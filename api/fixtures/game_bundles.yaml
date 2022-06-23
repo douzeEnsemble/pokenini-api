@@ -1,0 +1,49 @@
+App\Entity\GameBundle:
+    game_bundle_red_green_blue_yellow:
+        name: 'Red, Green, Blue, Yellow'
+        generation: '@gen_1'
+    game_bundle_gold_silver_crystal:
+        name: 'Gold, Silver, Crystal'
+        generation: '@gen_2'
+    game_bundle_ruby_sapphire_emerald:
+        name: 'Ruby, Sapphire, Emerald'
+        generation: '@gen_3'
+    game_bundle_red_fire_leaf_green:
+        name: 'RedFire, LeafGreen'
+        generation: '@gen_3'
+    game_bundle_diamond_pearl_platinium:
+        name: 'Diamond, Pearl, Platinium'
+        generation: '@gen_4'
+    game_bundle_heart_gold_soul_silver:
+        name: 'Heart Gold, Soul Silver'
+        generation: '@gen_4'
+    game_bundle_black_white:
+        name: 'Black, White'
+        generation: '@gen_5'
+    game_bundle_black2_white2:
+        name: 'Black 2, White 2'
+        generation: '@gen_5'
+    game_bundle_x_y:
+        name: 'X, Y'
+        generation: '@gen_6'
+    game_bundle_omega_ruby_alpha_sapphire:
+        name: 'Omega Ruby, Alpha Sapphire'
+        generation: '@gen_6'
+    game_bundle_sun_moon:
+        name: 'Sun, Moon'
+        generation: '@gen_7'
+    game_bundle_ultra_sun_ultra_moon:
+        name: 'Ultra Sun, Ultra Moon'
+        generation: '@gen_7'
+    game_bundle_lets_go_pikachu_lets_go_eevee:
+        name: 'Lets Go Pikachu, Lets Go Eevee'
+        generation: '@gen_7'
+    game_bundle_sword_shield:
+        name: 'Sword, Shield'
+        generation: '@gen_8'
+    game_bundle_brilland_diamond_shining_pearl:
+        name: 'Brilland Diamond, Shining Pearl'
+        generation: '@gen_8'
+    game_bundle_legend_arceus:
+        name: 'Legend Arceus'
+        generation: '@gen_8'

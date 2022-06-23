@@ -1,0 +1,15 @@
+App\Entity\VariantForm:
+    variant_form_gender:
+        name: 'Gender'
+    variant_form_alternate:
+        name: 'Alternate'
+    variant_form_baby:
+        name: 'Baby'
+    variant_form_battle:
+        name: 'Battle'
+    variant_form_item:
+        name: 'Item'
+    variant_form_fusion:
+        name: 'Fusion'
+    variant_form_unobtainable:
+        name: 'Unobtainable'

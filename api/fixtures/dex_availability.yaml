@@ -1,0 +1,58 @@
+App\Entity\DexAvailability:
+    dexavailability_redbluegreenyellow_douze:
+        pokemon: '@pokemon_douze'
+        dex: '@dex_redbluegreenyellow'
+        
+    dexavailability_home_douze:
+        pokemon: '@pokemon_douze'
+        dex: '@dex_home'
+        
+    dexavailability_redbluegreenyellow_bulbasaur:
+        pokemon: '@pokemon_bulbasaur'
+        dex: '@dex_redbluegreenyellow'
+        
+    dexavailability_redbluegreenyellow_yvysaur:
+        pokemon: '@pokemon_yvysaur'
+        dex: '@dex_redbluegreenyellow'
+        
+    dexavailability_redbluegreenyellow_venusaur:
+        pokemon: '@pokemon_venusaur'
+        dex: '@dex_redbluegreenyellow'
+        
+    dexavailability_goldsilvercrystal_bulbasaur:
+        pokemon: '@pokemon_bulbasaur'
+        dex: '@dex_goldsilvercrystal'
+        
+    dexavailability_goldsilvercrystal_yvysaur:
+        pokemon: '@pokemon_yvysaur'
+        dex: '@dex_goldsilvercrystal'
+        
+    dexavailability_goldsilvercrystal_venusaur:
+        pokemon: '@pokemon_venusaur'
+        dex: '@dex_goldsilvercrystal'
+        
+    dexavailability_home_bulbasaur:
+        pokemon: '@pokemon_bulbasaur'
+        dex: '@dex_home'
+        
+    dexavailability_home_yvysaur:
+        pokemon: '@pokemon_yvysaur'
+        dex: '@dex_home'
+        
+    dexavailability_home_venusaur:
+        pokemon: '@pokemon_venusaur'
+        dex: '@dex_home'
+        
+    dexavailability_home_venusaurf:
+        pokemon: '@pokemon_venusaur_f'
+        dex: '@dex_home'
+        
+    dexavailability_home_venusaurmega:
+        pokemon: '@pokemon_venusaur_mega'
+        dex: '@dex_home'
+        
+    dexavailability_home_venusaurgigantamax:
+        pokemon: '@pokemon_venusaur_gigantamax'
+        dex: '@dex_home'
+        
+    

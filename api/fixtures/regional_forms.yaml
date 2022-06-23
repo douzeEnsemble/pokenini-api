@@ -1,0 +1,7 @@
+App\Entity\RegionalForm:
+    regional_form_alolan:
+        name: 'Alolan'
+    regional_form_galarian:
+        name: 'Galarian'
+    regional_form_hisuian:
+        name: 'Hisuian'

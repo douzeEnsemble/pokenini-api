@@ -15,6 +15,14 @@
         <server name="SHELL_VERBOSITY" value="-1" />
         <server name="SYMFONY_PHPUNIT_REMOVE" value="" />
         <server name="SYMFONY_PHPUNIT_VERSION" value="9.5" />
+
+        <env name="SYMFONY_DEPRECATIONS_HELPER" value="disabled" />
+
+        <env
+            name="DATABASE_URL"
+            value="postgresql://api-platform:!ChangeMe!@database_test:5432/api?serverVersion=13%26charset=utf8"
+            force="true"
+        />
     </php>
 
     <testsuites>

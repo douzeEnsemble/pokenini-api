@@ -1,0 +1,209 @@
+<?php
+
+namespace App\Command;
+
+use App\Exception\InvalidFilePathDataException;
+use App\Exception\InvalidFileDataException;
+use App\Exception\NoDataPokemonException;
+use App\Repository\PokemonRepository;
+use Cocur\Slugify\Slugify;
+use Doctrine\ORM\EntityManagerInterface;
+use League\Csv\Reader;
+use League\MimeTypeDetection\FinfoMimeTypeDetector;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Attribute\AsCommand;
+use Symfony\Component\Console\Input\InputArgument;
+use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Uid\Uuid;
+
+#[AsCommand(name: 'app:import:pokemon')]
+class ImportPokemonCommand extends AbstractImportFileCommand
+{
+    protected static $defaultName = 'app:import:pokemon';
+
+    private const CHUNK_SIZE = 30;
+
+    public function __construct(
+        private PokemonRepository $pokemonRepository,
+        protected EntityManagerInterface $entityManager,
+
+    ) {
+        parent::__construct($this->entityManager);
+    }
+
+    protected function configure(): void
+    {
+        parent::configure();
+
+        $this
+            ->setHelp('This command allows you to import pokemon list from a csv')
+        ;
+    }
+
+    protected function processRecords(\Iterator $records, InputInterface $input, OutputInterface $output): void
+    {
+        $pokemons = $this->getPokemonsFromRecords($records);
+
+        $this->pokemonRepository->removeAll();
+
+        $pokemonsChunks = array_chunk($pokemons, self::CHUNK_SIZE);
+        foreach ($pokemonsChunks as $chunk) {
+            $this->upsertPokemons($chunk);
+        }
+
+        $nbPokemons = count($pokemons);
+
+        $output->writeln("<info>$nbPokemons pokemons created/updated</info>");
+    }
+
+    protected function getExpectedHeader(): array
+    {
+        return [
+            'Bankable',
+            'Breeedable Form',
+            'Origin',
+            'Games First Appears On',
+            'Form variant',
+            'Regional form',
+            'Special form',
+            'Family',
+            'Evolution',
+            'Pokémon',
+            'Dex',
+            'Sprites',
+            'Shiny Sprites',
+            'Type 1',
+            'Type 1 ico',
+            'Type 2',
+            'Type 2 ico',
+            'Steps',
+            'Egg Group',
+            'Egg Group 2',
+            'Male',
+            'Female',
+            'Ability 1',
+            'Ability 2',
+            'Hidden Ability',
+            'Abilities',
+            'All Moves',
+            'Move Type',
+            'Natures',
+            'Increases',
+            'Decreases',
+            'Icon',
+            'Bulbapedia Name',
+            'Bankable-ish',
+            'Slug',
+        ];
+    }
+
+    private function getPokemonsFromRecords(\Iterator $records): array
+    {
+        $pokemons = [];
+        foreach ($records as $record) {
+            $pokemons[] = $this->transformRecord($record);
+        }
+
+        return $pokemons;
+    }
+
+    /**
+     * @param mixed[] $record
+     *
+     * @return mixed[]
+     */
+    private function transformRecord(array $record): array
+    {
+        return [
+            'name' => $record['Pokémon'],
+            'nationalDexNumber' => (int) $record['Dex'],
+            'family' => $record['Family'],
+            'bankable' => filter_var($record['Bankable'], FILTER_VALIDATE_BOOLEAN),
+            'bankableish' => filter_var($record['Bankable-ish'], FILTER_VALIDATE_BOOLEAN),
+            'originalGameBundle' => $record['Origin'],
+            'variantForm' => $record['Form variant'],
+            'regionalForm' => $record['Regional form'],
+            'specialForm' => $record['Special form'],
+            'iconName' => $record['Bulbapedia Name'],
+            'slug' => $record['Slug'],
+        ];
+    }
+
+    private function upsertPokemons(array $pokemons)
+    {
+        if (empty($pokemons)) {
+            return;
+        }
+
+        $sqlValues = [];
+        $sqlParameters = [];
+        $i = 0;
+        foreach ($pokemons as $pokemon) {
+            $sqlValues[] = ":id$i"
+                . ", :name$i"
+                . ", :national_dex_number$i"
+                . ", (SELECT id FROM pokemon WHERE name = :family$i)"
+                . ", :bankable$i"
+                . ", :bankableish$i"
+                . ", (SELECT id FROM game_bundle WHERE name = :original_game_bundle$i)"
+                . ", (SELECT id FROM variant_form WHERE name = :variant_form$i)"
+                . ", (SELECT id FROM regional_form WHERE name = :regional_form$i)"
+                . ", (SELECT id FROM special_form WHERE name = :special_form$i)"
+                . ", :iconName$i"
+                . ", :slug$i"
+            ;
+
+            $sqlParameters["id$i"] = Uuid::v4();
+            $sqlParameters["name$i"] = $pokemon['name'];
+            $sqlParameters["national_dex_number$i"] = $pokemon['nationalDexNumber'];
+            $sqlParameters["family$i"] = $pokemon['family'];
+            $sqlParameters["bankable$i"] = $pokemon['bankable'] ? 'TRUE' : 'FALSE';
+            $sqlParameters["bankableish$i"] = $pokemon['bankableish'] ? 'TRUE' : 'FALSE';
+            $sqlParameters["original_game_bundle$i"] = $pokemon['originalGameBundle'];
+            $sqlParameters["variant_form$i"] = $pokemon['variantForm'];
+            $sqlParameters["regional_form$i"] = $pokemon['regionalForm'];
+            $sqlParameters["special_form$i"] = $pokemon['specialForm'];
+            $sqlParameters["iconName$i"] = $pokemon['iconName'];
+            $sqlParameters["slug$i"] = $pokemon['slug'];
+
+            $i++;
+        }
+
+        $sqlValuesStr = implode('), (', $sqlValues);
+
+        $sql = <<<SQL
+        INSERT INTO pokemon (
+            id,
+            name,
+            national_dex_number,
+            family_id,
+            bankable,
+            bankableish,
+            original_game_bundle_id,
+            variant_form_id,
+            regional_form_id,
+            special_form_id,
+            icon_name,
+            slug
+        )
+        VALUES ($sqlValuesStr)
+        ON CONFLICT (name)
+        DO
+        UPDATE
+        SET national_dex_number = excluded.national_dex_number,
+            family_id = excluded.family_id,
+            bankable = excluded.bankable,
+            bankableish = excluded.bankableish,
+            original_game_bundle_id = excluded.original_game_bundle_id,
+            variant_form_id = excluded.variant_form_id,
+            regional_form_id = excluded.regional_form_id,
+            special_form_id = excluded.special_form_id,
+            icon_name = excluded.icon_name,
+            slug = excluded.slug,
+            deleted_at = NULL
+SQL;
+
+        $this->entityManager->getConnection()->executeQuery($sql, $sqlParameters);
+    }
+}

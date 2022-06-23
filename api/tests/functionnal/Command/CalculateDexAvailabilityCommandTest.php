@@ -1,0 +1,76 @@
+<?php
+
+namespace App\Tests\functionnal\Command;
+
+use App\Repository\PokemonRepository;
+use App\Tests\resources\functionnal\CountDexAvailabilityTrait;
+use App\Tests\resources\functionnal\CountPokemonTrait;
+use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use Symfony\Bundle\FrameworkBundle\Console\Application;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+use Symfony\Component\Console\Command\Command;
+use Symfony\Component\Console\Tester\CommandTester;
+
+class CalculateDexAvailabilityCommandTest extends KernelTestCase
+{
+    use CountPokemonTrait;
+    use CountDexAvailabilityTrait;
+    use RefreshDatabaseTrait;
+
+    public function setUp(): void
+    {
+        self::bootKernel();
+    }
+
+    public function testNoGameAvailability(): void
+    {
+        /** @var PokemonRepository $repo */
+        $repo = static::getContainer()->get(PokemonRepository::class);
+        $repo->removeAll();
+
+        $this->assertEquals(0, $this->getPokemonNotDeletedCount());
+
+        $this->assertEquals(14, $this->getDexAvailabilityCount());
+
+        $commandTester = $this->executeCommand();
+        $commandTester->assertCommandIsSuccessful();
+
+        $this->assertStringContainsString("0 dex' availabilities calculated", $commandTester->getDisplay());
+
+        $this->assertEquals(0, $this->getDexAvailabilityCount());
+    }
+
+    public function testDexAvailabilities(): void
+    {
+        $this->assertEquals(14, $this->getDexAvailabilityCount());
+
+        $commandTester = $this->executeCommand();
+        $commandTester->assertCommandIsSuccessful();
+
+        $this->assertStringContainsString("8 dex' availabilities calculated", $commandTester->getDisplay());
+
+        $this->assertEquals(8, $this->getDexAvailabilityCount());
+    }
+
+    protected function getCommandName(): string
+    {
+        return 'app:calculate:dex_availability';
+    }
+
+    protected function getCommand(): Command
+    {
+        $application = new Application(self::$kernel);
+
+        return $application->find($this->getCommandName());
+    }
+
+    protected function executeCommand(): CommandTester
+    {
+        $command = $this->getCommand();
+
+        $commandTester = new CommandTester($command);
+        $commandTester->execute([]);
+
+        return $commandTester;
+    }
+}

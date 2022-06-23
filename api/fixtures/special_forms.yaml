@@ -1,0 +1,7 @@
+App\Entity\SpecialForm:
+    special_form_mega:
+        name: 'Mega'
+    special_form_alpha:
+        name: 'Alpha'
+    special_form_gigantamax:
+        name: 'Gigantamax'

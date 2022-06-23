@@ -1,0 +1,24 @@
+<?php
+
+namespace App\Repository;
+
+use App\Entity\DexAvailability;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\Persistence\ManagerRegistry;
+
+class DexAvailabilityRepository extends ServiceEntityRepository
+{
+    public function __construct(ManagerRegistry $registry)
+    {
+        parent::__construct($registry, DexAvailability::class);
+    }
+
+    public function removeAll(): void
+    {
+        $qb = $this->createQueryBuilder('da')
+            ->delete()
+        ;
+
+        $qb->getQuery()->execute();
+    }
+}

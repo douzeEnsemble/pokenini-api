@@ -1,0 +1,59 @@
+App\Entity\Pokemon:
+    pokemon (template):
+        bankable: true
+        bankableish: ~
+        variantForm: ~
+        regionalForm: ~
+        specialForm: ~
+        
+    pokemon_douze (extends pokemon):
+        name: 'Douze'
+        family: ~
+        nationalDexNumber: '1212'
+        originalGameBundle: '@game_bundle_red_green_blue_yellow'       
+        iconName: 'douze'
+        
+    pokemon_bulbasaur (extends pokemon):
+        name: 'Bulbasaur'
+        family: ~
+        nationalDexNumber: '1'
+        originalGameBundle: '@game_bundle_red_green_blue_yellow'       
+        iconName: 'bulbasaur'
+    
+    pokemon_yvysaur (extends pokemon):
+        name: 'Ivysaur'
+        family: '@pokemon_bulbasaur'
+        nationalDexNumber: '2'
+        originalGameBundle: '@game_bundle_red_green_blue_yellow'
+        iconName: 'ivysaur'
+        
+    pokemon_venusaur (extends pokemon):
+        name: 'Venusaur'
+        family: '@pokemon_bulbasaur'
+        nationalDexNumber: '3'
+        originalGameBundle: '@game_bundle_red_green_blue_yellow'       
+        iconName: 'venusaur'
+        
+    pokemon_venusaur_f (extends pokemon):
+        name: 'Venusaur ♀'
+        family: '@pokemon_bulbasaur'
+        nationalDexNumber: '3'
+        originalGameBundle: '@game_bundle_diamond_pearl_platinium'       
+        iconName: 'venusaur'
+        variantForm: '@variant_form_gender'
+    
+    pokemon_venusaur_mega (extends pokemon):
+        name: 'Mega Venusaur'
+        family: '@pokemon_bulbasaur'
+        nationalDexNumber: '3'
+        originalGameBundle: '@game_bundle_x_y'
+        iconName: 'venusaur'
+    
+    pokemon_venusaur_gigantamax (extends pokemon):
+        name: 'Gigantamax Venusaur'
+        family: '@pokemon_bulbasaur'
+        nationalDexNumber: '3'
+        originalGameBundle: '@game_bundle_sword_shield'
+        iconName: 'venusaur'
+        specialForm: '@special_form_gigantamax'
+    

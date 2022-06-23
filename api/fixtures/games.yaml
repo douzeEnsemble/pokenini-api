@@ -1,0 +1,109 @@
+App\Entity\Game:
+    game_red:
+        name: 'Red'
+        bundle: '@game_bundle_red_green_blue_yellow'
+    game_green:
+        name: 'Green'
+        bundle: '@game_bundle_red_green_blue_yellow'
+    game_blue:
+        name: 'Blue'
+        bundle: '@game_bundle_red_green_blue_yellow'
+    game_yellow:
+        name: 'Yellow'
+        bundle: '@game_bundle_red_green_blue_yellow'
+    game_gold:
+        name: 'Gold'
+        bundle: '@game_bundle_gold_silver_crystal'
+    game_silver:
+        name: 'Silver'
+        bundle: '@game_bundle_gold_silver_crystal'
+    game_crystal:
+        name: 'Crystal'
+        bundle: '@game_bundle_gold_silver_crystal'
+    game_ruby:
+        name: 'Ruby'
+        bundle: '@game_bundle_ruby_sapphire_emerald'
+    game_sapphire:
+        name: 'Sapphire'
+        bundle: '@game_bundle_ruby_sapphire_emerald'
+    game_red fire:
+        name: 'Red Fire'
+        bundle: '@game_bundle_red_fire_leaf_green'
+    game_leaf green:
+        name: 'Leaf Green'
+        bundle: '@game_bundle_red_fire_leaf_green'
+    game_emerald:
+        name: 'Emerald'
+        bundle: '@game_bundle_ruby_sapphire_emerald'
+    game_diamond:
+        name: 'Diamond'
+        bundle: '@game_bundle_diamond_pearl_platinium'
+    game_pearl:
+        name: 'Pearl'
+        bundle: '@game_bundle_diamond_pearl_platinium'
+    game_platinium:
+        name: 'Platinium'
+        bundle: '@game_bundle_diamond_pearl_platinium'
+    game_heart gold:
+        name: 'Heart Gold'
+        bundle: '@game_bundle_heart_gold_soul_silver'
+    game_soul silver:
+        name: 'Soul Silver'
+        bundle: '@game_bundle_heart_gold_soul_silver'
+    game_black:
+        name: 'Black'
+        bundle: '@game_bundle_black_white'
+    game_white:
+        name: 'White'
+        bundle: '@game_bundle_black_white'
+    game_black 2:
+        name: 'Black 2'
+        bundle: '@game_bundle_black2_white2'
+    game_white 2:
+        bundle: '@game_bundle_black2_white2'
+        name: 'White 2'
+    game_x:
+        name: 'X'
+        bundle: '@game_bundle_x_y'
+    game_y:
+        name: 'Y'
+        bundle: '@game_bundle_x_y'
+    game_omega ruby:
+        name: 'Omega Ruby'
+        bundle: '@game_bundle_omega_ruby_alpha_sapphire'
+    game_alpha sapphire:
+        name: 'Alpha Sapphire'
+        bundle: '@game_bundle_omega_ruby_alpha_sapphire'
+    game_sun:
+        name: 'Sun'
+        bundle: '@game_bundle_sun_moon'
+    game_moon:
+        name: 'Moon'
+        bundle: '@game_bundle_sun_moon'
+    game_ultra sun:
+        name: 'Ultra Sun'
+        bundle: '@game_bundle_ultra_sun_ultra_moon'
+    game_ultra moon:
+        name: 'Ultra Moon'
+        bundle: '@game_bundle_ultra_sun_ultra_moon'
+    game_let's go pikachu:
+        name: "Let's Go Pikachu"
+        bundle: '@game_bundle_lets_go_pikachu_lets_go_eevee'
+    game_let's go eevee:
+        name: "Let's Go Eevee"
+        bundle: '@game_bundle_lets_go_pikachu_lets_go_eevee'
+    game_sword:
+        name: 'Sword'
+        bundle: '@game_bundle_sword_shield'
+    game_shield:
+        name: 'Shield'
+        bundle: '@game_bundle_sword_shield'
+    game_brillant diamond:
+        name: 'Brillant Diamond'
+        bundle: '@game_bundle_brilland_diamond_shining_pearl'
+    game_shining pearl:
+        name: 'Shining Pearl'
+        bundle: '@game_bundle_brilland_diamond_shining_pearl'
+    game_legend arceus:
+        name: 'Legend Arceus'
+        bundle: '@game_bundle_legend_arceus'

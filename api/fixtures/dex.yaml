@@ -1,0 +1,10 @@
+App\Entity\Dex:
+    dex_redbluegreenyellow:
+        name: 'Red / Blue / Green / Yellow'
+        selectionRule: "(p.bankable or p.bankableish) and ba?.redgreenblueyellow"
+    dex_goldsilvercrystal:
+        name: 'Gold, Silver, Crystal'
+        selectionRule: "(p.bankable or p.bankableish) and ba?.redgreenblueyellow and ba?.goldsilvercrystal and p.specialForm === null and p.regionalForm === null"
+    dex_home:
+        name: 'Home'
+        selectionRule: "(p.bankable or p.bankableish)"

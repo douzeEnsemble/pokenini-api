@@ -1,0 +1,9 @@
+App\Entity\GameBundleAvailability:
+    game_bundle_douze_red_green_blue_yellow:
+        pokemon: '@pokemon_douze'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: true
+    game_bundle_douze_gold_silver_crystal:
+        pokemon: '@pokemon_douze'
+        bundle: '@game_bundle_gold_silver_crystal'
+        isAvailable: false

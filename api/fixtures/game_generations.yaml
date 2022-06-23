@@ -1,0 +1,17 @@
+App\Entity\GameGeneration:
+    gen_1:
+        name: '1'
+    gen_2:
+        name: '2'
+    gen_3:
+        name: '3'
+    gen_4:
+        name: '4'
+    gen_5:
+        name: '5'
+    gen_6:
+        name: '6'
+    gen_7:
+        name: '7'
+    gen_8:
+        name: '8'
