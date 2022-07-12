@@ -5,6 +5,7 @@ App\Entity\Pokemon:
         variantForm: ~
         regionalForm: ~
         specialForm: ~
+        familyOrder: 0
         
     pokemon_douze (extends pokemon):
         name: 'Douze'
@@ -12,6 +13,7 @@ App\Entity\Pokemon:
         nationalDexNumber: '1212'
         originalGameBundle: '@game_bundle_red_green_blue_yellow'       
         iconName: 'douze'
+        familyOrder: 0
         
     pokemon_bulbasaur (extends pokemon):
         name: 'Bulbasaur'
@@ -19,6 +21,7 @@ App\Entity\Pokemon:
         nationalDexNumber: '1'
         originalGameBundle: '@game_bundle_red_green_blue_yellow'       
         iconName: 'bulbasaur'
+        familyOrder: 0
     
     pokemon_yvysaur (extends pokemon):
         name: 'Ivysaur'
@@ -26,6 +29,7 @@ App\Entity\Pokemon:
         nationalDexNumber: '2'
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'ivysaur'
+        familyOrder: 1
         
     pokemon_venusaur (extends pokemon):
         name: 'Venusaur'
@@ -33,6 +37,7 @@ App\Entity\Pokemon:
         nationalDexNumber: '3'
         originalGameBundle: '@game_bundle_red_green_blue_yellow'       
         iconName: 'venusaur'
+        familyOrder: 2
         
     pokemon_venusaur_f (extends pokemon):
         name: 'Venusaur ♀'
@@ -41,6 +46,7 @@ App\Entity\Pokemon:
         originalGameBundle: '@game_bundle_diamond_pearl_platinium'       
         iconName: 'venusaur'
         variantForm: '@variant_form_gender'
+        familyOrder: 3
     
     pokemon_venusaur_mega (extends pokemon):
         name: 'Mega Venusaur'
@@ -48,6 +54,8 @@ App\Entity\Pokemon:
         nationalDexNumber: '3'
         originalGameBundle: '@game_bundle_x_y'
         iconName: 'venusaur'
+        specialForm: '@special_form_mega'
+        familyOrder: 4
     
     pokemon_venusaur_gigantamax (extends pokemon):
         name: 'Gigantamax Venusaur'
@@ -56,4 +64,5 @@ App\Entity\Pokemon:
         originalGameBundle: '@game_bundle_sword_shield'
         iconName: 'venusaur'
         specialForm: '@special_form_gigantamax'
+        familyOrder: 5
     

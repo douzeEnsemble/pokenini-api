@@ -17,6 +17,5 @@ class Dex
     use SlugifiedTrait;
 
     #[ORM\Column]
-    #[ORM\NotNull]
     public string $selectionRule = '';
 }

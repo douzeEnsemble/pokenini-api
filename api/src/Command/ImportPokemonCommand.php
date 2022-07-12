@@ -22,7 +22,7 @@ class ImportPokemonCommand extends AbstractImportFileCommand
 {
     protected static $defaultName = 'app:import:pokemon';
 
-    private const CHUNK_SIZE = 30;
+    private const CHUNK_SIZE = 10;
 
     public function __construct(
         private PokemonRepository $pokemonRepository,
@@ -68,6 +68,7 @@ class ImportPokemonCommand extends AbstractImportFileCommand
             'Regional form',
             'Special form',
             'Family',
+            'Family order',
             'Evolution',
             'Pokémon',
             'Dex',
@@ -119,6 +120,7 @@ class ImportPokemonCommand extends AbstractImportFileCommand
             'name' => $record['Pokémon'],
             'nationalDexNumber' => (int) $record['Dex'],
             'family' => $record['Family'],
+            'familyOrder' => $record['Family order'],
             'bankable' => filter_var($record['Bankable'], FILTER_VALIDATE_BOOLEAN),
             'bankableish' => filter_var($record['Bankable-ish'], FILTER_VALIDATE_BOOLEAN),
             'originalGameBundle' => $record['Origin'],
@@ -144,6 +146,7 @@ class ImportPokemonCommand extends AbstractImportFileCommand
                 . ", :name$i"
                 . ", :national_dex_number$i"
                 . ", (SELECT id FROM pokemon WHERE name = :family$i)"
+                . ", :familyOrder$i"
                 . ", :bankable$i"
                 . ", :bankableish$i"
                 . ", (SELECT id FROM game_bundle WHERE name = :original_game_bundle$i)"
@@ -158,6 +161,7 @@ class ImportPokemonCommand extends AbstractImportFileCommand
             $sqlParameters["name$i"] = $pokemon['name'];
             $sqlParameters["national_dex_number$i"] = $pokemon['nationalDexNumber'];
             $sqlParameters["family$i"] = $pokemon['family'];
+            $sqlParameters["familyOrder$i"] = $pokemon['familyOrder'];
             $sqlParameters["bankable$i"] = $pokemon['bankable'] ? 'TRUE' : 'FALSE';
             $sqlParameters["bankableish$i"] = $pokemon['bankableish'] ? 'TRUE' : 'FALSE';
             $sqlParameters["original_game_bundle$i"] = $pokemon['originalGameBundle'];
@@ -178,6 +182,7 @@ class ImportPokemonCommand extends AbstractImportFileCommand
             name,
             national_dex_number,
             family_id,
+            family_order,
             bankable,
             bankableish,
             original_game_bundle_id,
@@ -193,6 +198,7 @@ class ImportPokemonCommand extends AbstractImportFileCommand
         UPDATE
         SET national_dex_number = excluded.national_dex_number,
             family_id = excluded.family_id,
+            family_order = excluded.family_order,
             bankable = excluded.bankable,
             bankableish = excluded.bankableish,
             original_game_bundle_id = excluded.original_game_bundle_id,
@@ -204,6 +210,12 @@ class ImportPokemonCommand extends AbstractImportFileCommand
             deleted_at = NULL
 SQL;
 
-        $this->entityManager->getConnection()->executeQuery($sql, $sqlParameters);
+        try {
+            $this->entityManager->getConnection()->executeQuery($sql, $sqlParameters);
+        } catch (\Exception $e) {
+            var_dump($sqlParameters);
+
+            throw $e;
+        }
     }
 }

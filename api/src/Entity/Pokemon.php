@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 
-#[ApiResource]
+#[ApiResource(order: ["nationalDexNumber", "familyOrder"])]
 #[ORM\Entity]
 #[Gedmo\SoftDeleteable(fieldName: 'deletedAt')]
 class Pokemon
@@ -21,14 +21,12 @@ class Pokemon
     use SoftDeleteableEntity;
 
     #[ORM\Column]
-    #[ORM\NotNull]
     public int $nationalDexNumber;
 
     #[ORM\ManyToOne]
     public ?Pokemon $family = null;
 
     #[ORM\Column]
-    #[ORM\NotNull]
     public bool $bankable = true;
 
     #[ORM\Column(nullable: true)]
@@ -47,6 +45,8 @@ class Pokemon
     public ?SpecialForm $specialForm;
 
     #[ORM\Column]
-    #[ORM\NotNull]
     public string $iconName;
+
+    #[ORM\Column]
+    public int $familyOrder;
 }
