@@ -57,3 +57,11 @@ cc: sf
 phpunit: ## Execute unit test
 	docker-compose exec php bin/console doctrine:schema:update --force --env=test
 	docker-compose exec php bin/phpunit
+
+
+
+## —— Quality 👌 ———————————————————————————————————————————————————————————————
+phpcs: ## Execute phpcs
+	docker-compose exec php vendor/bin/phpcs
+phpcbf: ## Execute phpcbf (code beautifier) /!> This could edit your code
+	docker-compose exec php vendor/bin/phpcbf

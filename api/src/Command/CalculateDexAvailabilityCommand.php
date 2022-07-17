@@ -20,11 +20,11 @@ class CalculateDexAvailabilityCommand extends Command
     protected static $defaultName = 'app:calculate:dex_availability';
 
     public function __construct(
-        private DexAvailabilityRepository     $dexAvailabilityRepository,
+        private DexAvailabilityRepository $dexAvailabilityRepository,
         private GameBundleAvailabilityService $gameBundleAvailabilityService,
-        private DexRepository                 $dexRepository,
-        private PokemonRepository             $pokemonRepository,
-        private EntityManagerInterface        $entityManager
+        private DexRepository $dexRepository,
+        private PokemonRepository $pokemonRepository,
+        private EntityManagerInterface $entityManager
     ) {
         parent::__construct(self::$defaultName);
     }

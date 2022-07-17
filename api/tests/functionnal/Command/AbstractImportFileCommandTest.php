@@ -42,7 +42,10 @@ abstract class AbstractImportFileCommandTest extends KernelTestCase
 
         $this->assertEquals(2, $commandTester->getStatusCode());
 
-        $this->assertStringContainsString('File is not a valid csv (image/jpeg isn\'t accepted)', $commandTester->getDisplay());
+        $this->assertStringContainsString(
+            'File is not a valid csv (image/jpeg isn\'t accepted)',
+            $commandTester->getDisplay()
+        );
     }
 
     public function testFileNotAGoodCsv(): void
@@ -60,7 +63,10 @@ abstract class AbstractImportFileCommandTest extends KernelTestCase
 
         $this->assertEquals(2, $commandTester->getStatusCode());
 
-        $this->assertStringContainsString('File is not a valid csv (application/x-empty isn\'t accepted)', $commandTester->getDisplay());
+        $this->assertStringContainsString(
+            'File is not a valid csv (application/x-empty isn\'t accepted)',
+            $commandTester->getDisplay()
+        );
     }
 
     protected function getCommand(): Command

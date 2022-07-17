@@ -27,7 +27,6 @@ class ImportPokemonCommand extends AbstractImportFileCommand
     public function __construct(
         private PokemonRepository $pokemonRepository,
         protected EntityManagerInterface $entityManager,
-
     ) {
         parent::__construct($this->entityManager);
     }

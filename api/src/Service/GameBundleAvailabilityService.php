@@ -17,7 +17,7 @@ class GameBundleAvailabilityService
 
     public function getFromPokemon(Pokemon $pokemon): GameBundlesAvailabilities
     {
-        return $this->cache->get($pokemon->slug, function() use ($pokemon) {
+        return $this->cache->get($pokemon->slug, function () use ($pokemon) {
             return $this->gameBundleAvailabilityRepository->getFromPokemon($pokemon);
         });
     }

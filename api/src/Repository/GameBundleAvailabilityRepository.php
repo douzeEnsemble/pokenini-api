@@ -31,7 +31,11 @@ class GameBundleAvailabilityRepository extends ServiceEntityRepository
         SELECT		gen_random_uuid(), pokemon, bundle, CASE WHEN availability_count > 0 THEN TRUE ELSE FALSE END
         FROM		(
                         SELECT		gb.id as bundle, p.id as pokemon,
-                                    SUM(CASE WHEN ga.availability = '—' OR ga.availability = '' THEN 0 ELSE 1 END) AS availability_count
+                                    SUM(CASE
+                                        WHEN ga.availability = '—' OR ga.availability = ''
+                                        THEN 0
+                                        ELSE 1
+                                    END) AS availability_count
                         FROM		game_bundle AS gb
                                 JOIN game AS g
                                     ON gb.id = g.bundle_id

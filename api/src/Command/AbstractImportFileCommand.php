@@ -20,12 +20,15 @@ abstract class AbstractImportFileCommand extends Command
 {
     public function __construct(
         protected EntityManagerInterface $entityManager,
-
     ) {
         parent::__construct(self::$defaultName);
     }
 
-    abstract protected function processRecords(\Iterator $records, InputInterface $input, OutputInterface $output): void;
+    abstract protected function processRecords(
+        \Iterator $records,
+        InputInterface $input,
+        OutputInterface $output
+    ): void;
     abstract protected function getExpectedHeader(): array;
 
     protected function configure(): void
@@ -43,7 +46,7 @@ abstract class AbstractImportFileCommand extends Command
             $this->checkFilePath($filePath);
 
             $records = $this->getRecordsFromFile($filePath);
-        } catch (InvalidFilePathDataException|InvalidFileDataException $e) {
+        } catch (InvalidFilePathDataException | InvalidFileDataException $e) {
             $output->write("<error>{$e->getMessage()}</error>");
 
             return Command::INVALID;

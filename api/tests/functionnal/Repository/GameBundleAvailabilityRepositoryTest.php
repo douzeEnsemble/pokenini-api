@@ -62,9 +62,15 @@ class GameBundleAvailabilityRepositoryTest extends KernelTestCase
         $this->assertFalse($bundleAvailabilityDouzeGSC->isAvailable);
 
         /** @var GameBundleAvailability $bundleAvailabilityBulbasaurRGBY */
-        $bundleAvailabilityBulbasaurRGBY = $repo->findOneBy(['pokemon' => $pokemonBulbasaur, 'bundle' => $gameBundleRGBY]);
+        $bundleAvailabilityBulbasaurRGBY = $repo->findOneBy([
+            'pokemon' => $pokemonBulbasaur,
+            'bundle' => $gameBundleRGBY
+        ]);
         $this->assertTrue($bundleAvailabilityBulbasaurRGBY->isAvailable);
-        $bundleAvailabilityBulbasaurGSC = $repo->findOneBy(['pokemon' => $pokemonBulbasaur, 'bundle' => $gameBundleGSC]);
+        $bundleAvailabilityBulbasaurGSC = $repo->findOneBy([
+            'pokemon' => $pokemonBulbasaur,
+            'bundle' => $gameBundleGSC
+        ]);
         $this->assertTrue($bundleAvailabilityBulbasaurGSC->isAvailable);
     }
 

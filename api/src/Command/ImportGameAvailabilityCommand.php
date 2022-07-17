@@ -26,8 +26,7 @@ class ImportGameAvailabilityCommand extends AbstractImportFileCommand
 
     public function __construct(
         private GameAvailabilityRepository $gameAvailabilityRepository,
-        protected EntityManagerInterface   $entityManager,
-
+        protected EntityManagerInterface $entityManager,
     ) {
         parent::__construct($this->entityManager);
     }

@@ -18,5 +18,3 @@ trait BaseEntityTrait
         return $this->id;
     }
 }
-
-
