@@ -2,8 +2,10 @@
 
 namespace App\Entity\Traits;
 
+use ApiPlatform\Core\Annotation\ApiProperty;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 trait SlugifiedTrait
 {
@@ -11,5 +13,7 @@ trait SlugifiedTrait
 
     #[ORM\Column(unique: true)]
     #[Gedmo\Slug(fields: ['name'], separator: '')]
+    #[ApiProperty(identifier: true)]
+    #[Groups("pokemon_list")]
     public string $slug;
 }

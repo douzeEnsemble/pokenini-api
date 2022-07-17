@@ -123,7 +123,7 @@ class ImportPokemonCommand extends AbstractImportFileCommand
             'familyOrder' => $record['Family order'],
             'bankable' => filter_var($record['Bankable'], FILTER_VALIDATE_BOOLEAN),
             'bankableish' => filter_var($record['Bankable-ish'], FILTER_VALIDATE_BOOLEAN),
-            'originalGameBundle' => $record['Origin'],
+            'originalGameBundle' => $record['Games First Appears On'],
             'variantForm' => $record['Form variant'],
             'regionalForm' => $record['Regional form'],
             'specialForm' => $record['Special form'],

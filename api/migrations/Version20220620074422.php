@@ -16,11 +16,12 @@ final class Version20220620074422 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-        $this->addSql('CREATE TABLE catch_state (id UUID NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
+        // this up() migration is auto-generated, please modify it to your needs
+        $this->addSql('CREATE TABLE catch_state (id UUID NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, order_number INT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_4F8F865C5E237E06 ON catch_state (name)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_4F8F865C989D9B62 ON catch_state (slug)');
         $this->addSql('COMMENT ON COLUMN catch_state.id IS \'(DC2Type:uuid)\'');
-        $this->addSql('CREATE TABLE dex (id UUID NOT NULL, selection_rule VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE dex (id UUID NOT NULL, selection_rule VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, order_number INT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_F6CBDC025E237E06 ON dex (name)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_F6CBDC02989D9B62 ON dex (slug)');
         $this->addSql('COMMENT ON COLUMN dex.id IS \'(DC2Type:uuid)\'');
@@ -30,7 +31,7 @@ final class Version20220620074422 extends AbstractMigration
         $this->addSql('COMMENT ON COLUMN dex_availability.id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN dex_availability.pokemon_id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN dex_availability.dex_id IS \'(DC2Type:uuid)\'');
-        $this->addSql('CREATE TABLE game (id UUID NOT NULL, bundle_id UUID DEFAULT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE game (id UUID NOT NULL, bundle_id UUID DEFAULT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, order_number INT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_232B318C5E237E06 ON game (name)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_232B318C989D9B62 ON game (slug)');
         $this->addSql('CREATE INDEX IDX_232B318CF1FAD9D3 ON game (bundle_id)');
@@ -42,7 +43,7 @@ final class Version20220620074422 extends AbstractMigration
         $this->addSql('COMMENT ON COLUMN game_availability.id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN game_availability.pokemon_id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN game_availability.game_id IS \'(DC2Type:uuid)\'');
-        $this->addSql('CREATE TABLE game_bundle (id UUID NOT NULL, generation_id UUID DEFAULT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE game_bundle (id UUID NOT NULL, generation_id UUID DEFAULT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, order_number INT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_D84E9F355E237E06 ON game_bundle (name)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_D84E9F35989D9B62 ON game_bundle (slug)');
         $this->addSql('CREATE INDEX IDX_D84E9F35553A6EC4 ON game_bundle (generation_id)');
@@ -72,15 +73,15 @@ final class Version20220620074422 extends AbstractMigration
         $this->addSql('COMMENT ON COLUMN pokemon.variant_form_id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN pokemon.regional_form_id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN pokemon.special_form_id IS \'(DC2Type:uuid)\'');
-        $this->addSql('CREATE TABLE regional_form (id UUID NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE regional_form (id UUID NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, order_number INT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_ECF336915E237E06 ON regional_form (name)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_ECF33691989D9B62 ON regional_form (slug)');
         $this->addSql('COMMENT ON COLUMN regional_form.id IS \'(DC2Type:uuid)\'');
-        $this->addSql('CREATE TABLE special_form (id UUID NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE special_form (id UUID NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, order_number INT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_D0DFFC645E237E06 ON special_form (name)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_D0DFFC64989D9B62 ON special_form (slug)');
         $this->addSql('COMMENT ON COLUMN special_form.id IS \'(DC2Type:uuid)\'');
-        $this->addSql('CREATE TABLE variant_form (id UUID NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE variant_form (id UUID NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, order_number INT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_BD706BDA5E237E06 ON variant_form (name)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_BD706BDA989D9B62 ON variant_form (slug)');
         $this->addSql('COMMENT ON COLUMN variant_form.id IS \'(DC2Type:uuid)\'');
@@ -101,6 +102,7 @@ final class Version20220620074422 extends AbstractMigration
 
     public function down(Schema $schema): void
     {
+        // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE dex_availability DROP CONSTRAINT FK_C3DC5ADA44FE8083');
         $this->addSql('ALTER TABLE game_availability DROP CONSTRAINT FK_D16796D1E48FD905');
         $this->addSql('ALTER TABLE game DROP CONSTRAINT FK_232B318CF1FAD9D3');

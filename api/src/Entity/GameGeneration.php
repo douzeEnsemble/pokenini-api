@@ -8,7 +8,7 @@ use App\Entity\Traits\NamedTrait;
 use App\Entity\Traits\SlugifiedTrait;
 use Doctrine\ORM\Mapping as ORM;
 
-#[ApiResource]
+#[ApiResource(normalizationContext: ['groups' => ['game_generation_list']], order: ["name"])]
 #[ORM\Entity]
 class GameGeneration
 {

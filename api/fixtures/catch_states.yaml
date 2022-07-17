@@ -1,0 +1,14 @@
+App\Entity\CatchState:
+    catchstate_no:
+        name: "No"
+        orderNumber: 1
+    catchstate_maybe:
+        name: "Maybe"
+        orderNumber: 2
+    catchstate_maybenot:
+        name: "Maybe not"
+        orderNumber: 3
+    catchstate_yes:
+        name: "Yes"
+        orderNumber: 4
+    

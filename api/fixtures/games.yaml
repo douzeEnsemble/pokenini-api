@@ -2,108 +2,144 @@ App\Entity\Game:
     game_red:
         name: 'Red'
         bundle: '@game_bundle_red_green_blue_yellow'
+        orderNumber: 1
     game_green:
         name: 'Green'
         bundle: '@game_bundle_red_green_blue_yellow'
+        orderNumber: 2
     game_blue:
         name: 'Blue'
         bundle: '@game_bundle_red_green_blue_yellow'
+        orderNumber: 3
     game_yellow:
         name: 'Yellow'
         bundle: '@game_bundle_red_green_blue_yellow'
+        orderNumber: 4
     game_gold:
         name: 'Gold'
         bundle: '@game_bundle_gold_silver_crystal'
+        orderNumber: 4
     game_silver:
         name: 'Silver'
         bundle: '@game_bundle_gold_silver_crystal'
+        orderNumber: 5
     game_crystal:
         name: 'Crystal'
         bundle: '@game_bundle_gold_silver_crystal'
+        orderNumber: 6
     game_ruby:
         name: 'Ruby'
         bundle: '@game_bundle_ruby_sapphire_emerald'
+        orderNumber: 7
     game_sapphire:
         name: 'Sapphire'
         bundle: '@game_bundle_ruby_sapphire_emerald'
+        orderNumber: 8
     game_red fire:
         name: 'Red Fire'
         bundle: '@game_bundle_red_fire_leaf_green'
+        orderNumber: 9
     game_leaf green:
         name: 'Leaf Green'
         bundle: '@game_bundle_red_fire_leaf_green'
+        orderNumber: 10
     game_emerald:
         name: 'Emerald'
         bundle: '@game_bundle_ruby_sapphire_emerald'
+        orderNumber: 11
     game_diamond:
         name: 'Diamond'
         bundle: '@game_bundle_diamond_pearl_platinium'
+        orderNumber: 12
     game_pearl:
         name: 'Pearl'
         bundle: '@game_bundle_diamond_pearl_platinium'
+        orderNumber: 13
     game_platinium:
         name: 'Platinium'
         bundle: '@game_bundle_diamond_pearl_platinium'
+        orderNumber: 14
     game_heart gold:
         name: 'Heart Gold'
         bundle: '@game_bundle_heart_gold_soul_silver'
+        orderNumber: 15
     game_soul silver:
         name: 'Soul Silver'
         bundle: '@game_bundle_heart_gold_soul_silver'
+        orderNumber: 16
     game_black:
         name: 'Black'
         bundle: '@game_bundle_black_white'
+        orderNumber: 17
     game_white:
         name: 'White'
         bundle: '@game_bundle_black_white'
+        orderNumber: 18
     game_black 2:
         name: 'Black 2'
         bundle: '@game_bundle_black2_white2'
+        orderNumber: 19
     game_white 2:
         bundle: '@game_bundle_black2_white2'
         name: 'White 2'
+        orderNumber: 20
     game_x:
         name: 'X'
         bundle: '@game_bundle_x_y'
+        orderNumber: 21
     game_y:
         name: 'Y'
         bundle: '@game_bundle_x_y'
+        orderNumber: 22
     game_omega ruby:
         name: 'Omega Ruby'
         bundle: '@game_bundle_omega_ruby_alpha_sapphire'
+        orderNumber: 23
     game_alpha sapphire:
         name: 'Alpha Sapphire'
         bundle: '@game_bundle_omega_ruby_alpha_sapphire'
+        orderNumber: 24
     game_sun:
         name: 'Sun'
         bundle: '@game_bundle_sun_moon'
+        orderNumber: 25
     game_moon:
         name: 'Moon'
         bundle: '@game_bundle_sun_moon'
+        orderNumber: 26
     game_ultra sun:
         name: 'Ultra Sun'
         bundle: '@game_bundle_ultra_sun_ultra_moon'
+        orderNumber: 27
     game_ultra moon:
         name: 'Ultra Moon'
         bundle: '@game_bundle_ultra_sun_ultra_moon'
+        orderNumber: 28
     game_let's go pikachu:
         name: "Let's Go Pikachu"
         bundle: '@game_bundle_lets_go_pikachu_lets_go_eevee'
+        orderNumber: 29
     game_let's go eevee:
         name: "Let's Go Eevee"
         bundle: '@game_bundle_lets_go_pikachu_lets_go_eevee'
+        orderNumber: 30
     game_sword:
         name: 'Sword'
         bundle: '@game_bundle_sword_shield'
+        orderNumber: 31
     game_shield:
         name: 'Shield'
         bundle: '@game_bundle_sword_shield'
+        orderNumber: 32
     game_brillant diamond:
         name: 'Brillant Diamond'
         bundle: '@game_bundle_brilland_diamond_shining_pearl'
+        orderNumber: 33
     game_shining pearl:
         name: 'Shining Pearl'
         bundle: '@game_bundle_brilland_diamond_shining_pearl'
+        orderNumber: 34
     game_legend arceus:
         name: 'Legend Arceus'
         bundle: '@game_bundle_legend_arceus'
+        orderNumber: 35

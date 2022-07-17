@@ -1,7 +1,10 @@
 App\Entity\SpecialForm:
     special_form_mega:
         name: 'Mega'
+        orderNumber: 1
     special_form_alpha:
         name: 'Alpha'
+        orderNumber: 3
     special_form_gigantamax:
         name: 'Gigantamax'
+        orderNumber: 2

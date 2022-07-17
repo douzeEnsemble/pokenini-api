@@ -54,6 +54,7 @@ final class Version20220621220300 extends AbstractMigration
             'Sun, Moon' => '7',
             'Ultra Sun, Ultra Moon' => '7',
             'Let\'s Go Pikachu, Let\'s Go Eevee' => '7',
+            'Pokemon Go' => '7',
             'Sword, Shield' => '8',
             'Brilland Diamond, Shining Pearl' => '8',
             'Legend Arceus' => '8',
@@ -107,11 +108,12 @@ final class Version20220621220300 extends AbstractMigration
 
         $i = 0;
         foreach ($gameBundlesAndGeneration as $bundleName => $generationName) {
-            $sqlValues[] = ":id$i, :name$i, :slug$i, (SELECT id FROM game_generation WHERE name = :generationName$i)";
+            $sqlValues[] = ":id$i, :name$i, :slug$i, :orderNumber$i, (SELECT id FROM game_generation WHERE name = :generationName$i)";
 
             $sqlParameters["id$i"] = Uuid::v4();
             $sqlParameters["name$i"] = $bundleName;
             $sqlParameters["slug$i"] = $slugify->slugify($bundleName, '');
+            $sqlParameters["orderNumber$i"] = $i + 1;
             $sqlParameters["generationName$i"] = $generationName;
 
             $i++;
@@ -119,7 +121,7 @@ final class Version20220621220300 extends AbstractMigration
 
         $sqlValuesStr = implode('), (', $sqlValues);
 
-        $this->addSql("INSERT INTO game_bundle (id, name, slug, generation_id) VALUES ($sqlValuesStr)", $sqlParameters);
+        $this->addSql("INSERT INTO game_bundle (id, name, slug, order_number, generation_id) VALUES ($sqlValuesStr)", $sqlParameters);
     }
 
     private function insertGamesFromBundles(array $gameBundlesAndGeneration): void
@@ -132,11 +134,12 @@ final class Version20220621220300 extends AbstractMigration
             $games = array_map('trim', $games);
 
             foreach ($games as $game) {
-                $sqlValues[] = ":id$i, :name$i, :slug$i, (SELECT id FROM game_bundle WHERE name = :bundleName$i)";
+                $sqlValues[] = ":id$i, :name$i, :slug$i, :orderNumber$i, (SELECT id FROM game_bundle WHERE name = :bundleName$i)";
 
                 $sqlParameters["id$i"] = Uuid::v4();
                 $sqlParameters["name$i"] = $game;
                 $sqlParameters["slug$i"] = $slugify->slugify($game, '');
+                $sqlParameters["orderNumber$i"] = $i + 1;
                 $sqlParameters["bundleName$i"] = $gameBundle;
 
                 $i++;
@@ -145,23 +148,25 @@ final class Version20220621220300 extends AbstractMigration
 
         $sqlValuesStr = implode('), (', $sqlValues);
 
-        $this->addSql("INSERT INTO game (id, name, slug, bundle_id) VALUES ($sqlValuesStr)", $sqlParameters);
+        $this->addSql("INSERT INTO game (id, name, slug, order_number, bundle_id) VALUES ($sqlValuesStr)", $sqlParameters);
     }
 
     private function insertDexes(array $dexes): void
     {
         $slugify = new Slugify();
 
+        $i = 1;
         foreach ($dexes as $dexName => $selectionRule) {
             $sql = <<<SQL
-            INSERT INTO dex (id, name, selection_rule, slug)
-            VALUES (gen_random_uuid(), :name, :selectionRule, :slug)
+            INSERT INTO dex (id, name, selection_rule, slug, order_number)
+            VALUES (gen_random_uuid(), :name, :selectionRule, :slug, :orderNumber)
             SQL;
 
             $this->addSql($sql, [
                 'name' => $dexName,
                 'selectionRule' => $selectionRule,
-                'slug' => $slugify->slugify($dexName, '')
+                'slug' => $slugify->slugify($dexName, ''),
+                'orderNumber' => $i++,
             ]);
         }
     }

@@ -71,16 +71,17 @@ final class Version20220620074450 extends AbstractMigration
         $sqlParameters = [];
         $i = 0;
         foreach ($names as $name) {
-            $sqlValues[] = ":id$i, :name$i, :slug$i";
+            $sqlValues[] = ":id$i, :name$i, :slug$i, :order_number$i";
             $sqlParameters["id$i"] = Uuid::v4();
             $sqlParameters["name$i"] = $name;
             $sqlParameters["slug$i"] = $slugify->slugify($name, '');
+            $sqlParameters["order_number$i"] = $i+1;
 
             $i++;
         }
 
         $sqlValuesStr = implode('), (', $sqlValues);
 
-        $this->addSql("INSERT INTO $tableName (id, name, slug) VALUES ($sqlValuesStr)", $sqlParameters);
+        $this->addSql("INSERT INTO $tableName (id, name, slug, order_number) VALUES ($sqlValuesStr)", $sqlParameters);
     }
 }

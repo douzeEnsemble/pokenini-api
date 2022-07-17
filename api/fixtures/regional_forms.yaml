@@ -1,7 +1,10 @@
 App\Entity\RegionalForm:
     regional_form_alolan:
         name: 'Alolan'
+        orderNumber: 1
     regional_form_galarian:
         name: 'Galarian'
+        orderNumber: 2
     regional_form_hisuian:
         name: 'Hisuian'
+        orderNumber: 3
