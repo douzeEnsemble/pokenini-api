@@ -2,12 +2,15 @@
 
 namespace App\Command;
 
+use App\Entity\Dex;
 use App\Entity\DexAvailability;
+use App\Entity\Pokemon;
 use App\Repository\DexAvailabilityRepository;
 use App\Repository\DexRepository;
 use App\Repository\PokemonRepository;
 use App\Service\GameBundleAvailabilityService;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
@@ -54,6 +57,7 @@ class CalculateDexAvailabilityCommand extends Command
         $progressMain->start($dexCount * $pokemonCount);
 
         $nbDexAvailabilities = 0;
+        /** @var Dex $dex */
         foreach ($dexQuery->toIterable() as $dex) {
             $progressDex = $this->getProgressBar($output);
             $progressDex->setMessage("Dex {$dex->name}");
@@ -61,6 +65,7 @@ class CalculateDexAvailabilityCommand extends Command
             $progressDex->start($pokemonCount);
 
             $pokemonQuery = $this->pokemonRepository->getQueryAll();
+            /** @var Pokemon $pokemon */
             foreach ($pokemonQuery->toIterable() as $pokemon) {
                 $isGettable = $expressionLanguage->evaluate(
                     $dex->selectionRule,

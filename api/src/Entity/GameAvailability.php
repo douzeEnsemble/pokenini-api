@@ -11,8 +11,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 #[ApiResource(
     normalizationContext: ['groups' => ['game_availabilities_list']],
     order: ["pokemon.nationalDexNumber", "pokemon.familyOrder", "game.orderNumber"]
-)
-]
+)]
 #[ORM\Entity]
 class GameAvailability
 {

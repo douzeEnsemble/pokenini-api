@@ -56,6 +56,9 @@ class ImportGameAvailabilityCommand extends AbstractImportFileCommand
         $output->writeln("<info>$nbAvailabilities games' availabilities created</info>");
     }
 
+    /**
+     * @return string[]
+     */
     protected function getExpectedHeader(): array
     {
         return [
@@ -100,6 +103,11 @@ class ImportGameAvailabilityCommand extends AbstractImportFileCommand
         ];
     }
 
+    /**
+     * @param \Iterator|string[][] $records
+     *
+     * @return string[][]
+     */
     private function getGameAvailabilitiesFromRecords(\Iterator $records): array
     {
         $gameAvailabilities = [];
@@ -111,12 +119,10 @@ class ImportGameAvailabilityCommand extends AbstractImportFileCommand
     }
 
     /**
-     * @param mixed[] $gameAvailabilities
-     * @param mixed[] $record
-     *
-     * @return mixed[]
+     * @param string[][] $gameAvailabilities
+     * @param string[]   $record
      */
-    private function transformRecord(array &$gameAvailabilities, array $record): array
+    private function transformRecord(array &$gameAvailabilities, array $record): void
     {
         unset($record['#']);
 
@@ -130,11 +136,12 @@ class ImportGameAvailabilityCommand extends AbstractImportFileCommand
                 'availability' => $availability,
             ];
         }
-
-        return $gameAvailabilities;
     }
 
-    private function insertGameAvailabilities(array $gameAvailabilities)
+    /**
+     * @param string[][]|bool[][] $gameAvailabilities
+     */
+    private function insertGameAvailabilities(array $gameAvailabilities): void
     {
         if (empty($gameAvailabilities)) {
             return;

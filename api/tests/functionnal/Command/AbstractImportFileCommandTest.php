@@ -76,6 +76,9 @@ abstract class AbstractImportFileCommandTest extends KernelTestCase
         return $application->find($this->getCommandName());
     }
 
+    /**
+     * @param string[] $input
+     */
     protected function executeCommand(array $input): CommandTester
     {
         $command = $this->getCommand();

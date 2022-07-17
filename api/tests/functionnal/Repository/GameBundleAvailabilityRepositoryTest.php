@@ -42,7 +42,7 @@ class GameBundleAvailabilityRepositoryTest extends KernelTestCase
 
         /** @var GameBundleRepository $bundleRepo */
         $bundleRepo = static::getContainer()->get(GameBundleRepository::class);
-        /** @var PokemonRepository $bundleRepo */
+        /** @var PokemonRepository $pokemonRepo */
         $pokemonRepo = static::getContainer()->get(PokemonRepository::class);
 
         /** @var GameBundleAvailability $gameBundleRGBY */
@@ -58,6 +58,7 @@ class GameBundleAvailabilityRepositoryTest extends KernelTestCase
         /** @var GameBundleAvailability $bundleAvailabilityDouzeRGBY */
         $bundleAvailabilityDouzeRGBY = $repo->findOneBy(['pokemon' => $pokemonDouze, 'bundle' => $gameBundleRGBY]);
         $this->assertTrue($bundleAvailabilityDouzeRGBY->isAvailable);
+        /** @var GameBundleAvailability $bundleAvailabilityDouzeGSC */
         $bundleAvailabilityDouzeGSC = $repo->findOneBy(['pokemon' => $pokemonDouze, 'bundle' => $gameBundleGSC]);
         $this->assertFalse($bundleAvailabilityDouzeGSC->isAvailable);
 
@@ -67,6 +68,7 @@ class GameBundleAvailabilityRepositoryTest extends KernelTestCase
             'bundle' => $gameBundleRGBY
         ]);
         $this->assertTrue($bundleAvailabilityBulbasaurRGBY->isAvailable);
+        /** @var GameBundleAvailability $bundleAvailabilityBulbasaurGSC */
         $bundleAvailabilityBulbasaurGSC = $repo->findOneBy([
             'pokemon' => $pokemonBulbasaur,
             'bundle' => $gameBundleGSC
@@ -79,7 +81,7 @@ class GameBundleAvailabilityRepositoryTest extends KernelTestCase
         /** @var GameBundleAvailabilityRepository $repo */
         $repo = static::getContainer()->get(GameBundleAvailabilityRepository::class);
 
-        /** @var PokemonRepository $bundleRepo */
+        /** @var PokemonRepository $pokemonRepo */
         $pokemonRepo = static::getContainer()->get(PokemonRepository::class);
 
         /** @var Pokemon $pokemonDouze */

@@ -11,6 +11,7 @@ trait CountDexTrait
         /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
+        /** @var int */
         return $connection->executeQuery('SELECT COUNT(*) FROM dex')->fetchOne();
     }
 }

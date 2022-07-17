@@ -2,9 +2,7 @@
 
 namespace App\Command;
 
-use App\Repository\GameAvailabilityRepository;
 use App\Repository\GameBundleAvailabilityRepository;
-use App\Repository\GameBundleRepository;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -16,9 +14,7 @@ class CalculateGameBundleAvailabilityCommand extends Command
     protected static $defaultName = 'app:calculate:game_bundle_availability';
 
     public function __construct(
-        private GameBundleAvailabilityRepository $gameBundleAvailabilityRepository,
-        private GameBundleRepository $gameBundleRepository,
-        private GameAvailabilityRepository $gameAvailabilityRepository
+        private GameBundleAvailabilityRepository $gameBundleAvailabilityRepository
     ) {
         parent::__construct(self::$defaultName);
     }

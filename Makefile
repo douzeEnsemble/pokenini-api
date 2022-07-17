@@ -58,6 +58,8 @@ phpunit: ## Execute unit test
 	docker-compose exec php bin/console doctrine:schema:update --force --env=test
 	docker-compose exec php bin/phpunit
 
+phpstan: ## Execute phpstan analyse
+	docker-compose exec php vendor/bin/phpstan analyse
 
 
 ## —— Quality 👌 ———————————————————————————————————————————————————————————————

@@ -2,6 +2,7 @@
 
 namespace App\Tests\functionnal\Repository;
 
+use App\Entity\Dex;
 use App\Repository\DexRepository;
 use App\Tests\resources\functionnal\CountDexTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
@@ -24,6 +25,7 @@ class DexRepositoryTest extends KernelTestCase
 
         $dexesIterator = $repo->getQueryAll();
 
+        /** @var Dex[] $dexes */
         $dexes = iterator_to_array($dexesIterator->toIterable());
 
         $this->assertCount($this->getDexCount(), $dexes);

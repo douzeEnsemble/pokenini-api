@@ -56,6 +56,9 @@ class ImportPokemonCommand extends AbstractImportFileCommand
         $output->writeln("<info>$nbPokemons pokemons created/updated</info>");
     }
 
+    /**
+     * @return string[]
+     */
     protected function getExpectedHeader(): array
     {
         return [
@@ -98,6 +101,11 @@ class ImportPokemonCommand extends AbstractImportFileCommand
         ];
     }
 
+    /**
+     * @param \Iterator|string[][] $records
+     *
+     * @return string[][]|bool[][]
+     */
     private function getPokemonsFromRecords(\Iterator $records): array
     {
         $pokemons = [];
@@ -109,19 +117,24 @@ class ImportPokemonCommand extends AbstractImportFileCommand
     }
 
     /**
-     * @param mixed[] $record
+     * @param string[] $record
      *
-     * @return mixed[]
+     * @return string[]|bool[]
      */
     private function transformRecord(array $record): array
     {
+        /** @var bool $isBankable */
+        $isBankable = filter_var($record['Bankable'], FILTER_VALIDATE_BOOLEAN);
+        /** @var bool $isBankableish */
+        $isBankableish = filter_var($record['Bankable-ish'], FILTER_VALIDATE_BOOLEAN);
+
         return [
             'name' => $record['Pokémon'],
-            'nationalDexNumber' => (int) $record['Dex'],
+            'nationalDexNumber' => $record['Dex'],
             'family' => $record['Family'],
             'familyOrder' => $record['Family order'],
-            'bankable' => filter_var($record['Bankable'], FILTER_VALIDATE_BOOLEAN),
-            'bankableish' => filter_var($record['Bankable-ish'], FILTER_VALIDATE_BOOLEAN),
+            'bankable' => $isBankable,
+            'bankableish' => $isBankableish,
             'originalGameBundle' => $record['Games First Appears On'],
             'variantForm' => $record['Form variant'],
             'regionalForm' => $record['Regional form'],
@@ -131,7 +144,10 @@ class ImportPokemonCommand extends AbstractImportFileCommand
         ];
     }
 
-    private function upsertPokemons(array $pokemons)
+    /**
+     * @param string[][]|bool[][] $pokemons
+     */
+    private function upsertPokemons(array $pokemons): void
     {
         if (empty($pokemons)) {
             return;

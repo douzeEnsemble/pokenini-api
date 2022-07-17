@@ -17,6 +17,7 @@ trait NamedTrait
         "game_list",
         "game_availabilities_list",
         "game_bundle_list",
+        "game_bundle_availabilities_list",
         "game_generation_list",
         "forms_list",
     ])]

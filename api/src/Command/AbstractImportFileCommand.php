@@ -29,6 +29,10 @@ abstract class AbstractImportFileCommand extends Command
         InputInterface $input,
         OutputInterface $output
     ): void;
+
+    /**
+     * @return string[]
+     */
     abstract protected function getExpectedHeader(): array;
 
     protected function configure(): void
@@ -40,6 +44,7 @@ abstract class AbstractImportFileCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
+        /** @var string $filePath */
         $filePath = $input->getArgument('file');
 
         try {
@@ -80,7 +85,7 @@ abstract class AbstractImportFileCommand extends Command
         }
     }
 
-    protected function getRecordsFromFile(mixed $filePath): \Iterator
+    protected function getRecordsFromFile(string $filePath): \Iterator
     {
         $csv = Reader::createFromPath($filePath, 'r');
         $csv->setHeaderOffset(0);

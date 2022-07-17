@@ -18,6 +18,7 @@ class SpecialFormsApiTest extends ApiTestCase
             ]
         );
 
+        /** @var mixed[] $content */
         $content = json_decode($response->getContent(), true);
 
         $this->assertEquals([

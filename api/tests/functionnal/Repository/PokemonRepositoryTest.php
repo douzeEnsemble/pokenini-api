@@ -39,10 +39,10 @@ class PokemonRepositoryTest extends KernelTestCase
         /** @var PokemonRepository $repo */
         $repo = static::getContainer()->get(PokemonRepository::class);
 
-        $pokemonsIterator = $repo->getQueryAll();
+        $pokemonsIterator = $repo->getQueryAll()->toIterable();
 
         /** @var Pokemon[] $pokemons */
-        $pokemons = iterator_to_array($pokemonsIterator->toIterable());
+        $pokemons = iterator_to_array($pokemonsIterator);
 
         $this->assertCount($this->getPokemonCount(), $pokemons);
 
@@ -56,7 +56,7 @@ class PokemonRepositoryTest extends KernelTestCase
 
         $this->assertNull($pokemons[2]->variantForm);
         $this->assertNull($pokemons[2]->regionalForm);
-        $this->assertEquals('Gigantamax', $pokemons[2]->specialForm->name);
+        $this->assertEquals('Gigantamax', $pokemons[2]->specialForm?->name);
 
         $this->assertEquals('ivysaur', $pokemons[3]->iconName);
     }

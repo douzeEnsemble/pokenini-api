@@ -24,7 +24,7 @@ class GameBundleAvailabilityServiceTest extends KernelTestCase
         /** @var GameBundleAvailabilityService $service */
         $service = static::getContainer()->get(GameBundleAvailabilityService::class);
 
-        /** @var PokemonRepository $bundleRepo */
+        /** @var PokemonRepository $pokemonRepo */
         $pokemonRepo = static::getContainer()->get(PokemonRepository::class);
 
         /** @var Pokemon $pokemonDouze */

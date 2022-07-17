@@ -8,6 +8,9 @@ use App\Entity\Pokemon;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
+/**
+ * @extends ServiceEntityRepository<GameBundleAvailability>
+ */
 class GameBundleAvailabilityRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
@@ -71,11 +74,15 @@ class GameBundleAvailabilityRepository extends ServiceEntityRepository
 
         $qb->orderBy('b.name');
 
+        /** @var string[][] $result */
         $result = $qb->getQuery()->getArrayResult();
 
         $list = [];
         foreach ($result as $line) {
-            $list[$line['slug']] = $line['isAvailable'];
+            /** @var bool $isAvailable */
+            $isAvailable = $line['isAvailable'];
+
+            $list[$line['slug']] = $isAvailable;
         }
 
         return new GameBundlesAvailabilities($list);

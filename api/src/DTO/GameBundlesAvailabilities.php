@@ -2,8 +2,13 @@
 
 namespace App\DTO;
 
+use App\Entity\GameBundleAvailability;
+
 class GameBundlesAvailabilities
 {
+    /**
+     * @param bool[] $gameBundlesAvailabilities
+     */
     public function __construct(private array $gameBundlesAvailabilities)
     {
     }
