@@ -2,24 +2,12 @@
 
 namespace App\Tests\functionnal\Api;
 
-use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
-
-class VariantFormsApiTest extends ApiTestCase
+class VariantFormsApiTest extends AbstractApiTest
 {
     public function testGetCollection(): void
     {
-        $response = static::createClient()->request(
-            'GET',
-            '/variant_forms',
-            [
-                'headers' => [
-                    'accept' => 'application/json'
-                ]
-            ]
-        );
-
-        /** @var mixed[] $content */
-        $content = json_decode($response->getContent(), true);
+        /** @var string[] $content */
+        $content = $this->apiRequestContent('variant_forms');
 
         $this->assertEquals([
             'name' => 'Gender',

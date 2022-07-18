@@ -2,24 +2,12 @@
 
 namespace App\Tests\functionnal\Api;
 
-use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
-
-class GameAvailabilitiesApiTest extends ApiTestCase
+class GameAvailabilitiesApiTest extends AbstractApiTest
 {
     public function testGetCollection(): void
     {
-        $response = static::createClient()->request(
-            'GET',
-            '/game_availabilities',
-            [
-                'headers' => [
-                    'accept' => 'application/json'
-                ]
-            ]
-        );
-
-        /** @var mixed[] $content */
-        $content = json_decode($response->getContent(), true);
+        /** @var string[]|string[][] $content */
+        $content = $this->apiRequestContent('game_availabilities');
 
         $this->assertEquals([
             'pokemon' => [

@@ -20,10 +20,10 @@ class GameAvailabilityRepository extends ServiceEntityRepository
 
     public function removeAll(): void
     {
-        $qb = $this->createQueryBuilder('ga')
+        $queryBuilder = $this->createQueryBuilder('ga')
             ->delete()
         ;
 
-        $qb->getQuery()->execute();
+        $queryBuilder->getQuery()->execute();
     }
 }

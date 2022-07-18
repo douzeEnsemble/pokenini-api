@@ -4,7 +4,7 @@ namespace App\Tests\functionnal\Repository;
 
 use App\Entity\Pokemon;
 use App\Repository\PokemonRepository;
-use App\Tests\resources\functionnal\CountPokemonTrait;
+use App\Tests\resources\functionnal\CounterTrait\CountPokemonTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 

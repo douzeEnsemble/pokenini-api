@@ -155,38 +155,38 @@ class ImportPokemonCommand extends AbstractImportFileCommand
 
         $sqlValues = [];
         $sqlParameters = [];
-        $i = 0;
+        $index = 0;
         foreach ($pokemons as $pokemon) {
-            $sqlValues[] = ":id$i"
-                . ", :name$i"
-                . ", :national_dex_number$i"
-                . ", (SELECT id FROM pokemon WHERE name = :family$i)"
-                . ", :familyOrder$i"
-                . ", :bankable$i"
-                . ", :bankableish$i"
-                . ", (SELECT id FROM game_bundle WHERE name = :original_game_bundle$i)"
-                . ", (SELECT id FROM variant_form WHERE name = :variant_form$i)"
-                . ", (SELECT id FROM regional_form WHERE name = :regional_form$i)"
-                . ", (SELECT id FROM special_form WHERE name = :special_form$i)"
-                . ", :iconName$i"
-                . ", :slug$i"
+            $sqlValues[] = ":id$index"
+                . ", :name$index"
+                . ", :national_dex_number$index"
+                . ", (SELECT id FROM pokemon WHERE name = :family$index)"
+                . ", :familyOrder$index"
+                . ", :bankable$index"
+                . ", :bankableish$index"
+                . ", (SELECT id FROM game_bundle WHERE name = :original_game_bundle$index)"
+                . ", (SELECT id FROM variant_form WHERE name = :variant_form$index)"
+                . ", (SELECT id FROM regional_form WHERE name = :regional_form$index)"
+                . ", (SELECT id FROM special_form WHERE name = :special_form$index)"
+                . ", :iconName$index"
+                . ", :slug$index"
             ;
 
-            $sqlParameters["id$i"] = Uuid::v4();
-            $sqlParameters["name$i"] = $pokemon['name'];
-            $sqlParameters["national_dex_number$i"] = $pokemon['nationalDexNumber'];
-            $sqlParameters["family$i"] = $pokemon['family'];
-            $sqlParameters["familyOrder$i"] = $pokemon['familyOrder'];
-            $sqlParameters["bankable$i"] = $pokemon['bankable'] ? 'TRUE' : 'FALSE';
-            $sqlParameters["bankableish$i"] = $pokemon['bankableish'] ? 'TRUE' : 'FALSE';
-            $sqlParameters["original_game_bundle$i"] = $pokemon['originalGameBundle'];
-            $sqlParameters["variant_form$i"] = $pokemon['variantForm'];
-            $sqlParameters["regional_form$i"] = $pokemon['regionalForm'];
-            $sqlParameters["special_form$i"] = $pokemon['specialForm'];
-            $sqlParameters["iconName$i"] = $pokemon['iconName'];
-            $sqlParameters["slug$i"] = $pokemon['slug'];
+            $sqlParameters["id$index"] = Uuid::v4();
+            $sqlParameters["name$index"] = $pokemon['name'];
+            $sqlParameters["national_dex_number$index"] = $pokemon['nationalDexNumber'];
+            $sqlParameters["family$index"] = $pokemon['family'];
+            $sqlParameters["familyOrder$index"] = $pokemon['familyOrder'];
+            $sqlParameters["bankable$index"] = $pokemon['bankable'] ? 'TRUE' : 'FALSE';
+            $sqlParameters["bankableish$index"] = $pokemon['bankableish'] ? 'TRUE' : 'FALSE';
+            $sqlParameters["original_game_bundle$index"] = $pokemon['originalGameBundle'];
+            $sqlParameters["variant_form$index"] = $pokemon['variantForm'];
+            $sqlParameters["regional_form$index"] = $pokemon['regionalForm'];
+            $sqlParameters["special_form$index"] = $pokemon['specialForm'];
+            $sqlParameters["iconName$index"] = $pokemon['iconName'];
+            $sqlParameters["slug$index"] = $pokemon['slug'];
 
-            $i++;
+            $index++;
         }
 
         $sqlValuesStr = implode('), (', $sqlValues);

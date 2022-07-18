@@ -2,24 +2,12 @@
 
 namespace App\Tests\functionnal\Api;
 
-use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
-
-class DexesApiTest extends ApiTestCase
+class DexesApiTest extends AbstractApiTest
 {
     public function testGetCollection(): void
     {
-        $response = static::createClient()->request(
-            'GET',
-            '/dexes',
-            [
-                'headers' => [
-                    'accept' => 'application/json'
-                ]
-            ]
-        );
-
-        /** @var mixed[] $content */
-        $content = json_decode($response->getContent(), true);
+        /** @var string[] $content */
+        $content = $this->apiRequestContent('dexes');
 
         $this->assertEquals([
             'name' => 'Red / Blue / Green / Yellow',

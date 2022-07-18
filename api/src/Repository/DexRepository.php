@@ -20,20 +20,20 @@ class DexRepository extends ServiceEntityRepository
 
     public function getQueryAll(): Query
     {
-        $qb = $this->createQueryBuilder('d');
+        $queryBuilder = $this->createQueryBuilder('d');
 
-        $qb->orderBy('d.name');
+        $queryBuilder->orderBy('d.name');
 
-        return $qb->getQuery();
+        return $queryBuilder->getQuery();
     }
 
     public function countAll(): int
     {
-        $qb = $this->createQueryBuilder('d');
+        $queryBuilder = $this->createQueryBuilder('d');
 
-        $qb->select($qb->expr()->count('d'));
+        $queryBuilder->select($queryBuilder->expr()->count('d'));
 
         /** @var int */
-        return $qb->getQuery()->getSingleScalarResult();
+        return $queryBuilder->getQuery()->getSingleScalarResult();
     }
 }

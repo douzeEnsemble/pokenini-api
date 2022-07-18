@@ -149,20 +149,20 @@ class ImportGameAvailabilityCommand extends AbstractImportFileCommand
 
         $sqlValues = [];
         $sqlParameters = [];
-        $i = 0;
+        $index = 0;
         foreach ($gameAvailabilities as $gameAvailability) {
-            $sqlValues[] = ":id$i"
-                . ", (SELECT id FROM pokemon WHERE name = :pokemon$i)"
-                . ", (SELECT id FROM game WHERE name = :game$i)"
-                . ", :availability$i"
+            $sqlValues[] = ":id$index"
+                . ", (SELECT id FROM pokemon WHERE name = :pokemon$index)"
+                . ", (SELECT id FROM game WHERE name = :game$index)"
+                . ", :availability$index"
             ;
 
-            $sqlParameters["id$i"] = Uuid::v4();
-            $sqlParameters["pokemon$i"] = $gameAvailability['pokemon'];
-            $sqlParameters["game$i"] = $gameAvailability['game'];
-            $sqlParameters["availability$i"] = $gameAvailability['availability'];
+            $sqlParameters["id$index"] = Uuid::v4();
+            $sqlParameters["pokemon$index"] = $gameAvailability['pokemon'];
+            $sqlParameters["game$index"] = $gameAvailability['game'];
+            $sqlParameters["availability$index"] = $gameAvailability['availability'];
 
-            $i++;
+            $index++;
         }
 
         $sqlValuesStr = implode('), (', $sqlValues);

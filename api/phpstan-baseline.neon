@@ -16,56 +16,6 @@ parameters:
 			path: tests/functionnal/Repository/GameBundleAvailabilityRepositoryTest.php
 
 		-
-			message: "#^Cannot access property \\$bankable on mixed\\.$#"
-			count: 1
-			path: tests/functionnal/Repository/PokemonRepositoryTest.php
-
-		-
-			message: "#^Cannot access property \\$bankableish on mixed\\.$#"
-			count: 1
-			path: tests/functionnal/Repository/PokemonRepositoryTest.php
-
-		-
-			message: "#^Cannot access property \\$family on mixed\\.$#"
-			count: 1
-			path: tests/functionnal/Repository/PokemonRepositoryTest.php
-
-		-
-			message: "#^Cannot access property \\$iconName on mixed\\.$#"
-			count: 1
-			path: tests/functionnal/Repository/PokemonRepositoryTest.php
-
-		-
-			message: "#^Cannot access property \\$name on mixed\\.$#"
-			count: 1
-			path: tests/functionnal/Repository/PokemonRepositoryTest.php
-
-		-
-			message: "#^Cannot access property \\$nationalDexNumber on mixed\\.$#"
-			count: 1
-			path: tests/functionnal/Repository/PokemonRepositoryTest.php
-
-		-
-			message: "#^Cannot access property \\$originalGameBundle on mixed\\.$#"
-			count: 1
-			path: tests/functionnal/Repository/PokemonRepositoryTest.php
-
-		-
-			message: "#^Cannot access property \\$regionalForm on mixed\\.$#"
-			count: 1
-			path: tests/functionnal/Repository/PokemonRepositoryTest.php
-
-		-
-			message: "#^Cannot access property \\$specialForm on mixed\\.$#"
-			count: 1
-			path: tests/functionnal/Repository/PokemonRepositoryTest.php
-
-		-
-			message: "#^Cannot access property \\$variantForm on mixed\\.$#"
-			count: 1
-			path: tests/functionnal/Repository/PokemonRepositoryTest.php
-
-		-
 			message: "#^Parameter \\#1 \\$iterator of function iterator_to_array expects Traversable, iterable given\\.$#"
 			count: 1
 			path: tests/functionnal/Repository/PokemonRepositoryTest.php

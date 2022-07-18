@@ -2,7 +2,7 @@
 
 namespace App\Tests\functionnal\Command;
 
-use App\Tests\resources\functionnal\CountPokemonTrait;
+use App\Tests\resources\functionnal\CounterTrait\CountPokemonTrait;
 
 class ImportPokemonCommandTest extends AbstractImportFileCommandTest
 {

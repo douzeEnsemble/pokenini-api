@@ -21,10 +21,10 @@ class GameBundleRepository extends ServiceEntityRepository
      */
     public function getAll(): array
     {
-        $qb = $this->createQueryBuilder('gb');
-        $qb->orderBy('gb.name');
+        $queryBuilder = $this->createQueryBuilder('gb');
+        $queryBuilder->orderBy('gb.name');
 
         /** @var GameBundle[] */
-        return $qb->getQuery()->getResult();
+        return $queryBuilder->getQuery()->getResult();
     }
 }

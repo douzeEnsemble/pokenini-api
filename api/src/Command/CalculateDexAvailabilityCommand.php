@@ -39,6 +39,9 @@ class CalculateDexAvailabilityCommand extends Command
         ;
     }
 
+    /**
+     * @inheritdoc
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->dexAvailabilityRepository->removeAll();

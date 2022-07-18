@@ -19,10 +19,10 @@ class DexAvailabilityRepository extends ServiceEntityRepository
 
     public function removeAll(): void
     {
-        $qb = $this->createQueryBuilder('da')
+        $queryBuilder = $this->createQueryBuilder('da')
             ->delete()
         ;
 
-        $qb->getQuery()->execute();
+        $queryBuilder->getQuery()->execute();
     }
 }

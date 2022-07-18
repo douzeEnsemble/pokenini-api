@@ -26,13 +26,16 @@ class CalculateGameBundleAvailabilityCommand extends Command
         ;
     }
 
+    /**
+     * @inheritdoc
+     */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->gameBundleAvailabilityRepository->removeAll();
 
-        $nb = $this->gameBundleAvailabilityRepository->calculate();
+        $count = $this->gameBundleAvailabilityRepository->calculate();
 
-        $output->writeln("<info>$nb bundles' availabilities calculated</info>");
+        $output->writeln("<info>$count bundles' availabilities calculated</info>");
 
         return Command::SUCCESS;
     }

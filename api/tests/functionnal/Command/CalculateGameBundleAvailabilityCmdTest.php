@@ -3,16 +3,15 @@
 namespace App\Tests\functionnal\Command;
 
 use App\Repository\GameAvailabilityRepository;
-use App\Repository\PokemonRepository;
-use App\Tests\resources\functionnal\CountGameAvailabilityTrait;
-use App\Tests\resources\functionnal\CountGameBundleAvailabilityTrait;
+use App\Tests\resources\functionnal\CounterTrait\CountGameAvailabilityTrait;
+use App\Tests\resources\functionnal\CounterTrait\CountGameBundleAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Tester\CommandTester;
 
-class CalculateGameBundleAvailabillityCommandTest extends KernelTestCase
+class CalculateGameBundleAvailabilityCmdTest extends KernelTestCase
 {
     use CountGameAvailabilityTrait;
     use CountGameBundleAvailabilityTrait;

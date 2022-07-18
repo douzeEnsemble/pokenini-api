@@ -20,11 +20,11 @@ class GameBundleAvailabilityRepository extends ServiceEntityRepository
 
     public function removeAll(): void
     {
-        $qb = $this->createQueryBuilder('gba')
+        $queryBuilder = $this->createQueryBuilder('gba')
             ->delete()
         ;
 
-        $qb->getQuery()->execute();
+        $queryBuilder->getQuery()->execute();
     }
 
     public function calculate(): int
@@ -62,20 +62,20 @@ class GameBundleAvailabilityRepository extends ServiceEntityRepository
      */
     public function getFromPokemon(Pokemon $pokemon): GameBundlesAvailabilities
     {
-        $qb = $this->createQueryBuilder('gba');
+        $queryBuilder = $this->createQueryBuilder('gba');
 
-        $qb->select('gba.isAvailable');
-        $qb->addSelect('b.slug');
+        $queryBuilder->select('gba.isAvailable');
+        $queryBuilder->addSelect('b.slug');
 
-        $qb->join('gba.bundle', 'b');
+        $queryBuilder->join('gba.bundle', 'b');
 
-        $qb->where($qb->expr()->eq('gba.pokemon', ':pokemon'));
-        $qb->setParameter('pokemon', $pokemon);
+        $queryBuilder->where($queryBuilder->expr()->eq('gba.pokemon', ':pokemon'));
+        $queryBuilder->setParameter('pokemon', $pokemon);
 
-        $qb->orderBy('b.name');
+        $queryBuilder->orderBy('b.name');
 
         /** @var string[][] $result */
-        $result = $qb->getQuery()->getArrayResult();
+        $result = $queryBuilder->getQuery()->getArrayResult();
 
         $list = [];
         foreach ($result as $line) {

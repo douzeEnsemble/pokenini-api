@@ -19,31 +19,31 @@ class PokemonRepository extends ServiceEntityRepository
 
     public function removeAll(): void
     {
-        $qb = $this->createQueryBuilder('p')
+        $queryBuilder = $this->createQueryBuilder('p')
             ->update()
             ->set('p.deletedAt', ':now')
             ->setParameter('now', new \DateTimeImmutable())
         ;
 
-        $qb->getQuery()->execute();
+        $queryBuilder->getQuery()->execute();
     }
 
     public function getQueryAll(): Query
     {
-        $qb = $this->createQueryBuilder('p');
+        $queryBuilder = $this->createQueryBuilder('p');
 
-        $qb->orderBy('p.name');
+        $queryBuilder->orderBy('p.name');
 
-        return $qb->getQuery();
+        return $queryBuilder->getQuery();
     }
 
     public function countAll(): int
     {
-        $qb = $this->createQueryBuilder('p');
+        $queryBuilder = $this->createQueryBuilder('p');
 
-        $qb->select($qb->expr()->count('p'));
+        $queryBuilder->select($queryBuilder->expr()->count('p'));
 
         /** @var int */
-        return $qb->getQuery()->getSingleScalarResult();
+        return $queryBuilder->getQuery()->getSingleScalarResult();
     }
 }
