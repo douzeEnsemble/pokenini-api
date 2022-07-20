@@ -2,11 +2,8 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
 use App\Entity\Traits\BaseEntityTrait;
-use App\Entity\Traits\NamedTrait;
 use Doctrine\ORM\Mapping as ORM;
-use JetBrains\PhpStorm\Pure;
 
 #[ORM\Entity]
 /**
@@ -22,7 +19,6 @@ class DexAvailability
     #[ORM\ManyToOne(targetEntity: Dex::class)]
     public Dex $dex;
 
-    #[Pure]
     public static function create(
         Pokemon $pokemon,
         Dex $dex

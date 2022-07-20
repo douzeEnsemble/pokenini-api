@@ -39,7 +39,6 @@
     "require-dev": {
         "api-platform/schema-generator": "^4.0",
         "hautelook/alice-bundle": "^2.10",
-        "jetbrains/phpstorm-attributes": "^1.0",
         "justinrainbow/json-schema": "^5.2",
         "phpmd/phpmd": "^2.12",
         "phpstan/phpstan": "^1.8",
@@ -54,7 +53,8 @@
         "symfony/phpunit-bridge": "6.1.*",
         "symfony/stopwatch": "6.1.*",
         "symfony/var-dumper": "6.1.*",
-        "symfony/web-profiler-bundle": "6.1.*"
+        "symfony/web-profiler-bundle": "6.1.*",
+        "vimeo/psalm": "^4.24"
     },
     "config": {
         "optimize-autoloader": true,

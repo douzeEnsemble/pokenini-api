@@ -76,3 +76,6 @@ phpcbf: ## Execute phpcbf (code beautifier) /!\ This could edit your code
 
 phpmd: ## Execute phpmd
 	docker-compose exec php vendor/bin/phpmd src,tests text ruleset.xml
+
+psalm: ## Execute psalm
+	docker-compose exec php vendor/bin/psalm --show-info=true

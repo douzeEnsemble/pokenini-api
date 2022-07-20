@@ -7,7 +7,6 @@ use App\Entity\Traits\BaseEntityTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
-use JetBrains\PhpStorm\Pure;
 
 #[ApiResource(
     normalizationContext: ['groups' => ['game_bundle_availabilities_list']],
@@ -34,7 +33,6 @@ class GameBundleAvailability
     #[Groups(["game_bundle_availabilities_list"])]
     public bool $isAvailable;
 
-    #[Pure]
     public static function create(
         Pokemon $pokemon,
         GameBundle $gameBundle,
