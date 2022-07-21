@@ -44,4 +44,29 @@ class DexRepositoryTest extends KernelTestCase
 
         $this->assertEquals($this->getDexCount(), $repo->countAll());
     }
+
+    public function testGetBySlug(): void
+    {
+        /** @var DexRepository $repo */
+        $repo = static::getContainer()->get(DexRepository::class);
+
+        $dexRGBY = $repo->getBySlug('redbluegreenyellow');
+
+        $this->assertEquals('Red / Blue / Green / Yellow', $dexRGBY?->name);
+        $this->assertEquals(
+            '(p.bankable or p.bankableish) and ba?.redgreenblueyellow',
+            $dexRGBY?->selectionRule
+        );
+
+        $dexGSC = $repo->getBySlug('goldsilvercrystal');
+
+        $this->assertEquals('Gold, Silver, Crystal', $dexGSC?->name);
+        $this->assertEquals(
+            '(p.bankable or p.bankableish) and ba?.redgreenblueyellow and ba?.goldsilvercrystal '
+            . 'and p.specialForm === null and p.regionalForm === null',
+            $dexGSC?->selectionRule
+        );
+
+        $this->assertNull($repo->getBySlug('dexthatdoesntexists'));
+    }
 }

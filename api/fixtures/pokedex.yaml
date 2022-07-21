@@ -1,0 +1,62 @@
+App\Entity\Pokedex:
+    pokedex_redbluegreenyellow_bulbasaur:
+        pokemon: '@pokemon_bulbasaur'
+        dex: '@dex_redbluegreenyellow'
+        catchState: '@catchstate_no'
+        
+    pokedex_redbluegreenyellow_yvysaur:
+        pokemon: '@pokemon_yvysaur'
+        dex: '@dex_redbluegreenyellow'
+        catchState: '@catchstate_maybe'
+        
+    pokedex_redbluegreenyellow_venusaur:
+        pokemon: '@pokemon_venusaur'
+        dex: '@dex_redbluegreenyellow'
+        catchState: '@catchstate_maybenot'
+        
+    pokedex_goldsilvercrystal_bulbasaur:
+        pokemon: '@pokemon_bulbasaur'
+        dex: '@dex_goldsilvercrystal'
+        catchState: '@catchstate_yes'
+        
+    pokedex_goldsilvercrystal_yvysaur:
+        pokemon: '@pokemon_yvysaur'
+        dex: '@dex_goldsilvercrystal'
+        catchState: '@catchstate_no'
+        
+    pokedex_goldsilvercrystal_venusaur:
+        pokemon: '@pokemon_venusaur'
+        dex: '@dex_goldsilvercrystal'
+        catchState: '@catchstate_no'
+        
+    pokedex_home_bulbasaur:
+        pokemon: '@pokemon_bulbasaur'
+        dex: '@dex_home'
+        catchState: '@catchstate_no'
+        
+    pokedex_home_yvysaur:
+        pokemon: '@pokemon_yvysaur'
+        dex: '@dex_home'
+        catchState: '@catchstate_no'
+        
+    pokedex_home_venusaur:
+        pokemon: '@pokemon_venusaur'
+        dex: '@dex_home'
+        catchState: '@catchstate_no'
+        
+    pokedex_home_venusaurf:
+        pokemon: '@pokemon_venusaur_f'
+        dex: '@dex_home'
+        catchState: '@catchstate_no'
+        
+    pokedex_home_venusaurmega:
+        pokemon: '@pokemon_venusaur_mega'
+        dex: '@dex_home'
+        catchState: '@catchstate_no'
+        
+    pokedex_home_venusaurgigantamax:
+        pokemon: '@pokemon_venusaur_gigantamax'
+        dex: '@dex_home'
+        catchState: '@catchstate_no'
+        
+    

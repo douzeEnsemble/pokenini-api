@@ -59,6 +59,14 @@ final class Version20220620074422 extends AbstractMigration
         $this->addSql('CREATE UNIQUE INDEX UNIQ_3DFAABD65E237E06 ON game_generation (name)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_3DFAABD6989D9B62 ON game_generation (slug)');
         $this->addSql('COMMENT ON COLUMN game_generation.id IS \'(DC2Type:uuid)\'');
+        $this->addSql('CREATE TABLE pokedex (id UUID NOT NULL, pokemon_id UUID DEFAULT NULL, dex_id UUID DEFAULT NULL, catch_state_id UUID DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE INDEX IDX_6336F6A72FE71C3E ON pokedex (pokemon_id)');
+        $this->addSql('CREATE INDEX IDX_6336F6A744FE8083 ON pokedex (dex_id)');
+        $this->addSql('CREATE INDEX IDX_6336F6A71339B3D7 ON pokedex (catch_state_id)');
+        $this->addSql('COMMENT ON COLUMN pokedex.id IS \'(DC2Type:uuid)\'');
+        $this->addSql('COMMENT ON COLUMN pokedex.pokemon_id IS \'(DC2Type:uuid)\'');
+        $this->addSql('COMMENT ON COLUMN pokedex.dex_id IS \'(DC2Type:uuid)\'');
+        $this->addSql('COMMENT ON COLUMN pokedex.catch_state_id IS \'(DC2Type:uuid)\'');
         $this->addSql('CREATE TABLE pokemon (id UUID NOT NULL, family_id UUID DEFAULT NULL, original_game_bundle_id UUID DEFAULT NULL, variant_form_id UUID DEFAULT NULL, regional_form_id UUID DEFAULT NULL, special_form_id UUID DEFAULT NULL, national_dex_number INT NOT NULL, bankable BOOLEAN NOT NULL, bankableish BOOLEAN DEFAULT NULL, icon_name VARCHAR(255) NOT NULL, family_order INT NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, deleted_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_62DC90F35E237E06 ON pokemon (name)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_62DC90F3989D9B62 ON pokemon (slug)');
@@ -93,6 +101,9 @@ final class Version20220620074422 extends AbstractMigration
         $this->addSql('ALTER TABLE game_bundle ADD CONSTRAINT FK_D84E9F35553A6EC4 FOREIGN KEY (generation_id) REFERENCES game_generation (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE game_bundle_availability ADD CONSTRAINT FK_A9097E132FE71C3E FOREIGN KEY (pokemon_id) REFERENCES pokemon (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE game_bundle_availability ADD CONSTRAINT FK_A9097E13F1FAD9D3 FOREIGN KEY (bundle_id) REFERENCES game_bundle (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE pokedex ADD CONSTRAINT FK_6336F6A72FE71C3E FOREIGN KEY (pokemon_id) REFERENCES pokemon (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE pokedex ADD CONSTRAINT FK_6336F6A744FE8083 FOREIGN KEY (dex_id) REFERENCES dex (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('ALTER TABLE pokedex ADD CONSTRAINT FK_6336F6A71339B3D7 FOREIGN KEY (catch_state_id) REFERENCES catch_state (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE pokemon ADD CONSTRAINT FK_62DC90F3C35E566A FOREIGN KEY (family_id) REFERENCES pokemon (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE pokemon ADD CONSTRAINT FK_62DC90F3D847356D FOREIGN KEY (original_game_bundle_id) REFERENCES game_bundle (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE pokemon ADD CONSTRAINT FK_62DC90F33053B63B FOREIGN KEY (variant_form_id) REFERENCES variant_form (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
@@ -103,7 +114,9 @@ final class Version20220620074422 extends AbstractMigration
     public function down(Schema $schema): void
     {
         // this down() migration is auto-generated, please modify it to your needs
+        $this->addSql('ALTER TABLE pokedex DROP CONSTRAINT FK_6336F6A71339B3D7');
         $this->addSql('ALTER TABLE dex_availability DROP CONSTRAINT FK_C3DC5ADA44FE8083');
+        $this->addSql('ALTER TABLE pokedex DROP CONSTRAINT FK_6336F6A744FE8083');
         $this->addSql('ALTER TABLE game_availability DROP CONSTRAINT FK_D16796D1E48FD905');
         $this->addSql('ALTER TABLE game DROP CONSTRAINT FK_232B318CF1FAD9D3');
         $this->addSql('ALTER TABLE game_bundle_availability DROP CONSTRAINT FK_A9097E13F1FAD9D3');
@@ -112,6 +125,7 @@ final class Version20220620074422 extends AbstractMigration
         $this->addSql('ALTER TABLE dex_availability DROP CONSTRAINT FK_C3DC5ADA2FE71C3E');
         $this->addSql('ALTER TABLE game_availability DROP CONSTRAINT FK_D16796D12FE71C3E');
         $this->addSql('ALTER TABLE game_bundle_availability DROP CONSTRAINT FK_A9097E132FE71C3E');
+        $this->addSql('ALTER TABLE pokedex DROP CONSTRAINT FK_6336F6A72FE71C3E');
         $this->addSql('ALTER TABLE pokemon DROP CONSTRAINT FK_62DC90F3C35E566A');
         $this->addSql('ALTER TABLE pokemon DROP CONSTRAINT FK_62DC90F3373825C8');
         $this->addSql('ALTER TABLE pokemon DROP CONSTRAINT FK_62DC90F387FAC7E8');
@@ -124,6 +138,7 @@ final class Version20220620074422 extends AbstractMigration
         $this->addSql('DROP TABLE game_bundle');
         $this->addSql('DROP TABLE game_bundle_availability');
         $this->addSql('DROP TABLE game_generation');
+        $this->addSql('DROP TABLE pokedex');
         $this->addSql('DROP TABLE pokemon');
         $this->addSql('DROP TABLE regional_form');
         $this->addSql('DROP TABLE special_form');

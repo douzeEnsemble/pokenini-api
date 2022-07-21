@@ -14,6 +14,6 @@ trait SlugifiedTrait
     #[ORM\Column(unique: true)]
     #[Gedmo\Slug(fields: ['name'], separator: '')]
     #[ApiProperty(identifier: true)]
-    #[Groups(["pokemon_list", "dex_list"])]
+    #[Groups(["pokemon_list", "dex_list", "game_bundle_list", "catch_state_list"])]
     public string $slug;
 }

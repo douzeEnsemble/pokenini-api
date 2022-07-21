@@ -5,6 +5,7 @@ namespace App\Repository;
 use App\Entity\Dex;
 use App\Entity\GameAvailability;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -35,5 +36,15 @@ class DexRepository extends ServiceEntityRepository
 
         /** @var int */
         return $queryBuilder->getQuery()->getSingleScalarResult();
+    }
+
+    public function getBySlug(string $slug): ?Dex
+    {
+        $queryBuilder = $this->createQueryBuilder('d');
+        $queryBuilder->where($queryBuilder->expr()->eq('d.slug', ':slug'));
+        $queryBuilder->setParameter('slug', $slug);
+
+        /** @var Dex|null */
+        return $queryBuilder->getQuery()->getOneOrNullResult();
     }
 }
