@@ -32,6 +32,13 @@ class ImportPokemonCommandTest extends AbstractImportFileCommandTest
         $this->assertEquals(18, $this->getPokemonCount());
         $this->assertEquals(11, $this->getPokemonNotDeletedCount());
         $this->assertEquals(7, $this->getPokemonDeletedCount());
+
+        $charmander = $this->getPokemonFromName('Charmander');
+        $charmeleon = $this->getPokemonFromName('Charmeleon');
+
+        $this->assertNull($charmander['family_id']);
+        $this->assertNotNull($charmeleon['family_id']);
+        $this->assertEquals($charmander['id'], $charmeleon['family_id']);
     }
 
     public function testImportExistingPokemons(): void
@@ -44,6 +51,13 @@ class ImportPokemonCommandTest extends AbstractImportFileCommandTest
 
         $this->assertTrue($pokemonBefore['bankable']);
         $this->assertNull($pokemonBefore['bankableish']);
+
+        $bulbasaurBefore = $this->getPokemonFromName('Bulbasaur');
+        $ivysaurBefore = $this->getPokemonFromName('Ivysaur');
+
+        $this->assertNull($bulbasaurBefore['family_id']);
+        $this->assertNotNull($ivysaurBefore['family_id']);
+        $this->assertEquals($bulbasaurBefore['id'], $ivysaurBefore['family_id']);
 
         $commandTester = $this->executeCommand(['file' => 'tests/resources/data/pokemon_list/only_existing.csv']);
 
@@ -59,6 +73,13 @@ class ImportPokemonCommandTest extends AbstractImportFileCommandTest
 
         $this->assertFalse($pokemonAfter['bankable']);
         $this->assertFalse($pokemonAfter['bankableish']);
+
+        $bulbasaurAfter = $this->getPokemonFromName('Bulbasaur');
+        $ivysaurAfter = $this->getPokemonFromName('Ivysaur');
+
+        $this->assertNull($bulbasaurAfter['family_id']);
+        $this->assertNotNull($ivysaurAfter['family_id']);
+        $this->assertEquals($bulbasaurAfter['id'], $ivysaurAfter['family_id']);
     }
 
     public function testImportNewAndExistingPokemons(): void

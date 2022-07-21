@@ -22,8 +22,6 @@ class ImportPokemonCommand extends AbstractImportFileCommand
 {
     protected static $defaultName = 'app:import:pokemon';
 
-    private const CHUNK_SIZE = 10;
-
     public function __construct(
         private PokemonRepository $pokemonRepository,
         protected EntityManagerInterface $entityManager,
@@ -46,9 +44,8 @@ class ImportPokemonCommand extends AbstractImportFileCommand
 
         $this->pokemonRepository->removeAll();
 
-        $pokemonsChunks = array_chunk($pokemons, self::CHUNK_SIZE);
-        foreach ($pokemonsChunks as $chunk) {
-            $this->upsertPokemons($chunk);
+        foreach ($pokemons as $pokemon) {
+            $this->upsertPokemon($pokemon);
         }
 
         $nbPokemons = count($pokemons);
@@ -139,57 +136,35 @@ class ImportPokemonCommand extends AbstractImportFileCommand
             'variantForm' => $record['Form variant'],
             'regionalForm' => $record['Regional form'],
             'specialForm' => $record['Special form'],
-            'iconName' => $record['Bulbapedia Name'],
+            'iconName' => $record['Icon'],
             'slug' => $record['Slug'],
         ];
     }
 
     /**
-     * @param string[][]|bool[][] $pokemons
+     * @param string[][]|bool[][] $pokemon
      */
-    private function upsertPokemons(array $pokemons): void
+    private function upsertPokemon(array $pokemon): void
     {
-        if (empty($pokemons)) {
+        if (empty($pokemon)) {
             return;
         }
 
-        $sqlValues = [];
-        $sqlParameters = [];
-        $index = 0;
-        foreach ($pokemons as $pokemon) {
-            $sqlValues[] = ":id$index"
-                . ", :name$index"
-                . ", :national_dex_number$index"
-                . ", (SELECT id FROM pokemon WHERE name = :family$index)"
-                . ", :familyOrder$index"
-                . ", :bankable$index"
-                . ", :bankableish$index"
-                . ", (SELECT id FROM game_bundle WHERE name = :original_game_bundle$index)"
-                . ", (SELECT id FROM variant_form WHERE name = :variant_form$index)"
-                . ", (SELECT id FROM regional_form WHERE name = :regional_form$index)"
-                . ", (SELECT id FROM special_form WHERE name = :special_form$index)"
-                . ", :iconName$index"
-                . ", :slug$index"
-            ;
-
-            $sqlParameters["id$index"] = Uuid::v4();
-            $sqlParameters["name$index"] = $pokemon['name'];
-            $sqlParameters["national_dex_number$index"] = $pokemon['nationalDexNumber'];
-            $sqlParameters["family$index"] = $pokemon['family'];
-            $sqlParameters["familyOrder$index"] = $pokemon['familyOrder'];
-            $sqlParameters["bankable$index"] = $pokemon['bankable'] ? 'TRUE' : 'FALSE';
-            $sqlParameters["bankableish$index"] = $pokemon['bankableish'] ? 'TRUE' : 'FALSE';
-            $sqlParameters["original_game_bundle$index"] = $pokemon['originalGameBundle'];
-            $sqlParameters["variant_form$index"] = $pokemon['variantForm'];
-            $sqlParameters["regional_form$index"] = $pokemon['regionalForm'];
-            $sqlParameters["special_form$index"] = $pokemon['specialForm'];
-            $sqlParameters["iconName$index"] = $pokemon['iconName'];
-            $sqlParameters["slug$index"] = $pokemon['slug'];
-
-            $index++;
-        }
-
-        $sqlValuesStr = implode('), (', $sqlValues);
+        $sqlParameters = [
+            'id' => Uuid::v4(),
+            'name' => $pokemon['name'],
+            'national_dex_number' => $pokemon['nationalDexNumber'],
+            'family' => $pokemon['family'],
+            'familyOrder' => $pokemon['familyOrder'],
+            'bankable' => $pokemon['bankable'] ? 'TRUE' : 'FALSE',
+            'bankableish' => $pokemon['bankableish'] ? 'TRUE' : 'FALSE',
+            'original_game_bundle' => $pokemon['originalGameBundle'],
+            'variant_form' => $pokemon['variantForm'],
+            'regional_form' => $pokemon['regionalForm'],
+            'special_form' => $pokemon['specialForm'],
+            'iconName' => $pokemon['iconName'],
+            "slug" => $pokemon['slug'],
+        ];
 
         $sql = <<<SQL
         INSERT INTO pokemon (
@@ -207,7 +182,21 @@ class ImportPokemonCommand extends AbstractImportFileCommand
             icon_name,
             slug
         )
-        VALUES ($sqlValuesStr)
+        VALUES (
+            :id,
+            :name,
+            :national_dex_number,
+            (SELECT id FROM pokemon WHERE name = :family and :name <> :family),
+            :familyOrder,
+            :bankable,
+            :bankableish,
+            (SELECT id FROM game_bundle WHERE name = :original_game_bundle),
+            (SELECT id FROM variant_form WHERE name = :variant_form),
+            (SELECT id FROM regional_form WHERE name = :regional_form),
+            (SELECT id FROM special_form WHERE name = :special_form),
+            :iconName,
+            :slug
+        )
         ON CONFLICT (name)
         DO
         UPDATE
