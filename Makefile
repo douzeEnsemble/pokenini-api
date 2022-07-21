@@ -19,8 +19,6 @@ help: ## Outputs this help screen
 
 install: ## Install requirements
 install: build
-	docker cp $(docker-compose ps -q caddy):/data/caddy/pki/authorities/local/root.crt /tmp/root.crt && sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain /tmp/root.crt
-	docker-compose build --pull --no-cache
 
 ## —— Docker 🐳 ————————————————————————————————————————————————————————————————
 build: ## Builds the Docker images
