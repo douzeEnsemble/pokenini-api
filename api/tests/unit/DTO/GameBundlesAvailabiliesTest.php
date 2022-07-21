@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\unit\DTO;
+namespace App\Tests\Unit\DTO;
 
 use App\DTO\GameBundlesAvailabilities;
 

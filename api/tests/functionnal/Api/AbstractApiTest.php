@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\functionnal\Api;
+namespace App\Tests\Functionnal\\Api;
 
 use ApiPlatform\Core\Bridge\Symfony\Bundle\Test\ApiTestCase;
 use Symfony\Contracts\HttpClient\ResponseInterface;

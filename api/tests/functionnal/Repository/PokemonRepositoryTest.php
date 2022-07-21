@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\functionnal\Repository;
+namespace App\Tests\Functionnal\\Repository;
 
 use App\Entity\Pokemon;
 use App\Repository\PokemonRepository;

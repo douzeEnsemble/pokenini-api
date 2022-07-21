@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\functionnal\Repository;
+namespace App\Tests\Functionnal\\Repository;
 
 use App\Repository\GameAvailabilityRepository;
 use App\Tests\resources\functionnal\CounterTrait\CountGameAvailabilityTrait;

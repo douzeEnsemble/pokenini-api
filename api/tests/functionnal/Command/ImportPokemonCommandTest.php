@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\functionnal\Command;
+namespace App\Tests\Functionnal\\Command;
 
 use App\Tests\resources\functionnal\CounterTrait\CountPokemonTrait;
 
