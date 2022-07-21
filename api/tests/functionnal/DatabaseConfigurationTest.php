@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Functionnal\;
+namespace App\Tests\Functionnal;
 
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;

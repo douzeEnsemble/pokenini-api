@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Tests\Functionnal\\Command;
+namespace App\Tests\Functionnal\Command;
 
 use App\Repository\PokemonRepository;
-use App\Tests\resources\functionnal\CounterTrait\CountDexAvailabilityTrait;
-use App\Tests\resources\functionnal\CounterTrait\CountPokemonTrait;
+use App\Tests\Resources\functionnal\CounterTrait\CountDexAvailabilityTrait;
+use App\Tests\Resources\functionnal\CounterTrait\CountPokemonTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;

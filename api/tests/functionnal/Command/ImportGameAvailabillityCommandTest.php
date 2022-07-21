@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Tests\Functionnal\\Command;
+namespace App\Tests\Functionnal\Command;
 
-use App\Tests\resources\functionnal\CounterTrait\CountGameAvailabilityTrait;
+use App\Tests\Resources\functionnal\CounterTrait\CountGameAvailabilityTrait;
 
 class ImportGameAvailabillityCommandTest extends AbstractImportFileCommandTest
 {

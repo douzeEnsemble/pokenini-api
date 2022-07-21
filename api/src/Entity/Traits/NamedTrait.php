@@ -14,6 +14,7 @@ trait NamedTrait
         "pokemon_list",
         "catch_state_list",
         "dex_list",
+        "dex_availabilities_list",
         "game_list",
         "game_availabilities_list",
         "game_bundle_list",

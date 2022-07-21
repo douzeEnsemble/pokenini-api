@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Functionnal\\Repository;
+namespace App\Tests\Functionnal\Repository;
 
 use App\Repository\GameBundleRepository;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;

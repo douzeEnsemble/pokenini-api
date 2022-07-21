@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Tests\Functionnal\\Command;
+namespace App\Tests\Functionnal\Command;
 
-use App\Tests\resources\functionnal\CounterTrait\CountPokemonTrait;
+use App\Tests\Resources\functionnal\CounterTrait\CountPokemonTrait;
 
 class ImportPokemonCommandTest extends AbstractImportFileCommandTest
 {

@@ -32,7 +32,7 @@ final class Version20220621220300 extends AbstractMigration
             'Sun, Moon' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event'  and ba?.sunmoon",
             'Ultra Sun, Ultra Moon' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event'  and ba?.ultrasunultramoon",
             'Let\'s Go Pikachu, Let\'s Go Eevee' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event'  and ba?.letgopikachuletsgoevoli",
-            'Sword, Shield' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event'  and ba?.swordswshield",
+            'Sword, Shield' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event' and ba?.swordswshield",
             'Brilland Diamond, Shining Pearl' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event'  and ba?.brillanddiamonrdshiningpearl",
             'Legend Arceus' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event'  and ba?.legendarceus",
             'Home' => "(p.bankable or p.bankableish)",

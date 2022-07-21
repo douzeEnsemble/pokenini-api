@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Functionnal\\Api;
+namespace App\Tests\Functionnal\Api;
 
 class GamesApiTest extends AbstractApiTest
 {

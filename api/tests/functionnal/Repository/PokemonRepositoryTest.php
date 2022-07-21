@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Tests\Functionnal\\Repository;
+namespace App\Tests\Functionnal\Repository;
 
 use App\Entity\Pokemon;
 use App\Repository\PokemonRepository;
-use App\Tests\resources\functionnal\CounterTrait\CountPokemonTrait;
+use App\Tests\Resources\functionnal\CounterTrait\CountPokemonTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 

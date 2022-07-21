@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Tests\Functionnal\\Service;
+namespace App\Tests\Functionnal\Service;
 
 use App\Entity\Pokemon;
 use App\Repository\PokemonRepository;
 use App\Service\GameBundleAvailabilityService;
-use App\Tests\resources\functionnal\CounterTrait\CountGameBundleAvailabilityTrait;
+use App\Tests\Resources\functionnal\CounterTrait\CountGameBundleAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 

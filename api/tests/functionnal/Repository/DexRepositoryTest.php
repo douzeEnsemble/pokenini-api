@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Tests\Functionnal\\Repository;
+namespace App\Tests\Functionnal\Repository;
 
 use App\Entity\Dex;
 use App\Repository\DexRepository;
-use App\Tests\resources\functionnal\CounterTrait\CountDexTrait;
+use App\Tests\Resources\functionnal\CounterTrait\CountDexTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 

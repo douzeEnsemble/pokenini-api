@@ -142,7 +142,7 @@ class ImportPokemonCommand extends AbstractImportFileCommand
     }
 
     /**
-     * @param string[][]|bool[][] $pokemon
+     * @param string[]|bool[] $pokemon
      */
     private function upsertPokemon(array $pokemon): void
     {

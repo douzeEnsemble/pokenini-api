@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Functionnal\\Command;
+namespace App\Tests\Functionnal\Command;
 
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Console\Application;

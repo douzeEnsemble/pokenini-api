@@ -54,7 +54,8 @@
         "symfony/stopwatch": "6.1.*",
         "symfony/var-dumper": "6.1.*",
         "symfony/web-profiler-bundle": "6.1.*",
-        "vimeo/psalm": "^4.24"
+        "vimeo/psalm": "^4.24",
+        "ext-http": "*"
     },
     "config": {
         "optimize-autoloader": true,
@@ -76,7 +77,8 @@
     "autoload-dev": {
         "psr-4": {
             "App\\Tests\\Functionnal\\": "tests/functionnal/",
-            "App\\Tests\\Unit\\": "tests/unit/"
+            "App\\Tests\\Unit\\": "tests/unit/",
+            "App\\Tests\\Resources\\": "tests/resources/"
         }
     },
     "replace": {
