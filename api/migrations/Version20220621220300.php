@@ -19,14 +19,14 @@ final class Version20220621220300 extends AbstractMigration
     public function up(Schema $schema): void
     {
         $this->insertDexes([
-            'Red, Green, Blue, Yellow' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event' and ba?.redgreenblueyellow",
-            'Gold, Silver, Crystal' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event' and ba?.goldsilvercrystal",
-            'Ruby, Sapphire, Emerald' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event' and ba?.rubysapphireemerald",
-            'Red Fire, Leaf Green' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event' and ba?.redfireleafgreen",
-            'Diamond, Pearl, Platinium' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event' and ba?.diamondpearlplatinium",
-            'Heart Gold, Soul Silver' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event' and ba?.heartgoldsoulsilver",
-            'Black, White' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event' and ba?.blackwhite",
-            'Black 2, White 2' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event' and ba?.black2white2",
+            'Red, Green, Blue, Yellow' => "(p.bankable or p.bankableish) and p.variantForm === null and p.regionalForm === null and p.specialForm === null and ba?.redgreenblueyellow",
+            'Gold, Silver, Crystal' => "(p.bankable or p.bankableish) and (p.variantForm === null or p.variantForm?.name === 'Baby') and p.regionalForm === null and p.specialForm === null and ba?.goldsilvercrystal",
+            'Ruby, Sapphire, Emerald' => "(p.bankable or p.bankableish) and (p.variantForm === null or p.variantForm?.name === 'Baby') and p.regionalForm === null and p.specialForm === null and ba?.rubysapphireemerald",
+            'Red Fire, Leaf Green' => "(p.bankable or p.bankableish) and (p.variantForm === null or p.variantForm?.name === 'Baby') and p.regionalForm === null and p.specialForm === null and ba?.redfireleafgreen",
+            'Diamond, Pearl, Platinium' => "(p.bankable or p.bankableish) and p.specialForm === null and ba?.diamondpearlplatinium",
+            'Heart Gold, Soul Silver' => "(p.bankable or p.bankableish) and p.specialForm === null and ba?.heartgoldsoulsilver",
+            'Black, White' => "(p.bankable or p.bankableish) and p.specialForm === null and ba?.blackwhite",
+            'Black 2, White 2' => "(p.bankable or p.bankableish) and p.specialForm === null and ba?.black2white2",
             'X, Y' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event' and ba?.xy",
             'Omega Ruby, Alpha Sapphire' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event' and ba?.omegarubyalphasapphire",
             'Sun, Moon' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event' and ba?.sunmoon",

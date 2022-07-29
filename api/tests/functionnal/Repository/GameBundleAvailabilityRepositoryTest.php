@@ -55,7 +55,7 @@ class GameBundleAvailabilityRepositoryTest extends KernelTestCase
     {
         $this->gameBundleAvailabilityRepo->removeAll();
 
-        $this->assertEquals(12, $this->gameBundleAvailabilityRepo->calculate());
+        $this->assertEquals(18, $this->gameBundleAvailabilityRepo->calculate());
 
         $this->assertIsAvailable('Red, Green, Blue, Yellow', 'Douze');
         $this->assertIsNotAvailable('Gold, Silver, Crystal', 'Douze');
@@ -73,8 +73,9 @@ class GameBundleAvailabilityRepositoryTest extends KernelTestCase
         $this->assertIsAvailable('Gold, Silver, Crystal', 'Venusaur');
         $this->assertIsNotAvailable('Ruby, Sapphire, Emerald', 'Venusaur');
 
-        $this->assertIsNotAvailable('Red, Green, Blue, Yellow', 'Mega Venusaur');
-        $this->assertIsNotAvailable('Gold, Silver, Crystal', 'Mega Venusaur');
+        // Because we only look for Venusaur. Dex availability will take care of mega form
+        $this->assertIsAvailable('Red, Green, Blue, Yellow', 'Mega Venusaur');
+        $this->assertIsAvailable('Gold, Silver, Crystal', 'Mega Venusaur');
         $this->assertIsNotAvailable('Ruby, Sapphire, Emerald', 'Mega Venusaur');
 
         $this->assertIsNotAvailable('Red, Green, Blue, Yellow', 'Deoxys');

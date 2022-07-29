@@ -131,7 +131,7 @@ class ImportGameAvailabilityCommand extends AbstractImportFileCommand
 
         foreach ($record as $game => $availability) {
             $gameAvailabilities[] = [
-                'pokemon' => $name,
+                'pokemonName' => $name,
                 'game' => $game,
                 'availability' => $availability,
             ];
@@ -152,13 +152,13 @@ class ImportGameAvailabilityCommand extends AbstractImportFileCommand
         $index = 0;
         foreach ($gameAvailabilities as $gameAvailability) {
             $sqlValues[] = ":id$index"
-                . ", (SELECT id FROM pokemon WHERE name = :pokemon$index)"
+                . ", :pokemonName$index"
                 . ", (SELECT id FROM game WHERE name = :game$index)"
                 . ", :availability$index"
             ;
 
             $sqlParameters["id$index"] = Uuid::v4();
-            $sqlParameters["pokemon$index"] = $gameAvailability['pokemon'];
+            $sqlParameters["pokemonName$index"] = $gameAvailability['pokemonName'];
             $sqlParameters["game$index"] = $gameAvailability['game'];
             $sqlParameters["availability$index"] = $gameAvailability['availability'];
 
@@ -170,7 +170,7 @@ class ImportGameAvailabilityCommand extends AbstractImportFileCommand
         $sql = <<<SQL
         INSERT INTO game_availability (
             id,
-            pokemon_id,
+            pokemon_name,
             game_id,
             availability
         )

@@ -29,7 +29,30 @@ class GameBundleAvailabilityRepository extends ServiceEntityRepository
 
     public function calculate(): int
     {
-        return $this->calculateNormalForms() + $this->calculateAlternateForms();
+        $sql = <<<SQL
+        INSERT INTO game_bundle_availability (id, pokemon_id, bundle_id, is_available)
+        SELECT		gen_random_uuid(), pokemon_id, bundle_id, CASE WHEN availability_count > 0 THEN TRUE ELSE FALSE END
+        FROM		(
+                        SELECT		gb.id as bundle_id, p.id as pokemon_id,
+                                    SUM(CASE
+                                        WHEN ga.availability = '—' OR ga.availability = ''
+                                        THEN 0
+                                        ELSE 1
+                                    END) AS availability_count
+                        FROM		game_bundle AS gb
+                                JOIN game AS g
+                                    ON gb.id = g.bundle_id
+                                JOIN game_availability AS ga
+                                    ON g.id = ga.game_id
+                                JOIN pokemon AS p
+                                    ON ga.pokemon_name = p.prime_name
+                        GROUP BY	gb.id, p.id
+                    ) AS sub
+        SQL;
+
+        $result = $this->getEntityManager()->getConnection()->executeQuery($sql);
+
+        return $result->rowCount();
     }
 
     /**
@@ -63,67 +86,5 @@ class GameBundleAvailabilityRepository extends ServiceEntityRepository
         }
 
         return new GameBundlesAvailabilities($list);
-    }
-
-    private function calculateNormalForms(): int
-    {
-        $sql = <<<SQL
-        INSERT INTO game_bundle_availability (id, pokemon_id, bundle_id, is_available)
-        SELECT		gen_random_uuid(), pokemon_id, bundle_id, CASE WHEN availability_count > 0 THEN TRUE ELSE FALSE END
-        FROM		(
-                        SELECT		gb.id as bundle_id, p.id as pokemon_id,
-                                    SUM(CASE
-                                        WHEN ga.availability = '—' OR ga.availability = ''
-                                        THEN 0
-                                        ELSE 1
-                                    END) AS availability_count
-                        FROM		game_bundle AS gb
-                                JOIN game AS g
-                                    ON gb.id = g.bundle_id
-                                JOIN game_availability AS ga
-                                    ON g.id = ga.game_id
-                                JOIN pokemon AS p
-                                    ON ga.pokemon_id = p.id
-                        GROUP BY	gb.id, p.id
-                    ) AS sub
-        SQL;
-
-        $result = $this->getEntityManager()->getConnection()->executeQuery($sql);
-
-        return $result->rowCount();
-    }
-
-    private function calculateAlternateForms(): int
-    {
-        $sql = <<<SQL
-        INSERT INTO game_bundle_availability (id, pokemon_id, bundle_id, is_available)
-        SELECT		gen_random_uuid(), pokemon_id, bundle_id, CASE WHEN availability_count > 0 THEN TRUE ELSE FALSE END
-        FROM		(
-                        SELECT		gb.id as bundle_id, p.id as pokemon_id,
-                                    SUM(CASE
-                                        WHEN ga.availability = '—' OR ga.availability = ''
-                                        THEN 0
-                                        ELSE 1
-                                    END) AS availability_count
-                        FROM		game_bundle AS gb
-                                JOIN game AS g
-                                    ON gb.id = g.bundle_id
-                                JOIN game_availability AS ga
-                                    ON g.id = ga.game_id
-                                JOIN pokemon AS p
-                                    ON ga.pokemon_id = p.family_id
-                                JOIN pokemon AS pf
-                                    ON ga.pokemon_id = p.family_id
-                                JOIN variant_form AS vf
-                                    ON p.variant_form_id = vf.id
-                                        AND vf.slug = 'alternate'
-                                        AND p.regional_form_id IS NULL
-                        GROUP BY	gb.id, p.id
-                    ) AS sub
-        SQL;
-
-        $result = $this->getEntityManager()->getConnection()->executeQuery($sql);
-
-        return $result->rowCount();
     }
 }

@@ -10,16 +10,16 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ApiResource(
     normalizationContext: ['groups' => ['game_availabilities_list']],
-    order: ["pokemon.nationalDexNumber", "pokemon.familyOrder", "game.orderNumber"]
+    order: ["game.orderNumber", "pokemonName"]
 )]
 #[ORM\Entity]
 class GameAvailability
 {
     use BaseEntityTrait;
 
-    #[ORM\ManyToOne(targetEntity: Pokemon::class)]
+    #[ORM\Column]
     #[Groups("game_availabilities_list")]
-    public Pokemon $pokemon;
+    public string $pokemonName;
 
     #[ORM\ManyToOne(targetEntity: Game::class)]
     #[Groups("game_availabilities_list")]

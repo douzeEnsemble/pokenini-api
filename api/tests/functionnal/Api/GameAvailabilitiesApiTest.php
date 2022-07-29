@@ -10,9 +10,7 @@ class GameAvailabilitiesApiTest extends AbstractApiTest
         $content = $this->apiRequestContent('game_availabilities');
 
         $this->assertEquals([
-            'pokemon' => [
-                'name' => 'Bulbasaur',
-            ],
+            'pokemonName' => 'Bulbasaur',
             'game' => [
                 'name' => 'Red',
             ],
@@ -20,23 +18,19 @@ class GameAvailabilitiesApiTest extends AbstractApiTest
         ], $content[0]);
 
         $this->assertEquals([
-            'pokemon' => [
-                'name' => 'Douze',
+            'pokemonName' => 'Douze',
+            'game' => [
+                'name' => 'Gold',
             ],
+            'availability' => '',
+        ], $content[12]);
+
+        $this->assertEquals([
+            'pokemonName' => 'Douze',
             'game' => [
                 'name' => 'Yellow',
             ],
             'availability' => '—',
-        ], $content[21]);
-
-        $this->assertEquals([
-            'pokemon' => [
-                'name' => 'Douze',
-            ],
-            'game' => [
-                'name' => 'Silver',
-            ],
-            'availability' => '',
-        ], $content[22]);
+        ], $content[13]);
     }
 }

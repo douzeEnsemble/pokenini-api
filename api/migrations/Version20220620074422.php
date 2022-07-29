@@ -16,7 +16,6 @@ final class Version20220620074422 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-        // this up() migration is auto-generated, please modify it to your needs
         $this->addSql('CREATE TABLE catch_state (id UUID NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, order_number INT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_4F8F865C5E237E06 ON catch_state (name)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_4F8F865C989D9B62 ON catch_state (slug)');
@@ -37,11 +36,9 @@ final class Version20220620074422 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_232B318CF1FAD9D3 ON game (bundle_id)');
         $this->addSql('COMMENT ON COLUMN game.id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN game.bundle_id IS \'(DC2Type:uuid)\'');
-        $this->addSql('CREATE TABLE game_availability (id UUID NOT NULL, pokemon_id UUID DEFAULT NULL, game_id UUID DEFAULT NULL, availability VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
-        $this->addSql('CREATE INDEX IDX_D16796D12FE71C3E ON game_availability (pokemon_id)');
+        $this->addSql('CREATE TABLE game_availability (id UUID NOT NULL, game_id UUID DEFAULT NULL, pokemon_name VARCHAR(255) NOT NULL, availability VARCHAR(255) NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE INDEX IDX_D16796D1E48FD905 ON game_availability (game_id)');
         $this->addSql('COMMENT ON COLUMN game_availability.id IS \'(DC2Type:uuid)\'');
-        $this->addSql('COMMENT ON COLUMN game_availability.pokemon_id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN game_availability.game_id IS \'(DC2Type:uuid)\'');
         $this->addSql('CREATE TABLE game_bundle (id UUID NOT NULL, generation_id UUID DEFAULT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, order_number INT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_D84E9F355E237E06 ON game_bundle (name)');
@@ -67,7 +64,7 @@ final class Version20220620074422 extends AbstractMigration
         $this->addSql('COMMENT ON COLUMN pokedex.pokemon_id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN pokedex.dex_id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN pokedex.catch_state_id IS \'(DC2Type:uuid)\'');
-        $this->addSql('CREATE TABLE pokemon (id UUID NOT NULL, family_id UUID DEFAULT NULL, original_game_bundle_id UUID DEFAULT NULL, variant_form_id UUID DEFAULT NULL, regional_form_id UUID DEFAULT NULL, special_form_id UUID DEFAULT NULL, national_dex_number INT NOT NULL, bankable BOOLEAN NOT NULL, bankableish BOOLEAN DEFAULT NULL, icon_name VARCHAR(255) NOT NULL, family_order INT NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, deleted_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE pokemon (id UUID NOT NULL, family_id UUID DEFAULT NULL, original_game_bundle_id UUID DEFAULT NULL, variant_form_id UUID DEFAULT NULL, regional_form_id UUID DEFAULT NULL, special_form_id UUID DEFAULT NULL, national_dex_number INT NOT NULL, prime_name VARCHAR(255) NOT NULL, bankable BOOLEAN NOT NULL, bankableish BOOLEAN DEFAULT NULL, icon_name VARCHAR(255) NOT NULL, family_order INT NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, deleted_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_62DC90F35E237E06 ON pokemon (name)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_62DC90F3989D9B62 ON pokemon (slug)');
         $this->addSql('CREATE INDEX IDX_62DC90F3C35E566A ON pokemon (family_id)');
@@ -96,7 +93,6 @@ final class Version20220620074422 extends AbstractMigration
         $this->addSql('ALTER TABLE dex_availability ADD CONSTRAINT FK_C3DC5ADA2FE71C3E FOREIGN KEY (pokemon_id) REFERENCES pokemon (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE dex_availability ADD CONSTRAINT FK_C3DC5ADA44FE8083 FOREIGN KEY (dex_id) REFERENCES dex (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE game ADD CONSTRAINT FK_232B318CF1FAD9D3 FOREIGN KEY (bundle_id) REFERENCES game_bundle (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
-        $this->addSql('ALTER TABLE game_availability ADD CONSTRAINT FK_D16796D12FE71C3E FOREIGN KEY (pokemon_id) REFERENCES pokemon (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE game_availability ADD CONSTRAINT FK_D16796D1E48FD905 FOREIGN KEY (game_id) REFERENCES game (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE game_bundle ADD CONSTRAINT FK_D84E9F35553A6EC4 FOREIGN KEY (generation_id) REFERENCES game_generation (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
         $this->addSql('ALTER TABLE game_bundle_availability ADD CONSTRAINT FK_A9097E132FE71C3E FOREIGN KEY (pokemon_id) REFERENCES pokemon (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
@@ -113,7 +109,6 @@ final class Version20220620074422 extends AbstractMigration
 
     public function down(Schema $schema): void
     {
-        // this down() migration is auto-generated, please modify it to your needs
         $this->addSql('ALTER TABLE pokedex DROP CONSTRAINT FK_6336F6A71339B3D7');
         $this->addSql('ALTER TABLE dex_availability DROP CONSTRAINT FK_C3DC5ADA44FE8083');
         $this->addSql('ALTER TABLE pokedex DROP CONSTRAINT FK_6336F6A744FE8083');
@@ -123,7 +118,6 @@ final class Version20220620074422 extends AbstractMigration
         $this->addSql('ALTER TABLE pokemon DROP CONSTRAINT FK_62DC90F3D847356D');
         $this->addSql('ALTER TABLE game_bundle DROP CONSTRAINT FK_D84E9F35553A6EC4');
         $this->addSql('ALTER TABLE dex_availability DROP CONSTRAINT FK_C3DC5ADA2FE71C3E');
-        $this->addSql('ALTER TABLE game_availability DROP CONSTRAINT FK_D16796D12FE71C3E');
         $this->addSql('ALTER TABLE game_bundle_availability DROP CONSTRAINT FK_A9097E132FE71C3E');
         $this->addSql('ALTER TABLE pokedex DROP CONSTRAINT FK_6336F6A72FE71C3E');
         $this->addSql('ALTER TABLE pokemon DROP CONSTRAINT FK_62DC90F3C35E566A');

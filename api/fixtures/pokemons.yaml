@@ -6,6 +6,8 @@ App\Entity\Pokemon:
         regionalForm: ~
         specialForm: ~
         familyOrder: 0
+        name: ~ # Need to be overrided
+        primeName: '$name'
         
     pokemon_douze (extends pokemon):
         name: 'Douze'
@@ -41,6 +43,7 @@ App\Entity\Pokemon:
         
     pokemon_venusaur_f (extends pokemon):
         name: 'Venusaur ♀'
+        primeName: 'Venusaur'
         family: '@pokemon_bulbasaur'
         nationalDexNumber: '3'
         originalGameBundle: '@game_bundle_diamond_pearl_platinium'       
@@ -50,6 +53,7 @@ App\Entity\Pokemon:
     
     pokemon_venusaur_mega (extends pokemon):
         name: 'Mega Venusaur'
+        primeName: 'Venusaur'
         family: '@pokemon_bulbasaur'
         nationalDexNumber: '3'
         originalGameBundle: '@game_bundle_x_y'
@@ -59,6 +63,7 @@ App\Entity\Pokemon:
     
     pokemon_venusaur_gigantamax (extends pokemon):
         name: 'Gigantamax Venusaur'
+        primeName: 'Venusaur'
         family: '@pokemon_bulbasaur'
         nationalDexNumber: '3'
         originalGameBundle: '@game_bundle_sword_shield'
@@ -76,6 +81,7 @@ App\Entity\Pokemon:
     
     pokemon_deoxys_attack (extends pokemon):
         name: 'Deoxys-Attack'
+        primeName: 'Deoxys'
         family: '@pokemon_deoxys'
         nationalDexNumber: '386'
         originalGameBundle: '@game_bundle_ruby_sapphire_emerald'
@@ -85,6 +91,7 @@ App\Entity\Pokemon:
     
     pokemon_deoxys_defense (extends pokemon):
         name: 'Deoxys-Defense'
+        primeName: 'Deoxys'
         family: '@pokemon_deoxys'
         nationalDexNumber: '386'
         originalGameBundle: '@game_bundle_ruby_sapphire_emerald'
@@ -94,6 +101,7 @@ App\Entity\Pokemon:
     
     pokemon_deoxys_speed (extends pokemon):
         name: 'Deoxys-Speed'
+        primeName: 'Deoxys'
         family: '@pokemon_deoxys'
         nationalDexNumber: '386'
         originalGameBundle: '@game_bundle_ruby_sapphire_emerald'

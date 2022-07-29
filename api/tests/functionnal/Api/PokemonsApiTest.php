@@ -6,9 +6,21 @@ class PokemonsApiTest extends AbstractApiTest
 {
     public function testGetCollection(): void
     {
-        /** @var string[]|int[]|bool[]|string[][] $content */
+        /** @var string[][]|int[][]|bool[][]|string[][][]|int[][][]|bool[][][] $content */
         $content = $this->apiRequestContent('pokemon');
 
+        $this->assertBulbasaur($content[0]);
+
+        $this->assertIvysaur($content[1]);
+
+        $this->assertVenusaur($content[4]);
+    }
+
+    /**
+     * @param string[]|int[]|bool[]|string[][]|int[][]|bool[][] $data
+     */
+    private function assertBulbasaur(array $data): void
+    {
         $this->assertEquals([
             'nationalDexNumber' => 1,
             'bankable' => true,
@@ -24,8 +36,15 @@ class PokemonsApiTest extends AbstractApiTest
             'familyOrder' => 0,
             'name' => 'Bulbasaur',
             'slug' => 'bulbasaur',
-        ], $content[0]);
+            'primeName' => 'Bulbasaur',
+        ], $data);
+    }
 
+    /**
+     * @param string[]|int[]|bool[]|string[][]|int[][]|bool[][] $data
+     */
+    private function assertIvysaur(array $data): void
+    {
         $this->assertEquals([
             'nationalDexNumber' => 2,
             'family' => [
@@ -43,6 +62,7 @@ class PokemonsApiTest extends AbstractApiTest
                 'familyOrder' => 0,
                 'name' => 'Bulbasaur',
                 'slug' => 'bulbasaur',
+                'primeName' => 'Bulbasaur',
             ],
             'bankable' => true,
             'originalGameBundle' => [
@@ -58,8 +78,15 @@ class PokemonsApiTest extends AbstractApiTest
             'familyOrder' => 1,
             'name' => 'Ivysaur',
             'slug' => 'ivysaur',
-        ], $content[1]);
+            'primeName' => 'Ivysaur',
+        ], $data);
+    }
 
+    /**
+     * @param string[]|int[]|bool[]|string[][]|int[][]|bool[][] $data
+     */
+    private function assertVenusaur(array $data): void
+    {
         $this->assertEquals([
             'nationalDexNumber' => 3,
             'family' => [
@@ -77,6 +104,7 @@ class PokemonsApiTest extends AbstractApiTest
                 'familyOrder' => 0,
                 'name' => 'Bulbasaur',
                 'slug' => 'bulbasaur',
+                'primeName' => 'Bulbasaur',
             ],
             'bankable' => true,
             'originalGameBundle' => [
@@ -95,6 +123,7 @@ class PokemonsApiTest extends AbstractApiTest
             'familyOrder' => 4,
             'name' => 'Mega Venusaur',
             'slug' => 'megavenusaur',
-        ], $content[4]);
+            'primeName' => 'Venusaur',
+        ], $data);
     }
 }

@@ -31,6 +31,10 @@ class Pokemon
 
     #[ORM\Column]
     #[Groups(["pokemon_list"])]
+    public string $primeName;
+
+    #[ORM\Column]
+    #[Groups(["pokemon_list"])]
     public bool $bankable = true;
 
     #[ORM\Column(nullable: true)]

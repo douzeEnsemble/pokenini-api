@@ -1,93 +1,93 @@
 App\Entity\GameAvailability:
     gameavailability_douze_red:
-        pokemon: '@pokemon_douze'
+        pokemonName: 'Douze'
         game: '@game_red'
         availability: 'C'
     gameavailability_douze_blue:
-        pokemon: '@pokemon_douze'
+        pokemonName: 'Douze'
         game: '@game_blue'
         availability: 'E'
     gameavailability_douze_yellow:
-        pokemon: '@pokemon_douze'
+        pokemonName: 'Douze'
         game: '@game_yellow'
         availability: '—'
     gameavailability_douze_green:
-        pokemon: '@pokemon_douze'
+        pokemonName: 'Douze'
         game: '@game_green'
         availability: ''
     gameavailability_douze_gold:
-        pokemon: '@pokemon_douze'
+        pokemonName: 'Douze'
         game: '@game_gold'
         availability: ''
     gameavailability_douze_silver:
-        pokemon: '@pokemon_douze'
+        pokemonName: 'Douze'
         game: '@game_silver'
         availability: ''
     gameavailability_bulbasaur_red:
-        pokemon: '@pokemon_bulbasaur'
+        pokemonName: 'Bulbasaur'
         game: '@game_red'
         availability: 'C'
     gameavailability_bulbasaur_blue:
-        pokemon: '@pokemon_bulbasaur'
+        pokemonName: 'Bulbasaur'
         game: '@game_blue'
         availability: 'C'
     gameavailability_bulbasaur_yellow:
-        pokemon: '@pokemon_bulbasaur'
+        pokemonName: 'Bulbasaur'
         game: '@game_yellow'
         availability: 'C'
     gameavailability_bulbasaur_green:
-        pokemon: '@pokemon_bulbasaur'
+        pokemonName: 'Bulbasaur'
         game: '@game_green'
         availability: 'C'
     gameavailability_bulbasaur_gold:
-        pokemon: '@pokemon_bulbasaur'
+        pokemonName: 'Bulbasaur'
         game: '@game_gold'
         availability: 'C'
     gameavailability_bulbasaur_silver:
-        pokemon: '@pokemon_bulbasaur'
+        pokemonName: 'Bulbasaur'
         game: '@game_silver'
         availability: 'C'
     gameavailability_ivysaur_blue:
-        pokemon: '@pokemon_ivysaur'
+        pokemonName: 'Ivysaur'
         game: '@game_blue'
         availability: 'C'
     gameavailability_ivysaur_yellow:
-        pokemon: '@pokemon_ivysaur'
+        pokemonName: 'Ivysaur'
         game: '@game_yellow'
         availability: 'C'
     gameavailability_ivysaur_green:
-        pokemon: '@pokemon_ivysaur'
+        pokemonName: 'Ivysaur'
         game: '@game_green'
         availability: 'C'
     gameavailability_ivysaur_gold:
-        pokemon: '@pokemon_ivysaur'
+        pokemonName: 'Ivysaur'
         game: '@game_gold'
         availability: 'C'
     gameavailability_ivysaur_silver:
-        pokemon: '@pokemon_ivysaur'
+        pokemonName: 'Ivysaur'
         game: '@game_silver'
         availability: 'C'
     gameavailability_venusaur_blue:
-        pokemon: '@pokemon_venusaur'
+        pokemonName: 'Venusaur'
         game: '@game_blue'
         availability: 'C'
     gameavailability_venusaur_yellow:
-        pokemon: '@pokemon_venusaur'
+        pokemonName: 'Venusaur'
         game: '@game_yellow'
         availability: 'C'
     gameavailability_venusaur_green:
-        pokemon: '@pokemon_venusaur'
+        pokemonName: 'Venusaur'
         game: '@game_green'
         availability: 'C'
     gameavailability_venusaur_gold:
-        pokemon: '@pokemon_venusaur'
+        pokemonName: 'Venusaur'
         game: '@game_gold'
         availability: 'C'
     gameavailability_venusaur_silver:
-        pokemon: '@pokemon_venusaur'
+        pokemonName: 'Venusaur'
         game: '@game_silver'
         availability: 'C'
     gameavailability_deoxys_emerald:
-        pokemon: '@pokemon_deoxys'
+        pokemonName: 'Deoxys'
         game: '@game_emerald'
         availability: 'C'
