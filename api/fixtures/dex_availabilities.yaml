@@ -1,23 +1,23 @@
 App\Entity\DexAvailability:
-    dexavailability_redbluegreenyellow_douze:
+    dexavailability_redgreenblueyellow_douze:
         pokemon: '@pokemon_douze'
-        dex: '@dex_redbluegreenyellow'
+        dex: '@dex_redgreenblueyellow'
         
     dexavailability_home_douze:
         pokemon: '@pokemon_douze'
         dex: '@dex_home'
         
-    dexavailability_redbluegreenyellow_bulbasaur:
+    dexavailability_redgreenblueyellow_bulbasaur:
         pokemon: '@pokemon_bulbasaur'
-        dex: '@dex_redbluegreenyellow'
+        dex: '@dex_redgreenblueyellow'
         
-    dexavailability_redbluegreenyellow_yvysaur:
+    dexavailability_redgreenblueyellow_yvysaur:
         pokemon: '@pokemon_ivysaur'
-        dex: '@dex_redbluegreenyellow'
+        dex: '@dex_redgreenblueyellow'
         
-    dexavailability_redbluegreenyellow_venusaur:
+    dexavailability_redgreenblueyellow_venusaur:
         pokemon: '@pokemon_venusaur'
-        dex: '@dex_redbluegreenyellow'
+        dex: '@dex_redgreenblueyellow'
         
     dexavailability_goldsilvercrystal_bulbasaur:
         pokemon: '@pokemon_bulbasaur'

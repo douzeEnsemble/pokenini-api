@@ -66,7 +66,7 @@ Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Pikachu,18,Thunder Stone,Raichu,26,,,Ele
 Yes,Yes,8,Legend Arceus,,,Alpha,Pikachu,19,Thunder Stone,Alpha Raichu,26,,,Electric,,,,"2,560",Field,Fairy,50.00%,50.00%,Static,,Lightning Rod,Flower Gift,Blizzard,Ice,,,,raichu,Raichu,,raichu-alpha
 Yes,Yes,4,"Diamond, Pearl, Platinium",Gender,,,Pikachu,20,Thunder Stone,Raichu ♀,26,,,Electric,,,,"2,560",Field,Fairy,50.00%,50.00%,Static,,Lightning Rod,Flower Veil,Block,Normal,,,,raichu,Raichu,,raichu-f
 Yes,Yes,8,Legend Arceus,Gender,,Alpha,Pikachu,21,Thunder Stone,Alpha Raichu ♀,26,,,Electric,,,,"2,560",Field,Fairy,50.00%,50.00%,Static,,Lightning Rod,Flower Veil,Block,Normal,,,,raichu,Raichu,,raichu-alpha-f
-Yes,Yes,7,"Sun, Moon",Alternate,,,Pikachu,22,Thunder Stone,Raichu-Alola,26,,,Electric,,Pyschic,,"2,560",Field,Fairy,50.00%,50.00%,Surge Surfer,,,Fluffy,Bloom Doom,Grass,,,,raichu-alola,"Raichu
+Yes,Yes,7,"Sun, Moon",Alternate,Alolan,,Pikachu,22,Thunder Stone,Raichu-Alola,26,,,Electric,,Pyschic,,"2,560",Field,Fairy,50.00%,50.00%,Surge Surfer,,,Fluffy,Bloom Doom,Grass,,,,raichu-alola,"Raichu
 (Alolan)",,raichu-alola
 Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Sandshrew,0,,Sandshrew,27,,,Ground,,,,"5,120",Field,,50.00%,50.00%,Sand Veil,,Sand Rush,Forecast,Blue Flare,Fire,,,,sandshrew,Sandshrew,,sandshrew
 Yes,Yes,7,"Sun, Moon",,Alolan,,Sandshrew,1,,Sandshrew-Alola,27,,,Ice,,Steel,,"5,120",Field,,50.00%,50.00%,Snow Cloak,,Slush Rush,Forewarn,Body Press,Fighting,,,,sandshrew-alola,"Sandshrew
@@ -783,9 +783,9 @@ Yes,No,3,"Ruby, Sapphire, Emerald",,,,Rayquaza,0,,Rayquaza,384,,,Dragon,,Flying,
 No,No,6,"X, Y",,,Mega,Rayquaza,1,,Mega Rayquaza,384,,,Dragon,,Flying,,"30,720",Undiscovered,,○,○,Delta Stream,,,,Sing,Normal,,,,rayquaza-mega,Rayquaza,Yes,rayquaza-mega
 Yes,No,3,"Ruby, Sapphire, Emerald",,,,Jirachi,0,,Jirachi,385,,,Steel,,Pyschic,,"30,720",Undiscovered,,○,○,Serene Grace,,,,Sinister Arrow Raid,Ghost,,,,jirachi,Jirachi,,jirachi
 Yes,No,3,"Ruby, Sapphire, Emerald",,,,Deoxys,0,,Deoxys,386,,,Pyschic,,,,"30,720",Undiscovered,,○,○,Pressure,,,,Sketch,Normal,,,,deoxys,Deoxys,,deoxys
-Yes,No,3,"Ruby, Sapphire, Emerald",,,Alternate,Deoxys,1,,Deoxys-Attack,386,,,Pyschic,,,,"30,720",Undiscovered,,○,○,Pressure,,,,Skill Swap,Pyschic,,,,deoxys-attack,Deoxys,,deoxys-attack
-Yes,No,3,"Ruby, Sapphire, Emerald",,,Alternate,Deoxys,2,,Deoxys-Defense,386,,,Pyschic,,,,"30,720",Undiscovered,,○,○,Pressure,,,,Skull Bash,Normal,,,,deoxys-defense,Deoxys,,deoxys-defense
-Yes,No,3,"Ruby, Sapphire, Emerald",,,Alternate,Deoxys,3,,Deoxys-Speed,386,,,Pyschic,,,,"30,720",Undiscovered,,○,○,Pressure,,,,Sky Attack,Flying,,,,deoxys-speed,Deoxys,,deoxys-speed
+Yes,No,3,"Ruby, Sapphire, Emerald",Alternate,,,Deoxys,1,,Deoxys-Attack,386,,,Pyschic,,,,"30,720",Undiscovered,,○,○,Pressure,,,,Skill Swap,Pyschic,,,,deoxys-attack,Deoxys,,deoxys-attack
+Yes,No,3,"Ruby, Sapphire, Emerald",Alternate,,,Deoxys,2,,Deoxys-Defense,386,,,Pyschic,,,,"30,720",Undiscovered,,○,○,Pressure,,,,Skull Bash,Normal,,,,deoxys-defense,Deoxys,,deoxys-defense
+Yes,No,3,"Ruby, Sapphire, Emerald",Alternate,,,Deoxys,3,,Deoxys-Speed,386,,,Pyschic,,,,"30,720",Undiscovered,,○,○,Pressure,,,,Sky Attack,Flying,,,,deoxys-speed,Deoxys,,deoxys-speed
 Yes,Yes,4,"Diamond, Pearl, Platinium",,,,Turtwig,0,,Turtwig,387,,,Grass,,,,"5,120",Monster,Grass,88.10%,11.90%,Overgrow,,Shell Armor,,Sky Drop,Flying,,,,turtwig,Turtwig,,turtwig
 Yes,Yes,8,Legend Arceus,,,Alpha,Turtwig,1,,Alpha Turtwig,387,,,Grass,,,,"5,120",Monster,Grass,88.10%,11.90%,Overgrow,,Shell Armor,,Sky Drop,Flying,,,,turtwig,Turtwig,,turtwig-alpha
 Yes,Yes,4,"Diamond, Pearl, Platinium",,,,Turtwig,2,18,Grotle,388,,,Grass,,,,"5,120",Monster,Grass,88.10%,11.90%,Overgrow,,Shell Armor,,Sky Uppercut,Fighting,,,,grotle,Grotle,,grotle

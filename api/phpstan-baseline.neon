@@ -1,18 +1,28 @@
 parameters:
 	ignoreErrors:
 		-
+			message: "#^Call to an undefined method Symfony\\\\Contracts\\\\Cache\\\\CacheInterface\\:\\:clear\\(\\)\\.$#"
+			count: 1
+			path: src/Command/CalculateDexAvailabilityCommand.php
+
+		-
+			message: "#^Call to an undefined method Symfony\\\\Contracts\\\\Cache\\\\CacheInterface\\:\\:clear\\(\\)\\.$#"
+			count: 1
+			path: src/Command/CalculateGameBundleAvailabilityCommand.php
+
+		-
 			message: "#^Parameter \\#1 \\$iterator of function iterator_to_array expects Traversable, iterable given\\.$#"
 			count: 1
 			path: tests/functionnal/Repository/DexRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$goldsilvercrystal\\.$#"
-			count: 2
+			count: 3
 			path: tests/functionnal/Repository/GameBundleAvailabilityRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$redgreenblueyellow\\.$#"
-			count: 2
+			count: 3
 			path: tests/functionnal/Repository/GameBundleAvailabilityRepositoryTest.php
 
 		-
@@ -22,12 +32,12 @@ parameters:
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$goldsilvercrystal\\.$#"
-			count: 2
+			count: 3
 			path: tests/functionnal/Service/GameBundleAvailabilityServiceTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$redgreenblueyellow\\.$#"
-			count: 2
+			count: 3
 			path: tests/functionnal/Service/GameBundleAvailabilityServiceTest.php
 
 		-

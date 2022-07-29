@@ -30,7 +30,7 @@ class DexRepositoryTest extends KernelTestCase
 
         $this->assertCount($this->getDexCount(), $dexes);
 
-        $this->assertEquals('Gold, Silver, Crystal', $dexes[0]->name);
+        $this->assertEquals('Gold / Silver / Crystal', $dexes[0]->name);
         $this->assertEquals(
             "(p.bankable or p.bankableish) and ba?.redgreenblueyellow",
             $dexes[2]->selectionRule
@@ -50,9 +50,9 @@ class DexRepositoryTest extends KernelTestCase
         /** @var DexRepository $repo */
         $repo = static::getContainer()->get(DexRepository::class);
 
-        $dexRGBY = $repo->getBySlug('redbluegreenyellow');
+        $dexRGBY = $repo->getBySlug('redgreenblueyellow');
 
-        $this->assertEquals('Red / Blue / Green / Yellow', $dexRGBY?->name);
+        $this->assertEquals('Red / Green / Blue / Yellow', $dexRGBY?->name);
         $this->assertEquals(
             '(p.bankable or p.bankableish) and ba?.redgreenblueyellow',
             $dexRGBY?->selectionRule
@@ -60,7 +60,7 @@ class DexRepositoryTest extends KernelTestCase
 
         $dexGSC = $repo->getBySlug('goldsilvercrystal');
 
-        $this->assertEquals('Gold, Silver, Crystal', $dexGSC?->name);
+        $this->assertEquals('Gold / Silver / Crystal', $dexGSC?->name);
         $this->assertEquals(
             '(p.bankable or p.bankableish) and ba?.redgreenblueyellow and ba?.goldsilvercrystal '
             . 'and p.specialForm === null and p.regionalForm === null',

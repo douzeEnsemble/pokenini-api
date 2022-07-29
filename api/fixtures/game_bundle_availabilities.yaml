@@ -7,3 +7,93 @@ App\Entity\GameBundleAvailability:
         pokemon: '@pokemon_douze'
         bundle: '@game_bundle_gold_silver_crystal'
         isAvailable: false
+
+    game_bundle_bulbasaur_red_green_blue_yellow:
+        pokemon: '@pokemon_bulbasaur'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: true
+    game_bundle_bulbasaur_gold_silver_crystal:
+        pokemon: '@pokemon_bulbasaur'
+        bundle: '@game_bundle_gold_silver_crystal'
+        isAvailable: true
+
+    game_bundle_ivysaur_red_green_blue_yellow:
+        pokemon: '@pokemon_ivysaur'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: true
+    game_bundle_ivysaur_gold_silver_crystal:
+        pokemon: '@pokemon_ivysaur'
+        bundle: '@game_bundle_gold_silver_crystal'
+        isAvailable: true
+
+    game_bundle_venusaur_red_green_blue_yellow:
+        pokemon: '@pokemon_venusaur'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: true
+    game_bundle_venusaur_gold_silver_crystal:
+        pokemon: '@pokemon_venusaur'
+        bundle: '@game_bundle_gold_silver_crystal'
+        isAvailable: true
+
+    game_bundle_venusaur_f_red_green_blue_yellow:
+        pokemon: '@pokemon_venusaur_f'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: false
+    game_bundle_venusaur_f_gold_silver_crystal:
+        pokemon: '@pokemon_venusaur_f'
+        bundle: '@game_bundle_gold_silver_crystal'
+        isAvailable: false
+
+    game_bundle_venusaur_mega_red_green_blue_yellow:
+        pokemon: '@pokemon_venusaur_mega'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: false
+    game_bundle_venusaur_mega_gold_silver_crystal:
+        pokemon: '@pokemon_venusaur_mega'
+        bundle: '@game_bundle_gold_silver_crystal'
+        isAvailable: false
+
+    game_bundle_venusaur_gigantamax_red_green_blue_yellow:
+        pokemon: '@pokemon_venusaur_gigantamax'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: false
+    game_bundle_venusaur_gigantamax_gold_silver_crystal:
+        pokemon: '@pokemon_venusaur_gigantamax'
+        bundle: '@game_bundle_gold_silver_crystal'
+        isAvailable: false
+
+    game_bundle_deoxys_red_green_blue_yellow:
+        pokemon: '@pokemon_deoxys'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: true
+    game_bundle_deoxys_gold_silver_crystal:
+        pokemon: '@pokemon_deoxys'
+        bundle: '@game_bundle_gold_silver_crystal'
+        isAvailable: true
+
+    game_bundle_deoxys_attack_red_green_blue_yellow:
+        pokemon: '@pokemon_deoxys_attack'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: true
+    game_bundle_deoxys_attack_gold_silver_crystal:
+        pokemon: '@pokemon_deoxys_attack'
+        bundle: '@game_bundle_gold_silver_crystal'
+        isAvailable: true
+
+    game_bundle_deoxys_defense_red_green_blue_yellow:
+        pokemon: '@pokemon_deoxys_defense'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: true
+    game_bundle_deoxys_defense_gold_silver_crystal:
+        pokemon: '@pokemon_deoxys_defense'
+        bundle: '@game_bundle_gold_silver_crystal'
+        isAvailable: true
+
+    game_bundle_deoxys_speed_red_green_blue_yellow:
+        pokemon: '@pokemon_deoxys_speed'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: true
+    game_bundle_deoxys_speed_gold_silver_crystal:
+        pokemon: '@pokemon_deoxys_speed'
+        bundle: '@game_bundle_gold_silver_crystal'
+        isAvailable: true

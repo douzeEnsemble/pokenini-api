@@ -10,7 +10,9 @@ class ImportPokemonCommandTest extends AbstractImportFileCommandTest
 
     public function testFileNoDataCsv(): void
     {
-        $commandTester = $this->executeCommand(['file' => 'tests/resources/data/pokemon_list/zero_data.csv']);
+        $commandTester = $this->executeCommand([
+            'file' => 'tests/resources/data/pokemon_list/zero_data.csv'
+        ]);
 
         $commandTester->assertCommandIsSuccessful();
 
@@ -23,7 +25,9 @@ class ImportPokemonCommandTest extends AbstractImportFileCommandTest
         $this->assertEquals($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
         $this->assertEquals(0, $this->getPokemonDeletedCount());
 
-        $commandTester = $this->executeCommand(['file' => 'tests/resources/data/pokemon_list/only_new.csv']);
+        $commandTester = $this->executeCommand([
+            'file' => 'tests/resources/data/pokemon_list/only_new.csv'
+        ]);
 
         $commandTester->assertCommandIsSuccessful();
 
@@ -59,7 +63,9 @@ class ImportPokemonCommandTest extends AbstractImportFileCommandTest
         $this->assertNotNull($ivysaurBefore['family_id']);
         $this->assertEquals($bulbasaurBefore['id'], $ivysaurBefore['family_id']);
 
-        $commandTester = $this->executeCommand(['file' => 'tests/resources/data/pokemon_list/only_existing.csv']);
+        $commandTester = $this->executeCommand([
+            'file' => 'tests/resources/data/pokemon_list/only_existing.csv'
+        ]);
 
         $commandTester->assertCommandIsSuccessful();
 
@@ -88,7 +94,9 @@ class ImportPokemonCommandTest extends AbstractImportFileCommandTest
         $this->assertEquals($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
         $this->assertEquals(0, $this->getPokemonDeletedCount());
 
-        $commandTester = $this->executeCommand(['file' => 'tests/resources/data/pokemon_list/new_and_existing.csv']);
+        $commandTester = $this->executeCommand([
+            'file' => 'tests/resources/data/pokemon_list/new_and_existing.csv'
+        ]);
 
         $commandTester->assertCommandIsSuccessful();
 
@@ -97,6 +105,31 @@ class ImportPokemonCommandTest extends AbstractImportFileCommandTest
         $this->assertEquals(22, $this->getPokemonCount());
         $this->assertEquals(17, $this->getPokemonNotDeletedCount());
         $this->assertEquals(5, $this->getPokemonDeletedCount());
+    }
+
+    public function testUpdateRegionalFormPokemons(): void
+    {
+        $this->assertGreaterThan(0, $this->getPokemonCount());
+        $this->assertEquals($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
+        $this->assertEquals(0, $this->getPokemonDeletedCount());
+
+        $pokemonBefore = $this->getPokemonFromName('Douze');
+        $this->assertNull($pokemonBefore['regional_form_id']);
+
+        $commandTester = $this->executeCommand([
+            'file' => 'tests/resources/data/pokemon_list/update_regional_form.csv'
+        ]);
+
+        $commandTester->assertCommandIsSuccessful();
+
+        $this->assertStringContainsString('1 pokemons created/updated', $commandTester->getDisplay());
+
+        $this->assertEquals(11, $this->getPokemonCount());
+        $this->assertEquals(1, $this->getPokemonNotDeletedCount());
+        $this->assertEquals(10, $this->getPokemonDeletedCount());
+
+        $pokemonAfter = $this->getPokemonFromName('Douze');
+        $this->assertNotNull($pokemonAfter['regional_form_id']);
     }
 
     protected function getCommandName(): string

@@ -12,7 +12,7 @@ App\Entity\GameBundle:
         generation: '@gen_3'
         orderNumber: 3
     game_bundle_red_fire_leaf_green:
-        name: 'RedFire, LeafGreen'
+        name: 'Red Fire, Leaf Green'
         generation: '@gen_3'
         orderNumber: 4
     game_bundle_diamond_pearl_platinium:

@@ -1,17 +1,17 @@
 App\Entity\Pokedex:
-    pokedex_redbluegreenyellow_bulbasaur:
+    pokedex_redgreenblueyellow_bulbasaur:
         pokemon: '@pokemon_bulbasaur'
-        dex: '@dex_redbluegreenyellow'
+        dex: '@dex_redgreenblueyellow'
         catchState: '@catchstate_no'
         
-    pokedex_redbluegreenyellow_yvysaur:
+    pokedex_redgreenblueyellow_yvysaur:
         pokemon: '@pokemon_ivysaur'
-        dex: '@dex_redbluegreenyellow'
+        dex: '@dex_redgreenblueyellow'
         catchState: '@catchstate_maybe'
         
-    pokedex_redbluegreenyellow_venusaur:
+    pokedex_redgreenblueyellow_venusaur:
         pokemon: '@pokemon_venusaur'
-        dex: '@dex_redbluegreenyellow'
+        dex: '@dex_redgreenblueyellow'
         catchState: '@catchstate_maybenot'
         
     pokedex_goldsilvercrystal_bulbasaur:

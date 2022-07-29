@@ -7,7 +7,7 @@ class DexAvailabilitiesApiTest extends AbstractApiTest
     public function testGetCollectionFilteredByDex(): void
     {
         /** @var string[]|string[][] $content */
-        $content = $this->apiRequestContent('dex_availabilities', ['dex.slug' => 'redbluegreenyellow']);
+        $content = $this->apiRequestContent('dex_availabilities', ['dex.slug' => 'redgreenblueyellow']);
 
         $this->assertCount(4, $content);
 

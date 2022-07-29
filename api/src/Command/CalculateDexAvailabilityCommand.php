@@ -16,6 +16,7 @@ use Symfony\Component\Console\Helper\ProgressBar;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
+use Symfony\Contracts\Cache\CacheInterface;
 
 #[AsCommand(name: 'app:calculate:dex_availability')]
 class CalculateDexAvailabilityCommand extends Command
@@ -23,11 +24,12 @@ class CalculateDexAvailabilityCommand extends Command
     protected static $defaultName = 'app:calculate:dex_availability';
 
     public function __construct(
-        private DexAvailabilityRepository $dexAvailabilityRepository,
-        private GameBundleAvailabilityService $gameBundleAvailabilityService,
-        private DexRepository $dexRepository,
-        private PokemonRepository $pokemonRepository,
-        private EntityManagerInterface $entityManager
+        private readonly DexAvailabilityRepository $dexAvailabilityRepository,
+        private readonly GameBundleAvailabilityService $gameBundleAvailabilityService,
+        private readonly DexRepository $dexRepository,
+        private readonly PokemonRepository $pokemonRepository,
+        private readonly EntityManagerInterface $entityManager,
+        private readonly CacheInterface $cache,
     ) {
         parent::__construct(self::$defaultName);
     }
@@ -37,6 +39,14 @@ class CalculateDexAvailabilityCommand extends Command
         $this
             ->setHelp("This command allows you to update dex availabilities")
         ;
+    }
+
+    /**
+     * @inheritdoc
+     */
+    protected function initialize(InputInterface $input, OutputInterface $output): void
+    {
+        $this->cache->clear();
     }
 
     /**
@@ -68,6 +78,7 @@ class CalculateDexAvailabilityCommand extends Command
             $progressDex->start($pokemonCount);
 
             $pokemonQuery = $this->pokemonRepository->getQueryAll();
+
             /** @var Pokemon $pokemon */
             foreach ($pokemonQuery->toIterable() as $pokemon) {
                 $isGettable = $expressionLanguage->evaluate(

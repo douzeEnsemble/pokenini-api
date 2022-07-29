@@ -10,12 +10,12 @@ class DexesApiTest extends AbstractApiTest
         $content = $this->apiRequestContent('dexes');
 
         $this->assertEquals([
-            'name' => 'Red / Blue / Green / Yellow',
-            'slug' => 'redbluegreenyellow',
+            'name' => 'Red / Green / Blue / Yellow',
+            'slug' => 'redgreenblueyellow',
         ], $content[0]);
 
         $this->assertEquals([
-            'name' => 'Gold, Silver, Crystal',
+            'name' => 'Gold / Silver / Crystal',
             'slug' => 'goldsilvercrystal',
         ], $content[1]);
 

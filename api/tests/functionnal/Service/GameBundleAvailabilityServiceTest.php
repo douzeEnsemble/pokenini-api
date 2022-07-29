@@ -29,19 +29,23 @@ class GameBundleAvailabilityServiceTest extends KernelTestCase
 
         /** @var Pokemon $pokemonDouze */
         $pokemonDouze = $pokemonRepo->findOneBy(['name' => 'Douze']);
-        /** @var Pokemon $pokemonBulbasaur */
-        $pokemonBulbasaur = $pokemonRepo->findOneBy(['name' => 'Bulbasaur']);
 
         $listDouze = $service->getFromPokemon($pokemonDouze);
-        $this->assertTrue(isset($listDouze->redgreenblueyellow));
-        $this->assertTrue(isset($listDouze->goldsilvercrystal));
         $this->assertTrue($listDouze->redgreenblueyellow);
         $this->assertFalse($listDouze->goldsilvercrystal);
 
+        /** @var Pokemon $pokemonBulbasaur */
+        $pokemonBulbasaur = $pokemonRepo->findOneBy(['name' => 'Bulbasaur']);
+
         $listBulbasaur = $service->getFromPokemon($pokemonBulbasaur);
-        $this->assertFalse(isset($listBulbasaur->redgreenblueyellow));
-        $this->assertFalse(isset($listBulbasaur->goldsilvercrystal));
-        $this->assertNull($listBulbasaur->redgreenblueyellow);
-        $this->assertNull($listBulbasaur->goldsilvercrystal);
+        $this->assertTrue($listBulbasaur->redgreenblueyellow);
+        $this->assertTrue($listBulbasaur->goldsilvercrystal);
+
+        /** @var Pokemon $pokemonMegaVenusaur */
+        $pokemonMegaVenusaur = $pokemonRepo->findOneBy(['name' => 'Mega Venusaur']);
+
+        $listMegaVenusaur = $service->getFromPokemon($pokemonMegaVenusaur);
+        $this->assertFalse($listMegaVenusaur->redgreenblueyellow);
+        $this->assertFalse($listMegaVenusaur->goldsilvercrystal);
     }
 }

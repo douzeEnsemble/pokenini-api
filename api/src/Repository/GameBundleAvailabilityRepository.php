@@ -112,8 +112,12 @@ class GameBundleAvailabilityRepository extends ServiceEntityRepository
                                     ON g.id = ga.game_id
                                 JOIN pokemon AS p
                                     ON ga.pokemon_id = p.family_id
+                                JOIN pokemon AS pf
+                                    ON ga.pokemon_id = p.family_id
                                 JOIN variant_form AS vf
-                                    ON p.variant_form_id = vf.id AND vf.slug = 'alternate'
+                                    ON p.variant_form_id = vf.id
+                                        AND vf.slug = 'alternate'
+                                        AND p.regional_form_id IS NULL
                         GROUP BY	gb.id, p.id
                     ) AS sub
         SQL;

@@ -6,7 +6,7 @@ class PokedexApiTest extends AbstractApiTest
 {
     public function testList(): void
     {
-        $response = $this->apiRequest('pokedex', ['dex.slug' => 'redbluegreenyellow']);
+        $response = $this->apiRequest('pokedex', ['dex.slug' => 'redgreenblueyellow']);
 
         $this->assertEquals(200, $response->getStatusCode());
 
@@ -17,7 +17,7 @@ class PokedexApiTest extends AbstractApiTest
         $this->assertArrayHasKey('pokemons', $data);
         $this->assertArrayHasKey('dex', $data);
 
-        $this->assertEquals('Red / Blue / Green / Yellow', $data['dex']['name']);
+        $this->assertEquals('Red / Green / Blue / Yellow', $data['dex']['name']);
 
         /** @var string[][] $pokemons */
         $pokemons = $data['pokemons'];

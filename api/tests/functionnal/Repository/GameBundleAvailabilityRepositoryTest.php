@@ -57,12 +57,6 @@ class GameBundleAvailabilityRepositoryTest extends KernelTestCase
 
         $this->assertEquals(12, $this->gameBundleAvailabilityRepo->calculate());
 
-//        /** @var GameBundleAvailability $item */
-//        foreach ($this->gameBundleAvailabilityRepo->findAll() as $item) {
-//            dump($item->bundle->name, $item->pokemon->name, $item->isAvailable);
-//        }
-//        exit;
-
         $this->assertIsAvailable('Red, Green, Blue, Yellow', 'Douze');
         $this->assertIsNotAvailable('Gold, Silver, Crystal', 'Douze');
         $this->assertIsNotAvailable('Ruby, Sapphire, Emerald', 'Douze');
@@ -95,15 +89,22 @@ class GameBundleAvailabilityRepositoryTest extends KernelTestCase
     public function testGetFromPokemon(): void
     {
         $pokemonDouze = $this->getPokemon('Douze');
-        $pokemonBulbasaur = $this->getPokemon('Bulbasaur');
 
         $listDouze = $this->gameBundleAvailabilityRepo->getFromPokemon($pokemonDouze);
         $this->assertTrue($listDouze->redgreenblueyellow);
         $this->assertFalse($listDouze->goldsilvercrystal);
 
+        $pokemonBulbasaur = $this->getPokemon('Bulbasaur');
+
         $listBulbasaur = $this->gameBundleAvailabilityRepo->getFromPokemon($pokemonBulbasaur);
-        $this->assertNull($listBulbasaur->redgreenblueyellow);
-        $this->assertNull($listBulbasaur->goldsilvercrystal);
+        $this->assertTrue($listBulbasaur->redgreenblueyellow);
+        $this->assertTrue($listBulbasaur->goldsilvercrystal);
+
+        $pokemonMegaVenusaur = $this->getPokemon('Mega Venusaur');
+
+        $listMegaVenusaur = $this->gameBundleAvailabilityRepo->getFromPokemon($pokemonMegaVenusaur);
+        $this->assertFalse($listMegaVenusaur->redgreenblueyellow);
+        $this->assertFalse($listMegaVenusaur->goldsilvercrystal);
     }
 
     private function assertIsAvailable(string $bundleName, string $pokemonName): void

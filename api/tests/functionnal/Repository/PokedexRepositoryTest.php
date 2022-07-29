@@ -21,7 +21,7 @@ class PokedexRepositoryTest extends KernelTestCase
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
-        $pokedexesIterator = $repo->getQueryFromDexSlug('redbluegreenyellow');
+        $pokedexesIterator = $repo->getQueryFromDexSlug('redgreenblueyellow');
 
         /** @var string[][] $pokedexes */
         $pokedexes = iterator_to_array($pokedexesIterator);
