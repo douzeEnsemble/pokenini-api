@@ -29,9 +29,9 @@ class ImportPokemonCommandTest extends AbstractImportFileCommandTest
 
         $this->assertStringContainsString('11 pokemons created/updated', $commandTester->getDisplay());
 
-        $this->assertEquals(18, $this->getPokemonCount());
+        $this->assertEquals(22, $this->getPokemonCount());
         $this->assertEquals(11, $this->getPokemonNotDeletedCount());
-        $this->assertEquals(7, $this->getPokemonDeletedCount());
+        $this->assertEquals(11, $this->getPokemonDeletedCount());
 
         $charmander = $this->getPokemonFromName('Charmander');
         $charmeleon = $this->getPokemonFromName('Charmeleon');
@@ -65,9 +65,9 @@ class ImportPokemonCommandTest extends AbstractImportFileCommandTest
 
         $this->assertStringContainsString('7 pokemons created/updated', $commandTester->getDisplay());
 
-        $this->assertEquals(7, $this->getPokemonCount());
+        $this->assertEquals(11, $this->getPokemonCount());
         $this->assertEquals(7, $this->getPokemonNotDeletedCount());
-        $this->assertEquals(0, $this->getPokemonDeletedCount());
+        $this->assertEquals(4, $this->getPokemonDeletedCount());
 
         $pokemonAfter = $this->getPokemonFromName('Douze');
 
@@ -94,9 +94,9 @@ class ImportPokemonCommandTest extends AbstractImportFileCommandTest
 
         $this->assertStringContainsString('17 pokemons created/updated', $commandTester->getDisplay());
 
-        $this->assertEquals(18, $this->getPokemonCount());
+        $this->assertEquals(22, $this->getPokemonCount());
         $this->assertEquals(17, $this->getPokemonNotDeletedCount());
-        $this->assertEquals(1, $this->getPokemonDeletedCount());
+        $this->assertEquals(5, $this->getPokemonDeletedCount());
     }
 
     protected function getCommandName(): string

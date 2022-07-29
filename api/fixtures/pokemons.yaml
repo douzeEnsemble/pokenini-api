@@ -23,7 +23,7 @@ App\Entity\Pokemon:
         iconName: 'bulbasaur'
         familyOrder: 0
     
-    pokemon_yvysaur (extends pokemon):
+    pokemon_ivysaur (extends pokemon):
         name: 'Ivysaur'
         family: '@pokemon_bulbasaur'
         nationalDexNumber: '2'
@@ -65,4 +65,39 @@ App\Entity\Pokemon:
         iconName: 'venusaur'
         specialForm: '@special_form_gigantamax'
         familyOrder: 5
+    
+    pokemon_deoxys (extends pokemon):
+        name: 'Deoxys'
+        family: 
+        nationalDexNumber: '386'
+        originalGameBundle: '@game_bundle_ruby_sapphire_emerald'
+        iconName: 'deoxys'
+        familyOrder: 0
+    
+    pokemon_deoxys_attack (extends pokemon):
+        name: 'Deoxys-Attack'
+        family: '@pokemon_deoxys'
+        nationalDexNumber: '386'
+        originalGameBundle: '@game_bundle_ruby_sapphire_emerald'
+        iconName: 'deoxys-attack'
+        familyOrder: 1
+        variantForm: '@variant_form_alternate'
+    
+    pokemon_deoxys_defense (extends pokemon):
+        name: 'Deoxys-Defense'
+        family: '@pokemon_deoxys'
+        nationalDexNumber: '386'
+        originalGameBundle: '@game_bundle_ruby_sapphire_emerald'
+        iconName: 'deoxys-defense'
+        familyOrder: 2
+        variantForm: '@variant_form_alternate'
+    
+    pokemon_deoxys_speed (extends pokemon):
+        name: 'Deoxys-Speed'
+        family: '@pokemon_deoxys'
+        nationalDexNumber: '386'
+        originalGameBundle: '@game_bundle_ruby_sapphire_emerald'
+        iconName: 'deoxys-speed'
+        familyOrder: 3
+        variantForm: '@variant_form_alternate'
     

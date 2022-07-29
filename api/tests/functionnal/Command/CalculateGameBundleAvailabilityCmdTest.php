@@ -41,7 +41,7 @@ class CalculateGameBundleAvailabilityCmdTest extends KernelTestCase
         $commandTester = $this->executeCommand();
         $commandTester->assertCommandIsSuccessful();
 
-        $this->assertStringContainsString("4 bundles' availabilities calculated", $commandTester->getDisplay());
+        $this->assertStringContainsString("12 bundles' availabilities calculated", $commandTester->getDisplay());
     }
 
     protected function getCommandName(): string

@@ -5,7 +5,7 @@ App\Entity\Pokedex:
         catchState: '@catchstate_no'
         
     pokedex_redbluegreenyellow_yvysaur:
-        pokemon: '@pokemon_yvysaur'
+        pokemon: '@pokemon_ivysaur'
         dex: '@dex_redbluegreenyellow'
         catchState: '@catchstate_maybe'
         
@@ -20,7 +20,7 @@ App\Entity\Pokedex:
         catchState: '@catchstate_yes'
         
     pokedex_goldsilvercrystal_yvysaur:
-        pokemon: '@pokemon_yvysaur'
+        pokemon: '@pokemon_ivysaur'
         dex: '@dex_goldsilvercrystal'
         catchState: '@catchstate_no'
         
@@ -35,7 +35,7 @@ App\Entity\Pokedex:
         catchState: '@catchstate_no'
         
     pokedex_home_yvysaur:
-        pokemon: '@pokemon_yvysaur'
+        pokemon: '@pokemon_ivysaur'
         dex: '@dex_home'
         catchState: '@catchstate_no'
         

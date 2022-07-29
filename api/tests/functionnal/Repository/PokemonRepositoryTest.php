@@ -50,15 +50,15 @@ class PokemonRepositoryTest extends KernelTestCase
         $this->assertEquals(1, $pokemons[0]->nationalDexNumber);
         $this->assertNull($pokemons[0]->family);
 
-        $this->assertTrue($pokemons[1]->bankable);
-        $this->assertNull($pokemons[1]->bankableish);
-        $this->assertEquals('Red, Green, Blue, Yellow', $pokemons[1]->originalGameBundle->name);
+        $this->assertTrue($pokemons[5]->bankable);
+        $this->assertNull($pokemons[5]->bankableish);
+        $this->assertEquals('Red, Green, Blue, Yellow', $pokemons[5]->originalGameBundle->name);
 
-        $this->assertNull($pokemons[2]->variantForm);
-        $this->assertNull($pokemons[2]->regionalForm);
-        $this->assertEquals('Gigantamax', $pokemons[2]->specialForm?->name);
+        $this->assertNull($pokemons[6]->variantForm);
+        $this->assertNull($pokemons[6]->regionalForm);
+        $this->assertEquals('Gigantamax', $pokemons[6]->specialForm?->name);
 
-        $this->assertEquals('ivysaur', $pokemons[3]->iconName);
+        $this->assertEquals('ivysaur', $pokemons[7]->iconName);
     }
 
     public function testCountAll(): void

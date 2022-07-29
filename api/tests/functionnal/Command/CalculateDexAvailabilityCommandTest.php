@@ -47,9 +47,9 @@ class CalculateDexAvailabilityCommandTest extends KernelTestCase
         $commandTester = $this->executeCommand();
         $commandTester->assertCommandIsSuccessful();
 
-        $this->assertStringContainsString("8 dex' availabilities calculated", $commandTester->getDisplay());
+        $this->assertStringContainsString("12 dex' availabilities calculated", $commandTester->getDisplay());
 
-        $this->assertEquals(8, $this->getDexAvailabilityCount());
+        $this->assertEquals(12, $this->getDexAvailabilityCount());
     }
 
     protected function getCommandName(): string

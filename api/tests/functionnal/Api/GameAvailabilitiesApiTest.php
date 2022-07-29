@@ -24,19 +24,19 @@ class GameAvailabilitiesApiTest extends AbstractApiTest
                 'name' => 'Douze',
             ],
             'game' => [
-                'name' => 'Green',
+                'name' => 'Yellow',
             ],
-            'availability' => '',
-        ], $content[7]);
+            'availability' => '—',
+        ], $content[21]);
 
         $this->assertEquals([
             'pokemon' => [
                 'name' => 'Douze',
             ],
             'game' => [
-                'name' => 'Blue',
+                'name' => 'Silver',
             ],
-            'availability' => 'E',
-        ], $content[8]);
+            'availability' => '',
+        ], $content[22]);
     }
 }

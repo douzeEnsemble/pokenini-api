@@ -12,7 +12,7 @@ App\Entity\DexAvailability:
         dex: '@dex_redbluegreenyellow'
         
     dexavailability_redbluegreenyellow_yvysaur:
-        pokemon: '@pokemon_yvysaur'
+        pokemon: '@pokemon_ivysaur'
         dex: '@dex_redbluegreenyellow'
         
     dexavailability_redbluegreenyellow_venusaur:
@@ -24,7 +24,7 @@ App\Entity\DexAvailability:
         dex: '@dex_goldsilvercrystal'
         
     dexavailability_goldsilvercrystal_yvysaur:
-        pokemon: '@pokemon_yvysaur'
+        pokemon: '@pokemon_ivysaur'
         dex: '@dex_goldsilvercrystal'
         
     dexavailability_goldsilvercrystal_venusaur:
@@ -36,7 +36,7 @@ App\Entity\DexAvailability:
         dex: '@dex_home'
         
     dexavailability_home_yvysaur:
-        pokemon: '@pokemon_yvysaur'
+        pokemon: '@pokemon_ivysaur'
         dex: '@dex_home'
         
     dexavailability_home_venusaur:

@@ -47,3 +47,47 @@ App\Entity\GameAvailability:
         pokemon: '@pokemon_bulbasaur'
         game: '@game_silver'
         availability: 'C'
+    gameavailability_ivysaur_blue:
+        pokemon: '@pokemon_ivysaur'
+        game: '@game_blue'
+        availability: 'C'
+    gameavailability_ivysaur_yellow:
+        pokemon: '@pokemon_ivysaur'
+        game: '@game_yellow'
+        availability: 'C'
+    gameavailability_ivysaur_green:
+        pokemon: '@pokemon_ivysaur'
+        game: '@game_green'
+        availability: 'C'
+    gameavailability_ivysaur_gold:
+        pokemon: '@pokemon_ivysaur'
+        game: '@game_gold'
+        availability: 'C'
+    gameavailability_ivysaur_silver:
+        pokemon: '@pokemon_ivysaur'
+        game: '@game_silver'
+        availability: 'C'
+    gameavailability_venusaur_blue:
+        pokemon: '@pokemon_venusaur'
+        game: '@game_blue'
+        availability: 'C'
+    gameavailability_venusaur_yellow:
+        pokemon: '@pokemon_venusaur'
+        game: '@game_yellow'
+        availability: 'C'
+    gameavailability_venusaur_green:
+        pokemon: '@pokemon_venusaur'
+        game: '@game_green'
+        availability: 'C'
+    gameavailability_venusaur_gold:
+        pokemon: '@pokemon_venusaur'
+        game: '@game_gold'
+        availability: 'C'
+    gameavailability_venusaur_silver:
+        pokemon: '@pokemon_venusaur'
+        game: '@game_silver'
+        availability: 'C'
+    gameavailability_deoxys_emerald:
+        pokemon: '@pokemon_deoxys'
+        game: '@game_emerald'
+        availability: 'C'

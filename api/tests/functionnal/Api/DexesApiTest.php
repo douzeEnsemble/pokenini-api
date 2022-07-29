@@ -22,6 +22,6 @@ class DexesApiTest extends AbstractApiTest
         $this->assertEquals([
             'name' => 'Home',
             'slug' => 'home',
-        ], $content[2]);
+        ], $content[3]);
     }
 }

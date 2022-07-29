@@ -2,6 +2,7 @@
 
 namespace App\Tests\Functionnal\Repository;
 
+use App\Entity\GameBundle;
 use App\Entity\GameBundleAvailability;
 use App\Entity\Pokemon;
 use App\Repository\GameBundleAvailabilityRepository;
@@ -16,89 +17,149 @@ class GameBundleAvailabilityRepositoryTest extends KernelTestCase
     use RefreshDatabaseTrait;
     use CountGameBundleAvailabilityTrait;
 
+    /** @var GameBundle[] */
+    private array $gameBundles;
+    /** @var Pokemon[] */
+    private array $pokemons;
+
+    private GameBundleAvailabilityRepository $gameBundleAvailabilityRepo;
+    private GameBundleRepository $gameBundleRepo;
+    private PokemonRepository $pokemonRepo;
+
     public function setUp(): void
     {
         self::bootKernel();
+
+        // Using temp variables is for avoid typing conflict
+        /** @var GameBundleAvailabilityRepository $gameBundleAvailabilityRepo */
+        $gameBundleAvailabilityRepo = static::getContainer()->get(GameBundleAvailabilityRepository::class);
+        $this->gameBundleAvailabilityRepo = $gameBundleAvailabilityRepo;
+        /** @var GameBundleRepository $gameBundleRepo */
+        $gameBundleRepo = static::getContainer()->get(GameBundleRepository::class);
+        $this->gameBundleRepo = $gameBundleRepo;
+        /** @var PokemonRepository $pokemonRepo */
+        $pokemonRepo = static::getContainer()->get(PokemonRepository::class);
+        $this->pokemonRepo = $pokemonRepo;
     }
 
     public function testRemoveAll(): void
     {
         $this->assertGreaterThan(0, $this->getGameBundleAvailabilityCount());
 
-        /** @var GameBundleAvailabilityRepository $repo */
-        $repo = static::getContainer()->get(GameBundleAvailabilityRepository::class);
-        $repo->removeAll();
+        $this->gameBundleAvailabilityRepo->removeAll();
 
         $this->assertEquals(0, $this->getGameBundleAvailabilityCount());
     }
 
     public function testCalculate(): void
     {
-        /** @var GameBundleAvailabilityRepository $repo */
-        $repo = static::getContainer()->get(GameBundleAvailabilityRepository::class);
-        $repo->removeAll();
+        $this->gameBundleAvailabilityRepo->removeAll();
 
-        $this->assertEquals(4, $repo->calculate());
+        $this->assertEquals(12, $this->gameBundleAvailabilityRepo->calculate());
 
-        /** @var GameBundleRepository $bundleRepo */
-        $bundleRepo = static::getContainer()->get(GameBundleRepository::class);
-        /** @var PokemonRepository $pokemonRepo */
-        $pokemonRepo = static::getContainer()->get(PokemonRepository::class);
+//        /** @var GameBundleAvailability $item */
+//        foreach ($this->gameBundleAvailabilityRepo->findAll() as $item) {
+//            dump($item->bundle->name, $item->pokemon->name, $item->isAvailable);
+//        }
+//        exit;
 
-        /** @var GameBundleAvailability $gameBundleRGBY */
-        $gameBundleRGBY = $bundleRepo->findOneBy(['name' => 'Red, Green, Blue, Yellow']);
-        /** @var GameBundleAvailability $gameBundleGSC */
-        $gameBundleGSC = $bundleRepo->findOneBy(['name' => 'Gold, Silver, Crystal']);
+        $this->assertIsAvailable('Red, Green, Blue, Yellow', 'Douze');
+        $this->assertIsNotAvailable('Gold, Silver, Crystal', 'Douze');
+        $this->assertIsNotAvailable('Ruby, Sapphire, Emerald', 'Douze');
 
-        /** @var Pokemon $pokemonDouze */
-        $pokemonDouze = $pokemonRepo->findOneBy(['name' => 'Douze']);
-        /** @var Pokemon $pokemonBulbasaur */
-        $pokemonBulbasaur = $pokemonRepo->findOneBy(['name' => 'Bulbasaur']);
+        $this->assertIsAvailable('Red, Green, Blue, Yellow', 'Bulbasaur');
+        $this->assertIsAvailable('Gold, Silver, Crystal', 'Bulbasaur');
+        $this->assertIsNotAvailable('Ruby, Sapphire, Emerald', 'Bulbasaur');
 
-        /** @var GameBundleAvailability $bundleAvailabilityDouzeRGBY */
-        $bundleAvailabilityDouzeRGBY = $repo->findOneBy(['pokemon' => $pokemonDouze, 'bundle' => $gameBundleRGBY]);
-        $this->assertTrue($bundleAvailabilityDouzeRGBY->isAvailable);
-        /** @var GameBundleAvailability $bundleAvailabilityDouzeGSC */
-        $bundleAvailabilityDouzeGSC = $repo->findOneBy(['pokemon' => $pokemonDouze, 'bundle' => $gameBundleGSC]);
-        $this->assertFalse($bundleAvailabilityDouzeGSC->isAvailable);
+        $this->assertIsAvailable('Red, Green, Blue, Yellow', 'Ivysaur');
+        $this->assertIsAvailable('Gold, Silver, Crystal', 'Ivysaur');
+        $this->assertIsNotAvailable('Ruby, Sapphire, Emerald', 'Ivysaur');
 
-        /** @var GameBundleAvailability $bundleAvailabilityBulbasaurRGBY */
-        $bundleAvailabilityBulbasaurRGBY = $repo->findOneBy([
-            'pokemon' => $pokemonBulbasaur,
-            'bundle' => $gameBundleRGBY
-        ]);
-        $this->assertTrue($bundleAvailabilityBulbasaurRGBY->isAvailable);
-        /** @var GameBundleAvailability $bundleAvailabilityBulbasaurGSC */
-        $bundleAvailabilityBulbasaurGSC = $repo->findOneBy([
-            'pokemon' => $pokemonBulbasaur,
-            'bundle' => $gameBundleGSC
-        ]);
-        $this->assertTrue($bundleAvailabilityBulbasaurGSC->isAvailable);
+        $this->assertIsAvailable('Red, Green, Blue, Yellow', 'Venusaur');
+        $this->assertIsAvailable('Gold, Silver, Crystal', 'Venusaur');
+        $this->assertIsNotAvailable('Ruby, Sapphire, Emerald', 'Venusaur');
+
+        $this->assertIsNotAvailable('Red, Green, Blue, Yellow', 'Mega Venusaur');
+        $this->assertIsNotAvailable('Gold, Silver, Crystal', 'Mega Venusaur');
+        $this->assertIsNotAvailable('Ruby, Sapphire, Emerald', 'Mega Venusaur');
+
+        $this->assertIsNotAvailable('Red, Green, Blue, Yellow', 'Deoxys');
+        $this->assertIsNotAvailable('Gold, Silver, Crystal', 'Deoxys');
+        $this->assertIsAvailable('Ruby, Sapphire, Emerald', 'Deoxys');
+
+        $this->assertIsNotAvailable('Red, Green, Blue, Yellow', 'Deoxys-Attack');
+        $this->assertIsNotAvailable('Gold, Silver, Crystal', 'Deoxys-Attack');
+        $this->assertIsAvailable('Ruby, Sapphire, Emerald', 'Deoxys-Attack');
     }
 
     public function testGetFromPokemon(): void
     {
-        /** @var GameBundleAvailabilityRepository $repo */
-        $repo = static::getContainer()->get(GameBundleAvailabilityRepository::class);
+        $pokemonDouze = $this->getPokemon('Douze');
+        $pokemonBulbasaur = $this->getPokemon('Bulbasaur');
 
-        /** @var PokemonRepository $pokemonRepo */
-        $pokemonRepo = static::getContainer()->get(PokemonRepository::class);
-
-        /** @var Pokemon $pokemonDouze */
-        $pokemonDouze = $pokemonRepo->findOneBy(['name' => 'Douze']);
-        /** @var Pokemon $pokemonBulbasaur */
-        $pokemonBulbasaur = $pokemonRepo->findOneBy(['name' => 'Bulbasaur']);
-
-        $listDouze = $repo->getFromPokemon($pokemonDouze);
-        $this->assertTrue(isset($listDouze->redgreenblueyellow));
-        $this->assertTrue(isset($listDouze->goldsilvercrystal));
+        $listDouze = $this->gameBundleAvailabilityRepo->getFromPokemon($pokemonDouze);
         $this->assertTrue($listDouze->redgreenblueyellow);
         $this->assertFalse($listDouze->goldsilvercrystal);
 
-        $listBulbasaur = $repo->getFromPokemon($pokemonBulbasaur);
-        $this->assertFalse(isset($listBulbasaur->redgreenblueyellow));
-        $this->assertFalse(isset($listBulbasaur->goldsilvercrystal));
+        $listBulbasaur = $this->gameBundleAvailabilityRepo->getFromPokemon($pokemonBulbasaur);
         $this->assertNull($listBulbasaur->redgreenblueyellow);
         $this->assertNull($listBulbasaur->goldsilvercrystal);
+    }
+
+    private function assertIsAvailable(string $bundleName, string $pokemonName): void
+    {
+        $gameBundleAvailability = $this->getGameBundleAvailability($bundleName, $pokemonName);
+
+        $this->assertTrue($gameBundleAvailability?->isAvailable);
+    }
+
+    private function assertIsNotAvailable(string $bundleName, string $pokemonName): void
+    {
+        $gameBundleAvailability = $this->getGameBundleAvailability($bundleName, $pokemonName);
+
+        $this->assertNotEquals(true, $gameBundleAvailability?->isAvailable);
+    }
+
+    private function getGameBundleAvailability(string $bundleName, string $pokemonName): ?GameBundleAvailability
+    {
+        $bundle = $this->getGameBundle($bundleName);
+        $pokemon = $this->getPokemon($pokemonName);
+
+        return $this->gameBundleAvailabilityRepo->findOneBy([
+            'pokemon' => $pokemon,
+            'bundle' => $bundle
+        ]);
+    }
+
+    private function getGameBundle(string $name): GameBundle
+    {
+        if (isset($this->gameBundles[$name])) {
+            return $this->gameBundles[$name];
+        }
+
+        /** @var GameBundle $gameBundle */
+        $gameBundle = $this->gameBundleRepo->findOneBy(['name' => $name]);
+
+        $this->assertNotNull($gameBundle);
+
+        $this->gameBundles[$name] = $gameBundle;
+
+        return $gameBundle;
+    }
+
+    private function getPokemon(string $name): Pokemon
+    {
+        if (isset($this->pokemons[$name])) {
+            return $this->pokemons[$name];
+        }
+
+        /** @var Pokemon $pokemon */
+        $pokemon = $this->pokemonRepo->findOneBy(['name' => $name]);
+
+        $this->assertNotNull($pokemon);
+
+        $this->pokemons[$name] = $pokemon;
+
+        return $pokemon;
     }
 }
