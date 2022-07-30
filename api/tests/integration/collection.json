@@ -1,0 +1,1681 @@
+{
+  "info": {
+    "_postman_id": "07de4c8a-4dc2-4940-a431-f91d12c03ec2",
+    "name": "Pkmn-Lagd Pokedex",
+    "schema": "http://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Pokedex Red, Green, Blue, Yellow",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const expectedDexTitle = \"Red, Green, Blue, Yellow\";",
+              "const expectedPokedexCount = 151;",
+              "const expectedIncludeTexts = [",
+              "    'nidoran-f',",
+              "    'nidoran-m',",
+              "];",
+              "const expectedNotIncludeTexts = [",
+              "    'venusaur-f',",
+              "    'Mega Venusaur',",
+              "    '-Alola',",
+              "    'Unown A',",
+              "    'unown-b',",
+              "    'unown-question',",
+              "    'deoxys-attack',",
+              "    'Alpha Rhyperior',",
+              "    'giratina-origin',",
+              "    'shaymin-sky',",
+              "    'Spring Deerling',",
+              "    'Winter Sawsbuck',",
+              "    'Thundurus',",
+              "    'Therian Thundurus',",
+              "    'Lycanroc-Midday',",
+              "    'Lycanroc-Dusk',",
+              "    'naganadel',",
+              "    'meltan',",
+              "    'Alcremie-Vanilla-Cream-Strawberry',",
+              "    'alcremie-rainbow-swirl-flower',",
+              "    'Gigantamax Toxtricity-Amped',",
+              "    'Shadow Rider Calyrex',",
+              "];",
+              "",
+              "pm.test(\"Status must be success\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Dex title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Response should contains or not some texts\", function () {",
+              "    const responseText = pm.response.text();",
+              "",
+              "    for (i in expectedIncludeTexts) {",
+              "        pm.expect(responseText).to.include(expectedIncludeTexts[i]);",
+              "    }",
+              "",
+              "    for (i in expectedNotIncludeTexts) {",
+              "        pm.expect(responseText).to.not.include(expectedNotIncludeTexts[i]);",
+              "    };",
+              "});",
+              "",
+              "pm.test(\"Pokemons list should have an expected count\", function () {",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://caddy/pokedex?dex.slug=redgreenblueyellow",
+          "protocol": "http",
+          "host": [
+            "caddy"
+          ],
+          "path": [
+            "pokedex"
+          ],
+          "query": [
+            {
+              "key": "dex.slug",
+              "value": "redgreenblueyellow"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pokedex Gold, Silver, Crystal",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const expectedDexTitle = \"Gold, Silver, Crystal\";",
+              "const expectedPokedexCount = 278;",
+              "const expectedIncludeTexts = [",
+              "    'nidoran-f',",
+              "    'nidoran-m',",
+              "    'Unown A',",
+              "    'unown-b',",
+              "    'unown-question',",
+              "];",
+              "const expectedNotIncludeTexts = [",
+              "    'venusaur-f',",
+              "    'Mega Venusaur',",
+              "    '-Alola',",
+              "    'deoxys-attack',",
+              "    'Alpha Rhyperior',",
+              "    'giratina-origin',",
+              "    'shaymin-sky',",
+              "    'Spring Deerling',",
+              "    'Winter Sawsbuck',",
+              "    'Thundurus',",
+              "    'Therian Thundurus',",
+              "    'Lycanroc-Midday',",
+              "    'Lycanroc-Dusk',",
+              "    'naganadel',",
+              "    'meltan',",
+              "    'Alcremie-Vanilla-Cream-Strawberry',",
+              "    'alcremie-rainbow-swirl-flower',",
+              "    'Gigantamax Toxtricity-Amped',",
+              "    'Shadow Rider Calyrex',",
+              "];",
+              "",
+              "pm.test(\"Status must be success\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Dex title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Response should contains or not some texts\", function () {",
+              "    const responseText = pm.response.text();",
+              "",
+              "    for (i in expectedIncludeTexts) {",
+              "        pm.expect(responseText).to.include(expectedIncludeTexts[i]);",
+              "    }",
+              "",
+              "    for (i in expectedNotIncludeTexts) {",
+              "        pm.expect(responseText).to.not.include(expectedNotIncludeTexts[i]);",
+              "    };",
+              "});",
+              "",
+              "pm.test(\"Pokemons list should have an expected count\", function () {",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://caddy/pokedex?dex.slug=goldsilvercrystal",
+          "protocol": "http",
+          "host": [
+            "caddy"
+          ],
+          "path": [
+            "pokedex"
+          ],
+          "query": [
+            {
+              "key": "dex.slug",
+              "value": "goldsilvercrystal"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pokedex Ruby, Sapphire, Emerald",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const expectedDexTitle = \"Ruby, Sapphire, Emerald\";",
+              "const expectedPokedexCount = 416;",
+              "const expectedIncludeTexts = [",
+              "    'nidoran-f',",
+              "    'nidoran-m',",
+              "    'Unown A',",
+              "    'unown-b',",
+              "    'unown-question',",
+              "    'deoxys-attack',",
+              "];",
+              "const expectedNotIncludeTexts = [",
+              "    'venusaur-f',",
+              "    'Mega Venusaur',",
+              "    '-Alola',",
+              "    'Alpha Rhyperior',",
+              "    'giratina-origin',",
+              "    'shaymin-sky',",
+              "    'Spring Deerling',",
+              "    'Winter Sawsbuck',",
+              "    'Thundurus',",
+              "    'Therian Thundurus',",
+              "    'Lycanroc-Midday',",
+              "    'Lycanroc-Dusk',",
+              "    'naganadel',",
+              "    'meltan',",
+              "    'Alcremie-Vanilla-Cream-Strawberry',",
+              "    'alcremie-rainbow-swirl-flower',",
+              "    'Gigantamax Toxtricity-Amped',",
+              "    'Shadow Rider Calyrex',",
+              "];",
+              "",
+              "pm.test(\"Status must be success\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Dex title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Response should contains or not some texts\", function () {",
+              "    const responseText = pm.response.text();",
+              "",
+              "    for (i in expectedIncludeTexts) {",
+              "        pm.expect(responseText).to.include(expectedIncludeTexts[i]);",
+              "    }",
+              "",
+              "    for (i in expectedNotIncludeTexts) {",
+              "        pm.expect(responseText).to.not.include(expectedNotIncludeTexts[i]);",
+              "    };",
+              "});",
+              "",
+              "pm.test(\"Pokemons list should have an expected count\", function () {",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://caddy/pokedex?dex.slug=rubysapphireemerald",
+          "protocol": "http",
+          "host": [
+            "caddy"
+          ],
+          "path": [
+            "pokedex"
+          ],
+          "query": [
+            {
+              "key": "dex.slug",
+              "value": "rubysapphireemerald"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pokedex Red Fire, Leaf Green",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const expectedDexTitle = \"Red Fire, Leaf Green\";",
+              "const expectedPokedexCount = 416;",
+              "const expectedIncludeTexts = [",
+              "    'nidoran-f',",
+              "    'nidoran-m',",
+              "    'Unown A',",
+              "    'unown-b',",
+              "    'unown-question',",
+              "    'deoxys-attack',",
+              "];",
+              "const expectedNotIncludeTexts = [",
+              "    'venusaur-f',",
+              "    'Mega Venusaur',",
+              "    '-Alola',",
+              "    'Alpha Rhyperior',",
+              "    'giratina-origin',",
+              "    'shaymin-sky',",
+              "    'Spring Deerling',",
+              "    'Winter Sawsbuck',",
+              "    'Thundurus',",
+              "    'Therian Thundurus',",
+              "    'Lycanroc-Midday',",
+              "    'Lycanroc-Dusk',",
+              "    'naganadel',",
+              "    'meltan',",
+              "    'Alcremie-Vanilla-Cream-Strawberry',",
+              "    'alcremie-rainbow-swirl-flower',",
+              "    'Gigantamax Toxtricity-Amped',",
+              "    'Shadow Rider Calyrex',",
+              "];",
+              "",
+              "pm.test(\"Status must be success\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Dex title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Response should contains or not some texts\", function () {",
+              "    const responseText = pm.response.text();",
+              "",
+              "    for (i in expectedIncludeTexts) {",
+              "        pm.expect(responseText).to.include(expectedIncludeTexts[i]);",
+              "    }",
+              "",
+              "    for (i in expectedNotIncludeTexts) {",
+              "        pm.expect(responseText).to.not.include(expectedNotIncludeTexts[i]);",
+              "    };",
+              "});",
+              "",
+              "pm.test(\"Pokemons list should have an expected count\", function () {",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://caddy/pokedex?dex.slug=redfireleafgreen",
+          "protocol": "http",
+          "host": [
+            "caddy"
+          ],
+          "path": [
+            "pokedex"
+          ],
+          "query": [
+            {
+              "key": "dex.slug",
+              "value": "redfireleafgreen"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pokedex Diamond, Pearl, Platinium",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const expectedDexTitle = \"Diamond, Pearl, Platinium\";",
+              "const expectedPokedexCount = 632;",
+              "const expectedIncludeTexts = [",
+              "    'venusaur-f',",
+              "    'nidoran-f',",
+              "    'nidoran-m',",
+              "    'Unown A',",
+              "    'unown-b',",
+              "    'unown-question',",
+              "    'deoxys-attack',",
+              "    'giratina-origin',",
+              "    'shaymin-sky',",
+              "];",
+              "const expectedNotIncludeTexts = [",
+              "    'Mega Venusaur',",
+              "    '-Alola',",
+              "    'Alpha Rhyperior',",
+              "    'Spring Deerling',",
+              "    'Winter Sawsbuck',",
+              "    'Thundurus',",
+              "    'Therian Thundurus',",
+              "    'Lycanroc-Midday',",
+              "    'Lycanroc-Dusk',",
+              "    'naganadel',",
+              "    'meltan',",
+              "    'Alcremie-Vanilla-Cream-Strawberry',",
+              "    'alcremie-rainbow-swirl-flower',",
+              "    'Gigantamax Toxtricity-Amped',",
+              "    'Shadow Rider Calyrex',",
+              "];",
+              "",
+              "pm.test(\"Status must be success\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Dex title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Response should contains or not some texts\", function () {",
+              "    const responseText = pm.response.text();",
+              "",
+              "    for (i in expectedIncludeTexts) {",
+              "        pm.expect(responseText).to.include(expectedIncludeTexts[i]);",
+              "    }",
+              "",
+              "    for (i in expectedNotIncludeTexts) {",
+              "        pm.expect(responseText).to.not.include(expectedNotIncludeTexts[i]);",
+              "    };",
+              "});",
+              "",
+              "pm.test(\"Pokemons list should have an expected count\", function () {",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://caddy/pokedex?dex.slug=diamondpearlplatinium",
+          "protocol": "http",
+          "host": [
+            "caddy"
+          ],
+          "path": [
+            "pokedex"
+          ],
+          "query": [
+            {
+              "key": "dex.slug",
+              "value": "diamondpearlplatinium"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pokedex Heart Gold, Soul Silver",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const expectedDexTitle = \"Heart Gold, Soul Silver\";",
+              "const expectedPokedexCount = 632;",
+              "const expectedIncludeTexts = [",
+              "    'venusaur-f',",
+              "    'nidoran-f',",
+              "    'nidoran-m',",
+              "    'Unown A',",
+              "    'unown-b',",
+              "    'unown-question',",
+              "    'deoxys-attack',",
+              "    'giratina-origin',",
+              "    'shaymin-sky',",
+              "];",
+              "const expectedNotIncludeTexts = [",
+              "    'Mega Venusaur',",
+              "    '-Alola',",
+              "    'Alpha Rhyperior',",
+              "    'Spring Deerling',",
+              "    'Winter Sawsbuck',",
+              "    'Thundurus',",
+              "    'Therian Thundurus',",
+              "    'Lycanroc-Midday',",
+              "    'Lycanroc-Dusk',",
+              "    'naganadel',",
+              "    'meltan',",
+              "    'Alcremie-Vanilla-Cream-Strawberry',",
+              "    'alcremie-rainbow-swirl-flower',",
+              "    'Gigantamax Toxtricity-Amped',",
+              "    'Shadow Rider Calyrex',",
+              "];",
+              "",
+              "pm.test(\"Status must be success\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Dex title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Response should contains or not some texts\", function () {",
+              "    const responseText = pm.response.text();",
+              "",
+              "    for (i in expectedIncludeTexts) {",
+              "        pm.expect(responseText).to.include(expectedIncludeTexts[i]);",
+              "    }",
+              "",
+              "    for (i in expectedNotIncludeTexts) {",
+              "        pm.expect(responseText).to.not.include(expectedNotIncludeTexts[i]);",
+              "    };",
+              "});",
+              "",
+              "pm.test(\"Pokemons list should have an expected count\", function () {",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://caddy/pokedex?dex.slug=heartgoldsoulsilver",
+          "protocol": "http",
+          "host": [
+            "caddy"
+          ],
+          "path": [
+            "pokedex"
+          ],
+          "query": [
+            {
+              "key": "dex.slug",
+              "value": "heartgoldsoulsilver"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pokedex Black, White",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const expectedDexTitle = \"Black, White\";",
+              "const expectedPokedexCount = 799;",
+              "const expectedIncludeTexts = [",
+              "    'venusaur-f',",
+              "    'nidoran-f',",
+              "    'nidoran-m',",
+              "    'Unown A',",
+              "    'unown-b',",
+              "    'unown-question',",
+              "    'deoxys-attack',",
+              "    'giratina-origin',",
+              "    'shaymin-sky',",
+              "    'Spring Deerling',",
+              "    'Winter Sawsbuck',",
+              "    'Thundurus',",
+              "];",
+              "const expectedNotIncludeTexts = [",
+              "    'Mega Venusaur',",
+              "    '-Alola',",
+              "    'Alpha Rhyperior',",
+              "    'Therian Thundurus',",
+              "    'Lycanroc-Midday',",
+              "    'Lycanroc-Dusk',",
+              "    'naganadel',",
+              "    'meltan',",
+              "    'Alcremie-Vanilla-Cream-Strawberry',",
+              "    'alcremie-rainbow-swirl-flower',",
+              "    'Gigantamax Toxtricity-Amped',",
+              "    'Shadow Rider Calyrex',",
+              "];",
+              "",
+              "pm.test(\"Status must be success\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Dex title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Response should contains or not some texts\", function () {",
+              "    const responseText = pm.response.text();",
+              "",
+              "    for (i in expectedIncludeTexts) {",
+              "        pm.expect(responseText).to.include(expectedIncludeTexts[i]);",
+              "    }",
+              "",
+              "    for (i in expectedNotIncludeTexts) {",
+              "        pm.expect(responseText).to.not.include(expectedNotIncludeTexts[i]);",
+              "    };",
+              "});",
+              "",
+              "pm.test(\"Pokemons list should have an expected count\", function () {",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://caddy/pokedex?dex.slug=blackwhite",
+          "protocol": "http",
+          "host": [
+            "caddy"
+          ],
+          "path": [
+            "pokedex"
+          ],
+          "query": [
+            {
+              "key": "dex.slug",
+              "value": "blackwhite"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pokedex Black 2, White 2",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const expectedDexTitle = \"Black 2, White 2\";",
+              "const expectedPokedexCount = 802;",
+              "const expectedIncludeTexts = [",
+              "    'venusaur-f',",
+              "    'nidoran-f',",
+              "    'nidoran-m',",
+              "    'Unown A',",
+              "    'unown-b',",
+              "    'unown-question',",
+              "    'deoxys-attack',",
+              "    'giratina-origin',",
+              "    'shaymin-sky',",
+              "    'Spring Deerling',",
+              "    'Winter Sawsbuck',",
+              "    'Thundurus',",
+              "    'Therian Thundurus',",
+              "];",
+              "const expectedNotIncludeTexts = [",
+              "    'Mega Venusaur',",
+              "    '-Alola',",
+              "    'Alpha Rhyperior',",
+              "    'Lycanroc-Midday',",
+              "    'Lycanroc-Dusk',",
+              "    'naganadel',",
+              "    'meltan',",
+              "    'Alcremie-Vanilla-Cream-Strawberry',",
+              "    'alcremie-rainbow-swirl-flower',",
+              "    'Gigantamax Toxtricity-Amped',",
+              "    'Shadow Rider Calyrex',",
+              "];",
+              "",
+              "pm.test(\"Status must be success\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Dex title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Response should contains or not some texts\", function () {",
+              "    const responseText = pm.response.text();",
+              "",
+              "    for (i in expectedIncludeTexts) {",
+              "        pm.expect(responseText).to.include(expectedIncludeTexts[i]);",
+              "    }",
+              "",
+              "    for (i in expectedNotIncludeTexts) {",
+              "        pm.expect(responseText).to.not.include(expectedNotIncludeTexts[i]);",
+              "    };",
+              "});",
+              "",
+              "pm.test(\"Pokemons list should have an expected count\", function () {",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://caddy/pokedex?dex.slug=black2white2",
+          "protocol": "http",
+          "host": [
+            "caddy"
+          ],
+          "path": [
+            "pokedex"
+          ],
+          "query": [
+            {
+              "key": "dex.slug",
+              "value": "black2white2"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pokedex X, Y",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const expectedDexTitle = \"X, Y\";",
+              "const expectedPokedexCount = 970;",
+              "const expectedIncludeTexts = [",
+              "    'venusaur-f',",
+              "    'Mega Venusaur',",
+              "    'nidoran-f',",
+              "    'nidoran-m',",
+              "    'Unown A',",
+              "    'unown-b',",
+              "    'unown-question',",
+              "    'deoxys-attack',",
+              "    'giratina-origin',",
+              "    'shaymin-sky',",
+              "    'Spring Deerling',",
+              "    'Winter Sawsbuck',",
+              "    'Thundurus',",
+              "    'Therian Thundurus',",
+              "];",
+              "const expectedNotIncludeTexts = [",
+              "    '-Alola',",
+              "    'Alpha Rhyperior',",
+              "    'Lycanroc-Midday',",
+              "    'Lycanroc-Dusk',",
+              "    'naganadel',",
+              "    'meltan',",
+              "    'Alcremie-Vanilla-Cream-Strawberry',",
+              "    'alcremie-rainbow-swirl-flower',",
+              "    'Gigantamax Toxtricity-Amped',",
+              "    'Shadow Rider Calyrex',",
+              "];",
+              "",
+              "pm.test(\"Status must be success\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Dex title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Response should contains or not some texts\", function () {",
+              "    const responseText = pm.response.text();",
+              "",
+              "    for (i in expectedIncludeTexts) {",
+              "        pm.expect(responseText).to.include(expectedIncludeTexts[i]);",
+              "    }",
+              "",
+              "    for (i in expectedNotIncludeTexts) {",
+              "        pm.expect(responseText).to.not.include(expectedNotIncludeTexts[i]);",
+              "    };",
+              "});",
+              "",
+              "pm.test(\"Pokemons list should have an expected count\", function () {",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://caddy/pokedex?dex.slug=xy",
+          "protocol": "http",
+          "host": [
+            "caddy"
+          ],
+          "path": [
+            "pokedex"
+          ],
+          "query": [
+            {
+              "key": "dex.slug",
+              "value": "xy"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pokedex Omega Ruby, Alpha Sapphire",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const expectedDexTitle = \"Omega Ruby, Alpha Sapphire\";",
+              "const expectedPokedexCount = 970;",
+              "const expectedIncludeTexts = [",
+              "    'venusaur-f',",
+              "    'Mega Venusaur',",
+              "    'nidoran-f',",
+              "    'nidoran-m',",
+              "    'Unown A',",
+              "    'unown-b',",
+              "    'unown-question',",
+              "    'deoxys-attack',",
+              "    'giratina-origin',",
+              "    'shaymin-sky',",
+              "    'Spring Deerling',",
+              "    'Winter Sawsbuck',",
+              "    'Thundurus',",
+              "    'Therian Thundurus',",
+              "];",
+              "const expectedNotIncludeTexts = [",
+              "    '-Alola',",
+              "    'Alpha Rhyperior',",
+              "    'Lycanroc-Midday',",
+              "    'Lycanroc-Dusk',",
+              "    'naganadel',",
+              "    'meltan',",
+              "    'Alcremie-Vanilla-Cream-Strawberry',",
+              "    'alcremie-rainbow-swirl-flower',",
+              "    'Gigantamax Toxtricity-Amped',",
+              "    'Shadow Rider Calyrex',",
+              "];",
+              "",
+              "pm.test(\"Status must be success\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Dex title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Response should contains or not some texts\", function () {",
+              "    const responseText = pm.response.text();",
+              "",
+              "    for (i in expectedIncludeTexts) {",
+              "        pm.expect(responseText).to.include(expectedIncludeTexts[i]);",
+              "    }",
+              "",
+              "    for (i in expectedNotIncludeTexts) {",
+              "        pm.expect(responseText).to.not.include(expectedNotIncludeTexts[i]);",
+              "    };",
+              "});",
+              "",
+              "pm.test(\"Pokemons list should have an expected count\", function () {",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://caddy/pokedex?dex.slug=omegarubyalphasapphire",
+          "protocol": "http",
+          "host": [
+            "caddy"
+          ],
+          "path": [
+            "pokedex"
+          ],
+          "query": [
+            {
+              "key": "dex.slug",
+              "value": "omegarubyalphasapphire"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pokedex Sun, Moon",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const expectedDexTitle = \"Sun, Moon\";",
+              "const expectedPokedexCount = 1080;",
+              "const expectedIncludeTexts = [",
+              "    'venusaur-f',",
+              "    'Mega Venusaur',",
+              "    'nidoran-f',",
+              "    'nidoran-m',",
+              "    'Unown A',",
+              "    'unown-b',",
+              "    'unown-question',",
+              "    'deoxys-attack',",
+              "    'giratina-origin',",
+              "    'shaymin-sky',",
+              "    'Spring Deerling',",
+              "    'Winter Sawsbuck',",
+              "    'Thundurus',",
+              "    'Therian Thundurus',",
+              "    '-Alola',",
+              "    'Lycanroc-Midday',",
+              "];",
+              "const expectedNotIncludeTexts = [",
+              "    'Alpha Rhyperior',",
+              "    'Lycanroc-Dusk',",
+              "    'naganadel',",
+              "    'meltan',",
+              "    'Alcremie-Vanilla-Cream-Strawberry',",
+              "    'alcremie-rainbow-swirl-flower',",
+              "    'Gigantamax Toxtricity-Amped',",
+              "    'Shadow Rider Calyrex',",
+              "];",
+              "",
+              "pm.test(\"Status must be success\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Dex title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Response should contains or not some texts\", function () {",
+              "    const responseText = pm.response.text();",
+              "",
+              "    for (i in expectedIncludeTexts) {",
+              "        pm.expect(responseText).to.include(expectedIncludeTexts[i]);",
+              "    }",
+              "",
+              "    for (i in expectedNotIncludeTexts) {",
+              "        pm.expect(responseText).to.not.include(expectedNotIncludeTexts[i]);",
+              "    };",
+              "});",
+              "",
+              "pm.test(\"Pokemons list should have an expected count\", function () {",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://caddy/pokedex?dex.slug=sunmoon",
+          "protocol": "http",
+          "host": [
+            "caddy"
+          ],
+          "path": [
+            "pokedex"
+          ],
+          "query": [
+            {
+              "key": "dex.slug",
+              "value": "sunmoon"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pokedex Ultra Sun, Ultra Moon",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const expectedDexTitle = \"Ultra Sun, Ultra Moon\";",
+              "const expectedPokedexCount = 1086;",
+              "const expectedIncludeTexts = [",
+              "    'venusaur-f',",
+              "    'Mega Venusaur',",
+              "    'nidoran-f',",
+              "    'nidoran-m',",
+              "    'Unown A',",
+              "    'unown-b',",
+              "    'unown-question',",
+              "    'deoxys-attack',",
+              "    'giratina-origin',",
+              "    'shaymin-sky',",
+              "    'Spring Deerling',",
+              "    'Winter Sawsbuck',",
+              "    'Thundurus',",
+              "    'Therian Thundurus',",
+              "    '-Alola',",
+              "    'Lycanroc-Midday',",
+              "    'Lycanroc-Dusk',",
+              "    'naganadel',",
+              "];",
+              "const expectedNotIncludeTexts = [",
+              "    'Alpha Rhyperior',",
+              "    'meltan',",
+              "    'Alcremie-Vanilla-Cream-Strawberry',",
+              "    'alcremie-rainbow-swirl-flower',",
+              "    'Gigantamax Toxtricity-Amped',",
+              "    'Shadow Rider Calyrex',",
+              "];",
+              "",
+              "pm.test(\"Status must be success\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Dex title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Response should contains or not some texts\", function () {",
+              "    const responseText = pm.response.text();",
+              "",
+              "    for (i in expectedIncludeTexts) {",
+              "        pm.expect(responseText).to.include(expectedIncludeTexts[i]);",
+              "    }",
+              "",
+              "    for (i in expectedNotIncludeTexts) {",
+              "        pm.expect(responseText).to.not.include(expectedNotIncludeTexts[i]);",
+              "    };",
+              "});",
+              "",
+              "pm.test(\"Pokemons list should have an expected count\", function () {",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://caddy/pokedex?dex.slug=ultrasunultramoon",
+          "protocol": "http",
+          "host": [
+            "caddy"
+          ],
+          "path": [
+            "pokedex"
+          ],
+          "query": [
+            {
+              "key": "dex.slug",
+              "value": "ultrasunultramoon"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pokedex Let's Go Pikachu, Let's Go Eevee",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const expectedDexTitle = \"Let's Go Pikachu, Let's Go Eevee\";",
+              "const expectedPokedexCount = 208;",
+              "const expectedIncludeTexts = [",
+              "    'venusaur-f',",
+              "    'Mega Venusaur',",
+              "    'nidoran-f',",
+              "    'nidoran-m',",
+              "    '-Alola',",
+              "    'meltan',",
+              "];",
+              "const expectedNotIncludeTexts = [",
+              "    'Alpha Rhyperior',",
+              "    'Unown A',",
+              "    'unown-b',",
+              "    'unown-question',",
+              "    'deoxys-attack',",
+              "    'giratina-origin',",
+              "    'shaymin-sky',",
+              "    'Spring Deerling',",
+              "    'Winter Sawsbuck',",
+              "    'Thundurus',",
+              "    'Therian Thundurus',",
+              "    'Lycanroc-Midday',",
+              "    'Lycanroc-Dusk',",
+              "    'naganadel',",
+              "    'Alcremie-Vanilla-Cream-Strawberry',",
+              "    'alcremie-rainbow-swirl-flower',",
+              "    'Gigantamax Toxtricity-Amped',",
+              "    'Shadow Rider Calyrex',",
+              "];",
+              "",
+              "pm.test(\"Status must be success\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Dex title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Response should contains or not some texts\", function () {",
+              "    const responseText = pm.response.text();",
+              "",
+              "    for (i in expectedIncludeTexts) {",
+              "        pm.expect(responseText).to.include(expectedIncludeTexts[i]);",
+              "    }",
+              "",
+              "    for (i in expectedNotIncludeTexts) {",
+              "        pm.expect(responseText).to.not.include(expectedNotIncludeTexts[i]);",
+              "    };",
+              "});",
+              "",
+              "pm.test(\"Pokemons list should have an expected count\", function () {",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://caddy/pokedex?dex.slug=letsgopikachuletsgoeevee",
+          "protocol": "http",
+          "host": [
+            "caddy"
+          ],
+          "path": [
+            "pokedex"
+          ],
+          "query": [
+            {
+              "key": "dex.slug",
+              "value": "letsgopikachuletsgoeevee"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pokedex Sword, Shield",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const expectedDexTitle = \"Sword, Shield\";",
+              "const expectedPokedexCount = 943;",
+              "const expectedIncludeTexts = [",
+              "    'venusaur-f',",
+              "    'nidoran-f',",
+              "    'nidoran-m',",
+              "    'giratina-origin',",
+              "    '-Alola',",
+              "    'Thundurus',",
+              "    'Therian Thundurus',",
+              "    'Lycanroc-Midday',",
+              "    'Lycanroc-Dusk',",
+              "    'naganadel',",
+              "    'meltan',",
+              "    'Alcremie-Vanilla-Cream-Strawberry',",
+              "    'alcremie-rainbow-swirl-flower',",
+              "    'Gigantamax Toxtricity-Amped',",
+              "];",
+              "const expectedNotIncludeTexts = [",
+              "    'Mega Venusaur',",
+              "    'Unown A',",
+              "    'unown-b',",
+              "    'unown-question',",
+              "    'deoxys-attack',",
+              "    'Alpha Rhyperior',",
+              "    'Spring Deerling',",
+              "    'Winter Sawsbuck',",
+              "    'shaymin-sky',",
+              "    'Shadow Rider Calyrex',",
+              "];",
+              "",
+              "pm.test(\"Status must be success\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Dex title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Response should contains or not some texts\", function () {",
+              "    const responseText = pm.response.text();",
+              "",
+              "    for (i in expectedIncludeTexts) {",
+              "        pm.expect(responseText).to.include(expectedIncludeTexts[i]);",
+              "    }",
+              "",
+              "    for (i in expectedNotIncludeTexts) {",
+              "        pm.expect(responseText).to.not.include(expectedNotIncludeTexts[i]);",
+              "    };",
+              "});",
+              "",
+              "pm.test(\"Pokemons list should have an expected count\", function () {",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://caddy/pokedex?dex.slug=swordshield",
+          "protocol": "http",
+          "host": [
+            "caddy"
+          ],
+          "path": [
+            "pokedex"
+          ],
+          "query": [
+            {
+              "key": "dex.slug",
+              "value": "swordshield"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pokedex Brilland Diamond, Shining Pearl",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const expectedDexTitle = \"Brilland Diamond, Shining Pearl\";",
+              "const expectedPokedexCount = 632;",
+              "const expectedIncludeTexts = [",
+              "    'venusaur-f',",
+              "    'nidoran-f',",
+              "    'nidoran-m',",
+              "    'Unown A',",
+              "    'unown-b',",
+              "    'unown-question',",
+              "    'deoxys-attack',",
+              "    'giratina-origin',",
+              "    'shaymin-sky',",
+              "];",
+              "const expectedNotIncludeTexts = [",
+              "    'Mega Venusaur',",
+              "    '-Alola',",
+              "    'Alpha Rhyperior',",
+              "    'Spring Deerling',",
+              "    'Winter Sawsbuck',",
+              "    'Thundurus',",
+              "    'Therian Thundurus',",
+              "    'Lycanroc-Midday',",
+              "    'Lycanroc-Dusk',",
+              "    'naganadel',",
+              "    'meltan',",
+              "    'Alcremie-Vanilla-Cream-Strawberry',",
+              "    'alcremie-rainbow-swirl-flower',",
+              "    'Gigantamax Toxtricity-Amped',",
+              "    'Shadow Rider Calyrex',",
+              "];",
+              "",
+              "pm.test(\"Status must be success\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Dex title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Response should contains or not some texts\", function () {",
+              "    const responseText = pm.response.text();",
+              "",
+              "    for (i in expectedIncludeTexts) {",
+              "        pm.expect(responseText).to.include(expectedIncludeTexts[i]);",
+              "    }",
+              "",
+              "    for (i in expectedNotIncludeTexts) {",
+              "        pm.expect(responseText).to.not.include(expectedNotIncludeTexts[i]);",
+              "    };",
+              "});",
+              "",
+              "pm.test(\"Pokemons list should have an expected count\", function () {",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://caddy/pokedex?dex.slug=brillanddiamondshiningpearl",
+          "protocol": "http",
+          "host": [
+            "caddy"
+          ],
+          "path": [
+            "pokedex"
+          ],
+          "query": [
+            {
+              "key": "dex.slug",
+              "value": "brillanddiamondshiningpearl"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pokedex Legend Arceus",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const expectedDexTitle = \"Legend Arceus\";",
+              "const expectedPokedexCount = 664;",
+              "const expectedIncludeTexts = [",
+              "    'Unown A',",
+              "    'unown-b',",
+              "    'unown-question',",
+              "    'Alpha Rhyperior',",
+              "    'giratina-origin',",
+              "    'shaymin-sky',",
+              "    'Thundurus',",
+              "    'Therian Thundurus',",
+              "];",
+              "const expectedNotIncludeTexts = [",
+              "    'venusaur-f',",
+              "    'nidoran-f',",
+              "    'nidoran-m',",
+              "    'Mega Venusaur',",
+              "    '-Alola',",
+              "    'deoxys-attack',",
+              "    'Spring Deerling',",
+              "    'Winter Sawsbuck',",
+              "    'Lycanroc-Midday',",
+              "    'Lycanroc-Dusk',",
+              "    'naganadel',",
+              "    'meltan',",
+              "    'Alcremie-Vanilla-Cream-Strawberry',",
+              "    'alcremie-rainbow-swirl-flower',",
+              "    'Gigantamax Toxtricity-Amped',",
+              "    'Shadow Rider Calyrex',",
+              "];",
+              "",
+              "pm.test(\"Status must be success\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Dex title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Response should contains or not some texts\", function () {",
+              "    const responseText = pm.response.text();",
+              "",
+              "    for (i in expectedIncludeTexts) {",
+              "        pm.expect(responseText).to.include(expectedIncludeTexts[i]);",
+              "    }",
+              "",
+              "    for (i in expectedNotIncludeTexts) {",
+              "        pm.expect(responseText).to.not.include(expectedNotIncludeTexts[i]);",
+              "    };",
+              "});",
+              "",
+              "pm.test(\"Pokemons list should have an expected count\", function () {",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://caddy/pokedex?dex.slug=legendarceus",
+          "protocol": "http",
+          "host": [
+            "caddy"
+          ],
+          "path": [
+            "pokedex"
+          ],
+          "query": [
+            {
+              "key": "dex.slug",
+              "value": "legendarceus"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pokedex Home",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const expectedDexTitle = \"Home\";",
+              "const expectedPokedexCount = 1734;",
+              "const expectedIncludeTexts = [",
+              "    'Unown A',",
+              "    'unown-b',",
+              "    'unown-question',",
+              "    'Alpha Rhyperior',",
+              "    'giratina-origin',",
+              "    'shaymin-sky',",
+              "    'Thundurus',",
+              "    'Therian Thundurus',",
+              "    'venusaur-f',",
+              "    'nidoran-f',",
+              "    'nidoran-m',",
+              "    'Mega Venusaur',",
+              "    '-Alola',",
+              "    'deoxys-attack',",
+              "    'Spring Deerling',",
+              "    'Winter Sawsbuck',",
+              "    'Lycanroc-Midday',",
+              "    'Lycanroc-Dusk',",
+              "    'naganadel',",
+              "    'meltan',",
+              "    'Alcremie-Vanilla-Cream-Strawberry',",
+              "    'alcremie-rainbow-swirl-flower',",
+              "    'Gigantamax Toxtricity-Amped',",
+              "];",
+              "const expectedNotIncludeTexts = [",
+              "    'Shadow Rider Calyrex',",
+              "];",
+              "",
+              "pm.test(\"Status must be success\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Dex title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Response should contains or not some texts\", function () {",
+              "    const responseText = pm.response.text();",
+              "",
+              "    for (i in expectedIncludeTexts) {",
+              "        pm.expect(responseText).to.include(expectedIncludeTexts[i]);",
+              "    }",
+              "",
+              "    for (i in expectedNotIncludeTexts) {",
+              "        pm.expect(responseText).to.not.include(expectedNotIncludeTexts[i]);",
+              "    };",
+              "});",
+              "",
+              "pm.test(\"Pokemons list should have an expected count\", function () {",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://caddy/pokedex?dex.slug=home",
+          "protocol": "http",
+          "host": [
+            "caddy"
+          ],
+          "path": [
+            "pokedex"
+          ],
+          "query": [
+            {
+              "key": "dex.slug",
+              "value": "home"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pokedex Home Shiny",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const expectedDexTitle = \"Home Shiny\";",
+              "const expectedPokedexCount = 1213;",
+              "const expectedIncludeTexts = [",
+              "    'Unown A',",
+              "    'unown-b',",
+              "    'unown-question',",
+              "    'giratina-origin',",
+              "    'shaymin-sky',",
+              "    'Thundurus',",
+              "    'Therian Thundurus',",
+              "    'venusaur-f',",
+              "    'nidoran-f',",
+              "    'nidoran-m',",
+              "    '-Alola',",
+              "    'deoxys-attack',",
+              "    'Spring Deerling',",
+              "    'Winter Sawsbuck',",
+              "    'Lycanroc-Midday',",
+              "    'Lycanroc-Dusk',",
+              "    'naganadel',",
+              "    'meltan',",
+              "    'Alcremie-Vanilla-Cream-Strawberry',",
+              "    'Gigantamax Toxtricity-Amped',",
+              "];",
+              "const expectedNotIncludeTexts = [",
+              "    'Mega Venusaur',",
+              "    'Alpha Rhyperior',",
+              "    'Shadow Rider Calyrex',",
+              "    'alcremie-rainbow-swirl-flower',",
+              "];",
+              "",
+              "pm.test(\"Status must be success\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Dex title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Response should contains or not some texts\", function () {",
+              "    const responseText = pm.response.text();",
+              "",
+              "    for (i in expectedIncludeTexts) {",
+              "        pm.expect(responseText).to.include(expectedIncludeTexts[i]);",
+              "    }",
+              "",
+              "    for (i in expectedNotIncludeTexts) {",
+              "        pm.expect(responseText).to.not.include(expectedNotIncludeTexts[i]);",
+              "    };",
+              "});",
+              "",
+              "pm.test(\"Pokemons list should have an expected count\", function () {",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://caddy/pokedex?dex.slug=homeshiny",
+          "protocol": "http",
+          "host": [
+            "caddy"
+          ],
+          "path": [
+            "pokedex"
+          ],
+          "query": [
+            {
+              "key": "dex.slug",
+              "value": "homeshiny"
+            }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Pokedex Home Pokemon Go",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const expectedDexTitle = \"Home Pokemon Go\";",
+              "const expectedPokedexCount = 919;",
+              "const expectedIncludeTexts = [",
+              "    'Unown A',",
+              "    'nidoran-f',",
+              "    'nidoran-m',",
+              "    'Spring Deerling',",
+              "    'Thundurus',",
+              "    'Lycanroc-Midday',",
+              "    'naganadel',",
+              "    'meltan',",
+              "    'Alcremie-Vanilla-Cream-Strawberry',",
+              "];",
+              "const expectedNotIncludeTexts = [",
+              "    'venusaur-f',",
+              "    'unown-b',",
+              "    'unown-question',",
+              "    'giratina-origin',",
+              "    'shaymin-sky',",
+              "    'Therian Thundurus',",
+              "    'Mega Venusaur',",
+              "    'deoxys-attack',",
+              "    '-Alola',",
+              "    'Alpha Rhyperior',",
+              "    'Winter Sawsbuck',",
+              "    'Lycanroc-Dusk',",
+              "    'Shadow Rider Calyrex',",
+              "    'alcremie-rainbow-swirl-flower',",
+              "    'Gigantamax Toxtricity-Amped',",
+              "];",
+              "",
+              "pm.test(\"Status must be success\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Dex title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Response should contains or not some texts\", function () {",
+              "    const responseText = pm.response.text();",
+              "",
+              "    for (i in expectedIncludeTexts) {",
+              "        pm.expect(responseText).to.include(expectedIncludeTexts[i]);",
+              "    }",
+              "",
+              "    for (i in expectedNotIncludeTexts) {",
+              "        pm.expect(responseText).to.not.include(expectedNotIncludeTexts[i]);",
+              "    };",
+              "});",
+              "",
+              "pm.test(\"Pokemons list should have an expected count\", function () {",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://caddy/pokedex?dex.slug=homepokemongo",
+          "protocol": "http",
+          "host": [
+            "caddy"
+          ],
+          "path": [
+            "pokedex"
+          ],
+          "query": [
+            {
+              "key": "dex.slug",
+              "value": "homepokemongo"
+            }
+          ]
+        }
+      },
+      "response": []
+    }
+  ]
+}

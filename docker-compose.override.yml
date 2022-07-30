@@ -47,6 +47,12 @@ services:
         protocol: tcp
 ###< doctrine/doctrine-bundle ###
 
+  newman:
+    build:
+      context: api/docker/newman
+    volumes:
+      - ./api/tests/integration:/etc/newman:ro
+
 volumes:
 ###> doctrine/doctrine-bundle ###
   db_data_test:
