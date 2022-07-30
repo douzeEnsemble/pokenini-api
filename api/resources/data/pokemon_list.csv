@@ -424,8 +424,8 @@ Yes,Yes,8,"Sword, Shield",,Galarian,,Slowpoke,5,,Slowking-Galar,199,,,Pyschic,,,
 (Galarian)",,slowking-galar
 Yes,Yes,2,"Gold, Silver, Crystal",,,,Misdreavus,0,,Misdreavus,200,,,Ghost,,,,"6,240",Amorphous,,50.00%,50.00%,Levitate,,,,Hold Back,Normal,,,,misdreavus,Misdreavus,,misdreavus
 Yes,Yes,8,Legend Arceus,,,Alpha,Misdreavus,1,,Alpha Misdreavus,200,,,Ghost,,,,"6,240",Amorphous,,50.00%,50.00%,Levitate,,,,Hold Back,Normal,,,,misdreavus,Misdreavus,,misdreavus-alpha
-Yes,No,2,"Gold, Silver, Crystal",,,,Unown,2,,Unown A,201,,,Pyschic,,,,"10,240",Undiscovered,,○,○,Levitate,,,,Hold Hands,Normal,,,,unown,Unown,,unown
-Yes,No,8,Legend Arceus,,,Alpha,Unown,3,,Alpha Unown A,201,,,Pyschic,,,,"10,240",Undiscovered,,○,○,Levitate,,,,Hold Hands,Normal,,,,unown,Unown,,unown-alpha
+Yes,No,2,"Gold, Silver, Crystal",,,,Unown,2,,Unown A,201,,,Pyschic,,,,"10,240",Undiscovered,,○,○,Levitate,,,,Hold Hands,Normal,,,,unown,Unown,,unown-a
+Yes,No,8,Legend Arceus,,,Alpha,Unown,3,,Alpha Unown A,201,,,Pyschic,,,,"10,240",Undiscovered,,○,○,Levitate,,,,Hold Hands,Normal,,,,unown,Unown,,unown-a-alpha
 Yes,No,2,"Gold, Silver, Crystal",Alternate,,,Unown,4,,Unown B,201,,,Pyschic,,,,"10,240",Undiscovered,,○,○,Levitate,,,,Hone Claws,Dark,,,,unown-b,Unown,,unown-b
 Yes,No,8,Legend Arceus,Alternate,,Alpha,Unown,5,,Alpha Unown B,201,,,Pyschic,,,,"10,240",Undiscovered,,○,○,Levitate,,,,Hone Claws,Dark,,,,unown-b,Unown,,unown-b-alpha
 Yes,No,2,"Gold, Silver, Crystal",Alternate,,,Unown,6,,Unown C,201,,,Pyschic,,,,"10,240",Undiscovered,,○,○,Levitate,,,,Horn Attack,Normal,,,,unown-c,Unown,,unown-c
@@ -1164,7 +1164,7 @@ Yes,Yes,5,Legend Arceus,,,,Petilil,1,Sun Stone,Lilligant,549,,,Grass,,,,"5,120",
 Yes,Yes,8,Legend Arceus,,,Alpha,Petilil,2,Sun Stone,Alpha Lilligant,549,,,Grass,,,,"5,120",Grass,,0.00%,100.00%,Chlorophyll,Own Tempo,Leaf Guard,,,,,,,lilligant,Lilligant,,lilligant-alpha
 Yes,Yes,8,Legend Arceus,,Hisuian,,Petilil,3,Sun Stone,Lilligant-Hisui,549,,,Grass,,Fight,,,,,,,,,,,,,,,,lilligant-hisui,Lilligant (Hisuian),,lilligant-hisui
 Yes,Yes,8,Legend Arceus,,Hisuian,Alpha,Petilil,4,Sun Stone,Alpha Lilligant-Hisui,549,,,Grass,,Fight,,,,,,,,,,,,,,,,lilligant-hisui,Lilligant (Hisuian),,lilligant-hisui-alpha
-Yes,Yes,5,"Black, White",,,,Red Basculin,0,,Red Basculin,550,,,Water,,,,"10,240",Water 2,,50.00%,50.00%,Reckless,Adaptability,Mold Breaker,,,,,,,basculin,Basculin,,basculin
+Yes,Yes,5,"Black, White",,,,Red Basculin,0,,Red Basculin,550,,,Water,,,,"10,240",Water 2,,50.00%,50.00%,Reckless,Adaptability,Mold Breaker,,,,,,,basculin,Basculin,,basculin-red-striped
 Yes,Yes,5,"Black, White",Alternate,,,Red Basculin,1,,Blue Basculin,550,,,Water,,,,"10,240",Water 2,,50.00%,50.00%,Rock Head,Adaptability,Mold Breaker,,,,,,,basculin-blue-striped,Basculin,,basculin-blue-striped
 Yes,Yes,5,Legend Arceus,Alternate,,,Red Basculin,2,,White Basculin,550,,,Water,,,,"10,240",Water 2,,50.00%,50.00%,Rock Head,Adaptability,Mold Breaker,,,,,,,basculin-white-striped,Basculin (Hisuian),,basculin-white-striped
 Yes,Yes,8,Legend Arceus,Alternate,,Alpha,Red Basculin,3,,Alpha White Basculin,550,,,Water,,,,"10,240",Water 2,,50.00%,50.00%,Rock Head,Adaptability,Mold Breaker,,,,,,,basculin-white-striped,Basculin (Hisuian),,basculin-white-striped-alpha
@@ -1216,11 +1216,11 @@ Yes,Yes,5,"Black, White",,,,Ducklett,1,35,Swanna,581,,,Water,,Flying,,"5,120",Wa
 Yes,Yes,5,"Black, White",,,,Vanillite,0,,Vanillite,582,,,Ice,,,,"5,120",Mineral,,50.00%,50.00%,Ice Body,Snow Cloak,Weak Armor,,,,,,,vanillite,Vanillite,,vanillite
 Yes,Yes,5,"Black, White",,,,Vanillite,1,35,Vanillish,583,,,Ice,,,,"5,120",Mineral,,50.00%,50.00%,Ice Body,Snow Cloak,Weak Armor,,,,,,,vanillish,Vanillish,,vanillish
 Yes,Yes,5,"Black, White",,,,Vanillite,2,47,Vanilluxe,584,,,Ice,,,,"5,120",Mineral,,50.00%,50.00%,Ice Body,Snow Warning,Weak Armor,,,,,,,vanilluxe,Vanilluxe,,vanilluxe
-Yes,Yes,5,"Black, White",,,,Spring Deerling,0,,Spring Deerling,585,,,Normal,,Grass,,"5,120",Field,,50.00%,50.00%,Chlorophyll,Sap Sipper,Serene Grace,,,,,,,deerling,Deerling,,deerling
+Yes,Yes,5,"Black, White",,,,Spring Deerling,0,,Spring Deerling,585,,,Normal,,Grass,,"5,120",Field,,50.00%,50.00%,Chlorophyll,Sap Sipper,Serene Grace,,,,,,,deerling,Deerling,,deerling-spring
 Yes,Yes,5,"Black, White",Alternate,,,Spring Deerling,1,,Summer Deerling,585,,,Normal,,Grass,,"5,120",Field,,50.00%,50.00%,Chlorophyll,Sap Sipper,Serene Grace,,,,,,,deerling-summer,Deerling,,deerling-summer
 Yes,Yes,5,"Black, White",Alternate,,,Spring Deerling,2,,Autumn Deerling,585,,,Normal,,Grass,,"5,120",Field,,50.00%,50.00%,Chlorophyll,Sap Sipper,Serene Grace,,,,,,,deerling-autumn,Deerling,,deerling-autumn
 Yes,Yes,5,"Black, White",Alternate,,,Spring Deerling,3,,Winter Deerling,585,,,Normal,,Grass,,"5,120",Field,,50.00%,50.00%,Chlorophyll,Sap Sipper,Serene Grace,,,,,,,deerling-winter,Deerling,,deerling-winter
-Yes,Yes,5,"Black, White",,,,Spring Deerling,4,34,Spring Sawsbuck,586,,,Normal,,Grass,,"5,120",Field,,50.00%,50.00%,Chlorophyll,Sap Sipper,Serene Grace,,,,,,,sawsbuck,Sawsbuck,,sawsbuck
+Yes,Yes,5,"Black, White",,,,Spring Deerling,4,34,Spring Sawsbuck,586,,,Normal,,Grass,,"5,120",Field,,50.00%,50.00%,Chlorophyll,Sap Sipper,Serene Grace,,,,,,,sawsbuck,Sawsbuck,,sawsbuck-spring
 Yes,Yes,5,"Black, White",Alternate,,,Spring Deerling,5,34,Summer Sawsbuck,586,,,Normal,,Grass,,"5,120",Field,,50.00%,50.00%,Chlorophyll,Sap Sipper,Serene Grace,,,,,,,sawsbuck-summer,Sawsbuck,,sawsbuck-summer
 Yes,Yes,5,"Black, White",Alternate,,,Spring Deerling,6,34,Autumn Sawsbuck,586,,,Normal,,Grass,,"5,120",Field,,50.00%,50.00%,Chlorophyll,Sap Sipper,Serene Grace,,,,,,,sawsbuck-autumn,Sawsbuck,,sawsbuck-autumn
 Yes,Yes,5,"Black, White",Alternate,,,Spring Deerling,7,34,Winter Sawsbuck,586,,,Normal,,Grass,,"5,120",Field,,50.00%,50.00%,Chlorophyll,Sap Sipper,Serene Grace,,,,,,,sawsbuck-winter,Sawsbuck,,sawsbuck-winter
@@ -1287,13 +1287,13 @@ Yes,No,5,"Black, White",,,,Cobalion,0,,Cobalion,638,,,Steel,,Fighting,,"20,480",
 Yes,No,5,"Black, White",,,,Terrakion,0,,Terrakion,639,,,Rock,,Fighting,,"20,480",Undiscovered,,○,○,Justified,,,,,,,,,terrakion,Terrakion,,terrakion
 Yes,No,5,"Black, White",,,,Virizion,0,,Virizion,640,,,Grass,,Fighting,,"20,480",Undiscovered,,○,○,Justified,,,,,,,,,virizion,Virizion,,virizion
 Yes,No,5,"Black, White",,,,Tornadus,0,,Tornadus,641,,,Flying,,,,"30,720",Undiscovered,,100.00%,0.00%,Prankster,,Defiant,,,,,,,tornadus,Tornadus,,tornadus
-Yes,No,6,"X, Y",,,,Tornadus,1,,Therian Tornadus,641,,,Flying,,,,"30,720",Undiscovered,,100.00%,0.00%,Regenerator,,,,,,,,,tornadus-therian,Tornadus,,tornadus-therian
+Yes,No,6,"Black 2, White 2",Therian,,,Tornadus,1,,Therian Tornadus,641,,,Flying,,,,"30,720",Undiscovered,,100.00%,0.00%,Regenerator,,,,,,,,,tornadus-therian,Tornadus,,tornadus-therian
 Yes,No,5,"Black, White",,,,Thundurus,0,,Thundurus,642,,,Electric,,Flying,,"30,720",Undiscovered,,100.00%,0.00%,Prankster,,Defiant,,,,,,,thundurus,Thundurus,,thundurus
-Yes,No,6,"X, Y",,,,Thundurus,1,,Therian Thundurus,642,,,Electric,,Flying,,"30,720",Undiscovered,,100.00%,0.00%,Volt Absorb,,,,,,,,,thundurus-therian,Thundurus,,thundurus-therian
+Yes,No,6,"Black 2, White 2",Therian,,,Thundurus,1,,Therian Thundurus,642,,,Electric,,Flying,,"30,720",Undiscovered,,100.00%,0.00%,Volt Absorb,,,,,,,,,thundurus-therian,Thundurus,,thundurus-therian
 Yes,No,5,"Black, White",,,,Reshiram,0,,Reshiram,643,,,Dragon,,Fire,,"30,720",Undiscovered,,○,○,Turboblaze,,,,,,,,,reshiram,Reshiram,,reshiram
 Yes,No,5,"Black, White",,,,Zekrom,0,,Zekrom,644,,,Dragon,,Electric,,"30,720",Undiscovered,,○,○,Teravolt,,,,,,,,,zekrom,Zekrom,,zekrom
 Yes,No,5,"Black, White",,,,Landorus,0,,Landorus,645,,,Ground,,Flying,,"30,720",Undiscovered,,100.00%,0.00%,Sand Force,,Sheer Force,,,,,,,landorus,Landorus,,landorus
-Yes,No,6,"X, Y",,,,Landorus,1,,Therian Landorus,645,,,Ground,,Flying,,"30,720",Undiscovered,,100.00%,0.00%,Intimidate,,,,,,,,,landorus-therian,Landorus,,landorus-therian
+Yes,No,6,"Black 2, White 2",Therian,,,Landorus,1,,Therian Landorus,645,,,Ground,,Flying,,"30,720",Undiscovered,,100.00%,0.00%,Intimidate,,,,,,,,,landorus-therian,Landorus,,landorus-therian
 Yes,No,5,"Black, White",,,,Kyurem,0,,Kyurem,646,,,Dragon,,Ice,,"30,720",Undiscovered,,○,○,Pressure,,,,,,,,,kyurem,Kyurem,,kyurem
 No,No,5,"Black, White",Fusion,,,Kyurem,1,,Black Kyurem,646,,,Dragon,,Ice,,"30,720",Undiscovered,,○,○,Turboblaze,,,,,,,,,kyurem-black,Kyurem,,kyurem-black
 No,No,5,"Black, White",Fusion,,,Kyurem,2,,White Kyurem,646,,,Dragon,,Ice,,"30,720",Undiscovered,,○,○,Teravolt,,,,,,,,,kyurem-white,Kyurem,,kyurem-white
@@ -1346,18 +1346,18 @@ Yes,No,6,"X, Y",Alternate,,Event,Scatterbug,21,,Vivillon-Pokéball,666,,,Bug,,Fl
 Yes,Yes,6,"X, Y",,,,Litleo,0,,Litleo,667,,,Fire,,Normal,,"5,120",Field,,25.00%,75.00%,Rivalry,Unnerve,Moxie,,,,,,,litleo,Litleo,,litleo
 Yes,Yes,6,"X, Y",,,,Litleo,1,35,Pyroar,668,,,Fire,,Normal,,"5,120",Field,,25.00%,75.00%,Rivalry,Unnerve,Moxie,,,,,,,pyroar,Pyroar,,pyroar
 Yes,Yes,6,"X, Y",Gender,,,Litleo,2,35,Pyroar ♀,668,,,Fire,,Normal,,"5,120",Field,,25.00%,75.00%,Rivalry,Unnerve,Moxie,,,,,,,female/pyroar,Pyroar,,pyroar-f
-Yes,Yes,6,"X, Y",,,,Red Flabébé,0,,Red Flabébé,669,,,Fairy,,,,"5,120",Fairy,,0.00%,100.00%,Flower Veil,,Symbiosis,,,,,,,flabebe,Flabébé,,flabebe
+Yes,Yes,6,"X, Y",,,,Red Flabébé,0,,Red Flabébé,669,,,Fairy,,,,"5,120",Fairy,,0.00%,100.00%,Flower Veil,,Symbiosis,,,,,,,flabebe,Flabébé,,flabebe-red
 Yes,Yes,6,"X, Y",Alternate,,,Red Flabébé,1,,Orange Flabébé,669,,,Fairy,,,,"5,120",Fairy,,0.00%,100.00%,Flower Veil,,Symbiosis,,,,,,,flabebe-orange,Flabébé,,flabebe-orange
 Yes,Yes,6,"X, Y",Alternate,,,Red Flabébé,2,,Yellow Flabébé,669,,,Fairy,,,,"5,120",Fairy,,0.00%,100.00%,Flower Veil,,Symbiosis,,,,,,,flabebe-yellow,Flabébé,,flabebe-yellow
 Yes,Yes,6,"X, Y",Alternate,,,Red Flabébé,3,,White Flabébé,669,,,Fairy,,,,"5,120",Fairy,,0.00%,100.00%,Flower Veil,,Symbiosis,,,,,,,flabebe-white,Flabébé,,flabebe-white
 Yes,Yes,6,"X, Y",Alternate,,,Red Flabébé,4,,Blue Flabébé,669,,,Fairy,,,,"5,120",Fairy,,0.00%,100.00%,Flower Veil,,Symbiosis,,,,,,,flabebe-blue,Flabébé,,flabebe-blue
-Yes,Yes,6,"X, Y",,,,Red Flabébé,5,19,Red Floette,670,,,Fairy,,,,"5,120",Fairy,,0.00%,100.00%,Flower Veil,,Symbiosis,,,,,,,floette,Floette,,floette
+Yes,Yes,6,"X, Y",,,,Red Flabébé,5,19,Red Floette,670,,,Fairy,,,,"5,120",Fairy,,0.00%,100.00%,Flower Veil,,Symbiosis,,,,,,,floette,Floette,,floette-red
 Yes,Yes,7,"Sun, Moon",Alternate,,,Red Flabébé,6,19,Orange Floette,670,,,Fairy,,,,"5,120",Fairy,,0.00%,100.00%,Flower Veil,,Symbiosis,,,,,,,floette-orange,Floette,,floette-orange
 Yes,Yes,6,"X, Y",Alternate,,,Red Flabébé,7,19,Yellow Floette,670,,,Fairy,,,,"5,120",Fairy,,0.00%,100.00%,Flower Veil,,Symbiosis,,,,,,,floette-yellow,Floette,,floette-yellow
 Yes,Yes,7,"Sun, Moon",Alternate,,,Red Flabébé,8,19,White Floette,670,,,Fairy,,,,"5,120",Fairy,,0.00%,100.00%,Flower Veil,,Symbiosis,,,,,,,floette-white,Floette,,floette-white
 Yes,Yes,6,"X, Y",Alternate,,,Red Flabébé,9,19,Blue Floette,670,,,Fairy,,,,"5,120",Fairy,,0.00%,100.00%,Flower Veil,,Symbiosis,,,,,,,floette-blue,Floette,,floette-blue
 No,No,6,"X, Y",Unobtainable,,,Red Flabébé,10,,Eternal Floette,670,,,Fairy,,,,"5,120",Fairy,,0.00%,100.00%,Flower Veil,,Symbiosis,,,,,,,floette-eternal,Floette,,floette-eternal
-Yes,Yes,6,"X, Y",,,,Red Flabébé,11,Shiny Stone,Red Florges,671,,,Fairy,,,,"5,120",Fairy,,0.00%,100.00%,Flower Veil,,Symbiosis,,,,,,,florges,Florges,,florges
+Yes,Yes,6,"X, Y",,,,Red Flabébé,11,Shiny Stone,Red Florges,671,,,Fairy,,,,"5,120",Fairy,,0.00%,100.00%,Flower Veil,,Symbiosis,,,,,,,florges,Florges,,florges-red
 Yes,Yes,6,"X, Y",Alternate,,,Red Flabébé,12,Shiny Stone,Orange Florges,671,,,Fairy,,,,"5,120",Fairy,,0.00%,100.00%,Flower Veil,,Symbiosis,,,,,,,florges-orange,Florges,,florges-orange
 Yes,Yes,6,"X, Y",Alternate,,,Red Flabébé,13,Shiny Stone,Yellow Florges,671,,,Fairy,,,,"5,120",Fairy,,0.00%,100.00%,Flower Veil,,Symbiosis,,,,,,,florges-yellow,Florges,,florges-yellow
 Yes,Yes,6,"X, Y",Alternate,,,Red Flabébé,14,Shiny Stone,White Florges,671,,,Fairy,,,,"5,120",Fairy,,0.00%,100.00%,Flower Veil,,Symbiosis,,,,,,,florges-white,Florges,,florges-white
@@ -1471,7 +1471,7 @@ Yes,Yes,7,"Sun, Moon",,,,Grubbin,2,21 (Location),Vikavolt,738,,,Bug,,Electric,,"
 Yes,No,7,"Sun, Moon",,,Totem,Grubbin,3,,Totem Vikavolt,738,,,Bug,,Electric,,"3,840",Bug,,50.00%,50.00%,Levitate,,,,,,,,,vikavolt,Vikavolt,,vikavolt-totem
 Yes,Yes,7,"Sun, Moon",,,,Crabrawler,0,,Crabrawler,739,,,Fighting,,,,"5,120",Water 3,,50.00%,50.00%,Hyper Cutter,Iron Fist,Anger Point,,,,,,,crabrawler,Crabrawler,,crabrawler
 Yes,Yes,7,"Sun, Moon",,,,Crabrawler,1,2 (Location),Crabominable,740,,,Fighting,,Ice,,"5,120",Water 3,,50.00%,50.00%,Hyper Cutter,Iron Fist,Anger Point,,,,,,,crabominable,Crabominable,,crabominable
-Yes,Yes,7,"Sun, Moon",,,,Oricorio-Baile,0,,Oricorio-Baile,741,,,Fire,,Flying,,"5,120",Flying,,25.00%,75.00%,Dancer,,,,,,,,,oricorio,Oricorio,,oricorio
+Yes,Yes,7,"Sun, Moon",,,,Oricorio-Baile,0,,Oricorio-Baile,741,,,Fire,,Flying,,"5,120",Flying,,25.00%,75.00%,Dancer,,,,,,,,,oricorio,Oricorio,,oricorio-baile
 Yes,Yes,7,"Sun, Moon",Alternate,,,Oricorio-Baile,1,,Oricorio-PomPom,741,,,Electric,,Flying,,"5,120",Flying,,25.00%,75.00%,Dancer,,,,,,,,,oricorio-pom-pom,Oricorio,,oricorio-pom-pom
 Yes,Yes,7,"Sun, Moon",Alternate,,,Oricorio-Baile,2,,Oricorio-Pa’u,741,,,Pyschic,,Flying,,"5,120",Flying,,25.00%,75.00%,Dancer,,,,,,,,,oricorio-pau,Oricorio,,oricorio-pau
 Yes,Yes,7,"Sun, Moon",Alternate,,,Oricorio-Baile,3,,Oricorio-Sensu,741,,,Ghost,,Flying,,"5,120",Flying,,25.00%,75.00%,Dancer,,,,,,,,,oricorio-sensu,Oricorio,,oricorio-sensu
@@ -1479,7 +1479,7 @@ Yes,Yes,7,"Sun, Moon",,,,Cutiefly,0,,Cutiefly,742,,,Bug,,Fairy,,"5,120",Bug,Fair
 Yes,Yes,7,"Sun, Moon",,,,Cutiefly,1,25,Ribombee,743,,,Bug,,Fairy,,"5,120",Bug,Fairy,50.00%,50.00%,Honey Gather,Shield Dust,Sweet Veil,,,,,,,ribombee,Ribombee,,ribombee
 Yes,No,7,"Sun, Moon",,,Totem,Cutiefly,2,,Totem Ribombee,743,,,Bug,,Fairy,,"5,120",Bug,Fairy,50.00%,50.00%,Sweet Veil,,,,,,,,,ribombee,Ribombee,,ribombee-totem
 Yes,Yes,7,"Sun, Moon",,,,Rockruff,0,,Rockruff,744,,,Rock,,,,"3,840",Field,,50.00%,50.00%,Keen Eye,Vital Spirit,Steadfast,,,,,,,rockruff,Rockruff,,rockruff
-Yes,Yes,7,"Sun, Moon",,,,Rockruff,1,25 (Day),Lycanroc-Midday,745,,,Rock,,,,"3,840",Field,,50.00%,50.00%,Keen Eye,Sand Rush,Steadfast,,,,,,,lycanroc,Lycanroc,,lycanroc
+Yes,Yes,7,"Sun, Moon",,,,Rockruff,1,25 (Day),Lycanroc-Midday,745,,,Rock,,,,"3,840",Field,,50.00%,50.00%,Keen Eye,Sand Rush,Steadfast,,,,,,,lycanroc,Lycanroc,,lycanroc-midday
 Yes,No,7,"Ultra Sun, Ultra Moon",Alternate,,,Rockruff,2,"25 (Dusk, Own Tempo)",Lycanroc-Dusk,745,,,Rock,,,,"3,840",Field,,50.00%,50.00%,Tough Claws,,Own Tempo,,,,,,,lycanroc-dusk,Lycanroc,,lycanroc-dusk
 Yes,Yes,7,"Sun, Moon",Alternate,,,Rockruff,3,25 (Night),Lycanroc-Midnight,745,,,Rock,,,,"3,840",Field,,50.00%,50.00%,Keen Eye,Vital Spirit,No Guard,,,,,,,lycanroc-midnight,Lycanroc,,lycanroc-midnight
 Yes,Yes,7,"Sun, Moon",,,,Wishiwashi,0,,Wishiwashi,746,,,Water,,,,"3,840",Water 2,,50.00%,50.00%,Schooling,,,,,,,,,wishiwashi,Wishiwashi,,wishiwashi
@@ -1635,9 +1635,9 @@ No,No,8,"Sword, Shield",Battle,,,Cramorant,2,,Cramorant-Gorging,845,,,Flying,,Wa
 Yes,Yes,8,"Sword, Shield",,,,Arrokuda,0,,Arrokuda,846,,,Water,,,,"5,120",Water2,,50.20%,49.80%,Swift Swim,,Propeller Tail,,,,,,,arrokuda,Arrokuda,,arrokuda
 Yes,Yes,8,"Sword, Shield",,,,Arrokuda,1,26,Barraskewda,847,,,Water,,,,"5,120",Water2,,50.20%,49.80%,Swift Swim,,Propeller Tail,,,,,,,barraskewda,Barraskewda,,barraskewda
 Yes,Yes,8,"Sword, Shield",,,,Toxel,0,,Toxel,848,,,Electric,,Poison,,"6,400",Undiscovered,,50.20%,49.80%,Rattled,Static,Klutz,,,,,,,toxel,Toxel,,toxel
-Yes,Yes,8,"Sword, Shield",,,,Toxel,1,30 (Nature),Toxtricity,849,,,Electric,,Poison,,"6,400",HumanLike,,50.20%,49.80%,Punk Rock,Plus,Technician,,,,,,,toxtricity,Toxtricity,,toxtricity
+Yes,Yes,8,"Sword, Shield",,,,Toxel,1,30 (Nature),Toxtricity-Amped,849,,,Electric,,Poison,,"6,400",HumanLike,,50.20%,49.80%,Punk Rock,Plus,Technician,,,,,,,toxtricity,Toxtricity,,toxtricity-amped
 Yes,No,8,"Sword, Shield",Alternate,,,Toxel,2,30 (Nature),Toxtricity-Low-Key,849,,,Electric,,Poison,,"6,400",HumanLike,,50.20%,49.80%,Punk Rock,Minus,Technician,,,,,,,toxtricity-low-key,Toxtricity,,toxtricity-low-key
-Yes,No,8,"Sword, Shield",,,Gigantamax,Toxel,3,,Gigantamax Toxtricity,849,,,Electric,,Poison,,"6,400",HumanLike,,50.20%,49.80%,Punk Rock,Plus,Technician,,,,,,,toxtricity-gmax,Toxtricity,,toxtricity-gmax
+Yes,No,8,"Sword, Shield",,,Gigantamax,Toxel,3,,Gigantamax Toxtricity-Amped,849,,,Electric,,Poison,,"6,400",HumanLike,,50.20%,49.80%,Punk Rock,Plus,Technician,,,,,,,toxtricity-gmax,Toxtricity,,toxtricity-amped-gmax
 Yes,No,8,"Sword, Shield",Alternate,,Gigantamax,Toxel,4,,Gigantamax Toxtricity-Low-Key,849,,,Electric,,Poison,,"6,400",HumanLike,,50.20%,49.80%,Punk Rock,Plus,Technician,,,,,,,toxtricity-gmax,Toxtricity,,toxtricity-low-key-gmax
 Yes,Yes,8,"Sword, Shield",,,,Sizzlipede,0,,Sizzlipede,850,,,Fire,,Bug,,"5,120",Bug,,50.20%,49.80%,Flash Fire,White Smoke,Flame Body,,,,,,,sizzlipede,Sizzlipede,,sizzlipede
 Yes,Yes,8,"Sword, Shield",,,,Sizzlipede,1,28,Centiskorch,851,,,Fire,,Bug,,"5,120",Bug,,50.20%,49.80%,Flash Fire,White Smoke,Flame Body,,,,,,,centiskorch,Centiskorch,,centiskorch
@@ -1663,7 +1663,7 @@ Yes,Yes,8,"Sword, Shield",,,,Farfetch'd,7,2 (3 Crits 1 battle),Sirfetch'd,865,,,
 Yes,Yes,8,"Sword, Shield",,,,Mr. Mime,8,42,Mr. Rime,866,,,Ice,,Psychic,,"6,400",HumanLike,,50.20%,49.80%,Tangled Feet,Screen Cleaner,Ice Body,,,,,,,mr-rime,Mr. Rime,,mr-rime
 Yes,Yes,8,"Sword, Shield",,,,Yamask,9,2 (49+ Dmg in area),Runerigus,867,,,Ground,,Ghost,,"6,400",Mineral,Amorphous,50.20%,49.80%,Wandering Spirit,,,,,,,,,runerigus,Runerigus,,runerigus
 Yes,Yes,8,"Sword, Shield",,,,Milcery,0,,Milcery,868,,,Fairy,,,,"5,120",Fairy,Amorphous,0.00%,100.00%,Sweet Veil,,Aroma Veil,,,,,,,milcery,Milcery,,milcery
-Yes,Yes,8,"Sword, Shield",,,,Milcery,1,2 (Sweet item + Spin),Alcremie,869,,,Fairy,,,,"5,120",Fairy,Amorphous,0.00%,100.00%,Sweet Veil,,Aroma Veil,,,,,,,alcremie,Alcremie,,alcremie
+Yes,Yes,8,"Sword, Shield",,,,Milcery,1,2 (Sweet item + Spin),Alcremie-Vanilla-Cream-Strawberry,869,,,Fairy,,,,"5,120",Fairy,Amorphous,0.00%,100.00%,Sweet Veil,,Aroma Veil,,,,,,,alcremie,Alcremie,,alcremie-vanilla-cream-strawberry
 Yes,No,8,"Sword, Shield",Alternate,,,Milcery,2,3 (Sweet item + Spin),Alcremie-Vanilla-Cream-Berry,869,,,Fairy,,,,"5,120",Fairy,Amorphous,0.00%,100.00%,Sweet Veil,,Aroma Veil,,,,,,,alcremie-vanilla-cream-berry,Alcremie,,alcremie-vanilla-cream-berry
 Yes,No,8,"Sword, Shield",Alternate,,,Milcery,3,4 (Sweet item + Spin),Alcremie-Vanilla-Cream-Love,869,,,Fairy,,,,"5,120",Fairy,Amorphous,0.00%,100.00%,Sweet Veil,,Aroma Veil,,,,,,,alcremie-vanilla-cream-love,Alcremie,,alcremie-vanilla-cream-love
 Yes,No,8,"Sword, Shield",Alternate,,,Milcery,4,5 (Sweet item + Spin),Alcremie-Vanilla-Cream-Star,869,,,Fairy,,,,"5,120",Fairy,Amorphous,0.00%,100.00%,Sweet Veil,,Aroma Veil,,,,,,,alcremie-vanilla-cream-star,Alcremie,,alcremie-vanilla-cream-star
@@ -1726,7 +1726,7 @@ Yes,No,8,"Sword, Shield",Alternate,,,Milcery,60,61 (Sweet item + Spin),Alcremie-
 Yes,No,8,"Sword, Shield",Alternate,,,Milcery,61,62 (Sweet item + Spin),Alcremie-Rainbow-Swirl-Clover,869,,,Fairy,,,,"5,120",Fairy,Amorphous,0.00%,100.00%,Sweet Veil,,Aroma Veil,,,,,,,alcremie-rainbow-swirl-clover,Alcremie,,alcremie-rainbow-swirl-clover
 Yes,No,8,"Sword, Shield",Alternate,,,Milcery,62,63 (Sweet item + Spin),Alcremie-Rainbow-Swirl-Flower,869,,,Fairy,,,,"5,120",Fairy,Amorphous,0.00%,100.00%,Sweet Veil,,Aroma Veil,,,,,,,alcremie-rainbow-swirl-flower,Alcremie,,alcremie-rainbow-swirl-flower
 Yes,No,8,"Sword, Shield",Alternate,,,Milcery,63,64 (Sweet item + Spin),Alcremie-Rainbow-Swirl-Ribbon,869,,,Fairy,,,,"5,120",Fairy,Amorphous,0.00%,100.00%,Sweet Veil,,Aroma Veil,,,,,,,alcremie-rainbow-swirl-ribbon,Alcremie,,alcremie-rainbow-swirl-ribbon
-Yes,No,8,"Sword, Shield",,,Gigantamax,Milcery,64,,Gigantamax Alcremie,869,,,Fairy,,,,"5,120",Fairy,Amorphous,0.00%,100.00%,Sweet Veil,,Aroma Veil,,,,,,,alcremie-gmax,Alcremie,,alcremie-gmax
+Yes,No,8,"Sword, Shield",,,Gigantamax,Milcery,64,,Gigantamax Alcremie-Vanilla-Cream-Strawberry,869,,,Fairy,,,,"5,120",Fairy,Amorphous,0.00%,100.00%,Sweet Veil,,Aroma Veil,,,,,,,alcremie-gmax,Alcremie,,alcremie-vanilla-cream-strawberry-gmax
 Yes,No,8,"Sword, Shield",Alternate,,Gigantamax,Milcery,65,3 (Sweet item + Spin),Gigantamax Alcremie-Vanilla-Cream-Berry,869,,,Fairy,,,,"5,120",Fairy,Amorphous,0.00%,100.00%,Sweet Veil,,Aroma Veil,,,,,,,alcremie-gmax,Alcremie,,alcremie-vanilla-cream-berry-gmax
 Yes,No,8,"Sword, Shield",Alternate,,Gigantamax,Milcery,66,4 (Sweet item + Spin),Gigantamax Alcremie-Vanilla-Cream-Love,869,,,Fairy,,,,"5,120",Fairy,Amorphous,0.00%,100.00%,Sweet Veil,,Aroma Veil,,,,,,,alcremie-gmax,Alcremie,,alcremie-vanilla-cream-love-gmax
 Yes,No,8,"Sword, Shield",Alternate,,Gigantamax,Milcery,67,5 (Sweet item + Spin),Gigantamax Alcremie-Vanilla-Cream-Star,869,,,Fairy,,,,"5,120",Fairy,Amorphous,0.00%,100.00%,Sweet Veil,,Aroma Veil,,,,,,,alcremie-gmax,Alcremie,,alcremie-vanilla-cream-star-gmax
@@ -1819,7 +1819,7 @@ No,No,8,"Sword, Shield",Item,,,Zamazenta,1,,Zamazenta-Crowned,889,,,Fighting,,St
 Yes,No,8,"Sword, Shield",,,,Eternatus,0,,Eternatus,890,,,Poison,,Dragon,,"30,720",Undiscovered,,○,○,Pressure,,,,,,,,,eternatus,Eternatus,,eternatus
 No,No,8,"Sword, Shield",Unobtainable,,Gigantamax,Eternatus,1,,Eternatus-Eternamax,890,,,Poison,,Dragon,,"30,720",Undiscovered,,○,○,Pressure,,,,,,,,,eternatus-eternamax,Eternatus,,eternatus-eternamax
 Yes,No,8,"Sword, Shield",,,,Kubfu,0,,Kubfu,891,,,Fighting,,,,"30,720",Undiscovered,,87.50%,12.50%,Inner Focus,,,,,,,,,kubfu,Kubfu,,kubfu
-Yes,No,8,"Sword, Shield",,,,Urshifu,1,,Urshifu Single Strike Style,892,,,Fighting,,Dark,,"30,720",Undiscovered,,87.50%,12.50%,Unseen Fist,,,,,,,,,urshifu,Urshifu,,urshifu
+Yes,No,8,"Sword, Shield",,,,Urshifu,1,,Urshifu Single Strike Style,892,,,Fighting,,Dark,,"30,720",Undiscovered,,87.50%,12.50%,Unseen Fist,,,,,,,,,urshifu,Urshifu,,urshifu-single-strike
 Yes,No,8,"Sword, Shield",,,Gigantamax,Urshifu,2,,Gigantamax Urshifu Single Strike Style,892,,,Fighting,,Dark,,"30,720",Undiscovered,,87.50%,12.50%,Unseen Fist,,,,,,,,,urshifu-gmax,Urshifu,,urshifu-gmax
 Yes,No,8,"Sword, Shield",Alternate,,,Urshifu,3,,Urshifu Rapid Strike Style,892,,,Fighting,,Water,,"30,720",Undiscovered,,87.50%,12.50%,Unseen Fist,,,,,,,,,urshifu,Urshifu,,urshifu-rapid-strike
 Yes,No,8,"Sword, Shield",Alternate,,Gigantamax,Urshifu,4,,Gigantamax Urshifu Rapid Strike Style,892,,,Fighting,,Water,,"30,720",Undiscovered,,87.50%,12.50%,Unseen Fist,,,,,,,,,urshifu-rapid-strike-gmax,Urshifu,,urshifu-rapid-strike-gmax
@@ -1847,4 +1847,4 @@ Yes,No,8,Legend Arceus,,,Alpha,Sneasel,14,,Alpha Sneasler,903,,,Fight,,Poison,,,
 Yes,No,8,Legend Arceus,,,,Overqwil,0,,Overqwil,904,,,Dark,,Poison,,,,,,,,,,,,,,,,overqwil,Overqwil,,overqwil
 Yes,No,8,Legend Arceus,,,Alpha,Overqwil,1,,Alpha Overqwil,904,,,Dark,,Poison,,,,,,,,,,,,,,,,overqwil,Overqwil,,overqwil-alpha
 Yes,No,8,Legend Arceus,,,,Enamorus,0,,Enamorus,905,,,Fairy,,Flying,,,,,,,,,,,,,,,,enamorus,Enamorus,,enamorus
-Yes,No,8,Legend Arceus,,,,Enamorus,1,,Therian Enamorus,905,,,Fairy,,Flying,,,,,,,,,,,,,,,,enamorus-therian,Enamorus,,enamorus-therian
+Yes,No,8,Legend Arceus,Therian,,,Enamorus,1,,Therian Enamorus,905,,,Fairy,,Flying,,,,,,,,,,,,,,,,enamorus-therian,Enamorus,,enamorus-therian

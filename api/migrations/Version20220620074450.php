@@ -30,6 +30,7 @@ final class Version20220620074450 extends AbstractMigration
             'Gender',
             'Alternate',
             'Baby',
+            'Therian',
             'Battle',
             'Item',
             'Fusion',

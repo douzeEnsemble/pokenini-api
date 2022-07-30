@@ -20,7 +20,7 @@ final class Version20220620074422 extends AbstractMigration
         $this->addSql('CREATE UNIQUE INDEX UNIQ_4F8F865C5E237E06 ON catch_state (name)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_4F8F865C989D9B62 ON catch_state (slug)');
         $this->addSql('COMMENT ON COLUMN catch_state.id IS \'(DC2Type:uuid)\'');
-        $this->addSql('CREATE TABLE dex (id UUID NOT NULL, selection_rule VARCHAR(255) NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, order_number INT NOT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE dex (id UUID NOT NULL, selection_rule VARCHAR(412) NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, order_number INT NOT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_F6CBDC025E237E06 ON dex (name)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_F6CBDC02989D9B62 ON dex (slug)');
         $this->addSql('COMMENT ON COLUMN dex.id IS \'(DC2Type:uuid)\'');

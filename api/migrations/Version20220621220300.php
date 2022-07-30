@@ -18,27 +18,228 @@ final class Version20220621220300 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-        $this->insertDexes([
-            'Red, Green, Blue, Yellow' => "(p.bankable or p.bankableish) and p.variantForm === null and p.regionalForm === null and p.specialForm === null and ba?.redgreenblueyellow",
-            'Gold, Silver, Crystal' => "(p.bankable or p.bankableish) and (p.variantForm === null or p.variantForm?.name === 'Baby') and p.regionalForm === null and p.specialForm === null and ba?.goldsilvercrystal",
-            'Ruby, Sapphire, Emerald' => "(p.bankable or p.bankableish) and (p.variantForm === null or p.variantForm?.name === 'Baby') and p.regionalForm === null and p.specialForm === null and ba?.rubysapphireemerald",
-            'Red Fire, Leaf Green' => "(p.bankable or p.bankableish) and (p.variantForm === null or p.variantForm?.name === 'Baby') and p.regionalForm === null and p.specialForm === null and ba?.redfireleafgreen",
-            'Diamond, Pearl, Platinium' => "(p.bankable or p.bankableish) and p.specialForm === null and ba?.diamondpearlplatinium",
-            'Heart Gold, Soul Silver' => "(p.bankable or p.bankableish) and p.specialForm === null and ba?.heartgoldsoulsilver",
-            'Black, White' => "(p.bankable or p.bankableish) and p.specialForm === null and ba?.blackwhite",
-            'Black 2, White 2' => "(p.bankable or p.bankableish) and p.specialForm === null and ba?.black2white2",
-            'X, Y' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event' and ba?.xy",
-            'Omega Ruby, Alpha Sapphire' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event' and ba?.omegarubyalphasapphire",
-            'Sun, Moon' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event' and ba?.sunmoon",
-            'Ultra Sun, Ultra Moon' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event' and ba?.ultrasunultramoon",
-            'Let\'s Go Pikachu, Let\'s Go Eevee' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event' and ba?.letgopikachuletsgoevoli",
-            'Sword, Shield' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event' and ba?.swordswshield",
-            'Brilland Diamond, Shining Pearl' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event' and ba?.brillanddiamonrdshiningpearl",
-            'Legend Arceus' => "(p.bankable or p.bankableish) and p.specialForm?.name != 'Event' and ba?.legendarceus",
-            'Home' => "(p.bankable or p.bankableish)",
-            'Home Shiny' => "(p.bankable or p.bankableish) and p.specialForm == null",
-            'Home Pogo' => "(p.bankable or p.bankableish) and p.variantForm == null and p.specialForm == null and p.regionalForm == null",
-        ]);
+        $this->insertDexes(array(
+            'Red, Green, Blue, Yellow' => <<< RULE
+                (p.bankable or p.bankableish)
+                and p.variantForm === null
+                and p.regionalForm === null
+                and p.specialForm === null
+                and ba?.redgreenblueyellow
+                RULE,
+            'Gold, Silver, Crystal' => <<<RULE
+                (p.bankable or p.bankableish)
+                and (
+                    p.variantForm === null
+                    or p.variantForm?.name in ['Baby', 'Alternate']
+                )
+                and p.regionalForm === null
+                and p.specialForm === null
+                and ba?.goldsilvercrystal
+                RULE,
+            'Ruby, Sapphire, Emerald' => <<<RULE
+                (p.bankable or p.bankableish)
+                and (
+                    p.variantForm === null
+                    or p.variantForm?.name in ['Baby', 'Alternate']
+                )
+                and p.regionalForm === null
+                and p.specialForm === null
+                and ba?.rubysapphireemerald
+                RULE,
+            'Red Fire, Leaf Green' => <<<RULE
+                (p.bankable or p.bankableish)
+                and (
+                    p.variantForm === null
+                    or p.variantForm?.name in ['Baby', 'Alternate']
+                )
+                and p.regionalForm === null
+                and p.specialForm === null
+                and ba?.redfireleafgreen
+                RULE,
+            'Diamond, Pearl, Platinium' => <<<RULE
+                (p.bankable or p.bankableish)
+                and (
+                    p.variantForm === null
+                    or p.variantForm?.name in ['Baby', 'Alternate', 'Gender']
+                )
+                and p.regionalForm === null
+                and p.specialForm === null
+                and ba?.diamondpearlplatinium
+                RULE,
+            'Heart Gold, Soul Silver' => <<<RULE
+                (p.bankable or p.bankableish)
+                and (
+                    p.variantForm === null
+                    or p.variantForm?.name in ['Baby', 'Alternate', 'Gender']
+                )
+                and p.regionalForm === null
+                and p.specialForm === null
+                and ba?.heartgoldsoulsilver
+                RULE,
+            'Black, White' => <<<RULE
+                (p.bankable or p.bankableish)
+                and (
+                    p.variantForm === null
+                    or p.variantForm?.name in ['Baby', 'Alternate', 'Gender']
+                )
+                and p.regionalForm === null
+                and p.specialForm === null
+                and ba?.blackwhite
+                RULE,
+            'Black 2, White 2' => <<<RULE
+                (p.bankable or p.bankableish)
+                and (
+                    p.variantForm === null
+                    or p.variantForm?.name in ['Baby', 'Alternate', 'Gender', 'Therian']
+                )
+                and p.regionalForm === null
+                and p.specialForm === null
+                and ba?.black2white2
+                RULE,
+            'X, Y' => <<<RULE
+                (p.bankable or p.bankableish)
+                and (
+                    p.variantForm === null
+                    or p.variantForm?.name in ['Baby', 'Alternate', 'Gender', 'Therian']
+                )
+                and (
+                    p.specialForm === null
+                    or p.specialForm?.name in ['Mega']
+                )
+                and ba?.xy
+                RULE,
+            'Omega Ruby, Alpha Sapphire' => <<<RULE
+                (p.bankable or p.bankableish)
+                and (
+                    p.variantForm === null
+                    or p.variantForm?.name in ['Baby', 'Alternate', 'Gender', 'Therian']
+                )
+                and (
+                    p.specialForm === null
+                    or p.specialForm?.name in ['Mega']
+                )
+                and ba?.omegarubyalphasapphire
+                RULE,
+            'Sun, Moon' => <<<RULE
+                (p.bankable or p.bankableish)
+                and (
+                    p.variantForm === null
+                    or p.variantForm?.name in ['Baby', 'Alternate', 'Gender', 'Therian']
+                )
+                and (
+                    p.specialForm === null
+                    or p.specialForm?.name in ['Mega']
+                )
+                and (
+                    p.regionalForm === null
+                    or p.regionalForm?.name === 'Alolan'
+                )
+                and p.name !== 'Lycanroc-Dusk'
+                and ba?.sunmoon
+                RULE,
+            'Ultra Sun, Ultra Moon' => <<<RULE
+                (p.bankable or p.bankableish)
+                and (
+                    p.variantForm === null
+                    or p.variantForm?.name in ['Baby', 'Alternate', 'Gender', 'Therian']
+                )
+                and (
+                    p.specialForm === null
+                    or p.specialForm?.name in ['Mega']
+                )
+                and (
+                    p.regionalForm === null
+                    or p.regionalForm?.name === 'Alolan'
+                )
+                and ba?.ultrasunultramoon
+                RULE,
+            'Let\'s Go Pikachu, Let\'s Go Eevee' => <<<RULE
+                (p.bankable or p.bankableish)
+                and (
+                    p.variantForm === null
+                    or p.variantForm?.name in ['Gender']
+                )
+                and (
+                    p.specialForm === null
+                    or p.specialForm?.name in ['Mega']
+                )
+                and (
+                    p.regionalForm === null
+                    or p.regionalForm?.name === 'Alolan'
+                )
+                and ba?.letsgopikachuletsgoeevee
+                RULE,
+            'Sword, Shield' => <<<RULE
+                (p.bankable or p.bankableish)
+                and (
+                    p.variantForm === null
+                    or p.variantForm?.name in ['Baby', 'Alternate', 'Gender', 'Therian']
+                )
+                and (
+                    p.regionalForm === null
+                    or p.regionalForm?.name in ['Alolan', 'Galarian']
+                )
+                and (
+                    p.specialForm === null
+                    or p.specialForm?.name === 'Gigantamax'
+                )
+                and ba?.swordshield
+                RULE,
+            'Brilland Diamond, Shining Pearl' => <<<RULE
+                (p.bankable or p.bankableish)
+                and (
+                    p.variantForm === null
+                    or p.variantForm?.name in ['Baby', 'Alternate', 'Gender']
+                )
+                and p.regionalForm === null
+                and p.specialForm === null
+                and ba?.brillanddiamondshiningpearl
+                RULE,
+            'Legend Arceus' => <<<RULE
+                (p.bankable or p.bankableish)
+                and (
+                    p.variantForm === null
+                    or p.variantForm?.name in ['Baby', 'Alternate', 'Gender', 'Therian']
+                )
+                and (
+                    p.regionalForm === null
+                    or p.regionalForm?.name === 'Hisuian'
+                )
+                and (
+                    p.specialForm === null
+                    or p.specialForm?.name === 'Alpha'
+                )
+                and ba?.legendarceus
+                RULE,
+            'Home' => <<<RULE
+                (p.bankable or p.bankableish)
+                and (
+                    p.variantForm === null
+                    or p.variantForm?.name in ['Baby', 'Alternate', 'Gender', 'Therian', 'Item']
+                )
+                RULE,
+            'Home Shiny' => <<<RULE
+                (p.bankable or p.bankableish)
+                and (
+                    p.variantForm === null
+                    or p.variantForm?.name in ['Baby', 'Alternate', 'Gender', 'Therian']
+                )
+                and (
+                    p.specialForm === null
+                    or p.specialForm?.name === 'Gigantamax'
+                )
+                and (
+                    p.primeName !== 'Alcremie'
+                    or p.name in ['Alcremie-Vanilla-Cream-Strawberry', 'Gigantamax Alcremie-Vanilla-Cream-Strawberry']
+                )
+                RULE,
+            'Home Pokemon Go' => <<<RULE
+                (p.bankable or p.bankableish)
+                and p.variantForm == null
+                and p.specialForm == null
+                and p.regionalForm == null
+                RULE,
+        ));
 
         $gameBundlesAndGeneration = [
             'Red, Green, Blue, Yellow' => '1',
