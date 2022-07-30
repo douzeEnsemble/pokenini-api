@@ -65,7 +65,7 @@ phpunit: ## Execute unit test
 
 ## —— Quality 👌 ———————————————————————————————————————————————————————————————
 quality: ## Execute all quality analyses
-quality: phpcs phpmd
+quality: phpcs phpmd psalm
 
 phpcs: ## Execute phpcs
 	docker-compose exec php vendor/bin/phpcs

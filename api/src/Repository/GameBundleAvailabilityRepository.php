@@ -58,7 +58,7 @@ class GameBundleAvailabilityRepository extends ServiceEntityRepository
     /**
      * @param Pokemon $pokemon
      *
-     * @return GameBundlesAvailabilities, dex slug as property, dex availability as value
+     * @return GameBundlesAvailabilities dex slug as property and dex availability as value
      */
     public function getFromPokemon(Pokemon $pokemon): GameBundlesAvailabilities
     {
