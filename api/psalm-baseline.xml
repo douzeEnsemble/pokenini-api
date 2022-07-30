@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<files psalm-version="4.24.0@06dd975cb55d36af80f242561738f16c5f58264f">
+  <file src="src/Command/CalculateDexAvailabilityCommand.php">
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>clear</code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="src/Command/CalculateGameBundleAvailabilityCommand.php">
+    <UndefinedInterfaceMethod occurrences="1">
+      <code>clear</code>
+    </UndefinedInterfaceMethod>
+  </file>
+  <file src="src/Entity/DexAvailability.php">
+    <MissingConstructor occurrences="2">
+      <code>$dex</code>
+      <code>$pokemon</code>
+    </MissingConstructor>
+  </file>
+  <file src="src/Entity/Game.php">
+    <MissingConstructor occurrences="1">
+      <code>$bundle</code>
+    </MissingConstructor>
+  </file>
+  <file src="src/Entity/GameAvailability.php">
+    <MissingConstructor occurrences="2">
+      <code>$game</code>
+      <code>$pokemonName</code>
+    </MissingConstructor>
+  </file>
+  <file src="src/Entity/GameBundle.php">
+    <MissingConstructor occurrences="1">
+      <code>$generation</code>
+    </MissingConstructor>
+  </file>
+  <file src="src/Entity/GameBundleAvailability.php">
+    <MissingConstructor occurrences="3">
+      <code>$bundle</code>
+      <code>$isAvailable</code>
+      <code>$pokemon</code>
+    </MissingConstructor>
+  </file>
+  <file src="src/Entity/Pokedex.php">
+    <MissingConstructor occurrences="3">
+      <code>$catchState</code>
+      <code>$dex</code>
+      <code>$pokemon</code>
+    </MissingConstructor>
+  </file>
+  <file src="src/Entity/Pokemon.php">
+    <MissingConstructor occurrences="8">
+      <code>$familyOrder</code>
+      <code>$iconName</code>
+      <code>$nationalDexNumber</code>
+      <code>$originalGameBundle</code>
+      <code>$primeName</code>
+      <code>$regionalForm</code>
+      <code>$specialForm</code>
+      <code>$variantForm</code>
+    </MissingConstructor>
+  </file>
+  <file src="src/Entity/Traits/SlugifiedTrait.php">
+    <MissingConstructor occurrences="9">
+      <code>$slug</code>
+      <code>$slug</code>
+      <code>$slug</code>
+      <code>$slug</code>
+      <code>$slug</code>
+      <code>$slug</code>
+      <code>$slug</code>
+      <code>$slug</code>
+      <code>$slug</code>
+    </MissingConstructor>
+  </file>
+</files>
