@@ -9,8 +9,8 @@ on:
   workflow_dispatch: ~
 
 jobs:
-  tests:
-    name: Tests
+  build:
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -39,13 +39,21 @@ jobs:
         run: curl  -vk -o /dev/null https://localhost:4430
       - name: Create test database
         run: |
-          docker-compose exec -T php bin/console -e test doctrine:database:create
+          docker-compose exec -T php bin/console -e test doctrine:database:create --if-not-exists
           docker-compose exec -T php bin/console -e test doctrine:migrations:migrate --no-interaction
       - name: Doctrine Schema Validator
         run: docker-compose exec -T php bin/console doctrine:schema:validate --skip-sync
-      - name: Jest
-        run: docker-compose exec -T pwa yarn test --ci --passWithNoTests
+  check_quality:
+    name: Quality
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Check Quality
         run: make quality
+  check_tests:
+    name: Tests
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
       - name: Check Tests
         run: make tests
