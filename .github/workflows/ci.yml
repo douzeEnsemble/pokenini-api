@@ -58,3 +58,6 @@ jobs:
       - name: Tests PHPUnit
         run: make phpunit
         continue-on-error: true
+      - name: Integration Newman
+        run: make newman
+        continue-on-error: true
