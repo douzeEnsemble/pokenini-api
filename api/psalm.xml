@@ -12,4 +12,13 @@
             <directory name="vendor" />
         </ignoreFiles>
     </projectFiles>
+
+    <issueHandlers>
+        <MissingConstructor>
+            <errorLevel type="suppress" />
+        </MissingConstructor>
+        <PropertyNotSetInConstructor>
+            <errorLevel type="suppress" />
+        </PropertyNotSetInConstructor>
+    </issueHandlers>
 </psalm>
