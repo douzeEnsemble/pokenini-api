@@ -2,7 +2,11 @@
 DOCKER_COMP = docker-compose
 
 # Docker containers
+ifeq ($(CI),"true")
+PHP_CONT = $(DOCKER_COMP) exec php -T
+else
 PHP_CONT = $(DOCKER_COMP) exec php
+endif
 
 # Executables
 PHP      = $(PHP_CONT) php
@@ -60,7 +64,7 @@ phpstan: ## Execute phpstan analyse
 
 phpunit: ## Execute unit test
 	@$(PHP) bin/console doctrine:schema:update --force --env=test
-	@$(PHP) bin/phpunit
+	$(PHP) bin/phpunit
 
 
 ## —— Quality 👌 ———————————————————————————————————————————————————————————————
@@ -84,4 +88,8 @@ integration: ## Execute all integration tests
 integration: newman
 
 newman: ## Execute newman
+ifeq ($(CI),"true")
+	docker run -T -v $(pwd)/api/tests/integration:/etc/newman -t postman/newman:alpine run collection.json
+else
 	docker run -v $(pwd)/api/tests/integration:/etc/newman -t postman/newman:alpine run collection.json
+endif
