@@ -43,52 +43,13 @@ jobs:
           docker-compose exec -T php bin/console -e test doctrine:migrations:migrate --no-interaction
       - name: Doctrine Schema Validator
         run: docker-compose exec -T php bin/console doctrine:schema:validate --skip-sync
-      - uses: actions/upload-artifact@v2
-        with:
-         name: built-artifact
-         path: .
-  check_quality_phpcs:
-    name: Quality PHPCS
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v2
-        with:
-          name: built-artifact
-      - run: make phpcs
-  check_quality_phpmd:
-    name: Quality PHPMD
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v2
-        with:
-          name: built-artifact
-      - run: make phpmd
-  check_quality_psalm:
-    name: Quality Psalm
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v2
-        with:
-          name: built-artifact
-      - run: make psalm
-  check_tests_phpstan:
-    name: Tests PHPStan
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v2
-        with:
-          name: built-artifact
-      - run: make phpstan
-  check_tests_phpunit:
-    name: Tests PHPUnit
-    needs: build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/download-artifact@v2
-        with:
-          name: built-artifact
-      - run: make phpunit
+      - name: Quality PHPCS
+        run: make phpcs
+      - name: Quality PHPMD
+        run: make phpmd
+      - name: Quality Psalm
+        run: make psalm
+      - name: Tests PHPStan
+        run: make phpstan
+      - name: Tests PHPUnit
+        run: make phpunit
