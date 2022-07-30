@@ -40,9 +40,9 @@ jobs:
         run: |
           docker-compose exec -T php bin/console -e test doctrine:database:create
           docker-compose exec -T php bin/console -e test doctrine:migrations:migrate --no-interaction
-      - name: PHPUnit
-        run: docker-compose exec -T php bin/phpunit
+      - name: Check Quality
+        run: make quality
+      - name: Check Tests
+        run: make tests
       - name: Doctrine Schema Validator
         run: docker-compose exec -T php bin/console doctrine:schema:validate --skip-sync
-      - name: Jest
-        run: docker-compose exec -T pwa yarn test --ci --passWithNoTests
