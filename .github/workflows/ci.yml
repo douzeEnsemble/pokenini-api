@@ -15,16 +15,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-#      - name: Pull images
-#        run: docker-compose pull --ignore-pull-failures || true
-#      - name: Start services
-#        run: docker-compose up --build -d
-      - uses: whoan/docker-build-with-cache-action@v5
-        with:
-          username: whoan
-          password: "${{ secrets.DOCKER_HUB_ACCESTOKEN }}"
-          image_name: renauddouze/pokenini
-          compose_file: docker-compose.yml > docker-compose.override.yml
+      - name: Pull images
+        run: docker-compose pull --ignore-pull-failures || true
+      - name: Start services
+        run: docker-compose up --build -d
       - name: Wait for services
         run: |
           while status="$(docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" "$(docker-compose ps -q php)")"; do
@@ -47,23 +41,25 @@ jobs:
         run: |
           docker-compose exec -T php bin/console -e test doctrine:database:create --if-not-exists
           docker-compose exec -T php bin/console -e test doctrine:migrations:migrate --no-interaction
+      - name: Pushe the built
+        run: 
       - name: Doctrine Schema Validator
         run: docker-compose exec -T php bin/console doctrine:schema:validate --skip-sync
       - name: Quality PHPCS
-        run: make
-        continue-on-error: true
+        run: make phpcs
+        continue-on-error: false
       - name: Quality PHPMD
         run: make phpmd
-        continue-on-error: true
+        continue-on-error: false
       - name: Quality Psalm
         run: make psalm
-        continue-on-error: true
+        continue-on-error: false
       - name: Tests PHPStan
         run: make phpstan
-        continue-on-error: true
+        continue-on-error: false
       - name: Tests PHPUnit
         run: make phpunit
-        continue-on-error: true
+        continue-on-error: false
       - name: Integration Newman
         run: make newman
-        continue-on-error: true
+        continue-on-error: false
