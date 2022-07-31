@@ -75,19 +75,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/album?dex.slug=redgreenblueyellow",
+          "raw": "http://caddy/album/redgreenblueyellow",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "album"
-          ],
-          "query": [
-            {
-              "key": "dex.slug",
-              "value": "redgreenblueyellow"
-            }
+            "album/redgreenblueyellow"
           ]
         }
       },
@@ -163,19 +157,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/album?dex.slug=goldsilvercrystal",
+          "raw": "http://caddy/album/goldsilvercrystal",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "album"
-          ],
-          "query": [
-            {
-              "key": "dex.slug",
-              "value": "goldsilvercrystal"
-            }
+            "album/goldsilvercrystal"
           ]
         }
       },
@@ -251,19 +239,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/album?dex.slug=rubysapphireemerald",
+          "raw": "http://caddy/album/rubysapphireemerald",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "album"
-          ],
-          "query": [
-            {
-              "key": "dex.slug",
-              "value": "rubysapphireemerald"
-            }
+            "album/rubysapphireemerald"
           ]
         }
       },
@@ -339,19 +321,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/album?dex.slug=redfireleafgreen",
+          "raw": "http://caddy/album/redfireleafgreen",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "album"
-          ],
-          "query": [
-            {
-              "key": "dex.slug",
-              "value": "redfireleafgreen"
-            }
+            "album/redfireleafgreen"
           ]
         }
       },
@@ -427,19 +403,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/album?dex.slug=diamondpearlplatinium",
+          "raw": "http://caddy/album/diamondpearlplatinium",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "album"
-          ],
-          "query": [
-            {
-              "key": "dex.slug",
-              "value": "diamondpearlplatinium"
-            }
+            "album/diamondpearlplatinium"
           ]
         }
       },
@@ -515,19 +485,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/album?dex.slug=heartgoldsoulsilver",
+          "raw": "http://caddy/album/heartgoldsoulsilver",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "album"
-          ],
-          "query": [
-            {
-              "key": "dex.slug",
-              "value": "heartgoldsoulsilver"
-            }
+            "album/heartgoldsoulsilver"
           ]
         }
       },
@@ -603,19 +567,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/album?dex.slug=blackwhite",
+          "raw": "http://caddy/album/blackwhite",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "album"
-          ],
-          "query": [
-            {
-              "key": "dex.slug",
-              "value": "blackwhite"
-            }
+            "album/blackwhite"
           ]
         }
       },
@@ -691,19 +649,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/album?dex.slug=black2white2",
+          "raw": "http://caddy/album/black2white2",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "album"
-          ],
-          "query": [
-            {
-              "key": "dex.slug",
-              "value": "black2white2"
-            }
+            "album/black2white2"
           ]
         }
       },
@@ -779,19 +731,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/album?dex.slug=xy",
+          "raw": "http://caddy/album/xy",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "album"
-          ],
-          "query": [
-            {
-              "key": "dex.slug",
-              "value": "xy"
-            }
+            "album/xy"
           ]
         }
       },
@@ -867,19 +813,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/album?dex.slug=omegarubyalphasapphire",
+          "raw": "http://caddy/album/omegarubyalphasapphire",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "album"
-          ],
-          "query": [
-            {
-              "key": "dex.slug",
-              "value": "omegarubyalphasapphire"
-            }
+            "album/omegarubyalphasapphire"
           ]
         }
       },
@@ -955,19 +895,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/album?dex.slug=sunmoon",
+          "raw": "http://caddy/album/sunmoon",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "album"
-          ],
-          "query": [
-            {
-              "key": "dex.slug",
-              "value": "sunmoon"
-            }
+            "album/sunmoon"
           ]
         }
       },
@@ -1043,19 +977,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/album?dex.slug=ultrasunultramoon",
+          "raw": "http://caddy/album/ultrasunultramoon",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "album"
-          ],
-          "query": [
-            {
-              "key": "dex.slug",
-              "value": "ultrasunultramoon"
-            }
+            "album/ultrasunultramoon"
           ]
         }
       },
@@ -1131,19 +1059,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/album?dex.slug=letsgopikachuletsgoeevee",
+          "raw": "http://caddy/album/letsgopikachuletsgoeevee",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "album"
-          ],
-          "query": [
-            {
-              "key": "dex.slug",
-              "value": "letsgopikachuletsgoeevee"
-            }
+            "album/letsgopikachuletsgoeevee"
           ]
         }
       },
@@ -1219,19 +1141,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/album?dex.slug=swordshield",
+          "raw": "http://caddy/album/swordshield",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "album"
-          ],
-          "query": [
-            {
-              "key": "dex.slug",
-              "value": "swordshield"
-            }
+            "album/swordshield"
           ]
         }
       },
@@ -1307,19 +1223,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/album?dex.slug=brillanddiamondshiningpearl",
+          "raw": "http://caddy/album/brillanddiamondshiningpearl",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "album"
-          ],
-          "query": [
-            {
-              "key": "dex.slug",
-              "value": "brillanddiamondshiningpearl"
-            }
+            "album/brillanddiamondshiningpearl"
           ]
         }
       },
@@ -1395,19 +1305,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/album?dex.slug=legendarceus",
+          "raw": "http://caddy/album/legendarceus",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "album"
-          ],
-          "query": [
-            {
-              "key": "dex.slug",
-              "value": "legendarceus"
-            }
+            "album/legendarceus"
           ]
         }
       },
@@ -1483,19 +1387,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/album?dex.slug=home",
+          "raw": "http://caddy/album/home",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "album"
-          ],
-          "query": [
-            {
-              "key": "dex.slug",
-              "value": "home"
-            }
+            "album/home"
           ]
         }
       },
@@ -1571,19 +1469,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/album?dex.slug=homeshiny",
+          "raw": "http://caddy/album/homeshiny",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "album"
-          ],
-          "query": [
-            {
-              "key": "dex.slug",
-              "value": "homeshiny"
-            }
+            "album/homeshiny"
           ]
         }
       },
@@ -1659,19 +1551,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/album?dex.slug=homepokemongo",
+          "raw": "http://caddy/album/homepokemongo",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "album"
-          ],
-          "query": [
-            {
-              "key": "dex.slug",
-              "value": "homepokemongo"
-            }
+            "album/homepokemongo"
           ]
         }
       },

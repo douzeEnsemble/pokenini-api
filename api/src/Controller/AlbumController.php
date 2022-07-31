@@ -20,7 +20,6 @@ class AlbumController extends AbstractController
 
     #[Route(methods: ['GET'], path: '/{dexSlug}')]
     public function index(
-        Request $request,
         DexRepository $dexRepository,
         string $dexSlug
     ): JsonResponse {
