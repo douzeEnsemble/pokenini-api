@@ -15,10 +15,16 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v2
-      - name: Pull images
-        run: docker-compose pull --ignore-pull-failures || true
-      - name: Start services
-        run: docker-compose up --build -d
+#      - name: Pull images
+#        run: docker-compose pull --ignore-pull-failures || true
+#      - name: Start services
+#        run: docker-compose up --build -d
+      - uses: whoan/docker-build-with-cache-action@v5
+        with:
+          username: whoan
+          password: "${{ secrets.GITHUB_TOKEN }}"
+          registry: docker.pkg.github.com
+          compose_file: docker-compose.yml > docker-compose.override.yml
       - name: Wait for services
         run: |
           while status="$(docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" "$(docker-compose ps -q php)")"; do
