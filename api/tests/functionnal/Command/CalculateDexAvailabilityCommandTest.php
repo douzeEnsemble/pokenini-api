@@ -5,6 +5,7 @@ namespace App\Tests\Functionnal\Command;
 use App\Repository\PokemonRepository;
 use App\Tests\Resources\functionnal\CounterTrait\CountDexAvailabilityTrait;
 use App\Tests\Resources\functionnal\CounterTrait\CountPokemonTrait;
+use App\Tests\Resources\functionnal\HasserTrait\HasDexAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
@@ -15,6 +16,7 @@ class CalculateDexAvailabilityCommandTest extends KernelTestCase
 {
     use CountPokemonTrait;
     use CountDexAvailabilityTrait;
+    use HasDexAvailabilityTrait;
     use RefreshDatabaseTrait;
 
     public function setUp(): void

@@ -3,10 +3,12 @@
 namespace App\Tests\Functionnal\Command;
 
 use App\Tests\Resources\functionnal\CounterTrait\CountPokemonTrait;
+use App\Tests\Resources\functionnal\GetterTrait\GetPokemonTrait;
 
 class ImportPokemonCommandTest extends AbstractImportFileCommandTest
 {
     use CountPokemonTrait;
+    use GetPokemonTrait;
 
     public function testFileNoDataCsv(): void
     {

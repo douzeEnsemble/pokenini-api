@@ -60,6 +60,7 @@ final class Version20220620074422 extends AbstractMigration
         $this->addSql('CREATE INDEX IDX_6336F6A72FE71C3E ON pokedex (pokemon_id)');
         $this->addSql('CREATE INDEX IDX_6336F6A744FE8083 ON pokedex (dex_id)');
         $this->addSql('CREATE INDEX IDX_6336F6A71339B3D7 ON pokedex (catch_state_id)');
+        $this->addSql('CREATE UNIQUE INDEX pokemon_dex ON pokedex (pokemon_id, dex_id)');
         $this->addSql('COMMENT ON COLUMN pokedex.id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN pokedex.pokemon_id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN pokedex.dex_id IS \'(DC2Type:uuid)\'');

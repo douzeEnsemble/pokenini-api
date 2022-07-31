@@ -1,19 +1,19 @@
 {
   "info": {
     "_postman_id": "07de4c8a-4dc2-4940-a431-f91d12c03ec2",
-    "name": "Pkmn-Lagd Pokedex",
+    "name": "Pkmn-Lagd Album",
     "schema": "http://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
     {
-      "name": "Pokedex Red, Green, Blue, Yellow",
+      "name": "Album Red, Green, Blue, Yellow",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "const expectedDexTitle = \"Red, Green, Blue, Yellow\";",
-              "const expectedPokedexCount = 151;",
+              "const expectedAlbumCount = 151;",
               "const expectedIncludeTexts = [",
               "    'nidoran-f',",
               "    'nidoran-m',",
@@ -64,7 +64,7 @@
               "});",
               "",
               "pm.test(\"Pokemons list should have an expected count\", function () {",
-              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedAlbumCount);",
               "});"
             ],
             "type": "text/javascript"
@@ -75,13 +75,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/pokedex?dex.slug=redgreenblueyellow",
+          "raw": "http://caddy/album?dex.slug=redgreenblueyellow",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "pokedex"
+            "album"
           ],
           "query": [
             {
@@ -94,14 +94,14 @@
       "response": []
     },
     {
-      "name": "Pokedex Gold, Silver, Crystal",
+      "name": "Album Gold, Silver, Crystal",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "const expectedDexTitle = \"Gold, Silver, Crystal\";",
-              "const expectedPokedexCount = 278;",
+              "const expectedAlbumCount = 278;",
               "const expectedIncludeTexts = [",
               "    'nidoran-f',",
               "    'nidoran-m',",
@@ -152,7 +152,7 @@
               "});",
               "",
               "pm.test(\"Pokemons list should have an expected count\", function () {",
-              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedAlbumCount);",
               "});"
             ],
             "type": "text/javascript"
@@ -163,13 +163,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/pokedex?dex.slug=goldsilvercrystal",
+          "raw": "http://caddy/album?dex.slug=goldsilvercrystal",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "pokedex"
+            "album"
           ],
           "query": [
             {
@@ -182,14 +182,14 @@
       "response": []
     },
     {
-      "name": "Pokedex Ruby, Sapphire, Emerald",
+      "name": "Album Ruby, Sapphire, Emerald",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "const expectedDexTitle = \"Ruby, Sapphire, Emerald\";",
-              "const expectedPokedexCount = 416;",
+              "const expectedAlbumCount = 416;",
               "const expectedIncludeTexts = [",
               "    'nidoran-f',",
               "    'nidoran-m',",
@@ -240,7 +240,7 @@
               "});",
               "",
               "pm.test(\"Pokemons list should have an expected count\", function () {",
-              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedAlbumCount);",
               "});"
             ],
             "type": "text/javascript"
@@ -251,13 +251,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/pokedex?dex.slug=rubysapphireemerald",
+          "raw": "http://caddy/album?dex.slug=rubysapphireemerald",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "pokedex"
+            "album"
           ],
           "query": [
             {
@@ -270,14 +270,14 @@
       "response": []
     },
     {
-      "name": "Pokedex Red Fire, Leaf Green",
+      "name": "Album Red Fire, Leaf Green",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "const expectedDexTitle = \"Red Fire, Leaf Green\";",
-              "const expectedPokedexCount = 416;",
+              "const expectedAlbumCount = 416;",
               "const expectedIncludeTexts = [",
               "    'nidoran-f',",
               "    'nidoran-m',",
@@ -328,7 +328,7 @@
               "});",
               "",
               "pm.test(\"Pokemons list should have an expected count\", function () {",
-              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedAlbumCount);",
               "});"
             ],
             "type": "text/javascript"
@@ -339,13 +339,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/pokedex?dex.slug=redfireleafgreen",
+          "raw": "http://caddy/album?dex.slug=redfireleafgreen",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "pokedex"
+            "album"
           ],
           "query": [
             {
@@ -358,14 +358,14 @@
       "response": []
     },
     {
-      "name": "Pokedex Diamond, Pearl, Platinium",
+      "name": "Album Diamond, Pearl, Platinium",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "const expectedDexTitle = \"Diamond, Pearl, Platinium\";",
-              "const expectedPokedexCount = 632;",
+              "const expectedAlbumCount = 632;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
               "    'nidoran-f',",
@@ -416,7 +416,7 @@
               "});",
               "",
               "pm.test(\"Pokemons list should have an expected count\", function () {",
-              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedAlbumCount);",
               "});"
             ],
             "type": "text/javascript"
@@ -427,13 +427,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/pokedex?dex.slug=diamondpearlplatinium",
+          "raw": "http://caddy/album?dex.slug=diamondpearlplatinium",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "pokedex"
+            "album"
           ],
           "query": [
             {
@@ -446,14 +446,14 @@
       "response": []
     },
     {
-      "name": "Pokedex Heart Gold, Soul Silver",
+      "name": "Album Heart Gold, Soul Silver",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "const expectedDexTitle = \"Heart Gold, Soul Silver\";",
-              "const expectedPokedexCount = 632;",
+              "const expectedAlbumCount = 632;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
               "    'nidoran-f',",
@@ -504,7 +504,7 @@
               "});",
               "",
               "pm.test(\"Pokemons list should have an expected count\", function () {",
-              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedAlbumCount);",
               "});"
             ],
             "type": "text/javascript"
@@ -515,13 +515,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/pokedex?dex.slug=heartgoldsoulsilver",
+          "raw": "http://caddy/album?dex.slug=heartgoldsoulsilver",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "pokedex"
+            "album"
           ],
           "query": [
             {
@@ -534,14 +534,14 @@
       "response": []
     },
     {
-      "name": "Pokedex Black, White",
+      "name": "Album Black, White",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "const expectedDexTitle = \"Black, White\";",
-              "const expectedPokedexCount = 799;",
+              "const expectedAlbumCount = 799;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
               "    'nidoran-f',",
@@ -592,7 +592,7 @@
               "});",
               "",
               "pm.test(\"Pokemons list should have an expected count\", function () {",
-              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedAlbumCount);",
               "});"
             ],
             "type": "text/javascript"
@@ -603,13 +603,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/pokedex?dex.slug=blackwhite",
+          "raw": "http://caddy/album?dex.slug=blackwhite",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "pokedex"
+            "album"
           ],
           "query": [
             {
@@ -622,14 +622,14 @@
       "response": []
     },
     {
-      "name": "Pokedex Black 2, White 2",
+      "name": "Album Black 2, White 2",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "const expectedDexTitle = \"Black 2, White 2\";",
-              "const expectedPokedexCount = 802;",
+              "const expectedAlbumCount = 802;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
               "    'nidoran-f',",
@@ -680,7 +680,7 @@
               "});",
               "",
               "pm.test(\"Pokemons list should have an expected count\", function () {",
-              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedAlbumCount);",
               "});"
             ],
             "type": "text/javascript"
@@ -691,13 +691,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/pokedex?dex.slug=black2white2",
+          "raw": "http://caddy/album?dex.slug=black2white2",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "pokedex"
+            "album"
           ],
           "query": [
             {
@@ -710,14 +710,14 @@
       "response": []
     },
     {
-      "name": "Pokedex X, Y",
+      "name": "Album X, Y",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "const expectedDexTitle = \"X, Y\";",
-              "const expectedPokedexCount = 970;",
+              "const expectedAlbumCount = 970;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
               "    'Mega Venusaur',",
@@ -768,7 +768,7 @@
               "});",
               "",
               "pm.test(\"Pokemons list should have an expected count\", function () {",
-              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedAlbumCount);",
               "});"
             ],
             "type": "text/javascript"
@@ -779,13 +779,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/pokedex?dex.slug=xy",
+          "raw": "http://caddy/album?dex.slug=xy",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "pokedex"
+            "album"
           ],
           "query": [
             {
@@ -798,14 +798,14 @@
       "response": []
     },
     {
-      "name": "Pokedex Omega Ruby, Alpha Sapphire",
+      "name": "Album Omega Ruby, Alpha Sapphire",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "const expectedDexTitle = \"Omega Ruby, Alpha Sapphire\";",
-              "const expectedPokedexCount = 970;",
+              "const expectedAlbumCount = 970;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
               "    'Mega Venusaur',",
@@ -856,7 +856,7 @@
               "});",
               "",
               "pm.test(\"Pokemons list should have an expected count\", function () {",
-              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedAlbumCount);",
               "});"
             ],
             "type": "text/javascript"
@@ -867,13 +867,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/pokedex?dex.slug=omegarubyalphasapphire",
+          "raw": "http://caddy/album?dex.slug=omegarubyalphasapphire",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "pokedex"
+            "album"
           ],
           "query": [
             {
@@ -886,14 +886,14 @@
       "response": []
     },
     {
-      "name": "Pokedex Sun, Moon",
+      "name": "Album Sun, Moon",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "const expectedDexTitle = \"Sun, Moon\";",
-              "const expectedPokedexCount = 1080;",
+              "const expectedAlbumCount = 1080;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
               "    'Mega Venusaur',",
@@ -944,7 +944,7 @@
               "});",
               "",
               "pm.test(\"Pokemons list should have an expected count\", function () {",
-              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedAlbumCount);",
               "});"
             ],
             "type": "text/javascript"
@@ -955,13 +955,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/pokedex?dex.slug=sunmoon",
+          "raw": "http://caddy/album?dex.slug=sunmoon",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "pokedex"
+            "album"
           ],
           "query": [
             {
@@ -974,14 +974,14 @@
       "response": []
     },
     {
-      "name": "Pokedex Ultra Sun, Ultra Moon",
+      "name": "Album Ultra Sun, Ultra Moon",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "const expectedDexTitle = \"Ultra Sun, Ultra Moon\";",
-              "const expectedPokedexCount = 1086;",
+              "const expectedAlbumCount = 1086;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
               "    'Mega Venusaur',",
@@ -1032,7 +1032,7 @@
               "});",
               "",
               "pm.test(\"Pokemons list should have an expected count\", function () {",
-              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedAlbumCount);",
               "});"
             ],
             "type": "text/javascript"
@@ -1043,13 +1043,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/pokedex?dex.slug=ultrasunultramoon",
+          "raw": "http://caddy/album?dex.slug=ultrasunultramoon",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "pokedex"
+            "album"
           ],
           "query": [
             {
@@ -1062,14 +1062,14 @@
       "response": []
     },
     {
-      "name": "Pokedex Let's Go Pikachu, Let's Go Eevee",
+      "name": "Album Let's Go Pikachu, Let's Go Eevee",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "const expectedDexTitle = \"Let's Go Pikachu, Let's Go Eevee\";",
-              "const expectedPokedexCount = 208;",
+              "const expectedAlbumCount = 208;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
               "    'Mega Venusaur',",
@@ -1120,7 +1120,7 @@
               "});",
               "",
               "pm.test(\"Pokemons list should have an expected count\", function () {",
-              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedAlbumCount);",
               "});"
             ],
             "type": "text/javascript"
@@ -1131,13 +1131,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/pokedex?dex.slug=letsgopikachuletsgoeevee",
+          "raw": "http://caddy/album?dex.slug=letsgopikachuletsgoeevee",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "pokedex"
+            "album"
           ],
           "query": [
             {
@@ -1150,14 +1150,14 @@
       "response": []
     },
     {
-      "name": "Pokedex Sword, Shield",
+      "name": "Album Sword, Shield",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "const expectedDexTitle = \"Sword, Shield\";",
-              "const expectedPokedexCount = 943;",
+              "const expectedAlbumCount = 943;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
               "    'nidoran-f',",
@@ -1208,7 +1208,7 @@
               "});",
               "",
               "pm.test(\"Pokemons list should have an expected count\", function () {",
-              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedAlbumCount);",
               "});"
             ],
             "type": "text/javascript"
@@ -1219,13 +1219,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/pokedex?dex.slug=swordshield",
+          "raw": "http://caddy/album?dex.slug=swordshield",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "pokedex"
+            "album"
           ],
           "query": [
             {
@@ -1238,14 +1238,14 @@
       "response": []
     },
     {
-      "name": "Pokedex Brilland Diamond, Shining Pearl",
+      "name": "Album Brilland Diamond, Shining Pearl",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "const expectedDexTitle = \"Brilland Diamond, Shining Pearl\";",
-              "const expectedPokedexCount = 632;",
+              "const expectedAlbumCount = 632;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
               "    'nidoran-f',",
@@ -1296,7 +1296,7 @@
               "});",
               "",
               "pm.test(\"Pokemons list should have an expected count\", function () {",
-              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedAlbumCount);",
               "});"
             ],
             "type": "text/javascript"
@@ -1307,13 +1307,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/pokedex?dex.slug=brillanddiamondshiningpearl",
+          "raw": "http://caddy/album?dex.slug=brillanddiamondshiningpearl",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "pokedex"
+            "album"
           ],
           "query": [
             {
@@ -1326,14 +1326,14 @@
       "response": []
     },
     {
-      "name": "Pokedex Legend Arceus",
+      "name": "Album Legend Arceus",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "const expectedDexTitle = \"Legend Arceus\";",
-              "const expectedPokedexCount = 664;",
+              "const expectedAlbumCount = 664;",
               "const expectedIncludeTexts = [",
               "    'Unown A',",
               "    'unown-b',",
@@ -1384,7 +1384,7 @@
               "});",
               "",
               "pm.test(\"Pokemons list should have an expected count\", function () {",
-              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedAlbumCount);",
               "});"
             ],
             "type": "text/javascript"
@@ -1395,13 +1395,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/pokedex?dex.slug=legendarceus",
+          "raw": "http://caddy/album?dex.slug=legendarceus",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "pokedex"
+            "album"
           ],
           "query": [
             {
@@ -1414,14 +1414,14 @@
       "response": []
     },
     {
-      "name": "Pokedex Home",
+      "name": "Album Home",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "const expectedDexTitle = \"Home\";",
-              "const expectedPokedexCount = 1734;",
+              "const expectedAlbumCount = 1734;",
               "const expectedIncludeTexts = [",
               "    'Unown A',",
               "    'unown-b',",
@@ -1472,7 +1472,7 @@
               "});",
               "",
               "pm.test(\"Pokemons list should have an expected count\", function () {",
-              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedAlbumCount);",
               "});"
             ],
             "type": "text/javascript"
@@ -1483,13 +1483,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/pokedex?dex.slug=home",
+          "raw": "http://caddy/album?dex.slug=home",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "pokedex"
+            "album"
           ],
           "query": [
             {
@@ -1502,14 +1502,14 @@
       "response": []
     },
     {
-      "name": "Pokedex Home Shiny",
+      "name": "Album Home Shiny",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "const expectedDexTitle = \"Home Shiny\";",
-              "const expectedPokedexCount = 1213;",
+              "const expectedAlbumCount = 1213;",
               "const expectedIncludeTexts = [",
               "    'Unown A',",
               "    'unown-b',",
@@ -1560,7 +1560,7 @@
               "});",
               "",
               "pm.test(\"Pokemons list should have an expected count\", function () {",
-              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedAlbumCount);",
               "});"
             ],
             "type": "text/javascript"
@@ -1571,13 +1571,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/pokedex?dex.slug=homeshiny",
+          "raw": "http://caddy/album?dex.slug=homeshiny",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "pokedex"
+            "album"
           ],
           "query": [
             {
@@ -1590,14 +1590,14 @@
       "response": []
     },
     {
-      "name": "Pokedex Home Pokemon Go",
+      "name": "Album Home Pokemon Go",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
               "const expectedDexTitle = \"Home Pokemon Go\";",
-              "const expectedPokedexCount = 919;",
+              "const expectedAlbumCount = 919;",
               "const expectedIncludeTexts = [",
               "    'Unown A',",
               "    'nidoran-f',",
@@ -1648,7 +1648,7 @@
               "});",
               "",
               "pm.test(\"Pokemons list should have an expected count\", function () {",
-              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedAlbumCount);",
               "});"
             ],
             "type": "text/javascript"
@@ -1659,13 +1659,13 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/pokedex?dex.slug=homepokemongo",
+          "raw": "http://caddy/album?dex.slug=homepokemongo",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
-            "pokedex"
+            "album"
           ],
           "query": [
             {
