@@ -90,6 +90,10 @@ integration: newman
 newman: ## Execute newman
 ifeq ($(CI),"true")
 	docker run -T -v $(pwd)/api/tests/integration:/etc/newman -t postman/newman:alpine run collection.json
+    @$(SYMFONY) app:import:pokemon resources/data/pokemon_list.csv
+    @$(SYMFONY) app:import:game_availability resources/data/bulbapedia_availability.csv
+    @$(SYMFONY) app:calculate:game_bundle_availability
+    @$(SYMFONY) app:calculate:dex_availability
 else
 	docker run -v $(pwd)/api/tests/integration:/etc/newman -t postman/newman:alpine run collection.json
 endif
