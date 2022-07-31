@@ -6,10 +6,9 @@ use App\Entity\Dex;
 use App\Entity\DexAvailability;
 use App\Entity\GameAvailability;
 use App\Entity\Pokedex;
-use App\Entity\Pokemon;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Uid\Uuid;
 
 /**
  * @extends ServiceEntityRepository<Pokedex>
@@ -46,6 +45,39 @@ class PokedexRepository extends ServiceEntityRepository
             $sql,
             [
                 'dex_slug' => $dexSlug,
+            ]
+        );
+    }
+
+    public function upsertFromSlugs(string $dexSlug, string $pokemonSlug, string $catchStateSlug): void
+    {
+        $sql = <<<SQL
+        INSERT INTO pokedex (
+            id,
+            dex_id,
+            pokemon_id,
+            catch_state_id
+        )
+        VALUES
+        (
+            :id,
+            (SELECT id FROM dex WHERE slug = :dex_slug),
+            (SELECT id FROM pokemon WHERE slug = :pokemon_slug),
+            (SELECT id FROM catch_state WHERE slug = :catch_state_slug)
+        )
+        ON CONFLICT (dex_id, pokemon_id)
+        DO
+        UPDATE
+        SET catch_state_id = excluded.catch_state_id
+        SQL;
+
+        $this->getEntityManager()->getConnection()->executeQuery(
+            $sql,
+            [
+                'id' => Uuid::v4(),
+                'dex_slug' => $dexSlug,
+                'pokemon_slug' => $pokemonSlug,
+                'catch_state_slug' => $catchStateSlug,
             ]
         );
     }

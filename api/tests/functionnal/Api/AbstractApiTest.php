@@ -12,19 +12,27 @@ abstract class AbstractApiTest extends ApiTestCase
 
     /**
      * @param string[] $params
+     * @param string[]|string[][] $options
      */
-    public function apiRequest(string $route, array $params = []): ResponseInterface
-    {
+    public function apiRequest(
+        string $route,
+        array $params = [],
+        string $method = 'GET',
+        array $options = []
+    ): ResponseInterface {
         $urlParams = \http_build_query($params);
 
         return static::createClient()->request(
-            'GET',
+            $method,
             "/{$route}?$urlParams",
-            [
-                'headers' => [
-                    'accept' => 'application/json'
-                ]
-            ]
+            array_merge(
+                [
+                    'headers' => [
+                        'accept' => 'application/json'
+                    ]
+                ],
+                $options
+            )
         );
     }
 
