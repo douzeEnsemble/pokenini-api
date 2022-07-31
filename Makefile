@@ -26,13 +26,13 @@ install: build
 
 ## —— Docker 🐳 ————————————————————————————————————————————————————————————————
 build: ## Builds the Docker images
-	docker-compose build
+	$(DOCKER_COMP) build
 
 start: ## Start the project
-	docker-compose up -d
+	$(DOCKER_COMP) up -d
 
 stop: ## Stop the project
-	docker-compose down --remove-orphans
+	$(DOCKER_COMP) down --remove-orphans
 
 sh: ## Connect to the PHP FPM container
 	@$(PHP_CONT) sh
@@ -89,11 +89,12 @@ integration: newman
 
 newman: ## Execute newman
 ifeq ($(CI),"true")
-	docker run -T -v $(pwd)/api/tests/integration:/etc/newman -t postman/newman:alpine run collection.json
-    @$(SYMFONY) app:import:pokemon resources/data/pokemon_list.csv
-    @$(SYMFONY) app:import:game_availability resources/data/bulbapedia_availability.csv
-    @$(SYMFONY) app:calculate:game_bundle_availability
-    @$(SYMFONY) app:calculate:dex_availability
+	$(DOCKER_COMP) up -d
+	@$(SYMFONY) app:import:pokemon resources/data/pokemon_list.csv
+	@$(SYMFONY) app:import:game_availability resources/data/bulbapedia_availability.csv
+	@$(SYMFONY) app:calculate:game_bundle_availability
+	@$(SYMFONY) app:calculate:dex_availability
+	$(DOCKER_COMP) run -T newman run collection.json
 else
-	docker run -v $(pwd)/api/tests/integration:/etc/newman -t postman/newman:alpine run collection.json
+	$(DOCKER_COMP) run newman run collection.json
 endif
