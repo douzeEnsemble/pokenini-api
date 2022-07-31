@@ -9,7 +9,7 @@ on:
   workflow_dispatch: ~
 
 jobs:
-  tests:
+  build_and_tests:
     name: All Checks (Quality & Tests & Integration)
     runs-on: ubuntu-latest
     steps:
@@ -41,8 +41,6 @@ jobs:
         run: |
           docker-compose exec -T php bin/console -e test doctrine:database:create --if-not-exists
           docker-compose exec -T php bin/console -e test doctrine:migrations:migrate --no-interaction
-      - name: Pushe the built
-        run: 
       - name: Doctrine Schema Validator
         run: docker-compose exec -T php bin/console doctrine:schema:validate --skip-sync
       - name: Quality PHPCS
