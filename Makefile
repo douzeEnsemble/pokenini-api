@@ -88,7 +88,7 @@ integration: ## Execute all integration tests
 integration: newman
 
 newman: ## Execute newman
-ifeq ($(CI),"true")
+ifeq (${CI}, true)
 	$(DOCKER_COMP) up -d
 	@$(SYMFONY) app:import:pokemon resources/data/pokemon_list.csv
 	@$(SYMFONY) app:import:game_availability resources/data/bulbapedia_availability.csv
