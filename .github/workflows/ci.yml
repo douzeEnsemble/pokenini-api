@@ -10,7 +10,7 @@ on:
 
 jobs:
   tests:
-    name: Check Quality & Tests & Integration
+    name: All Checks (Quality & Tests & Integration)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
