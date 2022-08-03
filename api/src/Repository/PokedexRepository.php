@@ -26,7 +26,8 @@ class PokedexRepository extends ServiceEntityRepository
     public function getQueryFromDexSlug(string $dexSlug): \Traversable
     {
         $sql = <<<SQL
-        SELECT  p.slug AS pokemon_slug, p.name AS pokemon_name, p.icon_name AS pokemon_icon,
+        SELECT  p.slug AS pokemon_slug, p.name AS pokemon_name, p.french_name AS pokemon_french_name,
+                p.icon_name AS pokemon_icon,
                 cs.slug AS catch_state_slug, cs.name AS catch_state_name
         FROM    dex_availability AS da
             JOIN pokemon AS p

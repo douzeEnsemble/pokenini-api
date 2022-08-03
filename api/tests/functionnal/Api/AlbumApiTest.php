@@ -28,18 +28,21 @@ class AlbumApiTest extends AbstractApiTest
 
         $this->assertEquals('bulbasaur', $pokemons[0]['pokemon_slug']);
         $this->assertEquals('Bulbasaur', $pokemons[0]['pokemon_name']);
+        $this->assertEquals('Bulbizarre', $pokemons[0]['pokemon_french_name']);
         $this->assertEquals('bulbasaur', $pokemons[0]['pokemon_icon']);
         $this->assertEquals('no', $pokemons[0]['catch_state_slug']);
         $this->assertEquals('No', $pokemons[0]['catch_state_name']);
 
         $this->assertEquals('venusaur', $pokemons[2]['pokemon_slug']);
         $this->assertEquals('Venusaur', $pokemons[2]['pokemon_name']);
+        $this->assertEquals('Florizarre', $pokemons[2]['pokemon_french_name']);
         $this->assertEquals('venusaur', $pokemons[2]['pokemon_icon']);
         $this->assertEquals('maybenot', $pokemons[2]['catch_state_slug']);
         $this->assertEquals('Maybe not', $pokemons[2]['catch_state_name']);
 
         $this->assertEquals('douze', $pokemons[3]['pokemon_slug']);
         $this->assertEquals('Douze', $pokemons[3]['pokemon_name']);
+        $this->assertEquals('Douze', $pokemons[3]['pokemon_french_name']);
         $this->assertEquals('douze', $pokemons[3]['pokemon_icon']);
         $this->assertNull($pokemons[3]['catch_state_slug']);
         $this->assertNull($pokemons[3]['catch_state_name']);
@@ -92,9 +95,7 @@ class AlbumApiTest extends AbstractApiTest
 
         $this->apiRequest(
             'album/redgreenblueyellow/douze',
-            [
-                'dex.slug' => 'redgreenblueyellow'
-            ],
+            [],
             'PUT',
             [
                 'body' => 'maybenot'
