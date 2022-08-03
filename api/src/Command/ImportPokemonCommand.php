@@ -70,6 +70,7 @@ class ImportPokemonCommand extends AbstractImportFileCommand
             'Family order',
             'Evolution',
             'Pokémon',
+            'Pokémon Fr',
             'Dex',
             'Sprites',
             'Shiny Sprites',
@@ -127,6 +128,7 @@ class ImportPokemonCommand extends AbstractImportFileCommand
 
         return [
             'name' => $record['Pokémon'],
+            'frenchName' => $record['Pokémon Fr'],
             'nationalDexNumber' => $record['Dex'],
             'family' => $record['Family'],
             'familyOrder' => $record['Family order'],
@@ -154,6 +156,7 @@ class ImportPokemonCommand extends AbstractImportFileCommand
         $sqlParameters = [
             'id' => Uuid::v4(),
             'name' => $pokemon['name'],
+            'french_name' => $pokemon['frenchName'],
             'national_dex_number' => $pokemon['nationalDexNumber'],
             'family' => $pokemon['family'],
             'familyOrder' => $pokemon['familyOrder'],
@@ -172,6 +175,7 @@ class ImportPokemonCommand extends AbstractImportFileCommand
         INSERT INTO pokemon (
             id,
             name,
+            french_name,
             national_dex_number,
             family_id,
             family_order,
@@ -188,6 +192,7 @@ class ImportPokemonCommand extends AbstractImportFileCommand
         VALUES (
             :id,
             :name,
+            :french_name,
             :national_dex_number,
             (SELECT id FROM pokemon WHERE name = :family and :name <> :family),
             :familyOrder,
@@ -204,7 +209,8 @@ class ImportPokemonCommand extends AbstractImportFileCommand
         ON CONFLICT (name)
         DO
         UPDATE
-        SET national_dex_number = excluded.national_dex_number,
+        SET french_name = excluded.french_name,
+            national_dex_number = excluded.national_dex_number,
             family_id = excluded.family_id,
             family_order = excluded.family_order,
             prime_name = excluded.prime_name,

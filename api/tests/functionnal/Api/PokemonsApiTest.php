@@ -37,6 +37,7 @@ class PokemonsApiTest extends AbstractApiTest
             'name' => 'Bulbasaur',
             'slug' => 'bulbasaur',
             'primeName' => 'Bulbasaur',
+            'frenchName' => 'Bulbizarre',
         ], $data);
     }
 
@@ -63,6 +64,7 @@ class PokemonsApiTest extends AbstractApiTest
                 'name' => 'Bulbasaur',
                 'slug' => 'bulbasaur',
                 'primeName' => 'Bulbasaur',
+                'frenchName' => 'Bulbizarre',
             ],
             'bankable' => true,
             'originalGameBundle' => [
@@ -79,6 +81,7 @@ class PokemonsApiTest extends AbstractApiTest
             'name' => 'Ivysaur',
             'slug' => 'ivysaur',
             'primeName' => 'Ivysaur',
+            'frenchName' => 'Herbizarre',
         ], $data);
     }
 
@@ -105,6 +108,7 @@ class PokemonsApiTest extends AbstractApiTest
                 'name' => 'Bulbasaur',
                 'slug' => 'bulbasaur',
                 'primeName' => 'Bulbasaur',
+                'frenchName' => 'Bulbizarre',
             ],
             'bankable' => true,
             'originalGameBundle' => [
@@ -124,6 +128,7 @@ class PokemonsApiTest extends AbstractApiTest
             'name' => 'Mega Venusaur',
             'slug' => 'megavenusaur',
             'primeName' => 'Venusaur',
+            'frenchName' => 'Mega Florizarre',
         ], $data);
     }
 }

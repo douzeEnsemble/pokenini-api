@@ -65,7 +65,7 @@ final class Version20220620074422 extends AbstractMigration
         $this->addSql('COMMENT ON COLUMN pokedex.pokemon_id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN pokedex.dex_id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN pokedex.catch_state_id IS \'(DC2Type:uuid)\'');
-        $this->addSql('CREATE TABLE pokemon (id UUID NOT NULL, family_id UUID DEFAULT NULL, original_game_bundle_id UUID DEFAULT NULL, variant_form_id UUID DEFAULT NULL, regional_form_id UUID DEFAULT NULL, special_form_id UUID DEFAULT NULL, national_dex_number INT NOT NULL, prime_name VARCHAR(255) NOT NULL, bankable BOOLEAN NOT NULL, bankableish BOOLEAN DEFAULT NULL, icon_name VARCHAR(255) NOT NULL, family_order INT NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, deleted_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
+        $this->addSql('CREATE TABLE pokemon (id UUID NOT NULL, family_id UUID DEFAULT NULL, original_game_bundle_id UUID DEFAULT NULL, variant_form_id UUID DEFAULT NULL, regional_form_id UUID DEFAULT NULL, special_form_id UUID DEFAULT NULL, french_name VARCHAR(255) NOT NULL, national_dex_number INT NOT NULL, prime_name VARCHAR(255) NOT NULL, bankable BOOLEAN NOT NULL, bankableish BOOLEAN DEFAULT NULL, icon_name VARCHAR(255) NOT NULL, family_order INT NOT NULL, name VARCHAR(255) NOT NULL, slug VARCHAR(255) NOT NULL, deleted_at TIMESTAMP(0) WITHOUT TIME ZONE DEFAULT NULL, PRIMARY KEY(id))');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_62DC90F35E237E06 ON pokemon (name)');
         $this->addSql('CREATE UNIQUE INDEX UNIQ_62DC90F3989D9B62 ON pokemon (slug)');
         $this->addSql('CREATE INDEX IDX_62DC90F3C35E566A ON pokemon (family_id)');

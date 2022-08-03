@@ -22,6 +22,12 @@ class Pokemon
     use SoftDeleteableEntity;
 
     #[ORM\Column]
+    #[Groups([
+        "pokemon_list",
+    ])]
+    public string $frenchName = '';
+
+    #[ORM\Column]
     #[Groups(["pokemon_list"])]
     public int $nationalDexNumber;
 

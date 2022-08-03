@@ -1,7 +1,3 @@
-
-
-
-
 # Pokémon Living/Alternate/Gender Extended Dex!
 
 ## To Begin
@@ -34,6 +30,11 @@ docker-compose exec php sh -c '
 
 ### Install
 
+```
+make install start
+```
+
+or a hard way
 ```
 docker-compose build --pull --no-cache
 docker-compose up -d 
@@ -92,7 +93,7 @@ docker-compose exec php sh -c '
 ### Open bash into php  container
 
 ```
-docker-compose run --rm php /bin/sh
+make sh
 ```
 
 `exit` in it to quit.
@@ -102,10 +103,7 @@ docker-compose run --rm php /bin/sh
 To install a package
 
 ```
-docker-compose exec php sh -c '
-    composer require gedmo/doctrine-extensions
-    php bin/console cache:clear
-'
+make composer c="require gedmo/doctrine-extensions"
 ```
 
 ### Reset database and migrations

@@ -11,6 +11,7 @@ App\Entity\Pokemon:
         
     pokemon_douze (extends pokemon):
         name: 'Douze'
+        frenchName: 'Douze'
         family: ~
         nationalDexNumber: '1212'
         originalGameBundle: '@game_bundle_red_green_blue_yellow'       
@@ -19,6 +20,7 @@ App\Entity\Pokemon:
         
     pokemon_bulbasaur (extends pokemon):
         name: 'Bulbasaur'
+        frenchName: 'Bulbizarre'
         family: ~
         nationalDexNumber: '1'
         originalGameBundle: '@game_bundle_red_green_blue_yellow'       
@@ -27,6 +29,7 @@ App\Entity\Pokemon:
     
     pokemon_ivysaur (extends pokemon):
         name: 'Ivysaur'
+        frenchName: 'Herbizarre'
         family: '@pokemon_bulbasaur'
         nationalDexNumber: '2'
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
@@ -35,6 +38,7 @@ App\Entity\Pokemon:
         
     pokemon_venusaur (extends pokemon):
         name: 'Venusaur'
+        frenchName: 'Florizarre'
         family: '@pokemon_bulbasaur'
         nationalDexNumber: '3'
         originalGameBundle: '@game_bundle_red_green_blue_yellow'       
@@ -43,6 +47,7 @@ App\Entity\Pokemon:
         
     pokemon_venusaur_f (extends pokemon):
         name: 'Venusaur ♀'
+        frenchName: 'Florizarre ♀'
         primeName: 'Venusaur'
         family: '@pokemon_bulbasaur'
         nationalDexNumber: '3'
@@ -53,6 +58,7 @@ App\Entity\Pokemon:
     
     pokemon_venusaur_mega (extends pokemon):
         name: 'Mega Venusaur'
+        frenchName: 'Mega Florizarre'
         primeName: 'Venusaur'
         family: '@pokemon_bulbasaur'
         nationalDexNumber: '3'
@@ -63,6 +69,7 @@ App\Entity\Pokemon:
     
     pokemon_venusaur_gigantamax (extends pokemon):
         name: 'Gigantamax Venusaur'
+        frenchName: 'Gigamax Florizarre'
         primeName: 'Venusaur'
         family: '@pokemon_bulbasaur'
         nationalDexNumber: '3'
@@ -73,6 +80,7 @@ App\Entity\Pokemon:
     
     pokemon_deoxys (extends pokemon):
         name: 'Deoxys'
+        frenchName: 'Deoxys'
         family: 
         nationalDexNumber: '386'
         originalGameBundle: '@game_bundle_ruby_sapphire_emerald'
@@ -82,6 +90,7 @@ App\Entity\Pokemon:
     pokemon_deoxys_attack (extends pokemon):
         name: 'Deoxys-Attack'
         primeName: 'Deoxys'
+        frenchName: 'Deoxys Attaque'
         family: '@pokemon_deoxys'
         nationalDexNumber: '386'
         originalGameBundle: '@game_bundle_ruby_sapphire_emerald'
@@ -92,6 +101,7 @@ App\Entity\Pokemon:
     pokemon_deoxys_defense (extends pokemon):
         name: 'Deoxys-Defense'
         primeName: 'Deoxys'
+        frenchName: 'Deoxys Défense'
         family: '@pokemon_deoxys'
         nationalDexNumber: '386'
         originalGameBundle: '@game_bundle_ruby_sapphire_emerald'
@@ -102,6 +112,7 @@ App\Entity\Pokemon:
     pokemon_deoxys_speed (extends pokemon):
         name: 'Deoxys-Speed'
         primeName: 'Deoxys'
+        frenchName: 'Deoxys Vitesse'
         family: '@pokemon_deoxys'
         nationalDexNumber: '386'
         originalGameBundle: '@game_bundle_ruby_sapphire_emerald'
