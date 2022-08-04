@@ -46,6 +46,7 @@ App\Entity\Pokemon:
         familyOrder: 2
         
     pokemon_venusaur_f (extends pokemon):
+        slug: 'venusaur-f'
         name: 'Venusaur ♀'
         frenchName: 'Florizarre ♀'
         primeName: 'Venusaur'
@@ -57,6 +58,7 @@ App\Entity\Pokemon:
         familyOrder: 3
     
     pokemon_venusaur_mega (extends pokemon):
+        slug: 'venusaur-mega'
         name: 'Mega Venusaur'
         frenchName: 'Mega Florizarre'
         primeName: 'Venusaur'
@@ -68,6 +70,7 @@ App\Entity\Pokemon:
         familyOrder: 4
     
     pokemon_venusaur_gigantamax (extends pokemon):
+        slug: 'venusaur-gmax'
         name: 'Gigantamax Venusaur'
         frenchName: 'Gigamax Florizarre'
         primeName: 'Venusaur'

@@ -126,7 +126,7 @@ class PokemonsApiTest extends AbstractApiTest
             'iconName' => 'venusaur',
             'familyOrder' => 4,
             'name' => 'Mega Venusaur',
-            'slug' => 'megavenusaur',
+            'slug' => 'venusaurmega',
             'primeName' => 'Venusaur',
             'frenchName' => 'Mega Florizarre',
         ], $data);

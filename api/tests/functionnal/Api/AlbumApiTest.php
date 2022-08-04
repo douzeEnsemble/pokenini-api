@@ -26,26 +26,34 @@ class AlbumApiTest extends AbstractApiTest
         /** @var string[][] $pokemons */
         $pokemons = $data['pokemons'];
 
-        $this->assertEquals('bulbasaur', $pokemons[0]['pokemon_slug']);
-        $this->assertEquals('Bulbasaur', $pokemons[0]['pokemon_name']);
-        $this->assertEquals('Bulbizarre', $pokemons[0]['pokemon_french_name']);
-        $this->assertEquals('bulbasaur', $pokemons[0]['pokemon_icon']);
-        $this->assertEquals('no', $pokemons[0]['catch_state_slug']);
-        $this->assertEquals('No', $pokemons[0]['catch_state_name']);
+        $this->assertEquals(
+            AlbumApiTestData::getExpectedRegGreenBlueYellowContent(),
+            $pokemons
+        );
+    }
 
-        $this->assertEquals('venusaur', $pokemons[2]['pokemon_slug']);
-        $this->assertEquals('Venusaur', $pokemons[2]['pokemon_name']);
-        $this->assertEquals('Florizarre', $pokemons[2]['pokemon_french_name']);
-        $this->assertEquals('venusaur', $pokemons[2]['pokemon_icon']);
-        $this->assertEquals('maybenot', $pokemons[2]['catch_state_slug']);
-        $this->assertEquals('Maybe not', $pokemons[2]['catch_state_name']);
+    public function testListHome(): void
+    {
+        $response = $this->apiRequest('album/home');
 
-        $this->assertEquals('douze', $pokemons[3]['pokemon_slug']);
-        $this->assertEquals('Douze', $pokemons[3]['pokemon_name']);
-        $this->assertEquals('Douze', $pokemons[3]['pokemon_french_name']);
-        $this->assertEquals('douze', $pokemons[3]['pokemon_icon']);
-        $this->assertNull($pokemons[3]['catch_state_slug']);
-        $this->assertNull($pokemons[3]['catch_state_name']);
+        $this->assertEquals(200, $response->getStatusCode());
+
+        $content = $response->getContent();
+        /** @var string[][]|string[][][] $data */
+        $data = json_decode($content, true);
+
+        $this->assertArrayHasKey('pokemons', $data);
+        $this->assertArrayHasKey('dex', $data);
+
+        $this->assertEquals('Home', $data['dex']['name']);
+
+        /** @var string[][] $pokemons */
+        $pokemons = $data['pokemons'];
+
+        $this->assertEquals(
+            AlbumApiTestData::getExpectedHomeContent(),
+            $pokemons
+        );
     }
 
     public function testListNoSlug(): void
