@@ -104,12 +104,11 @@ endif
 deploy: ## Deployment
 	rm -Rf ~/tmp/deploy
 	mkdir -p ~/tmp/deploy
-	heroku git:clone -a pokenini-api ~/tmp/deploy/heroku
 	git clone git@github.com:RenaudDouze/pokenini-api.git ~/tmp/deploy/project
 	rm -Rf ~/tmp/deploy/project/.git
-	cp -R ~/tmp/deploy/project/api/* ~/tmp/deploy/heroku/
+	heroku git:remote -a pokenini-api
 	cd ~/tmp/deploy/heroku; \
         git add --all; \
 		git commit --allow-empty -m "Deployment"; \
-		git push heroku main
+		git push heroku master
 	rm -Rf ~/tmp/deploy
