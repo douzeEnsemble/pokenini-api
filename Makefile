@@ -15,7 +15,7 @@ SYMFONY  = $(PHP_CONT) bin/console
 
 # Misc
 .DEFAULT_GOAL = help
-.PHONY        = help build up start down logs sh composer vendor sf cc
+.PHONY        = help build up start down logs sh composer vendor sf cc deploy
 
 ## —— 🎵 🐳 The Symfony-docker Makefile 🐳 🎵 ——————————————————————————————————
 help: ## Outputs this help screen
@@ -98,3 +98,18 @@ ifeq (${CI}, true)
 else
 	$(DOCKER_COMP) run newman run collection.json
 endif
+
+
+## —— Deployment 🚀 ————————————————————————————————————————————————————————————————
+deploy: ## Deployment
+	rm -Rf ~/tmp/deploy
+	mkdir -p ~/tmp/deploy
+	heroku git:clone -a polar-coast-47030 ~/tmp/deploy/heroku
+	git clone git@github.com:RenaudDouze/pokenini-api-platform.git ~/tmp/deploy/api
+	rm -Rf ~/tmp/deploy/api/.git
+	cp -R ~/tmp/deploy/api ~/tmp/deploy/heroku/
+	cd ~/tmp/deploy/heroku
+	git add --all
+	git commit --allow-empty -m "Deployment"
+	git push heroku master
+	rm -Rf ~/tmp/deploy
