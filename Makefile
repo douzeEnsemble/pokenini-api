@@ -106,9 +106,9 @@ deploy: ## Deployment
 	mkdir -p ~/tmp/deploy
 	git clone git@github.com:RenaudDouze/pokenini-api.git ~/tmp/deploy/pokenini-api
 	cd ~/tmp/deploy/pokenini-api/api; \
-	    git init; \
+	    git init -b main; \
 	    heroku git:remote -a pokenini-api; \
         git add --all; \
 		git commit --allow-empty -m "Deployment"; \
-		git push heroku master
-	rm -Rf ~/tmp/deploy
+		git push heroku main
+	rm -Rf ~/tmp/deploy/pokenini-api
