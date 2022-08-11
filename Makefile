@@ -107,7 +107,7 @@ deploy: ## Deployment
 	heroku git:clone -a polar-coast-47030 ~/tmp/deploy/heroku
 	git clone git@github.com:RenaudDouze/pokenini-api-platform.git ~/tmp/deploy/api
 	rm -Rf ~/tmp/deploy/api/.git
-	cp -R ~/tmp/deploy/api ~/tmp/deploy/heroku/
+	cp -R ~/tmp/deploy/api/api ~/tmp/deploy/heroku/
 	cd ~/tmp/deploy/heroku
 	git add --all
 	git commit --allow-empty -m "Deployment"
