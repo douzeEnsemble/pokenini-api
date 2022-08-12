@@ -11,6 +11,7 @@ trait FrenchNamedTrait
     #[Groups([
         "pokemon_list",
         "dex_list",
+        "catch_state_list",
     ])]
     public string $frenchName = '';
 }
