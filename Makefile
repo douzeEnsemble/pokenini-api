@@ -103,11 +103,12 @@ endif
 ## —— Deployment 🚀 ————————————————————————————————————————————————————————————————
 deploy: ## Deployment
 	rm -Rf ~/tmp/deploy/pokenini-api
-	mkdir -p ~/tmp/deploy
-	git clone git@github.com:RenaudDouze/pokenini-api.git ~/tmp/deploy/pokenini-api
-	cd ~/tmp/deploy/pokenini-api/api; \
-	    git init -b main; \
-	    heroku git:remote -a pokenini-api; \
+	mkdir -p ~/tmp/deploy/pokenini-api
+	heroku git:clone -a pokenini-api ~/tmp/deploy/pokenini-api/heroku
+	git clone git@github.com:RenaudDouze/pokenini-api.git ~/tmp/deploy/pokenini-api/project
+	rm -Rf ~/tmp/deploy/pokenini-api/project/.git
+	cp -R ~/tmp/deploy/pokenini-api/project/api/* ~/tmp/deploy/pokenini-api/heroku/
+	cd ~/tmp/deploy/pokenini-api/heroku; \
         git add --all; \
 		git commit --allow-empty -m "Deployment"; \
 		git push heroku main

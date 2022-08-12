@@ -7,6 +7,8 @@
 ```
 make stop build start && \
 docker-compose exec php sh -c '
+    php bin/console doct:data:drop --force && php bin/console doct:data:c && php bin/console doct:migr:mig --no-interaction
+    php bin/console doct:data:drop --force --env=test && php bin/console doct:data:c --env=test
     php bin/console app:import:pokemon resources/data/pokemon_list.csv
     php bin/console app:import:game_availability resources/data/bulbapedia_availability.csv
     php bin/console app:calculate:game_bundle_availability
@@ -21,6 +23,7 @@ or
 ```
 docker-compose exec php sh -c '
     php bin/console doct:data:drop --force && php bin/console doct:data:c && php bin/console doct:migr:mig --no-interaction
+    php bin/console doct:data:drop --force --env=test && php bin/console doct:data:c --env=test
     php bin/console app:import:pokemon resources/data/pokemon_list.csv
     php bin/console app:import:game_availability resources/data/bulbapedia_availability.csv
     php bin/console app:calculate:game_bundle_availability
@@ -127,6 +130,6 @@ docker-compose exec php sh -c '
 To execute a migration over and over
 ```
 docker-compose exec php sh -c '
-    php bin/console doct:migr:exec 'DoctrineMigrations\Version20220621220300' --down --no-interaction && php bin/console doct:migr:exec 'DoctrineMigrations\Version20220621220300' --up --no-interaction
+    php bin/console doct:migr:exec 'DoctrineMigrations\\Version20220812093938' --down --no-interaction && php bin/console doct:migr:exec 'DoctrineMigrations\\Version20220812093938' --up --no-interaction
 '
 ```

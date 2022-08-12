@@ -32,7 +32,8 @@ class AlbumController extends AbstractController
         // Better with serializer ?
         return new JsonResponse([
             'dex' => [
-                'name' => $dex?->name
+                'name' => $dex?->name,
+                'french_name' => $dex?->frenchName,
             ],
             'pokemons' => $pokemons,
         ]);

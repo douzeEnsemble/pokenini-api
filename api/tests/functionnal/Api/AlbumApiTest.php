@@ -18,11 +18,14 @@ class AlbumApiTest extends AbstractApiTest
         /** @var string[][]|string[][][] $data */
         $data = json_decode($content, true);
 
-        $this->assertArrayHasKey('pokemons', $data);
         $this->assertArrayHasKey('dex', $data);
 
+        $this->assertArrayHasKey('name', $data['dex']);
         $this->assertEquals('Red / Green / Blue / Yellow', $data['dex']['name']);
+        $this->assertArrayHasKey('french_name', $data['dex']);
+        $this->assertEquals('Rouge / Vert / Bleu / Jaune', $data['dex']['french_name']);
 
+        $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
         $pokemons = $data['pokemons'];
 
@@ -42,11 +45,13 @@ class AlbumApiTest extends AbstractApiTest
         /** @var string[][]|string[][][] $data */
         $data = json_decode($content, true);
 
-        $this->assertArrayHasKey('pokemons', $data);
         $this->assertArrayHasKey('dex', $data);
-
+        $this->assertArrayHasKey('name', $data['dex']);
         $this->assertEquals('Home', $data['dex']['name']);
+        $this->assertArrayHasKey('french_name', $data['dex']);
+        $this->assertEquals('Home', $data['dex']['french_name']);
 
+        $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
         $pokemons = $data['pokemons'];
 
