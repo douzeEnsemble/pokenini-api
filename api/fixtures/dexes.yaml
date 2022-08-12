@@ -7,7 +7,7 @@ App\Entity\Dex:
     dex_goldsilvercrystal:
         name: 'Gold / Silver / Crystal'
         frenchName: 'Or / Argent / Cristal'
-        selectionRule: "(p.bankable or p.bankableish) and ba?.redgreenblueyellow and ba?.goldsilvercrystal and p.specialForm === null and p.regionalForm === null"
+        selectionRule: "(p.bankable or p.bankableish) and ba?.goldsilvercrystal and p.specialForm === null and p.regionalForm === null"
         orderNumber: 2
     dex_rubysapphireemerald:
         name: 'Ruby / Sapphire / Emerald'
@@ -19,3 +19,9 @@ App\Entity\Dex:
         frenchName: 'Home'
         selectionRule: "(p.bankable or p.bankableish)"
         orderNumber: 3
+    dex_home_shiny:
+        name: 'Home Shiny'
+        frenchName: 'Home Chromatique'
+        selectionRule: "(p.bankable or p.bankableish)"
+        orderNumber: 4
+        isShiny: true

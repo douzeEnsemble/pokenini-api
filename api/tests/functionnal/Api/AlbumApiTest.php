@@ -16,7 +16,7 @@ class AlbumApiTest extends AbstractApiTest
 
         $content = $response->getContent();
         /** @var string[][]|string[][][] $data */
-        $data = json_decode($content, true);
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('dex', $data);
 
@@ -24,6 +24,8 @@ class AlbumApiTest extends AbstractApiTest
         $this->assertEquals('Red / Green / Blue / Yellow', $data['dex']['name']);
         $this->assertArrayHasKey('french_name', $data['dex']);
         $this->assertEquals('Rouge / Vert / Bleu / Jaune', $data['dex']['french_name']);
+        $this->assertArrayHasKey('is_shiny', $data['dex']);
+        $this->assertFalse($data['dex']['is_shiny']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -43,13 +45,15 @@ class AlbumApiTest extends AbstractApiTest
 
         $content = $response->getContent();
         /** @var string[][]|string[][][] $data */
-        $data = json_decode($content, true);
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('dex', $data);
         $this->assertArrayHasKey('name', $data['dex']);
         $this->assertEquals('Home', $data['dex']['name']);
         $this->assertArrayHasKey('french_name', $data['dex']);
         $this->assertEquals('Home', $data['dex']['french_name']);
+        $this->assertArrayHasKey('is_shiny', $data['dex']);
+        $this->assertFalse($data['dex']['is_shiny']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -59,6 +63,31 @@ class AlbumApiTest extends AbstractApiTest
             AlbumApiTestData::getExpectedHomeContent(),
             $pokemons
         );
+    }
+
+    public function testListHomeShiny(): void
+    {
+        $response = $this->apiRequest('album/homeshiny');
+
+        $this->assertEquals(200, $response->getStatusCode());
+
+        $content = $response->getContent();
+        /** @var string[][]|string[][][] $data */
+        $data = json_decode($content, true);
+
+        $this->assertArrayHasKey('dex', $data);
+        $this->assertArrayHasKey('name', $data['dex']);
+        $this->assertEquals('Home Shiny', $data['dex']['name']);
+        $this->assertArrayHasKey('french_name', $data['dex']);
+        $this->assertEquals('Home Chromatique', $data['dex']['french_name']);
+        $this->assertArrayHasKey('is_shiny', $data['dex']);
+        $this->assertTrue($data['dex']['is_shiny']);
+
+        $this->assertArrayHasKey('pokemons', $data);
+        /** @var string[][] $pokemons */
+        $pokemons = $data['pokemons'];
+
+        $this->assertEquals([], $pokemons);
     }
 
     public function testListNoSlug(): void
