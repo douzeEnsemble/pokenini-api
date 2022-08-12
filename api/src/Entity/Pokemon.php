@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Entity\Traits\BaseEntityTrait;
+use App\Entity\Traits\FrenchNamedTrait;
 use App\Entity\Traits\NamedTrait;
 use App\Entity\Traits\SlugifiedTrait;
 use Doctrine\ORM\Mapping as ORM;
@@ -18,14 +19,9 @@ class Pokemon
 {
     use BaseEntityTrait;
     use NamedTrait;
+    use FrenchNamedTrait;
     use SlugifiedTrait;
     use SoftDeleteableEntity;
-
-    #[ORM\Column]
-    #[Groups([
-        "pokemon_list",
-    ])]
-    public string $frenchName = '';
 
     #[ORM\Column]
     #[Groups(["pokemon_list"])]

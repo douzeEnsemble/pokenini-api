@@ -18,7 +18,7 @@ final class Version20220621220300 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-        $this->insertDexes(array(
+        $this->insertDexes([
             'Red, Green, Blue, Yellow' => <<< RULE
                 (p.bankable or p.bankableish)
                 and p.variantForm === null
@@ -239,7 +239,7 @@ final class Version20220621220300 extends AbstractMigration
                 and p.specialForm == null
                 and p.regionalForm == null
                 RULE,
-        ));
+        ]);
 
         $gameBundlesAndGeneration = [
             'Red, Green, Blue, Yellow' => '1',

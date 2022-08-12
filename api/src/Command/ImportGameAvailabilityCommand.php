@@ -99,7 +99,7 @@ class ImportGameAvailabilityCommand extends AbstractImportFileCommand
             'Shield',
             'Brillant Diamond',
             'Shining Pearl',
-            'Legend Arceus',
+            'Pokémon Legends Arceus',
         ];
     }
 

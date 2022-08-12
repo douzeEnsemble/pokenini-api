@@ -5,6 +5,7 @@ namespace App\Entity;
 use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Entity\Traits\BaseEntityTrait;
+use App\Entity\Traits\FrenchNamedTrait;
 use App\Entity\Traits\NamedTrait;
 use App\Entity\Traits\OrderedTrait;
 use App\Entity\Traits\SlugifiedTrait;
@@ -17,6 +18,7 @@ class Dex
 {
     use BaseEntityTrait;
     use NamedTrait;
+    use FrenchNamedTrait;
     use SlugifiedTrait;
     use OrderedTrait;
 

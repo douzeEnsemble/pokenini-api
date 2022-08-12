@@ -13,6 +13,7 @@
           "script": {
             "exec": [
               "const expectedDexTitle = \"Red, Green, Blue, Yellow\";",
+              "const expectedDexFrenchTitle = \"Rouge, Vert, Bleu, Jaune\";",
               "const expectedPokedexCount = 151;",
               "const expectedIncludeTexts = [",
               "    'nidoran-f',",
@@ -49,6 +50,10 @@
               "",
               "pm.test(\"Dex title should match expected\", function () {",
               "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Dex french title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.french_name).to.eql(expectedDexFrenchTitle);",
               "});",
               "",
               "pm.test(\"Response should contains or not some texts\", function () {",
@@ -96,6 +101,7 @@
           "script": {
             "exec": [
               "const expectedDexTitle = \"Gold, Silver, Crystal\";",
+              "const expectedDexFrenchTitle = \"Or, Argent, Cristal\";",
               "const expectedPokedexCount = 278;",
               "const expectedIncludeTexts = [",
               "    'nidoran-f',",
@@ -132,6 +138,10 @@
               "",
               "pm.test(\"Dex title should match expected\", function () {",
               "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Dex french title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.french_name).to.eql(expectedDexFrenchTitle);",
               "});",
               "",
               "pm.test(\"Response should contains or not some texts\", function () {",
@@ -179,6 +189,7 @@
           "script": {
             "exec": [
               "const expectedDexTitle = \"Ruby, Sapphire, Emerald\";",
+              "const expectedDexFrenchTitle = \"Rubis, Saphir, Émeraude\";",
               "const expectedPokedexCount = 414;",
               "const expectedIncludeTexts = [",
               "    'nidoran-f',",
@@ -215,6 +226,10 @@
               "",
               "pm.test(\"Dex title should match expected\", function () {",
               "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Dex french title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.french_name).to.eql(expectedDexFrenchTitle);",
               "});",
               "",
               "pm.test(\"Response should contains or not some texts\", function () {",
@@ -262,6 +277,7 @@
           "script": {
             "exec": [
               "const expectedDexTitle = \"Red Fire, Leaf Green\";",
+              "const expectedDexFrenchTitle = \"Rouge Feu, Vert Feuille\";",
               "const expectedPokedexCount = 414;",
               "const expectedIncludeTexts = [",
               "    'nidoran-f',",
@@ -298,6 +314,10 @@
               "",
               "pm.test(\"Dex title should match expected\", function () {",
               "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Dex french title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.french_name).to.eql(expectedDexFrenchTitle);",
               "});",
               "",
               "pm.test(\"Response should contains or not some texts\", function () {",
@@ -345,6 +365,7 @@
           "script": {
             "exec": [
               "const expectedDexTitle = \"Diamond, Pearl, Platinium\";",
+              "const expectedDexFrenchTitle = \"Diamant, Perle, Platine\";",
               "const expectedPokedexCount = 630;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
@@ -381,6 +402,10 @@
               "",
               "pm.test(\"Dex title should match expected\", function () {",
               "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Dex french title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.french_name).to.eql(expectedDexFrenchTitle);",
               "});",
               "",
               "pm.test(\"Response should contains or not some texts\", function () {",
@@ -428,6 +453,7 @@
           "script": {
             "exec": [
               "const expectedDexTitle = \"Heart Gold, Soul Silver\";",
+              "const expectedDexFrenchTitle = \"Or HeartGold, Argent SoulSilver\";",
               "const expectedPokedexCount = 630;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
@@ -464,6 +490,10 @@
               "",
               "pm.test(\"Dex title should match expected\", function () {",
               "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Dex french title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.french_name).to.eql(expectedDexFrenchTitle);",
               "});",
               "",
               "pm.test(\"Response should contains or not some texts\", function () {",
@@ -511,6 +541,7 @@
           "script": {
             "exec": [
               "const expectedDexTitle = \"Black, White\";",
+              "const expectedDexFrenchTitle = \"Noire, Blanche\";",
               "const expectedPokedexCount = 797;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
@@ -547,6 +578,10 @@
               "",
               "pm.test(\"Dex title should match expected\", function () {",
               "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Dex french title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.french_name).to.eql(expectedDexFrenchTitle);",
               "});",
               "",
               "pm.test(\"Response should contains or not some texts\", function () {",
@@ -594,6 +629,7 @@
           "script": {
             "exec": [
               "const expectedDexTitle = \"Black 2, White 2\";",
+              "const expectedDexFrenchTitle = \"Noire 2, Blanche 2\";",
               "const expectedPokedexCount = 800;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
@@ -630,6 +666,10 @@
               "",
               "pm.test(\"Dex title should match expected\", function () {",
               "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Dex french title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.french_name).to.eql(expectedDexFrenchTitle);",
               "});",
               "",
               "pm.test(\"Response should contains or not some texts\", function () {",
@@ -677,6 +717,7 @@
           "script": {
             "exec": [
               "const expectedDexTitle = \"X, Y\";",
+              "const expectedDexFrenchTitle = \"X, Y\";",
               "const expectedPokedexCount = 968;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
@@ -713,6 +754,10 @@
               "",
               "pm.test(\"Dex title should match expected\", function () {",
               "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Dex french title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.french_name).to.eql(expectedDexFrenchTitle);",
               "});",
               "",
               "pm.test(\"Response should contains or not some texts\", function () {",
@@ -760,6 +805,7 @@
           "script": {
             "exec": [
               "const expectedDexTitle = \"Omega Ruby, Alpha Sapphire\";",
+              "const expectedDexFrenchTitle = \"Rubis Oméga, Saphir Alpha\";",
               "const expectedPokedexCount = 968;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
@@ -796,6 +842,10 @@
               "",
               "pm.test(\"Dex title should match expected\", function () {",
               "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Dex french title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.french_name).to.eql(expectedDexFrenchTitle);",
               "});",
               "",
               "pm.test(\"Response should contains or not some texts\", function () {",
@@ -843,6 +893,7 @@
           "script": {
             "exec": [
               "const expectedDexTitle = \"Sun, Moon\";",
+              "const expectedDexFrenchTitle = \"Soleil, Lune\";",
               "const expectedPokedexCount = 1078;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
@@ -879,6 +930,10 @@
               "",
               "pm.test(\"Dex title should match expected\", function () {",
               "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Dex french title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.french_name).to.eql(expectedDexFrenchTitle);",
               "});",
               "",
               "pm.test(\"Response should contains or not some texts\", function () {",
@@ -926,6 +981,7 @@
           "script": {
             "exec": [
               "const expectedDexTitle = \"Ultra Sun, Ultra Moon\";",
+              "const expectedDexFrenchTitle = \"Ultra Soleil, Ultra Lune\";",
               "const expectedPokedexCount = 1084;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
@@ -962,6 +1018,10 @@
               "",
               "pm.test(\"Dex title should match expected\", function () {",
               "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Dex french title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.french_name).to.eql(expectedDexFrenchTitle);",
               "});",
               "",
               "pm.test(\"Response should contains or not some texts\", function () {",
@@ -1009,6 +1069,7 @@
           "script": {
             "exec": [
               "const expectedDexTitle = \"Let's Go Pikachu, Let's Go Eevee\";",
+              "const expectedDexFrenchTitle = \"Let's Go Pikachu, Let's Go Évoli\";",
               "const expectedPokedexCount = 208;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
@@ -1045,6 +1106,10 @@
               "",
               "pm.test(\"Dex title should match expected\", function () {",
               "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Dex french title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.french_name).to.eql(expectedDexFrenchTitle);",
               "});",
               "",
               "pm.test(\"Response should contains or not some texts\", function () {",
@@ -1092,6 +1157,7 @@
           "script": {
             "exec": [
               "const expectedDexTitle = \"Sword, Shield\";",
+              "const expectedDexFrenchTitle = \"Épée, Bouclier\";",
               "const expectedPokedexCount = 943;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
@@ -1128,6 +1194,10 @@
               "",
               "pm.test(\"Dex title should match expected\", function () {",
               "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Dex french title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.french_name).to.eql(expectedDexFrenchTitle);",
               "});",
               "",
               "pm.test(\"Response should contains or not some texts\", function () {",
@@ -1175,6 +1245,7 @@
           "script": {
             "exec": [
               "const expectedDexTitle = \"Brilland Diamond, Shining Pearl\";",
+              "const expectedDexFrenchTitle = \"Diamant Étincelant, Perle Scintillante\";",
               "const expectedPokedexCount = 630;",
               "const expectedIncludeTexts = [",
               "    'venusaur-f',",
@@ -1211,6 +1282,10 @@
               "",
               "pm.test(\"Dex title should match expected\", function () {",
               "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Dex french title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.french_name).to.eql(expectedDexFrenchTitle);",
               "});",
               "",
               "pm.test(\"Response should contains or not some texts\", function () {",
@@ -1251,13 +1326,14 @@
       "response": []
     },
     {
-      "name": "Album Legend Arceus",
+      "name": "Album Pokémon Legends Arceus",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
-              "const expectedDexTitle = \"Legend Arceus\";",
+              "const expectedDexTitle = \"Pokémon Legends Arceus\";",
+              "const expectedDexFrenchTitle = \"Légendes Pokémon : Arceus\";",
               "const expectedPokedexCount = 666;",
               "const expectedIncludeTexts = [",
               "    'Unown A',",
@@ -1296,6 +1372,10 @@
               "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
               "});",
               "",
+              "pm.test(\"Dex french title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.french_name).to.eql(expectedDexFrenchTitle);",
+              "});",
+              "",
               "pm.test(\"Response should contains or not some texts\", function () {",
               "    const responseText = pm.response.text();",
               "",
@@ -1320,14 +1400,14 @@
         "method": "GET",
         "header": [],
         "url": {
-          "raw": "http://caddy/album/legendarceus",
+          "raw": "http://caddy/album/pokemonlegendsarceus",
           "protocol": "http",
           "host": [
             "caddy"
           ],
           "path": [
             "album",
-            "legendarceus"
+            "pokemonlegendsarceus"
           ]
         }
       },
@@ -1341,6 +1421,7 @@
           "script": {
             "exec": [
               "const expectedDexTitle = \"Home\";",
+              "const expectedDexFrenchTitle = \"Home\";",
               "const expectedPokedexCount = 1736;",
               "const expectedIncludeTexts = [",
               "    'Unown A',",
@@ -1377,6 +1458,10 @@
               "",
               "pm.test(\"Dex title should match expected\", function () {",
               "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Dex french title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.french_name).to.eql(expectedDexFrenchTitle);",
               "});",
               "",
               "pm.test(\"Response should contains or not some texts\", function () {",
@@ -1424,6 +1509,7 @@
           "script": {
             "exec": [
               "const expectedDexTitle = \"Home Shiny\";",
+              "const expectedDexFrenchTitle = \"Home Chromatique\";",
               "const expectedPokedexCount = 1212;",
               "const expectedIncludeTexts = [",
               "    'Unown A',",
@@ -1460,6 +1546,10 @@
               "",
               "pm.test(\"Dex title should match expected\", function () {",
               "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Dex french title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.french_name).to.eql(expectedDexFrenchTitle);",
               "});",
               "",
               "pm.test(\"Response should contains or not some texts\", function () {",
@@ -1507,6 +1597,7 @@
           "script": {
             "exec": [
               "const expectedDexTitle = \"Home Pokemon Go\";",
+              "const expectedDexFrenchTitle = \"Home Pokemon Go\";",
               "const expectedPokedexCount = 917;",
               "const expectedIncludeTexts = [",
               "    'Unown A',",
@@ -1543,6 +1634,10 @@
               "",
               "pm.test(\"Dex title should match expected\", function () {",
               "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Dex french title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.french_name).to.eql(expectedDexFrenchTitle);",
               "});",
               "",
               "pm.test(\"Response should contains or not some texts\", function () {",

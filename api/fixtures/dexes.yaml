@@ -1,17 +1,21 @@
 App\Entity\Dex:
     dex_redgreenblueyellow:
         name: 'Red / Green / Blue / Yellow'
+        frenchName: 'Rouge / Vert / Bleu / Jaune'
         selectionRule: "(p.bankable or p.bankableish) and ba?.redgreenblueyellow"
         orderNumber: 1
     dex_goldsilvercrystal:
         name: 'Gold / Silver / Crystal'
+        frenchName: 'Or / Argent / Cristal'
         selectionRule: "(p.bankable or p.bankableish) and ba?.redgreenblueyellow and ba?.goldsilvercrystal and p.specialForm === null and p.regionalForm === null"
         orderNumber: 2
     dex_rubysapphireemerald:
         name: 'Ruby / Sapphire / Emerald'
+        frenchName: 'Rubis / Saphir / Émeraude'
         selectionRule: "(p.bankable or p.bankableish) and ba?.rubysapphireemerald"
         orderNumber: 3
     dex_home:
         name: 'Home'
+        frenchName: 'Home'
         selectionRule: "(p.bankable or p.bankableish)"
         orderNumber: 3

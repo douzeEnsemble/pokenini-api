@@ -139,7 +139,7 @@ App\Entity\Game:
         name: 'Shining Pearl'
         bundle: '@game_bundle_brilland_diamond_shining_pearl'
         orderNumber: 34
-    game_legend arceus:
-        name: 'Legend Arceus'
-        bundle: '@game_bundle_legend_arceus'
+    game_pokemon_legends arceus:
+        name: 'Pokémon Legends Arceus'
+        bundle: '@game_bundle_pokemon_legends_arceus'
         orderNumber: 35
