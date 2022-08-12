@@ -26,6 +26,8 @@ class AlbumApiTest extends AbstractApiTest
         $this->assertEquals('Rouge / Vert / Bleu / Jaune', $data['dex']['french_name']);
         $this->assertArrayHasKey('is_shiny', $data['dex']);
         $this->assertFalse($data['dex']['is_shiny']);
+        $this->assertArrayHasKey('is_private', $data['dex']);
+        $this->assertTrue($data['dex']['is_private']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -54,6 +56,8 @@ class AlbumApiTest extends AbstractApiTest
         $this->assertEquals('Home', $data['dex']['french_name']);
         $this->assertArrayHasKey('is_shiny', $data['dex']);
         $this->assertFalse($data['dex']['is_shiny']);
+        $this->assertArrayHasKey('is_private', $data['dex']);
+        $this->assertFalse($data['dex']['is_private']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -82,6 +86,8 @@ class AlbumApiTest extends AbstractApiTest
         $this->assertEquals('Home Chromatique', $data['dex']['french_name']);
         $this->assertArrayHasKey('is_shiny', $data['dex']);
         $this->assertTrue($data['dex']['is_shiny']);
+        $this->assertArrayHasKey('is_private', $data['dex']);
+        $this->assertFalse($data['dex']['is_private']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */

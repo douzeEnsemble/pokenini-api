@@ -19,9 +19,11 @@ App\Entity\Dex:
         frenchName: 'Home'
         selectionRule: "(p.bankable or p.bankableish)"
         orderNumber: 3
+        isPrivate: false
     dex_home_shiny:
         name: 'Home Shiny'
         frenchName: 'Home Chromatique'
         selectionRule: "(p.bankable or p.bankableish)"
         orderNumber: 4
         isShiny: true
+        isPrivate: false

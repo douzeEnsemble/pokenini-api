@@ -30,4 +30,10 @@ class Dex
         "dex_list",
     ])]
     public bool $isShiny = false;
+
+    #[ORM\Column]
+    #[Groups([
+        "dex_list",
+    ])]
+    public bool $isPrivate = true;
 }
