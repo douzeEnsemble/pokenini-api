@@ -14,6 +14,7 @@ class DexesApiTest extends AbstractApiTest
             'frenchName' => 'Rouge / Vert / Bleu / Jaune',
             'slug' => 'redgreenblueyellow',
             'isShiny' => false,
+            'isPrivate' => true,
         ], $content[0]);
 
         $this->assertEquals([
@@ -21,6 +22,7 @@ class DexesApiTest extends AbstractApiTest
             'frenchName' => 'Or / Argent / Cristal',
             'slug' => 'goldsilvercrystal',
             'isShiny' => false,
+            'isPrivate' => true,
         ], $content[1]);
 
         $this->assertEquals([
@@ -28,6 +30,7 @@ class DexesApiTest extends AbstractApiTest
             'frenchName' => 'Home',
             'slug' => 'home',
             'isShiny' => false,
+            'isPrivate' => false,
         ], $content[3]);
 
         $this->assertEquals([
@@ -35,6 +38,7 @@ class DexesApiTest extends AbstractApiTest
             'frenchName' => 'Home Chromatique',
             'slug' => 'homeshiny',
             'isShiny' => true,
+            'isPrivate' => false,
         ], $content[4]);
     }
 }

@@ -35,6 +35,7 @@ class AlbumController extends AbstractController
                 'name' => $dex?->name,
                 'french_name' => $dex?->frenchName,
                 'is_shiny' => $dex?->isShiny,
+                'is_private' => $dex?->isPrivate,
             ],
             'pokemons' => $pokemons,
         ]);
