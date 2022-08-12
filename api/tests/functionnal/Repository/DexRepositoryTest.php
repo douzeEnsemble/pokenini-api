@@ -30,9 +30,10 @@ class DexRepositoryTest extends KernelTestCase
 
         $this->assertCount($this->getDexCount(), $dexes);
 
-        $this->assertEquals('Gold / Silver / Crystal', $dexes[0]->name);
+        $this->assertEquals('Red / Green / Blue / Yellow', $dexes[0]->name);
+
         $this->assertEquals(
-            "(p.bankable or p.bankableish) and ba?.redgreenblueyellow",
+            "(p.bankable or p.bankableish) and ba?.rubysapphireemerald",
             $dexes[2]->selectionRule
         );
     }
@@ -62,7 +63,7 @@ class DexRepositoryTest extends KernelTestCase
 
         $this->assertEquals('Gold / Silver / Crystal', $dexGSC?->name);
         $this->assertEquals(
-            '(p.bankable or p.bankableish) and ba?.redgreenblueyellow and ba?.goldsilvercrystal '
+            '(p.bankable or p.bankableish) and ba?.goldsilvercrystal '
             . 'and p.specialForm === null and p.regionalForm === null',
             $dexGSC?->selectionRule
         );

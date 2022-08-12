@@ -23,7 +23,7 @@ class DexRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('d');
 
-        $queryBuilder->orderBy('d.name');
+        $queryBuilder->orderBy('d.orderNumber');
 
         return $queryBuilder->getQuery();
     }

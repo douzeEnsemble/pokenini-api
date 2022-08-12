@@ -13,18 +13,28 @@ class DexesApiTest extends AbstractApiTest
             'name' => 'Red / Green / Blue / Yellow',
             'frenchName' => 'Rouge / Vert / Bleu / Jaune',
             'slug' => 'redgreenblueyellow',
+            'isShiny' => false,
         ], $content[0]);
 
         $this->assertEquals([
             'name' => 'Gold / Silver / Crystal',
             'frenchName' => 'Or / Argent / Cristal',
             'slug' => 'goldsilvercrystal',
+            'isShiny' => false,
         ], $content[1]);
 
         $this->assertEquals([
             'name' => 'Home',
             'frenchName' => 'Home',
             'slug' => 'home',
+            'isShiny' => false,
         ], $content[3]);
+
+        $this->assertEquals([
+            'name' => 'Home Shiny',
+            'frenchName' => 'Home Chromatique',
+            'slug' => 'homeshiny',
+            'isShiny' => true,
+        ], $content[4]);
     }
 }

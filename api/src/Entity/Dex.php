@@ -24,4 +24,10 @@ class Dex
 
     #[ORM\Column(length: 412)]
     public string $selectionRule = '';
+
+    #[ORM\Column]
+    #[Groups([
+        "dex_list",
+    ])]
+    public bool $isShiny = false;
 }
