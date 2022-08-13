@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Resources\functionnal\HasserTrait;
+namespace App\Tests\Resources\Traits\HasserTrait;
 
 use Doctrine\DBAL\Connection;
 

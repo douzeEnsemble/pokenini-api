@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Resources\functionnal\CounterTrait;
+namespace App\Tests\Resources\Traits\CounterTrait;
 
 use Doctrine\DBAL\Connection;
 

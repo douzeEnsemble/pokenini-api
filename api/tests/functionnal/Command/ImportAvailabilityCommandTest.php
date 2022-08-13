@@ -2,7 +2,7 @@
 
 namespace App\Tests\Functionnal\Command;
 
-use App\Tests\Resources\functionnal\CounterTrait\CountGameAvailabilityTrait;
+use App\Tests\Resources\Traits\CounterTrait\CountGameAvailabilityTrait;
 
 class ImportAvailabilityCommandTest extends AbstractImportFileCommandTest
 {
