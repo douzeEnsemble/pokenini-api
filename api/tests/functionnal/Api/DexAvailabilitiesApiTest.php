@@ -9,16 +9,16 @@ class DexAvailabilitiesApiTest extends AbstractApiTest
         /** @var string[]|string[][] $content */
         $content = $this->apiRequestContent('dex_availabilities', ['dex.slug' => 'redgreenblueyellow']);
 
-        $this->assertCount(4, $content);
+        $this->assertCount(7, $content);
 
         /** @var string[]|string[][] $content */
         $content = $this->apiRequestContent('dex_availabilities', ['dex.slug' => 'goldsilvercrystal']);
 
-        $this->assertCount(3, $content);
+        $this->assertCount(6, $content);
 
         /** @var string[]|string[][] $content */
         $content = $this->apiRequestContent('dex_availabilities', ['dex.slug' => 'home']);
 
-        $this->assertCount(7, $content);
+        $this->assertCount(12, $content);
     }
 }

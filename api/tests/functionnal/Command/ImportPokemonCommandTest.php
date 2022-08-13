@@ -35,9 +35,9 @@ class ImportPokemonCommandTest extends AbstractImportFileCommandTest
 
         $this->assertStringContainsString('11 pokemons created/updated', $commandTester->getDisplay());
 
-        $this->assertEquals(22, $this->getPokemonCount());
+        $this->assertEquals(27, $this->getPokemonCount());
         $this->assertEquals(11, $this->getPokemonNotDeletedCount());
-        $this->assertEquals(11, $this->getPokemonDeletedCount());
+        $this->assertEquals(16, $this->getPokemonDeletedCount());
 
         $charmander = $this->getPokemonFromName('Charmander');
         $charmeleon = $this->getPokemonFromName('Charmeleon');
@@ -73,9 +73,9 @@ class ImportPokemonCommandTest extends AbstractImportFileCommandTest
 
         $this->assertStringContainsString('7 pokemons created/updated', $commandTester->getDisplay());
 
-        $this->assertEquals(11, $this->getPokemonCount());
+        $this->assertEquals(16, $this->getPokemonCount());
         $this->assertEquals(7, $this->getPokemonNotDeletedCount());
-        $this->assertEquals(4, $this->getPokemonDeletedCount());
+        $this->assertEquals(9, $this->getPokemonDeletedCount());
 
         $pokemonAfter = $this->getPokemonFromName('Douze');
 
@@ -104,9 +104,9 @@ class ImportPokemonCommandTest extends AbstractImportFileCommandTest
 
         $this->assertStringContainsString('17 pokemons created/updated', $commandTester->getDisplay());
 
-        $this->assertEquals(22, $this->getPokemonCount());
+        $this->assertEquals(27, $this->getPokemonCount());
         $this->assertEquals(17, $this->getPokemonNotDeletedCount());
-        $this->assertEquals(5, $this->getPokemonDeletedCount());
+        $this->assertEquals(10, $this->getPokemonDeletedCount());
     }
 
     public function testUpdateRegionalFormPokemons(): void
@@ -126,9 +126,9 @@ class ImportPokemonCommandTest extends AbstractImportFileCommandTest
 
         $this->assertStringContainsString('1 pokemons created/updated', $commandTester->getDisplay());
 
-        $this->assertEquals(11, $this->getPokemonCount());
+        $this->assertEquals(16, $this->getPokemonCount());
         $this->assertEquals(1, $this->getPokemonNotDeletedCount());
-        $this->assertEquals(10, $this->getPokemonDeletedCount());
+        $this->assertEquals(15, $this->getPokemonDeletedCount());
 
         $pokemonAfter = $this->getPokemonFromName('Douze');
         $this->assertNotNull($pokemonAfter['regional_form_id']);

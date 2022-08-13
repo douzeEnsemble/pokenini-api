@@ -3,8 +3,9 @@
 namespace App\Tests\Unit\DTO;
 
 use App\DTO\GameBundlesAvailabilities;
+use PHPUnit\Framework\TestCase;
 
-class GameBundlesAvailabiliesTest extends \PHPUnit\Framework\TestCase
+class GameBundlesAvailabiliesTest extends TestCase
 {
     public function testGet(): void
     {
