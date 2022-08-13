@@ -31,7 +31,7 @@ class PokedexRepository extends ServiceEntityRepository
                 rf.slug as regional_form_slug, rf.name as regional_form_name,
                 sf.slug as special_form_slug, sf.name as special_form_name,
                 vf.slug as variant_form_slug, vf.name as variant_form_name,
-                cs.slug AS catch_state_slug, cs.name AS catch_state_name
+                cs.slug AS catch_state_slug, cs.name AS catch_state_name, cs.french_name AS catch_state_french_name
         FROM    dex_availability AS da
             JOIN pokemon AS p
                 ON da.pokemon_id = p.id
