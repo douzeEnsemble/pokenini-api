@@ -20,13 +20,28 @@ final class Version20220812131058 extends AbstractMigration
         $this->addSql('ALTER TABLE catch_state ADD french_name VARCHAR(255) NULL');
 
         $catchStatesNames = [
-            'No' => 'Non',
-            'ToEvolve' => 'af. évoluer',
-            'ToBreed' => 'af. reproduire',
-            'ToTransfer' => 'à transférer',
-            'Yes' => 'Oui',
+            'no' => [
+                'en' => 'No',
+                'fr' => 'Non',
+            ],
+            'toevolve' => [
+                'en' => 'To evolve',
+                'fr' => 'af. évoluer',
+            ],
+            'tobreed' => [
+                'en' => 'To breed',
+                'fr' => 'af. reproduire',
+            ],
+            'totransfer' => [
+                'en' => 'To transfer',
+                'fr' => 'à transférer',
+            ],
+            'yes' => [
+                'en' => 'Yes',
+                'fr' => 'Oui',
+            ],
         ];
-        $this->addCatchStateFrenchNames($catchStatesNames);
+        $this->updateCatchStateNames($catchStatesNames);
 
         // Alter column without NO NULL constraint
         $this->addSql('ALTER TABLE catch_state ALTER french_name SET NOT NULL');
@@ -37,14 +52,22 @@ final class Version20220812131058 extends AbstractMigration
         $this->addSql('ALTER TABLE catch_state DROP french_name');
     }
 
-    private function addCatchStateFrenchNames(array $catchStatesNames): void
+    private function updateCatchStateNames(array $catchStatesNames): void
     {
-        foreach ($catchStatesNames as $catchStateName => $catchStateFrenchName) {
+        foreach ($catchStatesNames as $catchStateSlug => $catchStateNames) {
+            $sql = <<< SQL
+            UPDATE  catch_state
+            SET     french_name = :catchStateFrenchName,
+                    name = :catchStateName
+            WHERE   slug = :catchStateSlug
+            SQL;
+
             $this->addSql(
-                "UPDATE catch_state SET french_name = :catchStateFrenchName WHERE name = :catchStateName",
+                $sql,
                 [
-                    'catchStateFrenchName' => $catchStateFrenchName,
-                    'catchStateName' => $catchStateName,
+                    'catchStateSlug' => $catchStateSlug,
+                    'catchStateFrenchName' => $catchStateNames['fr'],
+                    'catchStateName' => $catchStateNames['en'],
                 ]
             );
         }
