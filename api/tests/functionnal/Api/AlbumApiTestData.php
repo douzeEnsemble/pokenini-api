@@ -25,6 +25,7 @@ final class AlbumApiTestData
                 'variant_form_name' => null,
                 'catch_state_slug' => 'no',
                 'catch_state_name' => 'No',
+                'catch_state_french_name' => 'Non',
             ],
             [
                 'pokemon_slug' => 'ivysaur',
@@ -39,6 +40,7 @@ final class AlbumApiTestData
                 'variant_form_name' => null,
                 'catch_state_slug' => 'maybe',
                 'catch_state_name' => 'Maybe',
+                'catch_state_french_name' => 'Peut être',
             ],
             [
                 'pokemon_slug' => 'venusaur',
@@ -53,6 +55,7 @@ final class AlbumApiTestData
                 'variant_form_name' => null,
                 'catch_state_slug' => 'maybenot',
                 'catch_state_name' => 'Maybe not',
+                'catch_state_french_name' => 'Peut être pas',
             ],
             [
                 'pokemon_slug' => 'caterpie',
@@ -67,6 +70,7 @@ final class AlbumApiTestData
                 'variant_form_name' => null,
                 'catch_state_slug' => 'maybenot',
                 'catch_state_name' => 'Maybe not',
+                'catch_state_french_name' => 'Peut être pas',
             ],
             [
                 'pokemon_slug' => 'metapod',
@@ -81,6 +85,7 @@ final class AlbumApiTestData
                 'variant_form_name' => null,
                 'catch_state_slug' => null,
                 'catch_state_name' => null,
+                'catch_state_french_name' => null,
             ],
             [
                 'pokemon_slug' => 'butterfree',
@@ -95,6 +100,7 @@ final class AlbumApiTestData
                 'variant_form_name' => null,
                 'catch_state_slug' => null,
                 'catch_state_name' => null,
+                'catch_state_french_name' => null,
             ],
             [
                 'pokemon_slug' => 'douze',
@@ -109,6 +115,7 @@ final class AlbumApiTestData
                 'variant_form_name' => null,
                 'catch_state_slug' => null,
                 'catch_state_name' => null,
+                'catch_state_french_name' => null,
             ],
         ];
     }
@@ -134,6 +141,7 @@ final class AlbumApiTestData
                 'variant_form_name' => null,
                 'catch_state_slug' => 'no',
                 'catch_state_name' => 'No',
+                'catch_state_french_name' => 'Non',
             ],
             [
                 'pokemon_slug' => 'ivysaur',
@@ -148,6 +156,7 @@ final class AlbumApiTestData
                 'variant_form_name' => null,
                 'catch_state_slug' => 'no',
                 'catch_state_name' => 'No',
+                'catch_state_french_name' => 'Non',
             ],
             [
                 'pokemon_slug' => 'venusaur',
@@ -162,6 +171,7 @@ final class AlbumApiTestData
                 'variant_form_name' => null,
                 'catch_state_slug' => 'no',
                 'catch_state_name' => 'No',
+                'catch_state_french_name' => 'Non',
             ],
             [
                 'pokemon_slug' => 'venusaurf',
@@ -176,6 +186,7 @@ final class AlbumApiTestData
                 'variant_form_name' => 'Gender',
                 'catch_state_slug' => 'no',
                 'catch_state_name' => 'No',
+                'catch_state_french_name' => 'Non',
             ],
             [
                 'pokemon_slug' => 'venusaurmega',
@@ -190,6 +201,7 @@ final class AlbumApiTestData
                 'variant_form_name' => null,
                 'catch_state_slug' => 'no',
                 'catch_state_name' => 'No',
+                'catch_state_french_name' => 'Non',
             ],
             [
                 'pokemon_slug' => 'venusaurgmax',
@@ -204,6 +216,7 @@ final class AlbumApiTestData
                 'variant_form_name' => null,
                 'catch_state_slug' => 'no',
                 'catch_state_name' => 'No',
+                'catch_state_french_name' => 'Non',
             ],
             [
                 'pokemon_slug' => 'caterpie',
@@ -218,6 +231,7 @@ final class AlbumApiTestData
                 'variant_form_name' => null,
                 'catch_state_slug' => null,
                 'catch_state_name' => null,
+                'catch_state_french_name' => null,
             ],
             [
                 'pokemon_slug' => 'metapod',
@@ -232,6 +246,7 @@ final class AlbumApiTestData
                 'variant_form_name' => null,
                 'catch_state_slug' => null,
                 'catch_state_name' => null,
+                'catch_state_french_name' => null,
             ],
             [
                 'pokemon_slug' => 'butterfree',
@@ -246,6 +261,7 @@ final class AlbumApiTestData
                 'variant_form_name' => null,
                 'catch_state_slug' => null,
                 'catch_state_name' => null,
+                'catch_state_french_name' => null,
             ],
             [
                 'pokemon_slug' => 'butterfreef',
@@ -260,6 +276,7 @@ final class AlbumApiTestData
                 'variant_form_name' => 'Gender',
                 'catch_state_slug' => null,
                 'catch_state_name' => null,
+                'catch_state_french_name' => null,
             ],
             [
                 'pokemon_slug' => 'butterfreegmax',
@@ -274,6 +291,7 @@ final class AlbumApiTestData
                 'variant_form_name' => null,
                 'catch_state_slug' => null,
                 'catch_state_name' => null,
+                'catch_state_french_name' => null,
             ],
             [
                 'pokemon_slug' => 'douze',
@@ -288,6 +306,7 @@ final class AlbumApiTestData
                 'variant_form_name' => null,
                 'catch_state_slug' => null,
                 'catch_state_name' => null,
+                'catch_state_french_name' => null,
             ],
         ];
     }
