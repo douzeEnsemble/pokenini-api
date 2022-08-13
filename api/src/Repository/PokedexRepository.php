@@ -23,7 +23,7 @@ class PokedexRepository extends ServiceEntityRepository
     /**
      * @return \Traversable<int, array<mixed, mixed>>
      */
-    public function getQueryFromDexSlug(string $dexSlug): \Traversable
+    public function getListQueryFromDexSlug(string $dexSlug): \Traversable
     {
         $sql = <<<SQL
         SELECT  p.slug AS pokemon_slug, p.name AS pokemon_name, p.french_name AS pokemon_french_name,

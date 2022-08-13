@@ -18,17 +18,17 @@ class PokedexRepositoryTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testGetQueryFromDexSlug(): void
+    public function testGetListQueryFromDexSlug(): void
     {
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
-        $pokedexesIterator = $repo->getQueryFromDexSlug('redgreenblueyellow');
+        $pokedexesIterator = $repo->getListQueryFromDexSlug('redgreenblueyellow');
 
         /** @var string[][] $pokedexes */
         $pokedexes = iterator_to_array($pokedexesIterator);
 
-        $this->assertCount(4, $pokedexes);
+        $this->assertCount(7, $pokedexes);
 
         $this->assertEquals('Bulbasaur', $pokedexes[0]['pokemon_name']);
         $this->assertEquals('Bulbizarre', $pokedexes[0]['pokemon_french_name']);
@@ -48,11 +48,11 @@ class PokedexRepositoryTest extends KernelTestCase
         $this->assertEquals('Maybe not', $pokedexes[2]['catch_state_name']);
         $this->assertEquals('maybenot', $pokedexes[2]['catch_state_slug']);
 
-        $this->assertEquals('Douze', $pokedexes[3]['pokemon_name']);
-        $this->assertEquals('Douze', $pokedexes[3]['pokemon_french_name']);
-        $this->assertEquals('douze', $pokedexes[3]['pokemon_slug']);
-        $this->assertNull($pokedexes[3]['catch_state_name']);
-        $this->assertNull($pokedexes[3]['catch_state_slug']);
+        $this->assertEquals('Douze', $pokedexes[6]['pokemon_name']);
+        $this->assertEquals('Douze', $pokedexes[6]['pokemon_french_name']);
+        $this->assertEquals('douze', $pokedexes[6]['pokemon_slug']);
+        $this->assertNull($pokedexes[6]['catch_state_name']);
+        $this->assertNull($pokedexes[6]['catch_state_slug']);
     }
 
     public function testUpdateFromSlugs(): void

@@ -123,3 +123,56 @@ App\Entity\Pokemon:
         familyOrder: 3
         variantForm: '@variant_form_alternate'
     
+    pokemon_caterpie (extends pokemon):
+        name: 'Caterpie'
+        primeName: 'Caterpie'
+        frenchName: 'Chenipan'
+        nationalDexNumber: '10'
+        originalGameBundle: '@game_bundle_red_green_blue_yellow'
+        iconName: 'caterpie'
+        familyOrder: 0
+    
+    pokemon_metapod (extends pokemon):
+        name: 'Metapod'
+        primeName: 'Metapod'
+        frenchName: 'Chrysacier'
+        family: '@pokemon_caterpie'
+        nationalDexNumber: '11'
+        originalGameBundle: '@game_bundle_red_green_blue_yellow'
+        iconName: 'metapod'
+        familyOrder: 1
+    
+    pokemon_butterfree (extends pokemon):
+        name: 'Butterfree'
+        primeName: 'Butterfree'
+        frenchName: 'Papilusion'
+        family: '@pokemon_caterpie'
+        nationalDexNumber: '11'
+        originalGameBundle: '@game_bundle_red_green_blue_yellow'
+        iconName: 'butterfree'
+        familyOrder: 2
+    
+    pokemon_butterfree_f (extends pokemon):
+        slug: 'butterfree-f'
+        name: 'Butterfree ♀'
+        primeName: 'Butterfree ♀'
+        frenchName: 'Papilusion'
+        family: '@pokemon_caterpie'
+        nationalDexNumber: '11'
+        originalGameBundle: '@game_bundle_diamond_pearl_platinium'
+        iconName: 'butterfree'
+        familyOrder: 3
+        variantForm: '@variant_form_gender'
+    
+    pokemon_butterfree_gigantamax (extends pokemon):
+        slug: 'butterfree-gmax'
+        name: 'Gigantamax Butterfree'
+        frenchName: 'Gigamax Papilusion'
+        primeName: 'Papilusion'
+        family: '@pokemon_caterpie'
+        nationalDexNumber: '12'
+        originalGameBundle: '@game_bundle_sword_shield'
+        iconName: 'butterfree-gmax'
+        specialForm: '@special_form_gigantamax'
+        familyOrder: 5
+    

@@ -32,7 +32,7 @@ class PokemonRepository extends ServiceEntityRepository
     {
         $queryBuilder = $this->createQueryBuilder('p');
 
-        $queryBuilder->orderBy('p.name');
+        $queryBuilder->orderBy('p.nationalDexNumber, p.familyOrder');
 
         return $queryBuilder->getQuery();
     }

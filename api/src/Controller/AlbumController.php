@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Helper\PokedexListReportHelper;
+use App\Repository\CatchStateRepository;
 use App\Repository\DexRepository;
 use App\Repository\PokedexRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,10 +23,17 @@ class AlbumController extends AbstractController
     #[Route(methods: ['GET'], path: '/{dexSlug}')]
     public function index(
         DexRepository $dexRepository,
+        CatchStateRepository $catchStateRepository,
         string $dexSlug
     ): JsonResponse {
+        /** @var string[][]|int[][] $pokemons */
         $pokemons = iterator_to_array(
-            $this->pokedexRepository->getQueryFromDexSlug($dexSlug)
+            $this->pokedexRepository->getListQueryFromDexSlug($dexSlug)
+        );
+
+        $report = PokedexListReportHelper::getReportFromPokedex(
+            $pokemons,
+            $catchStateRepository->getAll()
         );
 
         $dex = $dexRepository->getBySlug($dexSlug);
@@ -38,6 +47,7 @@ class AlbumController extends AbstractController
                 'is_private' => $dex?->isPrivate,
             ],
             'pokemons' => $pokemons,
+            'report' => $report,
         ]);
     }
 
