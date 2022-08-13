@@ -16,11 +16,12 @@ final class PokedexListReportHelper
      */
     public static function getReportFromPokedex(array $pokedex, array $catchStates): array
     {
-        $report = [];
+        $reportDetail = [];
 
         foreach ($catchStates as $catchState) {
-            $report[$catchState->slug] = [
+            $reportDetail[$catchState->slug] = [
                 'count' => 0,
+                'slug' => $catchState->slug,
                 'name' => $catchState->name,
                 'french_name' => $catchState->frenchName,
             ];
@@ -29,9 +30,13 @@ final class PokedexListReportHelper
         foreach ($pokedex as $line) {
             $catchStateSlug = $line['catch_state_slug'] ?? $catchStates[0]->slug;
 
-            ++$report[$catchStateSlug]['count'];
+            ++$reportDetail[$catchStateSlug]['count'];
         }
 
-        return $report;
+        return [
+            'total' => count($pokedex),
+            'caught' => $reportDetail['yes']['count'],
+            'detail' => array_values($reportDetail),
+        ];
     }
 }

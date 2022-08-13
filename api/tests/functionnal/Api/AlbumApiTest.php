@@ -2,11 +2,13 @@
 
 namespace App\Tests\Functionnal\Api;
 
-use App\Tests\Resources\functionnal\GetterTrait\GetPokedexTrait;
+use App\Tests\Resources\Traits\GetterTrait\GetPokedexTrait;
+use App\Tests\Resources\Traits\AssertReportTrait;
 
 class AlbumApiTest extends AbstractApiTest
 {
     use GetPokedexTrait;
+    use AssertReportTrait;
 
     public function testList(): void
     {
@@ -174,52 +176,5 @@ class AlbumApiTest extends AbstractApiTest
 
         $this->assertArrayHasKey('slug', $pokedexAfter);
         $this->assertEquals('maybenot', $pokedexAfter['slug']);
-    }
-    /**
-     * @param string[][]|int[][] $report
-     */
-    public function assertReport(array $report, int $countNo, int $countMaybe, int $countMaybeNot, int $countYes): void
-    {
-        $this->assertEquals(
-            [
-                'no',
-                'maybe',
-                'maybenot',
-                'yes',
-            ],
-            array_keys($report)
-        );
-
-        $this->assertArrayHasKey('no', $report);
-        $this->assertArrayHasKey('count', $report['no']);
-        $this->assertEquals($countNo, $report['no']['count']);
-        $this->assertArrayHasKey('name', $report['no']);
-        $this->assertEquals('No', $report['no']['name']);
-        $this->assertArrayHasKey('french_name', $report['no']);
-        $this->assertEquals('Non', $report['no']['french_name']);
-
-        $this->assertArrayHasKey('maybe', $report);
-        $this->assertArrayHasKey('count', $report['maybe']);
-        $this->assertEquals($countMaybe, $report['maybe']['count']);
-        $this->assertArrayHasKey('name', $report['maybe']);
-        $this->assertEquals('Maybe', $report['maybe']['name']);
-        $this->assertArrayHasKey('french_name', $report['maybe']);
-        $this->assertEquals('Peut être', $report['maybe']['french_name']);
-
-        $this->assertArrayHasKey('maybenot', $report);
-        $this->assertArrayHasKey('count', $report['maybenot']);
-        $this->assertEquals($countMaybeNot, $report['maybenot']['count']);
-        $this->assertArrayHasKey('name', $report['maybenot']);
-        $this->assertEquals('Maybe not', $report['maybenot']['name']);
-        $this->assertArrayHasKey('french_name', $report['maybenot']);
-        $this->assertEquals('Peut être pas', $report['maybenot']['french_name']);
-
-        $this->assertArrayHasKey('yes', $report);
-        $this->assertArrayHasKey('count', $report['yes']);
-        $this->assertEquals($countYes, $report['yes']['count']);
-        $this->assertArrayHasKey('name', $report['yes']);
-        $this->assertEquals('Yes', $report['yes']['name']);
-        $this->assertArrayHasKey('french_name', $report['yes']);
-        $this->assertEquals('Oui', $report['yes']['french_name']);
     }
 }
