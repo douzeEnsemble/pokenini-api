@@ -23,7 +23,7 @@ final class Version20220812131058 extends AbstractMigration
             'No' => 'Non',
             'ToEvolve' => 'af. évoluer',
             'ToBreed' => 'af. reproduire',
-            'ToTransfer' => 'af. transférer',
+            'ToTransfer' => 'à transférer',
             'Yes' => 'Oui',
         ];
         $this->addCatchStateFrenchNames($catchStatesNames);
