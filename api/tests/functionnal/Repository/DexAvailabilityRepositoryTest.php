@@ -3,7 +3,7 @@
 namespace App\Tests\Functionnal\Repository;
 
 use App\Repository\DexAvailabilityRepository;
-use App\Tests\Resources\functionnal\CounterTrait\CountDexAvailabilityTrait;
+use App\Tests\Resources\Traits\CounterTrait\CountDexAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 

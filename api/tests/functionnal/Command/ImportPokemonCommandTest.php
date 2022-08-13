@@ -2,8 +2,8 @@
 
 namespace App\Tests\Functionnal\Command;
 
-use App\Tests\Resources\functionnal\CounterTrait\CountPokemonTrait;
-use App\Tests\Resources\functionnal\GetterTrait\GetPokemonTrait;
+use App\Tests\Resources\Traits\CounterTrait\CountPokemonTrait;
+use App\Tests\Resources\Traits\GetterTrait\GetPokemonTrait;
 
 class ImportPokemonCommandTest extends AbstractImportFileCommandTest
 {

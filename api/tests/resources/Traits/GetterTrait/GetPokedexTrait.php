@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Tests\Resources\functionnal\GetterTrait;
+namespace App\Tests\Resources\Traits\GetterTrait;
 
 use Doctrine\DBAL\Connection;
 

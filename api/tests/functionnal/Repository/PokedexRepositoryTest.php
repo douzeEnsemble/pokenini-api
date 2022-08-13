@@ -4,7 +4,7 @@ namespace App\Tests\Functionnal\Repository;
 
 use App\Entity\Pokedex;
 use App\Repository\PokedexRepository;
-use App\Tests\Resources\functionnal\GetterTrait\GetPokedexTrait;
+use App\Tests\Resources\Traits\GetterTrait\GetPokedexTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 

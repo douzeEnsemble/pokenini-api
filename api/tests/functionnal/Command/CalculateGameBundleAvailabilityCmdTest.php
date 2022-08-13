@@ -3,8 +3,8 @@
 namespace App\Tests\Functionnal\Command;
 
 use App\Repository\GameAvailabilityRepository;
-use App\Tests\Resources\functionnal\CounterTrait\CountGameAvailabilityTrait;
-use App\Tests\Resources\functionnal\CounterTrait\CountGameBundleAvailabilityTrait;
+use App\Tests\Resources\Traits\CounterTrait\CountGameAvailabilityTrait;
+use App\Tests\Resources\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
