@@ -2,8 +2,9 @@
 
 namespace App\Controller;
 
-use App\Helper\PokedexListReportHelper;
-use App\Repository\CatchStateRepository;
+use App\DTO\Report\Report;
+use App\DTO\Report\Statistic;
+use App\Repository\DexAvailabilityRepository;
 use App\Repository\DexRepository;
 use App\Repository\PokedexRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -16,14 +17,15 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/album')]
 class AlbumController extends AbstractController
 {
-    public function __construct(private readonly PokedexRepository $pokedexRepository)
-    {
+    public function __construct(
+        private readonly PokedexRepository $pokedexRepository,
+        private readonly DexAvailabilityRepository $dexAvailabilityRepository,
+    ) {
     }
 
-    #[Route(methods: ['GET'], path: '/{dexSlug}')]
+    #[Route(path: '/{dexSlug}', methods: ['GET'])]
     public function index(
         DexRepository $dexRepository,
-        CatchStateRepository $catchStateRepository,
         string $dexSlug
     ): JsonResponse {
         /** @var string[][]|int[][] $pokemons */
@@ -31,10 +33,7 @@ class AlbumController extends AbstractController
             $this->pokedexRepository->getListQueryFromDexSlug($dexSlug)
         );
 
-        $report = PokedexListReportHelper::getReportFromPokedex(
-            $pokemons,
-            $catchStateRepository->getAll()
-        );
+        $report = $this->getReportFromDexSlug($dexSlug);
 
         $dex = $dexRepository->getBySlug($dexSlug);
 
@@ -79,5 +78,34 @@ class AlbumController extends AbstractController
         $catchStateSlug = $content;
 
         $this->pokedexRepository->upsertFromSlugs($dexSlug, $pokemonSlug, $catchStateSlug);
+    }
+
+    private function getReportFromDexSlug(string $dexSlug): Report
+    {
+        $totalCaught = 0;
+        $detail = [];
+
+        $total = $this->dexAvailabilityRepository->getTotalFromDexSlug($dexSlug);
+        $totalUncaught = $total;
+
+        $catchStatesCounts = $this->pokedexRepository->getCatchStatesCountsFromDexSlug($dexSlug);
+        foreach ($catchStatesCounts as $catchStatesCount) {
+            $detail[] = new Statistic(
+                (string) $catchStatesCount['slug'],
+                (string) $catchStatesCount['name'],
+                (string) $catchStatesCount['french_name'],
+                (int) $catchStatesCount['count'],
+            );
+
+            if ('yes' === $catchStatesCount['slug']) {
+                $totalCaught = (int) $catchStatesCount['count'];
+            }
+
+            if ('no' !== $catchStatesCount['slug']) {
+                $totalUncaught -= $catchStatesCount['count'];
+            }
+        }
+
+        return new Report($total, $totalCaught, $totalUncaught, $detail);
     }
 }

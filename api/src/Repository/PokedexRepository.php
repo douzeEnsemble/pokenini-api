@@ -59,6 +59,40 @@ class PokedexRepository extends ServiceEntityRepository
         );
     }
 
+    /**
+     * @return int[][]|string[][]
+     */
+    public function getCatchStatesCountsFromDexSlug(string $dexSlug): array
+    {
+        $sql = <<<SQL
+        SELECT  COUNT(pd.id) AS count, cs.slug AS slug, cs.name AS name, cs.french_name AS french_name
+        FROM
+            catch_state AS cs,
+            dex_availability AS da
+
+            JOIN dex AS d
+                ON da.dex_id = d.id
+
+            LEFT JOIN pokedex AS pd
+                ON pd.dex_id = da.dex_id
+                    AND pd.pokemon_id = da.pokemon_id
+        WHERE
+            d.slug = :dex_slug
+
+            AND (pd.catch_state_id IS NULL OR cs.id = pd.catch_state_id)
+        GROUP BY cs.slug, cs.name, cs.french_name, cs.order_number
+        ORDER BY cs.order_number
+        SQL;
+
+        /** @var int[][]|string[][] */
+        return $this->getEntityManager()->getConnection()->fetchAllAssociative(
+            $sql,
+            [
+                'dex_slug' => $dexSlug,
+            ]
+        );
+    }
+
     public function upsertFromSlugs(string $dexSlug, string $pokemonSlug, string $catchStateSlug): void
     {
         $sql = <<<SQL

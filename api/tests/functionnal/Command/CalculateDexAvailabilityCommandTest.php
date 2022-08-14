@@ -32,7 +32,7 @@ class CalculateDexAvailabilityCommandTest extends KernelTestCase
 
         $this->assertEquals(0, $this->getPokemonNotDeletedCount());
 
-        $this->assertEquals(25, $this->getDexAvailabilityCount());
+        $this->assertEquals(36, $this->getDexAvailabilityCount());
 
         $commandTester = $this->executeCommand();
         $commandTester->assertCommandIsSuccessful();
@@ -44,7 +44,7 @@ class CalculateDexAvailabilityCommandTest extends KernelTestCase
 
     public function testDexAvailabilities(): void
     {
-        $this->assertEquals(25, $this->getDexAvailabilityCount());
+        $this->assertEquals(36, $this->getDexAvailabilityCount());
 
         $commandTester = $this->executeCommand();
         $commandTester->assertCommandIsSuccessful();
