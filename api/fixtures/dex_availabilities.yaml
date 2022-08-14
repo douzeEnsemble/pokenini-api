@@ -99,4 +99,48 @@ App\Entity\DexAvailability:
         pokemon: '@pokemon_butterfree_gigantamax'
         dex: '@dex_home'
         
+    dexavailability_homeshiny_bulbasaur:
+        pokemon: '@pokemon_bulbasaur'
+        dex: '@dex_home_shiny'
+        
+    dexavailability_homeshiny_yvysaur:
+        pokemon: '@pokemon_ivysaur'
+        dex: '@dex_home_shiny'
+        
+    dexavailability_homeshiny_venusaur:
+        pokemon: '@pokemon_venusaur'
+        dex: '@dex_home_shiny'
+        
+    dexavailability_homeshiny_venusaurf:
+        pokemon: '@pokemon_venusaur_f'
+        dex: '@dex_home_shiny'
+        
+    dexavailability_homeshiny_venusaurmega:
+        pokemon: '@pokemon_venusaur_mega'
+        dex: '@dex_home_shiny'
+        
+    dexavailability_homeshiny_venusaurgigantamax:
+        pokemon: '@pokemon_venusaur_gigantamax'
+        dex: '@dex_home_shiny'
+    
+    dexavailability_homeshiny_caterpie:
+        pokemon: '@pokemon_caterpie'
+        dex: '@dex_home_shiny'
+    
+    dexavailability_homeshiny_metapod:
+        pokemon: '@pokemon_metapod'
+        dex: '@dex_home_shiny'
+    
+    dexavailability_homeshiny_butterfree:
+        pokemon: '@pokemon_butterfree'
+        dex: '@dex_home_shiny'
+    
+    dexavailability_homeshiny_butterfreef:
+        pokemon: '@pokemon_butterfree_f'
+        dex: '@dex_home_shiny'
+    
+    dexavailability_homeshiny_butterfreegigantamax:
+        pokemon: '@pokemon_butterfree_gigantamax'
+        dex: '@dex_home_shiny'
+        
     

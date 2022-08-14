@@ -25,4 +25,16 @@ class DexAvailabilityRepository extends ServiceEntityRepository
 
         $queryBuilder->getQuery()->execute();
     }
+
+    public function getTotalFromDexSlug(string $dexSlug): int
+    {
+        $queryBuilder = $this->createQueryBuilder('da');
+        $queryBuilder->select('count(da)');
+        $queryBuilder->join('da.dex', 'd');
+        $queryBuilder->where($queryBuilder->expr()->eq('d.slug', ':dex_slug'));
+        $queryBuilder->setParameter('dex_slug', $dexSlug);
+
+        /** @var int */
+        return $queryBuilder->getQuery()->getSingleScalarResult();
+    }
 }

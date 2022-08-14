@@ -55,6 +55,44 @@ class PokedexRepositoryTest extends KernelTestCase
         $this->assertNull($pokedexes[6]['catch_state_slug']);
     }
 
+    public function testGetCatchStatesCountsFromDexSlug(): void
+    {
+        /** @var PokedexRepository $repo */
+        $repo = static::getContainer()->get(PokedexRepository::class);
+
+        $counts = $repo->getCatchStatesCountsFromDexSlug('redgreenblueyellow');
+
+        $this->assertEquals(
+            [
+                [
+                    'count' => 1,
+                    'slug' => 'no',
+                    'name' => 'No',
+                    'french_name' => 'Non',
+                ],
+                [
+                    'count' => 1,
+                    'slug' => 'maybe',
+                    'name' => 'Maybe',
+                    'french_name' => 'Peut être',
+                ],
+                [
+                    'count' => 2,
+                    'slug' => 'maybenot',
+                    'name' => 'Maybe not',
+                    'french_name' => 'Peut être pas',
+                ],
+                [
+                    'count' => 0,
+                    'slug' => 'yes',
+                    'name' => 'Yes',
+                    'french_name' => 'Oui',
+                ],
+            ],
+            $counts
+        );
+    }
+
     public function testUpdateFromSlugs(): void
     {
         $pokedexBefore = $this->getPokedexFromSlugs('redgreenblueyellow', 'ivysaur');
