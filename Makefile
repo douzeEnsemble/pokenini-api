@@ -109,7 +109,17 @@ deploy: ## Deployment
 	rm -Rf ~/tmp/deploy/pokenini-api/project/.git
 	cp -R ~/tmp/deploy/pokenini-api/project/api/* ~/tmp/deploy/pokenini-api/heroku/
 	cd ~/tmp/deploy/pokenini-api/heroku; \
-        git add --all; \
+    	git add --all; \
 		git commit --allow-empty -m "Deployment"; \
 		git push heroku main
+	rm -Rf ~/tmp/deploy/pokenini-api
+
+runs: ## Run commands into production env
+	mkdir -p ~/tmp/deploy/pokenini-api
+	heroku git:clone -a pokenini-api ~/tmp/deploy/pokenini-api/heroku
+	cd ~/tmp/deploy/pokenini-api/heroku; \
+		heroku run php bin/console app:import:pokemon resources/data/pokemon_list.csv; \
+		heroku run php bin/console app:import:game_availability resources/data/bulbapedia_availability.csv; \
+		heroku run php bin/console app:calculate:game_bundle_availability; \
+		heroku run php bin/console app:calculate:dex_availability
 	rm -Rf ~/tmp/deploy/pokenini-api
