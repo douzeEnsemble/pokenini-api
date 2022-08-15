@@ -134,6 +134,25 @@ class ImportPokemonCommandTest extends AbstractImportFileCommandTest
         $this->assertNotNull($pokemonAfter['regional_form_id']);
     }
 
+    public function testDifferentColumnsOrderPokemons(): void
+    {
+        $this->assertGreaterThan(0, $this->getPokemonCount());
+        $this->assertEquals($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
+        $this->assertEquals(0, $this->getPokemonDeletedCount());
+
+        $commandTester = $this->executeCommand([
+            'file' => 'tests/resources/data/pokemon_list/different_columns_order.csv'
+        ]);
+
+        $commandTester->assertCommandIsSuccessful();
+
+        $this->assertStringContainsString('17 pokemons created/updated', $commandTester->getDisplay());
+
+        $this->assertEquals(27, $this->getPokemonCount());
+        $this->assertEquals(17, $this->getPokemonNotDeletedCount());
+        $this->assertEquals(10, $this->getPokemonDeletedCount());
+    }
+
     protected function getCommandName(): string
     {
         return 'app:import:pokemon';

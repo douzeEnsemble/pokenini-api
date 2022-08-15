@@ -92,8 +92,12 @@ abstract class AbstractImportFileCommand extends Command
         $csv->skipEmptyRecords();
 
         $header = $csv->getHeader();
+        $expectedHeader = $this->getExpectedHeader();
 
-        if ($header !== $this->getExpectedHeader()) {
+        sort($header);
+        sort($expectedHeader);
+
+        if ($header !== $expectedHeader) {
             throw new InvalidFileDataException('This is not a valid data csv file');
         }
 
