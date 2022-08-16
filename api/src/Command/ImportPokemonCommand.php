@@ -69,8 +69,12 @@ class ImportPokemonCommand extends AbstractImportFileCommand
             'Family',
             'Family order',
             'Evolution',
-            'Pokémon',
-            'Pokémon Fr',
+            'Pokémon Nom Complet',
+            'Pokémon Nom simplifié',
+            'Forme',
+            'Pokémon Nom Complet Fr',
+            'Pokémon Nom simplifié Fr',
+            'Forme Fr',
             'Dex',
             'Sprites',
             'Shiny Sprites',
@@ -127,8 +131,12 @@ class ImportPokemonCommand extends AbstractImportFileCommand
         $isBankableish = filter_var($record['Bankable-ish'], FILTER_VALIDATE_BOOLEAN);
 
         return [
-            'name' => $record['Pokémon'],
-            'frenchName' => $record['Pokémon Fr'],
+            'name' => $record['Pokémon Nom Complet'],
+            'simplifiedName' => $record['Pokémon Nom simplifié'],
+            'formsLabel' => $record['Forme'],
+            'frenchName' => $record['Pokémon Nom Complet Fr'],
+            'simplifiedFrenchName' => $record['Pokémon Nom simplifié Fr'],
+            'formsFrenchLabel' => $record['Forme Fr'],
             'nationalDexNumber' => $record['Dex'],
             'family' => $record['Family'],
             'familyOrder' => $record['Family order'],
@@ -156,17 +164,21 @@ class ImportPokemonCommand extends AbstractImportFileCommand
         $sqlParameters = [
             'id' => Uuid::v4(),
             'name' => $pokemon['name'],
-            'french_name' => $pokemon['frenchName'],
-            'national_dex_number' => $pokemon['nationalDexNumber'],
+            'simplifiedName' => $pokemon['simplifiedName'],
+            'formsLabel' => $pokemon['formsLabel'],
+            'frenchName' => $pokemon['frenchName'],
+            'simplifiedFrenchName' => $pokemon['simplifiedFrenchName'],
+            'formsFrenchLabel' => $pokemon['formsFrenchLabel'],
+            'nationalDexNumber' => $pokemon['nationalDexNumber'],
             'family' => $pokemon['family'],
             'familyOrder' => $pokemon['familyOrder'],
             'primeName' => $pokemon['primeName'],
             'bankable' => $pokemon['bankable'] ? 'TRUE' : 'FALSE',
             'bankableish' => $pokemon['bankableish'] ? 'TRUE' : 'FALSE',
-            'original_game_bundle' => $pokemon['originalGameBundle'],
-            'variant_form' => $pokemon['variantForm'],
-            'regional_form' => $pokemon['regionalForm'],
-            'special_form' => $pokemon['specialForm'],
+            'originalGameBundle' => $pokemon['originalGameBundle'],
+            'variantForm' => $pokemon['variantForm'],
+            'regionalForm' => $pokemon['regionalForm'],
+            'specialForm' => $pokemon['specialForm'],
             'iconName' => $pokemon['iconName'],
             "slug" => $pokemon['slug'],
         ];
@@ -175,7 +187,11 @@ class ImportPokemonCommand extends AbstractImportFileCommand
         INSERT INTO pokemon (
             id,
             name,
+            simplified_name,
+            forms_label,
             french_name,
+            simplified_french_name,
+            forms_french_label,
             national_dex_number,
             family_id,
             family_order,
@@ -192,24 +208,33 @@ class ImportPokemonCommand extends AbstractImportFileCommand
         VALUES (
             :id,
             :name,
-            :french_name,
-            :national_dex_number,
+            :simplifiedName,
+            :formsLabel,
+            :frenchName,
+            :simplifiedFrenchName,
+            :formsFrenchLabel,
+            :nationalDexNumber,
             (SELECT id FROM pokemon WHERE name = :family and :name <> :family),
             :familyOrder,
             :primeName,
             :bankable,
             :bankableish,
-            (SELECT id FROM game_bundle WHERE name = :original_game_bundle),
-            (SELECT id FROM variant_form WHERE name = :variant_form),
-            (SELECT id FROM regional_form WHERE name = :regional_form),
-            (SELECT id FROM special_form WHERE name = :special_form),
+            (SELECT id FROM game_bundle WHERE name = :originalGameBundle),
+            (SELECT id FROM variant_form WHERE name = :variantForm),
+            (SELECT id FROM regional_form WHERE name = :regionalForm),
+            (SELECT id FROM special_form WHERE name = :specialForm),
             :iconName,
             :slug
         )
-        ON CONFLICT (name)
+        ON CONFLICT (slug)
         DO
         UPDATE
-        SET french_name = excluded.french_name,
+        SET name = excluded.name,
+            simplified_name = excluded.simplified_name,
+            forms_label = excluded.forms_label,
+            french_name = excluded.french_name,
+            simplified_french_name = excluded.simplified_french_name,
+            forms_french_label = excluded.forms_french_label,
             national_dex_number = excluded.national_dex_number,
             family_id = excluded.family_id,
             family_order = excluded.family_order,
@@ -221,16 +246,9 @@ class ImportPokemonCommand extends AbstractImportFileCommand
             regional_form_id = excluded.regional_form_id,
             special_form_id = excluded.special_form_id,
             icon_name = excluded.icon_name,
-            slug = excluded.slug,
             deleted_at = NULL
 SQL;
 
-        try {
-            $this->entityManager->getConnection()->executeQuery($sql, $sqlParameters);
-        } catch (\Exception $e) {
-            var_dump($sqlParameters);
-
-            throw $e;
-        }
+        $this->entityManager->getConnection()->executeQuery($sql, $sqlParameters);
     }
 }

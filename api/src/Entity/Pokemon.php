@@ -2,16 +2,19 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiProperty;
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Entity\Traits\BaseEntityTrait;
 use App\Entity\Traits\FrenchNamedTrait;
 use App\Entity\Traits\NamedTrait;
-use App\Entity\Traits\SlugifiedTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
 use Symfony\Component\Serializer\Annotation\Groups;
 
+/**
+ * @SuppressWarnings(PHPMD.TooManyFields)
+ */
 #[ApiResource(normalizationContext: ['groups' => ['pokemon_list']], order: ["nationalDexNumber", "familyOrder"])]
 #[ORM\Entity]
 #[Gedmo\SoftDeleteable(fieldName: 'deletedAt')]
@@ -20,8 +23,36 @@ class Pokemon
     use BaseEntityTrait;
     use NamedTrait;
     use FrenchNamedTrait;
-    use SlugifiedTrait;
     use SoftDeleteableEntity;
+
+    #[ORM\Column(unique: true)]
+    #[ApiProperty(identifier: true)]
+    #[Groups(["pokemon_list"])]
+    public string $slug;
+
+    #[ORM\Column]
+    #[Groups([
+        "pokemon_list",
+    ])]
+    public string $simplifiedName = '';
+
+    #[ORM\Column]
+    #[Groups([
+        "pokemon_list",
+    ])]
+    public string $simplifiedFrenchName = '';
+
+    #[ORM\Column]
+    #[Groups([
+        "pokemon_list",
+    ])]
+    public string $formsLabel = '';
+
+    #[ORM\Column]
+    #[Groups([
+        "pokemon_list",
+    ])]
+    public string $formsFrenchLabel = '';
 
     #[ORM\Column]
     #[Groups(["pokemon_list"])]

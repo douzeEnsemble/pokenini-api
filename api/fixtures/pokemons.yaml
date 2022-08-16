@@ -7,9 +7,15 @@ App\Entity\Pokemon:
         specialForm: ~
         familyOrder: 0
         name: ~ # Need to be overrided
+        frenchName: ~ # Need to be overrided
         primeName: '$name'
+        simplifiedName: '$name'
+        formsLabel: ''
+        simplifiedFrenchName: '$frenchName'
+        formsFrenchLabel: ''
         
     pokemon_douze (extends pokemon):
+        slug: 'douze'
         name: 'Douze'
         frenchName: 'Douze'
         family: ~
@@ -19,6 +25,7 @@ App\Entity\Pokemon:
         familyOrder: 0
         
     pokemon_bulbasaur (extends pokemon):
+        slug: 'bulbasaur'
         name: 'Bulbasaur'
         frenchName: 'Bulbizarre'
         family: ~
@@ -28,6 +35,7 @@ App\Entity\Pokemon:
         familyOrder: 0
     
     pokemon_ivysaur (extends pokemon):
+        slug: 'ivysaur'
         name: 'Ivysaur'
         frenchName: 'Herbizarre'
         family: '@pokemon_bulbasaur'
@@ -37,6 +45,7 @@ App\Entity\Pokemon:
         familyOrder: 1
         
     pokemon_venusaur (extends pokemon):
+        slug: 'venusaur'
         name: 'Venusaur'
         frenchName: 'Florizarre'
         family: '@pokemon_bulbasaur'
@@ -47,9 +56,13 @@ App\Entity\Pokemon:
         
     pokemon_venusaur_f (extends pokemon):
         slug: 'venusaur-f'
-        name: 'Venusaur ♀'
-        frenchName: 'Florizarre ♀'
         primeName: 'Venusaur'
+        name: 'Venusaur ♀'
+        simplifiedName: 'Venusaur'
+        formsLabel: '♀️'
+        frenchName: 'Florizarre ♀'
+        simplifiedFrenchName: 'Florizarre'
+        formsFrenchLabel: '♀️'
         family: '@pokemon_bulbasaur'
         nationalDexNumber: '3'
         originalGameBundle: '@game_bundle_diamond_pearl_platinium'       
@@ -59,9 +72,13 @@ App\Entity\Pokemon:
     
     pokemon_venusaur_mega (extends pokemon):
         slug: 'venusaur-mega'
-        name: 'Mega Venusaur'
-        frenchName: 'Mega Florizarre'
         primeName: 'Venusaur'
+        name: 'Mega Venusaur'
+        simplifiedName: 'Venusaur'
+        formsLabel: 'Mega'
+        frenchName: 'Mega Florizarre'
+        simplifiedFrenchName: 'Florizarre'
+        formsFrenchLabel: 'Mega'
         family: '@pokemon_bulbasaur'
         nationalDexNumber: '3'
         originalGameBundle: '@game_bundle_x_y'
@@ -71,9 +88,13 @@ App\Entity\Pokemon:
     
     pokemon_venusaur_gigantamax (extends pokemon):
         slug: 'venusaur-gmax'
-        name: 'Gigantamax Venusaur'
-        frenchName: 'Gigamax Florizarre'
         primeName: 'Venusaur'
+        name: 'Gigantamax Venusaur'
+        simplifiedName: 'Venusaur'
+        formsLabel: 'Gigantamax'
+        frenchName: 'Gigamax Florizarre'
+        simplifiedFrenchName: 'Florizarre'
+        formsFrenchLabel: 'Gigamax'
         family: '@pokemon_bulbasaur'
         nationalDexNumber: '3'
         originalGameBundle: '@game_bundle_sword_shield'
@@ -82,6 +103,7 @@ App\Entity\Pokemon:
         familyOrder: 5
     
     pokemon_deoxys (extends pokemon):
+        slug: 'deoxys'
         name: 'Deoxys'
         frenchName: 'Deoxys'
         family: 
@@ -91,8 +113,11 @@ App\Entity\Pokemon:
         familyOrder: 0
     
     pokemon_deoxys_attack (extends pokemon):
-        name: 'Deoxys-Attack'
+        slug: 'deoxys-attack'
         primeName: 'Deoxys'
+        name: 'Deoxys-Attack'
+        formsLabel: 'Attack'
+        simplifiedFrenchName: 'Attaque'
         frenchName: 'Deoxys Attaque'
         family: '@pokemon_deoxys'
         nationalDexNumber: '386'
@@ -102,8 +127,11 @@ App\Entity\Pokemon:
         variantForm: '@variant_form_alternate'
     
     pokemon_deoxys_defense (extends pokemon):
-        name: 'Deoxys-Defense'
+        slug: 'deoxys-defense'
         primeName: 'Deoxys'
+        name: 'Deoxys-Defense'
+        formsLabel: 'Defense'
+        simplifiedFrenchName: 'Défense'
         frenchName: 'Deoxys Défense'
         family: '@pokemon_deoxys'
         nationalDexNumber: '386'
@@ -113,8 +141,11 @@ App\Entity\Pokemon:
         variantForm: '@variant_form_alternate'
     
     pokemon_deoxys_speed (extends pokemon):
-        name: 'Deoxys-Speed'
+        slug: 'deoxys-speed'
         primeName: 'Deoxys'
+        name: 'Deoxys-Speed'
+        formsLabel: 'Speed'
+        simplifiedFrenchName: 'Vitesse'
         frenchName: 'Deoxys Vitesse'
         family: '@pokemon_deoxys'
         nationalDexNumber: '386'
@@ -124,8 +155,8 @@ App\Entity\Pokemon:
         variantForm: '@variant_form_alternate'
     
     pokemon_caterpie (extends pokemon):
+        slug: 'caterpie'
         name: 'Caterpie'
-        primeName: 'Caterpie'
         frenchName: 'Chenipan'
         nationalDexNumber: '10'
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
@@ -133,8 +164,8 @@ App\Entity\Pokemon:
         familyOrder: 0
     
     pokemon_metapod (extends pokemon):
+        slug: 'metapod'
         name: 'Metapod'
-        primeName: 'Metapod'
         frenchName: 'Chrysacier'
         family: '@pokemon_caterpie'
         nationalDexNumber: '11'
@@ -143,8 +174,8 @@ App\Entity\Pokemon:
         familyOrder: 1
     
     pokemon_butterfree (extends pokemon):
+        slug: 'butterfree'
         name: 'Butterfree'
-        primeName: 'Butterfree'
         frenchName: 'Papilusion'
         family: '@pokemon_caterpie'
         nationalDexNumber: '11'
@@ -154,9 +185,13 @@ App\Entity\Pokemon:
     
     pokemon_butterfree_f (extends pokemon):
         slug: 'butterfree-f'
+        primeName: 'Butterfree'
         name: 'Butterfree ♀'
-        primeName: 'Butterfree ♀'
+        simplifiedName: 'Butterfree'
+        formsLabel: '♀️'
         frenchName: 'Papilusion'
+        simplifiedFrenchName: 'Papilusion'
+        formsFrenchLabel: '♀️'
         family: '@pokemon_caterpie'
         nationalDexNumber: '11'
         originalGameBundle: '@game_bundle_diamond_pearl_platinium'
@@ -166,9 +201,13 @@ App\Entity\Pokemon:
     
     pokemon_butterfree_gigantamax (extends pokemon):
         slug: 'butterfree-gmax'
+        primeName: 'Butterfree'
         name: 'Gigantamax Butterfree'
+        simplifiedName: 'Butterfree'
+        formsLabel: 'Gigantamax'
         frenchName: 'Gigamax Papilusion'
-        primeName: 'Papilusion'
+        simplifiedFrenchName: 'Papilusion'
+        formsFrenchLabel: 'Gigamax'
         family: '@pokemon_caterpie'
         nationalDexNumber: '12'
         originalGameBundle: '@game_bundle_sword_shield'

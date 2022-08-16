@@ -38,6 +38,10 @@ class PokemonsApiTest extends AbstractApiTest
             'slug' => 'bulbasaur',
             'primeName' => 'Bulbasaur',
             'frenchName' => 'Bulbizarre',
+            'simplifiedName' => 'Bulbasaur',
+            'simplifiedFrenchName' => 'Bulbizarre',
+            'formsLabel' => '',
+            'formsFrenchLabel' => '',
         ], $data);
     }
 
@@ -65,6 +69,10 @@ class PokemonsApiTest extends AbstractApiTest
                 'slug' => 'bulbasaur',
                 'primeName' => 'Bulbasaur',
                 'frenchName' => 'Bulbizarre',
+                'simplifiedName' => 'Bulbasaur',
+                'simplifiedFrenchName' => 'Bulbizarre',
+                'formsLabel' => '',
+                'formsFrenchLabel' => '',
             ],
             'bankable' => true,
             'originalGameBundle' => [
@@ -82,6 +90,10 @@ class PokemonsApiTest extends AbstractApiTest
             'slug' => 'ivysaur',
             'primeName' => 'Ivysaur',
             'frenchName' => 'Herbizarre',
+            'simplifiedName' => 'Ivysaur',
+            'simplifiedFrenchName' => 'Herbizarre',
+            'formsLabel' => '',
+            'formsFrenchLabel' => '',
         ], $data);
     }
 
@@ -109,6 +121,10 @@ class PokemonsApiTest extends AbstractApiTest
                 'slug' => 'bulbasaur',
                 'primeName' => 'Bulbasaur',
                 'frenchName' => 'Bulbizarre',
+                'simplifiedName' => 'Bulbasaur',
+                'simplifiedFrenchName' => 'Bulbizarre',
+                'formsLabel' => '',
+                'formsFrenchLabel' => '',
             ],
             'bankable' => true,
             'originalGameBundle' => [
@@ -126,9 +142,13 @@ class PokemonsApiTest extends AbstractApiTest
             'iconName' => 'venusaur',
             'familyOrder' => 4,
             'name' => 'Mega Venusaur',
-            'slug' => 'venusaurmega',
+            'slug' => 'venusaur-mega',
             'primeName' => 'Venusaur',
             'frenchName' => 'Mega Florizarre',
+            'simplifiedName' => 'Venusaur',
+            'simplifiedFrenchName' => 'Florizarre',
+            'formsLabel' => 'Mega',
+            'formsFrenchLabel' => 'Mega',
         ], $data);
     }
 }
