@@ -13,6 +13,7 @@ final class AlbumApiTestData
     {
         return [
             [
+                'pokemon_national_dex_number' => '1',
                 'pokemon_slug' => 'bulbasaur',
                 'pokemon_name' => 'Bulbasaur',
                 'pokemon_simplified_name' => 'Bulbasaur',
@@ -32,6 +33,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => 'Non',
             ],
             [
+                'pokemon_national_dex_number' => '2',
                 'pokemon_slug' => 'ivysaur',
                 'pokemon_name' => 'Ivysaur',
                 'pokemon_simplified_name' => 'Ivysaur',
@@ -51,6 +53,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => 'Peut être',
             ],
             [
+                'pokemon_national_dex_number' => '3',
                 'pokemon_slug' => 'venusaur',
                 'pokemon_name' => 'Venusaur',
                 'pokemon_simplified_name' => 'Venusaur',
@@ -70,6 +73,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => 'Peut être pas',
             ],
             [
+                'pokemon_national_dex_number' => '10',
                 'pokemon_slug' => 'caterpie',
                 'pokemon_name' => 'Caterpie',
                 'pokemon_simplified_name' => 'Caterpie',
@@ -89,6 +93,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => 'Peut être pas',
             ],
             [
+                'pokemon_national_dex_number' => '11',
                 'pokemon_slug' => 'metapod',
                 'pokemon_name' => 'Metapod',
                 'pokemon_simplified_name' => 'Metapod',
@@ -108,6 +113,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => null,
             ],
             [
+                'pokemon_national_dex_number' => '12',
                 'pokemon_slug' => 'butterfree',
                 'pokemon_name' => 'Butterfree',
                 'pokemon_simplified_name' => 'Butterfree',
@@ -127,6 +133,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => null,
             ],
             [
+                'pokemon_national_dex_number' => '1212',
                 'pokemon_slug' => 'douze',
                 'pokemon_name' => 'Douze',
                 'pokemon_simplified_name' => 'Douze',
@@ -157,6 +164,7 @@ final class AlbumApiTestData
     {
         return [
             [
+                'pokemon_national_dex_number' => '1',
                 'pokemon_slug' => 'bulbasaur',
                 'pokemon_name' => 'Bulbasaur',
                 'pokemon_simplified_name' => 'Bulbasaur',
@@ -176,6 +184,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => 'Non',
             ],
             [
+                'pokemon_national_dex_number' => '2',
                 'pokemon_slug' => 'ivysaur',
                 'pokemon_name' => 'Ivysaur',
                 'pokemon_simplified_name' => 'Ivysaur',
@@ -195,6 +204,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => 'Non',
             ],
             [
+                'pokemon_national_dex_number' => '3',
                 'pokemon_slug' => 'venusaur',
                 'pokemon_name' => 'Venusaur',
                 'pokemon_simplified_name' => 'Venusaur',
@@ -214,6 +224,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => 'Non',
             ],
             [
+                'pokemon_national_dex_number' => '3',
                 'pokemon_slug' => 'venusaur-f',
                 'pokemon_name' => 'Venusaur ♀',
                 'pokemon_simplified_name' => 'Venusaur',
@@ -233,6 +244,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => 'Non',
             ],
             [
+                'pokemon_national_dex_number' => '3',
                 'pokemon_slug' => 'venusaur-mega',
                 'pokemon_name' => 'Mega Venusaur',
                 'pokemon_simplified_name' => 'Venusaur',
@@ -252,6 +264,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => 'Non',
             ],
             [
+                'pokemon_national_dex_number' => '3',
                 'pokemon_slug' => 'venusaur-gmax',
                 'pokemon_name' => 'Gigantamax Venusaur',
                 'pokemon_simplified_name' => 'Venusaur',
@@ -271,6 +284,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => 'Non',
             ],
             [
+                'pokemon_national_dex_number' => '10',
                 'pokemon_slug' => 'caterpie',
                 'pokemon_name' => 'Caterpie',
                 'pokemon_simplified_name' => 'Caterpie',
@@ -290,6 +304,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => null,
             ],
             [
+                'pokemon_national_dex_number' => '11',
                 'pokemon_slug' => 'metapod',
                 'pokemon_name' => 'Metapod',
                 'pokemon_simplified_name' => 'Metapod',
@@ -309,6 +324,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => null,
             ],
             [
+                'pokemon_national_dex_number' => '12',
                 'pokemon_slug' => 'butterfree',
                 'pokemon_name' => 'Butterfree',
                 'pokemon_simplified_name' => 'Butterfree',
@@ -328,6 +344,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => null,
             ],
             [
+                'pokemon_national_dex_number' => '12',
                 'pokemon_slug' => 'butterfree-f',
                 'pokemon_name' => 'Butterfree ♀',
                 'pokemon_simplified_name' => 'Butterfree',
@@ -347,6 +364,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => null,
             ],
             [
+                'pokemon_national_dex_number' => '12',
                 'pokemon_slug' => 'butterfree-gmax',
                 'pokemon_name' => 'Gigantamax Butterfree',
                 'pokemon_simplified_name' => 'Butterfree',
@@ -366,6 +384,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => null,
             ],
             [
+                'pokemon_national_dex_number' => '1212',
                 'pokemon_slug' => 'douze',
                 'pokemon_name' => 'Douze',
                 'pokemon_simplified_name' => 'Douze',
@@ -396,6 +415,7 @@ final class AlbumApiTestData
     {
         return [
             [
+                'pokemon_national_dex_number' => '1',
                 'pokemon_slug' => 'bulbasaur',
                 'pokemon_name' => 'Bulbasaur',
                 'pokemon_simplified_name' => 'Bulbasaur',
@@ -415,6 +435,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => null,
             ],
             [
+                'pokemon_national_dex_number' => '2',
                 'pokemon_slug' => 'ivysaur',
                 'pokemon_name' => 'Ivysaur',
                 'pokemon_simplified_name' => 'Ivysaur',
@@ -434,6 +455,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => null,
             ],
             [
+                'pokemon_national_dex_number' => '3',
                 'pokemon_slug' => 'venusaur',
                 'pokemon_name' => 'Venusaur',
                 'pokemon_simplified_name' => 'Venusaur',
@@ -453,6 +475,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => null,
             ],
             [
+                'pokemon_national_dex_number' => '3',
                 'pokemon_slug' => 'venusaur-f',
                 'pokemon_name' => 'Venusaur ♀',
                 'pokemon_simplified_name' => 'Venusaur',
@@ -472,6 +495,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => null,
             ],
             [
+                'pokemon_national_dex_number' => '3',
                 'pokemon_slug' => 'venusaur-mega',
                 'pokemon_name' => 'Mega Venusaur',
                 'pokemon_simplified_name' => 'Venusaur',
@@ -491,6 +515,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => null,
             ],
             [
+                'pokemon_national_dex_number' => '3',
                 'pokemon_slug' => 'venusaur-gmax',
                 'pokemon_name' => 'Gigantamax Venusaur',
                 'pokemon_simplified_name' => 'Venusaur',
@@ -510,6 +535,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => null,
             ],
             [
+                'pokemon_national_dex_number' => '10',
                 'pokemon_slug' => 'caterpie',
                 'pokemon_name' => 'Caterpie',
                 'pokemon_simplified_name' => 'Caterpie',
@@ -529,6 +555,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => null,
             ],
             [
+                'pokemon_national_dex_number' => '11',
                 'pokemon_slug' => 'metapod',
                 'pokemon_name' => 'Metapod',
                 'pokemon_simplified_name' => 'Metapod',
@@ -548,6 +575,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => null,
             ],
             [
+                'pokemon_national_dex_number' => '12',
                 'pokemon_slug' => 'butterfree',
                 'pokemon_name' => 'Butterfree',
                 'pokemon_simplified_name' => 'Butterfree',
@@ -567,6 +595,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => null,
             ],
             [
+                'pokemon_national_dex_number' => '12',
                 'pokemon_slug' => 'butterfree-f',
                 'pokemon_name' => 'Butterfree ♀',
                 'pokemon_simplified_name' => 'Butterfree',
@@ -586,6 +615,7 @@ final class AlbumApiTestData
                 'catch_state_french_name' => null,
             ],
             [
+                'pokemon_national_dex_number' => '12',
                 'pokemon_slug' => 'butterfree-gmax',
                 'pokemon_name' => 'Gigantamax Butterfree',
                 'pokemon_simplified_name' => 'Butterfree',

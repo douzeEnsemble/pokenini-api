@@ -28,6 +28,7 @@ class PokedexRepository extends ServiceEntityRepository
         $sql = <<<SQL
         SELECT  p.slug AS pokemon_slug,
                 p.name AS pokemon_name,
+                p.national_dex_number AS pokemon_national_dex_number,
                 p.simplified_name AS pokemon_simplified_name,
                 p.forms_label AS pokemon_forms_label,
                 p.french_name AS pokemon_french_name,
