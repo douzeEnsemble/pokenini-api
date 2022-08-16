@@ -22,7 +22,7 @@ class Dex
     use SlugifiedTrait;
     use OrderedTrait;
 
-    #[ORM\Column(length: 412)]
+    #[ORM\Column(length: 1357)]
     public string $selectionRule = '';
 
     #[ORM\Column]
