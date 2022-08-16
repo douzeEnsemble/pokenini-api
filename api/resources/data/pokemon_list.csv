@@ -122,7 +122,7 @@ Yes,Yes,7,"Sun, Moon",,Alolan,,Diglett,3,26,Dugtrio-Alola,Dugtrio,Alolan,Triopik
 Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Meowth,0,,Meowth,Meowth,,Miaouss,Miaouss,,52,,,meowth,Meowth,,meowth,Normal,,,,"5,120",Field,,50.00%,50.00%,Pickup,Technician,Unnerve,Insomnia,Chip Away,Normal,,,
 Yes,Yes,7,"Sun, Moon",,Alolan,,Meowth,1,,Meowth-Alola,Meowth,Alolan,Miaouss d'Alola,Miaouss,d'Alola,52,,,meowth-alola,"Meowth
 (Alolan)",,meowth-alola,Dark,,,,"5,120",Field,,50.00%,50.00%,Pickup,Technician,Rattled,Intimidate,Circle Throw,Fighting,,,
-Yes,Yes,8,"Sword, Shield",,Galarian,,Meowth,2,,Meowth-Galar,Meowth,Galarian,Miaouss de Galar,Miaouss,,52,,,meowth-galar,"Meowth
+Yes,Yes,8,"Sword, Shield",,Galarian,,Meowth,2,,Meowth-Galar,Meowth,Galarian,Miaouss de Galar,Miaouss,de Galar,52,,,meowth-galar,"Meowth
 (Galarian)",,meowth-galar,Steel,,,,"5,120",Field,,50.00%,50.00%,Pickup,Tough Claws,Unnerve,Intrepid Sword,Clamp,Water,,,
 Yes,No,8,"Sword, Shield",,,Gigantamax,Meowth,3,,Gigantamax Meowth,Meowth,Gigantamax,Gigamax Miaouss,Miaouss,Gigamax,52,,,meowth-gmax,Meowth,,meowth-gmax,Normal,,,,"5,120",Field,,50.00%,50.00%,Pickup,Technician,Unnerve,Iron Barbs,Clanging Scales,Dragon,,,
 Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Meowth,4,28,Persian,Persian,,Persian,Persian,,53,,,persian,Persian,,persian,Normal,,,,"5,120",Field,,50.00%,50.00%,Limber,Technician,Unnerve,Iron Fist,Clangorous Soul,Dragon,,,
@@ -182,17 +182,17 @@ Yes,Yes,7,"Sun, Moon",,Alolan,,Geodude,8,Trade,Golem-Alola,Golem,Alolan,Grolem d
 (Alolan)",,golem-alola,Rock,,Electric,,"3,840",Mineral,,50.00%,50.00%,Magnet Pull,Sturdy,Galvanize,Mummy,Dark Pulse,Dark,,,
 Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Ponyta,0,,Ponyta,Ponyta,,Ponyta,Ponyta,,77,,,ponyta,Ponyta,,ponyta,Fire,,,,"5,120",Field,,50.00%,50.00%,Run Away,Flash Fire,Flame Body,Natural Cure,Dark Void,Dark,,,
 Yes,Yes,8,Pokémon Legends Arceus,,,Alpha,Ponyta,1,,Alpha Ponyta,Ponyta,Alpha,Baron Ponyta,Ponyta,Baron,77,,,ponyta,Ponyta,,ponyta-alpha,Fire,,,,"5,120",Field,,50.00%,50.00%,Run Away,Flash Fire,Flame Body,Natural Cure,Dark Void,Dark,,,
-Yes,Yes,8,"Sword, Shield",,Galarian,,Ponyta,2,,Ponyta-Galar,Ponyta,Galarian,Ponyta de Galar,Ponyta,,77,,,ponyta-galar,"Ponyta
+Yes,Yes,8,"Sword, Shield",,Galarian,,Ponyta,2,,Ponyta-Galar,Ponyta,Galarian,Ponyta de Galar,Ponyta,de Galar,77,,,ponyta-galar,"Ponyta
 (Galarian)",,ponyta-galar,Pyschic,,,,"5,120",Field,,50.00%,50.00%,Run Away,Pastel Veil,Anticipation,Neuroforce,Darkest Lariat,Dark,,,
 Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Ponyta,3,40,Rapidash,Rapidash,,Galopa,Galopa,,78,,,rapidash,Rapidash,,rapidash,Fire,,,,"5,120",Field,,50.00%,50.00%,Run Away,Flash Fire,Flame Body,Neutralizing Gas,Dazzling Gleam,Fairy,,,
 Yes,Yes,8,Pokémon Legends Arceus,,,Alpha,Ponyta,4,40,Alpha Rapidash,Rapidash,Alpha,Baron Galopa,Galopa,Baron,78,,,rapidash,Rapidash,,rapidash-alpha,Fire,,,,"5,120",Field,,50.00%,50.00%,Run Away,Flash Fire,Flame Body,Neutralizing Gas,Dazzling Gleam,Fairy,,,
-Yes,Yes,8,"Sword, Shield",,Galarian,,Ponyta,5,40,Rapidash-Galar,Rapidash,Galarian,Galopa de Galar,Galopa,,78,,,rapidash-galar,"Rapidash
+Yes,Yes,8,"Sword, Shield",,Galarian,,Ponyta,5,40,Rapidash-Galar,Rapidash,Galarian,Galopa de Galar,Galopa,de Galar,78,,,rapidash-galar,"Rapidash
 (Galarian)",,rapidash-galar,Pyschic,,Fairy,,"5,120",Field,,50.00%,50.00%,Run Away,Pastel Veil,Anticipation,No Guard,Decorate,Fairy,,,
 Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Slowpoke,0,,Slowpoke,Slowpoke,,Ramoloss,Ramoloss,,79,,,slowpoke,Slowpoke,,slowpoke,Water,,Pyschic,,"5,120",Monster,Water 1,50.00%,50.00%,Oblivious,Own Tempo,Regenerator,Normalize,Defend Order,Bug,,,
-Yes,Yes,8,"Sword, Shield",,Galarian,,Slowpoke,1,,Slowpoke-Galar,Slowpoke,Galarian,Ramoloss de Galar,Ramoloss,,79,,,slowpoke-galar,"Slowpoke
+Yes,Yes,8,"Sword, Shield",,Galarian,,Slowpoke,1,,Slowpoke-Galar,Slowpoke,Galarian,Ramoloss de Galar,Ramoloss,de Galar,79,,,slowpoke-galar,"Slowpoke
 (Galarian)",,slowpoke-galar,Pyschic,,,,"5,120",Monster,Water 1,50.00%,50.00%,Gluttony,Own Tempo,Regenerator,Oblivious,Defense Curl,Normal,,,
 Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Slowpoke,2,37,Slowbro,Slowbro,,Flagadoss,Flagadoss,,80,,,slowbro,Slowbro,,slowbro,Water,,Pyschic,,"5,120",Monster,Water 1,50.00%,50.00%,Oblivious,Own Tempo,Regenerator,Overcoat,Defog,Flying,,,
-Yes,Yes,8,"Sword, Shield",,Galarian,,Slowpoke,3,,Slowbro-Galar,Slowbro,Galarian,Flagadoss de Galar,Flagadoss,,80,,,slowbro-galar,"Slowbro
+Yes,Yes,8,"Sword, Shield",,Galarian,,Slowpoke,3,,Slowbro-Galar,Slowbro,Galarian,Flagadoss de Galar,Flagadoss,de Galar,80,,,slowbro-galar,"Slowbro
 (Galarian)",,slowbro-galar,Pyschic,,,,"5,120",Monster,Water 1,50.00%,50.00%,Gluttony,Own Tempo,Regenerator,Oblivious,Defense Curl,Normal,,,
 No,No,6,"X, Y",,,Mega,Slowpoke,4,,Mega Slowbro,Slowbro,Mega,Mega Flagadoss,Flagadoss,Mega,80,,,slowbro-mega,Slowbro,Yes,slowbro-mega,Water,,Pyschic,,"5,120",Monster,Water 1,50.00%,50.00%,Shell Armor,,,Overgrow,Destiny Bond,Ghost,,,
 Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Magnemite,0,,Magnemite,Magnemite,,Magnéti,Magnéti,,81,,,magnemite,Magnemite,,magnemite,Electric,,Steel,,"5,120",Mineral,,○,○,Magnet Pull,Sturdy,Analytic,Own Tempo,Detect,Fighting,,,
@@ -200,7 +200,7 @@ Yes,Yes,8,Pokémon Legends Arceus,,,Alpha,Magnemite,1,,Alpha Magnemite,Magnemite
 Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Magnemite,2,30,Magneton,Magneton,,Magnéton,Magnéton,,82,,,magneton,Magneton,,magneton,Electric,,Steel,,"5,120",Mineral,,○,○,Magnet Pull,Sturdy,Analytic,Parental Bond,Devastating Drake,Dragon,,,
 Yes,Yes,8,Pokémon Legends Arceus,,,Alpha,Magnemite,3,30,Alpha Magneton,Magneton,Alpha,Baron Magnéton,Magnéton,Baron,82,,,magneton,Magneton,,magneton-alpha,Electric,,Steel,,"5,120",Mineral,,○,○,Magnet Pull,Sturdy,Analytic,Parental Bond,Devastating Drake,Dragon,,,
 Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Farfetch'd,0,,Farfetch'd,Farfetch'd,,Canarticho,Canarticho,,83,,,farfetchd,Farfetch'd,,farfetchd,Normal,,Flying,,"5,120",Flying,Field,50.00%,50.00%,Keen Eye,Inner Focus,Defiant,Pastel Veil,Diamond Storm,Rock,,,
-Yes,Yes,8,"Sword, Shield",,Galarian,,Farfetch'd,1,,Farfetch'd-Galar,Farfetch'd,Galarian,Canarticho de Galar,Canarticho,,83,,,farfetchd-galar,"Farfetch'd
+Yes,Yes,8,"Sword, Shield",,Galarian,,Farfetch'd,1,,Farfetch'd-Galar,Farfetch'd,Galarian,Canarticho de Galar,Canarticho,de Galar,83,,,farfetchd-galar,"Farfetch'd
 (Galarian)",,farfetchd-galar,Fighting,,,,"5,120",Flying,Field,50.00%,50.00%,Steadfast,,Scrappy,Perish Body,Dig,Ground,,,
 Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Doduo,2,,Doduo ♂️,Doduo,♂️,Doduo ♂️,Doduo,♂️,84,,,doduo,Doduo,,doduo,Normal,,Flying,,"5,120",Flying,,50.00%,50.00%,Run Away,Early Bird,Tangled Feet,Pickpocket,Disable,Normal,,,
 Yes,Yes,4,"Diamond, Pearl, Platinium",Gender,,,Doduo,3,,Doduo ♀,Doduo,♀️,Doduo ♀,Doduo,♀️,84,,,doduo,Doduo,,doduo-f,Normal,,Flying,,"5,120",Flying,,50.00%,50.00%,Run Away,Early Bird,Tangled Feet,Pickup,Disarming Voice,Fairy,,,
@@ -254,7 +254,7 @@ Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Lickitung,0,,Lickitung,Lickitung,,Excela
 Yes,Yes,8,Pokémon Legends Arceus,,,Alpha,Lickitung,1,,Alpha Lickitung,Lickitung,Alpha,Baron Excelangue,Excelangue,Baron,108,,,lickitung,Lickitung,,lickitung-alpha,Normal,,,,"5,120",Monster,,50.00%,50.00%,Own Tempo,Oblivious,Cloud Nine,Sand Spit,Egg Bomb,Normal,,,
 Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Koffing,0,,Koffing,Koffing,,Smogo,Smogo,,109,,,koffing,Koffing,,koffing,Poison,,,,"5,120",Amorphous,,50.00%,50.00%,Levitate,,,Sand Stream,Electric Terrain,Electric,,,
 Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Koffing,1,35,Weezing,Weezing,,Smogogo,Smogogo,,110,,,weezing,Weezing,,weezing,Poison,,,,"5,120",Amorphous,,50.00%,50.00%,Levitate,,,Sand Veil,Electrify,Electric,,,
-Yes,Yes,8,"Sword, Shield",,Galarian,,Koffing,2,35,Weezing-Galar,Weezing,Galarian,Smogogo de Galar,Smogogo,,110,,,weezing-galar,"Weezing
+Yes,Yes,8,"Sword, Shield",,Galarian,,Koffing,2,35,Weezing-Galar,Weezing,Galarian,Smogogo de Galar,Smogogo,de Galar,110,,,weezing-galar,"Weezing
 (Galarian)",,weezing-galar,Poison,,Fairy,,"5,120",Amorphous,,50.00%,50.00%,Levitate,Neutralizing Gas,Misty Surge,Sap Sipper,Electro Ball,Electric,,,
 Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Rhyhorn,3,,Rhyhorn ♂️,Rhyhorn,♂️,Rhinocorne ♂️,Rhinocorne,♂️,111,,,rhyhorn,Rhyhorn,,rhyhorn,Ground,,Rock,,"5,120",Monster,Field,50.00%,50.00%,Lightning Rod,Rock Head,Reckless,Schooling,Electroweb,Electric,,,
 Yes,Yes,8,Pokémon Legends Arceus,,,Alpha,Rhyhorn,5,,Alpha Rhyhorn ♂️,Rhyhorn,Alpha ♂️,Baron Rhinocorne ♂️,Rhinocorne,Baron ♂️,111,,,rhyhorn,Rhyhorn,,rhyhorn-alpha,Ground,,Rock,,"5,120",Monster,Field,50.00%,50.00%,Lightning Rod,Rock Head,Reckless,Schooling,Electroweb,Electric,,,
@@ -278,7 +278,7 @@ Yes,Yes,4,"Diamond, Pearl, Platinium",Gender,,,Goldeen,5,33,Seaking ♀,Seaking,
 Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Staryu,0,,Staryu,Staryu,,Stari,Stari,,120,,,staryu,Staryu,,staryu,Water,,,,"5,120",Water 3,,○,○,Illuminate,Natural Cure,Analytic,Slush Rush,Facade,Normal,,,
 Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Staryu,1,Water Stone,Starmie,Starmie,,Staross,Staross,,121,,,starmie,Starmie,,starmie,Water,,Pyschic,,"5,120",Water 3,,○,○,Illuminate,Natural Cure,Analytic,Sniper,Fairy Lock,Fairy,,,
 Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Mr. Mime,0,2 (Know Mimic),Mr. Mime,Mr. Mime,,M. Mime,M. Mime,,122,,,mr-mime,Mr. Mime,,mr-mime,Pyschic,,Fairy,,"6,240",Human-Like,,50.00%,50.00%,Soundproof,Filter,Technician,Snow Cloak,Fairy Wind,Fairy,,,
-Yes,Yes,8,"Sword, Shield",,Galarian,,Mr. Mime,1,2 (Know Mimic),Mr. Mime-Galar,Mr. Mime,Galarian,M. Mime de Galar,M. Mime,,122,,,mr-mime-galar,"Mr. Mime
+Yes,Yes,8,"Sword, Shield",,Galarian,,Mr. Mime,1,2 (Know Mimic),Mr. Mime-Galar,Mr. Mime,Galarian,M. Mime de Galar,M. Mime,de Galar,122,,,mr-mime-galar,"Mr. Mime
 (Galarian)",,mr-mime-galar,Ice,,Pyschic,,"6,240",Human-Like,,50.00%,50.00%,Vital Spirit,Screen Cleaner,Ice Body,Snow Warning,Fake Out,Normal,,,
 Yes,Yes,8,Pokémon Legends Arceus,,,Alpha,Mr. Mime,2,2 (Know Mimic),Alpha Mr. Mime,Mr. Mime,Alpha,Baron Mr. Mime,Mr. Mime,Baron,122,,,mr-mime,Mr. Mime,,mr-mime-alpha,Pyschic,,Fairy,,"6,240",Human-Like,,50.00%,50.00%,Soundproof,Filter,Technician,Snow Cloak,Fairy Wind,Fairy,,,
 Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Scyther,3,,Scyther ♂️,Scyther,♂️,Insécateur ♂️,Insécateur,♂️,123,,,scyther,Scyther,,scyther,Bug,,Flying,,"6,240",Bug,,50.00%,50.00%,Swarm,Technician,Steadfast,Solar Power,Fake Tears,Dark,,,
@@ -328,13 +328,13 @@ Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Snorlax,0,2 (Happiness),Snorlax,Snorlax,
 Yes,Yes,8,Pokémon Legends Arceus,,,Alpha,Snorlax,1,2 (Happiness),Alpha Snorlax,Snorlax,Alpha,Baron Ronflex,Ronflex,Baron,143,,,snorlax,Snorlax,,snorlax-alpha,Normal,,,,"10,120",Monster,,88.10%,11.90%,Immunity,Thick Fat,Gluttony,Tangled Feet,Floral Healing,Fairy,,,
 Yes,No,8,"Sword, Shield",,,Gigantamax,Snorlax,2,,Gigantamax Snorlax,Snorlax,Gigantamax,Gigamax Ronflex,Ronflex,Gigamax,143,,,snorlax-gmax,Snorlax,,snorlax-gmax,Normal,,,,"10,120",Monster,,88.10%,11.90%,Immunity,Thick Fat,Gluttony,Tangling Hair,Flower Shield,Fairy,,,
 Yes,No,1,"Red, Green, Blue, Yellow",,,,Articuno,0,,Articuno,Articuno,,Artikodin,Artikodin,,144,,,articuno,Articuno,,articuno,Ice,,Flying,,"20,480",Undiscovered,,○,○,Pressure,,Snow Cloak,Technician,Fly,Flying,,,
-Yes,No,8,"Sword, Shield",,Galarian,,Articuno,1,,Articuno-Galar,Articuno,Galarian,Artikodin de Galar,Artikodin,,144,,,articuno-galar,"Articuno
+Yes,No,8,"Sword, Shield",,Galarian,,Articuno,1,,Articuno-Galar,Articuno,Galarian,Artikodin de Galar,Artikodin,de Galar,144,,,articuno-galar,"Articuno
 (Galarian)",,articuno-galar,Ice,,Flying,,"20,480",Undiscovered,,○,○,Pressure,,Snow Cloak,Technician,Fly,Flying,,,
 Yes,No,1,"Red, Green, Blue, Yellow",,,,Zapdos,0,,Zapdos,Zapdos,,Électhor,Électhor,,145,,,zapdos,Zapdos,,zapdos,Electric,,Flying,,"20,480",Undiscovered,,○,○,Pressure,,Static,Telepathy,Flying Press,Fighting,,,
-Yes,No,8,"Sword, Shield",,Galarian,,Zapdos,1,,Zapdos-Galar,Zapdos,Galarian,Électhor de Galar,Électhor,,145,,,zapdos-galar,"Zapdos
+Yes,No,8,"Sword, Shield",,Galarian,,Zapdos,1,,Zapdos-Galar,Zapdos,Galarian,Électhor de Galar,Électhor,de Galar,145,,,zapdos-galar,"Zapdos
 (Galarian)",,zapdos-galar,Electric,,Flying,,"20,480",Undiscovered,,○,○,Pressure,,Static,Telepathy,Flying Press,Fighting,,,
 Yes,No,1,"Red, Green, Blue, Yellow",,,,Moltres,0,,Moltres,Moltres,,Sulfura,Sulfura,,146,,,moltres,Moltres,,moltres,Fire,,Flying,,"20,480",Undiscovered,,○,○,Pressure,,Flame Body,Teravolt,Focus Blast,Fighting,,,
-Yes,No,8,"Sword, Shield",,Galarian,,Moltres,1,,Moltres-Galar,Moltres,Galarian,Sulfura de Galar,Sulfura,,146,,,moltres-galar,"Moltres
+Yes,No,8,"Sword, Shield",,Galarian,,Moltres,1,,Moltres-Galar,Moltres,Galarian,Sulfura de Galar,Sulfura,de Galar,146,,,moltres-galar,"Moltres
 (Galarian)",,moltres-galar,Fire,,Flying,,"20,480",Undiscovered,,○,○,Pressure,,Flame Body,Teravolt,Focus Blast,Fighting,,,
 Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Dratini,0,,Dratini,Dratini,,Minidraco,Minidraco,,147,,,dratini,Dratini,,dratini,Dragon,,,,"10,240",Water 1,Dragon,50.00%,50.00%,Shed Skin,,Marvel Scale,Thick Fat,Focus Energy,Normal,,,
 Yes,Yes,1,"Red, Green, Blue, Yellow",,,,Dratini,1,30,Dragonair,Dragonair,,Draco,Draco,,148,,,dragonair,Dragonair,,dragonair,Dragon,,,,"10,240",Water 1,Dragon,50.00%,50.00%,Shed Skin,,Marvel Scale,Tinted Lens,Focus Punch,Fighting,,,
@@ -422,7 +422,7 @@ Yes,Yes,8,Pokémon Legends Arceus,,,Alpha,Murkrow,11,,Alpha Murkrow ♂️,Murkr
 Yes,Yes,4,"Diamond, Pearl, Platinium",Gender,,,Murkrow,12,,Murkrow ♀,Murkrow,♀️,Cornèbre ♀,Cornèbre,♀️,198,,,murkrow,Murkrow,,murkrow-f,Dark,,Flying,,"5,120",Flying,,50.00%,50.00%,Insomnia,Super Luck,Prankster,,High Horsepower,Ground,,,
 Yes,Yes,8,Pokémon Legends Arceus,Gender,,Alpha,Murkrow,13,,Alpha Murkrow ♀,Murkrow,Alpha ♀️,Baron Cornèbre ♀,Cornèbre,Baron ♀️,198,,,murkrow,Murkrow,,murkrow-f-alpha,Dark,,Flying,,"5,120",Flying,,50.00%,50.00%,Insomnia,Super Luck,Prankster,,High Horsepower,Ground,,,
 Yes,Yes,2,"Gold, Silver, Crystal",,,,Slowpoke,14,Trade (Kings Rock),Slowking,Slowking,,Roigada,Roigada,,199,,,slowking,Slowking,,slowking,Water,,Pyschic,,"5,120",Monster,Water 1,50.00%,50.00%,Oblivious,Own Tempo,Regenerator,,High Jump Kick,Fighting,,,
-Yes,Yes,8,"Sword, Shield",,Galarian,,Slowpoke,15,,Slowking-Galar,Slowking,Galarian,Roigada de Galar,Roigada,,199,,,slowking-galar,"Slowking
+Yes,Yes,8,"Sword, Shield",,Galarian,,Slowpoke,15,,Slowking-Galar,Slowking,Galarian,Roigada de Galar,Roigada,de Galar,199,,,slowking-galar,"Slowking
 (Galarian)",,slowking-galar,Pyschic,,,,"5,120",Monster,Water 1,50.00%,50.00%,Gluttony,Own Tempo,Regenerator,Oblivious,Defense Curl,Normal,,,
 Yes,Yes,2,"Gold, Silver, Crystal",,,,Misdreavus,0,,Misdreavus,Misdreavus,,Feuforêve,Feuforêve,,200,,,misdreavus,Misdreavus,,misdreavus,Ghost,,,,"6,240",Amorphous,,50.00%,50.00%,Levitate,,,,Hold Back,Normal,,,
 Yes,Yes,8,Pokémon Legends Arceus,,,Alpha,Misdreavus,1,,Alpha Misdreavus,Misdreavus,Alpha,Baron Feuforêve,Feuforêve,Baron,200,,,misdreavus,Misdreavus,,misdreavus-alpha,Ghost,,,,"6,240",Amorphous,,50.00%,50.00%,Levitate,,,,Hold Back,Normal,,,
@@ -537,7 +537,7 @@ Yes,Yes,8,Pokémon Legends Arceus,,,Alpha,Swinub,3,33,Alpha Piloswine ♂️,Pil
 Yes,Yes,4,"Diamond, Pearl, Platinium",Gender,,,Swinub,4,33,Piloswine ♀,Piloswine,♀️,Cochignon ♀,Cochignon,♀️,221,,,piloswine,Piloswine,,piloswine-f,Ice,,Ground,,"5,120",Field,,50.00%,50.00%,Oblivious,Snow Cloak,Thick Fat,,Light of Ruin,Fairy,,,
 Yes,Yes,8,Pokémon Legends Arceus,Gender,,Alpha,Swinub,5,33,Alpha Piloswine ♀,Piloswine,Alpha ♀️,Baron Cochignon ♀,Cochignon,Baron ♀️,221,,,piloswine,Piloswine,,piloswine-alpha-f,Ice,,Ground,,"5,120",Field,,50.00%,50.00%,Oblivious,Snow Cloak,Thick Fat,,Light of Ruin,Fairy,,,
 Yes,Yes,2,"Gold, Silver, Crystal",,,,Corsola,0,,Corsola,Corsola,,Corayon,Corayon,,222,,,corsola,Corsola,,corsola,Water,,Rock,,"5,120",Water 1,Water 3,25.00%,75.00%,Hustle,Natural Cure,Regenerator,,Light Screen,Pyschic,,,
-Yes,Yes,8,"Sword, Shield",,,,Corsola,1,,Corsola-Galar,Corsola,Galarian,Corayon de Galar,Corayon,,222,,,corsola-galar,"Corsola
+Yes,Yes,8,"Sword, Shield",,,,Corsola,1,,Corsola-Galar,Corsola,Galarian,Corayon de Galar,Corayon,de Galar,222,,,corsola-galar,"Corsola
 (Galarian)",,corsola-galar,Ghost,,,,"5,120",Water 1,Water 3,25.00%,75.00%,Weak Armor,,Cursed Body,,Light That Burns The Sky,Pyschic,,,
 Yes,Yes,2,"Gold, Silver, Crystal",,,,Remoraid,0,,Remoraid,Remoraid,,Rémoraid,Rémoraid,,223,,,remoraid,Remoraid,,remoraid,Water,,,,"5,120",Water 1,Water 2,50.00%,50.00%,Hustle,Sniper,Moody,,Liquidation,Water,,,
 Yes,Yes,8,Pokémon Legends Arceus,,,Alpha,Remoraid,1,,Alpha Remoraid,Remoraid,Alpha,Baron Rémoraid,Rémoraid,Baron,223,,,remoraid,Remoraid,,remoraid-alpha,Water,,,,"5,120",Water 1,Water 2,50.00%,50.00%,Hustle,Sniper,Moody,,Liquidation,Water,,,
@@ -600,10 +600,10 @@ No,No,6,"X, Y",,,Mega,Mudkip,3,,Mega Swampert,Swampert,Mega,Mega Flobio,Flobio,M
 Yes,Yes,3,"Ruby, Sapphire, Emerald",,,,Poochyena,0,,Poochyena,Poochyena,,Medhyèna,Medhyèna,,261,,,poochyena,Poochyena,,poochyena,Dark,,,,"3,840",Field,,50.00%,50.00%,Run Away,Quick Feet,Rattled,,Moongeist Beam,Ghost,,,
 Yes,Yes,3,"Ruby, Sapphire, Emerald",,,,Poochyena,1,18,Mightyena,Mightyena,,Grahyèna,Grahyèna,,262,,,mightyena,Mightyena,,mightyena,Dark,,,,"3,840",Field,,50.00%,50.00%,Intimidate,Quick Feet,Moxie,,Moonlight,Fairy,,,
 Yes,Yes,3,"Ruby, Sapphire, Emerald",,,,Zigzagoon,0,,Zigzagoon,Zigzagoon,,Zigzaton,Zigzaton,,263,,,zigzagoon,Zigzagoon,,zigzagoon,Normal,,,,"3,840",Field,,50.00%,50.00%,Pickup,Gluttony,Quick Feet,,Morning Sun,Normal,,,
-Yes,Yes,8,"Sword, Shield",,,,Zigzagoon,1,,Zigzagoon-Galar,Zigzagoon,Galarian,Zigzaton de Galar,Zigzaton,,263,,,zigzagoon-galar,"Zigzagoon
+Yes,Yes,8,"Sword, Shield",,,,Zigzagoon,1,,Zigzagoon-Galar,Zigzagoon,Galarian,Zigzaton de Galar,Zigzaton,de Galar,263,,,zigzagoon-galar,"Zigzagoon
 (Galarian)",,zigzagoon-galar,Dark,,Normal,,"3,840",Field,,50.00%,50.00%,Pickup,Gluttony,Quick Feet,,Mud Bomb,Ground,,,
 Yes,Yes,3,"Ruby, Sapphire, Emerald",,,,Zigzagoon,2,20,Linoone,Linoone,,Linéon,Linéon,,264,,,linoone,Linoone,,linoone,Normal,,,,"3,840",Field,,50.00%,50.00%,Pickup,Gluttony,Quick Feet,,Mud Shot,Ground,,,
-Yes,Yes,8,"Sword, Shield",,,,Zigzagoon,3,21,Linoone-Galar,Linoone,Galarian,Linéon de Galar,Linéon,,264,,,linoone-galar,"Linoone
+Yes,Yes,8,"Sword, Shield",,,,Zigzagoon,3,21,Linoone-Galar,Linoone,Galarian,Linéon de Galar,Linéon,de Galar,264,,,linoone-galar,"Linoone
 (Galarian)",,linoone-galar,Dark,,Normal,,"3,840",Field,,50.00%,50.00%,Pickup,Gluttony,Quick Feet,,Mud Sport,Ground,,,
 Yes,Yes,3,"Ruby, Sapphire, Emerald",,,,Wurmple,0,,Wurmple,Wurmple,,Chenipotte,Chenipotte,,265,,,wurmple,Wurmple,,wurmple,Bug,,,,"3,840",Bug,,50.00%,50.00%,Shield Dust,,Run Away,,Mud-Slap,Ground,,,
 Yes,Yes,8,Pokémon Legends Arceus,,,Alpha,Wurmple,1,,Alpha Wurmple,Wurmple,Alpha,Baron Chenipotte,Chenipotte,Baron,265,,,wurmple,Wurmple,,wurmple-alpha,Bug,,,,"3,840",Bug,,50.00%,50.00%,Shield Dust,,Run Away,,Mud-Slap,Ground,,,
@@ -1176,11 +1176,11 @@ Yes,Yes,5,"Black, White",,,,Sandile,0,,Sandile,Sandile,,Mascaïman,Mascaïman,,5
 Yes,Yes,5,"Black, White",,,,Sandile,1,29,Krokorok,Krokorok,,Escroco,Escroco,,552,,,krokorok,Krokorok,,krokorok,Ground,,Dark,,"5,120",Field,,50.00%,50.00%,Intimidate,Moxie,Anger Point,,,,,,
 Yes,Yes,5,"Black, White",,,,Sandile,2,40,Krookodile,Krookodile,,Crocorible,Crocorible,,553,,,krookodile,Krookodile,,krookodile,Ground,,Dark,,"5,120",Field,,50.00%,50.00%,Intimidate,Moxie,Anger Point,,,,,,
 Yes,Yes,5,"Black, White",,,,Darumaka,0,,Darumaka,Darumaka,,Darumarond,Darumarond,,554,,,darumaka,Darumaka,,darumaka,Fire,,,,"5,120",Field,,50.00%,50.00%,Hustle,,Inner Focus,,,,,,
-Yes,Yes,8,"Sword, Shield",,Galarian,,Darumaka,1,,Darumaka-Galar,Darumaka,Galarian,Darumarond de Galar,Darumarond,,554,,,darumaka-galar,"Darumaka
+Yes,Yes,8,"Sword, Shield",,Galarian,,Darumaka,1,,Darumaka-Galar,Darumaka,Galarian,Darumarond de Galar,Darumarond,de Galar,554,,,darumaka-galar,"Darumaka
 (Galarian)",,darumaka-galar,Ice,,,,"5,120",Field,,50.00%,50.00%,Hustle,,Inner Focus,,,,,,
 Yes,Yes,5,"Black, White",,,,Darumaka,2,35,Darmanitan,Darmanitan,,Darumacho,Darumacho,,555,,,darmanitan,Darmanitan,,darmanitan,Fire,,,,"5,120",Field,,50.00%,50.00%,Sheer Force,,Zen Mode,,,,,,
 No,No,5,"Black, White",Battle,,,Darumaka,3,,Zen Darmanitan,Darmanitan,Zen,Darumacho Transe,Darumacho,Transe,555,,,darmanitan-zen,Darmanitan,,darmanitan-zen,Fire,,Pyschic,,"5,120",Field,,50.00%,50.00%,Sheer Force,,Zen Mode,,,,,,
-Yes,Yes,8,"Sword, Shield",,Galarian,,Darumaka,4,Ice Stone,Darmanitan-Galar,Darmanitan,Galarian,Darumacho de Galar,Darumacho,,555,,,darmanitan-galar,"Darmanitan
+Yes,Yes,8,"Sword, Shield",,Galarian,,Darumaka,4,Ice Stone,Darmanitan-Galar,Darmanitan,Galarian,Darumacho de Galar,Darumacho,de Galar,555,,,darmanitan-galar,"Darmanitan
 (Galarian)",,darmanitan-galar,Ice,,,,"5,120",Field,,50.00%,50.00%,Gorilla Tactics,,Zen Mode,,,,,,
 No,No,8,"Sword, Shield",Battle,Galarian,,Darumaka,5,,Zen Darmanitan-Galar,Darmanitan,Galarian Zen,Darumacho Transe de Galar,Darumacho,De Galar Transe,555,,,darmanitan-galar-zen,"Darmanitan
 (Galarian)",,darmanitan-galar-zen,Ice,,Fire,,"5,120",Field,,50.00%,50.00%,Gorilla Tactics,,Zen Mode,,,,,,
@@ -1191,7 +1191,7 @@ Yes,Yes,5,"Black, White",,,,Scraggy,0,,Scraggy,Scraggy,,Baggiguane,Baggiguane,,5
 Yes,Yes,5,"Black, White",,,,Scraggy,1,39,Scrafty,Scrafty,,Baggaïd,Baggaïd,,560,,,scrafty,Scrafty,,scrafty,Dark,,Fighting,,"3,840",Field,Dragon,50.00%,50.00%,Shed Skin,Moxie,Intimidate,,,,,,
 Yes,Yes,5,"Black, White",,,,Sigilyph,0,,Sigilyph,Sigilyph,,Cryptéro,Cryptéro,,561,,,sigilyph,Sigilyph,,sigilyph,Pyschic,,Flying,,"5,120",Flying,,50.00%,50.00%,Wonder Skin,Magic Guard,Tinted Lens,,,,,,
 Yes,Yes,5,"Black, White",,,,Yamask,0,,Yamask,Yamask,,Tutafeh,Tutafeh,,562,,,yamask,Yamask,,yamask,Ghost,,,,"6,240",Mineral,Amorphous,50.00%,50.00%,Mummy,,,,,,,,
-Yes,Yes,8,"Sword, Shield",,,,Yamask,1,,Yamask-Galar,Yamask,Galarian,Tutafeh de Galar,Tutafeh,,562,,,yamask-galar,"Yamask
+Yes,Yes,8,"Sword, Shield",,,,Yamask,1,,Yamask-Galar,Yamask,Galarian,Tutafeh de Galar,Tutafeh,de Galar,562,,,yamask-galar,"Yamask
 (Galarian)",,yamask-galar,Ground,,Ghost,,"6,240",Mineral,Amorphous,50.00%,50.00%,Wandering Spirit,,,,,,,,
 Yes,Yes,5,"Black, White",,,,Yamask,2,34,Cofagrigus,Cofagrigus,,Tutankafer,Tutankafer,,563,,,cofagrigus,Cofagrigus,,cofagrigus,Ghost,,,,"6,240",Mineral,Amorphous,50.00%,50.00%,Mummy,,,,,,,,
 Yes,Yes,5,"Black, White",,,,Tirtouga,0,,Tirtouga,Tirtouga,,Carapagos,Carapagos,,564,,,tirtouga,Tirtouga,,tirtouga,Water,,Rock,,"7,680",Water 1,Water 3,88.10%,11.90%,Solid Rock,Sturdy,Swift Swim,,,,,,
@@ -1227,7 +1227,7 @@ Yes,Yes,5,"Black, White",Alternate,,,Spring Deerling,3,,Winter Deerling,Deerling
 Yes,Yes,5,"Black, White",,,,Spring Deerling,4,34,Spring Sawsbuck,Sawsbuck,Summer,Haydaim forme Printemps,Haydaim,Printemps,586,,,sawsbuck,Sawsbuck,,sawsbuck-spring,Normal,,Grass,,"5,120",Field,,50.00%,50.00%,Chlorophyll,Sap Sipper,Serene Grace,,,,,,
 Yes,Yes,5,"Black, White",Alternate,,,Spring Deerling,5,34,Summer Sawsbuck,Sawsbuck,Autumn,Haydaim forme Été,Haydaim,Été,586,,,sawsbuck-summer,Sawsbuck,,sawsbuck-summer,Normal,,Grass,,"5,120",Field,,50.00%,50.00%,Chlorophyll,Sap Sipper,Serene Grace,,,,,,
 Yes,Yes,5,"Black, White",Alternate,,,Spring Deerling,6,34,Autumn Sawsbuck,Sawsbuck,Winter,Haydaim forme Automne,Haydaim,Automne,586,,,sawsbuck-autumn,Sawsbuck,,sawsbuck-autumn,Normal,,Grass,,"5,120",Field,,50.00%,50.00%,Chlorophyll,Sap Sipper,Serene Grace,,,,,,
-Yes,Yes,5,"Black, White",Alternate,,,Spring Deerling,7,34,Winter Sawsbuck,Sawsbuck,,Haydaim forme Hiver,Haydaim,Hiver,586,,,sawsbuck-winter,Sawsbuck,,sawsbuck-winter,Normal,,Grass,,"5,120",Field,,50.00%,50.00%,Chlorophyll,Sap Sipper,Serene Grace,,,,,,
+Yes,Yes,5,"Black, White",Alternate,,,Spring Deerling,7,34,Winter Sawsbuck,Sawsbuck,Winter,Haydaim forme Hiver,Haydaim,Hiver,586,,,sawsbuck-winter,Sawsbuck,,sawsbuck-winter,Normal,,Grass,,"5,120",Field,,50.00%,50.00%,Chlorophyll,Sap Sipper,Serene Grace,,,,,,
 Yes,Yes,5,"Black, White",,,,Emolga,0,,Emolga,Emolga,,Emolga,Emolga,,587,,,emolga,Emolga,,emolga,Electric,,Flying,,"5,120",Field,,50.00%,50.00%,Static,,Motor Drive,,,,,,
 Yes,Yes,5,"Black, White",,,,Karrablast,0,,Karrablast,Karrablast,,Carabing,Carabing,,588,,,karrablast,Karrablast,,karrablast,Bug,,,,"3,840",Bug,,50.00%,50.00%,Swarm,Shed Skin,No Guard,,,,,,
 Yes,Yes,5,"Black, White",,,,Karrablast,1,Trade (With Shelmet),Escavalier,Escavalier,,Lançargot,Lançargot,,589,,,escavalier,Escavalier,,escavalier,Bug,,Steel,,"3,840",Bug,,50.00%,50.00%,Swarm,Shell Armor,Overcoat,,,,,,
@@ -1262,7 +1262,7 @@ Yes,Yes,5,"Black, White",,,,Cryogonal,0,,Cryogonal,Cryogonal,,Hexagel,Hexagel,,6
 Yes,Yes,5,"Black, White",,,,Shelmet,0,,Shelmet,Shelmet,,Escargaume,Escargaume,,616,,,shelmet,Shelmet,,shelmet,Bug,,,,"3,840",Bug,,50.00%,50.00%,Hydration,Shell Armor,Overcoat,,,,,,
 Yes,Yes,5,"Black, White",,,,Shelmet,1,Trade (With Escavalier),Accelgor,Accelgor,,Limaspeed,Limaspeed,,617,,,accelgor,Accelgor,,accelgor,Bug,,,,"3,840",Bug,,50.00%,50.00%,Hydration,Sticky Hold,Unburden,,,,,,
 Yes,Yes,5,"Black, White",,,,Stunfisk,0,,Stunfisk,Stunfisk,,Limonde,Limonde,,618,,,stunfisk,Stunfisk,,stunfisk,Ground,,Electric,,"5,120",Water 1,Amorphous,50.00%,50.00%,Static,Limber,Sand Veil,,,,,,
-Yes,Yes,8,"Sword, Shield",,,,Stunfisk,1,,Stunfisk-Galar,Stunfisk,Galarian,Limonde de Galar,Limonde,,618,,,stunfisk-galar,"Stunfisk
+Yes,Yes,8,"Sword, Shield",,,,Stunfisk,1,,Stunfisk-Galar,Stunfisk,Galarian,Limonde de Galar,Limonde,de Galar,618,,,stunfisk-galar,"Stunfisk
 (Galarian)",,stunfisk-galar,Ground,,Steel,,"5,120",Water 1,Amorphous,50.00%,50.00%,Mimicry,,,,,,,,
 Yes,Yes,5,"Black, White",,,,Mienfoo,0,,Mienfoo,Mienfoo,,Kungfouine,Kungfouine,,619,,,mienfoo,Mienfoo,,mienfoo,Fighting,,,,"6,240",Field,Human-Like,50.00%,50.00%,Inner Focus,Regenerator,Reckless,,,,,,
 Yes,Yes,5,"Black, White",,,,Mienfoo,1,50,Mienshao,Mienshao,,Shaofouine,Shaofouine,,620,,,mienshao,Mienshao,,mienshao,Fighting,,,,"6,240",Field,Human-Like,50.00%,50.00%,Inner Focus,Regenerator,Reckless,,,,,,
@@ -1648,9 +1648,9 @@ Yes,Yes,8,"Sword, Shield",,,,Sizzlipede,1,28,Centiskorch,Centiskorch,,Scolocendr
 Yes,No,8,"Sword, Shield",,,Gigantamax,Sizzlipede,2,,Gigantamax Centiskorch,Centiskorch,Gigantamax,Gigamax Scolocendre,Scolocendre,Gigamax,851,,,centiskorch-gmax,Centiskorch,,centiskorch-gmax,Fire,,Bug,,"5,120",Bug,,50.20%,49.80%,Flash Fire,White Smoke,Flame Body,,,,,,
 Yes,Yes,8,"Sword, Shield",,,,Clobbopus,0,,Clobbopus,Clobbopus,,Poulpaf,Poulpaf,,852,,,clobbopus,Clobbopus,,clobbopus,Fighting,,,,"6,400",Water1,HumanLike,50.20%,49.80%,Limber,,Technician,,,,,,
 Yes,Yes,8,"Sword, Shield",,,,Clobbopus,1,2 (Taunt),Grapploct,Grapploct,,Krakos,Krakos,,853,,,grapploct,Grapploct,,grapploct,Fighting,,,,"6,400",Water1,HumanLike,50.20%,49.80%,Limber,,Technician,,,,,,
-Yes,Yes,8,"Sword, Shield",,,,Sinistea,0,,Sinistea,Sinistea,,Théffroi forme contrefaçon,Théffroi,contrefaçon,854,,,sinistea,Sinistea,,sinistea,Ghost,,,,"5,120",Mineral,Amorphous,○,○,Weak Armor,,Cursed Body,,,,,,
+Yes,Yes,8,"Sword, Shield",,,,Sinistea,0,,Sinistea,Sinistea,Phony,Théffroi forme contrefaçon,Théffroi,Contrefaçon,854,,,sinistea,Sinistea,,sinistea,Ghost,,,,"5,120",Mineral,Amorphous,○,○,Weak Armor,,Cursed Body,,,,,,
 Yes,No,8,"Sword, Shield",Alternate,,,Sinistea,1,,Sinistea-Antique,Sinistea,Antique,Théffroi forme authentique,Théffroi,authentique,854,,,sinistea,Sinistea,,sinistea-antique,Ghost,,,,"5,120",Mineral,Amorphous,○,○,Weak Armor,,Cursed Body,,,,,,
-Yes,Yes,8,"Sword, Shield",,,,Sinistea,2,Cracked  Pot,Polteageist,Polteageist,,Polthégeist forme contrefaçon,Polthégeist,contrefaçon,855,,,polteageist,Polteageist,,polteageist,Ghost,,,,"5,120",Mineral,Amorphous,○,○,Weak Armor,,Cursed Body,,,,,,
+Yes,Yes,8,"Sword, Shield",,,,Sinistea,2,Cracked  Pot,Polteageist,Polteageist,Phony,Polthégeist forme contrefaçon,Polthégeist,Contrefaçon,855,,,polteageist,Polteageist,,polteageist,Ghost,,,,"5,120",Mineral,Amorphous,○,○,Weak Armor,,Cursed Body,,,,,,
 Yes,No,8,"Sword, Shield",Alternate,,,Sinistea,3,Chipped Pot,Polteageist-Antique,Polteageist,Antique,Polthégeist forme authentique,Polthégeist,authentique,855,,,polteageist,Polteageist,,polteageist-antique,Ghost,,,,"5,120",Mineral,Amorphous,○,○,Weak Armor,,Cursed Body,,,,,,
 Yes,Yes,8,"Sword, Shield",,,,Hatenna,0,,Hatenna,Hatenna,,Bibichut,Bibichut,,856,,,hatenna,Hatenna,,hatenna,Psychic,,,,"5,120",Fairy,,0.00%,100.00%,Healer,Anticipation,Magic Bounce,,,,,,
 Yes,Yes,8,"Sword, Shield",,,,Hatenna,1,32,Hattrem,Hattrem,,Chapotus,Chapotus,,857,,,hattrem,Hattrem,,hattrem,Psychic,,,,"5,120",Fairy,,0.00%,100.00%,Healer,Anticipation,Magic Bounce,,,,,,

@@ -178,7 +178,7 @@ App\Entity\Pokemon:
         name: 'Butterfree'
         frenchName: 'Papilusion'
         family: '@pokemon_caterpie'
-        nationalDexNumber: '11'
+        nationalDexNumber: '12'
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'butterfree'
         familyOrder: 2
@@ -193,7 +193,7 @@ App\Entity\Pokemon:
         simplifiedFrenchName: 'Papilusion'
         formsFrenchLabel: '♀️'
         family: '@pokemon_caterpie'
-        nationalDexNumber: '11'
+        nationalDexNumber: '12'
         originalGameBundle: '@game_bundle_diamond_pearl_platinium'
         iconName: 'butterfree'
         familyOrder: 3
