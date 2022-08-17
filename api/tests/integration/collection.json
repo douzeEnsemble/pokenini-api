@@ -1733,7 +1733,7 @@
               "const expectedDexFrenchTitle = \"Home Chromatique\";",
               "const expectedDexIsShiny = true;",
               "const expectedDexIsPrivate = false;",
-              "const expectedPokedexCount = 1230;",
+              "const expectedPokedexCount = 1222;",
               "const expectedIncludeTexts = [",
               "    'Unown A',",
               "    'unown-b',",
@@ -1919,6 +1919,107 @@
           "path": [
             "album",
             "homepokemongo"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Album Alpha",
+      "event": [
+        {
+          "listen": "test",
+          "script": {
+            "exec": [
+              "const expectedDexTitle = \"Alpha\";",
+              "const expectedDexFrenchTitle = \"Baron\";",
+              "const expectedDexIsShiny = false;",
+              "const expectedDexIsPrivate = false;",
+              "const expectedPokedexCount = 328;",
+              "const expectedIncludeTexts = [",
+              "    'Unown A',",
+              "    'unown-b',",
+              "    'Zarbi ?',",
+              "    'Blindalys',",
+              "    'Papinox',",
+              "    'Alpha Rhyperior',",
+              "];",
+              "const expectedNotIncludeTexts = [",
+              "    'nidoran-f',",
+              "    'nidoran-m',",
+              "    'Spring Deerling',",
+              "    'Thundurus',",
+              "    'Lycanroc-Midday',",
+              "    'naganadel',",
+              "    'meltan',",
+              "    'Alcremie-Vanilla-Cream-Strawberry',",
+              "    'venusaur-f',",
+              "    'giratina-origin',",
+              "    'shaymin-sky',",
+              "    'Therian Thundurus',",
+              "    'Mega Venusaur',",
+              "    'deoxys-attack',",
+              "    '-Alola',",
+              "    'Winter Sawsbuck',",
+              "    'Lycanroc-Dusk',",
+              "    'Shadow Rider Calyrex',",
+              "    'Alcremie-Matcha-Cream-Love',",
+              "    'alcremie-rainbow-swirl-flower',",
+              "    'Gigantamax Toxtricity-Amped',",
+              "];",
+              "",
+              "pm.test(\"Status must be success\", function () {",
+              "    pm.response.to.have.status(200);",
+              "});",
+              "",
+              "pm.test(\"Dex title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.name).to.eql(expectedDexTitle);",
+              "});",
+              "",
+              "pm.test(\"Dex french title should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.french_name).to.eql(expectedDexFrenchTitle);",
+              "});",
+              "",
+              "pm.test(\"Dex is shiny boolean should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.is_shiny).to.eql(expectedDexIsShiny);",
+              "});",
+              "",
+              "pm.test(\"Dex is private boolean should match expected\", function () {",
+              "    pm.expect(pm.response.json().dex.is_private).to.eql(expectedDexIsPrivate);",
+              "});",
+              "",
+              "pm.test(\"Response should contains or not some texts\", function () {",
+              "    const responseText = pm.response.text();",
+              "",
+              "    for (i in expectedIncludeTexts) {",
+              "        pm.expect(responseText).to.include(expectedIncludeTexts[i]);",
+              "    }",
+              "",
+              "    for (i in expectedNotIncludeTexts) {",
+              "        pm.expect(responseText).to.not.include(expectedNotIncludeTexts[i]);",
+              "    };",
+              "});",
+              "",
+              "pm.test(\"Pokemons list should have an expected count\", function () {",
+              "    pm.expect(pm.response.json().pokemons).to.have.lengthOf(expectedPokedexCount);",
+              "});"
+            ],
+            "type": "text/javascript"
+          }
+        }
+      ],
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "http://caddy/album/alpha",
+          "protocol": "http",
+          "host": [
+            "caddy"
+          ],
+          "path": [
+            "album",
+            "alpha"
           ]
         }
       },
