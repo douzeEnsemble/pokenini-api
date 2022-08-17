@@ -16,7 +16,6 @@ final class Version20220817083308 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-
         $this->addSql('ALTER TABLE dex ALTER selection_rule TYPE VARCHAR(1357)');
 
         $rule = <<<RULE
