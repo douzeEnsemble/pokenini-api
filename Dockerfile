@@ -75,7 +75,7 @@ VOLUME /var/run/php
 ENV COMPOSER_ALLOW_SUPERUSER=1
 ENV PATH="${PATH}:/root/.composer/vendor/bin"
 
-WORKDIR /srv/api
+WORKDIR /srv
 
 # build for production
 ARG APP_ENV=prod
@@ -101,7 +101,7 @@ RUN set -eux; \
 	composer dump-env prod; \
 	composer run-script --no-dev post-install-cmd; \
 	chmod +x bin/console; sync
-VOLUME /srv/api/var
+VOLUME /srv/var
 
 COPY docker/php/docker-healthcheck.sh /usr/local/bin/docker-healthcheck
 RUN chmod +x /usr/local/bin/docker-healthcheck
@@ -129,8 +129,8 @@ RUN xcaddy build \
 
 FROM caddy:${CADDY_VERSION} AS api_platform_caddy
 
-WORKDIR /srv/api
+WORKDIR /srv
 
 COPY --from=api_platform_caddy_builder /usr/bin/caddy /usr/bin/caddy
-COPY --from=api_platform_php /srv/api/public public/
+COPY --from=api_platform_php /srv/public public/
 COPY docker/caddy/Caddyfile /etc/caddy/Caddyfile

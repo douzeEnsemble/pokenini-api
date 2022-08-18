@@ -43,10 +43,6 @@ indent_style = space
 indent_size = 4
 trim_trailing_whitespace = false
 
-[helm/api-platform/**.yaml]
-indent_style = space
-indent_size = 2
-
 [.github/workflows/*.yml]
 indent_style = space
 indent_size = 2

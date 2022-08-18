@@ -23,7 +23,6 @@ bin/*
 !bin/console
 build/
 docker/db/data/
-helm/
 public/bundles/
 var/
 vendor/
