@@ -27,3 +27,11 @@ App\Entity\Dex:
         orderNumber: 4
         isShiny: true
         isPrivate: false
+    dex_home_pogo:
+        name: 'Home PoGo'
+        frenchName: 'Home PoGo'
+        selectionRule: "(p.bankable or p.bankableish) and p.categoryForm === null and p.regionalForm === null and p.specialForm === null and p.variantForm === null"
+        orderNumber: 5
+        isShiny: false
+        isPrivate: false
+        isDisplayForm: false
