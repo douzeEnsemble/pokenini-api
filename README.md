@@ -29,7 +29,8 @@ docker-compose exec php sh -c '
     php bin/console app:calculate:game_bundle_availability
     php bin/console app:calculate:dex_availability
     echo "Finished"
-'
+' && \
+make quality tests integration
 ```
 
 ### Install
