@@ -82,7 +82,6 @@ phpmd: ## Execute phpmd
 psalm: ## Execute psalm
 	@$(PHP) vendor/bin/psalm --show-info=true
 
-
 ## —— Integration 🗂️ ———————————————————————————————————————————————————————————————
 integration: ## Execute all integration tests
 integration: newman

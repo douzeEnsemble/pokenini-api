@@ -42,6 +42,10 @@ class PokemonsApiTest extends AbstractApiTest
             'simplifiedFrenchName' => 'Bulbizarre',
             'formsLabel' => '',
             'formsFrenchLabel' => '',
+            'categoryForm' => [
+                'name' => 'Starter',
+                'slug' => 'starter',
+            ],
         ], $data);
     }
 
@@ -73,6 +77,10 @@ class PokemonsApiTest extends AbstractApiTest
                 'simplifiedFrenchName' => 'Bulbizarre',
                 'formsLabel' => '',
                 'formsFrenchLabel' => '',
+                'categoryForm' => [
+                    'name' => 'Starter',
+                    'slug' => 'starter',
+                ],
             ],
             'bankable' => true,
             'originalGameBundle' => [
@@ -125,6 +133,10 @@ class PokemonsApiTest extends AbstractApiTest
                 'simplifiedFrenchName' => 'Bulbizarre',
                 'formsLabel' => '',
                 'formsFrenchLabel' => '',
+                'categoryForm' => [
+                    'name' => 'Starter',
+                    'slug' => 'starter',
+                ],
             ],
             'bankable' => true,
             'originalGameBundle' => [

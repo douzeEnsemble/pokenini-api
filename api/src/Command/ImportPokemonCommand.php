@@ -66,6 +66,7 @@ class ImportPokemonCommand extends AbstractImportFileCommand
             'Form variant',
             'Regional form',
             'Special form',
+            'Category form',
             'Family',
             'Family order',
             'Evolution',
@@ -147,6 +148,7 @@ class ImportPokemonCommand extends AbstractImportFileCommand
             'variantForm' => $record['Form variant'],
             'regionalForm' => $record['Regional form'],
             'specialForm' => $record['Special form'],
+            'categoryForm' => $record['Category form'],
             'iconName' => $record['Icon'],
             'slug' => $record['Slug'],
         ];
@@ -161,27 +163,7 @@ class ImportPokemonCommand extends AbstractImportFileCommand
             return;
         }
 
-        $sqlParameters = [
-            'id' => Uuid::v4(),
-            'name' => $pokemon['name'],
-            'simplifiedName' => $pokemon['simplifiedName'],
-            'formsLabel' => $pokemon['formsLabel'],
-            'frenchName' => $pokemon['frenchName'],
-            'simplifiedFrenchName' => $pokemon['simplifiedFrenchName'],
-            'formsFrenchLabel' => $pokemon['formsFrenchLabel'],
-            'nationalDexNumber' => $pokemon['nationalDexNumber'],
-            'family' => $pokemon['family'],
-            'familyOrder' => $pokemon['familyOrder'],
-            'primeName' => $pokemon['primeName'],
-            'bankable' => $pokemon['bankable'] ? 'TRUE' : 'FALSE',
-            'bankableish' => $pokemon['bankableish'] ? 'TRUE' : 'FALSE',
-            'originalGameBundle' => $pokemon['originalGameBundle'],
-            'variantForm' => $pokemon['variantForm'],
-            'regionalForm' => $pokemon['regionalForm'],
-            'specialForm' => $pokemon['specialForm'],
-            'iconName' => $pokemon['iconName'],
-            "slug" => $pokemon['slug'],
-        ];
+        $sqlParameters = $this->getSqlParametersFromPokemon($pokemon);
 
         $sql = <<<SQL
         INSERT INTO pokemon (
@@ -202,6 +184,7 @@ class ImportPokemonCommand extends AbstractImportFileCommand
             variant_form_id,
             regional_form_id,
             special_form_id,
+            category_form_id,
             icon_name,
             slug
         )
@@ -223,6 +206,7 @@ class ImportPokemonCommand extends AbstractImportFileCommand
             (SELECT id FROM variant_form WHERE name = :variantForm),
             (SELECT id FROM regional_form WHERE name = :regionalForm),
             (SELECT id FROM special_form WHERE name = :specialForm),
+            (SELECT id FROM category_form WHERE name = :categoryForm),
             :iconName,
             :slug
         )
@@ -245,10 +229,42 @@ class ImportPokemonCommand extends AbstractImportFileCommand
             variant_form_id = excluded.variant_form_id,
             regional_form_id = excluded.regional_form_id,
             special_form_id = excluded.special_form_id,
+            category_form_id = excluded.category_form_id,
             icon_name = excluded.icon_name,
             deleted_at = NULL
 SQL;
 
         $this->entityManager->getConnection()->executeQuery($sql, $sqlParameters);
+    }
+
+    /**
+     * @param string[]|bool[] $pokemon
+     *
+     * @return string[]
+     */
+    private function getSqlParametersFromPokemon(array $pokemon): array
+    {
+        return [
+            'id' => (string) Uuid::v4(),
+            'name' => (string) $pokemon['name'],
+            'simplifiedName' => (string) $pokemon['simplifiedName'],
+            'formsLabel' => (string) $pokemon['formsLabel'],
+            'frenchName' => (string) $pokemon['frenchName'],
+            'simplifiedFrenchName' => (string) $pokemon['simplifiedFrenchName'],
+            'formsFrenchLabel' => (string) $pokemon['formsFrenchLabel'],
+            'nationalDexNumber' => (string) $pokemon['nationalDexNumber'],
+            'family' => (string) $pokemon['family'],
+            'familyOrder' => (string) $pokemon['familyOrder'],
+            'primeName' => (string) $pokemon['primeName'],
+            'bankable' => (string) $pokemon['bankable'] ? 'TRUE' : 'FALSE',
+            'bankableish' => (string) $pokemon['bankableish'] ? 'TRUE' : 'FALSE',
+            'originalGameBundle' => (string) $pokemon['originalGameBundle'],
+            'variantForm' => (string) $pokemon['variantForm'],
+            'regionalForm' => (string) $pokemon['regionalForm'],
+            'specialForm' => (string) $pokemon['specialForm'],
+            'categoryForm' => (string) $pokemon['categoryForm'],
+            'iconName' => (string) $pokemon['iconName'],
+            "slug" => (string) $pokemon['slug'],
+        ];
     }
 }

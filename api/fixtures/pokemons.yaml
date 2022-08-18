@@ -33,6 +33,7 @@ App\Entity\Pokemon:
         originalGameBundle: '@game_bundle_red_green_blue_yellow'       
         iconName: 'bulbasaur'
         familyOrder: 0
+        categoryForm: '@category_form_starter'
     
     pokemon_ivysaur (extends pokemon):
         slug: 'ivysaur'
@@ -111,6 +112,7 @@ App\Entity\Pokemon:
         originalGameBundle: '@game_bundle_ruby_sapphire_emerald'
         iconName: 'deoxys'
         familyOrder: 0
+        categoryForm: '@category_form_mythical'
     
     pokemon_deoxys_attack (extends pokemon):
         slug: 'deoxys-attack'
@@ -125,6 +127,7 @@ App\Entity\Pokemon:
         iconName: 'deoxys-attack'
         familyOrder: 1
         variantForm: '@variant_form_alternate'
+        categoryForm: '@category_form_mythical'
     
     pokemon_deoxys_defense (extends pokemon):
         slug: 'deoxys-defense'
@@ -139,6 +142,7 @@ App\Entity\Pokemon:
         iconName: 'deoxys-defense'
         familyOrder: 2
         variantForm: '@variant_form_alternate'
+        categoryForm: '@category_form_mythical'
     
     pokemon_deoxys_speed (extends pokemon):
         slug: 'deoxys-speed'
@@ -153,6 +157,7 @@ App\Entity\Pokemon:
         iconName: 'deoxys-speed'
         familyOrder: 3
         variantForm: '@variant_form_alternate'
+        categoryForm: '@category_form_mythical'
     
     pokemon_caterpie (extends pokemon):
         slug: 'caterpie'
