@@ -4,24 +4,17 @@ version: "3.4"
 services:
   php:
     volumes:
-      - ./api:/srv/api:rw,cached
-      - ./api/docker/php/conf.d/api-platform.dev.ini:/usr/local/etc/php/conf.d/api-platform.ini
+      - .:/srv:rw,cached
+      - ./docker/php/conf.d/api-platform.dev.ini:/usr/local/etc/php/conf.d/api-platform.ini
     environment:
       APP_ENV: dev
     depends_on:
       - database_test
 
-  pwa:
-    build:
-      context: ./pwa
-      target: api_platform_pwa_dev
-    volumes:
-      - ./pwa:/usr/src/pwa:rw,cached
-
   caddy:
     volumes:
-      - ./api/docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
-      - ./api/public:/srv/api/public:ro
+      - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile:ro
+      - ./public:/srv/public:ro
     environment:
       MERCURE_EXTRA_DIRECTIVES: demo
 
@@ -49,9 +42,9 @@ services:
 
   newman:
     build:
-      context: api/docker/newman
+      context: docker/newman
     volumes:
-      - ./api/tests/integration:/etc/newman:ro
+      - ./tests/integration:/etc/newman:ro
 
 volumes:
 ###> doctrine/doctrine-bundle ###
