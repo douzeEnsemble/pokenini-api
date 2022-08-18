@@ -29,6 +29,8 @@ class AlbumApiTest extends AbstractApiTest
         $this->assertFalse($data['dex']['is_shiny']);
         $this->assertArrayHasKey('is_private', $data['dex']);
         $this->assertTrue($data['dex']['is_private']);
+        $this->assertArrayHasKey('is_display_form', $data['dex']);
+        $this->assertTrue($data['dex']['is_display_form']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -65,6 +67,8 @@ class AlbumApiTest extends AbstractApiTest
         $this->assertFalse($data['dex']['is_shiny']);
         $this->assertArrayHasKey('is_private', $data['dex']);
         $this->assertFalse($data['dex']['is_private']);
+        $this->assertArrayHasKey('is_display_form', $data['dex']);
+        $this->assertTrue($data['dex']['is_display_form']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -101,6 +105,8 @@ class AlbumApiTest extends AbstractApiTest
         $this->assertTrue($data['dex']['is_shiny']);
         $this->assertArrayHasKey('is_private', $data['dex']);
         $this->assertFalse($data['dex']['is_private']);
+        $this->assertArrayHasKey('is_display_form', $data['dex']);
+        $this->assertTrue($data['dex']['is_display_form']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -116,6 +122,29 @@ class AlbumApiTest extends AbstractApiTest
         $report = $data['report'];
 
         $this->assertReport($report, 0, 0, 0, 0, 11);
+    }
+
+    public function testListHomePoGo(): void
+    {
+        $response = $this->apiRequest('album/homepogo');
+
+        $this->assertEquals(200, $response->getStatusCode());
+
+        $content = $response->getContent();
+        /** @var string[][]|string[][][]|int[][][] $data */
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertArrayHasKey('dex', $data);
+        $this->assertArrayHasKey('name', $data['dex']);
+        $this->assertEquals('Home PoGo', $data['dex']['name']);
+        $this->assertArrayHasKey('french_name', $data['dex']);
+        $this->assertEquals('Home PoGo', $data['dex']['french_name']);
+        $this->assertArrayHasKey('is_shiny', $data['dex']);
+        $this->assertFalse($data['dex']['is_shiny']);
+        $this->assertArrayHasKey('is_private', $data['dex']);
+        $this->assertFalse($data['dex']['is_private']);
+        $this->assertArrayHasKey('is_display_form', $data['dex']);
+        $this->assertFalse($data['dex']['is_display_form']);
     }
 
     public function testListNoSlug(): void
