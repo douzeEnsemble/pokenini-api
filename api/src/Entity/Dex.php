@@ -36,10 +36,4 @@ class Dex
         "dex_list",
     ])]
     public bool $isPrivate = true;
-
-    #[ORM\Column]
-    #[Groups([
-        "dex_list",
-    ])]
-    public bool $isDisplayForm = true;
 }
