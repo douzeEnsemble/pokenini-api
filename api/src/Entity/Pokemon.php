@@ -90,6 +90,10 @@ class Pokemon
     #[Groups(["pokemon_list"])]
     public ?SpecialForm $specialForm;
 
+    #[ORM\ManyToOne]
+    #[Groups(["pokemon_list"])]
+    public ?CategoryForm $categoryForm;
+
     #[ORM\Column]
     #[Groups(["pokemon_list", "dex_availabilities_list"])]
     public string $iconName;

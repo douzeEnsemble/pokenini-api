@@ -1,0 +1,10 @@
+App\Entity\CategoryForm:
+    category_form_starter:
+        name: 'Starter'
+        orderNumber: 1
+    category_form_legendary:
+        name: 'Legendary'
+        orderNumber: 3
+    category_form_mythical:
+        name: 'Mythical'
+        orderNumber: 2
