@@ -6,6 +6,7 @@ use App\Exception\InvalidFilePathDataException;
 use App\Exception\InvalidFileDataException;
 use App\Exception\NoDataPokemonException;
 use App\Repository\PokemonRepository;
+use App\Service\ImportPokemonsService;
 use Cocur\Slugify\Slugify;
 use Doctrine\ORM\EntityManagerInterface;
 use League\Csv\Reader;
@@ -24,7 +25,7 @@ class ImportPokemonCommand extends AbstractImportFileCommand
 
     public function __construct(
         private PokemonRepository $pokemonRepository,
-        protected EntityManagerInterface $entityManager,
+        protected EntityManagerInterface $entityManager
     ) {
         parent::__construct($this->entityManager);
     }
