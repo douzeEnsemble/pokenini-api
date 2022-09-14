@@ -78,7 +78,8 @@ class DexUpdater extends AbstractUpdater
             selection_rule= excluded.selection_rule,
             is_shiny= excluded.is_shiny,
             is_private= excluded.is_private,
-            is_display_form= excluded.is_display_form
+            is_display_form= excluded.is_display_form,
+            deleted_at = NULL
         SQL;
 
         $this->entityManager->getConnection()->executeQuery($sql, $sqlParameters);

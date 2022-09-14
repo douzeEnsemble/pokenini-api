@@ -10,10 +10,13 @@ use App\Entity\Traits\NamedTrait;
 use App\Entity\Traits\OrderedTrait;
 use App\Entity\Traits\SlugifiedTrait;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ApiResource(normalizationContext: ['groups' => ['dex_list']], order: ["orderNumber"])]
 #[ORM\Entity]
+#[Gedmo\SoftDeleteable(fieldName: 'deletedAt')]
 class Dex
 {
     use BaseEntityTrait;
@@ -21,6 +24,7 @@ class Dex
     use FrenchNamedTrait;
     use SlugifiedTrait;
     use OrderedTrait;
+    use SoftDeleteableEntity;
 
     #[ORM\Column(length: 1357)]
     public string $selectionRule = '';

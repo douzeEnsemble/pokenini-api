@@ -57,7 +57,8 @@ abstract class AbstractFormUpdater extends AbstractUpdater
         UPDATE
         SET
             name = excluded.name,
-            order_number= excluded.order_number
+            order_number= excluded.order_number,
+            deleted_at = NULL
         SQL;
 
         $this->entityManager->getConnection()->executeQuery($sql, $sqlParameters);

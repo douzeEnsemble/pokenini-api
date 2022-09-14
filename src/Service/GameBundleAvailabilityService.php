@@ -10,8 +10,8 @@ use Symfony\Contracts\Cache\CacheInterface;
 class GameBundleAvailabilityService
 {
     public function __construct(
-        private GameBundleAvailabilityRepository $gameBundleAvailabilityRepository,
-        private CacheInterface $cache
+        private readonly GameBundleAvailabilityRepository $gameBundleAvailabilityRepository,
+        private readonly CacheInterface $cache
     ) {
     }
 

@@ -48,7 +48,8 @@ class GameGenerationUpdater extends AbstractUpdater
         DO
         UPDATE
         SET
-            name = excluded.name
+            name = excluded.name,
+            deleted_at = NULL
         SQL;
 
         $this->entityManager->getConnection()->executeQuery($sql, $sqlParameters);

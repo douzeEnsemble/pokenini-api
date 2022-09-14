@@ -58,7 +58,8 @@ class GameBundleUpdater extends AbstractUpdater
         SET
             name = excluded.name,
             order = excluded.order,
-            generation_id = excluded.generation_id
+            generation_id = excluded.generation_id,
+            deleted_at = NULL
         SQL;
 
         $this->entityManager->getConnection()->executeQuery($sql, $sqlParameters);

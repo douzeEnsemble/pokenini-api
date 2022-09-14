@@ -58,7 +58,8 @@ class CatchStateUpdater extends AbstractUpdater
         SET
             name = excluded.name,
             french_name = excluded.french_name,
-            order_number= excluded.order_number
+            order_number= excluded.order_number,
+            deleted_at = NULL
         SQL;
 
         $this->entityManager->getConnection()->executeQuery($sql, $sqlParameters);
