@@ -1,6 +1,6 @@
 <?php
 
-namespace functionnal\Service\Updater\Form;
+namespace App\Tests\Functionnal\Service\Updater\Form;
 
 use App\Service\Updater\AbstractUpdater;
 use App\Service\Updater\Form\RegionalFormUpdater;
@@ -9,6 +9,7 @@ class RegionalFormUpdaterTest extends AbstractFormUpdaterTest
 {
     protected int $initialTotalCount = 3;
     protected int $finalTotalCount = 4;
+    protected int $mustBeDeletedTotalCount = 0;
     protected string $sheetName = 'form / Regional form';
     protected string $tableName = 'regional_form';
 

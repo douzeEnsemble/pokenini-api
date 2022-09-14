@@ -1,62 +1,16 @@
 <?php
 
-namespace App\Command;
+namespace App\Service\Updater;
 
-use App\Exception\InvalidFilePathDataException;
-use App\Exception\InvalidFileDataException;
-use App\Exception\NoDataPokemonException;
-use App\Repository\PokemonRepository;
-use App\Service\ImportPokemonsService;
-use Cocur\Slugify\Slugify;
-use Doctrine\ORM\EntityManagerInterface;
-use League\Csv\Reader;
-use League\MimeTypeDetection\FinfoMimeTypeDetector;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Attribute\AsCommand;
-use Symfony\Component\Console\Input\InputArgument;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Uid\Uuid;
 
-#[AsCommand(name: 'app:import:pokemon')]
-class ImportPokemonCommand extends AbstractImportFileCommand
+class PokemonUpdater extends AbstractUpdater
 {
-    protected static $defaultName = 'app:import:pokemon';
+    protected string $sheetName = 'Pokémons';
+    protected string $tableName = 'pokemon';
+    protected string $headerCellsRange = 'A1:AP1';
+    protected string $recordsCellsRange = 'A2:AP';
 
-    public function __construct(
-        private PokemonRepository $pokemonRepository,
-        protected EntityManagerInterface $entityManager
-    ) {
-        parent::__construct($this->entityManager);
-    }
-
-    protected function configure(): void
-    {
-        parent::configure();
-
-        $this
-            ->setHelp('This command allows you to import pokemon list from a csv')
-        ;
-    }
-
-    protected function processRecords(\Iterator $records, InputInterface $input, OutputInterface $output): void
-    {
-        $pokemons = $this->getPokemonsFromRecords($records);
-
-        $this->pokemonRepository->removeAll();
-
-        foreach ($pokemons as $pokemon) {
-            $this->upsertPokemon($pokemon);
-        }
-
-        $nbPokemons = count($pokemons);
-
-        $output->writeln("<info>$nbPokemons pokemons created/updated</info>");
-    }
-
-    /**
-     * @return string[]
-     */
     protected function getExpectedHeader(): array
     {
         return [
@@ -105,66 +59,15 @@ class ImportPokemonCommand extends AbstractImportFileCommand
         ];
     }
 
-    /**
-     * @param \Iterator|string[][] $records
-     *
-     * @return string[][]|bool[][]
-     */
-    private function getPokemonsFromRecords(\Iterator $records): array
+    protected function upsertRecord(array $record): void
     {
-        $pokemons = [];
-        foreach ($records as $record) {
-            $pokemons[] = $this->transformRecord($record);
-        }
-
-        return $pokemons;
-    }
-
-    /**
-     * @param string[] $record
-     *
-     * @return string[]|bool[]
-     */
-    private function transformRecord(array $record): array
-    {
-        /** @var bool $isBankable */
-        $isBankable = filter_var($record['Bankable'], FILTER_VALIDATE_BOOLEAN);
-        /** @var bool $isBankableish */
-        $isBankableish = filter_var($record['Bankable-ish'], FILTER_VALIDATE_BOOLEAN);
-
-        return [
-            'name' => $record['Pokémon Nom Complet'],
-            'simplifiedName' => $record['Pokémon Nom simplifié'],
-            'formsLabel' => $record['Forme'],
-            'frenchName' => $record['Pokémon Nom Complet Fr'],
-            'simplifiedFrenchName' => $record['Pokémon Nom simplifié Fr'],
-            'formsFrenchLabel' => $record['Forme Fr'],
-            'nationalDexNumber' => $record['Dex'],
-            'family' => $record['Family'],
-            'familyOrder' => $record['Family order'],
-            'primeName' => $record['Bulbapedia Name'],
-            'bankable' => $isBankable,
-            'bankableish' => $isBankableish,
-            'originalGameBundle' => $record['Games First Appears On'],
-            'variantForm' => $record['Form variant'],
-            'regionalForm' => $record['Regional form'],
-            'specialForm' => $record['Special form'],
-            'categoryForm' => $record['Category form'],
-            'iconName' => $record['Icon'],
-            'slug' => $record['Slug'],
-        ];
-    }
-
-    /**
-     * @param string[]|bool[] $pokemon
-     */
-    private function upsertPokemon(array $pokemon): void
-    {
-        if (empty($pokemon)) {
+        if (empty($record)) {
             return;
         }
 
-        $sqlParameters = $this->getSqlParametersFromPokemon($pokemon);
+        $newRecord = $this->transformRecord($record);
+
+        $sqlParameters = $this->getSqlParametersFromPokemon($newRecord);
 
         $sql = <<<SQL
         INSERT INTO pokemon (
@@ -266,6 +169,41 @@ SQL;
             'categoryForm' => (string) $pokemon['categoryForm'],
             'iconName' => (string) $pokemon['iconName'],
             "slug" => (string) $pokemon['slug'],
+        ];
+    }
+
+    /**
+     * @param string[] $record
+     *
+     * @return string[]|bool[]
+     */
+    private function transformRecord(array $record): array
+    {
+        /** @var bool $isBankable */
+        $isBankable = filter_var($record['Bankable'], FILTER_VALIDATE_BOOLEAN);
+        /** @var bool $isBankableish */
+        $isBankableish = filter_var($record['Bankable-ish'], FILTER_VALIDATE_BOOLEAN);
+
+        return [
+            'name' => $record['Pokémon Nom Complet'],
+            'simplifiedName' => $record['Pokémon Nom simplifié'],
+            'formsLabel' => $record['Forme'],
+            'frenchName' => $record['Pokémon Nom Complet Fr'],
+            'simplifiedFrenchName' => $record['Pokémon Nom simplifié Fr'],
+            'formsFrenchLabel' => $record['Forme Fr'],
+            'nationalDexNumber' => $record['Dex'],
+            'family' => $record['Family'],
+            'familyOrder' => $record['Family order'],
+            'primeName' => $record['Bulbapedia Name'],
+            'bankable' => $isBankable,
+            'bankableish' => $isBankableish,
+            'originalGameBundle' => $record['Games First Appears On'],
+            'variantForm' => $record['Form variant'],
+            'regionalForm' => $record['Regional form'],
+            'specialForm' => $record['Special form'],
+            'categoryForm' => $record['Category form'],
+            'iconName' => $record['Icon'],
+            'slug' => $record['Slug'],
         ];
     }
 }

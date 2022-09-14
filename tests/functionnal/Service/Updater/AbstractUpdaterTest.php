@@ -1,6 +1,6 @@
 <?php
 
-namespace functionnal\Service\Updater;
+namespace App\Tests\Functionnal\Service\Updater;
 
 use App\Exception\InvalidSheetDataException;
 use App\Service\Updater\AbstractUpdater;
@@ -10,12 +10,13 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 abstract class AbstractUpdaterTest extends KernelTestCase
 {
+    use RefreshDatabaseTrait;
+
     protected int $initialTotalCount;
     protected int $finalTotalCount;
+    protected int $mustBeDeletedTotalCount;
     protected string $sheetName;
     protected string $tableName;
-
-    use RefreshDatabaseTrait;
 
     public function setUp(): void
     {
@@ -29,7 +30,7 @@ abstract class AbstractUpdaterTest extends KernelTestCase
         $this->expectException(InvalidSheetDataException::class);
         $this->expectExceptionMessage('Spreadsheet is empty');
 
-        $service->do('empty');
+        $service->execute('empty');
     }
 
     public function testDoWrongSheet(): void
@@ -39,18 +40,20 @@ abstract class AbstractUpdaterTest extends KernelTestCase
         $this->expectException(InvalidSheetDataException::class);
         $this->expectExceptionMessage('This is not a valid data spreadsheet');
 
-        $service->do('wrong_sheet');
+        $service->execute('wrong_sheet');
     }
 
     public function testDo(): void
     {
         $this->assertEquals($this->initialTotalCount, $this->getTableCount());
+        $this->assertEquals(0, $this->getTableDeletedAtCount());
 
         $service = $this->getService();
 
-        $service->do($this->sheetName);
+        $service->execute($this->sheetName);
 
         $this->assertEquals($this->finalTotalCount, $this->getTableCount());
+        $this->assertEquals($this->mustBeDeletedTotalCount, $this->getTableDeletedAtCount());
     }
 
     abstract protected function getService(): AbstractUpdater;
@@ -61,6 +64,19 @@ abstract class AbstractUpdaterTest extends KernelTestCase
         $connection = static::getContainer()->get(Connection::class);
 
         /** @var int */
-        return $connection->executeQuery('SELECT COUNT(*) FROM '.$this->tableName)->fetchOne();
+        return $connection->executeQuery(
+            "SELECT COUNT(*) FROM {$this->tableName}"
+        )->fetchOne();
+    }
+
+    protected function getTableDeletedAtCount(): int
+    {
+        /** @var Connection $connection */
+        $connection = static::getContainer()->get(Connection::class);
+
+        /** @var int */
+        return $connection->executeQuery(
+            "SELECT COUNT(*) FROM {$this->tableName} WHERE deleted_at IS NOT NULL"
+        )->fetchOne();
     }
 }

@@ -9,9 +9,12 @@ use App\Entity\Traits\NamedTrait;
 use App\Entity\Traits\OrderedTrait;
 use App\Entity\Traits\SlugifiedTrait;
 use Doctrine\ORM\Mapping as ORM;
+use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ApiResource(normalizationContext: ['groups' => ['catch_state_list']], order: ["orderNumber"])]
 #[ORM\Entity]
+#[Gedmo\SoftDeleteable(fieldName: 'deletedAt')]
 class CatchState
 {
     use BaseEntityTrait;
@@ -19,4 +22,5 @@ class CatchState
     use FrenchNamedTrait;
     use SlugifiedTrait;
     use OrderedTrait;
+    use SoftDeleteableEntity;
 }

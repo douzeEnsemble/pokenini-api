@@ -1,9 +1,9 @@
 <?php
 
-namespace functionnal\Service\Updater\Form;
+namespace App\Tests\Functionnal\Service\Updater\Form;
 
 use App\Exception\InvalidSheetDataException;
-use functionnal\Service\Updater\AbstractUpdaterTest;
+use App\Tests\Functionnal\Service\Updater\AbstractUpdaterTest;
 
 abstract class AbstractFormUpdaterTest extends AbstractUpdaterTest
 {
@@ -14,7 +14,7 @@ abstract class AbstractFormUpdaterTest extends AbstractUpdaterTest
         $this->expectException(InvalidSheetDataException::class);
         $this->expectExceptionMessage('There is not data in spreadsheet');
 
-        $service->do('form / empty_data');
+        $service->execute('form / empty_data');
     }
 
     public function testDoZeroData(): void
@@ -24,28 +24,32 @@ abstract class AbstractFormUpdaterTest extends AbstractUpdaterTest
         $this->expectException(InvalidSheetDataException::class);
         $this->expectExceptionMessage("Can't get data for range 'form / zero_data'!A2:C");
 
-        $service->do('form / zero_data');
+        $service->execute('form / zero_data');
     }
 
     public function testDoAnotherList(): void
     {
         $this->assertEquals($this->initialTotalCount, $this->getTableCount());
+        $this->assertEquals(0, $this->getTableDeletedAtCount());
 
         $service = $this->getService();
 
-        $service->do('form / another_list');
+        $service->execute('form / another_list');
 
-        $this->assertEquals($this->initialTotalCount+4, $this->getTableCount());
+        $this->assertEquals($this->initialTotalCount + 4, $this->getTableCount());
+        $this->assertEquals($this->initialTotalCount, $this->getTableDeletedAtCount());
     }
 
     public function testDoDifferentColumnsOrder(): void
     {
         $this->assertEquals($this->initialTotalCount, $this->getTableCount());
+        $this->assertEquals(0, $this->getTableDeletedAtCount());
 
         $service = $this->getService();
 
-        $service->do('form / different_columns_order');
+        $service->execute('form / different_columns_order');
 
-        $this->assertEquals($this->initialTotalCount+4, $this->getTableCount());
+        $this->assertEquals($this->initialTotalCount + 4, $this->getTableCount());
+        $this->assertEquals($this->initialTotalCount, $this->getTableDeletedAtCount());
     }
 }
