@@ -13,7 +13,7 @@ use Symfony\Component\Uid\Uuid;
 abstract class AbstractFormUpdater extends AbstractUpdater
 {
     protected string $headerCellsRange = 'A1:C1';
-    protected string $recordsCellsRange = 'A2:C';
+    protected array $recordsCellsRanges = ['A2:C'];
 
     protected function getExpectedHeader(): array
     {

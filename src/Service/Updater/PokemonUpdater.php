@@ -9,7 +9,7 @@ class PokemonUpdater extends AbstractUpdater
     protected string $sheetName = 'Pokémons';
     protected string $tableName = 'pokemon';
     protected string $headerCellsRange = 'A1:AP1';
-    protected string $recordsCellsRange = 'A2:AP';
+    protected array $recordsCellsRanges = ['A2:AP'];
 
     protected function getExpectedHeader(): array
     {
