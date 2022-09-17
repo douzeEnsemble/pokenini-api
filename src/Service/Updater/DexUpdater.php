@@ -9,7 +9,7 @@ class DexUpdater extends AbstractUpdater
     protected string $sheetName = 'Dex';
     protected string $tableName = 'dex';
     protected string $headerCellsRange = 'A1:H1';
-    protected string $recordsCellsRange = 'A2:H';
+    protected array $recordsCellsRanges = ['A2:H'];
 
     protected function getExpectedHeader(): array
     {

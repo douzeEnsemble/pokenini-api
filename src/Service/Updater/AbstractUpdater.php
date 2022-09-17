@@ -7,12 +7,13 @@ use App\Service\SpreadsheetService;
 use Doctrine\ORM\EntityManagerInterface;
 use Google\Service\Exception as GoogleServiceException;
 
-abstract class AbstractUpdater
+abstract class AbstractUpdater implements UpdaterInterface
 {
     protected string $sheetName;
     protected string $tableName;
     protected string $headerCellsRange;
-    protected string $recordsCellsRange;
+    /** @var string[] */
+    protected array $recordsCellsRanges;
 
     public function __construct(
         protected readonly SpreadsheetService $spreadsheetService,
@@ -29,11 +30,12 @@ abstract class AbstractUpdater
 
         $this->validateHeader($header);
 
-        $records = $this->getRecords($header);
-
         $this->removeExistingRecords();
 
-        $this->upsertRecords($records);
+        foreach ($this->getRecordsCellsRanges() as $recordsCellsRanges) {
+            $records = $this->getRecords($header, $recordsCellsRanges);
+            $this->upsertRecords($records);
+        }
     }
 
     /**
@@ -47,6 +49,14 @@ abstract class AbstractUpdater
      * @return void
      */
     abstract protected function upsertRecord(array $record): void;
+
+    /**
+     * @return string[]
+     */
+    protected function getRecordsCellsRanges(): array
+    {
+        return $this->recordsCellsRanges;
+    }
 
     /**
      * @param string[] $header
@@ -81,14 +91,37 @@ abstract class AbstractUpdater
      * @param string[] $header
      * @return string[][]
      */
-    protected function getRecords(array $header): array
+    protected function getRecords(array $header, string $range): array
     {
-        $values = $this->getSheetValues("'{$this->sheetName}'!{$this->recordsCellsRange}");
+        $values = $this->getRecordsData($range);
+
+        return $this->transformRecords($values, $header);
+    }
+
+    /**
+     * @param string $range
+     *
+     * @return string[][]
+     */
+    protected function getRecordsData(string $range): array
+    {
+        $values = $this->getSheetValues("'{$this->sheetName}'!{$range}");
 
         if (empty($values)) {
             throw new InvalidSheetDataException('There is not data in spreadsheet');
         }
 
+        return $values;
+    }
+
+    /**
+     * @param string[][] $values
+     * @param string[] $header
+     *
+     * @return string[][]
+     */
+    protected function transformRecords(array $values, array $header): array
+    {
         return array_map(static function ($value) use ($header): array {
             // To fill missing column at the end. The api remove empty data
             $value += array_fill(count($value), count($header) - count($value), '');

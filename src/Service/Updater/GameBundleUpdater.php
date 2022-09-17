@@ -9,7 +9,7 @@ class GameBundleUpdater extends AbstractUpdater
     protected string $sheetName = 'Game Bundle';
     protected string $tableName = 'game_bundle';
     protected string $headerCellsRange = 'A1:D1';
-    protected string $recordsCellsRange = 'A2:D';
+    protected array $recordsCellsRanges = ['A2:D'];
 
     protected function getExpectedHeader(): array
     {
