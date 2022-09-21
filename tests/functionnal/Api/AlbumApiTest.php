@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Functionnal\Api;
 
 use App\Tests\Resources\Traits\GetterTrait\GetPokedexTrait;

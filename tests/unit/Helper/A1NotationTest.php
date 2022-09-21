@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace unit\Helper;
 
 use App\Helper\A1Notation;

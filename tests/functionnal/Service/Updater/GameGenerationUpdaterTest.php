@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Tests\Functionnal\Service\Updater;
 
 use App\Service\Updater\AbstractUpdater;
