@@ -1,0 +1,26 @@
+{
+  "range": "'form / Regional form'!A2:C5",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Alolan",
+      "alolan",
+      "1"
+    ],
+    [
+      "Galarian",
+      "galarian",
+      "2"
+    ],
+    [
+      "Hisuian",
+      "hisuian",
+      "3"
+    ],
+    [
+      "Paldean",
+      "paldean",
+      "4"
+    ]
+  ]
+}

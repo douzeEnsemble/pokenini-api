@@ -70,6 +70,16 @@ services:
 # Mercure is installed as a Caddy module, prevent the Flex recipe from installing another service
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
+  
+  moco:
+    build:
+      context: docker/moco
+    volumes:
+      - ./tests/resources/moco/:/var/moco:ro
+    networks:
+      default:
+        aliases:
+          - sheets.googleapis.mock
 
 volumes:
   php_socket:
@@ -83,3 +93,7 @@ volumes:
 ###< doctrine/doctrine-bundle ###
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
+networks:
+  default:
+    driver: overlay
+    attachable: true

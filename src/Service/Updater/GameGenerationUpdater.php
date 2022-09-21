@@ -52,6 +52,6 @@ class GameGenerationUpdater extends AbstractUpdater
             deleted_at = NULL
         SQL;
 
-        $this->entityManager->getConnection()->executeQuery($sql, $sqlParameters);
+        $this->executeQuery($sql, $sqlParameters);
     }
 }

@@ -3,9 +3,6 @@
 namespace App\Service\Updater;
 
 use App\Helper\A1Notation;
-use Google\Service\Sheets\BandedRange;
-use Google\Service\Sheets\CellData;
-use Google\Service\Sheets\GridRange;
 use Symfony\Component\Uid\Uuid;
 
 class GameAvailabilityUpdater extends AbstractUpdater
@@ -16,7 +13,8 @@ class GameAvailabilityUpdater extends AbstractUpdater
     protected int $recordsCellsStartRowIndex = 2;
     protected int $recordsCellsStartColumnIndex = 0;
 
-    protected const BATCH_SIZE = 100;
+    protected const RANGE_SIZE = 100;
+    protected const BATCH_SIZE = 20;
 
     /**
      * @return string[]
@@ -26,12 +24,12 @@ class GameAvailabilityUpdater extends AbstractUpdater
         $rowCount = $this->spreadsheetService->getSheetRowCount($this->spreadsheetId, $this->sheetName);
         $columnCount = $this->spreadsheetService->getSheetColumnCount($this->spreadsheetId, $this->sheetName);
 
-        $nbBatch = ($rowCount / self::BATCH_SIZE);
+        $nbBatch = ($rowCount / self::RANGE_SIZE);
 
         $ranges = [];
         for ($i = 0; $i < $nbBatch; $i++) {
-            $startRow = $this->recordsCellsStartRowIndex + (self::BATCH_SIZE * $i) + 1;
-            $endRow = min($startRow + self::BATCH_SIZE - 1, $rowCount - 1);
+            $startRow = $this->recordsCellsStartRowIndex + (self::RANGE_SIZE * $i) + 1;
+            $endRow = min($startRow + self::RANGE_SIZE - 1, $rowCount - 1);
 
             $ranges[] = sprintf(
                 '%s:%s',
@@ -97,6 +95,20 @@ class GameAvailabilityUpdater extends AbstractUpdater
     }
 
     /**
+     * @param string[] $header
+     */
+    protected function handleCellRange(array $header, string $cellRange): void
+    {
+        $records = $this->getRecords($header, $cellRange);
+
+        $availabilitiesChunks = array_chunk($records, self::BATCH_SIZE);
+        unset($records);
+        foreach ($availabilitiesChunks as $chunk) {
+            $this->upsertRecords($chunk);
+        }
+    }
+
+    /**
      * @param string[][]|bool[][] $records
      */
     protected function upsertRecords(array $records): void
@@ -135,7 +147,7 @@ class GameAvailabilityUpdater extends AbstractUpdater
         VALUES ($sqlValuesStr)
 SQL;
 
-        $this->entityManager->getConnection()->executeQuery($sql, $sqlParameters);
+        $this->executeQuery($sql, $sqlParameters);
     }
 
     protected function upsertRecord(array $record): void
