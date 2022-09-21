@@ -1,0 +1,36 @@
+{
+  "range": "'Catch state'!A2:D6",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "No",
+      "no",
+      "1",
+      "Non"
+    ],
+    [
+      "To evolve",
+      "toevolve",
+      "2",
+      "af. évoluer"
+    ],
+    [
+      "To breed",
+      "tobreed",
+      "3",
+      "af. reproduire"
+    ],
+    [
+      "To transfer",
+      "totransfer",
+      "4",
+      "à transférer"
+    ],
+    [
+      "Yes",
+      "yes",
+      "5",
+      "Oui"
+    ]
+  ]
+}

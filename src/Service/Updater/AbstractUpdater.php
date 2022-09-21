@@ -32,9 +32,8 @@ abstract class AbstractUpdater implements UpdaterInterface
 
         $this->removeExistingRecords();
 
-        foreach ($this->getRecordsCellsRanges() as $recordsCellsRanges) {
-            $records = $this->getRecords($header, $recordsCellsRanges);
-            $this->upsertRecords($records);
+        foreach ($this->getRecordsCellsRanges() as $recordsCellsRange) {
+            $this->handleCellRange($header, $recordsCellsRange);
         }
     }
 
@@ -85,6 +84,15 @@ abstract class AbstractUpdater implements UpdaterInterface
         }
 
         return $values[0];
+    }
+
+    /**
+     * @param string[] $header
+     */
+    protected function handleCellRange(array $header, string $cellRange): void
+    {
+        $records = $this->getRecords($header, $cellRange);
+        $this->upsertRecords($records);
     }
 
     /**
@@ -165,6 +173,14 @@ abstract class AbstractUpdater implements UpdaterInterface
         SET     deleted_at = NOW()
         SQL;
 
-        $this->entityManager->getConnection()->executeQuery($sql);
+        $this->executeQuery($sql);
+    }
+
+    /**
+     * @param mixed[] $sqlParameters
+     */
+    protected function executeQuery(string $sql, array $sqlParameters = []): void
+    {
+        $this->entityManager->getConnection()->executeStatement($sql, $sqlParameters);
     }
 }

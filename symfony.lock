@@ -244,9 +244,6 @@
     "phar-io/version": {
         "version": "3.2.1"
     },
-    "php-cs-fixer/diff": {
-        "version": "v2.0.2"
-    },
     "phpdocumentor/reflection-common": {
         "version": "2.2.0"
     },
@@ -255,9 +252,6 @@
     },
     "phpdocumentor/type-resolver": {
         "version": "1.6.0"
-    },
-    "phpspec/prophecy": {
-        "version": "v1.15.0"
     },
     "phpunit/php-code-coverage": {
         "version": "9.2.15"

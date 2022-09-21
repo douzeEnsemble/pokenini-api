@@ -61,6 +61,6 @@ abstract class AbstractFormUpdater extends AbstractUpdater
             deleted_at = NULL
         SQL;
 
-        $this->entityManager->getConnection()->executeQuery($sql, $sqlParameters);
+        $this->executeQuery($sql, $sqlParameters);
     }
 }

@@ -1,0 +1,16 @@
+{
+  "range": "Dex!A1:H1",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Name",
+      "Slug",
+      "Selection rule",
+      "Order",
+      "French Name",
+      "Is Shiny",
+      "Is Private",
+      "Is Display Form"
+    ]
+  ]
+}

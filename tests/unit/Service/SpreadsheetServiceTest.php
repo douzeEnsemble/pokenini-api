@@ -35,11 +35,8 @@ class SpreadsheetServiceTest extends TestCase
             ->willReturn($valueRange)
         ;
 
-        $cache = new ArrayAdapter();
+        $service = new SpreadsheetService($client, 'http://sheets.googleapis.mock/');
 
-        $service = new SpreadsheetService($client, $cache);
-
-        $service->get('azertyuiop', 'A1:R12');
         $service->get('azertyuiop', 'A1:R12');
     }
 
@@ -51,20 +48,12 @@ class SpreadsheetServiceTest extends TestCase
             12,
             $service->getSheetRowCount('azertyuiop', 'Toto')
         );
-        $this->assertEquals(
-            12,
-            $service->getSheetRowCount('azertyuiop', 'Toto')
-        );
     }
 
     public function testGetSheetColumnCount(): void
     {
         $service = $this->getServiceForGettingProperties();
 
-        $this->assertEquals(
-            3,
-            $service->getSheetColumnCount('azertyuiop', 'Toto')
-        );
         $this->assertEquals(
             3,
             $service->getSheetColumnCount('azertyuiop', 'Toto')
@@ -115,8 +104,6 @@ class SpreadsheetServiceTest extends TestCase
             ->willReturn($spreadsheet)
         ;
 
-        $cache = new ArrayAdapter();
-
-        return new SpreadsheetService($client, $cache);
+        return new SpreadsheetService($client, 'http://sheets.googleapis.mock/');
     }
 }
