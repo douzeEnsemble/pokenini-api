@@ -24,7 +24,7 @@ services:
             - '../src/Kernel.php'
             - '../src/Tests/'
     
-    App\Service\:
-        resource: '../src/Service/'
+    App\Updater\:
+        resource: '../src/Updater/'
         # Temporary
         public: true

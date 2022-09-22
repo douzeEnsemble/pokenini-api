@@ -13,44 +13,44 @@ parameters:
 		-
 			message: "#^Parameter \\#1 \\$iterator of function iterator_to_array expects Traversable, iterable given\\.$#"
 			count: 1
-			path: tests/functionnal/Repository/DexRepositoryTest.php
+			path: tests/Functional/Repository/DexRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$goldsilvercrystal\\.$#"
 			count: 3
-			path: tests/functionnal/Repository/GameBundleAvailabilityRepositoryTest.php
+			path: tests/Functional/Repository/GameBundleAvailabilityRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$redgreenblueyellow\\.$#"
 			count: 3
-			path: tests/functionnal/Repository/GameBundleAvailabilityRepositoryTest.php
+			path: tests/Functional/Repository/GameBundleAvailabilityRepositoryTest.php
 
 		-
 			message: "#^Parameter \\#1 \\$iterator of function iterator_to_array expects Traversable, iterable given\\.$#"
 			count: 1
-			path: tests/functionnal/Repository/PokemonRepositoryTest.php
+			path: tests/Functional/Repository/PokemonRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$goldsilvercrystal\\.$#"
 			count: 3
-			path: tests/functionnal/Service/GameBundleAvailabilityServiceTest.php
+			path: tests/Functional/Service/GameBundleAvailabilityServiceTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$redgreenblueyellow\\.$#"
 			count: 3
-			path: tests/functionnal/Service/GameBundleAvailabilityServiceTest.php
+			path: tests/Functional/Service/GameBundleAvailabilityServiceTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$a\\.$#"
 			count: 1
-			path: tests/unit/DTO/GameBundlesAvailabiliesTest.php
+			path: tests/Unit/DTO/GameBundlesAvailabiliesTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$b\\.$#"
 			count: 1
-			path: tests/unit/DTO/GameBundlesAvailabiliesTest.php
+			path: tests/Unit/DTO/GameBundlesAvailabiliesTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$c\\.$#"
 			count: 1
-			path: tests/unit/DTO/GameBundlesAvailabiliesTest.php
+			path: tests/Unit/DTO/GameBundlesAvailabiliesTest.php
