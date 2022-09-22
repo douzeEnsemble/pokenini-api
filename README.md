@@ -10,8 +10,8 @@ sleep 10 && \
 docker-compose exec php sh -c '
     php bin/console doct:data:drop --force --if-exists && php bin/console doct:data:c && php bin/console doct:migr:mig --no-interaction
     php bin/console doct:data:drop --force --if-exists --env=test && php bin/console doct:data:c --env=test && php bin/console doct:migr:mig --no-interaction --env=test
-    php bin/console app:import:pokemon resources/data/pokemon_list.csv
-    php bin/console app:import:game_availability resources/data/bulbapedia_availability.csv
+    php bin/console app:update:pokemon
+    php bin/console app:update:game_availability
     php bin/console app:calculate:game_bundle_availability
     php bin/console app:calculate:dex_availability
     echo "Finished"
@@ -25,8 +25,8 @@ or
 docker-compose exec php sh -c '
     php bin/console doct:data:drop --force --if-exists && php bin/console doct:data:c && php bin/console doct:migr:mig --no-interaction
     php bin/console doct:data:drop --force --if-exists --env=test && php bin/console doct:data:c --env=test && php bin/console doct:migr:mig --no-interaction --env=test
-    php bin/console app:import:pokemon resources/data/pokemon_list.csv
-    php bin/console app:import:game_availability resources/data/bulbapedia_availability.csv
+    php bin/console app:update:pokemon
+    php bin/console app:update:game_availability
     php bin/console app:calculate:game_bundle_availability
     php bin/console app:calculate:dex_availability
     echo "Finished"
@@ -60,7 +60,7 @@ By default, there is no pokemon, you have to import them
 
 ```
 docker-compose exec php sh -c '
-    php bin/console app:import:pokemon resources/data/pokemon_list.csv
+    php bin/console app:update:pokemon
 '
 ```
 
@@ -70,7 +70,7 @@ By default, there is no game availabilty, you have to import them
 
 ```
 docker-compose exec php sh -c '
-    php bin/console app:import:game_availability resources/data/bulbapedia_availability.csv
+    php bin/console app:update:game_availability
 '
 ```
 

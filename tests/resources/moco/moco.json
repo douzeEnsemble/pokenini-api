@@ -451,101 +451,29 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Games Availability'!A4:AL103"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Games Availability'!A3:AL102"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A4%3AAL103.json"
+      "file": "/var/moco/values_%27Games%20Availability%27%21A3%3AAL102.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Games Availability'!A104:AL203"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Games Availability'!A103:AL202"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A104%3AAL203.json"
+      "file": "/var/moco/values_%27Games%20Availability%27%21A103%3AAL202.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Games Availability'!A204:AL212"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Games Availability'!A203:AL212"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A204%3AAL212.json"
-    }
-  },
-  {
-    "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Games Availability'!A204:AL303"
-    },
-    "response": {
-      "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A204%3AAL303.json"
-    }
-  },
-  {
-    "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Games Availability'!A304:AL403"
-    },
-    "response": {
-      "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A304%3AAL403.json"
-    }
-  },
-  {
-    "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Games Availability'!A404:AL503"
-    },
-    "response": {
-      "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A404%3AAL503.json"
-    }
-  },
-  {
-    "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Games Availability'!A504:AL603"
-    },
-    "response": {
-      "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A504%3AAL603.json"
-    }
-  },
-  {
-    "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Games Availability'!A604:AL703"
-    },
-    "response": {
-      "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A604%3AAL703.json"
-    }
-  },
-  {
-    "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Games Availability'!A704:AL803"
-    },
-    "response": {
-      "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A704%3AAL803.json"
-    }
-  },
-  {
-    "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Games Availability'!A804:AL903"
-    },
-    "response": {
-      "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A804%3AAL903.json"
-    }
-  },
-  {
-    "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Games Availability'!A904:AL964"
-    },
-    "response": {
-      "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A904%3AAL964.json"
+      "file": "/var/moco/values_%27Games%20Availability%27%21A203%3AAL212.json"
     }
   }
 ]
