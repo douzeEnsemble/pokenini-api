@@ -30,7 +30,7 @@ class GameAvailabilityUpdater extends AbstractUpdater
 
         $ranges = [];
         for ($i = 0; $i < $nbBatch; $i++) {
-            $startRow = $this->recordsCellsStartRowIndex + (self::RANGE_SIZE * $i) + 1;
+            $startRow = $this->recordsCellsStartRowIndex + (self::RANGE_SIZE * $i);
             $endRow = min($startRow + self::RANGE_SIZE - 1, $rowCount - 1);
 
             $ranges[] = sprintf(
