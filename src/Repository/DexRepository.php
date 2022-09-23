@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Entity\Dex;
-use App\Entity\GameAvailability;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\NonUniqueResultException;
-use Doctrine\ORM\Query;
+use Doctrine\ORM\AbstractQuery;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -21,7 +19,7 @@ class DexRepository extends ServiceEntityRepository
         parent::__construct($registry, Dex::class);
     }
 
-    public function getQueryAll(): Query
+    public function getQueryAll(): AbstractQuery
     {
         $queryBuilder = $this->createQueryBuilder('d');
 

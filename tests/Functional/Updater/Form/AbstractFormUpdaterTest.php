@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\Service\Updater\Form;
+namespace App\Tests\Functional\Updater\Form;
 
 use App\Exception\InvalidSheetDataException;
-use App\Tests\Functional\Service\Updater\AbstractUpdaterTest;
+use App\Tests\Functional\Updater\AbstractUpdaterTest;
 
 abstract class AbstractFormUpdaterTest extends AbstractUpdaterTest
 {

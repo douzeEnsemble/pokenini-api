@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Command;
 
-use App\Repository\GameBundleAvailabilityRepository;
+use App\Calculator\GameBundleAvailabilityCalculator;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
@@ -17,7 +17,7 @@ class CalculateGameBundleAvailabilityCommand extends Command
     protected static $defaultName = 'app:calculate:game_bundle_availability';
 
     public function __construct(
-        private GameBundleAvailabilityRepository $gameBundleAvailabilityRepository,
+        private GameBundleAvailabilityCalculator $gameBundleAvailabilityCalculator,
         private readonly CacheInterface $cache,
     ) {
         parent::__construct(self::$defaultName);
@@ -43,9 +43,7 @@ class CalculateGameBundleAvailabilityCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $this->gameBundleAvailabilityRepository->removeAll();
-
-        $count = $this->gameBundleAvailabilityRepository->calculate();
+        $count = $this->gameBundleAvailabilityCalculator->execute();
 
         $output->writeln("<info>$count bundles' availabilities calculated</info>");
 

@@ -6,7 +6,7 @@ namespace App\Repository;
 
 use App\Entity\Pokemon;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\Query;
+use Doctrine\ORM\AbstractQuery;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -30,7 +30,7 @@ class PokemonRepository extends ServiceEntityRepository
         $queryBuilder->getQuery()->execute();
     }
 
-    public function getQueryAll(): Query
+    public function getQueryAll(): AbstractQuery
     {
         $queryBuilder = $this->createQueryBuilder('p');
 

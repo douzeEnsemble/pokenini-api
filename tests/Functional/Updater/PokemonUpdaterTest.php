@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\Service\Updater;
+namespace App\Tests\Functional\Updater;
 
-use App\Updater\AbstractUpdater;
-use App\Updater\PokemonUpdater;
 use App\Tests\Resources\Traits\CounterTrait\CountPokemonTrait;
 use App\Tests\Resources\Traits\GetterTrait\GetPokemonTrait;
+use App\Updater\AbstractUpdater;
+use App\Updater\PokemonUpdater;
 
 class PokemonUpdaterTest extends AbstractUpdaterTest
 {

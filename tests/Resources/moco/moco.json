@@ -145,7 +145,25 @@
   },
   {
     "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Category form'!A1:C1"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27form%20%2F%20Category%20form%27%21A1%3AC1.json"
+    }
+  },
+  {
+    "request": {
       "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'form / Category form'!A2:C"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27form%20%2F%20Category%20form%27%21A2%3AC.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Category form'!A2:C"
     },
     "response": {
       "status": 200,
@@ -163,7 +181,25 @@
   },
   {
     "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Regional form'!A1:C1"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27form%20%2F%20Regional%20form%27%21A1%3AC1.json"
+    }
+  },
+  {
+    "request": {
       "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'form / Regional form'!A2:C"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27form%20%2F%20Regional%20form%27%21A2%3AC.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Regional form'!A2:C"
     },
     "response": {
       "status": 200,
@@ -181,7 +217,25 @@
   },
   {
     "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Special form'!A1:C1"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27form%20%2F%20Special%20form%27%21A1%3AC1.json"
+    }
+  },
+  {
+    "request": {
       "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'form / Special form'!A2:C"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27form%20%2F%20Special%20form%27%21A2%3AC.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Special form'!A2:C"
     },
     "response": {
       "status": 200,
@@ -199,7 +253,25 @@
   },
   {
     "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Variant form'!A1:C1"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27form%20%2F%20Variant%20form%27%21A1%3AC1.json"
+    }
+  },
+  {
+    "request": {
       "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'form / Variant form'!A2:C"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27form%20%2F%20Variant%20form%27%21A2%3AC.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Variant form'!A2:C"
     },
     "response": {
       "status": 200,
@@ -474,6 +546,42 @@
     "response": {
       "status": 200,
       "file": "/var/moco/values_%27Games%20Availability%27%21A203%3AAL212.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Game'!A1:D1"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27Game%27%21A1%3AD1.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Game'!A2:D"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27Game%27%21A2%3AD.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Game Bundle'!A1:D1"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27Game%20Bundle%27%21A1%3AD1.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Game Bundle'!A2:D"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27Game%20Bundle%27%21A2%3AD.json"
     }
   }
 ]

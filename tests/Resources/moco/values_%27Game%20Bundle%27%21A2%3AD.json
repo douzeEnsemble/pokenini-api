@@ -1,0 +1,108 @@
+{
+  "range": "'Game Bundle'!A2:D18",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "1",
+      "Red, Green, Blue, Yellow",
+      "redgreenblueyellow",
+      "1"
+    ],
+    [
+      "2",
+      "Gold, Silver, Crystal",
+      "goldsilvercrystal",
+      "2"
+    ],
+    [
+      "3",
+      "Ruby, Sapphire, Emerald",
+      "rubysapphireemerald",
+      "3"
+    ],
+    [
+      "3",
+      "Red Fire, Leaf Green",
+      "redfireleafgreen",
+      "4"
+    ],
+    [
+      "4",
+      "Diamond, Pearl, Platinium",
+      "diamondpearlplatinium",
+      "5"
+    ],
+    [
+      "4",
+      "Heart Gold, Soul Silver",
+      "heartgoldsoulsilver",
+      "6"
+    ],
+    [
+      "5",
+      "Black, White",
+      "blackwhite",
+      "7"
+    ],
+    [
+      "5",
+      "Black 2, White 2",
+      "black2white2",
+      "8"
+    ],
+    [
+      "6",
+      "X, Y",
+      "xy",
+      "9"
+    ],
+    [
+      "6",
+      "Omega Ruby, Alpha Sapphire",
+      "omegarubyalphasapphire",
+      "10"
+    ],
+    [
+      "7",
+      "Sun, Moon",
+      "sunmoon",
+      "11"
+    ],
+    [
+      "7",
+      "Ultra Sun, Ultra Moon",
+      "ultrasunultramoon",
+      "12"
+    ],
+    [
+      "7",
+      "Let's Go Pikachu, Let's Go Eevee",
+      "letsgopikachuletsgoeevee",
+      "13"
+    ],
+    [
+      "7",
+      "Pokemon Go",
+      "pokemongo",
+      "14"
+    ],
+    [
+      "8",
+      "Sword, Shield",
+      "swordshield",
+      "15"
+    ],
+    [
+      "8",
+      "Brilland Diamond, Shining Pearl",
+      "brillanddiamondshiningpearl",
+      "16"
+    ],
+    [
+      "8",
+      "Pokémon Legends Arceus",
+      "pokemonlegendsarceus",
+      "17"
+    ]
+  ]
+}
