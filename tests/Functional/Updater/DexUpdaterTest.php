@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\Service\Updater;
+namespace App\Tests\Functional\Updater;
 
 use App\Updater\AbstractUpdater;
 use App\Updater\DexUpdater;

@@ -93,7 +93,7 @@ volumes:
 ###< doctrine/doctrine-bundle ###
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
+
 networks:
   default:
-    driver: overlay
     attachable: true

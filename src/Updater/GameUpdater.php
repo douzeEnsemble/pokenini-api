@@ -6,19 +6,19 @@ namespace App\Updater;
 
 use Symfony\Component\Uid\Uuid;
 
-class GameBundleUpdater extends AbstractUpdater
+class GameUpdater extends AbstractUpdater
 {
-    protected string $sheetName = 'Game Bundle';
-    protected string $tableName = 'game_bundle';
+    protected string $sheetName = 'Game';
+    protected string $tableName = 'game';
     protected string $headerCellsRange = 'A1:D1';
     protected array $recordsCellsRanges = ['A2:D'];
 
     protected function getExpectedHeader(): array
     {
         return [
-            '#Generation',
-            'Slug',
+            '#Game Bundle',
             'Name',
+            'Slug',
             'Order',
         ];
     }
@@ -33,8 +33,8 @@ class GameBundleUpdater extends AbstractUpdater
             'id' => (string) Uuid::v4(),
             'slug' => $record['Slug'],
             'name' => $record['Name'],
-            'generation' => $record['#Generation'],
-            'order' => $record['Order'],
+            'order_number' => $record['Order'],
+            'game_bundle_slug' => $record['#Game Bundle'],
         ];
 
         $tableName = $this->tableName;
@@ -44,15 +44,15 @@ class GameBundleUpdater extends AbstractUpdater
           id,
           slug,
           name,
-          generation_id,
-          order_number
+          order_number,
+          bundle_id
         )
         VALUES (
             :id,
             :slug,
             :name,
-            (SELECT id FROM game_generation WHERE slug = :generation),
-            :order
+            :order_number,
+            (SELECT id FROM game_bundle WHERE slug = :game_bundle_slug)
         )
         ON CONFLICT (slug)
         DO
@@ -60,7 +60,7 @@ class GameBundleUpdater extends AbstractUpdater
         SET
             name = excluded.name,
             order_number = excluded.order_number,
-            generation_id = excluded.generation_id,
+            bundle_id = excluded.bundle_id,
             deleted_at = NULL
         SQL;
 
