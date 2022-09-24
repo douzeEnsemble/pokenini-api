@@ -60,12 +60,11 @@ tests: ## Execute all tests
 tests: phpstan phpunit
 
 phpstan: ## Execute phpstan analyse
-	@$(PHP) vendor/bin/phpstan analyse
+	@$(PHP) vendor/bin/phpstan analyse --memory-limit=-1
 
 phpunit: ## Execute unit test
 	@$(PHP) bin/console doctrine:schema:update --force --env=test
 	$(PHP) bin/phpunit
-
 
 ## —— Quality 👌 ———————————————————————————————————————————————————————————————
 quality: ## Execute all quality analyses
