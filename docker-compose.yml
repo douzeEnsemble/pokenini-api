@@ -76,10 +76,6 @@ services:
       context: docker/moco
     volumes:
       - ./tests/resources/moco/:/var/moco:ro
-    networks:
-      default:
-        aliases:
-          - sheets.googleapis.mock
 
 volumes:
   php_socket:
@@ -93,7 +89,3 @@ volumes:
 ###< doctrine/doctrine-bundle ###
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
-
-networks:
-  default:
-    attachable: true
