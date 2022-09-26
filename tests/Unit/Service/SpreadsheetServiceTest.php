@@ -37,7 +37,7 @@ class SpreadsheetServiceTest extends TestCase
             ->willReturn($valueRange)
         ;
 
-        $service = new SpreadsheetService($client, 'http://sheets.googleapis.mock/');
+        $service = new SpreadsheetService($client, 'http://moco/');
 
         $service->get('azertyuiop', 'A1:R12');
     }
@@ -106,6 +106,6 @@ class SpreadsheetServiceTest extends TestCase
             ->willReturn($spreadsheet)
         ;
 
-        return new SpreadsheetService($client, 'http://sheets.googleapis.mock/');
+        return new SpreadsheetService($client, 'http://moco/');
     }
 }
