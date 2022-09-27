@@ -6,9 +6,10 @@
 
 ```
 make stop build start && \
+sleep 10 && \
 docker-compose exec php sh -c '
-    php bin/console doct:data:drop --force && php bin/console doct:data:c && php bin/console doct:migr:mig --no-interaction
-    php bin/console doct:data:drop --force --env=test && php bin/console doct:data:c --env=test && php bin/console doct:migr:mig --no-interaction --env=test
+    php bin/console doct:data:drop --force --if-exists && php bin/console doct:data:c && php bin/console doct:migr:mig --no-interaction
+    php bin/console doct:data:drop --force --if-exists --env=test && php bin/console doct:data:c --env=test && php bin/console doct:migr:mig --no-interaction --env=test
     php bin/console app:import:pokemon resources/data/pokemon_list.csv
     php bin/console app:import:game_availability resources/data/bulbapedia_availability.csv
     php bin/console app:calculate:game_bundle_availability
@@ -22,8 +23,8 @@ or
 
 ```
 docker-compose exec php sh -c '
-    php bin/console doct:data:drop --force && php bin/console doct:data:c && php bin/console doct:migr:mig --no-interaction
-    php bin/console doct:data:drop --force --env=test && php bin/console doct:data:c --env=test && php bin/console doct:migr:mig --no-interaction --env=test
+    php bin/console doct:data:drop --force --if-exists && php bin/console doct:data:c && php bin/console doct:migr:mig --no-interaction
+    php bin/console doct:data:drop --force --if-exists --env=test && php bin/console doct:data:c --env=test && php bin/console doct:migr:mig --no-interaction --env=test
     php bin/console app:import:pokemon resources/data/pokemon_list.csv
     php bin/console app:import:game_availability resources/data/bulbapedia_availability.csv
     php bin/console app:calculate:game_bundle_availability
@@ -116,8 +117,8 @@ make composer c="require gedmo/doctrine-extensions"
 Reset database and redo all migrations
 ```
 docker-compose exec php sh -c '
-    php bin/console doct:data:drop --force && php bin/console doct:data:c && php bin/console doct:migr:mig --no-interaction & \
-    php bin/console doct:data:drop --force --env=test && php bin/console doct:data:c --env=test && php bin/console doct:migr:mig --no-interaction --env=test
+    php bin/console doct:data:drop --force --if-exists && php bin/console doct:data:c && php bin/console doct:migr:mig --no-interaction
+    php bin/console doct:data:drop --force --if-exists --env=test && php bin/console doct:data:c --env=test && php bin/console doct:migr:mig --no-interaction --env=test
 '
 ```
 

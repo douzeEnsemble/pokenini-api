@@ -20,7 +20,7 @@
 
         <env
             name="DATABASE_URL"
-            value="postgresql://api-platform:!ChangeMe!@database_test:5432/api?serverVersion=13%26charset=utf8"
+            value="postgresql://app:!ChangeMe!@database:5432/app?serverVersion=13%26charset=utf8"
             force="true"
         />
     </php>

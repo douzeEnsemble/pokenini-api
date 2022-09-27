@@ -2,8 +2,8 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiProperty;
-use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Metadata\ApiProperty;
+use ApiPlatform\Metadata\ApiResource;
 use App\Entity\Traits\BaseEntityTrait;
 use App\Entity\Traits\FrenchNamedTrait;
 use App\Entity\Traits\NamedTrait;

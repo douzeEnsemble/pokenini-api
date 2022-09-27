@@ -2,7 +2,7 @@
 
 namespace App\Entity;
 
-use ApiPlatform\Core\Annotation\ApiResource;
+use ApiPlatform\Metadata\ApiResource;
 use App\Entity\Traits\BaseEntityTrait;
 use App\Entity\Traits\NamedTrait;
 use App\Entity\Traits\OrderedTrait;
