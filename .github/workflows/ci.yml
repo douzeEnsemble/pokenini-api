@@ -31,6 +31,10 @@ jobs:
             esac
           done
           exit 1
+      - name: Check Docker services
+        run: docker compose ps
+      - name: Check Moco logs
+        run: docker compose logs moco
       - name: Check HTTP reachability
         run: curl -v -o /dev/null http://localhost:8080
       - name: Check HTTPS reachability

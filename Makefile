@@ -88,8 +88,8 @@ integration: newman
 newman: ## Execute newman
 ifeq (${CI}, true)
 	$(DOCKER_COMP) up -d
-	@$(SYMFONY) app:import:pokemon resources/data/pokemon_list.csv
-	@$(SYMFONY) app:import:game_availability resources/data/bulbapedia_availability.csv
+	@$(SYMFONY) app:update:pokemon
+	@$(SYMFONY) app:update:game_availability
 	@$(SYMFONY) app:calculate:game_bundle_availability
 	@$(SYMFONY) app:calculate:dex_availability
 	$(DOCKER_COMP) run -T newman run collection.json
