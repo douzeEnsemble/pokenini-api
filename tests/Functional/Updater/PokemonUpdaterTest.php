@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Updater;
 
-use App\Tests\Resources\Traits\CounterTrait\CountPokemonTrait;
-use App\Tests\Resources\Traits\GetterTrait\GetPokemonTrait;
+use App\Tests\Common\Traits\CounterTrait\CountPokemonTrait;
+use App\Tests\Common\Traits\GetterTrait\GetPokemonTrait;
 use App\Updater\AbstractUpdater;
 use App\Updater\PokemonUpdater;
 

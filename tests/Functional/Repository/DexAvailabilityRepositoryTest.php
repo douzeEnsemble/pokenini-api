@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Repository;
 
 use App\Repository\DexAvailabilityRepository;
-use App\Tests\Resources\Traits\CounterTrait\CountDexAvailabilityTrait;
+use App\Tests\Common\Traits\CounterTrait\CountDexAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 

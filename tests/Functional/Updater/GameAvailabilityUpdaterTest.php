@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Updater;
 
-use App\Tests\Resources\Traits\CounterTrait\CountGameAvailabilityTrait;
+use App\Tests\Common\Traits\CounterTrait\CountGameAvailabilityTrait;
 use App\Updater\AbstractUpdater;
 use App\Updater\GameAvailabilityUpdater;
 

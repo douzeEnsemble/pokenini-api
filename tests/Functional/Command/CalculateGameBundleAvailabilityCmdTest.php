@@ -5,14 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Command;
 
 use App\Repository\GameAvailabilityRepository;
-use App\Tests\Resources\Traits\CounterTrait\CountGameAvailabilityTrait;
-use App\Tests\Resources\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
+use App\Tests\Common\Traits\CounterTrait\CountGameAvailabilityTrait;
+use App\Tests\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Tester\CommandTester;
-use Symfony\Contracts\Cache\CacheInterface;
 
 class CalculateGameBundleAvailabilityCmdTest extends KernelTestCase
 {
