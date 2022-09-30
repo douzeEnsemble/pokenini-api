@@ -45,6 +45,12 @@ services:
 #        published: 5433
 #        protocol: tcp
 ###< doctrine/doctrine-bundle ###
+  
+  moco:
+    build:
+      context: docker/moco
+    volumes:
+      - ./tests/Resources/moco/:/var/moco:ro
 
   newman:
     build:

@@ -70,12 +70,6 @@ services:
 # Mercure is installed as a Caddy module, prevent the Flex recipe from installing another service
 ###> symfony/mercure-bundle ###
 ###< symfony/mercure-bundle ###
-  
-  moco:
-    build:
-      context: docker/moco
-    volumes:
-      - ./tests/resources/moco/:/var/moco:ro
 
 volumes:
   php_socket:
