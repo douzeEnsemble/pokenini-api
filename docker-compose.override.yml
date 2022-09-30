@@ -50,7 +50,7 @@ services:
     build:
       context: docker/moco
     volumes:
-      - ./tests/Resources/moco/:/var/moco:ro
+      - ./tests/resources/moco/:/var/moco:ro
 
   newman:
     build:

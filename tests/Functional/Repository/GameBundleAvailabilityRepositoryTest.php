@@ -10,7 +10,7 @@ use App\Entity\Pokemon;
 use App\Repository\GameBundleAvailabilityRepository;
 use App\Repository\GameBundleRepository;
 use App\Repository\PokemonRepository;
-use App\Tests\Resources\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
+use App\Tests\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Resources\Traits\CounterTrait;
+namespace App\Tests\Common\Traits\CounterTrait;
 
 use Doctrine\DBAL\Connection;
 

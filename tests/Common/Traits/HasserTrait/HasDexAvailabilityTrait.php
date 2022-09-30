@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Resources\Traits\HasserTrait;
+namespace App\Tests\Common\Traits\HasserTrait;
 
 use Doctrine\DBAL\Connection;
 

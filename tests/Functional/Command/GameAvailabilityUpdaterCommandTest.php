@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Command;
 
-use App\Tests\Resources\Traits\CounterTrait\CountGameAvailabilityTrait;
+use App\Tests\Common\Traits\CounterTrait\CountGameAvailabilityTrait;
 
 class GameAvailabilityUpdaterCommandTest extends AbstractUpdaterCommandTest
 {

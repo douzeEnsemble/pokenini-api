@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Repository;
 
 use App\Repository\GameAvailabilityRepository;
-use App\Tests\Resources\Traits\CounterTrait\CountGameAvailabilityTrait;
+use App\Tests\Common\Traits\CounterTrait\CountGameAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 

@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Controller;
 
+use App\Tests\Common\Traits\GetterTrait\GetPokedexTrait;
 use App\Tests\Functional\Api\AbstractApiTest;
 use App\Tests\Functional\Api\AlbumApiTestData;
 use App\Tests\Resources\Traits\AssertReportTrait;
-use App\Tests\Resources\Traits\GetterTrait\GetPokedexTrait;
 
 class AlbumControllerTest extends AbstractApiTest
 {

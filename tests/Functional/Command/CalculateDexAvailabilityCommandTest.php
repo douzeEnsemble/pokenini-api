@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Command;
 
 use App\Repository\PokemonRepository;
-use App\Tests\Resources\Traits\CounterTrait\CountDexAvailabilityTrait;
-use App\Tests\Resources\Traits\CounterTrait\CountPokemonTrait;
-use App\Tests\Resources\Traits\HasserTrait\HasDexAvailabilityTrait;
+use App\Tests\Common\Traits\CounterTrait\CountDexAvailabilityTrait;
+use App\Tests\Common\Traits\CounterTrait\CountPokemonTrait;
+use App\Tests\Common\Traits\HasserTrait\HasDexAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
