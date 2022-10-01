@@ -26,7 +26,6 @@ class PokemonUpdater extends AbstractUpdater
         ParameterType::STRING,
         ParameterType::STRING,
         ParameterType::STRING,
-        ParameterType::STRING,
         ParameterType::INTEGER,
         ParameterType::INTEGER,
         ParameterType::STRING,
