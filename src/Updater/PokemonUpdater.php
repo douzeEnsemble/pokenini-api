@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Updater;
 
-use Doctrine\DBAL\ParameterType;
 use Symfony\Component\Uid\Uuid;
 
 class PokemonUpdater extends AbstractUpdater
@@ -13,6 +12,13 @@ class PokemonUpdater extends AbstractUpdater
     protected string $tableName = 'pokemon';
     protected string $headerCellsRange = 'A1:AP1';
     protected array $recordsCellsRanges = ['A2:AP'];
+
+    private int $count = 0;
+
+    public function getCount(): int
+    {
+        return $this->count;
+    }
 
     protected function getExpectedHeader(): array
     {
@@ -142,6 +148,8 @@ class PokemonUpdater extends AbstractUpdater
 SQL;
 
         $this->executeQuery($sql, $sqlParameters);
+
+        ++$this->count;
     }
 
     /**

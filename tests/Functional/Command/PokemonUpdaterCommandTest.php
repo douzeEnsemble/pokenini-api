@@ -23,6 +23,8 @@ class PokemonUpdaterCommandTest extends AbstractUpdaterCommandTest
         $this->assertEquals(1816, $this->getPokemonCount());
         $this->assertEquals(1815, $this->getPokemonNotDeletedCount());
         $this->assertEquals(1, $this->getPokemonDeletedCount());
+
+        $this->assertStringContainsString("1815 pokémons updated", $commandTester->getDisplay());
     }
 
     protected function getCommandName(): string
