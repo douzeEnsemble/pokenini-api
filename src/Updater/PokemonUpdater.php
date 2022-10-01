@@ -165,8 +165,6 @@ class PokemonUpdater extends AbstractUpdater
             deleted_at = NULL
 SQL;
 
-        var_dump($sqlParameters);
-
         $this->executeQuery($sql, $sqlParameters, self::PARAMETERS_TYPES);
     }
 
