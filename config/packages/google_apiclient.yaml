@@ -7,4 +7,4 @@ services:
             - [setAccessType, ['offline']]
             - [setApplicationName, ['Pokénini']]
             - [setScopes, [['%google.spreadsheets_readonly%']]]
-            - [setAuthConfig, ['resources/auth/credentials.json']]
+            - [setAuthConfig, ['%env(GOOGLE_CREDENTIALS_PATH)%']]
