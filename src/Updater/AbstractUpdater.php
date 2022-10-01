@@ -180,9 +180,10 @@ abstract class AbstractUpdater implements UpdaterInterface
 
     /**
      * @param mixed[] $sqlParameters
+     * @param int[] $parametersTypes
      */
-    protected function executeQuery(string $sql, array $sqlParameters = []): void
+    protected function executeQuery(string $sql, array $sqlParameters = [], array $parametersTypes = []): void
     {
-        $this->entityManager->getConnection()->executeStatement($sql, $sqlParameters);
+        $this->entityManager->getConnection()->executeStatement($sql, $sqlParameters, $parametersTypes);
     }
 }

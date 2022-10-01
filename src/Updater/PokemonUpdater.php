@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Updater;
 
+use Doctrine\DBAL\ParameterType;
 use Symfony\Component\Uid\Uuid;
 
 class PokemonUpdater extends AbstractUpdater
@@ -12,6 +13,30 @@ class PokemonUpdater extends AbstractUpdater
     protected string $tableName = 'pokemon';
     protected string $headerCellsRange = 'A1:AP1';
     protected array $recordsCellsRanges = ['A2:AP'];
+
+    private const PARAMETERS_TYPES = [
+        ParameterType::STRING,
+        ParameterType::STRING,
+        ParameterType::STRING,
+        ParameterType::STRING,
+        ParameterType::STRING,
+        ParameterType::STRING,
+        ParameterType::STRING,
+        ParameterType::INTEGER,
+        ParameterType::STRING,
+        ParameterType::STRING,
+        ParameterType::STRING,
+        ParameterType::STRING,
+        ParameterType::INTEGER,
+        ParameterType::INTEGER,
+        ParameterType::STRING,
+        ParameterType::STRING,
+        ParameterType::STRING,
+        ParameterType::STRING,
+        ParameterType::STRING,
+        ParameterType::STRING,
+        ParameterType::STRING,
+    ];
 
     protected function getExpectedHeader(): array
     {
@@ -140,13 +165,15 @@ class PokemonUpdater extends AbstractUpdater
             deleted_at = NULL
 SQL;
 
-        $this->executeQuery($sql, $sqlParameters);
+        var_dump($sqlParameters);
+
+        $this->executeQuery($sql, $sqlParameters, self::PARAMETERS_TYPES);
     }
 
     /**
-     * @param string[]|bool[] $pokemon
+     * @param string[]|int[]|bool[] $pokemon
      *
-     * @return string[]
+     * @return string[]|int[]
      */
     private function getSqlParametersFromPokemon(array $pokemon): array
     {
@@ -158,12 +185,12 @@ SQL;
             'frenchName' => (string) $pokemon['frenchName'],
             'simplifiedFrenchName' => (string) $pokemon['simplifiedFrenchName'],
             'formsFrenchLabel' => (string) $pokemon['formsFrenchLabel'],
-            'nationalDexNumber' => (string) $pokemon['nationalDexNumber'],
+            'nationalDexNumber' => (int) $pokemon['nationalDexNumber'],
             'family' => (string) $pokemon['family'],
             'familyOrder' => (string) $pokemon['familyOrder'],
             'primeName' => (string) $pokemon['primeName'],
-            'bankable' => (string) $pokemon['bankable'] ? 'TRUE' : 'FALSE',
-            'bankableish' => (string) $pokemon['bankableish'] ? 'TRUE' : 'FALSE',
+            'bankable' => $pokemon['bankable'] ? 1 : 0,
+            'bankableish' => $pokemon['bankableish'] ? 1 : 0,
             'originalGameBundle' => (string) $pokemon['originalGameBundle'],
             'variantForm' => (string) $pokemon['variantForm'],
             'regionalForm' => (string) $pokemon['regionalForm'],
@@ -177,7 +204,7 @@ SQL;
     /**
      * @param string[] $record
      *
-     * @return string[]|bool[]
+     * @return string[]|int[]|bool[]
      */
     private function transformRecord(array $record): array
     {
@@ -193,7 +220,7 @@ SQL;
             'frenchName' => $record['Pokémon Nom Complet Fr'],
             'simplifiedFrenchName' => $record['Pokémon Nom simplifié Fr'],
             'formsFrenchLabel' => $record['Forme Fr'],
-            'nationalDexNumber' => $record['Dex'],
+            'nationalDexNumber' => (int) $record['Dex'],
             'family' => $record['Family'],
             'familyOrder' => $record['Family order'],
             'primeName' => $record['Bulbapedia Name'],
