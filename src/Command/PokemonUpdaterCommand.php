@@ -27,6 +27,9 @@ class PokemonUpdaterCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->updater->execute();
+        $count = $this->updater->getCount();
+
+        $output->writeln("<info>$count pokémons updated</info>");
 
         return Command::SUCCESS;
     }

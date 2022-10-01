@@ -18,6 +18,13 @@ class GameAvailabilityUpdater extends AbstractUpdater
     protected const RANGE_SIZE = 100;
     protected const BATCH_SIZE = 20;
 
+    private int $count = 0;
+
+    public function getCount(): int
+    {
+        return $this->count;
+    }
+
     /**
      * @return string[]
      */
@@ -150,6 +157,8 @@ class GameAvailabilityUpdater extends AbstractUpdater
 SQL;
 
         $this->executeQuery($sql, $sqlParameters);
+
+        $this->count += $index;
     }
 
     protected function upsertRecord(array $record): void

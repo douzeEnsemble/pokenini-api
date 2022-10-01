@@ -27,6 +27,9 @@ class GameAvailabilityUpdaterCommand extends Command
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $this->updater->execute();
+        $count = $this->updater->getCount();
+
+        $output->writeln("<info>$count games' availabilities updated</info>");
 
         return Command::SUCCESS;
     }
