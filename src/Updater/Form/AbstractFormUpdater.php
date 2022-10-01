@@ -28,7 +28,7 @@ abstract class AbstractFormUpdater extends AbstractUpdater
 
     protected function upsertRecord(array $record): void
     {
-        if (empty($record)) {
+        if (empty($record) || empty($record['Slug'])) {
             return;
         }
 
