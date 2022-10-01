@@ -14,29 +14,6 @@ class PokemonUpdater extends AbstractUpdater
     protected string $headerCellsRange = 'A1:AP1';
     protected array $recordsCellsRanges = ['A2:AP'];
 
-    private const PARAMETERS_TYPES = [
-        ParameterType::STRING,
-        ParameterType::STRING,
-        ParameterType::STRING,
-        ParameterType::STRING,
-        ParameterType::STRING,
-        ParameterType::STRING,
-        ParameterType::STRING,
-        ParameterType::INTEGER,
-        ParameterType::STRING,
-        ParameterType::STRING,
-        ParameterType::STRING,
-        ParameterType::INTEGER,
-        ParameterType::INTEGER,
-        ParameterType::STRING,
-        ParameterType::STRING,
-        ParameterType::STRING,
-        ParameterType::STRING,
-        ParameterType::STRING,
-        ParameterType::STRING,
-        ParameterType::STRING,
-    ];
-
     protected function getExpectedHeader(): array
     {
         return [
@@ -87,7 +64,7 @@ class PokemonUpdater extends AbstractUpdater
 
     protected function upsertRecord(array $record): void
     {
-        if (empty($record)) {
+        if (empty($record) || empty($record['Slug'])) {
             return;
         }
 
@@ -164,9 +141,7 @@ class PokemonUpdater extends AbstractUpdater
             deleted_at = NULL
 SQL;
 
-        var_dump($sqlParameters);
-
-        $this->executeQuery($sql, $sqlParameters, self::PARAMETERS_TYPES);
+        $this->executeQuery($sql, $sqlParameters);
     }
 
     /**
@@ -188,8 +163,8 @@ SQL;
             'family' => (string) $pokemon['family'],
             'familyOrder' => (string) $pokemon['familyOrder'],
             'primeName' => (string) $pokemon['primeName'],
-            'bankable' => $pokemon['bankable'] ? 1 : 0,
-            'bankableish' => $pokemon['bankableish'] ? 1 : 0,
+            'bankable' => (int) $pokemon['bankable'],
+            'bankableish' => (int) $pokemon['bankableish'],
             'originalGameBundle' => (string) $pokemon['originalGameBundle'],
             'variantForm' => (string) $pokemon['variantForm'],
             'regionalForm' => (string) $pokemon['regionalForm'],
