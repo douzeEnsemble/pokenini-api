@@ -13,6 +13,7 @@ use App\Entity\Traits\SlugifiedTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ApiResource(normalizationContext: ['groups' => ['catch_state_list']], order: ["orderNumber"])]
 #[ORM\Entity]
@@ -25,4 +26,10 @@ class CatchState
     use SlugifiedTrait;
     use OrderedTrait;
     use SoftDeleteableEntity;
+
+    #[ORM\Column]
+    #[Groups([
+        "catch_state_list",
+    ])]
+    public string $color = '';
 }

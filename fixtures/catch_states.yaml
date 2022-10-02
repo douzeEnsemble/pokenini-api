@@ -3,16 +3,20 @@ App\Entity\CatchState:
         name: "No"
         frenchName: "Non"
         orderNumber: 1
+        color: "#e57373"
     catchstate_maybe:
         name: "Maybe"
         frenchName: "Peut être"
         orderNumber: 2
+        color: "blue"
     catchstate_maybenot:
         name: "Maybe not"
         frenchName: "Peut être pas"
         orderNumber: 3
+        color: "yellow"
     catchstate_yes:
         name: "Yes"
         frenchName: "Oui"
         orderNumber: 4
+        color: "#66bb6a"
     

@@ -10,20 +10,20 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Catch state'!A1:D1"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Catch state'!A1:E1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Catch%20state%27%21A1%3AD1.json"
+      "file": "/var/moco/values_%27Catch%20state%27%21A1%3AE1.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Catch state'!A2:D"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Catch state'!A2:E"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Catch%20state%27%21A2%3AD.json"
+      "file": "/var/moco/values_%27Catch%20state%27%21A2%3AE.json"
     }
   },
   {
@@ -114,6 +114,15 @@
     "response": {
       "status": 200,
       "file": "/var/moco/values_%27empty%27%21A1%3AD1.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'empty'!A1:E1"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27empty%27%21A1%3AE1.json"
     }
   },
   {
@@ -474,6 +483,15 @@
     "response": {
       "status": 200,
       "file": "/var/moco/values_%27wrong_sheet%27%21A1%3AD1.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'wrong_sheet'!A1:E1"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27wrong_sheet%27%21A1%3AE1.json"
     }
   },
   {

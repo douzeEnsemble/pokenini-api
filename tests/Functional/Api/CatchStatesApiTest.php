@@ -15,24 +15,28 @@ class CatchStatesApiTest extends AbstractApiTest
             'name' => 'No',
             'frenchName' => 'Non',
             'slug' => 'no',
+            'color' => '#e57373',
         ], $content[0]);
 
         $this->assertEquals([
             'name' => 'Maybe',
             'frenchName' => 'Peut être',
             'slug' => 'maybe',
+            'color' => 'blue',
         ], $content[1]);
 
         $this->assertEquals([
             'name' => 'Maybe not',
             'frenchName' => 'Peut être pas',
             'slug' => 'maybenot',
+            'color' => 'yellow',
         ], $content[2]);
 
         $this->assertEquals([
             'name' => 'Yes',
             'frenchName' => 'Oui',
             'slug' => 'yes',
+            'color' => '#66bb6a',
         ], $content[3]);
     }
 }
