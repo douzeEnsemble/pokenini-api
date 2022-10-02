@@ -10,8 +10,8 @@ class CatchStateUpdater extends AbstractUpdater
 {
     protected string $sheetName = 'Catch state';
     protected string $tableName = 'catch_state';
-    protected string $headerCellsRange = 'A1:D1';
-    protected array $recordsCellsRanges = ['A2:D'];
+    protected string $headerCellsRange = 'A1:E1';
+    protected array $recordsCellsRanges = ['A2:E'];
 
     protected function getExpectedHeader(): array
     {
@@ -20,6 +20,7 @@ class CatchStateUpdater extends AbstractUpdater
             'Name',
             'French Name',
             'Order',
+            'Color',
         ];
     }
 
@@ -35,6 +36,7 @@ class CatchStateUpdater extends AbstractUpdater
             'name' => $record['Name'],
             'french_name' => $record['French Name'],
             'order_number' => $record['Order'],
+            'color' => $record['Color'],
         ];
 
         $tableName = $this->tableName;
@@ -45,14 +47,16 @@ class CatchStateUpdater extends AbstractUpdater
           slug,
           name,
           french_name,
-          order_number
+          order_number,
+          color
         )
         VALUES (
             :id,
             :slug,
             :name,
             :french_name,
-            :order_number
+            :order_number,
+            :color
         )
         ON CONFLICT (slug)
         DO
@@ -61,6 +65,7 @@ class CatchStateUpdater extends AbstractUpdater
             name = excluded.name,
             french_name = excluded.french_name,
             order_number= excluded.order_number,
+            color= excluded.color,
             deleted_at = NULL
         SQL;
 

@@ -6,7 +6,8 @@
       "Name",
       "Slug",
       "Order",
-      "French Name"
+      "French Name",
+      "Color"
     ]
   ]
 }
