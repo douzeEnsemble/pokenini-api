@@ -10,6 +10,8 @@ sleep 10 && \
 docker-compose exec php sh -c '
     php bin/console doct:data:drop --force --if-exists && php bin/console doct:data:c && php bin/console doct:migr:mig --no-interaction
     php bin/console doct:data:drop --force --if-exists --env=test && php bin/console doct:data:c --env=test && php bin/console doct:migr:mig --no-interaction --env=test
+    php bin/console app:update:labels
+    php bin/console app:update:games_and_dexes
     php bin/console app:update:pokemon
     php bin/console app:update:game_availability
     php bin/console app:calculate:game_bundle_availability
@@ -25,6 +27,8 @@ or
 docker-compose exec php sh -c '
     php bin/console doct:data:drop --force --if-exists && php bin/console doct:data:c && php bin/console doct:migr:mig --no-interaction
     php bin/console doct:data:drop --force --if-exists --env=test && php bin/console doct:data:c --env=test && php bin/console doct:migr:mig --no-interaction --env=test
+    php bin/console app:update:labels
+    php bin/console app:update:games_and_dexes
     php bin/console app:update:pokemon
     php bin/console app:update:game_availability
     php bin/console app:calculate:game_bundle_availability
@@ -50,6 +54,13 @@ docker-compose up -d
 
 ```
 docker-compose down --remove-orphans && docker-compose up -d --force-recreate
+```
+
+## Labels, games and dexes
+
+```
+php bin/console app:update:labels
+php bin/console app:update:games_and_dexes
 ```
 
 ## Pokémons

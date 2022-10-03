@@ -88,6 +88,8 @@ integration: newman
 newman: ## Execute newman
 ifeq (${CI}, true)
 	$(DOCKER_COMP) up -d
+	@$(SYMFONY) app:update:labels
+	@$(SYMFONY) app:update:games_and_dexes
 	@$(SYMFONY) app:update:pokemon
 	@$(SYMFONY) app:update:game_availability
 	@$(SYMFONY) app:calculate:game_bundle_availability
