@@ -2,6 +2,7 @@
 
 namespace App\Tests\Functional\Controller;
 
+use App\Tests\Common\Traits\CounterTrait\CounterTableTrait;
 use Doctrine\DBAL\Connection;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -9,6 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 class AdminControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;
+    use CounterTableTrait;
 
     public function testUpdateLabels(): void
     {
@@ -86,16 +88,5 @@ class AdminControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
 
         $this->assertEquals(53, $this->getTableCount('dex_availability'));
-    }
-
-    protected function getTableCount(string $tableName): int
-    {
-        /** @var Connection $connection */
-        $connection = static::getContainer()->get(Connection::class);
-
-        /** @var int */
-        return $connection->executeQuery(
-            "SELECT COUNT(*) FROM {$tableName}"
-        )->fetchOne();
     }
 }
