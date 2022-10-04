@@ -1,0 +1,26 @@
+{
+  "range": "'Category form'!A2:C5",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Starter",
+      "starter",
+      "1"
+    ],
+    [
+      "Legendary",
+      "legendary",
+      "2"
+    ],
+    [
+      "Mythical",
+      "mythical",
+      "3"
+    ],
+    [
+      "Ultra Beast",
+      "ultrabeast",
+      "4"
+    ]
+  ]
+}

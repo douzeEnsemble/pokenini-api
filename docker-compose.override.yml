@@ -46,11 +46,17 @@ services:
 #        protocol: tcp
 ###< doctrine/doctrine-bundle ###
   
-  moco:
+  moco_test:
     build:
       context: docker/moco
     volumes:
-      - ./tests/resources/moco/:/var/moco:ro
+      - ./tests/resources/moco/test/:/var/moco:ro
+  
+  moco_int:
+    build:
+      context: docker/moco
+    volumes:
+      - ./tests/resources/moco/int/:/var/moco:ro
 
   newman:
     build:

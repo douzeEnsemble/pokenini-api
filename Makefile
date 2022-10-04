@@ -88,15 +88,15 @@ integration: newman
 newman: ## Execute newman
 ifeq (${CI}, true)
 	$(DOCKER_COMP) up -d
-	@$(SYMFONY) app:update:labels
-	@$(SYMFONY) app:update:games_and_dexes
-	@$(SYMFONY) app:update:pokemon
-	@$(SYMFONY) app:update:game_availability
-	@$(SYMFONY) app:calculate:game_bundle_availability
-	@$(SYMFONY) app:calculate:dex_availability
-	$(DOCKER_COMP) run -T newman run collection.json
+	@$(SYMFONY) --env=int app:update:labels
+	@$(SYMFONY) --env=int app:update:games_and_dexes
+	@$(SYMFONY) --env=int app:update:pokemon
+	@$(SYMFONY) --env=int app:update:game_availability
+	@$(SYMFONY) --env=int app:calculate:game_bundle_availability
+	@$(SYMFONY) --env=int app:calculate:dex_availability
+	$(DOCKER_COMP) --env-file .env.int run -T newman run collection.json
 else
-	$(DOCKER_COMP) run newman run collection.json
+	$(DOCKER_COMP) --env-file .env.int run newman run collection.json
 endif
 
 
