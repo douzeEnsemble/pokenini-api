@@ -1,5 +1,5 @@
 {
-  "range": "'form / Category form'!A1:C1",
+  "range": "'Category form'!A1:C1",
   "majorDimension": "ROWS",
   "values": [
     [
