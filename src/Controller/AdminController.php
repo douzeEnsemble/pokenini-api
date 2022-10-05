@@ -9,6 +9,7 @@ use App\Calculator\GameBundleAvailabilityCalculator;
 use App\Service\UpdaterService\DexesUpdaterService;
 use App\Service\UpdaterService\GamesUpdaterService;
 use App\Service\UpdaterService\LabelsUpdaterService;
+use App\Updater\PokemonUpdater;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -31,6 +32,15 @@ class AdminController extends AbstractController
     ): Response {
         $gamesUpdaterService->execute();
         $dexesUpdaterService->execute();
+
+        return new Response();
+    }
+
+    #[Route(path: '/update/pokemons', methods: ['POST'])]
+    public function updatePokemons(
+        PokemonUpdater $pokemonUpdater
+    ): Response {
+        $pokemonUpdater->execute();
 
         return new Response();
     }

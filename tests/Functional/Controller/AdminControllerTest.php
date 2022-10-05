@@ -58,6 +58,22 @@ class AdminControllerTest extends WebTestCase
         $this->assertEquals(22, $this->getTableCount('dex'));
     }
 
+    public function testUpdatePokemons(): void
+    {
+        $client = static::createClient();
+
+        $this->assertEquals(16, $this->getTableCount('pokemon'));
+
+        $client->request(
+            'POST',
+            "/istrateur/update/pokemons",
+        );
+
+        $this->assertResponseIsSuccessful();
+
+        $this->assertEquals(1816, $this->getTableCount('pokemon'));
+    }
+
     public function testUpdateGameBundleAvailability(): void
     {
         $client = static::createClient();
