@@ -16,7 +16,7 @@ class AdminControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $this->assertEquals(4, $this->getTableCount('catch_state'));
+        $this->assertEquals(5, $this->getTableCount('catch_state'));
         $this->assertEquals(3, $this->getTableCount('category_form'));
         $this->assertEquals(3, $this->getTableCount('regional_form'));
         $this->assertEquals(3, $this->getTableCount('special_form'));
@@ -29,7 +29,7 @@ class AdminControllerTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
-        $this->assertEquals(8, $this->getTableCount('catch_state'));
+        $this->assertEquals(9, $this->getTableCount('catch_state'));
         $this->assertEquals(4, $this->getTableCount('category_form'));
         $this->assertEquals(4, $this->getTableCount('regional_form'));
         $this->assertEquals(5, $this->getTableCount('special_form'));

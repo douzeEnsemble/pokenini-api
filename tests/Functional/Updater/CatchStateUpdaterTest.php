@@ -9,9 +9,10 @@ use App\Updater\CatchStateUpdater;
 
 class CatchStateUpdaterTest extends AbstractUpdaterTest
 {
-    protected int $initialTotalCount = 4;
-    protected int $finalTotalCount = 8;
-    protected int $mustBeDeletedTotalCount = 2;
+    protected int $initialTotalCount = 5;
+    protected int $finalTotalCount = 9;
+    protected int $initialDeletedTotalCount = 1;
+    protected int $mustBeDeletedTotalCount = 3;
     protected string $sheetName = 'Catch state';
     protected string $tableName = 'catch_state';
 

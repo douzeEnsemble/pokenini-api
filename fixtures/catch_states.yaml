@@ -19,4 +19,10 @@ App\Entity\CatchState:
         frenchName: "Oui"
         orderNumber: 4
         color: "#66bb6a"
+    catchstate_forbidden:
+        name: "Forbidden"
+        frenchName: "Interdit"
+        orderNumber: 2
+        color: "red"
+        deletedAt: "<dateTime('now')>"
     

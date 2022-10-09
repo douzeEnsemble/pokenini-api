@@ -92,7 +92,7 @@ class PokedexRepository extends ServiceEntityRepository
                     AND pd.pokemon_id = da.pokemon_id
         WHERE
             d.slug = :dex_slug
-
+            AND cs.deleted_at IS NULL
             AND (pd.catch_state_id IS NULL OR cs.id = pd.catch_state_id)
         GROUP BY cs.slug, cs.name, cs.french_name, cs.order_number
         ORDER BY cs.order_number
