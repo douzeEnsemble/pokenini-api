@@ -16,6 +16,7 @@ abstract class AbstractUpdaterTest extends KernelTestCase
 
     protected int $initialTotalCount;
     protected int $finalTotalCount;
+    protected int $initialDeletedTotalCount = 0;
     protected int $mustBeDeletedTotalCount;
     protected string $sheetName;
     protected string $tableName;
@@ -48,7 +49,7 @@ abstract class AbstractUpdaterTest extends KernelTestCase
     public function testDo(): void
     {
         $this->assertEquals($this->initialTotalCount, $this->getTableCount());
-        $this->assertEquals(0, $this->getTableDeletedAtCount());
+        $this->assertEquals($this->initialDeletedTotalCount, $this->getTableDeletedAtCount());
 
         $service = $this->getService();
 
