@@ -6,7 +6,6 @@
 
 ```
 make stop build start && \
-sleep 10 && \
 docker-compose exec php sh -c '
     php bin/console doct:data:drop --force --if-exists && php bin/console doct:data:c && php bin/console doct:migr:mig --no-interaction
     php bin/console doct:data:drop --force --if-exists --env=test && php bin/console doct:data:c --env=test && php bin/console doct:migr:mig --no-interaction --env=test
