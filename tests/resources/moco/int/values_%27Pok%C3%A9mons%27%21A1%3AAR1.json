@@ -1,5 +1,5 @@
 {
-  "range": "'pokemon_list / new_and_existing'!A1:AP1",
+  "range": "'Pokémons'!A1:AR1",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -22,7 +22,9 @@
       "Forme Fr",
       "Dex",
       "Sprites",
+      "Sprites url",
       "Shiny Sprites",
+      "Shiny Sprites url",
       "Icon",
       "Bulbapedia Name",
       "Bankable-ish",

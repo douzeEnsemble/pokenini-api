@@ -10,8 +10,8 @@ class PokemonUpdater extends AbstractUpdater
 {
     protected string $sheetName = 'Pokémons';
     protected string $tableName = 'pokemon';
-    protected string $headerCellsRange = 'A1:AP1';
-    protected array $recordsCellsRanges = ['A2:AP'];
+    protected string $headerCellsRange = 'A1:AR1';
+    protected array $recordsCellsRanges = ['A2:AR'];
 
     private int $count = 0;
 
@@ -42,7 +42,9 @@ class PokemonUpdater extends AbstractUpdater
             'Forme Fr',
             'Dex',
             'Sprites',
+            'Sprites url',
             'Shiny Sprites',
+            'Shiny Sprites url',
             'Type 1',
             'Type 1 ico',
             'Type 2',
