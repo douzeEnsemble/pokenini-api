@@ -1,5 +1,5 @@
 {
-  "range": "Dex!A1:H1",
+  "range": "Dex!A1:I1",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -10,7 +10,8 @@
       "French Name",
       "Is Shiny",
       "Is Private",
-      "Is Display Form"
+      "Is Display Form",
+      "Display template"
     ]
   ]
 }

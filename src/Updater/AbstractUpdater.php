@@ -118,7 +118,7 @@ abstract class AbstractUpdater implements UpdaterInterface
         $values = $this->getSheetValues("'{$this->sheetName}'!{$range}");
 
         if (empty($values)) {
-            throw new InvalidSheetDataException('There is not data in spreadsheet');
+            throw new InvalidSheetDataException("There is not data in spreadsheet ('{$this->sheetName}'!{$range})");
         }
 
         return $values;

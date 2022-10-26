@@ -3,27 +3,32 @@ App\Entity\Dex:
         name: 'Red / Green / Blue / Yellow'
         frenchName: 'Rouge / Vert / Bleu / Jaune'
         selectionRule: "(p.bankable or p.bankableish) and ba?.redgreenblueyellow"
+        displayTemplate: 'box'
         orderNumber: 1
     dex_goldsilvercrystal:
         name: 'Gold / Silver / Crystal'
         frenchName: 'Or / Argent / Cristal'
         selectionRule: "(p.bankable or p.bankableish) and ba?.goldsilvercrystal and p.specialForm === null and p.regionalForm === null"
+        displayTemplate: 'box'
         orderNumber: 2
     dex_rubysapphireemerald:
         name: 'Ruby / Sapphire / Emerald'
         frenchName: 'Rubis / Saphir / Émeraude'
         selectionRule: "(p.bankable or p.bankableish) and ba?.rubysapphireemerald"
+        displayTemplate: 'box'
         orderNumber: 3
     dex_home:
         name: 'Home'
         frenchName: 'Home'
         selectionRule: "(p.bankable or p.bankableish)"
+        displayTemplate: 'box'
         orderNumber: 3
         isPrivate: false
     dex_home_shiny:
         name: 'Home Shiny'
         frenchName: 'Home Chromatique'
         selectionRule: "(p.bankable or p.bankableish)"
+        displayTemplate: 'box'
         orderNumber: 4
         isShiny: true
         isPrivate: false
@@ -31,6 +36,7 @@ App\Entity\Dex:
         name: 'Home PoGo'
         frenchName: 'Home PoGo'
         selectionRule: "(p.bankable or p.bankableish) and p.categoryForm === null and p.regionalForm === null and p.specialForm === null and p.variantForm === null"
+        displayTemplate: 'list-7'
         orderNumber: 5
         isShiny: false
         isPrivate: false

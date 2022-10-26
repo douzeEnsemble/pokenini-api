@@ -48,4 +48,10 @@ class Dex
         "dex_list",
     ])]
     public bool $isDisplayForm = true;
+
+    #[ORM\Column]
+    #[Groups([
+        "dex_list",
+    ])]
+    public string $displayTemplate = 'box';
 }

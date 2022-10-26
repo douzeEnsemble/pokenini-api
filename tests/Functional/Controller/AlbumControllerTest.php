@@ -35,6 +35,8 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertTrue($data['dex']['is_private']);
         $this->assertArrayHasKey('is_display_form', $data['dex']);
         $this->assertTrue($data['dex']['is_display_form']);
+        $this->assertArrayHasKey('display_template', $data['dex']);
+        $this->assertEquals('box', $data['dex']['display_template']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -73,6 +75,8 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertFalse($data['dex']['is_private']);
         $this->assertArrayHasKey('is_display_form', $data['dex']);
         $this->assertTrue($data['dex']['is_display_form']);
+        $this->assertArrayHasKey('display_template', $data['dex']);
+        $this->assertEquals('box', $data['dex']['display_template']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -111,6 +115,8 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertFalse($data['dex']['is_private']);
         $this->assertArrayHasKey('is_display_form', $data['dex']);
         $this->assertTrue($data['dex']['is_display_form']);
+        $this->assertArrayHasKey('display_template', $data['dex']);
+        $this->assertEquals('box', $data['dex']['display_template']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -149,6 +155,8 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertFalse($data['dex']['is_private']);
         $this->assertArrayHasKey('is_display_form', $data['dex']);
         $this->assertFalse($data['dex']['is_display_form']);
+        $this->assertArrayHasKey('display_template', $data['dex']);
+        $this->assertEquals('list-7', $data['dex']['display_template']);
     }
 
     public function testListNoSlug(): void

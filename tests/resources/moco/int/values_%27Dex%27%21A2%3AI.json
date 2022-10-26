@@ -1,5 +1,5 @@
 {
-  "range": "Dex!A2:H22",
+  "range": "Dex!A2:I22",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -10,7 +10,8 @@
       "Rouge, Vert, Bleu, Jaune",
       "FALSE",
       "TRUE",
-      "TRUE"
+      "TRUE",
+      "box"
     ],
     [
       "Gold, Silver, Crystal",
@@ -20,7 +21,8 @@
       "Or, Argent, Cristal",
       "FALSE",
       "TRUE",
-      "TRUE"
+      "TRUE",
+      "box"
     ],
     [
       "Ruby, Sapphire, Emerald",
@@ -30,7 +32,8 @@
       "Rubis, Saphir, Émeraude",
       "FALSE",
       "TRUE",
-      "TRUE"
+      "TRUE",
+      "box"
     ],
     [
       "Red Fire, Leaf Green",
@@ -40,7 +43,8 @@
       "Rouge Feu, Vert Feuille",
       "FALSE",
       "TRUE",
-      "TRUE"
+      "TRUE",
+      "box"
     ],
     [
       "Diamond, Pearl, Platinium",
@@ -50,7 +54,8 @@
       "Diamant, Perle, Platine",
       "FALSE",
       "TRUE",
-      "TRUE"
+      "TRUE",
+      "box"
     ],
     [
       "Heart Gold, Soul Silver",
@@ -60,7 +65,8 @@
       "Or HeartGold, Argent SoulSilver",
       "FALSE",
       "TRUE",
-      "TRUE"
+      "TRUE",
+      "box"
     ],
     [
       "Black, White",
@@ -70,7 +76,8 @@
       "Noire, Blanche",
       "FALSE",
       "TRUE",
-      "TRUE"
+      "TRUE",
+      "box"
     ],
     [
       "Black 2, White 2",
@@ -80,7 +87,8 @@
       "Noire 2, Blanche 2",
       "FALSE",
       "TRUE",
-      "TRUE"
+      "TRUE",
+      "box"
     ],
     [
       "X, Y",
@@ -90,7 +98,8 @@
       "X, Y",
       "FALSE",
       "TRUE",
-      "TRUE"
+      "TRUE",
+      "box"
     ],
     [
       "Omega Ruby, Alpha Sapphire",
@@ -100,7 +109,8 @@
       "Rubis Oméga, Saphir Alpha",
       "FALSE",
       "TRUE",
-      "TRUE"
+      "TRUE",
+      "box"
     ],
     [
       "Sun, Moon",
@@ -110,7 +120,8 @@
       "Soleil, Lune",
       "FALSE",
       "TRUE",
-      "TRUE"
+      "TRUE",
+      "box"
     ],
     [
       "Ultra Sun, Ultra Moon",
@@ -120,7 +131,8 @@
       "Ultra Soleil, Ultra Lune",
       "FALSE",
       "TRUE",
-      "TRUE"
+      "TRUE",
+      "box"
     ],
     [
       "Let's Go Pikachu, Let's Go Eevee",
@@ -130,7 +142,8 @@
       "Let's Go Pikachu, Let's Go Évoli",
       "FALSE",
       "TRUE",
-      "TRUE"
+      "TRUE",
+      "box"
     ],
     [
       "Sword, Shield",
@@ -140,7 +153,8 @@
       "Épée, Bouclier",
       "FALSE",
       "FALSE",
-      "TRUE"
+      "TRUE",
+      "box"
     ],
     [
       "Brilland Diamond, Shining Pearl",
@@ -150,7 +164,8 @@
       "Diamant Étincelant, Perle Scintillante",
       "FALSE",
       "TRUE",
-      "TRUE"
+      "TRUE",
+      "box"
     ],
     [
       "Pokémon Legends Arceus",
@@ -160,7 +175,8 @@
       "Légendes Pokémon : Arceus",
       "FALSE",
       "TRUE",
-      "TRUE"
+      "TRUE",
+      "box"
     ],
     [
       "Home",
@@ -170,7 +186,8 @@
       "Home",
       "FALSE",
       "FALSE",
-      "TRUE"
+      "TRUE",
+      "box"
     ],
     [
       "Home Shiny",
@@ -180,7 +197,8 @@
       "Home Chromatique",
       "TRUE",
       "FALSE",
-      "TRUE"
+      "TRUE",
+      "box"
     ],
     [
       "Home Pokemon Go",
@@ -190,7 +208,8 @@
       "Home Pokemon Go",
       "FALSE",
       "FALSE",
-      "FALSE"
+      "FALSE",
+      "list-7"
     ],
     [
       "Alpha",
@@ -200,7 +219,8 @@
       "Baron",
       "FALSE",
       "FALSE",
-      "TRUE"
+      "TRUE",
+      "list-3"
     ],
     [
       "Mega",
@@ -210,7 +230,8 @@
       "Méga",
       "FALSE",
       "FALSE",
-      "TRUE"
+      "TRUE",
+      "list-3"
     ]
   ]
 }

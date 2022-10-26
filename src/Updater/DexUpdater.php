@@ -10,8 +10,8 @@ class DexUpdater extends AbstractUpdater
 {
     protected string $sheetName = 'Dex';
     protected string $tableName = 'dex';
-    protected string $headerCellsRange = 'A1:H1';
-    protected array $recordsCellsRanges = ['A2:H'];
+    protected string $headerCellsRange = 'A1:I1';
+    protected array $recordsCellsRanges = ['A2:I'];
 
     protected function getExpectedHeader(): array
     {
@@ -24,6 +24,7 @@ class DexUpdater extends AbstractUpdater
             'Is Shiny',
             'Is Private',
             'Is Display Form',
+            'Display template',
         ];
     }
 
@@ -43,6 +44,7 @@ class DexUpdater extends AbstractUpdater
             'is_shiny' => $record['Is Shiny'],
             'is_private' => $record['Is Private'],
             'is_display_form' => $record['Is Display Form'],
+            'display_template' => $record['Display template'],
         ];
 
         $tableName = $this->tableName;
@@ -57,7 +59,8 @@ class DexUpdater extends AbstractUpdater
           selection_rule,
           is_shiny,
           is_private,
-          is_display_form
+          is_display_form,
+          display_template
         )
         VALUES (
             :id,
@@ -68,7 +71,8 @@ class DexUpdater extends AbstractUpdater
             :selection_rule,
             :is_shiny,
             :is_private,
-            :is_display_form
+            :is_display_form,
+            :display_template
         )
         ON CONFLICT (slug)
         DO
@@ -81,6 +85,7 @@ class DexUpdater extends AbstractUpdater
             is_shiny= excluded.is_shiny,
             is_private= excluded.is_private,
             is_display_form= excluded.is_display_form,
+            display_template= excluded.display_template,
             deleted_at = NULL
         SQL;
 
