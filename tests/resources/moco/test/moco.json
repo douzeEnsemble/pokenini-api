@@ -64,11 +64,11 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Pok%C3%A9mons'!A1:AP1"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Pok%C3%A9mons'!A1:AR1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Pok%C3%A9mons%27%21A1%3AAP1.json"
+      "file": "/var/moco/values_%27Pok%C3%A9mons%27%21A1%3AAR1.json"
     }
   },
   {
@@ -82,11 +82,11 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'empty'!A1:AP1"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'empty'!A1:AR1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27empty%27%21A1%3AAP1.json"
+      "file": "/var/moco/values_%27empty%27%21A1%3AAR1.json"
     }
   },
   {
@@ -361,101 +361,101 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / different_columns_order'!A1:AP1"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / different_columns_order'!A1:AR1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27pokemon_list%20%2F%20different_columns_order%27%21A1%3AAP1.json"
+      "file": "/var/moco/values_%27pokemon_list%20%2F%20different_columns_order%27%21A1%3AAR1.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / different_columns_order'!A2:AP"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / different_columns_order'!A2:AR"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27pokemon_list%20%2F%20different_columns_order%27%21A2%3AAP.json"
+      "file": "/var/moco/values_%27pokemon_list%20%2F%20different_columns_order%27%21A2%3AAR.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / new_and_existing'!A1:AP1"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / new_and_existing'!A1:AR1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27pokemon_list%20%2F%20new_and_existing%27%21A1%3AAP1.json"
+      "file": "/var/moco/values_%27pokemon_list%20%2F%20new_and_existing%27%21A1%3AAR1.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / new_and_existing'!A2:AP"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / new_and_existing'!A2:AR"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27pokemon_list%20%2F%20new_and_existing%27%21A2%3AAP.json"
+      "file": "/var/moco/values_%27pokemon_list%20%2F%20new_and_existing%27%21A2%3AAR.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / only_existing'!A1:AP1"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / only_existing'!A1:AR1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27pokemon_list%20%2F%20only_existing%27%21A1%3AAP1.json"
+      "file": "/var/moco/values_%27pokemon_list%20%2F%20only_existing%27%21A1%3AAR1.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / only_existing'!A2:AP"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / only_existing'!A2:AR"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27pokemon_list%20%2F%20only_existing%27%21A2%3AAP.json"
+      "file": "/var/moco/values_%27pokemon_list%20%2F%20only_existing%27%21A2%3AAR.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / only_new'!A1:AP1"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / only_new'!A1:AR1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27pokemon_list%20%2F%20only_new%27%21A1%3AAP1.json"
+      "file": "/var/moco/values_%27pokemon_list%20%2F%20only_new%27%21A1%3AAR1.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / only_new'!A2:AP"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / only_new'!A2:AR"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27pokemon_list%20%2F%20only_new%27%21A2%3AAP.json"
+      "file": "/var/moco/values_%27pokemon_list%20%2F%20only_new%27%21A2%3AAR.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / update_regional_form'!A1:AP1"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / update_regional_form'!A1:AR1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27pokemon_list%20%2F%20update_regional_form%27%21A1%3AAP1.json"
+      "file": "/var/moco/values_%27pokemon_list%20%2F%20update_regional_form%27%21A1%3AAR1.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / update_regional_form'!A2:AP"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / update_regional_form'!A2:AR"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27pokemon_list%20%2F%20update_regional_form%27%21A2%3AAP.json"
+      "file": "/var/moco/values_%27pokemon_list%20%2F%20update_regional_form%27%21A2%3AAR.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'wrong_sheet'!A1:AP1"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'wrong_sheet'!A1:AR1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27wrong_sheet%27%21A1%3AAP1.json"
+      "file": "/var/moco/values_%27wrong_sheet%27%21A1%3AAR1.json"
     }
   },
   {
@@ -514,20 +514,20 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Pokémons'!A1:AP1"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Pokémons'!A1:AR1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Pok%C3%A9mons%27%21A1%3AAP1.json"
+      "file": "/var/moco/values_%27Pok%C3%A9mons%27%21A1%3AAR1.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Pokémons'!A2:AP"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Pokémons'!A2:AR"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Pok%C3%A9mons%27%21A2%3AAP.json"
+      "file": "/var/moco/values_%27Pok%C3%A9mons%27%21A2%3AAR.json"
     }
   },
   {

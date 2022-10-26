@@ -163,20 +163,20 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Pokémons'!A1:AP1"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Pokémons'!A1:AR1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Pok%C3%A9mons%27%21A1%3AAP1.json"
+      "file": "/var/moco/values_%27Pok%C3%A9mons%27%21A1%3AAR1.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Pokémons'!A2:AP"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Pokémons'!A2:AR"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Pok%C3%A9mons%27%21A2%3AAP.json"
+      "file": "/var/moco/values_%27Pok%C3%A9mons%27%21A2%3AAR.json"
     }
   },
   {

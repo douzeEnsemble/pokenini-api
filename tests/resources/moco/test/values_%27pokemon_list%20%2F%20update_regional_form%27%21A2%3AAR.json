@@ -1,5 +1,5 @@
 {
-  "range": "'pokemon_list / update_regional_form'!A2:AP2",
+  "range": "'pokemon_list / update_regional_form'!A2:AR2",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -22,7 +22,9 @@
       "",
       "1",
       "",
+      "https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/regular/douze.png",
       "",
+      "https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/shiny/douze.png",
       "douze",
       "Douze",
       "",

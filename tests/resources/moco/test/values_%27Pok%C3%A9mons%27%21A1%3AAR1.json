@@ -1,9 +1,8 @@
 {
-  "range": "'pokemon_list / different_columns_order'!A1:AP1",
+  "range": "'Pokémons'!A1:AR1",
   "majorDimension": "ROWS",
   "values": [
     [
-      "Evolution",
       "Bankable",
       "Breeedable Form",
       "Origin",
@@ -14,6 +13,7 @@
       "Category form",
       "Family",
       "Family order",
+      "Evolution",
       "Pokémon Nom Complet",
       "Pokémon Nom simplifié",
       "Forme",
@@ -22,7 +22,9 @@
       "Forme Fr",
       "Dex",
       "Sprites",
+      "Sprites url",
       "Shiny Sprites",
+      "Shiny Sprites url",
       "Icon",
       "Bulbapedia Name",
       "Bankable-ish",
