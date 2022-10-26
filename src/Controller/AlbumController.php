@@ -47,6 +47,7 @@ class AlbumController extends AbstractController
                 'is_shiny' => $dex?->isShiny,
                 'is_private' => $dex?->isPrivate,
                 'is_display_form' => $dex?->isDisplayForm,
+                'display_template' => $dex?->displayTemplate,
             ],
             'pokemons' => $pokemons,
             'report' => $report,

@@ -18,6 +18,7 @@ class DexesApiTest extends AbstractApiTest
             'isShiny' => false,
             'isPrivate' => true,
             'isDisplayForm' => true,
+            'displayTemplate' => 'box',
         ], $content[0]);
 
         $this->assertEquals([
@@ -27,6 +28,7 @@ class DexesApiTest extends AbstractApiTest
             'isShiny' => false,
             'isPrivate' => true,
             'isDisplayForm' => true,
+            'displayTemplate' => 'box',
         ], $content[1]);
 
         $this->assertEquals([
@@ -36,6 +38,7 @@ class DexesApiTest extends AbstractApiTest
             'isShiny' => false,
             'isPrivate' => false,
             'isDisplayForm' => true,
+            'displayTemplate' => 'box',
         ], $content[3]);
 
         $this->assertEquals([
@@ -45,6 +48,7 @@ class DexesApiTest extends AbstractApiTest
             'isShiny' => true,
             'isPrivate' => false,
             'isDisplayForm' => true,
+            'displayTemplate' => 'box',
         ], $content[4]);
 
         $this->assertEquals([
@@ -54,6 +58,7 @@ class DexesApiTest extends AbstractApiTest
             'isShiny' => false,
             'isPrivate' => false,
             'isDisplayForm' => false,
+            'displayTemplate' => 'list-7',
         ], $content[5]);
     }
 }
