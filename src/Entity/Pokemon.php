@@ -103,4 +103,12 @@ class Pokemon
     #[ORM\Column]
     #[Groups(["pokemon_list"])]
     public int $familyOrder;
+
+    #[ORM\Column]
+    #[Groups(["pokemon_list"])]
+    public string $regularSpriteUrl = '';
+
+    #[ORM\Column]
+    #[Groups(["pokemon_list"])]
+    public string $shinySpriteUrl = '';
 }
