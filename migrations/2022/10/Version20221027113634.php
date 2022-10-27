@@ -16,8 +16,8 @@ final class Version20221027113634 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-        $this->addSql('ALTER TABLE pokemon ADD regular_sprite_url VARCHAR(255) NOT NULL');
-        $this->addSql('ALTER TABLE pokemon ADD shiny_sprite_url VARCHAR(255) NOT NULL');
+        $this->addSql("ALTER TABLE pokemon ADD regular_sprite_url VARCHAR(255) NOT NULL DEFAULT ''");
+        $this->addSql("ALTER TABLE pokemon ADD shiny_sprite_url VARCHAR(255) NOT NULL DEFAULT ''");
     }
 
     public function down(Schema $schema): void
