@@ -142,6 +142,6 @@ docker-compose exec php sh -c '
 To execute a migration over and over
 ```
 docker-compose exec php sh -c '
-    php bin/console doct:migr:exec 'DoctrineMigrations\\Version20220812093938' --down --no-interaction && php bin/console doct:migr:exec 'DoctrineMigrations\\Version20220812093938' --up --no-interaction
+    php bin/console doct:migr:exec 'DoctrineMigrations\\Version20221113212114' --down --no-interaction && php bin/console doct:migr:exec 'DoctrineMigrations\\Version20221113212114' --up --no-interaction
 '
 ```

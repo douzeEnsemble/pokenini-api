@@ -7,15 +7,14 @@ namespace App\Tests\Functional\Controller;
 use App\Tests\Common\Traits\GetterTrait\GetPokedexTrait;
 use App\Tests\Functional\Api\AbstractApiTest;
 use App\Tests\Functional\Api\AlbumApiTestData;
-use App\Tests\Resources\Traits\AssertReportTrait;
 
 class AlbumControllerTest extends AbstractApiTest
 {
     use GetPokedexTrait;
 
-    public function testList(): void
+    public function testListUser12(): void
     {
-        $response = $this->apiRequest('album/redgreenblueyellow');
+        $response = $this->apiRequest('album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow');
 
         $this->assertEquals(200, $response->getStatusCode());
 
@@ -43,7 +42,15 @@ class AlbumControllerTest extends AbstractApiTest
         $pokemons = $data['pokemons'];
 
         $this->assertEquals(
-            AlbumApiTestData::getExpectedRegGreenBlueYellowContent(),
+            AlbumApiTestData::getExpectedRegGreenBlueYellowContent(
+                'no',
+                'maybe',
+                'maybenot',
+                'maybenot',
+                null,
+                null,
+                null
+            ),
             $pokemons
         );
 
@@ -54,9 +61,107 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertReport($report, 1, 1, 2, 0, 7);
     }
 
+    public function testListUser13(): void
+    {
+        $response = $this->apiRequest('album/bd307a3ec329e10a2cff8fb87480823da114f8f4/redgreenblueyellow');
+
+        $this->assertEquals(200, $response->getStatusCode());
+
+        $content = $response->getContent();
+        /** @var string[][]|string[][][]|int[][][] $data */
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertArrayHasKey('dex', $data);
+
+        $this->assertArrayHasKey('name', $data['dex']);
+        $this->assertEquals('Red / Green / Blue / Yellow', $data['dex']['name']);
+        $this->assertArrayHasKey('french_name', $data['dex']);
+        $this->assertEquals('Rouge / Vert / Bleu / Jaune', $data['dex']['french_name']);
+        $this->assertArrayHasKey('is_shiny', $data['dex']);
+        $this->assertFalse($data['dex']['is_shiny']);
+        $this->assertArrayHasKey('is_private', $data['dex']);
+        $this->assertTrue($data['dex']['is_private']);
+        $this->assertArrayHasKey('is_display_form', $data['dex']);
+        $this->assertTrue($data['dex']['is_display_form']);
+        $this->assertArrayHasKey('display_template', $data['dex']);
+        $this->assertEquals('box', $data['dex']['display_template']);
+
+        $this->assertArrayHasKey('pokemons', $data);
+        /** @var string[][] $pokemons */
+        $pokemons = $data['pokemons'];
+
+        $this->assertEquals(
+            AlbumApiTestData::getExpectedRegGreenBlueYellowContent(
+                'yes',
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ),
+            $pokemons
+        );
+
+        $this->assertArrayHasKey('report', $data);
+        /** @var int[]|int[][][]|string[][][] $report */
+        $report = $data['report'];
+
+        $this->assertReport($report, 0, 0, 0, 1, 7);
+    }
+
+    public function testListUserUnknown(): void
+    {
+        $response = $this->apiRequest('album/46546542313186/redgreenblueyellow');
+
+        $this->assertEquals(200, $response->getStatusCode());
+
+        $content = $response->getContent();
+        /** @var string[][]|string[][][]|int[][][] $data */
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertArrayHasKey('dex', $data);
+
+        $this->assertArrayHasKey('name', $data['dex']);
+        $this->assertEquals('Red / Green / Blue / Yellow', $data['dex']['name']);
+        $this->assertArrayHasKey('french_name', $data['dex']);
+        $this->assertEquals('Rouge / Vert / Bleu / Jaune', $data['dex']['french_name']);
+        $this->assertArrayHasKey('is_shiny', $data['dex']);
+        $this->assertFalse($data['dex']['is_shiny']);
+        $this->assertArrayHasKey('is_private', $data['dex']);
+        $this->assertTrue($data['dex']['is_private']);
+        $this->assertArrayHasKey('is_display_form', $data['dex']);
+        $this->assertTrue($data['dex']['is_display_form']);
+        $this->assertArrayHasKey('display_template', $data['dex']);
+        $this->assertEquals('box', $data['dex']['display_template']);
+
+        $this->assertArrayHasKey('pokemons', $data);
+        /** @var string[][] $pokemons */
+        $pokemons = $data['pokemons'];
+
+        $this->assertEquals(
+            AlbumApiTestData::getExpectedRegGreenBlueYellowContent(
+                null,
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ),
+            $pokemons
+        );
+
+        $this->assertArrayHasKey('report', $data);
+        /** @var int[]|int[][][]|string[][][] $report */
+        $report = $data['report'];
+
+        $this->assertReport($report, 0, 0, 0, 0, 7);
+    }
+
     public function testListHome(): void
     {
-        $response = $this->apiRequest('album/home');
+        $response = $this->apiRequest('album/7b52009b64fd0a2a49e6d8a939753077792b0554/home');
 
         $this->assertEquals(200, $response->getStatusCode());
 
@@ -96,7 +201,7 @@ class AlbumControllerTest extends AbstractApiTest
 
     public function testListHomeShiny(): void
     {
-        $response = $this->apiRequest('album/homeshiny');
+        $response = $this->apiRequest('album/7b52009b64fd0a2a49e6d8a939753077792b0554/homeshiny');
 
         $this->assertEquals(200, $response->getStatusCode());
 
@@ -136,7 +241,7 @@ class AlbumControllerTest extends AbstractApiTest
 
     public function testListHomePoGo(): void
     {
-        $response = $this->apiRequest('album/homepogo');
+        $response = $this->apiRequest('album/7b52009b64fd0a2a49e6d8a939753077792b0554/homepogo');
 
         $this->assertEquals(200, $response->getStatusCode());
 
@@ -174,6 +279,17 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertEquals(404, $response->getStatusCode());
     }
 
+    public function testListNoUser(): void
+    {
+        $response = $this->apiRequest('album/home', []);
+
+        $this->assertEquals(404, $response->getStatusCode());
+
+        $response = $this->apiRequest('album/home', []);
+
+        $this->assertEquals(404, $response->getStatusCode());
+    }
+
     public function testUpdate(): void
     {
         $pokedexBefore = $this->getPokedexFromSlugs('redgreenblueyellow', 'ivysaur');
@@ -182,7 +298,7 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertEquals('maybe', $pokedexBefore['slug']);
 
         $this->apiRequest(
-            'album/redgreenblueyellow/ivysaur',
+            'album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow/ivysaur',
             [],
             'PATCH',
             [
@@ -205,7 +321,7 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertEmpty($pokedexBefore);
 
         $this->apiRequest(
-            'album/redgreenblueyellow/douze',
+            'album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow/douze',
             [],
             'PUT',
             [

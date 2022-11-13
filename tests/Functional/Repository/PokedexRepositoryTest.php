@@ -19,12 +19,15 @@ class PokedexRepositoryTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testGetListQueryFromDexSlug(): void
+    public function testgetListQuery(): void
     {
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
-        $pokedexesIterator = $repo->getListQueryFromDexSlug('redgreenblueyellow');
+        $pokedexesIterator = $repo->getListQuery(
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'redgreenblueyellow'
+        );
 
         /** @var string[][] $pokedexes */
         $pokedexes = iterator_to_array($pokedexesIterator);
@@ -56,12 +59,15 @@ class PokedexRepositoryTest extends KernelTestCase
         $this->assertNull($pokedexes[6]['catch_state_slug']);
     }
 
-    public function testGetCatchStatesCountsFromDexSlug(): void
+    public function testGetCatchStatesCounts(): void
     {
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
-        $counts = $repo->getCatchStatesCountsFromDexSlug('redgreenblueyellow');
+        $counts = $repo->getCatchStatesCounts(
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'redgreenblueyellow'
+        );
 
         $this->assertEquals(
             [
@@ -94,7 +100,7 @@ class PokedexRepositoryTest extends KernelTestCase
         );
     }
 
-    public function testUpdateFromSlugs(): void
+    public function testUpdate(): void
     {
         $pokedexBefore = $this->getPokedexFromSlugs('redgreenblueyellow', 'ivysaur');
 
@@ -104,7 +110,7 @@ class PokedexRepositoryTest extends KernelTestCase
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
-        $repo->upsertFromSlugs('redgreenblueyellow', 'ivysaur', 'yes');
+        $repo->upsert('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow', 'ivysaur', 'yes');
 
         $pokedexAfter = $this->getPokedexFromSlugs('redgreenblueyellow', 'ivysaur');
 
@@ -112,7 +118,7 @@ class PokedexRepositoryTest extends KernelTestCase
         $this->assertEquals('yes', $pokedexAfter['slug']);
     }
 
-    public function testInsertFromSlugs(): void
+    public function testInsert(): void
     {
         $pokedexBefore = $this->getPokedexFromSlugs('redgreenblueyellow', 'douze');
 
@@ -121,7 +127,7 @@ class PokedexRepositoryTest extends KernelTestCase
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
-        $repo->upsertFromSlugs('redgreenblueyellow', 'douze', 'maybenot');
+        $repo->upsert('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow', 'douze', 'maybenot');
 
         $pokedexAfter = $this->getPokedexFromSlugs('redgreenblueyellow', 'douze');
 
