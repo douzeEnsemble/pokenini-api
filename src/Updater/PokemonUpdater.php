@@ -11,6 +11,7 @@ class PokemonUpdater extends AbstractUpdater
     protected string $sheetName = 'Pokémons';
     protected string $tableName = 'pokemon';
     protected string $headerCellsRange = 'A1:AR1';
+    /** @var string[] */
     protected array $recordsCellsRanges = ['A2:AR'];
 
     private int $count = 0;

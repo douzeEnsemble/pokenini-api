@@ -11,6 +11,7 @@ class CatchStateUpdater extends AbstractUpdater
     protected string $sheetName = 'Catch state';
     protected string $tableName = 'catch_state';
     protected string $headerCellsRange = 'A1:E1';
+    /** @var string[] */
     protected array $recordsCellsRanges = ['A2:E'];
 
     protected function getExpectedHeader(): array

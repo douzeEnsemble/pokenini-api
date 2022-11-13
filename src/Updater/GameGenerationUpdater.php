@@ -11,6 +11,7 @@ class GameGenerationUpdater extends AbstractUpdater
     protected string $sheetName = 'Game Generation';
     protected string $tableName = 'game_generation';
     protected string $headerCellsRange = 'A1:B1';
+    /** @var string[] */
     protected array $recordsCellsRanges = ['A2:B'];
 
     protected function getExpectedHeader(): array

@@ -11,6 +11,7 @@ class DexUpdater extends AbstractUpdater
     protected string $sheetName = 'Dex';
     protected string $tableName = 'dex';
     protected string $headerCellsRange = 'A1:I1';
+    /** @var string[] */
     protected array $recordsCellsRanges = ['A2:I'];
 
     protected function getExpectedHeader(): array
