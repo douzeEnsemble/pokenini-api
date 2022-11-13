@@ -11,9 +11,16 @@ final class AlbumApiTestData
      *
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
-    public static function getExpectedRegGreenBlueYellowContent(): array
-    {
-        return [
+    public static function getExpectedRegGreenBlueYellowContent(
+        ?string $bulbasaurCatchState,
+        ?string $ivysaurCatchState,
+        ?string $venusaurCatchState,
+        ?string $caterpieCatchState,
+        ?string $metapodCatchState,
+        ?string $butterfreeCatchState,
+        ?string $douzeCatchState,
+    ): array {
+        $bulbasaurData = array_merge(
             [
                 'pokemon_national_dex_number' => '1',
                 'pokemon_slug' => 'bulbasaur',
@@ -32,10 +39,11 @@ final class AlbumApiTestData
                 'special_form_name' => null,
                 'variant_form_slug' => null,
                 'variant_form_name' => null,
-                'catch_state_slug' => 'no',
-                'catch_state_name' => 'No',
-                'catch_state_french_name' => 'Non',
             ],
+            self::getCatchStateDataFromSlug($bulbasaurCatchState)
+        );
+
+        $ivysaurData = array_merge(
             [
                 'pokemon_national_dex_number' => '2',
                 'pokemon_slug' => 'ivysaur',
@@ -58,6 +66,10 @@ final class AlbumApiTestData
                 'catch_state_name' => 'Maybe',
                 'catch_state_french_name' => 'Peut être',
             ],
+            self::getCatchStateDataFromSlug($ivysaurCatchState)
+        );
+
+        $venusaurData = array_merge(
             [
                 'pokemon_national_dex_number' => '3',
                 'pokemon_slug' => 'venusaur',
@@ -82,6 +94,10 @@ final class AlbumApiTestData
                 'catch_state_name' => 'Maybe not',
                 'catch_state_french_name' => 'Peut être pas',
             ],
+            self::getCatchStateDataFromSlug($venusaurCatchState)
+        );
+
+        $caterpieData = array_merge(
             [
                 'pokemon_national_dex_number' => '10',
                 'pokemon_slug' => 'caterpie',
@@ -104,6 +120,10 @@ final class AlbumApiTestData
                 'catch_state_name' => 'Maybe not',
                 'catch_state_french_name' => 'Peut être pas',
             ],
+            self::getCatchStateDataFromSlug($caterpieCatchState)
+        );
+
+        $metapodData = array_merge(
             [
                 'pokemon_national_dex_number' => '11',
                 'pokemon_slug' => 'metapod',
@@ -126,6 +146,10 @@ final class AlbumApiTestData
                 'catch_state_name' => null,
                 'catch_state_french_name' => null,
             ],
+            self::getCatchStateDataFromSlug($metapodCatchState)
+        );
+
+        $butterfreeData = array_merge(
             [
                 'pokemon_national_dex_number' => '12',
                 'pokemon_slug' => 'butterfree',
@@ -148,6 +172,10 @@ final class AlbumApiTestData
                 'catch_state_name' => null,
                 'catch_state_french_name' => null,
             ],
+            self::getCatchStateDataFromSlug($butterfreeCatchState)
+        );
+
+        $douzeData = array_merge(
             [
                 'pokemon_national_dex_number' => '1212',
                 'pokemon_slug' => 'douze',
@@ -170,7 +198,58 @@ final class AlbumApiTestData
                 'catch_state_name' => null,
                 'catch_state_french_name' => null,
             ],
+            self::getCatchStateDataFromSlug($douzeCatchState)
+        );
+
+        return [
+            $bulbasaurData,
+            $ivysaurData,
+            $venusaurData,
+            $caterpieData,
+            $metapodData,
+            $butterfreeData,
+            $douzeData,
         ];
+    }
+
+    /**
+     * @return string[]|null[]
+     */
+    private static function getCatchStateDataFromSlug(?string $catchStateSlug): array
+    {
+        switch ($catchStateSlug) {
+            case 'yes':
+                return [
+                    'catch_state_slug' => 'yes',
+                    'catch_state_name' => 'Yes',
+                    'catch_state_french_name' => 'Oui',
+                ];
+            case 'maybe':
+                return [
+                    'catch_state_slug' => 'maybe',
+                    'catch_state_name' => 'Maybe',
+                    'catch_state_french_name' => 'Peut être',
+                ];
+            case 'maybenot':
+                return [
+                    'catch_state_slug' => 'maybenot',
+                    'catch_state_name' => 'Maybe not',
+                    'catch_state_french_name' => 'Peut être pas',
+                ];
+            case 'no':
+                return [
+                    'catch_state_slug' => 'no',
+                    'catch_state_name' => 'No',
+                    'catch_state_french_name' => 'Non',
+                ];
+            case null:
+            default:
+                return [
+                    'catch_state_slug' => null,
+                    'catch_state_name' => null,
+                    'catch_state_french_name' => null,
+                ];
+        }
     }
 
     /**

@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\UniqueConstraint;
 
 #[ORM\Entity]
-#[UniqueConstraint(name: 'pokemon_dex', columns: ['pokemon_id', 'dex_id'])]
+#[UniqueConstraint(name: 'pokemon_dex', columns: ['pokemon_id', 'dex_id', 'trainer_token'])]
 class Pokedex
 {
     use BaseEntityTrait;
@@ -22,4 +22,7 @@ class Pokedex
 
     #[ORM\ManyToOne]
     public ?CatchState $catchState;
+
+    #[ORM\Column]
+    public string $trainerToken = '';
 }

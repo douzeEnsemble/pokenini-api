@@ -30,12 +30,12 @@ class DexAvailabilityRepositoryTest extends KernelTestCase
         $this->assertEquals(0, $this->getDexAvailabilityCount());
     }
 
-    public function testGetTotalFromDexSlug(): void
+    public function testGetTotal(): void
     {
         /** @var DexAvailabilityRepository $repo */
         $repo = static::getContainer()->get(DexAvailabilityRepository::class);
 
-        $totalCount = $repo->getTotalFromDexSlug('redgreenblueyellow');
+        $totalCount = $repo->getTotal('redgreenblueyellow');
 
         $this->assertEquals(7, $totalCount);
     }

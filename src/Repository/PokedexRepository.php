@@ -25,7 +25,7 @@ class PokedexRepository extends ServiceEntityRepository
     /**
      * @return \Traversable<int, array<mixed, mixed>>
      */
-    public function getListQueryFromDexSlug(string $dexSlug): \Traversable
+    public function getListQuery(string $trainerToken, string $dexSlug): \Traversable
     {
         $sql = <<<SQL
         SELECT  p.slug AS pokemon_slug,
@@ -54,7 +54,7 @@ class PokedexRepository extends ServiceEntityRepository
             JOIN dex AS d
                 ON da.dex_id = d.id
             LEFT JOIN pokedex AS pd
-                ON pd.dex_id = da.dex_id AND pd.pokemon_id = da.pokemon_id
+                ON pd.dex_id = da.dex_id AND pd.pokemon_id = da.pokemon_id AND pd.trainer_token = :trainer_token
             LEFT JOIN catch_state AS cs
                 ON pd.catch_state_id = cs.id
             LEFT JOIN regional_form AS rf
@@ -70,6 +70,7 @@ class PokedexRepository extends ServiceEntityRepository
         return $this->getEntityManager()->getConnection()->iterateAssociative(
             $sql,
             [
+                'trainer_token' => $trainerToken,
                 'dex_slug' => $dexSlug,
             ]
         );
@@ -78,7 +79,7 @@ class PokedexRepository extends ServiceEntityRepository
     /**
      * @return int[][]|string[][]
      */
-    public function getCatchStatesCountsFromDexSlug(string $dexSlug): array
+    public function getCatchStatesCounts(string $trainerToken, string $dexSlug): array
     {
         $sql = <<<SQL
         SELECT  COUNT(pd.id) AS count, cs.slug AS slug, cs.name AS name, cs.french_name AS french_name
@@ -92,6 +93,7 @@ class PokedexRepository extends ServiceEntityRepository
             LEFT JOIN pokedex AS pd
                 ON pd.dex_id = da.dex_id
                     AND pd.pokemon_id = da.pokemon_id
+                    AND pd.trainer_token = :trainer_token
         WHERE
             d.slug = :dex_slug
             AND cs.deleted_at IS NULL
@@ -104,16 +106,18 @@ class PokedexRepository extends ServiceEntityRepository
         return $this->getEntityManager()->getConnection()->fetchAllAssociative(
             $sql,
             [
+                'trainer_token' => $trainerToken,
                 'dex_slug' => $dexSlug,
             ]
         );
     }
 
-    public function upsertFromSlugs(string $dexSlug, string $pokemonSlug, string $catchStateSlug): void
+    public function upsert(string $trainerToken, string $dexSlug, string $pokemonSlug, string $catchStateSlug): void
     {
         $sql = <<<SQL
         INSERT INTO pokedex (
             id,
+            trainer_token,
             dex_id,
             pokemon_id,
             catch_state_id
@@ -121,11 +125,12 @@ class PokedexRepository extends ServiceEntityRepository
         VALUES
         (
             :id,
+            :trainer_token,
             (SELECT id FROM dex WHERE slug = :dex_slug),
             (SELECT id FROM pokemon WHERE slug = :pokemon_slug),
             (SELECT id FROM catch_state WHERE slug = :catch_state_slug)
         )
-        ON CONFLICT (dex_id, pokemon_id)
+        ON CONFLICT (trainer_token, dex_id, pokemon_id)
         DO
         UPDATE
         SET catch_state_id = excluded.catch_state_id
@@ -135,6 +140,7 @@ class PokedexRepository extends ServiceEntityRepository
             $sql,
             [
                 'id' => Uuid::v4(),
+                'trainer_token' => $trainerToken,
                 'dex_slug' => $dexSlug,
                 'pokemon_slug' => $pokemonSlug,
                 'catch_state_slug' => $catchStateSlug,
