@@ -20,6 +20,9 @@ class GameAvailabilityUpdater extends AbstractUpdater
 
     private int $count = 0;
 
+    /** @var string[][] */
+    private array $gameAvailabilities;
+
     public function getCount(): int
     {
         return $this->count;
@@ -100,7 +103,9 @@ class GameAvailabilityUpdater extends AbstractUpdater
         $newValues = $this->transformRecords($values, $header);
         unset($values);
 
-        return $this->getGameAvailabilitiesFromRecords($newValues);
+        $this->getGameAvailabilitiesFromRecords($newValues);
+
+        return $this->gameAvailabilities;
     }
 
     /**
@@ -181,25 +186,19 @@ SQL;
 
     /**
      * @param string[][] $records
-     *
-     * @return string[][]
      */
-    private function getGameAvailabilitiesFromRecords(array $records): array
+    private function getGameAvailabilitiesFromRecords(array $records): void
     {
-        $gameAvailabilities = [];
+        $this->gameAvailabilities = [];
         foreach ($records as $record) {
-            $this->transformGameAvailabilityRecord($gameAvailabilities, $record);
+            $this->transformGameAvailabilityRecord($record);
         }
-
-        return $gameAvailabilities;
     }
 
     /**
-     * @param string[][] $gameAvailabilities
      * @param string[]   $record
      */
     private function transformGameAvailabilityRecord(
-        array &$gameAvailabilities,
         array $record
     ): void {
         unset($record['#']);
@@ -208,7 +207,7 @@ SQL;
         unset($record['Name']);
 
         foreach ($record as $game => $availability) {
-            $gameAvailabilities[] = [
+            $this->gameAvailabilities[] = [
                 'pokemonName' => $name,
                 'game' => $game,
                 'availability' => $availability,

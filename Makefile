@@ -79,7 +79,7 @@ phpmd: ## Execute phpmd
 	@$(PHP) vendor/bin/phpmd src,tests text ruleset.xml
 
 psalm: ## Execute psalm
-	@$(PHP) vendor/bin/psalm --show-info=true
+	@$(PHP) vendor/bin/psalm --show-info=false
 
 ## —— Integration 🗂️ ———————————————————————————————————————————————————————————————
 integration: ## Execute all integration tests
