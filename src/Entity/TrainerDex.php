@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use ApiPlatform\Metadata\ApiResource;
 use App\Entity\Traits\BaseEntityTrait;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\UniqueConstraint;
 
-#[ApiResource]
 #[ORM\Entity]
+#[UniqueConstraint(name: 'trainers_dex', columns: ['trainer_token', 'dex_id'])]
 class TrainerDex
 {
     use BaseEntityTrait;

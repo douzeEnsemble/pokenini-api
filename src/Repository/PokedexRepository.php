@@ -4,9 +4,6 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Entity\Dex;
-use App\Entity\DexAvailability;
-use App\Entity\GameAvailability;
 use App\Entity\Pokedex;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;

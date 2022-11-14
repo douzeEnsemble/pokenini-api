@@ -4,13 +4,12 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Controller;
 
-use App\Tests\Common\Traits\GetterTrait\GetPokedexTrait;
+use App\Tests\Common\Traits\GetterTrait\GetTrainerDexTrait;
 use App\Tests\Functional\Api\AbstractApiTest;
-use App\Tests\Functional\Api\AlbumApiTestData;
 
 class DexControllerTest extends AbstractApiTest
 {
-    use GetPokedexTrait;
+    use GetTrainerDexTrait;
 
     public function testListUser12(): void
     {
@@ -58,5 +57,52 @@ class DexControllerTest extends AbstractApiTest
             DexControllerTestData::getUserUnknownContent(),
             $data
         );
+    }
+
+    public function testUpdate(): void
+    {
+        $trainerDexBefore = $this->getTrainerDex('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow');
+
+        $this->assertArrayHasKey('is_private', $trainerDexBefore);
+        $this->assertFalse($trainerDexBefore['is_private']);
+
+        $this->apiRequest(
+            'dex/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow',
+            [],
+            'PATCH',
+            [
+                'body' => '{"isPrivate": true}'
+            ]
+        );
+
+        $this->assertResponseIsSuccessful();
+
+        $trainerDexAfter = $this->getTrainerDex('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow');
+
+        $this->assertArrayHasKey('is_private', $trainerDexAfter);
+        $this->assertTrue($trainerDexAfter['is_private']);
+    }
+
+    public function testCreate(): void
+    {
+        $trainerDexBefore = $this->getTrainerDex('bd307a3ec329e10a2cff8fb87480823da114f8f4', 'redgreenblueyellow');
+
+        $this->assertEmpty($trainerDexBefore);
+
+        $this->apiRequest(
+            'dex/bd307a3ec329e10a2cff8fb87480823da114f8f4/redgreenblueyellow',
+            [],
+            'PATCH',
+            [
+                'body' => '{"isPrivate": true}'
+            ]
+        );
+
+        $this->assertResponseIsSuccessful();
+
+        $trainerDexAfter = $this->getTrainerDex('bd307a3ec329e10a2cff8fb87480823da114f8f4', 'redgreenblueyellow');
+
+        $this->assertArrayHasKey('is_private', $trainerDexAfter);
+        $this->assertTrue($trainerDexAfter['is_private']);
     }
 }
