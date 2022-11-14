@@ -28,6 +28,7 @@
         "symfony/framework-bundle": "6.1.*",
         "symfony/mercure-bundle": "^0.3.5",
         "symfony/monolog-bundle": "^3.8",
+        "symfony/options-resolver": "6.1.*",
         "symfony/property-access": "6.1.*",
         "symfony/property-info": "6.1.*",
         "symfony/runtime": "6.1.*",
@@ -39,7 +40,6 @@
         "symfony/yaml": "6.1.*"
     },
     "require-dev": {
-        "api-platform/schema-generator": "^5.0",
         "hautelook/alice-bundle": "^2.10",
         "justinrainbow/json-schema": "^5.2",
         "phpmd/phpmd": "^2.12",
