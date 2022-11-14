@@ -6,7 +6,7 @@ namespace App\Tests\Functional\Controller;
 
 use App\Tests\Common\Traits\GetterTrait\GetPokedexTrait;
 use App\Tests\Functional\Api\AbstractApiTest;
-use App\Tests\Functional\Api\AlbumApiTestData;
+use App\Tests\Functional\Controller\AlbumControllerTestData;
 
 class AlbumControllerTest extends AbstractApiTest
 {
@@ -42,7 +42,7 @@ class AlbumControllerTest extends AbstractApiTest
         $pokemons = $data['pokemons'];
 
         $this->assertEquals(
-            AlbumApiTestData::getExpectedRegGreenBlueYellowContent(
+            AlbumControllerTestData::getExpectedRegGreenBlueYellowContent(
                 'no',
                 'maybe',
                 'maybenot',
@@ -91,7 +91,7 @@ class AlbumControllerTest extends AbstractApiTest
         $pokemons = $data['pokemons'];
 
         $this->assertEquals(
-            AlbumApiTestData::getExpectedRegGreenBlueYellowContent(
+            AlbumControllerTestData::getExpectedRegGreenBlueYellowContent(
                 'yes',
                 null,
                 null,
@@ -140,7 +140,7 @@ class AlbumControllerTest extends AbstractApiTest
         $pokemons = $data['pokemons'];
 
         $this->assertEquals(
-            AlbumApiTestData::getExpectedRegGreenBlueYellowContent(
+            AlbumControllerTestData::getExpectedRegGreenBlueYellowContent(
                 null,
                 null,
                 null,
@@ -188,7 +188,7 @@ class AlbumControllerTest extends AbstractApiTest
         $pokemons = $data['pokemons'];
 
         $this->assertEquals(
-            AlbumApiTestData::getExpectedHomeContent(),
+            AlbumControllerTestData::getExpectedHomeContent(),
             $pokemons
         );
 
@@ -228,7 +228,7 @@ class AlbumControllerTest extends AbstractApiTest
         $pokemons = $data['pokemons'];
 
         $this->assertEquals(
-            AlbumApiTestData::getExpectedHomeShinyContent(),
+            AlbumControllerTestData::getExpectedHomeShinyContent(),
             $pokemons
         );
 

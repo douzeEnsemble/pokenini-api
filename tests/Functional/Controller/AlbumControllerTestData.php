@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\Api;
+namespace App\Tests\Functional\Controller;
 
-final class AlbumApiTestData
+final class AlbumControllerTestData
 {
     /**
      * @return string[][]|null[][]
