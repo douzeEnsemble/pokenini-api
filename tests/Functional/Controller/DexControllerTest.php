@@ -105,4 +105,22 @@ class DexControllerTest extends AbstractApiTest
         $this->assertArrayHasKey('is_private', $trainerDexAfter);
         $this->assertTrue($trainerDexAfter['is_private']);
     }
+
+    public function testBadArgument(): void
+    {
+        $trainerDexBefore = $this->getTrainerDex('bd307a3ec329e10a2cff8fb87480823da114f8f4', 'redgreenblueyellow');
+
+        $this->assertEmpty($trainerDexBefore);
+
+        $this->apiRequest(
+            'dex/bd307a3ec329e10a2cff8fb87480823da114f8f4/redgreenblueyellow',
+            [],
+            'PATCH',
+            [
+                'body' => '{"is_private": true}'
+            ]
+        );
+
+        $this->assertResponseStatusCodeSame(400);
+    }
 }

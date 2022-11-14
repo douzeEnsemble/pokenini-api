@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
+use App\DTO\TrainerDexValues;
 use App\Entity\TrainerDex;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Component\Uid\Uuid;
@@ -47,12 +48,7 @@ class TrainerDexRepository extends ServiceEntityRepository
         );
     }
 
-    /**
-     * @param bool[] $options
-     *
-     * @todo Replace $options by a DTO and use Symfony/OptionsResolver
-     */
-    public function upsert(string $trainerToken, string $dexSlug, array $options): void
+    public function upsert(string $trainerToken, string $dexSlug, TrainerDexValues $values): void
     {
         $sql = <<<SQL
         INSERT INTO trainer_dex (
@@ -80,7 +76,7 @@ class TrainerDexRepository extends ServiceEntityRepository
                 'id' => Uuid::v4(),
                 'trainer_token' => $trainerToken,
                 'dex_slug' => $dexSlug,
-                'is_private' => $options['isPrivate'],
+                'is_private' => $values->isPrivate,
             ]
         );
     }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\DTO\TrainerDexValues;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\TrainerDexRepository;
@@ -11,6 +12,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
 
 #[Route('/dex')]
 class DexController extends AbstractController
@@ -66,6 +68,12 @@ class DexController extends AbstractController
         /** @var bool[] */
         $content = json_decode((string) $json, true);
 
-        $this->trainerDexRepository->upsert($trainerToken, $dexSlug, $content);
+        try {
+            $values = new TrainerDexValues($content);
+        } catch (InvalidArgumentException  $e) {
+            throw new BadRequestHttpException($e->getMessage());
+        }
+
+        $this->trainerDexRepository->upsert($trainerToken, $dexSlug, $values);
     }
 }
