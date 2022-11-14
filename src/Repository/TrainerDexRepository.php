@@ -6,7 +6,7 @@ namespace App\Repository;
 
 use App\Entity\TrainerDex;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\AbstractQuery;
+use Symfony\Component\Uid\Uuid;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -43,6 +43,44 @@ class TrainerDexRepository extends ServiceEntityRepository
             $sql,
             [
                 'trainer_token' => $trainerToken,
+            ]
+        );
+    }
+
+    /**
+     * @param bool[] $options
+     *
+     * @todo Replace $options by a DTO and use Symfony/OptionsResolver
+     */
+    public function upsert(string $trainerToken, string $dexSlug, array $options): void
+    {
+        $sql = <<<SQL
+        INSERT INTO trainer_dex (
+            id,
+            trainer_token,
+            dex_id,
+            is_private
+        )
+        VALUES
+        (
+            :id,
+            :trainer_token,
+            (SELECT id FROM dex WHERE slug = :dex_slug),
+            :is_private
+        )
+        ON CONFLICT (trainer_token, dex_id)
+        DO
+        UPDATE
+        SET is_private = excluded.is_private
+        SQL;
+
+        $this->getEntityManager()->getConnection()->executeQuery(
+            $sql,
+            [
+                'id' => Uuid::v4(),
+                'trainer_token' => $trainerToken,
+                'dex_slug' => $dexSlug,
+                'is_private' => $options['isPrivate'],
             ]
         );
     }

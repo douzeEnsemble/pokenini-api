@@ -21,6 +21,7 @@ final class Version20221114211756 extends AbstractMigration
         $this->addSql('COMMENT ON COLUMN trainer_dex.id IS \'(DC2Type:uuid)\'');
         $this->addSql('COMMENT ON COLUMN trainer_dex.dex_id IS \'(DC2Type:uuid)\'');
         $this->addSql('ALTER TABLE trainer_dex ADD CONSTRAINT FK_C93AEB5544FE8083 FOREIGN KEY (dex_id) REFERENCES dex (id) NOT DEFERRABLE INITIALLY IMMEDIATE');
+        $this->addSql('CREATE UNIQUE INDEX trainers_dex ON trainer_dex (trainer_token, dex_id)');
     }
 
     public function down(Schema $schema): void
