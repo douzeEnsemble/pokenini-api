@@ -65,13 +65,15 @@ class DexControllerTest extends AbstractApiTest
 
         $this->assertArrayHasKey('is_private', $trainerDexBefore);
         $this->assertFalse($trainerDexBefore['is_private']);
+        $this->assertArrayHasKey('is_on_home', $trainerDexBefore);
+        $this->assertFalse($trainerDexBefore['is_on_home']);
 
         $this->apiRequest(
             'dex/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow',
             [],
             'PATCH',
             [
-                'body' => '{"isPrivate": true}'
+                'body' => '{"isPrivate": true, "isOnHome": true}'
             ]
         );
 
@@ -81,6 +83,8 @@ class DexControllerTest extends AbstractApiTest
 
         $this->assertArrayHasKey('is_private', $trainerDexAfter);
         $this->assertTrue($trainerDexAfter['is_private']);
+        $this->assertArrayHasKey('is_on_home', $trainerDexAfter);
+        $this->assertTrue($trainerDexAfter['is_on_home']);
     }
 
     public function testCreate(): void
@@ -94,7 +98,7 @@ class DexControllerTest extends AbstractApiTest
             [],
             'PATCH',
             [
-                'body' => '{"isPrivate": true}'
+                'body' => '{"isPrivate": true, "isOnHome": false}'
             ]
         );
 
@@ -104,6 +108,8 @@ class DexControllerTest extends AbstractApiTest
 
         $this->assertArrayHasKey('is_private', $trainerDexAfter);
         $this->assertTrue($trainerDexAfter['is_private']);
+        $this->assertArrayHasKey('is_on_home', $trainerDexAfter);
+        $this->assertFalse($trainerDexAfter['is_on_home']);
     }
 
     public function testBadArgument(): void
@@ -117,7 +123,7 @@ class DexControllerTest extends AbstractApiTest
             [],
             'PATCH',
             [
-                'body' => '{"is_private": true}'
+                'body' => '{"is_private": true, "isOnHome": false}'
             ]
         );
 

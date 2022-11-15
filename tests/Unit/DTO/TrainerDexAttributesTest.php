@@ -4,18 +4,17 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\DTO;
 
-use App\DTO\GameBundlesAvailabilities;
-use App\DTO\TrainerDexValues;
+use App\DTO\TrainerDexAttributes;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
 use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 
-class TrainerDexValuesTest extends TestCase
+class TrainerDexAttributesTest extends TestCase
 {
     public function testOk(): void
     {
-        $values = new TrainerDexValues(['isPrivate' => false]);
+        $values = new TrainerDexAttributes(['isPrivate' => false, 'isOnHome' => false]);
 
         $this->assertFalse($values->isPrivate);
     }
@@ -23,18 +22,18 @@ class TrainerDexValuesTest extends TestCase
     public function testWrongValue(): void
     {
         $this->expectException(InvalidOptionsException::class);
-        new TrainerDexValues(['isPrivate' => 'yes']);
+        new TrainerDexAttributes(['isPrivate' => 'yes', 'isOnHome' => false]);
     }
 
     public function testMissingValue(): void
     {
         $this->expectException(MissingOptionsException::class);
-        new TrainerDexValues([]);
+        new TrainerDexAttributes([]);
     }
 
     public function testAnotherValue(): void
     {
         $this->expectException(UndefinedOptionsException::class);
-        new TrainerDexValues(['is_private' => true]);
+        new TrainerDexAttributes(['is_private' => true, 'isOnHome' => false]);
     }
 }

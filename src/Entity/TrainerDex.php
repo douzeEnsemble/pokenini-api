@@ -21,5 +21,8 @@ class TrainerDex
     public Dex $dex;
 
     #[ORM\Column]
-    public ?bool $isPrivate = true;
+    public bool $isPrivate = true;
+
+    #[ORM\Column]
+    public bool $isOnHome = false;
 }

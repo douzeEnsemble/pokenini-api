@@ -6,9 +6,10 @@ namespace App\DTO;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-final class TrainerDexValues
+final class TrainerDexAttributes
 {
     public bool $isPrivate;
+    public bool $isOnHome;
 
     /**
      * @param string[]|bool[] $values
@@ -21,11 +22,15 @@ final class TrainerDexValues
         $options = $resolver->resolve($values);
 
         $this->isPrivate = $options['isPrivate'];
+        $this->isOnHome = $options['isOnHome'];
     }
 
     private function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setRequired('isPrivate');
         $resolver->setAllowedTypes('isPrivate', 'bool');
+
+        $resolver->setRequired('isOnHome');
+        $resolver->setAllowedTypes('isOnHome', 'bool');
     }
 }
