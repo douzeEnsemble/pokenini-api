@@ -23,7 +23,7 @@ class TrainerDexRepository extends ServiceEntityRepository
     /**
      * @return \Traversable<int, array<mixed, mixed>>
      */
-    public function getListQuery(string $trainerToken): \Traversable
+    public function getListQuery(string $trainerExternalId): \Traversable
     {
         $sql = <<<SQL
         SELECT  d.name as name,
@@ -37,24 +37,24 @@ class TrainerDexRepository extends ServiceEntityRepository
         FROM    dex AS d
             LEFT JOIN trainer_dex AS td
                 ON td.dex_id = d.id
-                AND td.trainer_token = :trainer_token
+                AND td.trainer_external_id = :trainer_external_id
         ORDER BY d.order_number
         SQL;
 
         return $this->getEntityManager()->getConnection()->iterateAssociative(
             $sql,
             [
-                'trainer_token' => $trainerToken,
+                'trainer_external_id' => $trainerExternalId,
             ]
         );
     }
 
-    public function upsert(string $trainerToken, string $dexSlug, TrainerDexAttributes $attributes): void
+    public function upsert(string $trainerExternalId, string $dexSlug, TrainerDexAttributes $attributes): void
     {
         $sql = <<<SQL
         INSERT INTO trainer_dex (
             id,
-            trainer_token,
+            trainer_external_id,
             dex_id,
             is_private,
             is_on_home
@@ -62,12 +62,12 @@ class TrainerDexRepository extends ServiceEntityRepository
         VALUES
         (
             :id,
-            :trainer_token,
+            :trainer_external_id,
             (SELECT id FROM dex WHERE slug = :dex_slug),
             :is_private,
             :is_on_home
         )
-        ON CONFLICT (trainer_token, dex_id)
+        ON CONFLICT (trainer_external_id, dex_id)
         DO
         UPDATE
         SET is_private = excluded.is_private,
@@ -78,7 +78,7 @@ class TrainerDexRepository extends ServiceEntityRepository
             $sql,
             [
                 'id' => Uuid::v4(),
-                'trainer_token' => $trainerToken,
+                'trainer_external_id' => $trainerExternalId,
                 'dex_slug' => $dexSlug,
                 'is_private' => (int) $attributes->isPrivate,
                 'is_on_home' => (int) $attributes->isOnHome,
