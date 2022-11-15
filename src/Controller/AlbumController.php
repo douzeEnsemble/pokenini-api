@@ -25,18 +25,18 @@ class AlbumController extends AbstractController
     ) {
     }
 
-    #[Route(path: '/{trainerToken}/{dexSlug}', methods: ['GET'])]
+    #[Route(path: '/{trainerExternalId}/{dexSlug}', methods: ['GET'])]
     public function index(
         DexRepository $dexRepository,
-        string $trainerToken,
+        string $trainerExternalId,
         string $dexSlug
     ): JsonResponse {
         /** @var string[][]|int[][] $pokemons */
         $pokemons = iterator_to_array(
-            $this->pokedexRepository->getListQuery($trainerToken, $dexSlug)
+            $this->pokedexRepository->getListQuery($trainerExternalId, $dexSlug)
         );
 
-        $report = $this->getReport($trainerToken, $dexSlug);
+        $report = $this->getReport($trainerExternalId, $dexSlug);
 
         $dex = $dexRepository->getBySlug($dexSlug);
 
@@ -55,31 +55,31 @@ class AlbumController extends AbstractController
         ]);
     }
 
-    #[Route(methods: ['PATCH'], path: '/{trainerToken}/{dexSlug}/{pokemonSlug}')]
+    #[Route(methods: ['PATCH'], path: '/{trainerExternalId}/{dexSlug}/{pokemonSlug}')]
     public function update(
         Request $request,
-        string $trainerToken,
+        string $trainerExternalId,
         string $dexSlug,
         string $pokemonSlug
     ): Response {
-        $this->upsert($trainerToken, $dexSlug, $pokemonSlug, $request);
+        $this->upsert($trainerExternalId, $dexSlug, $pokemonSlug, $request);
 
         return new Response();
     }
 
-    #[Route(methods: ['PUT'], path: '/{trainerToken}/{dexSlug}/{pokemonSlug}')]
+    #[Route(methods: ['PUT'], path: '/{trainerExternalId}/{dexSlug}/{pokemonSlug}')]
     public function create(
         Request $request,
-        string $trainerToken,
+        string $trainerExternalId,
         string $dexSlug,
         string $pokemonSlug
     ): Response {
-        $this->upsert($trainerToken, $dexSlug, $pokemonSlug, $request);
+        $this->upsert($trainerExternalId, $dexSlug, $pokemonSlug, $request);
 
         return new Response('', Response::HTTP_CREATED);
     }
 
-    private function upsert(string $trainerToken, string $dexSlug, string $pokemonSlug, Request $request): void
+    private function upsert(string $trainerExternalId, string $dexSlug, string $pokemonSlug, Request $request): void
     {
         $content = $request->getContent();
 
@@ -90,10 +90,10 @@ class AlbumController extends AbstractController
         /** @var string $catchStateSlug */
         $catchStateSlug = $content;
 
-        $this->pokedexRepository->upsert($trainerToken, $dexSlug, $pokemonSlug, $catchStateSlug);
+        $this->pokedexRepository->upsert($trainerExternalId, $dexSlug, $pokemonSlug, $catchStateSlug);
     }
 
-    private function getReport(string $trainerToken, string $dexSlug): Report
+    private function getReport(string $trainerExternalId, string $dexSlug): Report
     {
         $totalCaught = 0;
         $detail = [];
@@ -101,7 +101,7 @@ class AlbumController extends AbstractController
         $total = $this->dexAvailabilityRepository->getTotal($dexSlug);
         $totalUncaught = $total;
 
-        $catchStatesCounts = $this->pokedexRepository->getCatchStatesCounts($trainerToken, $dexSlug);
+        $catchStatesCounts = $this->pokedexRepository->getCatchStatesCounts($trainerExternalId, $dexSlug);
         foreach ($catchStatesCounts as $catchStatesCount) {
             $detail[] = new Statistic(
                 (string) $catchStatesCount['slug'],

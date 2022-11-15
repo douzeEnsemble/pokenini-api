@@ -22,42 +22,42 @@ class DexController extends AbstractController
     ) {
     }
 
-    #[Route(path: '/{trainerToken}/list', methods: ['GET'])]
+    #[Route(path: '/{trainerExternalId}/list', methods: ['GET'])]
     public function list(
-        string $trainerToken
+        string $trainerExternalId
     ): JsonResponse {
         /** @var string[][]|bool[][] $dexes */
         $dexes = iterator_to_array(
-            $this->trainerDexRepository->getListQuery($trainerToken)
+            $this->trainerDexRepository->getListQuery($trainerExternalId)
         );
 
         // Better with serializer ?
         return new JsonResponse($dexes);
     }
 
-    #[Route(methods: ['PATCH'], path: '/{trainerToken}/{dexSlug}')]
+    #[Route(methods: ['PATCH'], path: '/{trainerExternalId}/{dexSlug}')]
     public function update(
         Request $request,
-        string $trainerToken,
+        string $trainerExternalId,
         string $dexSlug
     ): Response {
-        $this->upsert($trainerToken, $dexSlug, $request);
+        $this->upsert($trainerExternalId, $dexSlug, $request);
 
         return new Response();
     }
 
-    #[Route(methods: ['PUT'], path: '/{trainerToken}/{dexSlug}')]
+    #[Route(methods: ['PUT'], path: '/{trainerExternalId}/{dexSlug}')]
     public function create(
         Request $request,
-        string $trainerToken,
+        string $trainerExternalId,
         string $dexSlug
     ): Response {
-        $this->upsert($trainerToken, $dexSlug, $request);
+        $this->upsert($trainerExternalId, $dexSlug, $request);
 
         return new Response('', Response::HTTP_CREATED);
     }
 
-    private function upsert(string $trainerToken, string $dexSlug, Request $request): void
+    private function upsert(string $trainerExternalId, string $dexSlug, Request $request): void
     {
         $json = $request->getContent();
 
@@ -74,6 +74,6 @@ class DexController extends AbstractController
             throw new BadRequestHttpException($e->getMessage());
         }
 
-        $this->trainerDexRepository->upsert($trainerToken, $dexSlug, $attributes);
+        $this->trainerDexRepository->upsert($trainerExternalId, $dexSlug, $attributes);
     }
 }

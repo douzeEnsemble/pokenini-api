@@ -9,13 +9,13 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\UniqueConstraint;
 
 #[ORM\Entity]
-#[UniqueConstraint(name: 'trainers_dex', columns: ['trainer_token', 'dex_id'])]
+#[UniqueConstraint(name: 'trainers_dex', columns: ['trainer_external_id', 'dex_id'])]
 class TrainerDex
 {
     use BaseEntityTrait;
 
     #[ORM\Column]
-    public string $trainerToken = '';
+    public string $trainerExternalId = '';
 
     #[ORM\ManyToOne]
     public Dex $dex;
