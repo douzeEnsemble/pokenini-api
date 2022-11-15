@@ -20,6 +20,7 @@ final class DexControllerTestData
                 'is_private' => false,
                 'is_display_form' => true,
                 'display_template' => 'box',
+                'is_on_home' => false,
             ],
             [
                 'name' => 'Gold / Silver / Crystal',
@@ -29,6 +30,7 @@ final class DexControllerTestData
                 'is_private' => true,
                 'is_display_form' => true,
                 'display_template' => 'box',
+                'is_on_home' => false,
             ],
             [
                 'name' => 'Ruby / Sapphire / Emerald',
@@ -38,6 +40,7 @@ final class DexControllerTestData
                 'is_private' => true,
                 'is_display_form' => true,
                 'display_template' => 'box',
+                'is_on_home' => false,
             ],
             [
                 'name' => 'Home',
@@ -47,6 +50,7 @@ final class DexControllerTestData
                 'is_private' => true,
                 'is_display_form' => true,
                 'display_template' => 'box',
+                'is_on_home' => false,
             ],
             [
                 'name' => 'Home Shiny',
@@ -56,6 +60,7 @@ final class DexControllerTestData
                 'is_private' => true,
                 'is_display_form' => true,
                 'display_template' => 'box',
+                'is_on_home' => false,
             ],
             [
                 'name' => 'Home PoGo',
@@ -65,6 +70,7 @@ final class DexControllerTestData
                 'is_private' => false,
                 'is_display_form' => false,
                 'display_template' => 'list-7',
+                'is_on_home' => true,
             ],
         ];
     }
@@ -83,6 +89,7 @@ final class DexControllerTestData
                 'is_private' => true,
                 'is_display_form' => true,
                 'display_template' => 'box',
+                'is_on_home' => false,
             ],
             [
                 'name' => 'Gold / Silver / Crystal',
@@ -92,6 +99,7 @@ final class DexControllerTestData
                 'is_private' => true,
                 'is_display_form' => true,
                 'display_template' => 'box',
+                'is_on_home' => false,
             ],
             [
                 'name' => 'Ruby / Sapphire / Emerald',
@@ -101,6 +109,7 @@ final class DexControllerTestData
                 'is_private' => true,
                 'is_display_form' => true,
                 'display_template' => 'box',
+                'is_on_home' => false,
             ],
             [
                 'name' => 'Home',
@@ -110,6 +119,7 @@ final class DexControllerTestData
                 'is_private' => false,
                 'is_display_form' => true,
                 'display_template' => 'box',
+                'is_on_home' => false,
             ],
             [
                 'name' => 'Home Shiny',
@@ -119,6 +129,7 @@ final class DexControllerTestData
                 'is_private' => false,
                 'is_display_form' => true,
                 'display_template' => 'box',
+                'is_on_home' => false,
             ],
             [
                 'name' => 'Home PoGo',
@@ -128,6 +139,7 @@ final class DexControllerTestData
                 'is_private' => false,
                 'is_display_form' => false,
                 'display_template' => 'list-7',
+                'is_on_home' => false,
             ],
         ];
     }
@@ -146,6 +158,7 @@ final class DexControllerTestData
                 'is_private' => true,
                 'is_display_form' => true,
                 'display_template' => 'box',
+                'is_on_home' => false,
             ],
             [
                 'name' => 'Gold / Silver / Crystal',
@@ -155,6 +168,7 @@ final class DexControllerTestData
                 'is_private' => true,
                 'is_display_form' => true,
                 'display_template' => 'box',
+                'is_on_home' => false,
             ],
             [
                 'name' => 'Ruby / Sapphire / Emerald',
@@ -164,6 +178,7 @@ final class DexControllerTestData
                 'is_private' => true,
                 'is_display_form' => true,
                 'display_template' => 'box',
+                'is_on_home' => false,
             ],
             [
                 'name' => 'Home',
@@ -173,6 +188,7 @@ final class DexControllerTestData
                 'is_private' => false,
                 'is_display_form' => true,
                 'display_template' => 'box',
+                'is_on_home' => false,
             ],
             [
                 'name' => 'Home Shiny',
@@ -182,6 +198,7 @@ final class DexControllerTestData
                 'is_private' => false,
                 'is_display_form' => true,
                 'display_template' => 'box',
+                'is_on_home' => false,
             ],
             [
                 'name' => 'Home PoGo',
@@ -191,6 +208,7 @@ final class DexControllerTestData
                 'is_private' => false,
                 'is_display_form' => false,
                 'display_template' => 'list-7',
+                'is_on_home' => false,
             ],
         ];
     }

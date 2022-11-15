@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\DTO\TrainerDexValues;
+use App\DTO\TrainerDexAttributes;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use App\Repository\TrainerDexRepository;
@@ -69,11 +69,11 @@ class DexController extends AbstractController
         $content = json_decode((string) $json, true);
 
         try {
-            $values = new TrainerDexValues($content);
+            $attributes = new TrainerDexAttributes($content);
         } catch (InvalidArgumentException  $e) {
             throw new BadRequestHttpException($e->getMessage());
         }
 
-        $this->trainerDexRepository->upsert($trainerToken, $dexSlug, $values);
+        $this->trainerDexRepository->upsert($trainerToken, $dexSlug, $attributes);
     }
 }
