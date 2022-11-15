@@ -18,7 +18,7 @@ final class Version20221115211251 extends AbstractMigration
     {
         $sql = <<<SQL
         INSERT INTO trainer_dex(id, dex_id, trainer_external_id, is_private, is_on_home)
-        SELECT  gen_random_uuid(), id, 'f86cbe805674d85f7806b175b70647a6a9334631', is_private, is_private
+        SELECT  gen_random_uuid(), id, 'f86cbe805674d85f7806b175b70647a6a9334631', is_private, NOT is_private
         FROM    dex
         SQL;
 
