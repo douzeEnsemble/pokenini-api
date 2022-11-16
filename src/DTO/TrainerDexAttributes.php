@@ -27,10 +27,10 @@ final class TrainerDexAttributes
 
     private function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setRequired('isPrivate');
+        $resolver->setDefault('isPrivate', false);
         $resolver->setAllowedTypes('isPrivate', 'bool');
 
-        $resolver->setRequired('isOnHome');
+        $resolver->setDefault('isOnHome', false);
         $resolver->setAllowedTypes('isOnHome', 'bool');
     }
 }

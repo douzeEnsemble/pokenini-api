@@ -112,6 +112,31 @@ class DexControllerTest extends AbstractApiTest
         $this->assertFalse($trainerDexAfter['is_on_home']);
     }
 
+    public function testCreateWithMissingAttribute(): void
+    {
+        $trainerDexBefore = $this->getTrainerDex('bd307a3ec329e10a2cff8fb87480823da114f8f4', 'redgreenblueyellow');
+
+        $this->assertEmpty($trainerDexBefore);
+
+        $this->apiRequest(
+            'dex/bd307a3ec329e10a2cff8fb87480823da114f8f4/redgreenblueyellow',
+            [],
+            'PATCH',
+            [
+                'body' => '{"isPrivate": true}'
+            ]
+        );
+
+        $this->assertResponseIsSuccessful();
+
+        $trainerDexAfter = $this->getTrainerDex('bd307a3ec329e10a2cff8fb87480823da114f8f4', 'redgreenblueyellow');
+
+        $this->assertArrayHasKey('is_private', $trainerDexAfter);
+        $this->assertTrue($trainerDexAfter['is_private']);
+        $this->assertArrayHasKey('is_on_home', $trainerDexAfter);
+        $this->assertFalse($trainerDexAfter['is_on_home']);
+    }
+
     public function testBadArgument(): void
     {
         $trainerDexBefore = $this->getTrainerDex('bd307a3ec329e10a2cff8fb87480823da114f8f4', 'redgreenblueyellow');
