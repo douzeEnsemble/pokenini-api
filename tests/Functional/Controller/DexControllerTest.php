@@ -71,7 +71,7 @@ class DexControllerTest extends AbstractApiTest
         $this->apiRequest(
             'dex/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow',
             [],
-            'PATCH',
+            'PUT',
             [
                 'body' => '{"isPrivate": true, "isOnHome": true}'
             ]
@@ -96,7 +96,7 @@ class DexControllerTest extends AbstractApiTest
         $this->apiRequest(
             'dex/bd307a3ec329e10a2cff8fb87480823da114f8f4/redgreenblueyellow',
             [],
-            'PATCH',
+            'PUT',
             [
                 'body' => '{"isPrivate": true, "isOnHome": false}'
             ]
@@ -121,7 +121,7 @@ class DexControllerTest extends AbstractApiTest
         $this->apiRequest(
             'dex/bd307a3ec329e10a2cff8fb87480823da114f8f4/redgreenblueyellow',
             [],
-            'PATCH',
+            'PUT',
             [
                 'body' => '{"isPrivate": true}'
             ]
@@ -146,7 +146,7 @@ class DexControllerTest extends AbstractApiTest
         $this->apiRequest(
             'dex/bd307a3ec329e10a2cff8fb87480823da114f8f4/redgreenblueyellow',
             [],
-            'PATCH',
+            'PUT',
             [
                 'body' => '{"is_private": true, "isOnHome": false}'
             ]

@@ -35,8 +35,8 @@ class DexController extends AbstractController
         return new JsonResponse($dexes);
     }
 
-    #[Route(methods: ['PATCH'], path: '/{trainerExternalId}/{dexSlug}')]
-    public function patch(
+    #[Route(methods: ['PUT'], path: '/{trainerExternalId}/{dexSlug}')]
+    public function put(
         Request $request,
         string $trainerExternalId,
         string $dexSlug
