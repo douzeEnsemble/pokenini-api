@@ -36,29 +36,11 @@ class DexController extends AbstractController
     }
 
     #[Route(methods: ['PATCH'], path: '/{trainerExternalId}/{dexSlug}')]
-    public function update(
+    public function patch(
         Request $request,
         string $trainerExternalId,
         string $dexSlug
     ): Response {
-        $this->upsert($trainerExternalId, $dexSlug, $request);
-
-        return new Response();
-    }
-
-    #[Route(methods: ['PUT'], path: '/{trainerExternalId}/{dexSlug}')]
-    public function create(
-        Request $request,
-        string $trainerExternalId,
-        string $dexSlug
-    ): Response {
-        $this->upsert($trainerExternalId, $dexSlug, $request);
-
-        return new Response('', Response::HTTP_CREATED);
-    }
-
-    private function upsert(string $trainerExternalId, string $dexSlug, Request $request): void
-    {
         $json = $request->getContent();
 
         if (empty($json)) {
@@ -75,5 +57,7 @@ class DexController extends AbstractController
         }
 
         $this->trainerDexRepository->upsert($trainerExternalId, $dexSlug, $attributes);
+
+        return new Response();
     }
 }
