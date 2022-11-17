@@ -117,9 +117,6 @@
     "fakerphp/faker": {
         "version": "v1.19.0"
     },
-    "fig/link-util": {
-        "version": "1.2.0"
-    },
     "friendsofphp/proxy-manager-lts": {
         "version": "v1.0.5"
     },
