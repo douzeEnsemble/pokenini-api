@@ -38,13 +38,35 @@ class DexRepository extends ServiceEntityRepository
         return $queryBuilder->getQuery()->getSingleScalarResult();
     }
 
-    public function getBySlug(string $slug): ?Dex
+    /**
+     * @return string[]|bool[]
+     */
+    public function getData(string $trainerExternalId, string $dexSlug): array
     {
-        $queryBuilder = $this->createQueryBuilder('d');
-        $queryBuilder->where($queryBuilder->expr()->eq('d.slug', ':slug'));
-        $queryBuilder->setParameter('slug', $slug);
+        $sql = <<<SQL
+        SELECT      d.name AS name, 
+                    d.french_name AS french_name,
+                    d.is_shiny AS is_shiny,
+                    d.is_display_form AS is_display_form,
+                    d.display_template AS display_template,
+                    d.selection_rule AS selection_rule,
+                    COALESCE(td.is_private, d.is_private) AS is_private,
+                    COALESCE(td.is_on_home, false) AS is_on_home
+        FROM        dex AS d
+                LEFT JOIN trainer_dex AS td
+                    ON td.dex_id = d.id AND td.trainer_external_id = :trainer_external_id
+        WHERE       d.slug = :dex_slug
+        SQL;
 
-        /** @var Dex|null */
-        return $queryBuilder->getQuery()->getOneOrNullResult();
+        $data = $this->getEntityManager()->getConnection()->fetchAllAssociative(
+            $sql,
+            [
+                'trainer_external_id' => $trainerExternalId,
+                'dex_slug' => $dexSlug,
+            ]
+        );
+
+        /** @var string[]|bool[] */
+        return $data[0] ?? [];
     }
 }

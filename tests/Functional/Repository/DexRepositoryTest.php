@@ -48,28 +48,36 @@ class DexRepositoryTest extends KernelTestCase
         $this->assertEquals($this->getDexCount(), $repo->countAll());
     }
 
-    public function testGetBySlug(): void
+    public function testGetData(): void
     {
         /** @var DexRepository $repo */
         $repo = static::getContainer()->get(DexRepository::class);
 
-        $dexRGBY = $repo->getBySlug('redgreenblueyellow');
+        $dexRGBY = $repo->getData('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow');
 
-        $this->assertEquals('Red / Green / Blue / Yellow', $dexRGBY?->name);
+        $this->assertArrayHasKey('name', $dexRGBY);
+        $this->assertEquals('Red / Green / Blue / Yellow', $dexRGBY['name']);
+        $this->assertArrayHasKey('selection_rule', $dexRGBY);
         $this->assertEquals(
             '(p.bankable or p.bankableish) and ba?.redgreenblueyellow',
-            $dexRGBY?->selectionRule
+            $dexRGBY['selection_rule']
         );
+        $this->assertArrayHasKey('is_private', $dexRGBY);
+        $this->assertFalse($dexRGBY['is_private']);
 
-        $dexGSC = $repo->getBySlug('goldsilvercrystal');
+        $dexGSC = $repo->getData('7b52009b64fd0a2a49e6d8a939753077792b0554', 'goldsilvercrystal');
 
-        $this->assertEquals('Gold / Silver / Crystal', $dexGSC?->name);
+        $this->assertArrayHasKey('name', $dexGSC);
+        $this->assertEquals('Gold / Silver / Crystal', $dexGSC['name']);
+        $this->assertArrayHasKey('selection_rule', $dexGSC);
         $this->assertEquals(
             '(p.bankable or p.bankableish) and ba?.goldsilvercrystal '
             . 'and p.specialForm === null and p.regionalForm === null',
-            $dexGSC?->selectionRule
+            $dexGSC['selection_rule']
         );
+        $this->assertArrayHasKey('is_private', $dexGSC);
+        $this->assertTrue($dexGSC['is_private']);
 
-        $this->assertNull($repo->getBySlug('dexthatdoesntexists'));
+        $this->assertEmpty($repo->getData('7b52009b64fd0a2a49e6d8a939753077792b0554', 'dexthatdoesntexists'));
     }
 }

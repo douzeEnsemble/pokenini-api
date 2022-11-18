@@ -31,7 +31,9 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertArrayHasKey('is_shiny', $data['dex']);
         $this->assertFalse($data['dex']['is_shiny']);
         $this->assertArrayHasKey('is_private', $data['dex']);
-        $this->assertTrue($data['dex']['is_private']);
+        $this->assertFalse($data['dex']['is_private']);
+        $this->assertArrayHasKey('is_on_home', $data['dex']);
+        $this->assertFalse($data['dex']['is_on_home']);
         $this->assertArrayHasKey('is_display_form', $data['dex']);
         $this->assertTrue($data['dex']['is_display_form']);
         $this->assertArrayHasKey('display_template', $data['dex']);
@@ -81,6 +83,8 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertFalse($data['dex']['is_shiny']);
         $this->assertArrayHasKey('is_private', $data['dex']);
         $this->assertTrue($data['dex']['is_private']);
+        $this->assertArrayHasKey('is_on_home', $data['dex']);
+        $this->assertFalse($data['dex']['is_on_home']);
         $this->assertArrayHasKey('is_display_form', $data['dex']);
         $this->assertTrue($data['dex']['is_display_form']);
         $this->assertArrayHasKey('display_template', $data['dex']);
@@ -130,6 +134,8 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertFalse($data['dex']['is_shiny']);
         $this->assertArrayHasKey('is_private', $data['dex']);
         $this->assertTrue($data['dex']['is_private']);
+        $this->assertArrayHasKey('is_on_home', $data['dex']);
+        $this->assertFalse($data['dex']['is_on_home']);
         $this->assertArrayHasKey('is_display_form', $data['dex']);
         $this->assertTrue($data['dex']['is_display_form']);
         $this->assertArrayHasKey('display_template', $data['dex']);
@@ -177,7 +183,7 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertArrayHasKey('is_shiny', $data['dex']);
         $this->assertFalse($data['dex']['is_shiny']);
         $this->assertArrayHasKey('is_private', $data['dex']);
-        $this->assertFalse($data['dex']['is_private']);
+        $this->assertTrue($data['dex']['is_private']);
         $this->assertArrayHasKey('is_display_form', $data['dex']);
         $this->assertTrue($data['dex']['is_display_form']);
         $this->assertArrayHasKey('display_template', $data['dex']);
@@ -217,7 +223,7 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertArrayHasKey('is_shiny', $data['dex']);
         $this->assertTrue($data['dex']['is_shiny']);
         $this->assertArrayHasKey('is_private', $data['dex']);
-        $this->assertFalse($data['dex']['is_private']);
+        $this->assertTrue($data['dex']['is_private']);
         $this->assertArrayHasKey('is_display_form', $data['dex']);
         $this->assertTrue($data['dex']['is_display_form']);
         $this->assertArrayHasKey('display_template', $data['dex']);
