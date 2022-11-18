@@ -38,18 +38,11 @@ class AlbumController extends AbstractController
 
         $report = $this->getReport($trainerExternalId, $dexSlug);
 
-        $dex = $dexRepository->getBySlug($dexSlug);
+        $dex = $dexRepository->getData($trainerExternalId, $dexSlug);
 
         // Better with serializer ?
         return new JsonResponse([
-            'dex' => [
-                'name' => $dex?->name,
-                'french_name' => $dex?->frenchName,
-                'is_shiny' => $dex?->isShiny,
-                'is_private' => $dex?->isPrivate,
-                'is_display_form' => $dex?->isDisplayForm,
-                'display_template' => $dex?->displayTemplate,
-            ],
+            'dex' => $dex,
             'pokemons' => $pokemons,
             'report' => $report,
         ]);
