@@ -13,14 +13,14 @@ class TrainerDexAttributesTest extends TestCase
 {
     public function testOk(): void
     {
-        $attributes = new TrainerDexAttributes(['isPrivate' => false, 'isOnHome' => false]);
+        $attributes = new TrainerDexAttributes(['is_private' => false, 'is_on_home' => false]);
 
         $this->assertFalse($attributes->isPrivate);
     }
 
     public function testMissingOnelValue(): void
     {
-        $attributes = new TrainerDexAttributes(['isOnHome' => true]);
+        $attributes = new TrainerDexAttributes(['is_on_home' => true]);
 
         $this->assertFalse($attributes->isPrivate);
     }
@@ -36,12 +36,12 @@ class TrainerDexAttributesTest extends TestCase
     public function testWrongValue(): void
     {
         $this->expectException(InvalidOptionsException::class);
-        new TrainerDexAttributes(['isPrivate' => 'yes', 'isOnHome' => false]);
+        new TrainerDexAttributes(['is_private' => 'yes', 'is_on_home' => false]);
     }
 
     public function testAnotherValue(): void
     {
         $this->expectException(UndefinedOptionsException::class);
-        new TrainerDexAttributes(['is_private' => true, 'isOnHome' => false]);
+        new TrainerDexAttributes(['isPrivate' => true, 'is_on_home' => false]);
     }
 }
