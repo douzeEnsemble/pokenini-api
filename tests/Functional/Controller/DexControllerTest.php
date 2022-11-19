@@ -73,7 +73,8 @@ class DexControllerTest extends AbstractApiTest
             [],
             'PUT',
             [
-                'body' => '{"is_private": true, "is_on_home": true}'
+                'body' => '{"is_private": true, "is_on_home": true}',
+                'auth_basic' => ['web', 'douze']
             ]
         );
 
@@ -98,7 +99,8 @@ class DexControllerTest extends AbstractApiTest
             [],
             'PUT',
             [
-                'body' => '{"is_private": true, "is_on_home": false}'
+                'body' => '{"is_private": true, "is_on_home": false}',
+                'auth_basic' => ['web', 'douze']
             ]
         );
 
@@ -123,7 +125,8 @@ class DexControllerTest extends AbstractApiTest
             [],
             'PUT',
             [
-                'body' => '{"is_private": true}'
+                'body' => '{"is_private": true}',
+                'auth_basic' => ['web', 'douze']
             ]
         );
 
@@ -148,7 +151,8 @@ class DexControllerTest extends AbstractApiTest
             [],
             'PUT',
             [
-                'body' => '{"is_private": true, "isOnHome": false}'
+                'body' => '{"is_private": true, "isOnHome": false}',
+                'auth_basic' => ['web', 'douze'],
             ]
         );
 
