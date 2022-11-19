@@ -20,7 +20,7 @@ abstract class AbstractApiTest extends ApiTestCase
         string $route,
         array $params = [],
         string $method = 'GET',
-        array $options = []
+        array $options = ['auth_basic' => ['web', 'douze']]
     ): ResponseInterface {
         $urlParams = \http_build_query($params);
 
@@ -40,12 +40,17 @@ abstract class AbstractApiTest extends ApiTestCase
 
     /**
      * @param string[] $params
+     * @param string[]|string[][] $options
      *
      * @return mixed[]
      */
-    public function apiRequestContent(string $route, array $params = []): array
-    {
-        $response = $this->apiRequest($route, $params);
+    public function apiRequestContent(
+        string $route,
+        array $params = [],
+        string $method = 'GET',
+        array $options = ['auth_basic' => ['web', 'douze']]
+    ): array {
+        $response = $this->apiRequest($route, $params, $method, $options);
 
         /** @var mixed[] */
         return json_decode($response->getContent(), true);

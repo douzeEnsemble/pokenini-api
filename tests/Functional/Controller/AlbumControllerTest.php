@@ -308,7 +308,8 @@ class AlbumControllerTest extends AbstractApiTest
             [],
             'PATCH',
             [
-                'body' => 'yes'
+                'body' => 'yes',
+                'auth_basic' => ['web', 'douze'],
             ]
         );
 
@@ -331,7 +332,8 @@ class AlbumControllerTest extends AbstractApiTest
             [],
             'PUT',
             [
-                'body' => 'maybenot'
+                'body' => 'maybenot',
+                'auth_basic' => ['web', 'douze'],
             ]
         );
 
