@@ -21,16 +21,16 @@ final class TrainerDexAttributes
 
         $options = $resolver->resolve($values);
 
-        $this->isPrivate = $options['isPrivate'];
-        $this->isOnHome = $options['isOnHome'];
+        $this->isPrivate = $options['is_private'];
+        $this->isOnHome = $options['is_on_home'];
     }
 
     private function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefault('isPrivate', false);
-        $resolver->setAllowedTypes('isPrivate', 'bool');
+        $resolver->setDefault('is_private', false);
+        $resolver->setAllowedTypes('is_private', 'bool');
 
-        $resolver->setDefault('isOnHome', false);
-        $resolver->setAllowedTypes('isOnHome', 'bool');
+        $resolver->setDefault('is_on_home', false);
+        $resolver->setAllowedTypes('is_on_home', 'bool');
     }
 }
