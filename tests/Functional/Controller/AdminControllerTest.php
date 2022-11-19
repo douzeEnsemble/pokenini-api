@@ -25,6 +25,12 @@ class AdminControllerTest extends WebTestCase
         $client->request(
             'POST',
             "/istrateur/update/labels",
+            [],
+            [],
+            [
+                'PHP_AUTH_USER' => 'web',
+                'PHP_AUTH_PW'   => 'douze',
+            ],
         );
 
         $this->assertResponseIsSuccessful();
@@ -34,6 +40,24 @@ class AdminControllerTest extends WebTestCase
         $this->assertEquals(4, $this->getTableCount('regional_form'));
         $this->assertEquals(5, $this->getTableCount('special_form'));
         $this->assertEquals(8, $this->getTableCount('variant_form'));
+    }
+
+    public function testUpdateLabelsBadAuth(): void
+    {
+        $client = static::createClient();
+
+        $client->request(
+            'POST',
+            "/istrateur/update/labels",
+            [],
+            [],
+            [
+                'PHP_AUTH_USER' => 'web',
+                'PHP_AUTH_PW'   => 'treize',
+            ],
+        );
+
+        $this->assertResponseStatusCodeSame(401);
     }
 
     public function testUpdateGamesAndDexes(): void
@@ -48,6 +72,12 @@ class AdminControllerTest extends WebTestCase
         $client->request(
             'POST',
             "/istrateur/update/games_and_dexes",
+            [],
+            [],
+            [
+                'PHP_AUTH_USER' => 'web',
+                'PHP_AUTH_PW'   => 'douze',
+            ],
         );
 
         $this->assertResponseIsSuccessful();
@@ -56,6 +86,24 @@ class AdminControllerTest extends WebTestCase
         $this->assertEquals(17, $this->getTableCount('game_bundle'));
         $this->assertEquals(38, $this->getTableCount('game'));
         $this->assertEquals(22, $this->getTableCount('dex'));
+    }
+
+    public function testUpdateGamesAndDexesBadAuth(): void
+    {
+        $client = static::createClient();
+
+        $client->request(
+            'POST',
+            "/istrateur/update/games_and_dexes",
+            [],
+            [],
+            [
+                'PHP_AUTH_USER' => 'web',
+                'PHP_AUTH_PW'   => 'treize',
+            ],
+        );
+
+        $this->assertResponseStatusCodeSame(401);
     }
 
     public function testUpdatePokemons(): void
@@ -67,11 +115,35 @@ class AdminControllerTest extends WebTestCase
         $client->request(
             'POST',
             "/istrateur/update/pokemons",
+            [],
+            [],
+            [
+                'PHP_AUTH_USER' => 'web',
+                'PHP_AUTH_PW'   => 'douze',
+            ],
         );
 
         $this->assertResponseIsSuccessful();
 
         $this->assertEquals(1816, $this->getTableCount('pokemon'));
+    }
+
+    public function testUpdatePokemonsBadAuth(): void
+    {
+        $client = static::createClient();
+
+        $client->request(
+            'POST',
+            "/istrateur/update/pokemons",
+            [],
+            [],
+            [
+                'PHP_AUTH_USER' => 'web',
+                'PHP_AUTH_PW'   => 'treize',
+            ],
+        );
+
+        $this->assertResponseStatusCodeSame(401);
     }
 
     public function testUpdateGameBundleAvailability(): void
@@ -83,11 +155,35 @@ class AdminControllerTest extends WebTestCase
         $client->request(
             'POST',
             "/istrateur/update/game_bundle_availability",
+            [],
+            [],
+            [
+                'PHP_AUTH_USER' => 'web',
+                'PHP_AUTH_PW'   => 'douze',
+            ],
         );
 
         $this->assertResponseIsSuccessful();
 
         $this->assertEquals(18, $this->getTableCount('game_bundle_availability'));
+    }
+
+    public function testUpdateGameBundleAvailabilityBadAuth(): void
+    {
+        $client = static::createClient();
+
+        $client->request(
+            'POST',
+            "/istrateur/update/game_bundle_availability",
+            [],
+            [],
+            [
+                'PHP_AUTH_USER' => 'web',
+                'PHP_AUTH_PW'   => 'treize',
+            ],
+        );
+
+        $this->assertResponseStatusCodeSame(401);
     }
 
     public function testUpdateDexAvailability(): void
@@ -99,10 +195,34 @@ class AdminControllerTest extends WebTestCase
         $client->request(
             'POST',
             "/istrateur/update/dex_availability",
+            [],
+            [],
+            [
+                'PHP_AUTH_USER' => 'web',
+                'PHP_AUTH_PW'   => 'douze',
+            ],
         );
 
         $this->assertResponseIsSuccessful();
 
         $this->assertEquals(53, $this->getTableCount('dex_availability'));
+    }
+
+    public function testUpdateDexAvailabilityBadAuth(): void
+    {
+        $client = static::createClient();
+
+        $client->request(
+            'POST',
+            "/istrateur/update/dex_availability",
+            [],
+            [],
+            [
+                'PHP_AUTH_USER' => 'web',
+                'PHP_AUTH_PW'   => 'treize',
+            ],
+        );
+
+        $this->assertResponseStatusCodeSame(401);
     }
 }
