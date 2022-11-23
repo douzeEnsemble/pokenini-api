@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
-#[Route('/istrateur')]
+#[Route('/istration')]
 class AdminController extends AbstractController
 {
     #[Route(path: '/update/labels', methods: ['POST'])]
