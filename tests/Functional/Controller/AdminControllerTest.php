@@ -24,7 +24,7 @@ class AdminControllerTest extends WebTestCase
 
         $client->request(
             'POST',
-            "/istrateur/update/labels",
+            "/istration/update/labels",
             [],
             [],
             [
@@ -48,7 +48,7 @@ class AdminControllerTest extends WebTestCase
 
         $client->request(
             'POST',
-            "/istrateur/update/labels",
+            "/istration/update/labels",
             [],
             [],
             [
@@ -71,7 +71,7 @@ class AdminControllerTest extends WebTestCase
 
         $client->request(
             'POST',
-            "/istrateur/update/games_and_dexes",
+            "/istration/update/games_and_dexes",
             [],
             [],
             [
@@ -94,7 +94,7 @@ class AdminControllerTest extends WebTestCase
 
         $client->request(
             'POST',
-            "/istrateur/update/games_and_dexes",
+            "/istration/update/games_and_dexes",
             [],
             [],
             [
@@ -114,7 +114,7 @@ class AdminControllerTest extends WebTestCase
 
         $client->request(
             'POST',
-            "/istrateur/update/pokemons",
+            "/istration/update/pokemons",
             [],
             [],
             [
@@ -134,7 +134,7 @@ class AdminControllerTest extends WebTestCase
 
         $client->request(
             'POST',
-            "/istrateur/update/pokemons",
+            "/istration/update/pokemons",
             [],
             [],
             [
@@ -154,7 +154,7 @@ class AdminControllerTest extends WebTestCase
 
         $client->request(
             'POST',
-            "/istrateur/update/game_bundle_availability",
+            "/istration/update/game_bundle_availability",
             [],
             [],
             [
@@ -174,7 +174,7 @@ class AdminControllerTest extends WebTestCase
 
         $client->request(
             'POST',
-            "/istrateur/update/game_bundle_availability",
+            "/istration/update/game_bundle_availability",
             [],
             [],
             [
@@ -194,7 +194,7 @@ class AdminControllerTest extends WebTestCase
 
         $client->request(
             'POST',
-            "/istrateur/update/dex_availability",
+            "/istration/update/dex_availability",
             [],
             [],
             [
@@ -214,7 +214,7 @@ class AdminControllerTest extends WebTestCase
 
         $client->request(
             'POST',
-            "/istrateur/update/dex_availability",
+            "/istration/update/dex_availability",
             [],
             [],
             [
