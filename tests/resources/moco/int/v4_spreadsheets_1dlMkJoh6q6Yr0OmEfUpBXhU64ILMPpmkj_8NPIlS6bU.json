@@ -1559,7 +1559,7 @@
         "sheetType": "GRID",
         "gridProperties": {
           "rowCount": 22,
-          "columnCount": 9,
+          "columnCount": 10,
           "frozenRowCount": 1
         },
         "tabColor": {

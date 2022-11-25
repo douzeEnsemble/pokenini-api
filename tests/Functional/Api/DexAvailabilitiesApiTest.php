@@ -16,7 +16,7 @@ class DexAvailabilitiesApiTest extends AbstractApiTest
         /** @var string[]|string[][] $content */
         $content = $this->apiRequestContent('dex_availabilities', ['dex.slug' => 'goldsilvercrystal']);
 
-        $this->assertCount(6, $content);
+        $this->assertCount(9, $content);
 
         /** @var string[]|string[][] $content */
         $content = $this->apiRequestContent('dex_availabilities', ['dex.slug' => 'home']);

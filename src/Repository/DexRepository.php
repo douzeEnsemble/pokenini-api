@@ -44,11 +44,12 @@ class DexRepository extends ServiceEntityRepository
     public function getData(string $trainerExternalId, string $dexSlug): array
     {
         $sql = <<<SQL
-        SELECT      d.name AS name, 
+        SELECT      d.name AS name,
                     d.french_name AS french_name,
                     d.is_shiny AS is_shiny,
                     d.is_display_form AS is_display_form,
                     d.display_template AS display_template,
+                    d.region_name AS region_name,
                     d.selection_rule AS selection_rule,
                     COALESCE(td.is_private, d.is_private) AS is_private,
                     COALESCE(td.is_on_home, false) AS is_on_home

@@ -13,28 +13,28 @@ App\Entity\Pokemon:
         formsLabel: ''
         simplifiedFrenchName: '$frenchName'
         formsFrenchLabel: ''
-        
+
     pokemon_douze (extends pokemon):
         slug: 'douze'
         name: 'Douze'
         frenchName: 'Douze'
         family: ~
-        nationalDexNumber: '1212'
-        originalGameBundle: '@game_bundle_red_green_blue_yellow'       
+        nationalDexNumber: '9912'
+        originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'douze'
         familyOrder: 0
-        
+
     pokemon_bulbasaur (extends pokemon):
         slug: 'bulbasaur'
         name: 'Bulbasaur'
         frenchName: 'Bulbizarre'
         family: ~
         nationalDexNumber: '1'
-        originalGameBundle: '@game_bundle_red_green_blue_yellow'       
+        originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'bulbasaur'
         familyOrder: 0
         categoryForm: '@category_form_starter'
-    
+
     pokemon_ivysaur (extends pokemon):
         slug: 'ivysaur'
         name: 'Ivysaur'
@@ -44,19 +44,19 @@ App\Entity\Pokemon:
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'ivysaur'
         familyOrder: 1
-        
+
     pokemon_venusaur (extends pokemon):
         slug: 'venusaur'
         name: 'Venusaur'
         frenchName: 'Florizarre'
         family: '@pokemon_bulbasaur'
         nationalDexNumber: '3'
-        originalGameBundle: '@game_bundle_red_green_blue_yellow'       
+        originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'venusaur'
         familyOrder: 2
         regularSpriteUrl: 'https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/regular/venusaur.png'
         shinySpriteUrl: 'https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/shiny/venusaur.png'
-        
+
     pokemon_venusaur_f (extends pokemon):
         slug: 'venusaur-f'
         primeName: 'Venusaur'
@@ -68,11 +68,11 @@ App\Entity\Pokemon:
         formsFrenchLabel: '♀️'
         family: '@pokemon_bulbasaur'
         nationalDexNumber: '3'
-        originalGameBundle: '@game_bundle_diamond_pearl_platinium'       
+        originalGameBundle: '@game_bundle_diamond_pearl_platinium'
         iconName: 'venusaur'
         variantForm: '@variant_form_gender'
         familyOrder: 3
-    
+
     pokemon_venusaur_mega (extends pokemon):
         slug: 'venusaur-mega'
         primeName: 'Venusaur'
@@ -88,7 +88,7 @@ App\Entity\Pokemon:
         iconName: 'venusaur'
         specialForm: '@special_form_mega'
         familyOrder: 4
-    
+
     pokemon_venusaur_gigantamax (extends pokemon):
         slug: 'venusaur-gmax'
         primeName: 'Venusaur'
@@ -104,18 +104,49 @@ App\Entity\Pokemon:
         iconName: 'venusaur'
         specialForm: '@special_form_gigantamax'
         familyOrder: 5
-    
+
+    pokemon_charmander (extends pokemon):
+        slug: 'charmander'
+        name: 'Charmander'
+        frenchName: 'Salamèche'
+        family: ~
+        nationalDexNumber: '4'
+        originalGameBundle: '@game_bundle_red_green_blue_yellow'
+        iconName: 'charmander'
+        familyOrder: 0
+        categoryForm: '@category_form_starter'
+
+    pokemon_charmeleon (extends pokemon):
+        slug: 'charmeleon'
+        name: 'Charmeleon'
+        frenchName: 'Reptincel'
+        family: '@pokemon_charmander'
+        nationalDexNumber: '5'
+        originalGameBundle: '@game_bundle_red_green_blue_yellow'
+        iconName: 'charmeleon'
+        familyOrder: 1
+
+    pokemon_charizard (extends pokemon):
+        slug: 'charizard'
+        name: 'Charizard'
+        frenchName: 'Dracaufeu'
+        family: '@pokemon_charmander'
+        nationalDexNumber: '6'
+        originalGameBundle: '@game_bundle_red_green_blue_yellow'
+        iconName: 'charizard'
+        familyOrder: 2
+
     pokemon_deoxys (extends pokemon):
         slug: 'deoxys'
         name: 'Deoxys'
         frenchName: 'Deoxys'
-        family: 
+        family:
         nationalDexNumber: '386'
         originalGameBundle: '@game_bundle_ruby_sapphire_emerald'
         iconName: 'deoxys'
         familyOrder: 0
         categoryForm: '@category_form_mythical'
-    
+
     pokemon_deoxys_attack (extends pokemon):
         slug: 'deoxys-attack'
         primeName: 'Deoxys'
@@ -130,7 +161,7 @@ App\Entity\Pokemon:
         familyOrder: 1
         variantForm: '@variant_form_alternate'
         categoryForm: '@category_form_mythical'
-    
+
     pokemon_deoxys_defense (extends pokemon):
         slug: 'deoxys-defense'
         primeName: 'Deoxys'
@@ -145,7 +176,7 @@ App\Entity\Pokemon:
         familyOrder: 2
         variantForm: '@variant_form_alternate'
         categoryForm: '@category_form_mythical'
-    
+
     pokemon_deoxys_speed (extends pokemon):
         slug: 'deoxys-speed'
         primeName: 'Deoxys'
@@ -160,7 +191,7 @@ App\Entity\Pokemon:
         familyOrder: 3
         variantForm: '@variant_form_alternate'
         categoryForm: '@category_form_mythical'
-    
+
     pokemon_caterpie (extends pokemon):
         slug: 'caterpie'
         name: 'Caterpie'
@@ -169,7 +200,7 @@ App\Entity\Pokemon:
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'caterpie'
         familyOrder: 0
-    
+
     pokemon_metapod (extends pokemon):
         slug: 'metapod'
         name: 'Metapod'
@@ -179,7 +210,7 @@ App\Entity\Pokemon:
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'metapod'
         familyOrder: 1
-    
+
     pokemon_butterfree (extends pokemon):
         slug: 'butterfree'
         name: 'Butterfree'
@@ -189,7 +220,7 @@ App\Entity\Pokemon:
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'butterfree'
         familyOrder: 2
-    
+
     pokemon_butterfree_f (extends pokemon):
         slug: 'butterfree-f'
         primeName: 'Butterfree'
@@ -205,7 +236,7 @@ App\Entity\Pokemon:
         iconName: 'butterfree'
         familyOrder: 3
         variantForm: '@variant_form_gender'
-    
+
     pokemon_butterfree_gigantamax (extends pokemon):
         slug: 'butterfree-gmax'
         primeName: 'Butterfree'
@@ -221,4 +252,3 @@ App\Entity\Pokemon:
         iconName: 'butterfree-gmax'
         specialForm: '@special_form_gigantamax'
         familyOrder: 5
-    

@@ -60,7 +60,8 @@ class PokemonRepositoryTest extends KernelTestCase
         $this->assertNull($pokemons[5]->regionalForm);
         $this->assertEquals('Gigantamax', $pokemons[5]->specialForm?->name);
 
-        $this->assertEquals('butterfree', $pokemons[8]->iconName);
+        $this->assertEquals('charizard', $pokemons[8]->iconName);
+        $this->assertEquals('butterfree', $pokemons[11]->iconName);
 
         $this->assertEquals(
             'https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/regular/venusaur.png',

@@ -19,6 +19,7 @@ class DexesApiTest extends AbstractApiTest
             'isPrivate' => true,
             'isDisplayForm' => true,
             'displayTemplate' => 'box',
+            'regionName' => 'Kanto',
         ], $content[0]);
 
         $this->assertEquals([
@@ -29,6 +30,7 @@ class DexesApiTest extends AbstractApiTest
             'isPrivate' => true,
             'isDisplayForm' => true,
             'displayTemplate' => 'box',
+            'regionName' => 'Johto',
         ], $content[1]);
 
         $this->assertEquals([

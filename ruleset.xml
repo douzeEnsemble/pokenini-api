@@ -14,9 +14,20 @@
         <exclude name="MissingImport" />
         <exclude name="StaticAccess" />
     </rule>
-    <rule ref="rulesets/codesize.xml" />
+
+    <rule ref="rulesets/codesize.xml">
+        <exclude name="TooManyPublicMethods" />
+    </rule>
+    <rule ref="rulesets/codesize.xml/TooManyPublicMethods">
+        <properties>
+            <property name="maxmethods" description="The method count reporting threshold" value="20"/>
+            <property name="ignorepattern" description="Ignore methods matching this regex" value="(^(set|get|is|has|with))i"/>
+        </properties>
+    </rule>
+
     <rule ref="rulesets/controversial.xml" />
     <rule ref="rulesets/design.xml" />
+
     <rule ref="rulesets/naming.xml">
         <exclude name="LongVariable" />
     </rule>
@@ -25,5 +36,6 @@
             <property name="maximum" value="32" />
         </properties>
     </rule>
+
     <rule ref="rulesets/unusedcode.xml" />
 </ruleset>
