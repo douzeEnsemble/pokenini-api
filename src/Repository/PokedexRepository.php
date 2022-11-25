@@ -44,26 +44,38 @@ class PokedexRepository extends ServiceEntityRepository
                 vf.name as variant_form_name,
                 cs.slug AS catch_state_slug,
                 cs.name AS catch_state_name,
-                cs.french_name AS catch_state_french_name
+                cs.french_name AS catch_state_french_name,
+                rdn.dex_number AS pokemon_regional_dex_number,
+                CONCAT(
+                    LPAD(CAST(COALESCE(rdn.dex_number, 999) AS varchar), 3, '0'),
+                    '-',
+                    LPAD(CAST(p.national_dex_number AS varchar), 4, '0'),
+                    '-',
+                    LPAD(CAST(p.family_order AS varchar), 2, '0')
+                ) as pokemon_order_number
         FROM    dex_availability AS da
             JOIN pokemon AS p
                 ON da.pokemon_id = p.id
             JOIN dex AS d
                 ON da.dex_id = d.id
             LEFT JOIN pokedex AS pd
-                ON pd.dex_id = da.dex_id 
-                AND pd.pokemon_id = da.pokemon_id 
+                ON pd.dex_id = da.dex_id
+                AND pd.pokemon_id = da.pokemon_id
                 AND pd.trainer_external_id = :trainer_external_id
             LEFT JOIN catch_state AS cs
                 ON pd.catch_state_id = cs.id
             LEFT JOIN regional_form AS rf
-                ON p.regional_form_id = rf.id
+                    ON p.regional_form_id = rf.id
             LEFT JOIN special_form AS sf
                 ON p.special_form_id = sf.id
             LEFT JOIN variant_form AS vf
                 ON p.variant_form_id = vf.id
+            LEFT JOIN regional_dex_number AS rdn
+                ON d.region_name IS NOT NULL
+                    AND d.region_name = rdn.region_name
+                    AND p.prime_name = rdn.pokemon_name
         WHERE   d.slug = :dex_slug
-        ORDER BY p.national_dex_number, p.family_order
+        ORDER BY pokemon_order_number
         SQL;
 
         return $this->getEntityManager()->getConnection()->iterateAssociative(

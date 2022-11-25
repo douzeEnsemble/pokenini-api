@@ -7,12 +7,12 @@ namespace App\Updater;
 use App\Helper\A1Notation;
 use Symfony\Component\Uid\Uuid;
 
-class GameAvailabilityUpdater extends AbstractUpdater
+class RegionalDexNumberUpdater extends AbstractUpdater
 {
-    protected string $sheetName = 'Games Availability';
-    protected string $tableName = 'game_availability';
-    protected string $headerCellsRange = 'A2:AL2';
-    protected int $recordsCellsStartRowIndex = 2;
+    protected string $sheetName = 'Regional Dex Number';
+    protected string $tableName = 'regional_dex_number';
+    protected string $headerCellsRange = 'A1:L1';
+    protected int $recordsCellsStartRowIndex = 1;
     protected int $recordsCellsStartColumnIndex = 0;
 
     protected const RANGE_SIZE = 100;
@@ -56,44 +56,18 @@ class GameAvailabilityUpdater extends AbstractUpdater
     protected function getExpectedHeader(): array
     {
         return [
-            '#',
-            'Name',
-            'Red',
-            'Green',
-            'Blue',
-            'Yellow',
-            'Gold',
-            'Silver',
-            'Crystal',
-            'Ruby',
-            'Sapphire',
-            'Red Fire',
-            'Leaf Green',
-            'Emerald',
-            'Diamond',
-            'Pearl',
-            'Platinium',
-            'Heart Gold',
-            'Soul Silver',
-            'Black',
-            'White',
-            'Black 2',
-            'White 2',
-            'X',
-            'Y',
-            'Omega Ruby',
-            'Alpha Sapphire',
-            'Sun',
-            'Moon',
-            'Ultra Sun',
-            'Ultra Moon',
-            'Let\'s Go Pikachu',
-            'Let\'s Go Eevee',
-            'Sword',
-            'Shield',
-            'Brillant Diamond',
-            'Shining Pearl',
-            'Pokémon Legends Arceus',
+            'Pokemon',
+            'National',
+            'Kanto',
+            'Johto',
+            'Hoenn',
+            'Sinnoh',
+            'Uova',
+            'Kalos',
+            'Alola',
+            'Galar',
+            'Hisui',
+            'Paldea',
         ];
     }
 
@@ -137,14 +111,14 @@ class GameAvailabilityUpdater extends AbstractUpdater
         foreach ($records as $record) {
             $sqlValues[] = ":id$index"
                 . ", :pokemonName$index"
-                . ", (SELECT id FROM game WHERE name = :game$index)"
-                . ", :availability$index"
+                . ", :regionName$index"
+                . ", :dexNumber$index"
             ;
 
             $sqlParameters["id$index"] = Uuid::v4();
             $sqlParameters["pokemonName$index"] = $record['pokemonName'];
-            $sqlParameters["game$index"] = $record['game'];
-            $sqlParameters["availability$index"] = $record['availability'];
+            $sqlParameters["regionName$index"] = $record['regionName'];
+            $sqlParameters["dexNumber$index"] = $record['dexNumber'];
 
             $index++;
         }
@@ -152,11 +126,11 @@ class GameAvailabilityUpdater extends AbstractUpdater
         $sqlValuesStr = implode('), (', $sqlValues);
 
         $sql = <<<SQL
-        INSERT INTO game_availability (
+        INSERT INTO regional_dex_number (
             id,
             pokemon_name,
-            game_id,
-            availability
+            region_name,
+            dex_number
         )
         VALUES ($sqlValuesStr)
 SQL;
@@ -196,21 +170,24 @@ SQL;
     }
 
     /**
-     * @param string[]   $record
+     * @param string[] $record
      */
     private function transformRecord(
         array $record
     ): void {
-        unset($record['#']);
+        $name = $record['Pokemon'];
+        unset($record['Pokemon']);
+        unset($record['National']);
 
-        $name = $record['Name'];
-        unset($record['Name']);
+        foreach ($record as $regionName => $dexNumber) {
+            if (! is_numeric($dexNumber)) {
+                continue;
+            }
 
-        foreach ($record as $game => $availability) {
             $this->records[] = [
                 'pokemonName' => $name,
-                'game' => $game,
-                'availability' => $availability,
+                'regionName' => $regionName,
+                'dexNumber' => $dexNumber,
             ];
         }
     }

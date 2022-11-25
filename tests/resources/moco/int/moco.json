@@ -145,20 +145,20 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Dex'!A1:I1"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Dex'!A1:J1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Dex%27%21A1%3AI1.json"
+      "file": "/var/moco/values_%27Dex%27%21A1%3AJ1.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Dex'!A2:I"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Dex'!A2:J"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Dex%27%21A2%3AI.json"
+      "file": "/var/moco/values_%27Dex%27%21A2%3AJ.json"
     }
   },
   {
@@ -294,6 +294,114 @@
     "response": {
       "status": 200,
       "file": "/var/moco/values_%27Games%20Availability%27%21A903%3AAL964.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Regional Dex Number'!A1:L1"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A1%3AL1.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Regional Dex Number'!A2:L101"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A2%3AL101.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Regional Dex Number'!A102:L201"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A102%3AL201.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Regional Dex Number'!A202:L301"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A202%3AL301.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Regional Dex Number'!A302:L401"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A302%3AL401.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Regional Dex Number'!A402:L501"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A402%3AL501.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Regional Dex Number'!A502:L601"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A502%3AL601.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Regional Dex Number'!A602:L701"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A602%3AL701.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Regional Dex Number'!A702:L801"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A702%3AL801.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Regional Dex Number'!A802:L901"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A802%3AL901.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Regional Dex Number'!A902:L1001"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A902%3AL1001.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Regional Dex Number'!A1002:L1006"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A1002%3AL1006.json"
     }
   }
 ]

@@ -12,7 +12,7 @@ class AlbumControllerTest extends AbstractApiTest
 {
     use GetPokedexTrait;
 
-    public function testListUser12(): void
+    public function testListUser12RedGreenBlueYellow(): void
     {
         $response = $this->apiRequest('album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow');
 
@@ -38,6 +38,8 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertTrue($data['dex']['is_display_form']);
         $this->assertArrayHasKey('display_template', $data['dex']);
         $this->assertEquals('box', $data['dex']['display_template']);
+        $this->assertArrayHasKey('region_name', $data['dex']);
+        $this->assertEquals('Kanto', $data['dex']['region_name']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -61,6 +63,61 @@ class AlbumControllerTest extends AbstractApiTest
         $report = $data['report'];
 
         $this->assertReport($report, 1, 1, 2, 0, 7);
+    }
+
+    public function testListUser12GoldSilverCrystal(): void
+    {
+        $response = $this->apiRequest('album/7b52009b64fd0a2a49e6d8a939753077792b0554/goldsilvercrystal');
+
+        $this->assertEquals(200, $response->getStatusCode());
+
+        $content = $response->getContent();
+        /** @var string[][]|string[][][]|int[][][] $data */
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertArrayHasKey('dex', $data);
+
+        $this->assertArrayHasKey('name', $data['dex']);
+        $this->assertEquals('Gold / Silver / Crystal', $data['dex']['name']);
+        $this->assertArrayHasKey('french_name', $data['dex']);
+        $this->assertEquals('Or / Argent / Cristal', $data['dex']['french_name']);
+        $this->assertArrayHasKey('is_shiny', $data['dex']);
+        $this->assertFalse($data['dex']['is_shiny']);
+        $this->assertArrayHasKey('is_private', $data['dex']);
+        $this->assertTrue($data['dex']['is_private']);
+        $this->assertArrayHasKey('is_on_home', $data['dex']);
+        $this->assertFalse($data['dex']['is_on_home']);
+        $this->assertArrayHasKey('is_display_form', $data['dex']);
+        $this->assertTrue($data['dex']['is_display_form']);
+        $this->assertArrayHasKey('display_template', $data['dex']);
+        $this->assertEquals('box', $data['dex']['display_template']);
+        $this->assertArrayHasKey('region_name', $data['dex']);
+        $this->assertEquals('Johto', $data['dex']['region_name']);
+
+        $this->assertArrayHasKey('pokemons', $data);
+        /** @var string[][] $pokemons */
+        $pokemons = $data['pokemons'];
+
+        $this->assertEquals(
+            AlbumControllerTestData::getExpectedGoldSilverCrystalContent(
+                'yes',
+                'no',
+                'no',
+                null,
+                null,
+                null,
+                null,
+                null,
+                null
+            ),
+            $pokemons
+        );
+
+        $this->assertArrayHasKey('report', $data);
+        /** @var int[]|int[][][]|string[][][] $report */
+        $report = $data['report'];
+
+        $this->assertReport($report, 2, 0, 0, 1, 9);
     }
 
     public function testListUser13(): void
@@ -89,6 +146,8 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertTrue($data['dex']['is_display_form']);
         $this->assertArrayHasKey('display_template', $data['dex']);
         $this->assertEquals('box', $data['dex']['display_template']);
+        $this->assertArrayHasKey('region_name', $data['dex']);
+        $this->assertEquals('Kanto', $data['dex']['region_name']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -140,6 +199,8 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertTrue($data['dex']['is_display_form']);
         $this->assertArrayHasKey('display_template', $data['dex']);
         $this->assertEquals('box', $data['dex']['display_template']);
+        $this->assertArrayHasKey('region_name', $data['dex']);
+        $this->assertEquals('Kanto', $data['dex']['region_name']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -188,6 +249,8 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertTrue($data['dex']['is_display_form']);
         $this->assertArrayHasKey('display_template', $data['dex']);
         $this->assertEquals('box', $data['dex']['display_template']);
+        $this->assertArrayHasKey('region_name', $data['dex']);
+        $this->assertNull($data['dex']['region_name']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -228,6 +291,8 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertTrue($data['dex']['is_display_form']);
         $this->assertArrayHasKey('display_template', $data['dex']);
         $this->assertEquals('box', $data['dex']['display_template']);
+        $this->assertArrayHasKey('region_name', $data['dex']);
+        $this->assertNull($data['dex']['region_name']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -268,6 +333,8 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertFalse($data['dex']['is_display_form']);
         $this->assertArrayHasKey('display_template', $data['dex']);
         $this->assertEquals('list-7', $data['dex']['display_template']);
+        $this->assertArrayHasKey('region_name', $data['dex']);
+        $this->assertNull($data['dex']['region_name']);
     }
 
     public function testListNoSlug(): void

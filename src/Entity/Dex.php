@@ -54,4 +54,10 @@ class Dex
         "dex_list",
     ])]
     public string $displayTemplate = 'box';
+
+    #[ORM\Column(nullable: true)]
+    #[Groups([
+        "dex_list",
+    ])]
+    public ?string $regionName = null;
 }

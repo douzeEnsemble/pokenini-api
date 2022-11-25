@@ -1,5 +1,5 @@
 {
-  "range": "Dex!A2:I22",
+  "range": "Dex!A2:J22",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -11,7 +11,8 @@
       "FALSE",
       "TRUE",
       "TRUE",
-      "box"
+      "box",
+      "Kanto"
     ],
     [
       "Gold, Silver, Crystal",
@@ -22,7 +23,8 @@
       "FALSE",
       "TRUE",
       "TRUE",
-      "box"
+      "box",
+      "Johto"
     ],
     [
       "Ruby, Sapphire, Emerald",
@@ -33,7 +35,8 @@
       "FALSE",
       "TRUE",
       "TRUE",
-      "box"
+      "box",
+      "Hoenn"
     ],
     [
       "Red Fire, Leaf Green",
@@ -44,7 +47,8 @@
       "FALSE",
       "TRUE",
       "TRUE",
-      "box"
+      "box",
+      "Kanto"
     ],
     [
       "Diamond, Pearl, Platinium",
@@ -55,7 +59,8 @@
       "FALSE",
       "TRUE",
       "TRUE",
-      "box"
+      "box",
+      "Sinnoh"
     ],
     [
       "Heart Gold, Soul Silver",
@@ -66,7 +71,8 @@
       "FALSE",
       "TRUE",
       "TRUE",
-      "box"
+      "box",
+      "Johto"
     ],
     [
       "Black, White",
@@ -77,7 +83,8 @@
       "FALSE",
       "TRUE",
       "TRUE",
-      "box"
+      "box",
+      "Unys"
     ],
     [
       "Black 2, White 2",
@@ -88,7 +95,8 @@
       "FALSE",
       "TRUE",
       "TRUE",
-      "box"
+      "box",
+      "Unys"
     ],
     [
       "X, Y",
@@ -99,7 +107,8 @@
       "FALSE",
       "TRUE",
       "TRUE",
-      "box"
+      "box",
+      "Kalos"
     ],
     [
       "Omega Ruby, Alpha Sapphire",
@@ -110,18 +119,20 @@
       "FALSE",
       "TRUE",
       "TRUE",
-      "box"
+      "box",
+      "Hoenn"
     ],
     [
       "Sun, Moon",
       "sunmoon",
-      "(p.bankable or p.bankableish)\nand (\n    p.variantForm === null\n    or p.variantForm?.name in ['Baby', 'Alternate', 'Gender', 'Therian']\n)\nand (\n    p.specialForm === null\n    or p.specialForm?.name in ['Mega']\n)\nand (\n    p.regionalForm === null\n    or p.regionalForm?.name === 'Alolan'\n)\nand p.name !== 'Lycanroc-Dusk'\nand ba?.sunmoon",
+      "(p.bankable or p.bankableish)\nand (\n    p.variantForm === null\n    or p.variantForm?.name in ['Baby', 'Alternate', 'Gender', 'Therian']\n)\nand (\n    p.specialForm === null\n    or p.specialForm?.name in ['Mega']\n)\nand (\n    p.regionalForm === null\n    or p.regionalForm?.name === 'Alolan'\n)\nand p.slug !== 'lycanroc-dusk'\nand ba?.sunmoon",
       "11",
       "Soleil, Lune",
       "FALSE",
       "TRUE",
       "TRUE",
-      "box"
+      "box",
+      "Alola"
     ],
     [
       "Ultra Sun, Ultra Moon",
@@ -132,7 +143,8 @@
       "FALSE",
       "TRUE",
       "TRUE",
-      "box"
+      "box",
+      "Alola"
     ],
     [
       "Let's Go Pikachu, Let's Go Eevee",
@@ -143,7 +155,8 @@
       "FALSE",
       "TRUE",
       "TRUE",
-      "box"
+      "box",
+      "Kanto"
     ],
     [
       "Sword, Shield",
@@ -154,7 +167,8 @@
       "FALSE",
       "FALSE",
       "TRUE",
-      "box"
+      "box",
+      "Galar"
     ],
     [
       "Brilland Diamond, Shining Pearl",
@@ -165,7 +179,8 @@
       "FALSE",
       "TRUE",
       "TRUE",
-      "box"
+      "box",
+      "Sinnoh"
     ],
     [
       "Pokémon Legends Arceus",
@@ -176,7 +191,8 @@
       "FALSE",
       "TRUE",
       "TRUE",
-      "box"
+      "box",
+      "Hisui"
     ],
     [
       "Home",

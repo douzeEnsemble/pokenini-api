@@ -10,9 +10,9 @@ class DexUpdater extends AbstractUpdater
 {
     protected string $sheetName = 'Dex';
     protected string $tableName = 'dex';
-    protected string $headerCellsRange = 'A1:I1';
+    protected string $headerCellsRange = 'A1:J1';
     /** @var string[] */
-    protected array $recordsCellsRanges = ['A2:I'];
+    protected array $recordsCellsRanges = ['A2:J'];
 
     protected function getExpectedHeader(): array
     {
@@ -26,6 +26,7 @@ class DexUpdater extends AbstractUpdater
             'Is Private',
             'Is Display Form',
             'Display template',
+            'Region'
         ];
     }
 
@@ -46,6 +47,7 @@ class DexUpdater extends AbstractUpdater
             'is_private' => $record['Is Private'],
             'is_display_form' => $record['Is Display Form'],
             'display_template' => $record['Display template'],
+            'region_name' => $record['Region'],
         ];
 
         $tableName = $this->tableName;
@@ -61,7 +63,8 @@ class DexUpdater extends AbstractUpdater
           is_shiny,
           is_private,
           is_display_form,
-          display_template
+          display_template,
+          region_name
         )
         VALUES (
             :id,
@@ -73,7 +76,8 @@ class DexUpdater extends AbstractUpdater
             :is_shiny,
             :is_private,
             :is_display_form,
-            :display_template
+            :display_template,
+            :region_name
         )
         ON CONFLICT (slug)
         DO
@@ -87,6 +91,7 @@ class DexUpdater extends AbstractUpdater
             is_private= excluded.is_private,
             is_display_form= excluded.is_display_form,
             display_template= excluded.display_template,
+            region_name= excluded.region_name,
             deleted_at = NULL
         SQL;
 

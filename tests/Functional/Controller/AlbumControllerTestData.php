@@ -7,7 +7,7 @@ namespace App\Tests\Functional\Controller;
 final class AlbumControllerTestData
 {
     /**
-     * @return string[][]|null[][]
+     * @return string[][]|int[][]|null[][]
      *
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
@@ -21,183 +21,49 @@ final class AlbumControllerTestData
         ?string $douzeCatchState,
     ): array {
         $bulbasaurData = array_merge(
+            AlbumControllerTestPokemonData::getBulbasaurData(),
             [
-                'pokemon_national_dex_number' => '1',
-                'pokemon_slug' => 'bulbasaur',
-                'pokemon_name' => 'Bulbasaur',
-                'pokemon_simplified_name' => 'Bulbasaur',
-                'pokemon_forms_label' => '',
-                'pokemon_french_name' => 'Bulbizarre',
-                'pokemon_simplified_french_name' => 'Bulbizarre',
-                'pokemon_forms_french_label' => '',
-                'pokemon_icon' => 'bulbasaur',
-                'pokemon_regular_sprite_url' => '',
-                'pokemon_shiny_sprite_url' => '',
-                'regional_form_slug' => null,
-                'regional_form_name' => null,
-                'special_form_slug' => null,
-                'special_form_name' => null,
-                'variant_form_slug' => null,
-                'variant_form_name' => null,
+                'pokemon_regional_dex_number' => 1,
+                'pokemon_order_number' => '001-0001-00',
             ],
             self::getCatchStateDataFromSlug($bulbasaurCatchState)
         );
 
         $ivysaurData = array_merge(
+            AlbumControllerTestPokemonData::getIvysaurData(),
             [
-                'pokemon_national_dex_number' => '2',
-                'pokemon_slug' => 'ivysaur',
-                'pokemon_name' => 'Ivysaur',
-                'pokemon_simplified_name' => 'Ivysaur',
-                'pokemon_forms_label' => '',
-                'pokemon_french_name' => 'Herbizarre',
-                'pokemon_simplified_french_name' => 'Herbizarre',
-                'pokemon_forms_french_label' => '',
-                'pokemon_icon' => 'ivysaur',
-                'pokemon_regular_sprite_url' => '',
-                'pokemon_shiny_sprite_url' => '',
-                'regional_form_slug' => null,
-                'regional_form_name' => null,
-                'special_form_slug' => null,
-                'special_form_name' => null,
-                'variant_form_slug' => null,
-                'variant_form_name' => null,
-                'catch_state_slug' => 'maybe',
-                'catch_state_name' => 'Maybe',
-                'catch_state_french_name' => 'Peut être',
+                'pokemon_regional_dex_number' => 2,
+                'pokemon_order_number' => '002-0002-01',
             ],
             self::getCatchStateDataFromSlug($ivysaurCatchState)
         );
 
         $venusaurData = array_merge(
+            AlbumControllerTestPokemonData::getVenusaurData(),
             [
-                'pokemon_national_dex_number' => '3',
-                'pokemon_slug' => 'venusaur',
-                'pokemon_name' => 'Venusaur',
-                'pokemon_simplified_name' => 'Venusaur',
-                'pokemon_forms_label' => '',
-                'pokemon_french_name' => 'Florizarre',
-                'pokemon_simplified_french_name' => 'Florizarre',
-                'pokemon_forms_french_label' => '',
-                'pokemon_icon' => 'venusaur',
-                'pokemon_regular_sprite_url' =>
-                    'https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/regular/venusaur.png',
-                'pokemon_shiny_sprite_url' =>
-                    'https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/shiny/venusaur.png',
-                'regional_form_slug' => null,
-                'regional_form_name' => null,
-                'special_form_slug' => null,
-                'special_form_name' => null,
-                'variant_form_slug' => null,
-                'variant_form_name' => null,
-                'catch_state_slug' => 'maybenot',
-                'catch_state_name' => 'Maybe not',
-                'catch_state_french_name' => 'Peut être pas',
+                'pokemon_regional_dex_number' => 3,
+                'pokemon_order_number' => '003-0003-02',
             ],
             self::getCatchStateDataFromSlug($venusaurCatchState)
         );
 
         $caterpieData = array_merge(
-            [
-                'pokemon_national_dex_number' => '10',
-                'pokemon_slug' => 'caterpie',
-                'pokemon_name' => 'Caterpie',
-                'pokemon_simplified_name' => 'Caterpie',
-                'pokemon_forms_label' => '',
-                'pokemon_french_name' => 'Chenipan',
-                'pokemon_simplified_french_name' => 'Chenipan',
-                'pokemon_forms_french_label' => '',
-                'pokemon_icon' => 'caterpie',
-                'pokemon_regular_sprite_url' => '',
-                'pokemon_shiny_sprite_url' => '',
-                'regional_form_slug' => null,
-                'regional_form_name' => null,
-                'special_form_slug' => null,
-                'special_form_name' => null,
-                'variant_form_slug' => null,
-                'variant_form_name' => null,
-                'catch_state_slug' => 'maybenot',
-                'catch_state_name' => 'Maybe not',
-                'catch_state_french_name' => 'Peut être pas',
-            ],
+            AlbumControllerTestPokemonData::getCaterpieData(),
             self::getCatchStateDataFromSlug($caterpieCatchState)
         );
 
         $metapodData = array_merge(
-            [
-                'pokemon_national_dex_number' => '11',
-                'pokemon_slug' => 'metapod',
-                'pokemon_name' => 'Metapod',
-                'pokemon_simplified_name' => 'Metapod',
-                'pokemon_forms_label' => '',
-                'pokemon_french_name' => 'Chrysacier',
-                'pokemon_simplified_french_name' => 'Chrysacier',
-                'pokemon_forms_french_label' => '',
-                'pokemon_icon' => 'metapod',
-                'pokemon_regular_sprite_url' => '',
-                'pokemon_shiny_sprite_url' => '',
-                'regional_form_slug' => null,
-                'regional_form_name' => null,
-                'special_form_slug' => null,
-                'special_form_name' => null,
-                'variant_form_slug' => null,
-                'variant_form_name' => null,
-                'catch_state_slug' => null,
-                'catch_state_name' => null,
-                'catch_state_french_name' => null,
-            ],
+            AlbumControllerTestPokemonData::getMetapodData(),
             self::getCatchStateDataFromSlug($metapodCatchState)
         );
 
         $butterfreeData = array_merge(
-            [
-                'pokemon_national_dex_number' => '12',
-                'pokemon_slug' => 'butterfree',
-                'pokemon_name' => 'Butterfree',
-                'pokemon_simplified_name' => 'Butterfree',
-                'pokemon_forms_label' => '',
-                'pokemon_french_name' => 'Papilusion',
-                'pokemon_simplified_french_name' => 'Papilusion',
-                'pokemon_forms_french_label' => '',
-                'pokemon_icon' => 'butterfree',
-                'pokemon_regular_sprite_url' => '',
-                'pokemon_shiny_sprite_url' => '',
-                'regional_form_slug' => null,
-                'regional_form_name' => null,
-                'special_form_slug' => null,
-                'special_form_name' => null,
-                'variant_form_slug' => null,
-                'variant_form_name' => null,
-                'catch_state_slug' => null,
-                'catch_state_name' => null,
-                'catch_state_french_name' => null,
-            ],
+            AlbumControllerTestPokemonData::getButterfreeData(),
             self::getCatchStateDataFromSlug($butterfreeCatchState)
         );
 
         $douzeData = array_merge(
-            [
-                'pokemon_national_dex_number' => '1212',
-                'pokemon_slug' => 'douze',
-                'pokemon_name' => 'Douze',
-                'pokemon_simplified_name' => 'Douze',
-                'pokemon_forms_label' => '',
-                'pokemon_french_name' => 'Douze',
-                'pokemon_simplified_french_name' => 'Douze',
-                'pokemon_forms_french_label' => '',
-                'pokemon_icon' => 'douze',
-                'pokemon_regular_sprite_url' => '',
-                'pokemon_shiny_sprite_url' => '',
-                'regional_form_slug' => null,
-                'regional_form_name' => null,
-                'special_form_slug' => null,
-                'special_form_name' => null,
-                'variant_form_slug' => null,
-                'variant_form_name' => null,
-                'catch_state_slug' => null,
-                'catch_state_name' => null,
-                'catch_state_french_name' => null,
-            ],
+            AlbumControllerTestPokemonData::getDouzeData(),
             self::getCatchStateDataFromSlug($douzeCatchState)
         );
 
@@ -209,6 +75,103 @@ final class AlbumControllerTestData
             $metapodData,
             $butterfreeData,
             $douzeData,
+        ];
+    }
+    /**
+     * @return string[][]|int[][]|null[][]
+     *
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     */
+    public static function getExpectedGoldSilverCrystalContent(
+        ?string $bulbasaurCatchState,
+        ?string $ivysaurCatchState,
+        ?string $venusaurCatchState,
+        ?string $charmanderCatchState,
+        ?string $charmeleonCatchState,
+        ?string $charizardCatchState,
+        ?string $caterpieCatchState,
+        ?string $metapodCatchState,
+        ?string $butterfreeCatchState,
+    ): array {
+        $bulbasaurData = array_merge(
+            AlbumControllerTestPokemonData::getBulbasaurData(),
+            [
+                'pokemon_regional_dex_number' => 231,
+                'pokemon_order_number' => '231-0001-00',
+            ],
+            self::getCatchStateDataFromSlug($bulbasaurCatchState)
+        );
+
+        $ivysaurData = array_merge(
+            AlbumControllerTestPokemonData::getIvysaurData(),
+            [
+                'pokemon_regional_dex_number' => 232,
+                'pokemon_order_number' => '232-0002-01',
+            ],
+            self::getCatchStateDataFromSlug($ivysaurCatchState)
+        );
+
+        $venusaurData = array_merge(
+            AlbumControllerTestPokemonData::getVenusaurData(),
+            [
+                'pokemon_regional_dex_number' => 233,
+                'pokemon_order_number' => '233-0003-02',
+            ],
+            self::getCatchStateDataFromSlug($venusaurCatchState)
+        );
+
+        $charmanderData = array_merge(
+            AlbumControllerTestPokemonData::getCharmanderData(),
+            self::getCatchStateDataFromSlug($charmanderCatchState)
+        );
+
+        $charmeleonData = array_merge(
+            AlbumControllerTestPokemonData::getCharmeleonData(),
+            self::getCatchStateDataFromSlug($charmeleonCatchState)
+        );
+
+        $charizardData = array_merge(
+            AlbumControllerTestPokemonData::getCharizardData(),
+            self::getCatchStateDataFromSlug($charizardCatchState)
+        );
+
+        $caterpieData = array_merge(
+            AlbumControllerTestPokemonData::getCaterpieData(),
+            [
+                'pokemon_regional_dex_number' => 24,
+                'pokemon_order_number' => '024-0010-00',
+            ],
+            self::getCatchStateDataFromSlug($caterpieCatchState)
+        );
+
+        $metapodData = array_merge(
+            AlbumControllerTestPokemonData::getMetapodData(),
+            [
+                'pokemon_regional_dex_number' => 25,
+                'pokemon_order_number' => '025-0011-01',
+            ],
+            self::getCatchStateDataFromSlug($metapodCatchState)
+        );
+
+        $butterfreeData = array_merge(
+            AlbumControllerTestPokemonData::getButterfreeData(),
+            [
+                'pokemon_regional_dex_number' => 26,
+                'pokemon_order_number' => '026-0012-02',
+            ],
+            self::getCatchStateDataFromSlug($butterfreeCatchState)
+        );
+
+        return [
+            $caterpieData,
+            $metapodData,
+            $butterfreeData,
+            $bulbasaurData,
+            $ivysaurData,
+            $venusaurData,
+            $charmanderData,
+            $charmeleonData,
+            $charizardData,
         ];
     }
 
@@ -253,83 +216,29 @@ final class AlbumControllerTestData
     }
 
     /**
-     * @return string[][]|null[][]
+     * @return string[][]|int[][]|null[][]
      *
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
     public static function getExpectedHomeContent(): array
     {
         return [
+            array_merge(
+                AlbumControllerTestPokemonData::getBulbasaurData(),
+                self::getCatchStateDataFromSlug('no')
+            ),
+            array_merge(
+                AlbumControllerTestPokemonData::getIvysaurData(),
+                self::getCatchStateDataFromSlug('no')
+            ),
+            array_merge(
+                AlbumControllerTestPokemonData::getVenusaurData(),
+                self::getCatchStateDataFromSlug('no')
+            ),
             [
-                'pokemon_national_dex_number' => '1',
-                'pokemon_slug' => 'bulbasaur',
-                'pokemon_name' => 'Bulbasaur',
-                'pokemon_simplified_name' => 'Bulbasaur',
-                'pokemon_forms_label' => '',
-                'pokemon_french_name' => 'Bulbizarre',
-                'pokemon_simplified_french_name' => 'Bulbizarre',
-                'pokemon_forms_french_label' => '',
-                'pokemon_icon' => 'bulbasaur',
-                'pokemon_regular_sprite_url' => '',
-                'pokemon_shiny_sprite_url' => '',
-                'regional_form_slug' => null,
-                'regional_form_name' => null,
-                'special_form_slug' => null,
-                'special_form_name' => null,
-                'variant_form_slug' => null,
-                'variant_form_name' => null,
-                'catch_state_slug' => 'no',
-                'catch_state_name' => 'No',
-                'catch_state_french_name' => 'Non',
-            ],
-            [
-                'pokemon_national_dex_number' => '2',
-                'pokemon_slug' => 'ivysaur',
-                'pokemon_name' => 'Ivysaur',
-                'pokemon_simplified_name' => 'Ivysaur',
-                'pokemon_forms_label' => '',
-                'pokemon_french_name' => 'Herbizarre',
-                'pokemon_simplified_french_name' => 'Herbizarre',
-                'pokemon_forms_french_label' => '',
-                'pokemon_icon' => 'ivysaur',
-                'pokemon_regular_sprite_url' => '',
-                'pokemon_shiny_sprite_url' => '',
-                'regional_form_slug' => null,
-                'regional_form_name' => null,
-                'special_form_slug' => null,
-                'special_form_name' => null,
-                'variant_form_slug' => null,
-                'variant_form_name' => null,
-                'catch_state_slug' => 'no',
-                'catch_state_name' => 'No',
-                'catch_state_french_name' => 'Non',
-            ],
-            [
-                'pokemon_national_dex_number' => '3',
-                'pokemon_slug' => 'venusaur',
-                'pokemon_name' => 'Venusaur',
-                'pokemon_simplified_name' => 'Venusaur',
-                'pokemon_forms_label' => '',
-                'pokemon_french_name' => 'Florizarre',
-                'pokemon_simplified_french_name' => 'Florizarre',
-                'pokemon_forms_french_label' => '',
-                'pokemon_icon' => 'venusaur',
-                'pokemon_regular_sprite_url' =>
-                    'https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/regular/venusaur.png',
-                'pokemon_shiny_sprite_url' =>
-                    'https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/shiny/venusaur.png',
-                'regional_form_slug' => null,
-                'regional_form_name' => null,
-                'special_form_slug' => null,
-                'special_form_name' => null,
-                'variant_form_slug' => null,
-                'variant_form_name' => null,
-                'catch_state_slug' => 'no',
-                'catch_state_name' => 'No',
-                'catch_state_french_name' => 'Non',
-            ],
-            [
-                'pokemon_national_dex_number' => '3',
+                'pokemon_national_dex_number' => 3,
+                'pokemon_regional_dex_number' => null,
+                'pokemon_order_number' => '999-0003-03',
                 'pokemon_slug' => 'venusaur-f',
                 'pokemon_name' => 'Venusaur ♀',
                 'pokemon_simplified_name' => 'Venusaur',
@@ -351,7 +260,9 @@ final class AlbumControllerTestData
                 'catch_state_french_name' => 'Non',
             ],
             [
-                'pokemon_national_dex_number' => '3',
+                'pokemon_national_dex_number' => 3,
+                'pokemon_regional_dex_number' => null,
+                'pokemon_order_number' => '999-0003-04',
                 'pokemon_slug' => 'venusaur-mega',
                 'pokemon_name' => 'Mega Venusaur',
                 'pokemon_simplified_name' => 'Venusaur',
@@ -373,7 +284,9 @@ final class AlbumControllerTestData
                 'catch_state_french_name' => 'Non',
             ],
             [
-                'pokemon_national_dex_number' => '3',
+                'pokemon_national_dex_number' => 3,
+                'pokemon_regional_dex_number' => null,
+                'pokemon_order_number' => '999-0003-05',
                 'pokemon_slug' => 'venusaur-gmax',
                 'pokemon_name' => 'Gigantamax Venusaur',
                 'pokemon_simplified_name' => 'Venusaur',
@@ -394,74 +307,16 @@ final class AlbumControllerTestData
                 'catch_state_name' => 'No',
                 'catch_state_french_name' => 'Non',
             ],
+            array_merge(
+                AlbumControllerTestPokemonData::getCaterpieData(),
+                self::getCatchStateDataFromSlug(null)
+            ),
+            AlbumControllerTestPokemonData::getMetapodData(),
+            AlbumControllerTestPokemonData::getButterfreeData(),
             [
-                'pokemon_national_dex_number' => '10',
-                'pokemon_slug' => 'caterpie',
-                'pokemon_name' => 'Caterpie',
-                'pokemon_simplified_name' => 'Caterpie',
-                'pokemon_forms_label' => '',
-                'pokemon_french_name' => 'Chenipan',
-                'pokemon_simplified_french_name' => 'Chenipan',
-                'pokemon_forms_french_label' => '',
-                'pokemon_icon' => 'caterpie',
-                'pokemon_regular_sprite_url' => '',
-                'pokemon_shiny_sprite_url' => '',
-                'regional_form_slug' => null,
-                'regional_form_name' => null,
-                'special_form_slug' => null,
-                'special_form_name' => null,
-                'variant_form_slug' => null,
-                'variant_form_name' => null,
-                'catch_state_slug' => null,
-                'catch_state_name' => null,
-                'catch_state_french_name' => null,
-            ],
-            [
-                'pokemon_national_dex_number' => '11',
-                'pokemon_slug' => 'metapod',
-                'pokemon_name' => 'Metapod',
-                'pokemon_simplified_name' => 'Metapod',
-                'pokemon_forms_label' => '',
-                'pokemon_french_name' => 'Chrysacier',
-                'pokemon_simplified_french_name' => 'Chrysacier',
-                'pokemon_forms_french_label' => '',
-                'pokemon_icon' => 'metapod',
-                'pokemon_regular_sprite_url' => '',
-                'pokemon_shiny_sprite_url' => '',
-                'regional_form_slug' => null,
-                'regional_form_name' => null,
-                'special_form_slug' => null,
-                'special_form_name' => null,
-                'variant_form_slug' => null,
-                'variant_form_name' => null,
-                'catch_state_slug' => null,
-                'catch_state_name' => null,
-                'catch_state_french_name' => null,
-            ],
-            [
-                'pokemon_national_dex_number' => '12',
-                'pokemon_slug' => 'butterfree',
-                'pokemon_name' => 'Butterfree',
-                'pokemon_simplified_name' => 'Butterfree',
-                'pokemon_forms_label' => '',
-                'pokemon_french_name' => 'Papilusion',
-                'pokemon_simplified_french_name' => 'Papilusion',
-                'pokemon_forms_french_label' => '',
-                'pokemon_icon' => 'butterfree',
-                'pokemon_regular_sprite_url' => '',
-                'pokemon_shiny_sprite_url' => '',
-                'regional_form_slug' => null,
-                'regional_form_name' => null,
-                'special_form_slug' => null,
-                'special_form_name' => null,
-                'variant_form_slug' => null,
-                'variant_form_name' => null,
-                'catch_state_slug' => null,
-                'catch_state_name' => null,
-                'catch_state_french_name' => null,
-            ],
-            [
-                'pokemon_national_dex_number' => '12',
+                'pokemon_national_dex_number' => 12,
+                'pokemon_regional_dex_number' => null,
+                'pokemon_order_number' => '999-0012-03',
                 'pokemon_slug' => 'butterfree-f',
                 'pokemon_name' => 'Butterfree ♀',
                 'pokemon_simplified_name' => 'Butterfree',
@@ -483,7 +338,9 @@ final class AlbumControllerTestData
                 'catch_state_french_name' => null,
             ],
             [
-                'pokemon_national_dex_number' => '12',
+                'pokemon_national_dex_number' => 12,
+                'pokemon_regional_dex_number' => null,
+                'pokemon_order_number' => '999-0012-05',
                 'pokemon_slug' => 'butterfree-gmax',
                 'pokemon_name' => 'Gigantamax Butterfree',
                 'pokemon_simplified_name' => 'Butterfree',
@@ -504,109 +361,34 @@ final class AlbumControllerTestData
                 'catch_state_name' => null,
                 'catch_state_french_name' => null,
             ],
-            [
-                'pokemon_national_dex_number' => '1212',
-                'pokemon_slug' => 'douze',
-                'pokemon_name' => 'Douze',
-                'pokemon_simplified_name' => 'Douze',
-                'pokemon_forms_label' => '',
-                'pokemon_french_name' => 'Douze',
-                'pokemon_simplified_french_name' => 'Douze',
-                'pokemon_forms_french_label' => '',
-                'pokemon_icon' => 'douze',
-                'pokemon_regular_sprite_url' => '',
-                'pokemon_shiny_sprite_url' => '',
-                'regional_form_slug' => null,
-                'regional_form_name' => null,
-                'special_form_slug' => null,
-                'special_form_name' => null,
-                'variant_form_slug' => null,
-                'variant_form_name' => null,
-                'catch_state_slug' => null,
-                'catch_state_name' => null,
-                'catch_state_french_name' => null,
-            ],
+            AlbumControllerTestPokemonData::getDouzeData(),
         ];
     }
 
     /**
-     * @return string[][]|null[][]
+     * @return string[][]|int[][]|null[][]
      *
      * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
     public static function getExpectedHomeShinyContent(): array
     {
         return [
+            array_merge(
+                AlbumControllerTestPokemonData::getBulbasaurData(),
+                self::getCatchStateDataFromSlug(null)
+            ),
+            array_merge(
+                AlbumControllerTestPokemonData::getIvysaurData(),
+                self::getCatchStateDataFromSlug(null)
+            ),
+            array_merge(
+                AlbumControllerTestPokemonData::getVenusaurData(),
+                self::getCatchStateDataFromSlug(null)
+            ),
             [
-                'pokemon_national_dex_number' => '1',
-                'pokemon_slug' => 'bulbasaur',
-                'pokemon_name' => 'Bulbasaur',
-                'pokemon_simplified_name' => 'Bulbasaur',
-                'pokemon_forms_label' => '',
-                'pokemon_french_name' => 'Bulbizarre',
-                'pokemon_simplified_french_name' => 'Bulbizarre',
-                'pokemon_forms_french_label' => '',
-                'pokemon_icon' => 'bulbasaur',
-                'pokemon_regular_sprite_url' => '',
-                'pokemon_shiny_sprite_url' => '',
-                'regional_form_slug' => null,
-                'regional_form_name' => null,
-                'special_form_slug' => null,
-                'special_form_name' => null,
-                'variant_form_slug' => null,
-                'variant_form_name' => null,
-                'catch_state_slug' => null,
-                'catch_state_name' => null,
-                'catch_state_french_name' => null,
-            ],
-            [
-                'pokemon_national_dex_number' => '2',
-                'pokemon_slug' => 'ivysaur',
-                'pokemon_name' => 'Ivysaur',
-                'pokemon_simplified_name' => 'Ivysaur',
-                'pokemon_forms_label' => '',
-                'pokemon_french_name' => 'Herbizarre',
-                'pokemon_simplified_french_name' => 'Herbizarre',
-                'pokemon_forms_french_label' => '',
-                'pokemon_icon' => 'ivysaur',
-                'pokemon_regular_sprite_url' => '',
-                'pokemon_shiny_sprite_url' => '',
-                'regional_form_slug' => null,
-                'regional_form_name' => null,
-                'special_form_slug' => null,
-                'special_form_name' => null,
-                'variant_form_slug' => null,
-                'variant_form_name' => null,
-                'catch_state_slug' => null,
-                'catch_state_name' => null,
-                'catch_state_french_name' => null,
-            ],
-            [
-                'pokemon_national_dex_number' => '3',
-                'pokemon_slug' => 'venusaur',
-                'pokemon_name' => 'Venusaur',
-                'pokemon_simplified_name' => 'Venusaur',
-                'pokemon_forms_label' => '',
-                'pokemon_french_name' => 'Florizarre',
-                'pokemon_simplified_french_name' => 'Florizarre',
-                'pokemon_forms_french_label' => '',
-                'pokemon_icon' => 'venusaur',
-                'pokemon_regular_sprite_url' =>
-                    'https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/regular/venusaur.png',
-                'pokemon_shiny_sprite_url' =>
-                    'https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/shiny/venusaur.png',
-                'regional_form_slug' => null,
-                'regional_form_name' => null,
-                'special_form_slug' => null,
-                'special_form_name' => null,
-                'variant_form_slug' => null,
-                'variant_form_name' => null,
-                'catch_state_slug' => null,
-                'catch_state_name' => null,
-                'catch_state_french_name' => null,
-            ],
-            [
-                'pokemon_national_dex_number' => '3',
+                'pokemon_national_dex_number' => 3,
+                'pokemon_regional_dex_number' => null,
+                'pokemon_order_number' => '999-0003-03',
                 'pokemon_slug' => 'venusaur-f',
                 'pokemon_name' => 'Venusaur ♀',
                 'pokemon_simplified_name' => 'Venusaur',
@@ -628,7 +410,9 @@ final class AlbumControllerTestData
                 'catch_state_french_name' => null,
             ],
             [
-                'pokemon_national_dex_number' => '3',
+                'pokemon_national_dex_number' => 3,
+                'pokemon_regional_dex_number' => null,
+                'pokemon_order_number' => '999-0003-04',
                 'pokemon_slug' => 'venusaur-mega',
                 'pokemon_name' => 'Mega Venusaur',
                 'pokemon_simplified_name' => 'Venusaur',
@@ -650,7 +434,9 @@ final class AlbumControllerTestData
                 'catch_state_french_name' => null,
             ],
             [
-                'pokemon_national_dex_number' => '3',
+                'pokemon_national_dex_number' => 3,
+                'pokemon_regional_dex_number' => null,
+                'pokemon_order_number' => '999-0003-05',
                 'pokemon_slug' => 'venusaur-gmax',
                 'pokemon_name' => 'Gigantamax Venusaur',
                 'pokemon_simplified_name' => 'Venusaur',
@@ -671,74 +457,16 @@ final class AlbumControllerTestData
                 'catch_state_name' => null,
                 'catch_state_french_name' => null,
             ],
+            array_merge(
+                AlbumControllerTestPokemonData::getCaterpieData(),
+                self::getCatchStateDataFromSlug(null)
+            ),
+            AlbumControllerTestPokemonData::getMetapodData(),
+            AlbumControllerTestPokemonData::getButterfreeData(),
             [
-                'pokemon_national_dex_number' => '10',
-                'pokemon_slug' => 'caterpie',
-                'pokemon_name' => 'Caterpie',
-                'pokemon_simplified_name' => 'Caterpie',
-                'pokemon_forms_label' => '',
-                'pokemon_french_name' => 'Chenipan',
-                'pokemon_simplified_french_name' => 'Chenipan',
-                'pokemon_forms_french_label' => '',
-                'pokemon_icon' => 'caterpie',
-                'pokemon_regular_sprite_url' => '',
-                'pokemon_shiny_sprite_url' => '',
-                'regional_form_slug' => null,
-                'regional_form_name' => null,
-                'special_form_slug' => null,
-                'special_form_name' => null,
-                'variant_form_slug' => null,
-                'variant_form_name' => null,
-                'catch_state_slug' => null,
-                'catch_state_name' => null,
-                'catch_state_french_name' => null,
-            ],
-            [
-                'pokemon_national_dex_number' => '11',
-                'pokemon_slug' => 'metapod',
-                'pokemon_name' => 'Metapod',
-                'pokemon_simplified_name' => 'Metapod',
-                'pokemon_forms_label' => '',
-                'pokemon_french_name' => 'Chrysacier',
-                'pokemon_simplified_french_name' => 'Chrysacier',
-                'pokemon_forms_french_label' => '',
-                'pokemon_icon' => 'metapod',
-                'pokemon_regular_sprite_url' => '',
-                'pokemon_shiny_sprite_url' => '',
-                'regional_form_slug' => null,
-                'regional_form_name' => null,
-                'special_form_slug' => null,
-                'special_form_name' => null,
-                'variant_form_slug' => null,
-                'variant_form_name' => null,
-                'catch_state_slug' => null,
-                'catch_state_name' => null,
-                'catch_state_french_name' => null,
-            ],
-            [
-                'pokemon_national_dex_number' => '12',
-                'pokemon_slug' => 'butterfree',
-                'pokemon_name' => 'Butterfree',
-                'pokemon_simplified_name' => 'Butterfree',
-                'pokemon_forms_label' => '',
-                'pokemon_french_name' => 'Papilusion',
-                'pokemon_simplified_french_name' => 'Papilusion',
-                'pokemon_forms_french_label' => '',
-                'pokemon_icon' => 'butterfree',
-                'pokemon_regular_sprite_url' => '',
-                'pokemon_shiny_sprite_url' => '',
-                'regional_form_slug' => null,
-                'regional_form_name' => null,
-                'special_form_slug' => null,
-                'special_form_name' => null,
-                'variant_form_slug' => null,
-                'variant_form_name' => null,
-                'catch_state_slug' => null,
-                'catch_state_name' => null,
-                'catch_state_french_name' => null,
-            ],
-            [
-                'pokemon_national_dex_number' => '12',
+                'pokemon_national_dex_number' => 12,
+                'pokemon_regional_dex_number' => null,
+                'pokemon_order_number' => '999-0012-03',
                 'pokemon_slug' => 'butterfree-f',
                 'pokemon_name' => 'Butterfree ♀',
                 'pokemon_simplified_name' => 'Butterfree',
@@ -760,7 +488,9 @@ final class AlbumControllerTestData
                 'catch_state_french_name' => null,
             ],
             [
-                'pokemon_national_dex_number' => '12',
+                'pokemon_national_dex_number' => 12,
+                'pokemon_regional_dex_number' => null,
+                'pokemon_order_number' => '999-0012-05',
                 'pokemon_slug' => 'butterfree-gmax',
                 'pokemon_name' => 'Gigantamax Butterfree',
                 'pokemon_simplified_name' => 'Butterfree',

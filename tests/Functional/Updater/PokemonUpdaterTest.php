@@ -14,7 +14,7 @@ class PokemonUpdaterTest extends AbstractUpdaterTest
     use CountPokemonTrait;
     use GetPokemonTrait;
 
-    protected int $initialTotalCount = 16;
+    protected int $initialTotalCount = 19;
     protected int $finalTotalCount = 1816;
     protected int $mustBeDeletedTotalCount = 1;
     protected string $sheetName = 'Pokémons';
@@ -66,9 +66,9 @@ class PokemonUpdaterTest extends AbstractUpdaterTest
 
         $this->getService()->execute('pokemon_list / only_existing');
 
-        $this->assertEquals(16, $this->getPokemonCount());
+        $this->assertEquals(19, $this->getPokemonCount());
         $this->assertEquals(7, $this->getPokemonNotDeletedCount());
-        $this->assertEquals(9, $this->getPokemonDeletedCount());
+        $this->assertEquals(12, $this->getPokemonDeletedCount());
 
         $pokemonAfter = $this->getPokemonFromName('Douze');
 
@@ -110,9 +110,9 @@ class PokemonUpdaterTest extends AbstractUpdaterTest
 
         $this->getService()->execute('pokemon_list / update_regional_form');
 
-        $this->assertEquals(16, $this->getPokemonCount());
+        $this->assertEquals(19, $this->getPokemonCount());
         $this->assertEquals(1, $this->getPokemonNotDeletedCount());
-        $this->assertEquals(15, $this->getPokemonDeletedCount());
+        $this->assertEquals(18, $this->getPokemonDeletedCount());
 
         $pokemonAfter = $this->getPokemonFromName('Douze');
         $this->assertNotNull($pokemonAfter['regional_form_id']);

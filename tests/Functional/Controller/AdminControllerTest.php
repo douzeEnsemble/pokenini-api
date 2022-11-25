@@ -110,7 +110,7 @@ class AdminControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $this->assertEquals(16, $this->getTableCount('pokemon'));
+        $this->assertEquals(19, $this->getTableCount('pokemon'));
 
         $client->request(
             'POST',
@@ -190,7 +190,7 @@ class AdminControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $this->assertEquals(36, $this->getTableCount('dex_availability'));
+        $this->assertEquals(39, $this->getTableCount('dex_availability'));
 
         $client->request(
             'POST',
@@ -205,7 +205,7 @@ class AdminControllerTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
-        $this->assertEquals(53, $this->getTableCount('dex_availability'));
+        $this->assertEquals(61, $this->getTableCount('dex_availability'));
     }
 
     public function testUpdateDexAvailabilityBadAuth(): void
