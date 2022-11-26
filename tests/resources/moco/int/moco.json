@@ -289,11 +289,20 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Games Availability'!A903:AN964"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Games Availability'!A903:AN1002"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A903%3AAN964.json"
+      "file": "/var/moco/values_%27Games%20Availability%27%21A903%3AAN1002.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Games Availability'!A1003:AN1067"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27Games%20Availability%27%21A1003%3AAN1067.json"
     }
   },
   {
