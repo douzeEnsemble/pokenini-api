@@ -18,9 +18,9 @@ class GameAvailabilityUpdaterCommandTest extends AbstractUpdaterCommandTest
 
         $commandTester->assertCommandIsSuccessful();
 
-        $this->assertEquals(7560, $this->getGameAvailabilityCount());
+        $this->assertEquals(7980, $this->getGameAvailabilityCount());
 
-        $this->assertStringContainsString("7560 games' availabilities updated", $commandTester->getDisplay());
+        $this->assertStringContainsString("7980 games' availabilities updated", $commandTester->getDisplay());
     }
 
     protected function getCommandName(): string

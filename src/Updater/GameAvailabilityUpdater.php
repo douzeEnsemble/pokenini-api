@@ -11,7 +11,7 @@ class GameAvailabilityUpdater extends AbstractUpdater
 {
     protected string $sheetName = 'Games Availability';
     protected string $tableName = 'game_availability';
-    protected string $headerCellsRange = 'A2:AL2';
+    protected string $headerCellsRange = 'A2:AN2';
     protected int $recordsCellsStartRowIndex = 2;
     protected int $recordsCellsStartColumnIndex = 0;
 
@@ -94,6 +94,8 @@ class GameAvailabilityUpdater extends AbstractUpdater
             'Brillant Diamond',
             'Shining Pearl',
             'Pokémon Legends Arceus',
+            'Scarlet',
+            'Violet',
         ];
     }
 
