@@ -1,5 +1,5 @@
 {
-  "range": "'Games Availability'!A2:AL2",
+  "range": "'Games Availability'!A2:AN2",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -40,7 +40,9 @@
       "Shield",
       "Brillant Diamond",
       "Shining Pearl",
-      "Pokémon Legends Arceus"
+      "Pokémon Legends Arceus",
+      "Scarlet",
+      "Violet"
     ]
   ]
 }

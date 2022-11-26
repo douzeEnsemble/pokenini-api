@@ -1,5 +1,5 @@
 {
-  "range": "'Games Availability'!A203:AL302",
+  "range": "'Games Availability'!A203:AN302",
   "majorDimension": "ROWS",
   "values": [
     [
