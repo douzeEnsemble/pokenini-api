@@ -1253,6 +1253,95 @@
     },
     {
       "properties": {
+        "sheetId": 1760361155,
+        "title": "Regional Dex Number",
+        "index": 14,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 1006,
+          "columnCount": 12
+        },
+        "tabColor": {
+          "red": 1,
+          "green": 0.8509804,
+          "blue": 0.4
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 1,
+            "green": 0.8509804,
+            "blue": 0.4
+          }
+        }
+      },
+      "conditionalFormats": [
+        {
+          "ranges": [
+            {
+              "sheetId": 1760361155,
+              "startRowIndex": 1,
+              "endRowIndex": 1006,
+              "startColumnIndex": 1,
+              "endColumnIndex": 2
+            }
+          ],
+          "booleanRule": {
+            "condition": {
+              "type": "CUSTOM_FORMULA",
+              "values": [
+                {
+                  "userEnteredValue": "=COUNTIF(B2:B;B2)\u003e1"
+                }
+              ]
+            },
+            "format": {
+              "backgroundColor": {
+                "red": 0.7176471,
+                "green": 0.88235295,
+                "blue": 0.8039216
+              },
+              "backgroundColorStyle": {
+                "rgbColor": {
+                  "red": 0.7176471,
+                  "green": 0.88235295,
+                  "blue": 0.8039216
+                }
+              }
+            }
+          }
+        }
+      ],
+      "basicFilter": {
+        "range": {
+          "sheetId": 1760361155,
+          "startRowIndex": 0,
+          "endRowIndex": 1006,
+          "startColumnIndex": 0,
+          "endColumnIndex": 12
+        },
+        "criteria": {
+          "9": {},
+          "10": {},
+          "11": {}
+        },
+        "filterSpecs": [
+          {
+            "columnIndex": 11,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 10,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 9,
+            "filterCriteria": {}
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
         "sheetId": 1033988697,
         "title": "Resource Type",
         "index": 14,
