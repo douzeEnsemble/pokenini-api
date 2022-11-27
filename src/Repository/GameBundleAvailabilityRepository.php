@@ -37,7 +37,7 @@ class GameBundleAvailabilityRepository extends ServiceEntityRepository
         FROM		(
                         SELECT		gb.id as bundle_id, p.id as pokemon_id,
                                     SUM(CASE
-                                        WHEN ga.availability = '—' OR ga.availability = ''
+                                        WHEN ga.availability = '—' OR ga.availability = '-' OR ga.availability = ''
                                         THEN 0
                                         ELSE 1
                                     END) AS availability_count
