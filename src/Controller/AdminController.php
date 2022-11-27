@@ -12,6 +12,7 @@ use App\Service\UpdaterService\GamesUpdaterService;
 use App\Service\UpdaterService\LabelsUpdaterService;
 use App\Updater\GameAvailabilityUpdater;
 use App\Updater\PokemonUpdater;
+use App\Updater\RegionalDexNumberUpdater;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -52,6 +53,15 @@ class AdminController extends AbstractController
         GameAvailabilityUpdater $gameAvailabilityUpdater,
     ): Response {
         $gameAvailabilityUpdater->execute();
+
+        return new Response();
+    }
+
+    #[Route(path: '/update/regional_dex_number', methods: ['POST'])]
+    public function updateRegionalDexNumber(
+        RegionalDexNumberUpdater $regionalDexNumberUpdater,
+    ): Response {
+        $regionalDexNumberUpdater->execute();
 
         return new Response();
     }

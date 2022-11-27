@@ -12,6 +12,7 @@ docker-compose exec php sh -c '
     php bin/console app:update:labels
     php bin/console app:update:games_and_dexes
     php bin/console app:update:pokemon
+    php bin/console app:update:regional_dex_number
     php bin/console app:update:game_availability
     php bin/console app:calculate:game_bundle_availability
     php bin/console app:calculate:dex_availability
@@ -20,7 +21,7 @@ docker-compose exec php sh -c '
 make quality tests integration
 ```
 
-or 
+or
 
 ```
 docker-compose exec php sh -c '
@@ -29,6 +30,7 @@ docker-compose exec php sh -c '
     php bin/console app:update:labels
     php bin/console app:update:games_and_dexes
     php bin/console app:update:pokemon
+    php bin/console app:update:regional_dex_number
     php bin/console app:update:game_availability
     php bin/console app:calculate:game_bundle_availability
     php bin/console app:calculate:dex_availability
@@ -46,7 +48,7 @@ make install start
 or a hard way
 ```
 docker-compose build --pull --no-cache
-docker-compose up -d 
+docker-compose up -d
 ```
 
 ### Restart
@@ -71,6 +73,16 @@ By default, there is no pokemon, you have to import them
 ```
 docker-compose exec php sh -c '
     php bin/console app:update:pokemon
+'
+```
+
+### Import regional dex number list
+
+By default, there is no regional dex number, you have to import them
+
+```
+docker-compose exec php sh -c '
+    php bin/console app:update:regional_dex_number
 '
 ```
 

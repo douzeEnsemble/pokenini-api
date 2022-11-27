@@ -132,6 +132,28 @@ class AdminControllerTest extends WebTestCase
         $this->assertEquals(7980, $this->getTableCount('game_availability'));
     }
 
+    public function testUpdateRegionalDexNumber(): void
+    {
+        $client = static::createClient();
+
+        $this->assertEquals(12, $this->getTableCount('regional_dex_number'));
+
+        $client->request(
+            'POST',
+            "/istration/update/regional_dex_number",
+            [],
+            [],
+            [
+                'PHP_AUTH_USER' => 'web',
+                'PHP_AUTH_PW'   => 'douze',
+            ],
+        );
+
+        $this->assertResponseIsSuccessful();
+
+        $this->assertEquals(2863, $this->getTableCount('regional_dex_number'));
+    }
+
     public function testCalculateGameBundleAvailability(): void
     {
         $client = static::createClient();
