@@ -28,20 +28,20 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Dex'!A1:J1"
+      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Dex'!A1:M1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Dex%27%21A1%3AJ1.json"
+      "file": "/var/moco/values_%27Dex%27%21A1%3AM1.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Dex'!A2:J"
+      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Dex'!A2:M"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Dex%27%21A2%3AJ.json"
+      "file": "/var/moco/values_%27Dex%27%21A2%3AM.json"
     }
   },
   {
@@ -127,11 +127,11 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'empty'!A1:J1"
+      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'empty'!A1:M1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27empty%27%21A1%3AJ1.json"
+      "file": "/var/moco/values_%27empty%27%21A1%3AM1.json"
     }
   },
   {
@@ -505,11 +505,11 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'wrong_sheet'!A1:J1"
+      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'wrong_sheet'!A1:M1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27wrong_sheet%27%21A1%3AJ1.json"
+      "file": "/var/moco/values_%27wrong_sheet%27%21A1%3AM1.json"
     }
   },
   {
