@@ -11,8 +11,8 @@ App\Entity\GameBundle:
         name: 'Ruby, Sapphire, Emerald'
         generation: '@gen_3'
         orderNumber: 3
-    game_bundle_red_fire_leaf_green:
-        name: 'Red Fire, Leaf Green'
+    game_bundle_fire_red_leaf_green:
+        name: 'Fire Red, Leaf Green'
         generation: '@gen_3'
         orderNumber: 4
     game_bundle_diamond_pearl_platinium:

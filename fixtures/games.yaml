@@ -35,13 +35,13 @@ App\Entity\Game:
         name: 'Sapphire'
         bundle: '@game_bundle_ruby_sapphire_emerald'
         orderNumber: 8
-    game_red fire:
-        name: 'Red Fire'
-        bundle: '@game_bundle_red_fire_leaf_green'
+    game_ed fire:
+        name: 'Fire Red'
+        bundle: '@game_bundle_fire_red_leaf_green'
         orderNumber: 9
     game_leaf green:
         name: 'Leaf Green'
-        bundle: '@game_bundle_red_fire_leaf_green'
+        bundle: '@game_bundle_fire_red_leaf_green'
         orderNumber: 10
     game_emerald:
         name: 'Emerald'
