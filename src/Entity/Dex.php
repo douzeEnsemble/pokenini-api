@@ -28,7 +28,7 @@ class Dex
     use OrderedTrait;
     use SoftDeleteableEntity;
 
-    #[ORM\Column(length: 1357)]
+    #[ORM\Column(length: 13570)]
     public string $selectionRule = '';
 
     #[ORM\Column]
