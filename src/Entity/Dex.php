@@ -60,4 +60,22 @@ class Dex
         "dex_list",
     ])]
     public ?string $regionName = null;
+
+    #[ORM\Column(length: 655)]
+    #[Groups([
+        "dex_list",
+    ])]
+    public string $description = '';
+
+    #[ORM\Column(length: 655)]
+    #[Groups([
+        "dex_list",
+    ])]
+    public string $frenchDescription = '';
+
+    #[ORM\Column]
+    #[Groups([
+        "dex_list",
+    ])]
+    public int $version = 1;
 }

@@ -51,6 +51,9 @@ class DexUpdater extends AbstractUpdater
             'is_display_form' => $record['Is Display Form'],
             'display_template' => $record['Display template'],
             'region_name' => $record['Region'],
+            'description' => $record['Description'],
+            'french_description' => $record['French description'],
+            'version' => $record['Version'],
         ];
 
         $tableName = $this->tableName;
@@ -67,7 +70,10 @@ class DexUpdater extends AbstractUpdater
           is_private,
           is_display_form,
           display_template,
-          region_name
+          region_name,
+          description,
+          french_description,
+          version
         )
         VALUES (
             :id,
@@ -80,7 +86,10 @@ class DexUpdater extends AbstractUpdater
             :is_private,
             :is_display_form,
             :display_template,
-            :region_name
+            :region_name,
+            :description,
+            :french_description,
+            :version
         )
         ON CONFLICT (slug)
         DO
@@ -95,6 +104,9 @@ class DexUpdater extends AbstractUpdater
             is_display_form= excluded.is_display_form,
             display_template= excluded.display_template,
             region_name= excluded.region_name,
+            description= excluded.description,
+            french_description= excluded.french_description,
+            version= excluded.version,
             deleted_at = NULL
         SQL;
 

@@ -6,6 +6,9 @@ App\Entity\Dex:
         displayTemplate: 'box'
         orderNumber: 1
         regionName: 'Kanto'
+        description: 'The list of obtainable Pokémons in Red, Blue, Yellow and even Green games'
+        frenchDescription: 'La liste des pokémons obtenable dans les jeux Rouge, Bleu, Jaune et même Vert.'
+        version: 1
     dex_goldsilvercrystal:
         name: 'Gold / Silver / Crystal'
         frenchName: 'Or / Argent / Cristal'
@@ -13,6 +16,9 @@ App\Entity\Dex:
         displayTemplate: 'box'
         orderNumber: 2
         regionName: 'Johto'
+        description: 'The list of obtainable Pokémons in Gold, Silver and Crystal games'
+        frenchDescription: 'La liste des pokémons obtenable dans les jeux Or, Argent et Cristal.'
+        version: 1
     dex_rubysapphireemerald:
         name: 'Ruby / Sapphire / Emerald'
         frenchName: 'Rubis / Saphir / Émeraude'
@@ -27,6 +33,7 @@ App\Entity\Dex:
         displayTemplate: 'box'
         orderNumber: 3
         isPrivate: false
+        version: 2
     dex_home_shiny:
         name: 'Home Shiny'
         frenchName: 'Home Chromatique'
