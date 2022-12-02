@@ -10,9 +10,9 @@ class DexUpdater extends AbstractUpdater
 {
     protected string $sheetName = 'Dex';
     protected string $tableName = 'dex';
-    protected string $headerCellsRange = 'A1:J1';
+    protected string $headerCellsRange = 'A1:M1';
     /** @var string[] */
-    protected array $recordsCellsRanges = ['A2:J'];
+    protected array $recordsCellsRanges = ['A2:M'];
 
     protected function getExpectedHeader(): array
     {
@@ -26,7 +26,10 @@ class DexUpdater extends AbstractUpdater
             'Is Private',
             'Is Display Form',
             'Display template',
-            'Region'
+            'Region',
+            'French description',
+            'Description',
+            'Version',
         ];
     }
 
