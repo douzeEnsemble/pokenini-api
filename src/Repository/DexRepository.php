@@ -52,7 +52,10 @@ class DexRepository extends ServiceEntityRepository
                     d.region_name AS region_name,
                     d.selection_rule AS selection_rule,
                     COALESCE(td.is_private, d.is_private) AS is_private,
-                    COALESCE(td.is_on_home, false) AS is_on_home
+                    COALESCE(td.is_on_home, false) AS is_on_home,
+                    d.description AS description,
+                    d.french_description AS french_description,
+                    d.version AS version
         FROM        dex AS d
                 LEFT JOIN trainer_dex AS td
                     ON td.dex_id = d.id AND td.trainer_external_id = :trainer_external_id

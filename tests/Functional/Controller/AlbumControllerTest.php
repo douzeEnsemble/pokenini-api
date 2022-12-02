@@ -40,6 +40,18 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertEquals('box', $data['dex']['display_template']);
         $this->assertArrayHasKey('region_name', $data['dex']);
         $this->assertEquals('Kanto', $data['dex']['region_name']);
+        $this->assertArrayHasKey('description', $data['dex']);
+        $this->assertEquals(
+            'The list of obtainable Pokémons in Red, Blue, Yellow and even Green games',
+            $data['dex']['description']
+        );
+        $this->assertArrayHasKey('french_description', $data['dex']);
+        $this->assertEquals(
+            'La liste des pokémons obtenable dans les jeux Rouge, Bleu, Jaune et même Vert.',
+            $data['dex']['french_description']
+        );
+        $this->assertArrayHasKey('version', $data['dex']);
+        $this->assertEquals('1', $data['dex']['version']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -93,6 +105,18 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertEquals('box', $data['dex']['display_template']);
         $this->assertArrayHasKey('region_name', $data['dex']);
         $this->assertEquals('Johto', $data['dex']['region_name']);
+        $this->assertArrayHasKey('description', $data['dex']);
+        $this->assertEquals(
+            'The list of obtainable Pokémons in Gold, Silver and Crystal games',
+            $data['dex']['description']
+        );
+        $this->assertArrayHasKey('french_description', $data['dex']);
+        $this->assertEquals(
+            'La liste des pokémons obtenable dans les jeux Or, Argent et Cristal.',
+            $data['dex']['french_description']
+        );
+        $this->assertArrayHasKey('version', $data['dex']);
+        $this->assertEquals('1', $data['dex']['version']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -148,6 +172,18 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertEquals('box', $data['dex']['display_template']);
         $this->assertArrayHasKey('region_name', $data['dex']);
         $this->assertEquals('Kanto', $data['dex']['region_name']);
+        $this->assertArrayHasKey('description', $data['dex']);
+        $this->assertEquals(
+            'The list of obtainable Pokémons in Red, Blue, Yellow and even Green games',
+            $data['dex']['description']
+        );
+        $this->assertArrayHasKey('french_description', $data['dex']);
+        $this->assertEquals(
+            'La liste des pokémons obtenable dans les jeux Rouge, Bleu, Jaune et même Vert.',
+            $data['dex']['french_description']
+        );
+        $this->assertArrayHasKey('version', $data['dex']);
+        $this->assertEquals('1', $data['dex']['version']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -201,6 +237,18 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertEquals('box', $data['dex']['display_template']);
         $this->assertArrayHasKey('region_name', $data['dex']);
         $this->assertEquals('Kanto', $data['dex']['region_name']);
+        $this->assertArrayHasKey('description', $data['dex']);
+        $this->assertEquals(
+            'The list of obtainable Pokémons in Red, Blue, Yellow and even Green games',
+            $data['dex']['description']
+        );
+        $this->assertArrayHasKey('french_description', $data['dex']);
+        $this->assertEquals(
+            'La liste des pokémons obtenable dans les jeux Rouge, Bleu, Jaune et même Vert.',
+            $data['dex']['french_description']
+        );
+        $this->assertArrayHasKey('version', $data['dex']);
+        $this->assertEquals('1', $data['dex']['version']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -251,6 +299,12 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertEquals('box', $data['dex']['display_template']);
         $this->assertArrayHasKey('region_name', $data['dex']);
         $this->assertNull($data['dex']['region_name']);
+        $this->assertArrayHasKey('description', $data['dex']);
+        $this->assertEquals('', $data['dex']['description']);
+        $this->assertArrayHasKey('french_description', $data['dex']);
+        $this->assertEquals('', $data['dex']['french_description']);
+        $this->assertArrayHasKey('version', $data['dex']);
+        $this->assertEquals('2', $data['dex']['version']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -293,6 +347,12 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertEquals('box', $data['dex']['display_template']);
         $this->assertArrayHasKey('region_name', $data['dex']);
         $this->assertNull($data['dex']['region_name']);
+        $this->assertArrayHasKey('description', $data['dex']);
+        $this->assertEquals('', $data['dex']['description']);
+        $this->assertArrayHasKey('french_description', $data['dex']);
+        $this->assertEquals('', $data['dex']['french_description']);
+        $this->assertArrayHasKey('version', $data['dex']);
+        $this->assertEquals('1', $data['dex']['version']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -335,6 +395,12 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertEquals('list-7', $data['dex']['display_template']);
         $this->assertArrayHasKey('region_name', $data['dex']);
         $this->assertNull($data['dex']['region_name']);
+        $this->assertArrayHasKey('description', $data['dex']);
+        $this->assertEquals('', $data['dex']['description']);
+        $this->assertArrayHasKey('french_description', $data['dex']);
+        $this->assertEquals('', $data['dex']['french_description']);
+        $this->assertArrayHasKey('version', $data['dex']);
+        $this->assertEquals('1', $data['dex']['version']);
     }
 
     public function testListNoSlug(): void

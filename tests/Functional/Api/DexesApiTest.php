@@ -20,6 +20,9 @@ class DexesApiTest extends AbstractApiTest
             'isDisplayForm' => true,
             'displayTemplate' => 'box',
             'regionName' => 'Kanto',
+            'description' => 'The list of obtainable Pokémons in Red, Blue, Yellow and even Green games',
+            'frenchDescription' => 'La liste des pokémons obtenable dans les jeux Rouge, Bleu, Jaune et même Vert.',
+            'version' => 1,
         ], $content[0]);
 
         $this->assertEquals([
@@ -31,6 +34,9 @@ class DexesApiTest extends AbstractApiTest
             'isDisplayForm' => true,
             'displayTemplate' => 'box',
             'regionName' => 'Johto',
+            'description' => 'The list of obtainable Pokémons in Gold, Silver and Crystal games',
+            'frenchDescription' => 'La liste des pokémons obtenable dans les jeux Or, Argent et Cristal.',
+            'version' => 1,
         ], $content[1]);
 
         $this->assertEquals([
@@ -41,6 +47,9 @@ class DexesApiTest extends AbstractApiTest
             'isPrivate' => false,
             'isDisplayForm' => true,
             'displayTemplate' => 'box',
+            'description' => '',
+            'frenchDescription' => '',
+            'version' => 2,
         ], $content[3]);
 
         $this->assertEquals([
@@ -51,6 +60,9 @@ class DexesApiTest extends AbstractApiTest
             'isPrivate' => false,
             'isDisplayForm' => true,
             'displayTemplate' => 'box',
+            'description' => '',
+            'frenchDescription' => '',
+            'version' => 1,
         ], $content[4]);
 
         $this->assertEquals([
@@ -61,6 +73,9 @@ class DexesApiTest extends AbstractApiTest
             'isPrivate' => false,
             'isDisplayForm' => false,
             'displayTemplate' => 'list-7',
+            'description' => '',
+            'frenchDescription' => '',
+            'version' => 1,
         ], $content[5]);
     }
 }
