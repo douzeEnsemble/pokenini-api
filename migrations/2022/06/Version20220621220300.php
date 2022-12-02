@@ -46,7 +46,7 @@ final class Version20220621220300 extends AbstractMigration
                 and p.specialForm === null
                 and ba?.rubysapphireemerald
                 RULE,
-            'Red Fire, Leaf Green' => <<<RULE
+            'Fire Red, Leaf Green' => <<<RULE
                 (p.bankable or p.bankableish)
                 and (
                     p.variantForm === null
@@ -54,7 +54,7 @@ final class Version20220621220300 extends AbstractMigration
                 )
                 and p.regionalForm === null
                 and p.specialForm === null
-                and ba?.redfireleafgreen
+                and ba?.fireredleafgreen
                 RULE,
             'Diamond, Pearl, Platinium' => <<<RULE
                 (p.bankable or p.bankableish)
@@ -245,7 +245,7 @@ final class Version20220621220300 extends AbstractMigration
             'Red, Green, Blue, Yellow' => '1',
             'Gold, Silver, Crystal' => '2',
             'Ruby, Sapphire, Emerald' => '3',
-            'Red Fire, Leaf Green' => '3',
+            'Fire Red, Leaf Green' => '3',
             'Diamond, Pearl, Platinium' => '4',
             'Heart Gold, Soul Silver' => '4',
             'Black, White' => '5',

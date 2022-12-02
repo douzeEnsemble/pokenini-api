@@ -39,9 +39,9 @@
       "Hoenn"
     ],
     [
-      "Red Fire, Leaf Green",
-      "redfireleafgreen",
-      "(p.bankable or p.bankableish)\nand (\n    p.variantForm === null\n    or p.variantForm?.name in ['Baby', 'Alternate']\n)\nand p.regionalForm === null\nand p.specialForm === null\nand ba?.redfireleafgreen",
+      "Fire Red, Leaf Green",
+      "fireredleafgreen",
+      "(p.bankable or p.bankableish)\nand (\n    p.variantForm === null\n    or p.variantForm?.name in ['Baby', 'Alternate']\n)\nand p.regionalForm === null\nand p.specialForm === null\nand ba?.fireredleafgreen",
       "4",
       "Rouge Feu, Vert Feuille",
       "FALSE",

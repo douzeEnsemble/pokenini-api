@@ -46,7 +46,7 @@ final class Version20220812093938 extends AbstractMigration
             'Red, Green, Blue, Yellow' => 'Rouge, Vert, Bleu, Jaune',
             'Gold, Silver, Crystal' => 'Or, Argent, Cristal',
             'Ruby, Sapphire, Emerald' => 'Rubis, Saphir, Émeraude',
-            'Red Fire, Leaf Green' => 'Rouge Feu, Vert Feuille',
+            'Fire Red, Leaf Green' => 'Rouge Feu, Vert Feuille',
             'Diamond, Pearl, Platinium' => 'Diamant, Perle, Platine',
             'Heart Gold, Soul Silver' => 'Or HeartGold, Argent SoulSilver',
             'Black, White' => 'Noire, Blanche',

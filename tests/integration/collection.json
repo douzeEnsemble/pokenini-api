@@ -381,13 +381,13 @@
       "response": []
     },
     {
-      "name": "Album Red Fire, Leaf Green",
+      "name": "Album Fire Red, Leaf Green",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
-              "const expectedDexTitle = \"Red Fire, Leaf Green\";",
+              "const expectedDexTitle = \"Fire Red, Leaf Green\";",
               "const expectedDexFrenchTitle = \"Rouge Feu, Vert Feuille\";",
               "const expectedDexIsShiny = false;",
               "const expectedDexIsPrivate = true;",
@@ -491,7 +491,7 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/redfireleafgreen",
+          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/fireredleafgreen",
           "protocol": "http",
           "host": [
             "caddy"
@@ -499,7 +499,7 @@
           "path": [
             "album",
             "7b52009b64fd0a2a49e6d8a939753077792b0554",
-            "redfireleafgreen"
+            "fireredleafgreen"
           ]
         }
       },

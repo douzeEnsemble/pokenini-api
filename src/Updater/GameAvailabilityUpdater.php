@@ -67,7 +67,7 @@ class GameAvailabilityUpdater extends AbstractUpdater
             'Crystal',
             'Ruby',
             'Sapphire',
-            'Red Fire',
+            'Fire Red',
             'Leaf Green',
             'Emerald',
             'Diamond',
