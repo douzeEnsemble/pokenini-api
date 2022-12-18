@@ -12,7 +12,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 #[AsCommand(name: 'app:update:games_and_dexes')]
-class GamesAndDexesUpdaterCommand extends Command
+class UpdateGamesAndDexesCommand extends Command
 {
     protected static $defaultName = 'app:update:games_and_dexes';
 

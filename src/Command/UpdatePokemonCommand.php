@@ -11,7 +11,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 
 #[AsCommand(name: 'app:update:pokemon')]
-class PokemonUpdaterCommand extends Command
+class UpdatePokemonCommand extends Command
 {
     protected static $defaultName = 'app:update:pokemon';
 
