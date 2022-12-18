@@ -34,7 +34,9 @@ jobs:
       - name: Check Docker services
         run: docker compose ps
       - name: Check Moco logs
-        run: docker compose logs moco
+        run: |
+        docker compose logs moco_test
+        docker compose logs moco_int
       - name: Check HTTP reachability
         run: curl -v -o /dev/null http://localhost:8080
       - name: Check HTTPS reachability
