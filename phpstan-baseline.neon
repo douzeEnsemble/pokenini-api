@@ -6,11 +6,6 @@ parameters:
 			path: src/Command/CalculateDexAvailabilityCommand.php
 
 		-
-			message: "#^Call to an undefined method Symfony\\\\Contracts\\\\Cache\\\\CacheInterface\\:\\:clear\\(\\)\\.$#"
-			count: 1
-			path: src/Command/CalculateGameBundleAvailabilityCommand.php
-
-		-
 			message: "#^Parameter \\#1 \\$iterator of function iterator_to_array expects Traversable, iterable given\\.$#"
 			count: 1
 			path: tests/Functional/Repository/DexRepositoryTest.php
