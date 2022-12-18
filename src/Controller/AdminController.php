@@ -16,6 +16,7 @@ use App\Updater\RegionalDexNumberUpdater;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Contracts\Cache\CacheInterface;
 
 #[Route('/istration')]
 class AdminController extends AbstractController
@@ -48,20 +49,20 @@ class AdminController extends AbstractController
         return new Response();
     }
 
-    #[Route(path: '/update/game_availability', methods: ['POST'])]
-    public function updateGameAvailability(
-        GameAvailabilityUpdater $gameAvailabilityUpdater,
-    ): Response {
-        $gameAvailabilityUpdater->execute();
-
-        return new Response();
-    }
-
     #[Route(path: '/update/regional_dex_number', methods: ['POST'])]
     public function updateRegionalDexNumber(
         RegionalDexNumberUpdater $regionalDexNumberUpdater,
     ): Response {
         $regionalDexNumberUpdater->execute();
+
+        return new Response();
+    }
+
+    #[Route(path: '/update/game_availability', methods: ['POST'])]
+    public function updateGameAvailability(
+        GameAvailabilityUpdater $gameAvailabilityUpdater,
+    ): Response {
+        $gameAvailabilityUpdater->execute();
 
         return new Response();
     }
