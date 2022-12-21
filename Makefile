@@ -86,9 +86,6 @@ integration: ## Execute all integration tests
 integration: newman
 
 newman: ## Execute newman
-ifeq (${CI}, true)
-	$(DOCKER_COMP) up -d
-endif
 	@$(SYMFONY) --env=int app:update:labels
 	@$(SYMFONY) --env=int app:update:games_and_dexes
 	@$(SYMFONY) --env=int app:update:pokemon
@@ -97,7 +94,6 @@ endif
 	@$(SYMFONY) --env=int app:calculate:game_bundle_availability
 	@$(SYMFONY) --env=int app:calculate:dex_availability
 	$(DOCKER_COMP) --env-file .env.int run newman run collection.json
-
 
 ## —— Deployment 🚀 ————————————————————————————————————————————————————————————————
 deploy: ## Deployment
