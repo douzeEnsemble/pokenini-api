@@ -40,6 +40,8 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertEquals('box', $data['dex']['display_template']);
         $this->assertArrayHasKey('region_name', $data['dex']);
         $this->assertEquals('Kanto', $data['dex']['region_name']);
+        $this->assertArrayHasKey('region_french_name', $data['dex']);
+        $this->assertEquals('Kanto', $data['dex']['region_french_name']);
         $this->assertArrayHasKey('description', $data['dex']);
         $this->assertEquals(
             'The list of obtainable Pokémons in Red, Blue, Yellow and even Green games',
@@ -105,6 +107,8 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertEquals('box', $data['dex']['display_template']);
         $this->assertArrayHasKey('region_name', $data['dex']);
         $this->assertEquals('Johto', $data['dex']['region_name']);
+        $this->assertArrayHasKey('region_french_name', $data['dex']);
+        $this->assertEquals('Johto', $data['dex']['region_french_name']);
         $this->assertArrayHasKey('description', $data['dex']);
         $this->assertEquals(
             'The list of obtainable Pokémons in Gold, Silver and Crystal games',
@@ -172,6 +176,8 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertEquals('box', $data['dex']['display_template']);
         $this->assertArrayHasKey('region_name', $data['dex']);
         $this->assertEquals('Kanto', $data['dex']['region_name']);
+        $this->assertArrayHasKey('region_french_name', $data['dex']);
+        $this->assertEquals('Kanto', $data['dex']['region_french_name']);
         $this->assertArrayHasKey('description', $data['dex']);
         $this->assertEquals(
             'The list of obtainable Pokémons in Red, Blue, Yellow and even Green games',
@@ -237,6 +243,8 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertEquals('box', $data['dex']['display_template']);
         $this->assertArrayHasKey('region_name', $data['dex']);
         $this->assertEquals('Kanto', $data['dex']['region_name']);
+        $this->assertArrayHasKey('region_french_name', $data['dex']);
+        $this->assertEquals('Kanto', $data['dex']['region_french_name']);
         $this->assertArrayHasKey('description', $data['dex']);
         $this->assertEquals(
             'The list of obtainable Pokémons in Red, Blue, Yellow and even Green games',
@@ -299,6 +307,8 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertEquals('box', $data['dex']['display_template']);
         $this->assertArrayHasKey('region_name', $data['dex']);
         $this->assertNull($data['dex']['region_name']);
+        $this->assertArrayHasKey('region_french_name', $data['dex']);
+        $this->assertNull($data['dex']['region_french_name']);
         $this->assertArrayHasKey('description', $data['dex']);
         $this->assertEquals('', $data['dex']['description']);
         $this->assertArrayHasKey('french_description', $data['dex']);
@@ -347,6 +357,8 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertEquals('box', $data['dex']['display_template']);
         $this->assertArrayHasKey('region_name', $data['dex']);
         $this->assertNull($data['dex']['region_name']);
+        $this->assertArrayHasKey('region_french_name', $data['dex']);
+        $this->assertNull($data['dex']['region_french_name']);
         $this->assertArrayHasKey('description', $data['dex']);
         $this->assertEquals('', $data['dex']['description']);
         $this->assertArrayHasKey('french_description', $data['dex']);
@@ -395,6 +407,8 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertEquals('list-7', $data['dex']['display_template']);
         $this->assertArrayHasKey('region_name', $data['dex']);
         $this->assertNull($data['dex']['region_name']);
+        $this->assertArrayHasKey('region_french_name', $data['dex']);
+        $this->assertNull($data['dex']['region_french_name']);
         $this->assertArrayHasKey('description', $data['dex']);
         $this->assertEquals('', $data['dex']['description']);
         $this->assertArrayHasKey('french_description', $data['dex']);
