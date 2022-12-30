@@ -49,7 +49,8 @@ class DexRepository extends ServiceEntityRepository
                     d.is_shiny AS is_shiny,
                     d.is_display_form AS is_display_form,
                     d.display_template AS display_template,
-                    d.region_name AS region_name,
+                    r.name AS region_name,
+                    r.french_name AS region_french_name,
                     d.selection_rule AS selection_rule,
                     COALESCE(td.is_private, d.is_private) AS is_private,
                     COALESCE(td.is_on_home, false) AS is_on_home,
@@ -57,6 +58,8 @@ class DexRepository extends ServiceEntityRepository
                     d.french_description AS french_description,
                     d.version AS version
         FROM        dex AS d
+                LEFT JOIN region AS r
+                    ON d.region_id = r.id
                 LEFT JOIN trainer_dex AS td
                     ON td.dex_id = d.id AND td.trainer_external_id = :trainer_external_id
         WHERE       d.slug = :dex_slug
