@@ -27,7 +27,15 @@ App\Entity\Region:
         name: 'Alola'
         frenchName: 'Alola'
         orderNumber: 7
-    region_almia:
-        name: 'Almia'
-        frenchName: 'Almia'
+    region_galar:
+        name: 'Galar'
+        frenchName: 'Galar'
         orderNumber: 8
+    region_hisui:
+        name: 'Hisui'
+        frenchName: 'Hisui'
+        orderNumber: 9
+    region_paldea:
+        name: 'Paldea'
+        frenchName: 'Paldea'
+        orderNumber: 10

@@ -4,14 +4,19 @@ declare(strict_types=1);
 
 namespace App\Updater;
 
+use App\Exception\InvalidSheetDataException;
 use App\Helper\A1Notation;
+use App\Repository\RegionRepository;
+use App\Service\SpreadsheetService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Uid\Uuid;
 
 class RegionalDexNumberUpdater extends AbstractUpdater
 {
     protected string $sheetName = 'Regional Dex Number';
     protected string $tableName = 'regional_dex_number';
-    protected string $headerCellsRange = 'A1:L1';
+    // Not use, header cells range depends on regions
+    protected string $headerCellsRange = '';
     protected int $recordsCellsStartRowIndex = 1;
     protected int $recordsCellsStartColumnIndex = 0;
 
@@ -19,9 +24,26 @@ class RegionalDexNumberUpdater extends AbstractUpdater
     protected const BATCH_SIZE = 20;
 
     private int $count = 0;
+    /**
+     * @var string[]|null
+     */
+    private ?array $regionsCache = null;
 
     /** @var string[][] */
     private array $records;
+
+    public function __construct(
+        SpreadsheetService $spreadsheetService,
+        EntityManagerInterface $entityManager,
+        string $spreadsheetId,
+        protected readonly RegionRepository $regionRepository
+    ) {
+        parent::__construct(
+            $spreadsheetService,
+            $entityManager,
+            $spreadsheetId
+        );
+    }
 
     public function getCount(): int
     {
@@ -53,22 +75,39 @@ class RegionalDexNumberUpdater extends AbstractUpdater
         return $ranges;
     }
 
+    /**
+     * @return string[]
+     */
+    protected function getHeader(): array
+    {
+        $regions = $this->getRegions();
+
+        $headerCellsRange = sprintf(
+            '%s:%s',
+            A1Notation::fromIndex(0, 0),
+            A1Notation::fromIndex(0, 1 + count($regions)),
+        );
+
+        $values = $this->getSheetValues("'{$this->sheetName}'!{$headerCellsRange}");
+
+        if (empty($values)) {
+            throw new InvalidSheetDataException('Spreadsheet is empty');
+        }
+
+        return $values[0];
+    }
+
     protected function getExpectedHeader(): array
     {
-        return [
-            'Pokemon',
-            'National',
-            'Kanto',
-            'Johto',
-            'Hoenn',
-            'Sinnoh',
-            'Uova',
-            'Kalos',
-            'Alola',
-            'Galar',
-            'Hisui',
-            'Paldea',
-        ];
+        $regions = $this->getRegions();
+
+        return array_merge(
+            [
+                'Pokemon',
+                'National',
+            ],
+            $regions
+        );
     }
 
     protected function getRecords(array $header, string $range): array
@@ -190,5 +229,19 @@ SQL;
                 'dexNumber' => $dexNumber,
             ];
         }
+    }
+
+    /**
+     * @return string[]
+     */
+    private function getRegions(): array
+    {
+        if (null != $this->regionsCache) {
+            return $this->regionsCache;
+        }
+
+        $this->regionsCache = $this->regionRepository->getAllNames();
+
+        return $this->regionsCache;
     }
 }

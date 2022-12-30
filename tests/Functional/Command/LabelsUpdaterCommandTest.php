@@ -17,7 +17,7 @@ class LabelsUpdaterCommandTest extends AbstractUpdaterCommandTest
         $this->assertEquals(3, $this->getTableCount('regional_form'));
         $this->assertEquals(3, $this->getTableCount('special_form'));
         $this->assertEquals(7, $this->getTableCount('variant_form'));
-        $this->assertEquals(8, $this->getTableCount('region'));
+        $this->assertEquals(10, $this->getTableCount('region'));
 
         $commandTester = $this->executeCommand();
 
