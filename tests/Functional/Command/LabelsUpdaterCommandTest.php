@@ -17,6 +17,7 @@ class LabelsUpdaterCommandTest extends AbstractUpdaterCommandTest
         $this->assertEquals(3, $this->getTableCount('regional_form'));
         $this->assertEquals(3, $this->getTableCount('special_form'));
         $this->assertEquals(7, $this->getTableCount('variant_form'));
+        $this->assertEquals(8, $this->getTableCount('region'));
 
         $commandTester = $this->executeCommand();
 
@@ -27,7 +28,8 @@ class LabelsUpdaterCommandTest extends AbstractUpdaterCommandTest
         $this->assertEquals(4, $this->getTableCount('regional_form'));
         $this->assertEquals(5, $this->getTableCount('special_form'));
         $this->assertEquals(8, $this->getTableCount('variant_form'));
-
+        $this->assertEquals(8, $this->getTableCount('variant_form'));
+        $this->assertEquals(11, $this->getTableCount('region'));
 
         $this->assertStringContainsString("Labels updated", $commandTester->getDisplay());
     }

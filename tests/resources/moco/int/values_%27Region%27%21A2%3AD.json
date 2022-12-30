@@ -1,0 +1,66 @@
+{
+  "range": "Region!A2:D11",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Kanto",
+      "kanto",
+      "1",
+      "Kanto"
+    ],
+    [
+      "Johto",
+      "johto",
+      "2",
+      "Johto"
+    ],
+    [
+      "Hoenn",
+      "hoenn",
+      "3",
+      "Hoenn"
+    ],
+    [
+      "Sinnoh",
+      "sinnoh",
+      "4",
+      "Sinnoh"
+    ],
+    [
+      "Unova",
+      "unova",
+      "5",
+      "Unys"
+    ],
+    [
+      "Kalos",
+      "kalos",
+      "6",
+      "Kalos"
+    ],
+    [
+      "Alola",
+      "alola",
+      "7",
+      "Alola"
+    ],
+    [
+      "Galar",
+      "galar",
+      "8",
+      "Galar"
+    ],
+    [
+      "Hisui",
+      "hisui",
+      "9",
+      "Hisui"
+    ],
+    [
+      "Paldea",
+      "paldea",
+      "10",
+      "Paldea"
+    ]
+  ]
+}

@@ -3,7 +3,6 @@
 namespace App\Command;
 
 use App\Service\UpdaterService\LabelsUpdaterService;
-use App\Updater\PokemonUpdater;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
