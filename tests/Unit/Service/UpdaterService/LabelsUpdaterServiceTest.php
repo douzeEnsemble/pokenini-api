@@ -5,10 +5,7 @@ namespace App\Tests\Unit\Service\UpdaterService;
 use App\Service\UpdaterService\FormsUpdaterService;
 use App\Service\UpdaterService\LabelsUpdaterService;
 use App\Updater\CatchStateUpdater;
-use App\Updater\Form\CategoryFormUpdater;
-use App\Updater\Form\RegionalFormUpdater;
-use App\Updater\Form\SpecialFormUpdater;
-use App\Updater\Form\VariantFormUpdater;
+use App\Updater\RegionUpdater;
 use PHPUnit\Framework\TestCase;
 
 class LabelsUpdaterServiceTest extends TestCase
@@ -25,10 +22,16 @@ class LabelsUpdaterServiceTest extends TestCase
             ->expects($this->once())
             ->method('execute')
         ;
+        $regionUpdater = $this->createMock(RegionUpdater::class);
+        $regionUpdater
+            ->expects($this->once())
+            ->method('execute')
+        ;
 
         $service = new LabelsUpdaterService(
             $catchStateUpdater,
-            $formsUpdaterService
+            $formsUpdaterService,
+            $regionUpdater
         );
 
         $service->execute();

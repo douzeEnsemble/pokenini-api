@@ -1,0 +1,12 @@
+{
+  "range": "Region!A1:D1",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Name",
+      "Slug",
+      "Order",
+      "French Name"
+    ]
+  ]
+}

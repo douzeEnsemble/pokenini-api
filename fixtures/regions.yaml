@@ -1,0 +1,33 @@
+App\Entity\Region:
+    region_kanto:
+        name: 'Kanto'
+        frenchName: 'Kanto'
+        orderNumber: 1
+    region_johto:
+        name: 'Johto'
+        frenchName: 'Johto'
+        orderNumber: 2
+    region_hoenn:
+        name: 'Hoenn'
+        frenchName: 'Hoenn'
+        orderNumber: 3
+    region_sinnoh:
+        name: 'Sinnoh'
+        frenchName: 'Sinnoh'
+        orderNumber: 4
+    region_unova:
+        name: 'Unova'
+        frenchName: 'Unys'
+        orderNumber: 5
+    region_kalos:
+        name: 'Kalos'
+        frenchName: 'Kalos'
+        orderNumber: 6
+    region_alola:
+        name: 'Alola'
+        frenchName: 'Alola'
+        orderNumber: 7
+    region_almia:
+        name: 'Almia'
+        frenchName: 'Almia'
+        orderNumber: 8

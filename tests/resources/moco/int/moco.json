@@ -412,5 +412,23 @@
       "status": 200,
       "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A1002%3AL1006.json"
     }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Region'!A1:D1"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27Region%27%21A1%3AD1.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Region'!A2:D"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/values_%27Region%27%21A2%3AD.json"
+    }
   }
 ]
