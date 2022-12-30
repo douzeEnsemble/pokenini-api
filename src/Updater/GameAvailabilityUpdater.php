@@ -4,14 +4,17 @@ declare(strict_types=1);
 
 namespace App\Updater;
 
+use App\Exception\InvalidSheetDataException;
 use App\Helper\A1Notation;
+use App\Repository\GameRepository;
+use App\Service\SpreadsheetService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Uid\Uuid;
 
 class GameAvailabilityUpdater extends AbstractUpdater
 {
     protected string $sheetName = 'Games Availability';
     protected string $tableName = 'game_availability';
-    protected string $headerCellsRange = 'A2:AN2';
     protected int $recordsCellsStartRowIndex = 2;
     protected int $recordsCellsStartColumnIndex = 0;
 
@@ -23,9 +26,55 @@ class GameAvailabilityUpdater extends AbstractUpdater
     /** @var string[][] */
     private array $records;
 
+    /**
+     * @var string[]|null
+     */
+    private ?array $gamesCache = null;
+
+    public function __construct(
+        SpreadsheetService $spreadsheetService,
+        EntityManagerInterface $entityManager,
+        string $spreadsheetId,
+        protected readonly GameRepository $gameRepository
+    ) {
+        parent::__construct(
+            $spreadsheetService,
+            $entityManager,
+            $spreadsheetId
+        );
+    }
+
     public function getCount(): int
     {
         return $this->count;
+    }
+
+    /**
+     * @return string[]
+     */
+    protected function getHeader(): array
+    {
+        $games = $this->getGames();
+
+        $headerCellsRange = sprintf(
+            '%s:%s',
+            A1Notation::fromIndex(
+                1,
+                $this->recordsCellsStartColumnIndex
+            ),
+            A1Notation::fromIndex(
+                1,
+                1 + count($games)
+            ),
+        );
+
+        $values = $this->getSheetValues("'{$this->sheetName}'!{$headerCellsRange}");
+
+        if (empty($values)) {
+            throw new InvalidSheetDataException('Spreadsheet is empty');
+        }
+
+        return $values[0];
     }
 
     /**
@@ -55,48 +104,15 @@ class GameAvailabilityUpdater extends AbstractUpdater
 
     protected function getExpectedHeader(): array
     {
-        return [
-            '#',
-            'Name',
-            'Red',
-            'Green',
-            'Blue',
-            'Yellow',
-            'Gold',
-            'Silver',
-            'Crystal',
-            'Ruby',
-            'Sapphire',
-            'Fire Red',
-            'Leaf Green',
-            'Emerald',
-            'Diamond',
-            'Pearl',
-            'Platinium',
-            'Heart Gold',
-            'Soul Silver',
-            'Black',
-            'White',
-            'Black 2',
-            'White 2',
-            'X',
-            'Y',
-            'Omega Ruby',
-            'Alpha Sapphire',
-            'Sun',
-            'Moon',
-            'Ultra Sun',
-            'Ultra Moon',
-            'Let\'s Go Pikachu',
-            'Let\'s Go Eevee',
-            'Sword',
-            'Shield',
-            'Brillant Diamond',
-            'Shining Pearl',
-            'Pokémon Legends Arceus',
-            'Scarlet',
-            'Violet',
-        ];
+        $games = $this->getGames();
+
+        return array_merge(
+            [
+                '#',
+                'Name',
+            ],
+            $games
+        );
     }
 
     protected function getRecords(array $header, string $range): array
@@ -215,5 +231,18 @@ SQL;
                 'availability' => $availability,
             ];
         }
+    }
+    /**
+     * @return string[]
+     */
+    private function getGames(): array
+    {
+        if (null != $this->gamesCache) {
+            return $this->gamesCache;
+        }
+
+        $this->gamesCache = $this->gameRepository->getAllNames();
+
+        return $this->gamesCache;
     }
 }

@@ -15,3 +15,5 @@ App\Entity\GameGeneration:
         name: '7'
     gen_8:
         name: '8'
+    gen_9:
+        name: '9'

@@ -143,3 +143,11 @@ App\Entity\Game:
         name: 'Pokémon Legends Arceus'
         bundle: '@game_bundle_pokemon_legends_arceus'
         orderNumber: 35
+    game_scarlet:
+        name: 'Scarlet'
+        bundle: '@game_bundle_pokemon_legends_arceus'
+        orderNumber: 36
+    game_violet:
+        name: 'Violet'
+        bundle: '@game_bundle_scarlet_violet'
+        orderNumber: 37

@@ -9,9 +9,9 @@ use App\Updater\GameUpdater;
 
 class GameUpdaterTest extends AbstractUpdaterTest
 {
-    protected int $initialTotalCount = 36;
-    protected int $finalTotalCount = 38;
-    protected int $mustBeDeletedTotalCount = 1;
+    protected int $initialTotalCount = 38;
+    protected int $finalTotalCount = 40;
+    protected int $mustBeDeletedTotalCount = 3;
     protected string $sheetName = 'Game';
     protected string $tableName = 'game';
 

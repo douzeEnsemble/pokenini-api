@@ -63,3 +63,7 @@ App\Entity\GameBundle:
         name: 'Pokémon Legends Arceus'
         generation: '@gen_8'
         orderNumber: 16
+    game_bundle_scarlet_violet:
+        name: 'Scarlet, Violet'
+        generation: '@gen_9'
+        orderNumber: 17
