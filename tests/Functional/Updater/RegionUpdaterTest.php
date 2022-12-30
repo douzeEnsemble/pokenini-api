@@ -10,7 +10,7 @@ use App\Updater\RegionUpdater;
 class RegionUpdaterTest extends AbstractUpdaterTest
 {
     protected int $initialTotalCount = 10;
-    protected int $finalTotalCount = 11;
+    protected int $finalTotalCount = 10;
     protected int $mustBeDeletedTotalCount = 0;
     protected string $sheetName = 'Region';
     protected string $tableName = 'region';
