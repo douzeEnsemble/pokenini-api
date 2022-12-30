@@ -57,7 +57,7 @@ final class Version20220812093938 extends AbstractMigration
             'Ultra Sun, Ultra Moon' => 'Ultra Soleil, Ultra Lune',
             "Let's Go Pikachu, Let's Go Eevee" => "Let's Go Pikachu, Let's Go Évoli",
             'Sword, Shield' => 'Épée, Bouclier',
-            'Brilland Diamond, Shining Pearl' => 'Diamant Étincelant, Perle Scintillante',
+            'Brilliant Diamond, Shining Pearl' => 'Diamant Étincelant, Perle Scintillante',
             'Pokémon Legends Arceus' => 'Légendes Pokémon : Arceus',
             'Home' => 'Home',
             'Home Shiny' => 'Home Chromatique',
