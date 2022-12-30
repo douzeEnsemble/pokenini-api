@@ -56,7 +56,7 @@ App\Entity\GameBundle:
         generation: '@gen_8'
         orderNumber: 14
     game_bundle_brilland_diamond_shining_pearl:
-        name: 'Brilland Diamond, Shining Pearl'
+        name: 'Brillant Diamond, Shining Pearl'
         generation: '@gen_8'
         orderNumber: 15
     game_bundle_pokemon_legends_arceus:
