@@ -23,7 +23,7 @@ class GamesAndDexesUpdaterCommandTest extends AbstractUpdaterCommandTest
 
         $this->assertEquals(9, $this->getTableCount('game_generation'));
         $this->assertEquals(18, $this->getTableCount('game_bundle'));
-        $this->assertEquals(40, $this->getTableCount('game'));
+        $this->assertEquals(38, $this->getTableCount('game'));
         $this->assertEquals(22, $this->getTableCount('dex'));
 
         $this->assertStringContainsString("Games and dexes updated", $commandTester->getDisplay());

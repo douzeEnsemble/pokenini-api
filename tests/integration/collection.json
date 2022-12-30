@@ -1756,13 +1756,13 @@
       "response": []
     },
     {
-      "name": "Album Brillant Diamond, Shining Pearl",
+      "name": "Album Brilliant Diamond, Shining Pearl",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
-              "const expectedDexTitle = \"Brillant Diamond, Shining Pearl\";",
+              "const expectedDexTitle = \"Brilliant Diamond, Shining Pearl\";",
               "const expectedDexFrenchTitle = \"Diamant Étincelant, Perle Scintillante\";",
               "const expectedDexIsShiny = false;",
               "const expectedDexIsPrivate = true;",
@@ -1866,7 +1866,7 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/brillanddiamondshiningpearl",
+          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/brilliantdiamondshiningpearl",
           "protocol": "http",
           "host": [
             "caddy"
@@ -1874,7 +1874,7 @@
           "path": [
             "album",
             "7b52009b64fd0a2a49e6d8a939753077792b0554",
-            "brillanddiamondshiningpearl"
+            "brilliantdiamondshiningpearl"
           ]
         }
       },

@@ -185,7 +185,7 @@ final class Version20220621220300 extends AbstractMigration
                 )
                 and ba?.swordshield
                 RULE,
-            'Brilland Diamond, Shining Pearl' => <<<RULE
+            'Brilliant Diamond, Shining Pearl' => <<<RULE
                 (p.bankable or p.bankableish)
                 and (
                     p.variantForm === null
@@ -193,7 +193,7 @@ final class Version20220621220300 extends AbstractMigration
                 )
                 and p.regionalForm === null
                 and p.specialForm === null
-                and ba?.brillanddiamondshiningpearl
+                and ba?.brilliantdiamondshiningpearl
                 RULE,
             'Legend Arceus' => <<<RULE
                 (p.bankable or p.bankableish)
@@ -257,7 +257,7 @@ final class Version20220621220300 extends AbstractMigration
             'Let\'s Go Pikachu, Let\'s Go Eevee' => '7',
             'Pokemon Go' => '7',
             'Sword, Shield' => '8',
-            'Brilland Diamond, Shining Pearl' => '8',
+            'Brilliant Diamond, Shining Pearl' => '8',
             'Legend Arceus' => '8',
         ];
 

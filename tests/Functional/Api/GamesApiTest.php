@@ -33,7 +33,7 @@ class GamesApiTest extends AbstractApiTest
 
         $this->assertEquals([
             'bundle' => [
-                'name' => 'Brillant Diamond, Shining Pearl',
+                'name' => 'Brilliant Diamond, Shining Pearl',
                 'generation' => [
                     'name' => '8',
                 ]
