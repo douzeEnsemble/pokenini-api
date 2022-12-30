@@ -9,7 +9,7 @@ use App\Updater\GameGenerationUpdater;
 
 class GameGenerationUpdaterTest extends AbstractUpdaterTest
 {
-    protected int $initialTotalCount = 8;
+    protected int $initialTotalCount = 9;
     protected int $finalTotalCount = 9;
     protected int $mustBeDeletedTotalCount = 0;
     protected string $sheetName = 'Game Generation';

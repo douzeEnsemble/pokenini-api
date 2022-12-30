@@ -64,9 +64,9 @@ class AdminControllerTest extends WebTestCase
     {
         $client = static::createClient();
 
-        $this->assertEquals(8, $this->getTableCount('game_generation'));
-        $this->assertEquals(16, $this->getTableCount('game_bundle'));
-        $this->assertEquals(36, $this->getTableCount('game'));
+        $this->assertEquals(9, $this->getTableCount('game_generation'));
+        $this->assertEquals(17, $this->getTableCount('game_bundle'));
+        $this->assertEquals(38, $this->getTableCount('game'));
         $this->assertEquals(6, $this->getTableCount('dex'));
 
         $client->request(
@@ -83,8 +83,8 @@ class AdminControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
 
         $this->assertEquals(9, $this->getTableCount('game_generation'));
-        $this->assertEquals(17, $this->getTableCount('game_bundle'));
-        $this->assertEquals(38, $this->getTableCount('game'));
+        $this->assertEquals(18, $this->getTableCount('game_bundle'));
+        $this->assertEquals(40, $this->getTableCount('game'));
         $this->assertEquals(22, $this->getTableCount('dex'));
     }
 

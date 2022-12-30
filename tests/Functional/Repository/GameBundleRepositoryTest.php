@@ -24,6 +24,6 @@ class GameBundleRepositoryTest extends KernelTestCase
 
         $list = $repo->getAll();
 
-        $this->assertCount(16, $list);
+        $this->assertCount(17, $list);
     }
 }
