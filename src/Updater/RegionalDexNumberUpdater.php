@@ -15,8 +15,6 @@ class RegionalDexNumberUpdater extends AbstractUpdater
 {
     protected string $sheetName = 'Regional Dex Number';
     protected string $tableName = 'regional_dex_number';
-    // Not use, header cells range depends on regions
-    protected string $headerCellsRange = '';
     protected int $recordsCellsStartRowIndex = 1;
     protected int $recordsCellsStartColumnIndex = 0;
 
@@ -84,8 +82,14 @@ class RegionalDexNumberUpdater extends AbstractUpdater
 
         $headerCellsRange = sprintf(
             '%s:%s',
-            A1Notation::fromIndex(0, 0),
-            A1Notation::fromIndex(0, 1 + count($regions)),
+            A1Notation::fromIndex(
+                0,
+                $this->recordsCellsStartColumnIndex
+            ),
+            A1Notation::fromIndex(
+                0,
+                1 + count($regions)
+            ),
         );
 
         $values = $this->getSheetValues("'{$this->sheetName}'!{$headerCellsRange}");
