@@ -4,11 +4,14 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Updater;
 
+use App\Tests\Common\Traits\GetterTrait\GetDexTrait;
 use App\Updater\AbstractUpdater;
 use App\Updater\DexUpdater;
 
 class DexUpdaterTest extends AbstractUpdaterTest
 {
+    use GetDexTrait;
+
     protected int $initialTotalCount = 6;
     protected int $finalTotalCount = 22;
     protected int $mustBeDeletedTotalCount = 1;
@@ -19,5 +22,22 @@ class DexUpdaterTest extends AbstractUpdaterTest
     {
         /** @var DexUpdater */
         return static::getContainer()->get(DexUpdater::class);
+    }
+
+    public function testDexRegion(): void
+    {
+        $redGreenBlueYellowBefore = $this->getDexFromSlug('redgreenblueyellow');
+        $rubySapphireEmeraldBefore = $this->getDexFromSlug('rubysapphireemerald');
+
+        $this->assertEquals('Kanto', $redGreenBlueYellowBefore['region_name']);
+        $this->assertNull($rubySapphireEmeraldBefore['region_name']);
+
+        $this->getService()->execute('Dex');
+
+        $redGreenBlueYellowAfter = $this->getDexFromSlug('redgreenblueyellow');
+        $rubySapphireEmeraldAfter = $this->getDexFromSlug('rubysapphireemerald');
+
+        $this->assertEquals('Kanto', $redGreenBlueYellowAfter['region_name']);
+        $this->assertEquals('Hoenn', $rubySapphireEmeraldAfter['region_name']);
     }
 }

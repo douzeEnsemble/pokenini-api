@@ -5,7 +5,7 @@ App\Entity\Dex:
         selectionRule: "(p.bankable or p.bankableish) and ba?.redgreenblueyellow"
         displayTemplate: 'box'
         orderNumber: 1
-        regionName: 'Kanto'
+        region: '@region_kanto'
         description: 'The list of obtainable Pokémons in Red, Blue, Yellow and even Green games'
         frenchDescription: 'La liste des pokémons obtenable dans les jeux Rouge, Bleu, Jaune et même Vert.'
         version: 1
@@ -15,7 +15,7 @@ App\Entity\Dex:
         selectionRule: "(p.bankable or p.bankableish) and ba?.goldsilvercrystal and p.specialForm === null and p.regionalForm === null"
         displayTemplate: 'box'
         orderNumber: 2
-        regionName: 'Johto'
+        region: '@region_johto'
         description: 'The list of obtainable Pokémons in Gold, Silver and Crystal games'
         frenchDescription: 'La liste des pokémons obtenable dans les jeux Or, Argent et Cristal.'
         version: 1
@@ -25,13 +25,12 @@ App\Entity\Dex:
         selectionRule: "(p.bankable or p.bankableish) and ba?.rubysapphireemerald"
         displayTemplate: 'box'
         orderNumber: 3
-        regionName: 'Hoenn'
     dex_home:
         name: 'Home'
         frenchName: 'Home'
         selectionRule: "(p.bankable or p.bankableish)"
         displayTemplate: 'box'
-        orderNumber: 3
+        orderNumber: 4
         isPrivate: false
         version: 2
     dex_home_shiny:
@@ -39,7 +38,7 @@ App\Entity\Dex:
         frenchName: 'Home Chromatique'
         selectionRule: "(p.bankable or p.bankableish)"
         displayTemplate: 'box'
-        orderNumber: 4
+        orderNumber: 5
         isShiny: true
         isPrivate: false
     dex_home_pogo:
@@ -47,7 +46,7 @@ App\Entity\Dex:
         frenchName: 'Home PoGo'
         selectionRule: "(p.bankable or p.bankableish) and p.categoryForm === null and p.regionalForm === null and p.specialForm === null and p.variantForm === null"
         displayTemplate: 'list-7'
-        orderNumber: 5
+        orderNumber: 6
         isShiny: false
         isPrivate: false
         isDisplayForm: false

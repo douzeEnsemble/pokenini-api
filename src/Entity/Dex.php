@@ -55,11 +55,11 @@ class Dex
     ])]
     public string $displayTemplate = 'box';
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\ManyToOne]
     #[Groups([
         "dex_list",
     ])]
-    public ?string $regionName = null;
+    public ?Region $region = null;
 
     #[ORM\Column(length: 655)]
     #[Groups([

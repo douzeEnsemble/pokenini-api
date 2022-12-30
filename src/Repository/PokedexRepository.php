@@ -58,6 +58,8 @@ class PokedexRepository extends ServiceEntityRepository
                 ON da.pokemon_id = p.id
             JOIN dex AS d
                 ON da.dex_id = d.id
+            LEFT JOIN region AS r
+                ON d.region_id = r.id
             LEFT JOIN pokedex AS pd
                 ON pd.dex_id = da.dex_id
                 AND pd.pokemon_id = da.pokemon_id
@@ -71,8 +73,8 @@ class PokedexRepository extends ServiceEntityRepository
             LEFT JOIN variant_form AS vf
                 ON p.variant_form_id = vf.id
             LEFT JOIN regional_dex_number AS rdn
-                ON d.region_name IS NOT NULL
-                    AND d.region_name = rdn.region_name
+                ON r.name IS NOT NULL
+                    AND r.name = rdn.region_name
                     AND p.prime_name = rdn.pokemon_name
         WHERE   d.slug = :dex_slug
         ORDER BY pokemon_order_number
