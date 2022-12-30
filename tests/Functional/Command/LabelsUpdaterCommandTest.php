@@ -29,7 +29,7 @@ class LabelsUpdaterCommandTest extends AbstractUpdaterCommandTest
         $this->assertEquals(5, $this->getTableCount('special_form'));
         $this->assertEquals(8, $this->getTableCount('variant_form'));
         $this->assertEquals(8, $this->getTableCount('variant_form'));
-        $this->assertEquals(11, $this->getTableCount('region'));
+        $this->assertEquals(10, $this->getTableCount('region'));
 
         $this->assertStringContainsString("Labels updated", $commandTester->getDisplay());
     }
