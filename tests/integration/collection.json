@@ -1756,13 +1756,13 @@
       "response": []
     },
     {
-      "name": "Album Brilland Diamond, Shining Pearl",
+      "name": "Album Brillant Diamond, Shining Pearl",
       "event": [
         {
           "listen": "test",
           "script": {
             "exec": [
-              "const expectedDexTitle = \"Brilland Diamond, Shining Pearl\";",
+              "const expectedDexTitle = \"Brillant Diamond, Shining Pearl\";",
               "const expectedDexFrenchTitle = \"Diamant Étincelant, Perle Scintillante\";",
               "const expectedDexIsShiny = false;",
               "const expectedDexIsPrivate = true;",

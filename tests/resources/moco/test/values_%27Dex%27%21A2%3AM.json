@@ -213,7 +213,7 @@
       "3"
     ],
     [
-      "Brilland Diamond, Shining Pearl",
+      "Brillant Diamond, Shining Pearl",
       "brillanddiamondshiningpearl",
       "(p.bankable or p.bankableish)\nand (\n    p.variantForm === null\n    or p.variantForm?.name in ['Baby', 'Alternate', 'Gender']\n)\nand p.regionalForm === null\nand p.specialForm === null\nand ba?.brillanddiamondshiningpearl",
       "15",
@@ -224,7 +224,7 @@
       "box",
       "sinnoh",
       "La liste des pokémons obtenable dans les jeux Diamant Étincelant et Perle Scintillante.\n\nCes jeux introduisent les différences visibles de genre entre des pokémons de la même espèces, comme pour la famille Étourmi ou Keunotor. Et cela même sur des pokémons existants, comme pour Pikachu, Papilusion ou Doduo/Dodrio par exemple.\nEt des pokémons à formes variables apparaissent aussi comme Cheniti/Cheniselle ou Motisma. Ou des transformations comme Giratina et Shaymin.",
-      "The list of obtainable Pokémons in Brilland Diamond and Shining Pearl.\n\nThese games introduce visible gender differences between Pokémons from the same species, as for the starmi or Keunotor family. Even that on existing Pokémons, as for Pikachu, Papilusion or Doduo/Dodrio for example.\nAnd Pokémons with variable shapes also appear as Burmy/Wormadam or Rotom. Or transformations like Giratina and Shaymin.",
+      "The list of obtainable Pokémons in Brillant Diamond and Shining Pearl.\n\nThese games introduce visible gender differences between Pokémons from the same species, as for the starmi or Keunotor family. Even that on existing Pokémons, as for Pikachu, Papilusion or Doduo/Dodrio for example.\nAnd Pokémons with variable shapes also appear as Burmy/Wormadam or Rotom. Or transformations like Giratina and Shaymin.",
       "2"
     ],
     [
