@@ -288,7 +288,7 @@
       "1"
     ],
     [
-      "Alpha",
+      "alpha",
       "alpha",
       "    (p.bankable or p.bankableish)\n    and p.specialForm?.name === 'Alpha'",
       "20",
@@ -303,7 +303,7 @@
       "1"
     ],
     [
-      "Mega",
+      "mega",
       "mega",
       "(p.bankable or p.bankableish)\nand p.specialForm?.name === 'Mega'",
       "21",
