@@ -5,16 +5,16 @@
     [
       "Pokemon",
       "National",
-      "Kanto",
-      "Johto",
-      "Hoenn",
-      "Sinnoh",
-      "Unova",
-      "Kalos",
-      "Alola",
-      "Galar",
-      "Hisui",
-      "Paldea"
+      "kanto",
+      "johto",
+      "hoenn",
+      "sinnoh",
+      "unova",
+      "kalos",
+      "alola",
+      "galar",
+      "hisui",
+      "paldea"
     ]
   ]
 }
