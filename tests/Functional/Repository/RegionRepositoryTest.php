@@ -22,20 +22,20 @@ class RegionRepositoryTest extends KernelTestCase
         /** @var RegionRepository $repo */
         $repo = static::getContainer()->get(RegionRepository::class);
 
-        $list = $repo->getAllNames();
+        $list = $repo->getAllSlugs();
 
         $this->assertEquals(
             [
-                'Kanto',
-                'Johto',
-                'Hoenn',
-                'Sinnoh',
-                'Unova',
-                'Kalos',
-                'Alola',
-                'Galar',
-                'Hisui',
-                'Paldea',
+                'kanto',
+                'johto',
+                'hoenn',
+                'sinnoh',
+                'unova',
+                'kalos',
+                'alola',
+                'galar',
+                'hisui',
+                'paldea',
             ],
             $list
         );

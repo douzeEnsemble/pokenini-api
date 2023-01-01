@@ -21,10 +21,10 @@ class GameRepository extends ServiceEntityRepository
     /**
      * @return string[]
      */
-    public function getAllNames(): array
+    public function getAllSlugs(): array
     {
         $queryBuilder = $this->createQueryBuilder('g');
-        $queryBuilder->select('g.name');
+        $queryBuilder->select('g.slug');
         $queryBuilder->orderBy('g.orderNumber');
 
         /** @var string[] */

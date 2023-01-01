@@ -155,7 +155,7 @@ class GameAvailabilityUpdater extends AbstractUpdater
         foreach ($records as $record) {
             $sqlValues[] = ":id$index"
                 . ", :pokemonName$index"
-                . ", (SELECT id FROM game WHERE name = :game$index)"
+                . ", (SELECT id FROM game WHERE slug = :game$index)"
                 . ", :availability$index"
             ;
 
@@ -241,7 +241,7 @@ SQL;
             return $this->gamesCache;
         }
 
-        $this->gamesCache = $this->gameRepository->getAllNames();
+        $this->gamesCache = $this->gameRepository->getAllSlugs();
 
         return $this->gamesCache;
     }

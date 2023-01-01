@@ -21,10 +21,10 @@ class RegionRepository extends ServiceEntityRepository
     /**
      * @return string[]
      */
-    public function getAllNames(): array
+    public function getAllSlugs(): array
     {
         $queryBuilder = $this->createQueryBuilder('r');
-        $queryBuilder->select('r.name');
+        $queryBuilder->select('r.slug');
         $queryBuilder->orderBy('r.orderNumber');
 
         /** @var string[] */
