@@ -244,7 +244,7 @@ SQL;
             return $this->regionsCache;
         }
 
-        $this->regionsCache = $this->regionRepository->getAllNames();
+        $this->regionsCache = $this->regionRepository->getAllSlugs();
 
         return $this->regionsCache;
     }
