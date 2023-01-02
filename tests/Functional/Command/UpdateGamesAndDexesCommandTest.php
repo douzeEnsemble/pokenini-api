@@ -6,7 +6,7 @@ namespace App\Tests\Functional\Command;
 
 use App\Tests\Common\Traits\CounterTrait\CounterTableTrait;
 
-class GamesAndDexesUpdaterCommandTest extends AbstractUpdaterCommandTest
+class UpdateGamesAndDexesCommandTest extends AbstractUpdaterCommandTest
 {
     use CounterTableTrait;
 
@@ -26,7 +26,10 @@ class GamesAndDexesUpdaterCommandTest extends AbstractUpdaterCommandTest
         $this->assertEquals(38, $this->getTableCount('game'));
         $this->assertEquals(22, $this->getTableCount('dex'));
 
-        $this->assertStringContainsString("Games and dexes updated", $commandTester->getDisplay());
+        $this->assertStringContainsString("9 game's generations updated", $commandTester->getDisplay());
+        $this->assertStringContainsString("17 game's bundles updated", $commandTester->getDisplay());
+        $this->assertStringContainsString("36 games updated", $commandTester->getDisplay());
+        $this->assertStringContainsString("21 dexes updated", $commandTester->getDisplay());
     }
 
     protected function getCommandName(): string

@@ -4,12 +4,7 @@ declare(strict_types=1);
 
 namespace App\Updater\Form;
 
-use App\Exception\InvalidSheetDataException;
 use App\Updater\AbstractUpdater;
-use Doctrine\ORM\EntityManagerInterface;
-use Google\Client;
-use Google\Service\Exception as GoogleServiceException;
-use Google\Service\Sheets;
 use Symfony\Component\Uid\Uuid;
 
 abstract class AbstractFormUpdater extends AbstractUpdater
@@ -64,5 +59,7 @@ abstract class AbstractFormUpdater extends AbstractUpdater
         SQL;
 
         $this->executeQuery($sql, $sqlParameters);
+
+        $this->statictic->increment();
     }
 }

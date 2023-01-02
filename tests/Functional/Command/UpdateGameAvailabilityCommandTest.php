@@ -6,7 +6,7 @@ namespace App\Tests\Functional\Command;
 
 use App\Tests\Common\Traits\CounterTrait\CountGameAvailabilityTrait;
 
-class GameAvailabilityUpdaterCommandTest extends AbstractUpdaterCommandTest
+class UpdateGameAvailabilityCommandTest extends AbstractUpdaterCommandTest
 {
     use CountGameAvailabilityTrait;
 

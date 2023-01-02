@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Updater;
 
+use App\DTO\DataChangeReport\Statistic;
 use App\Exception\InvalidSheetDataException;
 use App\Service\SpreadsheetService;
 use Doctrine\ORM\EntityManagerInterface;
@@ -13,15 +14,19 @@ abstract class AbstractUpdater implements UpdaterInterface
 {
     protected string $sheetName;
     protected string $tableName;
+    protected string $statisticName;
     protected string $headerCellsRange;
     /** @var string[] */
     protected array $recordsCellsRanges;
+
+    protected Statistic $statictic;
 
     public function __construct(
         protected readonly SpreadsheetService $spreadsheetService,
         protected readonly EntityManagerInterface $entityManager,
         protected readonly string $spreadsheetId
     ) {
+        $this->statictic = new Statistic($this->statisticName);
     }
 
     public function execute(?string $sheetName = null): void
@@ -37,6 +42,11 @@ abstract class AbstractUpdater implements UpdaterInterface
         foreach ($this->getRecordsCellsRanges() as $recordsCellsRange) {
             $this->handleCellRange($header, $recordsCellsRange);
         }
+    }
+
+    public function getStatistic(): Statistic
+    {
+        return $this->statictic;
     }
 
     /**

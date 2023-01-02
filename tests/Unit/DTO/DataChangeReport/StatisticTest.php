@@ -2,42 +2,51 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit\DTO\Report;
+namespace App\Tests\Unit\DTO\DataChangeReport;
 
-use App\DTO\Report\Statistic;
+use App\DTO\DataChangeReport\Statistic;
 use PHPUnit\Framework\TestCase;
 
 class StatisticTest extends TestCase
 {
     public function testConstructor(): void
     {
-        $statisticWithCount = new Statistic('douze', 'Twelve', 'Douze', 12);
+        $statisticWithCount = new Statistic('douze', 12);
 
         $this->assertEquals('douze', $statisticWithCount->slug);
-        $this->assertEquals('Twelve', $statisticWithCount->name);
-        $this->assertEquals('Douze', $statisticWithCount->frenchName);
         $this->assertEquals(12, $statisticWithCount->count);
 
-        $statisticWithoutCount = new Statistic('zero', 'Zero', 'Zéro');
+        $statisticWithoutCount = new Statistic('zero');
 
         $this->assertEquals('zero', $statisticWithoutCount->slug);
-        $this->assertEquals('Zero', $statisticWithoutCount->name);
-        $this->assertEquals('Zéro', $statisticWithoutCount->frenchName);
         $this->assertEquals(0, $statisticWithoutCount->count);
     }
 
     public function testIncrement(): void
     {
-        $statisticWithCount = new Statistic('douze', 'Twelve', 'Douze', 12);
+        $statisticWithCount = new Statistic('douze', 12);
 
         $this->assertEquals(12, $statisticWithCount->count);
 
         $this->assertEquals(13, $statisticWithCount->increment());
 
-        $statisticWithoutCount = new Statistic('zero', 'Zero', 'Zéro');
+        $statisticWithoutCount = new Statistic('zero');
 
         $this->assertEquals(0, $statisticWithoutCount->count);
 
         $this->assertEquals(1, $statisticWithoutCount->increment());
+    }
+
+    public function testIncrementBy(): void
+    {
+        $statistic = new Statistic('douze', 12);
+
+        $this->assertEquals(12, $statistic->count);
+
+        $this->assertEquals(13, $statistic->incrementBy(1));
+
+        $this->assertEquals(16, $statistic->incrementBy(3));
+
+        $this->assertEquals(16, $statistic->count);
     }
 }

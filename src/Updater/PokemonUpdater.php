@@ -10,16 +10,10 @@ class PokemonUpdater extends AbstractUpdater
 {
     protected string $sheetName = 'Pokémons';
     protected string $tableName = 'pokemon';
+    protected string $statisticName = 'pokemon';
     protected string $headerCellsRange = 'A1:AR1';
     /** @var string[] */
     protected array $recordsCellsRanges = ['A2:AR'];
-
-    private int $count = 0;
-
-    public function getCount(): int
-    {
-        return $this->count;
-    }
 
     protected function getExpectedHeader(): array
     {
@@ -158,7 +152,7 @@ SQL;
 
         $this->executeQuery($sql, $sqlParameters);
 
-        ++$this->count;
+        $this->statictic->increment();
     }
 
     /**

@@ -10,6 +10,7 @@ class DexUpdater extends AbstractUpdater
 {
     protected string $sheetName = 'Dex';
     protected string $tableName = 'dex';
+    protected string $statisticName = 'dex';
     protected string $headerCellsRange = 'A1:M1';
     /** @var string[] */
     protected array $recordsCellsRanges = ['A2:M'];
@@ -111,5 +112,7 @@ class DexUpdater extends AbstractUpdater
         SQL;
 
         $this->executeQuery($sql, $sqlParameters);
+
+        $this->statictic->increment();
     }
 }

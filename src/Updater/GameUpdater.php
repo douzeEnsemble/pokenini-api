@@ -10,6 +10,7 @@ class GameUpdater extends AbstractUpdater
 {
     protected string $sheetName = 'Game';
     protected string $tableName = 'game';
+    protected string $statisticName = 'game';
     protected string $headerCellsRange = 'A1:D1';
     /** @var string[] */
     protected array $recordsCellsRanges = ['A2:D'];
@@ -66,5 +67,7 @@ class GameUpdater extends AbstractUpdater
         SQL;
 
         $this->executeQuery($sql, $sqlParameters);
+
+        $this->statictic->increment();
     }
 }

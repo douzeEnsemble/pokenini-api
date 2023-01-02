@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\DTO\Report\Report;
-use App\DTO\Report\Statistic;
+use App\DTO\AlbumReport\Report;
+use App\DTO\AlbumReport\Statistic;
 use App\Repository\DexAvailabilityRepository;
 use App\Repository\DexRepository;
 use App\Repository\PokedexRepository;

@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Command;
 
-use App\Service\UpdaterService\GameAvailabilitiesUpdaterService;
+use App\Service\UpdaterService\PokemonsUpdaterService;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
-#[AsCommand(name: 'app:update:game_availability')]
-final class UpdateGameAvailabilityCommand extends AbstractUpdateCommand
+#[AsCommand(name: 'app:update:pokemons')]
+final class UpdatePokemonsCommand extends AbstractUpdateCommand
 {
-    protected static $defaultName = 'app:update:game_availability';
+    protected static $defaultName = 'app:update:pokemons';
 
     public function __construct(
         TranslatorInterface $translator,
-        GameAvailabilitiesUpdaterService $updaterService,
+        PokemonsUpdaterService $updaterService,
     ) {
         parent::__construct($translator, $updaterService);
     }

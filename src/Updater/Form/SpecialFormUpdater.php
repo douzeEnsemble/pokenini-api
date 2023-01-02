@@ -8,4 +8,5 @@ class SpecialFormUpdater extends AbstractFormUpdater
 {
     protected string $sheetName = 'Special form';
     protected string $tableName = 'special_form';
+    protected string $statisticName = 'special_form';
 }

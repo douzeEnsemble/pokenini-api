@@ -6,7 +6,7 @@ namespace App\Tests\Functional\Command;
 
 use App\Tests\Common\Traits\CounterTrait\CounterTableTrait;
 
-class LabelsUpdaterCommandTest extends AbstractUpdaterCommandTest
+class UpdateLabelsCommandTest extends AbstractUpdaterCommandTest
 {
     use CounterTableTrait;
 
@@ -31,7 +31,12 @@ class LabelsUpdaterCommandTest extends AbstractUpdaterCommandTest
         $this->assertEquals(8, $this->getTableCount('variant_form'));
         $this->assertEquals(10, $this->getTableCount('region'));
 
-        $this->assertStringContainsString("Labels updated", $commandTester->getDisplay());
+        $this->assertStringContainsString("6 catch's states updated", $commandTester->getDisplay());
+        $this->assertStringContainsString("0 regions updated", $commandTester->getDisplay());
+        $this->assertStringContainsString("4 category forms updated", $commandTester->getDisplay());
+        $this->assertStringContainsString("4 regional forms updated", $commandTester->getDisplay());
+        $this->assertStringContainsString("5 special forms updated", $commandTester->getDisplay());
+        $this->assertStringContainsString("8 variant forms updated", $commandTester->getDisplay());
     }
 
     protected function getCommandName(): string
