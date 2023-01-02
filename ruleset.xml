@@ -30,10 +30,18 @@
 
     <rule ref="rulesets/naming.xml">
         <exclude name="LongVariable" />
+        <exclude name="LongClassName" />
     </rule>
     <rule ref="rulesets/naming.xml/LongVariable">
         <properties>
-            <property name="maximum" value="32" />
+            <property name="maximum" value="42" />
+            <property name="subtract-suffixes" value="Command,Controller,Exception,Repository,Service" />
+        </properties>
+    </rule>
+    <rule ref="rulesets/naming.xml/LongClassName">
+        <properties>
+            <property name="maximum" value="42" />
+            <property name="subtract-suffixes" value="Command,Controller,Exception,Repository,Service" />
         </properties>
     </rule>
 

@@ -1,14 +1,14 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Call to an undefined method Symfony\\\\Contracts\\\\Cache\\\\CacheInterface\\:\\:clear\\(\\)\\.$#"
+			message: "#^Method App\\\\Controller\\\\AdminController\\:\\:reportToArray\\(\\) return type has no value type specified in iterable type array\\.$#"
 			count: 1
-			path: src/Command/CalculateDexAvailabilityCommand.php
+			path: src/Controller/AdminController.php
 
 		-
 			message: "#^Call to an undefined method Symfony\\\\Contracts\\\\Cache\\\\CacheInterface\\:\\:clear\\(\\)\\.$#"
 			count: 1
-			path: src/Controller/AdminController.php
+			path: src/Service/CalculatorService/DexAvailabilitiesCalculatorService.php
 
 		-
 			message: "#^Parameter \\#1 \\$iterator of function iterator_to_array expects Traversable, iterable given\\.$#"

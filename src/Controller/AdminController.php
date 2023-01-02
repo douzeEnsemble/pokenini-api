@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Calculator\DexAvailabilityCalculator;
-use App\Calculator\GameBundleAvailabilityCalculator;
 use App\DTO\AlbumReport\Statistic;
+use App\DTO\DataChangeReport\Report;
+use App\Service\CalculatorService\CalculatorServiceInterface;
+use App\Service\CalculatorService\DexAvailabilitiesCalculatorService;
+use App\Service\CalculatorService\GameBundleAvailabilitiesCalculatorService;
 use App\Service\UpdaterService\GameAvailabilitiesUpdaterService;
 use App\Service\UpdaterService\GamesAndDexesUpdaterService;
 use App\Service\UpdaterService\LabelsUpdaterService;
@@ -15,9 +17,7 @@ use App\Service\UpdaterService\RegionalDexNumbersUpdaterService;
 use App\Service\UpdaterService\UpdaterServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Contracts\Cache\CacheInterface;
 
 #[Route('/istration')]
 class AdminController extends AbstractController
@@ -58,31 +58,41 @@ class AdminController extends AbstractController
 
     #[Route(path: '/calculate/game_bundle_availability', methods: ['POST'])]
     public function calculateGameBundleAvailability(
-        GameBundleAvailabilityCalculator $gameBundleAvailabilityCalculator,
-    ): Response {
-        $gameBundleAvailabilityCalculator->execute();
-
-        return new Response();
+        GameBundleAvailabilitiesCalculatorService $gameBundleAvailabilitiesCalculatorService,
+    ): JsonResponse {
+        return $this->calculate($gameBundleAvailabilitiesCalculatorService);
     }
 
     #[Route(path: '/calculate/dex_availability', methods: ['POST'])]
     public function calculateDexAvailability(
-        DexAvailabilityCalculator $dexAvailabilityCalculator,
-        CacheInterface $cache
-    ): Response {
-        $cache->clear();
-
-        $dexAvailabilityCalculator->execute();
-
-        return new Response();
+        DexAvailabilitiesCalculatorService $dexAvailabilitiesCalculatorService
+    ): JsonResponse {
+        return $this->calculate($dexAvailabilitiesCalculatorService);
     }
 
     private function update(UpdaterServiceInterface $updaterService): JsonResponse
     {
         $updaterService->execute();
 
-        $report = $updaterService->getReport();
+        return new JsonResponse(
+            $this->reportToArray(
+                $updaterService->getReport()
+            )
+        );
+    }
+    private function calculate(CalculatorServiceInterface $calculatorService): JsonResponse
+    {
+        $calculatorService->execute();
 
+        return new JsonResponse(
+            $this->reportToArray(
+                $calculatorService->getReport()
+            )
+        );
+    }
+
+    private function reportToArray(Report $report): array
+    {
         $data = [];
 
         /** @var Statistic $statistic */
@@ -90,6 +100,6 @@ class AdminController extends AbstractController
             $data[$statistic->slug] = $statistic->count;
         }
 
-        return new JsonResponse($data);
+        return $data;
     }
 }

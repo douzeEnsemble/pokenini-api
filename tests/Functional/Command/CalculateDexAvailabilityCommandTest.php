@@ -26,7 +26,7 @@ class CalculateDexAvailabilityCommandTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testNoGameAvailability(): void
+    public function testNoDexAvailability(): void
     {
         /** @var PokemonRepository $repo */
         $repo = static::getContainer()->get(PokemonRepository::class);

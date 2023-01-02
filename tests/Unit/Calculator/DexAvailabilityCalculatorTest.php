@@ -97,8 +97,9 @@ class DexAvailabilityCalculatorTest extends TestCase
             $entityManager
         );
 
-        $count = $service->execute();
+        $service->execute();
+        $statistic = $service->getStatistic();
 
-        $this->assertEquals(3, $count);
+        $this->assertEquals(3, $statistic->count);
     }
 }
