@@ -232,6 +232,16 @@ class AdminControllerTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
+        $json = <<<JSON
+        {
+            "game_bundle_availability": 18
+        }
+        JSON;
+        $this->assertJsonStringEqualsJsonString(
+            $json,
+            (string) $client->getResponse()->getContent()
+        );
+
         $this->assertEquals(18, $this->getTableCount('game_bundle_availability'));
     }
 
@@ -253,6 +263,16 @@ class AdminControllerTest extends WebTestCase
         );
 
         $this->assertResponseIsSuccessful();
+
+        $json = <<<JSON
+        {
+            "dex_availability": 61
+        }
+        JSON;
+        $this->assertJsonStringEqualsJsonString(
+            $json,
+            (string) $client->getResponse()->getContent()
+        );
 
         $this->assertEquals(61, $this->getTableCount('dex_availability'));
     }

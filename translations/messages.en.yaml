@@ -12,3 +12,7 @@ update:
   special_form: "special forms"
   variant_form: "variant forms"
   pokemon: "pokémons"
+
+calculate:
+  game_bundle_availability: "bundles' availabilities"
+  dex_availability: "dex' availabilities"

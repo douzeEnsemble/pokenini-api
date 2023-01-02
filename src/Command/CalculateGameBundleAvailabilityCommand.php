@@ -4,21 +4,20 @@ declare(strict_types=1);
 
 namespace App\Command;
 
-use App\Calculator\GameBundleAvailabilityCalculator;
+use App\Service\CalculatorService\GameBundleAvailabilitiesCalculatorService;
 use Symfony\Component\Console\Attribute\AsCommand;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Input\InputInterface;
-use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[AsCommand(name: 'app:calculate:game_bundle_availability')]
-class CalculateGameBundleAvailabilityCommand extends Command
+class CalculateGameBundleAvailabilityCommand extends AbstractCalculateCommand
 {
     protected static $defaultName = 'app:calculate:game_bundle_availability';
 
     public function __construct(
-        private GameBundleAvailabilityCalculator $gameBundleAvailabilityCalculator,
+        TranslatorInterface $translator,
+        GameBundleAvailabilitiesCalculatorService $calculatorService,
     ) {
-        parent::__construct(self::$defaultName);
+        parent::__construct($translator, $calculatorService);
     }
 
     protected function configure(): void
@@ -26,17 +25,5 @@ class CalculateGameBundleAvailabilityCommand extends Command
         $this
             ->setHelp("This command allows you to update games' bundles' availabilities")
         ;
-    }
-
-    /**
-     * @inheritdoc
-     */
-    protected function execute(InputInterface $input, OutputInterface $output): int
-    {
-        $count = $this->gameBundleAvailabilityCalculator->execute();
-
-        $output->writeln("<info>$count bundles' availabilities calculated</info>");
-
-        return Command::SUCCESS;
     }
 }

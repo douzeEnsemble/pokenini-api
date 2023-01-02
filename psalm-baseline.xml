@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<files psalm-version="4.26.0@6998fabb2bf528b65777bf9941920888d23c03ac">
-  <file src="src/Command/CalculateDexAvailabilityCommand.php">
+<files psalm-version="4.30.0@d0bc6e25d89f649e4f36a534f330f8bb4643dd69">
+  <file src="src/Controller/AdminController.php">
     <UndefinedInterfaceMethod occurrences="1">
       <code>clear</code>
     </UndefinedInterfaceMethod>
   </file>
-  <file src="src/Controller/AdminController.php">
+  <file src="src/Service/CalculatorService/DexAvailabilitiesCalculatorService.php">
     <UndefinedInterfaceMethod occurrences="1">
       <code>clear</code>
     </UndefinedInterfaceMethod>

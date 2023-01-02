@@ -12,8 +12,9 @@ use App\Service\GameBundleAvailabilityService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
-class DexAvailabilityCalculator implements CalculatorInterface
+class DexAvailabilityCalculator extends AbstractCalculator
 {
+    protected string $statisticName = 'dex_availability';
     public function __construct(
         private readonly DexAvailabilityRepository $dexAvailabilityRepository,
         private readonly GameBundleAvailabilityService $gameBundleAvailabilityService,
@@ -21,9 +22,10 @@ class DexAvailabilityCalculator implements CalculatorInterface
         private readonly PokemonRepository $pokemonRepository,
         private readonly EntityManagerInterface $entityManager,
     ) {
+        parent::__construct();
     }
 
-    public function execute(): int
+    public function execute(): void
     {
         $this->dexAvailabilityRepository->removeAll();
 
@@ -31,7 +33,6 @@ class DexAvailabilityCalculator implements CalculatorInterface
 
         $expressionLanguage = new ExpressionLanguage();
 
-        $count = 0;
         /** @var Dex $dex */
         foreach ($dexQuery->toIterable() as $dex) {
             $pokemonQuery = $this->pokemonRepository->getQueryAll();
@@ -53,13 +54,11 @@ class DexAvailabilityCalculator implements CalculatorInterface
 
                 $this->entityManager->persist($dexAvailability);
 
-                $count++;
+                $this->statictic->increment();
             }
 
             $this->entityManager->flush();
             $this->entityManager->clear();
         }
-
-        return $count;
     }
 }

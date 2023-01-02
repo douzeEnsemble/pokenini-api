@@ -22,8 +22,9 @@ class GameBundleAvailabilityCalculatorTest extends TestCase
         ;
 
         $service = new GameBundleAvailabilityCalculator($gameBundleAvailabilityRepository);
-        $count = $service->execute();
+        $service->execute();
+        $statistic = $service->getStatistic();
 
-        $this->assertEquals(12, $count);
+        $this->assertEquals(12, $statistic->count);
     }
 }
