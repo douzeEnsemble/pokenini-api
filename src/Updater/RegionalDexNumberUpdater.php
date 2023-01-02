@@ -15,13 +15,13 @@ class RegionalDexNumberUpdater extends AbstractUpdater
 {
     protected string $sheetName = 'Regional Dex Number';
     protected string $tableName = 'regional_dex_number';
+    protected string $statisticName = 'regional_dex_number';
     protected int $recordsCellsStartRowIndex = 1;
     protected int $recordsCellsStartColumnIndex = 0;
 
     protected const RANGE_SIZE = 100;
     protected const BATCH_SIZE = 20;
 
-    private int $count = 0;
     /**
      * @var string[]|null
      */
@@ -41,11 +41,6 @@ class RegionalDexNumberUpdater extends AbstractUpdater
             $entityManager,
             $spreadsheetId
         );
-    }
-
-    public function getCount(): int
-    {
-        return $this->count;
     }
 
     /**
@@ -180,7 +175,7 @@ SQL;
 
         $this->executeQuery($sql, $sqlParameters);
 
-        $this->count += $index;
+        $this->statictic->incrementBy($index);
     }
 
     protected function upsertRecord(array $record): void

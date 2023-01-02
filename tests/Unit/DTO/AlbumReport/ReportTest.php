@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Unit\DTO\Report;
+namespace App\Tests\Unit\DTO\AlbumReport;
 
-use App\DTO\Report\Report;
-use App\DTO\Report\Statistic;
+use App\DTO\AlbumReport\Report;
+use App\DTO\AlbumReport\Statistic;
 use PHPUnit\Framework\TestCase;
 
 class ReportTest extends TestCase

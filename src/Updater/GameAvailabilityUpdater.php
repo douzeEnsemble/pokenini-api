@@ -15,13 +15,12 @@ class GameAvailabilityUpdater extends AbstractUpdater
 {
     protected string $sheetName = 'Games Availability';
     protected string $tableName = 'game_availability';
+    protected string $statisticName = 'game_availability';
     protected int $recordsCellsStartRowIndex = 2;
     protected int $recordsCellsStartColumnIndex = 0;
 
     protected const RANGE_SIZE = 100;
     protected const BATCH_SIZE = 20;
-
-    private int $count = 0;
 
     /** @var string[][] */
     private array $records;
@@ -42,11 +41,6 @@ class GameAvailabilityUpdater extends AbstractUpdater
             $entityManager,
             $spreadsheetId
         );
-    }
-
-    public function getCount(): int
-    {
-        return $this->count;
     }
 
     /**
@@ -181,7 +175,7 @@ SQL;
 
         $this->executeQuery($sql, $sqlParameters);
 
-        $this->count += $index;
+        $this->statictic->incrementBy($index);
     }
 
     protected function upsertRecord(array $record): void

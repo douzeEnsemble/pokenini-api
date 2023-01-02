@@ -3,7 +3,6 @@
 namespace App\Tests\Functional\Controller;
 
 use App\Tests\Common\Traits\CounterTrait\CounterTableTrait;
-use Doctrine\DBAL\Connection;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
@@ -17,6 +16,7 @@ class AdminControllerTest extends WebTestCase
         $client = static::createClient();
 
         $this->assertEquals(5, $this->getTableCount('catch_state'));
+        $this->assertEquals(10, $this->getTableCount('region'));
         $this->assertEquals(3, $this->getTableCount('category_form'));
         $this->assertEquals(3, $this->getTableCount('regional_form'));
         $this->assertEquals(3, $this->getTableCount('special_form'));
@@ -35,7 +35,23 @@ class AdminControllerTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
+        $json = <<<JSON
+        {
+            "catch_state": 6,
+            "region": 0,
+            "category_form": 4,
+            "regional_form": 4,
+            "special_form": 5,
+            "variant_form": 8
+        }
+        JSON;
+        $this->assertJsonStringEqualsJsonString(
+            $json,
+            (string) $client->getResponse()->getContent()
+        );
+
         $this->assertEquals(9, $this->getTableCount('catch_state'));
+        $this->assertEquals(10, $this->getTableCount('region'));
         $this->assertEquals(4, $this->getTableCount('category_form'));
         $this->assertEquals(4, $this->getTableCount('regional_form'));
         $this->assertEquals(5, $this->getTableCount('special_form'));
@@ -82,6 +98,19 @@ class AdminControllerTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
+        $json = <<<JSON
+        {
+            "game_generation": 9,
+            "game_bundle": 17,
+            "game": 36,
+            "dex": 21
+        }
+        JSON;
+        $this->assertJsonStringEqualsJsonString(
+            $json,
+            (string) $client->getResponse()->getContent()
+        );
+
         $this->assertEquals(9, $this->getTableCount('game_generation'));
         $this->assertEquals(18, $this->getTableCount('game_bundle'));
         $this->assertEquals(38, $this->getTableCount('game'));
@@ -107,6 +136,16 @@ class AdminControllerTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
+        $json = <<<JSON
+        {
+            "pokemon": 1815
+        }
+        JSON;
+        $this->assertJsonStringEqualsJsonString(
+            $json,
+            (string) $client->getResponse()->getContent()
+        );
+
         $this->assertEquals(1816, $this->getTableCount('pokemon'));
     }
 
@@ -129,6 +168,16 @@ class AdminControllerTest extends WebTestCase
 
         $this->assertResponseIsSuccessful();
 
+        $json = <<<JSON
+        {
+            "game_availability": 7980
+        }
+        JSON;
+        $this->assertJsonStringEqualsJsonString(
+            $json,
+            (string) $client->getResponse()->getContent()
+        );
+
         $this->assertEquals(7980, $this->getTableCount('game_availability'));
     }
 
@@ -150,6 +199,16 @@ class AdminControllerTest extends WebTestCase
         );
 
         $this->assertResponseIsSuccessful();
+
+        $json = <<<JSON
+        {
+            "regional_dex_number": 2863
+        }
+        JSON;
+        $this->assertJsonStringEqualsJsonString(
+            $json,
+            (string) $client->getResponse()->getContent()
+        );
 
         $this->assertEquals(2863, $this->getTableCount('regional_dex_number'));
     }

@@ -8,4 +8,5 @@ class RegionalFormUpdater extends AbstractFormUpdater
 {
     protected string $sheetName = 'Regional form';
     protected string $tableName = 'regional_form';
+    protected string $statisticName = 'regional_form';
 }

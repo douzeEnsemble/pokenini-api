@@ -10,6 +10,7 @@ class RegionUpdater extends AbstractUpdater
 {
     protected string $sheetName = 'Region';
     protected string $tableName = 'region';
+    protected string $statisticName = 'region';
     protected string $headerCellsRange = 'A1:D1';
     /** @var string[] */
     protected array $recordsCellsRanges = ['A2:D'];

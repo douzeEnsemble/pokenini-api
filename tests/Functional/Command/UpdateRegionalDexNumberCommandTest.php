@@ -6,7 +6,7 @@ namespace App\Tests\Functional\Command;
 
 use App\Tests\Common\Traits\CounterTrait\CountRegionalDexNumberTrait;
 
-class RegionalDexNumberUpdaterCommandTest extends AbstractUpdaterCommandTest
+class UpdateRegionalDexNumberCommandTest extends AbstractUpdaterCommandTest
 {
     use CountRegionalDexNumberTrait;
 

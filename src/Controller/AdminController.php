@@ -6,14 +6,15 @@ namespace App\Controller;
 
 use App\Calculator\DexAvailabilityCalculator;
 use App\Calculator\GameBundleAvailabilityCalculator;
-use App\Entity\GameAvailability;
-use App\Service\UpdaterService\DexesUpdaterService;
-use App\Service\UpdaterService\GamesUpdaterService;
+use App\DTO\AlbumReport\Statistic;
+use App\Service\UpdaterService\GameAvailabilitiesUpdaterService;
+use App\Service\UpdaterService\GamesAndDexesUpdaterService;
 use App\Service\UpdaterService\LabelsUpdaterService;
-use App\Updater\GameAvailabilityUpdater;
-use App\Updater\PokemonUpdater;
-use App\Updater\RegionalDexNumberUpdater;
+use App\Service\UpdaterService\PokemonsUpdaterService;
+use App\Service\UpdaterService\RegionalDexNumbersUpdaterService;
+use App\Service\UpdaterService\UpdaterServiceInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Contracts\Cache\CacheInterface;
@@ -22,49 +23,37 @@ use Symfony\Contracts\Cache\CacheInterface;
 class AdminController extends AbstractController
 {
     #[Route(path: '/update/labels', methods: ['POST'])]
-    public function updateLabels(LabelsUpdaterService $labelsUpdaterService): Response
+    public function updateLabels(LabelsUpdaterService $labelsUpdaterService): JsonResponse
     {
-        $labelsUpdaterService->execute();
-
-        return new Response();
+        return $this->update($labelsUpdaterService);
     }
 
     #[Route(path: '/update/games_and_dexes', methods: ['POST'])]
     public function updateGamesAndDexes(
-        GamesUpdaterService $gamesUpdaterService,
-        DexesUpdaterService $dexesUpdaterService
-    ): Response {
-        $gamesUpdaterService->execute();
-        $dexesUpdaterService->execute();
-
-        return new Response();
+        GamesAndDexesUpdaterService $gamesAndDexesUpdaterService
+    ): JsonResponse {
+        return $this->update($gamesAndDexesUpdaterService);
     }
 
     #[Route(path: '/update/pokemons', methods: ['POST'])]
     public function updatePokemons(
-        PokemonUpdater $pokemonUpdater
-    ): Response {
-        $pokemonUpdater->execute();
-
-        return new Response();
+        PokemonsUpdaterService $pokemonUpdaterService
+    ): JsonResponse {
+        return $this->update($pokemonUpdaterService);
     }
 
     #[Route(path: '/update/regional_dex_number', methods: ['POST'])]
     public function updateRegionalDexNumber(
-        RegionalDexNumberUpdater $regionalDexNumberUpdater,
-    ): Response {
-        $regionalDexNumberUpdater->execute();
-
-        return new Response();
+        RegionalDexNumbersUpdaterService $regionalDexNumbersUpdaterService,
+    ): JsonResponse {
+        return $this->update($regionalDexNumbersUpdaterService);
     }
 
     #[Route(path: '/update/game_availability', methods: ['POST'])]
     public function updateGameAvailability(
-        GameAvailabilityUpdater $gameAvailabilityUpdater,
-    ): Response {
-        $gameAvailabilityUpdater->execute();
-
-        return new Response();
+        GameAvailabilitiesUpdaterService $gameAvailabilitiesUpdaterService,
+    ): JsonResponse {
+        return $this->update($gameAvailabilitiesUpdaterService);
     }
 
     #[Route(path: '/calculate/game_bundle_availability', methods: ['POST'])]
@@ -86,5 +75,21 @@ class AdminController extends AbstractController
         $dexAvailabilityCalculator->execute();
 
         return new Response();
+    }
+
+    private function update(UpdaterServiceInterface $updaterService): JsonResponse
+    {
+        $updaterService->execute();
+
+        $report = $updaterService->getReport();
+
+        $data = [];
+
+        /** @var Statistic $statistic */
+        foreach ($report->detail as $statistic) {
+            $data[$statistic->slug] = $statistic->count;
+        }
+
+        return new JsonResponse($data);
     }
 }
