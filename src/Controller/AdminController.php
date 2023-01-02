@@ -79,7 +79,10 @@ class AdminController extends AbstractController
     #[Route(path: '/calculate/dex_availability', methods: ['POST'])]
     public function calculateDexAvailability(
         DexAvailabilityCalculator $dexAvailabilityCalculator,
+        CacheInterface $cache
     ): Response {
+        $cache->clear();
+
         $dexAvailabilityCalculator->execute();
 
         return new Response();

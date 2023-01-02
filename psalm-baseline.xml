@@ -5,7 +5,7 @@
       <code>clear</code>
     </UndefinedInterfaceMethod>
   </file>
-  <file src="src/Command/CalculateGameBundleAvailabilityCommand.php">
+  <file src="src/Controller/AdminController.php">
     <UndefinedInterfaceMethod occurrences="1">
       <code>clear</code>
     </UndefinedInterfaceMethod>
