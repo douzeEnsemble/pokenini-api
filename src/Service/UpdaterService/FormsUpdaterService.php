@@ -3,33 +3,33 @@
 namespace App\Service\UpdaterService;
 
 use App\DTO\DataChangeReport\Report;
-use App\Updater\Form\CategoryFormUpdater;
-use App\Updater\Form\RegionalFormUpdater;
-use App\Updater\Form\SpecialFormUpdater;
-use App\Updater\Form\VariantFormUpdater;
+use App\Updater\Forms\CategoryFormsUpdater;
+use App\Updater\Forms\RegionalFormsUpdater;
+use App\Updater\Forms\SpecialFormsUpdater;
+use App\Updater\Forms\VariantFormsUpdater;
 
 class FormsUpdaterService extends AbstractUpdaterService
 {
     public function __construct(
-        private readonly CategoryFormUpdater $categoryFormUpdater,
-        private readonly RegionalFormUpdater $regionalFormUpdater,
-        private readonly SpecialFormUpdater $specialFormUpdater,
-        private readonly VariantFormUpdater $variantFormUpdater
+        private readonly CategoryFormsUpdater $categoryFormsUpdater,
+        private readonly RegionalFormsUpdater $regionalFormsUpdater,
+        private readonly SpecialFormsUpdater $specialFormsUpdater,
+        private readonly VariantFormsUpdater $variantFormsUpdater
     ) {
     }
 
     public function execute(): void
     {
-        $this->categoryFormUpdater->execute();
-        $this->regionalFormUpdater->execute();
-        $this->specialFormUpdater->execute();
-        $this->variantFormUpdater->execute();
+        $this->categoryFormsUpdater->execute();
+        $this->regionalFormsUpdater->execute();
+        $this->specialFormsUpdater->execute();
+        $this->variantFormsUpdater->execute();
 
         $this->report = new Report([
-            $this->categoryFormUpdater->getStatistic(),
-            $this->regionalFormUpdater->getStatistic(),
-            $this->specialFormUpdater->getStatistic(),
-            $this->variantFormUpdater->getStatistic(),
+            $this->categoryFormsUpdater->getStatistic(),
+            $this->regionalFormsUpdater->getStatistic(),
+            $this->specialFormsUpdater->getStatistic(),
+            $this->variantFormsUpdater->getStatistic(),
         ]);
     }
 }

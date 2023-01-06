@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Command;
 
 use App\DTO\DataChangeReport\Statistic;
-use App\Service\CalculatorService\CalculatorServiceInterface as CalculatorServiceCalculatorServiceInterface;
+use App\Service\CalculatorService\CalculatorServiceInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -17,7 +17,7 @@ abstract class AbstractCalculateCommand extends Command
 
     public function __construct(
         private readonly TranslatorInterface $translator,
-        protected readonly CalculatorServiceCalculatorServiceInterface $updaterService
+        protected readonly CalculatorServiceInterface $calculatorService
     ) {
         parent::__construct(self::$defaultName);
     }
@@ -27,9 +27,9 @@ abstract class AbstractCalculateCommand extends Command
      */
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
-        $this->updaterService->execute();
+        $this->calculatorService->execute();
 
-        $report = $this->updaterService->getReport();
+        $report = $this->calculatorService->getReport();
 
         /** @var Statistic $statistic */
         foreach ($report->detail as $statistic) {

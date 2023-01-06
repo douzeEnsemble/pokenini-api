@@ -26,13 +26,13 @@ class DexController extends AbstractController
     public function list(
         string $trainerExternalId
     ): JsonResponse {
-        /** @var string[][]|bool[][] $dexes */
-        $dexes = iterator_to_array(
+        /** @var string[][]|bool[][] $dex */
+        $dex = iterator_to_array(
             $this->trainerDexRepository->getListQuery($trainerExternalId)
         );
 
         // Better with serializer ?
-        return new JsonResponse($dexes);
+        return new JsonResponse($dex);
     }
 
     #[Route(methods: ['PUT'], path: '/{trainerExternalId}/{dexSlug}')]

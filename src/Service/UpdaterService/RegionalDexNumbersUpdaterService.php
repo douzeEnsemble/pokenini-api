@@ -3,21 +3,21 @@
 namespace App\Service\UpdaterService;
 
 use App\DTO\DataChangeReport\Report;
-use App\Updater\RegionalDexNumberUpdater;
+use App\Updater\RegionalDexNumbersUpdater;
 
 class RegionalDexNumbersUpdaterService extends AbstractUpdaterService
 {
     public function __construct(
-        private readonly RegionalDexNumberUpdater $regionalDexNumberUpdater
+        private readonly RegionalDexNumbersUpdater $regionalDexNumbersUpdater
     ) {
     }
 
     public function execute(): void
     {
-        $this->regionalDexNumberUpdater->execute();
+        $this->regionalDexNumbersUpdater->execute();
 
         $this->report = new Report([
-            $this->regionalDexNumberUpdater->getStatistic(),
+            $this->regionalDexNumbersUpdater->getStatistic(),
         ]);
     }
 }

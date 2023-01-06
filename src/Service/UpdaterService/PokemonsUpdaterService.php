@@ -3,21 +3,21 @@
 namespace App\Service\UpdaterService;
 
 use App\DTO\DataChangeReport\Report;
-use App\Updater\PokemonUpdater;
+use App\Updater\PokemonsUpdater;
 
 class PokemonsUpdaterService extends AbstractUpdaterService
 {
     public function __construct(
-        private readonly PokemonUpdater $pokemonUpdater
+        private readonly PokemonsUpdater $pokemonsUpdater
     ) {
     }
 
     public function execute(): void
     {
-        $this->pokemonUpdater->execute();
+        $this->pokemonsUpdater->execute();
 
         $this->report = new Report([
-            $this->pokemonUpdater->getStatistic(),
+            $this->pokemonsUpdater->getStatistic(),
         ]);
     }
 }

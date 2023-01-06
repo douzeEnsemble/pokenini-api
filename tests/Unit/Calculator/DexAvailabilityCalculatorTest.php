@@ -2,21 +2,19 @@
 
 namespace App\Tests\Unit\Calculator;
 
-use App\Calculator\DexAvailabilityCalculator;
+use App\Calculator\DexAvailabilitiesCalculator;
 use App\DTO\GameBundlesAvailabilities;
 use App\Entity\Dex;
-use App\Entity\GameBundle;
-use App\Entity\GameBundleAvailability;
 use App\Entity\Pokemon;
-use App\Repository\DexAvailabilityRepository;
+use App\Repository\DexAvailabilitiesRepository;
 use App\Repository\DexRepository;
-use App\Repository\PokemonRepository;
-use App\Service\GameBundleAvailabilityService;
+use App\Repository\PokemonsRepository;
+use App\Service\GameBundlesAvailabilitiesService;
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\TestCase;
 
-class DexAvailabilityCalculatorTest extends TestCase
+class DexAvailabilitiesCalculatorTest extends TestCase
 {
     public function testExecute(): void
     {
@@ -24,14 +22,14 @@ class DexAvailabilityCalculatorTest extends TestCase
         $pokemonB = new Pokemon();
         $pokemonC = new Pokemon();
 
-        $dexAvailabilityRepository = $this->createMock(DexAvailabilityRepository::class);
-        $dexAvailabilityRepository
+        $dexAvailabilitiesRepository = $this->createMock(DexAvailabilitiesRepository::class);
+        $dexAvailabilitiesRepository
             ->expects($this->once())
             ->method('removeAll')
         ;
 
-        $gameBundleAvailabilityService = $this->createMock(GameBundleAvailabilityService::class);
-        $gameBundleAvailabilityService
+        $gameBundlesAvailabilitiesService = $this->createMock(GameBundlesAvailabilitiesService::class);
+        $gameBundlesAvailabilitiesService
             ->expects($this->exactly(6))
             ->method('getFromPokemon')
             ->willReturn(new GameBundlesAvailabilities([]))
@@ -82,18 +80,18 @@ class DexAvailabilityCalculatorTest extends TestCase
                 $pokemonC,
             ])
         ;
-        $pokemonRepository = $this->createMock(PokemonRepository::class);
-        $pokemonRepository
+        $pokemonsRepository = $this->createMock(PokemonsRepository::class);
+        $pokemonsRepository
             ->expects($this->exactly(2))
             ->method('getQueryAll')
             ->willReturn($pokemonQuery)
         ;
 
-        $service = new DexAvailabilityCalculator(
-            $dexAvailabilityRepository,
-            $gameBundleAvailabilityService,
+        $service = new DexAvailabilitiesCalculator(
+            $dexAvailabilitiesRepository,
+            $gameBundlesAvailabilitiesService,
             $dexRepository,
-            $pokemonRepository,
+            $pokemonsRepository,
             $entityManager
         );
 

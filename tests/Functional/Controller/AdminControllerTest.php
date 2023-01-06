@@ -37,12 +37,12 @@ class AdminControllerTest extends WebTestCase
 
         $json = <<<JSON
         {
-            "catch_state": 6,
-            "region": 0,
-            "category_form": 4,
-            "regional_form": 4,
-            "special_form": 5,
-            "variant_form": 8
+            "catch_states": 6,
+            "regions": 0,
+            "category_forms": 4,
+            "regional_forms": 4,
+            "special_forms": 5,
+            "variant_forms": 8
         }
         JSON;
         $this->assertJsonStringEqualsJsonString(
@@ -76,7 +76,7 @@ class AdminControllerTest extends WebTestCase
         $this->assertResponseStatusCodeSame(401);
     }
 
-    public function testUpdateGamesAndDexes(): void
+    public function testUpdateGamesAndDex(): void
     {
         $client = static::createClient();
 
@@ -87,7 +87,7 @@ class AdminControllerTest extends WebTestCase
 
         $client->request(
             'POST',
-            "/istration/update/games_and_dexes",
+            "/istration/update/games_and_dex",
             [],
             [],
             [
@@ -100,9 +100,9 @@ class AdminControllerTest extends WebTestCase
 
         $json = <<<JSON
         {
-            "game_generation": 9,
-            "game_bundle": 17,
-            "game": 36,
+            "game_generations": 9,
+            "game_bundles": 17,
+            "games": 36,
             "dex": 21
         }
         JSON;
@@ -138,7 +138,7 @@ class AdminControllerTest extends WebTestCase
 
         $json = <<<JSON
         {
-            "pokemon": 1815
+            "pokemons": 1815
         }
         JSON;
         $this->assertJsonStringEqualsJsonString(
@@ -149,7 +149,7 @@ class AdminControllerTest extends WebTestCase
         $this->assertEquals(1816, $this->getTableCount('pokemon'));
     }
 
-    public function testUpdateGameAvailability(): void
+    public function testUpdateGamesAvailabilities(): void
     {
         $client = static::createClient();
 
@@ -157,7 +157,7 @@ class AdminControllerTest extends WebTestCase
 
         $client->request(
             'POST',
-            "/istration/update/game_availability",
+            "/istration/update/games_availabilities",
             [],
             [],
             [
@@ -170,7 +170,7 @@ class AdminControllerTest extends WebTestCase
 
         $json = <<<JSON
         {
-            "game_availability": 7980
+            "games_availabilities": 7980
         }
         JSON;
         $this->assertJsonStringEqualsJsonString(
@@ -181,7 +181,7 @@ class AdminControllerTest extends WebTestCase
         $this->assertEquals(7980, $this->getTableCount('game_availability'));
     }
 
-    public function testUpdateRegionalDexNumber(): void
+    public function testUpdateRegionalDexNumbers(): void
     {
         $client = static::createClient();
 
@@ -189,7 +189,7 @@ class AdminControllerTest extends WebTestCase
 
         $client->request(
             'POST',
-            "/istration/update/regional_dex_number",
+            "/istration/update/regional_dex_numbers",
             [],
             [],
             [
@@ -202,7 +202,7 @@ class AdminControllerTest extends WebTestCase
 
         $json = <<<JSON
         {
-            "regional_dex_number": 2863
+            "regional_dex_numbers": 2863
         }
         JSON;
         $this->assertJsonStringEqualsJsonString(
@@ -213,7 +213,7 @@ class AdminControllerTest extends WebTestCase
         $this->assertEquals(2863, $this->getTableCount('regional_dex_number'));
     }
 
-    public function testCalculateGameBundleAvailability(): void
+    public function testCalculateGameBundlesAvailabilities(): void
     {
         $client = static::createClient();
 
@@ -221,7 +221,7 @@ class AdminControllerTest extends WebTestCase
 
         $client->request(
             'POST',
-            "/istration/calculate/game_bundle_availability",
+            "/istration/calculate/game_bundles_availabilities",
             [],
             [],
             [
@@ -234,7 +234,7 @@ class AdminControllerTest extends WebTestCase
 
         $json = <<<JSON
         {
-            "game_bundle_availability": 18
+            "game_bundles_availabilities": 18
         }
         JSON;
         $this->assertJsonStringEqualsJsonString(
@@ -245,7 +245,7 @@ class AdminControllerTest extends WebTestCase
         $this->assertEquals(18, $this->getTableCount('game_bundle_availability'));
     }
 
-    public function testCalculateDexAvailability(): void
+    public function testCalculateDexAvailabilities(): void
     {
         $client = static::createClient();
 
@@ -253,7 +253,7 @@ class AdminControllerTest extends WebTestCase
 
         $client->request(
             'POST',
-            "/istration/calculate/dex_availability",
+            "/istration/calculate/dex_availabilities",
             [],
             [],
             [
@@ -266,7 +266,7 @@ class AdminControllerTest extends WebTestCase
 
         $json = <<<JSON
         {
-            "dex_availability": 61
+            "dex_availabilities": 61
         }
         JSON;
         $this->assertJsonStringEqualsJsonString(
