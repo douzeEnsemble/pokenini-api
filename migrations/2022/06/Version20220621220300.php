@@ -18,7 +18,7 @@ final class Version20220621220300 extends AbstractMigration
 
     public function up(Schema $schema): void
     {
-        $this->insertDexes([
+        $this->insertDex([
             'Red, Green, Blue, Yellow' => <<< RULE
                 (p.bankable or p.bankableish)
                 and p.variantForm === null
@@ -352,12 +352,12 @@ final class Version20220621220300 extends AbstractMigration
         $this->addSql("INSERT INTO game (id, name, slug, order_number, bundle_id) VALUES ($sqlValuesStr)", $sqlParameters);
     }
 
-    private function insertDexes(array $dexes): void
+    private function insertDex(array $dex): void
     {
         $slugify = new Slugify();
 
         $i = 1;
-        foreach ($dexes as $dexName => $selectionRule) {
+        foreach ($dex as $dexName => $selectionRule) {
             $sql = <<<SQL
             INSERT INTO dex (id, name, selection_rule, slug, order_number)
             VALUES (gen_random_uuid(), :name, :selectionRule, :slug, :orderNumber)

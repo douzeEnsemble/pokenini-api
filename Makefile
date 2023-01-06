@@ -87,12 +87,12 @@ integration: newman
 
 newman: ## Execute newman
 	@$(SYMFONY) --env=int app:update:labels
-	@$(SYMFONY) --env=int app:update:games_and_dexes
-	@$(SYMFONY) --env=int app:update:pokemon
-	@$(SYMFONY) --env=int app:update:regional_dex_number
-	@$(SYMFONY) --env=int app:update:game_availability
-	@$(SYMFONY) --env=int app:calculate:game_bundle_availability
-	@$(SYMFONY) --env=int app:calculate:dex_availability
+	@$(SYMFONY) --env=int app:update:games_and_dex
+	@$(SYMFONY) --env=int app:update:pokemons
+	@$(SYMFONY) --env=int app:update:regional_dex_numbers
+	@$(SYMFONY) --env=int app:update:games_availabilities
+	@$(SYMFONY) --env=int app:calculate:game_bundles_availabilities
+	@$(SYMFONY) --env=int app:calculate:dex_availabilities
 	$(DOCKER_COMP) --env-file .env.int run newman run collection.json
 
 ## —— Deployment 🚀 ————————————————————————————————————————————————————————————————

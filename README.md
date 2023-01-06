@@ -10,12 +10,12 @@ docker-compose exec php sh -c '
     php bin/console doct:data:drop --force --if-exists && php bin/console doct:data:c && php bin/console doct:migr:mig --no-interaction
     php bin/console doct:data:drop --force --if-exists --env=test && php bin/console doct:data:c --env=test && php bin/console doct:migr:mig --no-interaction --env=test
     php bin/console app:update:labels
-    php bin/console app:update:games_and_dexes
-    php bin/console app:update:pokemon
-    php bin/console app:update:regional_dex_number
-    php bin/console app:update:game_availability
-    php bin/console app:calculate:game_bundle_availability
-    php bin/console app:calculate:dex_availability
+    php bin/console app:update:games_and_dex
+    php bin/console app:update:pokemons
+    php bin/console app:update:regional_dex_numbers
+    php bin/console app:update:games_availabilities
+    php bin/console app:calculate:game_bundles_availabilities
+    php bin/console app:calculate:dex_availabilities
     echo "Finished"
 ' && \
 make quality tests integration
@@ -28,12 +28,12 @@ docker-compose exec php sh -c '
     php bin/console doct:data:drop --force --if-exists && php bin/console doct:data:c && php bin/console doct:migr:mig --no-interaction
     php bin/console doct:data:drop --force --if-exists --env=test && php bin/console doct:data:c --env=test && php bin/console doct:migr:mig --no-interaction --env=test
     php bin/console app:update:labels
-    php bin/console app:update:games_and_dexes
-    php bin/console app:update:pokemon
-    php bin/console app:update:regional_dex_number
-    php bin/console app:update:game_availability
-    php bin/console app:calculate:game_bundle_availability
-    php bin/console app:calculate:dex_availability
+    php bin/console app:update:games_and_dex
+    php bin/console app:update:pokemons
+    php bin/console app:update:regional_dex_numbers
+    php bin/console app:update:games_availabilities
+    php bin/console app:calculate:game_bundles_availabilities
+    php bin/console app:calculate:dex_availabilities
     echo "Finished"
 ' && \
 make quality tests integration
@@ -57,11 +57,11 @@ docker-compose up -d
 docker-compose down --remove-orphans && docker-compose up -d --force-recreate
 ```
 
-## Labels, games and dexes
+## Labels, games and dex
 
 ```
 php bin/console app:update:labels
-php bin/console app:update:games_and_dexes
+php bin/console app:update:games_and_dex
 ```
 
 ## Pokémons
@@ -72,7 +72,7 @@ By default, there is no pokemon, you have to import them
 
 ```
 docker-compose exec php sh -c '
-    php bin/console app:update:pokemon
+    php bin/console app:update:pokemons
 '
 ```
 
@@ -82,7 +82,7 @@ By default, there is no regional dex number, you have to import them
 
 ```
 docker-compose exec php sh -c '
-    php bin/console app:update:regional_dex_number
+    php bin/console app:update:regional_dex_numbers
 '
 ```
 
@@ -92,7 +92,7 @@ By default, there is no game availabilty, you have to import them
 
 ```
 docker-compose exec php sh -c '
-    php bin/console app:update:game_availability
+    php bin/console app:update:games_availabilities
 '
 ```
 
@@ -102,17 +102,17 @@ Game bundle availability are calculated from games' availabilities
 
 ```
 docker-compose exec php sh -c '
-    php bin/console app:calculate:game_bundle_availability
+    php bin/console app:calculate:game_bundles_availabilities
 '
 ```
 
-### Calculate dexes' availabilty
+### Calculate dex' availabilty
 
 Dex availability are calculated from dex rules
 
 ```
 docker-compose exec php sh -c '
-    php bin/console app:calculate:dex_availability
+    php bin/console app:calculate:dex_availabilities
 '
 ```
 

@@ -18,27 +18,27 @@ parameters:
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$goldsilvercrystal\\.$#"
 			count: 3
-			path: tests/Functional/Repository/GameBundleAvailabilityRepositoryTest.php
+			path: tests/Functional/Repository/GameBundlesAvailabilitiesRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$redgreenblueyellow\\.$#"
 			count: 3
-			path: tests/Functional/Repository/GameBundleAvailabilityRepositoryTest.php
+			path: tests/Functional/Repository/GameBundlesAvailabilitiesRepositoryTest.php
 
 		-
 			message: "#^Parameter \\#1 \\$iterator of function iterator_to_array expects Traversable, iterable given\\.$#"
 			count: 1
-			path: tests/Functional/Repository/PokemonRepositoryTest.php
+			path: tests/Functional/Repository/PokemonsRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$goldsilvercrystal\\.$#"
 			count: 3
-			path: tests/Functional/Service/GameBundleAvailabilityServiceTest.php
+			path: tests/Functional/Service/GameBundlesAvailabilitiesServiceTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$redgreenblueyellow\\.$#"
 			count: 3
-			path: tests/Functional/Service/GameBundleAvailabilityServiceTest.php
+			path: tests/Functional/Service/GameBundlesAvailabilitiesServiceTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$a\\.$#"

@@ -6,8 +6,8 @@ use App\DTO\DataChangeReport\Report;
 use App\DTO\DataChangeReport\Statistic;
 use App\Service\UpdaterService\FormsUpdaterService;
 use App\Service\UpdaterService\LabelsUpdaterService;
-use App\Updater\CatchStateUpdater;
-use App\Updater\RegionUpdater;
+use App\Updater\CatchStatesUpdater;
+use App\Updater\RegionsUpdater;
 use PHPUnit\Framework\TestCase;
 
 class LabelsUpdaterServiceTest extends TestCase
@@ -25,32 +25,32 @@ class LabelsUpdaterServiceTest extends TestCase
             ->willReturn(new Report([]))
         ;
 
-        $catchStateUpdater = $this->createMock(CatchStateUpdater::class);
-        $catchStateUpdater
+        $catchStatesUpdater = $this->createMock(CatchStatesUpdater::class);
+        $catchStatesUpdater
             ->expects($this->once())
             ->method('execute')
         ;
-        $catchStateUpdater
+        $catchStatesUpdater
             ->expects($this->once())
             ->method('getStatistic')
             ->willReturn(new Statistic('cs'))
         ;
 
-        $regionUpdater = $this->createMock(RegionUpdater::class);
-        $regionUpdater
+        $regionsUpdater = $this->createMock(RegionsUpdater::class);
+        $regionsUpdater
             ->expects($this->once())
             ->method('execute')
         ;
-        $regionUpdater
+        $regionsUpdater
             ->expects($this->once())
             ->method('getStatistic')
             ->willReturn(new Statistic('r'))
         ;
 
         $service = new LabelsUpdaterService(
-            $catchStateUpdater,
+            $catchStatesUpdater,
             $formsUpdaterService,
-            $regionUpdater
+            $regionsUpdater
         );
 
         $service->execute();

@@ -25,18 +25,18 @@ class DexRepositoryTest extends KernelTestCase
         /** @var DexRepository $repo */
         $repo = static::getContainer()->get(DexRepository::class);
 
-        $dexesIterator = $repo->getQueryAll();
+        $dexIterator = $repo->getQueryAll();
 
-        /** @var Dex[] $dexes */
-        $dexes = iterator_to_array($dexesIterator->toIterable());
+        /** @var Dex[] $dex */
+        $dex = iterator_to_array($dexIterator->toIterable());
 
-        $this->assertCount($this->getDexCount(), $dexes);
+        $this->assertCount($this->getDexCount(), $dex);
 
-        $this->assertEquals('Red / Green / Blue / Yellow', $dexes[0]->name);
+        $this->assertEquals('Red / Green / Blue / Yellow', $dex[0]->name);
 
         $this->assertEquals(
             "(p.bankable or p.bankableish) and ba?.rubysapphireemerald",
-            $dexes[2]->selectionRule
+            $dex[2]->selectionRule
         );
     }
 

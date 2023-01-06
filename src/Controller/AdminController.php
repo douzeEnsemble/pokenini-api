@@ -8,9 +8,9 @@ use App\DTO\AlbumReport\Statistic;
 use App\DTO\DataChangeReport\Report;
 use App\Service\CalculatorService\CalculatorServiceInterface;
 use App\Service\CalculatorService\DexAvailabilitiesCalculatorService;
-use App\Service\CalculatorService\GameBundleAvailabilitiesCalculatorService;
-use App\Service\UpdaterService\GameAvailabilitiesUpdaterService;
-use App\Service\UpdaterService\GamesAndDexesUpdaterService;
+use App\Service\CalculatorService\GameBundlesAvailabilitiesCalculatorService;
+use App\Service\UpdaterService\GamesAvailabilitiesUpdaterService;
+use App\Service\UpdaterService\GamesAndDexUpdaterService;
 use App\Service\UpdaterService\LabelsUpdaterService;
 use App\Service\UpdaterService\PokemonsUpdaterService;
 use App\Service\UpdaterService\RegionalDexNumbersUpdaterService;
@@ -23,51 +23,51 @@ use Symfony\Component\Routing\Annotation\Route;
 class AdminController extends AbstractController
 {
     #[Route(path: '/update/labels', methods: ['POST'])]
-    public function updateLabels(LabelsUpdaterService $labelsUpdaterService): JsonResponse
+    public function updateLabels(LabelsUpdaterService $updaterService): JsonResponse
     {
-        return $this->update($labelsUpdaterService);
+        return $this->update($updaterService);
     }
 
-    #[Route(path: '/update/games_and_dexes', methods: ['POST'])]
-    public function updateGamesAndDexes(
-        GamesAndDexesUpdaterService $gamesAndDexesUpdaterService
+    #[Route(path: '/update/games_and_dex', methods: ['POST'])]
+    public function updateGamesAndDex(
+        GamesAndDexUpdaterService $updaterService
     ): JsonResponse {
-        return $this->update($gamesAndDexesUpdaterService);
+        return $this->update($updaterService);
     }
 
     #[Route(path: '/update/pokemons', methods: ['POST'])]
     public function updatePokemons(
-        PokemonsUpdaterService $pokemonUpdaterService
+        PokemonsUpdaterService $updaterService
     ): JsonResponse {
-        return $this->update($pokemonUpdaterService);
+        return $this->update($updaterService);
     }
 
-    #[Route(path: '/update/regional_dex_number', methods: ['POST'])]
-    public function updateRegionalDexNumber(
-        RegionalDexNumbersUpdaterService $regionalDexNumbersUpdaterService,
+    #[Route(path: '/update/regional_dex_numbers', methods: ['POST'])]
+    public function updateRegionalDexNumbers(
+        RegionalDexNumbersUpdaterService $updaterService,
     ): JsonResponse {
-        return $this->update($regionalDexNumbersUpdaterService);
+        return $this->update($updaterService);
     }
 
-    #[Route(path: '/update/game_availability', methods: ['POST'])]
-    public function updateGameAvailability(
-        GameAvailabilitiesUpdaterService $gameAvailabilitiesUpdaterService,
+    #[Route(path: '/update/games_availabilities', methods: ['POST'])]
+    public function updateGamesAvailabilities(
+        GamesAvailabilitiesUpdaterService $updaterService,
     ): JsonResponse {
-        return $this->update($gameAvailabilitiesUpdaterService);
+        return $this->update($updaterService);
     }
 
-    #[Route(path: '/calculate/game_bundle_availability', methods: ['POST'])]
-    public function calculateGameBundleAvailability(
-        GameBundleAvailabilitiesCalculatorService $gameBundleAvailabilitiesCalculatorService,
+    #[Route(path: '/calculate/game_bundles_availabilities', methods: ['POST'])]
+    public function calculateGameBundlesAvailabilities(
+        GameBundlesAvailabilitiesCalculatorService $calculatorService,
     ): JsonResponse {
-        return $this->calculate($gameBundleAvailabilitiesCalculatorService);
+        return $this->calculate($calculatorService);
     }
 
-    #[Route(path: '/calculate/dex_availability', methods: ['POST'])]
-    public function calculateDexAvailability(
-        DexAvailabilitiesCalculatorService $dexAvailabilitiesCalculatorService
+    #[Route(path: '/calculate/dex_availabilities', methods: ['POST'])]
+    public function calculateDexAvailabilities(
+        DexAvailabilitiesCalculatorService $calculatorService
     ): JsonResponse {
-        return $this->calculate($dexAvailabilitiesCalculatorService);
+        return $this->calculate($calculatorService);
     }
 
     private function update(UpdaterServiceInterface $updaterService): JsonResponse

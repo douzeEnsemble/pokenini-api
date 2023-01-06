@@ -2,14 +2,14 @@
 
 namespace App\Service\CalculatorService;
 
-use App\Calculator\DexAvailabilityCalculator;
+use App\Calculator\DexAvailabilitiesCalculator;
 use App\DTO\DataChangeReport\Report;
 use Symfony\Contracts\Cache\CacheInterface;
 
 class DexAvailabilitiesCalculatorService extends AbstractCalculatorService
 {
     public function __construct(
-        private readonly DexAvailabilityCalculator $dexAvailabilityCalculator,
+        private readonly DexAvailabilitiesCalculator $calculator,
         private readonly CacheInterface $cache
     ) {
     }
@@ -18,10 +18,10 @@ class DexAvailabilitiesCalculatorService extends AbstractCalculatorService
     {
         $this->cache->clear();
 
-        $this->dexAvailabilityCalculator->execute();
+        $this->calculator->execute();
 
         $this->report = new Report([
-            $this->dexAvailabilityCalculator->getStatistic(),
+            $this->calculator->getStatistic(),
         ]);
     }
 }

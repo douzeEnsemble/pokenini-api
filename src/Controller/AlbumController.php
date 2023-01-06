@@ -6,7 +6,7 @@ namespace App\Controller;
 
 use App\DTO\AlbumReport\Report;
 use App\DTO\AlbumReport\Statistic;
-use App\Repository\DexAvailabilityRepository;
+use App\Repository\DexAvailabilitiesRepository;
 use App\Repository\DexRepository;
 use App\Repository\PokedexRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -21,7 +21,7 @@ class AlbumController extends AbstractController
 {
     public function __construct(
         private readonly PokedexRepository $pokedexRepository,
-        private readonly DexAvailabilityRepository $dexAvailabilityRepository,
+        private readonly DexAvailabilitiesRepository $dexAvailabilitiesRepository,
     ) {
     }
 
@@ -91,7 +91,7 @@ class AlbumController extends AbstractController
         $totalCaught = 0;
         $detail = [];
 
-        $total = $this->dexAvailabilityRepository->getTotal($dexSlug);
+        $total = $this->dexAvailabilitiesRepository->getTotal($dexSlug);
         $totalUncaught = $total;
 
         $catchStatesCounts = $this->pokedexRepository->getCatchStatesCounts($trainerExternalId, $dexSlug);
