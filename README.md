@@ -5,37 +5,12 @@
 ### TL;DR
 
 ```
-make stop build start && \
-docker-compose exec php sh -c '
-    php bin/console doct:data:drop --force --if-exists && php bin/console doct:data:c && php bin/console doct:migr:mig --no-interaction
-    php bin/console doct:data:drop --force --if-exists --env=test && php bin/console doct:data:c --env=test && php bin/console doct:migr:mig --no-interaction --env=test
-    php bin/console app:update:labels
-    php bin/console app:update:games_and_dex
-    php bin/console app:update:pokemons
-    php bin/console app:update:regional_dex_numbers
-    php bin/console app:update:games_availabilities
-    php bin/console app:calculate:game_bundles_availabilities
-    php bin/console app:calculate:dex_availabilities
-    echo "Finished"
-' && \
-make quality tests integration
+make stop install start quality tests integration
 ```
 
 or
 
 ```
-docker-compose exec php sh -c '
-    php bin/console doct:data:drop --force --if-exists && php bin/console doct:data:c && php bin/console doct:migr:mig --no-interaction
-    php bin/console doct:data:drop --force --if-exists --env=test && php bin/console doct:data:c --env=test && php bin/console doct:migr:mig --no-interaction --env=test
-    php bin/console app:update:labels
-    php bin/console app:update:games_and_dex
-    php bin/console app:update:pokemons
-    php bin/console app:update:regional_dex_numbers
-    php bin/console app:update:games_availabilities
-    php bin/console app:calculate:game_bundles_availabilities
-    php bin/console app:calculate:dex_availabilities
-    echo "Finished"
-' && \
 make quality tests integration
 ```
 
@@ -45,16 +20,10 @@ make quality tests integration
 make install start
 ```
 
-or a hard way
-```
-docker-compose build --pull --no-cache
-docker-compose up -d
-```
-
 ### Restart
 
 ```
-docker-compose down --remove-orphans && docker-compose up -d --force-recreate
+make stop start
 ```
 
 ## Labels, games and dex
@@ -68,8 +37,6 @@ php bin/console app:update:games_and_dex
 
 ### Import pokemon list
 
-By default, there is no pokemon, you have to import them
-
 ```
 docker-compose exec php sh -c '
     php bin/console app:update:pokemons
@@ -78,8 +45,6 @@ docker-compose exec php sh -c '
 
 ### Import regional dex number list
 
-By default, there is no regional dex number, you have to import them
-
 ```
 docker-compose exec php sh -c '
     php bin/console app:update:regional_dex_numbers
@@ -87,8 +52,6 @@ docker-compose exec php sh -c '
 ```
 
 ### Import bulbapedia's games' availabilty list
-
-By default, there is no game availabilty, you have to import them
 
 ```
 docker-compose exec php sh -c '
@@ -138,9 +101,7 @@ make composer c="require gedmo/doctrine-extensions"
 
 Reset database and redo all migrations
 ```
-docker-compose exec php sh -c '
-    php bin/console doct:data:drop --force --if-exists && php bin/console doct:data:c && php bin/console doct:migr:mig --no-interaction
-    php bin/console doct:data:drop --force --if-exists --env=test && php bin/console doct:data:c --env=test && php bin/console doct:migr:mig --no-interaction --env=test
+make init_db
 '
 ```
 
