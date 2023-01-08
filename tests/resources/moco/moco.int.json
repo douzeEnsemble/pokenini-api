@@ -5,7 +5,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Catch%20state%27%21A1%3AE1.json"
+      "file": "/var/moco/test/values_%27Catch%20state%27%21A1%3AE1.json"
     }
   },
   {
@@ -14,7 +14,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Catch%20state%27%21A2%3AE.json"
+      "file": "/var/moco/test/values_%27Catch%20state%27%21A2%3AE.json"
     }
   },
   {
@@ -23,7 +23,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Category%20form%27%21A1%3AC1.json"
+      "file": "/var/moco/test/values_%27Category%20form%27%21A1%3AC1.json"
     }
   },
   {
@@ -32,7 +32,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Category%20form%27%21A2%3AC.json"
+      "file": "/var/moco/test/values_%27Category%20form%27%21A2%3AC.json"
     }
   },
   {
@@ -41,7 +41,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Regional%20form%27%21A1%3AC1.json"
+      "file": "/var/moco/test/values_%27Regional%20form%27%21A1%3AC1.json"
     }
   },
   {
@@ -50,7 +50,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Regional%20form%27%21A2%3AC.json"
+      "file": "/var/moco/test/values_%27Regional%20form%27%21A2%3AC.json"
     }
   },
   {
@@ -59,7 +59,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Special%20form%27%21A1%3AC1.json"
+      "file": "/var/moco/test/values_%27Special%20form%27%21A1%3AC1.json"
     }
   },
   {
@@ -68,7 +68,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Special%20form%27%21A2%3AC.json"
+      "file": "/var/moco/test/values_%27Special%20form%27%21A2%3AC.json"
     }
   },
   {
@@ -77,7 +77,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Variant%20form%27%21A1%3AC1.json"
+      "file": "/var/moco/test/values_%27Variant%20form%27%21A1%3AC1.json"
     }
   },
   {
@@ -86,7 +86,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Variant%20form%27%21A2%3AC.json"
+      "file": "/var/moco/test/values_%27Variant%20form%27%21A2%3AC.json"
     }
   },
   {
@@ -95,7 +95,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Game%20Generation%27%21A1%3AB1.json"
+      "file": "/var/moco/test/values_%27Game%20Generation%27%21A1%3AB1.json"
     }
   },
   {
@@ -104,7 +104,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Game%20Generation%27%21A2%3AB.json"
+      "file": "/var/moco/test/values_%27Game%20Generation%27%21A2%3AB.json"
     }
   },
   {
@@ -113,7 +113,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Game%20Bundle%27%21A1%3AD1.json"
+      "file": "/var/moco/test/values_%27Game%20Bundle%27%21A1%3AD1.json"
     }
   },
   {
@@ -122,7 +122,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Game%20Bundle%27%21A2%3AD.json"
+      "file": "/var/moco/int/values_%27Game%20Bundle%27%21A2%3AD.json"
     }
   },
   {
@@ -131,7 +131,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Game%27%21A1%3AD1.json"
+      "file": "/var/moco/test/values_%27Game%27%21A1%3AD1.json"
     }
   },
   {
@@ -140,7 +140,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Game%27%21A2%3AD.json"
+      "file": "/var/moco/int/values_%27Game%27%21A2%3AD.json"
     }
   },
   {
@@ -149,7 +149,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Dex%27%21A1%3AM1.json"
+      "file": "/var/moco/test/values_%27Dex%27%21A1%3AM1.json"
     }
   },
   {
@@ -158,7 +158,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Dex%27%21A2%3AM.json"
+      "file": "/var/moco/test/values_%27Dex%27%21A2%3AM.json"
     }
   },
   {
@@ -167,7 +167,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Pok%C3%A9mons%27%21A1%3AAR1.json"
+      "file": "/var/moco/test/values_%27Pok%C3%A9mons%27%21A1%3AAR1.json"
     }
   },
   {
@@ -176,7 +176,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Pok%C3%A9mons%27%21A2%3AAR.json"
+      "file": "/var/moco/test/values_%27Pok%C3%A9mons%27%21A2%3AAR.json"
     }
   },
   {
@@ -185,7 +185,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A2%3AAN2.json"
+      "file": "/var/moco/test/values_%27Games%20Availability%27%21A2%3AAN2.json"
     }
   },
   {
@@ -194,16 +194,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/v4_spreadsheets_1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU.json"
-    }
-  },
-  {
-    "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU"
-    },
-    "response": {
-      "status": 200,
-      "file": "/var/moco/v4_spreadsheets_1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU.json"
+      "file": "/var/moco/int/spreadsheets.json"
     }
   },
   {
@@ -212,7 +203,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A3%3AAN102.json"
+      "file": "/var/moco/test/values_%27Games%20Availability%27%21A3%3AAN102.json"
     }
   },
   {
@@ -221,7 +212,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A103%3AAN202.json"
+      "file": "/var/moco/test/values_%27Games%20Availability%27%21A103%3AAN202.json"
     }
   },
   {
@@ -230,7 +221,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A203%3AAN302.json"
+      "file": "/var/moco/test/values_%27Games%20Availability%27%21A203%3AAN302.json"
     }
   },
   {
@@ -239,7 +230,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A303%3AAN402.json"
+      "file": "/var/moco/test/values_%27Games%20Availability%27%21A303%3AAN402.json"
     }
   },
   {
@@ -248,7 +239,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A403%3AAN502.json"
+      "file": "/var/moco/test/values_%27Games%20Availability%27%21A403%3AAN502.json"
     }
   },
   {
@@ -257,7 +248,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A503%3AAN602.json"
+      "file": "/var/moco/test/values_%27Games%20Availability%27%21A503%3AAN602.json"
     }
   },
   {
@@ -266,7 +257,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A603%3AAN702.json"
+      "file": "/var/moco/test/values_%27Games%20Availability%27%21A603%3AAN702.json"
     }
   },
   {
@@ -275,7 +266,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A703%3AAN802.json"
+      "file": "/var/moco/test/values_%27Games%20Availability%27%21A703%3AAN802.json"
     }
   },
   {
@@ -284,7 +275,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A803%3AAN902.json"
+      "file": "/var/moco/test/values_%27Games%20Availability%27%21A803%3AAN902.json"
     }
   },
   {
@@ -293,7 +284,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A903%3AAN1002.json"
+      "file": "/var/moco/test/values_%27Games%20Availability%27%21A903%3AAN1002.json"
     }
   },
   {
@@ -302,7 +293,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Games%20Availability%27%21A1003%3AAN1067.json"
+      "file": "/var/moco/test/values_%27Games%20Availability%27%21A1003%3AAN1067.json"
     }
   },
   {
@@ -311,7 +302,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A1%3AL1.json"
+      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A1%3AL1.json"
     }
   },
   {
@@ -320,7 +311,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A2%3AL101.json"
+      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A2%3AL101.json"
     }
   },
   {
@@ -329,7 +320,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A102%3AL201.json"
+      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A102%3AL201.json"
     }
   },
   {
@@ -338,7 +329,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A202%3AL301.json"
+      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A202%3AL301.json"
     }
   },
   {
@@ -347,7 +338,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A302%3AL401.json"
+      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A302%3AL401.json"
     }
   },
   {
@@ -356,7 +347,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A402%3AL501.json"
+      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A402%3AL501.json"
     }
   },
   {
@@ -365,7 +356,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A502%3AL601.json"
+      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A502%3AL601.json"
     }
   },
   {
@@ -374,7 +365,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A602%3AL701.json"
+      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A602%3AL701.json"
     }
   },
   {
@@ -383,7 +374,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A702%3AL801.json"
+      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A702%3AL801.json"
     }
   },
   {
@@ -392,7 +383,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A802%3AL901.json"
+      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A802%3AL901.json"
     }
   },
   {
@@ -401,7 +392,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A902%3AL1001.json"
+      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A902%3AL1001.json"
     }
   },
   {
@@ -410,7 +401,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Regional%20Dex%20Number%27%21A1002%3AL1006.json"
+      "file": "/var/moco/test/values_%27Regional%20Dex%20Number%27%21A1002%3AL1006.json"
     }
   },
   {
@@ -419,7 +410,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Region%27%21A1%3AD1.json"
+      "file": "/var/moco/test/values_%27Region%27%21A1%3AD1.json"
     }
   },
   {
@@ -428,7 +419,7 @@
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/values_%27Region%27%21A2%3AD.json"
+      "file": "/var/moco/test/values_%27Region%27%21A2%3AD.json"
     }
   }
 ]

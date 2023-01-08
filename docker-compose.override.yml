@@ -8,7 +8,7 @@ services:
     volumes:
       - .:/srv
       - ./docker/php/conf.d/app.dev.ini:/usr/local/etc/php/conf.d/app.dev.ini:ro
-      # If you develop on Mac or Windows you can remove the vendor/ directory 
+      # If you develop on Mac or Windows you can remove the vendor/ directory
       #  from the bind-mount for better performance by enabling the next line:
       - /srv/vendor
     environment:
@@ -30,33 +30,24 @@ services:
       - target: 5432
         published: 5451
         protocol: tcp
-  
+
   moco_test:
     build:
-      context: docker/moco
+      context: docker/moco/test
     volumes:
-      - ./tests/resources/moco/test/:/var/moco:ro
-  
+      - ./tests/resources/moco:/var/moco:ro
+
   moco_int:
     build:
-      context: docker/moco
+      context: docker/moco/int
     volumes:
-      - ./tests/resources/moco/int/:/var/moco:ro
+      - ./tests/resources/moco:/var/moco:ro
 
   newman:
     build:
       context: docker/newman
     volumes:
       - ./tests/integration:/etc/newman:ro
-  
-  wait:
-    image: waisbrot/wait
-    links:
-      - database
-      - caddy
-    environment:
-      - TARGETS=database:5432
-      - TARGETS=caddy:80
 
 volumes:
 ###> doctrine/doctrine-bundle ###
