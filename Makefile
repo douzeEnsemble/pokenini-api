@@ -3,10 +3,13 @@ DOCKER_COMP = docker compose
 
 # Docker containers
 ifeq (${CI}, true)
-PHP_CONT = $(DOCKER_COMP) exec -T php
+DOCKER_COMP_EXEC = $(DOCKER_COMP) exec -T
 else
-PHP_CONT = $(DOCKER_COMP) exec php
+DOCKER_COMP_EXEC = $(DOCKER_COMP) exec
 endif
+
+PHP_CONT = $(DOCKER_COMP_EXEC) php
+DATABASE_CONT = $(DOCKER_COMP_EXEC) database
 
 # Executables
 PHP      = $(PHP_CONT) php
@@ -22,7 +25,7 @@ help: ## Outputs this help screen
 	@grep -E '(^[a-zA-Z0-9_-]+:.*?##.*$$)|(^##)' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}{printf "\033[32m%-30s\033[0m %s\n", $$1, $$2}' | sed -e 's/\[32m##/[33m/'
 
 install: ## Install requirements
-install: build
+install: build start data stop
 
 ## —— Docker 🐳 ————————————————————————————————————————————————————————————————
 build: ## Builds the Docker images
@@ -36,6 +39,34 @@ stop: ## Stop the project
 
 sh: ## Connect to the PHP FPM container
 	@$(PHP_CONT) sh
+
+waitup:
+	$(DATABASE_CONT) pg_isready -U app
+	while ! $(PHP_CONT) /usr/local/bin/docker-healthcheck; do \
+		sleep 1; \
+	done
+	echo 'Wait is over'
+
+## —— Data 💾 ————————————————————————————————————————————————————————————————
+data: ## Initialize data
+data: waitup init_db data_app
+
+init_db: ## Initialize database data
+	$(SYMFONY) doctrine:database:drop --force --if-exists --env=dev
+	$(SYMFONY) doctrine:database:create --env=dev
+	$(SYMFONY) doctrine:migration:migrate --no-interaction --env=dev
+	$(SYMFONY) doctrine:database:drop --force --if-exists --env=test
+	$(SYMFONY) doctrine:database:create --env=test
+	$(SYMFONY) doctrine:migration:migrate --no-interaction --env=test
+
+data_app: ## Initialize app data
+	$(SYMFONY) app:update:labels
+	$(SYMFONY) app:update:games_and_dex
+	$(SYMFONY) app:update:pokemons
+	$(SYMFONY) app:update:regional_dex_numbers
+	$(SYMFONY) app:update:games_availabilities
+	$(SYMFONY) app:calculate:game_bundles_availabilities
+	$(SYMFONY) app:calculate:dex_availabilities
 
 ## —— Composer 🧙 ——————————————————————————————————————————————————————————————
 composer: ## Run composer, pass the parameter "c=" to run a given command, example: make composer c='req symfony/orm-pack'
@@ -53,7 +84,6 @@ sf: ## List all Symfony commands or pass the parameter "c=" to run a given comma
 
 cc: c=c:c ## Clear the cache
 cc: sf
-
 
 ## —— Tests 🧪 ———————————————————————————————————————————————————————————————
 tests: ## Execute all tests
