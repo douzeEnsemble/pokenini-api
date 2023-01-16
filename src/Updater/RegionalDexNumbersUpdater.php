@@ -149,13 +149,13 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
         foreach ($records as $record) {
             $sqlValues[] = ":id$index"
                 . ", :pokemonName$index"
-                . ", :regionName$index"
+                . ", (SELECT id FROM region WHERE slug = :regionSlug$index)"
                 . ", :dexNumber$index"
             ;
 
             $sqlParameters["id$index"] = Uuid::v4();
             $sqlParameters["pokemonName$index"] = $record['pokemonName'];
-            $sqlParameters["regionName$index"] = $record['regionName'];
+            $sqlParameters["regionSlug$index"] = $record['regionSlug'];
             $sqlParameters["dexNumber$index"] = $record['dexNumber'];
 
             $index++;
@@ -167,7 +167,7 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
         INSERT INTO regional_dex_number (
             id,
             pokemon_name,
-            region_name,
+            region_id,
             dex_number
         )
         VALUES ($sqlValuesStr)
@@ -217,14 +217,14 @@ SQL;
         unset($record['Pokemon']);
         unset($record['National']);
 
-        foreach ($record as $regionName => $dexNumber) {
+        foreach ($record as $regionSlug => $dexNumber) {
             if (! is_numeric($dexNumber)) {
                 continue;
             }
 
             $this->records[] = [
                 'pokemonName' => $name,
-                'regionName' => $regionName,
+                'regionSlug' => $regionSlug,
                 'dexNumber' => $dexNumber,
             ];
         }

@@ -73,8 +73,8 @@ class PokedexRepository extends ServiceEntityRepository
             LEFT JOIN variant_form AS vf
                 ON p.variant_form_id = vf.id
             LEFT JOIN regional_dex_number AS rdn
-                ON r.name IS NOT NULL
-                    AND r.name = rdn.region_name
+                ON r.id IS NOT NULL
+                    AND r.id = rdn.region_id
                     AND p.prime_name = rdn.pokemon_name
         WHERE   d.slug = :dex_slug
         ORDER BY pokemon_order_number
