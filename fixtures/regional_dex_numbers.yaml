@@ -1,52 +1,52 @@
 App\Entity\RegionalDexNumber:
   regionaldexnumber_bulbasaur_kanto:
     pokemonName: 'Bulbasaur'
-    regionName: 'Kanto'
+    region: '@region_kanto'
     dexNumber: '1'
   regionaldexnumber_ivysaur_kanto:
     pokemonName: 'Ivysaur'
-    regionName: 'Kanto'
+    region: '@region_kanto'
     dexNumber: '2'
   regionaldexnumber_venusaur_kanto:
     pokemonName: 'Venusaur'
-    regionName: 'Kanto'
+    region: '@region_kanto'
     dexNumber: '3'
 
   regionaldexnumber_bulbasaur_johto:
     pokemonName: 'Bulbasaur'
-    regionName: 'Johto'
+    region: '@region_johto'
     dexNumber: '231'
   regionaldexnumber_ivysaur_johto:
     pokemonName: 'Ivysaur'
-    regionName: 'Johto'
+    region: '@region_johto'
     dexNumber: '232'
   regionaldexnumber_venusaur_johto:
     pokemonName: 'Venusaur'
-    regionName: 'Johto'
+    region: '@region_johto'
     dexNumber: '233'
 
   regionaldexnumber_caterpie_johto:
     pokemonName: 'Caterpie'
-    regionName: 'Johto'
+    region: '@region_johto'
     dexNumber: '24'
   regionaldexnumber_metapod_johto:
     pokemonName: 'Metapod'
-    regionName: 'Johto'
+    region: '@region_johto'
     dexNumber: '25'
   regionaldexnumber_butterfree_johto:
     pokemonName: 'Butterfree'
-    regionName: 'Johto'
+    region: '@region_johto'
     dexNumber: '26'
 
   regionaldexnumber_bulbasaur_kalos:
     pokemonName: 'Bulbasaur'
-    regionName: 'Kalos'
+    region: '@region_kalos'
     dexNumber: '1080'
   regionaldexnumber_ivysaur_kalos:
     pokemonName: 'Ivysaur'
-    regionName: 'Kalos'
+    region: '@region_kalos'
     dexNumber: '1081'
   regionaldexnumber_venusaur_kalos:
     pokemonName: 'Venusaur'
-    regionName: 'Kalos'
+    region: '@region_kalos'
     dexNumber: '1082'
