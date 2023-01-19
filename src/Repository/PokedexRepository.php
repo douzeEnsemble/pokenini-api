@@ -164,4 +164,63 @@ class PokedexRepository extends ServiceEntityRepository
             ]
         );
     }
+    /**
+     * @return int[]|string[]
+     */
+    public function getCatchStateCountsDefinedByTrainer(): array
+    {
+        $sql = <<<SQL
+        SELECT      COUNT(*) AS nb,
+                    p.trainer_external_id as trainer
+        FROM        pokedex AS p
+        GROUP BY p.trainer_external_id
+        ORDER BY nb DESC, p.trainer_external_id ASC
+        SQL;
+
+        return $this->getReportsResult($sql);
+    }
+
+    /**
+     * @return int[]|string[]
+     */
+    public function getDexUsage(): array
+    {
+        $sql = <<<SQL
+        SELECT      COUNT(p.id) AS nb,
+                        d.slug AS "dex"
+        FROM        dex AS d
+                LEFT JOIN pokedex AS p ON d.id = p.dex_id
+        GROUP BY d.slug, d.order_number
+        ORDER BY nb DESC, d.order_number ASC
+        SQL;
+
+        return $this->getReportsResult($sql);
+    }
+
+    /**
+     * @return int[]|string[]
+     */
+    public function getCatchStateUsage(): array
+    {
+        $sql = <<<SQL
+        SELECT      COUNT(*) AS nb,
+                    cs.name, cs.french_name, cs.color
+        FROM        pokedex AS p
+                LEFT JOIN catch_state AS cs
+                    ON p.catch_state_id = cs.id
+        GROUP BY    cs.name, cs.french_name, cs.order_number, cs.color
+        ORDER BY    cs.order_number
+        SQL;
+
+        return $this->getReportsResult($sql);
+    }
+
+    /**
+     * @return int[]|string[]
+     */
+    private function getReportsResult(string $sql): array
+    {
+         /** @var int[]|string[] */
+        return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
+    }
 }

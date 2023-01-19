@@ -71,7 +71,8 @@
             "symfony/flex": true,
             "symfony/runtime": true,
             "dealerdirect/phpcodesniffer-composer-installer": true
-        }
+        },
+        "process-timeout": 500
     },
     "autoload": {
         "psr-4": {
