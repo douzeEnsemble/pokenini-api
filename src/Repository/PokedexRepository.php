@@ -186,12 +186,14 @@ class PokedexRepository extends ServiceEntityRepository
     public function getDexUsage(): array
     {
         $sql = <<<SQL
-        SELECT      COUNT(p.id) AS nb,
-                        d.slug AS "dex"
+        SELECT      COUNT(DISTINCT p.trainer_external_id) AS nb,
+                        d.name, d.french_name
         FROM        dex AS d
+                JOIN dex_availability AS da ON d.id = da.dex_id
                 LEFT JOIN pokedex AS p ON d.id = p.dex_id
-        GROUP BY d.slug, d.order_number
-        ORDER BY nb DESC, d.order_number ASC
+        GROUP BY    d.name, d.french_name, d.order_number
+        HAVING      COUNT(DISTINCT p.trainer_external_id) > 0
+        ORDER BY    nb DESC, d.order_number
         SQL;
 
         return $this->getReportsResult($sql);

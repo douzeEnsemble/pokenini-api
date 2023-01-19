@@ -57,28 +57,19 @@ class ReportsControllerTest extends WebTestCase
             ],
             'dex_usage' => [
                 [
-                    'nb' => 7,
-                    'dex' => 'home',
+                    'nb' => 2,
+                    'name' => 'Red / Green / Blue / Yellow',
+                    'french_name' => 'Rouge / Vert / Bleu / Jaune',
                 ],
                 [
-                    'nb' => 5,
-                    'dex' => 'redgreenblueyellow',
+                    'nb' => 2,
+                    'name' => 'Gold / Silver / Crystal',
+                    'french_name' => 'Or / Argent / Cristal',
                 ],
                 [
-                    'nb' => 4,
-                    'dex' => 'goldsilvercrystal',
-                ],
-                [
-                    'nb' => 0,
-                    'dex' => 'rubysapphireemerald',
-                ],
-                [
-                    'nb' => 0,
-                    'dex' => 'homeshiny',
-                ],
-                [
-                    'nb' => 0,
-                    'dex' => 'homepogo',
+                    'nb' => 2,
+                    'name' => 'Home',
+                    'french_name' => 'Home',
                 ],
             ],
             'catch_state_usage' => [
