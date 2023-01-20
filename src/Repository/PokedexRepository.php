@@ -222,7 +222,7 @@ class PokedexRepository extends ServiceEntityRepository
      */
     private function getReportsResult(string $sql): array
     {
-         /** @var int[]|string[] */
+        /** @var int[]|string[] */
         return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
     }
 }

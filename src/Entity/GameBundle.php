@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use ApiPlatform\Metadata\ApiResource;
 use App\Entity\Traits\BaseEntityTrait;
 use App\Entity\Traits\NamedTrait;
 use App\Entity\Traits\OrderedTrait;
@@ -14,7 +13,6 @@ use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
 use Gedmo\Mapping\Annotation as Gedmo;
 
-#[ApiResource(normalizationContext: ['groups' => ['game_bundle_list']], order: ["orderNumber"])]
 #[ORM\Entity]
 #[Gedmo\SoftDeleteable(fieldName: 'deletedAt')]
 class GameBundle
