@@ -18,7 +18,7 @@ SYMFONY  = $(PHP_CONT) bin/console
 
 # Misc
 .DEFAULT_GOAL = help
-.PHONY        = help build up start down logs sh composer vendor sf cc deploy
+.PHONY        = help build up start down logs sh composer vendor sf cc
 
 ## —— 🎵 🐳 The Symfony-docker Makefile 🐳 🎵 ——————————————————————————————————
 help: ## Outputs this help screen
@@ -124,27 +124,3 @@ newman: ## Execute newman
 	@$(SYMFONY) --env=int app:calculate:game_bundles_availabilities
 	@$(SYMFONY) --env=int app:calculate:dex_availabilities
 	$(DOCKER_COMP) --env-file .env.int run newman run collection.json
-
-## —— Deployment 🚀 ————————————————————————————————————————————————————————————————
-deploy: ## Deployment
-	rm -Rf ~/tmp/deploy/pokenini-api
-	mkdir -p ~/tmp/deploy/pokenini-api
-	heroku git:clone -a pokenini-api ~/tmp/deploy/pokenini-api/heroku
-	git clone git@github.com:RenaudDouze/pokenini-api.git ~/tmp/deploy/pokenini-api/project
-	rm -Rf ~/tmp/deploy/pokenini-api/project/.git
-	cp -R ~/tmp/deploy/pokenini-api/project/* ~/tmp/deploy/pokenini-api/heroku/
-	cd ~/tmp/deploy/pokenini-api/heroku; \
-    	git add --all; \
-		git commit --allow-empty -m "Deployment"; \
-		git push heroku main
-	rm -Rf ~/tmp/deploy/pokenini-api
-
-runs: ## Run commands into production env
-	mkdir -p ~/tmp/deploy/pokenini-api
-	heroku git:clone -a pokenini-api ~/tmp/deploy/pokenini-api/heroku
-	cd ~/tmp/deploy/pokenini-api/heroku; \
-		heroku run php bin/console app:import:pokemon resources/data/pokemon_list.csv; \
-		heroku run php bin/console app:import:game_availability resources/data/bulbapedia_availability.csv; \
-		heroku run php bin/console app:calculate:game_bundle_availability; \
-		heroku run php bin/console app:calculate:dex_availability
-	rm -Rf ~/tmp/deploy/pokenini-api
