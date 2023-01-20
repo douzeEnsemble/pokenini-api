@@ -34,6 +34,8 @@ RUN set -eux; \
     	zip \
     	apcu \
 		opcache \
+		ctype \
+		iconv \
     ;
 
 ###> recipes ###
