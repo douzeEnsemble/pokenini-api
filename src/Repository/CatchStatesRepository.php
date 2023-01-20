@@ -19,14 +19,21 @@ class CatchStatesRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return CatchState[]
+     * @return string[]
      */
     public function getAll(): array
     {
-        $queryBuilder = $this->createQueryBuilder('cs');
-        $queryBuilder->orderBy('cs.orderNumber');
+        $sql = <<<SQL
+        SELECT      name,
+                    french_name as "frenchName",
+                    slug,
+                    color
+        FROM        catch_state
+        WHERE       deleted_at IS NULL
+        ORDER BY    order_number
+        SQL;
 
-        /** @var CatchState[] */
-        return $queryBuilder->getQuery()->getResult();
+        /** @var string[] */
+        return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
     }
 }

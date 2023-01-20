@@ -5,20 +5,19 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Controller;
 
 use App\Tests\Common\Traits\GetterTrait\GetPokedexTrait;
-use App\Tests\Functional\Api\AbstractApiTest;
 use App\Tests\Functional\Controller\AlbumControllerTestData;
 
-class AlbumControllerTest extends AbstractApiTest
+class AlbumControllerTest extends AbstractControllerApiTest
 {
     use GetPokedexTrait;
 
     public function testListUser12RedGreenBlueYellow(): void
     {
-        $response = $this->apiRequest('album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow');
+        $this->apiRequest('GET', 'album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow');
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertResponseIsOK();
 
-        $content = $response->getContent();
+        $content = $this->getResponseContent();
         /** @var string[][]|string[][][]|int[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
@@ -81,11 +80,11 @@ class AlbumControllerTest extends AbstractApiTest
 
     public function testListUser12GoldSilverCrystal(): void
     {
-        $response = $this->apiRequest('album/7b52009b64fd0a2a49e6d8a939753077792b0554/goldsilvercrystal');
+        $this->apiRequest('GET', 'album/7b52009b64fd0a2a49e6d8a939753077792b0554/goldsilvercrystal');
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertResponseIsOK();
 
-        $content = $response->getContent();
+        $content = $this->getResponseContent();
         /** @var string[][]|string[][][]|int[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
@@ -150,11 +149,11 @@ class AlbumControllerTest extends AbstractApiTest
 
     public function testListUser13(): void
     {
-        $response = $this->apiRequest('album/bd307a3ec329e10a2cff8fb87480823da114f8f4/redgreenblueyellow');
+        $this->apiRequest('GET', 'album/bd307a3ec329e10a2cff8fb87480823da114f8f4/redgreenblueyellow');
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertResponseIsOK();
 
-        $content = $response->getContent();
+        $content = $this->getResponseContent();
         /** @var string[][]|string[][][]|int[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
@@ -217,11 +216,11 @@ class AlbumControllerTest extends AbstractApiTest
 
     public function testListUserUnknown(): void
     {
-        $response = $this->apiRequest('album/46546542313186/redgreenblueyellow');
+        $this->apiRequest('GET', 'album/46546542313186/redgreenblueyellow');
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertResponseIsOK();
 
-        $content = $response->getContent();
+        $content = $this->getResponseContent();
         /** @var string[][]|string[][][]|int[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
@@ -284,11 +283,11 @@ class AlbumControllerTest extends AbstractApiTest
 
     public function testListHome(): void
     {
-        $response = $this->apiRequest('album/7b52009b64fd0a2a49e6d8a939753077792b0554/home');
+        $this->apiRequest('GET', 'album/7b52009b64fd0a2a49e6d8a939753077792b0554/home');
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertResponseIsOK();
 
-        $content = $response->getContent();
+        $content = $this->getResponseContent();
         /** @var string[][]|string[][][]|int[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
@@ -334,11 +333,11 @@ class AlbumControllerTest extends AbstractApiTest
 
     public function testListHomeShiny(): void
     {
-        $response = $this->apiRequest('album/7b52009b64fd0a2a49e6d8a939753077792b0554/homeshiny');
+        $this->apiRequest('GET', 'album/7b52009b64fd0a2a49e6d8a939753077792b0554/homeshiny');
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertResponseIsOK();
 
-        $content = $response->getContent();
+        $content = $this->getResponseContent();
         /** @var string[][]|string[][][]|int[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
@@ -384,11 +383,11 @@ class AlbumControllerTest extends AbstractApiTest
 
     public function testListHomePoGo(): void
     {
-        $response = $this->apiRequest('album/7b52009b64fd0a2a49e6d8a939753077792b0554/homepogo');
+        $this->apiRequest('GET', 'album/7b52009b64fd0a2a49e6d8a939753077792b0554/homepogo');
 
-        $this->assertEquals(200, $response->getStatusCode());
+        $this->assertResponseIsOK();
 
-        $content = $response->getContent();
+        $content = $this->getResponseContent();
         /** @var string[][]|string[][][]|int[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
@@ -419,28 +418,28 @@ class AlbumControllerTest extends AbstractApiTest
 
     public function testListNoSlug(): void
     {
-        $response = $this->apiRequest('album', []);
+        $this->apiRequest('GET', 'album', []);
 
-        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertResponseIsNotFound();
 
-        $response = $this->apiRequest('album', ['dex.slug' => '']);
+        $this->apiRequest('GET', 'album', ['dex.slug' => '']);
 
-        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertResponseIsNotFound();
 
-        $response = $this->apiRequest('album', ['dex.slug' => 'redgreenblueyellow']);
+        $this->apiRequest('GET', 'album', ['dex.slug' => 'redgreenblueyellow']);
 
-        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertResponseIsNotFound();
     }
 
     public function testListNoUser(): void
     {
-        $response = $this->apiRequest('album/home', []);
+        $this->apiRequest('GET', 'album/home', []);
 
-        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertResponseIsNotFound();
 
-        $response = $this->apiRequest('album/home', []);
+        $this->apiRequest('GET', 'album/home', []);
 
-        $this->assertEquals(404, $response->getStatusCode());
+        $this->assertResponseIsNotFound();
     }
 
     public function testUpdate(): void
@@ -451,13 +450,11 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertEquals('maybe', $pokedexBefore['slug']);
 
         $this->apiRequest(
+            'PATCH',
             'album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow/ivysaur',
             [],
-            'PATCH',
-            [
-                'body' => 'yes',
-                'auth_basic' => ['web', 'douze'],
-            ]
+            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            'yes'
         );
 
         $this->assertResponseIsSuccessful();
@@ -475,13 +472,11 @@ class AlbumControllerTest extends AbstractApiTest
         $this->assertEmpty($pokedexBefore);
 
         $this->apiRequest(
+            'PUT',
             'album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow/douze',
             [],
-            'PUT',
-            [
-                'body' => 'maybenot',
-                'auth_basic' => ['web', 'douze'],
-            ]
+            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            'maybenot'
         );
 
         $this->assertResponseIsSuccessful();

@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use ApiPlatform\Metadata\ApiProperty;
-use ApiPlatform\Metadata\ApiResource;
 use App\Entity\Traits\BaseEntityTrait;
 use App\Entity\Traits\FrenchNamedTrait;
 use App\Entity\Traits\NamedTrait;
@@ -17,7 +15,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
 /**
  * @SuppressWarnings(PHPMD.TooManyFields)
  */
-#[ApiResource(normalizationContext: ['groups' => ['pokemon_list']], order: ["nationalDexNumber", "familyOrder"])]
 #[ORM\Entity]
 #[Gedmo\SoftDeleteable(fieldName: 'deletedAt')]
 class Pokemon
@@ -28,7 +25,6 @@ class Pokemon
     use SoftDeleteableEntity;
 
     #[ORM\Column(unique: true)]
-    #[ApiProperty(identifier: true)]
     #[Groups(["pokemon_list"])]
     public string $slug;
 

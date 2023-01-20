@@ -4,18 +4,10 @@ declare(strict_types=1);
 
 namespace App\Entity;
 
-use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
-use ApiPlatform\Metadata\ApiFilter;
-use ApiPlatform\Metadata\ApiResource;
 use App\Entity\Traits\BaseEntityTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
-#[ApiResource(
-    normalizationContext: ['groups' => ['dex_availabilities_list']],
-    order: ["dex.orderNumber", "pokemon.nationalDexNumber", "pokemon.familyOrder"]
-)]
-#[ApiFilter(SearchFilter::class, properties: ['dex.slug' => 'exact'])]
 #[ORM\Entity]
 /**
  * Will be calculated from Dex configurations

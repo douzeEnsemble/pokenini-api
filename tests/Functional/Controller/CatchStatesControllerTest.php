@@ -2,14 +2,18 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\Api;
+namespace App\Tests\Functional\Controller;
 
-class CatchStatesApiTest extends AbstractApiTest
+class CatchStatesControllerTest extends AbstractControllerApiTest
 {
     public function testGetCollection(): void
     {
+        $this->apiRequest('GET', 'catch_states');
+
+        $this->assertResponseIsOK();
+
         /** @var string[] $content */
-        $content = $this->apiRequestContent('catch_states');
+        $content = $this->getJsonDecodedResponseContent();
 
         $this->assertEquals([
             'name' => 'No',
@@ -38,5 +42,24 @@ class CatchStatesApiTest extends AbstractApiTest
             'slug' => 'yes',
             'color' => '#66bb6a',
         ], $content[3]);
+    }
+
+    public function testGetAuth(): void
+    {
+        $this->apiRequest('GET', 'catch_states', [], ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze']);
+
+        $this->assertResponseIsOK();
+
+        /** @var string[] $content */
+        $content = $this->getJsonDecodedResponseContent();
+
+        $this->assertCount(4, $content);
+    }
+
+    public function testGetBadAuth(): void
+    {
+        $this->apiRequest('GET', 'catch_states', [], ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'treize']);
+
+        $this->assertEquals(401, $this->getResponse()->getStatusCode());
     }
 }
