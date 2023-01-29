@@ -54,3 +54,23 @@ parameters:
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$c\\.$#"
 			count: 1
 			path: tests/Unit/DTO/GameBundlesAvailabiliesTest.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:getIdentifier\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Entity/Trait/BaseEntityTraitTest.php
+
+		-
+			message: "#^Access to an undefined property object\\:\\:\\$name\\.$#"
+			count: 1
+			path: tests/Unit/Entity/Trait/NamedTraitTest.php
+
+		-
+			message: "#^Call to an undefined method object\\:\\:__toString\\(\\)\\.$#"
+			count: 1
+			path: tests/Unit/Entity/Trait/NamedTraitTest.php
+
+		-
+			message: "#^Cannot cast object to string\\.$#"
+			count: 1
+			path: tests/Unit/Entity/Trait/NamedTraitTest.php

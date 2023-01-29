@@ -56,8 +56,6 @@ abstract class AbstractUpdater implements UpdaterInterface
 
     /**
      * @param string[] $record
-     *
-     * @return void
      */
     abstract protected function upsertRecord(array $record): void;
 
@@ -159,7 +157,11 @@ abstract class AbstractUpdater implements UpdaterInterface
             $response = $this->spreadsheetService->get($this->spreadsheetId, $range);
 
             if (null === $response) {
+                // This condition is here form safety reason
+                // It can never happen
+                // @codeCoverageIgnoreStart
                 return [];
+                // @codeCoverageIgnoreEnd
             }
 
             return $response->getValues();

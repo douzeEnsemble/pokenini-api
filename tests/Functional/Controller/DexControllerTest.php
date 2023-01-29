@@ -149,4 +149,21 @@ class DexControllerTest extends AbstractControllerApiTest
 
         $this->assertResponseStatusCodeSame(400);
     }
+
+    public function testEmptyData(): void
+    {
+        $trainerDexBefore = $this->getTrainerDex('bd307a3ec329e10a2cff8fb87480823da114f8f4', 'redgreenblueyellow');
+
+        $this->assertEmpty($trainerDexBefore);
+
+        $this->apiRequest(
+            'PUT',
+            'dex/bd307a3ec329e10a2cff8fb87480823da114f8f4/redgreenblueyellow',
+            [],
+            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            '',
+        );
+
+        $this->assertResponseStatusCodeSame(400);
+    }
 }
