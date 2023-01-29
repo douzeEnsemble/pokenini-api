@@ -13,7 +13,6 @@ use Google\Service\Sheets\Spreadsheet;
 use Google\Service\Sheets\ValueRange;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
-use Symfony\Component\Cache\Adapter\ArrayAdapter;
 
 class SpreadsheetServiceTest extends TestCase
 {
@@ -60,6 +59,16 @@ class SpreadsheetServiceTest extends TestCase
             3,
             $service->getSheetColumnCount('azertyuiop', 'Toto')
         );
+    }
+
+    public function testGetSheetColumnCountNonExistingSheet(): void
+    {
+        $service = $this->getServiceForGettingProperties();
+
+        $this->expectException(\InvalidArgumentException::class);
+        $this->expectExceptionMessage('Cannot find sheet Tutu in spreadsheet azertyuiop');
+
+        $service->getSheetColumnCount('azertyuiop', 'Tutu');
     }
 
     private function getServiceForGettingProperties(): SpreadsheetService

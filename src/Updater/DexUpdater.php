@@ -36,10 +36,6 @@ class DexUpdater extends AbstractUpdater
 
     protected function upsertRecord(array $record): void
     {
-        if (empty($record) || empty($record['Slug'])) {
-            return;
-        }
-
         $sqlParameters = [
             'id' => (string) Uuid::v4(),
             'slug' => $record['Slug'],

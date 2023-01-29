@@ -18,7 +18,7 @@ SYMFONY  = $(PHP_CONT) bin/console
 
 # Misc
 .DEFAULT_GOAL = help
-.PHONY        = help build up start down logs sh composer vendor sf cc
+.PHONY        = help build up start down logs sh composer vendor sf cc tests quality integration measures
 
 ## —— 🎵 🐳 The Symfony-docker Makefile 🐳 🎵 ——————————————————————————————————
 help: ## Outputs this help screen
@@ -93,8 +93,14 @@ phpstan: ## Execute phpstan analyse
 	@$(PHP) vendor/bin/phpstan analyse --memory-limit=-1
 
 phpunit: ## Execute unit test
-	@$(PHP) bin/console doctrine:schema:update --force --env=test
+	@$(PHP) bin/console doctrine:schema:update --complete --force --env=test
 	$(PHP) bin/phpunit
+
+testsunit: ## Execute unit tests
+	@$(PHP_CONT) bin/phpunit tests/Unit
+
+testsfunctional: ## Execute functional tests
+	@$(PHP_CONT) bin/phpunit tests/Functional
 
 ## —— Quality 👌 ———————————————————————————————————————————————————————————————
 quality: ## Execute all quality analyses
@@ -124,3 +130,14 @@ newman: ## Execute newman
 	@$(SYMFONY) --env=int app:calculate:game_bundles_availabilities
 	@$(SYMFONY) --env=int app:calculate:dex_availabilities
 	$(DOCKER_COMP) --env-file .env.int run newman run collection.json
+
+## —— Measures 📏 ———————————————————————————————————————————————————————————————
+measures: ## Execute all measures tools
+measures: clovercoverage
+
+clovercoverage: ## Execute PHPUnit Coverage to check the score
+	$(DOCKER_COMP) exec -e XDEBUG_MODE=coverage -T php php bin/phpunit --coverage-clover=coverage.xml
+	@$(PHP_CONT) php tests/tools/coverage.php coverage.xml 100 true
+
+htmlcoverage: ## Execute PHPUnit Coverage in HTML
+	$(DOCKER_COMP) exec -e XDEBUG_MODE=coverage -T php php bin/phpunit --coverage-html=tests/coverage

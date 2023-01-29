@@ -465,6 +465,19 @@ class AlbumControllerTest extends AbstractControllerApiTest
         $this->assertEquals('yes', $pokedexAfter['slug']);
     }
 
+    public function testUpdateEmpty(): void
+    {
+        $this->apiRequest(
+            'PATCH',
+            'album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow/ivysaur',
+            [],
+            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            ''
+        );
+
+        $this->assertResponseStatusCodeSame(400);
+    }
+
     public function testCreate(): void
     {
         $pokedexBefore = $this->getPokedexFromSlugs('redgreenblueyellow', 'douze');
@@ -485,6 +498,19 @@ class AlbumControllerTest extends AbstractControllerApiTest
 
         $this->assertArrayHasKey('slug', $pokedexAfter);
         $this->assertEquals('maybenot', $pokedexAfter['slug']);
+    }
+
+    public function testCreateEmpty(): void
+    {
+        $this->apiRequest(
+            'PUT',
+            'album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow/ivysaur',
+            [],
+            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            ''
+        );
+
+        $this->assertResponseStatusCodeSame(400);
     }
 
     /**

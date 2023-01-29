@@ -139,10 +139,6 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
      */
     protected function upsertRecords(array $records): void
     {
-        if (empty($records)) {
-            return;
-        }
-
         $sqlValues = [];
         $sqlParameters = [];
         $index = 0;
@@ -178,6 +174,9 @@ SQL;
         $this->statictic->incrementBy($index);
     }
 
+    /**
+     * @codeCoverageIgnore
+     */
     protected function upsertRecord(array $record): void
     {
         throw new \RuntimeException(
