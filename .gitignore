@@ -16,6 +16,7 @@
 ###> symfony/phpunit-bridge ###
 .phpunit.result.cache
 /phpunit.xml
+
 ###< symfony/phpunit-bridge ###
 
 ###> phpunit/phpunit ###
@@ -31,3 +32,4 @@
 !/resources/auth/credentials.json
 /tests/gs/
 tests/coverage
+tests/mutation/index.html
