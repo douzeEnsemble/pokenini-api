@@ -9,7 +9,7 @@
         "@default": true,
         "global-ignore": [
             "App\\Updater\\GamesAvailabilitiesUpdater::upsertRecord",
-            "App\\Updater\\RegionalDexNumbersUpdater::upsertRecord"
+            "App\\Updater\\RegionalDexNumbersUpdater::upsertRecord",
         ]
     },
     "timeout": 60,
