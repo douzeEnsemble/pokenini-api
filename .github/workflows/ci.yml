@@ -107,4 +107,4 @@ jobs:
       - name: Prepare
         uses: ./.github/actions/docker-compose
       - name: Run
-        run: docker compose exec vendor/bin/infection --min-msi=100 --min-covered-msi=100 --logger-github
+        run: docker compose exec -T php php vendor/bin/infection --min-msi=100 --min-covered-msi=100
