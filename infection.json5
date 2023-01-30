@@ -1,0 +1,16 @@
+{
+    "$schema": "vendor/infection/infection/resources/schema.json",
+    "source": {
+        "directories": [
+            "src"
+        ]
+    },
+    "mutators": {
+        "@default": true,
+        "global-ignore": [
+            "App\\Updater\\GamesAvailabilitiesUpdater::upsertRecord",
+            "App\\Updater\\RegionalDexNumbersUpdater::upsertRecord"
+        ]
+    },
+    "timeout": 60,
+}
