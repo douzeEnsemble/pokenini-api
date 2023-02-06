@@ -118,3 +118,37 @@ docker-compose exec php sh -c '
     php bin/console doct:migr:exec 'DoctrineMigrations\\Version20221113212114' --down --no-interaction && php bin/console doct:migr:exec 'DoctrineMigrations\\Version20221113212114' --up --no-interaction
 '
 ```
+
+### Process
+
+#### Change a pokemon slug
+
+1. Look, in "Dex" sheet, for the slug. Replace it by the new one
+2. Look, in "Pokémons" sheet, for the slug.
+    a. For icon name,
+        1. you will need to change it into the sheet into "Icon" column
+        2. if not automatically updated, change it into "Sprites url"
+        3. if not automatically updated, change it into "Shiny Sprites url"
+        4. and into the icon repository, use the copy method to avoid missing image
+3. Check if the new slug is not used
+```sql
+SELECT		*
+FROM			pokemon
+WHERE			slug = 'new-slug'
+```
+4. Execute this query to change the slug
+```sql
+UPDATE 	pokemon
+SET		slug = 'new-slug'
+WHERE 	slug = 'old-slug'
+```
+5. Check that the new slug is uptodate
+```sql
+SELECT		*
+FROM			pokemon
+WHERE			slug = 'new-slug'
+```
+6. Update pokemons data in https://www.pokenini.fr/fr/istration page
+7. Check into an album if slug is ok by checkinh html source code
+7. Check into an album if icon is ok by checkinh html source code
+8. Delete original icon name into the icon repository
