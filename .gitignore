@@ -33,3 +33,4 @@
 /tests/gs/
 tests/coverage
 tests/mutation/index.html
+coverage.xml
