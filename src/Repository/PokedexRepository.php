@@ -34,8 +34,6 @@ class PokedexRepository extends ServiceEntityRepository
                 p.simplified_french_name AS pokemon_simplified_french_name,
                 p.forms_french_label AS pokemon_forms_french_label,
                 p.icon_name AS pokemon_icon,
-                p.regular_sprite_url AS pokemon_regular_sprite_url,
-                p.shiny_sprite_url AS pokemon_shiny_sprite_url,
                 rf.slug as regional_form_slug,
                 rf.name as regional_form_name,
                 sf.slug as special_form_slug,

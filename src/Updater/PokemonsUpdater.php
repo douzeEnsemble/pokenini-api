@@ -92,8 +92,6 @@ class PokemonsUpdater extends AbstractUpdater
             special_form_id,
             category_form_id,
             icon_name,
-            regular_sprite_url,
-            shiny_sprite_url,
             slug
         )
         VALUES (
@@ -116,8 +114,6 @@ class PokemonsUpdater extends AbstractUpdater
             (SELECT id FROM special_form WHERE slug = :specialForm),
             (SELECT id FROM category_form WHERE slug = :categoryForm),
             :iconName,
-            :regular_sprite_url,
-            :shiny_sprite_url,
             :slug
         )
         ON CONFLICT (slug)
@@ -141,8 +137,6 @@ class PokemonsUpdater extends AbstractUpdater
             special_form_id = excluded.special_form_id,
             category_form_id = excluded.category_form_id,
             icon_name = excluded.icon_name,
-            regular_sprite_url = excluded.regular_sprite_url,
-            shiny_sprite_url = excluded.shiny_sprite_url,
             deleted_at = NULL
 SQL;
 
@@ -178,8 +172,6 @@ SQL;
             'specialForm' => (string) $pokemon['specialForm'],
             'categoryForm' => (string) $pokemon['categoryForm'],
             'iconName' => (string) $pokemon['iconName'],
-            'regular_sprite_url' => (string) $pokemon['regular_sprite_url'],
-            'shiny_sprite_url' => (string) $pokemon['shiny_sprite_url'],
             'slug' => (string) $pokemon['slug'],
         ];
     }
@@ -215,8 +207,6 @@ SQL;
             'specialForm' => $record['#Special form'],
             'categoryForm' => $record['#Category form'],
             'iconName' => $record['Icon'],
-            'regular_sprite_url' => $record['Sprites url'],
-            'shiny_sprite_url' => $record['Shiny Sprites url'],
             'slug' => $record['Slug'],
         ];
     }
