@@ -256,6 +256,8 @@ final class AlbumControllerTestData
                 'catch_state_slug' => 'no',
                 'catch_state_name' => 'No',
                 'catch_state_french_name' => 'Non',
+                'family_lead_slug' => 'bulbasaur',
+                'pokemon_family_order' => 3,
             ],
             [
                 'pokemon_national_dex_number' => 3,
@@ -278,6 +280,8 @@ final class AlbumControllerTestData
                 'catch_state_slug' => 'no',
                 'catch_state_name' => 'No',
                 'catch_state_french_name' => 'Non',
+                'family_lead_slug' => 'bulbasaur',
+                'pokemon_family_order' => 4,
             ],
             [
                 'pokemon_national_dex_number' => 3,
@@ -300,6 +304,8 @@ final class AlbumControllerTestData
                 'catch_state_slug' => 'no',
                 'catch_state_name' => 'No',
                 'catch_state_french_name' => 'Non',
+                'family_lead_slug' => 'bulbasaur',
+                'pokemon_family_order' => 5,
             ],
             array_merge(
                 AlbumControllerTestPokemonData::getCaterpieData(),
@@ -328,11 +334,13 @@ final class AlbumControllerTestData
                 'catch_state_slug' => null,
                 'catch_state_name' => null,
                 'catch_state_french_name' => null,
+                'family_lead_slug' => 'caterpie',
+                'pokemon_family_order' => 3,
             ],
             [
                 'pokemon_national_dex_number' => 12,
                 'pokemon_regional_dex_number' => null,
-                'pokemon_order_number' => '999-0012-05',
+                'pokemon_order_number' => '999-0012-04',
                 'pokemon_slug' => 'butterfree-gmax',
                 'pokemon_name' => 'Gigantamax Butterfree',
                 'pokemon_simplified_name' => 'Butterfree',
@@ -350,6 +358,8 @@ final class AlbumControllerTestData
                 'catch_state_slug' => null,
                 'catch_state_name' => null,
                 'catch_state_french_name' => null,
+                'family_lead_slug' => 'caterpie',
+                'pokemon_family_order' => 4,
             ],
             AlbumControllerTestPokemonData::getDouzeData(),
         ];
@@ -396,6 +406,8 @@ final class AlbumControllerTestData
                 'catch_state_slug' => null,
                 'catch_state_name' => null,
                 'catch_state_french_name' => null,
+                'family_lead_slug' => 'bulbasaur',
+                'pokemon_family_order' => 3,
             ],
             [
                 'pokemon_national_dex_number' => 3,
@@ -418,6 +430,8 @@ final class AlbumControllerTestData
                 'catch_state_slug' => null,
                 'catch_state_name' => null,
                 'catch_state_french_name' => null,
+                'family_lead_slug' => 'bulbasaur',
+                'pokemon_family_order' => 4,
             ],
             [
                 'pokemon_national_dex_number' => 3,
@@ -440,6 +454,8 @@ final class AlbumControllerTestData
                 'catch_state_slug' => null,
                 'catch_state_name' => null,
                 'catch_state_french_name' => null,
+                'family_lead_slug' => 'bulbasaur',
+                'pokemon_family_order' => 5,
             ],
             array_merge(
                 AlbumControllerTestPokemonData::getCaterpieData(),
@@ -468,11 +484,13 @@ final class AlbumControllerTestData
                 'catch_state_slug' => null,
                 'catch_state_name' => null,
                 'catch_state_french_name' => null,
+                'family_lead_slug' => 'caterpie',
+                'pokemon_family_order' => 3,
             ],
             [
                 'pokemon_national_dex_number' => 12,
                 'pokemon_regional_dex_number' => null,
-                'pokemon_order_number' => '999-0012-05',
+                'pokemon_order_number' => '999-0012-04',
                 'pokemon_slug' => 'butterfree-gmax',
                 'pokemon_name' => 'Gigantamax Butterfree',
                 'pokemon_simplified_name' => 'Butterfree',
@@ -490,6 +508,8 @@ final class AlbumControllerTestData
                 'catch_state_slug' => null,
                 'catch_state_name' => null,
                 'catch_state_french_name' => null,
+                'family_lead_slug' => 'caterpie',
+                'pokemon_family_order' => 4,
             ],
         ];
     }
