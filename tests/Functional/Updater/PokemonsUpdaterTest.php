@@ -118,6 +118,48 @@ class PokemonsUpdaterTest extends AbstractUpdaterTest
         $this->assertNotNull($pokemonAfter['regional_form_id']);
     }
 
+    public function testUpdateFamilyLink(): void
+    {
+        $this->assertNotEmpty($this->getPokemonFromName('Charmander'));
+        $this->assertNotEmpty($this->getPokemonFromName('Charmeleon'));
+        $this->assertEmpty($this->getPokemonFromName('Pidgey'));
+        $this->assertEmpty($this->getPokemonFromName('Pidgeotto'));
+        $this->assertEmpty($this->getPokemonFromName('Rattata'));
+        $this->assertEmpty($this->getPokemonFromName('Raticate'));
+
+        $this->getService()->execute('pokemon_list / family_link');
+
+        // Testing updating existing family
+        $charmander = $this->getPokemonFromName('Charmander');
+        $charmeleon = $this->getPokemonFromName('Charmeleon');
+
+        $this->assertNull($charmander['family_id']);
+        $this->assertNotNull($charmeleon['family_id']);
+        $this->assertEquals($charmander['id'], $charmeleon['family_id']);
+
+        // Testing creating family
+        $pidgey = $this->getPokemonFromName('Pidgey');
+        $pidgeotto = $this->getPokemonFromName('Pidgeotto');
+
+        $this->assertNull($pidgey['family_id']);
+        $this->assertNotNull($pidgeotto['family_id']);
+        $this->assertEquals($pidgey['id'], $pidgeotto['family_id']);
+
+        // Testing creating family with gender
+        $rattataMale = $this->getPokemonFromName('Rattata ♂️');
+        $rattataFemale = $this->getPokemonFromName('Rattata ♀');
+        $raticateMale = $this->getPokemonFromName('Raticate ♂️');
+        $raticateFemale = $this->getPokemonFromName('Raticate ♀');
+
+        $this->assertNull($rattataMale['family_id']);
+        $this->assertNotNull($rattataFemale['family_id']);
+        $this->assertNotNull($raticateMale['family_id']);
+        $this->assertNotNull($raticateFemale['family_id']);
+        $this->assertEquals($rattataMale['id'], $rattataFemale['family_id']);
+        $this->assertEquals($rattataMale['id'], $raticateMale['family_id']);
+        $this->assertEquals($rattataMale['id'], $raticateFemale['family_id']);
+    }
+
     public function testDifferentColumnsOrderPokemons(): void
     {
         $this->assertGreaterThan(0, $this->getPokemonCount());
