@@ -421,5 +421,23 @@
       "status": 200,
       "file": "/var/moco/test/values_%27Region%27%21A2%3AD.json"
     }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'pokemon_list / family_link'!A1:AR1"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/test/values_%27pokemon_list%20%2F%20family_link%27%21A1%3AAR1.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'pokemon_list / family_link'!A2:AR"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/test/values_%27pokemon_list%20%2F%20family_link%27%21A2%3AAR.json"
+    }
   }
 ]

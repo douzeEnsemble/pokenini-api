@@ -103,7 +103,7 @@ class PokemonsUpdater extends AbstractUpdater
             :simplifiedFrenchName,
             :formsFrenchLabel,
             :nationalDexNumber,
-            (SELECT id FROM pokemon WHERE name = :family and :name <> :family),
+            (SELECT id FROM pokemon WHERE prime_name = :family AND 0 = family_order AND 0 <> :familyOrder),
             :familyOrder,
             :primeName,
             :bankable,
