@@ -249,4 +249,4 @@ App\Entity\Pokemon:
         originalGameBundle: '@game_bundle_sword_shield'
         iconName: 'butterfree-gmax'
         specialForm: '@special_form_gigantamax'
-        familyOrder: 5
+        familyOrder: 4

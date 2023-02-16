@@ -34,6 +34,8 @@ class PokedexRepository extends ServiceEntityRepository
                 p.simplified_french_name AS pokemon_simplified_french_name,
                 p.forms_french_label AS pokemon_forms_french_label,
                 p.icon_name AS pokemon_icon,
+                p.family_order AS pokemon_family_order,
+                pp.slug AS family_lead_slug,
                 rf.slug as regional_form_slug,
                 rf.name as regional_form_name,
                 sf.slug as special_form_slug,
@@ -74,6 +76,8 @@ class PokedexRepository extends ServiceEntityRepository
                 ON r.id IS NOT NULL
                     AND r.id = rdn.region_id
                     AND p.prime_name = rdn.pokemon_name
+            LEFT JOIN pokemon AS pp
+                ON p.family_id = pp.id
         WHERE   d.slug = :dex_slug
         ORDER BY pokemon_order_number
         SQL;

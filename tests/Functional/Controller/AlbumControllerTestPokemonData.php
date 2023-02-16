@@ -29,6 +29,8 @@ final class AlbumControllerTestPokemonData
             'special_form_name' => null,
             'variant_form_slug' => null,
             'variant_form_name' => null,
+            'family_lead_slug' => null,
+            'pokemon_family_order' => 0,
         ];
     }
 
@@ -58,6 +60,8 @@ final class AlbumControllerTestPokemonData
             'catch_state_slug' => 'maybe',
             'catch_state_name' => 'Maybe',
             'catch_state_french_name' => 'Peut être',
+            'family_lead_slug' => 'bulbasaur',
+            'pokemon_family_order' => 1,
         ];
     }
 
@@ -87,6 +91,8 @@ final class AlbumControllerTestPokemonData
             'catch_state_slug' => 'maybenot',
             'catch_state_name' => 'Maybe not',
             'catch_state_french_name' => 'Peut être pas',
+            'family_lead_slug' => 'bulbasaur',
+            'pokemon_family_order' => 2,
         ];
     }
 
@@ -116,6 +122,8 @@ final class AlbumControllerTestPokemonData
             'catch_state_slug' => 'maybenot',
             'catch_state_name' => 'Maybe not',
             'catch_state_french_name' => 'Peut être pas',
+            'family_lead_slug' => null,
+            'pokemon_family_order' => 0,
         ];
     }
 
@@ -145,6 +153,8 @@ final class AlbumControllerTestPokemonData
             'catch_state_slug' => null,
             'catch_state_name' => null,
             'catch_state_french_name' => null,
+            'family_lead_slug' => 'caterpie',
+            'pokemon_family_order' => 1,
         ];
     }
 
@@ -174,6 +184,8 @@ final class AlbumControllerTestPokemonData
             'catch_state_slug' => null,
             'catch_state_name' => null,
             'catch_state_french_name' => null,
+            'family_lead_slug' => 'caterpie',
+            'pokemon_family_order' => 2,
         ];
     }
 
@@ -203,6 +215,8 @@ final class AlbumControllerTestPokemonData
             'catch_state_slug' => null,
             'catch_state_name' => null,
             'catch_state_french_name' => null,
+            'family_lead_slug' => null,
+            'pokemon_family_order' => 0,
         ];
     }
 
@@ -229,6 +243,8 @@ final class AlbumControllerTestPokemonData
             'special_form_name' => null,
             'variant_form_slug' => null,
             'variant_form_name' => null,
+            'family_lead_slug' => null,
+            'pokemon_family_order' => 0,
         ];
     }
 
@@ -258,6 +274,8 @@ final class AlbumControllerTestPokemonData
             'catch_state_slug' => 'maybe',
             'catch_state_name' => 'Maybe',
             'catch_state_french_name' => 'Peut être',
+            'family_lead_slug' => 'charmander',
+            'pokemon_family_order' => 1,
         ];
     }
 
@@ -287,6 +305,8 @@ final class AlbumControllerTestPokemonData
             'catch_state_slug' => 'maybenot',
             'catch_state_name' => 'Maybe not',
             'catch_state_french_name' => 'Peut être pas',
+            'family_lead_slug' => 'charmander',
+            'pokemon_family_order' => 2,
         ];
     }
 }
