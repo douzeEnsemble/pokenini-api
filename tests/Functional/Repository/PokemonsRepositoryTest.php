@@ -62,15 +62,6 @@ class PokemonsRepositoryTest extends KernelTestCase
 
         $this->assertEquals('charizard', $pokemons[8]->iconName);
         $this->assertEquals('butterfree', $pokemons[11]->iconName);
-
-        $this->assertEquals(
-            'https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/regular/venusaur.png',
-            $pokemons[2]->regularSpriteUrl
-        );
-        $this->assertEquals(
-            'https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/shiny/venusaur.png',
-            $pokemons[2]->shinySpriteUrl
-        );
     }
 
     public function testCountAll(): void

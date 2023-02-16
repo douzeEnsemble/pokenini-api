@@ -54,8 +54,6 @@ App\Entity\Pokemon:
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'venusaur'
         familyOrder: 2
-        regularSpriteUrl: 'https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/regular/venusaur.png'
-        shinySpriteUrl: 'https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/shiny/venusaur.png'
 
     pokemon_venusaur_f (extends pokemon):
         slug: 'venusaur-f'
