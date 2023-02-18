@@ -23,6 +23,8 @@ class AlbumControllerTest extends AbstractControllerApiTest
 
         $this->assertArrayHasKey('dex', $data);
 
+        $this->assertArrayHasKey('slug', $data['dex']);
+        $this->assertEquals('redgreenblueyellow', $data['dex']['slug']);
         $this->assertArrayHasKey('name', $data['dex']);
         $this->assertEquals('Red / Green / Blue / Yellow', $data['dex']['name']);
         $this->assertArrayHasKey('french_name', $data['dex']);
@@ -90,6 +92,8 @@ class AlbumControllerTest extends AbstractControllerApiTest
 
         $this->assertArrayHasKey('dex', $data);
 
+        $this->assertArrayHasKey('slug', $data['dex']);
+        $this->assertEquals('goldsilvercrystal', $data['dex']['slug']);
         $this->assertArrayHasKey('name', $data['dex']);
         $this->assertEquals('Gold / Silver / Crystal', $data['dex']['name']);
         $this->assertArrayHasKey('french_name', $data['dex']);
@@ -159,6 +163,8 @@ class AlbumControllerTest extends AbstractControllerApiTest
 
         $this->assertArrayHasKey('dex', $data);
 
+        $this->assertArrayHasKey('slug', $data['dex']);
+        $this->assertEquals('redgreenblueyellow', $data['dex']['slug']);
         $this->assertArrayHasKey('name', $data['dex']);
         $this->assertEquals('Red / Green / Blue / Yellow', $data['dex']['name']);
         $this->assertArrayHasKey('french_name', $data['dex']);
@@ -226,6 +232,8 @@ class AlbumControllerTest extends AbstractControllerApiTest
 
         $this->assertArrayHasKey('dex', $data);
 
+        $this->assertArrayHasKey('slug', $data['dex']);
+        $this->assertEquals('redgreenblueyellow', $data['dex']['slug']);
         $this->assertArrayHasKey('name', $data['dex']);
         $this->assertEquals('Red / Green / Blue / Yellow', $data['dex']['name']);
         $this->assertArrayHasKey('french_name', $data['dex']);
@@ -291,6 +299,8 @@ class AlbumControllerTest extends AbstractControllerApiTest
         /** @var string[][]|string[][][]|int[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
+        $this->assertArrayHasKey('slug', $data['dex']);
+        $this->assertEquals('home', $data['dex']['slug']);
         $this->assertArrayHasKey('dex', $data);
         $this->assertArrayHasKey('name', $data['dex']);
         $this->assertEquals('Home', $data['dex']['name']);
@@ -341,6 +351,8 @@ class AlbumControllerTest extends AbstractControllerApiTest
         /** @var string[][]|string[][][]|int[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
+        $this->assertArrayHasKey('slug', $data['dex']);
+        $this->assertEquals('homeshiny', $data['dex']['slug']);
         $this->assertArrayHasKey('dex', $data);
         $this->assertArrayHasKey('name', $data['dex']);
         $this->assertEquals('Home Shiny', $data['dex']['name']);
@@ -391,6 +403,8 @@ class AlbumControllerTest extends AbstractControllerApiTest
         /** @var string[][]|string[][][]|int[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
+        $this->assertArrayHasKey('slug', $data['dex']);
+        $this->assertEquals('homepogo', $data['dex']['slug']);
         $this->assertArrayHasKey('dex', $data);
         $this->assertArrayHasKey('name', $data['dex']);
         $this->assertEquals('Home PoGo', $data['dex']['name']);
