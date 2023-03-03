@@ -75,4 +75,10 @@ class Dex
         "dex_list",
     ])]
     public int $version = 1;
+
+    #[ORM\Column]
+    #[Groups([
+        "dex_list",
+    ])]
+    public bool $isReleased = true;
 }

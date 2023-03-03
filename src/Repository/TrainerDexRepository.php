@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
+use App\DTO\DexQueryOptions;
 use App\DTO\TrainerDexAttributes;
 use App\Entity\TrainerDex;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -23,8 +24,17 @@ class TrainerDexRepository extends ServiceEntityRepository
     /**
      * @return \Traversable<int, array<mixed, mixed>>
      */
-    public function getListQuery(string $trainerExternalId): \Traversable
-    {
+    public function getListQuery(
+        string $trainerExternalId,
+        DexQueryOptions $options,
+    ): \Traversable {
+
+        $where = "";
+
+        if (! $options->includeUnreleasedDex) {
+            $where = " AND d.is_released = true ";
+        }
+
         $sql = <<<SQL
         SELECT  d.name as name,
                 d.french_name as french_name,
@@ -33,11 +43,14 @@ class TrainerDexRepository extends ServiceEntityRepository
                 COALESCE(td.is_private, d.is_private) as is_private,
                 COALESCE(td.is_on_home, false) as is_on_home,
                 d.is_display_form as is_display_form,
-                d.display_template as display_template
+                d.display_template as display_template,
+                d.is_released as is_released
         FROM    dex AS d
             LEFT JOIN trainer_dex AS td
                 ON td.dex_id = d.id
                 AND td.trainer_external_id = :trainer_external_id
+        WHERE   1 = 1
+                $where
         ORDER BY d.order_number
         SQL;
 

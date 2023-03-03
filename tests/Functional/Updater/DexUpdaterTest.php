@@ -40,4 +40,21 @@ class DexUpdaterTest extends AbstractUpdaterTest
         $this->assertEquals('Kanto', $redGreenBlueYellowAfter['region_name']);
         $this->assertEquals('Hoenn', $rubySapphireEmeraldAfter['region_name']);
     }
+
+    public function testDexIsReleased(): void
+    {
+        $redGreenBlueYellowBefore = $this->getDexFromSlug('redgreenblueyellow');
+        $rubySapphireEmeraldBefore = $this->getDexFromSlug('rubysapphireemerald');
+
+        $this->assertTrue($redGreenBlueYellowBefore['is_released']);
+        $this->assertTrue($rubySapphireEmeraldBefore['is_released']);
+
+        $this->getService()->execute('Dex');
+
+        $redGreenBlueYellowAfter = $this->getDexFromSlug('redgreenblueyellow');
+        $rubySapphireEmeraldAfter = $this->getDexFromSlug('rubysapphireemerald');
+
+        $this->assertFalse($redGreenBlueYellowAfter['is_released']);
+        $this->assertTrue($rubySapphireEmeraldAfter['is_released']);
+    }
 }

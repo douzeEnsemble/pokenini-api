@@ -18,7 +18,7 @@ class TrainerDexAttributesTest extends TestCase
         $this->assertFalse($attributes->isPrivate);
     }
 
-    public function testMissingOnelValue(): void
+    public function testMissingOneValue(): void
     {
         $attributes = new TrainerDexAttributes(['is_on_home' => true]);
 
