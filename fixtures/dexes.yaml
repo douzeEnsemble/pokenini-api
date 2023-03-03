@@ -19,6 +19,7 @@ App\Entity\Dex:
         description: 'The list of obtainable Pokémons in Gold, Silver and Crystal games'
         frenchDescription: 'La liste des pokémons obtenable dans les jeux Or, Argent et Cristal.'
         version: 1
+        isReleased: false
     dex_rubysapphireemerald:
         name: 'Ruby / Sapphire / Emerald'
         frenchName: 'Rubis / Saphir / Émeraude'

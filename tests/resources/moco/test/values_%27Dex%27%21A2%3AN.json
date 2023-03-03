@@ -1,5 +1,5 @@
 {
-  "range": "Dex!A2:M22",
+  "range": "Dex!A2:N22",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -15,7 +15,8 @@
       "kanto",
       "La liste des pokémons obtenable dans les jeux Rouge, Bleu, Jaune et même Vert.\n\nIl n'y avait pas de formes différentes pour le même pokémon ni de genre à l'époque. Donc ce sont les 151 premiers pokémons.",
       "The list of obtainable Pokémons in Red, Blue, Yellow and even Green games.\n\nThere were no different forms for the same Pokémon or gender at the time. So these are the first 151 Pokémons.",
-      "2"
+      "2",
+      "FALSE"
     ],
     [
       "Gold, Silver, Crystal",
@@ -30,7 +31,8 @@
       "johto",
       "La liste des pokémons obtenable dans les jeux Or, Argent et Cristal.\n\nSeul les Zarbi ont des formes différentes, seulement les 26 lettres de l'alphabet.",
       "The list of obtainable Pokémons in Gold, Silver and Crystal games.\n\nOnly Unown have different forms, only the 26 letters of the alphabet.",
-      "3"
+      "3",
+      "TRUE"
     ],
     [
       "Ruby, Sapphire, Emerald",
@@ -45,7 +47,8 @@
       "hoenn",
       "La liste des pokémons obtenable dans les jeux Rubis, Saphir et Émeraude.\n\nSeul les Zarbi et Deoxys ont des formes différentes. 26 formes pour les Zarbi. 4 pour Deoxys.",
       "The list of obtainable Pokémons in Ruby, Sapphire and Emerald games.\n\nOnly Zarbi and Deoxys have different forms. 26 forms for Zarbi. 4 for Deoxys.",
-      "3"
+      "3",
+      "TRUE"
     ],
     [
       "Fire Red, Leaf Green",
@@ -60,7 +63,8 @@
       "kanto",
       "La liste des pokémons obtenable dans les jeux Rouge Feu et Vert Feuille.\n\nDeoxys a 4 formes. Les Zarbi en ont 2 de plus, soit 28, avec l'introduction des formes '!' et '?'.",
       "The list of obtainable Pokémons in red and green leaf red games.\n\nDeoxys has 4 shapes. The Zarbi have 2 more, 28, with the introduction of forms '!' and '?'.",
-      "2"
+      "2",
+      "TRUE"
     ],
     [
       "Diamond, Pearl, Platinium",
@@ -75,7 +79,8 @@
       "sinnoh",
       "La liste des pokémons obtenable dans les jeux Diamant, Perle et Platine.\n\nCes jeux introduisent les différences visibles de genre entre des pokémons de la même espèces, comme pour la famille Étourmi ou Keunotor. Et cela même sur des pokémons existants, comme pour Pikachu, Papilusion ou Doduo/Dodrio par exemple.\nEt des pokémons à formes variables apparaissent aussi comme Cheniti/Cheniselle ou Motisma. Ou des transformations comme Giratina et Shaymin.",
       "The list of obtainable Pokémons in Diamond, Pearl and Platinum games.\n\nThese games introduce visible gender differences between Pokémons from the same species, as for the Starly or Bidoof family. Even that on existing Pokémons, as for Pikachu, Butterfree or Doduo/Dodrio for example.\nAnd Pokémons with variable shapes also appear as Burmy/Wormadam or Rotom. Or transformations like Giratina and Shaymin.",
-      "2"
+      "2",
+      "TRUE"
     ],
     [
       "Heart Gold, Soul Silver",
@@ -90,7 +95,8 @@
       "johto",
       "La liste des pokémons obtenable dans les jeux Or HeartGold et Argent Soulsilver.\n\nOn a le droit à des différences visibles de genre entre des pokémons de la même espèces et cela même sur des pokémons existants dans la version originale, comme pour Méganium ou la famille Rattata par exemple.\nEt des pokémons à formes variables apparaissent aussi comme Cheniti/Cheniselle ou Motisma. Ou des transformations comme Giratina et Shaymin.",
       "The list of obtainable Pokémons in the HeartGold and SoulSilver Games.\n\nWe have visible gender differences between Pokémons from the same species and even on existing Pokémons in the original version, as for Meganium or the Rattata family for example.\nAnd Pokémons with variable shapes also appear as Burmy/Wormadam or Rotom. Or transformations like Giratina and Shaymin.",
-      "2"
+      "2",
+      "TRUE"
     ],
     [
       "Black, White",
@@ -105,7 +111,8 @@
       "unova",
       "La liste des pokémons obtenable dans les jeux Noire et Blanche.\n\nLes pokémons ont des formes différentes en fonction du genre ou pas. On a aussi des transformations comme pour Giratina ou Shaymin.",
       "The list of obtainable Pokémons in Black and White games.\n\nPokémons have different shapes depending on the gender or not. We also have transformations as for Giratina or Shaymin.",
-      "2"
+      "2",
+      "TRUE"
     ],
     [
       "Black 2, White 2",
@@ -120,7 +127,8 @@
       "unova",
       "La liste des pokémons obtenable dans les jeux Noire 2 et Blanche 2.\n\nLes pokémons ont des formes différentes en fonction du genre ou pas. On a aussi des transformations comme pour Giratina ou Shaymin.\nKyurem a deux nouvelles formes de fusions avec Zekrom et Reshiram.",
       "The list of obtainable Pokémons in Black 2 and White 2 games.\n\nPokémons have different shapes depending on the gender or not. We also have transformations as for Giratina or Shaymin.\nKyurem has two new fusions forms with Zekrom and Reshiram.",
-      "3"
+      "3",
+      "TRUE"
     ],
     [
       "X, Y",
@@ -135,7 +143,8 @@
       "kalos",
       "La liste des pokémons obtenable dans les jeux X et Y.\n\nOn a le droit à des différences de genre, à des pokémons à formes variables et des transformations. \nOn a aussi le droit aux méga-évolutions !",
       "The list of obtainable Pokémons in X and Y games.\n\nWe have the right to gender differences, to Pokémons with variable forms and transformations.\nWe also have the right to mega-evolutions!",
-      "2"
+      "2",
+      "TRUE"
     ],
     [
       "Omega Ruby, Alpha Sapphire",
@@ -150,7 +159,8 @@
       "hoenn",
       "La liste des pokémons obtenable dans les jeux Rubis Oméga et Saphir Alpha.\n\nOn a le droit à des différences de genre, à des pokémons à formes variables et des transformations. \nOn a aussi le droit aux méga-évolutions !",
       "The list of obtainable Pokémons in Omega Ruby and Sapphire Alpha games.\n\nWe have the right to gender differences, to Pokémons with variable forms and transformations.\nWe also have the right to mega-evolutions!",
-      "2"
+      "2",
+      "TRUE"
     ],
     [
       "Sun, Moon",
@@ -165,7 +175,8 @@
       "alola",
       "La liste des pokémons obtenable dans les jeux Soleil et Lune.\n\nOn a le droit à des différences de genre, à des pokémons à formes variables et des transformations. \nOn a aussi le droit aux méga-évolutions !\nEt on a des formes régionales comme les Miaouss d'Alola ou les Goupix d'Alola.",
       "The list of obtainable Pokémons in Sun and Moon games.\n\nWe have gender differences, Pokémons with variable forms and transformations.\nWe also have mega-evolutions!\nAnd we have regional forms like Alolan Meowth or Alolan Vulpix.",
-      "3"
+      "3",
+      "TRUE"
     ],
     [
       "Ultra Sun, Ultra Moon",
@@ -180,7 +191,8 @@
       "alola",
       "La liste des pokémons obtenable dans les jeux Ultra Soleil et Ultra Lune.\n\nOn a le droit à des différences de genre, à des pokémons à formes variables et des transformations. \nOn a aussi le droit aux méga-évolutions !\nEt on a des formes régionales comme les Miaouss d'Alola ou les Goupix d'Alola.",
       "The list of obtainable Pokémons in Ultra Sun and Ultra Moon games.\n\nWe have gender differences, Pokémons with variable forms and transformations.\nWe also have mega-evolutions!\nAnd we have regional forms like Alolan Meowth or Alolan Vulpix.",
-      "2"
+      "2",
+      "TRUE"
     ],
     [
       "Let's Go Pikachu, Let's Go Eevee",
@@ -195,7 +207,8 @@
       "kanto",
       "La liste des pokémons obtenable dans les jeux Let's Go Pikachu et Let's Go Évoli.\n\nOn a le droit à des différences de genre et aux méga-évolutions !\nEt on a des formes régionales comme les Miaouss d'Alola ou les Goupix d'Alola.\nEt aussi les pokémons fabuleux Meltan et Melmetal.",
       "The list of obtainable Pokémons in the Games Let's Go Pikachu and Let's Go Eevee games.\n\nWe have gender differences and mega-evolutions!\nAnd we have regional forms like Alolan Meowth or Alolan Vulpix.\nAnd also the fabulous Pokémons Meltan and Melmetal.",
-      "2"
+      "2",
+      "TRUE"
     ],
     [
       "Sword, Shield",
@@ -210,7 +223,8 @@
       "galar",
       "La liste des pokémons obtenable dans les jeux Épée et Bouclier, ainsi que les DLC \"L'île solitaire de l'Armure\" et \"Les terres enneigées de la Couronne\"\n\nCes versions ne contiennent pas tous les pokémons existants. \n\nLes formes Gigamax apparaissent dans le jeux pour certains pokémons anciens (Tortank ou Papilusion) ou nouveaux (Corvaillus ou Torgamord).",
       "The list of obtainable Pokémons in Sword and Shield games, as well as the DLC \"Isle of Armor\" and \"Crown Tundra\"\n\nThese versions do not contain all existing Pokémons.\n\nGigamax forms appear in the games for certain ancient (Blastoise or Butterfree) or new (Corviknight or Drednaw) Pokémons.",
-      "3"
+      "3",
+      "TRUE"
     ],
     [
       "Brilliant Diamond, Shining Pearl",
@@ -225,7 +239,8 @@
       "sinnoh",
       "La liste des pokémons obtenable dans les jeux Diamant Étincelant et Perle Scintillante.\n\nCes jeux introduisent les différences visibles de genre entre des pokémons de la même espèces, comme pour la famille Étourmi ou Keunotor. Et cela même sur des pokémons existants, comme pour Pikachu, Papilusion ou Doduo/Dodrio par exemple.\nEt des pokémons à formes variables apparaissent aussi comme Cheniti/Cheniselle ou Motisma. Ou des transformations comme Giratina et Shaymin.",
       "The list of obtainable Pokémons in Brilliant Diamond and Shining Pearl.\n\nThese games introduce visible gender differences between Pokémons from the same species, as for the starmi or Keunotor family. Even that on existing Pokémons, as for Pikachu, Papilusion or Doduo/Dodrio for example.\nAnd Pokémons with variable shapes also appear as Burmy/Wormadam or Rotom. Or transformations like Giratina and Shaymin.",
-      "2"
+      "2",
+      "TRUE"
     ],
     [
       "Pokémon Legends Arceus",
@@ -240,7 +255,8 @@
       "hisui",
       "La liste des pokémons obtenable dans le jeu Légende Pokémon : Arceus.\n\nLa liste contient les versions de la région d'Hisui ainsi que les formes barons.",
       "The list of obtainable Pokémons in the Pokémon Legends : Arceus game.\n\nThe list contains the versions of the Hisui region as well as the alpha forms.",
-      "2"
+      "2",
+      "TRUE"
     ],
     [
       "Home",
@@ -255,7 +271,8 @@
       "",
       "Tous les pokémons pouvant être transférés sur Pokémon Home. \n\nIncluant les mâles/femelles, les formes différentes et les transformations (certains ne sont pas conservés lors du transfert, mais je voulais avoir les pokémons quand même, au cas où ça change)",
       "All Pokémons that can be transferred to Pokémon Home.\n\nIncluding males/female, different shapes and transformations (some are not kept during the transfer, but I wanted to have the Pokémons anyway, in case it changes)",
-      "4"
+      "4",
+      "TRUE"
     ],
     [
       "Home Shiny",
@@ -270,7 +287,8 @@
       "",
       "Tous les pokémons pouvant être transférés sur Pokémon Home dans leur version chromatique. \n\nIncluant les mâles/femelles, les formes différentes et les transformations (certains ne sont pas conservés lors du transfert, mais je voulais avoir les pokémons quand même, au cas où ça change)",
       "All Pokémons that can be transferred to Pokémon Home in their shiny version.\n\nIncluding males/female, different shapes and transformations (some are not kept during the transfer, but I wanted to have the Pokémons anyway, in case it changes)",
-      "4"
+      "4",
+      "TRUE"
     ],
     [
       "Home Pokemon Go",
@@ -285,7 +303,8 @@
       "",
       "Tous les pokémons pouvant être transférés sur Pokémon Home dans leur version chromatique. \n\nIncluant les mâles/femelles, les formes différentes et les transformations (certains ne sont pas conservés lors du transfert, mais je voulais avoir les pokémons quand même, au cas où ça change).\nMais il s'agit d'ici de la version où c'est toi qui les as eu.",
       "All Pokémons that can be transferred to Pokémon Home in their shiny version.\n\nIncluding males/female, different shapes and transformations (some are not kept during the transfer, but I wanted to have the Pokémons anyway, in case it changes).\nBut this is the version where you had them.",
-      "1"
+      "1",
+      "TRUE"
     ],
     [
       "Alpha",
@@ -300,7 +319,8 @@
       "",
       "Tous les pokémons du pokédex Pokémon Go dans Pokémon Home.\n\nLes différentes formes que ce soit de genre ou régionale ne sont pas prise en compte.\nUn Goupix de Kanto ou d'Alola débloque l'entrée.",
       "All Pokémons of Pokédex Pokémon Go in Pokémon Home.\n\nThe different forms whether gender or regional are not taken into account.\nA Vulpix from Kanto or Alola unlocks the entry.",
-      "1"
+      "1",
+      "TRUE"
     ],
     [
       "Mega",
@@ -315,7 +335,8 @@
       "",
       "La liste des pokémons obtenable dans les jeux Écarlate et Violet.\n\nLa liste contient les pokémons ayant une forme régionale de Paldea ou des nouveaux pokémons.\n\nLes formes teracristalisées ne sont pas prises ne compte.",
       "The list of obtainable Pokémons in Scarlet and Violet games.\n\nThe list contains Pokémons with a regional form of Paldea or new Pokémons.\n\nTeracristalized forms are not taken do not count.",
-      "1"
+      "1",
+      "TRUE"
     ]
   ]
 }

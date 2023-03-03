@@ -26,6 +26,28 @@ class DexControllerTest extends AbstractControllerApiTest
         );
     }
 
+    public function testListUser12WithUnReleased(): void
+    {
+        $this->apiRequest(
+            'GET',
+            'dex/7b52009b64fd0a2a49e6d8a939753077792b0554/list',
+            [
+                'include_unreleased_dex' => '1',
+            ]
+        );
+
+        $this->assertResponseIsOK();
+
+        $content = $this->getResponseContent();
+        /** @var string[][]|string[][][]|int[][][] $data */
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertEquals(
+            DexControllerTestData::getUser12ContentWithUnreleased(),
+            $data
+        );
+    }
+
     public function testListUser13(): void
     {
         $this->apiRequest('GET', 'dex/bd307a3ec329e10a2cff8fb87480823da114f8f4/list');

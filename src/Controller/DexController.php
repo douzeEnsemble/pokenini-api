@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\DTO\DexQueryOptions;
 use App\DTO\TrainerDexAttributes;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
@@ -24,11 +25,16 @@ class DexController extends AbstractController
 
     #[Route(path: '/{trainerExternalId}/list', methods: ['GET'])]
     public function list(
-        string $trainerExternalId
+        string $trainerExternalId,
+        Request $request,
     ): JsonResponse {
+        $dexQueryOptions = new DexQueryOptions([
+            'include_unreleased_dex' => $request->query->getBoolean('include_unreleased_dex', false)
+        ]);
+
         /** @var string[][]|bool[][] $dex */
         $dex = iterator_to_array(
-            $this->trainerDexRepository->getListQuery($trainerExternalId)
+            $this->trainerDexRepository->getListQuery($trainerExternalId, $dexQueryOptions)
         );
 
         // Better with serializer ?

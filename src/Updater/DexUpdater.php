@@ -11,9 +11,9 @@ class DexUpdater extends AbstractUpdater
     protected string $sheetName = 'Dex';
     protected string $tableName = 'dex';
     protected string $statisticName = 'dex';
-    protected string $headerCellsRange = 'A1:M1';
+    protected string $headerCellsRange = 'A1:N1';
     /** @var string[] */
-    protected array $recordsCellsRanges = ['A2:M'];
+    protected array $recordsCellsRanges = ['A2:N'];
 
     protected function getExpectedHeader(): array
     {
@@ -31,6 +31,7 @@ class DexUpdater extends AbstractUpdater
             'French description',
             'Description',
             'Version',
+            'Is released',
         ];
     }
 
@@ -51,6 +52,7 @@ class DexUpdater extends AbstractUpdater
             'description' => $record['Description'],
             'french_description' => $record['French description'],
             'version' => $record['Version'],
+            'is_released' => $record['Is released'],
         ];
 
         $tableName = $this->tableName;
@@ -70,7 +72,8 @@ class DexUpdater extends AbstractUpdater
           region_id,
           description,
           french_description,
-          version
+          version,
+          is_released
         )
         VALUES (
             :id,
@@ -86,7 +89,8 @@ class DexUpdater extends AbstractUpdater
             (SELECT id FROM region WHERE slug = :region),
             :description,
             :french_description,
-            :version
+            :version,
+            :is_released
         )
         ON CONFLICT (slug)
         DO
@@ -104,6 +108,7 @@ class DexUpdater extends AbstractUpdater
             description = excluded.description,
             french_description = excluded.french_description,
             version = excluded.version,
+            is_released = excluded.is_released,
             deleted_at = NULL
         SQL;
 
