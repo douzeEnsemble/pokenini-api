@@ -55,6 +55,8 @@ class AlbumControllerTest extends AbstractControllerApiTest
         );
         $this->assertArrayHasKey('version', $data['dex']);
         $this->assertEquals('1', $data['dex']['version']);
+        $this->assertArrayHasKey('is_released', $data['dex']);
+        $this->assertTrue($data['dex']['is_released']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -124,6 +126,8 @@ class AlbumControllerTest extends AbstractControllerApiTest
         );
         $this->assertArrayHasKey('version', $data['dex']);
         $this->assertEquals('1', $data['dex']['version']);
+        $this->assertArrayHasKey('is_released', $data['dex']);
+        $this->assertFalse($data['dex']['is_released']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -195,6 +199,8 @@ class AlbumControllerTest extends AbstractControllerApiTest
         );
         $this->assertArrayHasKey('version', $data['dex']);
         $this->assertEquals('1', $data['dex']['version']);
+        $this->assertArrayHasKey('is_released', $data['dex']);
+        $this->assertTrue($data['dex']['is_released']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -264,6 +270,8 @@ class AlbumControllerTest extends AbstractControllerApiTest
         );
         $this->assertArrayHasKey('version', $data['dex']);
         $this->assertEquals('1', $data['dex']['version']);
+        $this->assertArrayHasKey('is_released', $data['dex']);
+        $this->assertTrue($data['dex']['is_released']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -324,6 +332,8 @@ class AlbumControllerTest extends AbstractControllerApiTest
         $this->assertEquals('', $data['dex']['french_description']);
         $this->assertArrayHasKey('version', $data['dex']);
         $this->assertEquals('2', $data['dex']['version']);
+        $this->assertArrayHasKey('is_released', $data['dex']);
+        $this->assertTrue($data['dex']['is_released']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -376,6 +386,8 @@ class AlbumControllerTest extends AbstractControllerApiTest
         $this->assertEquals('', $data['dex']['french_description']);
         $this->assertArrayHasKey('version', $data['dex']);
         $this->assertEquals('1', $data['dex']['version']);
+        $this->assertArrayHasKey('is_released', $data['dex']);
+        $this->assertTrue($data['dex']['is_released']);
 
         $this->assertArrayHasKey('pokemons', $data);
         /** @var string[][] $pokemons */
@@ -428,6 +440,8 @@ class AlbumControllerTest extends AbstractControllerApiTest
         $this->assertEquals('', $data['dex']['french_description']);
         $this->assertArrayHasKey('version', $data['dex']);
         $this->assertEquals('1', $data['dex']['version']);
+        $this->assertArrayHasKey('is_released', $data['dex']);
+        $this->assertTrue($data['dex']['is_released']);
     }
 
     public function testListNoSlug(): void
