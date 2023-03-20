@@ -87,10 +87,7 @@ cc: sf
 
 ## —— Tests 🧪 ———————————————————————————————————————————————————————————————
 tests: ## Execute all tests
-tests: phpstan phpunit
-
-phpstan: ## Execute phpstan analyse
-	@$(PHP) vendor/bin/phpstan analyse --memory-limit=-1
+tests: phpunit
 
 phpunit: ## Execute unit test
 	@$(PHP) bin/console doctrine:schema:update --complete --force --env=test
@@ -104,7 +101,7 @@ testsfunctional: ## Execute functional tests
 
 ## —— Quality 👌 ———————————————————————————————————————————————————————————————
 quality: ## Execute all quality analyses
-quality: phpcs phpmd psalm
+quality: phpcs phpmd psalm phpstan
 
 phpcs: ## Execute phpcs
 	@$(PHP) vendor/bin/phpcs
@@ -116,6 +113,9 @@ phpmd: ## Execute phpmd
 
 psalm: ## Execute psalm
 	@$(PHP) vendor/bin/psalm --show-info=false
+
+phpstan: ## Execute phpstan analyse
+	@$(PHP) vendor/bin/phpstan analyse --memory-limit=-1
 
 ## —— Integration 🗂️ ———————————————————————————————————————————————————————————————
 integration: ## Execute all integration tests

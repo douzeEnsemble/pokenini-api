@@ -24,10 +24,12 @@
         "symfony/apache-pack": "^1.0",
         "symfony/asset": "6.2.*",
         "symfony/console": "6.2.*",
+        "symfony/doctrine-messenger": "6.2.*",
         "symfony/dotenv": "6.2.*",
         "symfony/expression-language": "6.2.*",
         "symfony/flex": "^2.2",
         "symfony/framework-bundle": "6.2.*",
+        "symfony/messenger": "6.2.*",
         "symfony/monolog-bundle": "^3.8",
         "symfony/options-resolver": "6.2.*",
         "symfony/property-access": "6.2.*",
@@ -60,7 +62,8 @@
         "symfony/stopwatch": "6.2.*",
         "symfony/var-dumper": "6.2.*",
         "symfony/web-profiler-bundle": "6.2.*",
-        "vimeo/psalm": "^4.24"
+        "vimeo/psalm": "^4.24",
+        "zenstruck/messenger-test": "^1.7"
     },
     "config": {
         "optimize-autoloader": true,

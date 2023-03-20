@@ -1,0 +1,49 @@
+parameters:
+    defaultReportData: '[{"slug":"douze","count":12}]'
+
+App\Entity\MessengerAction:
+    messengeraction_toprocess (template):
+        createdAt: '<date_create()>'
+        doneAt: ~
+        reportData: ~
+
+    messengeraction_done (template):
+        createdAt: '<dateTimeBetween("-1 hour", "-1 minute")>'
+        doneAt: '<date_create()>'
+        reportData: <{defaultReportData}>
+
+    messengeraction_calculatedexavailabilities_toprocess (extends messengeraction_toprocess):
+        __construct: ['App\Message\CalculateDexAvailabilities']
+
+    messengeraction_calculategamebundlesavailabilities_toprocess (extends messengeraction_toprocess):
+        __construct: ['App\Message\CalculateGameBundlesAvailabilities']
+
+    messengeraction_updategamesanddex_toprocess (extends messengeraction_toprocess):
+        __construct: ['App\Message\UpdateGamesAndDex']
+
+    messengeraction_updategamesavailabilities_toprocess (extends messengeraction_toprocess):
+        __construct: ['App\Message\UpdateGamesAvailabilities']
+
+    messengeraction_updatelabels_toprocess (extends messengeraction_toprocess):
+        __construct: ['App\Message\UpdateLabels']
+
+    messengeraction_updatepokemons_toprocess (extends messengeraction_toprocess):
+        __construct: ['App\Message\UpdatePokemons']
+
+    messengeraction_updateregionaldexnumbers_toprocess (extends messengeraction_toprocess):
+        __construct: ['App\Message\UpdateRegionalDexNumbers']
+
+    messengeraction_calculatedexavailabilities_done (extends messengeraction_done):
+        __construct: ['App\Message\CalculateDexAvailabilities']
+
+    messengeraction_updategamesanddex_done (extends messengeraction_done):
+        __construct: ['App\Message\UpdateGamesAndDex']
+
+    messengeraction_updategamesavailabilities_done (extends messengeraction_done):
+        __construct: ['App\Message\UpdateGamesAvailabilities']
+
+    messengeraction_updatelabels_done (extends messengeraction_done):
+        __construct: ['App\Message\UpdateLabels']
+
+    messengeraction_updatepokemons_done (extends messengeraction_done):
+        __construct: ['App\Message\UpdatePokemons']
