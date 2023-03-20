@@ -25,7 +25,7 @@ class CatchState
     use OrderedTrait;
     use SoftDeleteableEntity;
 
-    #[ORM\Column]
+    #[ORM\Column(options: ['default' => ''])]
     #[Groups([
         "catch_state_list",
     ])]
