@@ -46,7 +46,7 @@ class Dex
     ])]
     public bool $isDisplayForm = true;
 
-    #[ORM\Column]
+    #[ORM\Column(options: ['default' => 'box'])]
     #[Groups([
         "dex_list",
     ])]
