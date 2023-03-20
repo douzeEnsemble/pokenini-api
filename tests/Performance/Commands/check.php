@@ -1,10 +1,12 @@
 <?php
 
+declare(strict_types=1);
+
 if (!isset($argv[1])) {
     throw new \InvalidArgumentException('You must set the number of turn for the avegare');
 }
 
-$nbExecution = $argv[1];
+$nbExecution = (int) $argv[1];
 
 $resultFileDir = 'tests/Performance/Commands/Results';
 
@@ -20,8 +22,7 @@ $files = [
 
 $score = 0;
 
-foreach ($files as $file => $maxExecutionTime)
-{
+foreach ($files as $file => $maxExecutionTime) {
     $executionTimes = [];
     for ($i = 1; $i <= $nbExecution; $i++) {
         $executionTime = file_get_contents("$resultFileDir/$file-$i.txt");

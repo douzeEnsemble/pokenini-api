@@ -40,4 +40,17 @@ class ReportTest extends TestCase
 
         $this->assertCount(3, $reportA->detail);
     }
+
+    public function testJsonEncore(): void
+    {
+        $report = new Report([
+            new Statistic('a', 1),
+            new Statistic('b', 2),
+        ]);
+
+        $this->assertEquals(
+            '[{"slug":"a","count":1},{"slug":"b","count":2}]',
+            (string) json_encode($report->detail),
+        );
+    }
 }

@@ -119,6 +119,16 @@ docker-compose exec php sh -c '
 '
 ```
 
+### Send and Consume a message
+
+```
+make sf c="messenger:stop-workers" && \
+curl -X POST --insecure  "https://localhost:4430/istration/calculate/dex_availabilities" \
+  -H 'Authorization: Basic d2ViOmRvdXpl' \
+  -H 'cache-control: no-cache' && \
+make sf c="messenger:consume async -vv --limit=1"
+```
+
 ### Process
 
 #### Change a pokemon slug
@@ -152,3 +162,4 @@ WHERE			slug = 'new-slug'
 7. Check into an album if slug is ok by checkinh html source code
 7. Check into an album if icon is ok by checkinh html source code
 8. Delete original icon name into the icon repository
+

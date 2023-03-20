@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace unit\Helper;
+namespace App\Tests\Unit\Helper;
 
 use App\Helper\A1Notation;
 use PHPUnit\Framework\TestCase;

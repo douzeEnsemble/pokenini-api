@@ -4,102 +4,86 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\DTO\AlbumReport\Statistic;
-use App\DTO\DataChangeReport\Report;
-use App\Service\CalculatorService\CalculatorServiceInterface;
-use App\Service\CalculatorService\DexAvailabilitiesCalculatorService;
-use App\Service\CalculatorService\GameBundlesAvailabilitiesCalculatorService;
-use App\Service\UpdaterService\GamesAvailabilitiesUpdaterService;
-use App\Service\UpdaterService\GamesAndDexUpdaterService;
-use App\Service\UpdaterService\LabelsUpdaterService;
-use App\Service\UpdaterService\PokemonsUpdaterService;
-use App\Service\UpdaterService\RegionalDexNumbersUpdaterService;
-use App\Service\UpdaterService\UpdaterServiceInterface;
+use App\Entity\MessengerAction;
+use App\Message\ActionMessageInterface;
+use App\Message\CalculateDexAvailabilities;
+use App\Message\CalculateGameBundlesAvailabilities;
+use App\Message\UpdateLabels;
+use App\Message\UpdateGamesAndDex;
+use App\Message\UpdateGamesAvailabilities;
+use App\Message\UpdatePokemons;
+use App\Message\UpdateRegionalDexNumbers;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Messenger\MessageBusInterface;
 
 #[Route('/istration')]
 class AdminController extends AbstractController
 {
+    public function __construct(
+        private readonly MessageBusInterface $bus,
+        private readonly EntityManagerInterface $entityManager,
+    ) {
+    }
+
     #[Route(path: '/update/labels', methods: ['POST'])]
-    public function updateLabels(LabelsUpdaterService $updaterService): JsonResponse
+    public function updateLabels(): Response
     {
-        return $this->update($updaterService);
+        return $this->execute(UpdateLabels::class);
     }
 
     #[Route(path: '/update/games_and_dex', methods: ['POST'])]
-    public function updateGamesAndDex(
-        GamesAndDexUpdaterService $updaterService
-    ): JsonResponse {
-        return $this->update($updaterService);
+    public function updateGamesAndDex(): Response
+    {
+        return $this->execute(UpdateGamesAndDex::class);
     }
 
     #[Route(path: '/update/pokemons', methods: ['POST'])]
-    public function updatePokemons(
-        PokemonsUpdaterService $updaterService
-    ): JsonResponse {
-        return $this->update($updaterService);
+    public function updatePokemons(): Response
+    {
+        return $this->execute(UpdatePokemons::class);
     }
 
     #[Route(path: '/update/regional_dex_numbers', methods: ['POST'])]
-    public function updateRegionalDexNumbers(
-        RegionalDexNumbersUpdaterService $updaterService,
-    ): JsonResponse {
-        return $this->update($updaterService);
+    public function updateRegionalDexNumbers(): Response
+    {
+        return $this->execute(UpdateRegionalDexNumbers::class);
     }
 
     #[Route(path: '/update/games_availabilities', methods: ['POST'])]
-    public function updateGamesAvailabilities(
-        GamesAvailabilitiesUpdaterService $updaterService,
-    ): JsonResponse {
-        return $this->update($updaterService);
+    public function updateGamesAvailabilities(): Response
+    {
+        return $this->execute(UpdateGamesAvailabilities::class);
     }
 
     #[Route(path: '/calculate/game_bundles_availabilities', methods: ['POST'])]
-    public function calculateGameBundlesAvailabilities(
-        GameBundlesAvailabilitiesCalculatorService $calculatorService,
-    ): JsonResponse {
-        return $this->calculate($calculatorService);
+    public function calculateGameBundlesAvailabilities(): Response
+    {
+        return $this->execute(CalculateGameBundlesAvailabilities::class);
     }
 
     #[Route(path: '/calculate/dex_availabilities', methods: ['POST'])]
-    public function calculateDexAvailabilities(
-        DexAvailabilitiesCalculatorService $calculatorService
-    ): JsonResponse {
-        return $this->calculate($calculatorService);
+    public function calculateDexAvailabilities(): Response
+    {
+        return $this->execute(CalculateDexAvailabilities::class);
     }
 
-    private function update(UpdaterServiceInterface $updaterService): JsonResponse
+    private function execute(string $messageClass): Response
     {
-        $updaterService->execute();
+        $messengerAction = new MessengerAction($messageClass);
 
-        return new JsonResponse(
-            $this->reportToArray(
-                $updaterService->getReport()
-            )
+        $this->entityManager->persist($messengerAction);
+        $this->entityManager->flush();
+
+        /** @var ActionMessageInterface message */
+        $message = new $messageClass(
+            (string) $messengerAction->getIdentifier()
         );
-    }
-    private function calculate(CalculatorServiceInterface $calculatorService): JsonResponse
-    {
-        $calculatorService->execute();
 
-        return new JsonResponse(
-            $this->reportToArray(
-                $calculatorService->getReport()
-            )
-        );
-    }
+        $this->bus->dispatch($message);
 
-    private function reportToArray(Report $report): array
-    {
-        $data = [];
-
-        /** @var Statistic $statistic */
-        foreach ($report->detail as $statistic) {
-            $data[$statistic->slug] = $statistic->count;
-        }
-
-        return $data;
+        return new Response('', Response::HTTP_CREATED);
     }
 }
