@@ -3,13 +3,13 @@ parameters:
 
 App\Entity\MessengerAction:
     messengeraction_toprocess (template):
-        createdAt: '<date_create()>'
+        createdAt:  '<dateTimeBetween("-3 hour", "-2 hour")>'
         doneAt: ~
         reportData: ~
 
     messengeraction_done (template):
-        createdAt: '<dateTimeBetween("-1 hour", "-1 minute")>'
-        doneAt: '<date_create()>'
+        createdAt: '<dateTimeBetween("-2 hour", "-1 hour")>'
+        doneAt: '<dateTimeBetween("-1 hour", "-1 minute")>'
         reportData: <{defaultReportData}>
 
     messengeraction_calculatedexavailabilities_toprocess (extends messengeraction_toprocess):
