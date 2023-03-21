@@ -36,11 +36,13 @@ class MessengerActionsRepository extends ServiceEntityRepository
                 )
             ) as type_action,
             created_at,
-            done_at
+            done_at,
+            details
         FROM    (
                 SELECT  "type",
                         created_at,
                         done_at,
+                        report_data as details,
                         row_number() OVER(
                             PARTITION BY "type"
                             ORDER BY created_at DESC

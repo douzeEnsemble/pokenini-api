@@ -57,6 +57,9 @@ class MessengerActionsControllerTest extends WebTestCase
         );
         $this->assertArrayHasKey('done_at', $data[$key]);
         $this->assertNull($data[$key]['done_at']);
+
+        $this->assertArrayHasKey('details', $data[$key]);
+        $this->assertNull($data[$key]['details']);
     }
 
     /**
@@ -75,5 +78,8 @@ class MessengerActionsControllerTest extends WebTestCase
             '/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01]\d):[0-5]\d:[0-5]\d$/',
             $data[$key]['done_at']
         );
+
+        $this->assertArrayHasKey('details', $data[$key]);
+        $this->assertNotNull($data[$key]['details']);
     }
 }
