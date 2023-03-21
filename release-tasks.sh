@@ -1,3 +1,5 @@
+php bin/console messenger:stop-workers
+
 php bin/console app:update:labels
 php bin/console app:update:games_and_dex
 php bin/console app:update:pokemons
