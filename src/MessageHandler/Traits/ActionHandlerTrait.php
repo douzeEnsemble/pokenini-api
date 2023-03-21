@@ -7,6 +7,7 @@ namespace App\MessageHandler\Traits;
 use App\DTO\DataChangeReport\Report;
 use App\Entity\MessengerAction;
 use App\Message\AbstractActionMessage;
+use App\Repository\MessengerActionsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use RuntimeException;
 
@@ -18,6 +19,7 @@ trait ActionHandlerTrait
         AbstractActionMessage $message,
         Report $report
     ): void {
+        /** @var MessengerActionsRepository $repo */
         $repo = $this->entityManager->getRepository(MessengerAction::class);
 
         /** @var ?MessengerAction $messengerAction */
