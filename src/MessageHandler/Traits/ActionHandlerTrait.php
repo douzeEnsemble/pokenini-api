@@ -29,7 +29,7 @@ trait ActionHandlerTrait
             throw new RuntimeException("Can't find MessengerAction #{$message->actionId}");
         }
 
-        $messengerAction->reportData = (string) json_encode($report->detail);
+        $messengerAction->reportData = (string) json_encode($report);
         $messengerAction->doneAt = new \DateTime();
 
         $this->entityManager->flush();
