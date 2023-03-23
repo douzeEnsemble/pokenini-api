@@ -40,7 +40,7 @@ abstract class AbstractUpdateCommand extends Command
 
         $report = $this->updaterService->getReport();
 
-        $this->endMessengerAction($message, $report);
+        $this->endActionLog($message, $report);
 
         /** @var Statistic $statistic */
         foreach ($report->detail as $statistic) {

@@ -4,18 +4,18 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
-use App\Entity\MessengerAction;
+use App\Entity\ActionLog;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<MessengerAction>
+ * @extends ServiceEntityRepository<ActionLog>
  */
-class MessengerActionsRepository extends ServiceEntityRepository
+class ActionLogsRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, MessengerAction::class);
+        parent::__construct($registry, ActionLog::class);
     }
 
     /**
@@ -47,7 +47,7 @@ class MessengerActionsRepository extends ServiceEntityRepository
                             PARTITION BY "type"
                             ORDER BY created_at DESC
                         ) AS rn
-                FROM    messenger_action
+                FROM    action_log
             ) t
         WHERE t.rn = 1
 

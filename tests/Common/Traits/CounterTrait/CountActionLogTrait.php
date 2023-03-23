@@ -6,38 +6,38 @@ namespace App\Tests\Common\Traits\CounterTrait;
 
 use Doctrine\DBAL\Connection;
 
-trait CountMessengerActionTrait
+trait CountActionLogTrait
 {
-    protected function getMessengerActionCount(): int
+    protected function getActionLogCount(): int
     {
         /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         /** @var int */
         return $connection->executeQuery(
-            'SELECT COUNT(*) FROM messenger_action'
+            'SELECT COUNT(*) FROM action_log'
         )->fetchOne();
     }
 
-    protected function getMessengerActionToProcessCount(): int
+    protected function getActionLogToProcessCount(): int
     {
         /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         /** @var int */
         return $connection->executeQuery(
-            'SELECT COUNT(*) FROM messenger_action WHERE done_at IS NULL'
+            'SELECT COUNT(*) FROM action_log WHERE done_at IS NULL'
         )->fetchOne();
     }
 
-    protected function getMessengerActionDoneCount(): int
+    protected function getActionLogDoneCount(): int
     {
         /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         /** @var int */
         return $connection->executeQuery(
-            'SELECT COUNT(*) FROM messenger_action WHERE done_at IS NOT NULL'
+            'SELECT COUNT(*) FROM action_log WHERE done_at IS NOT NULL'
         )->fetchOne();
     }
 }

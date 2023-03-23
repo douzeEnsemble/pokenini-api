@@ -40,7 +40,7 @@ abstract class AbstractCalculateCommand extends Command
 
         $report = $this->calculatorService->getReport();
 
-        $this->endMessengerAction($message, $report);
+        $this->endActionLog($message, $report);
 
         /** @var Statistic $statistic */
         foreach ($report->detail as $statistic) {

@@ -17,6 +17,6 @@ trait UpdateHandlerTrait
 
         $report = $this->updaterService->getReport();
 
-        $this->endMessengerAction($message, $report);
+        $this->endActionLog($message, $report);
     }
 }

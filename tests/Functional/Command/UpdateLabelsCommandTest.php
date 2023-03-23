@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Command;
 
 use App\Tests\Common\Traits\CounterTrait\CounterTableTrait;
-use App\Tests\Common\Traits\CounterTrait\CountMessengerActionTrait;
+use App\Tests\Common\Traits\CounterTrait\CountActionLogTrait;
 
 class UpdateLabelsCommandTest extends AbstractUpdaterCommandTest
 {
     use CounterTableTrait;
-    use CountMessengerActionTrait;
+    use CountActionLogTrait;
 
     public function testUpdate(): void
     {
@@ -21,8 +21,8 @@ class UpdateLabelsCommandTest extends AbstractUpdaterCommandTest
         $this->assertEquals(7, $this->getTableCount('variant_form'));
         $this->assertEquals(10, $this->getTableCount('region'));
 
-        $this->assertEquals(7, $this->getMessengerActionToProcessCount());
-        $this->assertEquals(5, $this->getMessengerActionDoneCount());
+        $this->assertEquals(7, $this->getActionLogToProcessCount());
+        $this->assertEquals(5, $this->getActionLogDoneCount());
 
         $commandTester = $this->executeCommand();
 
@@ -36,8 +36,8 @@ class UpdateLabelsCommandTest extends AbstractUpdaterCommandTest
         $this->assertEquals(8, $this->getTableCount('variant_form'));
         $this->assertEquals(10, $this->getTableCount('region'));
 
-        $this->assertEquals(7, $this->getMessengerActionToProcessCount());
-        $this->assertEquals(6, $this->getMessengerActionDoneCount());
+        $this->assertEquals(7, $this->getActionLogToProcessCount());
+        $this->assertEquals(6, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString("6 catch's states updated", $commandTester->getDisplay());
         $this->assertStringContainsString("0 regions updated", $commandTester->getDisplay());

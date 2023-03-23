@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\ActionEnder;
 
 use App\DTO\DataChangeReport\Report;
-use App\Entity\MessengerAction;
+use App\Entity\ActionLog;
 use App\Message\ActionMessageInterface;
-use App\Repository\MessengerActionsRepository;
+use App\Repository\ActionLogsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use RuntimeException;
 
@@ -15,22 +15,22 @@ trait ActionEnderTrait
 {
     private readonly EntityManagerInterface $entityManager;
 
-    protected function endMessengerAction(
+    protected function endActionLog(
         ActionMessageInterface $message,
         Report $report
     ): void {
-        /** @var MessengerActionsRepository $repo */
-        $repo = $this->entityManager->getRepository(MessengerAction::class);
+        /** @var ActionLogsRepository $repo */
+        $repo = $this->entityManager->getRepository(ActionLog::class);
 
-        /** @var ?MessengerAction $messengerAction */
-        $messengerAction = $repo->find($message->getActionId());
+        /** @var ?ActionLog $actionLog */
+        $actionLog = $repo->find($message->getActionId());
 
-        if (null === $messengerAction) {
-            throw new RuntimeException("Can't find MessengerAction #{$message->getActionId()}");
+        if (null === $actionLog) {
+            throw new RuntimeException("Can't find ActionLog #{$message->getActionId()}");
         }
 
-        $messengerAction->reportData = (string) json_encode($report);
-        $messengerAction->doneAt = new \DateTime();
+        $actionLog->reportData = (string) json_encode($report);
+        $actionLog->doneAt = new \DateTime();
 
         $this->entityManager->flush();
     }

@@ -6,7 +6,7 @@ namespace App\Tests\Functional\Command;
 
 use App\Repository\PokemonsRepository;
 use App\Tests\Common\Traits\CounterTrait\CountDexAvailabilityTrait;
-use App\Tests\Common\Traits\CounterTrait\CountMessengerActionTrait;
+use App\Tests\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Common\Traits\CounterTrait\CountPokemonTrait;
 use App\Tests\Common\Traits\HasserTrait\HasDexAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
@@ -21,7 +21,7 @@ class CalculateDexAvailabilitiesCommandTest extends KernelTestCase
     use CountDexAvailabilityTrait;
     use HasDexAvailabilityTrait;
     use RefreshDatabaseTrait;
-    use CountMessengerActionTrait;
+    use CountActionLogTrait;
 
     public function setUp(): void
     {
@@ -38,8 +38,8 @@ class CalculateDexAvailabilitiesCommandTest extends KernelTestCase
 
         $this->assertEquals(39, $this->getDexAvailabilityCount());
 
-        $this->assertEquals(7, $this->getMessengerActionToProcessCount());
-        $this->assertEquals(5, $this->getMessengerActionDoneCount());
+        $this->assertEquals(7, $this->getActionLogToProcessCount());
+        $this->assertEquals(5, $this->getActionLogDoneCount());
 
         $commandTester = $this->executeCommand();
         $commandTester->assertCommandIsSuccessful();
@@ -48,16 +48,16 @@ class CalculateDexAvailabilitiesCommandTest extends KernelTestCase
 
         $this->assertEquals(0, $this->getDexAvailabilityCount());
 
-        $this->assertEquals(7, $this->getMessengerActionToProcessCount());
-        $this->assertEquals(6, $this->getMessengerActionDoneCount());
+        $this->assertEquals(7, $this->getActionLogToProcessCount());
+        $this->assertEquals(6, $this->getActionLogDoneCount());
     }
 
     public function testDexAvailabilities(): void
     {
         $this->assertEquals(39, $this->getDexAvailabilityCount());
 
-        $this->assertEquals(7, $this->getMessengerActionToProcessCount());
-        $this->assertEquals(5, $this->getMessengerActionDoneCount());
+        $this->assertEquals(7, $this->getActionLogToProcessCount());
+        $this->assertEquals(5, $this->getActionLogDoneCount());
 
         $commandTester = $this->executeCommand();
         $commandTester->assertCommandIsSuccessful();
@@ -66,8 +66,8 @@ class CalculateDexAvailabilitiesCommandTest extends KernelTestCase
 
         $this->assertEquals(61, $this->getDexAvailabilityCount());
 
-        $this->assertEquals(7, $this->getMessengerActionToProcessCount());
-        $this->assertEquals(6, $this->getMessengerActionDoneCount());
+        $this->assertEquals(7, $this->getActionLogToProcessCount());
+        $this->assertEquals(6, $this->getActionLogDoneCount());
 
         $this->assertTrue($this->hasDexAvailability('Red / Green / Blue / Yellow', 'Bulbasaur'));
     }

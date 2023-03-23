@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Command;
 
 use App\Tests\Common\Traits\CounterTrait\CounterTableTrait;
-use App\Tests\Common\Traits\CounterTrait\CountMessengerActionTrait;
+use App\Tests\Common\Traits\CounterTrait\CountActionLogTrait;
 
 class UpdateGamesAndDexCommandTest extends AbstractUpdaterCommandTest
 {
     use CounterTableTrait;
-    use CountMessengerActionTrait;
+    use CountActionLogTrait;
 
     public function testUpdate(): void
     {
@@ -19,8 +19,8 @@ class UpdateGamesAndDexCommandTest extends AbstractUpdaterCommandTest
         $this->assertEquals(38, $this->getTableCount('game'));
         $this->assertEquals(6, $this->getTableCount('dex'));
 
-        $this->assertEquals(7, $this->getMessengerActionToProcessCount());
-        $this->assertEquals(5, $this->getMessengerActionDoneCount());
+        $this->assertEquals(7, $this->getActionLogToProcessCount());
+        $this->assertEquals(5, $this->getActionLogDoneCount());
 
         $commandTester = $this->executeCommand();
 
@@ -31,8 +31,8 @@ class UpdateGamesAndDexCommandTest extends AbstractUpdaterCommandTest
         $this->assertEquals(38, $this->getTableCount('game'));
         $this->assertEquals(22, $this->getTableCount('dex'));
 
-        $this->assertEquals(7, $this->getMessengerActionToProcessCount());
-        $this->assertEquals(6, $this->getMessengerActionDoneCount());
+        $this->assertEquals(7, $this->getActionLogToProcessCount());
+        $this->assertEquals(6, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString("9 game's generations updated", $commandTester->getDisplay());
         $this->assertStringContainsString("17 game's bundles updated", $commandTester->getDisplay());

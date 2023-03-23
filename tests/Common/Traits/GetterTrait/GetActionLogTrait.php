@@ -6,7 +6,7 @@ namespace App\Tests\Common\Traits\GetterTrait;
 
 use Doctrine\DBAL\Connection;
 
-trait GetMessengerActionTrait
+trait GetActionLogTrait
 {
     /**
      * @return string
@@ -18,7 +18,7 @@ trait GetMessengerActionTrait
 
         $sql = <<<SQL
         SELECT  id
-        FROM    messenger_action
+        FROM    action_log
         WHERE   type = :type
             AND done_at IS NULL
         SQL;
