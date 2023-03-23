@@ -2,31 +2,31 @@
 
 declare(strict_types=1);
 
-namespace App\MessageHandler\Traits;
+namespace App\ActionEnder;
 
 use App\DTO\DataChangeReport\Report;
 use App\Entity\MessengerAction;
-use App\Message\AbstractActionMessage;
+use App\Message\ActionMessageInterface;
 use App\Repository\MessengerActionsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use RuntimeException;
 
-trait ActionHandlerTrait
+trait ActionEnderTrait
 {
     private readonly EntityManagerInterface $entityManager;
 
-    private function saveMessengerAction(
-        AbstractActionMessage $message,
+    protected function endMessengerAction(
+        ActionMessageInterface $message,
         Report $report
     ): void {
         /** @var MessengerActionsRepository $repo */
         $repo = $this->entityManager->getRepository(MessengerAction::class);
 
         /** @var ?MessengerAction $messengerAction */
-        $messengerAction = $repo->find($message->actionId);
+        $messengerAction = $repo->find($message->getActionId());
 
         if (null === $messengerAction) {
-            throw new RuntimeException("Can't find MessengerAction #{$message->actionId}");
+            throw new RuntimeException("Can't find MessengerAction #{$message->getActionId()}");
         }
 
         $messengerAction->reportData = (string) json_encode($report);

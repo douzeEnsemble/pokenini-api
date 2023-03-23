@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Command;
 
+use App\ActionStarter\CalculateGameBundlesAvailabilitiesActionStarter;
 use App\Service\CalculatorService\GameBundlesAvailabilitiesCalculatorService;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -15,9 +17,11 @@ class CalculateGameBundlesAvailabilitiesCommand extends AbstractCalculateCommand
 
     public function __construct(
         TranslatorInterface $translator,
+        EntityManagerInterface $entityManager,
+        CalculateGameBundlesAvailabilitiesActionStarter $actionStarter,
         GameBundlesAvailabilitiesCalculatorService $calculatorService,
     ) {
-        parent::__construct($translator, $calculatorService);
+        parent::__construct($translator, $entityManager, $actionStarter, $calculatorService);
     }
 
     protected function configure(): void

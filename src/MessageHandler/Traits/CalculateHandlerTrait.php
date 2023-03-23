@@ -4,11 +4,12 @@ declare(strict_types=1);
 
 namespace App\MessageHandler\Traits;
 
+use App\ActionEnder\ActionEnderTrait;
 use App\Message\AbstractActionMessage;
 
 trait CalculateHandlerTrait
 {
-    use ActionHandlerTrait;
+    use ActionEnderTrait;
 
     public function calculate(AbstractActionMessage $message): void
     {
@@ -16,6 +17,6 @@ trait CalculateHandlerTrait
 
         $report = $this->calculatorService->getReport();
 
-        $this->saveMessengerAction($message, $report);
+        $this->endMessengerAction($message, $report);
     }
 }
