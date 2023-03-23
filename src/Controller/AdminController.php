@@ -4,16 +4,13 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Entity\MessengerAction;
-use App\Message\ActionMessageInterface;
-use App\Message\CalculateDexAvailabilities;
-use App\Message\CalculateGameBundlesAvailabilities;
-use App\Message\UpdateLabels;
-use App\Message\UpdateGamesAndDex;
-use App\Message\UpdateGamesAvailabilities;
-use App\Message\UpdatePokemons;
-use App\Message\UpdateRegionalDexNumbers;
-use Doctrine\ORM\EntityManagerInterface;
+use App\ActionStarter\CalculateDexAvailabilitiesActionStarter;
+use App\ActionStarter\CalculateGameBundlesAvailabilitiesActionStarter;
+use App\ActionStarter\UpdateGamesAndDexActionStarter;
+use App\ActionStarter\UpdateGamesAvailabilitiesActionStarter;
+use App\ActionStarter\UpdateLabelsActionStarter;
+use App\ActionStarter\UpdatePokemonsActionStarter;
+use App\ActionStarter\UpdateRegionalDexNumbersActionStarter;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,63 +21,80 @@ class AdminController extends AbstractController
 {
     public function __construct(
         private readonly MessageBusInterface $bus,
-        private readonly EntityManagerInterface $entityManager,
     ) {
     }
 
     #[Route(path: '/update/labels', methods: ['POST'])]
-    public function updateLabels(): Response
-    {
-        return $this->execute(UpdateLabels::class);
+    public function updateLabels(
+        UpdateLabelsActionStarter $actionStarter
+    ): Response {
+        $message = $actionStarter->start();
+
+        $this->bus->dispatch($message);
+
+        return new Response('', Response::HTTP_CREATED);
     }
 
     #[Route(path: '/update/games_and_dex', methods: ['POST'])]
-    public function updateGamesAndDex(): Response
-    {
-        return $this->execute(UpdateGamesAndDex::class);
+    public function updateGamesAndDex(
+        UpdateGamesAndDexActionStarter $actionStarter
+    ): Response {
+        $message = $actionStarter->start();
+
+        $this->bus->dispatch($message);
+
+        return new Response('', Response::HTTP_CREATED);
     }
 
     #[Route(path: '/update/pokemons', methods: ['POST'])]
-    public function updatePokemons(): Response
-    {
-        return $this->execute(UpdatePokemons::class);
+    public function updatePokemons(
+        UpdatePokemonsActionStarter $actionStarter
+    ): Response {
+        $message = $actionStarter->start();
+
+        $this->bus->dispatch($message);
+
+        return new Response('', Response::HTTP_CREATED);
     }
 
     #[Route(path: '/update/regional_dex_numbers', methods: ['POST'])]
-    public function updateRegionalDexNumbers(): Response
-    {
-        return $this->execute(UpdateRegionalDexNumbers::class);
+    public function updateRegionalDexNumbers(
+        UpdateRegionalDexNumbersActionStarter $actionStarter
+    ): Response {
+        $message = $actionStarter->start();
+
+        $this->bus->dispatch($message);
+
+        return new Response('', Response::HTTP_CREATED);
     }
 
     #[Route(path: '/update/games_availabilities', methods: ['POST'])]
-    public function updateGamesAvailabilities(): Response
-    {
-        return $this->execute(UpdateGamesAvailabilities::class);
+    public function updateGamesAvailabilities(
+        UpdateGamesAvailabilitiesActionStarter $actionStarter
+    ): Response {
+        $message = $actionStarter->start();
+
+        $this->bus->dispatch($message);
+
+        return new Response('', Response::HTTP_CREATED);
     }
 
     #[Route(path: '/calculate/game_bundles_availabilities', methods: ['POST'])]
-    public function calculateGameBundlesAvailabilities(): Response
-    {
-        return $this->execute(CalculateGameBundlesAvailabilities::class);
+    public function calculateGameBundlesAvailabilities(
+        CalculateGameBundlesAvailabilitiesActionStarter $actionStarter
+    ): Response {
+        $message = $actionStarter->start();
+
+        $this->bus->dispatch($message);
+
+        return new Response('', Response::HTTP_CREATED);
     }
 
     #[Route(path: '/calculate/dex_availabilities', methods: ['POST'])]
-    public function calculateDexAvailabilities(): Response
-    {
-        return $this->execute(CalculateDexAvailabilities::class);
-    }
-
-    private function execute(string $messageClass): Response
-    {
-        $messengerAction = new MessengerAction($messageClass);
-
-        $this->entityManager->persist($messengerAction);
-        $this->entityManager->flush();
-
-        /** @var ActionMessageInterface message */
-        $message = new $messageClass(
-            (string) $messengerAction->getIdentifier()
-        );
+    public function calculateDexAvailabilities(
+        CalculateDexAvailabilitiesActionStarter $actionStarter
+    ): Response {
+        $message = $actionStarter->start();
 
         $this->bus->dispatch($message);
 
