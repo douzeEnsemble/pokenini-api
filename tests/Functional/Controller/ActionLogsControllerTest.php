@@ -7,17 +7,17 @@ namespace App\Tests\Functional\Controller;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
-class MessengerActionsControllerTest extends WebTestCase
+class ActionLogsControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;
 
-    public function testMessengerActions(): void
+    public function testActionLogs(): void
     {
         $client = static::createClient();
 
         $client->request(
             'GET',
-            '/messenger_actions',
+            '/action_logs',
             [
                 'headers' => [
                     'accept' => 'application/json'

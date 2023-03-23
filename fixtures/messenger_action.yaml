@@ -1,49 +1,49 @@
 parameters:
     defaultReportData: '[{"slug":"douze","count":12}]'
 
-App\Entity\MessengerAction:
-    messengeraction_toprocess (template):
+App\Entity\ActionLog:
+    actionlog_toprocess (template):
         createdAt:  '<dateTimeBetween("-3 hour", "-2 hour")>'
         doneAt: ~
         reportData: ~
 
-    messengeraction_done (template):
+    actionlog_done (template):
         createdAt: '<dateTimeBetween("-2 hour", "-1 hour")>'
         doneAt: '<dateTimeBetween("-1 hour", "-1 minute")>'
         reportData: <{defaultReportData}>
 
-    messengeraction_calculatedexavailabilities_toprocess (extends messengeraction_toprocess):
+    actionlog_calculatedexavailabilities_toprocess (extends actionlog_toprocess):
         __construct: ['App\Message\CalculateDexAvailabilities']
 
-    messengeraction_calculategamebundlesavailabilities_toprocess (extends messengeraction_toprocess):
+    actionlog_calculategamebundlesavailabilities_toprocess (extends actionlog_toprocess):
         __construct: ['App\Message\CalculateGameBundlesAvailabilities']
 
-    messengeraction_updategamesanddex_toprocess (extends messengeraction_toprocess):
+    actionlog_updategamesanddex_toprocess (extends actionlog_toprocess):
         __construct: ['App\Message\UpdateGamesAndDex']
 
-    messengeraction_updategamesavailabilities_toprocess (extends messengeraction_toprocess):
+    actionlog_updategamesavailabilities_toprocess (extends actionlog_toprocess):
         __construct: ['App\Message\UpdateGamesAvailabilities']
 
-    messengeraction_updatelabels_toprocess (extends messengeraction_toprocess):
+    actionlog_updatelabels_toprocess (extends actionlog_toprocess):
         __construct: ['App\Message\UpdateLabels']
 
-    messengeraction_updatepokemons_toprocess (extends messengeraction_toprocess):
+    actionlog_updatepokemons_toprocess (extends actionlog_toprocess):
         __construct: ['App\Message\UpdatePokemons']
 
-    messengeraction_updateregionaldexnumbers_toprocess (extends messengeraction_toprocess):
+    actionlog_updateregionaldexnumbers_toprocess (extends actionlog_toprocess):
         __construct: ['App\Message\UpdateRegionalDexNumbers']
 
-    messengeraction_calculatedexavailabilities_done (extends messengeraction_done):
+    actionlog_calculatedexavailabilities_done (extends actionlog_done):
         __construct: ['App\Message\CalculateDexAvailabilities']
 
-    messengeraction_updategamesanddex_done (extends messengeraction_done):
+    actionlog_updategamesanddex_done (extends actionlog_done):
         __construct: ['App\Message\UpdateGamesAndDex']
 
-    messengeraction_updategamesavailabilities_done (extends messengeraction_done):
+    actionlog_updategamesavailabilities_done (extends actionlog_done):
         __construct: ['App\Message\UpdateGamesAvailabilities']
 
-    messengeraction_updatelabels_done (extends messengeraction_done):
+    actionlog_updatelabels_done (extends actionlog_done):
         __construct: ['App\Message\UpdateLabels']
 
-    messengeraction_updatepokemons_done (extends messengeraction_done):
+    actionlog_updatepokemons_done (extends actionlog_done):
         __construct: ['App\Message\UpdatePokemons']
