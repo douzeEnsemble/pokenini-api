@@ -81,5 +81,6 @@ class ActionLogsControllerTest extends WebTestCase
 
         $this->assertArrayHasKey('details', $data[$key]);
         $this->assertNotNull($data[$key]['details']);
+        $this->assertIsArray($data[$key]['details']);
     }
 }
