@@ -19,6 +19,19 @@ class ActionLogsController extends AbstractController
     #[Route(path: '', methods: ['GET'])]
     public function get(ActionLogsRepository $repo): JsonResponse
     {
-        return new JsonResponse($repo->getLastests());
+        $actionLogs = $repo->getLastests();
+
+        array_walk(
+            $actionLogs,
+            function (&$actionLog) {
+                if (null === $actionLog['details']) {
+                    return;
+                }
+
+                $actionLog['details'] = json_decode($actionLog['details'], true);
+            }
+        );
+
+        return new JsonResponse($actionLogs);
     }
 }

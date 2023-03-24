@@ -1,5 +1,12 @@
 parameters:
-    defaultReportData: '[{"slug":"douze","count":12}]'
+    defaultReportData: '{"douze":12,"treize":13}'
+    updateLabelsReportData: '{"catch_states":6,"regions":0,"category_forms":6,"regional_forms":4,"special_forms":7,"variant_forms":7}'
+    updateGamesAndDexReportData: '{"game_generations":9,"game_bundles":18,"games":39,"dex":31}'
+    updatePokemonsReportData: '{"pokemons":1934}'
+    updateRegionalDexNumbersReportData: '{"regional_dex_numbers":2938}'
+    updateGamesAvailabitiliesReportData: '{"games_availabilities":41691}'
+    calculateGamesAvailabilitiesReportData: '{"game_bundles_availabilities":34794}'
+    calculateDexAvailabilitiesReportData: '{"dex_availabilities":22472}'
 
 App\Entity\ActionLog:
     actionlog_toprocess (template):
@@ -35,15 +42,20 @@ App\Entity\ActionLog:
 
     actionlog_calculatedexavailabilities_done (extends actionlog_done):
         __construct: ['App\Message\CalculateDexAvailabilities']
+        reportData: <{calculateDexAvailabilitiesReportData}>
 
     actionlog_updategamesanddex_done (extends actionlog_done):
         __construct: ['App\Message\UpdateGamesAndDex']
+        reportData: <{updateGamesAndDexReportData}>
 
     actionlog_updategamesavailabilities_done (extends actionlog_done):
         __construct: ['App\Message\UpdateGamesAvailabilities']
+        reportData: <{updateGamesAvailabitiliesReportData}>
 
     actionlog_updatelabels_done (extends actionlog_done):
         __construct: ['App\Message\UpdateLabels']
+        reportData: <{updateLabelsReportData}>
 
     actionlog_updatepokemons_done (extends actionlog_done):
         __construct: ['App\Message\UpdatePokemons']
+        reportData: <{updatePokemonsReportData}>

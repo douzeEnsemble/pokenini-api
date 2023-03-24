@@ -19,7 +19,7 @@ class ActionLogsRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return string[]
+     * @return string[][]|null[][]
      */
     public function getLastests(): array
     {
@@ -54,7 +54,7 @@ class ActionLogsRepository extends ServiceEntityRepository
         ORDER BY    "type" ASC, created_at DESC
         SQL;
 
-        /** @var string[] */
+        /** @var string[][]|null[][] */
         return $this->getEntityManager()->getConnection()->fetchAllAssociativeIndexed($sql);
     }
 }
