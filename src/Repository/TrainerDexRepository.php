@@ -50,6 +50,7 @@ class TrainerDexRepository extends ServiceEntityRepository
                 ON td.dex_id = d.id
                 AND td.trainer_external_id = :trainer_external_id
         WHERE   1 = 1
+                AND d.deleted_at IS NULL
                 $where
         ORDER BY d.order_number
         SQL;
