@@ -51,3 +51,13 @@ App\Entity\Dex:
         isShiny: false
         isPrivate: false
         isDisplayForm: false
+    dex_spoon:
+        name: 'Spoon'
+        frenchName: 'Cuillière'
+        selectionRule: "(p.bankable or p.bankableish)"
+        displayTemplate: 'box'
+        orderNumber: 3
+        isShiny: false
+        isPrivate: false
+        isDisplayForm: true
+        deletedAt: '<date_create()>'

@@ -30,7 +30,10 @@ class DexRepositoryTest extends KernelTestCase
         /** @var Dex[] $dex */
         $dex = iterator_to_array($dexIterator->toIterable());
 
-        $this->assertCount($this->getDexCount(), $dex);
+        $this->assertCount(
+            $this->getDexCount() - 1,
+            $dex
+        );
 
         $this->assertEquals('Red / Green / Blue / Yellow', $dex[0]->name);
 
@@ -45,7 +48,10 @@ class DexRepositoryTest extends KernelTestCase
         /** @var DexRepository $repo */
         $repo = static::getContainer()->get(DexRepository::class);
 
-        $this->assertEquals($this->getDexCount(), $repo->countAll());
+        $this->assertEquals(
+            $this->getDexCount() - 1,
+            $repo->countAll()
+        );
     }
 
     public function testGetData(): void
