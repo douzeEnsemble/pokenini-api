@@ -9,12 +9,14 @@ framework:
                     max_retries: 3
                     delay: 5
             failed: 'doctrine://default?queue_name=failed'
+            sync: 'sync://'
 
         routing:
-            '*': async
+            '*': sync
 
 when@test:
    framework:
        messenger:
            transports:
                async: 'test://'
+               sync: 'test://'
