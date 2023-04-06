@@ -1,1 +1,1 @@
-php bin/console doctrine:schema:create
+./bin/console doctrine:migrations:migrate --no-interaction
