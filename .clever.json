@@ -1,0 +1,11 @@
+{
+  "apps": [
+    {
+      "app_id": "app_ff51eb51-78f2-4bd4-891c-274f87efdc77",
+      "org_id": "user_51e6b13c-b5dd-4147-a5fa-8ba429c2d353",
+      "deploy_url": "https://github.com/douzeEnsemble/pokenini-api.git",
+      "name": "pokenini-api",
+      "alias": "pokenini-api"
+    }
+  ]
+}
