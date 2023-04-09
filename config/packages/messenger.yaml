@@ -12,7 +12,7 @@ framework:
             sync: 'sync://'
 
         routing:
-            '*': sync
+            '*': async
 
 when@test:
    framework:
