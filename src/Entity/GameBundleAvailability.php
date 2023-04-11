@@ -18,10 +18,12 @@ class GameBundleAvailability
     use BaseEntityTrait;
 
     #[ORM\ManyToOne(targetEntity: Pokemon::class)]
+    #[ORM\JoinColumn(nullable: false)]
     #[Groups(["game_bundle_availabilities_list"])]
     public Pokemon $pokemon;
 
     #[ORM\ManyToOne(targetEntity: GameBundle::class)]
+    #[ORM\JoinColumn(nullable: false)]
     #[Groups(["game_bundle_availabilities_list"])]
     public GameBundle $bundle;
 

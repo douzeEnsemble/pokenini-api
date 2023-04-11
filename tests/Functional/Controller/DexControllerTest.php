@@ -88,6 +88,9 @@ class DexControllerTest extends AbstractControllerApiTest
         $this->assertFalse($trainerDexBefore['is_private']);
         $this->assertArrayHasKey('is_on_home', $trainerDexBefore);
         $this->assertFalse($trainerDexBefore['is_on_home']);
+        $this->assertNull($trainerDexBefore['name']);
+        $this->assertNull($trainerDexBefore['french_name']);
+        $this->assertEmpty($trainerDexBefore['slug']);
 
         $this->apiRequest(
             'PUT',
@@ -105,6 +108,42 @@ class DexControllerTest extends AbstractControllerApiTest
         $this->assertTrue($trainerDexAfter['is_private']);
         $this->assertArrayHasKey('is_on_home', $trainerDexAfter);
         $this->assertTrue($trainerDexAfter['is_on_home']);
+        $this->assertNull($trainerDexAfter['name']);
+        $this->assertNull($trainerDexAfter['french_name']);
+        $this->assertEmpty($trainerDexAfter['slug']);
+    }
+
+    public function testUpdateTrainerSlug(): void
+    {
+        $trainerDexBefore = $this->getTrainerDex('7b52009b64fd0a2a49e6d8a939753077792b0554', 'homepogopokeball');
+
+        $this->assertArrayHasKey('is_private', $trainerDexBefore);
+        $this->assertFalse($trainerDexBefore['is_private']);
+        $this->assertArrayHasKey('is_on_home', $trainerDexBefore);
+        $this->assertTrue($trainerDexBefore['is_on_home']);
+        $this->assertNull($trainerDexBefore['name']);
+        $this->assertEquals('Home PoGo Poké Ball', $trainerDexBefore['french_name']);
+        $this->assertEquals('homepogopokeball', $trainerDexBefore['slug']);
+
+        $this->apiRequest(
+            'PUT',
+            'dex/7b52009b64fd0a2a49e6d8a939753077792b0554/homepogo/homepogopokeball',
+            [],
+            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            '{"is_private": true, "is_on_home": true}'
+        );
+
+        $this->assertResponseIsOK();
+
+        $trainerDexAfter = $this->getTrainerDex('7b52009b64fd0a2a49e6d8a939753077792b0554', 'homepogopokeball');
+
+        $this->assertArrayHasKey('is_private', $trainerDexAfter);
+        $this->assertTrue($trainerDexAfter['is_private']);
+        $this->assertArrayHasKey('is_on_home', $trainerDexAfter);
+        $this->assertTrue($trainerDexAfter['is_on_home']);
+        $this->assertNull($trainerDexAfter['name']);
+        $this->assertEquals('Home PoGo Poké Ball', $trainerDexAfter['french_name']);
+        $this->assertEquals('homepogopokeball', $trainerDexAfter['slug']);
     }
 
     public function testCreate(): void
@@ -129,6 +168,9 @@ class DexControllerTest extends AbstractControllerApiTest
         $this->assertTrue($trainerDexAfter['is_private']);
         $this->assertArrayHasKey('is_on_home', $trainerDexAfter);
         $this->assertFalse($trainerDexAfter['is_on_home']);
+        $this->assertNull($trainerDexAfter['name']);
+        $this->assertNull($trainerDexAfter['french_name']);
+        $this->assertEmpty($trainerDexAfter['slug']);
     }
 
     public function testCreateWithMissingAttribute(): void
@@ -153,14 +195,13 @@ class DexControllerTest extends AbstractControllerApiTest
         $this->assertTrue($trainerDexAfter['is_private']);
         $this->assertArrayHasKey('is_on_home', $trainerDexAfter);
         $this->assertFalse($trainerDexAfter['is_on_home']);
+        $this->assertNull($trainerDexAfter['name']);
+        $this->assertNull($trainerDexAfter['french_name']);
+        $this->assertEmpty($trainerDexAfter['slug']);
     }
 
     public function testBadArgument(): void
     {
-        $trainerDexBefore = $this->getTrainerDex('bd307a3ec329e10a2cff8fb87480823da114f8f4', 'redgreenblueyellow');
-
-        $this->assertEmpty($trainerDexBefore);
-
         $this->apiRequest(
             'PUT',
             'dex/bd307a3ec329e10a2cff8fb87480823da114f8f4/redgreenblueyellow',
@@ -174,10 +215,6 @@ class DexControllerTest extends AbstractControllerApiTest
 
     public function testEmptyData(): void
     {
-        $trainerDexBefore = $this->getTrainerDex('bd307a3ec329e10a2cff8fb87480823da114f8f4', 'redgreenblueyellow');
-
-        $this->assertEmpty($trainerDexBefore);
-
         $this->apiRequest(
             'PUT',
             'dex/bd307a3ec329e10a2cff8fb87480823da114f8f4/redgreenblueyellow',

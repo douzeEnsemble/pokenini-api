@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Controller;
 
+use App\Tests\Common\Traits\CounterTrait\CountTrainerDexTrait;
 use App\Tests\Common\Traits\GetterTrait\GetPokedexTrait;
 use App\Tests\Functional\Controller\AlbumControllerTestData;
 
 class AlbumControllerTest extends AbstractControllerApiTest
 {
     use GetPokedexTrait;
+    use CountTrainerDexTrait;
 
     public function testListUser12RedGreenBlueYellow(): void
     {
@@ -444,6 +446,47 @@ class AlbumControllerTest extends AbstractControllerApiTest
         $this->assertTrue($data['dex']['is_released']);
     }
 
+    public function testListHomeShinyOT(): void
+    {
+        $this->apiRequest('GET', 'album/7b52009b64fd0a2a49e6d8a939753077792b0554/homeshinyot');
+
+        $this->assertResponseIsOK();
+
+        $content = $this->getResponseContent();
+        /** @var string[][]|string[][][]|int[][][] $data */
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertArrayHasKey('slug', $data['dex']);
+        $this->assertEquals('homeshiny', $data['dex']['original_slug']);
+        $this->assertArrayHasKey('slug', $data['dex']);
+        $this->assertEquals('homeshinyot', $data['dex']['slug']);
+        $this->assertArrayHasKey('dex', $data);
+        $this->assertArrayHasKey('name', $data['dex']);
+        $this->assertEquals('Home Shiny OT', $data['dex']['name']);
+        $this->assertArrayHasKey('french_name', $data['dex']);
+        $this->assertEquals('Home Chromatique OT', $data['dex']['french_name']);
+        $this->assertArrayHasKey('is_shiny', $data['dex']);
+        $this->assertTrue($data['dex']['is_shiny']);
+        $this->assertArrayHasKey('is_private', $data['dex']);
+        $this->assertTrue($data['dex']['is_private']);
+        $this->assertArrayHasKey('is_display_form', $data['dex']);
+        $this->assertTrue($data['dex']['is_display_form']);
+        $this->assertArrayHasKey('display_template', $data['dex']);
+        $this->assertEquals('box', $data['dex']['display_template']);
+        $this->assertArrayHasKey('region_name', $data['dex']);
+        $this->assertNull($data['dex']['region_name']);
+        $this->assertArrayHasKey('region_french_name', $data['dex']);
+        $this->assertNull($data['dex']['region_french_name']);
+        $this->assertArrayHasKey('description', $data['dex']);
+        $this->assertEquals('', $data['dex']['description']);
+        $this->assertArrayHasKey('french_description', $data['dex']);
+        $this->assertEquals('', $data['dex']['french_description']);
+        $this->assertArrayHasKey('version', $data['dex']);
+        $this->assertEquals('1', $data['dex']['version']);
+        $this->assertArrayHasKey('is_released', $data['dex']);
+        $this->assertTrue($data['dex']['is_released']);
+    }
+
     public function testListNoSlug(): void
     {
         $this->apiRequest('GET', 'album', []);
@@ -477,6 +520,8 @@ class AlbumControllerTest extends AbstractControllerApiTest
         $this->assertArrayHasKey('slug', $pokedexBefore);
         $this->assertEquals('maybe', $pokedexBefore['slug']);
 
+        $this->assertEquals(9, $this->getTrainerDexCount());
+
         $this->apiRequest(
             'PATCH',
             'album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow/ivysaur',
@@ -491,6 +536,8 @@ class AlbumControllerTest extends AbstractControllerApiTest
 
         $this->assertArrayHasKey('slug', $pokedexAfter);
         $this->assertEquals('yes', $pokedexAfter['slug']);
+
+        $this->assertEquals(9, $this->getTrainerDexCount());
     }
 
     public function testUpdateEmpty(): void
@@ -506,11 +553,39 @@ class AlbumControllerTest extends AbstractControllerApiTest
         $this->assertResponseStatusCodeSame(400);
     }
 
+    public function testUpdateNonExistingDex(): void
+    {
+        $this->apiRequest(
+            'PATCH',
+            'album/7b52009b64fd0a2a49e6d8a939753077792b0554/douze/ivysaur',
+            [],
+            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            'yes'
+        );
+
+        $this->assertResponseStatusCodeSame(400);
+    }
+
+    public function testUpdateNonExistingPokemon(): void
+    {
+        $this->apiRequest(
+            'PATCH',
+            'album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow/treize',
+            [],
+            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            'yes'
+        );
+
+        $this->assertResponseStatusCodeSame(400);
+    }
+
     public function testCreate(): void
     {
         $pokedexBefore = $this->getPokedexFromSlugs('redgreenblueyellow', 'douze');
 
         $this->assertEmpty($pokedexBefore);
+
+        $this->assertEquals(9, $this->getTrainerDexCount());
 
         $this->apiRequest(
             'PUT',
@@ -526,6 +601,60 @@ class AlbumControllerTest extends AbstractControllerApiTest
 
         $this->assertArrayHasKey('slug', $pokedexAfter);
         $this->assertEquals('maybenot', $pokedexAfter['slug']);
+
+        $this->assertEquals(9, $this->getTrainerDexCount());
+    }
+
+    public function testCreateNonExistingTrainerDex(): void
+    {
+        $pokedexBefore = $this->getPokedexFromSlugs('spoon', 'douze');
+
+        $this->assertEmpty($pokedexBefore);
+
+        $this->assertEquals(9, $this->getTrainerDexCount());
+
+        $this->apiRequest(
+            'PUT',
+            'album/7b52009b64fd0a2a49e6d8a939753077792b0554/spoon/douze',
+            [],
+            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            'maybenot'
+        );
+
+        $this->assertResponseIsSuccessful();
+
+        $pokedexAfter = $this->getPokedexFromSlugs('spoon', 'douze');
+
+        $this->assertArrayHasKey('slug', $pokedexAfter);
+        $this->assertEquals('maybenot', $pokedexAfter['slug']);
+
+        $this->assertEquals(10, $this->getTrainerDexCount());
+    }
+
+    public function testCreateNonExistingDex(): void
+    {
+        $this->apiRequest(
+            'PUT',
+            'album/7b52009b64fd0a2a49e6d8a939753077792b0554/douze/ivysaur',
+            [],
+            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            'yes'
+        );
+
+        $this->assertResponseStatusCodeSame(400);
+    }
+
+    public function testCreateNonExistingPokemon(): void
+    {
+        $this->apiRequest(
+            'PUT',
+            'album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow/treize',
+            [],
+            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            'yes'
+        );
+
+        $this->assertResponseStatusCodeSame(400);
     }
 
     public function testCreateEmpty(): void

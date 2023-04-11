@@ -9,8 +9,8 @@ use App\Updater\GameBundlesUpdater;
 
 class GameBundlesUpdaterTest extends AbstractUpdaterTest
 {
-    protected int $initialTotalCount = 17;
-    protected int $finalTotalCount = 18;
+    protected int $initialTotalCount = 19;
+    protected int $finalTotalCount = 19;
     protected int $mustBeDeletedTotalCount = 1;
     protected string $sheetName = 'Game Bundle';
     protected string $tableName = 'game_bundle';

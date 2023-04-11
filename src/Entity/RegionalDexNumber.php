@@ -16,6 +16,7 @@ class RegionalDexNumber
     public string $pokemonName;
 
     #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
     public Region $region;
 
     #[ORM\Column]

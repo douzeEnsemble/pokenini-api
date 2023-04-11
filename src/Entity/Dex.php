@@ -53,6 +53,7 @@ class Dex
     public string $displayTemplate = 'box';
 
     #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: true)]
     #[Groups([
         "dex_list",
     ])]

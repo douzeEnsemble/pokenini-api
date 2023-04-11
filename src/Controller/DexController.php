@@ -41,11 +41,12 @@ class DexController extends AbstractController
         return new JsonResponse($dex);
     }
 
-    #[Route(methods: ['PUT'], path: '/{trainerExternalId}/{dexSlug}')]
+    #[Route(methods: ['PUT'], path: '/{trainerExternalId}/{dexSlug}/{trainerDexSlug}')]
     public function put(
         Request $request,
         string $trainerExternalId,
-        string $dexSlug
+        string $dexSlug,
+        string $trainerDexSlug = ''
     ): Response {
         $json = $request->getContent();
 
@@ -62,7 +63,7 @@ class DexController extends AbstractController
             throw new BadRequestHttpException($e->getMessage());
         }
 
-        $this->trainerDexRepository->upsert($trainerExternalId, $dexSlug, $attributes);
+        $this->trainerDexRepository->upsert($trainerExternalId, $dexSlug, $trainerDexSlug, $attributes);
 
         return new Response();
     }

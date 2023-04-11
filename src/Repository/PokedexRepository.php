@@ -56,8 +56,10 @@ class PokedexRepository extends ServiceEntityRepository
         FROM    dex_availability AS da
             JOIN pokemon AS p
                 ON da.pokemon_id = p.id
+            JOIN trainer_dex AS td
+                ON da.dex_id = td.dex_id
             JOIN dex AS d
-                ON da.dex_id = d.id
+                ON td.dex_id = d.id
             LEFT JOIN region AS r
                 ON d.region_id = r.id
             LEFT JOIN pokedex AS pd
@@ -78,7 +80,7 @@ class PokedexRepository extends ServiceEntityRepository
                     AND p.prime_name = rdn.pokemon_name
             LEFT JOIN pokemon AS pp
                 ON p.family_id = pp.id
-        WHERE   d.slug = :dex_slug
+        WHERE   COALESCE(NULLIF(td.slug, ''), d.slug) = :dex_slug
         ORDER BY pokemon_order_number
         SQL;
 
@@ -131,7 +133,8 @@ class PokedexRepository extends ServiceEntityRepository
         string $trainerExternalId,
         string $dexSlug,
         string $pokemonSlug,
-        string $catchStateSlug
+        string $catchStateSlug,
+        string $trainerDexSlug = '',
     ): void {
         $sql = <<<SQL
         INSERT INTO pokedex (
@@ -139,7 +142,8 @@ class PokedexRepository extends ServiceEntityRepository
             trainer_external_id,
             dex_id,
             pokemon_id,
-            catch_state_id
+            catch_state_id,
+            trainer_dex_id
         )
         VALUES
         (
@@ -147,7 +151,15 @@ class PokedexRepository extends ServiceEntityRepository
             :trainer_external_id,
             (SELECT id FROM dex WHERE slug = :dex_slug),
             (SELECT id FROM pokemon WHERE slug = :pokemon_slug),
-            (SELECT id FROM catch_state WHERE slug = :catch_state_slug)
+            (SELECT id FROM catch_state WHERE slug = :catch_state_slug),
+            (
+                SELECT  td.id
+                FROM    trainer_dex AS td
+                    JOIN dex AS d
+                        ON td.dex_id = d.id
+                WHERE   td.slug = :trainer_dex_slug
+                    AND d.slug = :dex_slug
+            )
         )
         ON CONFLICT (trainer_external_id, dex_id, pokemon_id)
         DO
@@ -163,6 +175,7 @@ class PokedexRepository extends ServiceEntityRepository
                 'dex_slug' => $dexSlug,
                 'pokemon_slug' => $pokemonSlug,
                 'catch_state_slug' => $catchStateSlug,
+                'trainer_dex_slug' => $trainerDexSlug,
             ]
         );
     }

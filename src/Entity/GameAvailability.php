@@ -19,6 +19,7 @@ class GameAvailability
     public string $pokemonName;
 
     #[ORM\ManyToOne(targetEntity: Game::class)]
+    #[ORM\JoinColumn(nullable: false)]
     #[Groups("game_availabilities_list")]
     public Game $game;
 
