@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Controller;
 
+/**
+ * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+ */
 final class AlbumControllerTestData
 {
     /**
      * @return string[][]|int[][]|null[][]
-     *
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
     public static function getExpectedRegGreenBlueYellowContent(
         ?string $bulbasaurCatchState,
@@ -79,8 +80,6 @@ final class AlbumControllerTestData
     }
     /**
      * @return string[][]|int[][]|null[][]
-     *
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
     public static function getExpectedGoldSilverCrystalContent(
         ?string $bulbasaurCatchState,
@@ -217,8 +216,6 @@ final class AlbumControllerTestData
 
     /**
      * @return string[][]|int[][]|null[][]
-     *
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
     public static function getExpectedHomeContent(): array
     {
@@ -367,8 +364,6 @@ final class AlbumControllerTestData
 
     /**
      * @return string[][]|int[][]|null[][]
-     *
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
      */
     public static function getExpectedHomeShinyContent(): array
     {
