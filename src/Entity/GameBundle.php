@@ -24,6 +24,7 @@ class GameBundle
     use SoftDeleteableEntity;
 
     #[ORM\ManyToOne(targetEntity: GameGeneration::class)]
+    #[ORM\JoinColumn(nullable: false)]
     #[Groups(["pokemon_list", "game_list", "game_bundle_list"])]
     public GameGeneration $generation;
 }

@@ -15,7 +15,7 @@ class UpdateGamesAndDexCommandTest extends AbstractUpdaterCommandTest
     public function testUpdate(): void
     {
         $this->assertEquals(9, $this->getTableCount('game_generation'));
-        $this->assertEquals(17, $this->getTableCount('game_bundle'));
+        $this->assertEquals(19, $this->getTableCount('game_bundle'));
         $this->assertEquals(38, $this->getTableCount('game'));
         $this->assertEquals(7, $this->getTableCount('dex'));
 
@@ -27,7 +27,7 @@ class UpdateGamesAndDexCommandTest extends AbstractUpdaterCommandTest
         $commandTester->assertCommandIsSuccessful();
 
         $this->assertEquals(9, $this->getTableCount('game_generation'));
-        $this->assertEquals(18, $this->getTableCount('game_bundle'));
+        $this->assertEquals(19, $this->getTableCount('game_bundle'));
         $this->assertEquals(38, $this->getTableCount('game'));
         $this->assertEquals(23, $this->getTableCount('dex'));
 
@@ -35,7 +35,7 @@ class UpdateGamesAndDexCommandTest extends AbstractUpdaterCommandTest
         $this->assertEquals(6, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString("9 game's generations updated", $commandTester->getDisplay());
-        $this->assertStringContainsString("17 game's bundles updated", $commandTester->getDisplay());
+        $this->assertStringContainsString("18 game's bundles updated", $commandTester->getDisplay());
         $this->assertStringContainsString("36 games updated", $commandTester->getDisplay());
         $this->assertStringContainsString("21 dex updated", $commandTester->getDisplay());
     }

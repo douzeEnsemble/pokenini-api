@@ -16,8 +16,28 @@ App\Entity\TrainerDex:
     trainerdex_u12_home_shiny:
         trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
         dex: '@dex_home_shiny'
+    trainerdex_u12_home_shiny_ot:
+        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        dex: '@dex_home_shiny'
+        name: 'Home Shiny OT'
+        frenchName: 'Home Chromatique OT'
+        slug: 'homeshinyot'
     trainerdex_u12_home_pogo:
         trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
         dex: '@dex_home_pogo'
         isPrivate: false
         isOnHome: true
+    trainerdex_u12_home_pogo_ot:
+        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        dex: '@dex_home_pogo'
+        isPrivate: false
+        isOnHome: true
+        name: 'Home PoGo OT'
+        slug: 'homepogoot'
+    trainerdex_u12_home_pogo_pokeball:
+        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        dex: '@dex_home_pogo'
+        isPrivate: false
+        isOnHome: true
+        frenchName: 'Home PoGo Poké Ball'
+        slug: 'homepogopokeball'

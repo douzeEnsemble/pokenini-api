@@ -73,22 +73,27 @@ class Pokemon
     public ?bool $bankableish = null;
 
     #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: false)]
     #[Groups(["pokemon_list"])]
     public GameBundle $originalGameBundle;
 
     #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: true)]
     #[Groups(["pokemon_list"])]
     public ?VariantForm $variantForm;
 
     #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: true)]
     #[Groups(["pokemon_list"])]
     public ?RegionalForm $regionalForm;
 
     #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: true)]
     #[Groups(["pokemon_list"])]
     public ?SpecialForm $specialForm;
 
     #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: true)]
     #[Groups(["pokemon_list"])]
     public ?CategoryForm $categoryForm;
 

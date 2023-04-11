@@ -20,8 +20,9 @@ trait GetTrainerDexTrait
         SELECT      td.*
         FROM        trainer_dex AS td
             JOIN dex AS d
-                ON td.dex_id = d.id AND d.slug = :dex_slug
+                ON td.dex_id = d.id
         WHERE       td.trainer_external_id = :trainer_external_id
+            AND     COALESCE(NULLIF(td.slug, ''), d.slug) = :dex_slug
         SQL;
         $parameters = [
             'trainer_external_id' => $trainerExternalId,

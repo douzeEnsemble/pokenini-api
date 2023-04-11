@@ -17,10 +17,12 @@ class DexAvailability
     use BaseEntityTrait;
 
     #[ORM\ManyToOne(targetEntity: Pokemon::class)]
+    #[ORM\JoinColumn(nullable: false)]
     #[Groups(["dex_availabilities_list"])]
     public Pokemon $pokemon;
 
     #[ORM\ManyToOne(targetEntity: Dex::class)]
+    #[ORM\JoinColumn(nullable: false)]
     public Dex $dex;
 
     public static function create(

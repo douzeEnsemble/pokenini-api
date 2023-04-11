@@ -9,6 +9,8 @@ use App\DTO\AlbumReport\Statistic;
 use App\Repository\DexAvailabilitiesRepository;
 use App\Repository\DexRepository;
 use App\Repository\PokedexRepository;
+use App\Repository\TrainerDexRepository;
+use Doctrine\DBAL\Exception\NotNullConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,6 +24,7 @@ class AlbumController extends AbstractController
     public function __construct(
         private readonly PokedexRepository $pokedexRepository,
         private readonly DexAvailabilitiesRepository $dexAvailabilitiesRepository,
+        private readonly TrainerDexRepository $trainerDexRepository,
     ) {
     }
 
@@ -49,31 +52,40 @@ class AlbumController extends AbstractController
     }
 
     #[Route(methods: ['PATCH'], path: '/{trainerExternalId}/{dexSlug}/{pokemonSlug}')]
+    #[Route(methods: ['PATCH'], path: '/{trainerExternalId}/{dexSlug}-{trainerDexSlug}/{pokemonSlug}')]
     public function update(
         Request $request,
         string $trainerExternalId,
         string $dexSlug,
-        string $pokemonSlug
+        string $pokemonSlug,
+        string $trainerDexSlug = '',
     ): Response {
-        $this->upsert($trainerExternalId, $dexSlug, $pokemonSlug, $request);
+        $this->upsert($trainerExternalId, $dexSlug, $trainerDexSlug, $pokemonSlug, $request);
 
         return new Response();
     }
 
     #[Route(methods: ['PUT'], path: '/{trainerExternalId}/{dexSlug}/{pokemonSlug}')]
+    #[Route(methods: ['PUT'], path: '/{trainerExternalId}/{dexSlug}-{trainerDexSlug}/{pokemonSlug}')]
     public function create(
         Request $request,
         string $trainerExternalId,
         string $dexSlug,
-        string $pokemonSlug
+        string $pokemonSlug,
+        string $trainerDexSlug = '',
     ): Response {
-        $this->upsert($trainerExternalId, $dexSlug, $pokemonSlug, $request);
+        $this->upsert($trainerExternalId, $dexSlug, $trainerDexSlug, $pokemonSlug, $request);
 
         return new Response('', Response::HTTP_CREATED);
     }
 
-    private function upsert(string $trainerExternalId, string $dexSlug, string $pokemonSlug, Request $request): void
-    {
+    private function upsert(
+        string $trainerExternalId,
+        string $dexSlug,
+        string $trainerDexSlug,
+        string $pokemonSlug,
+        Request $request
+    ): void {
         $content = $request->getContent();
 
         if (empty($content)) {
@@ -83,7 +95,23 @@ class AlbumController extends AbstractController
         /** @var string $catchStateSlug */
         $catchStateSlug = $content;
 
-        $this->pokedexRepository->upsert($trainerExternalId, $dexSlug, $pokemonSlug, $catchStateSlug);
+        try {
+            $this->trainerDexRepository->insertIfNeeded(
+                $trainerExternalId,
+                $dexSlug,
+                $trainerDexSlug
+            );
+
+            $this->pokedexRepository->upsert(
+                $trainerExternalId,
+                $dexSlug,
+                $pokemonSlug,
+                $catchStateSlug,
+                $trainerDexSlug,
+            );
+        } catch (NotNullConstraintViolationException $e) {
+            throw new BadRequestHttpException();
+        }
     }
 
     private function getReport(string $trainerExternalId, string $dexSlug): Report

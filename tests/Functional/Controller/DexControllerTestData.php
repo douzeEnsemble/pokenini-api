@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Controller;
 
+/**
+ * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+ */
 final class DexControllerTestData
 {
     /**
@@ -13,6 +16,7 @@ final class DexControllerTestData
     {
         return [
             [
+                'dex_slug' => 'redgreenblueyellow',
                 'name' => 'Red / Green / Blue / Yellow',
                 'french_name' => 'Rouge / Vert / Bleu / Jaune',
                 'slug' => 'redgreenblueyellow',
@@ -24,6 +28,7 @@ final class DexControllerTestData
                 'is_released' => true,
             ],
             [
+                'dex_slug' => 'rubysapphireemerald',
                 'name' => 'Ruby / Sapphire / Emerald',
                 'french_name' => 'Rubis / Saphir / Émeraude',
                 'slug' => 'rubysapphireemerald',
@@ -35,6 +40,7 @@ final class DexControllerTestData
                 'is_released' => true,
             ],
             [
+                'dex_slug' => 'home',
                 'name' => 'Home',
                 'french_name' => 'Home',
                 'slug' => 'home',
@@ -46,6 +52,7 @@ final class DexControllerTestData
                 'is_released' => true,
             ],
             [
+                'dex_slug' => 'homeshiny',
                 'name' => 'Home Shiny',
                 'french_name' => 'Home Chromatique',
                 'slug' => 'homeshiny',
@@ -57,9 +64,46 @@ final class DexControllerTestData
                 'is_released' => true,
             ],
             [
+                'dex_slug' => 'homeshiny',
+                'name' => 'Home Shiny OT',
+                'french_name' => 'Home Chromatique OT',
+                'slug' => 'homeshinyot',
+                'is_shiny' => true,
+                'is_private' => true,
+                'is_display_form' => true,
+                'display_template' => 'box',
+                'is_on_home' => false,
+                'is_released' => true,
+            ],
+            [
+                'dex_slug' => 'homepogo',
                 'name' => 'Home PoGo',
                 'french_name' => 'Home PoGo',
                 'slug' => 'homepogo',
+                'is_shiny' => false,
+                'is_private' => false,
+                'is_display_form' => false,
+                'display_template' => 'list-7',
+                'is_on_home' => true,
+                'is_released' => true,
+            ],
+            [
+                'dex_slug' => 'homepogo',
+                'name' => 'Home PoGo OT',
+                'french_name' => 'Home PoGo',
+                'slug' => 'homepogoot',
+                'is_shiny' => false,
+                'is_private' => false,
+                'is_display_form' => false,
+                'display_template' => 'list-7',
+                'is_on_home' => true,
+                'is_released' => true,
+            ],
+            [
+                'dex_slug' => 'homepogo',
+                'name' => 'Home PoGo',
+                'french_name' => 'Home PoGo Poké Ball',
+                'slug' => 'homepogopokeball',
                 'is_shiny' => false,
                 'is_private' => false,
                 'is_display_form' => false,
@@ -77,6 +121,7 @@ final class DexControllerTestData
     {
         return [
             [
+                'dex_slug' => 'redgreenblueyellow',
                 'name' => 'Red / Green / Blue / Yellow',
                 'french_name' => 'Rouge / Vert / Bleu / Jaune',
                 'slug' => 'redgreenblueyellow',
@@ -88,6 +133,7 @@ final class DexControllerTestData
                 'is_released' => true,
             ],
             [
+                'dex_slug' => 'goldsilvercrystal',
                 'name' => 'Gold / Silver / Crystal',
                 'french_name' => 'Or / Argent / Cristal',
                 'slug' => 'goldsilvercrystal',
@@ -99,6 +145,7 @@ final class DexControllerTestData
                 'is_released' => false,
             ],
             [
+                'dex_slug' => 'rubysapphireemerald',
                 'name' => 'Ruby / Sapphire / Emerald',
                 'french_name' => 'Rubis / Saphir / Émeraude',
                 'slug' => 'rubysapphireemerald',
@@ -110,6 +157,7 @@ final class DexControllerTestData
                 'is_released' => true,
             ],
             [
+                'dex_slug' => 'home',
                 'name' => 'Home',
                 'french_name' => 'Home',
                 'slug' => 'home',
@@ -121,6 +169,7 @@ final class DexControllerTestData
                 'is_released' => true,
             ],
             [
+                'dex_slug' => 'homeshiny',
                 'name' => 'Home Shiny',
                 'french_name' => 'Home Chromatique',
                 'slug' => 'homeshiny',
@@ -132,9 +181,46 @@ final class DexControllerTestData
                 'is_released' => true,
             ],
             [
+                'dex_slug' => 'homeshiny',
+                'name' => 'Home Shiny OT',
+                'french_name' => 'Home Chromatique OT',
+                'slug' => 'homeshinyot',
+                'is_shiny' => true,
+                'is_private' => true,
+                'is_display_form' => true,
+                'display_template' => 'box',
+                'is_on_home' => false,
+                'is_released' => true,
+            ],
+            [
+                'dex_slug' => 'homepogo',
                 'name' => 'Home PoGo',
                 'french_name' => 'Home PoGo',
                 'slug' => 'homepogo',
+                'is_shiny' => false,
+                'is_private' => false,
+                'is_display_form' => false,
+                'display_template' => 'list-7',
+                'is_on_home' => true,
+                'is_released' => true,
+            ],
+            [
+                'dex_slug' => 'homepogo',
+                'name' => 'Home PoGo OT',
+                'french_name' => 'Home PoGo',
+                'slug' => 'homepogoot',
+                'is_shiny' => false,
+                'is_private' => false,
+                'is_display_form' => false,
+                'display_template' => 'list-7',
+                'is_on_home' => true,
+                'is_released' => true,
+            ],
+            [
+                'dex_slug' => 'homepogo',
+                'name' => 'Home PoGo',
+                'french_name' => 'Home PoGo Poké Ball',
+                'slug' => 'homepogopokeball',
                 'is_shiny' => false,
                 'is_private' => false,
                 'is_display_form' => false,
@@ -152,6 +238,7 @@ final class DexControllerTestData
     {
         return [
             [
+                'dex_slug' => 'redgreenblueyellow',
                 'name' => 'Red / Green / Blue / Yellow',
                 'french_name' => 'Rouge / Vert / Bleu / Jaune',
                 'slug' => 'redgreenblueyellow',
@@ -163,6 +250,7 @@ final class DexControllerTestData
                 'is_released' => true,
             ],
             [
+                'dex_slug' => 'rubysapphireemerald',
                 'name' => 'Ruby / Sapphire / Emerald',
                 'french_name' => 'Rubis / Saphir / Émeraude',
                 'slug' => 'rubysapphireemerald',
@@ -174,6 +262,7 @@ final class DexControllerTestData
                 'is_released' => true,
             ],
             [
+                'dex_slug' => 'home',
                 'name' => 'Home',
                 'french_name' => 'Home',
                 'slug' => 'home',
@@ -185,6 +274,7 @@ final class DexControllerTestData
                 'is_released' => true,
             ],
             [
+                'dex_slug' => 'homeshiny',
                 'name' => 'Home Shiny',
                 'french_name' => 'Home Chromatique',
                 'slug' => 'homeshiny',
@@ -196,6 +286,7 @@ final class DexControllerTestData
                 'is_released' => true,
             ],
             [
+                'dex_slug' => 'homepogo',
                 'name' => 'Home PoGo',
                 'french_name' => 'Home PoGo',
                 'slug' => 'homepogo',
@@ -216,6 +307,7 @@ final class DexControllerTestData
     {
         return [
             [
+                'dex_slug' => 'redgreenblueyellow',
                 'name' => 'Red / Green / Blue / Yellow',
                 'french_name' => 'Rouge / Vert / Bleu / Jaune',
                 'slug' => 'redgreenblueyellow',
@@ -227,6 +319,7 @@ final class DexControllerTestData
                 'is_released' => true,
             ],
             [
+                'dex_slug' => 'rubysapphireemerald',
                 'name' => 'Ruby / Sapphire / Emerald',
                 'french_name' => 'Rubis / Saphir / Émeraude',
                 'slug' => 'rubysapphireemerald',
@@ -238,6 +331,7 @@ final class DexControllerTestData
                 'is_released' => true,
             ],
             [
+                'dex_slug' => 'home',
                 'name' => 'Home',
                 'french_name' => 'Home',
                 'slug' => 'home',
@@ -249,6 +343,7 @@ final class DexControllerTestData
                 'is_released' => true,
             ],
             [
+                'dex_slug' => 'homeshiny',
                 'name' => 'Home Shiny',
                 'french_name' => 'Home Chromatique',
                 'slug' => 'homeshiny',
@@ -260,6 +355,7 @@ final class DexControllerTestData
                 'is_released' => true,
             ],
             [
+                'dex_slug' => 'homepogo',
                 'name' => 'Home PoGo',
                 'french_name' => 'Home PoGo',
                 'slug' => 'homepogo',

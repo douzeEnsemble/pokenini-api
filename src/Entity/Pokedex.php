@@ -15,13 +15,20 @@ class Pokedex
     use BaseEntityTrait;
 
     #[ORM\ManyToOne]
-    public ?Pokemon $pokemon;
+    #[ORM\JoinColumn(nullable: false)]
+    public Pokemon $pokemon;
 
     #[ORM\ManyToOne]
-    public ?Dex $dex;
+    #[ORM\JoinColumn(nullable: false)]
+    public Dex $dex;
 
     #[ORM\ManyToOne]
-    public ?CatchState $catchState;
+    #[ORM\JoinColumn(nullable: true)]
+    public ?TrainerDex $trainerDex;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: true)]
+    public CatchState $catchState;
 
     #[ORM\Column]
     public string $trainerExternalId = '';

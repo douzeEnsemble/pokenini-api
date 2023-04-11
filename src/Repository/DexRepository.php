@@ -44,9 +44,10 @@ class DexRepository extends ServiceEntityRepository
     public function getData(string $trainerExternalId, string $dexSlug): array
     {
         $sql = <<<SQL
-        SELECT      d.slug AS "slug",
-                    d.name AS "name",
-                    d.french_name AS "french_name",
+        SELECT      COALESCE(NULLIF(td.slug, ''), d.slug) AS "slug",
+                    d.slug AS "original_slug",
+                    COALESCE(td.name, d.name) AS "name",
+                    COALESCE(td.french_name, d.french_name) AS "french_name",
                     d.is_shiny AS "is_shiny",
                     d.is_display_form AS "is_display_form",
                     d.display_template AS "display_template",
@@ -64,7 +65,7 @@ class DexRepository extends ServiceEntityRepository
                     ON d.region_id = r.id
                 LEFT JOIN trainer_dex AS td
                     ON td.dex_id = d.id AND td.trainer_external_id = :trainer_external_id
-        WHERE       d.slug = :dex_slug
+        WHERE       COALESCE(NULLIF(td.slug, ''), d.slug) = :dex_slug
         SQL;
 
         $data = $this->getEntityManager()->getConnection()->fetchAllAssociative(
