@@ -21,10 +21,13 @@ trait GetPokedexTrait
         FROM        pokedex AS pd
             JOIN pokemon AS p
                 ON pd.pokemon_id = p.id AND p.slug = :pokemon_slug
+            JOIN trainer_dex AS td
+                ON pd.trainer_dex_id = td.id
             JOIN dex AS d
-                ON pd.dex_id = d.id AND d.slug = :dex_slug
+                ON td.dex_id = d.id
             JOIN catch_state AS cs
                 ON pd.catch_state_id = cs.id
+        WHERE   COALESCE(NULLIF(td.slug, ''), d.slug) = :dex_slug
         SQL;
         $parameters = [
             'dex_slug' => $dexSlug,

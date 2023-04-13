@@ -41,3 +41,13 @@ App\Entity\TrainerDex:
         isOnHome: true
         frenchName: 'Home PoGo Poké Ball'
         slug: 'homepogopokeball'
+
+    trainerdex_u13_redgreenblueyellow:
+        trainerExternalId: 'bd307a3ec329e10a2cff8fb87480823da114f8f4'
+        dex: '@dex_redgreenblueyellow'
+    trainerdex_u13_goldsilvercrystal:
+        trainerExternalId: 'bd307a3ec329e10a2cff8fb87480823da114f8f4'
+        dex: '@dex_goldsilvercrystal'
+    trainerdex_u13_home:
+        trainerExternalId: 'bd307a3ec329e10a2cff8fb87480823da114f8f4'
+        dex: '@dex_home'

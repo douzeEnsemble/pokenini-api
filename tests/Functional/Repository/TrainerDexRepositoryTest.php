@@ -25,11 +25,11 @@ class TrainerDexRepositoryTest extends KernelTestCase
         /** @var TrainerDexRepository $repo */
         $repo = static::getContainer()->get(TrainerDexRepository::class);
 
-        $this->assertEquals(9, $this->getTrainerDexCount());
+        $this->assertEquals(12, $this->getTrainerDexCount());
 
         $repo->insertIfNeeded('7b52009b64fd0a2a49e6d8a939753077792b0554', 'spoon');
 
-        $this->assertEquals(10, $this->getTrainerDexCount());
+        $this->assertEquals(13, $this->getTrainerDexCount());
     }
 
     public function testInsertIfNeededSlugOk(): void
@@ -37,11 +37,11 @@ class TrainerDexRepositoryTest extends KernelTestCase
         /** @var TrainerDexRepository $repo */
         $repo = static::getContainer()->get(TrainerDexRepository::class);
 
-        $this->assertEquals(9, $this->getTrainerDexCount());
+        $this->assertEquals(12, $this->getTrainerDexCount());
 
         $repo->insertIfNeeded('7b52009b64fd0a2a49e6d8a939753077792b0554', 'spoon', 'fork');
 
-        $this->assertEquals(10, $this->getTrainerDexCount());
+        $this->assertEquals(13, $this->getTrainerDexCount());
     }
 
     public function testInsertIfNeededNoSlugKoDexDontExists(): void
@@ -69,11 +69,11 @@ class TrainerDexRepositoryTest extends KernelTestCase
         /** @var TrainerDexRepository $repo */
         $repo = static::getContainer()->get(TrainerDexRepository::class);
 
-        $this->assertEquals(9, $this->getTrainerDexCount());
+        $this->assertEquals(12, $this->getTrainerDexCount());
 
         $repo->insertIfNeeded('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow');
 
-        $this->assertEquals(9, $this->getTrainerDexCount());
+        $this->assertEquals(12, $this->getTrainerDexCount());
     }
 
     public function testInsertIfNeededSlugKoAlreadyExists(): void
@@ -81,11 +81,11 @@ class TrainerDexRepositoryTest extends KernelTestCase
         /** @var TrainerDexRepository $repo */
         $repo = static::getContainer()->get(TrainerDexRepository::class);
 
-        $this->assertEquals(9, $this->getTrainerDexCount());
+        $this->assertEquals(12, $this->getTrainerDexCount());
 
         $repo->insertIfNeeded('7b52009b64fd0a2a49e6d8a939753077792b0554', 'homepogo', 'homepogoot');
 
-        $this->assertEquals(9, $this->getTrainerDexCount());
+        $this->assertEquals(12, $this->getTrainerDexCount());
     }
 
     public function testInsertIfNeededNoSlugOkThenKo(): void
@@ -93,15 +93,15 @@ class TrainerDexRepositoryTest extends KernelTestCase
         /** @var TrainerDexRepository $repo */
         $repo = static::getContainer()->get(TrainerDexRepository::class);
 
-        $this->assertEquals(9, $this->getTrainerDexCount());
+        $this->assertEquals(12, $this->getTrainerDexCount());
 
         $repo->insertIfNeeded('7b52009b64fd0a2a49e6d8a939753077792b0554', 'spoon');
 
-        $this->assertEquals(10, $this->getTrainerDexCount());
+        $this->assertEquals(13, $this->getTrainerDexCount());
 
         $repo->insertIfNeeded('7b52009b64fd0a2a49e6d8a939753077792b0554', 'spoon');
 
-        $this->assertEquals(10, $this->getTrainerDexCount());
+        $this->assertEquals(13, $this->getTrainerDexCount());
     }
 
     public function testInsertIfNeededlugOkThenKo(): void
@@ -109,14 +109,14 @@ class TrainerDexRepositoryTest extends KernelTestCase
         /** @var TrainerDexRepository $repo */
         $repo = static::getContainer()->get(TrainerDexRepository::class);
 
-        $this->assertEquals(9, $this->getTrainerDexCount());
+        $this->assertEquals(12, $this->getTrainerDexCount());
 
         $repo->insertIfNeeded('7b52009b64fd0a2a49e6d8a939753077792b0554', 'spoon', 'fork');
 
-        $this->assertEquals(10, $this->getTrainerDexCount());
+        $this->assertEquals(13, $this->getTrainerDexCount());
 
         $repo->insertIfNeeded('7b52009b64fd0a2a49e6d8a939753077792b0554', 'spoon', 'fork');
 
-        $this->assertEquals(10, $this->getTrainerDexCount());
+        $this->assertEquals(13, $this->getTrainerDexCount());
     }
 }

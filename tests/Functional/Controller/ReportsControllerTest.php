@@ -71,6 +71,21 @@ class ReportsControllerTest extends WebTestCase
                     'name' => 'Home',
                     'french_name' => 'Home',
                 ],
+                [
+                    'nb' => 1,
+                    'name' => 'Ruby / Sapphire / Emerald',
+                    'french_name' => 'Rubis / Saphir / Émeraude',
+                ],
+                [
+                    'nb' => 1,
+                    'name' => 'Home Shiny',
+                    'french_name' => 'Home Chromatique',
+                ],
+                [
+                    'nb' => 1,
+                    'name' => 'Home PoGo',
+                    'french_name' => 'Home PoGo',
+                ],
             ],
             'catch_state_usage' => [
                 [
