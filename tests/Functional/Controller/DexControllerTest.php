@@ -148,13 +148,13 @@ class DexControllerTest extends AbstractControllerApiTest
 
     public function testCreate(): void
     {
-        $trainerDexBefore = $this->getTrainerDex('bd307a3ec329e10a2cff8fb87480823da114f8f4', 'redgreenblueyellow');
+        $trainerDexBefore = $this->getTrainerDex('fa35e192121eabf3dabf9f5ea6abdbcbc107ac3b', 'redgreenblueyellow');
 
         $this->assertEmpty($trainerDexBefore);
 
         $this->apiRequest(
             'PUT',
-            'dex/bd307a3ec329e10a2cff8fb87480823da114f8f4/redgreenblueyellow',
+            'dex/fa35e192121eabf3dabf9f5ea6abdbcbc107ac3b/redgreenblueyellow',
             [],
             ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
             '{"is_private": true, "is_on_home": false}'
@@ -162,7 +162,7 @@ class DexControllerTest extends AbstractControllerApiTest
 
         $this->assertResponseIsOK();
 
-        $trainerDexAfter = $this->getTrainerDex('bd307a3ec329e10a2cff8fb87480823da114f8f4', 'redgreenblueyellow');
+        $trainerDexAfter = $this->getTrainerDex('fa35e192121eabf3dabf9f5ea6abdbcbc107ac3b', 'redgreenblueyellow');
 
         $this->assertArrayHasKey('is_private', $trainerDexAfter);
         $this->assertTrue($trainerDexAfter['is_private']);
@@ -175,13 +175,13 @@ class DexControllerTest extends AbstractControllerApiTest
 
     public function testCreateWithMissingAttribute(): void
     {
-        $trainerDexBefore = $this->getTrainerDex('bd307a3ec329e10a2cff8fb87480823da114f8f4', 'redgreenblueyellow');
+        $trainerDexBefore = $this->getTrainerDex('fa35e192121eabf3dabf9f5ea6abdbcbc107ac3b', 'redgreenblueyellow');
 
         $this->assertEmpty($trainerDexBefore);
 
         $this->apiRequest(
             'PUT',
-            'dex/bd307a3ec329e10a2cff8fb87480823da114f8f4/redgreenblueyellow',
+            'dex/fa35e192121eabf3dabf9f5ea6abdbcbc107ac3b/redgreenblueyellow',
             [],
             ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
             '{"is_private": true}',
@@ -189,7 +189,7 @@ class DexControllerTest extends AbstractControllerApiTest
 
         $this->assertResponseIsOK();
 
-        $trainerDexAfter = $this->getTrainerDex('bd307a3ec329e10a2cff8fb87480823da114f8f4', 'redgreenblueyellow');
+        $trainerDexAfter = $this->getTrainerDex('fa35e192121eabf3dabf9f5ea6abdbcbc107ac3b', 'redgreenblueyellow');
 
         $this->assertArrayHasKey('is_private', $trainerDexAfter);
         $this->assertTrue($trainerDexAfter['is_private']);
@@ -204,7 +204,7 @@ class DexControllerTest extends AbstractControllerApiTest
     {
         $this->apiRequest(
             'PUT',
-            'dex/bd307a3ec329e10a2cff8fb87480823da114f8f4/redgreenblueyellow',
+            'dex/fa35e192121eabf3dabf9f5ea6abdbcbc107ac3b/redgreenblueyellow',
             [],
             ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
             '{"is_private": true, "isOnHome": false}',
@@ -217,7 +217,7 @@ class DexControllerTest extends AbstractControllerApiTest
     {
         $this->apiRequest(
             'PUT',
-            'dex/bd307a3ec329e10a2cff8fb87480823da114f8f4/redgreenblueyellow',
+            'dex/fa35e192121eabf3dabf9f5ea6abdbcbc107ac3b/redgreenblueyellow',
             [],
             ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
             '',

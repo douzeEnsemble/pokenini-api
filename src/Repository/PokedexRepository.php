@@ -56,16 +56,16 @@ class PokedexRepository extends ServiceEntityRepository
         FROM    dex_availability AS da
             JOIN pokemon AS p
                 ON da.pokemon_id = p.id
-            JOIN trainer_dex AS td
-                ON da.dex_id = td.dex_id
             JOIN dex AS d
-                ON td.dex_id = d.id
+                ON da.dex_id = d.id
+            LEFT JOIN trainer_dex AS td
+                ON d.id = td.dex_id
+                    AND td.trainer_external_id = :trainer_external_id
             LEFT JOIN region AS r
                 ON d.region_id = r.id
             LEFT JOIN pokedex AS pd
-                ON pd.dex_id = da.dex_id
+                ON pd.trainer_dex_id = td.id
                 AND pd.pokemon_id = da.pokemon_id
-                AND pd.trainer_external_id = :trainer_external_id
             LEFT JOIN catch_state AS cs
                 ON pd.catch_state_id = cs.id
             LEFT JOIN regional_form AS rf
@@ -107,10 +107,13 @@ class PokedexRepository extends ServiceEntityRepository
             JOIN dex AS d
                 ON da.dex_id = d.id
 
+            LEFT JOIN trainer_dex AS td
+                ON d.id = td.dex_id
+                    AND td.trainer_external_id = :trainer_external_id
+
             LEFT JOIN pokedex AS pd
-                ON pd.dex_id = da.dex_id
+                ON pd.trainer_dex_id = td.id
                     AND pd.pokemon_id = da.pokemon_id
-                    AND pd.trainer_external_id = :trainer_external_id
         WHERE
             d.slug = :dex_slug
             AND cs.deleted_at IS NULL
@@ -139,8 +142,6 @@ class PokedexRepository extends ServiceEntityRepository
         $sql = <<<SQL
         INSERT INTO pokedex (
             id,
-            trainer_external_id,
-            dex_id,
             pokemon_id,
             catch_state_id,
             trainer_dex_id
@@ -148,8 +149,6 @@ class PokedexRepository extends ServiceEntityRepository
         VALUES
         (
             :id,
-            :trainer_external_id,
-            (SELECT id FROM dex WHERE slug = :dex_slug),
             (SELECT id FROM pokemon WHERE slug = :pokemon_slug),
             (SELECT id FROM catch_state WHERE slug = :catch_state_slug),
             (
@@ -159,9 +158,10 @@ class PokedexRepository extends ServiceEntityRepository
                         ON td.dex_id = d.id
                 WHERE   td.slug = :trainer_dex_slug
                     AND d.slug = :dex_slug
+                    AND td.trainer_external_id = :trainer_external_id
             )
         )
-        ON CONFLICT (trainer_external_id, dex_id, pokemon_id)
+        ON CONFLICT (pokemon_id, trainer_dex_id)
         DO
         UPDATE
         SET catch_state_id = excluded.catch_state_id
@@ -186,10 +186,12 @@ class PokedexRepository extends ServiceEntityRepository
     {
         $sql = <<<SQL
         SELECT      COUNT(*) AS nb,
-                    p.trainer_external_id as trainer
+                    td.trainer_external_id as trainer
         FROM        pokedex AS p
-        GROUP BY p.trainer_external_id
-        ORDER BY nb DESC, p.trainer_external_id ASC
+            JOIN trainer_dex AS td
+                ON p.trainer_dex_id = td.id
+        GROUP BY td.trainer_external_id
+        ORDER BY nb DESC, td.trainer_external_id ASC
         SQL;
 
         return $this->getReportsResult($sql);
@@ -201,13 +203,12 @@ class PokedexRepository extends ServiceEntityRepository
     public function getDexUsage(): array
     {
         $sql = <<<SQL
-        SELECT      COUNT(DISTINCT p.trainer_external_id) AS nb,
+        SELECT      COUNT(DISTINCT td.trainer_external_id) AS nb,
                         d.name, d.french_name
         FROM        dex AS d
-                JOIN dex_availability AS da ON d.id = da.dex_id
-                LEFT JOIN pokedex AS p ON d.id = p.dex_id
+                JOIN trainer_dex AS td ON d.id = td.dex_id
         GROUP BY    d.name, d.french_name, d.order_number
-        HAVING      COUNT(DISTINCT p.trainer_external_id) > 0
+        HAVING      COUNT(DISTINCT td.trainer_external_id) > 0
         ORDER BY    nb DESC, d.order_number
         SQL;
 

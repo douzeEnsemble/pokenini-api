@@ -1,97 +1,113 @@
 App\Entity\Pokedex:
     pokedex_u12_redgreenblueyellow_bulbasaur:
         pokemon: '@pokemon_bulbasaur'
-        dex: '@dex_redgreenblueyellow'
         catchState: '@catchstate_no'
-        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-        
+        # trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        # dex: '@dex_redgreenblueyellow'
+        trainerDex: '@trainerdex_u12_redgreenblueyellow'
+
     pokedex_u12_redgreenblueyellow_yvysaur:
         pokemon: '@pokemon_ivysaur'
-        dex: '@dex_redgreenblueyellow'
         catchState: '@catchstate_maybe'
-        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-        
+        # trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        # dex: '@dex_redgreenblueyellow'
+        trainerDex: '@trainerdex_u12_redgreenblueyellow'
+
     pokedex_u12_redgreenblueyellow_venusaur:
         pokemon: '@pokemon_venusaur'
-        dex: '@dex_redgreenblueyellow'
         catchState: '@catchstate_maybenot'
-        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-        
+        # trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        # dex: '@dex_redgreenblueyellow'
+        trainerDex: '@trainerdex_u12_redgreenblueyellow'
+
     pokedex_u12_redgreenblueyellow_caterpie:
         pokemon: '@pokemon_caterpie'
-        dex: '@dex_redgreenblueyellow'
         catchState: '@catchstate_maybenot'
-        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-        
+        # trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        # dex: '@dex_redgreenblueyellow'
+        trainerDex: '@trainerdex_u12_redgreenblueyellow'
+
     pokedex_u12_goldsilvercrystal_bulbasaur:
         pokemon: '@pokemon_bulbasaur'
-        dex: '@dex_goldsilvercrystal'
         catchState: '@catchstate_yes'
-        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-        
+        # dex: '@dex_goldsilvercrystal'
+        # trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        trainerDex: '@trainerdex_u12_goldsilvercrystal'
+
     pokedex_u12_goldsilvercrystal_yvysaur:
         pokemon: '@pokemon_ivysaur'
-        dex: '@dex_goldsilvercrystal'
         catchState: '@catchstate_no'
-        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-        
+        # dex: '@dex_goldsilvercrystal'
+        # trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        trainerDex: '@trainerdex_u12_goldsilvercrystal'
+
     pokedex_u12_goldsilvercrystal_venusaur:
         pokemon: '@pokemon_venusaur'
-        dex: '@dex_goldsilvercrystal'
         catchState: '@catchstate_no'
-        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-        
+        # dex: '@dex_goldsilvercrystal'
+        # trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        trainerDex: '@trainerdex_u12_goldsilvercrystal'
+
     pokedex_u12_home_bulbasaur:
         pokemon: '@pokemon_bulbasaur'
-        dex: '@dex_home'
         catchState: '@catchstate_no'
-        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-        
+        # dex: '@dex_home'
+        # trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        trainerDex: '@trainerdex_u12_home'
+
     pokedex_u12_home_yvysaur:
         pokemon: '@pokemon_ivysaur'
-        dex: '@dex_home'
         catchState: '@catchstate_no'
-        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-        
+        # dex: '@dex_home'
+        # trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        trainerDex: '@trainerdex_u12_home'
+
     pokedex_u12_home_venusaur:
         pokemon: '@pokemon_venusaur'
-        dex: '@dex_home'
         catchState: '@catchstate_no'
-        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-        
+        # dex: '@dex_home'
+        # trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        trainerDex: '@trainerdex_u12_home'
+
     pokedex_u12_home_venusaurf:
         pokemon: '@pokemon_venusaur_f'
-        dex: '@dex_home'
         catchState: '@catchstate_no'
-        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-        
+        # dex: '@dex_home'
+        # trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        trainerDex: '@trainerdex_u12_home'
+
     pokedex_u12_home_venusaurmega:
         pokemon: '@pokemon_venusaur_mega'
-        dex: '@dex_home'
         catchState: '@catchstate_no'
-        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-        
+        # dex: '@dex_home'
+        # trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        trainerDex: '@trainerdex_u12_home'
+
     pokedex_u12_home_venusaurgigantamax:
         pokemon: '@pokemon_venusaur_gigantamax'
-        dex: '@dex_home'
         catchState: '@catchstate_no'
-        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-        
+        # dex: '@dex_home'
+        # trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        trainerDex: '@trainerdex_u12_home'
+
     pokedex_u13_redgreenblueyellow_bulbasaur:
         pokemon: '@pokemon_bulbasaur'
-        dex: '@dex_redgreenblueyellow'
         catchState: '@catchstate_yes'
-        trainerExternalId: 'bd307a3ec329e10a2cff8fb87480823da114f8f4'
-        
+        # dex: '@dex_redgreenblueyellow'
+        # trainerExternalId: 'bd307a3ec329e10a2cff8fb87480823da114f8f4'
+        trainerDex: '@trainerdex_u13_redgreenblueyellow'
+
     pokedex_u13_goldsilvercrystal_bulbasaur:
         pokemon: '@pokemon_bulbasaur'
-        dex: '@dex_goldsilvercrystal'
         catchState: '@catchstate_yes'
-        trainerExternalId: 'bd307a3ec329e10a2cff8fb87480823da114f8f4'
-        
+        # dex: '@dex_goldsilvercrystal'
+        # trainerExternalId: 'bd307a3ec329e10a2cff8fb87480823da114f8f4'
+        trainerDex: '@trainerdex_u13_goldsilvercrystal'
+
     pokedex_u13_home_bulbasaur:
         pokemon: '@pokemon_bulbasaur'
-        dex: '@dex_home'
         catchState: '@catchstate_yes'
-        trainerExternalId: 'bd307a3ec329e10a2cff8fb87480823da114f8f4'
-    
+        # dex: '@dex_home'
+        # trainerExternalId: 'bd307a3ec329e10a2cff8fb87480823da114f8f4'
+        trainerDex: '@trainerdex_u13_home'
+

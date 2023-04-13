@@ -520,7 +520,7 @@ class AlbumControllerTest extends AbstractControllerApiTest
         $this->assertArrayHasKey('slug', $pokedexBefore);
         $this->assertEquals('maybe', $pokedexBefore['slug']);
 
-        $this->assertEquals(9, $this->getTrainerDexCount());
+        $this->assertEquals(12, $this->getTrainerDexCount());
 
         $this->apiRequest(
             'PATCH',
@@ -537,7 +537,7 @@ class AlbumControllerTest extends AbstractControllerApiTest
         $this->assertArrayHasKey('slug', $pokedexAfter);
         $this->assertEquals('yes', $pokedexAfter['slug']);
 
-        $this->assertEquals(9, $this->getTrainerDexCount());
+        $this->assertEquals(12, $this->getTrainerDexCount());
     }
 
     public function testUpdateEmpty(): void
@@ -585,7 +585,7 @@ class AlbumControllerTest extends AbstractControllerApiTest
 
         $this->assertEmpty($pokedexBefore);
 
-        $this->assertEquals(9, $this->getTrainerDexCount());
+        $this->assertEquals(12, $this->getTrainerDexCount());
 
         $this->apiRequest(
             'PUT',
@@ -602,7 +602,7 @@ class AlbumControllerTest extends AbstractControllerApiTest
         $this->assertArrayHasKey('slug', $pokedexAfter);
         $this->assertEquals('maybenot', $pokedexAfter['slug']);
 
-        $this->assertEquals(9, $this->getTrainerDexCount());
+        $this->assertEquals(12, $this->getTrainerDexCount());
     }
 
     public function testCreateNonExistingTrainerDex(): void
@@ -611,7 +611,7 @@ class AlbumControllerTest extends AbstractControllerApiTest
 
         $this->assertEmpty($pokedexBefore);
 
-        $this->assertEquals(9, $this->getTrainerDexCount());
+        $this->assertEquals(12, $this->getTrainerDexCount());
 
         $this->apiRequest(
             'PUT',
@@ -628,7 +628,7 @@ class AlbumControllerTest extends AbstractControllerApiTest
         $this->assertArrayHasKey('slug', $pokedexAfter);
         $this->assertEquals('maybenot', $pokedexAfter['slug']);
 
-        $this->assertEquals(10, $this->getTrainerDexCount());
+        $this->assertEquals(13, $this->getTrainerDexCount());
     }
 
     public function testCreateNonExistingDex(): void

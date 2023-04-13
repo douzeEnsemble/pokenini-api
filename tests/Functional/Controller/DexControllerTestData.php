@@ -267,7 +267,7 @@ final class DexControllerTestData
                 'french_name' => 'Home',
                 'slug' => 'home',
                 'is_shiny' => false,
-                'is_private' => false,
+                'is_private' => true,
                 'is_display_form' => true,
                 'display_template' => 'box',
                 'is_on_home' => false,
