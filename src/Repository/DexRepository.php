@@ -44,7 +44,7 @@ class DexRepository extends ServiceEntityRepository
     public function getData(string $trainerExternalId, string $dexSlug): array
     {
         $sql = <<<SQL
-        SELECT      COALESCE(NULLIF(td.slug, ''), d.slug) AS "slug",
+        SELECT      COALESCE(td.slug, d.slug) AS "slug",
                     d.slug AS "original_slug",
                     COALESCE(td.name, d.name) AS "name",
                     COALESCE(td.french_name, d.french_name) AS "french_name",
@@ -64,8 +64,10 @@ class DexRepository extends ServiceEntityRepository
                 LEFT JOIN region AS r
                     ON d.region_id = r.id
                 LEFT JOIN trainer_dex AS td
-                    ON td.dex_id = d.id AND td.trainer_external_id = :trainer_external_id
-        WHERE       COALESCE(NULLIF(td.slug, ''), d.slug) = :dex_slug
+                    ON td.dex_id = d.id
+                    AND td.trainer_external_id = :trainer_external_id
+        WHERE      td.slug = :dex_slug
+                OR (td.slug IS NULL AND d.slug = :dex_slug)
         SQL;
 
         $data = $this->getEntityManager()->getConnection()->fetchAllAssociative(

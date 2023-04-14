@@ -114,9 +114,8 @@ class PokedexRepository extends ServiceEntityRepository
             LEFT JOIN pokedex AS pd
                 ON pd.trainer_dex_id = td.id
                     AND pd.pokemon_id = da.pokemon_id
-        WHERE
-            d.slug = :dex_slug
-            AND cs.deleted_at IS NULL
+                    AND td.slug = :dex_slug
+        WHERE   cs.deleted_at IS NULL
             AND (pd.catch_state_id IS NULL OR cs.id = pd.catch_state_id)
         GROUP BY cs.slug, cs.name, cs.french_name, cs.order_number
         ORDER BY cs.order_number
@@ -137,7 +136,6 @@ class PokedexRepository extends ServiceEntityRepository
         string $dexSlug,
         string $pokemonSlug,
         string $catchStateSlug,
-        string $trainerDexSlug = '',
     ): void {
         $sql = <<<SQL
         INSERT INTO pokedex (
@@ -154,10 +152,7 @@ class PokedexRepository extends ServiceEntityRepository
             (
                 SELECT  td.id
                 FROM    trainer_dex AS td
-                    JOIN dex AS d
-                        ON td.dex_id = d.id
-                WHERE   td.slug = :trainer_dex_slug
-                    AND d.slug = :dex_slug
+                WHERE   td.slug = :dex_slug
                     AND td.trainer_external_id = :trainer_external_id
             )
         )
@@ -175,7 +170,6 @@ class PokedexRepository extends ServiceEntityRepository
                 'dex_slug' => $dexSlug,
                 'pokemon_slug' => $pokemonSlug,
                 'catch_state_slug' => $catchStateSlug,
-                'trainer_dex_slug' => $trainerDexSlug,
             ]
         );
     }
