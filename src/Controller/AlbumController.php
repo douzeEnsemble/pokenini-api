@@ -52,29 +52,25 @@ class AlbumController extends AbstractController
     }
 
     #[Route(methods: ['PATCH'], path: '/{trainerExternalId}/{dexSlug}/{pokemonSlug}')]
-    #[Route(methods: ['PATCH'], path: '/{trainerExternalId}/{dexSlug}-{trainerDexSlug}/{pokemonSlug}')]
     public function update(
         Request $request,
         string $trainerExternalId,
         string $dexSlug,
         string $pokemonSlug,
-        string $trainerDexSlug = '',
     ): Response {
-        $this->upsert($trainerExternalId, $dexSlug, $trainerDexSlug, $pokemonSlug, $request);
+        $this->upsert($trainerExternalId, $dexSlug, $pokemonSlug, $request);
 
         return new Response();
     }
 
     #[Route(methods: ['PUT'], path: '/{trainerExternalId}/{dexSlug}/{pokemonSlug}')]
-    #[Route(methods: ['PUT'], path: '/{trainerExternalId}/{dexSlug}-{trainerDexSlug}/{pokemonSlug}')]
     public function create(
         Request $request,
         string $trainerExternalId,
         string $dexSlug,
         string $pokemonSlug,
-        string $trainerDexSlug = '',
     ): Response {
-        $this->upsert($trainerExternalId, $dexSlug, $trainerDexSlug, $pokemonSlug, $request);
+        $this->upsert($trainerExternalId, $dexSlug, $pokemonSlug, $request);
 
         return new Response('', Response::HTTP_CREATED);
     }
@@ -82,7 +78,6 @@ class AlbumController extends AbstractController
     private function upsert(
         string $trainerExternalId,
         string $dexSlug,
-        string $trainerDexSlug,
         string $pokemonSlug,
         Request $request
     ): void {
@@ -99,7 +94,6 @@ class AlbumController extends AbstractController
             $this->trainerDexRepository->insertIfNeeded(
                 $trainerExternalId,
                 $dexSlug,
-                $trainerDexSlug
             );
 
             $this->pokedexRepository->upsert(
@@ -107,7 +101,6 @@ class AlbumController extends AbstractController
                 $dexSlug,
                 $pokemonSlug,
                 $catchStateSlug,
-                $trainerDexSlug,
             );
         } catch (NotNullConstraintViolationException $e) {
             throw new BadRequestHttpException();

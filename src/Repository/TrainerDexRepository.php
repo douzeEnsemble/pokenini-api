@@ -67,70 +67,43 @@ class TrainerDexRepository extends ServiceEntityRepository
         );
     }
 
-    public function upsert(
+    public function set(
         string $trainerExternalId,
         string $dexSlug,
-        string $trainerDexSlug,
         TrainerDexAttributes $attributes
     ): void {
-        $sql = <<<SQL
-        INSERT INTO trainer_dex (
-            id,
-            trainer_external_id,
-            dex_id,
-            is_private,
-            is_on_home,
-            slug
-        )
-        VALUES
-        (
-            :id,
-            :trainer_external_id,
-            (SELECT id FROM dex WHERE slug = :dex_slug),
-            :is_private,
-            :is_on_home,
-            :trainer_dex_slug
-        )
-        ON CONFLICT (trainer_external_id, dex_id, slug)
-        DO
-        UPDATE
-        SET is_private = excluded.is_private,
-            is_on_home = excluded.is_on_home
-        SQL;
+        if (! $this->isCustomized($trainerExternalId, $dexSlug)) {
+            $this->upsert($trainerExternalId, $dexSlug, $attributes);
 
-        $this->getEntityManager()->getConnection()->executeQuery(
-            $sql,
-            [
-                'id' => Uuid::v4(),
-                'trainer_external_id' => $trainerExternalId,
-                'dex_slug' => $dexSlug,
-                'trainer_dex_slug' => $trainerDexSlug,
-                'is_private' => (int) $attributes->isPrivate,
-                'is_on_home' => (int) $attributes->isOnHome,
-            ]
-        );
+            return;
+        }
+
+        $this->updateCustom($trainerExternalId, $dexSlug, $attributes);
     }
 
     public function insertIfNeeded(
         string $trainerExternalId,
         string $dexSlug,
-        string $slug = '',
     ): void {
         $sql = <<<SQL
         INSERT INTO trainer_dex (
             id,
             trainer_external_id,
             dex_id,
+            name,
+            french_name,
             slug
         )
-        VALUES
-        (
+        SELECT
             :id,
             :trainer_external_id,
-            (SELECT id FROM dex WHERE slug = :dex_slug),
-            :slug
-        )
-        ON CONFLICT (trainer_external_id, dex_id, slug)
+            d.id,
+            d.name,
+            d.french_name,
+            d.slug
+        FROM    dex AS d
+        WHERE   d.slug = :dex_slug
+        ON CONFLICT (trainer_external_id, slug)
         DO NOTHING
         SQL;
 
@@ -140,7 +113,102 @@ class TrainerDexRepository extends ServiceEntityRepository
                 'id' => Uuid::v4(),
                 'trainer_external_id' => $trainerExternalId,
                 'dex_slug' => $dexSlug,
-                'slug' => $slug,
+            ]
+        );
+    }
+
+    private function isCustomized(
+        string $trainerExternalId,
+        string $dexSlug
+    ): bool {
+        $sql = <<<SQL
+        SELECT      COUNT(*)
+        FROM        trainer_dex AS td
+                JOIN dex AS d
+                    ON td.dex_id = d.id AND td.slug <> d.slug
+        WHERE       td.slug = :dex_slug
+                AND td.trainer_external_id = :trainer_external_id
+        SQL;
+
+        $count = $this->getEntityManager()->getConnection()->fetchOne(
+            $sql,
+            [
+                'id' => Uuid::v4(),
+                'trainer_external_id' => $trainerExternalId,
+                'dex_slug' => $dexSlug,
+            ]
+        );
+
+        return $count > 0;
+    }
+
+    private function upsert(
+        string $trainerExternalId,
+        string $dexSlug,
+        TrainerDexAttributes $attributes
+    ): void {
+        $sql = <<<SQL
+        INSERT INTO trainer_dex (
+            id,
+            trainer_external_id,
+            dex_id,
+            is_private,
+            is_on_home,
+            name,
+            french_name,
+            slug
+        )
+        SELECT
+            :id,
+            :trainer_external_id,
+            d.id,
+            :is_private,
+            :is_on_home,
+            d.name,
+            d.french_name,
+            d.slug
+        FROM    dex AS d
+        WHERE   d.slug = :dex_slug
+        ON CONFLICT (trainer_external_id, slug)
+        DO
+        UPDATE
+        SET     is_private = excluded.is_private,
+                is_on_home = excluded.is_on_home
+        WHERE   trainer_dex.slug = excluded.slug
+        SQL;
+
+        $this->getEntityManager()->getConnection()->executeQuery(
+            $sql,
+            [
+                'id' => Uuid::v4(),
+                'trainer_external_id' => $trainerExternalId,
+                'dex_slug' => $dexSlug,
+                'is_private' => (int) $attributes->isPrivate,
+                'is_on_home' => (int) $attributes->isOnHome,
+            ]
+        );
+    }
+
+    private function updateCustom(
+        string $trainerExternalId,
+        string $dexSlug,
+        TrainerDexAttributes $attributes
+    ): void {
+        $sql = <<<SQL
+        UPDATE  trainer_dex
+        SET     is_private = :is_private,
+                is_on_home = :is_on_home
+        WHERE   trainer_dex.slug = :dex_slug
+            AND trainer_external_id = :trainer_external_id
+        SQL;
+
+        $this->getEntityManager()->getConnection()->executeQuery(
+            $sql,
+            [
+                'trainer_external_id' => $trainerExternalId,
+                'dex_slug' => $dexSlug,
+                'is_private' => (int) $attributes->isPrivate,
+                'is_on_home' => (int) $attributes->isOnHome,
             ]
         );
     }

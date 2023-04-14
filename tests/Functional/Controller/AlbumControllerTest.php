@@ -27,6 +27,8 @@ class AlbumControllerTest extends AbstractControllerApiTest
 
         $this->assertArrayHasKey('slug', $data['dex']);
         $this->assertEquals('redgreenblueyellow', $data['dex']['slug']);
+        $this->assertArrayHasKey('original_slug', $data['dex']);
+        $this->assertEquals('redgreenblueyellow', $data['dex']['original_slug']);
         $this->assertArrayHasKey('name', $data['dex']);
         $this->assertEquals('Red / Green / Blue / Yellow', $data['dex']['name']);
         $this->assertArrayHasKey('french_name', $data['dex']);
@@ -98,6 +100,8 @@ class AlbumControllerTest extends AbstractControllerApiTest
 
         $this->assertArrayHasKey('slug', $data['dex']);
         $this->assertEquals('goldsilvercrystal', $data['dex']['slug']);
+        $this->assertArrayHasKey('original_slug', $data['dex']);
+        $this->assertEquals('goldsilvercrystal', $data['dex']['original_slug']);
         $this->assertArrayHasKey('name', $data['dex']);
         $this->assertEquals('Gold / Silver / Crystal', $data['dex']['name']);
         $this->assertArrayHasKey('french_name', $data['dex']);
@@ -171,6 +175,8 @@ class AlbumControllerTest extends AbstractControllerApiTest
 
         $this->assertArrayHasKey('slug', $data['dex']);
         $this->assertEquals('redgreenblueyellow', $data['dex']['slug']);
+        $this->assertArrayHasKey('original_slug', $data['dex']);
+        $this->assertEquals('redgreenblueyellow', $data['dex']['original_slug']);
         $this->assertArrayHasKey('name', $data['dex']);
         $this->assertEquals('Red / Green / Blue / Yellow', $data['dex']['name']);
         $this->assertArrayHasKey('french_name', $data['dex']);
@@ -242,6 +248,8 @@ class AlbumControllerTest extends AbstractControllerApiTest
 
         $this->assertArrayHasKey('slug', $data['dex']);
         $this->assertEquals('redgreenblueyellow', $data['dex']['slug']);
+        $this->assertArrayHasKey('original_slug', $data['dex']);
+        $this->assertEquals('redgreenblueyellow', $data['dex']['original_slug']);
         $this->assertArrayHasKey('name', $data['dex']);
         $this->assertEquals('Red / Green / Blue / Yellow', $data['dex']['name']);
         $this->assertArrayHasKey('french_name', $data['dex']);
@@ -311,6 +319,8 @@ class AlbumControllerTest extends AbstractControllerApiTest
 
         $this->assertArrayHasKey('slug', $data['dex']);
         $this->assertEquals('home', $data['dex']['slug']);
+        $this->assertArrayHasKey('original_slug', $data['dex']);
+        $this->assertEquals('home', $data['dex']['original_slug']);
         $this->assertArrayHasKey('dex', $data);
         $this->assertArrayHasKey('name', $data['dex']);
         $this->assertEquals('Home', $data['dex']['name']);
@@ -355,7 +365,7 @@ class AlbumControllerTest extends AbstractControllerApiTest
 
     public function testListHomeShiny(): void
     {
-        $this->apiRequest('GET', 'album/7b52009b64fd0a2a49e6d8a939753077792b0554/homeshiny');
+        $this->apiRequest('GET', 'album/7b52009b64fd0a2a49e6d8a939753077792b0554/home_shiny');
 
         $this->assertResponseIsOK();
 
@@ -364,7 +374,9 @@ class AlbumControllerTest extends AbstractControllerApiTest
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('slug', $data['dex']);
-        $this->assertEquals('homeshiny', $data['dex']['slug']);
+        $this->assertEquals('home_shiny', $data['dex']['slug']);
+        $this->assertArrayHasKey('original_slug', $data['dex']);
+        $this->assertEquals('homeshiny', $data['dex']['original_slug']);
         $this->assertArrayHasKey('dex', $data);
         $this->assertArrayHasKey('name', $data['dex']);
         $this->assertEquals('Home Shiny', $data['dex']['name']);
@@ -409,7 +421,7 @@ class AlbumControllerTest extends AbstractControllerApiTest
 
     public function testListHomePoGo(): void
     {
-        $this->apiRequest('GET', 'album/7b52009b64fd0a2a49e6d8a939753077792b0554/homepogo');
+        $this->apiRequest('GET', 'album/7b52009b64fd0a2a49e6d8a939753077792b0554/home_pogo');
 
         $this->assertResponseIsOK();
 
@@ -418,7 +430,9 @@ class AlbumControllerTest extends AbstractControllerApiTest
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('slug', $data['dex']);
-        $this->assertEquals('homepogo', $data['dex']['slug']);
+        $this->assertEquals('home_pogo', $data['dex']['slug']);
+        $this->assertArrayHasKey('original_slug', $data['dex']);
+        $this->assertEquals('homepogo', $data['dex']['original_slug']);
         $this->assertArrayHasKey('dex', $data);
         $this->assertArrayHasKey('name', $data['dex']);
         $this->assertEquals('Home PoGo', $data['dex']['name']);
@@ -457,9 +471,9 @@ class AlbumControllerTest extends AbstractControllerApiTest
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('slug', $data['dex']);
-        $this->assertEquals('homeshiny', $data['dex']['original_slug']);
-        $this->assertArrayHasKey('slug', $data['dex']);
         $this->assertEquals('homeshinyot', $data['dex']['slug']);
+        $this->assertArrayHasKey('original_slug', $data['dex']);
+        $this->assertEquals('homeshiny', $data['dex']['original_slug']);
         $this->assertArrayHasKey('dex', $data);
         $this->assertArrayHasKey('name', $data['dex']);
         $this->assertEquals('Home Shiny OT', $data['dex']['name']);
@@ -485,6 +499,28 @@ class AlbumControllerTest extends AbstractControllerApiTest
         $this->assertEquals('1', $data['dex']['version']);
         $this->assertArrayHasKey('is_released', $data['dex']);
         $this->assertTrue($data['dex']['is_released']);
+    }
+
+    public function testListMultipleHomePoGo(): void
+    {
+        $this->apiRequest('GET', 'album/7b52009b64fd0a2a49e6d8a939753077792b0554/homepogo');
+
+        $this->assertResponseIsOK();
+
+        $content = $this->getResponseContent();
+        /** @var string[][]|string[][][]|int[][][] $data */
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertArrayHasKey('dex', $data);
+        $this->assertEmpty($data['dex']);
+        $this->assertArrayHasKey('pokemons', $data);
+        $this->assertEmpty($data['pokemons']);
+
+        $this->assertArrayHasKey('report', $data);
+        /** @var int[]|int[][][]|string[][][] $report */
+        $report = $data['report'];
+
+        $this->assertReport($report, 0, 0, 0, 0, 0);
     }
 
     public function testListNoSlug(): void
@@ -555,6 +591,10 @@ class AlbumControllerTest extends AbstractControllerApiTest
 
     public function testUpdateNonExistingDex(): void
     {
+        $pokedexBefore = $this->getPokedexFromSlugs('douze', 'ivysaur');
+
+        $this->assertEmpty($pokedexBefore);
+
         $this->apiRequest(
             'PATCH',
             'album/7b52009b64fd0a2a49e6d8a939753077792b0554/douze/ivysaur',
@@ -563,7 +603,11 @@ class AlbumControllerTest extends AbstractControllerApiTest
             'yes'
         );
 
-        $this->assertResponseStatusCodeSame(400);
+        $this->assertResponseIsSuccessful();
+
+        $pokedexAfter = $this->getPokedexFromSlugs('douze', 'ivysaur');
+
+        $this->assertEmpty($pokedexAfter);
     }
 
     public function testUpdateNonExistingPokemon(): void
@@ -633,6 +677,10 @@ class AlbumControllerTest extends AbstractControllerApiTest
 
     public function testCreateNonExistingDex(): void
     {
+        $pokedexBefore = $this->getPokedexFromSlugs('douze', 'ivysaur');
+
+        $this->assertEmpty($pokedexBefore);
+
         $this->apiRequest(
             'PUT',
             'album/7b52009b64fd0a2a49e6d8a939753077792b0554/douze/ivysaur',
@@ -641,7 +689,11 @@ class AlbumControllerTest extends AbstractControllerApiTest
             'yes'
         );
 
-        $this->assertResponseStatusCodeSame(400);
+        $this->assertResponseIsSuccessful();
+
+        $pokedexAfter = $this->getPokedexFromSlugs('douze', 'ivysaur');
+
+        $this->assertEmpty($pokedexAfter);
     }
 
     public function testCreateNonExistingPokemon(): void

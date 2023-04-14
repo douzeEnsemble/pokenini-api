@@ -29,13 +29,22 @@ class DexAvailabilitiesRepository extends ServiceEntityRepository
 
     public function getTotal(string $dexSlug): int
     {
-        $queryBuilder = $this->createQueryBuilder('da');
-        $queryBuilder->select('count(da)');
-        $queryBuilder->join('da.dex', 'd');
-        $queryBuilder->where($queryBuilder->expr()->eq('d.slug', ':dex_slug'));
-        $queryBuilder->setParameter('dex_slug', $dexSlug);
+        $sql = <<<SQL
+        SELECT		COUNT(DISTINCT da.pokemon_id)
+        FROM		dex_availability AS da
+                JOIN dex AS d
+                    ON da.dex_id = d.id
+                JOIN trainer_dex AS td
+                    ON d.id = td.dex_id
+        WHERE		td.slug = :dex_slug
+        SQL;
 
         /** @var int */
-        return $queryBuilder->getQuery()->getSingleScalarResult();
+        return $this->getEntityManager()->getConnection()->fetchOne(
+            $sql,
+            [
+                'dex_slug' => $dexSlug,
+            ]
+        );
     }
 }

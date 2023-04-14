@@ -9,7 +9,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\UniqueConstraint;
 
 #[ORM\Entity]
-#[UniqueConstraint(name: 'trainers_dex', columns: ['trainer_external_id', 'dex_id', 'slug'])]
+#[UniqueConstraint(name: 'trainers_dex', columns: ['trainer_external_id', 'slug'])]
 class TrainerDex
 {
     use BaseEntityTrait;
@@ -27,12 +27,12 @@ class TrainerDex
     #[ORM\Column(options: ['default' => false])]
     public bool $isOnHome = false;
 
-    #[ORM\Column(nullable: true)]
-    public ?string $name = null;
+    #[ORM\Column]
+    public string $name;
 
-    #[ORM\Column(nullable: true)]
-    public ?string $frenchName = null;
+    #[ORM\Column]
+    public string $frenchName;
 
-    #[ORM\Column(options: ['default' => ''])]
-    public string $slug = '';
+    #[ORM\Column]
+    public string $slug;
 }

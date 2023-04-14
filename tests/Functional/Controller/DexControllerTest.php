@@ -88,9 +88,9 @@ class DexControllerTest extends AbstractControllerApiTest
         $this->assertFalse($trainerDexBefore['is_private']);
         $this->assertArrayHasKey('is_on_home', $trainerDexBefore);
         $this->assertFalse($trainerDexBefore['is_on_home']);
-        $this->assertNull($trainerDexBefore['name']);
-        $this->assertNull($trainerDexBefore['french_name']);
-        $this->assertEmpty($trainerDexBefore['slug']);
+        $this->assertEquals('Red / Green / Blue / Yellow', $trainerDexBefore['name']);
+        $this->assertEquals('Rouge / Vert / Bleu / Jaune', $trainerDexBefore['french_name']);
+        $this->assertEquals('redgreenblueyellow', $trainerDexBefore['slug']);
 
         $this->apiRequest(
             'PUT',
@@ -108,9 +108,9 @@ class DexControllerTest extends AbstractControllerApiTest
         $this->assertTrue($trainerDexAfter['is_private']);
         $this->assertArrayHasKey('is_on_home', $trainerDexAfter);
         $this->assertTrue($trainerDexAfter['is_on_home']);
-        $this->assertNull($trainerDexAfter['name']);
-        $this->assertNull($trainerDexAfter['french_name']);
-        $this->assertEmpty($trainerDexAfter['slug']);
+        $this->assertEquals('Red / Green / Blue / Yellow', $trainerDexAfter['name']);
+        $this->assertEquals('Rouge / Vert / Bleu / Jaune', $trainerDexAfter['french_name']);
+        $this->assertEquals('redgreenblueyellow', $trainerDexAfter['slug']);
     }
 
     public function testUpdateTrainerSlug(): void
@@ -121,13 +121,13 @@ class DexControllerTest extends AbstractControllerApiTest
         $this->assertFalse($trainerDexBefore['is_private']);
         $this->assertArrayHasKey('is_on_home', $trainerDexBefore);
         $this->assertTrue($trainerDexBefore['is_on_home']);
-        $this->assertNull($trainerDexBefore['name']);
+        $this->assertEquals('Home PoGo Poké Ball', $trainerDexBefore['name']);
         $this->assertEquals('Home PoGo Poké Ball', $trainerDexBefore['french_name']);
         $this->assertEquals('homepogopokeball', $trainerDexBefore['slug']);
 
         $this->apiRequest(
             'PUT',
-            'dex/7b52009b64fd0a2a49e6d8a939753077792b0554/homepogo/homepogopokeball',
+            'dex/7b52009b64fd0a2a49e6d8a939753077792b0554/homepogopokeball',
             [],
             ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
             '{"is_private": true, "is_on_home": true}'
@@ -141,7 +141,7 @@ class DexControllerTest extends AbstractControllerApiTest
         $this->assertTrue($trainerDexAfter['is_private']);
         $this->assertArrayHasKey('is_on_home', $trainerDexAfter);
         $this->assertTrue($trainerDexAfter['is_on_home']);
-        $this->assertNull($trainerDexAfter['name']);
+        $this->assertEquals('Home PoGo Poké Ball', $trainerDexAfter['name']);
         $this->assertEquals('Home PoGo Poké Ball', $trainerDexAfter['french_name']);
         $this->assertEquals('homepogopokeball', $trainerDexAfter['slug']);
     }
@@ -168,9 +168,9 @@ class DexControllerTest extends AbstractControllerApiTest
         $this->assertTrue($trainerDexAfter['is_private']);
         $this->assertArrayHasKey('is_on_home', $trainerDexAfter);
         $this->assertFalse($trainerDexAfter['is_on_home']);
-        $this->assertNull($trainerDexAfter['name']);
-        $this->assertNull($trainerDexAfter['french_name']);
-        $this->assertEmpty($trainerDexAfter['slug']);
+        $this->assertEquals('Red / Green / Blue / Yellow', $trainerDexAfter['name']);
+        $this->assertEquals('Rouge / Vert / Bleu / Jaune', $trainerDexAfter['french_name']);
+        $this->assertEquals('redgreenblueyellow', $trainerDexAfter['slug']);
     }
 
     public function testCreateWithMissingAttribute(): void
@@ -195,9 +195,9 @@ class DexControllerTest extends AbstractControllerApiTest
         $this->assertTrue($trainerDexAfter['is_private']);
         $this->assertArrayHasKey('is_on_home', $trainerDexAfter);
         $this->assertFalse($trainerDexAfter['is_on_home']);
-        $this->assertNull($trainerDexAfter['name']);
-        $this->assertNull($trainerDexAfter['french_name']);
-        $this->assertEmpty($trainerDexAfter['slug']);
+        $this->assertEquals('Red / Green / Blue / Yellow', $trainerDexAfter['name']);
+        $this->assertEquals('Rouge / Vert / Bleu / Jaune', $trainerDexAfter['french_name']);
+        $this->assertEquals('redgreenblueyellow', $trainerDexAfter['slug']);
     }
 
     public function testBadArgument(): void
