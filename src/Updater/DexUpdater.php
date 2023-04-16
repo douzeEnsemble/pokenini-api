@@ -11,9 +11,9 @@ class DexUpdater extends AbstractUpdater
     protected string $sheetName = 'Dex';
     protected string $tableName = 'dex';
     protected string $statisticName = 'dex';
-    protected string $headerCellsRange = 'A1:O1';
+    protected string $headerCellsRange = 'A1:N1';
     /** @var string[] */
-    protected array $recordsCellsRanges = ['A2:O'];
+    protected array $recordsCellsRanges = ['A2:N'];
 
     protected function getExpectedHeader(): array
     {
@@ -32,7 +32,6 @@ class DexUpdater extends AbstractUpdater
             'Description',
             'Version',
             'Is released',
-            'Calculation group',
         ];
     }
 

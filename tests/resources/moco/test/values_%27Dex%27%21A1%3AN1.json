@@ -1,5 +1,5 @@
 {
-  "range": "Dex!A1:O1",
+  "range": "Dex!A1:N1",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -16,8 +16,7 @@
       "French description",
       "Description",
       "Version",
-      "Is released",
-      "Calculation group"
+      "Is released"
     ]
   ]
 }
