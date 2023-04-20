@@ -31,13 +31,13 @@ services:
         published: 5451
         protocol: tcp
 
-  moco_test:
+  test.moco:
     build:
       context: docker/moco/test
     volumes:
       - ./tests/resources/moco:/var/moco:ro
 
-  moco_int:
+  int.moco:
     build:
       context: docker/moco/int
     volumes:
