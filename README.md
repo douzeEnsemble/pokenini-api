@@ -59,6 +59,14 @@ docker-compose exec php sh -c '
 '
 ```
 
+### Import bulbapedia's games' shinies' availabilty list
+
+```
+docker-compose exec php sh -c '
+    php bin/console app:update:games_shinies_availabilities
+'
+```
+
 ### Calculate games' bundles' availabilty
 
 Game bundle availability are calculated from games' availabilities

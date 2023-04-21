@@ -38,7 +38,7 @@ class CalculateDexAvailabilitiesCommandTest extends KernelTestCase
 
         $this->assertEquals(39, $this->getDexAvailabilityCount());
 
-        $this->assertEquals(7, $this->getActionLogToProcessCount());
+        $this->assertEquals(8, $this->getActionLogToProcessCount());
         $this->assertEquals(5, $this->getActionLogDoneCount());
 
         $commandTester = $this->executeCommand();
@@ -48,7 +48,7 @@ class CalculateDexAvailabilitiesCommandTest extends KernelTestCase
 
         $this->assertEquals(0, $this->getDexAvailabilityCount());
 
-        $this->assertEquals(7, $this->getActionLogToProcessCount());
+        $this->assertEquals(8, $this->getActionLogToProcessCount());
         $this->assertEquals(6, $this->getActionLogDoneCount());
     }
 
@@ -56,7 +56,7 @@ class CalculateDexAvailabilitiesCommandTest extends KernelTestCase
     {
         $this->assertEquals(39, $this->getDexAvailabilityCount());
 
-        $this->assertEquals(7, $this->getActionLogToProcessCount());
+        $this->assertEquals(8, $this->getActionLogToProcessCount());
         $this->assertEquals(5, $this->getActionLogDoneCount());
 
         $commandTester = $this->executeCommand();
@@ -66,7 +66,7 @@ class CalculateDexAvailabilitiesCommandTest extends KernelTestCase
 
         $this->assertEquals(61, $this->getDexAvailabilityCount());
 
-        $this->assertEquals(7, $this->getActionLogToProcessCount());
+        $this->assertEquals(8, $this->getActionLogToProcessCount());
         $this->assertEquals(6, $this->getActionLogDoneCount());
 
         $this->assertTrue($this->hasDexAvailability('Red / Green / Blue / Yellow', 'Bulbasaur'));

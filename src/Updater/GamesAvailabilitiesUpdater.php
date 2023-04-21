@@ -160,7 +160,7 @@ class GamesAvailabilitiesUpdater extends AbstractUpdater
         $sqlValuesStr = implode('), (', $sqlValues);
 
         $sql = <<<SQL
-        INSERT INTO game_availability (
+        INSERT INTO $this->tableName (
             id,
             pokemon_name,
             game_id,

@@ -79,6 +79,7 @@ jobs:
           docker compose exec -T php php bin/console --env=int app:update:pokemons
           docker compose exec -T php php bin/console --env=int app:update:regional_dex_numbers
           docker compose exec -T php php bin/console --env=int app:update:games_availabilities
+          docker compose exec -T php php bin/console --env=int app:update:games_shinies_availabilities
           docker compose exec -T php php bin/console --env=int app:calculate:game_bundles_availabilities
           docker compose exec -T php php bin/console --env=int app:calculate:dex_availabilities
           docker compose --env-file .env.int run newman run collection.json
