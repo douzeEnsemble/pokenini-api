@@ -40,7 +40,7 @@ class UpdateLabelsCommandTest extends AbstractUpdaterCommandTest
         $this->assertEquals(6, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString("6 catch's states updated", $commandTester->getDisplay());
-        $this->assertStringContainsString("0 regions updated", $commandTester->getDisplay());
+        $this->assertStringContainsString("10 regions updated", $commandTester->getDisplay());
         $this->assertStringContainsString("4 category forms updated", $commandTester->getDisplay());
         $this->assertStringContainsString("4 regional forms updated", $commandTester->getDisplay());
         $this->assertStringContainsString("5 special forms updated", $commandTester->getDisplay());

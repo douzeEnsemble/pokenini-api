@@ -13,7 +13,7 @@ class LabelsUpdaterService extends AbstractUpdaterService
     public function __construct(
         private readonly CatchStatesUpdater $catchStatesUpdater,
         private readonly FormsUpdaterService $formsUpdaterService,
-        private readonly RegionsUpdater $regionssUpdater,
+        private readonly RegionsUpdater $regionsUpdater,
     ) {
     }
 
@@ -21,11 +21,11 @@ class LabelsUpdaterService extends AbstractUpdaterService
     {
         $this->catchStatesUpdater->execute();
         $this->formsUpdaterService->execute();
-        $this->regionssUpdater->execute();
+        $this->regionsUpdater->execute();
 
         $this->report = new Report([
             $this->catchStatesUpdater->getStatistic(),
-            $this->regionssUpdater->getStatistic(),
+            $this->regionsUpdater->getStatistic(),
         ]);
 
         $this->report->merge($this->formsUpdaterService->getReport());
