@@ -63,5 +63,7 @@ class RegionsUpdater extends AbstractUpdater
         SQL;
 
         $this->executeQuery($sql, $sqlParameters);
+
+        $this->statictic->increment();
     }
 }
