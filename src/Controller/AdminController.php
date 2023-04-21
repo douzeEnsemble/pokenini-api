@@ -8,6 +8,7 @@ use App\ActionStarter\CalculateDexAvailabilitiesActionStarter;
 use App\ActionStarter\CalculateGameBundlesAvailabilitiesActionStarter;
 use App\ActionStarter\UpdateGamesAndDexActionStarter;
 use App\ActionStarter\UpdateGamesAvailabilitiesActionStarter;
+use App\ActionStarter\UpdateGamesShiniesAvailabilitiesActionStarter;
 use App\ActionStarter\UpdateLabelsActionStarter;
 use App\ActionStarter\UpdatePokemonsActionStarter;
 use App\ActionStarter\UpdateRegionalDexNumbersActionStarter;
@@ -71,6 +72,17 @@ class AdminController extends AbstractController
     #[Route(path: '/update/games_availabilities', methods: ['POST'])]
     public function updateGamesAvailabilities(
         UpdateGamesAvailabilitiesActionStarter $actionStarter
+    ): Response {
+        $message = $actionStarter->start();
+
+        $this->bus->dispatch($message);
+
+        return new Response('', Response::HTTP_CREATED);
+    }
+
+    #[Route(path: '/update/games_shinies_availabilities', methods: ['POST'])]
+    public function updateGamesShiniesAvailabilities(
+        UpdateGamesShiniesAvailabilitiesActionStarter $actionStarter
     ): Response {
         $message = $actionStarter->start();
 

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\MessageHandler;
 
-use App\Message\UpdateLabels;
+use App\Message\UpdateGamesShiniesAvailabilities;
 use App\Tests\Common\Traits\CounterTrait\CounterTableTrait;
 use App\Tests\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Common\Traits\GetterTrait\GetActionLogTrait;
@@ -13,7 +13,7 @@ use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Zenstruck\Messenger\Test\InteractsWithMessenger;
 
-class UpdateLabelsHandlerTest extends KernelTestCase
+class UpdateGamesShiniesAvailabilitiesHandlerTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use InteractsWithMessenger;
@@ -28,39 +28,28 @@ class UpdateLabelsHandlerTest extends KernelTestCase
 
     public function testHandler(): void
     {
-
         $transport = $this->transport('async');
         $transport->throwExceptions();
 
-        $this->assertEquals(5, $this->getTableCount('catch_state'));
-        $this->assertEquals(10, $this->getTableCount('region'));
-        $this->assertEquals(3, $this->getTableCount('category_form'));
-        $this->assertEquals(3, $this->getTableCount('regional_form'));
-        $this->assertEquals(3, $this->getTableCount('special_form'));
-        $this->assertEquals(7, $this->getTableCount('variant_form'));
+        $this->assertEquals(17, $this->getTableCount('game_shiny_availability'));
 
         $this->assertEquals(13, $this->getActionLogCount());
         $this->assertEquals(8, $this->getActionLogToProcessCount());
         $this->assertEquals(5, $this->getActionLogDoneCount());
 
         $transport->send(
-            new UpdateLabels(
-                $this->getIdToProcess(UpdateLabels::class)
+            new UpdateGamesShiniesAvailabilities(
+                $this->getIdToProcess(UpdateGamesShiniesAvailabilities::class)
             )
         );
 
-        $transport->queue()->assertContains(UpdateLabels::class, 1);
+        $transport->queue()->assertContains(UpdateGamesShiniesAvailabilities::class, 1);
 
         $transport->process(1);
 
         $transport->queue()->assertEmpty();
 
-        $this->assertEquals(9, $this->getTableCount('catch_state'));
-        $this->assertEquals(10, $this->getTableCount('region'));
-        $this->assertEquals(4, $this->getTableCount('category_form'));
-        $this->assertEquals(4, $this->getTableCount('regional_form'));
-        $this->assertEquals(5, $this->getTableCount('special_form'));
-        $this->assertEquals(8, $this->getTableCount('variant_form'));
+        $this->assertEquals(2622, $this->getTableCount('game_shiny_availability'));
 
         $this->assertEquals(13, $this->getActionLogCount());
         $this->assertEquals(7, $this->getActionLogToProcessCount());
@@ -72,9 +61,9 @@ class UpdateLabelsHandlerTest extends KernelTestCase
         $transport = $this->transport('async');
         $transport->throwExceptions();
 
-        $transport->send(new UpdateLabels('0a35b132-fa1d-4528-b866-dadac5876e1c'));
+        $transport->send(new UpdateGamesShiniesAvailabilities('0a35b132-fa1d-4528-b866-dadac5876e1c'));
 
-        $transport->queue()->assertContains(UpdateLabels::class, 1);
+        $transport->queue()->assertContains(UpdateGamesShiniesAvailabilities::class, 1);
 
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage("Can't find ActionLog #0a35b132-fa1d-4528-b866-dadac5876e1c");

@@ -1,5 +1,6 @@
 update:
   games_availabilities: "games' availabilities"
+  games_shinies_availabilities: "games' shinies' availabilities"
   regional_dex_numbers: "regional dex numbers"
   game_generations: "game's generations"
   game_bundles: "game's bundles"

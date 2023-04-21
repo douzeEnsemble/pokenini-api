@@ -8,6 +8,7 @@ use App\Message\CalculateDexAvailabilities;
 use App\Message\CalculateGameBundlesAvailabilities;
 use App\Message\UpdateGamesAndDex;
 use App\Message\UpdateGamesAvailabilities;
+use App\Message\UpdateGamesShiniesAvailabilities;
 use App\Message\UpdateLabels;
 use App\Message\UpdatePokemons;
 use App\Message\UpdateRegionalDexNumbers;
@@ -106,6 +107,28 @@ class AdminControllerTest extends WebTestCase
         $this->assertResponseStatusCodeSame(201);
 
         $this->transport('async')->queue()->assertContains(UpdateGamesAvailabilities::class, 1);
+    }
+
+    public function testUpdateGamesShiniesAvailabilities(): void
+    {
+        $client = static::createClient();
+
+        $this->transport('async')->queue()->assertEmpty();
+
+        $client->request(
+            'POST',
+            "/istration/update/games_shinies_availabilities",
+            [],
+            [],
+            [
+                'PHP_AUTH_USER' => 'web',
+                'PHP_AUTH_PW'   => 'douze',
+            ],
+        );
+
+        $this->assertResponseStatusCodeSame(201);
+
+        $this->transport('async')->queue()->assertContains(UpdateGamesShiniesAvailabilities::class, 1);
     }
 
     public function testUpdateRegionalDexNumbers(): void

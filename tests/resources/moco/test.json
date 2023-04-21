@@ -781,5 +781,23 @@
       "status": 200,
       "file": "/var/moco/test/values_%27pokemon_list%20%2F%20family_link%27%21A2%3AAR.json"
     }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Shinies Availability'!A2:AN2"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/test/values_%27Games%20Shinies%20Availability%27%21A2%3AAN2.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Shinies Availability'!A3:AN71"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/test/values_%27Games%20Shinies%20Availability%27%21A3%3AAN71.json"
+    }
   }
 ]

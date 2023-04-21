@@ -1,0 +1,69 @@
+App\Entity\GameShinyAvailability:
+    gameshinyavailability_bulbasaur_red:
+        pokemonName: 'Bulbasaur'
+        game: '@game_red'
+        availability: 'C'
+    gameshinyavailability_bulbasaur_blue:
+        pokemonName: 'Bulbasaur'
+        game: '@game_blue'
+        availability: 'C'
+    gameshinyavailability_bulbasaur_yellow:
+        pokemonName: 'Bulbasaur'
+        game: '@game_yellow'
+        availability: 'C'
+    gameshinyavailability_bulbasaur_green:
+        pokemonName: 'Bulbasaur'
+        game: '@game_green'
+        availability: 'C'
+    gameshinyavailability_bulbasaur_gold:
+        pokemonName: 'Bulbasaur'
+        game: '@game_gold'
+        availability: 'C'
+    gameshinyavailability_bulbasaur_silver:
+        pokemonName: 'Bulbasaur'
+        game: '@game_silver'
+        availability: 'C'
+    gameshinyavailability_ivysaur_blue:
+        pokemonName: 'Ivysaur'
+        game: '@game_blue'
+        availability: 'C'
+    gameshinyavailability_ivysaur_yellow:
+        pokemonName: 'Ivysaur'
+        game: '@game_yellow'
+        availability: 'C'
+    gameshinyavailability_ivysaur_green:
+        pokemonName: 'Ivysaur'
+        game: '@game_green'
+        availability: 'C'
+    gameshinyavailability_ivysaur_gold:
+        pokemonName: 'Ivysaur'
+        game: '@game_gold'
+        availability: 'C'
+    gameshinyavailability_ivysaur_silver:
+        pokemonName: 'Ivysaur'
+        game: '@game_silver'
+        availability: 'C'
+    gameshinyavailability_venusaur_blue:
+        pokemonName: 'Venusaur'
+        game: '@game_blue'
+        availability: 'C'
+    gameshinyavailability_venusaur_yellow:
+        pokemonName: 'Venusaur'
+        game: '@game_yellow'
+        availability: 'C'
+    gameshinyavailability_venusaur_green:
+        pokemonName: 'Venusaur'
+        game: '@game_green'
+        availability: 'C'
+    gameshinyavailability_venusaur_gold:
+        pokemonName: 'Venusaur'
+        game: '@game_gold'
+        availability: 'C'
+    gameshinyavailability_venusaur_silver:
+        pokemonName: 'Venusaur'
+        game: '@game_silver'
+        availability: 'C'
+    gameshinyavailability_deoxys_emerald:
+        pokemonName: 'Deoxys'
+        game: '@game_emerald'
+        availability: 'C'

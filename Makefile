@@ -65,6 +65,7 @@ data_app: ## Initialize app data
 	$(SYMFONY) app:update:pokemons
 	$(SYMFONY) app:update:regional_dex_numbers
 	$(SYMFONY) app:update:games_availabilities
+	$(SYMFONY) app:update:games_shinies_availabilities
 	$(SYMFONY) app:calculate:game_bundles_availabilities
 	$(SYMFONY) app:calculate:dex_availabilities
 
@@ -127,6 +128,7 @@ newman: ## Execute newman
 	@$(SYMFONY) --env=int app:update:pokemons
 	@$(SYMFONY) --env=int app:update:regional_dex_numbers
 	@$(SYMFONY) --env=int app:update:games_availabilities
+	@$(SYMFONY) --env=int app:update:games_shinies_availabilities
 	@$(SYMFONY) --env=int app:calculate:game_bundles_availabilities
 	@$(SYMFONY) --env=int app:calculate:dex_availabilities
 	$(DOCKER_COMP) --env-file .env.int run newman run collection.json

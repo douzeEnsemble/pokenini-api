@@ -19,7 +19,7 @@ class UpdateGamesAndDexCommandTest extends AbstractUpdaterCommandTest
         $this->assertEquals(38, $this->getTableCount('game'));
         $this->assertEquals(7, $this->getTableCount('dex'));
 
-        $this->assertEquals(7, $this->getActionLogToProcessCount());
+        $this->assertEquals(8, $this->getActionLogToProcessCount());
         $this->assertEquals(5, $this->getActionLogDoneCount());
 
         $commandTester = $this->executeCommand();
@@ -31,7 +31,7 @@ class UpdateGamesAndDexCommandTest extends AbstractUpdaterCommandTest
         $this->assertEquals(38, $this->getTableCount('game'));
         $this->assertEquals(23, $this->getTableCount('dex'));
 
-        $this->assertEquals(7, $this->getActionLogToProcessCount());
+        $this->assertEquals(8, $this->getActionLogToProcessCount());
         $this->assertEquals(6, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString("9 game's generations updated", $commandTester->getDisplay());

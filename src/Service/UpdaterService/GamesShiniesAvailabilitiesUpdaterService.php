@@ -5,12 +5,12 @@ declare(strict_types=1);
 namespace App\Service\UpdaterService;
 
 use App\DTO\DataChangeReport\Report;
-use App\Updater\GamesAvailabilitiesUpdater;
+use App\Updater\GamesShiniesAvailabilitiesUpdater;
 
-class GamesAvailabilitiesUpdaterService extends AbstractUpdaterService
+class GamesShiniesAvailabilitiesUpdaterService extends AbstractUpdaterService
 {
     public function __construct(
-        private readonly GamesAvailabilitiesUpdater $updater
+        private readonly GamesShiniesAvailabilitiesUpdater $updater
     ) {
     }
 
