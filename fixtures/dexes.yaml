@@ -8,7 +8,7 @@ App\Entity\Dex:
         region: '@region_kanto'
         description: 'The list of obtainable Pokémons in Red, Blue, Yellow and even Green games'
         frenchDescription: 'La liste des pokémons obtenable dans les jeux Rouge, Bleu, Jaune et même Vert.'
-        version: 1
+        lastChangedAt: '<(new DateTime("2023-02-21 08:51:00"))>'
     dex_goldsilvercrystal:
         name: 'Gold / Silver / Crystal'
         frenchName: 'Or / Argent / Cristal'
@@ -18,7 +18,7 @@ App\Entity\Dex:
         region: '@region_johto'
         description: 'The list of obtainable Pokémons in Gold, Silver and Crystal games'
         frenchDescription: 'La liste des pokémons obtenable dans les jeux Or, Argent et Cristal.'
-        version: 1
+        lastChangedAt: '<(new DateTime("2023-02-21 08:51:00"))>'
         isReleased: false
     dex_rubysapphireemerald:
         name: 'Ruby / Sapphire / Emerald'
@@ -26,6 +26,7 @@ App\Entity\Dex:
         selectionRule: "(p.bankable or p.bankableish) and ba?.rubysapphireemerald"
         displayTemplate: 'box'
         orderNumber: 3
+        lastChangedAt: '<date_create()>'
     dex_home:
         name: 'Home'
         frenchName: 'Home'
@@ -33,7 +34,7 @@ App\Entity\Dex:
         displayTemplate: 'box'
         orderNumber: 4
         isPrivate: false
-        version: 2
+        lastChangedAt: '<(new DateTime("2023-04-21 12:34:56"))>'
     dex_home_shiny:
         name: 'Home Shiny'
         frenchName: 'Home Chromatique'
@@ -42,6 +43,7 @@ App\Entity\Dex:
         orderNumber: 5
         isShiny: true
         isPrivate: false
+        lastChangedAt: '<(new DateTime("2023-03-21 12:34:56"))>'
     dex_home_pogo:
         name: 'Home PoGo'
         frenchName: 'Home PoGo'
@@ -51,6 +53,7 @@ App\Entity\Dex:
         isShiny: false
         isPrivate: false
         isDisplayForm: false
+        lastChangedAt: '<(new DateTime("2023-03-21 12:12:12"))>'
     dex_spoon:
         name: 'Spoon'
         frenchName: 'Cuillière'
@@ -61,3 +64,4 @@ App\Entity\Dex:
         isPrivate: false
         isDisplayForm: true
         deletedAt: '<date_create()>'
+        lastChangedAt: '<date_create()>'

@@ -58,7 +58,7 @@ class DexRepository extends ServiceEntityRepository
                     COALESCE(td.is_on_home, false) AS "is_on_home",
                     d.description AS "description",
                     d.french_description AS "french_description",
-                    d.version AS "version",
+                    TO_CHAR(last_changed_at, 'YYYYMMDD.HHMISS') AS "version",
                     d.is_released AS "is_released"
         FROM        dex AS d
                 LEFT JOIN region AS r
