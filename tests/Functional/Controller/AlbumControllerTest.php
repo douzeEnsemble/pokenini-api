@@ -58,7 +58,7 @@ class AlbumControllerTest extends AbstractControllerApiTest
             $data['dex']['french_description']
         );
         $this->assertArrayHasKey('version', $data['dex']);
-        $this->assertEquals('1', $data['dex']['version']);
+        $this->assertEquals('20230221.085100', $data['dex']['version']);
         $this->assertArrayHasKey('is_released', $data['dex']);
         $this->assertTrue($data['dex']['is_released']);
 
@@ -131,7 +131,7 @@ class AlbumControllerTest extends AbstractControllerApiTest
             $data['dex']['french_description']
         );
         $this->assertArrayHasKey('version', $data['dex']);
-        $this->assertEquals('1', $data['dex']['version']);
+        $this->assertEquals('20230221.085100', $data['dex']['version']);
         $this->assertArrayHasKey('is_released', $data['dex']);
         $this->assertFalse($data['dex']['is_released']);
 
@@ -206,7 +206,7 @@ class AlbumControllerTest extends AbstractControllerApiTest
             $data['dex']['french_description']
         );
         $this->assertArrayHasKey('version', $data['dex']);
-        $this->assertEquals('1', $data['dex']['version']);
+        $this->assertEquals('20230221.085100', $data['dex']['version']);
         $this->assertArrayHasKey('is_released', $data['dex']);
         $this->assertTrue($data['dex']['is_released']);
 
@@ -279,7 +279,7 @@ class AlbumControllerTest extends AbstractControllerApiTest
             $data['dex']['french_description']
         );
         $this->assertArrayHasKey('version', $data['dex']);
-        $this->assertEquals('1', $data['dex']['version']);
+        $this->assertEquals('20230221.085100', $data['dex']['version']);
         $this->assertArrayHasKey('is_released', $data['dex']);
         $this->assertTrue($data['dex']['is_released']);
 
@@ -343,7 +343,7 @@ class AlbumControllerTest extends AbstractControllerApiTest
         $this->assertArrayHasKey('french_description', $data['dex']);
         $this->assertEquals('', $data['dex']['french_description']);
         $this->assertArrayHasKey('version', $data['dex']);
-        $this->assertEquals('2', $data['dex']['version']);
+        $this->assertEquals('20230421.123456', $data['dex']['version']);
         $this->assertArrayHasKey('is_released', $data['dex']);
         $this->assertTrue($data['dex']['is_released']);
 
@@ -399,7 +399,7 @@ class AlbumControllerTest extends AbstractControllerApiTest
         $this->assertArrayHasKey('french_description', $data['dex']);
         $this->assertEquals('', $data['dex']['french_description']);
         $this->assertArrayHasKey('version', $data['dex']);
-        $this->assertEquals('1', $data['dex']['version']);
+        $this->assertEquals('20230321.123456', $data['dex']['version']);
         $this->assertArrayHasKey('is_released', $data['dex']);
         $this->assertTrue($data['dex']['is_released']);
 
@@ -455,7 +455,7 @@ class AlbumControllerTest extends AbstractControllerApiTest
         $this->assertArrayHasKey('french_description', $data['dex']);
         $this->assertEquals('', $data['dex']['french_description']);
         $this->assertArrayHasKey('version', $data['dex']);
-        $this->assertEquals('1', $data['dex']['version']);
+        $this->assertEquals('20230321.121212', $data['dex']['version']);
         $this->assertArrayHasKey('is_released', $data['dex']);
         $this->assertTrue($data['dex']['is_released']);
     }
@@ -496,7 +496,7 @@ class AlbumControllerTest extends AbstractControllerApiTest
         $this->assertArrayHasKey('french_description', $data['dex']);
         $this->assertEquals('', $data['dex']['french_description']);
         $this->assertArrayHasKey('version', $data['dex']);
-        $this->assertEquals('1', $data['dex']['version']);
+        $this->assertEquals('20230321.123456', $data['dex']['version']);
         $this->assertArrayHasKey('is_released', $data['dex']);
         $this->assertTrue($data['dex']['is_released']);
     }

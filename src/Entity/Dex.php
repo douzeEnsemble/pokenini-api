@@ -9,6 +9,7 @@ use App\Entity\Traits\FrenchNamedTrait;
 use App\Entity\Traits\NamedTrait;
 use App\Entity\Traits\OrderedTrait;
 use App\Entity\Traits\SlugifiedTrait;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -75,11 +76,18 @@ class Dex
     #[Groups([
         "dex_list",
     ])]
-    public int $version = 1;
-
-    #[ORM\Column]
-    #[Groups([
-        "dex_list",
-    ])]
     public bool $isReleased = true;
+
+    #[Gedmo\Timestampable(
+        on: 'change',
+        field: [
+            'selectionRule',
+            'isShiny',
+            'isDisplayForm',
+            'displayTemplate',
+            'region'
+        ]
+    )]
+    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+    public \DateTime $lastChangedAt;
 }
