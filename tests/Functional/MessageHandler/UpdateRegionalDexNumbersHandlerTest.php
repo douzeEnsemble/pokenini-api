@@ -33,9 +33,9 @@ class UpdateRegionalDexNumbersHandlerTest extends KernelTestCase
 
         $this->assertEquals(12, $this->getTableCount('regional_dex_number'));
 
-        $this->assertEquals(14, $this->getActionLogCount());
-        $this->assertEquals(9, $this->getActionLogToProcessCount());
-        $this->assertEquals(5, $this->getActionLogDoneCount());
+        $beforeTotalCount = $this->getActionLogCount();
+        $beforeToProcessCount = $this->getActionLogToProcessCount();
+        $beforeDoneCount = $this->getActionLogDoneCount();
 
         $transport->send(
             new UpdateRegionalDexNumbers(
@@ -51,9 +51,9 @@ class UpdateRegionalDexNumbersHandlerTest extends KernelTestCase
 
         $this->assertEquals(2863, $this->getTableCount('regional_dex_number'));
 
-        $this->assertEquals(14, $this->getActionLogCount());
-        $this->assertEquals(8, $this->getActionLogToProcessCount());
-        $this->assertEquals(6, $this->getActionLogDoneCount());
+        $this->assertEquals($beforeTotalCount, $this->getActionLogCount());
+        $this->assertEquals($beforeToProcessCount - 1, $this->getActionLogToProcessCount());
+        $this->assertEquals($beforeDoneCount + 1, $this->getActionLogDoneCount());
     }
 
     public function testExceptionHandler(): void
