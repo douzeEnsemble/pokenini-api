@@ -5,11 +5,11 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Entity;
 
 use App\Entity\GameBundle;
-use App\Entity\GameBundleAvailability;
+use App\Entity\GameBundleShinyAvailability;
 use App\Entity\Pokemon;
 use PHPUnit\Framework\TestCase;
 
-class GameBundleAvailabilityTest extends TestCase
+class GameBundleShinyAvailabilityTest extends TestCase
 {
     public function testCreateAvailable(): void
     {
@@ -19,15 +19,15 @@ class GameBundleAvailabilityTest extends TestCase
         $gameBundle = new GameBundle();
         $gameBundle->slug = 'Tic,Tac';
 
-        $gameBundleAvailability = GameBundleAvailability::create(
+        $gameBundleShinyAvailability = GameBundleShinyAvailability::create(
             $pokemon,
             $gameBundle,
             true
         );
 
-        $this->assertEquals($pokemon, $gameBundleAvailability->pokemon);
-        $this->assertEquals($gameBundle, $gameBundleAvailability->bundle);
-        $this->assertTrue($gameBundleAvailability->isAvailable);
+        $this->assertEquals($pokemon, $gameBundleShinyAvailability->pokemon);
+        $this->assertEquals($gameBundle, $gameBundleShinyAvailability->bundle);
+        $this->assertTrue($gameBundleShinyAvailability->isAvailable);
     }
 
     public function testCreateUnavailable(): void
@@ -38,14 +38,14 @@ class GameBundleAvailabilityTest extends TestCase
         $gameBundle = new GameBundle();
         $gameBundle->slug = 'Tic,Tac';
 
-        $gameBundleAvailability = GameBundleAvailability::create(
+        $gameBundleShinyAvailability = GameBundleShinyAvailability::create(
             $pokemon,
             $gameBundle,
             false
         );
 
-        $this->assertEquals($pokemon, $gameBundleAvailability->pokemon);
-        $this->assertEquals($gameBundle, $gameBundleAvailability->bundle);
-        $this->assertFalse($gameBundleAvailability->isAvailable);
+        $this->assertEquals($pokemon, $gameBundleShinyAvailability->pokemon);
+        $this->assertEquals($gameBundle, $gameBundleShinyAvailability->bundle);
+        $this->assertFalse($gameBundleShinyAvailability->isAvailable);
     }
 }

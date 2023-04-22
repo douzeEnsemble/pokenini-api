@@ -6,6 +6,7 @@ namespace App\Tests\Functional\Controller;
 
 use App\Message\CalculateDexAvailabilities;
 use App\Message\CalculateGameBundlesAvailabilities;
+use App\Message\CalculateGameBundlesShiniesAvailabilities;
 use App\Message\UpdateGamesAndDex;
 use App\Message\UpdateGamesAvailabilities;
 use App\Message\UpdateGamesShiniesAvailabilities;
@@ -173,6 +174,28 @@ class AdminControllerTest extends WebTestCase
         $this->assertResponseStatusCodeSame(201);
 
         $this->transport('async')->queue()->assertContains(CalculateGameBundlesAvailabilities::class, 1);
+    }
+
+    public function testCalculateGameBundlesShiniesAvailabilities(): void
+    {
+        $client = static::createClient();
+
+        $this->transport('async')->queue()->assertEmpty();
+
+        $client->request(
+            'POST',
+            "/istration/calculate/game_bundles_shinies_availabilities",
+            [],
+            [],
+            [
+                'PHP_AUTH_USER' => 'web',
+                'PHP_AUTH_PW'   => 'douze',
+            ],
+        );
+
+        $this->assertResponseStatusCodeSame(201);
+
+        $this->transport('async')->queue()->assertContains(CalculateGameBundlesShiniesAvailabilities::class, 1);
     }
 
     public function testCalculateDexAvailabilities(): void

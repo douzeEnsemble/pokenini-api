@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\ActionStarter\CalculateDexAvailabilitiesActionStarter;
 use App\ActionStarter\CalculateGameBundlesAvailabilitiesActionStarter;
+use App\ActionStarter\CalculateGameBundlesShiniesAvailabilitiesActionStarter;
 use App\ActionStarter\UpdateGamesAndDexActionStarter;
 use App\ActionStarter\UpdateGamesAvailabilitiesActionStarter;
 use App\ActionStarter\UpdateGamesShiniesAvailabilitiesActionStarter;
@@ -94,6 +95,17 @@ class AdminController extends AbstractController
     #[Route(path: '/calculate/game_bundles_availabilities', methods: ['POST'])]
     public function calculateGameBundlesAvailabilities(
         CalculateGameBundlesAvailabilitiesActionStarter $actionStarter
+    ): Response {
+        $message = $actionStarter->start();
+
+        $this->bus->dispatch($message);
+
+        return new Response('', Response::HTTP_CREATED);
+    }
+
+    #[Route(path: '/calculate/game_bundles_shinies_availabilities', methods: ['POST'])]
+    public function calculateGameBundlesShiniesAvailabilities(
+        CalculateGameBundlesShiniesAvailabilitiesActionStarter $actionStarter
     ): Response {
         $message = $actionStarter->start();
 

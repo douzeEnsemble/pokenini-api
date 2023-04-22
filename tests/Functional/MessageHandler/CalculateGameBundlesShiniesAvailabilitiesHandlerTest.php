@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\MessageHandler;
 
-use App\Message\UpdateGamesShiniesAvailabilities;
+use App\Message\CalculateGameBundlesShiniesAvailabilities;
 use App\Tests\Common\Traits\CounterTrait\CounterTableTrait;
 use App\Tests\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Common\Traits\GetterTrait\GetActionLogTrait;
@@ -13,7 +13,7 @@ use RuntimeException;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Zenstruck\Messenger\Test\InteractsWithMessenger;
 
-class UpdateGamesShiniesAvailabilitiesHandlerTest extends KernelTestCase
+class CalculateGameBundlesShiniesAvailabilitiesHandlerTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use InteractsWithMessenger;
@@ -31,25 +31,25 @@ class UpdateGamesShiniesAvailabilitiesHandlerTest extends KernelTestCase
         $transport = $this->transport('async');
         $transport->throwExceptions();
 
-        $this->assertEquals(17, $this->getTableCount('game_shiny_availability'));
+        $this->assertEquals(20, $this->getTableCount('game_bundle_shiny_availability'));
 
         $this->assertEquals(14, $this->getActionLogCount());
         $this->assertEquals(9, $this->getActionLogToProcessCount());
         $this->assertEquals(5, $this->getActionLogDoneCount());
 
         $transport->send(
-            new UpdateGamesShiniesAvailabilities(
-                $this->getIdToProcess(UpdateGamesShiniesAvailabilities::class)
+            new CalculateGameBundlesShiniesAvailabilities(
+                $this->getIdToProcess(CalculateGameBundlesShiniesAvailabilities::class)
             )
         );
 
-        $transport->queue()->assertContains(UpdateGamesShiniesAvailabilities::class, 1);
+        $transport->queue()->assertContains(CalculateGameBundlesShiniesAvailabilities::class, 1);
 
         $transport->process(1);
 
         $transport->queue()->assertEmpty();
 
-        $this->assertEquals(2622, $this->getTableCount('game_shiny_availability'));
+        $this->assertEquals(16, $this->getTableCount('game_bundle_shiny_availability'));
 
         $this->assertEquals(14, $this->getActionLogCount());
         $this->assertEquals(8, $this->getActionLogToProcessCount());
@@ -61,9 +61,9 @@ class UpdateGamesShiniesAvailabilitiesHandlerTest extends KernelTestCase
         $transport = $this->transport('async');
         $transport->throwExceptions();
 
-        $transport->send(new UpdateGamesShiniesAvailabilities('0a35b132-fa1d-4528-b866-dadac5876e1c'));
+        $transport->send(new CalculateGameBundlesShiniesAvailabilities('0a35b132-fa1d-4528-b866-dadac5876e1c'));
 
-        $transport->queue()->assertContains(UpdateGamesShiniesAvailabilities::class, 1);
+        $transport->queue()->assertContains(CalculateGameBundlesShiniesAvailabilities::class, 1);
 
         $this->expectException(RuntimeException::class);
         $this->expectExceptionMessage("Can't find ActionLog #0a35b132-fa1d-4528-b866-dadac5876e1c");

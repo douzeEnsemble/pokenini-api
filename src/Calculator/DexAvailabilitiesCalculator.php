@@ -11,6 +11,7 @@ use App\Repository\DexAvailabilitiesRepository;
 use App\Repository\DexRepository;
 use App\Repository\PokemonsRepository;
 use App\Service\GameBundlesAvailabilitiesService;
+use App\Service\GameBundlesShiniesAvailabilitiesService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
@@ -20,6 +21,7 @@ class DexAvailabilitiesCalculator extends AbstractCalculator
     public function __construct(
         private readonly DexAvailabilitiesRepository $dexAvailabilitiesRepo,
         private readonly GameBundlesAvailabilitiesService $gameBundlesAvailabilitiesService,
+        private readonly GameBundlesShiniesAvailabilitiesService $gameBundlesShiniesAvailabilitiesService,
         private readonly DexRepository $dexRepository,
         private readonly PokemonsRepository $pokemonsRepository,
         private readonly EntityManagerInterface $entityManager,
@@ -45,6 +47,7 @@ class DexAvailabilitiesCalculator extends AbstractCalculator
                     [
                         'p' => $pokemon,
                         'ba' => $this->gameBundlesAvailabilitiesService->getFromPokemon($pokemon),
+                        'bsa' => $this->gameBundlesShiniesAvailabilitiesService->getFromPokemon($pokemon),
                     ]
                 );
 

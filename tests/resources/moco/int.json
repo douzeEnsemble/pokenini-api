@@ -424,7 +424,7 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'pokemon_list / family_link'!A1:AR1"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / family_link'!A1:AR1"
     },
     "response": {
       "status": 200,
@@ -433,7 +433,7 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'pokemon_list / family_link'!A2:AR"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / family_link'!A2:AR"
     },
     "response": {
       "status": 200,
@@ -442,7 +442,7 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Shinies Availability'!A2:AN2"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Games Shinies Availability'!A2:AN2"
     },
     "response": {
       "status": 200,
@@ -451,7 +451,7 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Games Shinies Availability'!A3:AN71"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Games Shinies Availability'!A3:AN71"
     },
     "response": {
       "status": 200,
