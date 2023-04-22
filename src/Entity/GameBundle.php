@@ -10,7 +10,6 @@ use App\Entity\Traits\OrderedTrait;
 use App\Entity\Traits\SlugifiedTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
-use Symfony\Component\Serializer\Annotation\Groups;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity]
@@ -25,6 +24,5 @@ class GameBundle
 
     #[ORM\ManyToOne(targetEntity: GameGeneration::class)]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["pokemon_list", "game_list", "game_bundle_list"])]
     public GameGeneration $generation;
 }

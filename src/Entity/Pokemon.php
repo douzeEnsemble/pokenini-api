@@ -10,7 +10,6 @@ use App\Entity\Traits\NamedTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @SuppressWarnings(PHPMD.TooManyFields)
@@ -25,83 +24,58 @@ class Pokemon
     use SoftDeleteableEntity;
 
     #[ORM\Column(unique: true)]
-    #[Groups(["pokemon_list"])]
     public string $slug;
 
     #[ORM\Column]
-    #[Groups([
-        "pokemon_list",
-    ])]
     public string $simplifiedName = '';
 
     #[ORM\Column]
-    #[Groups([
-        "pokemon_list",
-    ])]
     public string $simplifiedFrenchName = '';
 
     #[ORM\Column]
-    #[Groups([
-        "pokemon_list",
-    ])]
     public string $formsLabel = '';
 
     #[ORM\Column]
-    #[Groups([
-        "pokemon_list",
-    ])]
     public string $formsFrenchLabel = '';
 
     #[ORM\Column]
-    #[Groups(["pokemon_list"])]
     public int $nationalDexNumber;
 
     #[ORM\ManyToOne]
-    #[Groups(["pokemon_list"])]
     public ?Pokemon $family = null;
 
     #[ORM\Column]
-    #[Groups(["pokemon_list"])]
     public string $primeName;
 
     #[ORM\Column]
-    #[Groups(["pokemon_list"])]
     public bool $bankable = true;
 
     #[ORM\Column(nullable: true)]
-    #[Groups(["pokemon_list"])]
     public ?bool $bankableish = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["pokemon_list"])]
     public GameBundle $originalGameBundle;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: true)]
-    #[Groups(["pokemon_list"])]
     public ?VariantForm $variantForm;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: true)]
-    #[Groups(["pokemon_list"])]
     public ?RegionalForm $regionalForm;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: true)]
-    #[Groups(["pokemon_list"])]
     public ?SpecialForm $specialForm;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: true)]
-    #[Groups(["pokemon_list"])]
     public ?CategoryForm $categoryForm;
 
     #[ORM\Column]
-    #[Groups(["pokemon_list", "dex_availabilities_list"])]
     public string $iconName;
 
     #[ORM\Column]
-    #[Groups(["pokemon_list"])]
     public int $familyOrder;
 }

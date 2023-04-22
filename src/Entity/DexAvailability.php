@@ -6,7 +6,6 @@ namespace App\Entity;
 
 use App\Entity\Traits\BaseEntityTrait;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity]
 /**
@@ -18,7 +17,6 @@ class DexAvailability
 
     #[ORM\ManyToOne(targetEntity: Pokemon::class)]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["dex_availabilities_list"])]
     public Pokemon $pokemon;
 
     #[ORM\ManyToOne(targetEntity: Dex::class)]
