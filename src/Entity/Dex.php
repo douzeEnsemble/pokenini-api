@@ -12,7 +12,6 @@ use App\Entity\Traits\SlugifiedTrait;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
-use Symfony\Component\Serializer\Annotation\Groups;
 use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity]
@@ -30,52 +29,28 @@ class Dex
     public string $selectionRule = '';
 
     #[ORM\Column]
-    #[Groups([
-        "dex_list",
-    ])]
     public bool $isShiny = false;
 
     #[ORM\Column]
-    #[Groups([
-        "dex_list",
-    ])]
     public bool $isPrivate = true;
 
     #[ORM\Column]
-    #[Groups([
-        "dex_list",
-    ])]
     public bool $isDisplayForm = true;
 
     #[ORM\Column(options: ['default' => 'box'])]
-    #[Groups([
-        "dex_list",
-    ])]
     public string $displayTemplate = 'box';
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: true)]
-    #[Groups([
-        "dex_list",
-    ])]
     public ?Region $region = null;
 
     #[ORM\Column(length: 655)]
-    #[Groups([
-        "dex_list",
-    ])]
     public string $description = '';
 
     #[ORM\Column(length: 655)]
-    #[Groups([
-        "dex_list",
-    ])]
     public string $frenchDescription = '';
 
     #[ORM\Column]
-    #[Groups([
-        "dex_list",
-    ])]
     public bool $isReleased = true;
 
     #[Gedmo\Timestampable(

@@ -6,7 +6,6 @@ namespace App\Entity;
 
 use App\Entity\Traits\BaseEntityTrait;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity]
@@ -19,17 +18,14 @@ class GameBundleAvailability
 
     #[ORM\ManyToOne(targetEntity: Pokemon::class)]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["game_bundle_availabilities_list"])]
     public Pokemon $pokemon;
 
     #[ORM\ManyToOne(targetEntity: GameBundle::class)]
     #[ORM\JoinColumn(nullable: false)]
-    #[Groups(["game_bundle_availabilities_list"])]
     public GameBundle $bundle;
 
     #[ORM\Column]
     #[Assert\NotNull]
-    #[Groups(["game_bundle_availabilities_list"])]
     public bool $isAvailable;
 
     public static function create(

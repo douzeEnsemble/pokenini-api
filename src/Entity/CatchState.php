@@ -12,7 +12,6 @@ use App\Entity\Traits\SlugifiedTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity]
 #[Gedmo\SoftDeleteable(fieldName: 'deletedAt')]
@@ -26,8 +25,5 @@ class CatchState
     use SoftDeleteableEntity;
 
     #[ORM\Column(options: ['default' => ''])]
-    #[Groups([
-        "catch_state_list",
-    ])]
     public string $color = '';
 }
