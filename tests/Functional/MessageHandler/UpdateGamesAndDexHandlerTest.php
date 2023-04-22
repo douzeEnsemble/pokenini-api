@@ -36,9 +36,9 @@ class UpdateGamesAndDexHandlerTest extends KernelTestCase
         $this->assertEquals(38, $this->getTableCount('game'));
         $this->assertEquals(7, $this->getTableCount('dex'));
 
-        $this->assertEquals(14, $this->getActionLogCount());
-        $this->assertEquals(9, $this->getActionLogToProcessCount());
-        $this->assertEquals(5, $this->getActionLogDoneCount());
+        $beforeTotalCount = $this->getActionLogCount();
+        $beforeToProcessCount = $this->getActionLogToProcessCount();
+        $beforeDoneCount = $this->getActionLogDoneCount();
 
         $transport->send(
             new UpdateGamesAndDex(
@@ -57,9 +57,9 @@ class UpdateGamesAndDexHandlerTest extends KernelTestCase
         $this->assertEquals(38, $this->getTableCount('game'));
         $this->assertEquals(23, $this->getTableCount('dex'));
 
-        $this->assertEquals(14, $this->getActionLogCount());
-        $this->assertEquals(8, $this->getActionLogToProcessCount());
-        $this->assertEquals(6, $this->getActionLogDoneCount());
+        $this->assertEquals($beforeTotalCount, $this->getActionLogCount());
+        $this->assertEquals($beforeToProcessCount - 1, $this->getActionLogToProcessCount());
+        $this->assertEquals($beforeDoneCount + 1, $this->getActionLogDoneCount());
     }
 
     public function testExceptionHandler(): void

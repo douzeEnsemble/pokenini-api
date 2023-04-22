@@ -39,9 +39,9 @@ class UpdateLabelsHandlerTest extends KernelTestCase
         $this->assertEquals(3, $this->getTableCount('special_form'));
         $this->assertEquals(7, $this->getTableCount('variant_form'));
 
-        $this->assertEquals(14, $this->getActionLogCount());
-        $this->assertEquals(9, $this->getActionLogToProcessCount());
-        $this->assertEquals(5, $this->getActionLogDoneCount());
+        $beforeTotalCount = $this->getActionLogCount();
+        $beforeToProcessCount = $this->getActionLogToProcessCount();
+        $beforeDoneCount = $this->getActionLogDoneCount();
 
         $transport->send(
             new UpdateLabels(
@@ -62,9 +62,9 @@ class UpdateLabelsHandlerTest extends KernelTestCase
         $this->assertEquals(5, $this->getTableCount('special_form'));
         $this->assertEquals(8, $this->getTableCount('variant_form'));
 
-        $this->assertEquals(14, $this->getActionLogCount());
-        $this->assertEquals(8, $this->getActionLogToProcessCount());
-        $this->assertEquals(6, $this->getActionLogDoneCount());
+        $this->assertEquals($beforeTotalCount, $this->getActionLogCount());
+        $this->assertEquals($beforeToProcessCount - 1, $this->getActionLogToProcessCount());
+        $this->assertEquals($beforeDoneCount + 1, $this->getActionLogDoneCount());
     }
 
     public function testExceptionHandler(): void
