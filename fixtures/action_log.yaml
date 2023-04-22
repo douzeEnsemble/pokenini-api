@@ -4,8 +4,8 @@ parameters:
     updateGamesAndDexReportData: '{"game_generations":9,"game_bundles":18,"games":39,"dex":31}'
     updatePokemonsReportData: '{"pokemons":1934}'
     updateRegionalDexNumbersReportData: '{"regional_dex_numbers":2938}'
-    updateGamesAvailabitiliesReportData: '{"games_availabilities":41691}'
-    updateGamesShiniesAvailabitiliesReportData: '{"games_shinies_availabilities":41691}'
+    updateGamesAvailabilitiesReportData: '{"games_availabilities":41691}'
+    updateGamesShiniesAvailabilitiesReportData: '{"games_shinies_availabilities":41691}'
     calculateGamesAvailabilitiesReportData: '{"game_bundles_availabilities":34794}'
     calculateDexAvailabilitiesReportData: '{"dex_availabilities":22472}'
 
@@ -57,7 +57,7 @@ App\Entity\ActionLog:
 
     actionlog_updategamesavailabilities_done (extends actionlog_done):
         __construct: ['App\Message\UpdateGamesAvailabilities']
-        reportData: <{updateGamesAvailabitiliesReportData}>
+        reportData: <{updateGamesAvailabilitiesReportData}>
 
     actionlog_updatelabels_done (extends actionlog_done):
         __construct: ['App\Message\UpdateLabels']
