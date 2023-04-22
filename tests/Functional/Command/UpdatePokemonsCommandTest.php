@@ -16,7 +16,7 @@ class UpdatePokemonsCommandTest extends AbstractUpdaterCommandTest
     {
         $this->assertEquals(19, $this->getTableCount('pokemon'));
 
-        $this->assertEquals(8, $this->getActionLogToProcessCount());
+        $this->assertEquals(9, $this->getActionLogToProcessCount());
         $this->assertEquals(5, $this->getActionLogDoneCount());
 
         $commandTester = $this->executeCommand();
@@ -24,7 +24,7 @@ class UpdatePokemonsCommandTest extends AbstractUpdaterCommandTest
         $commandTester->assertCommandIsSuccessful();
         $this->assertEquals(1816, $this->getTableCount('pokemon'));
 
-        $this->assertEquals(8, $this->getActionLogToProcessCount());
+        $this->assertEquals(9, $this->getActionLogToProcessCount());
         $this->assertEquals(6, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString("1815 pokémons updated", $commandTester->getDisplay());

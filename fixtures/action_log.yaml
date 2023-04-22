@@ -26,6 +26,9 @@ App\Entity\ActionLog:
     actionlog_calculategamebundlesavailabilities_toprocess (extends actionlog_toprocess):
         __construct: ['App\Message\CalculateGameBundlesAvailabilities']
 
+    actionlog_calculategamebundlesshiniesavailabilities_toprocess (extends actionlog_toprocess):
+        __construct: ['App\Message\CalculateGameBundlesShiniesAvailabilities']
+
     actionlog_updategamesanddex_toprocess (extends actionlog_toprocess):
         __construct: ['App\Message\UpdateGamesAndDex']
 

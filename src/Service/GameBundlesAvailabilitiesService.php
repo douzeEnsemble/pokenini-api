@@ -12,16 +12,18 @@ use Symfony\Contracts\Cache\CacheInterface;
 class GameBundlesAvailabilitiesService
 {
     public function __construct(
-        private readonly GameBundlesAvailabilitiesRepository $gameBundlesAvailabilitiesRepository,
+        private readonly GameBundlesAvailabilitiesRepository $repository,
         private readonly CacheInterface $cache
     ) {
     }
 
     public function getFromPokemon(Pokemon $pokemon): GameBundlesAvailabilities
     {
+        $key = 'gba-' . $pokemon->slug;
+
         /** @var GameBundlesAvailabilities */
-        return $this->cache->get($pokemon->slug, function () use ($pokemon) {
-            return $this->gameBundlesAvailabilitiesRepository->getFromPokemon($pokemon);
+        return $this->cache->get($key, function () use ($pokemon) {
+            return $this->repository->getFromPokemon($pokemon);
         });
     }
 }

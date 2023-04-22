@@ -34,13 +34,13 @@ class CalculateGameBundlesAvailabilitiesCommandTest extends KernelTestCase
 
         $this->assertEquals(0, $this->getGameAvailabilityCount());
 
-        $this->assertEquals(8, $this->getActionLogToProcessCount());
+        $this->assertEquals(9, $this->getActionLogToProcessCount());
         $this->assertEquals(5, $this->getActionLogDoneCount());
 
         $commandTester = $this->executeCommand();
         $commandTester->assertCommandIsSuccessful();
 
-        $this->assertEquals(8, $this->getActionLogToProcessCount());
+        $this->assertEquals(9, $this->getActionLogToProcessCount());
         $this->assertEquals(6, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString("0 bundles' availabilities calculated", $commandTester->getDisplay());
@@ -48,13 +48,13 @@ class CalculateGameBundlesAvailabilitiesCommandTest extends KernelTestCase
 
     public function testCalculateBundlesAvailabilities(): void
     {
-        $this->assertEquals(8, $this->getActionLogToProcessCount());
+        $this->assertEquals(9, $this->getActionLogToProcessCount());
         $this->assertEquals(5, $this->getActionLogDoneCount());
 
         $commandTester = $this->executeCommand();
         $commandTester->assertCommandIsSuccessful();
 
-        $this->assertEquals(8, $this->getActionLogToProcessCount());
+        $this->assertEquals(9, $this->getActionLogToProcessCount());
         $this->assertEquals(6, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString("18 bundles' availabilities calculated", $commandTester->getDisplay());

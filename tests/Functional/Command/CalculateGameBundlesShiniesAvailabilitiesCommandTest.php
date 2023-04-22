@@ -4,22 +4,20 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Command;
 
-use App\Repository\PokemonsRepository;
-use App\Tests\Common\Traits\CounterTrait\CountDexAvailabilityTrait;
+use App\Repository\GamesShiniesAvailabilitiesRepository;
+use App\Tests\Common\Traits\CounterTrait\CountGameShinyAvailabilityTrait;
+use App\Tests\Common\Traits\CounterTrait\CountGameBundleShinyAvailabilityTrait;
 use App\Tests\Common\Traits\CounterTrait\CountActionLogTrait;
-use App\Tests\Common\Traits\CounterTrait\CountPokemonTrait;
-use App\Tests\Common\Traits\HasserTrait\HasDexAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Console\Application;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Tester\CommandTester;
 
-class CalculateDexAvailabilitiesCommandTest extends KernelTestCase
+class CalculateGameBundlesShiniesAvailabilitiesCommandTest extends KernelTestCase
 {
-    use CountPokemonTrait;
-    use CountDexAvailabilityTrait;
-    use HasDexAvailabilityTrait;
+    use CountGameShinyAvailabilityTrait;
+    use CountGameBundleShinyAvailabilityTrait;
     use RefreshDatabaseTrait;
     use CountActionLogTrait;
 
@@ -28,15 +26,13 @@ class CalculateDexAvailabilitiesCommandTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testNoDexAvailabilities(): void
+    public function testNoGamesShiniesAvailabilities(): void
     {
-        /** @var PokemonsRepository $repo */
-        $repo = static::getContainer()->get(PokemonsRepository::class);
+        /** @var GamesShiniesAvailabilitiesRepository $repo */
+        $repo = static::getContainer()->get(GamesShiniesAvailabilitiesRepository::class);
         $repo->removeAll();
 
-        $this->assertEquals(0, $this->getPokemonNotDeletedCount());
-
-        $this->assertEquals(39, $this->getDexAvailabilityCount());
+        $this->assertEquals(0, $this->getGameShinyAvailabilityCount());
 
         $this->assertEquals(9, $this->getActionLogToProcessCount());
         $this->assertEquals(5, $this->getActionLogDoneCount());
@@ -44,37 +40,35 @@ class CalculateDexAvailabilitiesCommandTest extends KernelTestCase
         $commandTester = $this->executeCommand();
         $commandTester->assertCommandIsSuccessful();
 
-        $this->assertStringContainsString("0 dex' availabilities calculated", $commandTester->getDisplay());
-
-        $this->assertEquals(0, $this->getDexAvailabilityCount());
-
         $this->assertEquals(9, $this->getActionLogToProcessCount());
         $this->assertEquals(6, $this->getActionLogDoneCount());
+
+        $this->assertStringContainsString(
+            "0 bundles' shinies' availabilities calculated",
+            $commandTester->getDisplay()
+        );
     }
 
-    public function testDexAvailabilities(): void
+    public function testCalculateBundlesShiniesAvailabilities(): void
     {
-        $this->assertEquals(39, $this->getDexAvailabilityCount());
-
         $this->assertEquals(9, $this->getActionLogToProcessCount());
         $this->assertEquals(5, $this->getActionLogDoneCount());
 
         $commandTester = $this->executeCommand();
         $commandTester->assertCommandIsSuccessful();
 
-        $this->assertStringContainsString("61 dex' availabilities calculated", $commandTester->getDisplay());
-
-        $this->assertEquals(61, $this->getDexAvailabilityCount());
-
         $this->assertEquals(9, $this->getActionLogToProcessCount());
         $this->assertEquals(6, $this->getActionLogDoneCount());
 
-        $this->assertTrue($this->hasDexAvailability('Red / Green / Blue / Yellow', 'Bulbasaur'));
+        $this->assertStringContainsString(
+            "16 bundles' shinies' availabilities calculated",
+            $commandTester->getDisplay()
+        );
     }
 
     protected function getCommandName(): string
     {
-        return 'app:calculate:dex_availabilities';
+        return 'app:calculate:game_bundles_shinies_availabilities';
     }
 
     protected function getCommand(): Command

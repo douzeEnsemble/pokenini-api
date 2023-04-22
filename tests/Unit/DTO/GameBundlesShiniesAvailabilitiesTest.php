@@ -4,14 +4,14 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\DTO;
 
-use App\DTO\GameBundlesAvailabilities;
+use App\DTO\GameBundlesShiniesAvailabilities;
 use PHPUnit\Framework\TestCase;
 
-class GameBundlesAvailabiliesTest extends TestCase
+class GameBundlesShiniesAvailabilitiesTest extends TestCase
 {
     public function testGet(): void
     {
-        $object = new GameBundlesAvailabilities([
+        $object = new GameBundlesShiniesAvailabilities([
             'a' => true,
             'b' => false,
         ]);
@@ -24,14 +24,14 @@ class GameBundlesAvailabiliesTest extends TestCase
     {
         $this->expectException(\Exception::class);
 
-        $object = new GameBundlesAvailabilities([]);
+        $object = new GameBundlesShiniesAvailabilities([]);
 
         $object->c = true;
     }
 
     public function testIsset(): void
     {
-        $object = new GameBundlesAvailabilities([
+        $object = new GameBundlesShiniesAvailabilities([
             'a' => true,
         ]);
 

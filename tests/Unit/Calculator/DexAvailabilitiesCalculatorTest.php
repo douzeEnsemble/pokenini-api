@@ -6,12 +6,14 @@ namespace App\Tests\Unit\Calculator;
 
 use App\Calculator\DexAvailabilitiesCalculator;
 use App\DTO\GameBundlesAvailabilities;
+use App\DTO\GameBundlesShiniesAvailabilities;
 use App\Entity\Dex;
 use App\Entity\Pokemon;
 use App\Repository\DexAvailabilitiesRepository;
 use App\Repository\DexRepository;
 use App\Repository\PokemonsRepository;
 use App\Service\GameBundlesAvailabilitiesService;
+use App\Service\GameBundlesShiniesAvailabilitiesService;
 use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\TestCase;
@@ -35,6 +37,13 @@ class DexAvailabilitiesCalculatorTest extends TestCase
             ->expects($this->exactly(6))
             ->method('getFromPokemon')
             ->willReturn(new GameBundlesAvailabilities([]))
+        ;
+
+        $gameBundlesShiniesAvailabilitiesService = $this->createMock(GameBundlesShiniesAvailabilitiesService::class);
+        $gameBundlesShiniesAvailabilitiesService
+            ->expects($this->exactly(6))
+            ->method('getFromPokemon')
+            ->willReturn(new GameBundlesShiniesAvailabilities([]))
         ;
 
         $entityManager = $this->createMock(EntityManagerInterface::class);
@@ -92,6 +101,7 @@ class DexAvailabilitiesCalculatorTest extends TestCase
         $service = new DexAvailabilitiesCalculator(
             $dexAvailabilitiesRepository,
             $gameBundlesAvailabilitiesService,
+            $gameBundlesShiniesAvailabilitiesService,
             $dexRepository,
             $pokemonsRepository,
             $entityManager
