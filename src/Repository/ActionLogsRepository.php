@@ -37,6 +37,7 @@ class ActionLogsRepository extends ServiceEntityRepository
             ) as type_action,
             created_at AT TIME ZONE 'UTC' AS created_at,
             done_at AT TIME ZONE 'UTC' AS done_at,
+            EXTRACT(EPOCH FROM (done_at - created_at)) AS execution_time,
             details
         FROM    (
                 SELECT  "type",
