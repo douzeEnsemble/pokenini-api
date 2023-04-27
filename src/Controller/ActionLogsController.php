@@ -24,11 +24,14 @@ class ActionLogsController extends AbstractController
         array_walk(
             $actionLogs,
             function (&$actionLog) {
-                if (null === $actionLog['details']) {
-                    return;
+                if (null !== $actionLog['details']) {
+                    $actionLog['details'] = json_decode($actionLog['details'], true);
                 }
 
-                $actionLog['details'] = json_decode($actionLog['details'], true);
+                if (null !== $actionLog['execution_time'] && is_string($actionLog['execution_time'])) {
+                    list($actionLog['execution_time'], $zero) = explode('.', $actionLog['execution_time']);
+                    unset($zero);
+                }
             }
         );
 
