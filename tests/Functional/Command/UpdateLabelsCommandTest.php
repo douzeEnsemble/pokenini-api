@@ -21,8 +21,8 @@ class UpdateLabelsCommandTest extends AbstractUpdaterCommandTest
         $this->assertEquals(7, $this->getTableCount('variant_form'));
         $this->assertEquals(10, $this->getTableCount('region'));
 
-        $this->assertEquals(9, $this->getActionLogToProcessCount());
-        $this->assertEquals(5, $this->getActionLogDoneCount());
+        $initialToProcessCount = $this->getActionLogToProcessCount();
+        $initialDoneCount = $this->getActionLogDoneCount();
 
         $commandTester = $this->executeCommand();
 
@@ -36,8 +36,8 @@ class UpdateLabelsCommandTest extends AbstractUpdaterCommandTest
         $this->assertEquals(8, $this->getTableCount('variant_form'));
         $this->assertEquals(10, $this->getTableCount('region'));
 
-        $this->assertEquals(9, $this->getActionLogToProcessCount());
-        $this->assertEquals(6, $this->getActionLogDoneCount());
+        $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
+        $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString("6 catch's states updated", $commandTester->getDisplay());
         $this->assertStringContainsString("10 regions updated", $commandTester->getDisplay());

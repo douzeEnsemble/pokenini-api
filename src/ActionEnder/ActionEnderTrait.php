@@ -17,8 +17,29 @@ trait ActionEnderTrait
 
     protected function endActionLog(
         ActionMessageInterface $message,
-        Report $report
+        Report $report,
     ): void {
+        $actionLog = $this->findActionLog($message);
+
+        $actionLog->reportData = (string) json_encode($report);
+
+        $this->crimpActionLog($actionLog);
+    }
+
+    protected function endInErrorActionLog(
+        ActionMessageInterface $message,
+        string $errorTrace,
+    ): void {
+        $actionLog = $this->findActionLog($message);
+
+        $actionLog->errorTrace = $errorTrace;
+
+        $this->crimpActionLog($actionLog);
+    }
+
+    private function findActionLog(
+        ActionMessageInterface $message
+    ): ActionLog {
         /** @var ActionLogsRepository $repo */
         $repo = $this->entityManager->getRepository(ActionLog::class);
 
@@ -29,7 +50,11 @@ trait ActionEnderTrait
             throw new RuntimeException("Can't find ActionLog #{$message->getActionId()}");
         }
 
-        $actionLog->reportData = (string) json_encode($report);
+        return $actionLog;
+    }
+
+    private function crimpActionLog(ActionLog $actionLog): void
+    {
         $actionLog->doneAt = new \DateTime();
 
         $this->entityManager->flush();

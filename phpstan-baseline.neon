@@ -104,3 +104,23 @@ parameters:
 			message: "#^Cannot cast object to string\\.$#"
 			count: 1
 			path: tests/Unit/Entity/Trait/NamedTraitTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$originalClassName of method PHPUnit\\\\Framework\\\\TestCase\\:\\:createMock\\(\\) expects class\\-string\\<object\\>, string given\\.$#"
+			count: 2
+			path: tests/Unit/MessageHandler/AbstractTestCalculateHandler.php
+
+		-
+			message: "#^Unable to resolve the template type RealInstanceType in call to method PHPUnit\\\\Framework\\\\TestCase\\:\\:createMock\\(\\)$#"
+			count: 2
+			path: tests/Unit/MessageHandler/AbstractTestCalculateHandler.php
+
+		-
+			message: "#^Parameter \\#1 \\$originalClassName of method PHPUnit\\\\Framework\\\\TestCase\\:\\:createMock\\(\\) expects class\\-string\\<object\\>, string given\\.$#"
+			count: 2
+			path: tests/Unit/MessageHandler/AbstractTestUpdateHandler.php
+
+		-
+			message: "#^Unable to resolve the template type RealInstanceType in call to method PHPUnit\\\\Framework\\\\TestCase\\:\\:createMock\\(\\)$#"
+			count: 2
+			path: tests/Unit/MessageHandler/AbstractTestUpdateHandler.php

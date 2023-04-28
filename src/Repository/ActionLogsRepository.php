@@ -38,12 +38,14 @@ class ActionLogsRepository extends ServiceEntityRepository
             created_at AT TIME ZONE 'UTC' AS created_at,
             done_at AT TIME ZONE 'UTC' AS done_at,
             EXTRACT(EPOCH FROM (done_at - created_at)) AS execution_time,
-            details
+            details,
+            error_trace
         FROM    (
                 SELECT  "type",
                         created_at,
                         done_at,
                         report_data as details,
+                        error_trace as error_trace,
                         row_number() OVER(
                             PARTITION BY "type"
                             ORDER BY created_at DESC

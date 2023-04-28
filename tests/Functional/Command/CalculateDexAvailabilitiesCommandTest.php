@@ -38,8 +38,8 @@ class CalculateDexAvailabilitiesCommandTest extends KernelTestCase
 
         $this->assertEquals(39, $this->getDexAvailabilityCount());
 
-        $this->assertEquals(9, $this->getActionLogToProcessCount());
-        $this->assertEquals(5, $this->getActionLogDoneCount());
+        $initialToProcessCount = $this->getActionLogToProcessCount();
+        $initialDoneCount = $this->getActionLogDoneCount();
 
         $commandTester = $this->executeCommand();
         $commandTester->assertCommandIsSuccessful();
@@ -48,16 +48,16 @@ class CalculateDexAvailabilitiesCommandTest extends KernelTestCase
 
         $this->assertEquals(0, $this->getDexAvailabilityCount());
 
-        $this->assertEquals(9, $this->getActionLogToProcessCount());
-        $this->assertEquals(6, $this->getActionLogDoneCount());
+        $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
+        $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
     }
 
     public function testDexAvailabilities(): void
     {
         $this->assertEquals(39, $this->getDexAvailabilityCount());
 
-        $this->assertEquals(9, $this->getActionLogToProcessCount());
-        $this->assertEquals(5, $this->getActionLogDoneCount());
+        $initialToProcessCount = $this->getActionLogToProcessCount();
+        $initialDoneCount = $this->getActionLogDoneCount();
 
         $commandTester = $this->executeCommand();
         $commandTester->assertCommandIsSuccessful();
@@ -66,8 +66,8 @@ class CalculateDexAvailabilitiesCommandTest extends KernelTestCase
 
         $this->assertEquals(61, $this->getDexAvailabilityCount());
 
-        $this->assertEquals(9, $this->getActionLogToProcessCount());
-        $this->assertEquals(6, $this->getActionLogDoneCount());
+        $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
+        $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
 
         $this->assertTrue($this->hasDexAvailability('Red / Green / Blue / Yellow', 'Bulbasaur'));
     }

@@ -6,8 +6,7 @@ framework:
             async:
                 dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
                 retry_strategy:
-                    max_retries: 3
-                    delay: 5
+                    max_retries: 0
             failed: 'doctrine://default?queue_name=failed'
             sync: 'sync://'
 

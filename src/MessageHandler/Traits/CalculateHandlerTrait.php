@@ -13,10 +13,16 @@ trait CalculateHandlerTrait
 
     public function calculate(AbstractActionMessage $message): void
     {
-        $this->calculatorService->execute();
+        try {
+            $this->calculatorService->execute();
 
-        $report = $this->calculatorService->getReport();
+            $report = $this->calculatorService->getReport();
 
-        $this->endActionLog($message, $report);
+            $this->endActionLog($message, $report);
+        } catch (\Exception $e) {
+            $this->endInErrorActionLog($message, $e->getMessage());
+
+            throw $e;
+        }
     }
 }

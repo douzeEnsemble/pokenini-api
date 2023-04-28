@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Functional\MessageHandler;
 
 use App\Message\CalculateGameBundlesShiniesAvailabilities;
+use App\Tests\Common\Traits\ChangeTrait\ChangeActionLogTrait;
 use App\Tests\Common\Traits\CounterTrait\CounterTableTrait;
 use App\Tests\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Common\Traits\GetterTrait\GetActionLogTrait;
@@ -20,6 +21,7 @@ class CalculateGameBundlesShiniesAvailabilitiesHandlerTest extends KernelTestCas
     use CounterTableTrait;
     use CountActionLogTrait;
     use GetActionLogTrait;
+    use ChangeActionLogTrait;
 
     public function setUp(): void
     {
@@ -28,6 +30,8 @@ class CalculateGameBundlesShiniesAvailabilitiesHandlerTest extends KernelTestCas
 
     public function testHandler(): void
     {
+        $this->changeFromFailedIntoToProcess(CalculateGameBundlesShiniesAvailabilities::class);
+
         $transport = $this->transport('async');
         $transport->throwExceptions();
 

@@ -11,7 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
-class UpdateGamesAndDexHandler
+class UpdateGamesAndDexHandler implements UpdateHandlerInterface
 {
     use UpdateHandlerTrait;
 

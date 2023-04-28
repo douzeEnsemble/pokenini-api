@@ -14,11 +14,19 @@ App\Entity\ActionLog:
         createdAt:  '<dateTimeBetween("-3 hour", "-2 hour")>'
         doneAt: ~
         reportData: ~
+        errorTrace: ~
 
     actionlog_done (template):
         createdAt: '<dateTimeBetween("-2 hour", "-1 hour")>'
         doneAt: '<dateTimeBetween("-1 hour", "-1 minute")>'
         reportData: <{defaultReportData}>
+        errorTrace: ~
+
+    actionlog_failed (template):
+        createdAt: '<dateTimeBetween("-2 hour", "-1 hour")>'
+        doneAt: '<dateTimeBetween("-1 hour", "-1 minute")>'
+        reportData: ~
+        errorTrace: 'Something bad happened.'
 
     actionlog_calculatedexavailabilities_toprocess (extends actionlog_toprocess):
         __construct: ['App\Message\CalculateDexAvailabilities']
@@ -26,7 +34,7 @@ App\Entity\ActionLog:
     actionlog_calculategamebundlesavailabilities_toprocess (extends actionlog_toprocess):
         __construct: ['App\Message\CalculateGameBundlesAvailabilities']
 
-    actionlog_calculategamebundlesshiniesavailabilities_toprocess (extends actionlog_toprocess):
+    actionlog_calculategamebundlesshiniesavailabilities_failed (extends actionlog_failed):
         __construct: ['App\Message\CalculateGameBundlesShiniesAvailabilities']
 
     actionlog_updategamesanddex_toprocess (extends actionlog_toprocess):
@@ -35,7 +43,7 @@ App\Entity\ActionLog:
     actionlog_updategamesavailabilities_toprocess (extends actionlog_toprocess):
         __construct: ['App\Message\UpdateGamesAvailabilities']
 
-    actionlog_updategamesshiniesavailabilities_toprocess (extends actionlog_toprocess):
+    actionlog_updategamesshiniesavailabilities_failed (extends actionlog_failed):
         __construct: ['App\Message\UpdateGamesShiniesAvailabilities']
 
     actionlog_updatelabels_toprocess (extends actionlog_toprocess):
