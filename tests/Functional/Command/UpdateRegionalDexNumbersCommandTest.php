@@ -16,8 +16,8 @@ class UpdateRegionalDexNumbersCommandTest extends AbstractUpdaterCommandTest
     {
         $this->assertGreaterThan(0, $this->getRegionalDexNumberCount());
 
-        $this->assertEquals(9, $this->getActionLogToProcessCount());
-        $this->assertEquals(5, $this->getActionLogDoneCount());
+        $initialToProcessCount = $this->getActionLogToProcessCount();
+        $initialDoneCount = $this->getActionLogDoneCount();
 
         $commandTester = $this->executeCommand();
 
@@ -25,8 +25,8 @@ class UpdateRegionalDexNumbersCommandTest extends AbstractUpdaterCommandTest
 
         $this->assertEquals(2863, $this->getRegionalDexNumberCount());
 
-        $this->assertEquals(9, $this->getActionLogToProcessCount());
-        $this->assertEquals(6, $this->getActionLogDoneCount());
+        $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
+        $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString("2863 regional dex numbers updated", $commandTester->getDisplay());
     }

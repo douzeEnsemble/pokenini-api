@@ -16,8 +16,8 @@ class UpdateGamesShiniesAvailabilitiesCommandTest extends AbstractUpdaterCommand
     {
         $this->assertGreaterThan(0, $this->getGameShinyAvailabilityCount());
 
-        $this->assertEquals(9, $this->getActionLogToProcessCount());
-        $this->assertEquals(5, $this->getActionLogDoneCount());
+        $initialToProcessCount = $this->getActionLogToProcessCount();
+        $initialDoneCount = $this->getActionLogDoneCount();
 
         $commandTester = $this->executeCommand();
 
@@ -25,8 +25,8 @@ class UpdateGamesShiniesAvailabilitiesCommandTest extends AbstractUpdaterCommand
 
         $this->assertEquals(2622, $this->getGameShinyAvailabilityCount());
 
-        $this->assertEquals(9, $this->getActionLogToProcessCount());
-        $this->assertEquals(6, $this->getActionLogDoneCount());
+        $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
+        $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString("2622 games' shinies' availabilities updated", $commandTester->getDisplay());
     }

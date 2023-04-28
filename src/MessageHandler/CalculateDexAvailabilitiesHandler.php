@@ -11,7 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
-class CalculateDexAvailabilitiesHandler
+class CalculateDexAvailabilitiesHandler implements CalculateHandlerInterface
 {
     use CalculateHandlerTrait;
 

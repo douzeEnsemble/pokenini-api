@@ -25,6 +25,9 @@ class ActionLog
     #[ORM\Column(nullable: true)]
     public ?string $reportData = null;
 
+    #[ORM\Column(nullable: true)]
+    public ?string $errorTrace = null;
+
     public function __construct(
         #[ORM\Column]
         private string $type,

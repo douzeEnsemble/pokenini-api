@@ -38,8 +38,10 @@ class ActionLogsControllerTest extends WebTestCase
 
         $this->assertIsDone($data, 'calculate_dex_availabilities');
         $this->assertIsNotDone($data, 'calculate_game_bundles_availabilities');
+        $this->assertIsFailed($data, 'calculate_game_bundles_shinies_availabilities');
         $this->assertIsDone($data, 'update_games_and_dex');
         $this->assertIsDone($data, 'update_games_availabilities');
+        $this->assertIsFailed($data, 'update_games_shinies_availabilities');
         $this->assertIsDone($data, 'update_labels');
         $this->assertIsDone($data, 'update_pokemons');
         $this->assertIsNotDone($data, 'update_regional_dex_numbers');
@@ -64,6 +66,9 @@ class ActionLogsControllerTest extends WebTestCase
 
         $this->assertArrayHasKey('details', $data[$key]);
         $this->assertNull($data[$key]['details']);
+
+        $this->assertArrayHasKey('error_trace', $data[$key]);
+        $this->assertNull($data[$key]['error_trace']);
     }
 
     /**
@@ -92,5 +97,38 @@ class ActionLogsControllerTest extends WebTestCase
         $this->assertArrayHasKey('details', $data[$key]);
         $this->assertNotNull($data[$key]['details']);
         $this->assertIsArray($data[$key]['details']);
+
+        $this->assertArrayHasKey('error_trace', $data[$key]);
+        $this->assertNull($data[$key]['error_trace']);
+    }
+
+    /**
+     * @param string[][] $data
+     */
+    private function assertIsFailed(array $data, string $key): void
+    {
+        $this->assertArrayHasKey('created_at', $data[$key]);
+        $this->assertMatchesRegularExpression(
+            '/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01]\d):[0-5]\d:[0-5]\d\+\d{2}$/',
+            $data[$key]['created_at']
+        );
+
+        $this->assertArrayHasKey('done_at', $data[$key]);
+        $this->assertMatchesRegularExpression(
+            '/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01]\d):[0-5]\d:[0-5]\d\+\d{2}$/',
+            $data[$key]['done_at']
+        );
+
+        $this->assertArrayHasKey('execution_time', $data[$key]);
+        $this->assertMatchesRegularExpression(
+            '/^\d*$/',
+            $data[$key]['execution_time']
+        );
+
+        $this->assertArrayHasKey('details', $data[$key]);
+        $this->assertNull($data[$key]['details']);
+
+        $this->assertArrayHasKey('error_trace', $data[$key]);
+        $this->assertNotEmpty($data[$key]['error_trace']);
     }
 }

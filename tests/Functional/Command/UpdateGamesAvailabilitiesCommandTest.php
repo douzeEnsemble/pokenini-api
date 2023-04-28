@@ -16,8 +16,8 @@ class UpdateGamesAvailabilitiesCommandTest extends AbstractUpdaterCommandTest
     {
         $this->assertGreaterThan(0, $this->getGameAvailabilityCount());
 
-        $this->assertEquals(9, $this->getActionLogToProcessCount());
-        $this->assertEquals(5, $this->getActionLogDoneCount());
+        $initialToProcessCount = $this->getActionLogToProcessCount();
+        $initialDoneCount = $this->getActionLogDoneCount();
 
         $commandTester = $this->executeCommand();
 
@@ -25,8 +25,8 @@ class UpdateGamesAvailabilitiesCommandTest extends AbstractUpdaterCommandTest
 
         $this->assertEquals(7980, $this->getGameAvailabilityCount());
 
-        $this->assertEquals(9, $this->getActionLogToProcessCount());
-        $this->assertEquals(6, $this->getActionLogDoneCount());
+        $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
+        $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString("7980 games' availabilities updated", $commandTester->getDisplay());
     }

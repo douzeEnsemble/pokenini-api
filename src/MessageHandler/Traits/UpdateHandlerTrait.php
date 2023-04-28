@@ -13,10 +13,16 @@ trait UpdateHandlerTrait
 
     public function update(AbstractActionMessage $message): void
     {
-        $this->updaterService->execute();
+        try {
+            $this->updaterService->execute();
 
-        $report = $this->updaterService->getReport();
+            $report = $this->updaterService->getReport();
 
-        $this->endActionLog($message, $report);
+            $this->endActionLog($message, $report);
+        } catch (\Exception $e) {
+            $this->endInErrorActionLog($message, $e->getMessage());
+
+            throw $e;
+        }
     }
 }
