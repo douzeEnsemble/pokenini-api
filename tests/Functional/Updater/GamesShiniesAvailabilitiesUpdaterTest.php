@@ -8,7 +8,7 @@ use App\Tests\Common\Traits\CounterTrait\CountGameShinyAvailabilityTrait;
 use App\Updater\AbstractUpdater;
 use App\Updater\GamesShiniesAvailabilitiesUpdater;
 
-class GamesShiniesAvailabilitiesUpdaterTest extends AbstractUpdaterTest
+class GamesShiniesAvailabilitiesUpdaterTest extends AbstractTestUpdater
 {
     use CountGameShinyAvailabilityTrait;
 

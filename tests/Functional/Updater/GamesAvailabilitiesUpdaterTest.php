@@ -8,7 +8,7 @@ use App\Tests\Common\Traits\CounterTrait\CountGameAvailabilityTrait;
 use App\Updater\AbstractUpdater;
 use App\Updater\GamesAvailabilitiesUpdater;
 
-class GamesAvailabilitiesUpdaterTest extends AbstractUpdaterTest
+class GamesAvailabilitiesUpdaterTest extends AbstractTestUpdater
 {
     use CountGameAvailabilityTrait;
 

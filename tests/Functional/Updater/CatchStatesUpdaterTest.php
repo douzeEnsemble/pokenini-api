@@ -7,7 +7,7 @@ namespace App\Tests\Functional\Updater;
 use App\Updater\AbstractUpdater;
 use App\Updater\CatchStatesUpdater;
 
-class CatchStatesUpdaterTest extends AbstractUpdaterTest
+class CatchStatesUpdaterTest extends AbstractTestUpdater
 {
     protected int $initialTotalCount = 5;
     protected int $finalTotalCount = 9;

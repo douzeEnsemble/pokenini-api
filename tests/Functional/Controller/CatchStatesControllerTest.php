@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Controller;
 
-class CatchStatesControllerTest extends AbstractControllerApiTest
+class CatchStatesControllerTest extends AbstractTestControllerApi
 {
     public function testGetCollection(): void
     {

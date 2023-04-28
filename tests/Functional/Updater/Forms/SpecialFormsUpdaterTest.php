@@ -7,7 +7,7 @@ namespace App\Tests\Functional\Updater\Forms;
 use App\Updater\AbstractUpdater;
 use App\Updater\Forms\SpecialFormsUpdater;
 
-class SpecialFormsUpdaterTest extends AbstractFormsUpdaterTest
+class SpecialFormsUpdaterTest extends AbstractTestFormsUpdater
 {
     protected int $initialTotalCount = 3;
     protected int $finalTotalCount = 5;

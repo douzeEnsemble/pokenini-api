@@ -8,7 +8,7 @@ use App\Tests\Common\Traits\CounterTrait\CountTrainerDexTrait;
 use App\Tests\Common\Traits\GetterTrait\GetPokedexTrait;
 use App\Tests\Functional\Controller\AlbumControllerTestData;
 
-class AlbumControllerTest extends AbstractControllerApiTest
+class AlbumControllerTest extends AbstractTestControllerApi
 {
     use GetPokedexTrait;
     use CountTrainerDexTrait;

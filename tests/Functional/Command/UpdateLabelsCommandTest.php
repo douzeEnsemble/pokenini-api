@@ -7,7 +7,7 @@ namespace App\Tests\Functional\Command;
 use App\Tests\Common\Traits\CounterTrait\CounterTableTrait;
 use App\Tests\Common\Traits\CounterTrait\CountActionLogTrait;
 
-class UpdateLabelsCommandTest extends AbstractUpdaterCommandTest
+class UpdateLabelsCommandTest extends AbstractTestUpdaterCommand
 {
     use CounterTableTrait;
     use CountActionLogTrait;
