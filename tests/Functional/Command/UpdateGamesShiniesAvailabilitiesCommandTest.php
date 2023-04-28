@@ -7,7 +7,7 @@ namespace App\Tests\Functional\Command;
 use App\Tests\Common\Traits\CounterTrait\CountGameShinyAvailabilityTrait;
 use App\Tests\Common\Traits\CounterTrait\CountActionLogTrait;
 
-class UpdateGamesShiniesAvailabilitiesCommandTest extends AbstractUpdaterCommandTest
+class UpdateGamesShiniesAvailabilitiesCommandTest extends AbstractTestUpdaterCommand
 {
     use CountGameShinyAvailabilityTrait;
     use CountActionLogTrait;

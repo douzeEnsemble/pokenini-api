@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace App\Tests\Functional\Updater\Forms;
 
 use App\Exception\InvalidSheetDataException;
-use App\Tests\Functional\Updater\AbstractUpdaterTest;
+use App\Tests\Functional\Updater\AbstractTestUpdater;
 
-abstract class AbstractFormsUpdaterTest extends AbstractUpdaterTest
+abstract class AbstractTestFormsUpdater extends AbstractTestUpdater
 {
     public function testDoEmptyData(): void
     {

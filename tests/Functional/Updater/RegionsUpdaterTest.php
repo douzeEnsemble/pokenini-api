@@ -7,7 +7,7 @@ namespace App\Tests\Functional\Updater;
 use App\Updater\AbstractUpdater;
 use App\Updater\RegionsUpdater;
 
-class RegionsUpdaterTest extends AbstractUpdaterTest
+class RegionsUpdaterTest extends AbstractTestUpdater
 {
     protected int $initialTotalCount = 10;
     protected int $finalTotalCount = 10;

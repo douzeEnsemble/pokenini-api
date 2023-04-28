@@ -9,7 +9,7 @@ use App\Tests\Common\Traits\GetterTrait\GetPokemonTrait;
 use App\Updater\AbstractUpdater;
 use App\Updater\PokemonsUpdater;
 
-class PokemonsUpdaterTest extends AbstractUpdaterTest
+class PokemonsUpdaterTest extends AbstractTestUpdater
 {
     use CountPokemonTrait;
     use GetPokemonTrait;

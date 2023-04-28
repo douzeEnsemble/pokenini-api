@@ -9,7 +9,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\BrowserKit\AbstractBrowser;
 use Symfony\Component\HttpFoundation\Response;
 
-abstract class AbstractControllerApiTest extends WebTestCase
+abstract class AbstractTestControllerApi extends WebTestCase
 {
     use RefreshDatabaseTrait;
 

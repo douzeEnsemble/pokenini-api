@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Tester\CommandTester;
 
-abstract class AbstractUpdaterCommandTest extends KernelTestCase
+abstract class AbstractTestUpdaterCommand extends KernelTestCase
 {
     use RefreshDatabaseTrait;
 

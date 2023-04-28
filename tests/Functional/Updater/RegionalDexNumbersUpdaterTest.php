@@ -7,7 +7,7 @@ namespace App\Tests\Functional\Updater;
 use App\Updater\AbstractUpdater;
 use App\Updater\RegionalDexNumbersUpdater;
 
-class RegionalDexNumbersUpdaterTest extends AbstractUpdaterTest
+class RegionalDexNumbersUpdaterTest extends AbstractTestUpdater
 {
     protected int $initialTotalCount = 12;
     protected int $finalTotalCount = 2863;

@@ -8,7 +8,7 @@ use App\Tests\Common\Traits\GetterTrait\GetDexTrait;
 use App\Updater\AbstractUpdater;
 use App\Updater\DexUpdater;
 
-class DexUpdaterTest extends AbstractUpdaterTest
+class DexUpdaterTest extends AbstractTestUpdater
 {
     use GetDexTrait;
 

@@ -7,7 +7,7 @@ namespace App\Tests\Functional\Updater;
 use App\Updater\AbstractUpdater;
 use App\Updater\GamesUpdater;
 
-class GamesUpdaterTest extends AbstractUpdaterTest
+class GamesUpdaterTest extends AbstractTestUpdater
 {
     protected int $initialTotalCount = 38;
     protected int $finalTotalCount = 38;

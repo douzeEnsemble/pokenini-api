@@ -6,7 +6,7 @@ namespace App\Tests\Functional\Controller;
 
 use App\Tests\Common\Traits\GetterTrait\GetTrainerDexTrait;
 
-class DexControllerTest extends AbstractControllerApiTest
+class DexControllerTest extends AbstractTestControllerApi
 {
     use GetTrainerDexTrait;
 

@@ -10,7 +10,7 @@ use Doctrine\DBAL\Connection;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
-abstract class AbstractUpdaterTest extends KernelTestCase
+abstract class AbstractTestUpdater extends KernelTestCase
 {
     use RefreshDatabaseTrait;
 
