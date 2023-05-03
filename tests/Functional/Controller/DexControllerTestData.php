@@ -111,6 +111,18 @@ final class DexControllerTestData
                 'is_on_home' => true,
                 'is_released' => true,
             ],
+            [
+                'dex_slug' => 'rubysapphireemeraldshiny',
+                'name' => 'Ruby / Sapphire / Emerald: Shiny',
+                'french_name' => 'Rubis / Saphir / Émeraude: Chromatique',
+                'slug' => 'rubysapphireemeraldshiny',
+                'is_shiny' => true,
+                'is_private' => true,
+                'is_display_form' => true,
+                'display_template' => 'box',
+                'is_on_home' => false,
+                'is_released' => true,
+            ],
         ];
     }
 
@@ -228,6 +240,18 @@ final class DexControllerTestData
                 'is_on_home' => true,
                 'is_released' => true,
             ],
+            [
+                'dex_slug' => 'rubysapphireemeraldshiny',
+                'name' => 'Ruby / Sapphire / Emerald: Shiny',
+                'french_name' => 'Rubis / Saphir / Émeraude: Chromatique',
+                'slug' => 'rubysapphireemeraldshiny',
+                'is_shiny' => true,
+                'is_private' => true,
+                'is_display_form' => true,
+                'display_template' => 'box',
+                'is_on_home' => false,
+                'is_released' => true,
+            ],
         ];
     }
 
@@ -297,6 +321,18 @@ final class DexControllerTestData
                 'is_on_home' => false,
                 'is_released' => true,
             ],
+            [
+                'dex_slug' => 'rubysapphireemeraldshiny',
+                'name' => 'Ruby / Sapphire / Emerald: Shiny',
+                'french_name' => 'Rubis / Saphir / Émeraude: Chromatique',
+                'slug' => 'rubysapphireemeraldshiny',
+                'is_shiny' => true,
+                'is_private' => true,
+                'is_display_form' => true,
+                'display_template' => 'box',
+                'is_on_home' => false,
+                'is_released' => true,
+            ],
         ];
     }
 
@@ -363,6 +399,18 @@ final class DexControllerTestData
                 'is_private' => false,
                 'is_display_form' => false,
                 'display_template' => 'list-7',
+                'is_on_home' => false,
+                'is_released' => true,
+            ],
+            [
+                'dex_slug' => 'rubysapphireemeraldshiny',
+                'name' => 'Ruby / Sapphire / Emerald: Shiny',
+                'french_name' => 'Rubis / Saphir / Émeraude: Chromatique',
+                'slug' => 'rubysapphireemeraldshiny',
+                'is_shiny' => true,
+                'is_private' => true,
+                'is_display_form' => true,
+                'display_template' => 'box',
                 'is_on_home' => false,
                 'is_released' => true,
             ],
