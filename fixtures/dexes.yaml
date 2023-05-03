@@ -27,6 +27,14 @@ App\Entity\Dex:
         displayTemplate: 'box'
         orderNumber: 3
         lastChangedAt: '<date_create()>'
+    dex_rubysapphireemeraldshiny:
+        name: 'Ruby / Sapphire / Emerald: Shiny'
+        frenchName: 'Rubis / Saphir / Émeraude: Chromatique'
+        selectionRule: "(p.bankable or p.bankableish) and bsa?.rubysapphireemerald"
+        displayTemplate: 'box'
+        isShiny: true
+        orderNumber: 30
+        lastChangedAt: '<date_create()>'
     dex_home:
         name: 'Home'
         frenchName: 'Home'

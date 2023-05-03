@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Calculator;
 
 use App\Calculator\DexAvailabilitiesCalculator;
+use App\Calculator\DexAvailabilityCalculator;
 use App\DTO\GameBundlesAvailabilities;
 use App\DTO\GameBundlesShiniesAvailabilities;
 use App\Entity\Dex;
@@ -22,56 +23,19 @@ class DexAvailabilitiesCalculatorTest extends TestCase
 {
     public function testExecute(): void
     {
-        $pokemonA = new Pokemon();
-        $pokemonB = new Pokemon();
-        $pokemonC = new Pokemon();
-
         $dexAvailabilitiesRepository = $this->createMock(DexAvailabilitiesRepository::class);
         $dexAvailabilitiesRepository
             ->expects($this->once())
             ->method('removeAll')
         ;
 
-        $gameBundlesAvailabilitiesService = $this->createMock(GameBundlesAvailabilitiesService::class);
-        $gameBundlesAvailabilitiesService
-            ->expects($this->exactly(6))
-            ->method('getFromPokemon')
-            ->willReturn(new GameBundlesAvailabilities([]))
-        ;
-
-        $gameBundlesShiniesAvailabilitiesService = $this->createMock(GameBundlesShiniesAvailabilitiesService::class);
-        $gameBundlesShiniesAvailabilitiesService
-            ->expects($this->exactly(6))
-            ->method('getFromPokemon')
-            ->willReturn(new GameBundlesShiniesAvailabilities([]))
-        ;
-
-        $entityManager = $this->createMock(EntityManagerInterface::class);
-        $entityManager
-            ->expects($this->exactly(3))
-            ->method('persist')
-        ;
-        $entityManager
-            ->expects($this->exactly(2))
-            ->method('flush')
-        ;
-        $entityManager
-            ->expects($this->exactly(2))
-            ->method('clear')
-        ;
-
-        $dexOne = new Dex();
-        $dexOne->selectionRule = 'true';
-        $dexTwo = new Dex();
-        $dexTwo->selectionRule = 'false';
-
         $dexQuery = $this->createMock(AbstractQuery::class);
         $dexQuery
             ->expects($this->once())
             ->method('toIterable')
             ->willReturn([
-                $dexOne,
-                $dexTwo,
+                new Dex(),
+                new Dex(),
             ])
         ;
         $dexRepository = $this->createMock(DexRepository::class);
@@ -81,35 +45,22 @@ class DexAvailabilitiesCalculatorTest extends TestCase
             ->willReturn($dexQuery)
         ;
 
-        $pokemonQuery = $this->createMock(AbstractQuery::class);
-        $pokemonQuery
+        $dexAvailabilityCalculator = $this->createMock(DexAvailabilityCalculator::class);
+        $dexAvailabilityCalculator
             ->expects($this->exactly(2))
-            ->method('toIterable')
-            ->willReturn([
-                $pokemonA,
-                $pokemonB,
-                $pokemonC,
-            ])
-        ;
-        $pokemonsRepository = $this->createMock(PokemonsRepository::class);
-        $pokemonsRepository
-            ->expects($this->exactly(2))
-            ->method('getQueryAll')
-            ->willReturn($pokemonQuery)
+            ->method('calculate')
+            ->willReturn(3)
         ;
 
         $service = new DexAvailabilitiesCalculator(
             $dexAvailabilitiesRepository,
-            $gameBundlesAvailabilitiesService,
-            $gameBundlesShiniesAvailabilitiesService,
             $dexRepository,
-            $pokemonsRepository,
-            $entityManager
+            $dexAvailabilityCalculator,
         );
 
         $service->execute();
         $statistic = $service->getStatistic();
 
-        $this->assertEquals(3, $statistic->count);
+        $this->assertEquals(6, $statistic->count);
     }
 }
