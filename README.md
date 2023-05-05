@@ -77,6 +77,16 @@ docker-compose exec php sh -c '
 '
 ```
 
+### Calculate games' bundles' shinies' availabilty
+
+Game bundle shiny availability are calculated from games' shiny' availabilities
+
+```
+docker-compose exec php sh -c '
+    php bin/console app:calculate:game_bundles_shinies_availabilities
+'
+```
+
 ### Calculate dex' availabilty
 
 Dex availability are calculated from dex rules
