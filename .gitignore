@@ -34,3 +34,6 @@
 tests/coverage
 tests/mutation/index.html
 coverage.xml
+###> phpstan/phpstan ###
+phpstan.neon
+###< phpstan/phpstan ###
