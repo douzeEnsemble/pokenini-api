@@ -2,7 +2,7 @@
 # Adapted from https://github.com/dunglas/symfony-docker
 
 # Prod image
-FROM php:8.1-fpm-alpine AS app_php
+FROM php:8.2-fpm-alpine AS app_php
 
 # Allow to use development versions of Symfony
 ARG STABILITY="stable"
