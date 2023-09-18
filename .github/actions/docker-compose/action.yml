@@ -37,7 +37,7 @@ runs:
 
     - name: Check HTTP reachability
       shell: bash
-      run: curl -v -o /dev/null http://localhost:8080
+      run: curl -v -o /dev/null http://localhost:8980
 
     - name: Check HTTPS reachability
       shell: bash
