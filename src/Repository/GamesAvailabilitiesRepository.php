@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
+use App\DTO\GamesAvailabilities;
 use App\Entity\GameAvailability;
+use App\Entity\Pokemon;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -25,5 +27,42 @@ class GamesAvailabilitiesRepository extends ServiceEntityRepository
         ;
 
         $queryBuilder->getQuery()->execute();
+    }
+
+    /**
+     * @param Pokemon $pokemon
+     *
+     * @return GamesAvailabilities dex slug as property and dex availability as value
+     */
+    public function getFromPokemon(Pokemon $pokemon): GamesAvailabilities
+    {
+        $queryBuilder = $this->createQueryBuilder('ga');
+
+        $queryBuilder->select('ga.availability');
+        $queryBuilder->addSelect('g.slug');
+
+        $queryBuilder->join('ga.game', 'g');
+
+        $queryBuilder->where($queryBuilder->expr()->eq('ga.pokemonName', ':pokemonName'));
+        $queryBuilder->setParameter('pokemonName', $pokemon->primeName);
+
+        $queryBuilder->orderBy('g.name');
+
+        /** @var string[][] $result */
+        $result = $queryBuilder->getQuery()->getArrayResult();
+
+        $list = [];
+        foreach ($result as $line) {
+            /** @var bool $isAvailable */
+            $isAvailable =  (
+                '—' !== $line['availability']
+                && '-' !== $line['availability']
+                && '' !== $line['availability']
+            );
+
+            $list[$line['slug']] = $isAvailable;
+        }
+
+        return new GamesAvailabilities($list);
     }
 }

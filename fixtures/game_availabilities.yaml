@@ -87,6 +87,10 @@ App\Entity\GameAvailability:
         pokemonName: 'Venusaur'
         game: '@game_silver'
         availability: 'C'
+    gameavailability_deoxys_ruby:
+        pokemonName: 'Deoxys'
+        game: '@game_ruby'
+        availability: 'C'
     gameavailability_deoxys_emerald:
         pokemonName: 'Deoxys'
         game: '@game_emerald'

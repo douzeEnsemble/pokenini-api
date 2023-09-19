@@ -12,7 +12,7 @@ class GamesShiniesAvailabilitiesUpdaterTest extends AbstractTestUpdater
 {
     use CountGameShinyAvailabilityTrait;
 
-    protected int $initialTotalCount = 17;
+    protected int $initialTotalCount = 18;
     protected int $finalTotalCount = 2622;
     protected int $mustBeDeletedTotalCount = 0;
     protected string $sheetName = 'Games Shinies Availability';
