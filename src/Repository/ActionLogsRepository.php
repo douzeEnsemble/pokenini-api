@@ -35,6 +35,7 @@ class ActionLogsRepository extends ServiceEntityRepository
                     )
                 )
             ) as type_action,
+            t.rn as row_number,
             created_at AT TIME ZONE 'UTC' AS created_at,
             done_at AT TIME ZONE 'UTC' AS done_at,
             EXTRACT(EPOCH FROM (done_at - created_at)) AS execution_time,
@@ -52,12 +53,12 @@ class ActionLogsRepository extends ServiceEntityRepository
                         ) AS rn
                 FROM    action_log
             ) t
-        WHERE t.rn = 1
+        WHERE t.rn BETWEEN 1 AND 2
 
         ORDER BY    "type" ASC, created_at DESC
         SQL;
 
         /** @var string[][]|null[][] */
-        return $this->getEntityManager()->getConnection()->fetchAllAssociativeIndexed($sql);
+        return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
     }
 }

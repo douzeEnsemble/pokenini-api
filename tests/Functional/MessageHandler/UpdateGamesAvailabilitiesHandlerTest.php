@@ -51,8 +51,8 @@ class UpdateGamesAvailabilitiesHandlerTest extends KernelTestCase
 
         $this->assertEquals(7980, $this->getTableCount('game_availability'));
 
-        $this->assertEquals($beforeTotalCount, $this->getActionLogCount());
-        $this->assertEquals($beforeToProcessCount - 1, $this->getActionLogToProcessCount());
+        $this->assertEquals($beforeTotalCount + 1, $this->getActionLogCount());
+        $this->assertEquals($beforeToProcessCount, $this->getActionLogToProcessCount());
         $this->assertEquals($beforeDoneCount + 1, $this->getActionLogDoneCount());
     }
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Common\Traits\GetterTrait;
 
 use Doctrine\DBAL\Connection;
+use Symfony\Component\Uid\Uuid;
 
 trait GetActionLogTrait
 {
@@ -16,21 +17,33 @@ trait GetActionLogTrait
         /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
+        $actionLogId = Uuid::v4();
+
         $sql = <<<SQL
-        SELECT  id
-        FROM    action_log
-        WHERE   type = :type
-            AND done_at IS NULL
+        INSERT INTO action_log (
+            id,
+            created_at, 
+            done_at, 
+            report_data, 
+            error_trace,
+            "type"
+        )
+        VALUES (
+            :id,
+            NOW(),
+            NULL,
+            NULL,
+            NULL,
+            :type
+        )
         SQL;
-        $parameters = ['type' => $type];
+        $parameters = [
+            'id' => $actionLogId,
+            'type' => $type,
+        ];
 
-        /** @var false|string $result */
-        $result = $connection->executeQuery($sql, $parameters)->fetchOne();
+        $connection->executeStatement($sql, $parameters);
 
-        if (false === $result) {
-            return '';
-        }
-
-        return $result;
+        return (string) $actionLogId;
     }
 }

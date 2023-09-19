@@ -57,8 +57,8 @@ class UpdateGamesAndDexHandlerTest extends KernelTestCase
         $this->assertEquals(38, $this->getTableCount('game'));
         $this->assertEquals(24, $this->getTableCount('dex'));
 
-        $this->assertEquals($beforeTotalCount, $this->getActionLogCount());
-        $this->assertEquals($beforeToProcessCount - 1, $this->getActionLogToProcessCount());
+        $this->assertEquals($beforeTotalCount + 1, $this->getActionLogCount());
+        $this->assertEquals($beforeToProcessCount, $this->getActionLogToProcessCount());
         $this->assertEquals($beforeDoneCount + 1, $this->getActionLogDoneCount());
     }
 

@@ -33,102 +33,188 @@ class ActionLogsControllerTest extends WebTestCase
         $this->assertResponseIsSuccessful();
 
         $content = (string) $client->getResponse()->getContent();
-        /** @var string[][] $data */
+        /** @var string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
-        $this->assertIsDone($data, 'calculate_dex_availabilities');
-        $this->assertIsNotDone($data, 'calculate_game_bundles_availabilities');
-        $this->assertIsFailed($data, 'calculate_game_bundles_shinies_availabilities');
-        $this->assertIsDone($data, 'update_games_and_dex');
-        $this->assertIsDone($data, 'update_games_availabilities');
-        $this->assertIsFailed($data, 'update_games_shinies_availabilities');
-        $this->assertIsDone($data, 'update_labels');
-        $this->assertIsDone($data, 'update_pokemons');
-        $this->assertIsNotDone($data, 'update_regional_dex_numbers');
+        $this->assertThereIsNoLast($data, 'calculate_dex_availabilities');
+        $this->assertCurrentIsDone($data, 'calculate_dex_availabilities');
+
+        $this->assertThereIsNoLast($data, 'calculate_game_bundles_availabilities');
+        $this->assertCurrentIsNotDone($data, 'calculate_game_bundles_availabilities');
+
+        $this->assertThereIsNoLast($data, 'calculate_game_bundles_shinies_availabilities');
+        $this->assertCurrentIsFailed($data, 'calculate_game_bundles_shinies_availabilities');
+
+        $this->assertLastIsDone($data, 'update_games_and_dex');
+        $this->assertCurrentIsNotDone($data, 'update_games_and_dex');
+
+        $this->assertLastIsDone($data, 'update_games_availabilities');
+        $this->assertCurrentIsFailed($data, 'update_games_availabilities');
+
+        $this->assertLastIsDone($data, 'update_labels');
+        $this->assertCurrentIsDone($data, 'update_labels');
+
+        $this->assertLastIsFailed($data, 'update_games_shinies_availabilities');
+        $this->assertCurrentIsFailed($data, 'update_games_shinies_availabilities');
+
+        $this->assertLastIsNotDone($data, 'update_pokemons');
+        $this->assertCurrentIsDone($data, 'update_pokemons');
+
+        $this->assertLastIsNotDone($data, 'update_regional_dex_numbers');
+        $this->assertCurrentIsNotDone($data, 'update_regional_dex_numbers');
     }
 
     /**
-     * @param string[][] $data
+     * @param string[][][] $data
      */
-    private function assertIsNotDone(array $data, string $key): void
+    private function assertThereIsNoLast(array $data, string $key): void
     {
-        $this->assertArrayHasKey('created_at', $data[$key]);
-        $this->assertMatchesRegularExpression(
-            '/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01]\d):[0-5]\d:[0-5]\d\+\d{2}$/',
-            $data[$key]['created_at']
-        );
-
-        $this->assertArrayHasKey('done_at', $data[$key]);
-        $this->assertNull($data[$key]['done_at']);
-
-        $this->assertArrayHasKey('execution_time', $data[$key]);
-        $this->assertNull($data[$key]['execution_time']);
-
-        $this->assertArrayHasKey('details', $data[$key]);
-        $this->assertNull($data[$key]['details']);
-
-        $this->assertArrayHasKey('error_trace', $data[$key]);
-        $this->assertNull($data[$key]['error_trace']);
+        $this->assertArrayHasKey($key, $data);
+        $this->assertArrayNotHasKey('last', $data[$key]);
     }
 
     /**
-     * @param string[][] $data
+     * @param string[][][] $data
      */
-    private function assertIsDone(array $data, string $key): void
+    private function assertCurrentIsNotDone(array $data, string $key): void
     {
-        $this->assertArrayHasKey('created_at', $data[$key]);
+        $this->assertArrayHasKey($key, $data);
+        $this->assertArrayHasKey('current', $data[$key]);
+        $this->assertIsNotDone($data[$key]['current']);
+    }
+
+    /**
+     * @param string[][][] $data
+     */
+    private function assertCurrentIsDone(array $data, string $key): void
+    {
+        $this->assertArrayHasKey($key, $data);
+        $this->assertArrayHasKey('current', $data[$key]);
+        $this->assertIsDone($data[$key]['current']);
+    }
+
+    /**
+     * @param string[][][] $data
+     */
+    private function assertCurrentIsFailed(array $data, string $key): void
+    {
+        $this->assertArrayHasKey($key, $data);
+        $this->assertArrayHasKey('current', $data[$key]);
+        $this->assertIsFailed($data[$key]['current']);
+    }
+
+    /**
+     * @param string[][][] $data
+     */
+    private function assertLastIsNotDone(array $data, string $key): void
+    {
+        $this->assertArrayHasKey($key, $data);
+        $this->assertArrayHasKey('last', $data[$key]);
+        $this->assertIsNotDone($data[$key]['last']);
+    }
+
+    /**
+     * @param string[][][] $data
+     */
+    private function assertLastIsDone(array $data, string $key): void
+    {
+        $this->assertArrayHasKey($key, $data);
+        $this->assertArrayHasKey('last', $data[$key]);
+        $this->assertIsDone($data[$key]['last']);
+    }
+
+    /**
+     * @param string[][][] $data
+     */
+    private function assertLastIsFailed(array $data, string $key): void
+    {
+        $this->assertArrayHasKey($key, $data);
+        $this->assertArrayHasKey('last', $data[$key]);
+        $this->assertIsFailed($data[$key]['last']);
+    }
+
+    /**
+     * @param string[] $data
+     */
+    private function assertIsNotDone(array $data): void
+    {
+        $this->assertArrayHasKey('created_at', $data);
         $this->assertMatchesRegularExpression(
             '/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01]\d):[0-5]\d:[0-5]\d\+\d{2}$/',
-            $data[$key]['created_at']
+            $data['created_at']
         );
 
-        $this->assertArrayHasKey('done_at', $data[$key]);
+        $this->assertArrayHasKey('done_at', $data);
+        $this->assertNull($data['done_at']);
+
+        $this->assertArrayHasKey('execution_time', $data);
+        $this->assertNull($data['execution_time']);
+
+        $this->assertArrayHasKey('details', $data);
+        $this->assertNull($data['details']);
+
+        $this->assertArrayHasKey('error_trace', $data);
+        $this->assertNull($data['error_trace']);
+    }
+
+    /**
+     * @param string[] $data
+     */
+    private function assertIsDone(array $data): void
+    {
+        $this->assertArrayHasKey('created_at', $data);
         $this->assertMatchesRegularExpression(
             '/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01]\d):[0-5]\d:[0-5]\d\+\d{2}$/',
-            $data[$key]['done_at']
+            $data['created_at']
         );
 
-        $this->assertArrayHasKey('execution_time', $data[$key]);
+        $this->assertArrayHasKey('done_at', $data);
+        $this->assertMatchesRegularExpression(
+            '/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01]\d):[0-5]\d:[0-5]\d\+\d{2}$/',
+            $data['done_at']
+        );
+
+        $this->assertArrayHasKey('execution_time', $data);
         $this->assertMatchesRegularExpression(
             '/^\d*$/',
-            $data[$key]['execution_time']
+            $data['execution_time']
         );
 
-        $this->assertArrayHasKey('details', $data[$key]);
-        $this->assertNotNull($data[$key]['details']);
-        $this->assertIsArray($data[$key]['details']);
+        $this->assertArrayHasKey('details', $data);
+        $this->assertNotNull($data['details']);
+        $this->assertIsArray($data['details']);
 
-        $this->assertArrayHasKey('error_trace', $data[$key]);
-        $this->assertNull($data[$key]['error_trace']);
+        $this->assertArrayHasKey('error_trace', $data);
+        $this->assertNull($data['error_trace']);
     }
 
     /**
-     * @param string[][] $data
+     * @param string[] $data
      */
-    private function assertIsFailed(array $data, string $key): void
+    private function assertIsFailed(array $data): void
     {
-        $this->assertArrayHasKey('created_at', $data[$key]);
+        $this->assertArrayHasKey('created_at', $data);
         $this->assertMatchesRegularExpression(
             '/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01]\d):[0-5]\d:[0-5]\d\+\d{2}$/',
-            $data[$key]['created_at']
+            $data['created_at']
         );
 
-        $this->assertArrayHasKey('done_at', $data[$key]);
+        $this->assertArrayHasKey('done_at', $data);
         $this->assertMatchesRegularExpression(
             '/^\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[1-2][0-9]|3[0-1]) (2[0-3]|[01]\d):[0-5]\d:[0-5]\d\+\d{2}$/',
-            $data[$key]['done_at']
+            $data['done_at']
         );
 
-        $this->assertArrayHasKey('execution_time', $data[$key]);
+        $this->assertArrayHasKey('execution_time', $data);
         $this->assertMatchesRegularExpression(
             '/^\d*$/',
-            $data[$key]['execution_time']
+            $data['execution_time']
         );
 
-        $this->assertArrayHasKey('details', $data[$key]);
-        $this->assertNull($data[$key]['details']);
+        $this->assertArrayHasKey('details', $data);
+        $this->assertNull($data['details']);
 
-        $this->assertArrayHasKey('error_trace', $data[$key]);
-        $this->assertNotEmpty($data[$key]['error_trace']);
+        $this->assertArrayHasKey('error_trace', $data);
+        $this->assertNotEmpty($data['error_trace']);
     }
 }

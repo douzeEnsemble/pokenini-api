@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Tests\Functional\MessageHandler;
 
 use App\Message\UpdateGamesShiniesAvailabilities;
-use App\Tests\Common\Traits\ChangeTrait\ChangeActionLogTrait;
 use App\Tests\Common\Traits\CounterTrait\CounterTableTrait;
 use App\Tests\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Common\Traits\GetterTrait\GetActionLogTrait;
@@ -21,7 +20,6 @@ class UpdateGamesShiniesAvailabilitiesHandlerTest extends KernelTestCase
     use CounterTableTrait;
     use CountActionLogTrait;
     use GetActionLogTrait;
-    use ChangeActionLogTrait;
 
     public function setUp(): void
     {
@@ -30,8 +28,6 @@ class UpdateGamesShiniesAvailabilitiesHandlerTest extends KernelTestCase
 
     public function testHandler(): void
     {
-        $this->changeFromFailedIntoToProcess(UpdateGamesShiniesAvailabilities::class);
-
         $transport = $this->transport('async');
         $transport->throwExceptions();
 
@@ -55,8 +51,8 @@ class UpdateGamesShiniesAvailabilitiesHandlerTest extends KernelTestCase
 
         $this->assertEquals(2622, $this->getTableCount('game_shiny_availability'));
 
-        $this->assertEquals($beforeTotalCount, $this->getActionLogCount());
-        $this->assertEquals($beforeToProcessCount - 1, $this->getActionLogToProcessCount());
+        $this->assertEquals($beforeTotalCount + 1, $this->getActionLogCount());
+        $this->assertEquals($beforeToProcessCount, $this->getActionLogToProcessCount());
         $this->assertEquals($beforeDoneCount + 1, $this->getActionLogDoneCount());
     }
 

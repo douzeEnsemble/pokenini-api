@@ -35,6 +35,14 @@ class ActionLogsController extends AbstractController
             }
         );
 
-        return new JsonResponse($actionLogs);
+        $finalActionLogs = [];
+        foreach ($actionLogs as $actionLog) {
+            $typeAction = $actionLog['type_action'];
+            $period = $actionLog['row_number'] == 1 ? 'current' : 'last';
+
+            $finalActionLogs[$typeAction][$period] = $actionLog;
+        }
+
+        return new JsonResponse($finalActionLogs);
     }
 }

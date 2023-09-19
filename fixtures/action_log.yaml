@@ -28,49 +28,53 @@ App\Entity\ActionLog:
         reportData: ~
         errorTrace: 'Something bad happened.'
 
-    actionlog_calculatedexavailabilities_toprocess (extends actionlog_toprocess):
-        __construct: ['App\Message\CalculateDexAvailabilities']
-
-    actionlog_calculategamebundlesavailabilities_toprocess (extends actionlog_toprocess):
+    actionlog_calculategamebundlesavailabilities_current_toprocess (extends actionlog_toprocess):
         __construct: ['App\Message\CalculateGameBundlesAvailabilities']
 
-    actionlog_calculategamebundlesshiniesavailabilities_failed (extends actionlog_failed):
-        __construct: ['App\Message\CalculateGameBundlesShiniesAvailabilities']
-
-    actionlog_updategamesanddex_toprocess (extends actionlog_toprocess):
-        __construct: ['App\Message\UpdateGamesAndDex']
-
-    actionlog_updategamesavailabilities_toprocess (extends actionlog_toprocess):
-        __construct: ['App\Message\UpdateGamesAvailabilities']
-
-    actionlog_updategamesshiniesavailabilities_failed (extends actionlog_failed):
-        __construct: ['App\Message\UpdateGamesShiniesAvailabilities']
-
-    actionlog_updatelabels_toprocess (extends actionlog_toprocess):
-        __construct: ['App\Message\UpdateLabels']
-
-    actionlog_updatepokemons_toprocess (extends actionlog_toprocess):
-        __construct: ['App\Message\UpdatePokemons']
-
-    actionlog_updateregionaldexnumbers_toprocess (extends actionlog_toprocess):
-        __construct: ['App\Message\UpdateRegionalDexNumbers']
-
-    actionlog_calculatedexavailabilities_done (extends actionlog_done):
+    actionlog_calculatedexavailabilities_current_done (extends actionlog_done):
         __construct: ['App\Message\CalculateDexAvailabilities']
         reportData: <{calculateDexAvailabilitiesReportData}>
 
-    actionlog_updategamesanddex_done (extends actionlog_done):
+    actionlog_calculategamebundlesshiniesavailabilities_current_failed (extends actionlog_failed):
+        __construct: ['App\Message\CalculateGameBundlesShiniesAvailabilities']
+
+    actionlog_updategamesanddex_last_done (extends actionlog_done):
         __construct: ['App\Message\UpdateGamesAndDex']
         reportData: <{updateGamesAndDexReportData}>
+        createdAt:  '<dateTimeBetween("-5 hour", "-4 hour")>'
+    actionlog_updategamesanddex_current_toprocess (extends actionlog_toprocess):
+        __construct: ['App\Message\UpdateGamesAndDex']
 
-    actionlog_updategamesavailabilities_done (extends actionlog_done):
+    actionlog_updategamesavailabilities_last_done (extends actionlog_done):
         __construct: ['App\Message\UpdateGamesAvailabilities']
         reportData: <{updateGamesAvailabilitiesReportData}>
+        createdAt:  '<dateTimeBetween("-5 hour", "-4 hour")>'
+    actionlog_updategamesavailabilities_current_failed (extends actionlog_failed):
+        __construct: ['App\Message\UpdateGamesAvailabilities']
 
-    actionlog_updatelabels_done (extends actionlog_done):
+    actionlog_updatelabels_last_done (extends actionlog_done):
+        __construct: ['App\Message\UpdateLabels']
+        reportData: <{updateLabelsReportData}>
+        createdAt:  '<dateTimeBetween("-5 hour", "-4 hour")>'
+    actionlog_updatelabels_current_done (extends actionlog_done):
         __construct: ['App\Message\UpdateLabels']
         reportData: <{updateLabelsReportData}>
 
-    actionlog_updatepokemons_done (extends actionlog_done):
+    actionlog_updategamesshiniesavailabilities_last_failed (extends actionlog_failed):
+        __construct: ['App\Message\UpdateGamesShiniesAvailabilities']
+        createdAt:  '<dateTimeBetween("-5 hour", "-4 hour")>'
+    actionlog_updategamesshiniesavailabilities_current_failed (extends actionlog_failed):
+        __construct: ['App\Message\UpdateGamesShiniesAvailabilities']
+
+    actionlog_updatepokemons_last_toprocess (extends actionlog_toprocess):
+        __construct: ['App\Message\UpdatePokemons']
+        createdAt:  '<dateTimeBetween("-5 hour", "-4 hour")>'
+    actionlog_updatepokemons_current_done (extends actionlog_done):
         __construct: ['App\Message\UpdatePokemons']
         reportData: <{updatePokemonsReportData}>
+
+    actionlog_updateregionaldexnumbers_last_toprocess (extends actionlog_toprocess):
+        __construct: ['App\Message\UpdateRegionalDexNumbers']
+        createdAt:  '<dateTimeBetween("-5 hour", "-4 hour")>'
+    actionlog_updateregionaldexnumbers_current_toprocess (extends actionlog_toprocess):
+        __construct: ['App\Message\UpdateRegionalDexNumbers']

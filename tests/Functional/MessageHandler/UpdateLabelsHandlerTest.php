@@ -28,7 +28,6 @@ class UpdateLabelsHandlerTest extends KernelTestCase
 
     public function testHandler(): void
     {
-
         $transport = $this->transport('async');
         $transport->throwExceptions();
 
@@ -62,8 +61,8 @@ class UpdateLabelsHandlerTest extends KernelTestCase
         $this->assertEquals(5, $this->getTableCount('special_form'));
         $this->assertEquals(8, $this->getTableCount('variant_form'));
 
-        $this->assertEquals($beforeTotalCount, $this->getActionLogCount());
-        $this->assertEquals($beforeToProcessCount - 1, $this->getActionLogToProcessCount());
+        $this->assertEquals($beforeTotalCount + 1, $this->getActionLogCount());
+        $this->assertEquals($beforeToProcessCount, $this->getActionLogToProcessCount());
         $this->assertEquals($beforeDoneCount + 1, $this->getActionLogDoneCount());
     }
 
