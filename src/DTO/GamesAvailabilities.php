@@ -1,0 +1,30 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\DTO;
+
+class GamesAvailabilities
+{
+    /**
+     * @param bool[] $gamesAvailabilities
+     */
+    public function __construct(private array $gamesAvailabilities)
+    {
+    }
+
+    public function __get(string $game): ?bool
+    {
+        return $this->gamesAvailabilities[$game] ?? null;
+    }
+
+    public function __isset(string $game): bool
+    {
+        return isset($this->gamesAvailabilities[$game]);
+    }
+
+    public function __set(string $game, bool $value): void
+    {
+        throw new \Exception("Use constructor please");
+    }
+}

@@ -56,6 +56,46 @@ parameters:
 			path: tests/Functional/Service/GameBundlesShiniesAvailabilitiesServiceTest.php
 
 		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesAvailabilities\\:\\:\\$blue\\.$#"
+			count: 2
+			path: tests/Functional/Service/GamesAvailabilitiesServiceTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesAvailabilities\\:\\:\\$emerald\\.$#"
+			count: 3
+			path: tests/Functional/Service/GamesAvailabilitiesServiceTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesAvailabilities\\:\\:\\$red\\.$#"
+			count: 3
+			path: tests/Functional/Service/GamesAvailabilitiesServiceTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesAvailabilities\\:\\:\\$ruby\\.$#"
+			count: 1
+			path: tests/Functional/Service/GamesAvailabilitiesServiceTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesShiniesAvailabilities\\:\\:\\$blue\\.$#"
+			count: 2
+			path: tests/Functional/Service/GamesShiniesAvailabilitiesServiceTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesShiniesAvailabilities\\:\\:\\$emerald\\.$#"
+			count: 3
+			path: tests/Functional/Service/GamesShiniesAvailabilitiesServiceTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesShiniesAvailabilities\\:\\:\\$red\\.$#"
+			count: 3
+			path: tests/Functional/Service/GamesShiniesAvailabilitiesServiceTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesShiniesAvailabilities\\:\\:\\$ruby\\.$#"
+			count: 1
+			path: tests/Functional/Service/GamesShiniesAvailabilitiesServiceTest.php
+
+		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$a\\.$#"
 			count: 1
 			path: tests/Unit/DTO/GameBundlesAvailabilitiesTest.php
@@ -84,6 +124,36 @@ parameters:
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesShiniesAvailabilities\\:\\:\\$c\\.$#"
 			count: 1
 			path: tests/Unit/DTO/GameBundlesShiniesAvailabilitiesTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesAvailabilities\\:\\:\\$a\\.$#"
+			count: 1
+			path: tests/Unit/DTO/GamesAvailabilitiesTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesAvailabilities\\:\\:\\$b\\.$#"
+			count: 1
+			path: tests/Unit/DTO/GamesAvailabilitiesTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesAvailabilities\\:\\:\\$c\\.$#"
+			count: 1
+			path: tests/Unit/DTO/GamesAvailabilitiesTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesShiniesAvailabilities\\:\\:\\$a\\.$#"
+			count: 1
+			path: tests/Unit/DTO/GamesShiniesAvailabilitiesTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesShiniesAvailabilities\\:\\:\\$b\\.$#"
+			count: 1
+			path: tests/Unit/DTO/GamesShiniesAvailabilitiesTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesShiniesAvailabilities\\:\\:\\$c\\.$#"
+			count: 1
+			path: tests/Unit/DTO/GamesShiniesAvailabilitiesTest.php
 
 		-
 			message: "#^Call to an undefined method object\\:\\:getIdentifier\\(\\)\\.$#"

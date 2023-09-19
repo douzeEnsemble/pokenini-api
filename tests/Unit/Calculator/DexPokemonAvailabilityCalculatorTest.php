@@ -7,11 +7,16 @@ namespace App\Tests\Unit\Calculator;
 use App\Calculator\DexPokemonAvailabilityCalculator;
 use App\DTO\GameBundlesAvailabilities;
 use App\DTO\GameBundlesShiniesAvailabilities;
+use App\DTO\GamesAvailabilities;
+use App\DTO\GamesShiniesAvailabilities;
 use App\Entity\Dex;
 use App\Entity\DexAvailability;
 use App\Entity\Pokemon;
 use App\Service\GameBundlesAvailabilitiesService;
 use App\Service\GameBundlesShiniesAvailabilitiesService;
+use App\Service\GamesAvailabilitiesService;
+use App\Service\GamesShiniesAvailabilitiesService;
+use PHPMD\Rule;
 use PHPUnit\Framework\TestCase;
 
 class DexPokemonAvailabilityCalculatorTest extends TestCase
@@ -39,12 +44,36 @@ class DexPokemonAvailabilityCalculatorTest extends TestCase
             ]))
         ;
 
+        $gamesAvailabilitiesService = $this->createMock(GamesAvailabilitiesService::class);
+        $gamesAvailabilitiesService
+            ->expects($this->once())
+            ->method('getFromPokemon')
+            ->willReturn(new GamesAvailabilities([
+                'red' => false,
+            ]))
+        ;
+
+        $gamesShiniesAvailabilitiesService = $this->createMock(GamesShiniesAvailabilitiesService::class);
+        $gamesShiniesAvailabilitiesService
+            ->expects($this->once())
+            ->method('getFromPokemon')
+            ->willReturn(new GamesShiniesAvailabilities([
+                'blue' => true,
+            ]))
+        ;
+
         $dex = new Dex();
-        $dex->selectionRule = "p.slug == 'douze' and (ba?.redgreenblueyellow or bsa?.redgreenblueyellow)";
+        $dex->selectionRule = <<<RULE
+            p.slug == 'douze' 
+            and (ba?.redgreenblueyellow or bsa?.redgreenblueyellow)
+            and (ga?.red or gsa?.blue)
+        RULE;
 
         $calculate = new DexPokemonAvailabilityCalculator(
             $gameBundlesAvailabilitiesService,
             $gameBundlesShiniesAvailabilitiesService,
+            $gamesAvailabilitiesService,
+            $gamesShiniesAvailabilitiesService,
         );
 
         $dexAvailability = $calculate->calculate($dex, $pokemon);
@@ -68,12 +97,26 @@ class DexPokemonAvailabilityCalculatorTest extends TestCase
             ->method('getFromPokemon')
         ;
 
+        $gamesAvailabilitiesService = $this->createMock(GamesAvailabilitiesService::class);
+        $gamesAvailabilitiesService
+            ->expects($this->never())
+            ->method('getFromPokemon')
+        ;
+
+        $gamesShiniesAvailabilitiesService = $this->createMock(GamesShiniesAvailabilitiesService::class);
+        $gamesShiniesAvailabilitiesService
+            ->expects($this->never())
+            ->method('getFromPokemon')
+        ;
+
         $dex = new Dex();
         $dex->selectionRule = 'true';
 
         $calculate = new DexPokemonAvailabilityCalculator(
             $gameBundlesAvailabilitiesService,
             $gameBundlesShiniesAvailabilitiesService,
+            $gamesAvailabilitiesService,
+            $gamesShiniesAvailabilitiesService,
         );
 
         $dexAvailability = $calculate->calculate($dex, $pokemon);
@@ -81,7 +124,7 @@ class DexPokemonAvailabilityCalculatorTest extends TestCase
         $this->assertInstanceOf(DexAvailability::class, $dexAvailability);
     }
 
-    public function testCalculateWithoutRegularsValues(): void
+    public function testCalculateWithoutGamesBundlesRegularsValues(): void
     {
         $pokemon = new Pokemon();
 
@@ -100,12 +143,26 @@ class DexPokemonAvailabilityCalculatorTest extends TestCase
             ]))
         ;
 
+        $gamesAvailabilitiesService = $this->createMock(GamesAvailabilitiesService::class);
+        $gamesAvailabilitiesService
+            ->expects($this->never())
+            ->method('getFromPokemon')
+        ;
+
+        $gamesShiniesAvailabilitiesService = $this->createMock(GamesShiniesAvailabilitiesService::class);
+        $gamesShiniesAvailabilitiesService
+            ->expects($this->never())
+            ->method('getFromPokemon')
+        ;
+
         $dex = new Dex();
         $dex->selectionRule = 'bsa?.redgreenblueyellow';
 
         $calculate = new DexPokemonAvailabilityCalculator(
             $gameBundlesAvailabilitiesService,
             $gameBundlesShiniesAvailabilitiesService,
+            $gamesAvailabilitiesService,
+            $gamesShiniesAvailabilitiesService,
         );
 
         $dexAvailability = $calculate->calculate($dex, $pokemon);
@@ -113,7 +170,7 @@ class DexPokemonAvailabilityCalculatorTest extends TestCase
         $this->assertInstanceOf(DexAvailability::class, $dexAvailability);
     }
 
-    public function testCalculateWithoutShiniesValues(): void
+    public function testCalculateWithoutGamesBundlesShiniesValues(): void
     {
         $pokemon = new Pokemon();
 
@@ -132,12 +189,26 @@ class DexPokemonAvailabilityCalculatorTest extends TestCase
             ->method('getFromPokemon')
         ;
 
+        $gamesAvailabilitiesService = $this->createMock(GamesAvailabilitiesService::class);
+        $gamesAvailabilitiesService
+            ->expects($this->never())
+            ->method('getFromPokemon')
+        ;
+
+        $gamesShiniesAvailabilitiesService = $this->createMock(GamesShiniesAvailabilitiesService::class);
+        $gamesShiniesAvailabilitiesService
+            ->expects($this->never())
+            ->method('getFromPokemon')
+        ;
+
         $dex = new Dex();
         $dex->selectionRule = 'ba?.redgreenblueyellow';
 
         $calculate = new DexPokemonAvailabilityCalculator(
             $gameBundlesAvailabilitiesService,
             $gameBundlesShiniesAvailabilitiesService,
+            $gamesAvailabilitiesService,
+            $gamesShiniesAvailabilitiesService,
         );
 
         $dexAvailability = $calculate->calculate($dex, $pokemon);

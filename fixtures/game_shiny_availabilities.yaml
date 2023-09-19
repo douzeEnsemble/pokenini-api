@@ -63,7 +63,11 @@ App\Entity\GameShinyAvailability:
         pokemonName: 'Venusaur'
         game: '@game_silver'
         availability: 'C'
+    gameshinyavailability_deoxys_ruby:
+        pokemonName: 'Deoxys'
+        game: '@game_ruby'
+        availability: 'C'
     gameshinyavailability_deoxys_emerald:
         pokemonName: 'Deoxys'
         game: '@game_emerald'
-        availability: 'C'
+        availability: ''

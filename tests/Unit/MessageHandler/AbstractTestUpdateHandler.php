@@ -11,7 +11,6 @@ use App\MessageHandler\UpdateHandlerInterface;
 use App\Repository\ActionLogsRepository;
 use App\Service\UpdaterService\UpdaterServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 abstract class AbstractTestUpdateHandler extends TestCase
