@@ -185,6 +185,7 @@ abstract class AbstractUpdater implements UpdaterInterface
         $sql = <<<SQL
         UPDATE  $tableName
         SET     deleted_at = NOW()
+        WHERE   deleted_at IS NULL
         SQL;
 
         $this->executeQuery($sql);
