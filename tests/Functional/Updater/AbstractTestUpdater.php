@@ -82,4 +82,18 @@ abstract class AbstractTestUpdater extends KernelTestCase
             "SELECT COUNT(*) FROM {$this->tableName} WHERE deleted_at IS NOT NULL"
         )->fetchOne();
     }
+
+    public function testExecuteTwice(): void
+    {
+        $this->getService()->execute($this->sheetName);
+
+        $firstCount = $this->getService()->getStatistic()->count;
+
+        $this->getService()->execute($this->sheetName);
+
+        $this->assertEquals(
+            $firstCount,
+            $this->getService()->getStatistic()->count
+        );
+    }
 }

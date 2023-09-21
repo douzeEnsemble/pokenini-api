@@ -21,6 +21,8 @@ class DexAvailabilitiesCalculator extends AbstractCalculator
 
     public function execute(): void
     {
+        $this->init();
+
         $this->dexAvailabilitiesRepo->removeAll();
 
         $dexQuery = $this->dexRepository->getQueryAll();

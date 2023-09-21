@@ -16,7 +16,6 @@ use App\Service\GameBundlesAvailabilitiesService;
 use App\Service\GameBundlesShiniesAvailabilitiesService;
 use App\Service\GamesAvailabilitiesService;
 use App\Service\GamesShiniesAvailabilitiesService;
-use PHPMD\Rule;
 use PHPUnit\Framework\TestCase;
 
 class DexPokemonAvailabilityCalculatorTest extends TestCase
