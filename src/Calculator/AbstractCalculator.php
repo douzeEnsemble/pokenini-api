@@ -13,6 +13,10 @@ abstract class AbstractCalculator implements CalculatorInterface
 
     public function __construct()
     {
+    }
+
+    public function init(): void
+    {
         $this->statictic = new Statistic($this->statisticName);
     }
 

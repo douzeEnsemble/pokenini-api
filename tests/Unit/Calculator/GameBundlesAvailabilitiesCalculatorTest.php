@@ -29,4 +29,28 @@ class GameBundlesAvailabilitiesCalculatorTest extends TestCase
 
         $this->assertEquals(12, $statistic->count);
     }
+
+    public function testExecuteTwice(): void
+    {
+        $gameBundlesAvailabilitiesRepository = $this->createMock(GameBundlesAvailabilitiesRepository::class);
+        $gameBundlesAvailabilitiesRepository
+            ->expects($this->exactly(2))
+            ->method('removeAll')
+        ;
+        $gameBundlesAvailabilitiesRepository
+            ->expects($this->exactly(2))
+            ->method('calculate')
+            ->willReturn(12)
+        ;
+
+        $service = new GameBundlesAvailabilitiesCalculator($gameBundlesAvailabilitiesRepository);
+
+        $service->execute();
+
+        $firstCount = $service->getStatistic()->count;
+
+        $service->execute();
+
+        $this->assertEquals($firstCount, $service->getStatistic()->count);
+    }
 }

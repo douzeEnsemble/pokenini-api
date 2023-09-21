@@ -26,11 +26,12 @@ abstract class AbstractUpdater implements UpdaterInterface
         protected readonly EntityManagerInterface $entityManager,
         protected readonly string $spreadsheetId
     ) {
-        $this->statictic = new Statistic($this->statisticName);
     }
 
     public function execute(?string $sheetName = null): void
     {
+        $this->statictic = new Statistic($this->statisticName);
+
         $this->sheetName = $sheetName ?? $this->sheetName;
 
         $header = $this->getHeader();

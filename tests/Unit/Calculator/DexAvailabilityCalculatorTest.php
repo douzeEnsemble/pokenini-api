@@ -77,6 +77,72 @@ class DexAvailabilityCalculatorTest extends TestCase
         $this->assertEquals(3, $count);
     }
 
+    public function testCalculateTwice(): void
+    {
+        $pokemonA = new Pokemon();
+        $pokemonB = new Pokemon();
+        $pokemonC = new Pokemon();
+
+        $entityManager = $this->createMock(EntityManagerInterface::class);
+        $entityManager
+            ->expects($this->exactly(6))
+            ->method('persist')
+        ;
+        $entityManager
+            ->expects($this->exactly(2))
+            ->method('flush')
+        ;
+        $entityManager
+            ->expects($this->exactly(2))
+            ->method('clear')
+        ;
+
+        $dex = new Dex();
+
+        $pokemonQuery = $this->createMock(AbstractQuery::class);
+        $pokemonQuery
+            ->expects($this->exactly(2))
+            ->method('toIterable')
+            ->willReturn([
+                $pokemonA,
+                $pokemonB,
+                $pokemonC,
+            ])
+        ;
+        $pokemonsRepository = $this->createMock(PokemonsRepository::class);
+        $pokemonsRepository
+            ->expects($this->exactly(2))
+            ->method('getQueryAll')
+            ->willReturn($pokemonQuery)
+        ;
+
+        $dexPokemonAvailabilityCalculator = $this->createMock(DexPokemonAvailabilityCalculator::class);
+        $dexPokemonAvailabilityCalculator
+            ->expects($this->exactly(6))
+            ->method('calculate')
+            ->willReturnOnConsecutiveCalls(
+                DexAvailability::create($pokemonA, $dex),
+                DexAvailability::create($pokemonB, $dex),
+                DexAvailability::create($pokemonC, $dex),
+                DexAvailability::create($pokemonA, $dex),
+                DexAvailability::create($pokemonB, $dex),
+                DexAvailability::create($pokemonC, $dex),
+            )
+        ;
+
+        $calculator = new DexAvailabilityCalculator(
+            $pokemonsRepository,
+            $entityManager,
+            $dexPokemonAvailabilityCalculator,
+        );
+
+        $firstCount = $calculator->calculate($dex);
+
+        $count = $calculator->calculate($dex);
+
+        $this->assertEquals($firstCount, $count);
+    }
+
     public function testCalculateWithoutAvailabilities(): void
     {
         $pokemonA = new Pokemon();

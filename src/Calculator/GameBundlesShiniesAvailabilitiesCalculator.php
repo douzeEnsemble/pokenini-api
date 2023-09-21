@@ -17,6 +17,8 @@ class GameBundlesShiniesAvailabilitiesCalculator extends AbstractCalculator
 
     public function execute(): void
     {
+        $this->init();
+
         $this->repository->removeAll();
 
         $count = $this->repository->calculate();
