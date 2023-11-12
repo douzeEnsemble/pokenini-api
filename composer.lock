@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "984288d96440a45126e7a65c8fe6f7ab",
+    "content-hash": "f4665d3e75a26b98d6b58a87a2ff03ca",
     "packages": [
         {
             "name": "behat/transliterator",
@@ -7200,16 +7200,16 @@
         },
         {
             "name": "symfony/twig-bridge",
-            "version": "v6.3.2",
+            "version": "v6.3.8",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/twig-bridge.git",
-                "reference": "6f8435db76a2d79917489a19a82679276c1b4e32"
+                "reference": "c51407623959a626784ff302419026f56dc4e1ba"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/6f8435db76a2d79917489a19a82679276c1b4e32",
-                "reference": "6f8435db76a2d79917489a19a82679276c1b4e32",
+                "url": "https://api.github.com/repos/symfony/twig-bridge/zipball/c51407623959a626784ff302419026f56dc4e1ba",
+                "reference": "c51407623959a626784ff302419026f56dc4e1ba",
                 "shasum": ""
             },
             "require": {
@@ -7288,7 +7288,7 @@
             "description": "Provides integration for Twig with various Symfony components",
             "homepage": "https://symfony.com",
             "support": {
-                "source": "https://github.com/symfony/twig-bridge/tree/v6.3.2"
+                "source": "https://github.com/symfony/twig-bridge/tree/v6.3.8"
             },
             "funding": [
                 {
@@ -7304,7 +7304,7 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2023-07-20T16:42:33+00:00"
+            "time": "2023-11-09T21:20:12+00:00"
         },
         {
             "name": "symfony/twig-bundle",
@@ -13165,7 +13165,7 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=8.1",
+        "php": ">=8.2",
         "ext-apcu": "*",
         "ext-ctype": "*",
         "ext-iconv": "*",
@@ -13173,5 +13173,5 @@
         "ext-zip": "*"
     },
     "platform-dev": [],
-    "plugin-api-version": "2.3.0"
+    "plugin-api-version": "2.6.0"
 }
