@@ -31,8 +31,10 @@ install: build start data stop
 build: ## Builds the Docker images
 	$(DOCKER_COMP) build
 
-start: ## Start the project
-	$(DOCKER_COMP) up -d
+up: ## Up Docker container
+	$(DOCKER_COMP) up --wait
+
+start: up data ## Start the project
 
 stop: ## Stop the project
 	$(DOCKER_COMP) down --remove-orphans
@@ -40,16 +42,9 @@ stop: ## Stop the project
 sh: ## Connect to the PHP FPM container
 	@$(PHP_CONT) sh
 
-waitup:
-	$(DATABASE_CONT) pg_isready -U app
-	while ! $(PHP_CONT) /usr/local/bin/docker-healthcheck; do \
-		sleep 1; \
-	done
-	echo 'Wait is over'
-
 ## —— Data 💾 ————————————————————————————————————————————————————————————————
 data: ## Initialize data
-data: waitup init_db data_app
+data: init_db data_app
 
 init_db: ## Initialize database data
 	$(SYMFONY) doctrine:database:drop --force --if-exists --env=dev
