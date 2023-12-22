@@ -10,39 +10,8 @@ runs:
 
     - name: Start services
       shell: bash
-      run: docker compose up --build -d
-
-    - name: Wait for services
-      shell: bash
-      run: |
-
-        while status="$(docker inspect --format="{{if .Config.Healthcheck}}{{print .State.Health.Status}}{{end}}" "$(docker compose ps -q php)")"; do
-          case $status in
-            starting) sleep 1;;
-            healthy) exit 0;;
-            unhealthy)
-              docker compose ps
-              docker compose logs
-              exit 1
-            ;;
-          esac
-        done
-        exit 1
-
-    - name: Check Moco logs
-      shell: bash
-      run: |
-        docker compose logs test.moco
-        docker compose logs int.moco
-
-    - name: Check HTTP reachability
-      shell: bash
-      run: curl -v -o /dev/null http://localhost:8980
-
-    - name: Check HTTPS reachability
-      shell: bash
-      run: curl  -vk -o /dev/null https://localhost:4430
-
+      run: docker compose up --build --wait
+      
     - name: Create test database
       shell: bash
       run: |
