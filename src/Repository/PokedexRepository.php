@@ -51,7 +51,7 @@ class PokedexRepository extends ServiceEntityRepository
                     '-',
                     LPAD(CAST(p.national_dex_number AS varchar), 4, '0'),
                     '-',
-                    LPAD(CAST(p.family_order AS varchar), 2, '0')
+                    LPAD(CAST(p.family_order AS varchar), 3, '0')
                 ) as pokemon_order_number
         FROM    dex_availability AS da
             JOIN pokemon AS p
