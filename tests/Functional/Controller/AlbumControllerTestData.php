@@ -25,7 +25,7 @@ final class AlbumControllerTestData
             AlbumControllerTestPokemonData::getBulbasaurData(),
             [
                 'pokemon_regional_dex_number' => 1,
-                'pokemon_order_number' => '001-0001-00',
+                'pokemon_order_number' => '001-0001-000',
             ],
             self::getCatchStateDataFromSlug($bulbasaurCatchState)
         );
@@ -34,7 +34,7 @@ final class AlbumControllerTestData
             AlbumControllerTestPokemonData::getIvysaurData(),
             [
                 'pokemon_regional_dex_number' => 2,
-                'pokemon_order_number' => '002-0002-01',
+                'pokemon_order_number' => '002-0002-001',
             ],
             self::getCatchStateDataFromSlug($ivysaurCatchState)
         );
@@ -43,7 +43,7 @@ final class AlbumControllerTestData
             AlbumControllerTestPokemonData::getVenusaurData(),
             [
                 'pokemon_regional_dex_number' => 3,
-                'pokemon_order_number' => '003-0003-02',
+                'pokemon_order_number' => '003-0003-002',
             ],
             self::getCatchStateDataFromSlug($venusaurCatchState)
         );
@@ -96,7 +96,7 @@ final class AlbumControllerTestData
             AlbumControllerTestPokemonData::getBulbasaurData(),
             [
                 'pokemon_regional_dex_number' => 231,
-                'pokemon_order_number' => '231-0001-00',
+                'pokemon_order_number' => '231-0001-000',
             ],
             self::getCatchStateDataFromSlug($bulbasaurCatchState)
         );
@@ -105,7 +105,7 @@ final class AlbumControllerTestData
             AlbumControllerTestPokemonData::getIvysaurData(),
             [
                 'pokemon_regional_dex_number' => 232,
-                'pokemon_order_number' => '232-0002-01',
+                'pokemon_order_number' => '232-0002-001',
             ],
             self::getCatchStateDataFromSlug($ivysaurCatchState)
         );
@@ -114,7 +114,7 @@ final class AlbumControllerTestData
             AlbumControllerTestPokemonData::getVenusaurData(),
             [
                 'pokemon_regional_dex_number' => 233,
-                'pokemon_order_number' => '233-0003-02',
+                'pokemon_order_number' => '233-0003-002',
             ],
             self::getCatchStateDataFromSlug($venusaurCatchState)
         );
@@ -138,7 +138,7 @@ final class AlbumControllerTestData
             AlbumControllerTestPokemonData::getCaterpieData(),
             [
                 'pokemon_regional_dex_number' => 24,
-                'pokemon_order_number' => '024-0010-00',
+                'pokemon_order_number' => '024-0010-000',
             ],
             self::getCatchStateDataFromSlug($caterpieCatchState)
         );
@@ -147,7 +147,7 @@ final class AlbumControllerTestData
             AlbumControllerTestPokemonData::getMetapodData(),
             [
                 'pokemon_regional_dex_number' => 25,
-                'pokemon_order_number' => '025-0011-01',
+                'pokemon_order_number' => '025-0011-001',
             ],
             self::getCatchStateDataFromSlug($metapodCatchState)
         );
@@ -156,7 +156,7 @@ final class AlbumControllerTestData
             AlbumControllerTestPokemonData::getButterfreeData(),
             [
                 'pokemon_regional_dex_number' => 26,
-                'pokemon_order_number' => '026-0012-02',
+                'pokemon_order_number' => '026-0012-002',
             ],
             self::getCatchStateDataFromSlug($butterfreeCatchState)
         );
@@ -235,7 +235,7 @@ final class AlbumControllerTestData
             [
                 'pokemon_national_dex_number' => 3,
                 'pokemon_regional_dex_number' => null,
-                'pokemon_order_number' => '999-0003-03',
+                'pokemon_order_number' => '999-0003-003',
                 'pokemon_slug' => 'venusaur-f',
                 'pokemon_name' => 'Venusaur ♀',
                 'pokemon_simplified_name' => 'Venusaur',
@@ -259,7 +259,7 @@ final class AlbumControllerTestData
             [
                 'pokemon_national_dex_number' => 3,
                 'pokemon_regional_dex_number' => null,
-                'pokemon_order_number' => '999-0003-04',
+                'pokemon_order_number' => '999-0003-004',
                 'pokemon_slug' => 'venusaur-mega',
                 'pokemon_name' => 'Mega Venusaur',
                 'pokemon_simplified_name' => 'Venusaur',
@@ -283,7 +283,7 @@ final class AlbumControllerTestData
             [
                 'pokemon_national_dex_number' => 3,
                 'pokemon_regional_dex_number' => null,
-                'pokemon_order_number' => '999-0003-05',
+                'pokemon_order_number' => '999-0003-005',
                 'pokemon_slug' => 'venusaur-gmax',
                 'pokemon_name' => 'Gigantamax Venusaur',
                 'pokemon_simplified_name' => 'Venusaur',
@@ -313,7 +313,7 @@ final class AlbumControllerTestData
             [
                 'pokemon_national_dex_number' => 12,
                 'pokemon_regional_dex_number' => null,
-                'pokemon_order_number' => '999-0012-03',
+                'pokemon_order_number' => '999-0012-003',
                 'pokemon_slug' => 'butterfree-f',
                 'pokemon_name' => 'Butterfree ♀',
                 'pokemon_simplified_name' => 'Butterfree',
@@ -337,7 +337,7 @@ final class AlbumControllerTestData
             [
                 'pokemon_national_dex_number' => 12,
                 'pokemon_regional_dex_number' => null,
-                'pokemon_order_number' => '999-0012-04',
+                'pokemon_order_number' => '999-0012-004',
                 'pokemon_slug' => 'butterfree-gmax',
                 'pokemon_name' => 'Gigantamax Butterfree',
                 'pokemon_simplified_name' => 'Butterfree',
@@ -383,7 +383,7 @@ final class AlbumControllerTestData
             [
                 'pokemon_national_dex_number' => 3,
                 'pokemon_regional_dex_number' => null,
-                'pokemon_order_number' => '999-0003-03',
+                'pokemon_order_number' => '999-0003-003',
                 'pokemon_slug' => 'venusaur-f',
                 'pokemon_name' => 'Venusaur ♀',
                 'pokemon_simplified_name' => 'Venusaur',
@@ -407,7 +407,7 @@ final class AlbumControllerTestData
             [
                 'pokemon_national_dex_number' => 3,
                 'pokemon_regional_dex_number' => null,
-                'pokemon_order_number' => '999-0003-04',
+                'pokemon_order_number' => '999-0003-004',
                 'pokemon_slug' => 'venusaur-mega',
                 'pokemon_name' => 'Mega Venusaur',
                 'pokemon_simplified_name' => 'Venusaur',
@@ -431,7 +431,7 @@ final class AlbumControllerTestData
             [
                 'pokemon_national_dex_number' => 3,
                 'pokemon_regional_dex_number' => null,
-                'pokemon_order_number' => '999-0003-05',
+                'pokemon_order_number' => '999-0003-005',
                 'pokemon_slug' => 'venusaur-gmax',
                 'pokemon_name' => 'Gigantamax Venusaur',
                 'pokemon_simplified_name' => 'Venusaur',
@@ -461,7 +461,7 @@ final class AlbumControllerTestData
             [
                 'pokemon_national_dex_number' => 12,
                 'pokemon_regional_dex_number' => null,
-                'pokemon_order_number' => '999-0012-03',
+                'pokemon_order_number' => '999-0012-003',
                 'pokemon_slug' => 'butterfree-f',
                 'pokemon_name' => 'Butterfree ♀',
                 'pokemon_simplified_name' => 'Butterfree',
@@ -485,7 +485,7 @@ final class AlbumControllerTestData
             [
                 'pokemon_national_dex_number' => 12,
                 'pokemon_regional_dex_number' => null,
-                'pokemon_order_number' => '999-0012-04',
+                'pokemon_order_number' => '999-0012-004',
                 'pokemon_slug' => 'butterfree-gmax',
                 'pokemon_name' => 'Gigantamax Butterfree',
                 'pokemon_simplified_name' => 'Butterfree',
