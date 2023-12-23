@@ -19,13 +19,10 @@ class GamesShiniesAvailabilitiesRepositoryTest extends KernelTestCase
     use RefreshDatabaseTrait;
     use CountGameShinyAvailabilityTrait;
 
-    /** @var Game[] */
-    private array $games;
     /** @var Pokemon[] */
     private array $pokemons;
 
     private GamesShiniesAvailabilitiesRepository $gamesShiniesAvailabilitiesRepo;
-    private GamesRepository $gamesRepo;
     private PokemonsRepository $pokemonsRepo;
 
     public function setUp(): void
@@ -36,9 +33,6 @@ class GamesShiniesAvailabilitiesRepositoryTest extends KernelTestCase
         /** @var GamesShiniesAvailabilitiesRepository $gamesShiniesAvailabilitiesRepo */
         $gamesShiniesAvailabilitiesRepo = static::getContainer()->get(GamesShiniesAvailabilitiesRepository::class);
         $this->gamesShiniesAvailabilitiesRepo = $gamesShiniesAvailabilitiesRepo;
-        /** @var GamesRepository $gamesRepo */
-        $gamesRepo = static::getContainer()->get(GamesRepository::class);
-        $this->gamesRepo = $gamesRepo;
         /** @var PokemonsRepository $pokemonsRepo */
         $pokemonsRepo = static::getContainer()->get(PokemonsRepository::class);
         $this->pokemonsRepo = $pokemonsRepo;
@@ -55,8 +49,6 @@ class GamesShiniesAvailabilitiesRepositoryTest extends KernelTestCase
 
     public function testGetFromPokemon(): void
     {
-        $pokemonDouze = $this->getPokemon('Douze');
-
         $pokemonDeoxys = $this->getPokemon('Deoxys');
 
         $listDeoxys = $this->gamesShiniesAvailabilitiesRepo->getFromPokemon($pokemonDeoxys);

@@ -31,6 +31,46 @@ parameters:
 			path: tests/Functional/Repository/GameBundlesShiniesAvailabilitiesRepositoryTest.php
 
 		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesAvailabilities\\:\\:\\$blue\\.$#"
+			count: 2
+			path: tests/Functional/Repository/GamesAvailabilitiesRepositoryTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesAvailabilities\\:\\:\\$green\\.$#"
+			count: 2
+			path: tests/Functional/Repository/GamesAvailabilitiesRepositoryTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesAvailabilities\\:\\:\\$nexistepas\\.$#"
+			count: 2
+			path: tests/Functional/Repository/GamesAvailabilitiesRepositoryTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesAvailabilities\\:\\:\\$red\\.$#"
+			count: 2
+			path: tests/Functional/Repository/GamesAvailabilitiesRepositoryTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesAvailabilities\\:\\:\\$yellow\\.$#"
+			count: 2
+			path: tests/Functional/Repository/GamesAvailabilitiesRepositoryTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesShiniesAvailabilities\\:\\:\\$emerald\\.$#"
+			count: 1
+			path: tests/Functional/Repository/GamesShiniesAvailabilitiesRepositoryTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesShiniesAvailabilities\\:\\:\\$nexistepas\\.$#"
+			count: 1
+			path: tests/Functional/Repository/GamesShiniesAvailabilitiesRepositoryTest.php
+
+		-
+			message: "#^Access to an undefined property App\\\\DTO\\\\GamesShiniesAvailabilities\\:\\:\\$ruby\\.$#"
+			count: 1
+			path: tests/Functional/Repository/GamesShiniesAvailabilitiesRepositoryTest.php
+
+		-
 			message: "#^Parameter \\#1 \\$iterator of function iterator_to_array expects Traversable, iterable given\\.$#"
 			count: 1
 			path: tests/Functional/Repository/PokemonsRepositoryTest.php
