@@ -10,6 +10,8 @@ services:
             - [setAccessType, ['%google.access_type%']]
             - [setApplicationName, ['%google.application_name%']]
             - [setScopes, [['%google.spreadsheets_readonly%']]]
+            # Remove when pulling from real Google Sheets
+            # - [setAuthConfig, ['%env(GOOGLE_CREDENTIALS_PATH)%']]
 
 when@prod:
     services:
