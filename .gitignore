@@ -3,8 +3,6 @@
 
 /docker/db/data
 /doctrine_migration_*.sql
-resources/auth/credentials.json
-/resources/auth/credentials.json
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -39,3 +37,6 @@ coverage.xml
 ###> phpstan/phpstan ###
 phpstan.neon
 ###< phpstan/phpstan ###
+
+resources/auth/credentials.json
+/resources/auth/credentials.json
