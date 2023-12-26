@@ -4,6 +4,13 @@
 /docker/db/data
 /doctrine_migration_*.sql
 
+resources/auth/credentials.json
+
+/tests/gs/
+tests/coverage
+tests/mutation/index.html
+coverage.xml
+
 ###> symfony/framework-bundle ###
 /.env.local
 /.env.local.php
@@ -13,11 +20,6 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
-###> symfony/phpunit-bridge ###
-.phpunit.result.cache
-/phpunit.xml
-
-###< symfony/phpunit-bridge ###
 
 ###> phpunit/phpunit ###
 /phpunit.xml
@@ -29,14 +31,6 @@
 /phpcs.xml
 ###< squizlabs/php_codesniffer ###
 
-!/resources/auth/credentials.json
-/tests/gs/
-tests/coverage
-tests/mutation/index.html
-coverage.xml
 ###> phpstan/phpstan ###
 phpstan.neon
 ###< phpstan/phpstan ###
-
-resources/auth/credentials.json
-/resources/auth/credentials.json
