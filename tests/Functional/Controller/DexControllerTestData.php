@@ -53,8 +53,8 @@ final class DexControllerTestData
             ],
             [
                 'dex_slug' => 'homeshiny',
-                'name' => 'Home Shiny',
-                'french_name' => 'Home Chromatique',
+                'name' => "Home\nShiny",
+                'french_name' => "Home\nChromatique",
                 'slug' => 'home_shiny',
                 'is_shiny' => true,
                 'is_private' => true,
@@ -182,8 +182,8 @@ final class DexControllerTestData
             ],
             [
                 'dex_slug' => 'homeshiny',
-                'name' => 'Home Shiny',
-                'french_name' => 'Home Chromatique',
+                'name' => "Home\nShiny",
+                'french_name' => "Home\nChromatique",
                 'slug' => 'home_shiny',
                 'is_shiny' => true,
                 'is_private' => true,
@@ -299,8 +299,8 @@ final class DexControllerTestData
             ],
             [
                 'dex_slug' => 'homeshiny',
-                'name' => 'Home Shiny',
-                'french_name' => 'Home Chromatique',
+                'name' => "Home\nShiny",
+                'french_name' => "Home\nChromatique",
                 'slug' => 'homeshiny',
                 'is_shiny' => true,
                 'is_private' => false,
@@ -380,8 +380,8 @@ final class DexControllerTestData
             ],
             [
                 'dex_slug' => 'homeshiny',
-                'name' => 'Home Shiny',
-                'french_name' => 'Home Chromatique',
+                'name' => "Home\nShiny",
+                'french_name' => "Home\nChromatique",
                 'slug' => 'homeshiny',
                 'is_shiny' => true,
                 'is_private' => false,

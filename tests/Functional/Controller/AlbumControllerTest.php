@@ -379,9 +379,9 @@ class AlbumControllerTest extends AbstractTestControllerApi
         $this->assertEquals('homeshiny', $data['dex']['original_slug']);
         $this->assertArrayHasKey('dex', $data);
         $this->assertArrayHasKey('name', $data['dex']);
-        $this->assertEquals('Home Shiny', $data['dex']['name']);
+        $this->assertEquals("Home\nShiny", $data['dex']['name']);
         $this->assertArrayHasKey('french_name', $data['dex']);
-        $this->assertEquals('Home Chromatique', $data['dex']['french_name']);
+        $this->assertEquals("Home\nChromatique", $data['dex']['french_name']);
         $this->assertArrayHasKey('is_shiny', $data['dex']);
         $this->assertTrue($data['dex']['is_shiny']);
         $this->assertArrayHasKey('is_private', $data['dex']);

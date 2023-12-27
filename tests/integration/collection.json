@@ -2137,8 +2137,8 @@
           "listen": "test",
           "script": {
             "exec": [
-              "const expectedDexTitle = \"Home Shiny\";",
-              "const expectedDexFrenchTitle = \"Home Chromatique\";",
+              "const expectedDexTitle = \"Home\\nShiny\";",
+              "const expectedDexFrenchTitle = \"Home\\nChromatique\";",
               "const expectedDexIsShiny = true;",
               "const expectedDexIsPrivate = false;",
               "const expectedDexDisplayTemplate = \"box\";",
@@ -2262,8 +2262,8 @@
           "listen": "test",
           "script": {
             "exec": [
-              "const expectedDexTitle = \"Home Pokemon Go\";",
-              "const expectedDexFrenchTitle = \"Home Pokemon Go\";",
+              "const expectedDexTitle = \"Home\\nPokemon Go\";",
+              "const expectedDexFrenchTitle = \"Home\\nPokémon Go\";",
               "const expectedDexIsShiny = false;",
               "const expectedDexIsPrivate = false;",
               "const expectedDexDisplayTemplate = \"list-7\";",

@@ -78,8 +78,8 @@ class ReportsControllerTest extends WebTestCase
                 ],
                 [
                     'nb' => 1,
-                    'name' => 'Home Shiny',
-                    'french_name' => 'Home Chromatique',
+                    'name' => "Home\nShiny",
+                    'french_name' => "Home\nChromatique",
                 ],
                 [
                     'nb' => 1,
