@@ -1,4 +1,5 @@
 # Executables (local)
+DOCKER = docker
 DOCKER_COMP = docker compose
 
 # Docker containers
@@ -118,7 +119,9 @@ phpstan: ## Execute phpstan analyse
 integration: ## Execute all integration tests
 integration: newman
 
-newman: ## Execute newman
+newman: newman_prepare newman_execute## Execute newman
+
+newman_prepare:
 	@$(SYMFONY) --env=int app:update:labels
 	@$(SYMFONY) --env=int app:update:games_and_dex
 	@$(SYMFONY) --env=int app:update:pokemons
@@ -128,7 +131,11 @@ newman: ## Execute newman
 	@$(SYMFONY) --env=int app:calculate:game_bundles_availabilities
 	@$(SYMFONY) --env=int app:calculate:game_bundles_shinies_availabilities
 	@$(SYMFONY) --env=int app:calculate:dex_availabilities
-	$(DOCKER_COMP) --env-file .env.int run newman run collection.json
+
+newman_execute:
+	$(DOCKER) run --network=pokenini-api_default \
+		-v ./tests/integration:/etc/newman \
+		-t postman/newman:alpine run collection.json
 
 ## —— Measures 📏 ———————————————————————————————————————————————————————————————
 measures: ## Execute all measures tools
