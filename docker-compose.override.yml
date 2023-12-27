@@ -24,13 +24,6 @@ services:
     environment:
       MERCURE_EXTRA_DIRECTIVES: demo
 
-###> doctrine/doctrine-bundle ###
-  database:
-    ports:
-      - target: 5432
-        published: 5451
-        protocol: tcp
-
   test.moco:
     build:
       context: docker/moco/test
@@ -42,6 +35,21 @@ services:
       context: docker/moco/int
     volumes:
       - ./tests/resources/moco:/var/moco:ro
+
+###> doctrine/doctrine-bundle ###
+  database:
+    ports:
+      - target: 5432
+        published: 5451
+        protocol: tcp
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+     - target: 8080
+       published: 8081
+###< doctrine/doctrine-bundle ###
 
 volumes:
 ###> doctrine/doctrine-bundle ###

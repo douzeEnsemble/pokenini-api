@@ -26,6 +26,10 @@ make install start
 make stop start
 ```
 
+### Adminer
+
+[http://localhost:8081/?pgsql=database&username=app&db=app&ns=public]()
+
 ## Labels, games and dex
 
 ```
