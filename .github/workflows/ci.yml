@@ -83,7 +83,7 @@ jobs:
           docker compose exec -T php php bin/console --env=int app:calculate:game_bundles_availabilities
           docker compose exec -T php php bin/console --env=int app:calculate:game_bundles_shinies_availabilities
           docker compose exec -T php php bin/console --env=int app:calculate:dex_availabilities
-          docker compose --env-file .env.int run newman run collection.json
+          docker run --network=pokenini-api_default -v ./tests/integration:/etc/newman -t postman/newman:alpine run collection.json
       - name: Run
         run: docker compose exec -T php php bin/phpunit
 
