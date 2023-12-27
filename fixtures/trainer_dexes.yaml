@@ -28,8 +28,12 @@ App\Entity\TrainerDex:
     trainerdex_u12_home_shiny:
         trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
         dex: '@dex_home_shiny'
-        name: 'Home Shiny'
-        frenchName: 'Home Chromatique'
+        name: |-
+            Home
+            Shiny
+        frenchName: |-
+            Home
+            Chromatique
         slug: 'home_shiny'
     trainerdex_u12_home_shiny_ot:
         trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'

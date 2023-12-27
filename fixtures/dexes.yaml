@@ -44,8 +44,12 @@ App\Entity\Dex:
         isPrivate: false
         lastChangedAt: '<(new DateTime("2023-04-21 12:34:56"))>'
     dex_home_shiny:
-        name: 'Home Shiny'
-        frenchName: 'Home Chromatique'
+        name: |-
+            Home
+            Shiny
+        frenchName: |-
+            Home
+            Chromatique
         selectionRule: "(p.bankable or p.bankableish)"
         displayTemplate: 'box'
         orderNumber: 5
