@@ -38,4 +38,20 @@ class GamesAvailabilitiesTest extends TestCase
         $this->assertTrue(isset($object->a));
         $this->assertFalse(isset($object->b));
     }
+
+    public function testAll(): void
+    {
+        $object = new GamesAvailabilities([
+            'a' => true,
+            'b' => false,
+        ]);
+
+        $this->assertEquals(
+            [
+                'a' => true,
+                'b' => false,
+            ],
+            $object->all()
+        );
+    }
 }

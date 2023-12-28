@@ -27,4 +27,12 @@ class GameBundlesAvailabilities
     {
         throw new \Exception("Use constructor please");
     }
+
+    /**
+     * @return bool[]
+     */
+    public function all(): array
+    {
+        return $this->gameBundlesAvailabilities;
+    }
 }

@@ -22,7 +22,7 @@ class GameBundle
     use OrderedTrait;
     use SoftDeleteableEntity;
 
-    #[ORM\ManyToOne(targetEntity: GameGeneration::class)]
+    #[ORM\ManyToOne(fetch: 'EAGER')]
     #[ORM\JoinColumn(nullable: false)]
     public GameGeneration $generation;
 }
