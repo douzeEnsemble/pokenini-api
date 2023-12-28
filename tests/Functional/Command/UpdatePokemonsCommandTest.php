@@ -22,12 +22,12 @@ class UpdatePokemonsCommandTest extends AbstractTestUpdaterCommand
         $commandTester = $this->executeCommand();
 
         $commandTester->assertCommandIsSuccessful();
-        $this->assertEquals(1816, $this->getTableCount('pokemon'));
+        $this->assertEquals(1817, $this->getTableCount('pokemon'));
 
         $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
         $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
 
-        $this->assertStringContainsString("1815 pokémons updated", $commandTester->getDisplay());
+        $this->assertStringContainsString("1816 pokémons updated", $commandTester->getDisplay());
     }
 
     protected function getCommandName(): string

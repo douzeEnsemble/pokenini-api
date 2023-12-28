@@ -49,7 +49,7 @@ class UpdatePokemonsHandlerTest extends KernelTestCase
 
         $transport->queue()->assertEmpty();
 
-        $this->assertEquals(1816, $this->getTableCount('pokemon'));
+        $this->assertEquals(1817, $this->getTableCount('pokemon'));
 
         $this->assertEquals($beforeTotalCount + 1, $this->getActionLogCount());
         $this->assertEquals($beforeToProcessCount, $this->getActionLogToProcessCount());
