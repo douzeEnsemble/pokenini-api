@@ -7,9 +7,11 @@ namespace App\Entity;
 use App\Entity\Traits\BaseEntityTrait;
 use App\Entity\Traits\NamedTrait;
 use App\Entity\Traits\SlugifiedTrait;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Serializer\Annotation\Ignore;
 
 #[ORM\Entity]
 #[Gedmo\SoftDeleteable(fieldName: 'deletedAt')]
