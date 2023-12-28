@@ -20,6 +20,7 @@ class PokemonsUpdater extends AbstractUpdater
         return [
             'Bankable',
             'Breeedable Form',
+            'Bankable-ish',
             '#Origin',
             '#Games First Appears On',
             '#Form variant',
@@ -28,7 +29,8 @@ class PokemonsUpdater extends AbstractUpdater
             '#Category form',
             'Family',
             'Family order',
-            'Evolution',
+            'Bulbapedia Name',
+            'Slug',
             'Pokémon Nom Complet',
             'Pokémon Nom simplifié',
             'Forme',
@@ -37,9 +39,11 @@ class PokemonsUpdater extends AbstractUpdater
             'Forme Fr',
             'Dex',
             'Sprites',
-            'Sprites url',
             'Shiny Sprites',
+            'Icon',
+            'Sprites url',
             'Shiny Sprites url',
+            'Evolution',
             'Type 1',
             'Type 1 ico',
             'Type 2',
@@ -58,10 +62,6 @@ class PokemonsUpdater extends AbstractUpdater
             'Natures',
             'Increases',
             'Decreases',
-            'Icon',
-            'Bulbapedia Name',
-            'Bankable-ish',
-            'Slug',
         ];
     }
 
@@ -141,6 +141,7 @@ class PokemonsUpdater extends AbstractUpdater
 SQL;
 
         $this->executeQuery($sql, $sqlParameters);
+
 
         $this->statictic->increment();
     }

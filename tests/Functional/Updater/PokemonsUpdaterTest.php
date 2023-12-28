@@ -15,7 +15,7 @@ class PokemonsUpdaterTest extends AbstractTestUpdater
     use GetPokemonTrait;
 
     protected int $initialTotalCount = 19;
-    protected int $finalTotalCount = 1816;
+    protected int $finalTotalCount = 1817;
     protected int $mustBeDeletedTotalCount = 1;
     protected string $sheetName = 'Pokémons';
     protected string $tableName = 'pokemon';
