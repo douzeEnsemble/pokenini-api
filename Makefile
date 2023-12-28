@@ -133,7 +133,8 @@ newman_prepare:
 	@$(SYMFONY) --env=int app:calculate:dex_availabilities
 
 newman_execute:
-	$(DOCKER) run --network=pokenini-api_default \
+	$(DOCKER) run --rm --name pokenini-api-newman \
+		--network=pokenini-api_default \
 		-v ./tests/integration:/etc/newman \
 		-t postman/newman:alpine run collection.json
 
