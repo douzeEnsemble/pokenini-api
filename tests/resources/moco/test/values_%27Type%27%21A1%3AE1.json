@@ -1,0 +1,13 @@
+{
+  "range": "Type!A1:E1",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Name",
+      "Slug",
+      "French Name",
+      "Color",
+      "Order"
+    ]
+  ]
+}

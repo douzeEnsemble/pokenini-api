@@ -37,6 +37,7 @@ class UpdateLabelsHandlerTest extends KernelTestCase
         $this->assertEquals(3, $this->getTableCount('regional_form'));
         $this->assertEquals(3, $this->getTableCount('special_form'));
         $this->assertEquals(7, $this->getTableCount('variant_form'));
+        $this->assertEquals(19, $this->getTableCount('type'));
 
         $beforeTotalCount = $this->getActionLogCount();
         $beforeToProcessCount = $this->getActionLogToProcessCount();
@@ -60,6 +61,7 @@ class UpdateLabelsHandlerTest extends KernelTestCase
         $this->assertEquals(4, $this->getTableCount('regional_form'));
         $this->assertEquals(5, $this->getTableCount('special_form'));
         $this->assertEquals(8, $this->getTableCount('variant_form'));
+        $this->assertEquals(20, $this->getTableCount('type'));
 
         $this->assertEquals($beforeTotalCount + 1, $this->getActionLogCount());
         $this->assertEquals($beforeToProcessCount, $this->getActionLogToProcessCount());

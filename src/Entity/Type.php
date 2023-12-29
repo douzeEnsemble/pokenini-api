@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Entity;
 
 use App\Entity\Traits\BaseEntityTrait;
-use App\Entity\Traits\FrenchNamedTrait;
 use App\Entity\Traits\NamedTrait;
+use App\Entity\Traits\FrenchNamedTrait;
 use App\Entity\Traits\OrderedTrait;
 use App\Entity\Traits\SlugifiedTrait;
 use App\Entity\Traits\ColoredTrait;
@@ -16,7 +16,7 @@ use Gedmo\Mapping\Annotation as Gedmo;
 
 #[ORM\Entity]
 #[Gedmo\SoftDeleteable(fieldName: 'deletedAt')]
-class CatchState
+class Type
 {
     use BaseEntityTrait;
     use NamedTrait;

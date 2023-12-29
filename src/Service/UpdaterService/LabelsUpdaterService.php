@@ -7,6 +7,7 @@ namespace App\Service\UpdaterService;
 use App\DTO\DataChangeReport\Report;
 use App\Updater\CatchStatesUpdater;
 use App\Updater\RegionsUpdater;
+use App\Updater\TypesUpdater;
 
 class LabelsUpdaterService extends AbstractUpdaterService
 {
@@ -14,6 +15,7 @@ class LabelsUpdaterService extends AbstractUpdaterService
         private readonly CatchStatesUpdater $catchStatesUpdater,
         private readonly FormsUpdaterService $formsUpdaterService,
         private readonly RegionsUpdater $regionsUpdater,
+        private readonly TypesUpdater $typesUpdater,
     ) {
     }
 
@@ -22,10 +24,12 @@ class LabelsUpdaterService extends AbstractUpdaterService
         $this->catchStatesUpdater->execute();
         $this->formsUpdaterService->execute();
         $this->regionsUpdater->execute();
+        $this->typesUpdater->execute();
 
         $this->report = new Report([
             $this->catchStatesUpdater->getStatistic(),
             $this->regionsUpdater->getStatistic(),
+            $this->typesUpdater->getStatistic(),
         ]);
 
         $this->report->merge($this->formsUpdaterService->getReport());
