@@ -46,6 +46,12 @@ class PokedexRepository extends ServiceEntityRepository
                 cs.name AS catch_state_name,
                 cs.french_name AS catch_state_french_name,
                 rdn.dex_number AS pokemon_regional_dex_number,
+                pt.slug AS primary_type_slug,
+                pt.name AS primary_type_name,
+                pt.french_name AS primary_type_french_name,
+                st.slug AS secondary_type_slug,
+                st.name AS secondary_type_name,
+                st.french_name AS secondary_type_french_name,
                 CONCAT(
                     LPAD(CAST(COALESCE(rdn.dex_number, 999) AS varchar), 3, '0'),
                     '-',
@@ -74,6 +80,10 @@ class PokedexRepository extends ServiceEntityRepository
                 ON p.special_form_id = sf.id
             LEFT JOIN variant_form AS vf
                 ON p.variant_form_id = vf.id
+            LEFT JOIN "type" AS pt
+                ON p.primary_type_id = pt.id
+            LEFT JOIN "type" AS st
+                ON p.secondary_type_id = st.id
             LEFT JOIN regional_dex_number AS rdn
                 ON r.id IS NOT NULL
                     AND r.id = rdn.region_id

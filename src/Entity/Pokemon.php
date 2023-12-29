@@ -78,4 +78,12 @@ class Pokemon
 
     #[ORM\Column]
     public int $familyOrder;
+
+    #[ORM\ManyToOne(fetch: 'EAGER')]
+    #[ORM\JoinColumn(nullable: true)]
+    public ?Type $primaryType;
+
+    #[ORM\ManyToOne(fetch: 'EAGER')]
+    #[ORM\JoinColumn(nullable: true)]
+    public ?Type $secondaryType;
 }

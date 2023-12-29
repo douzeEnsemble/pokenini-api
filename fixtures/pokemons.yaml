@@ -34,6 +34,8 @@ App\Entity\Pokemon:
         iconName: 'bulbasaur'
         familyOrder: 0
         categoryForm: '@category_form_starter'
+        primaryType: '@type_grass'
+        secondaryType: '@type_poison'
 
     pokemon_ivysaur (extends pokemon):
         slug: 'ivysaur'
@@ -44,6 +46,8 @@ App\Entity\Pokemon:
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'ivysaur'
         familyOrder: 1
+        primaryType: '@type_grass'
+        secondaryType: '@type_poison'
 
     pokemon_venusaur (extends pokemon):
         slug: 'venusaur'
@@ -54,6 +58,8 @@ App\Entity\Pokemon:
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'venusaur'
         familyOrder: 2
+        primaryType: '@type_grass'
+        secondaryType: '@type_poison'
 
     pokemon_venusaur_f (extends pokemon):
         slug: 'venusaur-f'
@@ -70,6 +76,8 @@ App\Entity\Pokemon:
         iconName: 'venusaur'
         variantForm: '@variant_form_gender'
         familyOrder: 3
+        primaryType: '@type_grass'
+        secondaryType: '@type_poison'
 
     pokemon_venusaur_mega (extends pokemon):
         slug: 'venusaur-mega'
@@ -86,6 +94,8 @@ App\Entity\Pokemon:
         iconName: 'venusaur'
         specialForm: '@special_form_mega'
         familyOrder: 4
+        primaryType: '@type_grass'
+        secondaryType: '@type_poison'
 
     pokemon_venusaur_gigantamax (extends pokemon):
         slug: 'venusaur-gmax'
@@ -102,6 +112,8 @@ App\Entity\Pokemon:
         iconName: 'venusaur'
         specialForm: '@special_form_gigantamax'
         familyOrder: 5
+        primaryType: '@type_grass'
+        secondaryType: '@type_poison'
 
     pokemon_charmander (extends pokemon):
         slug: 'charmander'
@@ -113,6 +125,7 @@ App\Entity\Pokemon:
         iconName: 'charmander'
         familyOrder: 0
         categoryForm: '@category_form_starter'
+        primaryType: '@type_fire'
 
     pokemon_charmeleon (extends pokemon):
         slug: 'charmeleon'
@@ -123,6 +136,7 @@ App\Entity\Pokemon:
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'charmeleon'
         familyOrder: 1
+        primaryType: '@type_fire'
 
     pokemon_charizard (extends pokemon):
         slug: 'charizard'
@@ -133,6 +147,8 @@ App\Entity\Pokemon:
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'charizard'
         familyOrder: 2
+        primaryType: '@type_fire'
+        secondaryType: '@type_flying'
 
     pokemon_deoxys (extends pokemon):
         slug: 'deoxys'
@@ -144,6 +160,7 @@ App\Entity\Pokemon:
         iconName: 'deoxys'
         familyOrder: 0
         categoryForm: '@category_form_mythical'
+        primaryType: '@type_psychic'
 
     pokemon_deoxys_attack (extends pokemon):
         slug: 'deoxys-attack'
@@ -159,6 +176,7 @@ App\Entity\Pokemon:
         familyOrder: 1
         variantForm: '@variant_form_alternate'
         categoryForm: '@category_form_mythical'
+        primaryType: '@type_psychic'
 
     pokemon_deoxys_defense (extends pokemon):
         slug: 'deoxys-defense'
@@ -174,6 +192,7 @@ App\Entity\Pokemon:
         familyOrder: 2
         variantForm: '@variant_form_alternate'
         categoryForm: '@category_form_mythical'
+        primaryType: '@type_psychic'
 
     pokemon_deoxys_speed (extends pokemon):
         slug: 'deoxys-speed'
@@ -189,6 +208,7 @@ App\Entity\Pokemon:
         familyOrder: 3
         variantForm: '@variant_form_alternate'
         categoryForm: '@category_form_mythical'
+        primaryType: '@type_psychic'
 
     pokemon_caterpie (extends pokemon):
         slug: 'caterpie'
@@ -198,6 +218,7 @@ App\Entity\Pokemon:
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'caterpie'
         familyOrder: 0
+        primaryType: '@type_bug'
 
     pokemon_metapod (extends pokemon):
         slug: 'metapod'
@@ -208,6 +229,7 @@ App\Entity\Pokemon:
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'metapod'
         familyOrder: 1
+        primaryType: '@type_bug'
 
     pokemon_butterfree (extends pokemon):
         slug: 'butterfree'
@@ -218,6 +240,8 @@ App\Entity\Pokemon:
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'butterfree'
         familyOrder: 2
+        primaryType: '@type_bug'
+        secondaryType: '@type_flying'
 
     pokemon_butterfree_f (extends pokemon):
         slug: 'butterfree-f'
@@ -234,6 +258,8 @@ App\Entity\Pokemon:
         iconName: 'butterfree'
         familyOrder: 3
         variantForm: '@variant_form_gender'
+        primaryType: '@type_bug'
+        secondaryType: '@type_flying'
 
     pokemon_butterfree_gigantamax (extends pokemon):
         slug: 'butterfree-gmax'
@@ -250,3 +276,5 @@ App\Entity\Pokemon:
         iconName: 'butterfree-gmax'
         specialForm: '@special_form_gigantamax'
         familyOrder: 4
+        primaryType: '@type_bug'
+        secondaryType: '@type_flying'

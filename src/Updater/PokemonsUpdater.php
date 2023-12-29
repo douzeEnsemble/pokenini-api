@@ -43,8 +43,8 @@ class PokemonsUpdater extends AbstractUpdater
             'Icon',
             'Sprites url',
             'Shiny Sprites url',
-            'Type 1',
-            'Type 2',
+            '#Type 1',
+            '#Type 2',
             'Species number',
             'PokemonDB icon name',
             'MBCMechachu sprites index',
@@ -77,6 +77,8 @@ class PokemonsUpdater extends AbstractUpdater
             regional_form_id,
             special_form_id,
             category_form_id,
+            primary_type_id,
+            secondary_type_id,
             icon_name,
             slug
         )
@@ -99,6 +101,8 @@ class PokemonsUpdater extends AbstractUpdater
             (SELECT id FROM regional_form WHERE slug = :regionalForm),
             (SELECT id FROM special_form WHERE slug = :specialForm),
             (SELECT id FROM category_form WHERE slug = :categoryForm),
+            (SELECT id FROM "type" WHERE slug = :primaryType),
+            (SELECT id FROM "type" WHERE slug = :secondaryType),
             :iconName,
             :slug
         )
@@ -122,6 +126,8 @@ class PokemonsUpdater extends AbstractUpdater
             regional_form_id = excluded.regional_form_id,
             special_form_id = excluded.special_form_id,
             category_form_id = excluded.category_form_id,
+            primary_type_id = excluded.primary_type_id,
+            secondary_type_id = excluded.secondary_type_id,
             icon_name = excluded.icon_name,
             deleted_at = NULL
 SQL;
@@ -158,6 +164,8 @@ SQL;
             'regionalForm' => (string) $pokemon['regionalForm'],
             'specialForm' => (string) $pokemon['specialForm'],
             'categoryForm' => (string) $pokemon['categoryForm'],
+            'primaryType' => (string) $pokemon['primaryType'],
+            'secondaryType' => (string) $pokemon['secondaryType'],
             'iconName' => (string) $pokemon['iconName'],
             'slug' => (string) $pokemon['slug'],
         ];
@@ -193,6 +201,8 @@ SQL;
             'regionalForm' => $record['#Regional form'],
             'specialForm' => $record['#Special form'],
             'categoryForm' => $record['#Category form'],
+            'primaryType' => $record['#Type 1'],
+            'secondaryType' => $record['#Type 2'],
             'iconName' => $record['Icon'],
             'slug' => $record['Slug'],
         ];

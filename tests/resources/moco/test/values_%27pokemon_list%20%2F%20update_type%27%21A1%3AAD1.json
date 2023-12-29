@@ -1,5 +1,5 @@
 {
-  "range": "'pokemon_list / only_new'!A1:AD1",
+  "range": "'pokemon_list / update_type'!A1:AD1",
   "majorDimension": "ROWS",
   "values": [
     [
