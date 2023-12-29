@@ -11,9 +11,9 @@ class PokemonsUpdater extends AbstractUpdater
     protected string $sheetName = 'Pokémons';
     protected string $tableName = 'pokemon';
     protected string $statisticName = 'pokemons';
-    protected string $headerCellsRange = 'A1:AR1';
+    protected string $headerCellsRange = 'A1:AD1';
     /** @var string[] */
-    protected array $recordsCellsRanges = ['A2:AR'];
+    protected array $recordsCellsRanges = ['A2:AD'];
 
     protected function getExpectedHeader(): array
     {
@@ -43,25 +43,11 @@ class PokemonsUpdater extends AbstractUpdater
             'Icon',
             'Sprites url',
             'Shiny Sprites url',
-            'Evolution',
             'Type 1',
-            'Type 1 ico',
             'Type 2',
-            'Type 2 ico',
-            'Steps',
-            'Egg Group',
-            'Egg Group 2',
-            'Male',
-            'Female',
-            'Ability 1',
-            'Ability 2',
-            'Hidden Ability',
-            'Abilities',
-            'All Moves',
-            'Move Type',
-            'Natures',
-            'Increases',
-            'Decreases',
+            'Species number',
+            'PokemonDB icon name',
+            'MBCMechachu sprites index',
         ];
     }
 

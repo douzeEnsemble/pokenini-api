@@ -15,7 +15,7 @@ class PokemonsUpdaterTest extends AbstractTestUpdater
     use GetPokemonTrait;
 
     protected int $initialTotalCount = 19;
-    protected int $finalTotalCount = 1817;
+    protected int $finalTotalCount = 1818;
     protected int $mustBeDeletedTotalCount = 1;
     protected string $sheetName = 'Pokémons';
     protected string $tableName = 'pokemon';
@@ -29,8 +29,8 @@ class PokemonsUpdaterTest extends AbstractTestUpdater
         $this->getService()->execute('pokemon_list / only_new');
 
         $this->assertEquals(27, $this->getPokemonCount());
-        $this->assertEquals(11, $this->getPokemonNotDeletedCount());
-        $this->assertEquals(16, $this->getPokemonDeletedCount());
+        $this->assertEquals(8, $this->getPokemonNotDeletedCount());
+        $this->assertEquals(19, $this->getPokemonDeletedCount());
 
         $charmander = $this->getPokemonFromName('Charmander');
         $charmeleon = $this->getPokemonFromName('Charmeleon');
