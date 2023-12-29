@@ -1,5 +1,5 @@
 {
-  "range": "'pokemon_list / update_regional_form'!A2:AR2",
+  "range": "'pokemon_list / update_regional_form'!A2:AD2",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -13,7 +13,6 @@
       "",
       "Douze",
       "0",
-      "",
       "Douze",
       "Douze",
       "",
@@ -30,21 +29,7 @@
       "",
       "douze",
       "Grass",
-      "",
-      "Poison",
-      "",
-      "5 120",
-      "Monster",
-      "Grass",
-      "88,10%",
-      "11,90%",
-      "Overgrow",
-      "",
-      "Chlorophyll",
-      "Aerilate",
-      "Absorb",
-      "Grass",
-      "Bashful"
+      "Poison"
     ]
   ]
 }
