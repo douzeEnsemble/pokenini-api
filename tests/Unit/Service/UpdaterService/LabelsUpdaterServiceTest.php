@@ -10,6 +10,7 @@ use App\Service\UpdaterService\FormsUpdaterService;
 use App\Service\UpdaterService\LabelsUpdaterService;
 use App\Updater\CatchStatesUpdater;
 use App\Updater\RegionsUpdater;
+use App\Updater\TypesUpdater;
 use PHPUnit\Framework\TestCase;
 
 class LabelsUpdaterServiceTest extends TestCase
@@ -49,10 +50,22 @@ class LabelsUpdaterServiceTest extends TestCase
             ->willReturn(new Statistic('r'))
         ;
 
+        $typesUpdater = $this->createMock(TypesUpdater::class);
+        $typesUpdater
+            ->expects($this->once())
+            ->method('execute')
+        ;
+        $typesUpdater
+            ->expects($this->once())
+            ->method('getStatistic')
+            ->willReturn(new Statistic('t'))
+        ;
+
         $service = new LabelsUpdaterService(
             $catchStatesUpdater,
             $formsUpdaterService,
-            $regionsUpdater
+            $regionsUpdater,
+            $typesUpdater,
         );
 
         $service->execute();

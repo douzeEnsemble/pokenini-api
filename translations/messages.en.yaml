@@ -12,6 +12,7 @@ update:
   regional_forms: "regional forms"
   special_forms: "special forms"
   variant_forms: "variant forms"
+  types: "types"
   pokemons: "pokémons"
 
 calculate:

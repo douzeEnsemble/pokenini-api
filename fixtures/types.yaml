@@ -1,0 +1,97 @@
+App\Entity\Type:
+    normal:
+        name: 'Normal'
+        frenchName: 'Normal'
+        orderNumber: 1
+        color: '#A8A878'
+    fighting:
+        name: 'Fighting'
+        frenchName: 'Combat'
+        orderNumber: 2
+        color: '#C03028'
+    flying:
+        name: 'Flying'
+        frenchName: 'Vol'
+        orderNumber: 3
+        color: '#A890F0'
+    poison:
+        name: 'Poison'
+        frenchName: 'Poison'
+        orderNumber: 4
+        color: '#A040A0'
+    ground:
+        name: 'Ground'
+        frenchName: 'Sol'
+        orderNumber: 5
+        color: '#E0C068'
+    rock:
+        name: 'Rock'
+        frenchName: 'Roche'
+        orderNumber: 6
+        color: '#B8A038'
+    bug:
+        name: 'Bug'
+        frenchName: 'Insecte'
+        orderNumber: 7
+        color: '#A8B820'
+    ghost:
+        name: 'Ghost'
+        frenchName: 'Spectre'
+        orderNumber: 8
+        color: '#705898'
+    steel:
+        name: 'Steel'
+        frenchName: 'Acier'
+        orderNumber: 9
+        color: '#B8B8D0'
+    fire:
+        name: 'Fire'
+        frenchName: 'Feu'
+        orderNumber: 10
+        color: '#F08030'
+    water:
+        name: 'Water'
+        frenchName: 'Eau'
+        orderNumber: 11
+        color: '#6890F0'
+    grass:
+        name: 'Grass'
+        frenchName: 'Plante'
+        orderNumber: 12
+        color: '#78C850'
+    electric:
+        name: 'Electric'
+        frenchName: 'Electrik'
+        orderNumber: 13
+        color: '#F8D030'
+    psychic:
+        name: 'Psychic'
+        frenchName: 'Psy'
+        orderNumber: 14
+        color: '#F85888'
+    ice:
+        name: 'Ice'
+        frenchName: 'Glace'
+        orderNumber: 15
+        color: '#98D8D8'
+    dragon:
+        name: 'Dragon'
+        frenchName: 'Dragon'
+        orderNumber: 16
+        color: '#7038F8'
+    dark:
+        name: 'Dark'
+        frenchName: 'Ténèbre'
+        orderNumber: 17
+        color: '#705848'
+    stellar:
+        name: 'Stellar'
+        frenchName: 'Stellaire'
+        orderNumber: 19
+        color: '#7CC7B2'
+    unknown:
+        name: '???'
+        frenchName: '???'
+        orderNumber: 0
+        color: '#68A090'
+        deletedAt: "<dateTime('now')>"
