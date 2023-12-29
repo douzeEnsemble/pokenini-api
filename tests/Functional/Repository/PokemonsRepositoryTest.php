@@ -62,6 +62,9 @@ class PokemonsRepositoryTest extends KernelTestCase
 
         $this->assertEquals('charizard', $pokemons[8]->iconName);
         $this->assertEquals('butterfree', $pokemons[11]->iconName);
+
+        $this->assertEquals('fire', $pokemons[8]->primaryType?->slug);
+        $this->assertEquals('flying', $pokemons[8]->secondaryType?->slug);
     }
 
     public function testCountAll(): void

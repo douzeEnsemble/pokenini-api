@@ -475,5 +475,23 @@
       "status": 200,
       "file": "/var/moco/test/values_%27Type%27%21A2%3AE.json"
     }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / update_type'!A1:AD1"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/test/values_%27pokemon_list%20%2F%20update_type%27%21A1%3AAD1.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'pokemon_list / update_type'!A2:AD"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/test/values_%27pokemon_list%20%2F%20update_type%27%21A2%3AAD.json"
+    }
   }
 ]

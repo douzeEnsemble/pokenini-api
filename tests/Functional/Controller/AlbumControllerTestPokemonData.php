@@ -31,6 +31,12 @@ final class AlbumControllerTestPokemonData
             'variant_form_name' => null,
             'family_lead_slug' => null,
             'pokemon_family_order' => 0,
+            'primary_type_slug' => 'grass',
+            'primary_type_name' => 'Grass',
+            'primary_type_french_name' => 'Plante',
+            'secondary_type_slug' => 'poison',
+            'secondary_type_name' => 'Poison',
+            'secondary_type_french_name' => 'Poison',
         ];
     }
 
@@ -62,6 +68,12 @@ final class AlbumControllerTestPokemonData
             'catch_state_french_name' => 'Peut être',
             'family_lead_slug' => 'bulbasaur',
             'pokemon_family_order' => 1,
+            'primary_type_slug' => 'grass',
+            'primary_type_name' => 'Grass',
+            'primary_type_french_name' => 'Plante',
+            'secondary_type_slug' => 'poison',
+            'secondary_type_name' => 'Poison',
+            'secondary_type_french_name' => 'Poison',
         ];
     }
 
@@ -93,6 +105,12 @@ final class AlbumControllerTestPokemonData
             'catch_state_french_name' => 'Peut être pas',
             'family_lead_slug' => 'bulbasaur',
             'pokemon_family_order' => 2,
+            'primary_type_slug' => 'grass',
+            'primary_type_name' => 'Grass',
+            'primary_type_french_name' => 'Plante',
+            'secondary_type_slug' => 'poison',
+            'secondary_type_name' => 'Poison',
+            'secondary_type_french_name' => 'Poison',
         ];
     }
 
@@ -124,6 +142,12 @@ final class AlbumControllerTestPokemonData
             'catch_state_french_name' => 'Peut être pas',
             'family_lead_slug' => null,
             'pokemon_family_order' => 0,
+            'primary_type_slug' => 'bug',
+            'primary_type_name' => 'Bug',
+            'primary_type_french_name' => 'Insecte',
+            'secondary_type_slug' => null,
+            'secondary_type_name' => null,
+            'secondary_type_french_name' => null,
         ];
     }
 
@@ -155,6 +179,12 @@ final class AlbumControllerTestPokemonData
             'catch_state_french_name' => null,
             'family_lead_slug' => 'caterpie',
             'pokemon_family_order' => 1,
+            'primary_type_slug' => 'bug',
+            'primary_type_name' => 'Bug',
+            'primary_type_french_name' => 'Insecte',
+            'secondary_type_slug' => null,
+            'secondary_type_name' => null,
+            'secondary_type_french_name' => null,
         ];
     }
 
@@ -186,6 +216,12 @@ final class AlbumControllerTestPokemonData
             'catch_state_french_name' => null,
             'family_lead_slug' => 'caterpie',
             'pokemon_family_order' => 2,
+            'primary_type_slug' => 'bug',
+            'primary_type_name' => 'Bug',
+            'primary_type_french_name' => 'Insecte',
+            'secondary_type_slug' => 'flying',
+            'secondary_type_name' => 'Flying',
+            'secondary_type_french_name' => 'Vol',
         ];
     }
 
@@ -217,6 +253,12 @@ final class AlbumControllerTestPokemonData
             'catch_state_french_name' => null,
             'family_lead_slug' => null,
             'pokemon_family_order' => 0,
+            'primary_type_slug' => null,
+            'primary_type_name' => null,
+            'primary_type_french_name' => null,
+            'secondary_type_slug' => null,
+            'secondary_type_name' => null,
+            'secondary_type_french_name' => null,
         ];
     }
 
@@ -245,6 +287,12 @@ final class AlbumControllerTestPokemonData
             'variant_form_name' => null,
             'family_lead_slug' => null,
             'pokemon_family_order' => 0,
+            'primary_type_slug' => 'fire',
+            'primary_type_name' => 'Fire',
+            'primary_type_french_name' => 'Feu',
+            'secondary_type_slug' => null,
+            'secondary_type_name' => null,
+            'secondary_type_french_name' => null,
         ];
     }
 
@@ -276,6 +324,12 @@ final class AlbumControllerTestPokemonData
             'catch_state_french_name' => 'Peut être',
             'family_lead_slug' => 'charmander',
             'pokemon_family_order' => 1,
+            'primary_type_slug' => 'fire',
+            'primary_type_name' => 'Fire',
+            'primary_type_french_name' => 'Feu',
+            'secondary_type_slug' => null,
+            'secondary_type_name' => null,
+            'secondary_type_french_name' => null,
         ];
     }
 
@@ -307,6 +361,12 @@ final class AlbumControllerTestPokemonData
             'catch_state_french_name' => 'Peut être pas',
             'family_lead_slug' => 'charmander',
             'pokemon_family_order' => 2,
+            'primary_type_slug' => 'fire',
+            'primary_type_name' => 'Fire',
+            'primary_type_french_name' => 'Feu',
+            'secondary_type_slug' => 'flying',
+            'secondary_type_name' => 'Flying',
+            'secondary_type_french_name' => 'Vol',
         ];
     }
 }

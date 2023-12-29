@@ -41,6 +41,14 @@ class PokemonsUpdaterTest extends AbstractTestUpdater
 
         $this->assertNotNull($charmander['category_form_id']);
         $this->assertNull($charmeleon['category_form_id']);
+
+        $this->assertNotNull($charmeleon['primary_type_id']);
+        $this->assertNull($charmeleon['secondary_type_id']);
+
+        $charizard = $this->getPokemonFromName('Charizard');
+
+        $this->assertNotNull($charizard['primary_type_id']);
+        $this->assertNotNull($charizard['secondary_type_id']);
     }
 
     public function testImportExistingPokemons(): void
@@ -64,6 +72,9 @@ class PokemonsUpdaterTest extends AbstractTestUpdater
         $this->assertNotNull($bulbasaurBefore['category_form_id']);
         $this->assertNull($ivysaurBefore['category_form_id']);
 
+        $this->assertNotNull($bulbasaurBefore['primary_type_id']);
+        $this->assertNotNull($bulbasaurBefore['secondary_type_id']);
+
         $this->getService()->execute('pokemon_list / only_existing');
 
         $this->assertEquals(19, $this->getPokemonCount());
@@ -84,6 +95,9 @@ class PokemonsUpdaterTest extends AbstractTestUpdater
 
         $this->assertNotNull($bulbasaurAfter['category_form_id']);
         $this->assertNull($ivysaurAfter['category_form_id']);
+
+        $this->assertNotNull($bulbasaurBefore['primary_type_id']);
+        $this->assertNotNull($bulbasaurBefore['secondary_type_id']);
     }
 
     public function testImportNewAndExistingPokemons(): void
@@ -116,6 +130,27 @@ class PokemonsUpdaterTest extends AbstractTestUpdater
 
         $pokemonAfter = $this->getPokemonFromName('Douze');
         $this->assertNotNull($pokemonAfter['regional_form_id']);
+    }
+
+    public function testUpdateTypesPokemons(): void
+    {
+        $this->assertGreaterThan(0, $this->getPokemonCount());
+        $this->assertEquals($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
+        $this->assertEquals(0, $this->getPokemonDeletedCount());
+
+        $pokemonBefore = $this->getPokemonFromName('Douze');
+        $this->assertNull($pokemonBefore['primary_type_id']);
+        $this->assertNull($pokemonBefore['secondary_type_id']);
+
+        $this->getService()->execute('pokemon_list / update_type');
+
+        $this->assertEquals(19, $this->getPokemonCount());
+        $this->assertEquals(1, $this->getPokemonNotDeletedCount());
+        $this->assertEquals(18, $this->getPokemonDeletedCount());
+
+        $pokemonAfter = $this->getPokemonFromName('Douze');
+        $this->assertNotNull($pokemonAfter['primary_type_id']);
+        $this->assertNotNull($pokemonAfter['secondary_type_id']);
     }
 
     public function testUpdateFamilyLink(): void
