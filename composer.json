@@ -44,7 +44,7 @@
     },
     "require-dev": {
         "hautelook/alice-bundle": "^2.10",
-        "infection/infection": "^0.26.18",
+        "infection/infection": "0.27.*",
         "justinrainbow/json-schema": "^5.2",
         "phpmd/phpmd": "^2.12",
         "phpstan/phpstan": "^1.8",
