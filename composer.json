@@ -60,7 +60,7 @@
         "symfony/phpunit-bridge": "6.4.*",
         "symfony/stopwatch": "6.4.*",
         "symfony/var-dumper": "6.4.*",
-        "vimeo/psalm": "^4.24",
+        "vimeo/psalm": "5.18.*",
         "zenstruck/messenger-test": "^1.7"
     },
     "config": {
