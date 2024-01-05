@@ -13,8 +13,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[AsCommand(name: 'app:update:games_and_dex')]
 final class UpdateGamesAndDexCommand extends AbstractUpdateCommand
 {
-    protected static $defaultName = 'app:update:games_and_dex';
-
     public function __construct(
         TranslatorInterface $translator,
         EntityManagerInterface $entityManager,
@@ -22,5 +20,10 @@ final class UpdateGamesAndDexCommand extends AbstractUpdateCommand
         GamesAndDexUpdaterService $updaterService,
     ) {
         parent::__construct($translator, $entityManager, $actionStarter, $updaterService);
+    }
+
+    protected function getCommandName(): string
+    {
+        return 'app:update:games_and_dex';
     }
 }

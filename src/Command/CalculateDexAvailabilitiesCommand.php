@@ -13,8 +13,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[AsCommand(name: 'app:calculate:dex_availabilities')]
 class CalculateDexAvailabilitiesCommand extends AbstractCalculateCommand
 {
-    protected static $defaultName = 'app:calculate:dex_availabilities';
-
     public function __construct(
         TranslatorInterface $translator,
         EntityManagerInterface $entityManager,
@@ -29,5 +27,10 @@ class CalculateDexAvailabilitiesCommand extends AbstractCalculateCommand
         $this
             ->setHelp("This command allows you to update dex availabilities")
         ;
+    }
+
+    protected function getCommandName(): string
+    {
+        return 'app:calculate:dex_availabilities';
     }
 }
