@@ -8,23 +8,12 @@ use App\Repository\GamesAvailabilitiesRepository;
 use App\Tests\Common\Traits\CounterTrait\CountGameAvailabilityTrait;
 use App\Tests\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
 use App\Tests\Common\Traits\CounterTrait\CountActionLogTrait;
-use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
-use Symfony\Bundle\FrameworkBundle\Console\Application;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Tester\CommandTester;
 
-class CalculateGameBundlesAvailabilitiesCommandTest extends KernelTestCase
+class CalculateGameBundlesAvailabilitiesCommandTest extends AbstractTestCaseCommand
 {
     use CountGameAvailabilityTrait;
     use CountGameBundleAvailabilityTrait;
-    use RefreshDatabaseTrait;
     use CountActionLogTrait;
-
-    public function setUp(): void
-    {
-        self::bootKernel();
-    }
 
     public function testNoGamesAvailabilities(): void
     {
@@ -63,22 +52,5 @@ class CalculateGameBundlesAvailabilitiesCommandTest extends KernelTestCase
     protected function getCommandName(): string
     {
         return 'app:calculate:game_bundles_availabilities';
-    }
-
-    protected function getCommand(): Command
-    {
-        $application = new Application(self::$kernel);
-
-        return $application->find($this->getCommandName());
-    }
-
-    protected function executeCommand(): CommandTester
-    {
-        $command = $this->getCommand();
-
-        $commandTester = new CommandTester($command);
-        $commandTester->execute([]);
-
-        return $commandTester;
     }
 }

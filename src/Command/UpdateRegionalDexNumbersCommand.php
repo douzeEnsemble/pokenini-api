@@ -13,8 +13,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[AsCommand(name: 'app:update:regional_dex_numbers')]
 final class UpdateRegionalDexNumbersCommand extends AbstractUpdateCommand
 {
-    protected static $defaultName = 'app:update:regional_dex_numbers';
-
     public function __construct(
         TranslatorInterface $translator,
         EntityManagerInterface $entityManager,
@@ -22,5 +20,10 @@ final class UpdateRegionalDexNumbersCommand extends AbstractUpdateCommand
         RegionalDexNumbersUpdaterService $updaterService,
     ) {
         parent::__construct($translator, $entityManager, $actionStarter, $updaterService);
+    }
+
+    protected function getCommandName(): string
+    {
+        return 'app:update:regional_dex_numbers';
     }
 }

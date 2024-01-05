@@ -13,8 +13,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[AsCommand(name: 'app:calculate:game_bundles_shinies_availabilities')]
 class CalculateGameBundlesShiniesAvailabilitiesCommand extends AbstractCalculateCommand
 {
-    protected static $defaultName = 'app:calculate:game_bundles_shinies_availabilities';
-
     public function __construct(
         TranslatorInterface $translator,
         EntityManagerInterface $entityManager,
@@ -29,5 +27,10 @@ class CalculateGameBundlesShiniesAvailabilitiesCommand extends AbstractCalculate
         $this
             ->setHelp("This command allows you to update game' bundles' shinies' availabilities")
         ;
+    }
+
+    protected function getCommandName(): string
+    {
+        return 'app:calculate:game_bundles_shinies_availabilities';
     }
 }
