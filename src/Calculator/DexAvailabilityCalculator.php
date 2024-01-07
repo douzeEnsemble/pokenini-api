@@ -32,6 +32,9 @@ class DexAvailabilityCalculator
             }
 
             $this->entityManager->persist($dexAvailability);
+            $this->entityManager->flush();
+            $this->entityManager->detach($dexAvailability);
+            unset($dexAvailability);
 
             $count++;
         }

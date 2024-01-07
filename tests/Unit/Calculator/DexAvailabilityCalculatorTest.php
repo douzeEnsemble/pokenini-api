@@ -28,7 +28,11 @@ class DexAvailabilityCalculatorTest extends TestCase
             ->method('persist')
         ;
         $entityManager
-            ->expects($this->once())
+            ->expects($this->exactly(3))
+            ->method('detach')
+        ;
+        $entityManager
+        ->expects($this->exactly(4))
             ->method('flush')
         ;
         $entityManager
@@ -89,7 +93,11 @@ class DexAvailabilityCalculatorTest extends TestCase
             ->method('persist')
         ;
         $entityManager
-            ->expects($this->exactly(2))
+            ->expects($this->exactly(6))
+            ->method('detach')
+        ;
+        $entityManager
+            ->expects($this->exactly(8))
             ->method('flush')
         ;
         $entityManager
