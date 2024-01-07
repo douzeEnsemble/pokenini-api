@@ -2,7 +2,8 @@ doctrine:
     dbal:
         url: '%env(resolve:POSTGRESQL_ADDON_URI)%'
         server_version: '14'
-        profiling_collect_backtrace: '%kernel.debug%'
+        profiling_collect_backtrace: false
+        profiling_collect_schema_errors: false
     orm:
         auto_generate_proxy_classes: true
         enable_lazy_ghost_objects: true
