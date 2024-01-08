@@ -60,14 +60,13 @@
         "symfony/phpunit-bridge": "7.0.*",
         "symfony/stopwatch": "7.0.*",
         "symfony/var-dumper": "7.0.*",
-        "symfony/web-profiler-bundle": "7.0.*",
         "vimeo/psalm": "5.18.*",
         "zenstruck/messenger-test": "^1.7"
     },
     "config": {
         "optimize-autoloader": true,
         "preferred-install": {
-            "*": "dist"
+            "*": "dFist"
         },
         "sort-packages": true,
         "allow-plugins": {
