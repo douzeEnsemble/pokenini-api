@@ -9,24 +9,13 @@ use App\Tests\Common\Traits\CounterTrait\CountDexAvailabilityTrait;
 use App\Tests\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Common\Traits\CounterTrait\CountPokemonTrait;
 use App\Tests\Common\Traits\HasserTrait\HasDexAvailabilityTrait;
-use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
-use Symfony\Bundle\FrameworkBundle\Console\Application;
-use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Symfony\Component\Console\Command\Command;
-use Symfony\Component\Console\Tester\CommandTester;
 
-class CalculateDexAvailabilitiesCommandTest extends KernelTestCase
+class CalculateDexAvailabilitiesCommandTest extends AbstractTestCaseCommand
 {
     use CountPokemonTrait;
     use CountDexAvailabilityTrait;
     use HasDexAvailabilityTrait;
-    use RefreshDatabaseTrait;
     use CountActionLogTrait;
-
-    public function setUp(): void
-    {
-        self::bootKernel();
-    }
 
     public function testNoDexAvailabilities(): void
     {
@@ -75,22 +64,5 @@ class CalculateDexAvailabilitiesCommandTest extends KernelTestCase
     protected function getCommandName(): string
     {
         return 'app:calculate:dex_availabilities';
-    }
-
-    protected function getCommand(): Command
-    {
-        $application = new Application(self::$kernel);
-
-        return $application->find($this->getCommandName());
-    }
-
-    protected function executeCommand(): CommandTester
-    {
-        $command = $this->getCommand();
-
-        $commandTester = new CommandTester($command);
-        $commandTester->execute([]);
-
-        return $commandTester;
     }
 }
