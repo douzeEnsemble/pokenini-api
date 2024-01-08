@@ -6,11 +6,6 @@ parameters:
 			path: src/Service/CalculatorService/DexAvailabilitiesCalculatorService.php
 
 		-
-			message: "#^Parameter \\#1 \\$iterator of function iterator_to_array expects Traversable, iterable given\\.$#"
-			count: 1
-			path: tests/Functional/Repository/DexRepositoryTest.php
-
-		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$goldsilvercrystal\\.$#"
 			count: 3
 			path: tests/Functional/Repository/GameBundlesAvailabilitiesRepositoryTest.php
@@ -69,11 +64,6 @@ parameters:
 			message: "#^Access to an undefined property App\\\\DTO\\\\GamesShiniesAvailabilities\\:\\:\\$ruby\\.$#"
 			count: 1
 			path: tests/Functional/Repository/GamesShiniesAvailabilitiesRepositoryTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$iterator of function iterator_to_array expects Traversable, iterable given\\.$#"
-			count: 1
-			path: tests/Functional/Repository/PokemonsRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$goldsilvercrystal\\.$#"

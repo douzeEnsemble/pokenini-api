@@ -13,8 +13,6 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[AsCommand(name: 'app:update:labels')]
 final class UpdateLabelsCommand extends AbstractUpdateCommand
 {
-    protected static $defaultName = 'app:update:labels';
-
     public function __construct(
         TranslatorInterface $translator,
         EntityManagerInterface $entityManager,
@@ -22,5 +20,10 @@ final class UpdateLabelsCommand extends AbstractUpdateCommand
         LabelsUpdaterService $updaterService,
     ) {
         parent::__construct($translator, $entityManager, $actionStarter, $updaterService);
+    }
+
+    protected function getCommandName(): string
+    {
+        return 'app:update:labels';
     }
 }

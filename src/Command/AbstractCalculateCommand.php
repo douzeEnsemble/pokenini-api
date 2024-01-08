@@ -18,16 +18,16 @@ abstract class AbstractCalculateCommand extends Command
 {
     use ActionEnderTrait;
 
-    protected static $defaultName;
-
     public function __construct(
         private readonly TranslatorInterface $translator,
         private readonly EntityManagerInterface $entityManager,
         protected readonly ActionStarterInterface $actionStarter,
         protected readonly CalculatorServiceInterface $calculatorService,
     ) {
-        parent::__construct(self::$defaultName);
+        parent::__construct($this->getCommandName());
     }
+
+    abstract protected function getCommandName(): string;
 
     /**
      * @inheritdoc

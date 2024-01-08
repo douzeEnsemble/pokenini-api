@@ -7,7 +7,7 @@ namespace App\Tests\Functional\Command;
 use App\Tests\Common\Traits\CounterTrait\CounterTableTrait;
 use App\Tests\Common\Traits\CounterTrait\CountActionLogTrait;
 
-class UpdatePokemonsCommandTest extends AbstractTestUpdaterCommand
+class UpdatePokemonsCommandTest extends AbstractTestCaseCommand
 {
     use CounterTableTrait;
     use CountActionLogTrait;
