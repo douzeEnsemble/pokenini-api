@@ -3,49 +3,28 @@ version: "3.4"
 services:
   php:
     build:
-      context: ./
-      target: app_php
-    depends_on:
-      - database
-    restart: unless-stopped
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    expose:
+      - 9000
     volumes:
-      - php_socket:/var/run/php
-    healthcheck:
-      interval: 10s
-      timeout: 3s
-      retries: 3
-      start_period: 30s
-    environment:
-      TRUSTED_PROXIES: ${TRUSTED_PROXIES:-127.0.0.0/8,10.0.0.0/8,172.16.0.0/12,192.168.0.0/16}
-      TRUSTED_HOSTS: ^${SERVER_NAME:-example\.com|localhost}|caddy$$
+      - .:/var/www/html
+      - ./docker/php/php.ini:/usr/local/etc/php/php.ini
 
-  caddy:
+  apache:
     build:
-      context: ./
-      target: app_caddy
-
+      context: .
+      dockerfile: ./docker/apache/Dockerfile
+    ports:
+      - 8081:80
+      - 4431:443
     depends_on:
       - php
-    environment:
-      SERVER_NAME: ${SERVER_NAME:-localhost}, caddy:80
-    restart: unless-stopped
     volumes:
-      - php_socket:/var/run/php
-      - caddy_data:/data
-      - caddy_config:/config
-    ports:
-      # HTTP
-      - target: 80
-        published: ${HTTP_PORT:-8980}
-        protocol: tcp
-      # HTTPS
-      - target: 443
-        published: ${HTTPS_PORT:-4430}
-        protocol: tcp
-      # HTTP/3
-      - target: 443
-        published: ${HTTP3_PORT:-4430}
-        protocol: udp
+      - .:/var/www/html
+      - ./docker/apache/httpd.conf:/usr/local/apache2/conf/httpd.conf
+      - ./docker/apache/httpd-vhosts.conf:/usr/local/apache2/conf/extra/httpd-vhosts.conf
+      - ./docker/apache/ssl:/usr/local/apache2/ssl/
 
   database:
     image: postgres:${POSTGRES_VERSION:-14}-alpine
@@ -57,19 +36,31 @@ services:
     volumes:
       - db_data:/var/lib/postgresql/data
     ports:
-      # HTTP
-      - target: 80
-        published: ${FRONT_HTTP_PORT:-5450}
+      - target: 5432
+        published: 5451
         protocol: tcp
 
+  test.moco:
+    build:
+      context: docker/moco/test
+    volumes:
+      - ./tests/resources/moco:/var/moco:ro
+
+  int.moco:
+    build:
+      context: docker/moco/int
+    volumes:
+      - ./tests/resources/moco:/var/moco:ro
+
+  adminer:
+    image: adminer
+    restart: always
+    ports:
+     - target: 8080
+       published: 8082
+
 volumes:
-  php_socket:
-  php_front_socket:
-  caddy_data:
-  caddy_config:
-  caddy_front_data:
-  caddy_front_config:
 ###> doctrine/doctrine-bundle ###
   db_data:
+  db_data_test:
 ###< doctrine/doctrine-bundle ###
-

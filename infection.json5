@@ -13,4 +13,6 @@
         ]
     },
     "timeout": 60,
+    "tmpDir": "/var/www/html/var/cache",
+    "testFramework": "phpunit"
 }
