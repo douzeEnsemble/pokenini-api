@@ -44,7 +44,7 @@ class PokemonsRepositoryTest extends KernelTestCase
         $pokemonsIterator = $repo->getQueryAll()->toIterable();
 
         /** @var Pokemon[] $pokemons */
-        $pokemons = iterator_to_array($pokemonsIterator);
+        $pokemons = [...$pokemonsIterator];
 
         $this->assertCount($this->getPokemonCount(), $pokemons);
 

@@ -28,7 +28,7 @@ class DexRepositoryTest extends KernelTestCase
         $dexIterator = $repo->getQueryAll();
 
         /** @var Dex[] $dex */
-        $dex = iterator_to_array($dexIterator->toIterable());
+        $dex = [...$dexIterator->toIterable()];
 
         $this->assertCount(
             $this->getDexCount() - 1,
