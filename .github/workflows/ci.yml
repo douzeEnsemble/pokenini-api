@@ -74,6 +74,8 @@ jobs:
         uses: ./.github/actions/docker-compose
       - name: Initialize
         run: |
+          docker compose exec -T php php bin/console --env=int doctrine:database:create --if-not-exists
+          docker compose exec -T php php bin/console --env=int doctrine:migrations:migrate --no-interaction
           docker compose exec -T php php bin/console --env=int app:update:labels
           docker compose exec -T php php bin/console --env=int app:update:games_and_dex
           docker compose exec -T php php bin/console --env=int app:update:pokemons
