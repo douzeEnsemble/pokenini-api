@@ -19,7 +19,7 @@ SYMFONY  = $(PHP_CONT) bin/console
 
 # Misc
 .DEFAULT_GOAL = help
-.PHONY        = help build rebuild up install start stop sh data init_db data_app composer vendor sf cc tests phpunit testsunit testsfunctional quality phpcs phpcbf phpmd psalm phpstan integration newman measures coverage htmlcoverage infection
+.PHONY        : help build rebuild up install start stop sh data init_db data_app composer vendor sf cc tests phpunit testsunit testsfunctional quality phpcs phpcbf phpmd psalm phpstan integration newman measures coverage htmlcoverage infection
 
 ## —— 🎵 🐳 The Symfony-docker Makefile 🐳 🎵 ——————————————————————————————————
 help: ## Outputs this help screen
@@ -80,9 +80,7 @@ data_app: ## Initialize app data
 	$(SYMFONY) app:update:games_shinies_availabilities
 	$(SYMFONY) app:calculate:game_bundles_availabilities
 	$(SYMFONY) app:calculate:game_bundles_shinies_availabilities
-	date
 	$(SYMFONY) app:calculate:dex_availabilities
-	date
 
 ## —— Composer 🧙 ——————————————————————————————————————————————————————————————
 composer: ## Run composer, pass the parameter "c=" to run a given command, example: make composer c='req symfony/orm-pack'
