@@ -5,10 +5,10 @@
 ### TL;DR
 
 ```
-make stop install start quality tests integration
+make stop build start quality tests integration
 ```
 
-or
+    or
 
 ```
 make quality tests integration
@@ -17,7 +17,7 @@ make quality tests integration
 ### Install
 
 ```
-make install start
+make start
 ```
 
 ### Restart
@@ -28,7 +28,7 @@ make stop start
 
 ### Adminer
 
-[http://localhost:8081/?pgsql=database&username=app&db=app&ns=public]()
+[http://localhost:8082/?pgsql=database&username=app&db=app&ns=public]()
 
 ## Labels, games and dex
 
@@ -145,7 +145,7 @@ docker-compose exec php sh -c '
 
 ```
 make sf c="messenger:stop-workers" && \
-curl -X POST --insecure  "https://localhost:4430/istration/calculate/dex_availabilities" \
+curl -X POST --insecure  "https://localhost:4431/istration/calculate/dex_availabilities" \
   -H 'Authorization: Basic d2ViOmRvdXpl' \
   -H 'cache-control: no-cache' && \
 make sf c="messenger:consume async -vv --limit=1"

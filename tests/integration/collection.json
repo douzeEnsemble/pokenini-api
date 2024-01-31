@@ -116,10 +116,10 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow",
+          "raw": "http://apache/album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow",
           "protocol": "http",
           "host": [
-            "caddy"
+            "apache"
           ],
           "path": [
             "album",
@@ -241,10 +241,10 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/goldsilvercrystal",
+          "raw": "http://apache/album/7b52009b64fd0a2a49e6d8a939753077792b0554/goldsilvercrystal",
           "protocol": "http",
           "host": [
-            "caddy"
+            "apache"
           ],
           "path": [
             "album",
@@ -366,10 +366,10 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/rubysapphireemerald",
+          "raw": "http://apache/album/7b52009b64fd0a2a49e6d8a939753077792b0554/rubysapphireemerald",
           "protocol": "http",
           "host": [
-            "caddy"
+            "apache"
           ],
           "path": [
             "album",
@@ -491,10 +491,10 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/fireredleafgreen",
+          "raw": "http://apache/album/7b52009b64fd0a2a49e6d8a939753077792b0554/fireredleafgreen",
           "protocol": "http",
           "host": [
-            "caddy"
+            "apache"
           ],
           "path": [
             "album",
@@ -616,10 +616,10 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/diamondpearlplatinium",
+          "raw": "http://apache/album/7b52009b64fd0a2a49e6d8a939753077792b0554/diamondpearlplatinium",
           "protocol": "http",
           "host": [
-            "caddy"
+            "apache"
           ],
           "path": [
             "album",
@@ -741,10 +741,10 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/heartgoldsoulsilver",
+          "raw": "http://apache/album/7b52009b64fd0a2a49e6d8a939753077792b0554/heartgoldsoulsilver",
           "protocol": "http",
           "host": [
-            "caddy"
+            "apache"
           ],
           "path": [
             "album",
@@ -866,10 +866,10 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/blackwhite",
+          "raw": "http://apache/album/7b52009b64fd0a2a49e6d8a939753077792b0554/blackwhite",
           "protocol": "http",
           "host": [
-            "caddy"
+            "apache"
           ],
           "path": [
             "album",
@@ -991,10 +991,10 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/black2white2",
+          "raw": "http://apache/album/7b52009b64fd0a2a49e6d8a939753077792b0554/black2white2",
           "protocol": "http",
           "host": [
-            "caddy"
+            "apache"
           ],
           "path": [
             "album",
@@ -1116,10 +1116,10 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/xy",
+          "raw": "http://apache/album/7b52009b64fd0a2a49e6d8a939753077792b0554/xy",
           "protocol": "http",
           "host": [
-            "caddy"
+            "apache"
           ],
           "path": [
             "album",
@@ -1241,10 +1241,10 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/omegarubyalphasapphire",
+          "raw": "http://apache/album/7b52009b64fd0a2a49e6d8a939753077792b0554/omegarubyalphasapphire",
           "protocol": "http",
           "host": [
-            "caddy"
+            "apache"
           ],
           "path": [
             "album",
@@ -1366,10 +1366,10 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/sunmoon",
+          "raw": "http://apache/album/7b52009b64fd0a2a49e6d8a939753077792b0554/sunmoon",
           "protocol": "http",
           "host": [
-            "caddy"
+            "apache"
           ],
           "path": [
             "album",
@@ -1491,10 +1491,10 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/ultrasunultramoon",
+          "raw": "http://apache/album/7b52009b64fd0a2a49e6d8a939753077792b0554/ultrasunultramoon",
           "protocol": "http",
           "host": [
-            "caddy"
+            "apache"
           ],
           "path": [
             "album",
@@ -1616,10 +1616,10 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/letsgopikachuletsgoeevee",
+          "raw": "http://apache/album/7b52009b64fd0a2a49e6d8a939753077792b0554/letsgopikachuletsgoeevee",
           "protocol": "http",
           "host": [
-            "caddy"
+            "apache"
           ],
           "path": [
             "album",
@@ -1741,10 +1741,10 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/swordshield",
+          "raw": "http://apache/album/7b52009b64fd0a2a49e6d8a939753077792b0554/swordshield",
           "protocol": "http",
           "host": [
-            "caddy"
+            "apache"
           ],
           "path": [
             "album",
@@ -1866,10 +1866,10 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/brilliantdiamondshiningpearl",
+          "raw": "http://apache/album/7b52009b64fd0a2a49e6d8a939753077792b0554/brilliantdiamondshiningpearl",
           "protocol": "http",
           "host": [
-            "caddy"
+            "apache"
           ],
           "path": [
             "album",
@@ -1991,10 +1991,10 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/pokemonlegendsarceus",
+          "raw": "http://apache/album/7b52009b64fd0a2a49e6d8a939753077792b0554/pokemonlegendsarceus",
           "protocol": "http",
           "host": [
-            "caddy"
+            "apache"
           ],
           "path": [
             "album",
@@ -2116,10 +2116,10 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/home",
+          "raw": "http://apache/album/7b52009b64fd0a2a49e6d8a939753077792b0554/home",
           "protocol": "http",
           "host": [
-            "caddy"
+            "apache"
           ],
           "path": [
             "album",
@@ -2241,10 +2241,10 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/homeshiny",
+          "raw": "http://apache/album/7b52009b64fd0a2a49e6d8a939753077792b0554/homeshiny",
           "protocol": "http",
           "host": [
-            "caddy"
+            "apache"
           ],
           "path": [
             "album",
@@ -2366,10 +2366,10 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/homepokemongo",
+          "raw": "http://apache/album/7b52009b64fd0a2a49e6d8a939753077792b0554/homepokemongo",
           "protocol": "http",
           "host": [
-            "caddy"
+            "apache"
           ],
           "path": [
             "album",
@@ -2491,10 +2491,10 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/alpha",
+          "raw": "http://apache/album/7b52009b64fd0a2a49e6d8a939753077792b0554/alpha",
           "protocol": "http",
           "host": [
-            "caddy"
+            "apache"
           ],
           "path": [
             "album",
@@ -2616,10 +2616,10 @@
 					]
 				},
         "url": {
-          "raw": "http://caddy/album/7b52009b64fd0a2a49e6d8a939753077792b0554/mega",
+          "raw": "http://apache/album/7b52009b64fd0a2a49e6d8a939753077792b0554/mega",
           "protocol": "http",
           "host": [
-            "caddy"
+            "apache"
           ],
           "path": [
             "album",
