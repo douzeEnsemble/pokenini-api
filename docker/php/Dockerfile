@@ -30,6 +30,16 @@ RUN apt-get update && apt-get install -y \
         libpq-dev \
     && docker-php-ext-install pdo_pgsql pgsql
 
+RUN apt-get update \
+    && apt-get install -y libzip-dev zlib1g-dev \
+    && docker-php-ext-install zip
+
+RUN apt-get update \
+    && apt-get install -y libicu-dev \
+    && docker-php-ext-install intl
+
+RUN docker-php-ext-install ctype iconv
+
 RUN apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 ## > Install PHP extensions
