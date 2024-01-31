@@ -1,4 +1,3 @@
-/.env
 /.idea/
 
 /docker/db/data
@@ -12,6 +11,7 @@ tests/mutation/index.html
 coverage.xml
 
 ###> symfony/framework-bundle ###
+/.env
 /.env.local
 /.env.local.php
 /.env.*.local
