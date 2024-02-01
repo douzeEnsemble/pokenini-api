@@ -36,6 +36,8 @@ class PokedexRepository extends ServiceEntityRepository
                 p.icon_name AS pokemon_icon,
                 p.family_order AS pokemon_family_order,
                 pp.slug AS family_lead_slug,
+                cf.slug as category_form_slug,
+                cf.name as category_form_name,
                 rf.slug as regional_form_slug,
                 rf.name as regional_form_name,
                 sf.slug as special_form_slug,
@@ -74,6 +76,8 @@ class PokedexRepository extends ServiceEntityRepository
                 AND pd.pokemon_id = da.pokemon_id
             LEFT JOIN catch_state AS cs
                 ON pd.catch_state_id = cs.id
+            LEFT JOIN category_form AS cf
+                    ON p.category_form_id = cf.id
             LEFT JOIN regional_form AS rf
                     ON p.regional_form_id = rf.id
             LEFT JOIN special_form AS sf
