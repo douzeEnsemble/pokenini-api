@@ -1,10 +1,13 @@
 App\Entity\SpecialForm:
     special_form_mega:
         name: 'Mega'
+        frenchName: 'Mega'
         orderNumber: 1
     special_form_alpha:
         name: 'Alpha'
+        frenchName: 'Baron'
         orderNumber: 3
     special_form_gigantamax:
         name: 'Gigantamax'
+        frenchName: 'Gigamax'
         orderNumber: 2

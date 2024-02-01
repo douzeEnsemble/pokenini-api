@@ -1,22 +1,29 @@
 App\Entity\VariantForm:
     variant_form_gender:
         name: 'Gender'
+        frenchName: 'Sexe'
         orderNumber: 1
     variant_form_alternate:
         name: 'Alternate'
+        frenchName: 'Alternatif'
         orderNumber: 2
     variant_form_baby:
         name: 'Baby'
+        frenchName: 'Bébé'
         orderNumber: 3
     variant_form_battle:
         name: 'Battle'
+        frenchName: 'Combat'
         orderNumber: 4
     variant_form_item:
         name: 'Item'
+        frenchName: 'Objet'
         orderNumber: 5
     variant_form_fusion:
         name: 'Fusion'
+        frenchName: 'Fusion'
         orderNumber: 6
     variant_form_unobtainable:
         name: 'Unobtainable'
+        frenchName: 'Non obtenable'
         orderNumber: 7

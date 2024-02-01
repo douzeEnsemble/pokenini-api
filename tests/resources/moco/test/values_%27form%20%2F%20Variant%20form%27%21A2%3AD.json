@@ -1,0 +1,54 @@
+{
+  "range": "'form / Variant form'!A2:D9",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Gender",
+      "Sexe",
+      "gender",
+      "1"
+    ],
+    [
+      "Alternate",
+      "Alternatif",
+      "alternate",
+      "2"
+    ],
+    [
+      "Baby",
+      "Bébé",
+      "baby",
+      "3"
+    ],
+    [
+      "Therian",
+      "Totémique",
+      "therian",
+      "4"
+    ],
+    [
+      "Battle",
+      "Combat",
+      "battle",
+      "5"
+    ],
+    [
+      "Item",
+      "Objet",
+      "item",
+      "6"
+    ],
+    [
+      "Fusion",
+      "Fusion",
+      "fusion",
+      "7"
+    ],
+    [
+      "Unobtainable",
+      "Non obtenable",
+      "unobtainable",
+      "8"
+    ]
+  ]
+}

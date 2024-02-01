@@ -1,0 +1,30 @@
+{
+  "range": "'form / another_list'!A2:D5",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Bidule",
+      "Bidule",
+      "bidule",
+      "1000"
+    ],
+    [
+      "Machin",
+      "Machin",
+      "machin",
+      "2000"
+    ],
+    [
+      "Truc",
+      "Truc",
+      "truc",
+      "3000"
+    ],
+    [
+      "Chose",
+      "Chose",
+      "chose",
+      "4000"
+    ]
+  ]
+}

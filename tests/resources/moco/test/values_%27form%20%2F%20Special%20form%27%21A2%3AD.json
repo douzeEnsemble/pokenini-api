@@ -1,0 +1,36 @@
+{
+  "range": "'form / Special form'!A2:D6",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Mega",
+      "Mega",
+      "mega",
+      "1"
+    ],
+    [
+      "Gigantamax",
+      "Gigamax",
+      "gigantamax",
+      "2"
+    ],
+    [
+      "Totem",
+      "Dominant",
+      "totem",
+      "3"
+    ],
+    [
+      "Alpha",
+      "Baron",
+      "alpha",
+      "4"
+    ],
+    [
+      "Event",
+      "Événementiel",
+      "event",
+      "5"
+    ]
+  ]
+}

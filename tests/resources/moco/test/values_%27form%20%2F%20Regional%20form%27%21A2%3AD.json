@@ -1,0 +1,30 @@
+{
+  "range": "'form / Regional form'!A2:D5",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Alolan",
+      "d'Alola",
+      "alolan",
+      "1"
+    ],
+    [
+      "Galarian",
+      "de Galar",
+      "galarian",
+      "2"
+    ],
+    [
+      "Hisuian",
+      "de Hisui",
+      "hisuian",
+      "3"
+    ],
+    [
+      "Paldean",
+      "de Paldea",
+      "paldean",
+      "4"
+    ]
+  ]
+}

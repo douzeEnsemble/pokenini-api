@@ -9,13 +9,14 @@ use Symfony\Component\Uid\Uuid;
 
 abstract class AbstractFormsUpdater extends AbstractUpdater
 {
-    protected string $headerCellsRange = 'A1:C1';
-    protected array $recordsCellsRanges = ['A2:C'];
+    protected string $headerCellsRange = 'A1:D1';
+    protected array $recordsCellsRanges = ['A2:D'];
 
     protected function getExpectedHeader(): array
     {
         return [
             'Name',
+            'FrenchName',
             'Slug',
             'Order'
         ];
@@ -27,6 +28,7 @@ abstract class AbstractFormsUpdater extends AbstractUpdater
             'id' => (string) Uuid::v4(),
             'slug' => $record['Slug'],
             'name' => $record['Name'],
+            'french_name' => $record['FrenchName'],
             'order_number' => $record['Order'],
         ];
 
@@ -37,12 +39,14 @@ abstract class AbstractFormsUpdater extends AbstractUpdater
           id,
           slug,
           name,
+          french_name,
           order_number
         )
         VALUES (
             :id,
             :slug,
             :name,
+            :french_name,
             :order_number
         )
         ON CONFLICT (slug)
@@ -50,6 +54,7 @@ abstract class AbstractFormsUpdater extends AbstractUpdater
         UPDATE
         SET
             name = excluded.name,
+            french_name = excluded.french_name,
             order_number= excluded.order_number,
             deleted_at = NULL
         SQL;
