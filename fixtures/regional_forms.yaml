@@ -1,10 +1,13 @@
 App\Entity\RegionalForm:
     regional_form_alolan:
         name: 'Alolan'
+        frenchName: "d'Alola"
         orderNumber: 1
     regional_form_galarian:
         name: 'Galarian'
+        frenchName: 'de Galar'
         orderNumber: 2
     regional_form_hisuian:
         name: 'Hisuian'
+        frenchName: 'de Hisui'
         orderNumber: 3

@@ -1,10 +1,13 @@
 App\Entity\CategoryForm:
     category_form_starter:
         name: 'Starter'
+        frenchName: 'de Départ'
         orderNumber: 1
     category_form_legendary:
         name: 'Legendary'
+        frenchName: 'Légendaire'
         orderNumber: 3
     category_form_mythical:
         name: 'Mythical'
+        frenchName: 'Fabuleux'
         orderNumber: 2

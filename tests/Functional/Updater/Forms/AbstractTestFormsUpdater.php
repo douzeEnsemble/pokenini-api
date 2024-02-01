@@ -24,7 +24,7 @@ abstract class AbstractTestFormsUpdater extends AbstractTestUpdater
         $service = $this->getService();
 
         $this->expectException(InvalidSheetDataException::class);
-        $this->expectExceptionMessage("Can't get data for range 'form / zero_data'!A2:C");
+        $this->expectExceptionMessage("Can't get data for range 'form / zero_data'!A2:D");
 
         $service->execute('form / zero_data');
     }

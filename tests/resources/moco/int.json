@@ -19,74 +19,74 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Category form'!A1:C1"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Category form'!A1:D1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/test/values_%27Category%20form%27%21A1%3AC1.json"
+      "file": "/var/moco/test/values_%27Category%20form%27%21A1%3AD1.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Category form'!A2:C"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Category form'!A2:D"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/test/values_%27Category%20form%27%21A2%3AC.json"
+      "file": "/var/moco/test/values_%27Category%20form%27%21A2%3AD.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Regional form'!A1:C1"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Regional form'!A1:D1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/test/values_%27Regional%20form%27%21A1%3AC1.json"
+      "file": "/var/moco/test/values_%27Regional%20form%27%21A1%3AD1.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Regional form'!A2:C"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Regional form'!A2:D"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/test/values_%27Regional%20form%27%21A2%3AC.json"
+      "file": "/var/moco/test/values_%27Regional%20form%27%21A2%3AD.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Special form'!A1:C1"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Special form'!A1:D1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/test/values_%27Special%20form%27%21A1%3AC1.json"
+      "file": "/var/moco/test/values_%27Special%20form%27%21A1%3AD1.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Special form'!A2:C"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Special form'!A2:D"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/test/values_%27Special%20form%27%21A2%3AC.json"
+      "file": "/var/moco/test/values_%27Special%20form%27%21A2%3AD.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Variant form'!A1:C1"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Variant form'!A1:D1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/test/values_%27Variant%20form%27%21A1%3AC1.json"
+      "file": "/var/moco/test/values_%27Variant%20form%27%21A1%3AD1.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Variant form'!A2:C"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Variant form'!A2:D"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/test/values_%27Variant%20form%27%21A2%3AC.json"
+      "file": "/var/moco/test/values_%27Variant%20form%27%21A2%3AD.json"
     }
   },
   {

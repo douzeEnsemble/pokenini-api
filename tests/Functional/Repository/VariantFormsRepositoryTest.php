@@ -1,0 +1,29 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Tests\Functional\Repository;
+
+use App\Repository\VariantFormsRepository;
+use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
+
+class VariantFormsRepositoryTest extends KernelTestCase
+{
+    use RefreshDatabaseTrait;
+
+    public function setUp(): void
+    {
+        self::bootKernel();
+    }
+
+    public function testGetAll(): void
+    {
+        /** @var VariantFormsRepository $repo */
+        $repo = static::getContainer()->get(VariantFormsRepository::class);
+
+        $list = $repo->getAll();
+
+        $this->assertCount(7, $list);
+    }
+}
