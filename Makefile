@@ -19,7 +19,7 @@ SYMFONY  = $(PHP_CONT) bin/console
 
 # Misc
 .DEFAULT_GOAL = help
-.PHONY        : help build rebuild up install start stop sh data init_db data_app composer vendor sf cc tests phpunit testsunit testsfunctional quality phpcs phpcbf phpmd psalm phpstan integration newman measures coverage htmlcoverage infection
+.PHONY        : help build rebuild up install start stop sh data init_db data_app composer vendor sf cc tests phpunit testsunit testsfunctional quality phpcs phpcbf phpmd psalm phpstan integration newman measures clear-build coverage htmlcoverage infection
 
 ## —— 🎵 🐳 The Symfony-docker Makefile 🐳 🎵 ——————————————————————————————————
 help: ## Outputs this help screen
@@ -160,12 +160,21 @@ newman_execute:
 
 ## —— Measures 📏 ———————————————————————————————————————————————————————————————
 measures: ## Execute all measures tools
-measures: coverage infection
+measures: clear-build coverage infection
 
-coverage: ## Execute PHPUnit Coverage to check the score
+clear-build: # Clear build directory
+	rm -Rf build/*
+
+build/coverage/coverage-xml: ## Generate coverage report
 	$(DOCKER_COMP) exec \
 		-e XDEBUG_MODE=coverage -T php \
-		php bin/phpunit --coverage-clover=coverage.xml
+		php bin/phpunit \
+			--coverage-clover=coverage.xml \
+			--coverage-xml=build/coverage/coverage-xml \
+			--log-junit=build/coverage/junit.xml
+
+coverage: ## Execute PHPUnit Coverage to check the score
+coverage: build/coverage/coverage-xml
 	@$(PHP_CONT) php tests/tools/coverage.php coverage.xml 100 true
 
 htmlcoverage: ## Execute PHPUnit Coverage in HTML
@@ -174,6 +183,7 @@ htmlcoverage: ## Execute PHPUnit Coverage in HTML
 		php bin/phpunit --coverage-html=tests/coverage
 
 infection: ## Execute Infection (Mutation testing)
+infection: build/coverage/coverage-xml 
 	@$(PHP) vendor/bin/infection --threads=4 --show-mutations \
 		--min-msi=100 --min-covered-msi=100 \
 		--logger-html='tests/mutation/index.html'
