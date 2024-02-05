@@ -263,6 +263,7 @@ final class AlbumControllerTestData
                 'secondary_type_slug' => 'poison',
                 'secondary_type_name' => 'Poison',
                 'secondary_type_french_name' => 'Poison',
+                'original_game_bundle_slug' => 'diamondpearlplatinium',
             ],
             [
                 'pokemon_national_dex_number' => 3,
@@ -295,6 +296,7 @@ final class AlbumControllerTestData
                 'secondary_type_slug' => 'poison',
                 'secondary_type_name' => 'Poison',
                 'secondary_type_french_name' => 'Poison',
+                'original_game_bundle_slug' => 'xy',
             ],
             [
                 'pokemon_national_dex_number' => 3,
@@ -327,6 +329,7 @@ final class AlbumControllerTestData
                 'secondary_type_slug' => 'poison',
                 'secondary_type_name' => 'Poison',
                 'secondary_type_french_name' => 'Poison',
+                'original_game_bundle_slug' => 'swordshield',
             ],
             array_merge(
                 AlbumControllerTestPokemonData::getCaterpieData(),
@@ -365,6 +368,7 @@ final class AlbumControllerTestData
                 'secondary_type_slug' => 'flying',
                 'secondary_type_name' => 'Flying',
                 'secondary_type_french_name' => 'Vol',
+                'original_game_bundle_slug' => 'diamondpearlplatinium',
             ],
             [
                 'pokemon_national_dex_number' => 12,
@@ -397,6 +401,7 @@ final class AlbumControllerTestData
                 'secondary_type_slug' => 'flying',
                 'secondary_type_name' => 'Flying',
                 'secondary_type_french_name' => 'Vol',
+                'original_game_bundle_slug' => 'swordshield',
             ],
             AlbumControllerTestPokemonData::getDouzeData(),
         ];
@@ -451,6 +456,7 @@ final class AlbumControllerTestData
                 'secondary_type_slug' => 'poison',
                 'secondary_type_name' => 'Poison',
                 'secondary_type_french_name' => 'Poison',
+                'original_game_bundle_slug' => 'diamondpearlplatinium',
             ],
             [
                 'pokemon_national_dex_number' => 3,
@@ -483,6 +489,7 @@ final class AlbumControllerTestData
                 'secondary_type_slug' => 'poison',
                 'secondary_type_name' => 'Poison',
                 'secondary_type_french_name' => 'Poison',
+                'original_game_bundle_slug' => 'xy',
             ],
             [
                 'pokemon_national_dex_number' => 3,
@@ -515,6 +522,7 @@ final class AlbumControllerTestData
                 'secondary_type_slug' => 'poison',
                 'secondary_type_name' => 'Poison',
                 'secondary_type_french_name' => 'Poison',
+                'original_game_bundle_slug' => 'swordshield',
             ],
             array_merge(
                 AlbumControllerTestPokemonData::getCaterpieData(),
@@ -553,6 +561,7 @@ final class AlbumControllerTestData
                 'secondary_type_slug' => 'flying',
                 'secondary_type_name' => 'Flying',
                 'secondary_type_french_name' => 'Vol',
+                'original_game_bundle_slug' => 'diamondpearlplatinium',
             ],
             [
                 'pokemon_national_dex_number' => 12,
@@ -585,6 +594,7 @@ final class AlbumControllerTestData
                 'secondary_type_slug' => 'flying',
                 'secondary_type_name' => 'Flying',
                 'secondary_type_french_name' => 'Vol',
+                'original_game_bundle_slug' => 'swordshield',
             ],
         ];
     }

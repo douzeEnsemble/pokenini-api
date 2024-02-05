@@ -45,6 +45,8 @@ class PokedexRepositoryTest extends KernelTestCase
         $this->assertEquals('Poison', $pokedex[0]['secondary_type_name']);
         $this->assertEquals('Poison', $pokedex[0]['secondary_type_french_name']);
         $this->assertEquals('poison', $pokedex[0]['secondary_type_slug']);
+        $this->assertEquals('poison', $pokedex[0]['secondary_type_slug']);
+        $this->assertEquals('redgreenblueyellow', $pokedex[0]['original_game_bundle_slug']);
 
         $this->assertEquals('Ivysaur', $pokedex[1]['pokemon_name']);
         $this->assertEquals('Herbizarre', $pokedex[1]['pokemon_french_name']);
@@ -57,6 +59,7 @@ class PokedexRepositoryTest extends KernelTestCase
         $this->assertEquals('Poison', $pokedex[1]['secondary_type_name']);
         $this->assertEquals('Poison', $pokedex[1]['secondary_type_french_name']);
         $this->assertEquals('poison', $pokedex[1]['secondary_type_slug']);
+        $this->assertEquals('redgreenblueyellow', $pokedex[0]['original_game_bundle_slug']);
 
         $this->assertEquals('Venusaur', $pokedex[2]['pokemon_name']);
         $this->assertEquals('Florizarre', $pokedex[2]['pokemon_french_name']);
@@ -69,6 +72,7 @@ class PokedexRepositoryTest extends KernelTestCase
         $this->assertEquals('Poison', $pokedex[2]['secondary_type_name']);
         $this->assertEquals('Poison', $pokedex[2]['secondary_type_french_name']);
         $this->assertEquals('poison', $pokedex[2]['secondary_type_slug']);
+        $this->assertEquals('redgreenblueyellow', $pokedex[0]['original_game_bundle_slug']);
 
         $this->assertEquals('Caterpie', $pokedex[3]['pokemon_name']);
         $this->assertEquals('Chenipan', $pokedex[3]['pokemon_french_name']);
@@ -81,6 +85,7 @@ class PokedexRepositoryTest extends KernelTestCase
         $this->assertNull($pokedex[3]['secondary_type_name']);
         $this->assertNull($pokedex[3]['secondary_type_french_name']);
         $this->assertNull($pokedex[3]['secondary_type_slug']);
+        $this->assertEquals('redgreenblueyellow', $pokedex[0]['original_game_bundle_slug']);
 
         $this->assertEquals('Douze', $pokedex[6]['pokemon_name']);
         $this->assertEquals('Douze', $pokedex[6]['pokemon_french_name']);
@@ -93,6 +98,7 @@ class PokedexRepositoryTest extends KernelTestCase
         $this->assertNull($pokedex[6]['secondary_type_name']);
         $this->assertNull($pokedex[6]['secondary_type_french_name']);
         $this->assertNull($pokedex[6]['secondary_type_slug']);
+        $this->assertEquals('redgreenblueyellow', $pokedex[0]['original_game_bundle_slug']);
     }
 
     public function testGetCatchStatesCounts(): void

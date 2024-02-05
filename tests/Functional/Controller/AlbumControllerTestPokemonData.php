@@ -39,6 +39,7 @@ final class AlbumControllerTestPokemonData
             'secondary_type_slug' => 'poison',
             'secondary_type_name' => 'Poison',
             'secondary_type_french_name' => 'Poison',
+            'original_game_bundle_slug' => 'redgreenblueyellow',
         ];
     }
 
@@ -78,6 +79,7 @@ final class AlbumControllerTestPokemonData
             'secondary_type_slug' => 'poison',
             'secondary_type_name' => 'Poison',
             'secondary_type_french_name' => 'Poison',
+            'original_game_bundle_slug' => 'redgreenblueyellow',
         ];
     }
 
@@ -117,6 +119,7 @@ final class AlbumControllerTestPokemonData
             'secondary_type_slug' => 'poison',
             'secondary_type_name' => 'Poison',
             'secondary_type_french_name' => 'Poison',
+            'original_game_bundle_slug' => 'redgreenblueyellow',
         ];
     }
 
@@ -156,6 +159,7 @@ final class AlbumControllerTestPokemonData
             'secondary_type_slug' => null,
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
+            'original_game_bundle_slug' => 'redgreenblueyellow',
         ];
     }
 
@@ -195,6 +199,7 @@ final class AlbumControllerTestPokemonData
             'secondary_type_slug' => null,
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
+            'original_game_bundle_slug' => 'redgreenblueyellow',
         ];
     }
 
@@ -234,6 +239,7 @@ final class AlbumControllerTestPokemonData
             'secondary_type_slug' => 'flying',
             'secondary_type_name' => 'Flying',
             'secondary_type_french_name' => 'Vol',
+            'original_game_bundle_slug' => 'redgreenblueyellow',
         ];
     }
 
@@ -273,6 +279,7 @@ final class AlbumControllerTestPokemonData
             'secondary_type_slug' => null,
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
+            'original_game_bundle_slug' => 'redgreenblueyellow',
         ];
     }
 
@@ -309,6 +316,7 @@ final class AlbumControllerTestPokemonData
             'secondary_type_slug' => null,
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
+            'original_game_bundle_slug' => 'redgreenblueyellow',
         ];
     }
 
@@ -348,6 +356,7 @@ final class AlbumControllerTestPokemonData
             'secondary_type_slug' => null,
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
+            'original_game_bundle_slug' => 'redgreenblueyellow',
         ];
     }
 
@@ -387,6 +396,7 @@ final class AlbumControllerTestPokemonData
             'secondary_type_slug' => 'flying',
             'secondary_type_name' => 'Flying',
             'secondary_type_french_name' => 'Vol',
+            'original_game_bundle_slug' => 'redgreenblueyellow',
         ];
     }
 }

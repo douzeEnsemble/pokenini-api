@@ -54,6 +54,7 @@ class PokedexRepository extends ServiceEntityRepository
                 st.slug AS secondary_type_slug,
                 st.name AS secondary_type_name,
                 st.french_name AS secondary_type_french_name,
+                gb.slug AS original_game_bundle_slug,
                 CONCAT(
                     LPAD(CAST(COALESCE(rdn.dex_number, 999) AS varchar), 3, '0'),
                     '-',
@@ -94,6 +95,8 @@ class PokedexRepository extends ServiceEntityRepository
                     AND p.prime_name = rdn.pokemon_name
             LEFT JOIN pokemon AS pp
                 ON p.family_id = pp.id
+            LEFT JOIN game_bundle AS gb
+                ON p.original_game_bundle_id = gb.id
         WHERE   COALESCE(NULLIF(td.slug, ''), d.slug) = :dex_slug
         ORDER BY pokemon_order_number
         SQL;
