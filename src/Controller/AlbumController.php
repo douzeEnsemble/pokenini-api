@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\Repository\PokedexRepository;
 use App\Repository\TrainerDexRepository;
 use App\Service\Album\AlbumDexService;
+use App\Service\Album\AlbumPokemonService;
 use App\Service\Album\AlbumReportService;
 use Doctrine\DBAL\Exception\NotNullConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -28,18 +29,16 @@ class AlbumController extends AbstractController
 
     #[Route(path: '/{trainerExternalId}/{dexSlug}', methods: ['GET'])]
     public function index(
+        AlbumPokemonService $albumPokemonService,
         AlbumDexService $albumDexService,
         string $trainerExternalId,
         string $dexSlug
     ): JsonResponse {
-        /** @var string[][]|int[][] $pokemons */
-        $pokemons = iterator_to_array(
-            $this->pokedexRepository->getListQuery($trainerExternalId, $dexSlug)
-        );
+        $pokemons = $albumPokemonService->get($trainerExternalId, $dexSlug);
 
-        $report = $this->albumDexService->getReport($trainerExternalId, $dexSlug);
+        $report = $this->albumDexService->get($trainerExternalId, $dexSlug);
 
-        $dex = $albumDexService->getData($trainerExternalId, $dexSlug);
+        $dex = $albumDexService->get($trainerExternalId, $dexSlug);
 
         // Better with serializer ?
         return new JsonResponse([
