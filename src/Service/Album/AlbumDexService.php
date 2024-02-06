@@ -16,7 +16,7 @@ class AlbumDexService
     /**
      * @return string[]|bool[]
      */
-    public function getData(string $trainerExternalId, string $dexSlug): array
+    public function get(string $trainerExternalId, string $dexSlug): array
     {
         return $this->dexRepository->getData($trainerExternalId, $dexSlug);
     }

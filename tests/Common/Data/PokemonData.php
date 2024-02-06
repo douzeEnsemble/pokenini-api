@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\Controller;
+namespace App\Tests\Common\Data;
 
-final class AlbumControllerTestPokemonData
+final class PokemonData
 {
     /**
      * @return string[]|int[]|null[]

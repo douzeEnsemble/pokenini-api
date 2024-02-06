@@ -19,12 +19,12 @@ class AlbumDexServiceTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testGetData(): void
+    public function testGet(): void
     {
         /** @var AlbumDexService $service */
         $service = static::getContainer()->get(AlbumDexService::class);
 
-        $dexRGBY = $service->getData('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow');
+        $dexRGBY = $service->get('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow');
 
         $this->assertArrayHasKey('name', $dexRGBY);
         $this->assertEquals('Red / Green / Blue / Yellow', $dexRGBY['name']);
@@ -36,7 +36,7 @@ class AlbumDexServiceTest extends KernelTestCase
         $this->assertArrayHasKey('is_private', $dexRGBY);
         $this->assertFalse($dexRGBY['is_private']);
 
-        $dexGSC = $service->getData('7b52009b64fd0a2a49e6d8a939753077792b0554', 'goldsilvercrystal');
+        $dexGSC = $service->get('7b52009b64fd0a2a49e6d8a939753077792b0554', 'goldsilvercrystal');
 
         $this->assertArrayHasKey('name', $dexGSC);
         $this->assertEquals('Gold / Silver / Crystal', $dexGSC['name']);
@@ -49,6 +49,6 @@ class AlbumDexServiceTest extends KernelTestCase
         $this->assertArrayHasKey('is_private', $dexGSC);
         $this->assertTrue($dexGSC['is_private']);
 
-        $this->assertEmpty($service->getData('7b52009b64fd0a2a49e6d8a939753077792b0554', 'dexthatdoesntexists'));
+        $this->assertEmpty($service->get('7b52009b64fd0a2a49e6d8a939753077792b0554', 'dexthatdoesntexists'));
     }
 }

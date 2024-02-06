@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\Controller;
+namespace App\Tests\Common\Data;
 
 /**
  * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
  */
-final class AlbumControllerTestData
+final class AlbumData
 {
     /**
      * @return string[][]|int[][]|null[][]
@@ -22,7 +22,7 @@ final class AlbumControllerTestData
         ?string $douzeCatchState,
     ): array {
         $bulbasaurData = array_merge(
-            AlbumControllerTestPokemonData::getBulbasaurData(),
+            PokemonData::getBulbasaurData(),
             [
                 'pokemon_regional_dex_number' => 1,
                 'pokemon_order_number' => '001-0001-000',
@@ -31,7 +31,7 @@ final class AlbumControllerTestData
         );
 
         $ivysaurData = array_merge(
-            AlbumControllerTestPokemonData::getIvysaurData(),
+            PokemonData::getIvysaurData(),
             [
                 'pokemon_regional_dex_number' => 2,
                 'pokemon_order_number' => '002-0002-001',
@@ -40,7 +40,7 @@ final class AlbumControllerTestData
         );
 
         $venusaurData = array_merge(
-            AlbumControllerTestPokemonData::getVenusaurData(),
+            PokemonData::getVenusaurData(),
             [
                 'pokemon_regional_dex_number' => 3,
                 'pokemon_order_number' => '003-0003-002',
@@ -49,22 +49,22 @@ final class AlbumControllerTestData
         );
 
         $caterpieData = array_merge(
-            AlbumControllerTestPokemonData::getCaterpieData(),
+            PokemonData::getCaterpieData(),
             self::getCatchStateDataFromSlug($caterpieCatchState)
         );
 
         $metapodData = array_merge(
-            AlbumControllerTestPokemonData::getMetapodData(),
+            PokemonData::getMetapodData(),
             self::getCatchStateDataFromSlug($metapodCatchState)
         );
 
         $butterfreeData = array_merge(
-            AlbumControllerTestPokemonData::getButterfreeData(),
+            PokemonData::getButterfreeData(),
             self::getCatchStateDataFromSlug($butterfreeCatchState)
         );
 
         $douzeData = array_merge(
-            AlbumControllerTestPokemonData::getDouzeData(),
+            PokemonData::getDouzeData(),
             self::getCatchStateDataFromSlug($douzeCatchState)
         );
 
@@ -93,7 +93,7 @@ final class AlbumControllerTestData
         ?string $butterfreeCatchState,
     ): array {
         $bulbasaurData = array_merge(
-            AlbumControllerTestPokemonData::getBulbasaurData(),
+            PokemonData::getBulbasaurData(),
             [
                 'pokemon_regional_dex_number' => 231,
                 'pokemon_order_number' => '231-0001-000',
@@ -102,7 +102,7 @@ final class AlbumControllerTestData
         );
 
         $ivysaurData = array_merge(
-            AlbumControllerTestPokemonData::getIvysaurData(),
+            PokemonData::getIvysaurData(),
             [
                 'pokemon_regional_dex_number' => 232,
                 'pokemon_order_number' => '232-0002-001',
@@ -111,7 +111,7 @@ final class AlbumControllerTestData
         );
 
         $venusaurData = array_merge(
-            AlbumControllerTestPokemonData::getVenusaurData(),
+            PokemonData::getVenusaurData(),
             [
                 'pokemon_regional_dex_number' => 233,
                 'pokemon_order_number' => '233-0003-002',
@@ -120,22 +120,22 @@ final class AlbumControllerTestData
         );
 
         $charmanderData = array_merge(
-            AlbumControllerTestPokemonData::getCharmanderData(),
+            PokemonData::getCharmanderData(),
             self::getCatchStateDataFromSlug($charmanderCatchState)
         );
 
         $charmeleonData = array_merge(
-            AlbumControllerTestPokemonData::getCharmeleonData(),
+            PokemonData::getCharmeleonData(),
             self::getCatchStateDataFromSlug($charmeleonCatchState)
         );
 
         $charizardData = array_merge(
-            AlbumControllerTestPokemonData::getCharizardData(),
+            PokemonData::getCharizardData(),
             self::getCatchStateDataFromSlug($charizardCatchState)
         );
 
         $caterpieData = array_merge(
-            AlbumControllerTestPokemonData::getCaterpieData(),
+            PokemonData::getCaterpieData(),
             [
                 'pokemon_regional_dex_number' => 24,
                 'pokemon_order_number' => '024-0010-000',
@@ -144,7 +144,7 @@ final class AlbumControllerTestData
         );
 
         $metapodData = array_merge(
-            AlbumControllerTestPokemonData::getMetapodData(),
+            PokemonData::getMetapodData(),
             [
                 'pokemon_regional_dex_number' => 25,
                 'pokemon_order_number' => '025-0011-001',
@@ -153,7 +153,7 @@ final class AlbumControllerTestData
         );
 
         $butterfreeData = array_merge(
-            AlbumControllerTestPokemonData::getButterfreeData(),
+            PokemonData::getButterfreeData(),
             [
                 'pokemon_regional_dex_number' => 26,
                 'pokemon_order_number' => '026-0012-002',
@@ -221,15 +221,15 @@ final class AlbumControllerTestData
     {
         return [
             array_merge(
-                AlbumControllerTestPokemonData::getBulbasaurData(),
+                PokemonData::getBulbasaurData(),
                 self::getCatchStateDataFromSlug('no')
             ),
             array_merge(
-                AlbumControllerTestPokemonData::getIvysaurData(),
+                PokemonData::getIvysaurData(),
                 self::getCatchStateDataFromSlug('no')
             ),
             array_merge(
-                AlbumControllerTestPokemonData::getVenusaurData(),
+                PokemonData::getVenusaurData(),
                 self::getCatchStateDataFromSlug('no')
             ),
             [
@@ -332,11 +332,11 @@ final class AlbumControllerTestData
                 'original_game_bundle_slug' => 'swordshield',
             ],
             array_merge(
-                AlbumControllerTestPokemonData::getCaterpieData(),
+                PokemonData::getCaterpieData(),
                 self::getCatchStateDataFromSlug(null)
             ),
-            AlbumControllerTestPokemonData::getMetapodData(),
-            AlbumControllerTestPokemonData::getButterfreeData(),
+            PokemonData::getMetapodData(),
+            PokemonData::getButterfreeData(),
             [
                 'pokemon_national_dex_number' => 12,
                 'pokemon_regional_dex_number' => null,
@@ -403,7 +403,7 @@ final class AlbumControllerTestData
                 'secondary_type_french_name' => 'Vol',
                 'original_game_bundle_slug' => 'swordshield',
             ],
-            AlbumControllerTestPokemonData::getDouzeData(),
+            PokemonData::getDouzeData(),
         ];
     }
 
@@ -414,15 +414,15 @@ final class AlbumControllerTestData
     {
         return [
             array_merge(
-                AlbumControllerTestPokemonData::getBulbasaurData(),
+                PokemonData::getBulbasaurData(),
                 self::getCatchStateDataFromSlug(null)
             ),
             array_merge(
-                AlbumControllerTestPokemonData::getIvysaurData(),
+                PokemonData::getIvysaurData(),
                 self::getCatchStateDataFromSlug(null)
             ),
             array_merge(
-                AlbumControllerTestPokemonData::getVenusaurData(),
+                PokemonData::getVenusaurData(),
                 self::getCatchStateDataFromSlug(null)
             ),
             [
@@ -525,11 +525,11 @@ final class AlbumControllerTestData
                 'original_game_bundle_slug' => 'swordshield',
             ],
             array_merge(
-                AlbumControllerTestPokemonData::getCaterpieData(),
+                PokemonData::getCaterpieData(),
                 self::getCatchStateDataFromSlug(null)
             ),
-            AlbumControllerTestPokemonData::getMetapodData(),
-            AlbumControllerTestPokemonData::getButterfreeData(),
+            PokemonData::getMetapodData(),
+            PokemonData::getButterfreeData(),
             [
                 'pokemon_national_dex_number' => 12,
                 'pokemon_regional_dex_number' => null,

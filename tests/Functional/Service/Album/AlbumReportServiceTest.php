@@ -37,7 +37,7 @@ class AlbumReportServiceTest extends KernelTestCase
         /** @var AlbumReportService $service */
         $service = static::getContainer()->get(AlbumReportService::class);
 
-        $report = $service->getReport($trainerId, $dexSlug);
+        $report = $service->get($trainerId, $dexSlug);
         $this->assertReport($report, $countNo, $countMaybe, $countMaybeNot, $countYes, $countTotal);
     }
 

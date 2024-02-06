@@ -17,7 +17,7 @@ class AlbumReportService
     ) {
     }
 
-    public function getReport(string $trainerExternalId, string $dexSlug): Report
+    public function get(string $trainerExternalId, string $dexSlug): Report
     {
         $totalCaught = 0;
         $detail = [];
