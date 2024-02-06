@@ -6,46 +6,20 @@ namespace App\Controller;
 
 use App\Repository\PokedexRepository;
 use App\Repository\TrainerDexRepository;
-use App\Service\Album\AlbumDexService;
-use App\Service\Album\AlbumPokemonService;
-use App\Service\Album\AlbumReportService;
 use Doctrine\DBAL\Exception\NotNullConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/album')]
-class AlbumController extends AbstractController
+class AlbumUpsertController extends AbstractController
 {
     public function __construct(
         private readonly PokedexRepository $pokedexRepository,
-        private readonly AlbumReportService $albumDexService,
         private readonly TrainerDexRepository $trainerDexRepository,
     ) {
-    }
-
-    #[Route(path: '/{trainerExternalId}/{dexSlug}', methods: ['GET'])]
-    public function index(
-        AlbumPokemonService $albumPokemonService,
-        AlbumDexService $albumDexService,
-        string $trainerExternalId,
-        string $dexSlug
-    ): JsonResponse {
-        $pokemons = $albumPokemonService->get($trainerExternalId, $dexSlug);
-
-        $report = $this->albumDexService->get($trainerExternalId, $dexSlug);
-
-        $dex = $albumDexService->get($trainerExternalId, $dexSlug);
-
-        // Better with serializer ?
-        return new JsonResponse([
-            'dex' => $dex,
-            'pokemons' => $pokemons,
-            'report' => $report,
-        ]);
     }
 
     #[Route(methods: ['PATCH'], path: '/{trainerExternalId}/{dexSlug}/{pokemonSlug}')]
