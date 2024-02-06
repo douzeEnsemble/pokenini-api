@@ -7,9 +7,9 @@ namespace App\Controller;
 use App\DTO\AlbumReport\Report;
 use App\DTO\AlbumReport\Statistic;
 use App\Repository\DexAvailabilitiesRepository;
-use App\Repository\DexRepository;
 use App\Repository\PokedexRepository;
 use App\Repository\TrainerDexRepository;
+use App\Service\Album\AlbumDexService;
 use Doctrine\DBAL\Exception\NotNullConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -30,7 +30,7 @@ class AlbumController extends AbstractController
 
     #[Route(path: '/{trainerExternalId}/{dexSlug}', methods: ['GET'])]
     public function index(
-        DexRepository $dexRepository,
+        AlbumDexService $albumDexService,
         string $trainerExternalId,
         string $dexSlug
     ): JsonResponse {
@@ -41,7 +41,7 @@ class AlbumController extends AbstractController
 
         $report = $this->getReport($trainerExternalId, $dexSlug);
 
-        $dex = $dexRepository->getData($trainerExternalId, $dexSlug);
+        $dex = $albumDexService->getData($trainerExternalId, $dexSlug);
 
         // Better with serializer ?
         return new JsonResponse([
