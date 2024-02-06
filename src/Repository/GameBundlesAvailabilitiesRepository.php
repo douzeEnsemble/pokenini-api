@@ -58,8 +58,6 @@ class GameBundlesAvailabilitiesRepository extends ServiceEntityRepository
     }
 
     /**
-     * @param Pokemon $pokemon
-     *
      * @return GameBundlesAvailabilities dex slug as property and dex availability as value
      */
     public function getFromPokemon(Pokemon $pokemon): GameBundlesAvailabilities
@@ -88,5 +86,30 @@ class GameBundlesAvailabilitiesRepository extends ServiceEntityRepository
         }
 
         return new GameBundlesAvailabilities($list);
+    }
+
+    /**
+     * @return string[]
+     */
+    public function getFromPokemonSlug(string $slug): array
+    {
+        $sql = <<<SQL
+        SELECT  gb.slug AS game_bundle_slug
+        FROM    game_bundle_availability AS gba
+            JOIN pokemon AS p
+                ON gba.pokemon_id = p.id AND p.slug = :pokemon_slug
+            JOIN game_bundle AS gb
+                ON gba.bundle_id = gb.id
+        WHERE   gba.is_available = true
+        ORDER BY gb.order_number
+        SQL;
+
+        /** @var string[] */
+        return $this->getEntityManager()->getConnection()->fetchFirstColumn(
+            $sql,
+            [
+                'pokemon_slug' => $slug,
+            ]
+        );
     }
 }
