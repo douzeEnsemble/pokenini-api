@@ -4,12 +4,10 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\DTO\AlbumReport\Report;
-use App\DTO\AlbumReport\Statistic;
-use App\Repository\DexAvailabilitiesRepository;
 use App\Repository\PokedexRepository;
 use App\Repository\TrainerDexRepository;
 use App\Service\Album\AlbumDexService;
+use App\Service\Album\AlbumReportService;
 use Doctrine\DBAL\Exception\NotNullConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -23,7 +21,7 @@ class AlbumController extends AbstractController
 {
     public function __construct(
         private readonly PokedexRepository $pokedexRepository,
-        private readonly DexAvailabilitiesRepository $dexAvailabilitiesRepository,
+        private readonly AlbumReportService $albumDexService,
         private readonly TrainerDexRepository $trainerDexRepository,
     ) {
     }
@@ -39,7 +37,7 @@ class AlbumController extends AbstractController
             $this->pokedexRepository->getListQuery($trainerExternalId, $dexSlug)
         );
 
-        $report = $this->getReport($trainerExternalId, $dexSlug);
+        $report = $this->albumDexService->getReport($trainerExternalId, $dexSlug);
 
         $dex = $albumDexService->getData($trainerExternalId, $dexSlug);
 
@@ -105,34 +103,5 @@ class AlbumController extends AbstractController
         } catch (NotNullConstraintViolationException $e) {
             throw new BadRequestHttpException();
         }
-    }
-
-    private function getReport(string $trainerExternalId, string $dexSlug): Report
-    {
-        $totalCaught = 0;
-        $detail = [];
-
-        $total = $this->dexAvailabilitiesRepository->getTotal($dexSlug);
-        $totalUncaught = $total;
-
-        $catchStatesCounts = $this->pokedexRepository->getCatchStatesCounts($trainerExternalId, $dexSlug);
-        foreach ($catchStatesCounts as $catchStatesCount) {
-            $detail[] = new Statistic(
-                (string) $catchStatesCount['slug'],
-                (string) $catchStatesCount['name'],
-                (string) $catchStatesCount['french_name'],
-                (int) $catchStatesCount['count'],
-            );
-
-            if ('yes' === $catchStatesCount['slug']) {
-                $totalCaught = (int) $catchStatesCount['count'];
-            }
-
-            if ('no' !== $catchStatesCount['slug']) {
-                $totalUncaught -= $catchStatesCount['count'];
-            }
-        }
-
-        return new Report($total, $totalCaught, $totalUncaught, $detail);
     }
 }
