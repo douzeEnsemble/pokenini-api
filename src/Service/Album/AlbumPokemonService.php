@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\Album;
 
+use App\DTO\AlbumFilter\AlbumFilters;
 use App\Repository\PokedexRepository;
 
 class AlbumPokemonService
@@ -20,7 +21,11 @@ class AlbumPokemonService
     {
         /** @var string[][]|int[][] */
         return iterator_to_array(
-            $this->pokedexRepository->getListQuery($trainerExternalId, $dexSlug)
+            $this->pokedexRepository->getListQuery(
+                $trainerExternalId,
+                $dexSlug,
+                AlbumFilters::createFromArray([])
+            )
         );
     }
 }

@@ -6,14 +6,29 @@ namespace App\DTO\AlbumFilter;
 
 final class AlbumFilterValues
 {
-    /** @var AlbumFilter[] */
+    /** @var AlbumFilterValue[] */
     public array $values = [];
 
-    /** @param string[] */
+    /**
+     * @param string[] $values
+     */
     public function __construct(array $values)
     {
         foreach ($values as $value) {
             $this->values[] = new AlbumFilterValue($value);
         }
+    }
+
+    /**
+     * @return string[]
+     */
+    public function extract(): array
+    {
+        $values = [];
+        foreach ($this->values as $value) {
+            $values[] = $value->value;
+        }
+
+        return $values;
     }
 }

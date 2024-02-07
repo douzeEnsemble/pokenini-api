@@ -18,4 +18,14 @@ class AlbumFilterValuesTest extends TestCase
         $this->assertEquals('douze', $albumFilterValues->values[0]->value);
         $this->assertEquals('treize', $albumFilterValues->values[1]->value);
     }
+
+    public function testExtract(): void
+    {
+        $albumFilterValues = new AlbumFilterValues(['douze', 'treize']);
+
+        $this->assertEquals(
+            ['douze', 'treize'],
+            $albumFilterValues->extract()
+        );
+    }
 }

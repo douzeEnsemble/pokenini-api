@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-
 namespace App\DTO\AlbumFilter;
 
 use Symfony\Component\OptionsResolver\Options;
