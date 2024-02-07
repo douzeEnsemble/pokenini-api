@@ -86,11 +86,11 @@ class AlbumReportServiceTest extends KernelTestCase
             [
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
-                6,
-                0,
-                0,
-                0,
-                12,
+                8,
+                3,
+                3,
+                7,
+                22,
             ],
             [
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
@@ -112,10 +112,6 @@ class AlbumReportServiceTest extends KernelTestCase
         int $countYes,
         int $countTotal
     ): void {
-        $this->assertEquals($countTotal, $report->total);
-        $this->assertEquals($countYes, $report->totalCaught);
-        $this->assertEquals($countTotal - $countMaybe - $countMaybeNot - $countYes, $report->totalUncaught);
-
         $details = [];
         foreach ($report->detail as $detail) {
             $details[$detail->slug] = $detail->count;
@@ -130,5 +126,9 @@ class AlbumReportServiceTest extends KernelTestCase
             ],
             $details,
         );
+
+        $this->assertEquals($countTotal, $report->total);
+        $this->assertEquals($countYes, $report->totalCaught);
+        $this->assertEquals($countTotal - $countMaybe - $countMaybeNot - $countYes, $report->totalUncaught);
     }
 }

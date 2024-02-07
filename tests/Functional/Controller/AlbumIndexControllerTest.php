@@ -358,7 +358,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
         /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
-        $this->assertReport($report, 6, 0, 0, 0, 12);
+        $this->assertReport($report, 8, 3, 3, 7, 22);
     }
 
     public function testListHomeShiny(): void

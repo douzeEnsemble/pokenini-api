@@ -17,15 +17,6 @@ trait AssertReportTrait
         int $countYes,
         int $countTotal
     ): void {
-        $this->assertArrayHasKey('total', $report);
-        $this->assertEquals($countTotal, $report['total']);
-
-        $this->assertArrayHasKey('totalCaught', $report);
-        $this->assertEquals($countYes, $report['totalCaught']);
-
-        $this->assertArrayHasKey('totalUncaught', $report);
-        $this->assertEquals($countTotal - $countMaybe - $countMaybeNot - $countYes, $report['totalUncaught']);
-
         $this->assertArrayHasKey('detail', $report);
         /** @var int[][]|string[][] $reportDetail */
         $reportDetail = $report['detail'];
@@ -69,5 +60,14 @@ trait AssertReportTrait
         $this->assertEquals('Yes', $reportDetail[3]['name']);
         $this->assertArrayHasKey('frenchName', $reportDetail[3]);
         $this->assertEquals('Oui', $reportDetail[3]['frenchName']);
+
+        $this->assertArrayHasKey('total', $report);
+        $this->assertEquals($countTotal, $report['total']);
+
+        $this->assertArrayHasKey('totalCaught', $report);
+        $this->assertEquals($countYes, $report['totalCaught']);
+
+        $this->assertArrayHasKey('totalUncaught', $report);
+        $this->assertEquals($countTotal - $countMaybe - $countMaybeNot - $countYes, $report['totalUncaught']);
     }
 }

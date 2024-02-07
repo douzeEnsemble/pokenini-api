@@ -332,11 +332,29 @@ final class AlbumData
                 'original_game_bundle_slug' => 'swordshield',
             ],
             array_merge(
-                PokemonData::getCaterpieData(),
-                self::getCatchStateDataFromSlug(null)
+                PokemonData::getCharmanderData(),
+                self::getCatchStateDataFromSlug('yes')
             ),
-            PokemonData::getMetapodData(),
-            PokemonData::getButterfreeData(),
+            array_merge(
+                PokemonData::getCharmeleonData(),
+                self::getCatchStateDataFromSlug('yes')
+            ),
+            array_merge(
+                PokemonData::getCharizardData(),
+                self::getCatchStateDataFromSlug('yes')
+            ),
+            array_merge(
+                PokemonData::getCaterpieData(),
+                self::getCatchStateDataFromSlug('maybe')
+            ),
+            array_merge(
+                PokemonData::getMetapodData(),
+                self::getCatchStateDataFromSlug('maybenot')
+            ),
+            array_merge(
+                PokemonData::getButterfreeData(),
+                self::getCatchStateDataFromSlug('yes')
+            ),
             [
                 'pokemon_national_dex_number' => 12,
                 'pokemon_regional_dex_number' => null,
@@ -357,9 +375,9 @@ final class AlbumData
                 'special_form_name' => null,
                 'variant_form_slug' => 'gender',
                 'variant_form_name' => 'Gender',
-                'catch_state_slug' => null,
-                'catch_state_name' => null,
-                'catch_state_french_name' => null,
+                'catch_state_slug' => 'yes',
+                'catch_state_name' => 'Yes',
+                'catch_state_french_name' => 'Oui',
                 'family_lead_slug' => 'caterpie',
                 'pokemon_family_order' => 3,
                 'primary_type_slug' => 'bug',
@@ -390,9 +408,9 @@ final class AlbumData
                 'special_form_name' => 'Gigantamax',
                 'variant_form_slug' => null,
                 'variant_form_name' => null,
-                'catch_state_slug' => null,
-                'catch_state_name' => null,
-                'catch_state_french_name' => null,
+                'catch_state_slug' => 'no',
+                'catch_state_name' => 'No',
+                'catch_state_french_name' => 'Non',
                 'family_lead_slug' => 'caterpie',
                 'pokemon_family_order' => 4,
                 'primary_type_slug' => 'bug',
@@ -403,6 +421,34 @@ final class AlbumData
                 'secondary_type_french_name' => 'Vol',
                 'original_game_bundle_slug' => 'swordshield',
             ],
+            array_merge(
+                PokemonData::getRattataData(),
+                self::getCatchStateDataFromSlug('yes')
+            ),
+            array_merge(
+                PokemonData::getRattataFemaleData(),
+                self::getCatchStateDataFromSlug('maybe')
+            ),
+            array_merge(
+                PokemonData::getRattataAlolanData(),
+                self::getCatchStateDataFromSlug('maybenot')
+            ),
+            array_merge(
+                PokemonData::getRaticateData(),
+                self::getCatchStateDataFromSlug('yes')
+            ),
+            array_merge(
+                PokemonData::getRaticateFemaleData(),
+                self::getCatchStateDataFromSlug('maybe')
+            ),
+            array_merge(
+                PokemonData::getRaticateAlolanData(),
+                self::getCatchStateDataFromSlug('maybenot')
+            ),
+            array_merge(
+                PokemonData::getRaticateAlolanTotemData(),
+                self::getCatchStateDataFromSlug('no')
+            ),
             PokemonData::getDouzeData(),
         ];
     }

@@ -25,7 +25,7 @@ class CalculateDexAvailabilitiesCommandTest extends AbstractTestCaseCommand
 
         $this->assertEquals(0, $this->getPokemonNotDeletedCount());
 
-        $this->assertEquals(39, $this->getDexAvailabilityCount());
+        $this->assertEquals(49, $this->getDexAvailabilityCount());
 
         $initialToProcessCount = $this->getActionLogToProcessCount();
         $initialDoneCount = $this->getActionLogDoneCount();
@@ -43,7 +43,7 @@ class CalculateDexAvailabilitiesCommandTest extends AbstractTestCaseCommand
 
     public function testDexAvailabilities(): void
     {
-        $this->assertEquals(39, $this->getDexAvailabilityCount());
+        $this->assertEquals(49, $this->getDexAvailabilityCount());
 
         $initialToProcessCount = $this->getActionLogToProcessCount();
         $initialDoneCount = $this->getActionLogDoneCount();
