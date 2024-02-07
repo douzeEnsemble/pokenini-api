@@ -17,7 +17,7 @@ class UpdateLabelsCommandTest extends AbstractTestCaseCommand
         $this->assertEquals(5, $this->getTableCount('catch_state'));
         $this->assertEquals(3, $this->getTableCount('category_form'));
         $this->assertEquals(3, $this->getTableCount('regional_form'));
-        $this->assertEquals(3, $this->getTableCount('special_form'));
+        $this->assertEquals(4, $this->getTableCount('special_form'));
         $this->assertEquals(7, $this->getTableCount('variant_form'));
         $this->assertEquals(10, $this->getTableCount('region'));
         $this->assertEquals(19, $this->getTableCount('type'));

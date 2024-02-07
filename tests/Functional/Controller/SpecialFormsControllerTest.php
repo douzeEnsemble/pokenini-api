@@ -15,7 +15,7 @@ class SpecialFormsControllerTest extends AbstractTestControllerApi
         /** @var string[] $content */
         $content = $this->getJsonDecodedResponseContent();
 
-        $this->assertCount(3, $content);
+        $this->assertCount(4, $content);
 
         $this->assertEquals([
             'name' => 'Mega',
@@ -39,7 +39,7 @@ class SpecialFormsControllerTest extends AbstractTestControllerApi
         /** @var string[] $content */
         $content = $this->getJsonDecodedResponseContent();
 
-        $this->assertCount(3, $content);
+        $this->assertCount(4, $content);
     }
 
     public function testGetBadAuth(): void

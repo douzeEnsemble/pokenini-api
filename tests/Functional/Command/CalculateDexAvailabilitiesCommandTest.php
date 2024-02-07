@@ -51,9 +51,9 @@ class CalculateDexAvailabilitiesCommandTest extends AbstractTestCaseCommand
         $commandTester = $this->executeCommand();
         $commandTester->assertCommandIsSuccessful();
 
-        $this->assertStringContainsString("61 dex' availabilities calculated", $commandTester->getDisplay());
+        $this->assertStringContainsString("77 dex' availabilities calculated", $commandTester->getDisplay());
 
-        $this->assertEquals(61, $this->getDexAvailabilityCount());
+        $this->assertEquals(77, $this->getDexAvailabilityCount());
 
         $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
         $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());

@@ -24,6 +24,6 @@ class SpecialFormsRepositoryTest extends KernelTestCase
 
         $list = $repo->getAll();
 
-        $this->assertCount(3, $list);
+        $this->assertCount(4, $list);
     }
 }

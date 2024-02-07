@@ -278,3 +278,121 @@ App\Entity\Pokemon:
         familyOrder: 4
         primaryType: '@type_bug'
         secondaryType: '@type_flying'
+
+    pokemon_rattata (extends pokemon):
+        slug: "rattata"
+        name: "Rattata ♂️"
+        simplifiedName: "Rattata"
+        formsLabel: "♂️"
+        frenchName: "Rattata ♂️"
+        simplifiedFrenchName: "Rattata"
+        formsFrenchLabel: "♂️"
+        family: ~
+        nationalDexNumber: 19
+        originalGameBundle: '@game_bundle_red_green_blue_yellow'
+        iconName: "rattata"
+        familyOrder: 4
+        primaryType: '@type_normal'
+        secondaryType: ~
+
+    pokemon_rattata_f (extends pokemon):
+        slug: "rattata-f"
+        name: "Rattata ♀️"
+        simplifiedName: "Rattata"
+        formsLabel: "♀️"
+        frenchName: "Rattata ♀️"
+        simplifiedFrenchName: "Rattata"
+        formsFrenchLabel: "♀️"
+        family: '@pokemon_rattata'
+        nationalDexNumber: 19
+        originalGameBundle: '@game_bundle_diamond_pearl_platinium'
+        iconName: "rattata-f"
+        familyOrder: 5
+        variantForm: '@variant_form_gender'
+        primaryType: '@type_normal'
+        secondaryType: ~
+
+    pokemon_rattata_alola (extends pokemon):
+        slug: "rattata-alola"
+        name: "Rattata-Alola"
+        simplifiedName: "Rattata"
+        formsLabel: "Alolan"
+        frenchName: "Rattata d'Alola"
+        simplifiedFrenchName: "Rattata"
+        formsFrenchLabel: "d'Alola"
+        family: '@pokemon_rattata'
+        nationalDexNumber: 19
+        originalGameBundle: '@game_bundle_sun_moon'
+        iconName: "rattata-alola"
+        familyOrder: 6
+        regionalForm: '@regional_form_alolan'
+        primaryType: '@type_dark'
+        secondaryType: '@type_normal'
+
+    pokemon_raticate (extends pokemon):
+        slug: "raticate"
+        simplifiedName: "Raticate"
+        formsLabel: "♂️"
+        name: "Raticate ♂️"
+        simplifiedFrenchName: "Rattatac"
+        formsFrenchLabel: "♂️"
+        frenchName: "Rattatac ♂️"
+        family: '@pokemon_rattata'
+        nationalDexNumber: 20
+        originalGameBundle: '@game_bundle_red_green_blue_yellow'
+        iconName: "raticate"
+        familyOrder: 7
+        primaryType: '@type_normal'
+        secondaryType: ~
+
+    pokemon_raticate_f (extends pokemon):
+        slug: "raticate-f"
+        name: "Raticate ♀️"
+        frenchName: "Rattatac ♀️"
+        family: '@pokemon_rattata'
+        simplifiedName: "Raticate"
+        formsLabel: "♀️"
+        nationalDexNumber: 20
+        simplifiedFrenchName: "Rattatac"
+        formsFrenchLabel: "♀️"
+        originalGameBundle: '@game_bundle_diamond_pearl_platinium'
+        iconName: "raticate-f"
+        familyOrder: 8
+        variantForm: '@variant_form_gender'
+        primaryType: '@type_normal'
+        secondaryType: ~
+
+    pokemon_raticate_alola (extends pokemon):
+        slug: "raticate-alola"
+        name: "Raticate-Alola"
+        frenchName: "Rattatac d'Alola"
+        family: '@pokemon_rattata'
+        simplifiedName: "Raticate"
+        formsLabel: "Alolan"
+        nationalDexNumber: 20
+        simplifiedFrenchName: "Rattatac"
+        formsFrenchLabel: "d'Alola"
+        originalGameBundle: '@game_bundle_sun_moon'
+        iconName: "raticate-alola"
+        familyOrder: 9
+        regionalForm: '@regional_form_alolan'
+        primaryType: '@type_dark'
+        secondaryType: '@type_normal'
+
+    pokemon_raticate_alola_totem (extends pokemon):
+        slug: "raticate-alola-totem"
+        name: "Totem Raticate-Alola"
+        frenchName: "Totem Rattatac d'Alola"
+        family: '@pokemon_rattata'
+        nationalDexNumber: 20
+        simplifiedName: "Raticate"
+        formsLabel: "Totem Alolan"
+        originalGameBundle: '@game_bundle_ultra_sun_ultra_moon'
+        simplifiedFrenchName: "Rattatac"
+        formsFrenchLabel: "Totem d'Alola"
+        iconName: "raticate-alola"
+        familyOrder: 10
+        regionalForm: '@regional_form_alolan'
+        specialForm: '@special_form_totem'
+        primaryType: '@type_dark'
+        secondaryType: '@type_normal'
