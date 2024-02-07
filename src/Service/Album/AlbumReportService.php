@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Service\Album;
 
+use App\DTO\AlbumFilter\AlbumFilters;
 use App\DTO\AlbumReport\Report;
 use App\DTO\AlbumReport\Statistic;
 use App\Repository\DexAvailabilitiesRepository;
@@ -22,7 +23,7 @@ class AlbumReportService
         $totalCaught = 0;
         $detail = [];
 
-        $total = $this->dexAvailabilitiesRepository->getTotal($dexSlug);
+        $total = $this->dexAvailabilitiesRepository->getTotal($dexSlug, AlbumFilters::createFromArray([]));
         $totalUncaught = $total;
 
         $catchStatesCounts = $this->pokedexRepository->getCatchStatesCounts($trainerExternalId, $dexSlug);

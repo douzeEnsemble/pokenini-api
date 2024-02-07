@@ -4,8 +4,12 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
+use App\DTO\AlbumFilter\AlbumFilters;
 use App\Entity\DexAvailability;
+use App\Repository\Trait\FiltersTrait;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\ArrayParameterType;
+use Doctrine\DBAL\ParameterType;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -13,6 +17,8 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class DexAvailabilitiesRepository extends ServiceEntityRepository
 {
+    use FiltersTrait;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, DexAvailability::class);
@@ -27,8 +33,13 @@ class DexAvailabilitiesRepository extends ServiceEntityRepository
         $queryBuilder->getQuery()->execute();
     }
 
-    public function getTotal(string $dexSlug): int
-    {
+    public function getTotal(
+        string $dexSlug,
+        AlbumFilters $filters,
+    ): int {
+        $where = "td.slug = :dex_slug "
+            . $this->getFiltersQuery($filters);
+
         $sql = <<<SQL
         SELECT		COUNT(DISTINCT da.pokemon_id)
         FROM		dex_availability AS da
@@ -36,15 +47,44 @@ class DexAvailabilitiesRepository extends ServiceEntityRepository
                     ON da.dex_id = d.id
                 JOIN trainer_dex AS td
                     ON d.id = td.dex_id
-        WHERE		td.slug = :dex_slug
+                JOIN pokemon AS p
+                    ON da.pokemon_id = p.id
+                LEFT JOIN category_form AS cf
+                        ON p.category_form_id = cf.id
+                LEFT JOIN regional_form AS rf
+                        ON p.regional_form_id = rf.id
+                LEFT JOIN special_form AS sf
+                    ON p.special_form_id = sf.id
+                LEFT JOIN variant_form AS vf
+                    ON p.variant_form_id = vf.id
+                LEFT JOIN "type" AS pt
+                    ON p.primary_type_id = pt.id
+                LEFT JOIN "type" AS st
+                    ON p.secondary_type_id = st.id
+        WHERE		$where
         SQL;
+
+        $dynamicParams = $this->getFiltersParameters($filters);
+        $params = array_merge(
+            [
+                'dex_slug' => $dexSlug,
+            ],
+            $dynamicParams,
+        );
 
         /** @var int */
         return $this->getEntityManager()->getConnection()->fetchOne(
             $sql,
+            $params,
             [
-                'dex_slug' => $dexSlug,
-            ]
+                'dex_slug' => ParameterType::STRING,
+                'filter_primary_types' => ArrayParameterType::STRING,
+                'filter_secondary_types' => ArrayParameterType::STRING,
+                'filter_category_forms' => ArrayParameterType::STRING,
+                'filter_regional_forms' => ArrayParameterType::STRING,
+                'filter_special_forms' => ArrayParameterType::STRING,
+                'filter_variant_forms' => ArrayParameterType::STRING,
+            ],
         );
     }
 }
