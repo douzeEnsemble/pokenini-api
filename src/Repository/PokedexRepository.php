@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use App\DTO\AlbumFilter\AlbumFilters;
 use App\Entity\Pokedex;
+use App\Repository\Trait\FiltersTrait;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\ArrayParameterType;
 use Doctrine\DBAL\ParameterType;
@@ -17,6 +18,8 @@ use Symfony\Component\Uid\Uuid;
  */
 class PokedexRepository extends ServiceEntityRepository
 {
+    use FiltersTrait;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Pokedex::class);
@@ -57,7 +60,7 @@ class PokedexRepository extends ServiceEntityRepository
                 'filter_regional_forms' => ArrayParameterType::STRING,
                 'filter_special_forms' => ArrayParameterType::STRING,
                 'filter_variant_forms' => ArrayParameterType::STRING,
-            ]
+            ],
         );
     }
 
@@ -203,61 +206,6 @@ class PokedexRepository extends ServiceEntityRepository
     {
         /** @var int[]|string[] */
         return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
-    }
-
-    private function getFiltersQuery(AlbumFilters $filters): string
-    {
-        $query = '';
-
-        if (!empty($filters->primaryTypes->values)) {
-            $query .= ' AND pt.slug IN(:filter_primary_types)';
-        }
-        if (!empty($filters->secondaryTypes->values)) {
-            $query .= ' AND st.slug IN(:filter_secondary_types)';
-        }
-        if (!empty($filters->categoryForms->values)) {
-            $query .= ' AND cf.slug IN(:filter_category_forms)';
-        }
-        if (!empty($filters->regionalForms->values)) {
-            $query .= ' AND rf.slug IN(:filter_regional_forms)';
-        }
-        if (!empty($filters->specialForms->values)) {
-            $query .= ' AND sf.slug IN(:filter_special_forms)';
-        }
-        if (!empty($filters->variantForms->values)) {
-            $query .= ' AND vf.slug IN(:filter_variant_forms)';
-        }
-
-        return $query;
-    }
-
-    /**
-     * @return string[][]
-     */
-    private function getFiltersParameters(AlbumFilters $filters): array
-    {
-        $parameters = [];
-
-        if (!empty($filters->primaryTypes->values)) {
-            $parameters['filter_primary_types'] = $filters->primaryTypes->extract();
-        }
-        if (!empty($filters->secondaryTypes->values)) {
-            $parameters['filter_secondary_types'] = $filters->secondaryTypes->extract();
-        }
-        if (!empty($filters->categoryForms->values)) {
-            $parameters['filter_category_forms'] = $filters->categoryForms->extract();
-        }
-        if (!empty($filters->regionalForms->values)) {
-            $parameters['filter_regional_forms'] = $filters->regionalForms->extract();
-        }
-        if (!empty($filters->specialForms->values)) {
-            $parameters['filter_special_forms'] = $filters->specialForms->extract();
-        }
-        if (!empty($filters->variantForms->values)) {
-            $parameters['filter_variant_forms'] = $filters->variantForms->extract();
-        }
-
-        return $parameters;
     }
 
     private function getListQuerySQL(string $where): string

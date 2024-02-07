@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Repository;
 
+use App\DTO\AlbumFilter\AlbumFilters;
 use App\Repository\DexAvailabilitiesRepository;
 use App\Tests\Common\Traits\CounterTrait\CountDexAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
@@ -35,8 +36,148 @@ class DexAvailabilitiesRepositoryTest extends KernelTestCase
         /** @var DexAvailabilitiesRepository $repo */
         $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
 
-        $totalCount = $repo->getTotal('redgreenblueyellow');
+        $totalCount = $repo->getTotal('home', AlbumFilters::createFromArray([]));
 
-        $this->assertEquals(7, $totalCount);
+        $this->assertEquals(22, $totalCount);
+    }
+
+    public function testGetTotalPrimaryTypeFilter(): void
+    {
+        /** @var DexAvailabilitiesRepository $repo */
+        $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
+
+        $totalCount = $repo->getTotal(
+            'home',
+            AlbumFilters::createFromArray([
+                'primaryTypes' => [
+                    'grass',
+                ],
+            ])
+        );
+
+        $this->assertEquals(6, $totalCount);
+    }
+
+    public function testGetTotalSecondaryTypeFilter(): void
+    {
+        /** @var DexAvailabilitiesRepository $repo */
+        $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
+
+        $totalCount = $repo->getTotal(
+            'home',
+            AlbumFilters::createFromArray([
+                'secondaryTypes' => [
+                    'normal',
+                ],
+            ])
+        );
+
+        $this->assertEquals(3, $totalCount);
+    }
+
+    public function testGetTotalPrimaryAndSecondaryTypeFilter(): void
+    {
+        /** @var DexAvailabilitiesRepository $repo */
+        $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
+
+        $totalCount = $repo->getTotal(
+            'home',
+            AlbumFilters::createFromArray([
+                'primaryTypes' => [
+                    'bug',
+                ],
+                'secondaryTypes' => [
+                    'flying',
+                ],
+            ])
+        );
+
+        $this->assertEquals(3, $totalCount);
+    }
+
+    public function testGetTotalCategoryFormFilter(): void
+    {
+        /** @var DexAvailabilitiesRepository $repo */
+        $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
+
+        $totalCount = $repo->getTotal(
+            'home',
+            AlbumFilters::createFromArray([
+                'categoryForms' => [
+                    'starter',
+                ],
+            ])
+        );
+
+        $this->assertEquals(2, $totalCount);
+    }
+
+    public function testGetTotalRegionalFormFilter(): void
+    {
+        /** @var DexAvailabilitiesRepository $repo */
+        $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
+
+        $totalCount = $repo->getTotal(
+            'home',
+            AlbumFilters::createFromArray([
+                'regionalForms' => [
+                    'alolan',
+                ],
+            ])
+        );
+
+        $this->assertEquals(3, $totalCount);
+    }
+
+    public function testGetTotalSpecialFormFilter(): void
+    {
+        /** @var DexAvailabilitiesRepository $repo */
+        $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
+
+        $totalCount = $repo->getTotal(
+            'home',
+            AlbumFilters::createFromArray([
+                'specialForms' => [
+                    'gigantamax',
+                ],
+            ])
+        );
+
+        $this->assertEquals(2, $totalCount);
+    }
+
+    public function testGetTotalSpecialsFormFilter(): void
+    {
+        /** @var DexAvailabilitiesRepository $repo */
+        $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
+
+        $totalCount = $repo->getTotal(
+            'home',
+            AlbumFilters::createFromArray([
+                'specialForms' => [
+                    'gigantamax',
+                    'mega',
+                ],
+            ])
+        );
+
+        $this->assertEquals(3, $totalCount);
+    }
+
+    public function testGetTotalVariantFormFilter(): void
+    {
+        /** @var DexAvailabilitiesRepository $repo */
+        $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
+
+        $totalCount = $repo->getTotal(
+            'home',
+            AlbumFilters::createFromArray([
+                'variantForms' => [
+                    'gender',
+                ],
+            ])
+        );
+
+        $this->assertEquals(4, $totalCount);
     }
 }
