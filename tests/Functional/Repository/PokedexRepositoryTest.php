@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Repository;
 
+use App\DTO\AlbumFilter\AlbumFilters;
 use App\Repository\PokedexRepository;
 use App\Tests\Common\Traits\GetterTrait\GetPokedexTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
@@ -19,14 +20,15 @@ class PokedexRepositoryTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testgetListQuery(): void
+    public function testGetListQuery(): void
     {
         /** @var PokedexRepository $repo */
         $repo = static::getContainer()->get(PokedexRepository::class);
 
         $pokedexIterator = $repo->getListQuery(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
-            'redgreenblueyellow'
+            'redgreenblueyellow',
+            AlbumFilters::createFromArray([]),
         );
 
         /** @var string[][] $pokedex */

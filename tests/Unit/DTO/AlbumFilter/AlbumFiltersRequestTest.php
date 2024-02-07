@@ -25,7 +25,7 @@ class AlbumFiltersRequestTest extends TestCase
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->regionalForms);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->specialForms);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->variantForms);
-        
+
         $this->assertEmpty($filters->primaryTypes->values);
         $this->assertEmpty($filters->secondaryTypes->values);
         $this->assertEmpty($filters->categoryForms->values);
@@ -37,12 +37,12 @@ class AlbumFiltersRequestTest extends TestCase
     public function testAlbumFiltersFromRequest(): void
     {
         $request = new Request([
-            't1' => ['fire', 'water'],
-            't2' => ['water', 'fire'],
-            'fc' => ['starter', 'finisher'],
-            'fr' => ['provence', 'sud', 'mer'],
-            'fs' => ['banana', 'orange'],
-            'fv' => ['gender'],
+            'primary_types' => ['fire', 'water'],
+            'secondary_types' => ['water', 'fire'],
+            'category_forms' => ['starter', 'finisher'],
+            'regional_forms' => ['provence', 'sud', 'mer'],
+            'special_forms' => ['banana', 'orange'],
+            'variant_forms' => ['gender'],
         ]);
 
         $filters = AlbumFiltersRequest::albumFiltersFromRequest($request);
@@ -54,7 +54,7 @@ class AlbumFiltersRequestTest extends TestCase
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->regionalForms);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->specialForms);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->variantForms);
-        
+
         $this->assertCount(2, $filters->primaryTypes->values);
         $this->assertCount(2, $filters->secondaryTypes->values);
         $this->assertCount(2, $filters->categoryForms->values);

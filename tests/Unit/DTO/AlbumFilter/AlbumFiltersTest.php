@@ -21,7 +21,7 @@ class AlbumFiltersTest extends TestCase
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->regionalForms);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->specialForms);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->variantForms);
-        
+
         $this->assertEmpty($filters->primaryTypes->values);
         $this->assertEmpty($filters->secondaryTypes->values);
         $this->assertEmpty($filters->categoryForms->values);
@@ -48,7 +48,7 @@ class AlbumFiltersTest extends TestCase
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->regionalForms);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->specialForms);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->variantForms);
-        
+
         $this->assertCount(2, $filters->primaryTypes->values);
         $this->assertCount(2, $filters->secondaryTypes->values);
         $this->assertCount(2, $filters->categoryForms->values);

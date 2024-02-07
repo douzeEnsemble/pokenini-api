@@ -4,8 +4,11 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
+use App\DTO\AlbumFilter\AlbumFilters;
 use App\Entity\Pokedex;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\ArrayParameterType;
+use Doctrine\DBAL\ParameterType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Uid\Uuid;
 
@@ -22,9 +25,244 @@ class PokedexRepository extends ServiceEntityRepository
     /**
      * @return \Traversable<int, array<mixed, mixed>>
      */
-    public function getListQuery(string $trainerExternalId, string $dexSlug): \Traversable
+    public function getListQuery(
+        string $trainerExternalId,
+        string $dexSlug,
+        AlbumFilters $filters,
+    ): \Traversable {
+
+        $where = "COALESCE(NULLIF(td.slug, ''), d.slug) = :dex_slug "
+            . $this->getFiltersQuery($filters);
+
+        $sql = $this->getListQuerySQL($where);
+
+        $dynamicParams = $this->getFiltersParameters($filters);
+        $params = array_merge(
+            [
+                'trainer_external_id' => $trainerExternalId,
+                'dex_slug' => $dexSlug,
+            ],
+            $dynamicParams
+        );
+
+        return $this->getEntityManager()->getConnection()->iterateAssociative(
+            $sql,
+            $params,
+            [
+                'trainer_external_id' => ParameterType::STRING,
+                'dex_slug' => ParameterType::STRING,
+                'filter_primary_types' => ArrayParameterType::STRING,
+                'filter_secondary_types' => ArrayParameterType::STRING,
+                'filter_category_forms' => ArrayParameterType::STRING,
+                'filter_regional_forms' => ArrayParameterType::STRING,
+                'filter_special_forms' => ArrayParameterType::STRING,
+                'filter_variant_forms' => ArrayParameterType::STRING,
+            ]
+        );
+    }
+
+    /**
+     * @return int[][]|string[][]
+     */
+    public function getCatchStatesCounts(string $trainerExternalId, string $dexSlug): array
     {
         $sql = <<<SQL
+            SELECT  COUNT(pd.id) AS count, cs.slug AS slug, cs.name AS name, cs.french_name AS french_name
+            FROM
+                catch_state AS cs,
+                dex_availability AS da
+
+                JOIN dex AS d
+                    ON da.dex_id = d.id
+
+                LEFT JOIN trainer_dex AS td
+                    ON d.id = td.dex_id
+                        AND td.trainer_external_id = :trainer_external_id
+
+                LEFT JOIN pokedex AS pd
+                    ON pd.trainer_dex_id = td.id
+                        AND pd.pokemon_id = da.pokemon_id
+                        AND td.slug = :dex_slug
+            WHERE   cs.deleted_at IS NULL
+                AND (pd.catch_state_id IS NULL OR cs.id = pd.catch_state_id)
+            GROUP BY cs.slug, cs.name, cs.french_name, cs.order_number
+            ORDER BY cs.order_number
+            SQL;
+
+        /** @var int[][]|string[][] */
+        return $this->getEntityManager()->getConnection()->fetchAllAssociative(
+            $sql,
+            [
+                'trainer_external_id' => $trainerExternalId,
+                'dex_slug' => $dexSlug,
+            ]
+        );
+    }
+
+    public function upsert(
+        string $trainerExternalId,
+        string $dexSlug,
+        string $pokemonSlug,
+        string $catchStateSlug,
+    ): void {
+        $sql = <<<SQL
+            INSERT INTO pokedex (
+                id,
+                pokemon_id,
+                catch_state_id,
+                trainer_dex_id
+            )
+            VALUES
+            (
+                :id,
+                (SELECT id FROM pokemon WHERE slug = :pokemon_slug),
+                (SELECT id FROM catch_state WHERE slug = :catch_state_slug),
+                (
+                    SELECT  td.id
+                    FROM    trainer_dex AS td
+                    WHERE   td.slug = :dex_slug
+                        AND td.trainer_external_id = :trainer_external_id
+                )
+            )
+            ON CONFLICT (pokemon_id, trainer_dex_id)
+            DO
+            UPDATE
+            SET catch_state_id = excluded.catch_state_id
+            SQL;
+
+        $this->getEntityManager()->getConnection()->executeQuery(
+            $sql,
+            [
+                'id' => Uuid::v4(),
+                'trainer_external_id' => $trainerExternalId,
+                'dex_slug' => $dexSlug,
+                'pokemon_slug' => $pokemonSlug,
+                'catch_state_slug' => $catchStateSlug,
+            ]
+        );
+    }
+
+    /**
+     * @return int[]|string[]
+     */
+    public function getCatchStateCountsDefinedByTrainer(): array
+    {
+        $sql = <<<SQL
+            SELECT      COUNT(*) AS nb,
+                        td.trainer_external_id as trainer
+            FROM        pokedex AS p
+                JOIN trainer_dex AS td
+                    ON p.trainer_dex_id = td.id
+            GROUP BY td.trainer_external_id
+            ORDER BY nb DESC, td.trainer_external_id ASC
+            SQL;
+
+        return $this->getReportsResult($sql);
+    }
+
+    /**
+     * @return int[]|string[]
+     */
+    public function getDexUsage(): array
+    {
+        $sql = <<<SQL
+            SELECT      COUNT(DISTINCT td.trainer_external_id) AS nb,
+                            d.name, d.french_name
+            FROM        dex AS d
+                    JOIN trainer_dex AS td ON d.id = td.dex_id
+            GROUP BY    d.name, d.french_name, d.order_number
+            HAVING      COUNT(DISTINCT td.trainer_external_id) > 0
+            ORDER BY    nb DESC, d.order_number
+            SQL;
+
+        return $this->getReportsResult($sql);
+    }
+
+    /**
+     * @return int[]|string[]
+     */
+    public function getCatchStateUsage(): array
+    {
+        $sql = <<<SQL
+            SELECT      COUNT(*) AS nb,
+                        cs.name, cs.french_name, cs.color
+            FROM        pokedex AS p
+                    LEFT JOIN catch_state AS cs
+                        ON p.catch_state_id = cs.id
+            GROUP BY    cs.name, cs.french_name, cs.order_number, cs.color
+            ORDER BY    cs.order_number
+            SQL;
+
+        return $this->getReportsResult($sql);
+    }
+
+    /**
+     * @return int[]|string[]
+     */
+    private function getReportsResult(string $sql): array
+    {
+        /** @var int[]|string[] */
+        return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
+    }
+
+    private function getFiltersQuery(AlbumFilters $filters): string
+    {
+        $query = '';
+
+        if (!empty($filters->primaryTypes->values)) {
+            $query .= ' AND pt.slug IN(:filter_primary_types)';
+        }
+        if (!empty($filters->secondaryTypes->values)) {
+            $query .= ' AND st.slug IN(:filter_secondary_types)';
+        }
+        if (!empty($filters->categoryForms->values)) {
+            $query .= ' AND cf.slug IN(:filter_category_forms)';
+        }
+        if (!empty($filters->regionalForms->values)) {
+            $query .= ' AND rf.slug IN(:filter_regional_forms)';
+        }
+        if (!empty($filters->specialForms->values)) {
+            $query .= ' AND sf.slug IN(:filter_special_forms)';
+        }
+        if (!empty($filters->variantForms->values)) {
+            $query .= ' AND vf.slug IN(:filter_variant_forms)';
+        }
+
+        return $query;
+    }
+
+    /**
+     * @return string[][]
+     */
+    private function getFiltersParameters(AlbumFilters $filters): array
+    {
+        $parameters = [];
+
+        if (!empty($filters->primaryTypes->values)) {
+            $parameters['filter_primary_types'] = $filters->primaryTypes->extract();
+        }
+        if (!empty($filters->secondaryTypes->values)) {
+            $parameters['filter_secondary_types'] = $filters->secondaryTypes->extract();
+        }
+        if (!empty($filters->categoryForms->values)) {
+            $parameters['filter_category_forms'] = $filters->categoryForms->extract();
+        }
+        if (!empty($filters->regionalForms->values)) {
+            $parameters['filter_regional_forms'] = $filters->regionalForms->extract();
+        }
+        if (!empty($filters->specialForms->values)) {
+            $parameters['filter_special_forms'] = $filters->specialForms->extract();
+        }
+        if (!empty($filters->variantForms->values)) {
+            $parameters['filter_variant_forms'] = $filters->variantForms->extract();
+        }
+
+        return $parameters;
+    }
+
+    private function getListQuerySQL(string $where): string
+    {
+        return <<<SQL
         SELECT  p.slug AS pokemon_slug,
                 p.name AS pokemon_name,
                 p.national_dex_number AS pokemon_national_dex_number,
@@ -97,159 +335,8 @@ class PokedexRepository extends ServiceEntityRepository
                 ON p.family_id = pp.id
             LEFT JOIN game_bundle AS gb
                 ON p.original_game_bundle_id = gb.id
-        WHERE   COALESCE(NULLIF(td.slug, ''), d.slug) = :dex_slug
+        WHERE   $where
         ORDER BY pokemon_order_number
         SQL;
-
-        return $this->getEntityManager()->getConnection()->iterateAssociative(
-            $sql,
-            [
-                'trainer_external_id' => $trainerExternalId,
-                'dex_slug' => $dexSlug,
-            ]
-        );
-    }
-
-    /**
-     * @return int[][]|string[][]
-     */
-    public function getCatchStatesCounts(string $trainerExternalId, string $dexSlug): array
-    {
-        $sql = <<<SQL
-        SELECT  COUNT(pd.id) AS count, cs.slug AS slug, cs.name AS name, cs.french_name AS french_name
-        FROM
-            catch_state AS cs,
-            dex_availability AS da
-
-            JOIN dex AS d
-                ON da.dex_id = d.id
-
-            LEFT JOIN trainer_dex AS td
-                ON d.id = td.dex_id
-                    AND td.trainer_external_id = :trainer_external_id
-
-            LEFT JOIN pokedex AS pd
-                ON pd.trainer_dex_id = td.id
-                    AND pd.pokemon_id = da.pokemon_id
-                    AND td.slug = :dex_slug
-        WHERE   cs.deleted_at IS NULL
-            AND (pd.catch_state_id IS NULL OR cs.id = pd.catch_state_id)
-        GROUP BY cs.slug, cs.name, cs.french_name, cs.order_number
-        ORDER BY cs.order_number
-        SQL;
-
-        /** @var int[][]|string[][] */
-        return $this->getEntityManager()->getConnection()->fetchAllAssociative(
-            $sql,
-            [
-                'trainer_external_id' => $trainerExternalId,
-                'dex_slug' => $dexSlug,
-            ]
-        );
-    }
-
-    public function upsert(
-        string $trainerExternalId,
-        string $dexSlug,
-        string $pokemonSlug,
-        string $catchStateSlug,
-    ): void {
-        $sql = <<<SQL
-        INSERT INTO pokedex (
-            id,
-            pokemon_id,
-            catch_state_id,
-            trainer_dex_id
-        )
-        VALUES
-        (
-            :id,
-            (SELECT id FROM pokemon WHERE slug = :pokemon_slug),
-            (SELECT id FROM catch_state WHERE slug = :catch_state_slug),
-            (
-                SELECT  td.id
-                FROM    trainer_dex AS td
-                WHERE   td.slug = :dex_slug
-                    AND td.trainer_external_id = :trainer_external_id
-            )
-        )
-        ON CONFLICT (pokemon_id, trainer_dex_id)
-        DO
-        UPDATE
-        SET catch_state_id = excluded.catch_state_id
-        SQL;
-
-        $this->getEntityManager()->getConnection()->executeQuery(
-            $sql,
-            [
-                'id' => Uuid::v4(),
-                'trainer_external_id' => $trainerExternalId,
-                'dex_slug' => $dexSlug,
-                'pokemon_slug' => $pokemonSlug,
-                'catch_state_slug' => $catchStateSlug,
-            ]
-        );
-    }
-    /**
-     * @return int[]|string[]
-     */
-    public function getCatchStateCountsDefinedByTrainer(): array
-    {
-        $sql = <<<SQL
-        SELECT      COUNT(*) AS nb,
-                    td.trainer_external_id as trainer
-        FROM        pokedex AS p
-            JOIN trainer_dex AS td
-                ON p.trainer_dex_id = td.id
-        GROUP BY td.trainer_external_id
-        ORDER BY nb DESC, td.trainer_external_id ASC
-        SQL;
-
-        return $this->getReportsResult($sql);
-    }
-
-    /**
-     * @return int[]|string[]
-     */
-    public function getDexUsage(): array
-    {
-        $sql = <<<SQL
-        SELECT      COUNT(DISTINCT td.trainer_external_id) AS nb,
-                        d.name, d.french_name
-        FROM        dex AS d
-                JOIN trainer_dex AS td ON d.id = td.dex_id
-        GROUP BY    d.name, d.french_name, d.order_number
-        HAVING      COUNT(DISTINCT td.trainer_external_id) > 0
-        ORDER BY    nb DESC, d.order_number
-        SQL;
-
-        return $this->getReportsResult($sql);
-    }
-
-    /**
-     * @return int[]|string[]
-     */
-    public function getCatchStateUsage(): array
-    {
-        $sql = <<<SQL
-        SELECT      COUNT(*) AS nb,
-                    cs.name, cs.french_name, cs.color
-        FROM        pokedex AS p
-                LEFT JOIN catch_state AS cs
-                    ON p.catch_state_id = cs.id
-        GROUP BY    cs.name, cs.french_name, cs.order_number, cs.color
-        ORDER BY    cs.order_number
-        SQL;
-
-        return $this->getReportsResult($sql);
-    }
-
-    /**
-     * @return int[]|string[]
-     */
-    private function getReportsResult(string $sql): array
-    {
-        /** @var int[]|string[] */
-        return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
     }
 }
