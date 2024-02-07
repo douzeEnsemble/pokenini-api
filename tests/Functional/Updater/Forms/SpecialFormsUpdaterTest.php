@@ -9,7 +9,7 @@ use App\Updater\Forms\SpecialFormsUpdater;
 
 class SpecialFormsUpdaterTest extends AbstractTestFormsUpdater
 {
-    protected int $initialTotalCount = 3;
+    protected int $initialTotalCount = 4;
     protected int $finalTotalCount = 5;
     protected int $mustBeDeletedTotalCount = 0;
     protected string $sheetName = 'form / Special form';

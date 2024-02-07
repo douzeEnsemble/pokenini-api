@@ -47,7 +47,7 @@ class ReportsControllerTest extends WebTestCase
         return [
             'catch_state_counts_defined_by_trainer' => [
                 [
-                    'nb' => 13,
+                    'nb' => 20,
                     'trainer' => '7b52009b64fd0a2a49e6d8a939753077792b0554'
                 ],
                 [
@@ -89,7 +89,7 @@ class ReportsControllerTest extends WebTestCase
             ],
             'catch_state_usage' => [
                 [
-                    'nb' => 9,
+                    'nb' => 16,
                     'name' => 'No',
                     'french_name' => 'Non',
                     'color' => '#e57373',

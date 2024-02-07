@@ -49,7 +49,7 @@ class CalculateDexAvailabilitiesHandlerTest extends KernelTestCase
 
         $transport->queue()->assertEmpty();
 
-        $this->assertEquals(61, $this->getTableCount('dex_availability'));
+        $this->assertEquals(77, $this->getTableCount('dex_availability'));
 
         $this->assertEquals($beforeTotalCount + 1, $this->getActionLogCount());
         $this->assertEquals($beforeToProcessCount, $this->getActionLogToProcessCount());

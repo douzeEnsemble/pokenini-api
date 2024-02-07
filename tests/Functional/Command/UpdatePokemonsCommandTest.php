@@ -14,7 +14,7 @@ class UpdatePokemonsCommandTest extends AbstractTestCaseCommand
 
     public function testUpdate(): void
     {
-        $this->assertEquals(19, $this->getTableCount('pokemon'));
+        $this->assertEquals(26, $this->getTableCount('pokemon'));
 
         $initialToProcessCount = $this->getActionLogToProcessCount();
         $initialDoneCount = $this->getActionLogDoneCount();

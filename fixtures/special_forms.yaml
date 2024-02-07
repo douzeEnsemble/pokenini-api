@@ -11,3 +11,7 @@ App\Entity\SpecialForm:
         name: 'Gigantamax'
         frenchName: 'Gigamax'
         orderNumber: 2
+    special_form_totem:
+        name: 'Totem'
+        frenchName: 'Dominant'
+        orderNumber: 4

@@ -31,7 +31,7 @@ class UpdatePokemonsHandlerTest extends KernelTestCase
         $transport = $this->transport('async');
         $transport->throwExceptions();
 
-        $this->assertEquals(19, $this->getTableCount('pokemon'));
+        $this->assertEquals(26, $this->getTableCount('pokemon'));
 
         $beforeTotalCount = $this->getActionLogCount();
         $beforeToProcessCount = $this->getActionLogToProcessCount();
