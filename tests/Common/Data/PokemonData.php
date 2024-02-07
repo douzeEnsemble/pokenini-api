@@ -399,4 +399,284 @@ final class PokemonData
             'original_game_bundle_slug' => 'redgreenblueyellow',
         ];
     }
+
+    /**
+     * @return string[]|int[]|null[]
+     */
+    public static function getRattataData(): array
+    {
+        return [
+            'pokemon_slug' => 'rattata',
+            'pokemon_name' => 'Rattata ♂️',
+            'pokemon_national_dex_number' => 19,
+            'pokemon_simplified_name' => 'Rattata',
+            'pokemon_forms_label' => '♂️',
+            'pokemon_french_name' => 'Rattata ♂️',
+            'pokemon_simplified_french_name' => 'Rattata',
+            'pokemon_forms_french_label' => '♂️',
+            'pokemon_icon' => 'rattata',
+            'pokemon_family_order' => 4,
+            'family_lead_slug' => null,
+            'category_form_slug' => null,
+            'category_form_name' => null,
+            'regional_form_slug' => null,
+            'regional_form_name' => null,
+            'special_form_slug' => null,
+            'special_form_name' => null,
+            'variant_form_slug' => null,
+            'variant_form_name' => null,
+            'catch_state_slug' => 'yes',
+            'catch_state_name' => 'Yes',
+            'catch_state_french_name' => 'Oui',
+            'pokemon_regional_dex_number' => null,
+            'primary_type_slug' => 'normal',
+            'primary_type_name' => 'Normal',
+            'primary_type_french_name' => 'Normal',
+            'secondary_type_slug' => null,
+            'secondary_type_name' => null,
+            'secondary_type_french_name' => null,
+            'original_game_bundle_slug' => 'redgreenblueyellow',
+            'pokemon_order_number' => '999-0019-004',
+        ];
+    }
+
+    /**
+     * @return string[]|int[]|null[]
+     */
+    public static function getRattataFemaleData(): array
+    {
+        return [
+            'pokemon_slug' => 'rattata-f',
+            'pokemon_name' => 'Rattata ♀️',
+            'pokemon_national_dex_number' => 19,
+            'pokemon_simplified_name' => 'Rattata',
+            'pokemon_forms_label' => '♀️',
+            'pokemon_french_name' => 'Rattata ♀️',
+            'pokemon_simplified_french_name' => 'Rattata',
+            'pokemon_forms_french_label' => '♀️',
+            'pokemon_icon' => 'rattata-f',
+            'pokemon_family_order' => 5,
+            'family_lead_slug' => 'rattata',
+            'category_form_slug' => null,
+            'category_form_name' => null,
+            'regional_form_slug' => null,
+            'regional_form_name' => null,
+            'special_form_slug' => null,
+            'special_form_name' => null,
+            'variant_form_slug' => 'gender',
+            'variant_form_name' => 'Gender',
+            'catch_state_slug' => 'maybe',
+            'catch_state_name' => 'Maybe',
+            'catch_state_french_name' => 'Peut être',
+            'pokemon_regional_dex_number' => null,
+            'primary_type_slug' => 'normal',
+            'primary_type_name' => 'Normal',
+            'primary_type_french_name' => 'Normal',
+            'secondary_type_slug' => null,
+            'secondary_type_name' => null,
+            'secondary_type_french_name' => null,
+            'original_game_bundle_slug' => 'diamondpearlplatinium',
+            'pokemon_order_number' => '999-0019-005',
+        ];
+    }
+
+    /**
+     * @return string[]|int[]|null[]
+     */
+    public static function getRattataAlolanData(): array
+    {
+        return [
+            'pokemon_slug' => 'rattata-alola',
+            'pokemon_name' => 'Rattata-Alola',
+            'pokemon_national_dex_number' => 19,
+            'pokemon_simplified_name' => 'Rattata',
+            'pokemon_forms_label' => 'Alolan',
+            'pokemon_french_name' => "Rattata d'Alola",
+            'pokemon_simplified_french_name' => 'Rattata',
+            'pokemon_forms_french_label' => "d'Alola",
+            'pokemon_icon' => 'rattata-alola',
+            'pokemon_family_order' => 6,
+            'family_lead_slug' => 'rattata',
+            'category_form_slug' => null,
+            'category_form_name' => null,
+            'regional_form_slug' => 'alolan',
+            'regional_form_name' => 'Alolan',
+            'special_form_slug' => null,
+            'special_form_name' => null,
+            'variant_form_slug' => null,
+            'variant_form_name' => null,
+            'catch_state_slug' => 'maybenot',
+            'catch_state_name' => 'Maybe not',
+            'catch_state_french_name' => 'Peut être pas',
+            'pokemon_regional_dex_number' => null,
+            'primary_type_slug' => 'dark',
+            'primary_type_name' => 'Dark',
+            'primary_type_french_name' => 'Ténèbre',
+            'secondary_type_slug' => 'normal',
+            'secondary_type_name' => 'Normal',
+            'secondary_type_french_name' => 'Normal',
+            'original_game_bundle_slug' => 'sunmoon',
+            'pokemon_order_number' => '999-0019-006',
+        ];
+    }
+
+    /**
+     * @return string[]|int[]|null[]
+     */
+    public static function getRaticateData(): array
+    {
+        return [
+            'pokemon_slug' => 'raticate',
+            'pokemon_name' => 'Raticate ♂️',
+            'pokemon_national_dex_number' => 20,
+            'pokemon_simplified_name' => 'Raticate',
+            'pokemon_forms_label' => '♂️',
+            'pokemon_french_name' => 'Rattatac ♂️',
+            'pokemon_simplified_french_name' => 'Rattatac',
+            'pokemon_forms_french_label' => '♂️',
+            'pokemon_icon' => 'raticate',
+            'pokemon_family_order' => 7,
+            'family_lead_slug' => 'rattata',
+            'category_form_slug' => null,
+            'category_form_name' => null,
+            'regional_form_slug' => null,
+            'regional_form_name' => null,
+            'special_form_slug' => null,
+            'special_form_name' => null,
+            'variant_form_slug' => null,
+            'variant_form_name' => null,
+            'catch_state_slug' => 'yes',
+            'catch_state_name' => 'Yes',
+            'catch_state_french_name' => 'Oui',
+            'pokemon_regional_dex_number' => null,
+            'primary_type_slug' => 'normal',
+            'primary_type_name' => 'Normal',
+            'primary_type_french_name' => 'Normal',
+            'secondary_type_slug' => null,
+            'secondary_type_name' => null,
+            'secondary_type_french_name' => null,
+            'original_game_bundle_slug' => 'redgreenblueyellow',
+            'pokemon_order_number' => '999-0020-007',
+        ];
+    }
+
+    /**
+     * @return string[]|int[]|null[]
+     */
+    public static function getRaticateFemaleData(): array
+    {
+        return [
+            'pokemon_slug' => 'raticate-f',
+            'pokemon_name' => 'Raticate ♀️',
+            'pokemon_national_dex_number' => 20,
+            'pokemon_simplified_name' => 'Raticate',
+            'pokemon_forms_label' => '♀️',
+            'pokemon_french_name' => 'Rattatac ♀️',
+            'pokemon_simplified_french_name' => 'Rattatac',
+            'pokemon_forms_french_label' => '♀️',
+            'pokemon_icon' => 'raticate-f',
+            'pokemon_family_order' => 8,
+            'family_lead_slug' => 'rattata',
+            'category_form_slug' => null,
+            'category_form_name' => null,
+            'regional_form_slug' => null,
+            'regional_form_name' => null,
+            'special_form_slug' => null,
+            'special_form_name' => null,
+            'variant_form_slug' => 'gender',
+            'variant_form_name' => 'Gender',
+            'catch_state_slug' => 'maybe',
+            'catch_state_name' => 'Maybe',
+            'catch_state_french_name' => 'Peut être',
+            'pokemon_regional_dex_number' => null,
+            'primary_type_slug' => 'normal',
+            'primary_type_name' => 'Normal',
+            'primary_type_french_name' => 'Normal',
+            'secondary_type_slug' => null,
+            'secondary_type_name' => null,
+            'secondary_type_french_name' => null,
+            'original_game_bundle_slug' => 'diamondpearlplatinium',
+            'pokemon_order_number' => '999-0020-008',
+        ];
+    }
+
+    /**
+     * @return string[]|int[]|null[]
+     */
+    public static function getRaticateAlolanData(): array
+    {
+        return [
+            'pokemon_slug' => 'raticate-alola',
+            'pokemon_name' => 'Raticate-Alola',
+            'pokemon_national_dex_number' => 20,
+            'pokemon_simplified_name' => 'Raticate',
+            'pokemon_forms_label' => 'Alolan',
+            'pokemon_french_name' => "Rattatac d'Alola",
+            'pokemon_simplified_french_name' => 'Rattatac',
+            'pokemon_forms_french_label' => "d'Alola",
+            'pokemon_icon' => 'raticate-alola',
+            'pokemon_family_order' => 9,
+            'family_lead_slug' => 'rattata',
+            'category_form_slug' => null,
+            'category_form_name' => null,
+            'regional_form_slug' => 'alolan',
+            'regional_form_name' => 'Alolan',
+            'special_form_slug' => null,
+            'special_form_name' => null,
+            'variant_form_slug' => null,
+            'variant_form_name' => null,
+            'catch_state_slug' => 'maybenot',
+            'catch_state_name' => 'Maybe not',
+            'catch_state_french_name' => 'Peut être pas',
+            'pokemon_regional_dex_number' => null,
+            'primary_type_slug' => 'dark',
+            'primary_type_name' => 'Dark',
+            'primary_type_french_name' => 'Ténèbre',
+            'secondary_type_slug' => 'normal',
+            'secondary_type_name' => 'Normal',
+            'secondary_type_french_name' => 'Normal',
+            'original_game_bundle_slug' => 'sunmoon',
+            'pokemon_order_number' => '999-0020-009',
+        ];
+    }
+
+    /**
+     * @return string[]|int[]|null[]
+     */
+    public static function getRaticateAlolanTotemData(): array
+    {
+        return [
+            'pokemon_slug' => 'raticate-alola-totem',
+            'pokemon_name' => 'Totem Raticate-Alola',
+            'pokemon_national_dex_number' => 20,
+            'pokemon_simplified_name' => 'Raticate',
+            'pokemon_forms_label' => 'Totem Alolan',
+            'pokemon_french_name' => "Totem Rattatac d'Alola",
+            'pokemon_simplified_french_name' => 'Rattatac',
+            'pokemon_forms_french_label' => "Totem d'Alola",
+            'pokemon_icon' => 'raticate-alola',
+            'pokemon_family_order' => 10,
+            'family_lead_slug' => 'rattata',
+            'category_form_slug' => null,
+            'category_form_name' => null,
+            'regional_form_slug' => 'alolan',
+            'regional_form_name' => 'Alolan',
+            'special_form_slug' => 'totem',
+            'special_form_name' => 'Totem',
+            'variant_form_slug' => null,
+            'variant_form_name' => null,
+            'catch_state_slug' => 'no',
+            'catch_state_name' => 'No',
+            'catch_state_french_name' => 'Non',
+            'pokemon_regional_dex_number' => null,
+            'primary_type_slug' => 'dark',
+            'primary_type_name' => 'Dark',
+            'primary_type_french_name' => 'Ténèbre',
+            'secondary_type_slug' => 'normal',
+            'secondary_type_name' => 'Normal',
+            'secondary_type_french_name' => 'Normal',
+            'original_game_bundle_slug' => 'ultrasunultramoon',
+            'pokemon_order_number' => '999-0020-010',
+        ];
+    }
 }

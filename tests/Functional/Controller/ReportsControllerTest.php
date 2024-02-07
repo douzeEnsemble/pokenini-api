@@ -47,7 +47,7 @@ class ReportsControllerTest extends WebTestCase
         return [
             'catch_state_counts_defined_by_trainer' => [
                 [
-                    'nb' => 20,
+                    'nb' => 28,
                     'trainer' => '7b52009b64fd0a2a49e6d8a939753077792b0554'
                 ],
                 [
@@ -89,25 +89,25 @@ class ReportsControllerTest extends WebTestCase
             ],
             'catch_state_usage' => [
                 [
-                    'nb' => 16,
+                    'nb' => 11,
                     'name' => 'No',
                     'french_name' => 'Non',
                     'color' => '#e57373',
                 ],
                 [
-                    'nb' => 1,
+                    'nb' => 4,
                     'name' => 'Maybe',
                     'french_name' => 'Peut être',
                     'color' => 'blue',
                 ],
                 [
-                    'nb' => 2,
+                    'nb' => 5,
                     'name' => 'Maybe not',
                     'french_name' => 'Peut être pas',
                     'color' => 'yellow',
                 ],
                 [
-                    'nb' => 4,
+                    'nb' => 11,
                     'name' => 'Yes',
                     'french_name' => 'Oui',
                     'color' => '#66bb6a',

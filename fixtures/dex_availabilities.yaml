@@ -91,6 +91,18 @@ App\Entity\DexAvailability:
         pokemon: '@pokemon_venusaur_gigantamax'
         dex: '@dex_home'
 
+    dexavailability_home_charmander:
+        pokemon: '@pokemon_charmander'
+        dex: '@dex_home'
+
+    dexavailability_home_charmeleon:
+        pokemon: '@pokemon_charmeleon'
+        dex: '@dex_home'
+
+    dexavailability_home_charizard:
+        pokemon: '@pokemon_charizard'
+        dex: '@dex_home'
+
     dexavailability_home_caterpie:
         pokemon: '@pokemon_caterpie'
         dex: '@dex_home'
@@ -109,6 +121,34 @@ App\Entity\DexAvailability:
 
     dexavailability_home_butterfreegigantamax:
         pokemon: '@pokemon_butterfree_gigantamax'
+        dex: '@dex_home'
+
+    dexavailability_home_rattata:
+        pokemon: '@pokemon_rattata'
+        dex: '@dex_home'
+
+    dexavailability_home_rattata_f:
+        pokemon: '@pokemon_rattata_f'
+        dex: '@dex_home'
+
+    dexavailability_home_rattata_alola:
+        pokemon: '@pokemon_rattata_alola'
+        dex: '@dex_home'
+
+    dexavailability_home_raticate:
+        pokemon: '@pokemon_raticate'
+        dex: '@dex_home'
+
+    dexavailability_home_raticate_f:
+        pokemon: '@pokemon_raticate_f'
+        dex: '@dex_home'
+
+    dexavailability_home_raticate_alola:
+        pokemon: '@pokemon_raticate_alola'
+        dex: '@dex_home'
+
+    dexavailability_home_raticate_alola_totem:
+        pokemon: '@pokemon_raticate_alola_totem'
         dex: '@dex_home'
 
     dexavailability_homeshiny_bulbasaur:
