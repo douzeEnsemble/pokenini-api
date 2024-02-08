@@ -4,9 +4,8 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Service\Album;
 
+use App\DTO\AlbumFilter\AlbumFilters;
 use App\DTO\AlbumReport\Report;
-use App\DTO\AlbumReport\Statistic;
-use App\Service\Album\AlbumDexService;
 use App\Service\Album\AlbumReportService;
 use App\Tests\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
@@ -37,7 +36,29 @@ class AlbumReportServiceTest extends KernelTestCase
         /** @var AlbumReportService $service */
         $service = static::getContainer()->get(AlbumReportService::class);
 
-        $report = $service->get($trainerId, $dexSlug);
+        $report = $service->get($trainerId, $dexSlug, AlbumFilters::createFromArray([]));
+        $this->assertReport($report, $countNo, $countMaybe, $countMaybeNot, $countYes, $countTotal);
+    }
+
+    /**
+     * @param string[][] $filters
+     *
+     * @dataProvider getReportFilteredProvider
+     */
+    public function testGetReportFiltered(
+        string $trainerId,
+        string $dexSlug,
+        array $filters,
+        int $countNo,
+        int $countMaybe,
+        int $countMaybeNot,
+        int $countYes,
+        int $countTotal
+    ): void {
+        /** @var AlbumReportService $service */
+        $service = static::getContainer()->get(AlbumReportService::class);
+
+        $report = $service->get($trainerId, $dexSlug, AlbumFilters::createFromArray($filters));
         $this->assertReport($report, $countNo, $countMaybe, $countMaybeNot, $countYes, $countTotal);
     }
 
@@ -101,6 +122,133 @@ class AlbumReportServiceTest extends KernelTestCase
                 0,
                 11,
             ]
+        ];
+    }
+
+    /**
+     * @return string[][]|string[][][][]|int[][]
+     *
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     */
+    public function getReportFilteredProvider(): array
+    {
+        return [
+            'primary_type' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'primaryTypes' => [
+                        'grass',
+                    ],
+                ],
+                6,
+                0,
+                0,
+                0,
+                6,
+            ],
+            'secondary_type' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'secondaryTypes' => [
+                        'normal',
+                    ],
+                ],
+                1,
+                0,
+                2,
+                0,
+                3,
+            ],
+            'primary_and_secondary_types' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'primaryTypes' => [
+                        'bug',
+                    ],
+                    'secondaryTypes' => [
+                        'flying',
+                    ],
+                ],
+                1,
+                0,
+                0,
+                2,
+                3,
+            ],
+            'category_form' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'categoryForms' => [
+                        'starter',
+                    ],
+                ],
+                1,
+                0,
+                0,
+                1,
+                2,
+            ],
+            'regional_form' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'regionalForms' => [
+                        'alolan',
+                    ],
+                ],
+                1,
+                0,
+                2,
+                0,
+                3,
+            ],
+            'special_form' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'specialForms' => [
+                        'gigantamax',
+                    ],
+                ],
+                2,
+                0,
+                0,
+                0,
+                2,
+            ],
+            'special_forms' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'specialForms' => [
+                        'gigantamax',
+                        'mega',
+                    ],
+                ],
+                3,
+                0,
+                0,
+                0,
+                3,
+            ],
+            'variant_form' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'variantForms' => [
+                        'gender',
+                    ],
+                ],
+                1,
+                2,
+                0,
+                1,
+                4,
+            ],
         ];
     }
 

@@ -18,18 +18,18 @@ class AlbumReportService
     ) {
     }
 
-    public function get(string $trainerExternalId, string $dexSlug): Report
+    public function get(string $trainerExternalId, string $dexSlug, AlbumFilters $albumFilters): Report
     {
         $totalCaught = 0;
         $detail = [];
 
-        $total = $this->dexAvailabilitiesRepository->getTotal($dexSlug, AlbumFilters::createFromArray([]));
+        $total = $this->dexAvailabilitiesRepository->getTotal($dexSlug, $albumFilters);
         $totalUncaught = $total;
 
         $catchStatesCounts = $this->pokedexRepository->getCatchStatesCounts(
             $trainerExternalId,
             $dexSlug,
-            AlbumFilters::createFromArray([]),
+            $albumFilters,
         );
 
         foreach ($catchStatesCounts as $catchStatesCount) {
