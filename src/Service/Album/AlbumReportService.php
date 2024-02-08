@@ -26,7 +26,12 @@ class AlbumReportService
         $total = $this->dexAvailabilitiesRepository->getTotal($dexSlug, AlbumFilters::createFromArray([]));
         $totalUncaught = $total;
 
-        $catchStatesCounts = $this->pokedexRepository->getCatchStatesCounts($trainerExternalId, $dexSlug);
+        $catchStatesCounts = $this->pokedexRepository->getCatchStatesCounts(
+            $trainerExternalId,
+            $dexSlug,
+            AlbumFilters::createFromArray([]),
+        );
+
         foreach ($catchStatesCounts as $catchStatesCount) {
             $detail[] = new Statistic(
                 (string) $catchStatesCount['slug'],
