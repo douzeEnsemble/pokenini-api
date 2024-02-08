@@ -52,7 +52,7 @@ abstract class AbstractTestControllerApi extends WebTestCase
     }
 
     /**
-     * @param string[] $params
+     * @param string[]|string[][] $params
      * @param string[]|string[][] $options
      */
     public function apiRequest(

@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\DTO\AlbumFilter\AlbumFilters;
+use App\DTO\AlbumFilter\AlbumFiltersRequest;
 use App\Service\Album\AlbumDexService;
 use App\Service\Album\AlbumPokemonService;
 use App\Service\Album\AlbumReportService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Annotation\Route;
 
 #[Route('/album')]
@@ -21,9 +22,10 @@ class AlbumIndexController extends AbstractController
         AlbumDexService $albumDexService,
         AlbumReportService $albumReportService,
         string $trainerExternalId,
-        string $dexSlug
+        string $dexSlug,
+        Request $request,
     ): JsonResponse {
-        $albumsFilters = AlbumFilters::createFromArray([]);
+        $albumsFilters = AlbumFiltersRequest::albumFiltersFromRequest($request);
 
         $pokemons = $albumPokemonService->get($trainerExternalId, $dexSlug, $albumsFilters);
 
