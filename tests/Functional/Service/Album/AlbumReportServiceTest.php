@@ -178,6 +178,20 @@ class AlbumReportServiceTest extends KernelTestCase
                 2,
                 3,
             ],
+            'any_types' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'anyTypes' => [
+                        'normal',
+                    ],
+                ],
+                1,
+                2,
+                2,
+                2,
+                7,
+            ],
             'category_form' => [
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',

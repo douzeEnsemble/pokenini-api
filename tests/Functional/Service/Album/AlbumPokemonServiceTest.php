@@ -192,6 +192,31 @@ class AlbumPokemonServiceTest extends KernelTestCase
         $this->assertEquals('butterfree-gmax', $pokemons[2]['pokemon_slug']);
     }
 
+    public function testListFilteredAnyType(): void
+    {
+        /** @var AlbumPokemonService $service */
+        $service = static::getContainer()->get(AlbumPokemonService::class);
+
+        $pokemons = $service->get(
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'home',
+            AlbumFilters::createFromArray([
+                'anyTypes' => [
+                    'normal',
+                ],
+            ]),
+        );
+
+        $this->assertCount(7, $pokemons);
+        $this->assertEquals('rattata', $pokemons[0]['pokemon_slug']);
+        $this->assertEquals('rattata-f', $pokemons[1]['pokemon_slug']);
+        $this->assertEquals('rattata-alola', $pokemons[2]['pokemon_slug']);
+        $this->assertEquals('raticate', $pokemons[3]['pokemon_slug']);
+        $this->assertEquals('raticate-f', $pokemons[4]['pokemon_slug']);
+        $this->assertEquals('raticate-alola', $pokemons[5]['pokemon_slug']);
+        $this->assertEquals('raticate-alola-totem', $pokemons[6]['pokemon_slug']);
+    }
+
     public function testListFilteredCategoryType(): void
     {
         /** @var AlbumPokemonService $service */

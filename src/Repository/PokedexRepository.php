@@ -8,8 +8,6 @@ use App\DTO\AlbumFilter\AlbumFilters;
 use App\Entity\Pokedex;
 use App\Repository\Trait\FiltersTrait;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\DBAL\ArrayParameterType;
-use Doctrine\DBAL\ParameterType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Uid\Uuid;
 
@@ -51,16 +49,7 @@ class PokedexRepository extends ServiceEntityRepository
         return $this->getEntityManager()->getConnection()->iterateAssociative(
             $sql,
             $params,
-            [
-                'trainer_external_id' => ParameterType::STRING,
-                'dex_slug' => ParameterType::STRING,
-                'filter_primary_types' => ArrayParameterType::STRING,
-                'filter_secondary_types' => ArrayParameterType::STRING,
-                'filter_category_forms' => ArrayParameterType::STRING,
-                'filter_regional_forms' => ArrayParameterType::STRING,
-                'filter_special_forms' => ArrayParameterType::STRING,
-                'filter_variant_forms' => ArrayParameterType::STRING,
-            ],
+            $this->getFiltersTypes(),
         );
     }
 
@@ -127,16 +116,7 @@ class PokedexRepository extends ServiceEntityRepository
         return $this->getEntityManager()->getConnection()->fetchAllAssociative(
             $sql,
             $params,
-            [
-                'trainer_external_id' => ParameterType::STRING,
-                'dex_slug' => ParameterType::STRING,
-                'filter_primary_types' => ArrayParameterType::STRING,
-                'filter_secondary_types' => ArrayParameterType::STRING,
-                'filter_category_forms' => ArrayParameterType::STRING,
-                'filter_regional_forms' => ArrayParameterType::STRING,
-                'filter_special_forms' => ArrayParameterType::STRING,
-                'filter_variant_forms' => ArrayParameterType::STRING,
-            ],
+            $this->getFiltersTypes(),
         );
     }
 

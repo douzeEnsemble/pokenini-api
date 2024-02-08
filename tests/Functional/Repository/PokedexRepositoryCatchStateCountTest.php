@@ -137,6 +137,19 @@ class PokedexRepositoryCatchStateCountTest extends KernelTestCase
                     2,
                 ],
             ],
+            'any_types' => [
+                [
+                    'anyTypes' => [
+                        'normal',
+                    ],
+                ],
+                [
+                    1,
+                    2,
+                    2,
+                    2,
+                ],
+            ],
             'category_form' => [
                 [
                     'categoryForms' => [

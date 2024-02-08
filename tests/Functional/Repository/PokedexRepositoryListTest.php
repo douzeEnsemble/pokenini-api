@@ -181,6 +181,34 @@ class PokedexRepositoryListTest extends KernelTestCase
         $this->assertEquals('butterfree-gmax', $pokedex[2]['pokemon_slug']);
     }
 
+    public function testGetListQueryAnyTypeFilter(): void
+    {
+        /** @var PokedexRepository $repo */
+        $repo = static::getContainer()->get(PokedexRepository::class);
+
+        $pokedexIterator = $repo->getListQuery(
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'home',
+            AlbumFilters::createFromArray([
+                'anyTypes' => [
+                    'normal',
+                ],
+            ])
+        );
+
+        /** @var string[][] $pokedex */
+        $pokedex = iterator_to_array($pokedexIterator);
+
+        $this->assertCount(7, $pokedex);
+        $this->assertEquals('rattata', $pokedex[0]['pokemon_slug']);
+        $this->assertEquals('rattata-f', $pokedex[1]['pokemon_slug']);
+        $this->assertEquals('rattata-alola', $pokedex[2]['pokemon_slug']);
+        $this->assertEquals('raticate', $pokedex[3]['pokemon_slug']);
+        $this->assertEquals('raticate-f', $pokedex[4]['pokemon_slug']);
+        $this->assertEquals('raticate-alola', $pokedex[5]['pokemon_slug']);
+        $this->assertEquals('raticate-alola-totem', $pokedex[6]['pokemon_slug']);
+    }
+
     public function testGetListQueryCategoryForm(): void
     {
         /** @var PokedexRepository $repo */

@@ -95,6 +95,23 @@ class DexAvailabilitiesRepositoryTest extends KernelTestCase
         $this->assertEquals(3, $totalCount);
     }
 
+    public function testGetTotalAnyTypeFilter(): void
+    {
+        /** @var DexAvailabilitiesRepository $repo */
+        $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
+
+        $totalCount = $repo->getTotal(
+            'home',
+            AlbumFilters::createFromArray([
+                'anyTypes' => [
+                    'normal',
+                ],
+            ])
+        );
+
+        $this->assertEquals(7, $totalCount);
+    }
+
     public function testGetTotalCategoryFormFilter(): void
     {
         /** @var DexAvailabilitiesRepository $repo */
