@@ -293,7 +293,6 @@ App\Entity\Pokemon:
         iconName: "rattata"
         familyOrder: 4
         primaryType: '@type_normal'
-        secondaryType: ~
 
     pokemon_rattata_f (extends pokemon):
         slug: "rattata-f"
@@ -310,7 +309,6 @@ App\Entity\Pokemon:
         familyOrder: 5
         variantForm: '@variant_form_gender'
         primaryType: '@type_normal'
-        secondaryType: ~
 
     pokemon_rattata_alola (extends pokemon):
         slug: "rattata-alola"
@@ -343,7 +341,6 @@ App\Entity\Pokemon:
         iconName: "raticate"
         familyOrder: 7
         primaryType: '@type_normal'
-        secondaryType: ~
 
     pokemon_raticate_f (extends pokemon):
         slug: "raticate-f"
@@ -360,7 +357,6 @@ App\Entity\Pokemon:
         familyOrder: 8
         variantForm: '@variant_form_gender'
         primaryType: '@type_normal'
-        secondaryType: ~
 
     pokemon_raticate_alola (extends pokemon):
         slug: "raticate-alola"

@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Repository\Trait;
 
 use App\DTO\AlbumFilter\AlbumFilters;
+use Doctrine\DBAL\ArrayParameterType;
+use Doctrine\DBAL\ParameterType;
 
 trait FiltersTrait
 {
@@ -17,6 +19,9 @@ trait FiltersTrait
         }
         if (!empty($filters->secondaryTypes->values)) {
             $query .= ' AND st.slug IN(:filter_secondary_types)';
+        }
+        if (!empty($filters->anyTypes->values)) {
+            $query .= ' AND pt.slug IN(:filter_any_types) or st.slug IN(:filter_any_types)';
         }
         if (!empty($filters->categoryForms->values)) {
             $query .= ' AND cf.slug IN(:filter_category_forms)';
@@ -47,6 +52,9 @@ trait FiltersTrait
         if (!empty($filters->secondaryTypes->values)) {
             $parameters['filter_secondary_types'] = $filters->secondaryTypes->extract();
         }
+        if (!empty($filters->anyTypes->values)) {
+            $parameters['filter_any_types'] = $filters->anyTypes->extract();
+        }
         if (!empty($filters->categoryForms->values)) {
             $parameters['filter_category_forms'] = $filters->categoryForms->extract();
         }
@@ -61,5 +69,23 @@ trait FiltersTrait
         }
 
         return $parameters;
+    }
+
+    /**
+     * @return int[]
+     */
+    protected function getFiltersTypes(): array
+    {
+        return [
+            'trainer_external_id' => ParameterType::STRING,
+            'dex_slug' => ParameterType::STRING,
+            'filter_primary_types' => ArrayParameterType::STRING,
+            'filter_secondary_types' => ArrayParameterType::STRING,
+            'filter_any_types' => ArrayParameterType::STRING,
+            'filter_category_forms' => ArrayParameterType::STRING,
+            'filter_regional_forms' => ArrayParameterType::STRING,
+            'filter_special_forms' => ArrayParameterType::STRING,
+            'filter_variant_forms' => ArrayParameterType::STRING,
+        ];
     }
 }

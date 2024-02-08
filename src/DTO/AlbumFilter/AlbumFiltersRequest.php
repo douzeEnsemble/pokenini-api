@@ -16,6 +16,7 @@ final class AlbumFiltersRequest
         $resolver->setDefaults([
             'primary_types' => [],
             'secondary_types' => [],
+            'any_types' => [],
             'category_forms' => [],
             'regional_forms' => [],
             'special_forms' => [],
@@ -27,6 +28,7 @@ final class AlbumFiltersRequest
         return AlbumFilters::createFromArray([
             'primaryTypes' => $options['primary_types'],
             'secondaryTypes' => $options['secondary_types'],
+            'anyTypes' => $options['any_types'],
             'categoryForms' => $options['category_forms'],
             'regionalForms' => $options['regional_forms'],
             'specialForms' => $options['special_forms'],

@@ -12,6 +12,7 @@ final class AlbumFilters
     private function __construct(
         public AlbumFilterValues $primaryTypes,
         public AlbumFilterValues $secondaryTypes,
+        public AlbumFilterValues $anyTypes,
         public AlbumFilterValues $categoryForms,
         public AlbumFilterValues $regionalForms,
         public AlbumFilterValues $specialForms,
@@ -29,6 +30,7 @@ final class AlbumFilters
         $resolver->setDefaults([
             'primaryTypes' => [],
             'secondaryTypes' => [],
+            'anyTypes' => [],
             'categoryForms' => [],
             'regionalForms' => [],
             'specialForms' => [],
@@ -39,6 +41,9 @@ final class AlbumFilters
             return new AlbumFilterValues($data);
         });
         $resolver->setNormalizer('secondaryTypes', function (Options $options, array $data): AlbumFilterValues {
+            return new AlbumFilterValues($data);
+        });
+        $resolver->setNormalizer('anyTypes', function (Options $options, array $data): AlbumFilterValues {
             return new AlbumFilterValues($data);
         });
         $resolver->setNormalizer('categoryForms', function (Options $options, array $data): AlbumFilterValues {
@@ -59,6 +64,7 @@ final class AlbumFilters
         return new self(
             $options['primaryTypes'],
             $options['secondaryTypes'],
+            $options['anyTypes'],
             $options['categoryForms'],
             $options['regionalForms'],
             $options['specialForms'],

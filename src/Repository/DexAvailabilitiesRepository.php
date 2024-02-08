@@ -76,15 +76,7 @@ class DexAvailabilitiesRepository extends ServiceEntityRepository
         return $this->getEntityManager()->getConnection()->fetchOne(
             $sql,
             $params,
-            [
-                'dex_slug' => ParameterType::STRING,
-                'filter_primary_types' => ArrayParameterType::STRING,
-                'filter_secondary_types' => ArrayParameterType::STRING,
-                'filter_category_forms' => ArrayParameterType::STRING,
-                'filter_regional_forms' => ArrayParameterType::STRING,
-                'filter_special_forms' => ArrayParameterType::STRING,
-                'filter_variant_forms' => ArrayParameterType::STRING,
-            ],
+            $this->getFiltersTypes(),
         );
     }
 }
