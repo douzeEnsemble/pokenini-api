@@ -17,14 +17,14 @@ class AlbumPokemonService
     /**
      * @return string[][]|int[][]
      */
-    public function get(string $trainerExternalId, string $dexSlug): array
+    public function get(string $trainerExternalId, string $dexSlug, AlbumFilters $albumFilters): array
     {
         /** @var string[][]|int[][] */
         return iterator_to_array(
             $this->pokedexRepository->getListQuery(
                 $trainerExternalId,
                 $dexSlug,
-                AlbumFilters::createFromArray([]),
+                $albumFilters,
             )
         );
     }
