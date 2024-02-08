@@ -67,38 +67,76 @@ class PokedexRepository extends ServiceEntityRepository
     /**
      * @return int[][]|string[][]
      */
-    public function getCatchStatesCounts(string $trainerExternalId, string $dexSlug): array
-    {
+    public function getCatchStatesCounts(
+        string $trainerExternalId,
+        string $dexSlug,
+        AlbumFilters $filters,
+    ): array {
+
+        $where = '1 = 1 ' . $this->getFiltersQuery($filters);
+
         $sql = <<<SQL
-            SELECT  COUNT(pd.id) AS count, cs.slug AS slug, cs.name AS name, cs.french_name AS french_name
-            FROM
-                catch_state AS cs,
-                dex_availability AS da
-
-                JOIN dex AS d
-                    ON da.dex_id = d.id
-
-                LEFT JOIN trainer_dex AS td
-                    ON d.id = td.dex_id
-                        AND td.trainer_external_id = :trainer_external_id
-
-                LEFT JOIN pokedex AS pd
-                    ON pd.trainer_dex_id = td.id
-                        AND pd.pokemon_id = da.pokemon_id
-                        AND td.slug = :dex_slug
+            SELECT  COUNT(pokedex_id) AS count, 
+                    cs.slug AS slug, cs.name AS name, cs.french_name AS french_name
+            FROM    catch_state AS cs
+                    LEFT JOIN (
+                    SELECT  pd.id AS pokedex_id, pd.catch_state_id AS catch_state_id
+                    FROM
+                        dex_availability AS da
+                        JOIN dex AS d
+                            ON da.dex_id = d.id
+                        JOIN pokemon AS p
+                            ON da.pokemon_id = p.id
+                        LEFT JOIN trainer_dex AS td
+                            ON d.id = td.dex_id
+                                AND td.trainer_external_id = :trainer_external_id
+                        LEFT JOIN pokedex AS pd
+                            ON pd.trainer_dex_id = td.id
+                                AND pd.pokemon_id = da.pokemon_id
+                                AND td.slug = :dex_slug
+                        LEFT JOIN category_form AS cf
+                            ON p.category_form_id = cf.id
+                        LEFT JOIN regional_form AS rf
+                            ON p.regional_form_id = rf.id
+                        LEFT JOIN special_form AS sf
+                            ON p.special_form_id = sf.id
+                        LEFT JOIN variant_form AS vf
+                            ON p.variant_form_id = vf.id
+                        LEFT JOIN "type" AS pt
+                            ON p.primary_type_id = pt.id
+                        LEFT JOIN "type" AS st
+                            ON p.secondary_type_id = st.id
+                    WHERE   $where
+                ) AS t
+                        ON cs.id = t.catch_state_id
             WHERE   cs.deleted_at IS NULL
-                AND (pd.catch_state_id IS NULL OR cs.id = pd.catch_state_id)
             GROUP BY cs.slug, cs.name, cs.french_name, cs.order_number
             ORDER BY cs.order_number
             SQL;
 
+        $dynamicParams = $this->getFiltersParameters($filters);
+        $params = array_merge(
+            [
+                'trainer_external_id' => $trainerExternalId,
+                'dex_slug' => $dexSlug
+            ],
+            $dynamicParams
+        );
+
         /** @var int[][]|string[][] */
         return $this->getEntityManager()->getConnection()->fetchAllAssociative(
             $sql,
+            $params,
             [
-                'trainer_external_id' => $trainerExternalId,
-                'dex_slug' => $dexSlug,
-            ]
+                'trainer_external_id' => ParameterType::STRING,
+                'dex_slug' => ParameterType::STRING,
+                'filter_primary_types' => ArrayParameterType::STRING,
+                'filter_secondary_types' => ArrayParameterType::STRING,
+                'filter_category_forms' => ArrayParameterType::STRING,
+                'filter_regional_forms' => ArrayParameterType::STRING,
+                'filter_special_forms' => ArrayParameterType::STRING,
+                'filter_variant_forms' => ArrayParameterType::STRING,
+            ],
         );
     }
 
@@ -264,9 +302,9 @@ class PokedexRepository extends ServiceEntityRepository
             LEFT JOIN catch_state AS cs
                 ON pd.catch_state_id = cs.id
             LEFT JOIN category_form AS cf
-                    ON p.category_form_id = cf.id
+                ON p.category_form_id = cf.id
             LEFT JOIN regional_form AS rf
-                    ON p.regional_form_id = rf.id
+                ON p.regional_form_id = rf.id
             LEFT JOIN special_form AS sf
                 ON p.special_form_id = sf.id
             LEFT JOIN variant_form AS vf
