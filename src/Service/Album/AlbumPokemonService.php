@@ -24,7 +24,7 @@ class AlbumPokemonService
             $this->pokedexRepository->getListQuery(
                 $trainerExternalId,
                 $dexSlug,
-                AlbumFilters::createFromArray([])
+                AlbumFilters::createFromArray([]),
             )
         );
     }

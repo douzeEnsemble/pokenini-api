@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\DTO\AlbumFilter\AlbumFilters;
 use App\Service\Album\AlbumDexService;
 use App\Service\Album\AlbumPokemonService;
 use App\Service\Album\AlbumReportService;
@@ -24,7 +25,7 @@ class AlbumIndexController extends AbstractController
     ): JsonResponse {
         $pokemons = $albumPokemonService->get($trainerExternalId, $dexSlug);
 
-        $report = $albumReportService->get($trainerExternalId, $dexSlug);
+        $report = $albumReportService->get($trainerExternalId, $dexSlug, AlbumFilters::createFromArray([]));
 
         $dex = $albumDexService->get($trainerExternalId, $dexSlug);
 
