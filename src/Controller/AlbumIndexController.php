@@ -23,9 +23,11 @@ class AlbumIndexController extends AbstractController
         string $trainerExternalId,
         string $dexSlug
     ): JsonResponse {
-        $pokemons = $albumPokemonService->get($trainerExternalId, $dexSlug);
+        $albumsFilters = AlbumFilters::createFromArray([]);
 
-        $report = $albumReportService->get($trainerExternalId, $dexSlug, AlbumFilters::createFromArray([]));
+        $pokemons = $albumPokemonService->get($trainerExternalId, $dexSlug, $albumsFilters);
+
+        $report = $albumReportService->get($trainerExternalId, $dexSlug, $albumsFilters);
 
         $dex = $albumDexService->get($trainerExternalId, $dexSlug);
 
