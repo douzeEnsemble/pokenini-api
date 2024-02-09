@@ -95,6 +95,8 @@ class PokedexRepository extends ServiceEntityRepository
                             ON p.primary_type_id = pt.id
                         LEFT JOIN "type" AS st
                             ON p.secondary_type_id = st.id
+                        LEFT JOIN catch_state AS cs
+                            ON pd.catch_state_id = cs.id
                     WHERE   $where
                 ) AS t
                         ON cs.id = t.catch_state_id
