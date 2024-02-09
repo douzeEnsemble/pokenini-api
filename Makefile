@@ -133,6 +133,7 @@ psalm: ## Execute psalm
 	@$(PHP) vendor/bin/psalm --show-info=false
 
 phpstan: ## Execute phpstan analyse
+	@$(PHP) vendor/bin/phpstan clear-result-cache
 	@$(PHP) vendor/bin/phpstan analyse --memory-limit=-1
 
 ## —— Integration 🗂️ ———————————————————————————————————————————————————————————————

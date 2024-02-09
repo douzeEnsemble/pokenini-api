@@ -49,7 +49,9 @@ jobs:
       - name: Prepare
         uses: ./.github/actions/local
       - name: Run
-        run: ./vendor/bin/phpstan analyse --memory-limit=-1
+        run: |
+          ./vendor/bin/phpstan clear-result-cache
+          ./vendor/bin/phpstan analyse --memory-limit=-1
 
   phpunit:
     name: Tests / PHPUnit
