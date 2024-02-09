@@ -61,6 +61,11 @@ class DexAvailabilitiesRepository extends ServiceEntityRepository
                     ON p.primary_type_id = pt.id
                 LEFT JOIN "type" AS st
                     ON p.secondary_type_id = st.id
+                LEFT JOIN pokedex AS pd
+                    ON pd.trainer_dex_id = td.id
+                    AND pd.pokemon_id = da.pokemon_id
+                LEFT JOIN catch_state AS cs
+                    ON pd.catch_state_id = cs.id
         WHERE		$where
         SQL;
 

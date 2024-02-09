@@ -17,6 +17,7 @@ final class AlbumFilters
         public AlbumFilterValues $regionalForms,
         public AlbumFilterValues $specialForms,
         public AlbumFilterValues $variantForms,
+        public AlbumFilterValues $catchStates,
     ) {
     }
 
@@ -35,6 +36,7 @@ final class AlbumFilters
             'regionalForms' => [],
             'specialForms' => [],
             'variantForms' => [],
+            'catchStates' => [],
         ]);
 
         $resolver->setNormalizer('primaryTypes', function (Options $options, array $data): AlbumFilterValues {
@@ -58,6 +60,9 @@ final class AlbumFilters
         $resolver->setNormalizer('variantForms', function (Options $options, array $data): AlbumFilterValues {
             return new AlbumFilterValues($data);
         });
+        $resolver->setNormalizer('catchStates', function (Options $options, array $data): AlbumFilterValues {
+            return new AlbumFilterValues($data);
+        });
 
         $options = $resolver->resolve($data);
 
@@ -69,6 +74,7 @@ final class AlbumFilters
             $options['regionalForms'],
             $options['specialForms'],
             $options['variantForms'],
+            $options['catchStates'],
         );
     }
 }

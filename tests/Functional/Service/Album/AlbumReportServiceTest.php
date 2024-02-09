@@ -263,6 +263,35 @@ class AlbumReportServiceTest extends KernelTestCase
                 1,
                 4,
             ],
+            'catch_state' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'catchStates' => [
+                        'maybe',
+                    ],
+                ],
+                0,
+                3,
+                0,
+                0,
+                3,
+            ],
+            'catch_states' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'catchStates' => [
+                        'maybe',
+                        'maybenot',
+                    ],
+                ],
+                0,
+                3,
+                3,
+                0,
+                6,
+            ],
         ];
     }
 

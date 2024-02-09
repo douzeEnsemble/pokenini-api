@@ -12,6 +12,44 @@ trait FiltersTrait
 {
     protected function getFiltersQuery(AlbumFilters $filters): string
     {
+        return $this->getFiltersQueryTypes($filters)
+            . $this->getFiltersQueryForms($filters)
+            . $this->getFiltersQueryCatchStates($filters);
+    }
+
+    /**
+     * @return string[][]
+     */
+    protected function getFiltersParameters(AlbumFilters $filters): array
+    {
+        return array_merge(
+            $this->getFiltersParametersTypes($filters),
+            $this->getFiltersParametersForms($filters),
+            $this->getFiltersParametersCatchStates($filters),
+        );
+    }
+
+    /**
+     * @return int[]
+     */
+    protected function getFiltersTypes(): array
+    {
+        return [
+            'trainer_external_id' => ParameterType::STRING,
+            'dex_slug' => ParameterType::STRING,
+            'filter_primary_types' => ArrayParameterType::STRING,
+            'filter_secondary_types' => ArrayParameterType::STRING,
+            'filter_any_types' => ArrayParameterType::STRING,
+            'filter_category_forms' => ArrayParameterType::STRING,
+            'filter_regional_forms' => ArrayParameterType::STRING,
+            'filter_special_forms' => ArrayParameterType::STRING,
+            'filter_variant_forms' => ArrayParameterType::STRING,
+            'filter_catch_states' => ArrayParameterType::STRING,
+        ];
+    }
+
+    private function getFiltersQueryTypes(AlbumFilters $filters): string
+    {
         $query = '';
 
         if (!empty($filters->primaryTypes->values)) {
@@ -23,6 +61,34 @@ trait FiltersTrait
         if (!empty($filters->anyTypes->values)) {
             $query .= ' AND pt.slug IN(:filter_any_types) or st.slug IN(:filter_any_types)';
         }
+
+        return $query;
+    }
+
+    /**
+     * @return string[][]
+     */
+    private function getFiltersParametersTypes(AlbumFilters $filters): array
+    {
+        $parameters = [];
+
+        if (!empty($filters->primaryTypes->values)) {
+            $parameters['filter_primary_types'] = $filters->primaryTypes->extract();
+        }
+        if (!empty($filters->secondaryTypes->values)) {
+            $parameters['filter_secondary_types'] = $filters->secondaryTypes->extract();
+        }
+        if (!empty($filters->anyTypes->values)) {
+            $parameters['filter_any_types'] = $filters->anyTypes->extract();
+        }
+
+        return $parameters;
+    }
+
+    private function getFiltersQueryForms(AlbumFilters $filters): string
+    {
+        $query = '';
+
         if (!empty($filters->categoryForms->values)) {
             $query .= ' AND cf.slug IN(:filter_category_forms)';
         }
@@ -42,19 +108,10 @@ trait FiltersTrait
     /**
      * @return string[][]
      */
-    protected function getFiltersParameters(AlbumFilters $filters): array
+    private function getFiltersParametersForms(AlbumFilters $filters): array
     {
         $parameters = [];
 
-        if (!empty($filters->primaryTypes->values)) {
-            $parameters['filter_primary_types'] = $filters->primaryTypes->extract();
-        }
-        if (!empty($filters->secondaryTypes->values)) {
-            $parameters['filter_secondary_types'] = $filters->secondaryTypes->extract();
-        }
-        if (!empty($filters->anyTypes->values)) {
-            $parameters['filter_any_types'] = $filters->anyTypes->extract();
-        }
         if (!empty($filters->categoryForms->values)) {
             $parameters['filter_category_forms'] = $filters->categoryForms->extract();
         }
@@ -71,21 +128,28 @@ trait FiltersTrait
         return $parameters;
     }
 
-    /**
-     * @return int[]
-     */
-    protected function getFiltersTypes(): array
+    private function getFiltersQueryCatchStates(AlbumFilters $filters): string
     {
-        return [
-            'trainer_external_id' => ParameterType::STRING,
-            'dex_slug' => ParameterType::STRING,
-            'filter_primary_types' => ArrayParameterType::STRING,
-            'filter_secondary_types' => ArrayParameterType::STRING,
-            'filter_any_types' => ArrayParameterType::STRING,
-            'filter_category_forms' => ArrayParameterType::STRING,
-            'filter_regional_forms' => ArrayParameterType::STRING,
-            'filter_special_forms' => ArrayParameterType::STRING,
-            'filter_variant_forms' => ArrayParameterType::STRING,
-        ];
+        $query = '';
+
+        if (!empty($filters->catchStates->values)) {
+            $query .= ' AND cs.slug IN(:filter_catch_states)';
+        }
+
+        return $query;
+    }
+
+    /**
+     * @return string[][]
+     */
+    private function getFiltersParametersCatchStates(AlbumFilters $filters): array
+    {
+        $parameters = [];
+
+        if (!empty($filters->catchStates->values)) {
+            $parameters['filter_catch_states'] = $filters->catchStates->extract();
+        }
+
+        return $parameters;
     }
 }

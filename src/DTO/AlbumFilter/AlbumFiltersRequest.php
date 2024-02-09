@@ -21,6 +21,7 @@ final class AlbumFiltersRequest
             'regional_forms' => [],
             'special_forms' => [],
             'variant_forms' => [],
+            'catch_states' => [],
         ]);
 
         $options = $resolver->resolve($request->query->all());
@@ -33,6 +34,7 @@ final class AlbumFiltersRequest
             'regionalForms' => $options['regional_forms'],
             'specialForms' => $options['special_forms'],
             'variantForms' => $options['variant_forms'],
+            'catchStates' => $options['catch_states'],
         ]);
     }
 }
