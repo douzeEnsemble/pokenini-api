@@ -8,8 +8,6 @@ use App\DTO\AlbumFilter\AlbumFilters;
 use App\Entity\DexAvailability;
 use App\Repository\Trait\FiltersTrait;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\DBAL\ArrayParameterType;
-use Doctrine\DBAL\ParameterType;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -34,10 +32,11 @@ class DexAvailabilitiesRepository extends ServiceEntityRepository
     }
 
     public function getTotal(
+        string $trainerExternalId,
         string $dexSlug,
         AlbumFilters $filters,
     ): int {
-        $where = "td.slug = :dex_slug "
+        $where = "COALESCE(td.slug, d.slug) = :dex_slug "
             . $this->getFiltersQuery($filters);
 
         $sql = <<<SQL
@@ -45,8 +44,8 @@ class DexAvailabilitiesRepository extends ServiceEntityRepository
         FROM		dex_availability AS da
                 JOIN dex AS d
                     ON da.dex_id = d.id
-                JOIN trainer_dex AS td
-                    ON d.id = td.dex_id
+                LEFT JOIN trainer_dex AS td
+                    ON d.id = td.dex_id AND td.trainer_external_id = :trainer_id
                 JOIN pokemon AS p
                     ON da.pokemon_id = p.id
                 LEFT JOIN category_form AS cf
@@ -72,6 +71,7 @@ class DexAvailabilitiesRepository extends ServiceEntityRepository
         $dynamicParams = $this->getFiltersParameters($filters);
         $params = array_merge(
             [
+                'trainer_id' => $trainerExternalId,
                 'dex_slug' => $dexSlug,
             ],
             $dynamicParams,

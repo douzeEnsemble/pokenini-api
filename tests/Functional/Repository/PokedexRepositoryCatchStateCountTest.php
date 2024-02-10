@@ -108,6 +108,19 @@ class PokedexRepositoryCatchStateCountTest extends KernelTestCase
                     0,
                 ],
             ],
+            'primary_type_null' => [
+                [
+                    'primaryTypes' => [
+                        'null',
+                    ],
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    0,
+                ],
+            ],
             'secondary_type' => [
                 [
                     'secondaryTypes' => [
@@ -119,6 +132,19 @@ class PokedexRepositoryCatchStateCountTest extends KernelTestCase
                     0,
                     2,
                     0,
+                ],
+            ],
+            'secondary_type_null' => [
+                [
+                    'secondaryTypes' => [
+                        'null',
+                    ],
+                ],
+                [
+                    0,
+                    3,
+                    1,
+                    4,
                 ],
             ],
             'primary_and_secondary_types' => [
@@ -163,6 +189,19 @@ class PokedexRepositoryCatchStateCountTest extends KernelTestCase
                     1,
                 ],
             ],
+            'category_form_null' => [
+                [
+                    'categoryForms' => [
+                        'null',
+                    ],
+                ],
+                [
+                    7,
+                    3,
+                    3,
+                    6,
+                ],
+            ],
             'regional_form' => [
                 [
                     'regionalForms' => [
@@ -176,6 +215,19 @@ class PokedexRepositoryCatchStateCountTest extends KernelTestCase
                     0,
                 ],
             ],
+            'regional_form_null' => [
+                [
+                    'regionalForms' => [
+                        'null',
+                    ],
+                ],
+                [
+                    7,
+                    3,
+                    1,
+                    7,
+                ],
+            ],
             'special_form' => [
                 [
                     'specialForms' => [
@@ -187,6 +239,19 @@ class PokedexRepositoryCatchStateCountTest extends KernelTestCase
                     0,
                     0,
                     0,
+                ],
+            ],
+            'special_form_null' => [
+                [
+                    'specialForms' => [
+                        'null',
+                    ],
+                ],
+                [
+                    4,
+                    3,
+                    3,
+                    7,
                 ],
             ],
             'special_forms' => [
@@ -216,6 +281,19 @@ class PokedexRepositoryCatchStateCountTest extends KernelTestCase
                     1,
                 ],
             ],
+            'variant_form_null' => [
+                [
+                    'variantForms' => [
+                        'null',
+                    ],
+                ],
+                [
+                    7,
+                    1,
+                    3,
+                    6,
+                ],
+            ],
             'catch_state' => [
                 [
                     'catchStates' => [
@@ -225,6 +303,19 @@ class PokedexRepositoryCatchStateCountTest extends KernelTestCase
                 [
                     0,
                     3,
+                    0,
+                    0,
+                ],
+            ],
+            'catch_state_null' => [
+                [
+                    'catchStates' => [
+                        'null',
+                    ],
+                ],
+                [
+                    0,
+                    0,
                     0,
                     0,
                 ],

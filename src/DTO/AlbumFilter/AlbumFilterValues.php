@@ -10,7 +10,7 @@ final class AlbumFilterValues
     public array $values = [];
 
     /**
-     * @param string[] $values
+     * @param string[]|null[] $values
      */
     public function __construct(array $values)
     {
@@ -20,7 +20,7 @@ final class AlbumFilterValues
     }
 
     /**
-     * @return string[]
+     * @return string[]|null[]
      */
     public function extract(): array
     {
@@ -30,5 +30,18 @@ final class AlbumFilterValues
         }
 
         return $values;
+    }
+
+    public function hasNull(): bool
+    {
+        $hasNull = false;
+        $index = 0;
+        $count = count($this->values);
+
+        while (!$hasNull && $index < $count) {
+            $hasNull = is_null($this->values[$index++]->value);
+        }
+
+        return $hasNull;
     }
 }

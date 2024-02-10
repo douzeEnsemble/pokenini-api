@@ -61,4 +61,31 @@ class AlbumFiltersTest extends TestCase
         $this->assertCount(2, $filters->specialForms->values);
         $this->assertCount(1, $filters->variantForms->values);
     }
+
+    public function testNormalizer(): void
+    {
+        $filterValues = AlbumFilters::normalizer(['a', 'b', 'c']);
+
+        $this->assertInstanceOf(AlbumFilterValues::class, $filterValues);
+        $this->assertCount(3, $filterValues->values);
+        $this->assertFalse($filterValues->hasNull());
+    }
+
+    public function testNormalizerWithNullValue(): void
+    {
+        $filterValues = AlbumFilters::normalizer(['a', 'null', 'c']);
+
+        $this->assertInstanceOf(AlbumFilterValues::class, $filterValues);
+        $this->assertCount(3, $filterValues->values);
+        $this->assertTrue($filterValues->hasNull());
+    }
+
+    public function testNormalizerWithEmptyValue(): void
+    {
+        $filterValues = AlbumFilters::normalizer(['a', '', 'c']);
+
+        $this->assertInstanceOf(AlbumFilterValues::class, $filterValues);
+        $this->assertCount(2, $filterValues->values);
+        $this->assertFalse($filterValues->hasNull());
+    }
 }
