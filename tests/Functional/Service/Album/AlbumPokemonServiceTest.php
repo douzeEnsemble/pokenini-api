@@ -321,4 +321,62 @@ class AlbumPokemonServiceTest extends KernelTestCase
         $this->assertEquals('rattata-f', $pokemons[2]['pokemon_slug']);
         $this->assertEquals('raticate-f', $pokemons[3]['pokemon_slug']);
     }
+
+    /**
+     * @dataProvider providerListFilteredNull
+     */
+    public function testListFilteredNull(string $filter, int $expectedCount): void
+    {
+        /** @var AlbumPokemonService $service */
+        $service = static::getContainer()->get(AlbumPokemonService::class);
+
+        $pokemons = $service->get(
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'home',
+            AlbumFilters::createFromArray([
+                $filter => [
+                    'null',
+                ],
+            ]),
+        );
+
+        $this->assertCount($expectedCount, $pokemons);
+    }
+
+    /**
+     * @return string[][]|int[][]
+     */
+    public function providerListFilteredNull(): array
+    {
+        return [
+            'primary_types' => [
+                'primaryTypes',
+                1,
+            ],
+            'secondary_types' => [
+                'secondaryTypes',
+                9,
+            ],
+            'category_forms' => [
+                'categoryForms',
+                20,
+            ],
+            'regional_forms' => [
+                'regionalForms',
+                19,
+            ],
+            'special_forms' => [
+                'specialForms',
+                18,
+            ],
+            'variant_forms' => [
+                'variantForms',
+                18,
+            ],
+            'catch_states' => [
+                'catchStates',
+                1,
+            ],
+        ];
+    }
 }

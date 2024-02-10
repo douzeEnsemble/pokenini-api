@@ -147,6 +147,20 @@ class AlbumReportServiceTest extends KernelTestCase
                 0,
                 6,
             ],
+            'primary_type_null' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'primaryTypes' => [
+                        'null',
+                    ],
+                ],
+                0,
+                0,
+                0,
+                0,
+                1,
+            ],
             'secondary_type' => [
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
@@ -160,6 +174,20 @@ class AlbumReportServiceTest extends KernelTestCase
                 2,
                 0,
                 3,
+            ],
+            'secondary_type_null' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'secondaryTypes' => [
+                        'null',
+                    ],
+                ],
+                0,
+                3,
+                1,
+                4,
+                9,
             ],
             'primary_and_secondary_types' => [
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
@@ -192,6 +220,20 @@ class AlbumReportServiceTest extends KernelTestCase
                 2,
                 7,
             ],
+            'any_types_null' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'anyTypes' => [
+                        'null',
+                    ],
+                ],
+                0,
+                3,
+                1,
+                4,
+                9,
+            ],
             'category_form' => [
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
@@ -205,6 +247,20 @@ class AlbumReportServiceTest extends KernelTestCase
                 0,
                 1,
                 2,
+            ],
+            'category_form_null' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'categoryForms' => [
+                        'null',
+                    ],
+                ],
+                7,
+                3,
+                3,
+                6,
+                20,
             ],
             'regional_form' => [
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
@@ -220,6 +276,20 @@ class AlbumReportServiceTest extends KernelTestCase
                 0,
                 3,
             ],
+            'regional_form_null' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'regionalForms' => [
+                        'null',
+                    ],
+                ],
+                7,
+                3,
+                1,
+                7,
+                19,
+            ],
             'special_form' => [
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
@@ -233,6 +303,20 @@ class AlbumReportServiceTest extends KernelTestCase
                 0,
                 0,
                 2,
+            ],
+            'special_form_null' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'specialForms' => [
+                        'null',
+                    ],
+                ],
+                4,
+                3,
+                3,
+                7,
+                18,
             ],
             'special_forms' => [
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
@@ -263,6 +347,20 @@ class AlbumReportServiceTest extends KernelTestCase
                 1,
                 4,
             ],
+            'variant_form_null' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'variantForms' => [
+                        'null',
+                    ],
+                ],
+                7,
+                1,
+                3,
+                6,
+                18,
+            ],
             'catch_state' => [
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'home',
@@ -276,6 +374,20 @@ class AlbumReportServiceTest extends KernelTestCase
                 0,
                 0,
                 3,
+            ],
+            'catch_state_null' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'catchStates' => [
+                        'null',
+                    ],
+                ],
+                0,
+                0,
+                0,
+                0,
+                1,
             ],
             'catch_states' => [
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',

@@ -18,7 +18,7 @@ trait FiltersTrait
     }
 
     /**
-     * @return string[][]
+     * @return string[][]|null[][]
      */
     protected function getFiltersParameters(AlbumFilters $filters): array
     {
@@ -53,20 +53,32 @@ trait FiltersTrait
         $query = '';
 
         if (!empty($filters->primaryTypes->values)) {
-            $query .= ' AND pt.slug IN(:filter_primary_types)';
+            $query .= ' AND (pt.slug IN(:filter_primary_types)';
+            if ($filters->primaryTypes->hasNull()) {
+                $query .= ' OR pt.slug IS NULL';
+            }
+            $query .= ')';
         }
         if (!empty($filters->secondaryTypes->values)) {
-            $query .= ' AND st.slug IN(:filter_secondary_types)';
+            $query .= ' AND (st.slug IN(:filter_secondary_types)';
+            if ($filters->secondaryTypes->hasNull()) {
+                $query .= ' OR st.slug IS NULL';
+            }
+            $query .= ')';
         }
         if (!empty($filters->anyTypes->values)) {
-            $query .= ' AND pt.slug IN(:filter_any_types) or st.slug IN(:filter_any_types)';
+            $query .= ' AND (pt.slug IN(:filter_any_types) or st.slug IN(:filter_any_types)';
+            if ($filters->anyTypes->hasNull()) {
+                $query .= ' OR pt.slug IS NULL OR st.slug IS NULL';
+            }
+            $query .= ')';
         }
 
         return $query;
     }
 
     /**
-     * @return string[][]
+     * @return string[][]|null[][]
      */
     private function getFiltersParametersTypes(AlbumFilters $filters): array
     {
@@ -90,23 +102,39 @@ trait FiltersTrait
         $query = '';
 
         if (!empty($filters->categoryForms->values)) {
-            $query .= ' AND cf.slug IN(:filter_category_forms)';
+            $query .= ' AND (cf.slug IN(:filter_category_forms)';
+            if ($filters->categoryForms->hasNull()) {
+                $query .= ' OR cf.slug IS NULL';
+            }
+            $query .= ')';
         }
         if (!empty($filters->regionalForms->values)) {
-            $query .= ' AND rf.slug IN(:filter_regional_forms)';
+            $query .= ' AND (rf.slug IN(:filter_regional_forms)';
+            if ($filters->regionalForms->hasNull()) {
+                $query .= ' OR rf.slug IS NULL';
+            }
+            $query .= ')';
         }
         if (!empty($filters->specialForms->values)) {
-            $query .= ' AND sf.slug IN(:filter_special_forms)';
+            $query .= ' AND (sf.slug IN(:filter_special_forms)';
+            if ($filters->specialForms->hasNull()) {
+                $query .= ' OR sf.slug IS NULL';
+            }
+            $query .= ')';
         }
         if (!empty($filters->variantForms->values)) {
-            $query .= ' AND vf.slug IN(:filter_variant_forms)';
+            $query .= ' AND (vf.slug IN(:filter_variant_forms)';
+            if ($filters->variantForms->hasNull()) {
+                $query .= ' OR vf.slug IS NULL';
+            }
+            $query .= ')';
         }
 
         return $query;
     }
 
     /**
-     * @return string[][]
+     * @return string[][]|null[][]
      */
     private function getFiltersParametersForms(AlbumFilters $filters): array
     {
@@ -133,14 +161,18 @@ trait FiltersTrait
         $query = '';
 
         if (!empty($filters->catchStates->values)) {
-            $query .= ' AND cs.slug IN(:filter_catch_states)';
+            $query .= ' AND (cs.slug IN(:filter_catch_states)';
+            if ($filters->catchStates->hasNull()) {
+                $query .= ' OR cs.slug IS NULL';
+            }
+            $query .= ')';
         }
 
         return $query;
     }
 
     /**
-     * @return string[][]
+     * @return string[][]|null[][]
      */
     private function getFiltersParametersCatchStates(AlbumFilters $filters): array
     {

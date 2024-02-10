@@ -28,4 +28,39 @@ class AlbumFilterValuesTest extends TestCase
             $albumFilterValues->extract()
         );
     }
+
+    public function testHasNull(): void
+    {
+        $albumFilterValues = new AlbumFilterValues(['douze', null, 'treize']);
+
+        $this->assertTrue($albumFilterValues->hasNull());
+    }
+
+    public function testHasNullFirst(): void
+    {
+        $albumFilterValues = new AlbumFilterValues([null, 'douze']);
+
+        $this->assertTrue($albumFilterValues->hasNull());
+    }
+
+    public function testHasNullLast(): void
+    {
+        $albumFilterValues = new AlbumFilterValues(['douze', null]);
+
+        $this->assertTrue($albumFilterValues->hasNull());
+    }
+
+    public function testHasNullFalse(): void
+    {
+        $albumFilterValues = new AlbumFilterValues(['douze', 'treize']);
+
+        $this->assertFalse($albumFilterValues->hasNull());
+    }
+
+    public function testHasNullEmpty(): void
+    {
+        $albumFilterValues = new AlbumFilterValues([]);
+
+        $this->assertFalse($albumFilterValues->hasNull());
+    }
 }

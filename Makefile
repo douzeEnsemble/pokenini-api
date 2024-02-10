@@ -181,7 +181,7 @@ coverage: build/coverage/coverage-xml
 htmlcoverage: ## Execute PHPUnit Coverage in HTML
 	$(DOCKER_COMP) exec \
 		-e XDEBUG_MODE=coverage -T php \
-		php bin/phpunit --coverage-html=tests/coverage
+		php bin/phpunit --coverage-html=build/coverage/coverage-html
 
 infection: ## Execute Infection (Mutation testing)
 infection: build/coverage/coverage-xml 

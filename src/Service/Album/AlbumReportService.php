@@ -23,7 +23,11 @@ class AlbumReportService
         $totalCaught = 0;
         $detail = [];
 
-        $total = $this->dexAvailabilitiesRepository->getTotal($dexSlug, $albumFilters);
+        $total = $this->dexAvailabilitiesRepository->getTotal(
+            $trainerExternalId,
+            $dexSlug,
+            $albumFilters,
+        );
         $totalUncaught = $total;
 
         $catchStatesCounts = $this->pokedexRepository->getCatchStatesCounts(

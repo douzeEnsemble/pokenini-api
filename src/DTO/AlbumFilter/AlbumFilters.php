@@ -40,28 +40,28 @@ final class AlbumFilters
         ]);
 
         $resolver->setNormalizer('primaryTypes', function (Options $options, array $data): AlbumFilterValues {
-            return new AlbumFilterValues($data);
+            return self::normalizer($data);
         });
         $resolver->setNormalizer('secondaryTypes', function (Options $options, array $data): AlbumFilterValues {
-            return new AlbumFilterValues($data);
+            return self::normalizer($data);
         });
         $resolver->setNormalizer('anyTypes', function (Options $options, array $data): AlbumFilterValues {
-            return new AlbumFilterValues($data);
+            return self::normalizer($data);
         });
         $resolver->setNormalizer('categoryForms', function (Options $options, array $data): AlbumFilterValues {
-            return new AlbumFilterValues($data);
+            return self::normalizer($data);
         });
         $resolver->setNormalizer('regionalForms', function (Options $options, array $data): AlbumFilterValues {
-            return new AlbumFilterValues($data);
+            return self::normalizer($data);
         });
         $resolver->setNormalizer('specialForms', function (Options $options, array $data): AlbumFilterValues {
-            return new AlbumFilterValues($data);
+            return self::normalizer($data);
         });
         $resolver->setNormalizer('variantForms', function (Options $options, array $data): AlbumFilterValues {
-            return new AlbumFilterValues($data);
+            return self::normalizer($data);
         });
         $resolver->setNormalizer('catchStates', function (Options $options, array $data): AlbumFilterValues {
-            return new AlbumFilterValues($data);
+            return self::normalizer($data);
         });
 
         $options = $resolver->resolve($data);
@@ -76,5 +76,22 @@ final class AlbumFilters
             $options['variantForms'],
             $options['catchStates'],
         );
+    }
+
+    /**
+     * @param string[] $data
+     */
+    public static function normalizer(array $data): AlbumFilterValues
+    {
+        // Remove empty value
+        $cleanData = array_filter($data);
+
+        // Replace string null to null
+        $newData = array_map(
+            fn($value) => (('null' == $value) ? null : $value),
+            $cleanData
+        );
+
+        return new AlbumFilterValues($newData);
     }
 }

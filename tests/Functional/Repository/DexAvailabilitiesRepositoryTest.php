@@ -36,165 +36,234 @@ class DexAvailabilitiesRepositoryTest extends KernelTestCase
         /** @var DexAvailabilitiesRepository $repo */
         $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
 
-        $totalCount = $repo->getTotal('home', AlbumFilters::createFromArray([]));
+        $totalCount = $repo->getTotal(
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'home',
+            AlbumFilters::createFromArray([])
+        );
 
         $this->assertEquals(22, $totalCount);
     }
 
-    public function testGetTotalPrimaryTypeFilter(): void
+    public function testGetTotalDifferentTrainer(): void
     {
         /** @var DexAvailabilitiesRepository $repo */
         $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
 
         $totalCount = $repo->getTotal(
+            'bd307a3ec329e10a2cff8fb87480823da114f8f4',
             'home',
-            AlbumFilters::createFromArray([
-                'primaryTypes' => [
-                    'grass',
-                ],
-            ])
+            AlbumFilters::createFromArray([])
         );
 
-        $this->assertEquals(6, $totalCount);
+        $this->assertEquals(22, $totalCount);
     }
 
-    public function testGetTotalSecondaryTypeFilter(): void
+    /**
+     * @param string[][] $filters
+     *
+     * @dataProvider providerGetTotalFilters
+     */
+    public function testGetTotalFilters(array $filters, int $expectedTotalCount): void
     {
         /** @var DexAvailabilitiesRepository $repo */
         $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
 
         $totalCount = $repo->getTotal(
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
             'home',
-            AlbumFilters::createFromArray([
-                'secondaryTypes' => [
-                    'normal',
-                ],
-            ])
+            AlbumFilters::createFromArray($filters)
         );
 
-        $this->assertEquals(3, $totalCount);
+        $this->assertEquals($expectedTotalCount, $totalCount);
     }
 
-    public function testGetTotalPrimaryAndSecondaryTypeFilter(): void
+    /**
+     * @return string[][][][]|int[][]
+     *
+     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     */
+    public function providerGetTotalFilters(): array
     {
-        /** @var DexAvailabilitiesRepository $repo */
-        $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
-
-        $totalCount = $repo->getTotal(
-            'home',
-            AlbumFilters::createFromArray([
-                'primaryTypes' => [
-                    'bug',
+        return [
+            'primary_type' => [
+                'filters' => [
+                    'primaryTypes' => [
+                        'grass',
+                    ],
                 ],
-                'secondaryTypes' => [
-                    'flying',
+                'totalCount' => 6,
+            ],
+            'primary_type_null' => [
+                'filters' => [
+                    'primaryTypes' => [
+                        'null',
+                    ],
                 ],
-            ])
-        );
-
-        $this->assertEquals(3, $totalCount);
-    }
-
-    public function testGetTotalAnyTypeFilter(): void
-    {
-        /** @var DexAvailabilitiesRepository $repo */
-        $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
-
-        $totalCount = $repo->getTotal(
-            'home',
-            AlbumFilters::createFromArray([
-                'anyTypes' => [
-                    'normal',
+                'totalCount' => 1,
+            ],
+            'secondary_type' => [
+                'filters' => [
+                    'secondaryTypes' => [
+                        'normal',
+                    ],
                 ],
-            ])
-        );
-
-        $this->assertEquals(7, $totalCount);
-    }
-
-    public function testGetTotalCategoryFormFilter(): void
-    {
-        /** @var DexAvailabilitiesRepository $repo */
-        $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
-
-        $totalCount = $repo->getTotal(
-            'home',
-            AlbumFilters::createFromArray([
-                'categoryForms' => [
-                    'starter',
+                'totalCount' => 3,
+            ],
+            'secondary_type_null' => [
+                'filters' => [
+                    'secondaryTypes' => [
+                        'null',
+                    ],
                 ],
-            ])
-        );
-
-        $this->assertEquals(2, $totalCount);
-    }
-
-    public function testGetTotalRegionalFormFilter(): void
-    {
-        /** @var DexAvailabilitiesRepository $repo */
-        $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
-
-        $totalCount = $repo->getTotal(
-            'home',
-            AlbumFilters::createFromArray([
-                'regionalForms' => [
-                    'alolan',
+                'totalCount' => 9,
+            ],
+            'primary_and_secondary_types' => [
+                'filters' => [
+                    'primaryTypes' => [
+                        'bug',
+                    ],
+                    'secondaryTypes' => [
+                        'flying',
+                    ],
                 ],
-            ])
-        );
-
-        $this->assertEquals(3, $totalCount);
-    }
-
-    public function testGetTotalSpecialFormFilter(): void
-    {
-        /** @var DexAvailabilitiesRepository $repo */
-        $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
-
-        $totalCount = $repo->getTotal(
-            'home',
-            AlbumFilters::createFromArray([
-                'specialForms' => [
-                    'gigantamax',
+                'totalCount' => 3,
+            ],
+            'any_type' => [
+                'filters' => [
+                    'anyTypes' => [
+                        'normal',
+                    ],
                 ],
-            ])
-        );
-
-        $this->assertEquals(2, $totalCount);
-    }
-
-    public function testGetTotalSpecialsFormFilter(): void
-    {
-        /** @var DexAvailabilitiesRepository $repo */
-        $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
-
-        $totalCount = $repo->getTotal(
-            'home',
-            AlbumFilters::createFromArray([
-                'specialForms' => [
-                    'gigantamax',
-                    'mega',
+                'totalCount' => 7,
+            ],
+            'category_form' => [
+                'filters' => [
+                    'categoryForms' => [
+                        'starter',
+                    ],
                 ],
-            ])
-        );
-
-        $this->assertEquals(3, $totalCount);
-    }
-
-    public function testGetTotalVariantFormFilter(): void
-    {
-        /** @var DexAvailabilitiesRepository $repo */
-        $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
-
-        $totalCount = $repo->getTotal(
-            'home',
-            AlbumFilters::createFromArray([
-                'variantForms' => [
-                    'gender',
+                'totalCount' => 2,
+            ],
+            'category_form_null' => [
+                'filters' => [
+                    'categoryForms' => [
+                        'null',
+                    ],
                 ],
-            ])
-        );
-
-        $this->assertEquals(4, $totalCount);
+                'totalCount' => 20,
+            ],
+            'regional_form' => [
+                'filters' => [
+                    'regionalForms' => [
+                        'alolan',
+                    ],
+                ],
+                'totalCount' => 3,
+            ],
+            'regional_form_null' => [
+                'filters' => [
+                    'regionalForms' => [
+                        'null',
+                    ],
+                ],
+                'totalCount' => 19,
+            ],
+            'special_form' => [
+                'filters' => [
+                    'specialForms' => [
+                        'gigantamax',
+                    ],
+                ],
+                'totalCount' => 2,
+            ],
+            'special_form_null' => [
+                'filters' => [
+                    'specialForms' => [
+                        'null',
+                    ],
+                ],
+                'totalCount' => 18,
+            ],
+            'special_forms' => [
+                'filters' => [
+                    'specialForms' => [
+                        'gigantamax',
+                        'mega',
+                    ],
+                ],
+                'totalCount' => 3,
+            ],
+            'variant_form' => [
+                'filters' => [
+                    'variantForms' => [
+                        'gender',
+                    ],
+                ],
+                'totalCount' => 4,
+            ],
+            'variant_form_null' => [
+                'filters' => [
+                    'variantForms' => [
+                        'null',
+                    ],
+                ],
+                'totalCount' => 18,
+            ],
+            'catch_state' => [
+                'filters' => [
+                    'catchStates' => [
+                        'maybe',
+                    ],
+                ],
+                'totalCount' => 3,
+            ],
+            'catch_state_null' => [
+                'filters' => [
+                    'catchStates' => [
+                        'null',
+                    ],
+                ],
+                'totalCount' => 1,
+            ],
+            'catch_states' => [
+                'filters' => [
+                    'catchStates' => [
+                        'maybe',
+                        'maybenot',
+                    ],
+                ],
+                'totalCount' => 6,
+            ],
+            'empty' => [
+                'filters' => [
+                    'primaryTypes' => [
+                        '',
+                    ],
+                    'secondaryTypes' => [
+                        '',
+                    ],
+                    'anyTypes' => [
+                        '',
+                    ],
+                    'categoryForms' => [
+                        '',
+                    ],
+                    'regionalForms' => [
+                        '',
+                    ],
+                    'specialForms' => [
+                        '',
+                    ],
+                    'variantForms' => [
+                        '',
+                    ],
+                    'catchStates' => [
+                        '',
+                    ],
+                ],
+                'totalCount' => 22,
+            ],
+        ];
     }
 }

@@ -46,6 +46,29 @@ class AlbumIndexFilteredControllerTest extends AbstractTestControllerApi
         $this->assertReport($report, 6, 0, 0, 0, 6);
     }
 
+    public function testPrimaryTypeNullFilter(): void
+    {
+        $this->apiRequest(
+            'GET',
+            'album/7b52009b64fd0a2a49e6d8a939753077792b0554/home',
+            [
+                'primary_types' => [
+                    'null',
+                ],
+            ],
+        );
+        $this->assertResponseIsOK();
+        $content = $this->getResponseContent();
+        /** @var string[][]|string[][][]|int[][][] $data */
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertArrayHasKey('pokemons', $data);
+        /** @var string[][]|string[][][] $pokemons */
+        $pokemons = $data['pokemons'];
+
+        $this->assertCount(1, $pokemons);
+    }
+
     public function testSecondaryTypeFilter(): void
     {
         $this->apiRequest(
@@ -77,6 +100,30 @@ class AlbumIndexFilteredControllerTest extends AbstractTestControllerApi
         $report = $data['report'];
 
         $this->assertReport($report, 1, 0, 2, 0, 3);
+    }
+
+    public function testSecondaryTypeNullFilter(): void
+    {
+        $this->apiRequest(
+            'GET',
+            'album/7b52009b64fd0a2a49e6d8a939753077792b0554/home',
+            [
+                'secondary_types' => [
+                    'null',
+                ],
+            ],
+        );
+
+        $this->assertResponseIsOK();
+        $content = $this->getResponseContent();
+        /** @var string[][]|string[][][]|int[][][] $data */
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertArrayHasKey('pokemons', $data);
+        /** @var string[][]|string[][][] $pokemons */
+        $pokemons = $data['pokemons'];
+
+        $this->assertCount(9, $pokemons);
     }
 
     public function testPrimaryAndSecondaryTypeFilter(): void
@@ -184,6 +231,30 @@ class AlbumIndexFilteredControllerTest extends AbstractTestControllerApi
         $this->assertReport($report, 1, 0, 0, 1, 2);
     }
 
+    public function testCategoryFormNull(): void
+    {
+        $this->apiRequest(
+            'GET',
+            'album/7b52009b64fd0a2a49e6d8a939753077792b0554/home',
+            [
+                'category_forms' => [
+                    'null',
+                ],
+            ],
+        );
+
+        $this->assertResponseIsOK();
+        $content = $this->getResponseContent();
+        /** @var string[][]|string[][][]|int[][][] $data */
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertArrayHasKey('pokemons', $data);
+        /** @var string[][]|string[][][] $pokemons */
+        $pokemons = $data['pokemons'];
+
+        $this->assertCount(20, $pokemons);
+    }
+
     public function testRegionalForm(): void
     {
         $this->apiRequest(
@@ -217,6 +288,30 @@ class AlbumIndexFilteredControllerTest extends AbstractTestControllerApi
         $this->assertReport($report, 1, 0, 2, 0, 3);
     }
 
+    public function testRegionalFormNull(): void
+    {
+        $this->apiRequest(
+            'GET',
+            'album/7b52009b64fd0a2a49e6d8a939753077792b0554/home',
+            [
+                'regional_forms' => [
+                    'null',
+                ],
+            ],
+        );
+
+        $this->assertResponseIsOK();
+        $content = $this->getResponseContent();
+        /** @var string[][]|string[][][]|int[][][] $data */
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertArrayHasKey('pokemons', $data);
+        /** @var string[][]|string[][][] $pokemons */
+        $pokemons = $data['pokemons'];
+
+        $this->assertCount(19, $pokemons);
+    }
+
     public function testSpecialForm(): void
     {
         $this->apiRequest(
@@ -247,6 +342,30 @@ class AlbumIndexFilteredControllerTest extends AbstractTestControllerApi
         $report = $data['report'];
 
         $this->assertReport($report, 2, 0, 0, 0, 2);
+    }
+
+    public function testSpecialFormNull(): void
+    {
+        $this->apiRequest(
+            'GET',
+            'album/7b52009b64fd0a2a49e6d8a939753077792b0554/home',
+            [
+                'special_forms' => [
+                    'null',
+                ],
+            ],
+        );
+
+        $this->assertResponseIsOK();
+        $content = $this->getResponseContent();
+        /** @var string[][]|string[][][]|int[][][] $data */
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertArrayHasKey('pokemons', $data);
+        /** @var string[][]|string[][][] $pokemons */
+        $pokemons = $data['pokemons'];
+
+        $this->assertCount(18, $pokemons);
     }
 
     public function testSpecialsForm(): void
@@ -317,6 +436,30 @@ class AlbumIndexFilteredControllerTest extends AbstractTestControllerApi
         $this->assertReport($report, 1, 2, 0, 1, 4);
     }
 
+    public function testVariantFormNull(): void
+    {
+        $this->apiRequest(
+            'GET',
+            'album/7b52009b64fd0a2a49e6d8a939753077792b0554/home',
+            [
+                'variant_forms' => [
+                    '',
+                ],
+            ],
+        );
+
+        $this->assertResponseIsOK();
+        $content = $this->getResponseContent();
+        /** @var string[][]|string[][][]|int[][][] $data */
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertArrayHasKey('pokemons', $data);
+        /** @var string[][]|string[][][] $pokemons */
+        $pokemons = $data['pokemons'];
+
+        $this->assertCount(22, $pokemons);
+    }
+
     public function testCatchStateFilter(): void
     {
         $this->apiRequest(
@@ -348,6 +491,30 @@ class AlbumIndexFilteredControllerTest extends AbstractTestControllerApi
         $report = $data['report'];
 
         $this->assertReport($report, 0, 3, 0, 0, 3);
+    }
+
+    public function testCatchStateFilterNull(): void
+    {
+        $this->apiRequest(
+            'GET',
+            'album/7b52009b64fd0a2a49e6d8a939753077792b0554/home',
+            [
+                'catch_states' => [
+                    'null',
+                ],
+            ],
+        );
+
+        $this->assertResponseIsOK();
+        $content = $this->getResponseContent();
+        /** @var string[][]|string[][][]|int[][][] $data */
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertArrayHasKey('pokemons', $data);
+        /** @var string[][]|string[][][] $pokemons */
+        $pokemons = $data['pokemons'];
+
+        $this->assertCount(1, $pokemons);
     }
 
     public function testCatchStatesFilter(): void
@@ -385,5 +552,50 @@ class AlbumIndexFilteredControllerTest extends AbstractTestControllerApi
         $report = $data['report'];
 
         $this->assertReport($report, 0, 3, 3, 0, 6);
+    }
+
+    public function testEmptyFilters(): void
+    {
+        $this->apiRequest(
+            'GET',
+            'album/7b52009b64fd0a2a49e6d8a939753077792b0554/home',
+            [
+                'primary_types' => [
+                    '',
+                ],
+                'secondary_types' => [
+                    '',
+                ],
+                'any_types' => [
+                    '',
+                ],
+                'category_forms' => [
+                    '',
+                ],
+                'regional_forms' => [
+                    '',
+                ],
+                'special_forms' => [
+                    '',
+                ],
+                'variant_forms' => [
+                    '',
+                ],
+                'catch_states' => [
+                    '',
+                ],
+            ],
+        );
+
+        $this->assertResponseIsOK();
+        $content = $this->getResponseContent();
+        /** @var string[][]|string[][][]|int[][][] $data */
+        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+
+        $this->assertArrayHasKey('pokemons', $data);
+        /** @var string[][]|string[][][] $pokemons */
+        $pokemons = $data['pokemons'];
+
+        $this->assertCount(22, $pokemons);
     }
 }
