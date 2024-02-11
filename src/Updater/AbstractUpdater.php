@@ -9,6 +9,7 @@ use App\Exception\InvalidSheetDataException;
 use App\Service\SpreadsheetService;
 use Doctrine\ORM\EntityManagerInterface;
 use Google\Service\Exception as GoogleServiceException;
+use Psr\Log\LoggerInterface;
 
 abstract class AbstractUpdater implements UpdaterInterface
 {
@@ -24,6 +25,7 @@ abstract class AbstractUpdater implements UpdaterInterface
     public function __construct(
         protected readonly SpreadsheetService $spreadsheetService,
         protected readonly EntityManagerInterface $entityManager,
+        protected readonly LoggerInterface $logger,
         protected readonly string $spreadsheetId
     ) {
     }
@@ -79,6 +81,13 @@ abstract class AbstractUpdater implements UpdaterInterface
         sort($expectedHeader);
 
         if ($header !== $expectedHeader) {
+            $this->logger->error(
+                'This is not a valid data spreadsheet',
+                [
+                    'header' => $header,
+                    'expectedHeader' => $expectedHeader,
+                ]
+            );
             throw new InvalidSheetDataException('This is not a valid data spreadsheet');
         }
     }
@@ -91,6 +100,12 @@ abstract class AbstractUpdater implements UpdaterInterface
         $values = $this->getSheetValues("'{$this->sheetName}'!{$this->headerCellsRange}");
 
         if (empty($values)) {
+            $this->logger->error(
+                'Spreadsheet is empty',
+                [
+                    'spreadsheet' => "'{$this->sheetName}'!{$this->headerCellsRange}",
+                ]
+            );
             throw new InvalidSheetDataException('Spreadsheet is empty');
         }
 
@@ -127,6 +142,12 @@ abstract class AbstractUpdater implements UpdaterInterface
         $values = $this->getSheetValues("'{$this->sheetName}'!{$range}");
 
         if (empty($values)) {
+            $this->logger->error(
+                'There is not data in spreadsheet',
+                [
+                    'spreadsheet' => "'{$this->sheetName}'!{$range}",
+                ]
+            );
             throw new InvalidSheetDataException("There is not data in spreadsheet ('{$this->sheetName}'!{$range})");
         }
 
@@ -167,6 +188,12 @@ abstract class AbstractUpdater implements UpdaterInterface
 
             return $response->getValues();
         } catch (GoogleServiceException $e) {
+            $this->logger->error(
+                "Can't get data for range $range",
+                [
+                    'exception' => $e,
+                ]
+            );
             throw new InvalidSheetDataException("Can't get data for range $range");
         }
     }
