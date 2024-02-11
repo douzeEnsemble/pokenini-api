@@ -404,6 +404,34 @@ class AlbumReportServiceTest extends KernelTestCase
                 0,
                 6,
             ],
+            'orignal_game_bundles' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'originalGameBundles' => [
+                        'redgreenblueyellow',
+                    ],
+                ],
+                3,
+                1,
+                1,
+                6,
+                12,
+            ],
+            'orignal_game_bundles_null' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'originalGameBundles' => [
+                        'null',
+                    ],
+                ],
+                0,
+                0,
+                0,
+                0,
+                0,
+            ],
         ];
     }
 

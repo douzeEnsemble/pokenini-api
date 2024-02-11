@@ -27,6 +27,7 @@ class AlbumFiltersRequestTest extends TestCase
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->specialForms);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->variantForms);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->catchStates);
+        $this->assertInstanceOf(AlbumFilterValues::class, $filters->originalGameBundles);
 
         $this->assertEmpty($filters->primaryTypes->values);
         $this->assertEmpty($filters->secondaryTypes->values);
@@ -36,6 +37,7 @@ class AlbumFiltersRequestTest extends TestCase
         $this->assertEmpty($filters->specialForms->values);
         $this->assertEmpty($filters->variantForms->values);
         $this->assertEmpty($filters->catchStates->values);
+        $this->assertEmpty($filters->originalGameBundles->values);
     }
 
     public function testAlbumFiltersFromRequest(): void
@@ -49,6 +51,7 @@ class AlbumFiltersRequestTest extends TestCase
             'special_forms' => ['banana', 'orange'],
             'variant_forms' => ['gender'],
             'catch_states' => ['maybe', 'maybenot', 'yes'],
+            'original_game_bundles' => ['redgreenblueyellow', 'goldsilvercrystal'],
         ]);
 
         $filters = AlbumFiltersRequest::albumFiltersFromRequest($request);
@@ -62,6 +65,7 @@ class AlbumFiltersRequestTest extends TestCase
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->specialForms);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->variantForms);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->catchStates);
+        $this->assertInstanceOf(AlbumFilterValues::class, $filters->originalGameBundles);
 
         $this->assertCount(2, $filters->primaryTypes->values);
         $this->assertCount(2, $filters->secondaryTypes->values);
@@ -71,5 +75,6 @@ class AlbumFiltersRequestTest extends TestCase
         $this->assertCount(2, $filters->specialForms->values);
         $this->assertCount(1, $filters->variantForms->values);
         $this->assertCount(3, $filters->catchStates->values);
+        $this->assertCount(2, $filters->originalGameBundles->values);
     }
 }

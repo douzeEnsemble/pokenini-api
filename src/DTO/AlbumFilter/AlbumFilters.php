@@ -18,6 +18,7 @@ final class AlbumFilters
         public AlbumFilterValues $specialForms,
         public AlbumFilterValues $variantForms,
         public AlbumFilterValues $catchStates,
+        public AlbumFilterValues $originalGameBundles,
     ) {
     }
 
@@ -37,6 +38,7 @@ final class AlbumFilters
             'specialForms' => [],
             'variantForms' => [],
             'catchStates' => [],
+            'originalGameBundles' => [],
         ]);
 
         $resolver->setNormalizer('primaryTypes', function (Options $options, array $data): AlbumFilterValues {
@@ -63,6 +65,9 @@ final class AlbumFilters
         $resolver->setNormalizer('catchStates', function (Options $options, array $data): AlbumFilterValues {
             return self::normalizer($data);
         });
+        $resolver->setNormalizer('originalGameBundles', function (Options $options, array $data): AlbumFilterValues {
+            return self::normalizer($data);
+        });
 
         $options = $resolver->resolve($data);
 
@@ -75,6 +80,7 @@ final class AlbumFilters
             $options['specialForms'],
             $options['variantForms'],
             $options['catchStates'],
+            $options['originalGameBundles'],
         );
     }
 
