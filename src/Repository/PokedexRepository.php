@@ -97,6 +97,8 @@ class PokedexRepository extends ServiceEntityRepository
                             ON p.secondary_type_id = st.id
                         LEFT JOIN catch_state AS cs
                             ON pd.catch_state_id = cs.id
+                        LEFT JOIN game_bundle AS ogb
+                            ON p.original_game_bundle_id = ogb.id
                     WHERE   $where
                 ) AS t
                         ON cs.id = t.catch_state_id
@@ -260,7 +262,7 @@ class PokedexRepository extends ServiceEntityRepository
                 st.slug AS secondary_type_slug,
                 st.name AS secondary_type_name,
                 st.french_name AS secondary_type_french_name,
-                gb.slug AS original_game_bundle_slug,
+                ogb.slug AS original_game_bundle_slug,
                 CONCAT(
                     LPAD(CAST(COALESCE(rdn.dex_number, 999) AS varchar), 3, '0'),
                     '-',
@@ -301,8 +303,8 @@ class PokedexRepository extends ServiceEntityRepository
                     AND p.prime_name = rdn.pokemon_name
             LEFT JOIN pokemon AS pp
                 ON p.family_id = pp.id
-            LEFT JOIN game_bundle AS gb
-                ON p.original_game_bundle_id = gb.id
+            LEFT JOIN game_bundle AS ogb
+                ON p.original_game_bundle_id = ogb.id
         WHERE   $where
         ORDER BY pokemon_order_number
         SQL;

@@ -334,6 +334,32 @@ class PokedexRepositoryCatchStateCountTest extends KernelTestCase
                     0,
                 ],
             ],
+            'original_game_bundle' => [
+                [
+                    'originalGameBundles' => [
+                        'redgreenblueyellow',
+                    ],
+                ],
+                [
+                    3,
+                    1,
+                    1,
+                    6,
+                ],
+            ],
+            'original_game_bundle_null' => [
+                [
+                    'originalGameBundles' => [
+                        'null',
+                    ],
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    0,
+                ],
+            ],
         ];
     }
 }

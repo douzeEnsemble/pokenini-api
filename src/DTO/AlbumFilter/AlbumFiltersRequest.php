@@ -22,6 +22,7 @@ final class AlbumFiltersRequest
             'special_forms' => [],
             'variant_forms' => [],
             'catch_states' => [],
+            'original_game_bundles' => [],
         ]);
 
         $options = $resolver->resolve($request->query->all());
@@ -35,6 +36,7 @@ final class AlbumFiltersRequest
             'specialForms' => $options['special_forms'],
             'variantForms' => $options['variant_forms'],
             'catchStates' => $options['catch_states'],
+            'originalGameBundles' => $options['original_game_bundles'],
         ]);
     }
 }

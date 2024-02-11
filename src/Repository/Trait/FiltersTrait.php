@@ -14,7 +14,8 @@ trait FiltersTrait
     {
         return $this->getFiltersQueryTypes($filters)
             . $this->getFiltersQueryForms($filters)
-            . $this->getFiltersQueryCatchStates($filters);
+            . $this->getFiltersQueryCatchStates($filters)
+            . $this->getFiltersQueryGames($filters);
     }
 
     /**
@@ -26,6 +27,7 @@ trait FiltersTrait
             $this->getFiltersParametersTypes($filters),
             $this->getFiltersParametersForms($filters),
             $this->getFiltersParametersCatchStates($filters),
+            $this->getFiltersParametersGames($filters),
         );
     }
 
@@ -45,6 +47,7 @@ trait FiltersTrait
             'filter_special_forms' => ArrayParameterType::STRING,
             'filter_variant_forms' => ArrayParameterType::STRING,
             'filter_catch_states' => ArrayParameterType::STRING,
+            'filter_original_game_bundles' => ArrayParameterType::STRING,
         ];
     }
 
@@ -180,6 +183,35 @@ trait FiltersTrait
 
         if (!empty($filters->catchStates->values)) {
             $parameters['filter_catch_states'] = $filters->catchStates->extract();
+        }
+
+        return $parameters;
+    }
+
+    private function getFiltersQueryGames(AlbumFilters $filters): string
+    {
+        $query = '';
+
+        if (!empty($filters->originalGameBundles->values)) {
+            $query .= ' AND (ogb.slug IN(:filter_original_game_bundles)';
+            if ($filters->originalGameBundles->hasNull()) {
+                $query .= ' OR ogb.slug IS NULL';
+            }
+            $query .= ')';
+        }
+
+        return $query;
+    }
+
+    /**
+     * @return string[][]|null[][]
+     */
+    private function getFiltersParametersGames(AlbumFilters $filters): array
+    {
+        $parameters = [];
+
+        if (!empty($filters->originalGameBundles->values)) {
+            $parameters['filter_original_game_bundles'] = $filters->originalGameBundles->extract();
         }
 
         return $parameters;
