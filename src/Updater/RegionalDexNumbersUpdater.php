@@ -9,6 +9,7 @@ use App\Helper\A1Notation;
 use App\Repository\RegionsRepository;
 use App\Service\SpreadsheetService;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Uid\Uuid;
 
 class RegionalDexNumbersUpdater extends AbstractUpdater
@@ -33,12 +34,14 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
     public function __construct(
         SpreadsheetService $spreadsheetService,
         EntityManagerInterface $entityManager,
+        LoggerInterface $logger,
         string $spreadsheetId,
         protected readonly RegionsRepository $regionsRepository
     ) {
         parent::__construct(
             $spreadsheetService,
             $entityManager,
+            $logger,
             $spreadsheetId
         );
     }

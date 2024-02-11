@@ -9,6 +9,7 @@ use App\Helper\A1Notation;
 use App\Repository\GamesRepository;
 use App\Service\SpreadsheetService;
 use Doctrine\ORM\EntityManagerInterface;
+use Psr\Log\LoggerInterface;
 use Symfony\Component\Uid\Uuid;
 
 class GamesAvailabilitiesUpdater extends AbstractUpdater
@@ -33,12 +34,14 @@ class GamesAvailabilitiesUpdater extends AbstractUpdater
     public function __construct(
         SpreadsheetService $spreadsheetService,
         EntityManagerInterface $entityManager,
+        LoggerInterface $logger,
         string $spreadsheetId,
         protected readonly GamesRepository $gamesRepository
     ) {
         parent::__construct(
             $spreadsheetService,
             $entityManager,
+            $logger,
             $spreadsheetId
         );
     }
