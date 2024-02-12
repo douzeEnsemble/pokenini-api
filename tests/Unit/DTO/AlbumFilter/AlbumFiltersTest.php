@@ -22,6 +22,9 @@ class AlbumFiltersTest extends TestCase
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->regionalForms);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->specialForms);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->variantForms);
+        $this->assertInstanceOf(AlbumFilterValues::class, $filters->originalGameBundles);
+        $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleAvailabilities);
+        $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleShinyAvailabilities);
 
         $this->assertEmpty($filters->primaryTypes->values);
         $this->assertEmpty($filters->secondaryTypes->values);
@@ -30,6 +33,9 @@ class AlbumFiltersTest extends TestCase
         $this->assertEmpty($filters->regionalForms->values);
         $this->assertEmpty($filters->specialForms->values);
         $this->assertEmpty($filters->variantForms->values);
+        $this->assertEmpty($filters->originalGameBundles->values);
+        $this->assertEmpty($filters->gameBundleAvailabilities->values);
+        $this->assertEmpty($filters->gameBundleShinyAvailabilities->values);
     }
 
     public function testCreateFromArray(): void
@@ -42,6 +48,9 @@ class AlbumFiltersTest extends TestCase
             'regionalForms' => ['provence', 'sud', 'mer'],
             'specialForms' => ['banana', 'orange'],
             'variantForms' => ['gender'],
+            'originalGameBundles' => ['redgreenblueyellow'],
+            'gameBundleAvailabilities' => ['sunmoon'],
+            'gameBundleShinyAvailabilities' => ['ultrasunutramoon'],
         ]);
 
         $this->assertInstanceOf(AlbumFilters::class, $filters);
@@ -52,6 +61,9 @@ class AlbumFiltersTest extends TestCase
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->regionalForms);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->specialForms);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->variantForms);
+        $this->assertInstanceOf(AlbumFilterValues::class, $filters->originalGameBundles);
+        $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleAvailabilities);
+        $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleShinyAvailabilities);
 
         $this->assertCount(2, $filters->primaryTypes->values);
         $this->assertCount(2, $filters->secondaryTypes->values);
@@ -60,6 +72,9 @@ class AlbumFiltersTest extends TestCase
         $this->assertCount(3, $filters->regionalForms->values);
         $this->assertCount(2, $filters->specialForms->values);
         $this->assertCount(1, $filters->variantForms->values);
+        $this->assertCount(1, $filters->originalGameBundles->values);
+        $this->assertCount(1, $filters->gameBundleAvailabilities->values);
+        $this->assertCount(1, $filters->gameBundleShinyAvailabilities->values);
     }
 
     public function testNormalizer(): void

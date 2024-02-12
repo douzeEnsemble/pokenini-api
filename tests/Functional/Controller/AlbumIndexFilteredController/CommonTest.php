@@ -6,7 +6,7 @@ namespace App\Tests\Functional\Controller\AlbumIndexFilteredController;
 
 use App\Tests\Common\Traits\ReportTrait\AssertReportTrait;
 
-class CommonTest extends AbstractIndexFilteredControllerTest
+class CommonTest extends AbstractTestAlbumIndexFilteredController
 {
     use AssertReportTrait;
 
@@ -41,6 +41,12 @@ class CommonTest extends AbstractIndexFilteredControllerTest
                     '',
                 ],
                 'original_game_bundles' => [
+                    '',
+                ],
+                'game_bundle_availabilities' => [
+                    '',
+                ],
+                'game_bundle_shiny_availabilities' => [
                     '',
                 ],
             ],

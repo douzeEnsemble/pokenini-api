@@ -322,6 +322,99 @@ class AlbumPokemonServiceTest extends KernelTestCase
         $this->assertEquals('raticate-f', $pokemons[3]['pokemon_slug']);
     }
 
+    public function testListFilteredCatchStates(): void
+    {
+        /** @var AlbumPokemonService $service */
+        $service = static::getContainer()->get(AlbumPokemonService::class);
+
+        $pokemons = $service->get(
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'home',
+            AlbumFilters::createFromArray([
+                'catchStates' => [
+                    'maybe',
+                ],
+            ]),
+        );
+
+        $this->assertCount(3, $pokemons);
+        $this->assertEquals('caterpie', $pokemons[0]['pokemon_slug']);
+        $this->assertEquals('rattata-f', $pokemons[1]['pokemon_slug']);
+        $this->assertEquals('raticate-f', $pokemons[2]['pokemon_slug']);
+    }
+
+    public function testListFilteredOriginalGameBundle(): void
+    {
+        /** @var AlbumPokemonService $service */
+        $service = static::getContainer()->get(AlbumPokemonService::class);
+
+        $pokemons = $service->get(
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'home',
+            AlbumFilters::createFromArray([
+                'originalGameBundles' => [
+                    'redgreenblueyellow',
+                ],
+            ]),
+        );
+
+        $this->assertCount(12, $pokemons);
+        $this->assertEquals('bulbasaur', $pokemons[0]['pokemon_slug']);
+        $this->assertEquals('ivysaur', $pokemons[1]['pokemon_slug']);
+        $this->assertEquals('venusaur', $pokemons[2]['pokemon_slug']);
+        $this->assertEquals('charmander', $pokemons[3]['pokemon_slug']);
+        $this->assertEquals('charmeleon', $pokemons[4]['pokemon_slug']);
+        $this->assertEquals('charizard', $pokemons[5]['pokemon_slug']);
+        $this->assertEquals('caterpie', $pokemons[6]['pokemon_slug']);
+        $this->assertEquals('metapod', $pokemons[7]['pokemon_slug']);
+        $this->assertEquals('butterfree', $pokemons[8]['pokemon_slug']);
+        $this->assertEquals('rattata', $pokemons[9]['pokemon_slug']);
+        $this->assertEquals('raticate', $pokemons[10]['pokemon_slug']);
+        $this->assertEquals('douze', $pokemons[11]['pokemon_slug']);
+    }
+
+    public function testListFilteredGameBundleAvailabilities(): void
+    {
+        /** @var AlbumPokemonService $service */
+        $service = static::getContainer()->get(AlbumPokemonService::class);
+
+        $pokemons = $service->get(
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'home',
+            AlbumFilters::createFromArray([
+                'gameBundleAvailabilities' => [
+                    'ultrasunultramoon',
+                ],
+            ]),
+        );
+
+        $this->assertCount(2, $pokemons);
+        $this->assertEquals('rattata-alola', $pokemons[0]['pokemon_slug']);
+        $this->assertEquals('raticate-alola', $pokemons[1]['pokemon_slug']);
+    }
+
+    public function testListFilteredGameBundleShinyAvailabilities(): void
+    {
+        /** @var AlbumPokemonService $service */
+        $service = static::getContainer()->get(AlbumPokemonService::class);
+
+        $pokemons = $service->get(
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'home',
+            AlbumFilters::createFromArray([
+                'gameBundleShinyAvailabilities' => [
+                    'ultrasunultramoon',
+                ],
+            ]),
+        );
+
+        $this->assertCount(4, $pokemons);
+        $this->assertEquals('rattata-f', $pokemons[0]['pokemon_slug']);
+        $this->assertEquals('rattata-alola', $pokemons[1]['pokemon_slug']);
+        $this->assertEquals('raticate', $pokemons[2]['pokemon_slug']);
+        $this->assertEquals('raticate-f', $pokemons[3]['pokemon_slug']);
+    }
+
     /**
      * @dataProvider providerListFilteredNull
      */
@@ -376,6 +469,18 @@ class AlbumPokemonServiceTest extends KernelTestCase
             'catch_states' => [
                 'catchStates',
                 1,
+            ],
+            'original_game_bundles' => [
+                'originalGameBundles',
+                0,
+            ],
+            'game_bundle_availabilities' => [
+                'gameBundleAvailabilities',
+                0,
+            ],
+            'game_bundle_shiny_availabilities' => [
+                'gameBundleShinyAvailabilities',
+                0,
             ],
         ];
     }

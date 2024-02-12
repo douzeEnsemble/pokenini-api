@@ -6,6 +6,6 @@ namespace App\Tests\Functional\Controller\AlbumIndexFilteredController;
 
 use App\Tests\Functional\Controller\AbstractTestControllerApi;
 
-abstract class AbstractIndexFilteredControllerTest extends AbstractTestControllerApi
+abstract class AbstractTestAlbumIndexFilteredController extends AbstractTestControllerApi
 {
 }

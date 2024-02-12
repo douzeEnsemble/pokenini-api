@@ -48,6 +48,8 @@ trait FiltersTrait
             'filter_variant_forms' => ArrayParameterType::STRING,
             'filter_catch_states' => ArrayParameterType::STRING,
             'filter_original_game_bundles' => ArrayParameterType::STRING,
+            'filter_game_bundle_availabilities' => ArrayParameterType::STRING,
+            'filter_game_bundle_shiny_availabilities' => ArrayParameterType::STRING,
         ];
     }
 
@@ -199,6 +201,28 @@ trait FiltersTrait
             }
             $query .= ')';
         }
+        if (!empty($filters->gameBundleAvailabilities->values)) {
+            $query .= <<<SUBSQL
+            AND p.id IN (SELECT  gba.pokemon_id
+                        FROM    game_bundle_availability AS gba
+                            LEFT JOIN game_bundle AS gb
+                                ON gba.bundle_id = gb.id
+                        WHERE   gba.is_available = TRUE
+                                AND gb.slug IN(:filter_game_bundle_availabilities)
+                    )
+            SUBSQL;
+        }
+        if (!empty($filters->gameBundleShinyAvailabilities->values)) {
+            $query .= <<<SUBSQL
+            AND p.id IN (SELECT  gbsa.pokemon_id
+                        FROM    game_bundle_shiny_availability AS gbsa
+                            LEFT JOIN game_bundle AS gb
+                                ON gbsa.bundle_id = gb.id
+                        WHERE   gbsa.is_available = TRUE
+                                AND gb.slug IN(:filter_game_bundle_shiny_availabilities)
+                    )
+            SUBSQL;
+        }
 
         return $query;
     }
@@ -212,6 +236,12 @@ trait FiltersTrait
 
         if (!empty($filters->originalGameBundles->values)) {
             $parameters['filter_original_game_bundles'] = $filters->originalGameBundles->extract();
+        }
+        if (!empty($filters->gameBundleAvailabilities->values)) {
+            $parameters['filter_game_bundle_availabilities'] = $filters->gameBundleAvailabilities->extract();
+        }
+        if (!empty($filters->gameBundleShinyAvailabilities->values)) {
+            $parameters['filter_game_bundle_shiny_availabilities'] = $filters->gameBundleShinyAvailabilities->extract();
         }
 
         return $parameters;

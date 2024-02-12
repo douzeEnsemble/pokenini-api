@@ -328,4 +328,109 @@ class PokedexRepositoryListTest extends KernelTestCase
         $this->assertEquals('rattata-f', $pokedex[2]['pokemon_slug']);
         $this->assertEquals('raticate-f', $pokedex[3]['pokemon_slug']);
     }
+
+    public function testGetListQueryCatchStates(): void
+    {
+        /** @var PokedexRepository $repo */
+        $repo = static::getContainer()->get(PokedexRepository::class);
+
+        $pokedexIterator = $repo->getListQuery(
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'home',
+            AlbumFilters::createFromArray([
+                'catchStates' => [
+                    'maybe',
+                ],
+            ])
+        );
+
+        /** @var string[][] $pokedex */
+        $pokedex = iterator_to_array($pokedexIterator);
+
+        $this->assertCount(3, $pokedex);
+        $this->assertEquals('caterpie', $pokedex[0]['pokemon_slug']);
+        $this->assertEquals('rattata-f', $pokedex[1]['pokemon_slug']);
+        $this->assertEquals('raticate-f', $pokedex[2]['pokemon_slug']);
+    }
+
+    public function testGetListQueryOriginalGameBundle(): void
+    {
+        /** @var PokedexRepository $repo */
+        $repo = static::getContainer()->get(PokedexRepository::class);
+
+        $pokedexIterator = $repo->getListQuery(
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'home',
+            AlbumFilters::createFromArray([
+                'originalGameBundles' => [
+                    'redgreenblueyellow',
+                ],
+            ])
+        );
+
+        /** @var string[][] $pokedex */
+        $pokedex = iterator_to_array($pokedexIterator);
+
+        $this->assertCount(12, $pokedex);
+        $this->assertEquals('bulbasaur', $pokedex[0]['pokemon_slug']);
+        $this->assertEquals('ivysaur', $pokedex[1]['pokemon_slug']);
+        $this->assertEquals('venusaur', $pokedex[2]['pokemon_slug']);
+        $this->assertEquals('charmander', $pokedex[3]['pokemon_slug']);
+        $this->assertEquals('charmeleon', $pokedex[4]['pokemon_slug']);
+        $this->assertEquals('charizard', $pokedex[5]['pokemon_slug']);
+        $this->assertEquals('caterpie', $pokedex[6]['pokemon_slug']);
+        $this->assertEquals('metapod', $pokedex[7]['pokemon_slug']);
+        $this->assertEquals('butterfree', $pokedex[8]['pokemon_slug']);
+        $this->assertEquals('rattata', $pokedex[9]['pokemon_slug']);
+        $this->assertEquals('raticate', $pokedex[10]['pokemon_slug']);
+        $this->assertEquals('douze', $pokedex[11]['pokemon_slug']);
+    }
+
+    public function testGetListQueryGameBundleAvailabilities(): void
+    {
+        /** @var PokedexRepository $repo */
+        $repo = static::getContainer()->get(PokedexRepository::class);
+
+        $pokedexIterator = $repo->getListQuery(
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'home',
+            AlbumFilters::createFromArray([
+                'gameBundleAvailabilities' => [
+                    'ultrasunultramoon',
+                ],
+            ])
+        );
+
+        /** @var string[][] $pokedex */
+        $pokedex = iterator_to_array($pokedexIterator);
+
+        $this->assertCount(2, $pokedex);
+        $this->assertEquals('rattata-alola', $pokedex[0]['pokemon_slug']);
+        $this->assertEquals('raticate-alola', $pokedex[1]['pokemon_slug']);
+    }
+
+    public function testGetListQueryGameBundleShinyAvailabilities(): void
+    {
+        /** @var PokedexRepository $repo */
+        $repo = static::getContainer()->get(PokedexRepository::class);
+
+        $pokedexIterator = $repo->getListQuery(
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'home',
+            AlbumFilters::createFromArray([
+                'gameBundleShinyAvailabilities' => [
+                    'ultrasunultramoon',
+                ],
+            ])
+        );
+
+        /** @var string[][] $pokedex */
+        $pokedex = iterator_to_array($pokedexIterator);
+
+        $this->assertCount(4, $pokedex);
+        $this->assertEquals('rattata-f', $pokedex[0]['pokemon_slug']);
+        $this->assertEquals('rattata-alola', $pokedex[1]['pokemon_slug']);
+        $this->assertEquals('raticate', $pokedex[2]['pokemon_slug']);
+        $this->assertEquals('raticate-f', $pokedex[3]['pokemon_slug']);
+    }
 }

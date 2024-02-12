@@ -31,7 +31,7 @@ class CalculateGameBundlesShiniesAvailabilitiesHandlerTest extends KernelTestCas
         $transport = $this->transport('async');
         $transport->throwExceptions();
 
-        $this->assertEquals(20, $this->getTableCount('game_bundle_shiny_availability'));
+        $this->assertEquals(32, $this->getTableCount('game_bundle_shiny_availability'));
 
         $beforeTotalCount = $this->getActionLogCount();
         $beforeToProcessCount = $this->getActionLogToProcessCount();

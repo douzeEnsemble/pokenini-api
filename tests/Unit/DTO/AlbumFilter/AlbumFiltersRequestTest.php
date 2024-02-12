@@ -28,6 +28,8 @@ class AlbumFiltersRequestTest extends TestCase
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->variantForms);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->catchStates);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->originalGameBundles);
+        $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleAvailabilities);
+        $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleShinyAvailabilities);
 
         $this->assertEmpty($filters->primaryTypes->values);
         $this->assertEmpty($filters->secondaryTypes->values);
@@ -38,6 +40,8 @@ class AlbumFiltersRequestTest extends TestCase
         $this->assertEmpty($filters->variantForms->values);
         $this->assertEmpty($filters->catchStates->values);
         $this->assertEmpty($filters->originalGameBundles->values);
+        $this->assertEmpty($filters->gameBundleAvailabilities->values);
+        $this->assertEmpty($filters->gameBundleShinyAvailabilities->values);
     }
 
     public function testAlbumFiltersFromRequest(): void
@@ -52,6 +56,8 @@ class AlbumFiltersRequestTest extends TestCase
             'variant_forms' => ['gender'],
             'catch_states' => ['maybe', 'maybenot', 'yes'],
             'original_game_bundles' => ['redgreenblueyellow', 'goldsilvercrystal'],
+            'game_bundle_availabilities' => ['goldsilvercrystal'],
+            'game_bundle_shiny_availabilities' => ['goldsilvercrystal'],
         ]);
 
         $filters = AlbumFiltersRequest::albumFiltersFromRequest($request);
@@ -66,6 +72,8 @@ class AlbumFiltersRequestTest extends TestCase
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->variantForms);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->catchStates);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->originalGameBundles);
+        $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleAvailabilities);
+        $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleShinyAvailabilities);
 
         $this->assertCount(2, $filters->primaryTypes->values);
         $this->assertCount(2, $filters->secondaryTypes->values);
@@ -76,5 +84,7 @@ class AlbumFiltersRequestTest extends TestCase
         $this->assertCount(1, $filters->variantForms->values);
         $this->assertCount(3, $filters->catchStates->values);
         $this->assertCount(2, $filters->originalGameBundles->values);
+        $this->assertCount(1, $filters->gameBundleAvailabilities->values);
+        $this->assertCount(1, $filters->gameBundleShinyAvailabilities->values);
     }
 }

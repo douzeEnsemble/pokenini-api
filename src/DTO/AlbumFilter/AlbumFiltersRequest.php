@@ -23,6 +23,8 @@ final class AlbumFiltersRequest
             'variant_forms' => [],
             'catch_states' => [],
             'original_game_bundles' => [],
+            'game_bundle_availabilities' => [],
+            'game_bundle_shiny_availabilities' => [],
         ]);
 
         $options = $resolver->resolve($request->query->all());
@@ -37,6 +39,8 @@ final class AlbumFiltersRequest
             'variantForms' => $options['variant_forms'],
             'catchStates' => $options['catch_states'],
             'originalGameBundles' => $options['original_game_bundles'],
+            'gameBundleAvailabilities' => $options['game_bundle_availabilities'],
+            'gameBundleShinyAvailabilities' => $options['game_bundle_shiny_availabilities'],
         ]);
     }
 }
