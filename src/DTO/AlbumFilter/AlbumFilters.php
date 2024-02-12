@@ -9,6 +9,9 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class AlbumFilters
 {
+    /**
+     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+     */
     private function __construct(
         public AlbumFilterValues $primaryTypes,
         public AlbumFilterValues $secondaryTypes,
@@ -19,6 +22,8 @@ final class AlbumFilters
         public AlbumFilterValues $variantForms,
         public AlbumFilterValues $catchStates,
         public AlbumFilterValues $originalGameBundles,
+        public AlbumFilterValues $gameBundleAvailabilities,
+        public AlbumFilterValues $gameBundleShinyAvailabilities,
     ) {
     }
 
@@ -29,7 +34,7 @@ final class AlbumFilters
     {
         $resolver = new OptionsResolver();
 
-        $resolver->setDefaults([
+        $defaultsValues = [
             'primaryTypes' => [],
             'secondaryTypes' => [],
             'anyTypes' => [],
@@ -39,35 +44,20 @@ final class AlbumFilters
             'variantForms' => [],
             'catchStates' => [],
             'originalGameBundles' => [],
-        ]);
+            'gameBundleAvailabilities' => [],
+            'gameBundleShinyAvailabilities' => [],
+        ];
 
-        $resolver->setNormalizer('primaryTypes', function (Options $options, array $data): AlbumFilterValues {
-            return self::normalizer($data);
-        });
-        $resolver->setNormalizer('secondaryTypes', function (Options $options, array $data): AlbumFilterValues {
-            return self::normalizer($data);
-        });
-        $resolver->setNormalizer('anyTypes', function (Options $options, array $data): AlbumFilterValues {
-            return self::normalizer($data);
-        });
-        $resolver->setNormalizer('categoryForms', function (Options $options, array $data): AlbumFilterValues {
-            return self::normalizer($data);
-        });
-        $resolver->setNormalizer('regionalForms', function (Options $options, array $data): AlbumFilterValues {
-            return self::normalizer($data);
-        });
-        $resolver->setNormalizer('specialForms', function (Options $options, array $data): AlbumFilterValues {
-            return self::normalizer($data);
-        });
-        $resolver->setNormalizer('variantForms', function (Options $options, array $data): AlbumFilterValues {
-            return self::normalizer($data);
-        });
-        $resolver->setNormalizer('catchStates', function (Options $options, array $data): AlbumFilterValues {
-            return self::normalizer($data);
-        });
-        $resolver->setNormalizer('originalGameBundles', function (Options $options, array $data): AlbumFilterValues {
-            return self::normalizer($data);
-        });
+        $resolver->setDefaults($defaultsValues);
+
+        foreach (array_keys($defaultsValues) as $key) {
+            $resolver->setNormalizer(
+                $key,
+                function (Options $options, array $data): AlbumFilterValues {
+                    return self::normalizer($data);
+                }
+            );
+        }
 
         $options = $resolver->resolve($data);
 
@@ -81,6 +71,8 @@ final class AlbumFilters
             $options['variantForms'],
             $options['catchStates'],
             $options['originalGameBundles'],
+            $options['gameBundleAvailabilities'],
+            $options['gameBundleShinyAvailabilities'],
         );
     }
 

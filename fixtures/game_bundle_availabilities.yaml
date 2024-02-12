@@ -97,3 +97,57 @@ App\Entity\GameBundleAvailability:
         pokemon: '@pokemon_deoxys_speed'
         bundle: '@game_bundle_gold_silver_crystal'
         isAvailable: true
+    
+    gamebundleavailabitity_rattata_red_green_blue_yellow:
+        pokemon: '@pokemon_deoxys_speed'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: true
+    gamebundleavailabitity_rattata_game_bundle_ultra_sun_ultra_moon:
+        pokemon: '@pokemon_rattata'
+        bundle: '@game_bundle_ultra_sun_ultra_moon'
+        isAvailable: false
+    
+    gamebundleavailabitity_rattataf_red_green_blue_yellow:
+        pokemon: '@pokemon_rattata_f'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: false
+    gamebundleavailabitity_rattataf_game_bundle_ultra_sun_ultra_moon:
+        pokemon: '@pokemon_rattata_f'
+        bundle: '@game_bundle_ultra_sun_ultra_moon'
+        isAvailable: false
+
+    gamebundleavailabitity_rattataalola_red_green_blue_yellow:
+        pokemon: '@pokemon_rattata_alola'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: false
+    gamebundleavailabitity_rattataalola_game_bundle_ultra_sun_ultra_moon:
+        pokemon: '@pokemon_rattata_alola'
+        bundle: '@game_bundle_ultra_sun_ultra_moon'
+        isAvailable: true
+
+    gamebundleavailabitity_raticate_red_green_blue_yellow:
+        pokemon: '@pokemon_deoxys_speed'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: true
+    gamebundleavailabitity_raticate_game_bundle_ultra_sun_ultra_moon:
+        pokemon: '@pokemon_raticate'
+        bundle: '@game_bundle_ultra_sun_ultra_moon'
+        isAvailable: false
+    
+    gamebundleavailabitity_raticatef_red_green_blue_yellow:
+        pokemon: '@pokemon_raticate_f'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: false
+    gamebundleavailabitity_raticatef_game_bundle_ultra_sun_ultra_moon:
+        pokemon: '@pokemon_raticate_f'
+        bundle: '@game_bundle_ultra_sun_ultra_moon'
+        isAvailable: false
+
+    gamebundleavailabitity_raticatealola_red_green_blue_yellow:
+        pokemon: '@pokemon_raticate_alola'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: false
+    gamebundleavailabitity_raticatealola_game_bundle_ultra_sun_ultra_moon:
+        pokemon: '@pokemon_raticate_alola'
+        bundle: '@game_bundle_ultra_sun_ultra_moon'
+        isAvailable: true

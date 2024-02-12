@@ -6,7 +6,7 @@ namespace App\Tests\Functional\Controller\AlbumIndexFilteredController;
 
 use App\Tests\Common\Traits\ReportTrait\AssertReportTrait;
 
-class TypesTest extends AbstractIndexFilteredControllerTest
+class TypesTest extends AbstractTestAlbumIndexFilteredController
 {
     use AssertReportTrait;
 
