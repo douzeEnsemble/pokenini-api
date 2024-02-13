@@ -89,29 +89,4 @@ class GameBundlesShiniesAvailabilitiesRepository extends ServiceEntityRepository
 
         return new GameBundlesShiniesAvailabilities($list);
     }
-
-    /**
-     * @return string[]
-     */
-    public function getFromPokemonSlug(string $slug): array
-    {
-        $sql = <<<SQL
-        SELECT  gb.slug AS game_bundle_slug
-        FROM    game_bundle_shiny_availability AS gbsa
-            JOIN pokemon AS p
-                ON gbsa.pokemon_id = p.id AND p.slug = :pokemon_slug
-            JOIN game_bundle AS gb
-                ON gbsa.bundle_id = gb.id
-        WHERE   gbsa.is_available = true
-        ORDER BY gb.order_number
-        SQL;
-
-        /** @var string[] */
-        return $this->getEntityManager()->getConnection()->fetchFirstColumn(
-            $sql,
-            [
-                'pokemon_slug' => $slug,
-            ]
-        );
-    }
 }

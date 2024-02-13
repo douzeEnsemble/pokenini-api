@@ -111,21 +111,6 @@ class GameBundlesShiniesAvailabilitiesRepositoryTest extends KernelTestCase
         $this->assertFalse($listMegaVenusaur->goldsilvercrystal);
     }
 
-    public function testGetFromPokemonSlug(): void
-    {
-        $listDouze = $this->gameBundleShinyAvailabilityRepo->getFromPokemonSlug('douze');
-        $this->assertNotContains('redgreenblueyellow', $listDouze);
-        $this->assertNotContains('goldsilvercrystal', $listDouze);
-
-        $listBulbasaur = $this->gameBundleShinyAvailabilityRepo->getFromPokemonSlug('bulbasaur');
-        $this->assertContains('redgreenblueyellow', $listBulbasaur);
-        $this->assertContains('goldsilvercrystal', $listBulbasaur);
-
-        $listMegaVenusaur = $this->gameBundleShinyAvailabilityRepo->getFromPokemonSlug('venusaur-mega');
-        $this->assertNotContains('redgreenblueyellow', $listMegaVenusaur);
-        $this->assertNotContains('goldsilvercrystal', $listMegaVenusaur);
-    }
-
     private function assertIsAvailable(string $bundleName, string $pokemonName): void
     {
         $gameBundleShinyAvailability = $this->getGameBundleShinyAvailability($bundleName, $pokemonName);
