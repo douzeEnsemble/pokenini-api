@@ -19,3 +19,5 @@ calculate:
   game_bundles_availabilities: "bundles' availabilities"
   game_bundles_shinies_availabilities: "bundles' shinies' availabilities"
   dex_availabilities: "dex' availabilities"
+  pokemon_availabilities_game_bundle: "pokemons' availabilities for Game Bundles"
+  pokemon_availabilities_game_bundle_shiny: "pokemons' availabilities for Game Bundles Shiny"

@@ -1,0 +1,14 @@
+App\Entity\PokemonAvailabilities:
+    douze_game_bundles:
+        pokemon: '@pokemon_douze'
+        category: 'game_bundle'
+        items: 
+            - 'un'
+            - 'dos'
+            - 'tres'
+    douze_game_bundles_shiny:
+        pokemon: '@pokemon_douze'
+        category: 'game_bundle_shiny'
+        items: 
+            - 'un'
+            - 'dos'
