@@ -9,6 +9,7 @@ use App\Repository\GameBundlesAvailabilitiesRepository;
 class GameBundlesAvailabilitiesCalculator extends AbstractCalculator
 {
     protected string $statisticName = 'game_bundles_availabilities';
+
     public function __construct(
         private readonly GameBundlesAvailabilitiesRepository $repository,
     ) {
