@@ -25,8 +25,8 @@ class CalculatePokemonAvailabilitiesCommandTest extends AbstractTestCaseCommand
 
         $this->assertEquals(0, $this->getPokemonNotDeletedCount());
 
-        $this->assertEquals(1, $this->getPokemonAvailabilitiesCount('game_bundle'));
-        $this->assertEquals(1, $this->getPokemonAvailabilitiesCount('game_bundle_shiny'));
+        $this->assertEquals(26, $this->getPokemonAvailabilitiesCount('game_bundle'));
+        $this->assertEquals(26, $this->getPokemonAvailabilitiesCount('game_bundle_shiny'));
 
         $initialToProcessCount = $this->getActionLogToProcessCount();
         $initialDoneCount = $this->getActionLogDoneCount();
@@ -52,8 +52,8 @@ class CalculatePokemonAvailabilitiesCommandTest extends AbstractTestCaseCommand
 
     public function testPokemonAvailabilities(): void
     {
-        $this->assertEquals(1, $this->getPokemonAvailabilitiesCount('game_bundle'));
-        $this->assertEquals(1, $this->getPokemonAvailabilitiesCount('game_bundle_shiny'));
+        $this->assertEquals(26, $this->getPokemonAvailabilitiesCount('game_bundle'));
+        $this->assertEquals(26, $this->getPokemonAvailabilitiesCount('game_bundle_shiny'));
 
         $initialToProcessCount = $this->getActionLogToProcessCount();
         $initialDoneCount = $this->getActionLogDoneCount();

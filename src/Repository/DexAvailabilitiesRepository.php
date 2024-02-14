@@ -8,6 +8,7 @@ use App\DTO\AlbumFilter\AlbumFilters;
 use App\Entity\DexAvailability;
 use App\Repository\Trait\FiltersTrait;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\ParameterType;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -79,11 +80,19 @@ class DexAvailabilitiesRepository extends ServiceEntityRepository
             $dynamicParams,
         );
 
+        $types = array_merge(
+            [
+                'trainer_external_id' => ParameterType::STRING,
+                'dex_slug' => ParameterType::STRING,
+            ],
+            $this->getFiltersTypes(),
+        );
+
         /** @var int */
         return $this->getEntityManager()->getConnection()->fetchOne(
             $sql,
             $params,
-            $this->getFiltersTypes(),
+            $types,
         );
     }
 }
