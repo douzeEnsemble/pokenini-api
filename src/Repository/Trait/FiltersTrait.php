@@ -37,8 +37,6 @@ trait FiltersTrait
     protected function getFiltersTypes(): array
     {
         return [
-            'trainer_external_id' => ParameterType::STRING,
-            'dex_slug' => ParameterType::STRING,
             'filter_primary_types' => ArrayParameterType::STRING,
             'filter_secondary_types' => ArrayParameterType::STRING,
             'filter_any_types' => ArrayParameterType::STRING,

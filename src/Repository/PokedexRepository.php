@@ -6,8 +6,10 @@ namespace App\Repository;
 
 use App\DTO\AlbumFilter\AlbumFilters;
 use App\Entity\Pokedex;
+use App\Entity\PokemonAvailabilities;
 use App\Repository\Trait\FiltersTrait;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\ParameterType;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Uid\Uuid;
 
@@ -37,19 +39,32 @@ class PokedexRepository extends ServiceEntityRepository
 
         $sql = $this->getListQuerySQL($where);
 
-        $dynamicParams = $this->getFiltersParameters($filters);
         $params = array_merge(
             [
                 'trainer_external_id' => $trainerExternalId,
                 'dex_slug' => $dexSlug,
+                'pokemon_availabilities_game_bundle_category'
+                    => PokemonAvailabilities::CATEGORY_GAME_BUNDLE,
+                'pokemon_availabilities_game_bundle_shiny_category'
+                    => PokemonAvailabilities::CATEGORY_GAME_BUNDLE_SHINY,
             ],
-            $dynamicParams
+            $this->getFiltersParameters($filters),
+        );
+
+        $types = array_merge(
+            [
+                'trainer_external_id' => ParameterType::STRING,
+                'dex_slug' => ParameterType::STRING,
+                'pokemon_availabilities_game_bundle_category' => ParameterType::STRING,
+                'pokemon_availabilities_game_bundle_shiny_category' => ParameterType::STRING,
+            ],
+            $this->getFiltersTypes(),
         );
 
         return $this->getEntityManager()->getConnection()->iterateAssociative(
             $sql,
             $params,
-            $this->getFiltersTypes(),
+            $types,
         );
     }
 
@@ -107,20 +122,27 @@ class PokedexRepository extends ServiceEntityRepository
             ORDER BY cs.order_number
             SQL;
 
-        $dynamicParams = $this->getFiltersParameters($filters);
         $params = array_merge(
             [
                 'trainer_external_id' => $trainerExternalId,
                 'dex_slug' => $dexSlug
             ],
-            $dynamicParams
+            $this->getFiltersParameters($filters),
+        );
+
+        $types = array_merge(
+            [
+                'trainer_external_id' => ParameterType::STRING,
+                'dex_slug' => ParameterType::STRING,
+            ],
+            $this->getFiltersTypes(),
         );
 
         /** @var int[][]|string[][] */
         return $this->getEntityManager()->getConnection()->fetchAllAssociative(
             $sql,
             $params,
-            $this->getFiltersTypes(),
+            $types,
         );
     }
 
@@ -263,6 +285,8 @@ class PokedexRepository extends ServiceEntityRepository
                 st.name AS secondary_type_name,
                 st.french_name AS secondary_type_french_name,
                 ogb.slug AS original_game_bundle_slug,
+                pagb.items AS game_bundle_slugs,
+                pagbs.items AS game_bundle_shiny_slugs,
                 CONCAT(
                     LPAD(CAST(COALESCE(rdn.dex_number, 999) AS varchar), 3, '0'),
                     '-',
@@ -305,6 +329,10 @@ class PokedexRepository extends ServiceEntityRepository
                 ON p.family_id = pp.id
             LEFT JOIN game_bundle AS ogb
                 ON p.original_game_bundle_id = ogb.id
+            LEFT JOIN pokemon_availabilities AS pagb
+                ON p.id = pagb.pokemon_id AND pagb.category = :pokemon_availabilities_game_bundle_category
+            LEFT JOIN pokemon_availabilities AS pagbs
+                ON p.id = pagbs.pokemon_id AND pagbs.category = :pokemon_availabilities_game_bundle_shiny_category
         WHERE   $where
         ORDER BY pokemon_order_number
         SQL;

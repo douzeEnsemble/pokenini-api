@@ -40,6 +40,8 @@ final class PokemonData
             'secondary_type_name' => 'Poison',
             'secondary_type_french_name' => 'Poison',
             'original_game_bundle_slug' => 'redgreenblueyellow',
+            'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+            'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
         ];
     }
 
@@ -80,6 +82,8 @@ final class PokemonData
             'secondary_type_name' => 'Poison',
             'secondary_type_french_name' => 'Poison',
             'original_game_bundle_slug' => 'redgreenblueyellow',
+            'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+            'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
         ];
     }
 
@@ -120,6 +124,8 @@ final class PokemonData
             'secondary_type_name' => 'Poison',
             'secondary_type_french_name' => 'Poison',
             'original_game_bundle_slug' => 'redgreenblueyellow',
+            'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+            'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
         ];
     }
 
@@ -160,6 +166,8 @@ final class PokemonData
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'redgreenblueyellow',
+            'game_bundle_slugs' => '',
+            'game_bundle_shiny_slugs' => '',
         ];
     }
 
@@ -200,6 +208,8 @@ final class PokemonData
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'redgreenblueyellow',
+            'game_bundle_slugs' => '',
+            'game_bundle_shiny_slugs' => '',
         ];
     }
 
@@ -240,6 +250,8 @@ final class PokemonData
             'secondary_type_name' => 'Flying',
             'secondary_type_french_name' => 'Vol',
             'original_game_bundle_slug' => 'redgreenblueyellow',
+            'game_bundle_slugs' => '',
+            'game_bundle_shiny_slugs' => '',
         ];
     }
 
@@ -280,6 +292,8 @@ final class PokemonData
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'redgreenblueyellow',
+            'game_bundle_slugs' => 'un,dos,tres',
+            'game_bundle_shiny_slugs' => '',
         ];
     }
 
@@ -317,6 +331,8 @@ final class PokemonData
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'redgreenblueyellow',
+            'game_bundle_slugs' => '',
+            'game_bundle_shiny_slugs' => '',
         ];
     }
 
@@ -357,6 +373,8 @@ final class PokemonData
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'redgreenblueyellow',
+            'game_bundle_slugs' => '',
+            'game_bundle_shiny_slugs' => '',
         ];
     }
 
@@ -397,6 +415,8 @@ final class PokemonData
             'secondary_type_name' => 'Flying',
             'secondary_type_french_name' => 'Vol',
             'original_game_bundle_slug' => 'redgreenblueyellow',
+            'game_bundle_slugs' => '',
+            'game_bundle_shiny_slugs' => '',
         ];
     }
 
@@ -437,6 +457,8 @@ final class PokemonData
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'redgreenblueyellow',
             'pokemon_order_number' => '999-0019-004',
+            'game_bundle_slugs' => 'ultrasunultramoon',
+            'game_bundle_shiny_slugs' => 'ultrasunultramoon',
         ];
     }
 
@@ -477,6 +499,8 @@ final class PokemonData
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'diamondpearlplatinium',
             'pokemon_order_number' => '999-0019-005',
+            'game_bundle_slugs' => 'redgreenblueyellow,ultrasunultramoon',
+            'game_bundle_shiny_slugs' => 'redgreenblueyellow,ultrasunultramoon',
         ];
     }
 
@@ -517,6 +541,8 @@ final class PokemonData
             'secondary_type_french_name' => 'Normal',
             'original_game_bundle_slug' => 'sunmoon',
             'pokemon_order_number' => '999-0019-006',
+            'game_bundle_slugs' => 'redgreenblueyellow,ultrasunultramoon',
+            'game_bundle_shiny_slugs' => 'redgreenblueyellow,ultrasunultramoon',
         ];
     }
 
@@ -557,6 +583,8 @@ final class PokemonData
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'redgreenblueyellow',
             'pokemon_order_number' => '999-0020-007',
+            'game_bundle_slugs' => 'ultrasunultramoon',
+            'game_bundle_shiny_slugs' => 'ultrasunultramoon',
         ];
     }
 
@@ -597,6 +625,8 @@ final class PokemonData
             'secondary_type_french_name' => null,
             'original_game_bundle_slug' => 'diamondpearlplatinium',
             'pokemon_order_number' => '999-0020-008',
+            'game_bundle_slugs' => 'redgreenblueyellow,ultrasunultramoon',
+            'game_bundle_shiny_slugs' => 'redgreenblueyellow,ultrasunultramoon',
         ];
     }
 
@@ -637,6 +667,8 @@ final class PokemonData
             'secondary_type_french_name' => 'Normal',
             'original_game_bundle_slug' => 'sunmoon',
             'pokemon_order_number' => '999-0020-009',
+            'game_bundle_slugs' => 'redgreenblueyellow,ultrasunultramoon',
+            'game_bundle_shiny_slugs' => 'redgreenblueyellow,ultrasunultramoon',
         ];
     }
 
@@ -677,6 +709,8 @@ final class PokemonData
             'secondary_type_french_name' => 'Normal',
             'original_game_bundle_slug' => 'ultrasunultramoon',
             'pokemon_order_number' => '999-0020-010',
+            'game_bundle_slugs' => '',
+            'game_bundle_shiny_slugs' => '',
         ];
     }
 }
