@@ -84,6 +84,7 @@ data_app: ## Initialize app data
 	$(SYMFONY) app:calculate:game_bundles_availabilities
 	$(SYMFONY) app:calculate:game_bundles_shinies_availabilities
 	$(SYMFONY) app:calculate:dex_availabilities
+	$(SYMFONY) app:calculate:pokemon_availabilities
 
 ## —— Composer 🧙 ——————————————————————————————————————————————————————————————
 composer: ## Run composer, pass the parameter "c=" to run a given command, example: make composer c='req symfony/orm-pack'
@@ -152,6 +153,7 @@ newman_prepare:
 	@$(SYMFONY) --env=int app:calculate:game_bundles_availabilities
 	@$(SYMFONY) --env=int app:calculate:game_bundles_shinies_availabilities
 	@$(SYMFONY) --env=int app:calculate:dex_availabilities
+	@$(SYMFONY) --env=int app:calculate:pokemon_availabilities
 
 newman_execute:
 	$(DOCKER) run --rm --name pokenini-api-newman \
