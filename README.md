@@ -101,6 +101,16 @@ docker-compose exec php sh -c '
 '
 ```
 
+### Calculate pokemons' availabilties
+
+Pokemons availability are calculated from game bundles and game bundles shiny
+
+```
+docker-compose exec php sh -c '
+    php bin/console app:calculate:pokemon_availabilities
+'
+```
+
 ### Tips
 
 ### Open bash into php  container
