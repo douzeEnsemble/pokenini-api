@@ -19,14 +19,23 @@ class GameBundlesRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return GameBundle[]
+     * @return string[][]
      */
     public function getAll(): array
     {
-        $queryBuilder = $this->createQueryBuilder('gb');
-        $queryBuilder->orderBy('gb.name');
+        $sql = <<<SQL
+        SELECT      gb.name,
+                    gb.french_name as "frenchName",
+                    gb.slug,
+                    gg.slug AS generation_slug
+        FROM        game_bundle AS gb
+                JOIN game_generation AS gg
+                    ON gb.generation_id = gg.id
+        WHERE       gb.deleted_at IS NULL
+        ORDER BY    order_number
+        SQL;
 
-        /** @var GameBundle[] */
-        return $queryBuilder->getQuery()->getResult();
+        /** @var string[][] */
+        return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
     }
 }
