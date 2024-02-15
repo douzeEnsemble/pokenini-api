@@ -19,7 +19,7 @@ class RegionalFormsRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return string[]
+     * @return string[][]
      */
     public function getAll(): array
     {
@@ -32,7 +32,7 @@ class RegionalFormsRepository extends ServiceEntityRepository
         ORDER BY    order_number
         SQL;
 
-        /** @var string[] */
+        /** @var string[][] */
         return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
     }
 }
