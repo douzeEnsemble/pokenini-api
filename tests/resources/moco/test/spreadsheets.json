@@ -1814,7 +1814,7 @@
         "sheetType": "GRID",
         "gridProperties": {
           "rowCount": 18,
-          "columnCount": 4
+          "columnCount": 5
         },
         "tabColor": {
           "red": 0.2901961,

@@ -11,9 +11,9 @@ class GameBundlesUpdater extends AbstractUpdater
     protected string $sheetName = 'Game Bundle';
     protected string $tableName = 'game_bundle';
     protected string $statisticName = 'game_bundles';
-    protected string $headerCellsRange = 'A1:D1';
+    protected string $headerCellsRange = 'A1:E1';
     /** @var string[] */
-    protected array $recordsCellsRanges = ['A2:D'];
+    protected array $recordsCellsRanges = ['A2:E'];
 
     protected function getExpectedHeader(): array
     {
@@ -21,6 +21,7 @@ class GameBundlesUpdater extends AbstractUpdater
             '#Generation',
             'Slug',
             'Name',
+            'FrenchName',
             'Order',
         ];
     }
@@ -31,6 +32,7 @@ class GameBundlesUpdater extends AbstractUpdater
             'id' => (string) Uuid::v4(),
             'slug' => $record['Slug'],
             'name' => $record['Name'],
+            'french_name' => $record['FrenchName'],
             'generation' => $record['#Generation'],
             'order' => $record['Order'],
         ];
@@ -42,6 +44,7 @@ class GameBundlesUpdater extends AbstractUpdater
           id,
           slug,
           name,
+          french_name,
           generation_id,
           order_number
         )
@@ -49,6 +52,7 @@ class GameBundlesUpdater extends AbstractUpdater
             :id,
             :slug,
             :name,
+            :french_name,
             (SELECT id FROM game_generation WHERE slug = :generation),
             :order
         )
@@ -57,6 +61,7 @@ class GameBundlesUpdater extends AbstractUpdater
         UPDATE
         SET
             name = excluded.name,
+            french_name = excluded.french_name,
             order_number = excluded.order_number,
             generation_id = excluded.generation_id,
             deleted_at = NULL
