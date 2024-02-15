@@ -1,10 +1,11 @@
 {
-  "range": "'Game Bundle'!A1:D1",
+  "range": "'Game Bundle'!A1:E1",
   "majorDimension": "ROWS",
   "values": [
     [
       "#Generation",
       "Name",
+      "FrenchName",
       "Slug",
       "Order"
     ]

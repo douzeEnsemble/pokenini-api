@@ -604,20 +604,20 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Game Bundle'!A1:D1"
+      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Game Bundle'!A1:E1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/test/values_%27Game%20Bundle%27%21A1%3AD1.json"
+      "file": "/var/moco/test/values_%27Game%20Bundle%27%21A1%3AE1.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Game Bundle'!A2:D"
+      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'Game Bundle'!A2:E"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/test/values_%27Game%20Bundle%27%21A2%3AD.json"
+      "file": "/var/moco/test/values_%27Game%20Bundle%27%21A2%3AE.json"
     }
   },
   {
