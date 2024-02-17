@@ -23,12 +23,12 @@ class UpdateRegionalDexNumbersCommandTest extends AbstractTestCaseCommand
 
         $commandTester->assertCommandIsSuccessful();
 
-        $this->assertEquals(2863, $this->getRegionalDexNumberCount());
+        $this->assertEquals(4419, $this->getRegionalDexNumberCount());
 
         $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
         $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
 
-        $this->assertStringContainsString("2863 regional dex numbers updated", $commandTester->getDisplay());
+        $this->assertStringContainsString("4419 regional dex numbers updated", $commandTester->getDisplay());
     }
 
     protected function getCommandName(): string

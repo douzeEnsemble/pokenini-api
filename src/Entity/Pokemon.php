@@ -45,9 +45,6 @@ class Pokemon
     public ?Pokemon $family = null;
 
     #[ORM\Column]
-    public string $primeName;
-
-    #[ORM\Column]
     public bool $bankable = true;
 
     #[ORM\Column(nullable: true)]

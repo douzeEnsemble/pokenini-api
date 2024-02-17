@@ -23,12 +23,12 @@ class UpdateGamesAvailabilitiesCommandTest extends AbstractTestCaseCommand
 
         $commandTester->assertCommandIsSuccessful();
 
-        $this->assertEquals(7980, $this->getGameAvailabilityCount());
+        $this->assertEquals(68970, $this->getGameAvailabilityCount());
 
         $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
         $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
 
-        $this->assertStringContainsString("7980 games' availabilities updated", $commandTester->getDisplay());
+        $this->assertStringContainsString("68970 games' availabilities updated", $commandTester->getDisplay());
     }
 
     protected function getCommandName(): string

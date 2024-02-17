@@ -58,7 +58,7 @@ class CalculateDexAvailabilitiesCommandTest extends AbstractTestCaseCommand
         $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
         $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
 
-        $this->assertTrue($this->hasDexAvailability('Red / Green / Blue / Yellow', 'Bulbasaur'));
+        $this->assertTrue($this->hasDexAvailability('Red / Green / Blue / Yellow', 'bulbasaur'));
     }
 
     protected function getCommandName(): string

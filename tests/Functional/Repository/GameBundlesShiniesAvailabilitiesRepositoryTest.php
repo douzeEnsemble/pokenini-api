@@ -58,79 +58,79 @@ class GameBundlesShiniesAvailabilitiesRepositoryTest extends KernelTestCase
     {
         $this->gameBundleShinyAvailabilityRepo->removeAll();
 
-        $this->assertEquals(16, $this->gameBundleShinyAvailabilityRepo->calculate());
+        $this->assertEquals(9, $this->gameBundleShinyAvailabilityRepo->calculate());
 
-        $this->assertIsNotAvailable('Red, Green, Blue, Yellow', 'Douze');
-        $this->assertIsNotAvailable('Gold, Silver, Crystal', 'Douze');
-        $this->assertIsNotAvailable('Ruby, Sapphire, Emerald', 'Douze');
+        $this->assertIsNotAvailable('Red, Green, Blue, Yellow', 'douze');
+        $this->assertIsNotAvailable('Gold, Silver, Crystal', 'douze');
+        $this->assertIsNotAvailable('Ruby, Sapphire, Emerald', 'douze');
 
-        $this->assertIsAvailable('Red, Green, Blue, Yellow', 'Bulbasaur');
-        $this->assertIsAvailable('Gold, Silver, Crystal', 'Bulbasaur');
-        $this->assertIsNotAvailable('Ruby, Sapphire, Emerald', 'Bulbasaur');
+        $this->assertIsAvailable('Red, Green, Blue, Yellow', 'bulbasaur');
+        $this->assertIsAvailable('Gold, Silver, Crystal', 'bulbasaur');
+        $this->assertIsNotAvailable('Ruby, Sapphire, Emerald', 'bulbasaur');
 
-        $this->assertIsAvailable('Red, Green, Blue, Yellow', 'Ivysaur');
-        $this->assertIsAvailable('Gold, Silver, Crystal', 'Ivysaur');
-        $this->assertIsNotAvailable('Ruby, Sapphire, Emerald', 'Ivysaur');
+        $this->assertIsAvailable('Red, Green, Blue, Yellow', 'ivysaur');
+        $this->assertIsAvailable('Gold, Silver, Crystal', 'ivysaur');
+        $this->assertIsNotAvailable('Ruby, Sapphire, Emerald', 'ivysaur');
 
-        $this->assertIsAvailable('Red, Green, Blue, Yellow', 'Venusaur');
-        $this->assertIsAvailable('Gold, Silver, Crystal', 'Venusaur');
-        $this->assertIsNotAvailable('Ruby, Sapphire, Emerald', 'Venusaur');
+        $this->assertIsAvailable('Red, Green, Blue, Yellow', 'venusaur');
+        $this->assertIsAvailable('Gold, Silver, Crystal', 'venusaur');
+        $this->assertIsNotAvailable('Ruby, Sapphire, Emerald', 'venusaur');
 
-        // Because we only look for Venusaur. Dex availability will take care of mega form
-        $this->assertIsAvailable('Red, Green, Blue, Yellow', 'Mega Venusaur');
-        $this->assertIsAvailable('Gold, Silver, Crystal', 'Mega Venusaur');
-        $this->assertIsNotAvailable('Ruby, Sapphire, Emerald', 'Mega Venusaur');
+        $this->assertIsNotAvailable('Red, Green, Blue, Yellow', 'venusaur-mega');
+        $this->assertIsNotAvailable('Gold, Silver, Crystal', 'venusaur-mega');
+        $this->assertIsNotAvailable('Ruby, Sapphire, Emerald', 'venusaur-mega');
+        $this->assertIsAvailable('X, Y', 'venusaur-mega');
 
-        $this->assertIsNotAvailable('Red, Green, Blue, Yellow', 'Deoxys');
-        $this->assertIsNotAvailable('Gold, Silver, Crystal', 'Deoxys');
-        $this->assertIsAvailable('Ruby, Sapphire, Emerald', 'Deoxys');
+        $this->assertIsNotAvailable('Red, Green, Blue, Yellow', 'deoxys');
+        $this->assertIsNotAvailable('Gold, Silver, Crystal', 'deoxys');
+        $this->assertIsAvailable('Ruby, Sapphire, Emerald', 'deoxys');
 
-        $this->assertIsNotAvailable('Red, Green, Blue, Yellow', 'Deoxys-Attack');
-        $this->assertIsNotAvailable('Gold, Silver, Crystal', 'Deoxys-Attack');
-        $this->assertIsAvailable('Ruby, Sapphire, Emerald', 'Deoxys-Attack');
+        $this->assertIsNotAvailable('Red, Green, Blue, Yellow', 'deoxys-attack');
+        $this->assertIsNotAvailable('Gold, Silver, Crystal', 'deoxys-attack');
+        $this->assertIsNotAvailable('Ruby, Sapphire, Emerald', 'deoxys-attack');
     }
 
     public function testGetFromPokemon(): void
     {
-        $pokemonDouze = $this->getPokemon('Douze');
+        $pokemonDouze = $this->getPokemon('douze');
 
         $listDouze = $this->gameBundleShinyAvailabilityRepo->getFromPokemon($pokemonDouze);
         $this->assertNull($listDouze->redgreenblueyellow);
         $this->assertNull($listDouze->goldsilvercrystal);
 
-        $pokemonBulbasaur = $this->getPokemon('Bulbasaur');
+        $pokemonBulbasaur = $this->getPokemon('bulbasaur');
 
         $listBulbasaur = $this->gameBundleShinyAvailabilityRepo->getFromPokemon($pokemonBulbasaur);
         $this->assertTrue($listBulbasaur->redgreenblueyellow);
         $this->assertTrue($listBulbasaur->goldsilvercrystal);
 
-        $pokemonMegaVenusaur = $this->getPokemon('Mega Venusaur');
+        $pokemonMegaVenusaur = $this->getPokemon('venusaur-mega');
 
         $listMegaVenusaur = $this->gameBundleShinyAvailabilityRepo->getFromPokemon($pokemonMegaVenusaur);
         $this->assertFalse($listMegaVenusaur->redgreenblueyellow);
         $this->assertFalse($listMegaVenusaur->goldsilvercrystal);
     }
 
-    private function assertIsAvailable(string $bundleName, string $pokemonName): void
+    private function assertIsAvailable(string $bundleName, string $pokemonSlug): void
     {
-        $gameBundleShinyAvailability = $this->getGameBundleShinyAvailability($bundleName, $pokemonName);
+        $gameBundleShinyAvailability = $this->getGameBundleShinyAvailability($bundleName, $pokemonSlug);
 
         $this->assertTrue($gameBundleShinyAvailability?->isAvailable);
     }
 
-    private function assertIsNotAvailable(string $bundleName, string $pokemonName): void
+    private function assertIsNotAvailable(string $bundleName, string $pokemonSlug): void
     {
-        $gameBundleShinyAvailability = $this->getGameBundleShinyAvailability($bundleName, $pokemonName);
+        $gameBundleShinyAvailability = $this->getGameBundleShinyAvailability($bundleName, $pokemonSlug);
 
         $this->assertNotEquals(true, $gameBundleShinyAvailability?->isAvailable);
     }
 
     private function getGameBundleShinyAvailability(
         string $bundleName,
-        string $pokemonName
+        string $pokemonSlug
     ): ?GameBundleShinyAvailability {
         $bundle = $this->getGameBundle($bundleName);
-        $pokemon = $this->getPokemon($pokemonName);
+        $pokemon = $this->getPokemon($pokemonSlug);
 
         return $this->gameBundleShinyAvailabilityRepo->findOneBy([
             'pokemon' => $pokemon,
@@ -154,18 +154,18 @@ class GameBundlesShiniesAvailabilitiesRepositoryTest extends KernelTestCase
         return $gameBundle;
     }
 
-    private function getPokemon(string $name): Pokemon
+    private function getPokemon(string $slug): Pokemon
     {
-        if (isset($this->pokemons[$name])) {
-            return $this->pokemons[$name];
+        if (isset($this->pokemons[$slug])) {
+            return $this->pokemons[$slug];
         }
 
         /** @var Pokemon $pokemon */
-        $pokemon = $this->pokemonsRepo->findOneBy(['name' => $name]);
+        $pokemon = $this->pokemonsRepo->findOneBy(['slug' => $slug]);
 
         $this->assertNotNull($pokemon);
 
-        $this->pokemons[$name] = $pokemon;
+        $this->pokemons[$slug] = $pokemon;
 
         return $pokemon;
     }

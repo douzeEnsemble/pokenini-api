@@ -11,9 +11,9 @@ class PokemonsUpdater extends AbstractUpdater
     protected string $sheetName = 'Pokémons';
     protected string $tableName = 'pokemon';
     protected string $statisticName = 'pokemons';
-    protected string $headerCellsRange = 'A1:AD1';
+    protected string $headerCellsRange = 'A1:AC1';
     /** @var string[] */
-    protected array $recordsCellsRanges = ['A2:AD'];
+    protected array $recordsCellsRanges = ['A2:AC'];
 
     protected function getExpectedHeader(): array
     {
@@ -29,7 +29,6 @@ class PokemonsUpdater extends AbstractUpdater
             '#Category form',
             'Family',
             'Family order',
-            'Bulbapedia Name',
             'Slug',
             'Pokémon Nom Complet',
             'Pokémon Nom simplifié',
@@ -69,7 +68,6 @@ class PokemonsUpdater extends AbstractUpdater
             national_dex_number,
             family_id,
             family_order,
-            prime_name,
             bankable,
             bankableish,
             original_game_bundle_id,
@@ -91,9 +89,8 @@ class PokemonsUpdater extends AbstractUpdater
             :simplifiedFrenchName,
             :formsFrenchLabel,
             :nationalDexNumber,
-            (SELECT id FROM pokemon WHERE prime_name = :family AND 0 = family_order AND 0 <> :familyOrder),
+            (SELECT id FROM pokemon WHERE simplified_name = :family AND 0 = family_order AND 0 <> :familyOrder),
             :familyOrder,
-            :primeName,
             :bankable,
             :bankableish,
             (SELECT id FROM game_bundle WHERE slug = :originalGameBundle),
@@ -118,7 +115,6 @@ class PokemonsUpdater extends AbstractUpdater
             national_dex_number = excluded.national_dex_number,
             family_id = excluded.family_id,
             family_order = excluded.family_order,
-            prime_name = excluded.prime_name,
             bankable = excluded.bankable,
             bankableish = excluded.bankableish,
             original_game_bundle_id = excluded.original_game_bundle_id,
@@ -156,7 +152,6 @@ SQL;
             'nationalDexNumber' => (int) $pokemon['nationalDexNumber'],
             'family' => (string) $pokemon['family'],
             'familyOrder' => (string) $pokemon['familyOrder'],
-            'primeName' => (string) $pokemon['primeName'],
             'bankable' => (int) $pokemon['bankable'],
             'bankableish' => (int) $pokemon['bankableish'],
             'originalGameBundle' => (string) $pokemon['originalGameBundle'],
@@ -193,7 +188,6 @@ SQL;
             'nationalDexNumber' => (int) $record['Dex'],
             'family' => $record['Family'],
             'familyOrder' => $record['Family order'],
-            'primeName' => $record['Bulbapedia Name'],
             'bankable' => $isBankable,
             'bankableish' => $isBankableish,
             'originalGameBundle' => $record['#Games First Appears On'],

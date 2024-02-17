@@ -47,7 +47,7 @@ class GameBundlesShiniesAvailabilitiesRepository extends ServiceEntityRepository
                                 JOIN game_shiny_availability AS gsa
                                     ON g.id = gsa.game_id
                                 JOIN pokemon AS p
-                                    ON gsa.pokemon_name = p.prime_name
+                                    ON gsa.pokemon_slug = p.slug
                         GROUP BY	gb.id, p.id
                     ) AS sub
         SQL;

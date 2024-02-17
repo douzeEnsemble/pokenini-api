@@ -61,7 +61,7 @@ class GamesAvailabilitiesUpdater extends AbstractUpdater
             ),
             A1Notation::fromIndex(
                 1,
-                1 + count($games)
+                count($games)
             ),
         );
 
@@ -105,8 +105,7 @@ class GamesAvailabilitiesUpdater extends AbstractUpdater
 
         return array_merge(
             [
-                '#',
-                'Name',
+                '#Pokemon',
             ],
             $games
         );
@@ -147,13 +146,13 @@ class GamesAvailabilitiesUpdater extends AbstractUpdater
         $index = 0;
         foreach ($records as $record) {
             $sqlValues[] = ":id$index"
-                . ", :pokemonName$index"
+                . ", :pokemonSlug$index"
                 . ", (SELECT id FROM game WHERE slug = :game$index)"
                 . ", :availability$index"
             ;
 
             $sqlParameters["id$index"] = Uuid::v4();
-            $sqlParameters["pokemonName$index"] = $record['pokemonName'];
+            $sqlParameters["pokemonSlug$index"] = $record['pokemonSlug'];
             $sqlParameters["game$index"] = $record['game'];
             $sqlParameters["availability$index"] = $record['availability'];
 
@@ -165,7 +164,7 @@ class GamesAvailabilitiesUpdater extends AbstractUpdater
         $sql = <<<SQL
         INSERT INTO $this->tableName (
             id,
-            pokemon_name,
+            pokemon_slug,
             game_id,
             availability
         )
@@ -215,14 +214,12 @@ SQL;
     private function transformRecord(
         array $record
     ): void {
-        unset($record['#']);
-
-        $name = $record['Name'];
-        unset($record['Name']);
+        $slug = $record['#Pokemon'];
+        unset($record['#Pokemon']);
 
         foreach ($record as $game => $availability) {
             $this->records[] = [
-                'pokemonName' => $name,
+                'pokemonSlug' => $slug,
                 'game' => $game,
                 'availability' => $availability,
             ];

@@ -13,7 +13,7 @@ class RegionalDexNumber
     use BaseEntityTrait;
 
     #[ORM\Column]
-    public string $pokemonName;
+    public string $pokemonSlug;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]

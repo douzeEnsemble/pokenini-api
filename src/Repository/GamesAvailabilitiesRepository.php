@@ -43,8 +43,8 @@ class GamesAvailabilitiesRepository extends ServiceEntityRepository
 
         $queryBuilder->join('ga.game', 'g');
 
-        $queryBuilder->where($queryBuilder->expr()->eq('ga.pokemonName', ':pokemonName'));
-        $queryBuilder->setParameter('pokemonName', $pokemon->primeName);
+        $queryBuilder->where($queryBuilder->expr()->eq('ga.pokemonSlug', ':pokemonSlug'));
+        $queryBuilder->setParameter('pokemonSlug', $pokemon->slug);
 
         $queryBuilder->orderBy('g.name');
 

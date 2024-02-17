@@ -10,7 +10,7 @@ use App\Updater\RegionalDexNumbersUpdater;
 class RegionalDexNumbersUpdaterTest extends AbstractTestUpdater
 {
     protected int $initialTotalCount = 12;
-    protected int $finalTotalCount = 2863;
+    protected int $finalTotalCount = 4419;
     protected int $mustBeDeletedTotalCount = 0;
     protected string $sheetName = 'Regional Dex Number';
     protected string $tableName = 'regional_dex_number';

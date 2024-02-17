@@ -46,7 +46,7 @@ class CalculateGameBundlesAvailabilitiesCommandTest extends AbstractTestCaseComm
         $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
         $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
 
-        $this->assertStringContainsString("18 bundles' availabilities calculated", $commandTester->getDisplay());
+        $this->assertStringContainsString("11 bundles' availabilities calculated", $commandTester->getDisplay());
     }
 
     protected function getCommandName(): string

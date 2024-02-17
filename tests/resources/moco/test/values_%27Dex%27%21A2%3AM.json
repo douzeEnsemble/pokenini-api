@@ -260,7 +260,7 @@
     [
       "Home\nShiny",
       "homeshiny",
-      "    (p.bankable or p.bankableish)\n    and (\n        p.variantForm === null\n        or p.variantForm?.name in ['Baby', 'Alternate', 'Gender', 'Therian']\n    )\n    and (\n        p.specialForm === null\n        or p.specialForm?.name === 'Gigantamax'\n    )\n    and (\n        p.primeName !== 'Alcremie'\n        or p.name in [\n            'Alcremie-Vanilla-Cream-Strawberry',\n            'Alcremie-Ruby-Cream-Berry',\n            'Alcremie-Matcha-Cream-Love',\n            'Alcremie-Mint-Cream-Star',\n            'Alcremie-Lemon-Cream-Clover',\n            'Alcremie-Salted-Cream-Flower',\n            'Alcremie-Ruby-Swirl-Ribbon',\n            'Alcremie-Caramel-Swirl-Strawberry',\n            'Alcremie-Rainbow-Swirl-Berry',\n            'Gigantamax Alcremie-Vanilla-Cream-Strawberry'\n        ]\n    )",
+      "    (p.bankable or p.bankableish)\n    and (\n        p.variantForm === null\n        or p.variantForm?.name in ['Baby', 'Alternate', 'Gender', 'Therian']\n    )\n    and (\n        p.specialForm === null\n        or p.specialForm?.name === 'Gigantamax'\n    )\n    and (\n        p.simplifiedName !== 'Alcremie'\n        or p.name in [\n            'Alcremie-Vanilla-Cream-Strawberry',\n            'Alcremie-Ruby-Cream-Berry',\n            'Alcremie-Matcha-Cream-Love',\n            'Alcremie-Mint-Cream-Star',\n            'Alcremie-Lemon-Cream-Clover',\n            'Alcremie-Salted-Cream-Flower',\n            'Alcremie-Ruby-Swirl-Ribbon',\n            'Alcremie-Caramel-Swirl-Strawberry',\n            'Alcremie-Rainbow-Swirl-Berry',\n            'Gigantamax Alcremie-Vanilla-Cream-Strawberry'\n        ]\n    )",
       "18",
       "Home\nChromatique",
       "TRUE",

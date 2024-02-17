@@ -324,7 +324,7 @@ class PokedexRepository extends ServiceEntityRepository
             LEFT JOIN regional_dex_number AS rdn
                 ON r.id IS NOT NULL
                     AND r.id = rdn.region_id
-                    AND p.prime_name = rdn.pokemon_name
+                    AND p.slug = rdn.pokemon_slug
             LEFT JOIN pokemon AS pp
                 ON p.family_id = pp.id
             LEFT JOIN game_bundle AS ogb
