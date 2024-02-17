@@ -6,6 +6,7 @@
 resources/auth/credentials.json
 
 /tests/gs/
+/tests/tmp/
 tests/coverage
 tests/mutation/index.html
 coverage.xml

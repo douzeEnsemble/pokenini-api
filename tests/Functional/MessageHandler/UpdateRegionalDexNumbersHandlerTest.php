@@ -49,7 +49,7 @@ class UpdateRegionalDexNumbersHandlerTest extends KernelTestCase
 
         $transport->queue()->assertEmpty();
 
-        $this->assertEquals(2863, $this->getTableCount('regional_dex_number'));
+        $this->assertEquals(4419, $this->getTableCount('regional_dex_number'));
 
         $this->assertEquals($beforeTotalCount + 1, $this->getActionLogCount());
         $this->assertEquals($beforeToProcessCount, $this->getActionLogToProcessCount());

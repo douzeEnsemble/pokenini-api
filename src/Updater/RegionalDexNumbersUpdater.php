@@ -105,7 +105,7 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
 
         return array_merge(
             [
-                'Pokemon',
+                '#Pokemon',
                 'National',
             ],
             $regions
@@ -147,13 +147,13 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
         $index = 0;
         foreach ($records as $record) {
             $sqlValues[] = ":id$index"
-                . ", :pokemonName$index"
+                . ", :pokemonSlug$index"
                 . ", (SELECT id FROM region WHERE slug = :regionSlug$index)"
                 . ", :dexNumber$index"
             ;
 
             $sqlParameters["id$index"] = Uuid::v4();
-            $sqlParameters["pokemonName$index"] = $record['pokemonName'];
+            $sqlParameters["pokemonSlug$index"] = $record['pokemonSlug'];
             $sqlParameters["regionSlug$index"] = $record['regionSlug'];
             $sqlParameters["dexNumber$index"] = $record['dexNumber'];
 
@@ -165,7 +165,7 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
         $sql = <<<SQL
         INSERT INTO regional_dex_number (
             id,
-            pokemon_name,
+            pokemon_slug,
             region_id,
             dex_number
         )
@@ -215,8 +215,8 @@ SQL;
     private function transformRecord(
         array $record
     ): void {
-        $name = $record['Pokemon'];
-        unset($record['Pokemon']);
+        $slug = $record['#Pokemon'];
+        unset($record['#Pokemon']);
         unset($record['National']);
 
         foreach ($record as $regionSlug => $dexNumber) {
@@ -225,7 +225,7 @@ SQL;
             }
 
             $this->records[] = [
-                'pokemonName' => $name,
+                'pokemonSlug' => $slug,
                 'regionSlug' => $regionSlug,
                 'dexNumber' => $dexNumber,
             ];

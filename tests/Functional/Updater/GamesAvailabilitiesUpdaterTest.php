@@ -12,8 +12,8 @@ class GamesAvailabilitiesUpdaterTest extends AbstractTestUpdater
 {
     use CountGameAvailabilityTrait;
 
-    protected int $initialTotalCount = 24;
-    protected int $finalTotalCount = 7980;
+    protected int $initialTotalCount = 28;
+    protected int $finalTotalCount = 68970;
     protected int $mustBeDeletedTotalCount = 0;
     protected string $sheetName = 'Games Availability';
     protected string $tableName = 'game_availability';

@@ -85,16 +85,16 @@ class DebugPokemonControllerTest extends AbstractTestControllerApi
         $this->assertNotNull($data);
 
         $this->assertArrayHasKey('gamesAvailabilities', $data);
-        $this->assertArrayHasKey('blue', $data['gamesAvailabilities']);
-        $this->assertIsBool($data['gamesAvailabilities']['blue']);
-        $this->assertArrayHasKey('gold', $data['gamesAvailabilities']);
-        $this->assertIsBool($data['gamesAvailabilities']['gold']);
+        $this->assertArrayNotHasKey('blue', $data['gamesAvailabilities']);
+        $this->assertArrayNotHasKey('gold', $data['gamesAvailabilities']);
+        $this->assertArrayHasKey('x', $data['gamesAvailabilities']);
+        $this->assertIsBool($data['gamesAvailabilities']['x']);
 
         $this->assertArrayHasKey('gamesShiniesAvailabilities', $data);
-        $this->assertArrayHasKey('blue', $data['gamesShiniesAvailabilities']);
-        $this->assertIsBool($data['gamesShiniesAvailabilities']['blue']);
-        $this->assertArrayHasKey('gold', $data['gamesShiniesAvailabilities']);
-        $this->assertIsBool($data['gamesShiniesAvailabilities']['gold']);
+        $this->assertArrayNotHasKey('blue', $data['gamesShiniesAvailabilities']);
+        $this->assertArrayNotHasKey('gold', $data['gamesShiniesAvailabilities']);
+        $this->assertArrayHasKey('x', $data['gamesShiniesAvailabilities']);
+        $this->assertIsBool($data['gamesShiniesAvailabilities']['x']);
 
         $this->assertArrayHasKey('gameBundlesAvailabilities', $data);
         $this->assertArrayHasKey('goldsilvercrystal', $data['gameBundlesAvailabilities']);

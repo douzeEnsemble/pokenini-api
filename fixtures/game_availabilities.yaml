@@ -1,97 +1,113 @@
 App\Entity\GameAvailability:
     gameavailability_douze_red:
-        pokemonName: 'Douze'
+        pokemonSlug: 'douze'
         game: '@game_red'
         availability: 'C'
     gameavailability_douze_blue:
-        pokemonName: 'Douze'
+        pokemonSlug: 'douze'
         game: '@game_blue'
         availability: 'E'
     gameavailability_douze_yellow:
-        pokemonName: 'Douze'
+        pokemonSlug: 'douze'
         game: '@game_yellow'
         availability: '—'
     gameavailability_douze_green:
-        pokemonName: 'Douze'
+        pokemonSlug: 'douze'
         game: '@game_green'
         availability: ''
     gameavailability_douze_gold:
-        pokemonName: 'Douze'
+        pokemonSlug: 'douze'
         game: '@game_gold'
         availability: ''
     gameavailability_douze_silver:
-        pokemonName: 'Douze'
+        pokemonSlug: 'douze'
         game: '@game_silver'
         availability: ''
     gameavailability_bulbasaur_red:
-        pokemonName: 'Bulbasaur'
+        pokemonSlug: 'bulbasaur'
         game: '@game_red'
         availability: 'C'
     gameavailability_bulbasaur_blue:
-        pokemonName: 'Bulbasaur'
+        pokemonSlug: 'bulbasaur'
         game: '@game_blue'
         availability: 'C'
     gameavailability_bulbasaur_yellow:
-        pokemonName: 'Bulbasaur'
+        pokemonSlug: 'bulbasaur'
         game: '@game_yellow'
         availability: 'C'
     gameavailability_bulbasaur_green:
-        pokemonName: 'Bulbasaur'
+        pokemonSlug: 'bulbasaur'
         game: '@game_green'
         availability: 'C'
     gameavailability_bulbasaur_gold:
-        pokemonName: 'Bulbasaur'
+        pokemonSlug: 'bulbasaur'
         game: '@game_gold'
         availability: 'C'
     gameavailability_bulbasaur_silver:
-        pokemonName: 'Bulbasaur'
+        pokemonSlug: 'bulbasaur'
         game: '@game_silver'
         availability: 'C'
     gameavailability_ivysaur_blue:
-        pokemonName: 'Ivysaur'
+        pokemonSlug: 'ivysaur'
         game: '@game_blue'
         availability: 'C'
     gameavailability_ivysaur_yellow:
-        pokemonName: 'Ivysaur'
+        pokemonSlug: 'ivysaur'
         game: '@game_yellow'
         availability: 'C'
     gameavailability_ivysaur_green:
-        pokemonName: 'Ivysaur'
+        pokemonSlug: 'ivysaur'
         game: '@game_green'
         availability: 'C'
     gameavailability_ivysaur_gold:
-        pokemonName: 'Ivysaur'
+        pokemonSlug: 'ivysaur'
         game: '@game_gold'
         availability: 'C'
     gameavailability_ivysaur_silver:
-        pokemonName: 'Ivysaur'
+        pokemonSlug: 'ivysaur'
         game: '@game_silver'
         availability: 'C'
     gameavailability_venusaur_blue:
-        pokemonName: 'Venusaur'
+        pokemonSlug: 'venusaur'
         game: '@game_blue'
         availability: 'C'
     gameavailability_venusaur_yellow:
-        pokemonName: 'Venusaur'
+        pokemonSlug: 'venusaur'
         game: '@game_yellow'
         availability: 'C'
     gameavailability_venusaur_green:
-        pokemonName: 'Venusaur'
+        pokemonSlug: 'venusaur'
         game: '@game_green'
         availability: 'C'
     gameavailability_venusaur_gold:
-        pokemonName: 'Venusaur'
+        pokemonSlug: 'venusaur'
         game: '@game_gold'
         availability: 'C'
     gameavailability_venusaur_silver:
-        pokemonName: 'Venusaur'
+        pokemonSlug: 'venusaur'
         game: '@game_silver'
         availability: 'C'
+    gameavailability_venusaur_x:
+        pokemonSlug: 'venusaur'
+        game: '@game_x'
+        availability: 'C'
+    gameavailability_venusaur_y:
+        pokemonSlug: 'venusaur'
+        game: '@game_y'
+        availability: 'C'
+    gameavailability_venusaurmega_x:
+        pokemonSlug: 'venusaur-mega'
+        game: '@game_x'
+        availability: 'C'
+    gameavailability_venusaurmega_y:
+        pokemonSlug: 'venusaur-mega'
+        game: '@game_y'
+        availability: 'C'
     gameavailability_deoxys_ruby:
-        pokemonName: 'Deoxys'
+        pokemonSlug: 'deoxys'
         game: '@game_ruby'
         availability: 'C'
     gameavailability_deoxys_emerald:
-        pokemonName: 'Deoxys'
+        pokemonSlug: 'deoxys'
         game: '@game_emerald'
         availability: 'C'

@@ -14,7 +14,7 @@ class GameAvailability
     use BaseEntityTrait;
 
     #[ORM\Column]
-    public string $pokemonName;
+    public string $pokemonSlug;
 
     #[ORM\ManyToOne(targetEntity: Game::class)]
     #[ORM\JoinColumn(nullable: false)]

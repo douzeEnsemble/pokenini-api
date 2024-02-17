@@ -49,7 +49,7 @@ class CalculateGameBundlesAvailabilitiesHandlerTest extends KernelTestCase
 
         $transport->queue()->assertEmpty();
 
-        $this->assertEquals(18, $this->getTableCount('game_bundle_availability'));
+        $this->assertEquals(11, $this->getTableCount('game_bundle_availability'));
 
         $this->assertEquals($beforeTotalCount + 1, $this->getActionLogCount());
         $this->assertEquals($beforeToProcessCount, $this->getActionLogToProcessCount());

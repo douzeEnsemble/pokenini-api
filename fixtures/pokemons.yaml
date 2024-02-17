@@ -8,7 +8,6 @@ App\Entity\Pokemon:
         familyOrder: 0
         name: ~ # Need to be overrided
         frenchName: ~ # Need to be overrided
-        primeName: '$name'
         simplifiedName: '$name'
         formsLabel: ''
         simplifiedFrenchName: '$frenchName'
@@ -63,7 +62,6 @@ App\Entity\Pokemon:
 
     pokemon_venusaur_f (extends pokemon):
         slug: 'venusaur-f'
-        primeName: 'Venusaur'
         name: 'Venusaur ♀'
         simplifiedName: 'Venusaur'
         formsLabel: '♀️'
@@ -81,7 +79,6 @@ App\Entity\Pokemon:
 
     pokemon_venusaur_mega (extends pokemon):
         slug: 'venusaur-mega'
-        primeName: 'Venusaur'
         name: 'Mega Venusaur'
         simplifiedName: 'Venusaur'
         formsLabel: 'Mega'
@@ -99,7 +96,6 @@ App\Entity\Pokemon:
 
     pokemon_venusaur_gigantamax (extends pokemon):
         slug: 'venusaur-gmax'
-        primeName: 'Venusaur'
         name: 'Gigantamax Venusaur'
         simplifiedName: 'Venusaur'
         formsLabel: 'Gigantamax'
@@ -164,7 +160,6 @@ App\Entity\Pokemon:
 
     pokemon_deoxys_attack (extends pokemon):
         slug: 'deoxys-attack'
-        primeName: 'Deoxys'
         name: 'Deoxys-Attack'
         formsLabel: 'Attack'
         simplifiedFrenchName: 'Attaque'
@@ -180,7 +175,6 @@ App\Entity\Pokemon:
 
     pokemon_deoxys_defense (extends pokemon):
         slug: 'deoxys-defense'
-        primeName: 'Deoxys'
         name: 'Deoxys-Defense'
         formsLabel: 'Defense'
         simplifiedFrenchName: 'Défense'
@@ -196,7 +190,6 @@ App\Entity\Pokemon:
 
     pokemon_deoxys_speed (extends pokemon):
         slug: 'deoxys-speed'
-        primeName: 'Deoxys'
         name: 'Deoxys-Speed'
         formsLabel: 'Speed'
         simplifiedFrenchName: 'Vitesse'
@@ -245,7 +238,6 @@ App\Entity\Pokemon:
 
     pokemon_butterfree_f (extends pokemon):
         slug: 'butterfree-f'
-        primeName: 'Butterfree'
         name: 'Butterfree ♀'
         simplifiedName: 'Butterfree'
         formsLabel: '♀️'
@@ -263,7 +255,6 @@ App\Entity\Pokemon:
 
     pokemon_butterfree_gigantamax (extends pokemon):
         slug: 'butterfree-gmax'
-        primeName: 'Butterfree'
         name: 'Gigantamax Butterfree'
         simplifiedName: 'Butterfree'
         formsLabel: 'Gigantamax'

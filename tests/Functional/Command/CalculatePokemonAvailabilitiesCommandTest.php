@@ -76,8 +76,8 @@ class CalculatePokemonAvailabilitiesCommandTest extends AbstractTestCaseCommand
         $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
         $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
 
-        $this->assertTrue($this->hasPokemonAvailabilities('game_bundle', 'Bulbasaur'));
-        $this->assertTrue($this->hasPokemonAvailabilities('game_bundle_shiny', 'Bulbasaur'));
+        $this->assertTrue($this->hasPokemonAvailabilities('game_bundle', 'bulbasaur'));
+        $this->assertTrue($this->hasPokemonAvailabilities('game_bundle_shiny', 'bulbasaur'));
     }
 
     protected function getCommandName(): string

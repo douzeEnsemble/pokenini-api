@@ -50,7 +50,7 @@ class CalculateGameBundlesShiniesAvailabilitiesCommandTest extends AbstractTestC
         $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString(
-            "16 bundles' shinies' availabilities calculated",
+            "9 bundles' shinies' availabilities calculated",
             $commandTester->getDisplay()
         );
     }

@@ -8,7 +8,7 @@ use Doctrine\DBAL\Connection;
 
 trait HasPokemonAvailabilitiesTrait
 {
-    protected function hasPokemonAvailabilities(string $category, string $pokemonName): bool
+    protected function hasPokemonAvailabilities(string $category, string $pokemonSlug): bool
     {
         /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
@@ -19,7 +19,7 @@ trait HasPokemonAvailabilitiesTrait
             JOIN pokemon AS p
                 ON pa.pokemon_id = p.id
         WHERE   pa.category = :category
-            AND p.name = :pokemon_name
+            AND p.slug = :pokemon_slug
         SQL;
 
         /** @var int $count */
@@ -27,7 +27,7 @@ trait HasPokemonAvailabilitiesTrait
             $sql,
             [
                 'category' => $category,
-                'pokemon_name' => $pokemonName,
+                'pokemon_slug' => $pokemonSlug,
             ]
         )->fetchOne();
 
