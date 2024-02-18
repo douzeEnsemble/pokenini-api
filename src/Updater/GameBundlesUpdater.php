@@ -21,7 +21,7 @@ class GameBundlesUpdater extends AbstractUpdater
             '#Generation',
             'Slug',
             'Name',
-            'FrenchName',
+            'French Name',
             'Order',
         ];
     }
@@ -32,7 +32,7 @@ class GameBundlesUpdater extends AbstractUpdater
             'id' => (string) Uuid::v4(),
             'slug' => $record['Slug'],
             'name' => $record['Name'],
-            'french_name' => $record['FrenchName'],
+            'french_name' => $record['French Name'],
             'generation' => $record['#Generation'],
             'order' => $record['Order'],
         ];

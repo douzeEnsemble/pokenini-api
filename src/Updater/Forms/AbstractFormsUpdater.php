@@ -16,7 +16,7 @@ abstract class AbstractFormsUpdater extends AbstractUpdater
     {
         return [
             'Name',
-            'FrenchName',
+            'French Name',
             'Slug',
             'Order'
         ];
@@ -28,7 +28,7 @@ abstract class AbstractFormsUpdater extends AbstractUpdater
             'id' => (string) Uuid::v4(),
             'slug' => $record['Slug'],
             'name' => $record['Name'],
-            'french_name' => $record['FrenchName'],
+            'french_name' => $record['French Name'],
             'order_number' => $record['Order'],
         ];
 
