@@ -374,4 +374,31 @@ class PokedexRepositoryListTest extends KernelTestCase
         $this->assertEquals('raticate', $pokedex[2]['pokemon_slug']);
         $this->assertEquals('raticate-f', $pokedex[3]['pokemon_slug']);
     }
+
+    public function testGetListQueryFamilies(): void
+    {
+        /** @var PokedexRepository $repo */
+        $repo = static::getContainer()->get(PokedexRepository::class);
+
+        $pokedexIterator = $repo->getListQuery(
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'home',
+            AlbumFilters::createFromArray([
+                'families' => [
+                    'bulbasaur',
+                ],
+            ])
+        );
+
+        /** @var string[][] $pokedex */
+        $pokedex = iterator_to_array($pokedexIterator);
+
+        $this->assertCount(6, $pokedex);
+        $this->assertEquals('bulbasaur', $pokedex[0]['pokemon_slug']);
+        $this->assertEquals('ivysaur', $pokedex[1]['pokemon_slug']);
+        $this->assertEquals('venusaur', $pokedex[2]['pokemon_slug']);
+        $this->assertEquals('venusaur-f', $pokedex[3]['pokemon_slug']);
+        $this->assertEquals('venusaur-mega', $pokedex[4]['pokemon_slug']);
+        $this->assertEquals('venusaur-gmax', $pokedex[5]['pokemon_slug']);
+    }
 }

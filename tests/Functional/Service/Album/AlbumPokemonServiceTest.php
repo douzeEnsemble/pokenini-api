@@ -415,6 +415,30 @@ class AlbumPokemonServiceTest extends KernelTestCase
         $this->assertEquals('raticate-f', $pokemons[3]['pokemon_slug']);
     }
 
+    public function testListFilteredFamilies(): void
+    {
+        /** @var AlbumPokemonService $service */
+        $service = static::getContainer()->get(AlbumPokemonService::class);
+
+        $pokemons = $service->get(
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'home',
+            AlbumFilters::createFromArray([
+                'families' => [
+                    'bulbasaur',
+                ],
+            ]),
+        );
+
+        $this->assertCount(6, $pokemons);
+        $this->assertEquals('bulbasaur', $pokemons[0]['pokemon_slug']);
+        $this->assertEquals('ivysaur', $pokemons[1]['pokemon_slug']);
+        $this->assertEquals('venusaur', $pokemons[2]['pokemon_slug']);
+        $this->assertEquals('venusaur-f', $pokemons[3]['pokemon_slug']);
+        $this->assertEquals('venusaur-mega', $pokemons[4]['pokemon_slug']);
+        $this->assertEquals('venusaur-gmax', $pokemons[5]['pokemon_slug']);
+    }
+
     /**
      * @dataProvider providerListFilteredNull
      */

@@ -400,4 +400,56 @@ class AlbumReportServiceData
             ],
         ];
     }
+
+    /**
+     * @return string[][]|string[][][][]|int[][]
+     */
+    public static function getFamiliesReportFilteredProvider(): array
+    {
+        return [
+            'family' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'families' => [
+                        'bulbasaur',
+                    ],
+                ],
+                6,
+                0,
+                0,
+                0,
+                6,
+            ],
+            'family_null' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'families' => [
+                        'null',
+                    ],
+                ],
+                0,
+                0,
+                0,
+                1,
+                1,
+            ],
+            'families' => [
+                '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'home',
+                [
+                    'families' => [
+                        'bulbasaur',
+                        'charmander',
+                    ],
+                ],
+                6,
+                0,
+                0,
+                3,
+                9,
+            ],
+        ];
+    }
 }

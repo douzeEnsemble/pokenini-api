@@ -15,7 +15,9 @@ trait FiltersTrait
         return $this->getFiltersQueryTypes($filters)
             . $this->getFiltersQueryForms($filters)
             . $this->getFiltersQueryCatchStates($filters)
-            . $this->getFiltersQueryGames($filters);
+            . $this->getFiltersQueryGames($filters)
+            . $this->getFiltersQueryFamilies($filters)
+        ;
     }
 
     /**
@@ -28,6 +30,7 @@ trait FiltersTrait
             $this->getFiltersParametersForms($filters),
             $this->getFiltersParametersCatchStates($filters),
             $this->getFiltersParametersGames($filters),
+            $this->getFiltersParametersFamilies($filters),
         );
     }
 
@@ -48,6 +51,7 @@ trait FiltersTrait
             'filter_original_game_bundles' => ArrayParameterType::STRING,
             'filter_game_bundle_availabilities' => ArrayParameterType::STRING,
             'filter_game_bundle_shiny_availabilities' => ArrayParameterType::STRING,
+            'filter_families' => ArrayParameterType::STRING,
         ];
     }
 
@@ -240,6 +244,36 @@ trait FiltersTrait
         }
         if (!empty($filters->gameBundleShinyAvailabilities->values)) {
             $parameters['filter_game_bundle_shiny_availabilities'] = $filters->gameBundleShinyAvailabilities->extract();
+        }
+
+        return $parameters;
+    }
+
+    private function getFiltersQueryFamilies(AlbumFilters $filters): string
+    {
+        $query = '';
+
+        if (!empty($filters->families->values)) {
+            $query .= ' AND (pp.slug IN(:filter_families)'
+                . 'OR (p.slug IN(:filter_families) AND 0 = p.family_order)';
+            if ($filters->families->hasNull()) {
+                $query .= ' OR (pp.slug IS NULL AND 0 <> p.family_order)';
+            }
+            $query .= ')';
+        }
+
+        return $query;
+    }
+
+    /**
+     * @return string[][]|null[][]
+     */
+    private function getFiltersParametersFamilies(AlbumFilters $filters): array
+    {
+        $parameters = [];
+
+        if (!empty($filters->families->values)) {
+            $parameters['filter_families'] = $filters->families->extract();
         }
 
         return $parameters;

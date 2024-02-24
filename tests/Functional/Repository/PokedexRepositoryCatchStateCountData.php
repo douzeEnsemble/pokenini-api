@@ -360,4 +360,53 @@ class PokedexRepositoryCatchStateCountData
             ],
         ];
     }
+
+    /**
+     * @return string[][][][]|int[][][]
+     */
+    public static function providerGetFamiliesCountsCatchStatesFilters(): array
+    {
+        return [
+            'family' => [
+                [
+                    'families' => [
+                        'bulbasaur',
+                    ],
+                ],
+                [
+                    6,
+                    0,
+                    0,
+                    0,
+                ],
+            ],
+            'family_null' => [
+                [
+                    'families' => [
+                        'null',
+                    ],
+                ],
+                [
+                    0,
+                    0,
+                    0,
+                    1,
+                ],
+            ],
+            'families' => [
+                [
+                    'families' => [
+                        'bulbasaur',
+                        'charmander',
+                    ],
+                ],
+                [
+                    6,
+                    0,
+                    0,
+                    3,
+                ],
+            ],
+        ];
+    }
 }

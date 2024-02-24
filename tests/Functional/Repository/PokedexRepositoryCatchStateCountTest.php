@@ -97,6 +97,7 @@ class PokedexRepositoryCatchStateCountTest extends KernelTestCase
             PokedexRepositoryCatchStateCountData::providerGetCatchStatesCountsFormsFilters(),
             PokedexRepositoryCatchStateCountData::providerGetCatchStatesCountsCatchStatesFilters(),
             PokedexRepositoryCatchStateCountData::providerGetCatchStatesCountsGamesFilters(),
+            PokedexRepositoryCatchStateCountData::providerGetFamiliesCountsCatchStatesFilters(),
         );
     }
 }
