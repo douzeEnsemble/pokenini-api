@@ -25,6 +25,7 @@ class AlbumFiltersTest extends TestCase
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->originalGameBundles);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleAvailabilities);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleShinyAvailabilities);
+        $this->assertInstanceOf(AlbumFilterValues::class, $filters->families);
 
         $this->assertEmpty($filters->primaryTypes->values);
         $this->assertEmpty($filters->secondaryTypes->values);
@@ -36,6 +37,7 @@ class AlbumFiltersTest extends TestCase
         $this->assertEmpty($filters->originalGameBundles->values);
         $this->assertEmpty($filters->gameBundleAvailabilities->values);
         $this->assertEmpty($filters->gameBundleShinyAvailabilities->values);
+        $this->assertEmpty($filters->families->values);
     }
 
     public function testCreateFromArray(): void
@@ -51,6 +53,7 @@ class AlbumFiltersTest extends TestCase
             'originalGameBundles' => ['redgreenblueyellow'],
             'gameBundleAvailabilities' => ['sunmoon'],
             'gameBundleShinyAvailabilities' => ['ultrasunutramoon'],
+            'families' => ['pichu', 'eevee'],
         ]);
 
         $this->assertInstanceOf(AlbumFilters::class, $filters);
@@ -64,6 +67,7 @@ class AlbumFiltersTest extends TestCase
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->originalGameBundles);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleAvailabilities);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleShinyAvailabilities);
+        $this->assertInstanceOf(AlbumFilterValues::class, $filters->families);
 
         $this->assertCount(2, $filters->primaryTypes->values);
         $this->assertCount(2, $filters->secondaryTypes->values);
@@ -75,6 +79,7 @@ class AlbumFiltersTest extends TestCase
         $this->assertCount(1, $filters->originalGameBundles->values);
         $this->assertCount(1, $filters->gameBundleAvailabilities->values);
         $this->assertCount(1, $filters->gameBundleShinyAvailabilities->values);
+        $this->assertCount(2, $filters->families->values);
     }
 
     public function testNormalizer(): void

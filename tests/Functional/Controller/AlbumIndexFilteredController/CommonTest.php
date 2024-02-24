@@ -49,6 +49,9 @@ class CommonTest extends AbstractTestAlbumIndexFilteredController
                 'game_bundle_shiny_availabilities' => [
                     '',
                 ],
+                'families' => [
+                    '',
+                ],
             ],
         );
 

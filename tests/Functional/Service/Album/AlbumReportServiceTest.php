@@ -135,6 +135,7 @@ class AlbumReportServiceTest extends KernelTestCase
             AlbumReportServiceData::getFormsReportFilteredProvider(),
             AlbumReportServiceData::getCatchStatesReportFilteredProvider(),
             AlbumReportServiceData::getGamesReportFilteredProvider(),
+            AlbumReportServiceData::getFamiliesReportFilteredProvider(),
         );
     }
 

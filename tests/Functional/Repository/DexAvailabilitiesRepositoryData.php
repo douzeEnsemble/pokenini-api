@@ -242,6 +242,40 @@ class DexAvailabilitiesRepositoryData
     /**
      * @return string[][][][]|int[][]
      */
+    public static function providerGetTotalFamiliesFilters(): array
+    {
+        return [
+            'family' => [
+                'filters' => [
+                    'families' => [
+                        'maybe',
+                    ],
+                ],
+                'totalCount' => 3,
+            ],
+            'family_null' => [
+                'filters' => [
+                    'families' => [
+                        'null',
+                    ],
+                ],
+                'totalCount' => 1,
+            ],
+            'families' => [
+                'filters' => [
+                    'families' => [
+                        'maybe',
+                        'maybenot',
+                    ],
+                ],
+                'totalCount' => 6,
+            ],
+        ];
+    }
+
+    /**
+     * @return string[][][][]|int[][]
+     */
     public static function providerGetTotalEmptyFilters(): array
     {
         return [
@@ -269,6 +303,18 @@ class DexAvailabilitiesRepositoryData
                         '',
                     ],
                     'catchStates' => [
+                        '',
+                    ],
+                    'originalGameBundles' => [
+                        '',
+                    ],
+                    'gameBundleAvailabilities' => [
+                        '',
+                    ],
+                    'gameBundleShinyAvailabilities' => [
+                        '',
+                    ],
+                    'families' => [
                         '',
                     ],
                 ],

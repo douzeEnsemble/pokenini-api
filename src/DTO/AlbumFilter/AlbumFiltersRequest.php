@@ -25,6 +25,7 @@ final class AlbumFiltersRequest
             'original_game_bundles' => [],
             'game_bundle_availabilities' => [],
             'game_bundle_shiny_availabilities' => [],
+            'families' => [],
         ]);
 
         $options = $resolver->resolve($request->query->all());
@@ -41,6 +42,7 @@ final class AlbumFiltersRequest
             'originalGameBundles' => $options['original_game_bundles'],
             'gameBundleAvailabilities' => $options['game_bundle_availabilities'],
             'gameBundleShinyAvailabilities' => $options['game_bundle_shiny_availabilities'],
+            'families' => $options['families'],
         ]);
     }
 }

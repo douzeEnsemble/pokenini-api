@@ -24,6 +24,7 @@ final class AlbumFilters
         public AlbumFilterValues $originalGameBundles,
         public AlbumFilterValues $gameBundleAvailabilities,
         public AlbumFilterValues $gameBundleShinyAvailabilities,
+        public AlbumFilterValues $families,
     ) {
     }
 
@@ -46,6 +47,7 @@ final class AlbumFilters
             'originalGameBundles' => [],
             'gameBundleAvailabilities' => [],
             'gameBundleShinyAvailabilities' => [],
+            'families' => [],
         ];
 
         $resolver->setDefaults($defaultsValues);
@@ -73,6 +75,7 @@ final class AlbumFilters
             $options['originalGameBundles'],
             $options['gameBundleAvailabilities'],
             $options['gameBundleShinyAvailabilities'],
+            $options['families'],
         );
     }
 

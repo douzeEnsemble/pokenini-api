@@ -30,6 +30,7 @@ class AlbumFiltersRequestTest extends TestCase
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->originalGameBundles);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleAvailabilities);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleShinyAvailabilities);
+        $this->assertInstanceOf(AlbumFilterValues::class, $filters->families);
 
         $this->assertEmpty($filters->primaryTypes->values);
         $this->assertEmpty($filters->secondaryTypes->values);
@@ -42,6 +43,7 @@ class AlbumFiltersRequestTest extends TestCase
         $this->assertEmpty($filters->originalGameBundles->values);
         $this->assertEmpty($filters->gameBundleAvailabilities->values);
         $this->assertEmpty($filters->gameBundleShinyAvailabilities->values);
+        $this->assertEmpty($filters->families->values);
     }
 
     public function testAlbumFiltersFromRequest(): void
@@ -58,6 +60,7 @@ class AlbumFiltersRequestTest extends TestCase
             'original_game_bundles' => ['redgreenblueyellow', 'goldsilvercrystal'],
             'game_bundle_availabilities' => ['goldsilvercrystal'],
             'game_bundle_shiny_availabilities' => ['goldsilvercrystal'],
+            'families' => ['pichu', 'eevee'],
         ]);
 
         $filters = AlbumFiltersRequest::albumFiltersFromRequest($request);
@@ -74,6 +77,7 @@ class AlbumFiltersRequestTest extends TestCase
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->originalGameBundles);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleAvailabilities);
         $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleShinyAvailabilities);
+        $this->assertInstanceOf(AlbumFilterValues::class, $filters->families);
 
         $this->assertCount(2, $filters->primaryTypes->values);
         $this->assertCount(2, $filters->secondaryTypes->values);
@@ -86,5 +90,6 @@ class AlbumFiltersRequestTest extends TestCase
         $this->assertCount(2, $filters->originalGameBundles->values);
         $this->assertCount(1, $filters->gameBundleAvailabilities->values);
         $this->assertCount(1, $filters->gameBundleShinyAvailabilities->values);
+        $this->assertCount(2, $filters->families->values);
     }
 }
