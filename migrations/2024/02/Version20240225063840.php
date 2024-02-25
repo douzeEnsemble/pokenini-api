@@ -18,7 +18,10 @@ final class Version20240225063840 extends AbstractMigration
     {
         $this->addSql('ALTER TABLE pokemon DROP CONSTRAINT fk_62dc90f3c35e566a');
         $this->addSql('DROP INDEX idx_62dc90f3c35e566a');
-        $this->addSql('ALTER TABLE pokemon ADD family VARCHAR(255) NOT NULL');
+        $this->addSql('ALTER TABLE pokemon ADD family VARCHAR(255) NULL');
+        $this->addSql('UPDATE pokemon AS p SET family = pp.slug FROM pokemon AS pp WHERE p.family_id = pp.id');
+        $this->addSql('UPDATE pokemon AS p SET family = slug WHERE family IS NULL');
+        $this->addSql('ALTER TABLE pokemon ALTER COLUMN family SET NOT NULL');
         $this->addSql('ALTER TABLE pokemon DROP family_id');
     }
 
