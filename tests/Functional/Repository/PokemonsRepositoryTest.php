@@ -50,7 +50,7 @@ class PokemonsRepositoryTest extends KernelTestCase
 
         $this->assertEquals('Bulbasaur', $pokemons[0]->name);
         $this->assertEquals(1, $pokemons[0]->nationalDexNumber);
-        $this->assertNull($pokemons[0]->family);
+        $this->assertEquals('bulbasaur', $pokemons[0]->family);
 
         $this->assertTrue($pokemons[3]->bankable);
         $this->assertNull($pokemons[3]->bankableish);

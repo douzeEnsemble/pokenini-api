@@ -115,7 +115,7 @@ class PokedexRepository extends ServiceEntityRepository
                         LEFT JOIN game_bundle AS ogb
                             ON p.original_game_bundle_id = ogb.id
                         LEFT JOIN pokemon AS pp
-                            ON p.family_id = pp.id
+                            ON p.family = pp.slug
                     WHERE   $where
                 ) AS t
                         ON cs.id = t.catch_state_id
@@ -328,7 +328,7 @@ class PokedexRepository extends ServiceEntityRepository
                     AND r.id = rdn.region_id
                     AND p.slug = rdn.pokemon_slug
             LEFT JOIN pokemon AS pp
-                ON p.family_id = pp.id
+                ON p.family = pp.slug
             LEFT JOIN game_bundle AS ogb
                 ON p.original_game_bundle_id = ogb.id
             LEFT JOIN pokemon_availabilities AS pagb

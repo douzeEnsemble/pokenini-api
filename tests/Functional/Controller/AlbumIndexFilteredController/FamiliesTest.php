@@ -67,7 +67,7 @@ class FamiliesTest extends AbstractTestAlbumIndexFilteredController
         /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
-        $this->assertCount(1, $pokemons);
+        $this->assertCount(0, $pokemons);
     }
 
     public function testFamiliesFilter(): void

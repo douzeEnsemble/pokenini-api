@@ -41,8 +41,8 @@ class Pokemon
     #[ORM\Column]
     public int $nationalDexNumber;
 
-    #[ORM\ManyToOne]
-    public ?Pokemon $family = null;
+    #[ORM\Column]
+    public string $family = '';
 
     #[ORM\Column]
     public bool $bankable = true;

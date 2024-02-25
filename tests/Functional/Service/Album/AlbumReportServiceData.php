@@ -432,8 +432,8 @@ class AlbumReportServiceData
                 0,
                 0,
                 0,
-                1,
-                1,
+                0,
+                0,
             ],
             'families' => [
                 '7b52009b64fd0a2a49e6d8a939753077792b0554',

@@ -35,9 +35,8 @@ class PokemonsUpdaterTest extends AbstractTestUpdater
         $charmander = $this->getPokemonFromName('Charmander');
         $charmeleon = $this->getPokemonFromName('Charmeleon');
 
-        $this->assertNull($charmander['family_id']);
-        $this->assertNotNull($charmeleon['family_id']);
-        $this->assertEquals($charmander['id'], $charmeleon['family_id']);
+        $this->assertEquals('charmander', $charmander['family']);
+        $this->assertEquals('charmander', $charmeleon['family']);
 
         $this->assertNotNull($charmander['category_form_id']);
         $this->assertNull($charmeleon['category_form_id']);
@@ -65,9 +64,8 @@ class PokemonsUpdaterTest extends AbstractTestUpdater
         $bulbasaurBefore = $this->getPokemonFromName('Bulbasaur');
         $ivysaurBefore = $this->getPokemonFromName('Ivysaur');
 
-        $this->assertNull($bulbasaurBefore['family_id']);
-        $this->assertNotNull($ivysaurBefore['family_id']);
-        $this->assertEquals($bulbasaurBefore['id'], $ivysaurBefore['family_id']);
+        $this->assertEquals('bulbasaur', $bulbasaurBefore['family']);
+        $this->assertEquals('bulbasaur', $ivysaurBefore['family']);
 
         $this->assertNotNull($bulbasaurBefore['category_form_id']);
         $this->assertNull($ivysaurBefore['category_form_id']);
@@ -89,9 +87,8 @@ class PokemonsUpdaterTest extends AbstractTestUpdater
         $bulbasaurAfter = $this->getPokemonFromName('Bulbasaur');
         $ivysaurAfter = $this->getPokemonFromName('Ivysaur');
 
-        $this->assertNull($bulbasaurAfter['family_id']);
-        $this->assertNotNull($ivysaurAfter['family_id']);
-        $this->assertEquals($bulbasaurAfter['id'], $ivysaurAfter['family_id']);
+        $this->assertEquals('bulbasaur', $bulbasaurAfter['family']);
+        $this->assertEquals('bulbasaur', $ivysaurAfter['family']);
 
         $this->assertNotNull($bulbasaurAfter['category_form_id']);
         $this->assertNull($ivysaurAfter['category_form_id']);
@@ -168,17 +165,15 @@ class PokemonsUpdaterTest extends AbstractTestUpdater
         $charmander = $this->getPokemonFromName('Charmander');
         $charmeleon = $this->getPokemonFromName('Charmeleon');
 
-        $this->assertNull($charmander['family_id']);
-        $this->assertNotNull($charmeleon['family_id']);
-        $this->assertEquals($charmander['id'], $charmeleon['family_id']);
+        $this->assertEquals('charmander', $charmander['family']);
+        $this->assertEquals('charmander', $charmeleon['family']);
 
         // Testing creating family
         $pidgey = $this->getPokemonFromName('Pidgey');
         $pidgeotto = $this->getPokemonFromName('Pidgeotto');
 
-        $this->assertNull($pidgey['family_id']);
-        $this->assertNotNull($pidgeotto['family_id']);
-        $this->assertEquals($pidgey['id'], $pidgeotto['family_id']);
+        $this->assertEquals('pidgey', $pidgey['family']);
+        $this->assertEquals('pidgey', $pidgeotto['family']);
 
         // Testing creating family with gender
         $rattataMale = $this->getPokemonFromName('Rattata ♂️');
@@ -186,13 +181,10 @@ class PokemonsUpdaterTest extends AbstractTestUpdater
         $raticateMale = $this->getPokemonFromName('Raticate ♂️');
         $raticateFemale = $this->getPokemonFromName('Raticate ♀');
 
-        $this->assertNull($rattataMale['family_id']);
-        $this->assertNotNull($rattataFemale['family_id']);
-        $this->assertNotNull($raticateMale['family_id']);
-        $this->assertNotNull($raticateFemale['family_id']);
-        $this->assertEquals($rattataMale['id'], $rattataFemale['family_id']);
-        $this->assertEquals($rattataMale['id'], $raticateMale['family_id']);
-        $this->assertEquals($rattataMale['id'], $raticateFemale['family_id']);
+        $this->assertEquals('rattata', $rattataMale['family']);
+        $this->assertEquals('rattata', $rattataFemale['family']);
+        $this->assertEquals('rattata', $raticateMale['family']);
+        $this->assertEquals('rattata', $raticateFemale['family']);
     }
 
     public function testDifferentColumnsOrderPokemons(): void

@@ -69,7 +69,7 @@ class DexAvailabilitiesRepository extends ServiceEntityRepository
                 LEFT JOIN game_bundle AS ogb
                     ON p.original_game_bundle_id = ogb.id
                 LEFT JOIN pokemon AS pp
-                    ON p.family_id = pp.id
+                    ON p.family = pp.slug
         WHERE		$where
         SQL;
 
