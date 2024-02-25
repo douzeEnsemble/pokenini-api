@@ -6,18 +6,20 @@ App\Entity\Pokemon:
         regionalForm: ~
         specialForm: ~
         familyOrder: 0
+        slug: ~ # Need to be overrided
         name: ~ # Need to be overrided
         frenchName: ~ # Need to be overrided
         simplifiedName: '$name'
         formsLabel: ''
         simplifiedFrenchName: '$frenchName'
         formsFrenchLabel: ''
+        family: '$slug'
+        iconName: '$slug'
 
     pokemon_douze (extends pokemon):
         slug: 'douze'
         name: 'Douze'
         frenchName: 'Douze'
-        family: ~
         nationalDexNumber: '9912'
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'douze'
@@ -27,7 +29,7 @@ App\Entity\Pokemon:
         slug: 'bulbasaur'
         name: 'Bulbasaur'
         frenchName: 'Bulbizarre'
-        family: ~
+        family: 'bulbasaur'
         nationalDexNumber: '1'
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'bulbasaur'
@@ -40,7 +42,7 @@ App\Entity\Pokemon:
         slug: 'ivysaur'
         name: 'Ivysaur'
         frenchName: 'Herbizarre'
-        family: '@pokemon_bulbasaur'
+        family: 'bulbasaur'
         nationalDexNumber: '2'
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'ivysaur'
@@ -52,7 +54,7 @@ App\Entity\Pokemon:
         slug: 'venusaur'
         name: 'Venusaur'
         frenchName: 'Florizarre'
-        family: '@pokemon_bulbasaur'
+        family: 'bulbasaur'
         nationalDexNumber: '3'
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'venusaur'
@@ -68,7 +70,7 @@ App\Entity\Pokemon:
         frenchName: 'Florizarre ♀'
         simplifiedFrenchName: 'Florizarre'
         formsFrenchLabel: '♀️'
-        family: '@pokemon_bulbasaur'
+        family: 'bulbasaur'
         nationalDexNumber: '3'
         originalGameBundle: '@game_bundle_diamond_pearl_platinium'
         iconName: 'venusaur'
@@ -85,7 +87,7 @@ App\Entity\Pokemon:
         frenchName: 'Mega Florizarre'
         simplifiedFrenchName: 'Florizarre'
         formsFrenchLabel: 'Mega'
-        family: '@pokemon_bulbasaur'
+        family: 'bulbasaur'
         nationalDexNumber: '3'
         originalGameBundle: '@game_bundle_x_y'
         iconName: 'venusaur'
@@ -102,7 +104,7 @@ App\Entity\Pokemon:
         frenchName: 'Gigamax Florizarre'
         simplifiedFrenchName: 'Florizarre'
         formsFrenchLabel: 'Gigamax'
-        family: '@pokemon_bulbasaur'
+        family: 'bulbasaur'
         nationalDexNumber: '3'
         originalGameBundle: '@game_bundle_sword_shield'
         iconName: 'venusaur'
@@ -115,7 +117,7 @@ App\Entity\Pokemon:
         slug: 'charmander'
         name: 'Charmander'
         frenchName: 'Salamèche'
-        family: ~
+        family: 'charmander'
         nationalDexNumber: '4'
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'charmander'
@@ -127,7 +129,7 @@ App\Entity\Pokemon:
         slug: 'charmeleon'
         name: 'Charmeleon'
         frenchName: 'Reptincel'
-        family: '@pokemon_charmander'
+        family: 'charmander'
         nationalDexNumber: '5'
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'charmeleon'
@@ -138,7 +140,7 @@ App\Entity\Pokemon:
         slug: 'charizard'
         name: 'Charizard'
         frenchName: 'Dracaufeu'
-        family: '@pokemon_charmander'
+        family: 'charmander'
         nationalDexNumber: '6'
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'charizard'
@@ -150,7 +152,7 @@ App\Entity\Pokemon:
         slug: 'deoxys'
         name: 'Deoxys'
         frenchName: 'Deoxys'
-        family:
+        family: 'deoxys'
         nationalDexNumber: '386'
         originalGameBundle: '@game_bundle_ruby_sapphire_emerald'
         iconName: 'deoxys'
@@ -164,7 +166,7 @@ App\Entity\Pokemon:
         formsLabel: 'Attack'
         simplifiedFrenchName: 'Attaque'
         frenchName: 'Deoxys Attaque'
-        family: '@pokemon_deoxys'
+        family: 'deoxys'
         nationalDexNumber: '386'
         originalGameBundle: '@game_bundle_ruby_sapphire_emerald'
         iconName: 'deoxys-attack'
@@ -179,7 +181,7 @@ App\Entity\Pokemon:
         formsLabel: 'Defense'
         simplifiedFrenchName: 'Défense'
         frenchName: 'Deoxys Défense'
-        family: '@pokemon_deoxys'
+        family: 'deoxys'
         nationalDexNumber: '386'
         originalGameBundle: '@game_bundle_ruby_sapphire_emerald'
         iconName: 'deoxys-defense'
@@ -194,7 +196,7 @@ App\Entity\Pokemon:
         formsLabel: 'Speed'
         simplifiedFrenchName: 'Vitesse'
         frenchName: 'Deoxys Vitesse'
-        family: '@pokemon_deoxys'
+        family: 'deoxys'
         nationalDexNumber: '386'
         originalGameBundle: '@game_bundle_ruby_sapphire_emerald'
         iconName: 'deoxys-speed'
@@ -207,6 +209,7 @@ App\Entity\Pokemon:
         slug: 'caterpie'
         name: 'Caterpie'
         frenchName: 'Chenipan'
+        family: 'caterpie'
         nationalDexNumber: '10'
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'caterpie'
@@ -217,7 +220,7 @@ App\Entity\Pokemon:
         slug: 'metapod'
         name: 'Metapod'
         frenchName: 'Chrysacier'
-        family: '@pokemon_caterpie'
+        family: 'caterpie'
         nationalDexNumber: '11'
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'metapod'
@@ -228,7 +231,7 @@ App\Entity\Pokemon:
         slug: 'butterfree'
         name: 'Butterfree'
         frenchName: 'Papilusion'
-        family: '@pokemon_caterpie'
+        family: 'caterpie'
         nationalDexNumber: '12'
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
         iconName: 'butterfree'
@@ -244,7 +247,7 @@ App\Entity\Pokemon:
         frenchName: 'Papilusion'
         simplifiedFrenchName: 'Papilusion'
         formsFrenchLabel: '♀️'
-        family: '@pokemon_caterpie'
+        family: 'caterpie'
         nationalDexNumber: '12'
         originalGameBundle: '@game_bundle_diamond_pearl_platinium'
         iconName: 'butterfree'
@@ -261,7 +264,7 @@ App\Entity\Pokemon:
         frenchName: 'Gigamax Papilusion'
         simplifiedFrenchName: 'Papilusion'
         formsFrenchLabel: 'Gigamax'
-        family: '@pokemon_caterpie'
+        family: 'caterpie'
         nationalDexNumber: '12'
         originalGameBundle: '@game_bundle_sword_shield'
         iconName: 'butterfree-gmax'
@@ -271,113 +274,113 @@ App\Entity\Pokemon:
         secondaryType: '@type_flying'
 
     pokemon_rattata (extends pokemon):
-        slug: "rattata"
-        name: "Rattata ♂️"
-        simplifiedName: "Rattata"
-        formsLabel: "♂️"
-        frenchName: "Rattata ♂️"
-        simplifiedFrenchName: "Rattata"
-        formsFrenchLabel: "♂️"
-        family: ~
+        slug: 'rattata'
+        name: 'Rattata ♂️'
+        simplifiedName: 'Rattata'
+        formsLabel: '♂️'
+        frenchName: 'Rattata ♂️'
+        simplifiedFrenchName: 'Rattata'
+        formsFrenchLabel: '♂️'
+        family: 'rattata'
         nationalDexNumber: 19
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
-        iconName: "rattata"
+        iconName: 'rattata'
         familyOrder: 4
         primaryType: '@type_normal'
 
     pokemon_rattata_f (extends pokemon):
-        slug: "rattata-f"
-        name: "Rattata ♀️"
-        simplifiedName: "Rattata"
-        formsLabel: "♀️"
-        frenchName: "Rattata ♀️"
-        simplifiedFrenchName: "Rattata"
-        formsFrenchLabel: "♀️"
-        family: '@pokemon_rattata'
+        slug: 'rattata-f'
+        name: 'Rattata ♀️'
+        simplifiedName: 'Rattata'
+        formsLabel: '♀️'
+        frenchName: 'Rattata ♀️'
+        simplifiedFrenchName: 'Rattata'
+        formsFrenchLabel: '♀️'
+        family: 'rattata'
         nationalDexNumber: 19
         originalGameBundle: '@game_bundle_diamond_pearl_platinium'
-        iconName: "rattata-f"
+        iconName: 'rattata-f'
         familyOrder: 5
         variantForm: '@variant_form_gender'
         primaryType: '@type_normal'
 
     pokemon_rattata_alola (extends pokemon):
-        slug: "rattata-alola"
-        name: "Rattata-Alola"
-        simplifiedName: "Rattata"
-        formsLabel: "Alolan"
+        slug: 'rattata-alola'
+        name: 'Rattata-Alola'
+        simplifiedName: 'Rattata'
+        formsLabel: 'Alolan'
         frenchName: "Rattata d'Alola"
-        simplifiedFrenchName: "Rattata"
+        simplifiedFrenchName: 'Rattata'
         formsFrenchLabel: "d'Alola"
-        family: '@pokemon_rattata'
+        family: 'rattata'
         nationalDexNumber: 19
         originalGameBundle: '@game_bundle_sun_moon'
-        iconName: "rattata-alola"
+        iconName: 'rattata-alola'
         familyOrder: 6
         regionalForm: '@regional_form_alolan'
         primaryType: '@type_dark'
         secondaryType: '@type_normal'
 
     pokemon_raticate (extends pokemon):
-        slug: "raticate"
-        simplifiedName: "Raticate"
-        formsLabel: "♂️"
-        name: "Raticate ♂️"
-        simplifiedFrenchName: "Rattatac"
-        formsFrenchLabel: "♂️"
-        frenchName: "Rattatac ♂️"
-        family: '@pokemon_rattata'
+        slug: 'raticate'
+        simplifiedName: 'Raticate'
+        formsLabel: '♂️'
+        name: 'Raticate ♂️'
+        simplifiedFrenchName: 'Rattatac'
+        formsFrenchLabel: '♂️'
+        frenchName: 'Rattatac ♂️'
+        family: 'rattata'
         nationalDexNumber: 20
         originalGameBundle: '@game_bundle_red_green_blue_yellow'
-        iconName: "raticate"
+        iconName: 'raticate'
         familyOrder: 7
         primaryType: '@type_normal'
 
     pokemon_raticate_f (extends pokemon):
-        slug: "raticate-f"
-        name: "Raticate ♀️"
-        frenchName: "Rattatac ♀️"
-        family: '@pokemon_rattata'
-        simplifiedName: "Raticate"
-        formsLabel: "♀️"
+        slug: 'raticate-f'
+        name: 'Raticate ♀️'
+        frenchName: 'Rattatac ♀️'
+        family: 'rattata'
+        simplifiedName: 'Raticate'
+        formsLabel: '♀️'
         nationalDexNumber: 20
-        simplifiedFrenchName: "Rattatac"
-        formsFrenchLabel: "♀️"
+        simplifiedFrenchName: 'Rattatac'
+        formsFrenchLabel: '♀️'
         originalGameBundle: '@game_bundle_diamond_pearl_platinium'
-        iconName: "raticate-f"
+        iconName: 'raticate-f'
         familyOrder: 8
         variantForm: '@variant_form_gender'
         primaryType: '@type_normal'
 
     pokemon_raticate_alola (extends pokemon):
-        slug: "raticate-alola"
-        name: "Raticate-Alola"
+        slug: 'raticate-alola'
+        name: 'Raticate-Alola'
         frenchName: "Rattatac d'Alola"
-        family: '@pokemon_rattata'
-        simplifiedName: "Raticate"
-        formsLabel: "Alolan"
+        family: 'rattata'
+        simplifiedName: 'Raticate'
+        formsLabel: 'Alolan'
         nationalDexNumber: 20
-        simplifiedFrenchName: "Rattatac"
+        simplifiedFrenchName: 'Rattatac'
         formsFrenchLabel: "d'Alola"
         originalGameBundle: '@game_bundle_sun_moon'
-        iconName: "raticate-alola"
+        iconName: 'raticate-alola'
         familyOrder: 9
         regionalForm: '@regional_form_alolan'
         primaryType: '@type_dark'
         secondaryType: '@type_normal'
 
     pokemon_raticate_alola_totem (extends pokemon):
-        slug: "raticate-alola-totem"
-        name: "Totem Raticate-Alola"
+        slug: 'raticate-alola-totem'
+        name: 'Totem Raticate-Alola'
         frenchName: "Totem Rattatac d'Alola"
-        family: '@pokemon_rattata'
+        family: 'rattata'
         nationalDexNumber: 20
-        simplifiedName: "Raticate"
-        formsLabel: "Totem Alolan"
+        simplifiedName: 'Raticate'
+        formsLabel: 'Totem Alolan'
         originalGameBundle: '@game_bundle_ultra_sun_ultra_moon'
-        simplifiedFrenchName: "Rattatac"
+        simplifiedFrenchName: 'Rattatac'
         formsFrenchLabel: "Totem d'Alola"
-        iconName: "raticate-alola"
+        iconName: 'raticate-alola'
         familyOrder: 10
         regionalForm: '@regional_form_alolan'
         specialForm: '@special_form_totem'
