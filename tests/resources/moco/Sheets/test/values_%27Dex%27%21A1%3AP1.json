@@ -1,0 +1,24 @@
+{
+  "range": "Dex!A1:P1",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Name",
+      "Slug",
+      "Selection rule",
+      "Order",
+      "Election Order",
+      "French Name",
+      "Is Shiny",
+      "Is Premium",
+      "Is Display Form",
+      "Display template",
+      "#Region",
+      "French description",
+      "Description",
+      "Is released",
+      "Banner",
+      "Can Hold Election"
+    ]
+  ]
+}

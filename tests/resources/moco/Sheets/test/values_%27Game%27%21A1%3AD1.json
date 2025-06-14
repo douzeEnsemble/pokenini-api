@@ -1,0 +1,12 @@
+{
+  "range": "Game!A1:D1",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "#Game Bundle",
+      "Name",
+      "Slug",
+      "Order"
+    ]
+  ]
+}

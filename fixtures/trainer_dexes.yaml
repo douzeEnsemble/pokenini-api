@@ -1,0 +1,88 @@
+App\Entity\TrainerDex:
+    trainerdex_u12_redgreenblueyellow:
+        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        dex: '@dex_redgreenblueyellow'
+        isPrivate: false
+        isOnHome: false
+        name: 'Red / Green / Blue / Yellow'
+        frenchName: 'Rouge / Vert / Bleu / Jaune'
+        slug: 'redgreenblueyellow'
+    trainerdex_u12_goldsilvercrystal:
+        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        dex: '@dex_goldsilvercrystal'
+        name: 'Gold / Silver / Crystal'
+        frenchName: 'Or / Argent / Cristal'
+        slug: 'goldsilvercrystal'
+    trainerdex_u12_rubysapphireemerald:
+        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        dex: '@dex_rubysapphireemerald'
+        name: 'Ruby / Sapphire / Emerald'
+        frenchName: 'Rubis / Saphir / Émeraude'
+        slug: 'rubysapphireemerald'
+    trainerdex_u12_home:
+        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        dex: '@dex_home'
+        name: 'Home'
+        frenchName: 'Home'
+        slug: 'home'
+    trainerdex_u12_home_shiny:
+        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        dex: '@dex_home_shiny'
+        name: |-
+            Home
+            Shiny
+        frenchName: |-
+            Home
+            Chromatique
+        slug: 'home_shiny'
+    trainerdex_u12_home_shiny_ot:
+        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        dex: '@dex_home_shiny'
+        name: 'Home Shiny OT'
+        frenchName: 'Home Chromatique OT'
+        slug: 'homeshinyot'
+    trainerdex_u12_home_pogo:
+        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        dex: '@dex_home_pogo'
+        isPrivate: false
+        isOnHome: true
+        name: 'Home PoGo'
+        frenchName: 'Home PoGo'
+        slug: 'home_pogo'
+    trainerdex_u12_home_pogo_ot:
+        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        dex: '@dex_home_pogo'
+        isPrivate: false
+        isOnHome: true
+        name: 'Home PoGo OT'
+        frenchName: 'Home PoGo OT'
+        slug: 'homepogoot'
+    trainerdex_u12_home_pogo_pokeball:
+        trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
+        dex: '@dex_home_pogo'
+        isPrivate: false
+        isOnHome: true
+        name: 'Home PoGo Poké Ball'
+        frenchName: 'Home PoGo Poké Ball'
+        slug: 'homepogopokeball'
+
+    trainerdex_u13_redgreenblueyellow:
+        trainerExternalId: 'bd307a3ec329e10a2cff8fb87480823da114f8f4'
+        dex: '@dex_redgreenblueyellow'
+        name: 'Red / Green / Blue / Yellow'
+        frenchName: 'Rouge / Vert / Bleu / Jaune'
+        slug: 'redgreenblueyellow'
+    trainerdex_u13_goldsilvercrystal:
+        trainerExternalId: 'bd307a3ec329e10a2cff8fb87480823da114f8f4'
+        dex: '@dex_goldsilvercrystal'
+        name: 'Gold / Silver / Crystal'
+        frenchName: 'Or / Argent / Cristal'
+        slug: 'goldsilvercrystal'
+        isPrivate: true
+    trainerdex_u13_home:
+        trainerExternalId: 'bd307a3ec329e10a2cff8fb87480823da114f8f4'
+        dex: '@dex_home'
+        name: 'Home'
+        frenchName: 'Home'
+        slug: 'home'
+        isPrivate: true

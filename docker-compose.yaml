@@ -1,0 +1,71 @@
+name: Pokénini Api
+
+services:
+  adminer:
+    image: adminer:5.3.0
+    ports:
+      - '127.0.0.1:8082:8080'
+    restart: always
+
+  database:
+    image: postgres:${POSTGRES_VERSION:-14}-alpine
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB:-app}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-!ChangeMe!}
+      - POSTGRES_USER=${POSTGRES_USER:-app}
+
+  moco.sheets.int:
+    build:
+      context: docker/moco
+      args:
+        MOCO_VERSION: 1.5.0
+    volumes:
+      - ./tests/resources/moco/Sheets:/var/moco:ro
+    command: "/var/moco/int.moco.json"
+
+  moco.sheets.test:
+    build:
+      context: docker/moco
+      args:
+        MOCO_VERSION: 1.5.0
+    volumes:
+      - ./tests/resources/moco/Sheets/:/var/moco:ro
+    command: "/var/moco/test.moco.json"
+
+  newman:
+    image: postman/newman:6-alpine
+    volumes:
+      - ./tests/src/Integration:/etc/newman
+    entrypoint: newman run collection.json
+    working_dir: /etc/newman
+
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+      target: php_dev
+    volumes:
+      - .:/var/www/html
+    environment:
+      - PHP_CS_FIXER_IGNORE_ENV=1
+    tty: true
+
+  web:
+    image: nginx:1.28-alpine
+    volumes:
+      - .:/var/www/html
+      - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./docker/nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - '127.0.0.1:80:8080'
+      - '127.0.0.1:443:8080'
+
+volumes:
+  ###> doctrine/doctrine-bundle ###
+  db_data:
+  db_data_test:
+
+  ###< doctrine/doctrine-bundle ###
+

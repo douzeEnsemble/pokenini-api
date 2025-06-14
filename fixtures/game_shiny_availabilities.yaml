@@ -1,0 +1,89 @@
+App\Entity\GameShinyAvailability:
+    gameshinyavailability_bulbasaur_red:
+        pokemonSlug: 'bulbasaur'
+        game: '@game_red'
+        availability: 'C'
+    gameshinyavailability_bulbasaur_blue:
+        pokemonSlug: 'bulbasaur'
+        game: '@game_blue'
+        availability: 'C'
+    gameshinyavailability_bulbasaur_yellow:
+        pokemonSlug: 'bulbasaur'
+        game: '@game_yellow'
+        availability: 'C'
+    gameshinyavailability_bulbasaur_green:
+        pokemonSlug: 'bulbasaur'
+        game: '@game_green'
+        availability: 'C'
+    gameshinyavailability_bulbasaur_gold:
+        pokemonSlug: 'bulbasaur'
+        game: '@game_gold'
+        availability: 'C'
+    gameshinyavailability_bulbasaur_silver:
+        pokemonSlug: 'bulbasaur'
+        game: '@game_silver'
+        availability: 'C'
+    gameshinyavailability_ivysaur_blue:
+        pokemonSlug: 'ivysaur'
+        game: '@game_blue'
+        availability: 'C'
+    gameshinyavailability_ivysaur_yellow:
+        pokemonSlug: 'ivysaur'
+        game: '@game_yellow'
+        availability: 'C'
+    gameshinyavailability_ivysaur_green:
+        pokemonSlug: 'ivysaur'
+        game: '@game_green'
+        availability: 'C'
+    gameshinyavailability_ivysaur_gold:
+        pokemonSlug: 'ivysaur'
+        game: '@game_gold'
+        availability: 'C'
+    gameshinyavailability_ivysaur_silver:
+        pokemonSlug: 'ivysaur'
+        game: '@game_silver'
+        availability: 'C'
+    gameshinyavailability_venusaur_blue:
+        pokemonSlug: 'venusaur'
+        game: '@game_blue'
+        availability: 'C'
+    gameshinyavailability_venusaur_yellow:
+        pokemonSlug: 'venusaur'
+        game: '@game_yellow'
+        availability: 'C'
+    gameshinyavailability_venusaur_green:
+        pokemonSlug: 'venusaur'
+        game: '@game_green'
+        availability: 'C'
+    gameshinyavailability_venusaur_gold:
+        pokemonSlug: 'venusaur'
+        game: '@game_gold'
+        availability: 'C'
+    gameshinyavailability_venusaur_silver:
+        pokemonSlug: 'venusaur'
+        game: '@game_silver'
+        availability: 'C'
+    gameshinyavailability_venusaur_x:
+        pokemonSlug: 'venusaur'
+        game: '@game_x'
+        availability: 'C'
+    gameshinyavailability_venusaur_y:
+        pokemonSlug: 'venusaur'
+        game: '@game_y'
+        availability: 'C'
+    gameshinyavailability_venusaurmega_x:
+        pokemonSlug: 'venusaur-mega'
+        game: '@game_x'
+        availability: 'C'
+    gameshinyavailability_venusaurmega_y:
+        pokemonSlug: 'venusaur-mega'
+        game: '@game_y'
+        availability: 'C'
+    gameshinyavailability_deoxys_ruby:
+        pokemonSlug: 'deoxys'
+        game: '@game_ruby'
+        availability: 'C'
+    gameshinyavailability_deoxys_emerald:
+        pokemonSlug: 'deoxys'
+        game: '@game_emerald'
+        availability: ''

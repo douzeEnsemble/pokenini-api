@@ -1,0 +1,34 @@
+{
+  "range": "'pokemon_list / update_type'!A2:AC2",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "No",
+      "No",
+      "1",
+      "redgreenblueyellow",
+      "",
+      "",
+      "",
+      "",
+      "douze",
+      "0",
+      "Douze",
+      "Douze",
+      "",
+      "Douze",
+      "Douze",
+      "",
+      "1",
+      "",
+      "https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/regular/douze.png",
+      "",
+      "https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/shiny/douze.png",
+      "douze",
+      "",
+      "douze",
+      "grass",
+      "grass"
+    ]
+  ]
+}

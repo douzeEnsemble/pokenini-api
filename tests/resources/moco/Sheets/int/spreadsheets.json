@@ -1,0 +1,1912 @@
+{
+  "spreadsheetId": "1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU",
+  "properties": {
+    "title": "Pokénini - Resources @tests",
+    "locale": "fr_FR",
+    "autoRecalc": "ON_CHANGE",
+    "timeZone": "Europe/Paris",
+    "defaultFormat": {
+      "backgroundColor": {
+        "red": 1,
+        "green": 1,
+        "blue": 1
+      },
+      "padding": {
+        "top": 2,
+        "right": 3,
+        "bottom": 2,
+        "left": 3
+      },
+      "verticalAlignment": "BOTTOM",
+      "wrapStrategy": "OVERFLOW_CELL",
+      "textFormat": {
+        "foregroundColor": {},
+        "fontFamily": "arial,sans,sans-serif",
+        "fontSize": 10,
+        "bold": false,
+        "italic": false,
+        "strikethrough": false,
+        "underline": false,
+        "foregroundColorStyle": {
+          "rgbColor": {}
+        }
+      },
+      "backgroundColorStyle": {
+        "rgbColor": {
+          "red": 1,
+          "green": 1,
+          "blue": 1
+        }
+      }
+    },
+    "spreadsheetTheme": {
+      "primaryFontFamily": "Arial",
+      "themeColors": [
+        {
+          "colorType": "TEXT",
+          "color": {
+            "rgbColor": {}
+          }
+        },
+        {
+          "colorType": "BACKGROUND",
+          "color": {
+            "rgbColor": {
+              "red": 1,
+              "green": 1,
+              "blue": 1
+            }
+          }
+        },
+        {
+          "colorType": "ACCENT1",
+          "color": {
+            "rgbColor": {
+              "red": 0.25882354,
+              "green": 0.52156866,
+              "blue": 0.95686275
+            }
+          }
+        },
+        {
+          "colorType": "ACCENT2",
+          "color": {
+            "rgbColor": {
+              "red": 0.91764706,
+              "green": 0.2627451,
+              "blue": 0.20784314
+            }
+          }
+        },
+        {
+          "colorType": "ACCENT3",
+          "color": {
+            "rgbColor": {
+              "red": 0.9843137,
+              "green": 0.7372549,
+              "blue": 0.015686275
+            }
+          }
+        },
+        {
+          "colorType": "ACCENT4",
+          "color": {
+            "rgbColor": {
+              "red": 0.20392157,
+              "green": 0.65882355,
+              "blue": 0.3254902
+            }
+          }
+        },
+        {
+          "colorType": "ACCENT5",
+          "color": {
+            "rgbColor": {
+              "red": 1,
+              "green": 0.42745098,
+              "blue": 0.003921569
+            }
+          }
+        },
+        {
+          "colorType": "ACCENT6",
+          "color": {
+            "rgbColor": {
+              "red": 0.27450982,
+              "green": 0.7411765,
+              "blue": 0.7764706
+            }
+          }
+        },
+        {
+          "colorType": "LINK",
+          "color": {
+            "rgbColor": {
+              "red": 0.06666667,
+              "green": 0.33333334,
+              "blue": 0.8
+            }
+          }
+        }
+      ]
+    }
+  },
+  "sheets": [
+    {
+      "properties": {
+        "sheetId": 890788134,
+        "title": "empty",
+        "index": 0,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 1000,
+          "columnCount": 26
+        },
+        "tabColor": {
+          "red": 0.2901961,
+          "green": 0.5254902,
+          "blue": 0.9098039
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 0.2901961,
+            "green": 0.5254902,
+            "blue": 0.9098039
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 1211868303,
+        "title": "wrong_sheet",
+        "index": 1,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 18,
+          "columnCount": 4,
+          "frozenRowCount": 1,
+          "hideGridlines": true
+        },
+        "tabColor": {
+          "red": 0.1882353,
+          "green": 0.1882353,
+          "blue": 0.1882353
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 0.1882353,
+            "green": 0.1882353,
+            "blue": 0.1882353
+          }
+        }
+      },
+      "basicFilter": {
+        "range": {
+          "sheetId": 1211868303,
+          "startRowIndex": 0,
+          "endRowIndex": 18,
+          "startColumnIndex": 0,
+          "endColumnIndex": 4
+        },
+        "criteria": {
+          "0": {}
+        },
+        "filterSpecs": [
+          {
+            "columnIndex": 0,
+            "filterCriteria": {}
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 1502512820,
+        "title": "pokemon_list / different_columns_order",
+        "index": 2,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 18,
+          "columnCount": 43,
+          "frozenRowCount": 1,
+          "hideGridlines": true
+        },
+        "tabColor": {
+          "red": 0.1882353,
+          "green": 0.1882353,
+          "blue": 0.1882353
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 0.1882353,
+            "green": 0.1882353,
+            "blue": 0.1882353
+          }
+        }
+      },
+      "basicFilter": {
+        "range": {
+          "sheetId": 1502512820,
+          "startRowIndex": 0,
+          "endRowIndex": 18,
+          "startColumnIndex": 1,
+          "endColumnIndex": 43
+        },
+        "sortSpecs": [
+          {
+            "dimensionIndex": 17,
+            "sortOrder": "ASCENDING"
+          },
+          {
+            "dimensionIndex": 9,
+            "sortOrder": "ASCENDING"
+          }
+        ],
+        "criteria": {
+          "16": {},
+          "1": {},
+          "4": {},
+          "5": {},
+          "6": {},
+          "22": {},
+          "7": {},
+          "8": {},
+          "10": {},
+          "11": {},
+          "12": {},
+          "13": {}
+        },
+        "filterSpecs": [
+          {
+            "columnIndex": 5,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 7,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 6,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 1,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 4,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 10,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 8,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 13,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 16,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 11,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 12,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 22,
+            "filterCriteria": {}
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 1585082610,
+        "title": "pokemon_list / new_and_existing",
+        "index": 3,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 18,
+          "columnCount": 43,
+          "frozenRowCount": 1,
+          "hideGridlines": true
+        },
+        "tabColor": {
+          "red": 0.1882353,
+          "green": 0.1882353,
+          "blue": 0.1882353
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 0.1882353,
+            "green": 0.1882353,
+            "blue": 0.1882353
+          }
+        }
+      },
+      "basicFilter": {
+        "range": {
+          "sheetId": 1585082610,
+          "startRowIndex": 0,
+          "endRowIndex": 18,
+          "startColumnIndex": 0,
+          "endColumnIndex": 43
+        },
+        "sortSpecs": [
+          {
+            "dimensionIndex": 17,
+            "sortOrder": "ASCENDING"
+          },
+          {
+            "dimensionIndex": 8,
+            "sortOrder": "ASCENDING"
+          }
+        ],
+        "criteria": {
+          "0": {},
+          "3": {},
+          "4": {},
+          "5": {},
+          "6": {},
+          "7": {},
+          "9": {},
+          "10": {},
+          "11": {},
+          "12": {},
+          "13": {},
+          "16": {},
+          "22": {}
+        },
+        "filterSpecs": [
+          {
+            "columnIndex": 4,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 6,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 5,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 0,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 3,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 10,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 13,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 16,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 11,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 12,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 9,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 22,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 7,
+            "filterCriteria": {}
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 217375777,
+        "title": "pokemon_list / only_new",
+        "index": 4,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 12,
+          "columnCount": 43,
+          "frozenRowCount": 1,
+          "hideGridlines": true
+        },
+        "tabColor": {
+          "red": 0.1882353,
+          "green": 0.1882353,
+          "blue": 0.1882353
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 0.1882353,
+            "green": 0.1882353,
+            "blue": 0.1882353
+          }
+        }
+      },
+      "basicFilter": {
+        "range": {
+          "sheetId": 217375777,
+          "startRowIndex": 0,
+          "endRowIndex": 12,
+          "startColumnIndex": 0,
+          "endColumnIndex": 43
+        },
+        "sortSpecs": [
+          {
+            "dimensionIndex": 17,
+            "sortOrder": "ASCENDING"
+          },
+          {
+            "dimensionIndex": 8,
+            "sortOrder": "ASCENDING"
+          }
+        ],
+        "criteria": {
+          "0": {},
+          "3": {},
+          "4": {},
+          "5": {},
+          "6": {},
+          "7": {},
+          "9": {},
+          "10": {},
+          "11": {},
+          "12": {},
+          "13": {},
+          "16": {},
+          "22": {}
+        },
+        "filterSpecs": [
+          {
+            "columnIndex": 4,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 6,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 5,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 0,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 3,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 10,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 13,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 16,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 11,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 12,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 9,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 22,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 7,
+            "filterCriteria": {}
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 1412437454,
+        "title": "pokemon_list / only_existing",
+        "index": 5,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 8,
+          "columnCount": 43,
+          "frozenRowCount": 1,
+          "hideGridlines": true
+        },
+        "tabColor": {
+          "red": 0.1882353,
+          "green": 0.1882353,
+          "blue": 0.1882353
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 0.1882353,
+            "green": 0.1882353,
+            "blue": 0.1882353
+          }
+        }
+      },
+      "basicFilter": {
+        "range": {
+          "sheetId": 1412437454,
+          "startRowIndex": 0,
+          "endRowIndex": 8,
+          "startColumnIndex": 0,
+          "endColumnIndex": 43
+        },
+        "sortSpecs": [
+          {
+            "dimensionIndex": 17,
+            "sortOrder": "ASCENDING"
+          },
+          {
+            "dimensionIndex": 8,
+            "sortOrder": "ASCENDING"
+          }
+        ],
+        "criteria": {
+          "0": {},
+          "3": {},
+          "4": {},
+          "5": {},
+          "6": {},
+          "7": {},
+          "9": {},
+          "10": {},
+          "11": {},
+          "12": {},
+          "13": {},
+          "16": {},
+          "22": {}
+        },
+        "filterSpecs": [
+          {
+            "columnIndex": 4,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 6,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 5,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 0,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 3,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 10,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 13,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 16,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 11,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 12,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 9,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 22,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 7,
+            "filterCriteria": {}
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 31489135,
+        "title": "pokemon_list / update_regional_form",
+        "index": 6,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 2,
+          "columnCount": 43,
+          "frozenRowCount": 1,
+          "hideGridlines": true
+        },
+        "tabColor": {
+          "red": 0.1882353,
+          "green": 0.1882353,
+          "blue": 0.1882353
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 0.1882353,
+            "green": 0.1882353,
+            "blue": 0.1882353
+          }
+        }
+      },
+      "basicFilter": {
+        "range": {
+          "sheetId": 31489135,
+          "startRowIndex": 0,
+          "endRowIndex": 2,
+          "startColumnIndex": 0,
+          "endColumnIndex": 43
+        },
+        "sortSpecs": [
+          {
+            "dimensionIndex": 17,
+            "sortOrder": "ASCENDING"
+          },
+          {
+            "dimensionIndex": 8,
+            "sortOrder": "ASCENDING"
+          }
+        ],
+        "criteria": {
+          "0": {},
+          "3": {},
+          "4": {},
+          "5": {},
+          "6": {},
+          "7": {},
+          "9": {},
+          "10": {},
+          "11": {},
+          "12": {},
+          "13": {},
+          "16": {},
+          "22": {}
+        },
+        "filterSpecs": [
+          {
+            "columnIndex": 4,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 6,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 5,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 0,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 3,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 10,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 13,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 16,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 11,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 12,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 9,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 22,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 7,
+            "filterCriteria": {}
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 1536619663,
+        "title": "pokemon_list / zero_data",
+        "index": 7,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 1,
+          "columnCount": 43,
+          "hideGridlines": true
+        },
+        "tabColor": {
+          "red": 0.1882353,
+          "green": 0.1882353,
+          "blue": 0.1882353
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 0.1882353,
+            "green": 0.1882353,
+            "blue": 0.1882353
+          }
+        }
+      },
+      "basicFilter": {
+        "range": {
+          "sheetId": 1536619663,
+          "startRowIndex": 0,
+          "endRowIndex": 1,
+          "startColumnIndex": 0,
+          "endColumnIndex": 43
+        },
+        "sortSpecs": [
+          {
+            "dimensionIndex": 17,
+            "sortOrder": "ASCENDING"
+          },
+          {
+            "dimensionIndex": 8,
+            "sortOrder": "ASCENDING"
+          }
+        ],
+        "criteria": {
+          "0": {},
+          "3": {},
+          "4": {},
+          "5": {},
+          "6": {},
+          "7": {},
+          "9": {},
+          "10": {},
+          "11": {},
+          "12": {},
+          "13": {},
+          "16": {},
+          "22": {}
+        },
+        "filterSpecs": [
+          {
+            "columnIndex": 4,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 6,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 5,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 0,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 3,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 10,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 13,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 16,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 11,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 12,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 9,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 22,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 7,
+            "filterCriteria": {}
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 856952229,
+        "title": "pokemon_list / empty_data",
+        "index": 8,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 11,
+          "columnCount": 43,
+          "hideGridlines": true
+        },
+        "tabColor": {
+          "red": 0.1882353,
+          "green": 0.1882353,
+          "blue": 0.1882353
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 0.1882353,
+            "green": 0.1882353,
+            "blue": 0.1882353
+          }
+        }
+      },
+      "basicFilter": {
+        "range": {
+          "sheetId": 856952229,
+          "startRowIndex": 0,
+          "endRowIndex": 1,
+          "startColumnIndex": 0,
+          "endColumnIndex": 43
+        },
+        "sortSpecs": [
+          {
+            "dimensionIndex": 17,
+            "sortOrder": "ASCENDING"
+          },
+          {
+            "dimensionIndex": 8,
+            "sortOrder": "ASCENDING"
+          }
+        ],
+        "criteria": {
+          "0": {},
+          "3": {},
+          "4": {},
+          "5": {},
+          "6": {},
+          "7": {},
+          "9": {},
+          "10": {},
+          "11": {},
+          "12": {},
+          "13": {},
+          "16": {},
+          "22": {}
+        },
+        "filterSpecs": [
+          {
+            "columnIndex": 4,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 6,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 5,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 0,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 3,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 10,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 13,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 16,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 11,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 12,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 9,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 22,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 7,
+            "filterCriteria": {}
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 291755489,
+        "title": "Pokémons",
+        "index": 9,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 1818,
+          "columnCount": 42,
+          "frozenRowCount": 1,
+          "hideGridlines": true
+        },
+        "tabColorStyle": {
+          "rgbColor": {}
+        }
+      },
+      "basicFilter": {
+        "range": {
+          "sheetId": 291755489,
+          "startRowIndex": 0,
+          "endRowIndex": 1816,
+          "startColumnIndex": 0,
+          "endColumnIndex": 42
+        },
+        "sortSpecs": [
+          {
+            "dimensionIndex": 17,
+            "sortOrder": "ASCENDING"
+          },
+          {
+            "dimensionIndex": 8,
+            "sortOrder": "ASCENDING"
+          }
+        ],
+        "criteria": {
+          "0": {},
+          "3": {},
+          "4": {},
+          "5": {},
+          "6": {},
+          "7": {},
+          "9": {},
+          "10": {},
+          "11": {},
+          "12": {},
+          "13": {},
+          "16": {},
+          "22": {}
+        },
+        "filterSpecs": [
+          {
+            "columnIndex": 4,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 6,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 5,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 0,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 3,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 10,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 13,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 16,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 11,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 12,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 9,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 22,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 7,
+            "filterCriteria": {}
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 955083667,
+        "title": "game_availability_list / zero_data",
+        "index": 10,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 1,
+          "columnCount": 39
+        },
+        "tabColor": {
+          "red": 0.41568628,
+          "green": 0.65882355,
+          "blue": 0.30980393
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 0.41568628,
+            "green": 0.65882355,
+            "blue": 0.30980393
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 1022310621,
+        "title": "game_availability_list / empty_data",
+        "index": 11,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 11,
+          "columnCount": 39
+        },
+        "tabColor": {
+          "red": 0.41568628,
+          "green": 0.65882355,
+          "blue": 0.30980393
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 0.41568628,
+            "green": 0.65882355,
+            "blue": 0.30980393
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 581163367,
+        "title": "game_availability_list / data",
+        "index": 12,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 4,
+          "columnCount": 39
+        },
+        "tabColor": {
+          "red": 0.41568628,
+          "green": 0.65882355,
+          "blue": 0.30980393
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 0.41568628,
+            "green": 0.65882355,
+            "blue": 0.30980393
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 150203878,
+        "title": "Games Availability",
+        "index": 13,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 1817,
+          "columnCount": 39,
+          "frozenRowCount": 2
+        },
+        "tabColor": {
+          "red": 0.41568628,
+          "green": 0.65882355,
+          "blue": 0.30980393
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 0.41568628,
+            "green": 0.65882355,
+            "blue": 0.30980393
+          }
+        }
+      },
+      "merges": [
+        {
+          "sheetId": 150203878,
+          "startRowIndex": 0,
+          "endRowIndex": 1,
+          "startColumnIndex": 2,
+          "endColumnIndex": 6
+        },
+        {
+          "sheetId": 150203878,
+          "startRowIndex": 0,
+          "endRowIndex": 1,
+          "startColumnIndex": 6,
+          "endColumnIndex": 9
+        },
+        {
+          "sheetId": 150203878,
+          "startRowIndex": 0,
+          "endRowIndex": 1,
+          "startColumnIndex": 9,
+          "endColumnIndex": 14
+        },
+        {
+          "sheetId": 150203878,
+          "startRowIndex": 0,
+          "endRowIndex": 1,
+          "startColumnIndex": 14,
+          "endColumnIndex": 19
+        },
+        {
+          "sheetId": 150203878,
+          "startRowIndex": 0,
+          "endRowIndex": 1,
+          "startColumnIndex": 19,
+          "endColumnIndex": 23
+        },
+        {
+          "sheetId": 150203878,
+          "startRowIndex": 0,
+          "endRowIndex": 1,
+          "startColumnIndex": 23,
+          "endColumnIndex": 27
+        },
+        {
+          "sheetId": 150203878,
+          "startRowIndex": 0,
+          "endRowIndex": 1,
+          "startColumnIndex": 27,
+          "endColumnIndex": 33
+        },
+        {
+          "sheetId": 150203878,
+          "startRowIndex": 0,
+          "endRowIndex": 1,
+          "startColumnIndex": 33,
+          "endColumnIndex": 38
+        }
+      ]
+    },
+    {
+      "properties": {
+        "sheetId": 1341585328,
+        "title": "Games Shinies Availability",
+        "index": 12,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 123,
+          "columnCount": 39,
+          "frozenRowCount": 2,
+          "frozenColumnCount": 2
+        },
+        "tabColor": {
+          "red": 1,
+          "green": 1
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 1,
+            "green": 1
+          }
+        }
+      },
+      "merges": [
+        {
+          "sheetId": 1341585328,
+          "startRowIndex": 0,
+          "endRowIndex": 1,
+          "startColumnIndex": 33,
+          "endColumnIndex": 38
+        },
+        {
+          "sheetId": 1341585328,
+          "startRowIndex": 0,
+          "endRowIndex": 1,
+          "startColumnIndex": 38,
+          "endColumnIndex": 40
+        },
+        {
+          "sheetId": 1341585328,
+          "startRowIndex": 0,
+          "endRowIndex": 1,
+          "startColumnIndex": 2,
+          "endColumnIndex": 6
+        },
+        {
+          "sheetId": 1341585328,
+          "startRowIndex": 0,
+          "endRowIndex": 1,
+          "startColumnIndex": 6,
+          "endColumnIndex": 9
+        },
+        {
+          "sheetId": 1341585328,
+          "startRowIndex": 0,
+          "endRowIndex": 1,
+          "startColumnIndex": 9,
+          "endColumnIndex": 14
+        },
+        {
+          "sheetId": 1341585328,
+          "startRowIndex": 0,
+          "endRowIndex": 1,
+          "startColumnIndex": 14,
+          "endColumnIndex": 19
+        },
+        {
+          "sheetId": 1341585328,
+          "startRowIndex": 0,
+          "endRowIndex": 1,
+          "startColumnIndex": 19,
+          "endColumnIndex": 23
+        },
+        {
+          "sheetId": 1341585328,
+          "startRowIndex": 0,
+          "endRowIndex": 1,
+          "startColumnIndex": 23,
+          "endColumnIndex": 27
+        },
+        {
+          "sheetId": 1341585328,
+          "startRowIndex": 0,
+          "endRowIndex": 1,
+          "startColumnIndex": 27,
+          "endColumnIndex": 33
+        }
+      ],
+      "basicFilter": {
+        "range": {
+          "sheetId": 1341585328,
+          "startRowIndex": 0,
+          "endRowIndex": 2,
+          "startColumnIndex": 0,
+          "endColumnIndex": 40
+        }
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 1760361155,
+        "title": "Regional Dex Number",
+        "index": 14,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 1816,
+          "columnCount": 12
+        },
+        "tabColor": {
+          "red": 1,
+          "green": 0.8509804,
+          "blue": 0.4
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 1,
+            "green": 0.8509804,
+            "blue": 0.4
+          }
+        }
+      },
+      "conditionalFormats": [
+        {
+          "ranges": [
+            {
+              "sheetId": 1760361155,
+              "startRowIndex": 1,
+              "endRowIndex": 1006,
+              "startColumnIndex": 1,
+              "endColumnIndex": 2
+            }
+          ],
+          "booleanRule": {
+            "condition": {
+              "type": "CUSTOM_FORMULA",
+              "values": [
+                {
+                  "userEnteredValue": "=COUNTIF(B2:B;B2)\u003e1"
+                }
+              ]
+            },
+            "format": {
+              "backgroundColor": {
+                "red": 0.7176471,
+                "green": 0.88235295,
+                "blue": 0.8039216
+              },
+              "backgroundColorStyle": {
+                "rgbColor": {
+                  "red": 0.7176471,
+                  "green": 0.88235295,
+                  "blue": 0.8039216
+                }
+              }
+            }
+          }
+        }
+      ],
+      "basicFilter": {
+        "range": {
+          "sheetId": 1760361155,
+          "startRowIndex": 0,
+          "endRowIndex": 1006,
+          "startColumnIndex": 0,
+          "endColumnIndex": 12
+        },
+        "criteria": {
+          "9": {},
+          "10": {},
+          "11": {}
+        },
+        "filterSpecs": [
+          {
+            "columnIndex": 11,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 10,
+            "filterCriteria": {}
+          },
+          {
+            "columnIndex": 9,
+            "filterCriteria": {}
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 1033988697,
+        "title": "Resource Type",
+        "index": 14,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 1493,
+          "columnCount": 25
+        },
+        "tabColor": {
+          "red": 1,
+          "green": 1
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 1,
+            "green": 1
+          }
+        }
+      },
+      "protectedRanges": [
+        {
+          "protectedRangeId": 173206679,
+          "range": {
+            "sheetId": 1033988697
+          },
+          "warningOnly": true
+        }
+      ]
+    },
+    {
+      "properties": {
+        "sheetId": 1803711961,
+        "title": "form / different_columns_order",
+        "index": 15,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 5,
+          "columnCount": 3
+        },
+        "tabColor": {
+          "red": 1
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 1
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 380978085,
+        "title": "form / another_list",
+        "index": 16,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 5,
+          "columnCount": 3
+        },
+        "tabColor": {
+          "red": 1
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 1
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 715326452,
+        "title": "form / empty_data",
+        "index": 17,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 6,
+          "columnCount": 3
+        },
+        "tabColor": {
+          "red": 1
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 1
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 260462834,
+        "title": "form / zero_data",
+        "index": 18,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 1,
+          "columnCount": 3
+        },
+        "tabColor": {
+          "red": 1
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 1
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 414459321,
+        "title": "form / Category form",
+        "index": 19,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 5,
+          "columnCount": 3
+        },
+        "tabColor": {
+          "red": 1
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 1
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 403641023,
+        "title": "#Category form",
+        "index": 20,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 5,
+          "columnCount": 3
+        },
+        "tabColor": {
+          "red": 1
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 1
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 58606746,
+        "title": "form / Variant form",
+        "index": 21,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 9,
+          "columnCount": 3
+        },
+        "tabColor": {
+          "red": 1
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 1
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 952923837,
+        "title": "Variant form",
+        "index": 22,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 9,
+          "columnCount": 3
+        },
+        "tabColor": {
+          "red": 1
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 1
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 1747409001,
+        "title": "form / Regional form",
+        "index": 23,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 5,
+          "columnCount": 3
+        },
+        "tabColor": {
+          "red": 1
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 1
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 2074565433,
+        "title": "#Regional form",
+        "index": 24,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 9,
+          "columnCount": 3
+        },
+        "tabColor": {
+          "red": 1
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 1
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 305311087,
+        "title": "form / Special form",
+        "index": 25,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 6,
+          "columnCount": 3
+        },
+        "tabColor": {
+          "red": 1
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 1
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 1339824485,
+        "title": "#Special form",
+        "index": 26,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 9,
+          "columnCount": 3
+        },
+        "tabColor": {
+          "red": 1
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 1
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 1206671232,
+        "title": "Catch state",
+        "index": 27,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 7,
+          "columnCount": 5
+        },
+        "tabColor": {
+          "red": 0.59607846
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 0.59607846
+          }
+        }
+      },
+      "basicFilter": {
+        "range": {
+          "sheetId": 1206671232,
+          "startRowIndex": 0,
+          "endRowIndex": 7,
+          "startColumnIndex": 0,
+          "endColumnIndex": 5
+        }
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 1623522278,
+        "title": "Dex",
+        "index": 28,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 22,
+          "columnCount": 13,
+          "frozenRowCount": 1
+        },
+        "tabColor": {
+          "green": 1
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "green": 1
+          }
+        }
+      },
+      "basicFilter": {
+        "range": {
+          "sheetId": 1623522278,
+          "startRowIndex": 0,
+          "endRowIndex": 22,
+          "startColumnIndex": 0,
+          "endColumnIndex": 8
+        },
+        "sortSpecs": [
+          {
+            "dimensionIndex": 3,
+            "sortOrder": "ASCENDING"
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 2030660961,
+        "title": "Game Generation",
+        "index": 29,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 10,
+          "columnCount": 2
+        },
+        "tabColor": {
+          "red": 0.2901961,
+          "green": 0.5254902,
+          "blue": 0.9098039
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 0.2901961,
+            "green": 0.5254902,
+            "blue": 0.9098039
+          }
+        }
+      },
+      "basicFilter": {
+        "range": {
+          "sheetId": 2030660961,
+          "startRowIndex": 0,
+          "endRowIndex": 10,
+          "startColumnIndex": 0,
+          "endColumnIndex": 2
+        },
+        "sortSpecs": [
+          {
+            "dimensionIndex": 1,
+            "sortOrder": "ASCENDING"
+          }
+        ]
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 1335548265,
+        "title": "Game Bundle",
+        "index": 30,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 18,
+          "columnCount": 5
+        },
+        "tabColor": {
+          "red": 0.2901961,
+          "green": 0.5254902,
+          "blue": 0.9098039
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 0.2901961,
+            "green": 0.5254902,
+            "blue": 0.9098039
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 1501224559,
+        "title": "Game",
+        "index": 31,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 38,
+          "columnCount": 4
+        },
+        "tabColor": {
+          "red": 0.2901961,
+          "green": 0.5254902,
+          "blue": 0.9098039
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 0.2901961,
+            "green": 0.5254902,
+            "blue": 0.9098039
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 1293377463,
+        "title": "Collections Availability",
+        "index": 14,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 122,
+          "columnCount": 9
+        },
+        "tabColor": {
+          "red": 1,
+          "green": 1
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 1,
+            "green": 1
+          }
+        }
+      }
+    },
+    {
+      "properties": {
+        "sheetId": 1501224559,
+        "title": "Collection",
+        "index": 32,
+        "sheetType": "GRID",
+        "gridProperties": {
+          "rowCount": 10,
+          "columnCount": 4
+        },
+        "tabColor": {
+          "red": 0.2901961,
+          "green": 0.5254902,
+          "blue": 0.9098039
+        },
+        "tabColorStyle": {
+          "rgbColor": {
+            "red": 0.2901961,
+            "green": 0.5254902,
+            "blue": 0.9098039
+          }
+        }
+      }
+    }
+  ],
+  "spreadsheetUrl": "https://docs.google.com/spreadsheets/d/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/edit"
+}

@@ -1,0 +1,132 @@
+{
+  "range": "'Game Bundle'!A2:E18",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "1",
+      "Red, Green, Blue, Yellow",
+      "Rouge, Vert, Bleu, Jaune",
+      "redgreenblueyellow",
+      "1"
+    ],
+    [
+      "2",
+      "Gold, Silver, Crystal",
+      "Or, Argent, Cristal",
+      "goldsilvercrystal",
+      "2"
+    ],
+    [
+      "3",
+      "Ruby, Sapphire, Emerald",
+      "Rubis, Saphir, Émeraude",
+      "rubysapphireemerald",
+      "3"
+    ],
+    [
+      "3",
+      "Fire Red, Leaf Green",
+      "Rouge Feu, Vert Feuille",
+      "fireredleafgreen",
+      "4"
+    ],
+    [
+      "4",
+      "Diamond, Pearl, Platinium",
+      "Diamant, Perle, Platine",
+      "diamondpearlplatinium",
+      "5"
+    ],
+    [
+      "4",
+      "Heart Gold, Soul Silver",
+      "Or HeartGold, Argent SoulSilver",
+      "heartgoldsoulsilver",
+      "6"
+    ],
+    [
+      "5",
+      "Black, White",
+      "Noir, Blanc",
+      "blackwhite",
+      "7"
+    ],
+    [
+      "5",
+      "Black 2, White 2",
+      "Noir 2, Blanc 2",
+      "black2white2",
+      "8"
+    ],
+    [
+      "6",
+      "X, Y",
+      "X, Y",
+      "xy",
+      "9"
+    ],
+    [
+      "6",
+      "Omega Ruby, Alpha Sapphire",
+      "Rubis Oméga, Saphir Alpha",
+      "omegarubyalphasapphire",
+      "10"
+    ],
+    [
+      "7",
+      "Sun, Moon",
+      "Soleil, Lune",
+      "sunmoon",
+      "11"
+    ],
+    [
+      "7",
+      "Ultra Sun, Ultra Moon",
+      "Ultra-Soleil, Ultra-Lune",
+      "ultrasunultramoon",
+      "12"
+    ],
+    [
+      "7",
+      "Let's Go Pikachu, Let's Go Eevee",
+      "Let's Go Pikachu, Let's Go Évoli",
+      "letsgopikachuletsgoeevee",
+      "13"
+    ],
+    [
+      "7",
+      "Pokemon Go",
+      "Pokémon Go",
+      "pokemongo",
+      "14"
+    ],
+    [
+      "8",
+      "Sword, Shield",
+      "Épée, Bouclier",
+      "swordshield",
+      "15"
+    ],
+    [
+      "8",
+      "Brilliant Diamond, Shining Pearl",
+      "Diamant Étincelant, Perle Scintillante",
+      "brilliantdiamondshiningpearl",
+      "16"
+    ],
+    [
+      "8",
+      "Pokémon Legends Arceus",
+      "Légendes Pokémon : Arceus",
+      "pokemonlegendsarceus",
+      "17"
+    ],
+    [
+      "9",
+      "Scarlet, Violet",
+      "Écarlate, Violet",
+      "scarletviolet",
+      "18"
+    ]
+  ]
+}

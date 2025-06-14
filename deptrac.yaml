@@ -1,0 +1,132 @@
+parameters:
+  paths:
+    - ./src
+  exclude_files:
+    - .*test.*
+  layers:
+    - name: ActionEnder
+      collectors:
+        - type: classLike
+          value: 'App\\ActionEnder\\.*'
+    - name: ActionStarter
+      collectors:
+        - type: classLike
+          value: 'App\\ActionStarter\\.*'
+    - name: Calculator
+      collectors:
+        - type: classLike
+          value: 'App\\Calculator\\.*'
+    - name: Command
+      collectors:
+        - type: classLike
+          value: 'App\\Command\\.*'
+    - name: Controller
+      collectors:
+        - type: classLike
+          value: 'App\\Controller\\.*'
+    - name: DTO
+      collectors:
+        - type: classLike
+          value: 'App\\DTO\\.*'
+    - name: Entity
+      collectors:
+        - type: classLike
+          value: 'App\\Entity\\.*'
+    - name: Exception
+      collectors:
+        - type: classLike
+          value: 'App\\Exception\\.*'
+    - name: Helper
+      collectors:
+        - type: classLike
+          value: 'App\\Helper\\.*'
+    - name: Message
+      collectors:
+        - type: classLike
+          value: 'App\\Message\\.*'
+    - name: MessageHandler
+      collectors:
+        - type: classLike
+          value: 'App\\MessageHandler\\.*'
+    - name: Repository
+      collectors:
+        - type: classLike
+          value: 'App\\Repository\\.*'
+    - name: Service
+      collectors:
+        - type: classLike
+          value: 'App\\Service\\.*'
+    - name: Updater
+      collectors:
+        - type: classLike
+          value: 'App\\Updater\\.*'
+    
+  ruleset:
+    ActionEnder:
+      - DTO
+      - Entity
+      - Message
+      - Repository
+    ActionStarter:
+      - Entity
+      - Message
+    Calculator:
+      - Calculator
+      - DTO
+      - Entity
+      - Repository
+      - Service
+    Command:
+      - ActionEnder
+      - ActionStarter
+      - Calculator
+      - DTO
+      - Entity
+      - Message
+      - Repository
+      - Service
+      - Updater
+    Controller:
+      - ActionEnder
+      - ActionStarter
+      - DTO
+      - Entity
+      - Repository
+      - Service
+    DTO:
+      - DTO
+    Entity:
+      - Entity
+    Helper:
+      - Helper
+    Message:
+      - Message
+    MessageHandler:
+      - ActionEnder
+      - Calculator
+      - DTO
+      - Entity
+      - Message
+      - MessageHandler
+      - Service
+      - Updater
+      - Repository
+    Repository:
+      - DTO
+      - Entity
+      - Message
+      - Repository
+    Service:
+      - Calculator
+      - DTO
+      - Entity
+      - Repository
+      - Service
+      - Updater
+    Updater:
+      - DTO
+      - Entity
+      - Exception
+      - Helper
+      - Repository
+      - Service

@@ -1,0 +1,37 @@
+{
+  "range": "'pokemon_list / update_type'!A1:AC1",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Bankable",
+      "Breeedable Form",
+      "#Origin",
+      "#Games First Appears On",
+      "#Form variant",
+      "#Regional form",
+      "#Special form",
+      "#Category form",
+      "#Family",
+      "Family order",
+      "Pokémon Nom Complet",
+      "Pokémon Nom simplifié",
+      "Forme",
+      "Pokémon Nom Complet Fr",
+      "Pokémon Nom simplifié Fr",
+      "Forme Fr",
+      "Dex",
+      "Sprites",
+      "Sprites url",
+      "Shiny Sprites",
+      "Shiny Sprites url",
+      "Icon",
+      "Bankable-ish",
+      "Slug",
+      "#Type 1",
+      "#Type 2",
+      "Species number",
+      "PokemonDB icon name",
+      "MBCMechachu sprites index"
+    ]
+  ]
+}

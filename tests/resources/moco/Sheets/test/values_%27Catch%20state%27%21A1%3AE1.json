@@ -1,0 +1,13 @@
+{
+  "range": "'Catch state'!A1:D1",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Name",
+      "Slug",
+      "Order",
+      "French Name",
+      "Color"
+    ]
+  ]
+}

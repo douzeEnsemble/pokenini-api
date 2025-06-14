@@ -1,0 +1,12 @@
+{
+  "range": "'Variant form'!A1:D1",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Name",
+      "French Name",
+      "Slug",
+      "Order"
+    ]
+  ]
+}

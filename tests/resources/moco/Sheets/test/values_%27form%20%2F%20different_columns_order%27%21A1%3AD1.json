@@ -1,0 +1,12 @@
+{
+  "range": "'form / different_columns_order'!A1:D1",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Order",
+      "French Name",
+      "Name",
+      "Slug"
+    ]
+  ]
+}

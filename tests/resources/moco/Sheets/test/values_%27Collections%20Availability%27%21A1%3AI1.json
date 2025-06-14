@@ -1,0 +1,17 @@
+{
+  "range": "'Collections Availability'!A1:I1",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "#Pokemon",
+      "pogoshadow",
+      "pogoshadowshiny",
+      "pogodynamax",
+      "swshdynamaxadventuresbosses",
+      "svmassoutbreakspaldea",
+      "svmassoutbreakskitakami",
+      "svmassoutbreaksterrarium",
+      "svtransferable"
+    ]
+  ]
+}

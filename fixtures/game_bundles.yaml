@@ -1,0 +1,115 @@
+App\Entity\GameBundle:
+    game_bundle_red_green_blue_yellow:
+        name: 'Red, Green, Blue, Yellow'
+        slug: 'redgreenblueyellow'
+        frenchName: 'Rouge, Vert, Bleu, Jaune'
+        generation: '@gen_1'
+        orderNumber: 1
+    game_bundle_gold_silver_crystal:
+        name: 'Gold, Silver, Crystal'
+        slug: 'goldsilvercrystal'
+        frenchName: 'Or, Argent, Cristal'
+        generation: '@gen_2'
+        orderNumber: 2
+    game_bundle_ruby_sapphire_emerald:
+        name: 'Ruby, Sapphire, Emerald'
+        slug: 'rubysapphireemerald'
+        frenchName: 'Rubis, Saphir, Émeraude'
+        generation: '@gen_3'
+        orderNumber: 3
+    game_bundle_fire_red_leaf_green:
+        name: 'Fire Red, Leaf Green'
+        slug: 'fireredleafgreen'
+        frenchName: 'Rouge Feu, Vert Feuille'
+        generation: '@gen_3'
+        orderNumber: 4
+    game_bundle_diamond_pearl_platinium:
+        name: 'Diamond, Pearl, Platinium'
+        slug: 'diamondpearlplatinium'
+        frenchName: 'Diamant, Perle, Platine'
+        generation: '@gen_4'
+        orderNumber: 5
+    game_bundle_heart_gold_soul_silver:
+        name: 'Heart Gold, Soul Silver'
+        slug: 'heartgoldsoulsilver'
+        frenchName: 'Or HeartGold, Argent SoulSilver'
+        generation: '@gen_4'
+        orderNumber: 6
+    game_bundle_black_white:
+        name: 'Black, White'
+        slug: 'blackwhite'
+        frenchName: 'Noir, Blanc'
+        generation: '@gen_5'
+        orderNumber: 7
+    game_bundle_black2_white2:
+        name: 'Black 2, White 2'
+        slug: 'black2white2'
+        frenchName: Noir 2, Blanc 2'
+        generation: '@gen_5'
+        orderNumber: 8
+    game_bundle_x_y:
+        name: 'X, Y'
+        slug: 'xy'
+        frenchName: 'X, Y'
+        generation: '@gen_6'
+        orderNumber: 9
+    game_bundle_omega_ruby_alpha_sapphire:
+        name: 'Omega Ruby, Alpha Sapphire'
+        slug: 'omegarubyalphasapphire'
+        frenchName: Rubis Oméga, Saphir Alpha'
+        generation: '@gen_6'
+        orderNumber: 10
+    game_bundle_sun_moon:
+        name: 'Sun, Moon'
+        slug: 'sunmoon'
+        frenchName: Soleil, Lune'
+        generation: '@gen_7'
+        orderNumber: 11
+    game_bundle_ultra_sun_ultra_moon:
+        name: 'Ultra Sun, Ultra Moon'
+        slug: 'ultrasunultramoon'
+        frenchName: 'Ultra-Soleil, Ultra-Lune'
+        generation: '@gen_7'
+        orderNumber: 12
+    game_bundle_lets_go_pikachu_lets_go_eevee:
+        name: 'Lets Go Pikachu, Lets Go Eevee'
+        slug: 'letsgopikachuletsgoeevee'
+        frenchName: "Let's Go Pikachu, Let's Go Évoli"
+        generation: '@gen_7'
+        orderNumber: 13
+    game_bundle_pokemongo:
+        name: 'Pokemon Go'
+        slug: 'pokemongo'
+        frenchName: 'Pokémon Go'
+        generation: '@gen_7'
+        orderNumber: 14
+    game_bundle_sword_shield:
+        name: 'Sword, Shield'
+        slug: 'swordshield'
+        frenchName: 'Épée, Bouclier'
+        generation: '@gen_8'
+        orderNumber: 15
+    game_bundle_brilliant_diamond_shining_pearl:
+        name: 'Brilliant Diamond, Shining Pearl'
+        slug: 'brilliantdiamondshiningpearl'
+        frenchName: 'Diamant Étincelant, Perle Scintillante'
+        generation: '@gen_8'
+        orderNumber: 16
+    game_bundle_pokemon_legends_arceus:
+        name: 'Pokémon Legends Arceus'
+        slug: 'pokemonlegendsarceus'
+        frenchName: 'Légendes Pokémon : Arceus'
+        generation: '@gen_8'
+        orderNumber: 17
+    game_bundle_scarlet_violet:
+        name: 'Scarlet, Violet'
+        slug: 'scarletviolet'
+        frenchName: 'Écarlate, Violet'
+        generation: '@gen_9'
+        orderNumber: 18
+    game_bundle_machintruc:
+        name: 'Foo, Bar'
+        slug: 'foobar'
+        frenchName: 'Machin, Truc'
+        generation: '@gen_9'
+        orderNumber: 19

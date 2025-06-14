@@ -1,0 +1,13 @@
+{
+  "range": "'Game Bundle'!A1:E1",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "#Generation",
+      "Name",
+      "French Name",
+      "Slug",
+      "Order"
+    ]
+  ]
+}

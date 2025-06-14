@@ -1,0 +1,297 @@
+App\Entity\PokemonAvailabilities:
+    douze_game_bundles:
+        pokemon: '@pokemon_douze'
+        category: 'game_bundle'
+        items:  
+            - 'un'
+            - 'dos'
+            - 'tres'
+    douze_game_bundles_shiny:
+        pokemon: '@pokemon_douze'
+        category: 'game_bundle_shiny'
+        items: ['']
+
+    bulbasaur_game_bundles:
+        pokemon: '@pokemon_bulbasaur'
+        category: 'game_bundle'
+        items: 
+            - 'redgreenblueyellow'
+            - 'goldsilvercrystal'
+    bulbasaur_game_bundles_shiny:
+        pokemon: '@pokemon_bulbasaur'
+        category: 'game_bundle_shiny'
+        items: 
+            - 'redgreenblueyellow'
+            - 'goldsilvercrystal'
+
+    ivysaur_game_bundles:
+        pokemon: '@pokemon_ivysaur'
+        category: 'game_bundle'
+        items: 
+            - 'redgreenblueyellow'
+            - 'goldsilvercrystal'
+    ivysaur_game_bundles_shiny:
+        pokemon: '@pokemon_ivysaur'
+        category: 'game_bundle_shiny'
+        items: 
+            - 'redgreenblueyellow'
+            - 'goldsilvercrystal'
+
+    venusaur_game_bundles:
+        pokemon: '@pokemon_venusaur'
+        category: 'game_bundle'
+        items: 
+            - 'redgreenblueyellow'
+            - 'goldsilvercrystal'
+    venusaur_game_bundles_shiny:
+        pokemon: '@pokemon_venusaur'
+        category: 'game_bundle_shiny'
+        items: 
+            - 'redgreenblueyellow'
+            - 'goldsilvercrystal'
+
+    venusaurf_game_bundles:
+        pokemon: '@pokemon_venusaur_f'
+        category: 'game_bundle'
+        items: 
+            - 'redgreenblueyellow'
+            - 'goldsilvercrystal'
+    venusaurf_game_bundles_shiny:
+        pokemon: '@pokemon_venusaur_f'
+        category: 'game_bundle_shiny'
+        items: 
+            - 'redgreenblueyellow'
+            - 'goldsilvercrystal'
+
+    venusaurgigantamax_game_bundles:
+        pokemon: '@pokemon_venusaur_gigantamax'
+        category: 'game_bundle'
+        items: 
+            - 'redgreenblueyellow'
+            - 'goldsilvercrystal'
+    venusaurgigantamax_game_bundles_shiny:
+        pokemon: '@pokemon_venusaur_gigantamax'
+        category: 'game_bundle_shiny'
+        items: 
+            - 'redgreenblueyellow'
+            - 'goldsilvercrystal'
+
+    venusaurmega_game_bundles:
+        pokemon: '@pokemon_venusaur_mega'
+        category: 'game_bundle'
+        items: 
+            - 'redgreenblueyellow'
+            - 'goldsilvercrystal'
+    venusaurmega_game_bundles_shiny:
+        pokemon: '@pokemon_venusaur_mega'
+        category: 'game_bundle_shiny'
+        items: 
+            - 'redgreenblueyellow'
+            - 'goldsilvercrystal'
+
+    charmander_game_bundles:
+        pokemon: '@pokemon_charmander'
+        category: 'game_bundle'
+        items: ['']
+    charmander_game_bundles_shiny:
+        pokemon: '@pokemon_charmander'
+        category: 'game_bundle_shiny'
+        items: ['']
+
+    charmeleon_game_bundles:
+        pokemon: '@pokemon_charmeleon'
+        category: 'game_bundle'
+        items: ['']
+    charmeleon_game_bundles_shiny:
+        pokemon: '@pokemon_charmeleon'
+        category: 'game_bundle_shiny'
+        items: ['']
+
+    charizard_game_bundles:
+        pokemon: '@pokemon_charizard'
+        category: 'game_bundle'
+        items: ['']
+    charizard_game_bundles_shiny:
+        pokemon: '@pokemon_charizard'
+        category: 'game_bundle_shiny'
+        items: ['']
+
+    caterpie_game_bundles:
+        pokemon: '@pokemon_caterpie'
+        category: 'game_bundle'
+        items: ['']
+    caterpie_game_bundles_shiny:
+        pokemon: '@pokemon_caterpie'
+        category: 'game_bundle_shiny'
+        items: ['']
+
+    metapod_game_bundles:
+        pokemon: '@pokemon_metapod'
+        category: 'game_bundle'
+        items: ['']
+    metapod_game_bundles_shiny:
+        pokemon: '@pokemon_metapod'
+        category: 'game_bundle_shiny'
+        items: ['']
+
+    butterfree_game_bundles:
+        pokemon: '@pokemon_butterfree'
+        category: 'game_bundle'
+        items: ['']
+    butterfree_game_bundles_shiny:
+        pokemon: '@pokemon_butterfree'
+        category: 'game_bundle_shiny'
+        items: ['']
+
+    butterfreef_game_bundles:
+        pokemon: '@pokemon_butterfree_f'
+        category: 'game_bundle'
+        items: ['']
+    butterfreef_game_bundles_shiny:
+        pokemon: '@pokemon_butterfree_f'
+        category: 'game_bundle_shiny'
+        items: ['']
+
+    butterfreegmax_game_bundles:
+        pokemon: '@pokemon_butterfree_gigantamax'
+        category: 'game_bundle'
+        items: ['']
+    butterfreegmax_game_bundles_shiny:
+        pokemon: '@pokemon_butterfree_gigantamax'
+        category: 'game_bundle_shiny'
+        items: ['']
+
+    rattata_game_bundles:
+        pokemon: '@pokemon_rattata'
+        category: 'game_bundle'
+        items: 
+            - 'ultrasunultramoon'
+    rattata_game_bundles_shiny:
+        pokemon: '@pokemon_rattata'
+        category: 'game_bundle_shiny'
+        items: 
+            - 'ultrasunultramoon'
+
+    rattataf_game_bundles:
+        pokemon: '@pokemon_rattata_f'
+        category: 'game_bundle'
+        items: 
+            - 'redgreenblueyellow'
+            - 'ultrasunultramoon'
+    rattataf_game_bundles_shiny:
+        pokemon: '@pokemon_rattata_f'
+        category: 'game_bundle_shiny'
+        items: 
+            - 'redgreenblueyellow'
+            - 'ultrasunultramoon'
+
+    rattataalola_game_bundles:
+        pokemon: '@pokemon_rattata_alola'
+        category: 'game_bundle'
+        items: 
+            - 'redgreenblueyellow'
+            - 'ultrasunultramoon'
+    rattataalola_game_bundles_shiny:
+        pokemon: '@pokemon_rattata_alola'
+        category: 'game_bundle_shiny'
+        items: 
+            - 'redgreenblueyellow'
+            - 'ultrasunultramoon'
+
+    raticate_game_bundles:
+        pokemon: '@pokemon_raticate'
+        category: 'game_bundle'
+        items: 
+            - 'ultrasunultramoon'
+    raticate_game_bundles_shiny:
+        pokemon: '@pokemon_raticate'
+        category: 'game_bundle_shiny'
+        items: 
+            - 'ultrasunultramoon'
+
+    raticatef_game_bundles:
+        pokemon: '@pokemon_raticate_f'
+        category: 'game_bundle'
+        items: 
+            - 'redgreenblueyellow'
+            - 'ultrasunultramoon'
+    raticatef_game_bundles_shiny:
+        pokemon: '@pokemon_raticate_f'
+        category: 'game_bundle_shiny'
+        items: 
+            - 'redgreenblueyellow'
+            - 'ultrasunultramoon'
+
+    raticatealola_game_bundles:
+        pokemon: '@pokemon_raticate_alola'
+        category: 'game_bundle'
+        items: 
+            - 'redgreenblueyellow'
+            - 'ultrasunultramoon'
+    raticatealola_game_bundles_shiny:
+        pokemon: '@pokemon_raticate_alola'
+        category: 'game_bundle_shiny'
+        items: 
+            - 'redgreenblueyellow'
+            - 'ultrasunultramoon'
+
+    raticatealolatotem_game_bundles:
+        pokemon: '@pokemon_raticate_alola_totem'
+        category: 'game_bundle'
+        items: ['']
+    raticatealolatotem_game_bundles_shiny:
+        pokemon: '@pokemon_raticate_alola_totem'
+        category: 'game_bundle_shiny'
+        items: ['']
+
+    deoxys_game_bundles:
+        pokemon: '@pokemon_deoxys'
+        category: 'game_bundle'
+        items: 
+            - 'redgreenblueyellow'
+            - 'goldsilvercrystal'
+    deoxys_game_bundles_shiny:
+        pokemon: '@pokemon_deoxys'
+        category: 'game_bundle_shiny'
+        items: 
+            - 'redgreenblueyellow'
+            - 'goldsilvercrystal'
+
+    deoxysattack_game_bundles:
+        pokemon: '@pokemon_deoxys_attack'
+        category: 'game_bundle'
+        items: 
+            - 'redgreenblueyellow'
+            - 'goldsilvercrystal'
+    deoxysattack_game_bundles_shiny:
+        pokemon: '@pokemon_deoxys_attack'
+        category: 'game_bundle_shiny'
+        items: 
+            - 'redgreenblueyellow'
+            - 'goldsilvercrystal'
+
+    deoxysdefense_game_bundles:
+        pokemon: '@pokemon_deoxys_defense'
+        category: 'game_bundle'
+        items: 
+            - 'redgreenblueyellow'
+            - 'goldsilvercrystal'
+    deoxysdefense_game_bundles_shiny:
+        pokemon: '@pokemon_deoxys_defense'
+        category: 'game_bundle_shiny'
+        items: 
+            - 'redgreenblueyellow'
+            - 'goldsilvercrystal'
+
+    deoxysspeed_game_bundles:
+        pokemon: '@pokemon_deoxys_speed'
+        category: 'game_bundle'
+        items: 
+            - 'redgreenblueyellow'
+            - 'goldsilvercrystal'
+    deoxysspeed_game_bundles_shiny:
+        pokemon: '@pokemon_deoxys_speed'
+        category: 'game_bundle_shiny'
+        items: 
+            - 'redgreenblueyellow'
+            - 'goldsilvercrystal'

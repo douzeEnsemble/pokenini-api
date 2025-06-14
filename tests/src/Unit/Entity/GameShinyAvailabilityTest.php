@@ -1,0 +1,23 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Tests\Unit\Entity;
+
+use App\Entity\GameShinyAvailability;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
+
+/**
+ * @internal
+ */
+#[CoversClass(GameShinyAvailability::class)]
+class GameShinyAvailabilityTest extends TestCase
+{
+    public function testGetIdentifierDefault(): void
+    {
+        $entity = new GameShinyAvailability();
+
+        $this->assertNull($entity->getIdentifier());
+    }
+}

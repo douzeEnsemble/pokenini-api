@@ -1,0 +1,21 @@
+framework:
+    messenger:
+        failure_transport: failed
+
+        transports:
+            async:
+                dsn: '%env(MESSENGER_TRANSPORT_DSN)%'
+                retry_strategy:
+                    max_retries: 0
+            failed: 'doctrine://default?queue_name=failed'
+            sync: 'sync://'
+
+        routing:
+            '*': async
+
+when@test:
+   framework:
+       messenger:
+           transports:
+               async: 'test://'
+               sync: 'test://'

@@ -1,0 +1,54 @@
+{
+  "range": "Collection!A2:D38",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Sword, Shield - Dynamax Adventures bosses",
+      "swshdynamaxadventuresbosses",
+      11,
+      "Sword, Shield - Boss des expéditions Dynamax"
+    ],
+    [
+      "Scarlet, Violet - Paldea's outbreaks",
+      "svmassoutbreakspaldea",
+      20,
+      "Scarlet, Violet - Apparitions massives de Paldea"
+    ],
+    [
+      "Scarlet, Violet - Kitakami's outbreaks",
+      "svmassoutbreakskitakami",
+      21,
+      "Scarlet, Violet - Apparitions massives de Kitakami"
+    ],
+    [
+      "Scarlet, Violet - Terrarium's outbreaks",
+      "svmassoutbreaksterrarium",
+      22,
+      "Scarlet, Violet - Apparitions massives du Terrarium"
+    ],
+    [
+      "Scarlet, Violet - Transferable",
+      "svtransferable",
+      23,
+      "Scarlet, Violet - Transférable"
+    ],
+    [
+      "Pokemon Go - Shadow",
+      "pogoshadow",
+      50,
+      "Pokemon Go - Obscurs"
+    ],
+    [
+      "Pokemon Go - Shiny Shadow",
+      "pogoshadowshiny",
+      51,
+      "Pokemon Go - Obscurs Chromatique"
+    ],
+    [
+      "Pokemon Go - Dynamax",
+      "pogodynamax",
+      52,
+      "Pokemon Go - Dynamax"
+    ]
+  ]
+}

@@ -1,0 +1,74 @@
+<?xml version="1.0"?>
+<psalm
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    errorBaseline="psalm-baseline.xml"
+    errorLevel="5"
+    resolveFromConfigFile="true"
+    findUnusedBaselineEntry="true"
+    findUnusedCode="false"
+    cacheDirectory="var/cache/psalm"
+>
+    <projectFiles>
+        <directory name="src" />
+        <directory name="tests" />
+        <ignoreFiles>
+            <directory name="vendor" />
+            <directory name="tests/tools" />
+            <file name="tests/bootstrap.php" />
+        </ignoreFiles>
+    </projectFiles>
+
+    <issueHandlers>
+        <ArgumentTypeCoercion>
+            <errorLevel type="suppress">
+                <file name="tests/src/Unit/MessageHandler/AbstractTestCalculateHandler.php" />
+                <file name="tests/src/Unit/MessageHandler/AbstractTestUpdateHandler.php" />
+            </errorLevel>
+        </ArgumentTypeCoercion>
+        <MoreSpecificImplementedParamType>
+            <errorLevel type="suppress">
+                <file name="tests/src/Unit/MessageHandler/CalculateDexAvailabilitiesHandlerTest.php" />
+                <file name="tests/src/Unit/MessageHandler/CalculateGameBundlesAvailabilitiesHandlerTest.php" />
+                <file name="tests/src/Unit/MessageHandler/CalculateGameBundlesShiniesAvailabilitiesHandlerTest.php" />
+                <file name="tests/src/Unit/MessageHandler/CalculatePokemonAvailabilitiesHandlerTest.php" />
+                <file name="tests/src/Unit/MessageHandler/UpdateCollectionsAvailabilitiesHandlerTest.php" />
+                <file name="tests/src/Unit/MessageHandler/UpdateGamesAvailabilitiesHandlerTest.php" />
+                <file name="tests/src/Unit/MessageHandler/UpdateGamesCollectionsAndDexHandlerTest.php" />
+                <file name="tests/src/Unit/MessageHandler/UpdateGamesShiniesAvailabilitiesHandlerTest.php" />
+                <file name="tests/src/Unit/MessageHandler/UpdateLabelsHandlerTest.php" />
+                <file name="tests/src/Unit/MessageHandler/UpdatePokemonsHandlerTest.php" />
+                <file name="tests/src/Unit/MessageHandler/UpdateRegionalDexNumbersHandlerTest.php" />
+            </errorLevel>
+        </MoreSpecificImplementedParamType>
+        <PropertyNotSetInConstructor errorLevel="suppress" />
+        <RiskyTruthyFalsyComparison>
+            <errorLevel type="suppress">
+                <file name="src/Updater/AbstractUpdater.php" />
+                <file name="src/Updater/AbstractUpdater.php" />
+                <file name="src/Updater/CollectionsAvailabilitiesUpdater.php" />
+                <file name="src/Updater/GamesAvailabilitiesUpdater.php" />
+                <file name="src/Updater/RegionalDexNumbersUpdater.php" />
+            </errorLevel>
+        </RiskyTruthyFalsyComparison>
+        <UndefinedInterfaceMethod>
+            <errorLevel type="suppress">
+                <file name="src/Service/CalculatorService/DexAvailabilitiesCalculatorService.php" />
+            </errorLevel>
+        </UndefinedInterfaceMethod>  
+        <InvalidArgument>
+            <errorLevel type="suppress">
+                <file name="tests/src/Unit/DTO/ElectionVoteTest.php" />
+                <file name="tests/src/Unit/DTO/TrainerPokemonEloQueryOptionsTest.php" />
+                <file name="tests/src/Unit/DTO/TrainerPokemonEloListQueryOptionsTest.php" />
+                <file name="tests/src/Unit/DTO/TrainerPokemonEloTopQueryOptionsTest.php" />
+            </errorLevel>
+        </InvalidArgument>    
+        <MissingOverrideAttribute>
+            <errorLevel type="suppress">
+                <file name="tests/src/Functional/Controller/AbstractTestControllerApi.php" />
+            </errorLevel>
+        </MissingOverrideAttribute>        
+    </issueHandlers>
+</psalm>

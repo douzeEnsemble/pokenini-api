@@ -1,0 +1,144 @@
+App\Entity\GameBundleShinyAvailability:
+    gamebundleshinyavailabitity_bulbasaur_red_green_blue_yellow:
+        pokemon: '@pokemon_bulbasaur'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: true
+    gamebundleshinyavailabitity_bulbasaur_gold_silver_crystal:
+        pokemon: '@pokemon_bulbasaur'
+        bundle: '@game_bundle_gold_silver_crystal'
+        isAvailable: true
+
+    gamebundleshinyavailabitity_ivysaur_red_green_blue_yellow:
+        pokemon: '@pokemon_ivysaur'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: true
+    gamebundleshinyavailabitity_ivysaur_gold_silver_crystal:
+        pokemon: '@pokemon_ivysaur'
+        bundle: '@game_bundle_gold_silver_crystal'
+        isAvailable: true
+
+    gamebundleshinyavailabitity_venusaur_red_green_blue_yellow:
+        pokemon: '@pokemon_venusaur'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: true
+    gamebundleshinyavailabitity_venusaur_gold_silver_crystal:
+        pokemon: '@pokemon_venusaur'
+        bundle: '@game_bundle_gold_silver_crystal'
+        isAvailable: true
+
+    gamebundleshinyavailabitity_venusaur_f_red_green_blue_yellow:
+        pokemon: '@pokemon_venusaur_f'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: false
+    gamebundleshinyavailabitity_venusaur_f_gold_silver_crystal:
+        pokemon: '@pokemon_venusaur_f'
+        bundle: '@game_bundle_gold_silver_crystal'
+        isAvailable: false
+
+    gamebundleshinyavailabitity_venusaur_mega_red_green_blue_yellow:
+        pokemon: '@pokemon_venusaur_mega'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: false
+    gamebundleshinyavailabitity_venusaur_mega_gold_silver_crystal:
+        pokemon: '@pokemon_venusaur_mega'
+        bundle: '@game_bundle_gold_silver_crystal'
+        isAvailable: false
+
+    gamebundleshinyavailabitity_venusaur_gigantamax_red_green_blue_yellow:
+        pokemon: '@pokemon_venusaur_gigantamax'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: false
+    gamebundleshinyavailabitity_venusaur_gigantamax_gold_silver_crystal:
+        pokemon: '@pokemon_venusaur_gigantamax'
+        bundle: '@game_bundle_gold_silver_crystal'
+        isAvailable: false
+
+    gamebundleshinyavailabitity_deoxys_red_green_blue_yellow:
+        pokemon: '@pokemon_deoxys'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: true
+    gamebundleshinyavailabitity_deoxys_gold_silver_crystal:
+        pokemon: '@pokemon_deoxys'
+        bundle: '@game_bundle_gold_silver_crystal'
+        isAvailable: true
+
+    gamebundleshinyavailabitity_deoxys_attack_red_green_blue_yellow:
+        pokemon: '@pokemon_deoxys_attack'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: true
+    gamebundleshinyavailabitity_deoxys_attack_gold_silver_crystal:
+        pokemon: '@pokemon_deoxys_attack'
+        bundle: '@game_bundle_gold_silver_crystal'
+        isAvailable: true
+
+    gamebundleshinyavailabitity_deoxys_defense_red_green_blue_yellow:
+        pokemon: '@pokemon_deoxys_defense'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: true
+    gamebundleshinyavailabitity_deoxys_defense_gold_silver_crystal:
+        pokemon: '@pokemon_deoxys_defense'
+        bundle: '@game_bundle_gold_silver_crystal'
+        isAvailable: true
+
+    gamebundleshinyavailabitity_deoxys_speed_red_green_blue_yellow:
+        pokemon: '@pokemon_deoxys_speed'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: true
+    gamebundleshinyavailabitity_deoxys_speed_gold_silver_crystal:
+        pokemon: '@pokemon_deoxys_speed'
+        bundle: '@game_bundle_gold_silver_crystal'
+        isAvailable: true
+    
+    gamebundleshinyavailabitity_rattata_red_green_blue_yellow:
+        pokemon: '@pokemon_deoxys_speed'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: true
+    gamebundleshinyavailabitity_rattata_game_bundle_ultra_sun_ultra_moon:
+        pokemon: '@pokemon_rattata'
+        bundle: '@game_bundle_ultra_sun_ultra_moon'
+        isAvailable: false
+    
+    gamebundleshinyavailabitity_rattataf_red_green_blue_yellow:
+        pokemon: '@pokemon_rattata_f'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: false
+    gamebundleshinyavailabitity_rattataf_game_bundle_ultra_sun_ultra_moon:
+        pokemon: '@pokemon_rattata_f'
+        bundle: '@game_bundle_ultra_sun_ultra_moon'
+        isAvailable: true
+
+    gamebundleshinyavailabitity_rattataalola_red_green_blue_yellow:
+        pokemon: '@pokemon_rattata_alola'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: false
+    gamebundleshinyavailabitity_rattataalola_game_bundle_ultra_sun_ultra_moon:
+        pokemon: '@pokemon_rattata_alola'
+        bundle: '@game_bundle_ultra_sun_ultra_moon'
+        isAvailable: true
+
+    gamebundleshinyavailabitity_raticate_red_green_blue_yellow:
+        pokemon: '@pokemon_deoxys_speed'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: true
+    gamebundleshinyavailabitity_raticate_game_bundle_ultra_sun_ultra_moon:
+        pokemon: '@pokemon_raticate'
+        bundle: '@game_bundle_ultra_sun_ultra_moon'
+        isAvailable: true
+    
+    gamebundleshinyavailabitity_raticatef_red_green_blue_yellow:
+        pokemon: '@pokemon_raticate_f'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: false
+    gamebundleshinyavailabitity_raticatef_game_bundle_ultra_sun_ultra_moon:
+        pokemon: '@pokemon_raticate_f'
+        bundle: '@game_bundle_ultra_sun_ultra_moon'
+        isAvailable: true
+
+    gamebundleshinyavailabitity_raticatealola_red_green_blue_yellow:
+        pokemon: '@pokemon_raticate_alola'
+        bundle: '@game_bundle_red_green_blue_yellow'
+        isAvailable: false
+    gamebundleshinyavailabitity_raticatealola_game_bundle_ultra_sun_ultra_moon:
+        pokemon: '@pokemon_raticate_alola'
+        bundle: '@game_bundle_ultra_sun_ultra_moon'
+        isAvailable: false

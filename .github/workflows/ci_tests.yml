@@ -1,0 +1,72 @@
+name: CI Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request: ~
+  workflow_call:
+    secrets:
+      DOCKERHUB_USERNAME:
+        description: 'Docker Hub username'
+        required: true
+      DOCKERHUB_TOKEN:
+        description: 'Docker Hub token'
+        required: true
+
+env: 
+  DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+  DOCKERHUB_TOKEN: ${{ secrets.DOCKERHUB_TOKEN }}
+  PHP_CS_FIXER_IGNORE_ENV: 1
+
+jobs:
+  allin:
+    name: All tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Prepare
+        uses: ./.github/actions/docker-compose
+      - name: PHPUnit / Run
+        run: |
+          docker compose exec -T php php vendor/bin/phpunit tests/src/ --exclude-group="time-testing"
+      - name: Measures / Run Coverage
+        run: | 
+          docker compose exec \
+            -e XDEBUG_MODE=coverage \
+            -T php php vendor/bin/phpunit \
+            --exclude-group="browser-testing" \
+            --coverage-clover=coverage.xml \
+            --coverage-xml=build/coverage/coverage-xml \
+            --log-junit=build/coverage/junit.xml
+      - name: Measures / Composer install Infection
+        shell: bash
+        run: docker compose exec -T php composer install --working-dir=tools/infection --prefer-dist --no-progress --no-interaction
+      - name: Measures / Run Infection
+        run: | 
+          docker compose exec -T php php tools/infection/vendor/bin/infection \
+            --threads=4 --no-progress \
+            --skip-initial-tests --coverage=build/coverage \
+            --min-msi=100 --min-covered-msi=100 \
+            --filter=src
+      - name: Integration / Copy .env file
+        shell: bash
+        run: cp .env.int .env
+      - name: Integration / Initialize
+        run: |
+          docker compose exec -T php php bin/console doctrine:database:create --if-not-exists
+          docker compose exec -T php php bin/console doctrine:migrations:migrate --no-interaction
+          docker compose exec -T php php bin/console app:update:labels
+          docker compose exec -T php php bin/console app:update:games_collections_and_dex
+          docker compose exec -T php php bin/console app:update:pokemons
+          docker compose exec -T php php bin/console app:update:regional_dex_numbers
+          docker compose exec -T php php bin/console app:update:games_availabilities
+          docker compose exec -T php php bin/console app:update:games_shinies_availabilities
+          docker compose exec -T php php bin/console app:calculate:game_bundles_availabilities
+          docker compose exec -T php php bin/console app:calculate:game_bundles_shinies_availabilities
+          docker compose exec -T php php bin/console app:calculate:dex_availabilities
+          docker compose exec -T php php bin/console app:calculate:pokemon_availabilities
+      - name: Integration / Run
+        run: |
+          docker compose up newman --no-recreate --menu=false

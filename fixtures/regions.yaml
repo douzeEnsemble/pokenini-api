@@ -1,0 +1,51 @@
+App\Entity\Region:
+    region_kanto:
+        name: 'Kanto'
+        slug: 'kanto'
+        frenchName: 'Kanto'
+        orderNumber: 1
+    region_johto:
+        name: 'Johto'
+        slug: 'johto'
+        frenchName: 'Johto'
+        orderNumber: 2
+    region_hoenn:
+        name: 'Hoenn'
+        slug: 'hoenn'
+        frenchName: 'Hoenn'
+        orderNumber: 3
+    region_sinnoh:
+        name: 'Sinnoh'
+        slug: 'sinnoh'
+        frenchName: 'Sinnoh'
+        orderNumber: 4
+    region_unova:
+        name: 'Unova'
+        slug: 'unova'
+        frenchName: 'Unys'
+        orderNumber: 5
+    region_kalos:
+        name: 'Kalos'
+        slug: 'kalos'
+        frenchName: 'Kalos'
+        orderNumber: 6
+    region_alola:
+        name: 'Alola'
+        slug: 'alola'
+        frenchName: 'Alola'
+        orderNumber: 7
+    region_galar:
+        name: 'Galar'
+        slug: 'galar'
+        frenchName: 'Galar'
+        orderNumber: 8
+    region_hisui:
+        name: 'Hisui'
+        slug: 'hisui'
+        frenchName: 'Hisui'
+        orderNumber: 9
+    region_paldea:
+        name: 'Paldea'
+        slug: 'paldea'
+        frenchName: 'Paldea'
+        orderNumber: 10

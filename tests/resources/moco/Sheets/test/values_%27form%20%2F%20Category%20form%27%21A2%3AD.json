@@ -1,0 +1,30 @@
+{
+  "range": "'form / Category form'!A2:D5",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Starter",
+      "de Départ",
+      "starter",
+      "1"
+    ],
+    [
+      "Legendary",
+      "Légendaire",
+      "legendary",
+      "2"
+    ],
+    [
+      "Mythical",
+      "Fabuleux",
+      "mythical",
+      "3"
+    ],
+    [
+      "Ultra Beast",
+      "Ultra Chimère",
+      "ultrabeast",
+      "4"
+    ]
+  ]
+}

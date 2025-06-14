@@ -1,0 +1,20 @@
+{
+  "range": "'Regional Dex Number'!A1:L1",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "#Pokemon",
+      "National",
+      "kanto",
+      "johto",
+      "hoenn",
+      "sinnoh",
+      "unova",
+      "kalos",
+      "alola",
+      "galar",
+      "hisui",
+      "paldea"
+    ]
+  ]
+}

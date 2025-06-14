@@ -1,0 +1,13 @@
+{
+  "range": "wrong_sheet!A1:E1",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Name",
+      "Sprites",
+      "Shiny Sprites",
+      "Icon",
+      "Color"
+    ]
+  ]
+}

@@ -1,0 +1,25 @@
+App\Entity\CollectionAvailability:
+    collectionavailability_douze_swshdens:
+        pokemonSlug: 'douze'
+        collection: '@collection_pogodynamax'
+        availability: 'Y'
+    collectionavailability_douze_pogoshadow:
+        pokemonSlug: 'douze'
+        collection: '@collection_pogoshadow'
+        availability: '-'
+    collectionavailability_bulbasaur_swshdens:
+        pokemonSlug: 'bulbasaur'
+        collection: '@collection_pogodynamax'
+        availability: ''
+    collectionavailability_bulbasaur_pogoshadow:
+        pokemonSlug: 'bulbasaur'
+        collection: '@collection_pogoshadow'
+        availability: 'Y'
+    collectionavailability_charmander_swshdens:
+        pokemonSlug: 'charmander'
+        collection: '@collection_pogodynamax'
+        availability: ''
+    collectionavailability_charmander_pogoshadow:
+        pokemonSlug: 'charmander'
+        collection: '@collection_pogoshadow'
+        availability: ''

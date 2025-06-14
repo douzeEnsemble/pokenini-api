@@ -1,0 +1,280 @@
+App\Entity\DexAvailability:
+    dexavailability_redgreenblueyellow_douze:
+        pokemon: '@pokemon_douze'
+        dex: '@dex_redgreenblueyellow'
+
+    dexavailability_home_douze:
+        pokemon: '@pokemon_douze'
+        dex: '@dex_home'
+
+    dexavailability_redgreenblueyellow_bulbasaur:
+        pokemon: '@pokemon_bulbasaur'
+        dex: '@dex_redgreenblueyellow'
+
+    dexavailability_redgreenblueyellow_yvysaur:
+        pokemon: '@pokemon_ivysaur'
+        dex: '@dex_redgreenblueyellow'
+
+    dexavailability_redgreenblueyellow_venusaur:
+        pokemon: '@pokemon_venusaur'
+        dex: '@dex_redgreenblueyellow'
+
+    dexavailability_redgreenblueyellow_caterpie:
+        pokemon: '@pokemon_caterpie'
+        dex: '@dex_redgreenblueyellow'
+
+    dexavailability_redgreenblueyellow_metapod:
+        pokemon: '@pokemon_metapod'
+        dex: '@dex_redgreenblueyellow'
+
+    dexavailability_redgreenblueyellow_butterfree:
+        pokemon: '@pokemon_butterfree'
+        dex: '@dex_redgreenblueyellow'
+
+    dexavailability_goldsilvercrystal_bulbasaur:
+        pokemon: '@pokemon_bulbasaur'
+        dex: '@dex_goldsilvercrystal'
+
+    dexavailability_goldsilvercrystal_yvysaur:
+        pokemon: '@pokemon_ivysaur'
+        dex: '@dex_goldsilvercrystal'
+
+    dexavailability_goldsilvercrystal_venusaur:
+        pokemon: '@pokemon_venusaur'
+        dex: '@dex_goldsilvercrystal'
+
+    dexavailability_goldsilvercrystal_charmander:
+        pokemon: '@pokemon_charmander'
+        dex: '@dex_goldsilvercrystal'
+
+    dexavailability_goldsilvercrystal_charmeleon:
+        pokemon: '@pokemon_charmeleon'
+        dex: '@dex_goldsilvercrystal'
+
+    dexavailability_goldsilvercrystal_charizard:
+        pokemon: '@pokemon_charizard'
+        dex: '@dex_goldsilvercrystal'
+
+    dexavailability_goldsilvercrystal_caterpie:
+        pokemon: '@pokemon_caterpie'
+        dex: '@dex_goldsilvercrystal'
+
+    dexavailability_goldsilvercrystal_metapod:
+        pokemon: '@pokemon_metapod'
+        dex: '@dex_goldsilvercrystal'
+
+    dexavailability_goldsilvercrystal_butterfree:
+        pokemon: '@pokemon_butterfree'
+        dex: '@dex_goldsilvercrystal'
+
+    dexavailability_home_bulbasaur:
+        pokemon: '@pokemon_bulbasaur'
+        dex: '@dex_home'
+
+    dexavailability_home_yvysaur:
+        pokemon: '@pokemon_ivysaur'
+        dex: '@dex_home'
+
+    dexavailability_home_venusaur:
+        pokemon: '@pokemon_venusaur'
+        dex: '@dex_home'
+
+    dexavailability_home_venusaurf:
+        pokemon: '@pokemon_venusaur_f'
+        dex: '@dex_home'
+
+    dexavailability_home_venusaurmega:
+        pokemon: '@pokemon_venusaur_mega'
+        dex: '@dex_home'
+
+    dexavailability_home_venusaurgigantamax:
+        pokemon: '@pokemon_venusaur_gigantamax'
+        dex: '@dex_home'
+
+    dexavailability_home_charmander:
+        pokemon: '@pokemon_charmander'
+        dex: '@dex_home'
+
+    dexavailability_home_charmeleon:
+        pokemon: '@pokemon_charmeleon'
+        dex: '@dex_home'
+
+    dexavailability_home_charizard:
+        pokemon: '@pokemon_charizard'
+        dex: '@dex_home'
+
+    dexavailability_home_caterpie:
+        pokemon: '@pokemon_caterpie'
+        dex: '@dex_home'
+
+    dexavailability_home_metapod:
+        pokemon: '@pokemon_metapod'
+        dex: '@dex_home'
+
+    dexavailability_home_butterfree:
+        pokemon: '@pokemon_butterfree'
+        dex: '@dex_home'
+
+    dexavailability_home_butterfreef:
+        pokemon: '@pokemon_butterfree_f'
+        dex: '@dex_home'
+
+    dexavailability_home_butterfreegigantamax:
+        pokemon: '@pokemon_butterfree_gigantamax'
+        dex: '@dex_home'
+
+    dexavailability_home_rattata:
+        pokemon: '@pokemon_rattata'
+        dex: '@dex_home'
+
+    dexavailability_home_rattata_f:
+        pokemon: '@pokemon_rattata_f'
+        dex: '@dex_home'
+
+    dexavailability_home_rattata_alola:
+        pokemon: '@pokemon_rattata_alola'
+        dex: '@dex_home'
+
+    dexavailability_home_raticate:
+        pokemon: '@pokemon_raticate'
+        dex: '@dex_home'
+
+    dexavailability_home_raticate_f:
+        pokemon: '@pokemon_raticate_f'
+        dex: '@dex_home'
+
+    dexavailability_home_raticate_alola:
+        pokemon: '@pokemon_raticate_alola'
+        dex: '@dex_home'
+
+    dexavailability_home_raticate_alola_totem:
+        pokemon: '@pokemon_raticate_alola_totem'
+        dex: '@dex_home'
+
+    dexavailability_homeshiny_bulbasaur:
+        pokemon: '@pokemon_bulbasaur'
+        dex: '@dex_home_shiny'
+
+    dexavailability_homeshiny_yvysaur:
+        pokemon: '@pokemon_ivysaur'
+        dex: '@dex_home_shiny'
+
+    dexavailability_homeshiny_venusaur:
+        pokemon: '@pokemon_venusaur'
+        dex: '@dex_home_shiny'
+
+    dexavailability_homeshiny_venusaurf:
+        pokemon: '@pokemon_venusaur_f'
+        dex: '@dex_home_shiny'
+
+    dexavailability_homeshiny_venusaurmega:
+        pokemon: '@pokemon_venusaur_mega'
+        dex: '@dex_home_shiny'
+
+    dexavailability_homeshiny_venusaurgigantamax:
+        pokemon: '@pokemon_venusaur_gigantamax'
+        dex: '@dex_home_shiny'
+
+    dexavailability_homeshiny_caterpie:
+        pokemon: '@pokemon_caterpie'
+        dex: '@dex_home_shiny'
+
+    dexavailability_homeshiny_metapod:
+        pokemon: '@pokemon_metapod'
+        dex: '@dex_home_shiny'
+
+    dexavailability_homeshiny_butterfree:
+        pokemon: '@pokemon_butterfree'
+        dex: '@dex_home_shiny'
+
+    dexavailability_homeshiny_butterfreef:
+        pokemon: '@pokemon_butterfree_f'
+        dex: '@dex_home_shiny'
+
+    dexavailability_homeshiny_butterfreegigantamax:
+        pokemon: '@pokemon_butterfree_gigantamax'
+        dex: '@dex_home_shiny'
+
+    dexavailability_demo_bulbasaur:
+        pokemon: '@pokemon_bulbasaur'
+        dex: '@dex_demo'
+
+    dexavailability_demo_yvysaur:
+        pokemon: '@pokemon_ivysaur'
+        dex: '@dex_demo'
+
+    dexavailability_demo_venusaur:
+        pokemon: '@pokemon_venusaur'
+        dex: '@dex_demo'
+
+    dexavailability_demo_venusaurf:
+        pokemon: '@pokemon_venusaur_f'
+        dex: '@dex_demo'
+
+    dexavailability_demo_venusaurmega:
+        pokemon: '@pokemon_venusaur_mega'
+        dex: '@dex_demo'
+
+    dexavailability_demo_venusaurgigantamax:
+        pokemon: '@pokemon_venusaur_gigantamax'
+        dex: '@dex_demo'
+
+    dexavailability_demo_charmander:
+        pokemon: '@pokemon_charmander'
+        dex: '@dex_demo'
+
+    dexavailability_demo_charmeleon:
+        pokemon: '@pokemon_charmeleon'
+        dex: '@dex_demo'
+
+    dexavailability_demo_charizard:
+        pokemon: '@pokemon_charizard'
+        dex: '@dex_demo'
+
+    dexavailability_demo_caterpie:
+        pokemon: '@pokemon_caterpie'
+        dex: '@dex_demo'
+
+    dexavailability_demo_metapod:
+        pokemon: '@pokemon_metapod'
+        dex: '@dex_demo'
+
+    dexavailability_demo_butterfree:
+        pokemon: '@pokemon_butterfree'
+        dex: '@dex_demo'
+
+    dexavailability_demo_butterfreef:
+        pokemon: '@pokemon_butterfree_f'
+        dex: '@dex_demo'
+
+    dexavailability_demo_butterfreegigantamax:
+        pokemon: '@pokemon_butterfree_gigantamax'
+        dex: '@dex_demo'
+
+    dexavailability_demo_rattata:
+        pokemon: '@pokemon_rattata'
+        dex: '@dex_demo'
+
+    dexavailability_demo_rattata_f:
+        pokemon: '@pokemon_rattata_f'
+        dex: '@dex_demo'
+
+    dexavailability_demo_rattata_alola:
+        pokemon: '@pokemon_rattata_alola'
+        dex: '@dex_demo'
+
+    dexavailability_demo_raticate:
+        pokemon: '@pokemon_raticate'
+        dex: '@dex_demo'
+
+    dexavailability_demo_raticate_f:
+        pokemon: '@pokemon_raticate_f'
+        dex: '@dex_demo'
+
+    dexavailability_demo_raticate_alola:
+        pokemon: '@pokemon_raticate_alola'
+        dex: '@dex_demo'
+
+    dexavailability_demo_raticate_alola_totem:
+        pokemon: '@pokemon_raticate_alola_totem'
+        dex: '@dex_demo'

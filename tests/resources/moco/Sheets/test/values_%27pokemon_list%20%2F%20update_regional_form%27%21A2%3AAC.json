@@ -1,0 +1,34 @@
+{
+  "range": "'pokemon_list / update_regional_form'!A2:AC2",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "No",
+      "No",
+      "1",
+      "redgreenblueyellow",
+      "",
+      "alolan",
+      "",
+      "",
+      "douze",
+      "0",
+      "Douze",
+      "Douze",
+      "",
+      "Douze",
+      "Douze",
+      "",
+      "1",
+      "",
+      "https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/regular/douze.png",
+      "",
+      "https://raw.githubusercontent.com/msikma/pokesprite/master/pokemon-gen8/shiny/douze.png",
+      "douze",
+      "",
+      "douze",
+      "Grass",
+      "Poison"
+    ]
+  ]
+}

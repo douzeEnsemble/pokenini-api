@@ -1,0 +1,33 @@
+App\Entity\CatchState:
+    catchstate_no:
+        name: "No"
+        slug: "no"
+        frenchName: "Non"
+        orderNumber: 1
+        color: "#e57373"
+    catchstate_maybe:
+        name: "Maybe"
+        slug: "maybe"
+        frenchName: "Peut être"
+        orderNumber: 2
+        color: "blue"
+    catchstate_maybenot:
+        name: "Maybe not"
+        slug: "maybenot"
+        frenchName: "Peut être pas"
+        orderNumber: 3
+        color: "yellow"
+    catchstate_yes:
+        name: "Yes"
+        slug: "yes"
+        frenchName: "Oui"
+        orderNumber: 4
+        color: "#66bb6a"
+    catchstate_forbidden:
+        name: "Forbidden"
+        slug: "forbidden"
+        frenchName: "Interdit"
+        orderNumber: 2
+        color: "red"
+        deletedAt: "<dateTime('now')>"
+    
