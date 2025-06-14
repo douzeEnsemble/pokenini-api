@@ -145,7 +145,7 @@ class PokemonsRepository extends ServiceEntityRepository
 
     private function getNToPickSQL(): string
     {
-        $sql = file_get_contents(dirname(__DIR__).'/../../resources/sql/pokemons-get_n_to_pick.sql');
+        $sql = file_get_contents(dirname(__DIR__).'/../resources/sql/pokemons-get_n_to_pick.sql');
 
         if (false === $sql) {
             // This condition is here form safety reason
@@ -160,7 +160,7 @@ class PokemonsRepository extends ServiceEntityRepository
 
     private function getNToVoteSQL(): string
     {
-        $sql = file_get_contents(dirname(__DIR__).'/../../resources/sql/pokemons-get_n_to_vote.sql');
+        $sql = file_get_contents(dirname(__DIR__).'/../resources/sql/pokemons-get_n_to_vote.sql');
 
         if (false === $sql) {
             // This condition is here form safety reason

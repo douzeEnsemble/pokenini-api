@@ -73,7 +73,7 @@ abstract class AbstractTestControllerApi extends WebTestCase
 
         $this->client->request(
             $method,
-            "/{$route}?{$urlParams}",
+            "{$route}?{$urlParams}",
             [],
             [],
             array_merge(

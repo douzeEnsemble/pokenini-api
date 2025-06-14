@@ -19,7 +19,7 @@ class UpdateLabelsTest extends TestCase
         $message = new UpdateLabels('12');
 
         $this->assertEquals(
-            'O:28:"App\Message\UpdateLabels":1:{s:8:"actionId";s:2:"12";}',
+            'O:24:"App\Message\UpdateLabels":1:{s:8:"actionId";s:2:"12";}',
             serialize($message)
         );
     }

@@ -19,7 +19,7 @@ class CalculateDexAvailabilitiesTest extends TestCase
         $message = new CalculateDexAvailabilities('12');
 
         $this->assertEquals(
-            'O:42:"App\Message\CalculateDexAvailabilities":1:{s:8:"actionId";s:2:"12";}',
+            'O:38:"App\Message\CalculateDexAvailabilities":1:{s:8:"actionId";s:2:"12";}',
             serialize($message)
         );
     }

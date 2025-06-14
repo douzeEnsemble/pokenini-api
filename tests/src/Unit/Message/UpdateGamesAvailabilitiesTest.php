@@ -19,7 +19,7 @@ class UpdateGamesAvailabilitiesTest extends TestCase
         $message = new UpdateGamesAvailabilities('12');
 
         $this->assertEquals(
-            'O:41:"App\Message\UpdateGamesAvailabilities":1:{s:8:"actionId";s:2:"12";}',
+            'O:37:"App\Message\UpdateGamesAvailabilities":1:{s:8:"actionId";s:2:"12";}',
             serialize($message)
         );
     }

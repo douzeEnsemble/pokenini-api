@@ -19,7 +19,7 @@ class UpdateRegionalDexNumbersTest extends TestCase
         $message = new UpdateRegionalDexNumbers('12');
 
         $this->assertEquals(
-            'O:40:"App\Message\UpdateRegionalDexNumbers":1:{s:8:"actionId";s:2:"12";}',
+            'O:36:"App\Message\UpdateRegionalDexNumbers":1:{s:8:"actionId";s:2:"12";}',
             serialize($message)
         );
     }

@@ -19,7 +19,7 @@ class UpdatePokemonsTest extends TestCase
         $message = new UpdatePokemons('12');
 
         $this->assertEquals(
-            'O:30:"App\Message\UpdatePokemons":1:{s:8:"actionId";s:2:"12";}',
+            'O:26:"App\Message\UpdatePokemons":1:{s:8:"actionId";s:2:"12";}',
             serialize($message)
         );
     }

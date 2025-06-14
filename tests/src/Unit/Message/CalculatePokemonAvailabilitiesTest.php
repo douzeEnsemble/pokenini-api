@@ -19,7 +19,7 @@ class CalculatePokemonAvailabilitiesTest extends TestCase
         $message = new CalculatePokemonAvailabilities('12');
 
         $this->assertEquals(
-            'O:46:"App\Message\CalculatePokemonAvailabilities":1:{s:8:"actionId";s:2:"12";}',
+            'O:42:"App\Message\CalculatePokemonAvailabilities":1:{s:8:"actionId";s:2:"12";}',
             serialize($message)
         );
     }

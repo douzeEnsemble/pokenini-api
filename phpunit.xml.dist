@@ -22,9 +22,6 @@
       <directory>tests</directory>
     </testsuite>
   </testsuites>
-  <extensions>
-    <bootstrap class="Symfony\Component\Panther\ServerExtension" />
-  </extensions>
   <source ignoreIndirectDeprecations="true" restrictNotices="true" restrictWarnings="true">
     <include>
       <directory suffix=".php">src</directory>

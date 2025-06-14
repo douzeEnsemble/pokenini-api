@@ -19,7 +19,7 @@ class CalculateGameBundlesAvailabilitiesTest extends TestCase
         $message = new CalculateGameBundlesAvailabilities('12');
 
         $this->assertEquals(
-            'O:50:"App\Message\CalculateGameBundlesAvailabilities":1:{s:8:"actionId";s:2:"12";}',
+            'O:46:"App\Message\CalculateGameBundlesAvailabilities":1:{s:8:"actionId";s:2:"12";}',
             serialize($message)
         );
     }
