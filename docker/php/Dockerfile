@@ -71,51 +71,6 @@ ENV APP_ENV=dev
 RUN pecl install xdebug \
 	&& docker-php-ext-enable xdebug
 
-## < Install chromedriver
-ENV PANTHER_NO_SANDBOX=1
-ENV PANTHER_NO_REDUCED_MOTION=1
-ENV PANTHER_ERROR_SCREENSHOT_DIR=/var/www/html/var/screenshots
-ENV PANTHER_DEVTOOLS=disabled
-ENV PANTHER_CHROME_ARGUMENTS='--disable-dev-shm-usage'
-ENV GNUPGHOME=/usr/local/share/gnupg
-
-# hadolint ignore=DL3008
-RUN apt-get update && apt-get install -y --no-install-recommends \
-        gpg \
-        unzip \
-        wget \
-        chromium \ 
-        chromium-driver \ 
-        libgconf-2-4 \
-        libfontconfig-dev \
-        libfreetype6 \
-        libx11-6 \
-        libxext6 \
-        libxrender1 \
-        libxtst6 \
-        dirmngr \
-        gpg-agent \
-    && apt-get clean \
-    && rm -rf /var/lib/apt/lists/*
-
-RUN mkdir -p $GNUPGHOME \
-    && chmod 700 $GNUPGHOME \
-    && wget -q -nv -O phive.phar https://phar.io/releases/phive.phar \
-    && wget -q -nv -O phive.phar.asc https://phar.io/releases/phive.phar.asc \    
-    && gpg --refresh-keys \
-    && gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x9D8A98B29B2D5D79 \
-    && gpg --verify phive.phar.asc phive.phar \
-    && chmod +x phive.phar \
-    && mv phive.phar /usr/local/bin/phive
-
-ENV DEBIAN_FRONTEND=noninteractive
-
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN (echo "y" | /usr/local/bin/phive install --global bdi) \
-    && bdi detect /usr/local/bin/
-
-## > Install chromedriver
-
 FROM php_base AS php_prod
 
 USER www-data

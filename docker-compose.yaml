@@ -59,8 +59,8 @@ services:
       - ./docker/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./docker/nginx/conf.d:/etc/nginx/conf.d
     ports:
-      - '127.0.0.1:80:8080'
-      - '127.0.0.1:443:8080'
+      - '127.0.0.1:8080:8080'
+      - '127.0.0.1:4430:8080'
 
 volumes:
   ###> doctrine/doctrine-bundle ###

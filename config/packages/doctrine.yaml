@@ -1,6 +1,6 @@
 doctrine:
     dbal:
-        url: '%env(resolve:POSTGRESQL_ADDON_URI)%'
+        url: '%env(resolve:DATABASE_URL)%'
         charset: utf8
         server_version: "14"
         profiling_collect_backtrace: false
