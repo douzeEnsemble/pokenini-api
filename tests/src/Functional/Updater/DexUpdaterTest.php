@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Updater;
 
+use App\Tests\Common\Traits\GetterTrait\GetDexTrait;
 use App\Updater\AbstractUpdater;
 use App\Updater\DexUpdater;
-use App\Tests\Common\Traits\GetterTrait\GetDexTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 /**

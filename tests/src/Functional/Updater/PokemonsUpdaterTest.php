@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Updater;
 
-use App\Updater\AbstractUpdater;
-use App\Updater\PokemonsUpdater;
 use App\Tests\Common\Traits\CounterTrait\CountPokemonTrait;
 use App\Tests\Common\Traits\GetterTrait\GetPokemonTrait;
+use App\Updater\AbstractUpdater;
+use App\Updater\PokemonsUpdater;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 /**

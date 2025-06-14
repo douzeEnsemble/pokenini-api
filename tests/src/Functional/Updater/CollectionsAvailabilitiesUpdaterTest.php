@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Functional\Updater;
 
+use App\Tests\Common\Traits\CounterTrait\CountCollectionAvailabilityTrait;
 use App\Updater\AbstractUpdater;
 use App\Updater\CollectionsAvailabilitiesUpdater;
-use App\Tests\Common\Traits\CounterTrait\CountCollectionAvailabilityTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
