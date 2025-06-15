@@ -19,8 +19,8 @@ SYMFONY  = $(PHP_CONT) bin/console
 
 MKCERT := $(shell command -v mkcert 2> /dev/null)
 
-KEY_FILE := ./docker/apache/ssl/cert-key.pem
-CERT_FILE := ./docker/apache/ssl/cert.pem
+KEY_FILE := ./.docker/apache/ssl/cert-key.pem
+CERT_FILE := ./.docker/apache/ssl/cert.pem
 
 # Misc
 .DEFAULT_GOAL = help
@@ -39,7 +39,7 @@ help: ## Outputs this help screen
 .PHONY: certs
 certs: ## Create ssl files
 certs:
-	mkdir -p ./docker/apache/ssl
+	mkdir -p ./.docker/apache/ssl
 	@if [ -z "$(MKCERT)" ]; then \
 		echo "mkcert is not installed in your system. Please install it"; \
 		exit 1; \
@@ -367,6 +367,6 @@ tools/phpinsights/vendor/bin/phpinsights: ## Install phpinsights
 
 ## —— Image 🐳 ———————————————————————————————————————————————————————————————
 img-build: ## Build Docker image
-	docker build --target php_prod -f ./docker/php/Dockerfile -t ghcr.io/douzeensemble/pokenini:latest .
+	docker build --target php_prod -f ./.docker/php/Dockerfile -t ghcr.io/douzeensemble/pokenini:latest .
 img-push: ## Push Docker image
 	docker push ghcr.io/douzeensemble/pokenini:latest
