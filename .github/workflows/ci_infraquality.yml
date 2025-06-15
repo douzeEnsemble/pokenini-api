@@ -55,8 +55,8 @@ jobs:
       - name: Lint moco Dockerfile
         uses: hadolint/hadolint-action@v3.1.0
         with:
-          dockerfile: ./docker/moco/Dockerfile
+          dockerfile: ./.docker/moco/Dockerfile
       - name: Lint php Dockerfile
         uses: hadolint/hadolint-action@v3.1.0
         with:
-          dockerfile: ./docker/php/Dockerfile
+          dockerfile: ./.docker/php/Dockerfile
