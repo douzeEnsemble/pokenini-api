@@ -1,5 +1,5 @@
 {
-  "range": "'pokemon_list / update_regional_form'!A1:AC1",
+  "range": "'pokemon_list / update_type'!A1:AF1",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -30,8 +30,11 @@
       "#Type 1",
       "#Type 2",
       "Species number",
+      "MBCMechachu sprites index",
       "PokemonDB icon name",
-      "MBCMechachu sprites index"
+      "PokemonDB icon dex",
+      "generic-slug",
+      "#Groups"
     ]
   ]
 }

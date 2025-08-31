@@ -11,10 +11,10 @@ class PokemonsUpdater extends AbstractUpdater
     protected string $sheetName = 'Pokémons';
     protected string $tableName = 'pokemon';
     protected string $statisticName = 'pokemons';
-    protected string $headerCellsRange = 'A1:AC1';
+    protected string $headerCellsRange = 'A1:AF1';
 
     /** @var string[] */
-    protected array $recordsCellsRanges = ['A2:AC'];
+    protected array $recordsCellsRanges = ['A2:AF'];
 
     #[\Override]
     protected function getExpectedHeader(): array
@@ -47,8 +47,11 @@ class PokemonsUpdater extends AbstractUpdater
             '#Type 1',
             '#Type 2',
             'Species number',
-            'PokemonDB icon name',
             'MBCMechachu sprites index',
+            'PokemonDB icon name',
+            'PokemonDB icon dex',
+            'generic-slug',
+            '#Groups',
         ];
     }
 
