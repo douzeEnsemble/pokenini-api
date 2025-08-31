@@ -21,12 +21,6 @@ class A1NotationTest extends TestCase
         $this->assertEquals($expected, A1Notation::indexToLetter($index));
     }
 
-    #[DataProvider('providerIndexToA1Notation')]
-    public function testFromIndex(int $rowIndex, int $columnIndex, string $expected): void
-    {
-        $this->assertEquals($expected, A1Notation::fromIndex($rowIndex, $columnIndex));
-    }
-
     /**
      * @return int[][]|string[][]
      */
@@ -66,6 +60,12 @@ class A1NotationTest extends TestCase
                 'expected' => 'BN',
             ],
         ];
+    }
+
+    #[DataProvider('providerIndexToA1Notation')]
+    public function testFromIndex(int $rowIndex, int $columnIndex, string $expected): void
+    {
+        $this->assertEquals($expected, A1Notation::fromIndex($rowIndex, $columnIndex));
     }
 
     /**

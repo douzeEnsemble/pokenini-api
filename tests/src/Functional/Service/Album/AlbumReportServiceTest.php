@@ -46,27 +46,6 @@ class AlbumReportServiceTest extends KernelTestCase
     }
 
     /**
-     * @param string[][] $filters
-     */
-    #[DataProvider('providerGetReportFiltered')]
-    public function testGetReportFiltered(
-        string $trainerId,
-        string $dexSlug,
-        array $filters,
-        int $countNo,
-        int $countMaybe,
-        int $countMaybeNot,
-        int $countYes,
-        int $countTotal
-    ): void {
-        /** @var AlbumReportService $service */
-        $service = static::getContainer()->get(AlbumReportService::class);
-
-        $report = $service->get($trainerId, $dexSlug, AlbumFilters::createFromArray($filters));
-        $this->assertReport($report, $countNo, $countMaybe, $countMaybeNot, $countYes, $countTotal);
-    }
-
-    /**
      * @return int[][]|string[][]
      */
     public static function providerGetReport(): array
@@ -127,6 +106,27 @@ class AlbumReportServiceTest extends KernelTestCase
                 11,
             ],
         ];
+    }
+
+    /**
+     * @param string[][] $filters
+     */
+    #[DataProvider('providerGetReportFiltered')]
+    public function testGetReportFiltered(
+        string $trainerId,
+        string $dexSlug,
+        array $filters,
+        int $countNo,
+        int $countMaybe,
+        int $countMaybeNot,
+        int $countYes,
+        int $countTotal
+    ): void {
+        /** @var AlbumReportService $service */
+        $service = static::getContainer()->get(AlbumReportService::class);
+
+        $report = $service->get($trainerId, $dexSlug, AlbumFilters::createFromArray($filters));
+        $this->assertReport($report, $countNo, $countMaybe, $countMaybeNot, $countYes, $countTotal);
     }
 
     /**
