@@ -1,5 +1,5 @@
 {
-  "range": "'Pokémons'!A1:AC1",
+  "range": "'pokemon_list / family_link'!A1:AF1",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -14,9 +14,9 @@
       "#Category form",
       "#Family",
       "Family order",
+      "Slug",
       "Pokémon Nom Complet",
       "Pokémon Nom simplifié",
-      "Slug",
       "Forme",
       "Pokémon Nom Complet Fr",
       "Pokémon Nom simplifié Fr",
@@ -30,8 +30,11 @@
       "#Type 1",
       "#Type 2",
       "Species number",
+      "MBCMechachu sprites index",
       "PokemonDB icon name",
-      "MBCMechachu sprites index"
+      "PokemonDB icon dex",
+      "generic-slug",
+      "#Groups"
     ]
   ]
 }
