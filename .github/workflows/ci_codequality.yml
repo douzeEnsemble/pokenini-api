@@ -44,7 +44,7 @@ jobs:
         with:
           dir: phpmd
       - name: Run
-        run: ./tools/phpmd/vendor/bin/phpmd src,tests text ruleset.xml
+        run: ./tools/phpmd/vendor/bin/phpmd src,tests text phpmd.ruleset.xml
 
   psalm:
     name: Psalm
@@ -57,7 +57,7 @@ jobs:
         with:
           dir: psalm      
       - name: Run
-        run: ./tools/psalm/vendor/bin/psalm --show-info=false --root=.
+        run: tools/psalm/vendor/bin/psalm --show-info=false --no-cache --find-unused-psalm-suppress --no-suggestions --taint-analysis --root=.
 
   phpstan:
     name: PHPStan
