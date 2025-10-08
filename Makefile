@@ -3,19 +3,14 @@ DOCKER = docker
 DOCKER_COMP = docker compose
 
 # Docker containers
-ifeq (${CI}, true)
-DOCKER_COMP_EXEC = $(DOCKER_COMP) exec -T
-else
-DOCKER_COMP_EXEC = $(DOCKER_COMP) exec
-endif
-
-PHP_CONT = $(DOCKER_COMP_EXEC) php
-DATABASE_CONT = $(DOCKER_COMP_EXEC) database
+PHP_CONT = $(DOCKER_COMP) exec php
 
 # Executables
 PHP      = $(PHP_CONT) php
 COMPOSER = $(PHP_CONT) composer
-SYMFONY  = $(PHP_CONT) bin/console
+SYMFONY  = $(PHP) bin/console
+DOCKERCOMPOSE_LINTER_CMD = docker run -t --rm -v ${PWD}:/app zavoloklom/dclint:3.1.0-alpine
+DOTENV_LINTER_CMD = docker run -t --rm -v ${PWD}:/app -w /app dotenvlinter/dotenv-linter:3.3.0
 
 # Misc
 .DEFAULT_GOAL = help
@@ -38,14 +33,20 @@ build: ## Builds the Docker images
 
 .PHONY: rebuild
 rebuild: ## Re-builds the Docker images (build with no cache)
-	${DOCKER_COMP} build --no-cache
+	${DOCKER_COMP} build --no-cache --pull
 
 .PHONY: start
-start: install up vendor cc data ## ## Start the project
+start: ## Start the project
+start: install up vendor cc
 
 .PHONY: up
 up: ## Up Docker container
+up: up-process up-after
+
+up-process:
 	$(DOCKER_COMP) up --wait
+
+up-after:
 
 .PHONY: install
 install: ## Install requirements
@@ -57,20 +58,20 @@ stop: ## Stop the project
 
 .PHONY: destruct
 destruct: ## Destruct the project
-	$(DOCKER_COMP) down --remove-orphans --volumes database --rmi all
-
-.PHONY: bash
-bash: ## Connect to the PHP FPM container
-	@$(PHP_CONT) bash
+	$(DOCKER_COMP) down --remove-orphans --volumes database moco.sheets.int moco.sheets.test newman php web --rmi all
 
 .PHONY: logs
 logs: ## Containers logs
 	@$(DOCKER_COMP) logs -f -n 0
 
-.PHONY: mocks-restart
-mocks-restart: ## Restart mocks
+.PHONY: bash
+bash: ## Connect to the PHP container
+	@$(PHP_CONT) bash
+
+.PHONY: restart-mocks
+restart-mocks: ## Restart Moco mocks
 	$(DOCKER_COMP) restart moco.sheets.int
-	$(DOCKER_COMP) restart moco.sheets.test
+	$(DOCKER_COMP) restart moco.sheets.tests
 
 ## —— Data 💾 ————————————————————————————————————————————————————————————————
 .PHONY: data
@@ -121,7 +122,7 @@ updates: ## Updates all composer
 	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/phpmd 
 	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/psalm 
 	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/phpstan 
-	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/infection 
+	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/infection
 	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/jsonlint 
 	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/deptrac 
 	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/phpinsights 
@@ -144,6 +145,15 @@ tests:
 	@$(PHP) bin/console doctrine:schema:update --force --env=test
 	$(PHP) vendor/bin/phpunit tests/src
 
+.PHONY: tests-defect
+tests-defect: ## Execute tests and stop when one defect
+tests-defect:
+	$(PHP) vendor/bin/phpunit tests/src --stop-on-defect
+
+.PHONY: t
+t: ## Alias of tests
+t: tests
+
 .PHONY: tests-unit
 tests-unit: ## Execute unit tests
 	@$(PHP_CONT) vendor/bin/phpunit tests/src/Unit
@@ -152,15 +162,69 @@ tests-unit: ## Execute unit tests
 tests-functional: ## Execute functional tests
 	@$(PHP_CONT) vendor/bin/phpunit tests/src/Functional
 
+.PHONY: tu
+tu: ## Alias of tests-unit
+tu: tests-unit
+
+.PHONY: tf
+tf: ## Alias of tests-functional
+tf: tests-functional
+
+.PHONY: ti
+ti: ## Alias of tests-functional
+ti: tests-functional
+
+.PHONY: tests-api-mocked
+tests-api-mocked: ## Execute tests on the group api-mocked-testing only
+	@$(PHP_CONT) vendor/bin/phpunit tests/src/Functional --group=api-mocked-testing --stop-on-defect --no-progress --no-logging
 
 ## —— Quality 👌 ———————————————————————————————————————————————————————————————
 .PHONY: quality
 quality: ## Execute all quality analyses
 quality: infra-quality code-quality
 
+.PHONY: infra-quality
+infra-quality: ## Execute all infra quality analyses
+infra-quality: docker-compose-linter dockerfile-linter dotenv-linter
+
+.PHONY: iq
+iq: ## Alias of infra-quality
+iq: infra-quality
+
+.PHONY: docker-compose-linter
+docker-compose-linter: ## Run Docker Compose linter
+	$(DOCKERCOMPOSE_LINTER_CMD) -r .
+
+.PHONY: docker-compose-fixer
+docker-compose-fixer: ## Run Docker Compose fixer
+	$(DOCKERCOMPOSE_LINTER_CMD)  -r . --fix
+
+.PHONY: dockerfile-linter
+dockerfile-linter: ## Run Dockerfile linter
+	@find .docker -name 'Dockerfile' | while read -r dockerfile; do \
+		docker run -t --rm -v ${PWD}:/app hadolint/hadolint:2.12.0-alpine hadolint "/app/$$dockerfile"; \
+	done
+
+.PHONY: dotenv-linter
+dotenv-linter: ## Run DotEnv linter
+	$(DOTENV_LINTER_CMD) -r
+
+.PHONY: dotenv-linter
+dotenv-fixer: ## Run DotEnv fixer
+	$(DOTENV_LINTER_CMD) fix -r --no-backup
+
 .PHONY: code-quality
 code-quality: ## Execute all code quality analyses
-code-quality: phpcsfixer phpmd psalm phpstan deptrac
+code-quality: validate-autoloader phpcsfixer phpmd psalm phpstan deptrac
+
+.PHONY: cq
+cq: ## Alias of code-quality
+cq: code-quality
+
+.PHONY: validate-autoloader
+validate-autoloader: ## Execute cmheck on autoloader issues
+validate-autoloader:
+	@$(COMPOSER) dump-autoload -o --strict-psr --strict-ambiguous --dry-run
 
 .PHONY: phpcsfixer
 phpcsfixer: ## Execute PHP CS Fixer "Check"
@@ -175,13 +239,13 @@ phpcsfixer-fix: tools/php-cs-fixer/vendor/bin/php-cs-fixer
 .PHONY: phpmd
 phpmd: ## Execute phpmd
 phpmd: tools/phpmd/vendor/bin/phpmd
-	@$(PHP) tools/phpmd/vendor/bin/phpmd src,tests text ruleset.xml
+	@$(PHP) tools/phpmd/vendor/bin/phpmd src,tests text phpmd.ruleset.xml
 
 .PHONY: psalm
 psalm: ## Execute psalm
 psalm: tools/psalm/vendor/bin/psalm
 	@$(PHP_CONT) rm -Rf var/cache/psalm
-	@$(PHP) tools/psalm/vendor/bin/psalm --show-info=false
+	@$(PHP) tools/psalm/vendor/bin/psalm --show-info=false --no-cache --find-unused-psalm-suppress --no-suggestions --taint-analysis
 
 .PHONY: psalm-fix
 psalm-fix: ## Execute psalm auto fixing
@@ -197,38 +261,12 @@ phpstan: tools/phpstan/vendor/bin/phpstan
 .PHONY: deptrac
 deptrac: ## Execute deptrac analyse
 deptrac: tools/deptrac/vendor/bin/deptrac
-	@$(PHP) tools/deptrac/vendor/bin/deptrac analyse
+	@$(PHP) tools/deptrac/vendor/bin/deptrac analyse --report-uncovered --fail-on-uncovered --cache-file=/app/var/cache/deptrac/.deptrac.cache
 
 .PHONY: phpinsights
 phpinsights: ## Execute phpinsights
 phpinsights: tools/phpinsights/vendor/bin/phpinsights
 	@$(PHP) tools/phpinsights/vendor/bin/phpinsights
-
-.PHONY: infra-quality
-infra-quality: ## Execute all infra quality analyses
-infra-quality: docker-compose-linter dockerfile-linter dotenv-linter
-
-DOCKERCOMPOSE_LINTER_CMD = docker run -t --rm -v ${PWD}:/app zavoloklom/dclint:2.2.2-alpine
-docker-compose-linter: ## Run Docker Compose linter
-	$(DOCKERCOMPOSE_LINTER_CMD) -r .
-.PHONY: docker-compose-linter
-docker-compose-fixer: ## Run Docker Compose fixer
-	$(DOCKERCOMPOSE_LINTER_CMD)  -r . --fix
-.PHONY: docker-compose-fixer
-
-dockerfile-linter: ## Run Dockerfile linter
-		@find .docker -name 'Dockerfile' | while read -r dockerfile; do \
-		docker run -t --rm -v ${PWD}:/app hadolint/hadolint:2.12.0-alpine hadolint "/app/$$dockerfile"; \
-	done
-.PHONY: dockerfile-linter
-
-DOTENV_LINTER_CMD = docker run -t --rm -v ${PWD}:/app -w /app dotenvlinter/dotenv-linter:3.3.0
-dotenv-linter: ## Run DotEnv linter
-	$(DOTENV_LINTER_CMD) -r
-.PHONY: dotenv-linter
-dotenv-fixer: ## Run DotEnv fixer
-	$(DOTENV_LINTER_CMD) fix -r --no-backup
-.PHONY: dotenv-linter
 
 ## —— Integration 🗂️ ———————————————————————————————————————————————————————————————
 .PHONY: integration
@@ -260,36 +298,41 @@ newman-execute:
 ## —— Measures 📏 ———————————————————————————————————————————————————————————————
 .PHONY: measures
 measures: ## Execute all measures tools
-measures: clear-build coverage infection
+measures: coverage infection
+
+.PHONY: m
+m: ## Alias of measures
+m: measures
 
 .PHONY: clear-build
 clear-build: ## Clear build directory
-	rm -Rf build/*
+	rm -Rf build/coverage*
 
 build/coverage/coverage-xml: ## Generate coverage report
 	$(DOCKER_COMP) exec \
 		-e XDEBUG_MODE=coverage -T php \
 		php vendor/bin/phpunit \
-            --exclude-group="browser-testing" \
-			--coverage-clover=coverage.xml \
+			--exclude-group="browser-testing" \
+			--coverage-clover=build/coverage/coverage.xml \
 			--coverage-xml=build/coverage/coverage-xml \
 			--log-junit=build/coverage/junit.xml
 
 .PHONY: coverage
 coverage: ## Execute PHPUnit Coverage to check the score
-coverage: build/coverage/coverage-xml
-	@$(PHP_CONT) php tests/tools/coverage.php coverage.xml 100 true
+coverage: clear-build build/coverage/coverage-xml
+	@$(PHP_CONT) php tools/coverage/coverage.php build/coverage/coverage.xml 100 true \
+	|| (echo "❌ Coverage check failed, generating HTML report..." && $(MAKE) coverage-html && exit 1)
 
 .PHONY: coverage-html
 coverage-html: ## Execute PHPUnit Coverage in HTML
 	$(DOCKER_COMP) exec \
 		-e XDEBUG_MODE=coverage -T php \
 		php vendor/bin/phpunit \
-            --exclude-group="browser-testing" \
+			--exclude-group="browser-testing" \
 			--coverage-html=build/coverage/coverage-html
 
 .PHONY: clear-infection-cache
-clear-infection-cache: 
+clear-infection-cache:
 	@$(PHP_CONT) rm -Rf var/cache/infection
 
 .PHONY: infection
@@ -305,23 +348,43 @@ infection: build/coverage/coverage-xml tools/infection/vendor/bin/infection clea
 security: ## Execute all security commands
 security: composer-audit security-checker
 
+.PHONY: s
+s: ## Alias of security
+s: security
+
 .PHONY: composer-audit
 composer-audit: ## Execute Composer Audit
-	@$(COMPOSER) audit
+composer-audit: c=audit
+composer-audit: composer
 
-bin/local-php-security-checker: ## Download the file if needed
-	wget https://github.com/fabpot/local-php-security-checker/releases/download/v2.1.3/local-php-security-checker_linux_amd64 -O bin/local-php-security-checker
-	chmod a+x bin/local-php-security-checker
+tools/php-security-checker:
+	mkdir tools/php-security-checker
+
+tools/php-security-checker/local-php-security-checker: ## Download the file if needed
+tools/php-security-checker/local-php-security-checker: tools/php-security-checker
+	wget https://github.com/fabpot/local-php-security-checker/releases/download/v2.1.3/local-php-security-checker_linux_amd64 -O tools/php-security-checker/local-php-security-checker
+	chmod a+x tools/php-security-checker/local-php-security-checker
 
 .PHONY: security-checker
 security-checker: ## Execute Security Checker
-security-checker: bin/local-php-security-checker
-	bin/local-php-security-checker
+security-checker: tools/php-security-checker/local-php-security-checker
+	tools/php-security-checker/local-php-security-checker
 
-.PHONY: dependency-check
-dependency-check: ## Execute OWASP Dependency Check
-dependency-check: 
-	@bin/dependency-check.sh ${NVD_API_KEY}
+.PHONY: owasp-check
+owasp-check: ## Execute OWASP Dependency Check
+owasp-check: 
+	@tools/owasp-check/dependency-check.sh ${NVD_API_KEY}
+
+## —— Cleaning 🧽 ———————————————————————————————————————————————————————————————
+.PHONY: clean-unused-files
+clean-unused-files: ## Clean unused mocks files
+clean-unused-files:
+	tools/clean-unused-files/clean_unused_files.sh tests/resources/moco/Back/responses
+
+.PHONY: clean-moco-routes
+clean-moco-routes: ## Clean unused moco routes
+clean-moco-routes:
+	tools/clean-moco-routes/clean_moco_routes.sh tests/resources/moco/Back/moco.json
 
 ## —— Tools 🔧 ———————————————————————————————————————————————————————————————
 tools/php-cs-fixer/vendor/bin/php-cs-fixer: ## Install php-cs-fixer
@@ -336,17 +399,17 @@ tools/psalm/vendor/bin/psalm: ## Install psalm
 tools/phpstan/vendor/bin/phpstan: ## Install phpstan
 	@$(COMPOSER) install --working-dir=tools/phpstan --optimize-autoloader --no-dev
 
-tools/infection/vendor/bin/infection: ## Install infection
-	@$(COMPOSER) install --working-dir=tools/infection --optimize-autoloader --no-dev
-
 tools/deptrac/vendor/bin/deptrac: ## Install deptrac
 	@$(COMPOSER) install --working-dir=tools/deptrac --optimize-autoloader --no-dev
+
+tools/infection/vendor/bin/infection: ## Install infection
+	@$(COMPOSER) install --working-dir=tools/infection --optimize-autoloader --no-dev
 
 tools/phpinsights/vendor/bin/phpinsights: ## Install phpinsights
 	@$(COMPOSER) install --working-dir=tools/phpinsights --optimize-autoloader --no-dev
 
 ## —— Image 🐳 ———————————————————————————————————————————————————————————————
 img-build: ## Build Docker image
-	docker build --target php_prod -f ./.docker/php/Dockerfile -t ghcr.io/douzeensemble/pokenini:latest .
+	docker build --target php_prod -f ./.docker/php/Dockerfile -t ghcr.io/douzeensemble/pokenini-api:latest .
 img-push: ## Push Docker image
-	docker push ghcr.io/douzeensemble/pokenini:latest
+	docker push ghcr.io/douzeensemble/pokenini-api:latest
