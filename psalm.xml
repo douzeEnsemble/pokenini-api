@@ -15,7 +15,6 @@
         <directory name="tests" />
         <ignoreFiles>
             <directory name="vendor" />
-            <directory name="tests/tools" />
             <file name="tests/bootstrap.php" />
         </ignoreFiles>
     </projectFiles>

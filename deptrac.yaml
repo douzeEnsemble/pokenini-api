@@ -4,129 +4,271 @@ parameters:
   exclude_files:
     - .*test.*
   layers:
-    - name: ActionEnder
+    - name: AppActionEnder
       collectors:
         - type: classLike
-          value: 'App\\ActionEnder\\.*'
-    - name: ActionStarter
+          value: '^App\\ActionEnder\\.*'
+    - name: AppActionStarter
       collectors:
         - type: classLike
-          value: 'App\\ActionStarter\\.*'
-    - name: Calculator
+          value: '^App\\ActionStarter\\.*'
+    - name: AppCalculator
       collectors:
         - type: classLike
-          value: 'App\\Calculator\\.*'
-    - name: Command
+          value: '^App\\Calculator\\.*'
+    - name: AppCommand
       collectors:
         - type: classLike
-          value: 'App\\Command\\.*'
-    - name: Controller
+          value: '^App\\Command\\.*'
+    - name: AppController
       collectors:
         - type: classLike
-          value: 'App\\Controller\\.*'
-    - name: DTO
+          value: '^App\\Controller\\.*'
+    - name: AppDTO
       collectors:
         - type: classLike
-          value: 'App\\DTO\\.*'
-    - name: Entity
+          value: '^App\\DTO\\.*'
+    - name: AppEntity
       collectors:
         - type: classLike
-          value: 'App\\Entity\\.*'
-    - name: Exception
+          value: '^App\\Entity\\.*'
+    - name: AppException
       collectors:
         - type: classLike
-          value: 'App\\Exception\\.*'
-    - name: Helper
+          value: '^App\\Exception\\.*'
+    - name: AppHelper
       collectors:
         - type: classLike
-          value: 'App\\Helper\\.*'
-    - name: Message
+          value: '^App\\Helper\\.*'
+    - name: AppMessage
       collectors:
         - type: classLike
-          value: 'App\\Message\\.*'
-    - name: MessageHandler
+          value: '^App\\Message\\.*'
+    - name: AppMessageHandler
       collectors:
         - type: classLike
-          value: 'App\\MessageHandler\\.*'
-    - name: Repository
+          value: '^App\\MessageHandler\\.*'
+    - name: AppRepository
       collectors:
         - type: classLike
-          value: 'App\\Repository\\.*'
-    - name: Service
+          value: '^App\\Repository\\.*'
+    - name: AppService
       collectors:
         - type: classLike
-          value: 'App\\Service\\.*'
-    - name: Updater
+          value: '^App\\Service\\.*'
+    - name: AppUpdater
       collectors:
         - type: classLike
-          value: 'App\\Updater\\.*'
+          value: '^App\\Updater\\.*'
+    
+    # Doctrine
+    - name: DoctrineDBAL
+      collectors:
+        - type: classLike
+          value: '^Doctrine\\DBAL\\.*'
+    - name: DoctrineEntityManager
+      collectors:
+        - type: classLike
+          value: '^Doctrine\\ORM\\EntityManagerInterface'
+    - name: DoctrineORM
+      collectors:
+        - type: classLike
+          value: '^Doctrine\\ORM\\.*'
+    - name: DoctrinePersistence
+      collectors:
+        - type: classLike
+          value: '^Doctrine\\Persistence\\.*'
+    - name: DoctrineServiceEntityRepository
+      collectors:
+        - type: classLike
+          value: '^Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository'
+    
+    
+    # Google
+    - name: GoogleClient
+      collectors:
+        - type: classLike
+          value: '^Google\\Client'
+    - name: GoogleService
+      collectors:
+        - type: classLike
+          value: '^Google\\Service\\.*'
+
+    # Logger
+    - name: Logger
+      collectors:
+        - type: classLike
+          value: '^Psr\\Log\\LoggerInterface'
+
+    # Symfony
+    - name: SymfonyBridgeDoctrine
+      collectors:
+        - type: classLike
+          value: '^Symfony\\Bridge\\Doctrine\\.*'
+    - name: SymfonyContractsCache
+      collectors:
+        - type: classLike
+          value: '^Symfony\\Contracts\\Cache\\.*'
+    - name: SymfonyConsole
+      collectors:
+        - type: classLike
+          value: '^Symfony\\Component\\Console\\.*'
+    - name: SymfonyContractsTranslation
+      collectors:
+        - type: classLike
+          value: '^Symfony\\Contracts\\Translation\\.*'
+    - name: SymfonyExpressionLanguage
+      collectors:
+        - type: classLike
+          value: '^Symfony\\Component\\ExpressionLanguage\\.*'
+    - name: SymfonyFrameworkBundle
+      collectors:
+        - type: classLike
+          value: '^Symfony\\Bundle\\FrameworkBundle\\.*'
+    - name: SymfonyHttpFoundation
+      collectors:
+        - type: classLike
+          value: '^Symfony\\Component\\HttpFoundation\\.*'
+    - name: SymfonyHttpKernel
+      collectors:
+        - type: classLike
+          value: '^Symfony\\Component\\HttpKernel\\.*'
+    - name: SymfonyMessenger
+      collectors:
+        - type: classLike
+          value: '^Symfony\\Component\\Messenger\\.*'
+    - name: SymfonyOptionsResolver
+      collectors:
+        - type: classLike
+          value: '^Symfony\\Component\\OptionsResolver\\.*'
+    - name: SymfonyRouting
+      collectors:
+        - type: classLike
+          value: '^Symfony\\Component\\Routing\\.*'
+    - name: SymfonySerializer
+      collectors:
+        - type: classLike
+          value: '^Symfony\\Component\\Serializer\\.*'
+    - name: SymfonyUid
+      collectors:
+        - type: classLike
+          value: '^Symfony\\Component\\Uid\\.*'
+    - name: SymfonyValidator
+      collectors:
+        - type: classLike
+          value: '^Symfony\\Component\\Validator\\.*'
     
   ruleset:
-    ActionEnder:
-      - DTO
-      - Entity
-      - Message
-      - Repository
-    ActionStarter:
-      - Entity
-      - Message
-    Calculator:
-      - Calculator
-      - DTO
-      - Entity
-      - Repository
-      - Service
-    Command:
-      - ActionEnder
-      - ActionStarter
-      - Calculator
-      - DTO
-      - Entity
-      - Message
-      - Repository
-      - Service
-      - Updater
-    Controller:
-      - ActionEnder
-      - ActionStarter
-      - DTO
-      - Entity
-      - Repository
-      - Service
-    DTO:
-      - DTO
-    Entity:
-      - Entity
-    Helper:
-      - Helper
-    Message:
-      - Message
-    MessageHandler:
-      - ActionEnder
-      - Calculator
-      - DTO
-      - Entity
-      - Message
-      - MessageHandler
-      - Service
-      - Updater
-      - Repository
-    Repository:
-      - DTO
-      - Entity
-      - Message
-      - Repository
-    Service:
-      - Calculator
-      - DTO
-      - Entity
-      - Repository
-      - Service
-      - Updater
-    Updater:
-      - DTO
-      - Entity
-      - Exception
-      - Helper
-      - Repository
-      - Service
+    AppActionEnder:
+      - AppDTO
+      - AppEntity
+      - AppMessage
+      - AppRepository
+      - DoctrineEntityManager
+      - DoctrineORM
+    AppActionStarter:
+      - AppEntity
+      - AppMessage
+      - DoctrineEntityManager
+      - DoctrineORM
+    AppCalculator:
+      - AppCalculator
+      - AppDTO
+      - AppEntity
+      - AppRepository
+      - AppService
+      - DoctrineEntityManager
+      - DoctrineORM
+      - SymfonyExpressionLanguage
+    AppCommand:
+      - AppActionEnder
+      - AppActionStarter
+      - AppCalculator
+      - AppDTO
+      - AppEntity
+      - AppMessage
+      - AppRepository
+      - AppService
+      - AppUpdater
+      - DoctrineEntityManager
+      - DoctrineORM
+      - SymfonyConsole
+      - SymfonyContractsTranslation
+    AppController:
+      - AppActionEnder
+      - AppActionStarter
+      - AppDTO
+      - AppEntity
+      - AppRepository
+      - AppService
+      - DoctrineDBAL
+      - SymfonyFrameworkBundle
+      - SymfonyHttpFoundation
+      - SymfonyHttpKernel
+      - SymfonyMessenger
+      - SymfonyOptionsResolver
+      - SymfonyRouting
+      - SymfonySerializer
+    AppDTO:
+      - AppDTO
+      - SymfonyHttpFoundation
+      - SymfonyOptionsResolver
+    AppEntity:
+      - AppEntity
+      - DoctrineDBAL
+      - DoctrineORM
+      - SymfonyBridgeDoctrine
+      - SymfonyUid
+      - SymfonyValidator
+    AppHelper:
+      - AppHelper
+    AppMessage:
+      - AppMessage
+    AppMessageHandler:
+      - AppActionEnder
+      - AppCalculator
+      - AppDTO
+      - AppEntity
+      - AppMessage
+      - AppMessageHandler
+      - AppService
+      - AppUpdater
+      - AppRepository
+      - DoctrineEntityManager
+      - DoctrineORM
+      - SymfonyMessenger
+    AppRepository:
+      - AppDTO
+      - AppEntity
+      - AppMessage
+      - AppRepository
+      - DoctrineDBAL
+      - DoctrineORM
+      - DoctrinePersistence
+      - DoctrineServiceEntityRepository
+      - SymfonyUid
+    AppService:
+      - AppCalculator
+      - AppDTO
+      - AppEntity
+      - AppRepository
+      - AppService
+      - AppUpdater
+      - DoctrineDBAL
+      - GoogleClient
+      - GoogleService
+      - SymfonyContractsCache
+    AppUpdater:
+      - AppDTO
+      - AppEntity
+      - AppException
+      - AppHelper
+      - AppRepository
+      - AppService
+      - DoctrineEntityManager
+      - DoctrineORM
+      - GoogleService
+      - Logger
+      - SymfonyContractsCache
+      - SymfonyOptionsResolver
+      - SymfonyUid
