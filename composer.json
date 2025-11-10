@@ -43,7 +43,7 @@
         "ext-tokenizer": "*",
         "ext-xml": "*",
         "ext-xmlwriter": "*",
-        "hautelook/alice-bundle": "2.15.*",
+        "hautelook/alice-bundle": "2.16.*",
         "phpunit/phpunit": "^12.4.2",
         "symfony/debug-bundle": "7.3.*",
         "symfony/phpunit-bridge": "7.3.*",

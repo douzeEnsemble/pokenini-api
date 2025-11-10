@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "60304b232abc0b018d4a85ca41b4ec97",
+    "content-hash": "2b58b74f828df85fce41e380e5ead364",
     "packages": [
         {
             "name": "doctrine/collections",
@@ -7304,21 +7304,21 @@
         },
         {
             "name": "hautelook/alice-bundle",
-            "version": "2.15.1",
+            "version": "2.16.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/theofidry/AliceBundle.git",
-                "reference": "e33d72e4df48b846dd5fb99039dbcfc5401daf2c"
+                "reference": "69c9e3e6b85fcb3ed0dd430e8f790489aaa0cbcc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/theofidry/AliceBundle/zipball/e33d72e4df48b846dd5fb99039dbcfc5401daf2c",
-                "reference": "e33d72e4df48b846dd5fb99039dbcfc5401daf2c",
+                "url": "https://api.github.com/repos/theofidry/AliceBundle/zipball/69c9e3e6b85fcb3ed0dd430e8f790489aaa0cbcc",
+                "reference": "69c9e3e6b85fcb3ed0dd430e8f790489aaa0cbcc",
                 "shasum": ""
             },
             "require": {
                 "doctrine/data-fixtures": "^1.7 || ^2.0",
-                "doctrine/doctrine-bundle": "^2.11.3",
+                "doctrine/doctrine-bundle": "^2.11.3 || ^3.0",
                 "doctrine/orm": "^3.1",
                 "doctrine/persistence": "^3.3.1 || ^4.0",
                 "php": "^8.2",
@@ -7372,9 +7372,9 @@
             ],
             "support": {
                 "issues": "https://github.com/theofidry/AliceBundle/issues",
-                "source": "https://github.com/theofidry/AliceBundle/tree/2.15.1"
+                "source": "https://github.com/theofidry/AliceBundle/tree/2.16.0"
             },
-            "time": "2025-03-27T09:27:25+00:00"
+            "time": "2025-10-24T09:03:19+00:00"
         },
         {
             "name": "myclabs/deep-copy",
