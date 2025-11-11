@@ -118,7 +118,6 @@ vendor: ## Install vendors according to the current composer.lock file
 .PHONY: updates
 updates: ## Updates all composer
 	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader 
-	@$(COMPOSER) bump
 	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/php-cs-fixer 
 	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/phpmd 
 	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/psalm 
