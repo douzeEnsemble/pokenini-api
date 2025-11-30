@@ -1,52 +1,52 @@
 App\Entity\RegionalDexNumber:
   regionaldexnumber_bulbasaur_kanto:
-    pokemonSlug: 'bulbasaur'
-    region: '@region_kanto'
-    dexNumber: '1'
+    pokemonSlug: "bulbasaur"
+    region: "@region_kanto"
+    dexNumber: "1"
   regionaldexnumber_ivysaur_kanto:
-    pokemonSlug: 'ivysaur'
-    region: '@region_kanto'
-    dexNumber: '2'
+    pokemonSlug: "ivysaur"
+    region: "@region_kanto"
+    dexNumber: "2"
   regionaldexnumber_venusaur_kanto:
-    pokemonSlug: 'venusaur'
-    region: '@region_kanto'
-    dexNumber: '3'
+    pokemonSlug: "venusaur"
+    region: "@region_kanto"
+    dexNumber: "3"
 
   regionaldexnumber_bulbasaur_johto:
-    pokemonSlug: 'bulbasaur'
-    region: '@region_johto'
-    dexNumber: '231'
+    pokemonSlug: "bulbasaur"
+    region: "@region_johto"
+    dexNumber: "231"
   regionaldexnumber_ivysaur_johto:
-    pokemonSlug: 'ivysaur'
-    region: '@region_johto'
-    dexNumber: '232'
+    pokemonSlug: "ivysaur"
+    region: "@region_johto"
+    dexNumber: "232"
   regionaldexnumber_venusaur_johto:
-    pokemonSlug: 'venusaur'
-    region: '@region_johto'
-    dexNumber: '233'
+    pokemonSlug: "venusaur"
+    region: "@region_johto"
+    dexNumber: "233"
 
   regionaldexnumber_caterpie_johto:
-    pokemonSlug: 'caterpie'
-    region: '@region_johto'
-    dexNumber: '24'
+    pokemonSlug: "caterpie"
+    region: "@region_johto"
+    dexNumber: "24"
   regionaldexnumber_metapod_johto:
-    pokemonSlug: 'metapod'
-    region: '@region_johto'
-    dexNumber: '25'
+    pokemonSlug: "metapod"
+    region: "@region_johto"
+    dexNumber: "25"
   regionaldexnumber_butterfree_johto:
-    pokemonSlug: 'butterfree'
-    region: '@region_johto'
-    dexNumber: '26'
+    pokemonSlug: "butterfree"
+    region: "@region_johto"
+    dexNumber: "26"
 
   regionaldexnumber_bulbasaur_kalos:
-    pokemonSlug: 'bulbasaur'
-    region: '@region_kalos'
-    dexNumber: '1080'
+    pokemonSlug: "bulbasaur"
+    region: "@region_kalos"
+    dexNumber: "1080"
   regionaldexnumber_ivysaur_kalos:
-    pokemonSlug: 'ivysaur'
-    region: '@region_kalos'
-    dexNumber: '1081'
+    pokemonSlug: "ivysaur"
+    region: "@region_kalos"
+    dexNumber: "1081"
   regionaldexnumber_venusaur_kalos:
-    pokemonSlug: 'venusaur'
-    region: '@region_kalos'
-    dexNumber: '1082'
+    pokemonSlug: "venusaur"
+    region: "@region_kalos"
+    dexNumber: "1082"

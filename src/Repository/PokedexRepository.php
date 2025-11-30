@@ -77,13 +77,13 @@ class PokedexRepository extends ServiceEntityRepository
         $where = 'td.slug = :dex_slug '.$this->getFiltersQuery($filters);
 
         $sql = <<<SQL
-            SELECT  COUNT(dex_availability_id) AS count, 
+            SELECT  COUNT(dex_availability_id) AS count,
                     cs.slug AS slug, cs.name AS name, cs.french_name AS french_name
             FROM    catch_state AS cs
                     LEFT JOIN (
-                    SELECT  da.id AS dex_availability_id, 
+                    SELECT  da.id AS dex_availability_id,
                             COALESCE(
-                                pd.catch_state_id, 
+                                pd.catch_state_id,
                                 (SELECT id FROM catch_state WHERE slug = 'no')
                             ) AS catch_state_id
                     FROM

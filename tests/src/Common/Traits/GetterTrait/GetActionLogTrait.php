@@ -19,9 +19,9 @@ trait GetActionLogTrait
         $sql = <<<'SQL'
             INSERT INTO action_log (
                 id,
-                created_at, 
-                done_at, 
-                report_data, 
+                created_at,
+                done_at,
+                report_data,
                 error_trace,
                 "type"
             )

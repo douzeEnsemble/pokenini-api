@@ -100,21 +100,21 @@
       "request": {
         "method": "GET",
         "header": [],
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "douze",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "web",
-							"type": "string"
-						}
-					]
-				},
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "douze",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "web",
+              "type": "string"
+            }
+          ]
+        },
         "url": {
           "raw": "http://web:8080/album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow",
           "protocol": "http",
@@ -224,21 +224,21 @@
       "request": {
         "method": "GET",
         "header": [],
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "douze",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "web",
-							"type": "string"
-						}
-					]
-				},
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "douze",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "web",
+              "type": "string"
+            }
+          ]
+        },
         "url": {
           "raw": "http://web:8080/album/7b52009b64fd0a2a49e6d8a939753077792b0554/goldsilvercrystal",
           "protocol": "http",
@@ -348,21 +348,21 @@
       "request": {
         "method": "GET",
         "header": [],
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "douze",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "web",
-							"type": "string"
-						}
-					]
-				},
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "douze",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "web",
+              "type": "string"
+            }
+          ]
+        },
         "url": {
           "raw": "http://web:8080/album/7b52009b64fd0a2a49e6d8a939753077792b0554/rubysapphireemerald",
           "protocol": "http",
@@ -472,21 +472,21 @@
       "request": {
         "method": "GET",
         "header": [],
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "douze",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "web",
-							"type": "string"
-						}
-					]
-				},
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "douze",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "web",
+              "type": "string"
+            }
+          ]
+        },
         "url": {
           "raw": "http://web:8080/album/7b52009b64fd0a2a49e6d8a939753077792b0554/fireredleafgreen",
           "protocol": "http",
@@ -596,21 +596,21 @@
       "request": {
         "method": "GET",
         "header": [],
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "douze",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "web",
-							"type": "string"
-						}
-					]
-				},
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "douze",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "web",
+              "type": "string"
+            }
+          ]
+        },
         "url": {
           "raw": "http://web:8080/album/7b52009b64fd0a2a49e6d8a939753077792b0554/diamondpearlplatinium",
           "protocol": "http",
@@ -720,21 +720,21 @@
       "request": {
         "method": "GET",
         "header": [],
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "douze",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "web",
-							"type": "string"
-						}
-					]
-				},
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "douze",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "web",
+              "type": "string"
+            }
+          ]
+        },
         "url": {
           "raw": "http://web:8080/album/7b52009b64fd0a2a49e6d8a939753077792b0554/heartgoldsoulsilver",
           "protocol": "http",
@@ -844,21 +844,21 @@
       "request": {
         "method": "GET",
         "header": [],
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "douze",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "web",
-							"type": "string"
-						}
-					]
-				},
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "douze",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "web",
+              "type": "string"
+            }
+          ]
+        },
         "url": {
           "raw": "http://web:8080/album/7b52009b64fd0a2a49e6d8a939753077792b0554/blackwhite",
           "protocol": "http",
@@ -968,21 +968,21 @@
       "request": {
         "method": "GET",
         "header": [],
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "douze",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "web",
-							"type": "string"
-						}
-					]
-				},
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "douze",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "web",
+              "type": "string"
+            }
+          ]
+        },
         "url": {
           "raw": "http://web:8080/album/7b52009b64fd0a2a49e6d8a939753077792b0554/black2white2",
           "protocol": "http",
@@ -1092,31 +1092,27 @@
       "request": {
         "method": "GET",
         "header": [],
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "douze",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "web",
-							"type": "string"
-						}
-					]
-				},
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "douze",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "web",
+              "type": "string"
+            }
+          ]
+        },
         "url": {
           "raw": "http://web:8080/album/7b52009b64fd0a2a49e6d8a939753077792b0554/xy",
           "protocol": "http",
           "host": "web",
           "port": "8080",
-          "path": [
-            "album",
-            "7b52009b64fd0a2a49e6d8a939753077792b0554",
-            "xy"
-          ]
+          "path": ["album", "7b52009b64fd0a2a49e6d8a939753077792b0554", "xy"]
         }
       },
       "response": []
@@ -1216,21 +1212,21 @@
       "request": {
         "method": "GET",
         "header": [],
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "douze",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "web",
-							"type": "string"
-						}
-					]
-				},
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "douze",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "web",
+              "type": "string"
+            }
+          ]
+        },
         "url": {
           "raw": "http://web:8080/album/7b52009b64fd0a2a49e6d8a939753077792b0554/omegarubyalphasapphire",
           "protocol": "http",
@@ -1340,21 +1336,21 @@
       "request": {
         "method": "GET",
         "header": [],
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "douze",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "web",
-							"type": "string"
-						}
-					]
-				},
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "douze",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "web",
+              "type": "string"
+            }
+          ]
+        },
         "url": {
           "raw": "http://web:8080/album/7b52009b64fd0a2a49e6d8a939753077792b0554/sunmoon",
           "protocol": "http",
@@ -1464,21 +1460,21 @@
       "request": {
         "method": "GET",
         "header": [],
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "douze",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "web",
-							"type": "string"
-						}
-					]
-				},
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "douze",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "web",
+              "type": "string"
+            }
+          ]
+        },
         "url": {
           "raw": "http://web:8080/album/7b52009b64fd0a2a49e6d8a939753077792b0554/ultrasunultramoon",
           "protocol": "http",
@@ -1588,21 +1584,21 @@
       "request": {
         "method": "GET",
         "header": [],
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "douze",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "web",
-							"type": "string"
-						}
-					]
-				},
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "douze",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "web",
+              "type": "string"
+            }
+          ]
+        },
         "url": {
           "raw": "http://web:8080/album/7b52009b64fd0a2a49e6d8a939753077792b0554/letsgopikachuletsgoeevee",
           "protocol": "http",
@@ -1712,21 +1708,21 @@
       "request": {
         "method": "GET",
         "header": [],
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "douze",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "web",
-							"type": "string"
-						}
-					]
-				},
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "douze",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "web",
+              "type": "string"
+            }
+          ]
+        },
         "url": {
           "raw": "http://web:8080/album/7b52009b64fd0a2a49e6d8a939753077792b0554/swordshield",
           "protocol": "http",
@@ -1836,21 +1832,21 @@
       "request": {
         "method": "GET",
         "header": [],
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "douze",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "web",
-							"type": "string"
-						}
-					]
-				},
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "douze",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "web",
+              "type": "string"
+            }
+          ]
+        },
         "url": {
           "raw": "http://web:8080/album/7b52009b64fd0a2a49e6d8a939753077792b0554/brilliantdiamondshiningpearl",
           "protocol": "http",
@@ -1960,21 +1956,21 @@
       "request": {
         "method": "GET",
         "header": [],
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "douze",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "web",
-							"type": "string"
-						}
-					]
-				},
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "douze",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "web",
+              "type": "string"
+            }
+          ]
+        },
         "url": {
           "raw": "http://web:8080/album/7b52009b64fd0a2a49e6d8a939753077792b0554/pokemonlegendsarceus",
           "protocol": "http",
@@ -2084,31 +2080,27 @@
       "request": {
         "method": "GET",
         "header": [],
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "douze",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "web",
-							"type": "string"
-						}
-					]
-				},
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "douze",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "web",
+              "type": "string"
+            }
+          ]
+        },
         "url": {
           "raw": "http://web:8080/album/7b52009b64fd0a2a49e6d8a939753077792b0554/home",
           "protocol": "http",
           "host": "web",
           "port": "8080",
-          "path": [
-            "album",
-            "7b52009b64fd0a2a49e6d8a939753077792b0554",
-            "home"
-          ]
+          "path": ["album", "7b52009b64fd0a2a49e6d8a939753077792b0554", "home"]
         }
       },
       "response": []
@@ -2208,21 +2200,21 @@
       "request": {
         "method": "GET",
         "header": [],
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "douze",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "web",
-							"type": "string"
-						}
-					]
-				},
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "douze",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "web",
+              "type": "string"
+            }
+          ]
+        },
         "url": {
           "raw": "http://web:8080/album/7b52009b64fd0a2a49e6d8a939753077792b0554/homeshiny",
           "protocol": "http",
@@ -2332,21 +2324,21 @@
       "request": {
         "method": "GET",
         "header": [],
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "douze",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "web",
-							"type": "string"
-						}
-					]
-				},
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "douze",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "web",
+              "type": "string"
+            }
+          ]
+        },
         "url": {
           "raw": "http://web:8080/album/7b52009b64fd0a2a49e6d8a939753077792b0554/homepokemongo",
           "protocol": "http",
@@ -2456,31 +2448,27 @@
       "request": {
         "method": "GET",
         "header": [],
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "douze",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "web",
-							"type": "string"
-						}
-					]
-				},
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "douze",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "web",
+              "type": "string"
+            }
+          ]
+        },
         "url": {
           "raw": "http://web:8080/album/7b52009b64fd0a2a49e6d8a939753077792b0554/alpha",
           "protocol": "http",
           "host": "web",
           "port": "8080",
-          "path": [
-            "album",
-            "7b52009b64fd0a2a49e6d8a939753077792b0554",
-            "alpha"
-          ]
+          "path": ["album", "7b52009b64fd0a2a49e6d8a939753077792b0554", "alpha"]
         }
       },
       "response": []
@@ -2580,31 +2568,27 @@
       "request": {
         "method": "GET",
         "header": [],
-				"auth": {
-					"type": "basic",
-					"basic": [
-						{
-							"key": "password",
-							"value": "douze",
-							"type": "string"
-						},
-						{
-							"key": "username",
-							"value": "web",
-							"type": "string"
-						}
-					]
-				},
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "password",
+              "value": "douze",
+              "type": "string"
+            },
+            {
+              "key": "username",
+              "value": "web",
+              "type": "string"
+            }
+          ]
+        },
         "url": {
           "raw": "http://web:8080/album/7b52009b64fd0a2a49e6d8a939753077792b0554/mega",
           "protocol": "http",
           "host": "web",
           "port": "8080",
-          "path": [
-            "album",
-            "7b52009b64fd0a2a49e6d8a939753077792b0554",
-            "mega"
-          ]
+          "path": ["album", "7b52009b64fd0a2a49e6d8a939753077792b0554", "mega"]
         }
       },
       "response": []

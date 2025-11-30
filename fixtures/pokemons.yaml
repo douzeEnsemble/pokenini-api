@@ -1,388 +1,388 @@
 App\Entity\Pokemon:
-    pokemon (template):
-        bankable: true
-        bankableish: ~
-        variantForm: ~
-        regionalForm: ~
-        specialForm: ~
-        familyOrder: 0
-        slug: ~ # Need to be overrided
-        name: ~ # Need to be overrided
-        frenchName: ~ # Need to be overrided
-        simplifiedName: '$name'
-        formsLabel: ''
-        simplifiedFrenchName: '$frenchName'
-        formsFrenchLabel: ''
-        family: '$slug'
-        iconName: '$slug'
+  pokemon (template):
+    bankable: true
+    bankableish: ~
+    variantForm: ~
+    regionalForm: ~
+    specialForm: ~
+    familyOrder: 0
+    slug: ~ # Need to be overrided
+    name: ~ # Need to be overrided
+    frenchName: ~ # Need to be overrided
+    simplifiedName: "$name"
+    formsLabel: ""
+    simplifiedFrenchName: "$frenchName"
+    formsFrenchLabel: ""
+    family: "$slug"
+    iconName: "$slug"
 
-    pokemon_douze (extends pokemon):
-        slug: 'douze'
-        name: 'Douze'
-        frenchName: 'Douze'
-        nationalDexNumber: '9912'
-        originalGameBundle: '@game_bundle_red_green_blue_yellow'
-        iconName: 'douze'
-        familyOrder: 0
+  pokemon_douze (extends pokemon):
+    slug: "douze"
+    name: "Douze"
+    frenchName: "Douze"
+    nationalDexNumber: "9912"
+    originalGameBundle: "@game_bundle_red_green_blue_yellow"
+    iconName: "douze"
+    familyOrder: 0
 
-    pokemon_bulbasaur (extends pokemon):
-        slug: 'bulbasaur'
-        name: 'Bulbasaur'
-        frenchName: 'Bulbizarre'
-        family: 'bulbasaur'
-        nationalDexNumber: '1'
-        originalGameBundle: '@game_bundle_red_green_blue_yellow'
-        iconName: 'bulbasaur'
-        familyOrder: 0
-        categoryForm: '@category_form_starter'
-        primaryType: '@type_grass'
-        secondaryType: '@type_poison'
+  pokemon_bulbasaur (extends pokemon):
+    slug: "bulbasaur"
+    name: "Bulbasaur"
+    frenchName: "Bulbizarre"
+    family: "bulbasaur"
+    nationalDexNumber: "1"
+    originalGameBundle: "@game_bundle_red_green_blue_yellow"
+    iconName: "bulbasaur"
+    familyOrder: 0
+    categoryForm: "@category_form_starter"
+    primaryType: "@type_grass"
+    secondaryType: "@type_poison"
 
-    pokemon_ivysaur (extends pokemon):
-        slug: 'ivysaur'
-        name: 'Ivysaur'
-        frenchName: 'Herbizarre'
-        family: 'bulbasaur'
-        nationalDexNumber: '2'
-        originalGameBundle: '@game_bundle_red_green_blue_yellow'
-        iconName: 'ivysaur'
-        familyOrder: 1
-        primaryType: '@type_grass'
-        secondaryType: '@type_poison'
+  pokemon_ivysaur (extends pokemon):
+    slug: "ivysaur"
+    name: "Ivysaur"
+    frenchName: "Herbizarre"
+    family: "bulbasaur"
+    nationalDexNumber: "2"
+    originalGameBundle: "@game_bundle_red_green_blue_yellow"
+    iconName: "ivysaur"
+    familyOrder: 1
+    primaryType: "@type_grass"
+    secondaryType: "@type_poison"
 
-    pokemon_venusaur (extends pokemon):
-        slug: 'venusaur'
-        name: 'Venusaur'
-        frenchName: 'Florizarre'
-        family: 'bulbasaur'
-        nationalDexNumber: '3'
-        originalGameBundle: '@game_bundle_red_green_blue_yellow'
-        iconName: 'venusaur'
-        familyOrder: 2
-        primaryType: '@type_grass'
-        secondaryType: '@type_poison'
+  pokemon_venusaur (extends pokemon):
+    slug: "venusaur"
+    name: "Venusaur"
+    frenchName: "Florizarre"
+    family: "bulbasaur"
+    nationalDexNumber: "3"
+    originalGameBundle: "@game_bundle_red_green_blue_yellow"
+    iconName: "venusaur"
+    familyOrder: 2
+    primaryType: "@type_grass"
+    secondaryType: "@type_poison"
 
-    pokemon_venusaur_f (extends pokemon):
-        slug: 'venusaur-f'
-        name: 'Venusaur ♀'
-        simplifiedName: 'Venusaur'
-        formsLabel: '♀️'
-        frenchName: 'Florizarre ♀'
-        simplifiedFrenchName: 'Florizarre'
-        formsFrenchLabel: '♀️'
-        family: 'bulbasaur'
-        nationalDexNumber: '3'
-        originalGameBundle: '@game_bundle_diamond_pearl_platinium'
-        iconName: 'venusaur'
-        variantForm: '@variant_form_gender'
-        familyOrder: 3
-        primaryType: '@type_grass'
-        secondaryType: '@type_poison'
+  pokemon_venusaur_f (extends pokemon):
+    slug: "venusaur-f"
+    name: "Venusaur ♀"
+    simplifiedName: "Venusaur"
+    formsLabel: "♀️"
+    frenchName: "Florizarre ♀"
+    simplifiedFrenchName: "Florizarre"
+    formsFrenchLabel: "♀️"
+    family: "bulbasaur"
+    nationalDexNumber: "3"
+    originalGameBundle: "@game_bundle_diamond_pearl_platinium"
+    iconName: "venusaur"
+    variantForm: "@variant_form_gender"
+    familyOrder: 3
+    primaryType: "@type_grass"
+    secondaryType: "@type_poison"
 
-    pokemon_venusaur_mega (extends pokemon):
-        slug: 'venusaur-mega'
-        name: 'Mega Venusaur'
-        simplifiedName: 'Venusaur'
-        formsLabel: 'Mega'
-        frenchName: 'Mega Florizarre'
-        simplifiedFrenchName: 'Florizarre'
-        formsFrenchLabel: 'Mega'
-        family: 'bulbasaur'
-        nationalDexNumber: '3'
-        originalGameBundle: '@game_bundle_x_y'
-        iconName: 'venusaur'
-        specialForm: '@special_form_mega'
-        familyOrder: 4
-        primaryType: '@type_grass'
-        secondaryType: '@type_poison'
+  pokemon_venusaur_mega (extends pokemon):
+    slug: "venusaur-mega"
+    name: "Mega Venusaur"
+    simplifiedName: "Venusaur"
+    formsLabel: "Mega"
+    frenchName: "Mega Florizarre"
+    simplifiedFrenchName: "Florizarre"
+    formsFrenchLabel: "Mega"
+    family: "bulbasaur"
+    nationalDexNumber: "3"
+    originalGameBundle: "@game_bundle_x_y"
+    iconName: "venusaur"
+    specialForm: "@special_form_mega"
+    familyOrder: 4
+    primaryType: "@type_grass"
+    secondaryType: "@type_poison"
 
-    pokemon_venusaur_gigantamax (extends pokemon):
-        slug: 'venusaur-gmax'
-        name: 'Gigantamax Venusaur'
-        simplifiedName: 'Venusaur'
-        formsLabel: 'Gigantamax'
-        frenchName: 'Gigamax Florizarre'
-        simplifiedFrenchName: 'Florizarre'
-        formsFrenchLabel: 'Gigamax'
-        family: 'bulbasaur'
-        nationalDexNumber: '3'
-        originalGameBundle: '@game_bundle_sword_shield'
-        iconName: 'venusaur'
-        specialForm: '@special_form_gigantamax'
-        familyOrder: 5
-        primaryType: '@type_grass'
-        secondaryType: '@type_poison'
+  pokemon_venusaur_gigantamax (extends pokemon):
+    slug: "venusaur-gmax"
+    name: "Gigantamax Venusaur"
+    simplifiedName: "Venusaur"
+    formsLabel: "Gigantamax"
+    frenchName: "Gigamax Florizarre"
+    simplifiedFrenchName: "Florizarre"
+    formsFrenchLabel: "Gigamax"
+    family: "bulbasaur"
+    nationalDexNumber: "3"
+    originalGameBundle: "@game_bundle_sword_shield"
+    iconName: "venusaur"
+    specialForm: "@special_form_gigantamax"
+    familyOrder: 5
+    primaryType: "@type_grass"
+    secondaryType: "@type_poison"
 
-    pokemon_charmander (extends pokemon):
-        slug: 'charmander'
-        name: 'Charmander'
-        frenchName: 'Salamèche'
-        family: 'charmander'
-        nationalDexNumber: '4'
-        originalGameBundle: '@game_bundle_red_green_blue_yellow'
-        iconName: 'charmander'
-        familyOrder: 0
-        categoryForm: '@category_form_starter'
-        primaryType: '@type_fire'
+  pokemon_charmander (extends pokemon):
+    slug: "charmander"
+    name: "Charmander"
+    frenchName: "Salamèche"
+    family: "charmander"
+    nationalDexNumber: "4"
+    originalGameBundle: "@game_bundle_red_green_blue_yellow"
+    iconName: "charmander"
+    familyOrder: 0
+    categoryForm: "@category_form_starter"
+    primaryType: "@type_fire"
 
-    pokemon_charmeleon (extends pokemon):
-        slug: 'charmeleon'
-        name: 'Charmeleon'
-        frenchName: 'Reptincel'
-        family: 'charmander'
-        nationalDexNumber: '5'
-        originalGameBundle: '@game_bundle_red_green_blue_yellow'
-        iconName: 'charmeleon'
-        familyOrder: 1
-        primaryType: '@type_fire'
+  pokemon_charmeleon (extends pokemon):
+    slug: "charmeleon"
+    name: "Charmeleon"
+    frenchName: "Reptincel"
+    family: "charmander"
+    nationalDexNumber: "5"
+    originalGameBundle: "@game_bundle_red_green_blue_yellow"
+    iconName: "charmeleon"
+    familyOrder: 1
+    primaryType: "@type_fire"
 
-    pokemon_charizard (extends pokemon):
-        slug: 'charizard'
-        name: 'Charizard'
-        frenchName: 'Dracaufeu'
-        family: 'charmander'
-        nationalDexNumber: '6'
-        originalGameBundle: '@game_bundle_red_green_blue_yellow'
-        iconName: 'charizard'
-        familyOrder: 2
-        primaryType: '@type_fire'
-        secondaryType: '@type_flying'
+  pokemon_charizard (extends pokemon):
+    slug: "charizard"
+    name: "Charizard"
+    frenchName: "Dracaufeu"
+    family: "charmander"
+    nationalDexNumber: "6"
+    originalGameBundle: "@game_bundle_red_green_blue_yellow"
+    iconName: "charizard"
+    familyOrder: 2
+    primaryType: "@type_fire"
+    secondaryType: "@type_flying"
 
-    pokemon_deoxys (extends pokemon):
-        slug: 'deoxys'
-        name: 'Deoxys'
-        frenchName: 'Deoxys'
-        family: 'deoxys'
-        nationalDexNumber: '386'
-        originalGameBundle: '@game_bundle_ruby_sapphire_emerald'
-        iconName: 'deoxys'
-        familyOrder: 0
-        categoryForm: '@category_form_mythical'
-        primaryType: '@type_psychic'
+  pokemon_deoxys (extends pokemon):
+    slug: "deoxys"
+    name: "Deoxys"
+    frenchName: "Deoxys"
+    family: "deoxys"
+    nationalDexNumber: "386"
+    originalGameBundle: "@game_bundle_ruby_sapphire_emerald"
+    iconName: "deoxys"
+    familyOrder: 0
+    categoryForm: "@category_form_mythical"
+    primaryType: "@type_psychic"
 
-    pokemon_deoxys_attack (extends pokemon):
-        slug: 'deoxys-attack'
-        name: 'Deoxys-Attack'
-        formsLabel: 'Attack'
-        simplifiedFrenchName: 'Attaque'
-        frenchName: 'Deoxys Attaque'
-        family: 'deoxys'
-        nationalDexNumber: '386'
-        originalGameBundle: '@game_bundle_ruby_sapphire_emerald'
-        iconName: 'deoxys-attack'
-        familyOrder: 1
-        variantForm: '@variant_form_alternate'
-        categoryForm: '@category_form_mythical'
-        primaryType: '@type_psychic'
+  pokemon_deoxys_attack (extends pokemon):
+    slug: "deoxys-attack"
+    name: "Deoxys-Attack"
+    formsLabel: "Attack"
+    simplifiedFrenchName: "Attaque"
+    frenchName: "Deoxys Attaque"
+    family: "deoxys"
+    nationalDexNumber: "386"
+    originalGameBundle: "@game_bundle_ruby_sapphire_emerald"
+    iconName: "deoxys-attack"
+    familyOrder: 1
+    variantForm: "@variant_form_alternate"
+    categoryForm: "@category_form_mythical"
+    primaryType: "@type_psychic"
 
-    pokemon_deoxys_defense (extends pokemon):
-        slug: 'deoxys-defense'
-        name: 'Deoxys-Defense'
-        formsLabel: 'Defense'
-        simplifiedFrenchName: 'Défense'
-        frenchName: 'Deoxys Défense'
-        family: 'deoxys'
-        nationalDexNumber: '386'
-        originalGameBundle: '@game_bundle_ruby_sapphire_emerald'
-        iconName: 'deoxys-defense'
-        familyOrder: 2
-        variantForm: '@variant_form_alternate'
-        categoryForm: '@category_form_mythical'
-        primaryType: '@type_psychic'
+  pokemon_deoxys_defense (extends pokemon):
+    slug: "deoxys-defense"
+    name: "Deoxys-Defense"
+    formsLabel: "Defense"
+    simplifiedFrenchName: "Défense"
+    frenchName: "Deoxys Défense"
+    family: "deoxys"
+    nationalDexNumber: "386"
+    originalGameBundle: "@game_bundle_ruby_sapphire_emerald"
+    iconName: "deoxys-defense"
+    familyOrder: 2
+    variantForm: "@variant_form_alternate"
+    categoryForm: "@category_form_mythical"
+    primaryType: "@type_psychic"
 
-    pokemon_deoxys_speed (extends pokemon):
-        slug: 'deoxys-speed'
-        name: 'Deoxys-Speed'
-        formsLabel: 'Speed'
-        simplifiedFrenchName: 'Vitesse'
-        frenchName: 'Deoxys Vitesse'
-        family: 'deoxys'
-        nationalDexNumber: '386'
-        originalGameBundle: '@game_bundle_ruby_sapphire_emerald'
-        iconName: 'deoxys-speed'
-        familyOrder: 3
-        variantForm: '@variant_form_alternate'
-        categoryForm: '@category_form_mythical'
-        primaryType: '@type_psychic'
+  pokemon_deoxys_speed (extends pokemon):
+    slug: "deoxys-speed"
+    name: "Deoxys-Speed"
+    formsLabel: "Speed"
+    simplifiedFrenchName: "Vitesse"
+    frenchName: "Deoxys Vitesse"
+    family: "deoxys"
+    nationalDexNumber: "386"
+    originalGameBundle: "@game_bundle_ruby_sapphire_emerald"
+    iconName: "deoxys-speed"
+    familyOrder: 3
+    variantForm: "@variant_form_alternate"
+    categoryForm: "@category_form_mythical"
+    primaryType: "@type_psychic"
 
-    pokemon_caterpie (extends pokemon):
-        slug: 'caterpie'
-        name: 'Caterpie'
-        frenchName: 'Chenipan'
-        family: 'caterpie'
-        nationalDexNumber: '10'
-        originalGameBundle: '@game_bundle_red_green_blue_yellow'
-        iconName: 'caterpie'
-        familyOrder: 0
-        primaryType: '@type_bug'
+  pokemon_caterpie (extends pokemon):
+    slug: "caterpie"
+    name: "Caterpie"
+    frenchName: "Chenipan"
+    family: "caterpie"
+    nationalDexNumber: "10"
+    originalGameBundle: "@game_bundle_red_green_blue_yellow"
+    iconName: "caterpie"
+    familyOrder: 0
+    primaryType: "@type_bug"
 
-    pokemon_metapod (extends pokemon):
-        slug: 'metapod'
-        name: 'Metapod'
-        frenchName: 'Chrysacier'
-        family: 'caterpie'
-        nationalDexNumber: '11'
-        originalGameBundle: '@game_bundle_red_green_blue_yellow'
-        iconName: 'metapod'
-        familyOrder: 1
-        primaryType: '@type_bug'
+  pokemon_metapod (extends pokemon):
+    slug: "metapod"
+    name: "Metapod"
+    frenchName: "Chrysacier"
+    family: "caterpie"
+    nationalDexNumber: "11"
+    originalGameBundle: "@game_bundle_red_green_blue_yellow"
+    iconName: "metapod"
+    familyOrder: 1
+    primaryType: "@type_bug"
 
-    pokemon_butterfree (extends pokemon):
-        slug: 'butterfree'
-        name: 'Butterfree'
-        frenchName: 'Papilusion'
-        family: 'caterpie'
-        nationalDexNumber: '12'
-        originalGameBundle: '@game_bundle_red_green_blue_yellow'
-        iconName: 'butterfree'
-        familyOrder: 2
-        primaryType: '@type_bug'
-        secondaryType: '@type_flying'
+  pokemon_butterfree (extends pokemon):
+    slug: "butterfree"
+    name: "Butterfree"
+    frenchName: "Papilusion"
+    family: "caterpie"
+    nationalDexNumber: "12"
+    originalGameBundle: "@game_bundle_red_green_blue_yellow"
+    iconName: "butterfree"
+    familyOrder: 2
+    primaryType: "@type_bug"
+    secondaryType: "@type_flying"
 
-    pokemon_butterfree_f (extends pokemon):
-        slug: 'butterfree-f'
-        name: 'Butterfree ♀'
-        simplifiedName: 'Butterfree'
-        formsLabel: '♀️'
-        frenchName: 'Papilusion'
-        simplifiedFrenchName: 'Papilusion'
-        formsFrenchLabel: '♀️'
-        family: 'caterpie'
-        nationalDexNumber: '12'
-        originalGameBundle: '@game_bundle_diamond_pearl_platinium'
-        iconName: 'butterfree'
-        familyOrder: 3
-        variantForm: '@variant_form_gender'
-        primaryType: '@type_bug'
-        secondaryType: '@type_flying'
+  pokemon_butterfree_f (extends pokemon):
+    slug: "butterfree-f"
+    name: "Butterfree ♀"
+    simplifiedName: "Butterfree"
+    formsLabel: "♀️"
+    frenchName: "Papilusion"
+    simplifiedFrenchName: "Papilusion"
+    formsFrenchLabel: "♀️"
+    family: "caterpie"
+    nationalDexNumber: "12"
+    originalGameBundle: "@game_bundle_diamond_pearl_platinium"
+    iconName: "butterfree"
+    familyOrder: 3
+    variantForm: "@variant_form_gender"
+    primaryType: "@type_bug"
+    secondaryType: "@type_flying"
 
-    pokemon_butterfree_gigantamax (extends pokemon):
-        slug: 'butterfree-gmax'
-        name: 'Gigantamax Butterfree'
-        simplifiedName: 'Butterfree'
-        formsLabel: 'Gigantamax'
-        frenchName: 'Gigamax Papilusion'
-        simplifiedFrenchName: 'Papilusion'
-        formsFrenchLabel: 'Gigamax'
-        family: 'caterpie'
-        nationalDexNumber: '12'
-        originalGameBundle: '@game_bundle_sword_shield'
-        iconName: 'butterfree-gmax'
-        specialForm: '@special_form_gigantamax'
-        familyOrder: 4
-        primaryType: '@type_bug'
-        secondaryType: '@type_flying'
+  pokemon_butterfree_gigantamax (extends pokemon):
+    slug: "butterfree-gmax"
+    name: "Gigantamax Butterfree"
+    simplifiedName: "Butterfree"
+    formsLabel: "Gigantamax"
+    frenchName: "Gigamax Papilusion"
+    simplifiedFrenchName: "Papilusion"
+    formsFrenchLabel: "Gigamax"
+    family: "caterpie"
+    nationalDexNumber: "12"
+    originalGameBundle: "@game_bundle_sword_shield"
+    iconName: "butterfree-gmax"
+    specialForm: "@special_form_gigantamax"
+    familyOrder: 4
+    primaryType: "@type_bug"
+    secondaryType: "@type_flying"
 
-    pokemon_rattata (extends pokemon):
-        slug: 'rattata'
-        name: 'Rattata ♂️'
-        simplifiedName: 'Rattata'
-        formsLabel: '♂️'
-        frenchName: 'Rattata ♂️'
-        simplifiedFrenchName: 'Rattata'
-        formsFrenchLabel: '♂️'
-        family: 'rattata'
-        nationalDexNumber: 19
-        originalGameBundle: '@game_bundle_red_green_blue_yellow'
-        iconName: 'rattata'
-        familyOrder: 4
-        primaryType: '@type_normal'
+  pokemon_rattata (extends pokemon):
+    slug: "rattata"
+    name: "Rattata ♂️"
+    simplifiedName: "Rattata"
+    formsLabel: "♂️"
+    frenchName: "Rattata ♂️"
+    simplifiedFrenchName: "Rattata"
+    formsFrenchLabel: "♂️"
+    family: "rattata"
+    nationalDexNumber: 19
+    originalGameBundle: "@game_bundle_red_green_blue_yellow"
+    iconName: "rattata"
+    familyOrder: 4
+    primaryType: "@type_normal"
 
-    pokemon_rattata_f (extends pokemon):
-        slug: 'rattata-f'
-        name: 'Rattata ♀️'
-        simplifiedName: 'Rattata'
-        formsLabel: '♀️'
-        frenchName: 'Rattata ♀️'
-        simplifiedFrenchName: 'Rattata'
-        formsFrenchLabel: '♀️'
-        family: 'rattata'
-        nationalDexNumber: 19
-        originalGameBundle: '@game_bundle_diamond_pearl_platinium'
-        iconName: 'rattata-f'
-        familyOrder: 5
-        variantForm: '@variant_form_gender'
-        primaryType: '@type_normal'
+  pokemon_rattata_f (extends pokemon):
+    slug: "rattata-f"
+    name: "Rattata ♀️"
+    simplifiedName: "Rattata"
+    formsLabel: "♀️"
+    frenchName: "Rattata ♀️"
+    simplifiedFrenchName: "Rattata"
+    formsFrenchLabel: "♀️"
+    family: "rattata"
+    nationalDexNumber: 19
+    originalGameBundle: "@game_bundle_diamond_pearl_platinium"
+    iconName: "rattata-f"
+    familyOrder: 5
+    variantForm: "@variant_form_gender"
+    primaryType: "@type_normal"
 
-    pokemon_rattata_alola (extends pokemon):
-        slug: 'rattata-alola'
-        name: 'Rattata-Alola'
-        simplifiedName: 'Rattata'
-        formsLabel: 'Alolan'
-        frenchName: "Rattata d'Alola"
-        simplifiedFrenchName: 'Rattata'
-        formsFrenchLabel: "d'Alola"
-        family: 'rattata'
-        nationalDexNumber: 19
-        originalGameBundle: '@game_bundle_sun_moon'
-        iconName: 'rattata-alola'
-        familyOrder: 6
-        regionalForm: '@regional_form_alolan'
-        primaryType: '@type_dark'
-        secondaryType: '@type_normal'
+  pokemon_rattata_alola (extends pokemon):
+    slug: "rattata-alola"
+    name: "Rattata-Alola"
+    simplifiedName: "Rattata"
+    formsLabel: "Alolan"
+    frenchName: "Rattata d'Alola"
+    simplifiedFrenchName: "Rattata"
+    formsFrenchLabel: "d'Alola"
+    family: "rattata"
+    nationalDexNumber: 19
+    originalGameBundle: "@game_bundle_sun_moon"
+    iconName: "rattata-alola"
+    familyOrder: 6
+    regionalForm: "@regional_form_alolan"
+    primaryType: "@type_dark"
+    secondaryType: "@type_normal"
 
-    pokemon_raticate (extends pokemon):
-        slug: 'raticate'
-        simplifiedName: 'Raticate'
-        formsLabel: '♂️'
-        name: 'Raticate ♂️'
-        simplifiedFrenchName: 'Rattatac'
-        formsFrenchLabel: '♂️'
-        frenchName: 'Rattatac ♂️'
-        family: 'rattata'
-        nationalDexNumber: 20
-        originalGameBundle: '@game_bundle_red_green_blue_yellow'
-        iconName: 'raticate'
-        familyOrder: 7
-        primaryType: '@type_normal'
+  pokemon_raticate (extends pokemon):
+    slug: "raticate"
+    simplifiedName: "Raticate"
+    formsLabel: "♂️"
+    name: "Raticate ♂️"
+    simplifiedFrenchName: "Rattatac"
+    formsFrenchLabel: "♂️"
+    frenchName: "Rattatac ♂️"
+    family: "rattata"
+    nationalDexNumber: 20
+    originalGameBundle: "@game_bundle_red_green_blue_yellow"
+    iconName: "raticate"
+    familyOrder: 7
+    primaryType: "@type_normal"
 
-    pokemon_raticate_f (extends pokemon):
-        slug: 'raticate-f'
-        name: 'Raticate ♀️'
-        frenchName: 'Rattatac ♀️'
-        family: 'rattata'
-        simplifiedName: 'Raticate'
-        formsLabel: '♀️'
-        nationalDexNumber: 20
-        simplifiedFrenchName: 'Rattatac'
-        formsFrenchLabel: '♀️'
-        originalGameBundle: '@game_bundle_diamond_pearl_platinium'
-        iconName: 'raticate-f'
-        familyOrder: 8
-        variantForm: '@variant_form_gender'
-        primaryType: '@type_normal'
+  pokemon_raticate_f (extends pokemon):
+    slug: "raticate-f"
+    name: "Raticate ♀️"
+    frenchName: "Rattatac ♀️"
+    family: "rattata"
+    simplifiedName: "Raticate"
+    formsLabel: "♀️"
+    nationalDexNumber: 20
+    simplifiedFrenchName: "Rattatac"
+    formsFrenchLabel: "♀️"
+    originalGameBundle: "@game_bundle_diamond_pearl_platinium"
+    iconName: "raticate-f"
+    familyOrder: 8
+    variantForm: "@variant_form_gender"
+    primaryType: "@type_normal"
 
-    pokemon_raticate_alola (extends pokemon):
-        slug: 'raticate-alola'
-        name: 'Raticate-Alola'
-        frenchName: "Rattatac d'Alola"
-        family: 'rattata'
-        simplifiedName: 'Raticate'
-        formsLabel: 'Alolan'
-        nationalDexNumber: 20
-        simplifiedFrenchName: 'Rattatac'
-        formsFrenchLabel: "d'Alola"
-        originalGameBundle: '@game_bundle_sun_moon'
-        iconName: 'raticate-alola'
-        familyOrder: 9
-        regionalForm: '@regional_form_alolan'
-        primaryType: '@type_dark'
-        secondaryType: '@type_normal'
+  pokemon_raticate_alola (extends pokemon):
+    slug: "raticate-alola"
+    name: "Raticate-Alola"
+    frenchName: "Rattatac d'Alola"
+    family: "rattata"
+    simplifiedName: "Raticate"
+    formsLabel: "Alolan"
+    nationalDexNumber: 20
+    simplifiedFrenchName: "Rattatac"
+    formsFrenchLabel: "d'Alola"
+    originalGameBundle: "@game_bundle_sun_moon"
+    iconName: "raticate-alola"
+    familyOrder: 9
+    regionalForm: "@regional_form_alolan"
+    primaryType: "@type_dark"
+    secondaryType: "@type_normal"
 
-    pokemon_raticate_alola_totem (extends pokemon):
-        slug: 'raticate-alola-totem'
-        name: 'Totem Raticate-Alola'
-        frenchName: "Totem Rattatac d'Alola"
-        family: 'rattata'
-        nationalDexNumber: 20
-        simplifiedName: 'Raticate'
-        formsLabel: 'Totem Alolan'
-        originalGameBundle: '@game_bundle_ultra_sun_ultra_moon'
-        simplifiedFrenchName: 'Rattatac'
-        formsFrenchLabel: "Totem d'Alola"
-        iconName: 'raticate-alola'
-        familyOrder: 10
-        regionalForm: '@regional_form_alolan'
-        specialForm: '@special_form_totem'
-        primaryType: '@type_dark'
-        secondaryType: '@type_normal'
+  pokemon_raticate_alola_totem (extends pokemon):
+    slug: "raticate-alola-totem"
+    name: "Totem Raticate-Alola"
+    frenchName: "Totem Rattatac d'Alola"
+    family: "rattata"
+    nationalDexNumber: 20
+    simplifiedName: "Raticate"
+    formsLabel: "Totem Alolan"
+    originalGameBundle: "@game_bundle_ultra_sun_ultra_moon"
+    simplifiedFrenchName: "Rattatac"
+    formsFrenchLabel: "Totem d'Alola"
+    iconName: "raticate-alola"
+    familyOrder: 10
+    regionalForm: "@regional_form_alolan"
+    specialForm: "@special_form_totem"
+    primaryType: "@type_dark"
+    secondaryType: "@type_normal"
