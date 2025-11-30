@@ -60,7 +60,7 @@ parameters:
       collectors:
         - type: classLike
           value: '^App\\Updater\\.*'
-    
+
     # Doctrine
     - name: DoctrineDBAL
       collectors:
@@ -82,8 +82,7 @@ parameters:
       collectors:
         - type: classLike
           value: '^Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository'
-    
-    
+
     # Google
     - name: GoogleClient
       collectors:
@@ -157,7 +156,7 @@ parameters:
       collectors:
         - type: classLike
           value: '^Symfony\\Component\\Validator\\.*'
-    
+
   ruleset:
     AppActionEnder:
       - AppDTO

@@ -1,36 +1,36 @@
 App\Entity\VariantForm:
-    variant_form_gender:
-        name: 'Gender'
-        slug: 'gender'
-        frenchName: 'Sexe'
-        orderNumber: 1
-    variant_form_alternate:
-        name: 'Alternate'
-        slug: 'alternate'
-        frenchName: 'Alternatif'
-        orderNumber: 2
-    variant_form_baby:
-        name: 'Baby'
-        slug: 'baby'
-        frenchName: 'Bébé'
-        orderNumber: 3
-    variant_form_battle:
-        name: 'Battle'
-        slug: 'battle'
-        frenchName: 'Combat'
-        orderNumber: 4
-    variant_form_item:
-        name: 'Item'
-        slug: 'item'
-        frenchName: 'Objet'
-        orderNumber: 5
-    variant_form_fusion:
-        name: 'Fusion'
-        slug: 'fusion'
-        frenchName: 'Fusion'
-        orderNumber: 6
-    variant_form_unobtainable:
-        name: 'Unobtainable'
-        slug: 'unobtainable'
-        frenchName: 'Non obtenable'
-        orderNumber: 7
+  variant_form_gender:
+    name: "Gender"
+    slug: "gender"
+    frenchName: "Sexe"
+    orderNumber: 1
+  variant_form_alternate:
+    name: "Alternate"
+    slug: "alternate"
+    frenchName: "Alternatif"
+    orderNumber: 2
+  variant_form_baby:
+    name: "Baby"
+    slug: "baby"
+    frenchName: "Bébé"
+    orderNumber: 3
+  variant_form_battle:
+    name: "Battle"
+    slug: "battle"
+    frenchName: "Combat"
+    orderNumber: 4
+  variant_form_item:
+    name: "Item"
+    slug: "item"
+    frenchName: "Objet"
+    orderNumber: 5
+  variant_form_fusion:
+    name: "Fusion"
+    slug: "fusion"
+    frenchName: "Fusion"
+    orderNumber: 6
+  variant_form_unobtainable:
+    name: "Unobtainable"
+    slug: "unobtainable"
+    frenchName: "Non obtenable"
+    orderNumber: 7

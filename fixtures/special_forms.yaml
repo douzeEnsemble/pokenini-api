@@ -1,21 +1,21 @@
 App\Entity\SpecialForm:
-    special_form_mega:
-        name: 'Mega'
-        slug: 'mega'
-        frenchName: 'Mega'
-        orderNumber: 1
-    special_form_alpha:
-        name: 'Alpha'
-        slug: 'alpha'
-        frenchName: 'Baron'
-        orderNumber: 3
-    special_form_gigantamax:
-        name: 'Gigantamax'
-        slug: 'gigantamax'
-        frenchName: 'Gigamax'
-        orderNumber: 2
-    special_form_totem:
-        name: 'Totem'
-        slug: 'totem'
-        frenchName: 'Dominant'
-        orderNumber: 4
+  special_form_mega:
+    name: "Mega"
+    slug: "mega"
+    frenchName: "Mega"
+    orderNumber: 1
+  special_form_alpha:
+    name: "Alpha"
+    slug: "alpha"
+    frenchName: "Baron"
+    orderNumber: 3
+  special_form_gigantamax:
+    name: "Gigantamax"
+    slug: "gigantamax"
+    frenchName: "Gigamax"
+    orderNumber: 2
+  special_form_totem:
+    name: "Totem"
+    slug: "totem"
+    frenchName: "Dominant"
+    orderNumber: 4

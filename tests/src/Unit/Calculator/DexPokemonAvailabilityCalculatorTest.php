@@ -63,7 +63,7 @@ class DexPokemonAvailabilityCalculatorTest extends TestCase
 
         $dex = new Dex();
         $dex->selectionRule = <<<'RULE'
-                p.slug == 'douze' 
+                p.slug == 'douze'
                 and ba?.redgreenblueyellow
             RULE;
 

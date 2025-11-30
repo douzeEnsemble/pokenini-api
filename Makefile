@@ -11,6 +11,7 @@ COMPOSER = $(PHP_CONT) composer
 SYMFONY  = $(PHP) bin/console
 DOCKERCOMPOSE_LINTER_CMD = docker run -t --rm -v ${PWD}:/app zavoloklom/dclint:3.1.0-alpine
 DOTENV_LINTER_CMD = docker run -t --rm -v ${PWD}:/app -w /app dotenvlinter/dotenv-linter:3.3.0
+EDITORCONFIG_LINTER_CMD = docker run --rm --volume=${PWD}:/check mstruebing/editorconfig-checker:v3.6.0
 
 # Misc
 .DEFAULT_GOAL = help
@@ -117,15 +118,15 @@ vendor: ## Install vendors according to the current composer.lock file
 
 .PHONY: updates
 updates: ## Updates all composer
-	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader 
-	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/php-cs-fixer 
-	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/phpmd 
-	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/psalm 
-	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/phpstan 
+	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader
+	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/php-cs-fixer
+	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/phpmd
+	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/psalm
+	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/phpstan
 	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/infection
-	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/jsonlint 
-	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/deptrac 
-	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/phpinsights 
+	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/jsonlint
+	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/deptrac
+	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/phpinsights
 
 ## —— Symfony 🎵 ———————————————————————————————————————————————————————————————
 .PHONY: sf
@@ -141,7 +142,7 @@ cc: ## Clear the cache
 ## —— Tests 🧪 ———————————————————————————————————————————————————————————————
 .PHONY: tests
 tests: ## Execute all tests
-tests: 
+tests:
 	@$(PHP) bin/console doctrine:schema:update --force --env=test
 	$(PHP) vendor/bin/phpunit tests/src
 
@@ -215,11 +216,16 @@ dotenv-fixer: ## Run DotEnv fixer
 
 .PHONY: code-quality
 code-quality: ## Execute all code quality analyses
-code-quality: validate-autoloader phpcsfixer phpmd psalm phpstan deptrac
+code-quality: editorconfig-linter validate-autoloader phpcsfixer phpmd psalm phpstan deptrac
 
 .PHONY: cq
 cq: ## Alias of code-quality
 cq: code-quality
+
+.PHONY: editorconfig-linter
+editorconfig-linter: ## Execute editorconfig linter
+editorconfig-linter:
+	$(EDITORCONFIG_LINTER_CMD)
 
 .PHONY: validate-autoloader
 validate-autoloader: ## Execute cmheck on autoloader issues
@@ -372,7 +378,7 @@ security-checker: tools/php-security-checker/local-php-security-checker
 
 .PHONY: owasp-check
 owasp-check: ## Execute OWASP Dependency Check
-owasp-check: 
+owasp-check:
 	@tools/owasp-check/dependency-check.sh ${NVD_API_KEY}
 
 ## —— Cleaning 🧽 ———————————————————————————————————————————————————————————————

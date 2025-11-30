@@ -1,21 +1,26 @@
 WITH stats AS (
     SELECT MAX(view_count) AS max_view
-    FROM    trainer_pokemon_elo AS tpe
-        JOIN dex AS d 
-            ON tpe.dex_id = d.id AND d.slug = :dex_slug
-    WHERE   tpe.trainer_external_id = :trainer_external_id
+    FROM trainer_pokemon_elo AS tpe
+        JOIN dex AS d ON tpe.dex_id = d.id
+        AND d.slug = :dex_slug
+    WHERE tpe.trainer_external_id = :trainer_external_id
         AND tpe.election_slug = :election_slug
-), variables AS (
-    SELECT  
-            COUNT(CASE WHEN tpe.view_count = s.max_view - 1 AND tpe.view_count = tpe.win_count THEN 1 END) AS under_max_view_count
-    FROM    trainer_pokemon_elo AS tpe
-        JOIN dex AS d ON tpe.dex_id = d.id AND d.slug = :dex_slug
+),
+variables AS (
+    SELECT COUNT(
+            CASE
+                WHEN tpe.view_count = s.max_view - 1
+                AND tpe.view_count = tpe.win_count THEN 1
+            END
+        ) AS under_max_view_count
+    FROM trainer_pokemon_elo AS tpe
+        JOIN dex AS d ON tpe.dex_id = d.id
+        AND d.slug = :dex_slug
         CROSS JOIN stats s
-    WHERE   tpe.trainer_external_id = :trainer_external_id
+    WHERE tpe.trainer_external_id = :trainer_external_id
         AND tpe.election_slug = :election_slug
 )
-SELECT
-    p.slug AS pokemon_slug,
+SELECT p.slug AS pokemon_slug,
     p.name AS pokemon_name,
     p.national_dex_number AS pokemon_national_dex_number,
     p.simplified_name AS pokemon_simplified_name,
@@ -48,40 +53,32 @@ SELECT
         '-',
         LPAD(CAST(p.family_order AS varchar), 3, '0')
     ) as pokemon_order_number
-FROM
-    pokemon AS p
-    LEFT JOIN category_form AS cf 
-        ON p.category_form_id = cf.id
-    LEFT JOIN regional_form AS rf 
-        ON p.regional_form_id = rf.id
-    LEFT JOIN special_form AS sf 
-        ON p.special_form_id = sf.id
-    LEFT JOIN variant_form AS vf 
-        ON p.variant_form_id = vf.id
-    LEFT JOIN "type" AS pt 
-        ON p.primary_type_id = pt.id
-    LEFT JOIN "type" AS st 
-        ON p.secondary_type_id = st.id
-    LEFT JOIN pokemon AS pp 
-        ON p.family = pp.slug
-    LEFT JOIN game_bundle AS ogb 
-        ON p.original_game_bundle_id = ogb.id
-    JOIN dex_availability AS da
-        ON p.id = da.pokemon_id
-    JOIN dex AS d
-        ON da.dex_id = d.id AND d.slug = :dex_slug
+FROM pokemon AS p
+    LEFT JOIN category_form AS cf ON p.category_form_id = cf.id
+    LEFT JOIN regional_form AS rf ON p.regional_form_id = rf.id
+    LEFT JOIN special_form AS sf ON p.special_form_id = sf.id
+    LEFT JOIN variant_form AS vf ON p.variant_form_id = vf.id
+    LEFT JOIN "type" AS pt ON p.primary_type_id = pt.id
+    LEFT JOIN "type" AS st ON p.secondary_type_id = st.id
+    LEFT JOIN pokemon AS pp ON p.family = pp.slug
+    LEFT JOIN game_bundle AS ogb ON p.original_game_bundle_id = ogb.id
+    JOIN dex_availability AS da ON p.id = da.pokemon_id
+    JOIN dex AS d ON da.dex_id = d.id
+    AND d.slug = :dex_slug
 WHERE EXISTS (
-        SELECT  1
-        FROM    stats AS s,
-                variables as v,
-                trainer_pokemon_elo AS tpe
-        WHERE   p.id = tpe.pokemon_id
+        SELECT 1
+        FROM stats AS s,
+            variables as v,
+            trainer_pokemon_elo AS tpe
+        WHERE p.id = tpe.pokemon_id
             AND tpe.trainer_external_id = :trainer_external_id
             AND tpe.dex_id = d.id
             AND tpe.election_slug = :election_slug
-            AND tpe.view_count = CASE WHEN 0 = v.under_max_view_count THEN s.max_view ELSE s.max_view - 1 END
+            AND tpe.view_count = CASE
+                WHEN 0 = v.under_max_view_count THEN s.max_view
+                ELSE s.max_view - 1
+            END
             AND tpe.view_count = tpe.win_count
-    )
-    -- {album_filters}
+    ) -- {album_filters}
 ORDER BY RANDOM()
 LIMIT :count

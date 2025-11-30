@@ -1,55 +1,42 @@
 {
-    "$schema": "vendor/infection/infection/resources/schema.json",
-    "source": {
-        "directories": [
-            "src"
-        ]
+    $schema: "vendor/infection/infection/resources/schema.json",
+    source: {
+        directories: ["src"],
     },
-    "mutators": {
+    mutators: {
         "@default": true,
-        "Modulus": {
-            "ignore": [
-                "App\\Helper\\A1Notation::indexToLetter",
-            ]
+        Modulus: {
+            ignore: ["App\\Helper\\A1Notation::indexToLetter"],
         },
-        "FalseValue": {
-            "ignore": [
-                "App\\Entity\\TrainerPokemonElo::__construct",
-            ]
+        FalseValue: {
+            ignore: ["App\\Entity\\TrainerPokemonElo::__construct"],
         },
-        "Throw_": {
-            "ignore": [
+        Throw_: {
+            ignore: [
                 "App\\Repository\\TrainerPokemonEloRepository::getTopNSQL",
                 "App\\Repository\\PokemonsRepository::getNToPickSQL",
                 "App\\Repository\\PokemonsRepository::getNToVoteSQL",
-            ]
+            ],
         },
-        "RoundingFamily": {
-            "ignoreSourceCodeByRegex": [
-                "\\$this->logger->info.*",
-            ]
+        RoundingFamily: {
+            ignoreSourceCodeByRegex: ["\\$this->logger->info.*"],
         },
-        "ArrayItem": {
-            "ignoreSourceCodeByRegex": [
-                "\\$this->logger->info.*",
-            ]
+        ArrayItem: {
+            ignoreSourceCodeByRegex: ["\\$this->logger->info.*"],
         },
         "global-ignore": [
             "App\\Updater\\CollectionsAvailabilitiesUpdater::upsertRecord",
             "App\\Updater\\GamesAvailabilitiesUpdater::upsertRecord",
             "App\\Updater\\RegionalDexNumbersUpdater::upsertRecord",
         ],
-        "global-ignoreSourceCodeByRegex": [
-            "\\$query .= <<<'SUBSQL'.*",
-            
-        ]
+        "global-ignoreSourceCodeByRegex": ["\\$query .= <<<'SUBSQL'.*"],
     },
-    "tmpDir": "/var/www/html/var/cache/infection",
-    "timeout": 30,
-    "testFramework": "phpunit",
-    "testFrameworkOptions": '--exclude-group="browser-testing"',
-    "logs": {
-        "text": "infection_text.log",
-        "summary": "infection_summary.log",
-    }
+    tmpDir: "/var/www/html/var/cache/infection",
+    timeout: 30,
+    testFramework: "phpunit",
+    testFrameworkOptions: '--exclude-group="browser-testing"',
+    logs: {
+        text: "infection_text.log",
+        summary: "infection_summary.log",
+    },
 }

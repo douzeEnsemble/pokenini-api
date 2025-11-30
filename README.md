@@ -144,8 +144,8 @@ docker-compose exec php sh -c '
 ```
 make sf c="messenger:stop-workers" && \
 curl -X POST --insecure  "http://localhost/istration/update/labels" \
-  -H 'Authorization: Basic d2ViOmRvdXpl' \
-  -H 'cache-control: no-cache' && \
+    -H 'Authorization: Basic d2ViOmRvdXpl' \
+    -H 'cache-control: no-cache' && \
 make sf c="messenger:consume async -vv --limit=1"
 ```
 

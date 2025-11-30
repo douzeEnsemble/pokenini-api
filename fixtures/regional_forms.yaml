@@ -1,16 +1,16 @@
 App\Entity\RegionalForm:
-    regional_form_alolan:
-        name: 'Alolan'
-        slug: 'alolan'
-        frenchName: "d'Alola"
-        orderNumber: 1
-    regional_form_galarian:
-        name: 'Galarian'
-        slug: 'galarian'
-        frenchName: 'de Galar'
-        orderNumber: 2
-    regional_form_hisuian:
-        name: 'Hisuian'
-        slug: 'hisuian'
-        frenchName: 'de Hisui'
-        orderNumber: 3
+  regional_form_alolan:
+    name: "Alolan"
+    slug: "alolan"
+    frenchName: "d'Alola"
+    orderNumber: 1
+  regional_form_galarian:
+    name: "Galarian"
+    slug: "galarian"
+    frenchName: "de Galar"
+    orderNumber: 2
+  regional_form_hisuian:
+    name: "Hisuian"
+    slug: "hisuian"
+    frenchName: "de Hisui"
+    orderNumber: 3

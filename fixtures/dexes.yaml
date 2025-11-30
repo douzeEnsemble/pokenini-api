@@ -1,126 +1,126 @@
 App\Entity\Dex:
-    dex_redgreenblueyellow:
-        name: 'Red / Green / Blue / Yellow'
-        slug: 'redgreenblueyellow'
-        frenchName: 'Rouge / Vert / Bleu / Jaune'
-        selectionRule: "(p.bankable or p.bankableish) and ba?.redgreenblueyellow"
-        displayTemplate: 'box'
-        orderNumber: 1
-        electionOrderNumber: 99
-        region: '@region_kanto'
-        description: 'The list of obtainable Pokémons in Red, Blue, Yellow and even Green games'
-        frenchDescription: 'La liste des pokémons obtenable dans les jeux Rouge, Bleu, Jaune et même Vert.'
-        lastChangedAt: '<(new DateTime("2023-02-21 08:51:00"))>'
-        isPremium: true
-        canHoldElection: true
-        isReleased: true
-    dex_goldsilvercrystal:
-        name: 'Gold / Silver / Crystal'
-        slug: 'goldsilvercrystal'
-        frenchName: 'Or / Argent / Cristal'
-        selectionRule: "(p.bankable or p.bankableish) and ba?.goldsilvercrystal and p.specialForm === null and p.regionalForm === null"
-        displayTemplate: 'box'
-        orderNumber: 2
-        electionOrderNumber: 42
-        region: '@region_johto'
-        description: 'The list of obtainable Pokémons in Gold, Silver and Crystal games'
-        frenchDescription: 'La liste des pokémons obtenable dans les jeux Or, Argent et Cristal.'
-        lastChangedAt: '<(new DateTime("2023-02-21 08:51:00"))>'
-        isReleased: false
-        isPremium: false
-        canHoldElection: false
-    dex_rubysapphireemerald:
-        name: 'Ruby / Sapphire / Emerald'
-        slug: 'rubysapphireemerald'
-        frenchName: 'Rubis / Saphir / Émeraude'
-        selectionRule: "(p.bankable or p.bankableish) and ba?.rubysapphireemerald"
-        displayTemplate: 'box'
-        orderNumber: 3
-        electionOrderNumber: 93
-        lastChangedAt: '<date_create()>'
-        isPremium: false
-        canHoldElection: false
-        isReleased: true
-    dex_rubysapphireemeraldshiny:
-        name: 'Ruby / Sapphire / Emerald: Shiny'
-        slug: 'rubysapphireemeraldshiny'
-        frenchName: 'Rubis / Saphir / Émeraude: Chromatique'
-        selectionRule: "(p.bankable or p.bankableish) and bsa?.rubysapphireemerald"
-        displayTemplate: 'box'
-        isShiny: true
-        orderNumber: 30
-        electionOrderNumber: 25
-        lastChangedAt: '<date_create()>'
-        isPremium: false
-        canHoldElection: false
-        isReleased: true
-    dex_home:
-        name: 'Home'
-        slug: 'home'
-        frenchName: 'Home'
-        selectionRule: "(p.bankable or p.bankableish)"
-        displayTemplate: 'box'
-        orderNumber: 4
-        electionOrderNumber: 46
-        lastChangedAt: '<(new DateTime("2023-04-21 12:34:56"))>'
-        isPremium: false
-        canHoldElection: true
-        isReleased: true
-    dex_home_shiny:
-        name: |-
-            Home
-            Shiny
-        slug: 'homeshiny'
-        frenchName: |-
-            Home
-            Chromatique
-        selectionRule: "(p.bankable or p.bankableish)"
-        displayTemplate: 'box'
-        orderNumber: 5
-        electionOrderNumber: 8
-        isShiny: true
-        lastChangedAt: '<(new DateTime("2023-03-21 12:34:56"))>'
-        isPremium: false
-        canHoldElection: false
-        isReleased: true
-    dex_home_pogo:
-        name: 'Home PoGo'
-        slug: 'homepogo'
-        frenchName: 'Home PoGo'
-        selectionRule: "(p.bankable or p.bankableish) and p.categoryForm === null and p.regionalForm === null and p.specialForm === null and p.variantForm === null"
-        displayTemplate: 'list-7'
-        orderNumber: 6
-        electionOrderNumber: 39
-        isShiny: false
-        isDisplayForm: false
-        lastChangedAt: '<(new DateTime("2023-03-21 12:12:12"))>'
-        isPremium: false
-        canHoldElection: true
-        isReleased: false
-    dex_demo:
-        name: 'Demo'
-        slug: 'demo'
-        frenchName: 'Démo'
-        selectionRule: "(p.bankable or p.bankableish)"
-        displayTemplate: 'box'
-        orderNumber: 7
-        electionOrderNumber: 701
-        lastChangedAt: '<date_create()>'
-        isPremium: false
-        canHoldElection: false
-        isReleased: true
-    dex_spoon:
-        name: 'Spoon'
-        slug: 'spoon'
-        frenchName: 'Cuillière'
-        selectionRule: "(p.bankable or p.bankableish)"
-        displayTemplate: 'box'
-        orderNumber: 3
-        electionOrderNumber: 911
-        isShiny: false
-        isDisplayForm: true
-        deletedAt: '<date_create()>'
-        lastChangedAt: '<date_create()>'
-        isPremium: true
-        isReleased: false
-        canHoldElection: true
+  dex_redgreenblueyellow:
+    name: "Red / Green / Blue / Yellow"
+    slug: "redgreenblueyellow"
+    frenchName: "Rouge / Vert / Bleu / Jaune"
+    selectionRule: "(p.bankable or p.bankableish) and ba?.redgreenblueyellow"
+    displayTemplate: "box"
+    orderNumber: 1
+    electionOrderNumber: 99
+    region: "@region_kanto"
+    description: "The list of obtainable Pokémons in Red, Blue, Yellow and even Green games"
+    frenchDescription: "La liste des pokémons obtenable dans les jeux Rouge, Bleu, Jaune et même Vert."
+    lastChangedAt: '<(new DateTime("2023-02-21 08:51:00"))>'
+    isPremium: true
+    canHoldElection: true
+    isReleased: true
+  dex_goldsilvercrystal:
+    name: "Gold / Silver / Crystal"
+    slug: "goldsilvercrystal"
+    frenchName: "Or / Argent / Cristal"
+    selectionRule: "(p.bankable or p.bankableish) and ba?.goldsilvercrystal and p.specialForm === null and p.regionalForm === null"
+    displayTemplate: "box"
+    orderNumber: 2
+    electionOrderNumber: 42
+    region: "@region_johto"
+    description: "The list of obtainable Pokémons in Gold, Silver and Crystal games"
+    frenchDescription: "La liste des pokémons obtenable dans les jeux Or, Argent et Cristal."
+    lastChangedAt: '<(new DateTime("2023-02-21 08:51:00"))>'
+    isReleased: false
+    isPremium: false
+    canHoldElection: false
+  dex_rubysapphireemerald:
+    name: "Ruby / Sapphire / Emerald"
+    slug: "rubysapphireemerald"
+    frenchName: "Rubis / Saphir / Émeraude"
+    selectionRule: "(p.bankable or p.bankableish) and ba?.rubysapphireemerald"
+    displayTemplate: "box"
+    orderNumber: 3
+    electionOrderNumber: 93
+    lastChangedAt: "<date_create()>"
+    isPremium: false
+    canHoldElection: false
+    isReleased: true
+  dex_rubysapphireemeraldshiny:
+    name: "Ruby / Sapphire / Emerald: Shiny"
+    slug: "rubysapphireemeraldshiny"
+    frenchName: "Rubis / Saphir / Émeraude: Chromatique"
+    selectionRule: "(p.bankable or p.bankableish) and bsa?.rubysapphireemerald"
+    displayTemplate: "box"
+    isShiny: true
+    orderNumber: 30
+    electionOrderNumber: 25
+    lastChangedAt: "<date_create()>"
+    isPremium: false
+    canHoldElection: false
+    isReleased: true
+  dex_home:
+    name: "Home"
+    slug: "home"
+    frenchName: "Home"
+    selectionRule: "(p.bankable or p.bankableish)"
+    displayTemplate: "box"
+    orderNumber: 4
+    electionOrderNumber: 46
+    lastChangedAt: '<(new DateTime("2023-04-21 12:34:56"))>'
+    isPremium: false
+    canHoldElection: true
+    isReleased: true
+  dex_home_shiny:
+    name: |-
+      Home
+      Shiny
+    slug: "homeshiny"
+    frenchName: |-
+      Home
+      Chromatique
+    selectionRule: "(p.bankable or p.bankableish)"
+    displayTemplate: "box"
+    orderNumber: 5
+    electionOrderNumber: 8
+    isShiny: true
+    lastChangedAt: '<(new DateTime("2023-03-21 12:34:56"))>'
+    isPremium: false
+    canHoldElection: false
+    isReleased: true
+  dex_home_pogo:
+    name: "Home PoGo"
+    slug: "homepogo"
+    frenchName: "Home PoGo"
+    selectionRule: "(p.bankable or p.bankableish) and p.categoryForm === null and p.regionalForm === null and p.specialForm === null and p.variantForm === null"
+    displayTemplate: "list-7"
+    orderNumber: 6
+    electionOrderNumber: 39
+    isShiny: false
+    isDisplayForm: false
+    lastChangedAt: '<(new DateTime("2023-03-21 12:12:12"))>'
+    isPremium: false
+    canHoldElection: true
+    isReleased: false
+  dex_demo:
+    name: "Demo"
+    slug: "demo"
+    frenchName: "Démo"
+    selectionRule: "(p.bankable or p.bankableish)"
+    displayTemplate: "box"
+    orderNumber: 7
+    electionOrderNumber: 701
+    lastChangedAt: "<date_create()>"
+    isPremium: false
+    canHoldElection: false
+    isReleased: true
+  dex_spoon:
+    name: "Spoon"
+    slug: "spoon"
+    frenchName: "Cuillière"
+    selectionRule: "(p.bankable or p.bankableish)"
+    displayTemplate: "box"
+    orderNumber: 3
+    electionOrderNumber: 911
+    isShiny: false
+    isDisplayForm: true
+    deletedAt: "<date_create()>"
+    lastChangedAt: "<date_create()>"
+    isPremium: true
+    isReleased: false
+    canHoldElection: true

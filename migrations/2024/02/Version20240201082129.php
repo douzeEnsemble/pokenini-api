@@ -25,7 +25,7 @@ final class Version20240201082129 extends AbstractMigration
         $this->addSql('UPDATE regional_form SET french_name = name');
         $this->addSql('UPDATE special_form SET french_name = name');
         $this->addSql('UPDATE variant_form SET french_name = name');
-        
+
         $this->addSql('ALTER TABLE category_form ALTER COLUMN french_name SET NOT NULL');
         $this->addSql('ALTER TABLE regional_form ALTER COLUMN french_name SET NOT NULL');
         $this->addSql('ALTER TABLE special_form ALTER COLUMN french_name SET NOT NULL');

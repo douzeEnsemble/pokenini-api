@@ -1,282 +1,282 @@
 App\Entity\TrainerPokemonElo:
-    tpe_demo_u12_default_bulbasaur:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_demo'
-            pokemon: '@pokemon_bulbasaur'
-        elo: 1010
-    tpe_demo_u12_default_ivysaur:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_demo'
-            pokemon: '@pokemon_ivysaur'
-        elo: 1020
-    tpe_demo_u12_default_venusaur:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_demo'
-            pokemon: '@pokemon_venusaur'
-        elo: 1030
-    tpe_demo_u12_default_venusaurf:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_demo'
-            pokemon: '@pokemon_venusaur_f'
-        elo: 1040
-    tpe_demo_u12_default_venusaurmega:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_demo'
-            pokemon: '@pokemon_venusaur_mega'
-        elo: 1050
-    tpe_demo_u12_default_venusaurgmax:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_demo'
-            pokemon: '@pokemon_venusaur_gigantamax'
-        elo: 1060
+  tpe_demo_u12_default_bulbasaur:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_demo"
+      pokemon: "@pokemon_bulbasaur"
+    elo: 1010
+  tpe_demo_u12_default_ivysaur:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_demo"
+      pokemon: "@pokemon_ivysaur"
+    elo: 1020
+  tpe_demo_u12_default_venusaur:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_demo"
+      pokemon: "@pokemon_venusaur"
+    elo: 1030
+  tpe_demo_u12_default_venusaurf:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_demo"
+      pokemon: "@pokemon_venusaur_f"
+    elo: 1040
+  tpe_demo_u12_default_venusaurmega:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_demo"
+      pokemon: "@pokemon_venusaur_mega"
+    elo: 1050
+  tpe_demo_u12_default_venusaurgmax:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_demo"
+      pokemon: "@pokemon_venusaur_gigantamax"
+    elo: 1060
 
-    tpe_demo_u12_fav_bulbasaur:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_demo'
-            pokemon: '@pokemon_bulbasaur'
-            electionSlug: 'favorite'
-        elo: 1000
-    tpe_demo_u12_fav_ivysaur:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_demo'
-            pokemon: '@pokemon_ivysaur'
-            electionSlug: 'favorite'
-        elo: 1000
-    tpe_demo_u12_fav_venusaur:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_demo'
-            pokemon: '@pokemon_venusaur'
-            electionSlug: 'favorite'
-        elo: 1000
-    tpe_demo_u12_fav_venusaurf:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_demo'
-            pokemon: '@pokemon_venusaur_f'
-            electionSlug: 'favorite'
-        elo: 1000
-    tpe_demo_u12_fav_venusaurmega:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_demo'
-            pokemon: '@pokemon_venusaur_mega'
-            electionSlug: 'favorite'
-        elo: 1000
-    tpe_demo_u12_fav_venusaurgmax:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_demo'
-            pokemon: '@pokemon_venusaur_gigantamax'
-            electionSlug: 'favorite'
-        elo: 1000
+  tpe_demo_u12_fav_bulbasaur:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_demo"
+      pokemon: "@pokemon_bulbasaur"
+      electionSlug: "favorite"
+    elo: 1000
+  tpe_demo_u12_fav_ivysaur:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_demo"
+      pokemon: "@pokemon_ivysaur"
+      electionSlug: "favorite"
+    elo: 1000
+  tpe_demo_u12_fav_venusaur:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_demo"
+      pokemon: "@pokemon_venusaur"
+      electionSlug: "favorite"
+    elo: 1000
+  tpe_demo_u12_fav_venusaurf:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_demo"
+      pokemon: "@pokemon_venusaur_f"
+      electionSlug: "favorite"
+    elo: 1000
+  tpe_demo_u12_fav_venusaurmega:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_demo"
+      pokemon: "@pokemon_venusaur_mega"
+      electionSlug: "favorite"
+    elo: 1000
+  tpe_demo_u12_fav_venusaurgmax:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_demo"
+      pokemon: "@pokemon_venusaur_gigantamax"
+      electionSlug: "favorite"
+    elo: 1000
 
-    tpe_home_u12_fav_bulbasaur:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_home'
-            pokemon: '@pokemon_bulbasaur'
-            electionSlug: 'favorite'
-        elo: 1000
-    tpe_home_u12_fav_ivysaur:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_home'
-            pokemon: '@pokemon_ivysaur'
-            electionSlug: 'favorite'
-        elo: 1000
-    tpe_home_u12_fav_venusaur:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_home'
-            pokemon: '@pokemon_venusaur'
-            electionSlug: 'favorite'
-        elo: 1000
-    tpe_home_u12_fav_venusaurf:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_home'
-            pokemon: '@pokemon_venusaur_f'
-            electionSlug: 'favorite'
-        elo: 1000
-    tpe_home_u12_fav_venusaurmega:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_home'
-            pokemon: '@pokemon_venusaur_mega'
-            electionSlug: 'favorite'
-        elo: 1000
-    tpe_home_u12_fav_venusaurgmax:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_home'
-            pokemon: '@pokemon_venusaur_gigantamax'
-            electionSlug: 'favorite'
-        elo: 1000
+  tpe_home_u12_fav_bulbasaur:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_home"
+      pokemon: "@pokemon_bulbasaur"
+      electionSlug: "favorite"
+    elo: 1000
+  tpe_home_u12_fav_ivysaur:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_home"
+      pokemon: "@pokemon_ivysaur"
+      electionSlug: "favorite"
+    elo: 1000
+  tpe_home_u12_fav_venusaur:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_home"
+      pokemon: "@pokemon_venusaur"
+      electionSlug: "favorite"
+    elo: 1000
+  tpe_home_u12_fav_venusaurf:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_home"
+      pokemon: "@pokemon_venusaur_f"
+      electionSlug: "favorite"
+    elo: 1000
+  tpe_home_u12_fav_venusaurmega:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_home"
+      pokemon: "@pokemon_venusaur_mega"
+      electionSlug: "favorite"
+    elo: 1000
+  tpe_home_u12_fav_venusaurgmax:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_home"
+      pokemon: "@pokemon_venusaur_gigantamax"
+      electionSlug: "favorite"
+    elo: 1000
 
-    tpe_redgreenblueyellow_u12_fav_douze:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_redgreenblueyellow'
-            pokemon: '@pokemon_douze'
-            electionSlug: 'favorite'
-        elo: 1016
-    tpe_redgreenblueyellow_u12_fav_bulbasaur:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_redgreenblueyellow'
-            pokemon: '@pokemon_bulbasaur'
-            electionSlug: 'favorite'
-        elo: 984
-    tpe_redgreenblueyellow_u12_fav_ivysaur:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_redgreenblueyellow'
-            pokemon: '@pokemon_ivysaur'
-            electionSlug: 'favorite'
-        elo: 984
-    tpe_redgreenblueyellow_u12_fav_venusaur:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_redgreenblueyellow'
-            pokemon: '@pokemon_venusaur'
-            electionSlug: 'favorite'
-        elo: 984
-    tpe_redgreenblueyellow_u12_fav_caterpie:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_redgreenblueyellow'
-            pokemon: '@pokemon_caterpie'
-            electionSlug: 'favorite'
-        elo: 984
-    tpe_redgreenblueyellow_u12_fav_metapod:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_redgreenblueyellow'
-            pokemon: '@pokemon_metapod'
-            electionSlug: 'favorite'
-        elo: 984
-    tpe_redgreenblueyellow_u12_fav_butterfree:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_redgreenblueyellow'
-            pokemon: '@pokemon_butterfree'
-            electionSlug: 'favorite'
-        elo: 984
+  tpe_redgreenblueyellow_u12_fav_douze:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_redgreenblueyellow"
+      pokemon: "@pokemon_douze"
+      electionSlug: "favorite"
+    elo: 1016
+  tpe_redgreenblueyellow_u12_fav_bulbasaur:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_redgreenblueyellow"
+      pokemon: "@pokemon_bulbasaur"
+      electionSlug: "favorite"
+    elo: 984
+  tpe_redgreenblueyellow_u12_fav_ivysaur:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_redgreenblueyellow"
+      pokemon: "@pokemon_ivysaur"
+      electionSlug: "favorite"
+    elo: 984
+  tpe_redgreenblueyellow_u12_fav_venusaur:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_redgreenblueyellow"
+      pokemon: "@pokemon_venusaur"
+      electionSlug: "favorite"
+    elo: 984
+  tpe_redgreenblueyellow_u12_fav_caterpie:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_redgreenblueyellow"
+      pokemon: "@pokemon_caterpie"
+      electionSlug: "favorite"
+    elo: 984
+  tpe_redgreenblueyellow_u12_fav_metapod:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_redgreenblueyellow"
+      pokemon: "@pokemon_metapod"
+      electionSlug: "favorite"
+    elo: 984
+  tpe_redgreenblueyellow_u12_fav_butterfree:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_redgreenblueyellow"
+      pokemon: "@pokemon_butterfree"
+      electionSlug: "favorite"
+    elo: 984
 
-    tpe_redgreenblueyellow_u12_affinee_bulbasaur:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_redgreenblueyellow'
-            pokemon: '@pokemon_bulbasaur'
-            electionSlug: 'affinee'
-        elo: 1000
-        viewCount: 0
-    tpe_redgreenblueyellow_u12_affinee_ivysaur:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_redgreenblueyellow'
-            pokemon: '@pokemon_ivysaur'
-            electionSlug: 'affinee'
-        elo: 1016
-        viewCount: 1
-        winCount: 1
-    tpe_redgreenblueyellow_u12_affinee_venusaur:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_redgreenblueyellow'
-            pokemon: '@pokemon_venusaur'
-            electionSlug: 'affinee'
-        elo: 1032
-        viewCount: 2
-        winCount: 2
-    tpe_redgreenblueyellow_u12_affinee_caterpie:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_redgreenblueyellow'
-            pokemon: '@pokemon_caterpie'
-            electionSlug: 'affinee'
-        elo: 1048
-        viewCount: 3
-        winCount: 3
-    tpe_redgreenblueyellow_u12_affinee_metapod:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_redgreenblueyellow'
-            pokemon: '@pokemon_metapod'
-            electionSlug: 'affinee'
-        elo: 984
-        viewCount: 1
-        winCount: 0
-    tpe_redgreenblueyellow_u12_affinee_butterfree:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_redgreenblueyellow'
-            pokemon: '@pokemon_butterfree'
-            electionSlug: 'affinee'
-        elo: 968
-        viewCount: 2
-        winCount: 0
+  tpe_redgreenblueyellow_u12_affinee_bulbasaur:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_redgreenblueyellow"
+      pokemon: "@pokemon_bulbasaur"
+      electionSlug: "affinee"
+    elo: 1000
+    viewCount: 0
+  tpe_redgreenblueyellow_u12_affinee_ivysaur:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_redgreenblueyellow"
+      pokemon: "@pokemon_ivysaur"
+      electionSlug: "affinee"
+    elo: 1016
+    viewCount: 1
+    winCount: 1
+  tpe_redgreenblueyellow_u12_affinee_venusaur:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_redgreenblueyellow"
+      pokemon: "@pokemon_venusaur"
+      electionSlug: "affinee"
+    elo: 1032
+    viewCount: 2
+    winCount: 2
+  tpe_redgreenblueyellow_u12_affinee_caterpie:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_redgreenblueyellow"
+      pokemon: "@pokemon_caterpie"
+      electionSlug: "affinee"
+    elo: 1048
+    viewCount: 3
+    winCount: 3
+  tpe_redgreenblueyellow_u12_affinee_metapod:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_redgreenblueyellow"
+      pokemon: "@pokemon_metapod"
+      electionSlug: "affinee"
+    elo: 984
+    viewCount: 1
+    winCount: 0
+  tpe_redgreenblueyellow_u12_affinee_butterfree:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_redgreenblueyellow"
+      pokemon: "@pokemon_butterfree"
+      electionSlug: "affinee"
+    elo: 968
+    viewCount: 2
+    winCount: 0
 
-    tpe_home_u12_affinee_bulbasaur:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_home'
-            pokemon: '@pokemon_bulbasaur'
-            electionSlug: 'affinee'
-        elo: 1500
-        viewCount: 5
-        winCount: 5
-    tpe_home_u12_affinee_ivysaur:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_home'
-            pokemon: '@pokemon_ivysaur'
-            electionSlug: 'affinee'
-        elo: 1500
-        viewCount: 5
-        winCount: 5
-    tpe_home_u12_affinee_venusaur:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_home'
-            pokemon: '@pokemon_venusaur'
-            electionSlug: 'affinee'
-        elo: 1500
-        viewCount: 5
-        winCount: 5
-    tpe_home_u12_affinee_venusaurf:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_home'
-            pokemon: '@pokemon_venusaur_f'
-            electionSlug: 'affinee'
-        elo: 1500
-        viewCount: 5
-        winCount: 5
-    tpe_home_u12_affinee_venusaurmega:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_home'
-            pokemon: '@pokemon_venusaur_mega'
-            electionSlug: 'affinee'
-        elo: 1500
-        viewCount: 5
-        winCount: 5
-    tpe_home_u12_affinee_venusaurgmax:
-        __construct: 
-            trainerExternalId: '7b52009b64fd0a2a49e6d8a939753077792b0554'
-            dex: '@dex_home'
-            pokemon: '@pokemon_venusaur_gigantamax'
-            electionSlug: 'affinee'
-        elo: 1500
-        viewCount: 5
-        winCount: 5
+  tpe_home_u12_affinee_bulbasaur:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_home"
+      pokemon: "@pokemon_bulbasaur"
+      electionSlug: "affinee"
+    elo: 1500
+    viewCount: 5
+    winCount: 5
+  tpe_home_u12_affinee_ivysaur:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_home"
+      pokemon: "@pokemon_ivysaur"
+      electionSlug: "affinee"
+    elo: 1500
+    viewCount: 5
+    winCount: 5
+  tpe_home_u12_affinee_venusaur:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_home"
+      pokemon: "@pokemon_venusaur"
+      electionSlug: "affinee"
+    elo: 1500
+    viewCount: 5
+    winCount: 5
+  tpe_home_u12_affinee_venusaurf:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_home"
+      pokemon: "@pokemon_venusaur_f"
+      electionSlug: "affinee"
+    elo: 1500
+    viewCount: 5
+    winCount: 5
+  tpe_home_u12_affinee_venusaurmega:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_home"
+      pokemon: "@pokemon_venusaur_mega"
+      electionSlug: "affinee"
+    elo: 1500
+    viewCount: 5
+    winCount: 5
+  tpe_home_u12_affinee_venusaurgmax:
+    __construct:
+      trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      dex: "@dex_home"
+      pokemon: "@pokemon_venusaur_gigantamax"
+      electionSlug: "affinee"
+    elo: 1500
+    viewCount: 5
+    winCount: 5

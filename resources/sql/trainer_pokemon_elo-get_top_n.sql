@@ -1,48 +1,40 @@
 WITH total AS (
-    SELECT
-        COUNT(1) AS count
-    FROM
-        dex_availability AS da
-        JOIN dex AS d 
-            ON da.dex_id = d.id AND d.slug = :dex_slug
+    SELECT COUNT(1) AS count
+    FROM dex_availability AS da
+        JOIN dex AS d ON da.dex_id = d.id
+        AND d.slug = :dex_slug
 ),
 views AS (
-    SELECT
-        COUNT(1) AS count
-    FROM
-        trainer_pokemon_elo AS tpe
-        JOIN dex AS d 
-            ON tpe.dex_id = d.id AND d.slug = :dex_slug
-    WHERE
-        trainer_external_id = :trainer_external_id
+    SELECT COUNT(1) AS count
+    FROM trainer_pokemon_elo AS tpe
+        JOIN dex AS d ON tpe.dex_id = d.id
+        AND d.slug = :dex_slug
+    WHERE trainer_external_id = :trainer_external_id
         AND election_slug = :election_slug
 ),
 elo AS (
-    SELECT
-        tpe.elo,
+    SELECT tpe.elo,
         tpe.pokemon_id
-    FROM
-        trainer_pokemon_elo tpe
-        JOIN dex AS d 
-            ON tpe.dex_id = d.id AND d.slug = :dex_slug
-    WHERE
-        trainer_external_id = :trainer_external_id
+    FROM trainer_pokemon_elo tpe
+        JOIN dex AS d ON tpe.dex_id = d.id
+        AND d.slug = :dex_slug
+    WHERE trainer_external_id = :trainer_external_id
         AND election_slug = :election_slug
 ),
 stats AS (
-    SELECT
-        AVG(elo) AS avg_elo,
+    SELECT AVG(elo) AS avg_elo,
         STDDEV(elo) AS stddev_elo
-    FROM
-        elo
+    FROM elo
 ),
 variables AS (
-    SELECT
-        CASE
+    SELECT CASE
             WHEN 0 < t.count THEN COALESCE(
                 1 / NULLIF(
                     AVG(
-                        CASE WHEN t.count > 0 THEN v.count * 1.0 / t.count ELSE NULL END
+                        CASE
+                            WHEN t.count > 0 THEN v.count * 1.0 / t.count
+                            ELSE NULL
+                        END
                     ),
                     0
                 ),
@@ -50,15 +42,12 @@ variables AS (
             )
             ELSE 0
         END AS multiplier
-    FROM
-        views AS v,
+    FROM views AS v,
         total AS t
-    GROUP BY
-        t.count,
+    GROUP BY t.count,
         v.count
 )
-SELECT
-    e.elo AS elo,
+SELECT e.elo AS elo,
     e.elo > (s.avg_elo + (s.stddev_elo * var.multiplier)) AS significance,
     p.slug AS pokemon_slug,
     p.name AS pokemon_name,
@@ -93,8 +82,7 @@ SELECT
         '-',
         LPAD(CAST(p.family_order AS varchar), 3, '0')
     ) as pokemon_order_number
-FROM
-    stats AS s,
+FROM stats AS s,
     variables AS var,
     elo AS e
     JOIN pokemon AS p ON e.pokemon_id = p.id
@@ -106,8 +94,6 @@ FROM
     LEFT JOIN "type" AS st ON p.secondary_type_id = st.id
     LEFT JOIN pokemon AS pp ON p.family = pp.slug
     LEFT JOIN game_bundle AS ogb ON p.original_game_bundle_id = ogb.id
-ORDER BY
-    e.elo DESC,
+ORDER BY e.elo DESC,
     p.slug ASC
-LIMIT
-    :count
+LIMIT :count

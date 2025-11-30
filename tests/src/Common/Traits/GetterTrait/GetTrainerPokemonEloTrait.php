@@ -21,11 +21,11 @@ trait GetTrainerPokemonEloTrait
         $connection = static::getContainer()->get(Connection::class);
 
         $sql = <<< 'SQL'
-            SELECT  elo, 
-                    view_count, 
+            SELECT  elo,
+                    view_count,
                     win_count
-            FROM    trainer_pokemon_elo AS tpe 
-                JOIN dex AS d 
+            FROM    trainer_pokemon_elo AS tpe
+                JOIN dex AS d
                     ON tpe.dex_id = d.id AND d.slug = :dex_slug
                 JOIN pokemon AS p
                     ON tpe.pokemon_id = p.id

@@ -29,7 +29,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
         $sql = <<<'SQL'
             SELECT  tpe.elo
             FROM    trainer_pokemon_elo AS tpe
-                JOIN dex AS d 
+                JOIN dex AS d
                     ON tpe.dex_id = d.id AND d.slug = :dex_slug
                 JOIN pokemon AS p
                     ON tpe.pokemon_id = p.id AND p.slug = :pokemon_slug
@@ -72,10 +72,10 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
         $sql = <<<'SQL'
             INSERT INTO trainer_pokemon_elo (
                 id,
-                trainer_external_id, 
-                dex_id, 
-                election_slug, 
-                pokemon_id, 
+                trainer_external_id,
+                dex_id,
+                election_slug,
+                pokemon_id,
                 elo,
                 view_count,
                 win_count
@@ -172,7 +172,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
                         MAX(win_count) AS max_win,
                         COUNT(1) AS count_elo
                 FROM    trainer_pokemon_elo AS tpe
-                    JOIN dex AS d 
+                    JOIN dex AS d
                         ON tpe.dex_id = d.id AND d.slug = :dex_slug
                 WHERE   tpe.trainer_external_id = :trainer_external_id
                     AND tpe.election_slug = :election_slug
@@ -182,21 +182,21 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
                     JOIN dex as d
                         ON da.dex_id = d.id AND d.slug = :dex_slug
             ), variables AS (
-                SELECT  
-                    CASE 
+                SELECT
+                    CASE
                         WHEN ds.count > s.count_elo
                             THEN ds.count - s.count_elo
                         ELSE
                             COUNT(CASE WHEN tpe.view_count = s.max_view - 1 AND tpe.view_count = tpe.win_count THEN 1 END)
                     END AS under_max_view_count,
-                    CASE 
+                    CASE
                         WHEN ds.count > s.count_elo
                             THEN ds.count - s.count_elo
                         ELSE
                             COUNT(CASE WHEN tpe.view_count = s.max_view AND tpe.view_count = tpe.win_count THEN 1 END)
                     END AS max_view_count
                 FROM    trainer_pokemon_elo AS tpe
-                    JOIN dex AS d 
+                    JOIN dex AS d
                         ON tpe.dex_id = d.id AND d.slug = :dex_slug
                     CROSS JOIN stats s
                     CROSS JOIN dex_stats AS ds
@@ -204,7 +204,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
                     AND tpe.election_slug = :election_slug
                 GROUP BY ds.count, s.count_elo
             )
-            SELECT 
+            SELECT
                 SUM(view_count) AS view_count_sum,
                 SUM(win_count) AS win_count_sum,
                 (SELECT max_view FROM stats) AS view_count_max,
@@ -219,7 +219,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
                 ) AS max_view_count,
                 (SELECT count FROM dex_stats) AS dex_total_count
             FROM    trainer_pokemon_elo AS tpe
-                JOIN dex AS d 
+                JOIN dex AS d
                     ON tpe.dex_id = d.id AND d.slug = :dex_slug
             WHERE   tpe.trainer_external_id = :trainer_external_id
                     AND tpe.election_slug = :election_slug

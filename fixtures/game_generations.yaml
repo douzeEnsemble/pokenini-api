@@ -1,28 +1,28 @@
 App\Entity\GameGeneration:
-    gen_1:
-        name: '1'
-        slug: '1'
-    gen_2:
-        name: '2'
-        slug: '2'
-    gen_3:
-        name: '3'
-        slug: '3'
-    gen_4:
-        name: '4'
-        slug: '4'
-    gen_5:
-        name: '5'
-        slug: '5'
-    gen_6:
-        name: '6'
-        slug: '6'
-    gen_7:
-        name: '7'
-        slug: '7'
-    gen_8:
-        name: '8'
-        slug: '8'
-    gen_9:
-        name: '9'
-        slug: '9'
+  gen_1:
+    name: "1"
+    slug: "1"
+  gen_2:
+    name: "2"
+    slug: "2"
+  gen_3:
+    name: "3"
+    slug: "3"
+  gen_4:
+    name: "4"
+    slug: "4"
+  gen_5:
+    name: "5"
+    slug: "5"
+  gen_6:
+    name: "6"
+    slug: "6"
+  gen_7:
+    name: "7"
+    slug: "7"
+  gen_8:
+    name: "8"
+    slug: "8"
+  gen_9:
+    name: "9"
+    slug: "9"

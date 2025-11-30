@@ -29,13 +29,19 @@
         <MoreSpecificImplementedParamType>
             <errorLevel type="suppress">
                 <file name="tests/src/Unit/MessageHandler/CalculateDexAvailabilitiesHandlerTest.php" />
-                <file name="tests/src/Unit/MessageHandler/CalculateGameBundlesAvailabilitiesHandlerTest.php" />
-                <file name="tests/src/Unit/MessageHandler/CalculateGameBundlesShiniesAvailabilitiesHandlerTest.php" />
-                <file name="tests/src/Unit/MessageHandler/CalculatePokemonAvailabilitiesHandlerTest.php" />
-                <file name="tests/src/Unit/MessageHandler/UpdateCollectionsAvailabilitiesHandlerTest.php" />
+                <file
+                    name="tests/src/Unit/MessageHandler/CalculateGameBundlesAvailabilitiesHandlerTest.php" />
+                <file
+                    name="tests/src/Unit/MessageHandler/CalculateGameBundlesShiniesAvailabilitiesHandlerTest.php" />
+                <file
+                    name="tests/src/Unit/MessageHandler/CalculatePokemonAvailabilitiesHandlerTest.php" />
+                <file
+                    name="tests/src/Unit/MessageHandler/UpdateCollectionsAvailabilitiesHandlerTest.php" />
                 <file name="tests/src/Unit/MessageHandler/UpdateGamesAvailabilitiesHandlerTest.php" />
-                <file name="tests/src/Unit/MessageHandler/UpdateGamesCollectionsAndDexHandlerTest.php" />
-                <file name="tests/src/Unit/MessageHandler/UpdateGamesShiniesAvailabilitiesHandlerTest.php" />
+                <file
+                    name="tests/src/Unit/MessageHandler/UpdateGamesCollectionsAndDexHandlerTest.php" />
+                <file
+                    name="tests/src/Unit/MessageHandler/UpdateGamesShiniesAvailabilitiesHandlerTest.php" />
                 <file name="tests/src/Unit/MessageHandler/UpdateLabelsHandlerTest.php" />
                 <file name="tests/src/Unit/MessageHandler/UpdatePokemonsHandlerTest.php" />
                 <file name="tests/src/Unit/MessageHandler/UpdateRegionalDexNumbersHandlerTest.php" />
@@ -55,7 +61,7 @@
             <errorLevel type="suppress">
                 <file name="src/Service/CalculatorService/DexAvailabilitiesCalculatorService.php" />
             </errorLevel>
-        </UndefinedInterfaceMethod>  
+        </UndefinedInterfaceMethod>
         <InvalidArgument>
             <errorLevel type="suppress">
                 <file name="tests/src/Unit/DTO/ElectionVoteTest.php" />
@@ -63,11 +69,11 @@
                 <file name="tests/src/Unit/DTO/TrainerPokemonEloListQueryOptionsTest.php" />
                 <file name="tests/src/Unit/DTO/TrainerPokemonEloTopQueryOptionsTest.php" />
             </errorLevel>
-        </InvalidArgument>    
+        </InvalidArgument>
         <MissingOverrideAttribute>
             <errorLevel type="suppress">
                 <file name="tests/src/Functional/Controller/AbstractTestControllerApi.php" />
             </errorLevel>
-        </MissingOverrideAttribute>        
+        </MissingOverrideAttribute>
     </issueHandlers>
 </psalm>

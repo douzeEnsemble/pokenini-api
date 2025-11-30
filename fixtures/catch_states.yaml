@@ -30,4 +30,4 @@ App\Entity\CatchState:
         orderNumber: 2
         color: "red"
         deletedAt: "<dateTime('now')>"
-    
+
