@@ -216,7 +216,7 @@ dotenv-fixer: ## Run DotEnv fixer
 
 .PHONY: code-quality
 code-quality: ## Execute all code quality analyses
-code-quality: editorconfig-linter validate-autoloader phpcsfixer phpmd psalm phpstan deptrac
+code-quality: editorconfig-linter jsonlint validate-autoloader phpcsfixer phpmd psalm phpstan deptrac
 
 .PHONY: cq
 cq: ## Alias of code-quality
@@ -226,6 +226,19 @@ cq: code-quality
 editorconfig-linter: ## Execute editorconfig linter
 editorconfig-linter:
 	$(EDITORCONFIG_LINTER_CMD)
+
+.PHONY: jsonlint
+jsonlint: ## Execute jsonlint
+jsonlint: tools/jsonlint/vendor/bin/jsonlint
+	find tests/resources -type f -name "*.json" -not -name "spreadsheets.json" \
+		-exec grep -RhoP '"[A-Za-z0-9]+"(?=\s*:)' {} + \
+		| grep -v '"majorDimension"' \
+		| grep -vE '"[a-z0-9_]+"' \
+		| sort -u \
+		| tee /dev/stderr \
+		| grep . && exit 1 || exit 0
+	find tests/resources -type f -name "*.json" -not -name "spreadsheets.json" \
+		-exec $(PHP) tools/jsonlint/vendor/bin/jsonlint {} \;
 
 .PHONY: validate-autoloader
 validate-autoloader: ## Execute cmheck on autoloader issues
@@ -410,6 +423,9 @@ tools/deptrac/vendor/bin/deptrac: ## Install deptrac
 
 tools/infection/vendor/bin/infection: ## Install infection
 	@$(COMPOSER) install --working-dir=tools/infection --optimize-autoloader --no-dev
+
+tools/jsonlint/vendor/bin/jsonlint: ## Install jsonlint
+	@$(COMPOSER) install --working-dir=tools/jsonlint --optimize-autoloader --no-dev
 
 tools/phpinsights/vendor/bin/phpinsights: ## Install phpinsights
 	@$(COMPOSER) install --working-dir=tools/phpinsights --optimize-autoloader --no-dev
