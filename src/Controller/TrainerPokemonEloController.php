@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\DTO\TrainerPokemonEloQueryOptions;
-use App\DTO\TrainerPokemonEloTopQueryOptions;
 use App\Repository\TrainerPokemonEloRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -20,7 +19,9 @@ class TrainerPokemonEloController extends AbstractController
         Request $request,
         TrainerPokemonEloRepository $trainerPokemonEloRepository,
     ): JsonResponse {
-        $queryOptions = new TrainerPokemonEloTopQueryOptions($request->query->all());
+        /** @var array<int|string> $params */
+        $params = $request->query->all();
+        $queryOptions = new TrainerPokemonEloQueryOptions($params);
 
         // Better with serializer ?
         return new JsonResponse(
@@ -38,7 +39,9 @@ class TrainerPokemonEloController extends AbstractController
         Request $request,
         TrainerPokemonEloRepository $trainerPokemonEloRepository,
     ): JsonResponse {
-        $queryOptions = new TrainerPokemonEloQueryOptions($request->query->all());
+        /** @var array<int|string> $params */
+        $params = $request->query->all();
+        $queryOptions = new TrainerPokemonEloQueryOptions($params);
 
         // Better with serializer ?
         return new JsonResponse(

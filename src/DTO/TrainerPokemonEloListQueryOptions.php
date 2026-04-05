@@ -65,7 +65,7 @@ final class TrainerPokemonEloListQueryOptions
         $resolver->setNormalizer('count', function (Options $options, string $value): int {
             unset($options); // To remove PHPMD.UnusedFormalParameter warning
 
-            return (int) $value;
+            return intval($value);
         });
 
         AlbumFilters::configureOptions($resolver);

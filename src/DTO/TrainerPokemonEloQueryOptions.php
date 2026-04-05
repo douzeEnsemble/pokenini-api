@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\DTO;
 
+use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 final class TrainerPokemonEloQueryOptions
@@ -11,6 +12,7 @@ final class TrainerPokemonEloQueryOptions
     public string $trainerExternalId;
     public string $dexSlug;
     public string $electionSlug;
+    public int $count;
 
     /**
      * @param int[]|string[] $values
@@ -25,6 +27,7 @@ final class TrainerPokemonEloQueryOptions
         $this->trainerExternalId = $options['trainer_external_id'];
         $this->dexSlug = $options['dex_slug'];
         $this->electionSlug = $options['election_slug'];
+        $this->count = $options['count'];
     }
 
     private function configureOptions(OptionsResolver $resolver): void
@@ -37,5 +40,13 @@ final class TrainerPokemonEloQueryOptions
 
         $resolver->setDefault('election_slug', '');
         $resolver->setAllowedTypes('election_slug', 'string');
+
+        $resolver->setDefault('count', 5);
+        $resolver->setAllowedTypes('count', ['int', 'string']);
+        $resolver->setNormalizer('count', function (Options $options, string $value): int {
+            unset($options); // To remove PHPMD.UnusedFormalParameter warning
+
+            return intval($value);
+        });
     }
 }
