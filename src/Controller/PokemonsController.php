@@ -21,7 +21,9 @@ class PokemonsController extends AbstractController
         GetNPokemonsToChooseService $getNPokemonsToChooseService,
         SerializerInterface $serializer,
     ): Response {
-        $queryOptions = new TrainerPokemonEloListQueryOptions($request->query->all());
+        /** @var array<array<string>|int|string> $params */
+        $params = $request->query->all();
+        $queryOptions = new TrainerPokemonEloListQueryOptions($params);
 
         $list = $getNPokemonsToChooseService->getNPokemonsToChoose($queryOptions);
 
