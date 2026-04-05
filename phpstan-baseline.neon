@@ -251,7 +251,12 @@ parameters:
 			path: tests/src/Unit/DTO/TrainerPokemonEloListQueryOptionsTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$values of class App\\\\DTO\\\\TrainerPokemonEloQueryOptions constructor expects array\\<int\\|string\\>, array\\<string, string\\|false\\> given\\.$#"
+			message: "#^Parameter \\#1 \\$values of class App\\\\DTO\\\\TrainerPokemonEloQueryOptions constructor expects array\\<int\\|string\\>, array\\<string, float\\|string\\> given\\.$#"
+			count: 1
+			path: tests/src/Unit/DTO/TrainerPokemonEloQueryOptionsTest.php
+
+		-
+			message: "#^Parameter \\#1 \\$values of class App\\\\DTO\\\\TrainerPokemonEloQueryOptions constructor expects array\\<int\\|string\\>, array\\<string, int\\|string\\|false\\> given\\.$#"
 			count: 1
 			path: tests/src/Unit/DTO/TrainerPokemonEloQueryOptionsTest.php
 
