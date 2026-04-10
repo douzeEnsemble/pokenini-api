@@ -65,9 +65,13 @@ destruct: ## Destruct the project
 logs: ## Containers logs
 	@$(DOCKER_COMP) logs -f -n 0
 
+.PHONY: sh
+sh: ## Connect to the PHP container
+	@$(PHP_CONT) sh
+
 .PHONY: bash
-bash: ## Connect to the PHP container
-	@$(PHP_CONT) bash
+bash: ## Alias of sh
+bash: sh
 
 .PHONY: restart-mocks
 restart-mocks: ## Restart Moco mocks

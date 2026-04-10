@@ -9,7 +9,7 @@ class AlbumReportServiceData
     /**
      * @return int[][]|string[][]|string[][][][]
      *
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
      */
     public static function getTypesReportFilteredProvider(): array
     {
@@ -121,7 +121,7 @@ class AlbumReportServiceData
     /**
      * @return int[][]|string[][]|string[][][][]
      *
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
      */
     public static function getFormsReportFilteredProvider(): array
     {

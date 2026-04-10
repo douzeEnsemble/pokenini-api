@@ -112,7 +112,7 @@ class PokedexRepositoryCatchStateCountData
     /**
      * @return int[][][]|string[][][][]
      *
-     * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+     * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
      */
     public static function providerGetCatchStatesCountsFormsFilters(): array
     {

@@ -11,6 +11,7 @@ use App\MessageHandler\UpdateHandlerInterface;
 use App\Repository\ActionLogsRepository;
 use App\Service\UpdaterService\UpdaterServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 abstract class AbstractTestUpdateHandler extends TestCase
@@ -60,7 +61,7 @@ abstract class AbstractTestUpdateHandler extends TestCase
             ->method('flush')
         ;
 
-        /** @var UpdaterServiceInterface $updaterService */
+        /** @var MockObject|UpdaterServiceInterface $updaterService */
         $handler = $this->getHandler($updaterService, $entityManager);
 
         $message = $this->getMessage();
@@ -105,7 +106,7 @@ abstract class AbstractTestUpdateHandler extends TestCase
             ->method('flush')
         ;
 
-        /** @var UpdaterServiceInterface $updaterService */
+        /** @var MockObject|UpdaterServiceInterface $updaterService */
         $handler = $this->getHandler($updaterService, $entityManager);
 
         $message = $this->getMessage();

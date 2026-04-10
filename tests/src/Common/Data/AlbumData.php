@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Common\Data;
 
 /**
- * @SuppressWarnings(PHPMD.ExcessiveMethodLength)
+ * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
  */
 final class AlbumData
 {

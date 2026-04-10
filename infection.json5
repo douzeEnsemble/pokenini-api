@@ -31,7 +31,7 @@
         ],
         "global-ignoreSourceCodeByRegex": ["\\$query .= <<<'SUBSQL'.*"],
     },
-    tmpDir: "/var/www/html/var/cache/infection",
+    tmpDir: "/app/var/cache/infection",
     timeout: 30,
     testFramework: "phpunit",
     testFrameworkOptions: '--exclude-group="browser-testing"',

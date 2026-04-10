@@ -201,6 +201,7 @@ parameters:
       - AppRepository
       - AppService
       - DoctrineDBAL
+      - SymfonyBridgeDoctrine
       - SymfonyFrameworkBundle
       - SymfonyHttpFoundation
       - SymfonyHttpKernel
@@ -212,6 +213,7 @@ parameters:
       - AppDTO
       - SymfonyHttpFoundation
       - SymfonyOptionsResolver
+      - SymfonySerializer
     AppEntity:
       - AppEntity
       - DoctrineDBAL

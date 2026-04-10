@@ -30,7 +30,7 @@ abstract class AbstractCalculateCommand extends Command
     abstract protected function getCommandName(): string;
 
     /**
-     * @SuppressWarnings(PHPMD.UnusedFormalParameter)
+     * @SuppressWarnings("PHPMD.UnusedFormalParameter")
      */
     #[\Override]
     protected function execute(InputInterface $input, OutputInterface $output): int

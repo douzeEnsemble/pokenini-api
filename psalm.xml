@@ -20,12 +20,6 @@
     </projectFiles>
 
     <issueHandlers>
-        <ArgumentTypeCoercion>
-            <errorLevel type="suppress">
-                <file name="tests/src/Unit/MessageHandler/AbstractTestCalculateHandler.php" />
-                <file name="tests/src/Unit/MessageHandler/AbstractTestUpdateHandler.php" />
-            </errorLevel>
-        </ArgumentTypeCoercion>
         <MoreSpecificImplementedParamType>
             <errorLevel type="suppress">
                 <file name="tests/src/Unit/MessageHandler/CalculateDexAvailabilitiesHandlerTest.php" />

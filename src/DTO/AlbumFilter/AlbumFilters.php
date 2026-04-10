@@ -10,7 +10,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 final class AlbumFilters
 {
     /**
-     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
+     * @SuppressWarnings("PHPMD.ExcessiveParameterList")
      */
     public function __construct(
         public AlbumFilterValues $primaryTypes,

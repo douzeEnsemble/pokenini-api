@@ -79,3 +79,9 @@ App\Entity\ActionLog:
     createdAt: '<dateTimeBetween("-5 hour", "-4 hour")>'
   actionlog_updateregionaldexnumbers_current_toprocess (extends actionlog_toprocess):
     __construct: ['App\Message\UpdateRegionalDexNumbers']
+
+  actionlog_updateunknown_current_toprocess (extends actionlog_toprocess):
+    __construct: ['App\Message\']
+
+  actionlog_updateempty_current_toprocess (extends actionlog_toprocess):
+    __construct: ['']
