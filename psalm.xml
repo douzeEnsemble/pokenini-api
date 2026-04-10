@@ -66,6 +66,9 @@
                 <file name="tests/src/Unit/DTO/TrainerPokemonEloListQueryOptionsTest.php"/>
                 <file name="tests/src/Unit/DTO/TrainerPokemonEloTopQueryOptionsTest.php"/>
             </errorLevel>
+            <errorLevel type="suppress">
+                <referencedFunction name="PHPUnit\Framework\Attributes\CoversTrait::__construct"/>
+            </errorLevel>
         </InvalidArgument>
         <MissingOverrideAttribute>
             <errorLevel type="suppress">

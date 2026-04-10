@@ -26,6 +26,7 @@ class PokemonsRepository extends ServiceEntityRepository
 
     public function removeAll(): void
     {
+        /** @psalm-suppress QueryBuilderSetParameter */
         $queryBuilder = $this->createQueryBuilder('p')
             ->update()
             ->set('p.deletedAt', ':now')

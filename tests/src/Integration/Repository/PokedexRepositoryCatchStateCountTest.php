@@ -73,8 +73,8 @@ class PokedexRepositoryCatchStateCountTest extends KernelTestCase
     }
 
     /**
-     * @param string[][]             $filters
-     * @param int[][][]|string[][][] $expectedCounts
+     * @param array<string, array<int, string>> $filters
+     * @param array<int, int>                   $expectedCounts
      */
     #[DataProvider('providerGetCatchStatesCountsFilters')]
     public function testGetCatchStatesCountsFilters(
@@ -97,7 +97,10 @@ class PokedexRepositoryCatchStateCountTest extends KernelTestCase
     }
 
     /**
-     * @return int[][][]|string[][][][]
+     * @return array<string, array{
+     *  filters: array<string, array<int, string>>,
+     *  expectedCounts: array<int, int>,
+     * }>
      */
     public static function providerGetCatchStatesCountsFilters(): array
     {

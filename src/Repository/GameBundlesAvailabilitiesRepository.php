@@ -71,6 +71,8 @@ class GameBundlesAvailabilitiesRepository extends ServiceEntityRepository
         $queryBuilder->join('gba.bundle', 'b');
 
         $queryBuilder->where($queryBuilder->expr()->eq('gba.pokemon', ':pokemon'));
+
+        /** @psalm-suppress QueryBuilderSetParameter */
         $queryBuilder->setParameter('pokemon', $pokemon);
 
         $queryBuilder->orderBy('b.name');
