@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\DTO;
 
+/**
+ * @psalm-no-seal-properties
+ */
 class GamesShiniesAvailabilities
 {
     /**
