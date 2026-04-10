@@ -389,11 +389,6 @@ security-checker: ## Execute Security Checker
 security-checker: tools/php-security-checker/local-php-security-checker
 	tools/php-security-checker/local-php-security-checker
 
-.PHONY: owasp-check
-owasp-check: ## Execute OWASP Dependency Check
-owasp-check:
-	@tools/owasp-check/dependency-check.sh ${NVD_API_KEY}
-
 ## —— Cleaning 🧽 ———————————————————————————————————————————————————————————————
 .PHONY: clean-unused-files
 clean-unused-files: ## Clean unused mocks files
