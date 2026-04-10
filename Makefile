@@ -130,7 +130,6 @@ updates: ## Updates all composer
 	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/infection
 	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/jsonlint
 	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/deptrac
-	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/phpinsights
 
 ## —— Symfony 🎵 ———————————————————————————————————————————————————————————————
 .PHONY: sf
@@ -282,11 +281,6 @@ deptrac: ## Execute deptrac analyse
 deptrac: tools/deptrac/vendor/bin/deptrac
 	@$(PHP) tools/deptrac/vendor/bin/deptrac analyse --report-uncovered --fail-on-uncovered --cache-file=/app/var/cache/deptrac/.deptrac.cache
 
-.PHONY: phpinsights
-phpinsights: ## Execute phpinsights
-phpinsights: tools/phpinsights/vendor/bin/phpinsights
-	@$(PHP) tools/phpinsights/vendor/bin/phpinsights
-
 ## —— Integration 🗂️ ———————————————————————————————————————————————————————————————
 .PHONY: integration
 integration: ## Execute all integration tests
@@ -421,9 +415,6 @@ tools/infection/vendor/bin/infection: ## Install infection
 
 tools/jsonlint/vendor/bin/jsonlint: ## Install jsonlint
 	@$(COMPOSER) install --working-dir=tools/jsonlint --optimize-autoloader --no-dev
-
-tools/phpinsights/vendor/bin/phpinsights: ## Install phpinsights
-	@$(COMPOSER) install --working-dir=tools/phpinsights --optimize-autoloader --no-dev
 
 ## —— Image 🐳 ———————————————————————————————————————————————————————————————
 img-build: ## Build Docker image
