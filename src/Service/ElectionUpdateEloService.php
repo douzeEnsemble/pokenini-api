@@ -28,12 +28,12 @@ class ElectionUpdateEloService
         $winnersAverageElo = $this->getAverageElo($winnersPokemonElo);
         $losersAverageElo = $this->getAverageElo($losersPokemonElo);
 
-        $expectedWinnerElo = 1 / (1 + pow(10, ($losersAverageElo - $winnersAverageElo) / $this->eloDDifference));
-        $expectedLoserElo = 1 - $expectedWinnerElo;
+        $expectedWinnerElo = 1.0 / (1.0 + (float) pow(10, ($losersAverageElo - $winnersAverageElo) / $this->eloDDifference));
+        $expectedLoserElo = 1.0 - $expectedWinnerElo;
 
         $results = [];
-        $results['winners'] = $this->updatePokemonsElo($electionVote, $winnersPokemonElo, 1 - $expectedWinnerElo);
-        $results['losers'] = $this->updatePokemonsElo($electionVote, $losersPokemonElo, 0 - $expectedLoserElo);
+        $results['winners'] = $this->updatePokemonsElo($electionVote, $winnersPokemonElo, 1.0 - $expectedWinnerElo);
+        $results['losers'] = $this->updatePokemonsElo($electionVote, $losersPokemonElo, 0.0 - $expectedLoserElo);
 
         return $results;
     }
@@ -97,7 +97,7 @@ class ElectionUpdateEloService
 
     private function updatePokemonElo(ElectionVote $electionVote, PokemonElo $pokemonElo, float $baseExpectedElo): int
     {
-        $newElo = (int) ($pokemonElo->getElo() + round($this->eloKFactor * $baseExpectedElo));
+        $newElo = (int) ((float) $pokemonElo->getElo() + round((float) $this->eloKFactor * $baseExpectedElo));
 
         $this->repository->updateElo(
             $newElo,
