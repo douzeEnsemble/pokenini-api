@@ -11,6 +11,7 @@ use App\MessageHandler\CalculateHandlerInterface;
 use App\Repository\ActionLogsRepository;
 use App\Service\CalculatorService\CalculatorServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
 abstract class AbstractTestCalculateHandler extends TestCase
@@ -60,7 +61,7 @@ abstract class AbstractTestCalculateHandler extends TestCase
             ->method('flush')
         ;
 
-        /** @var CalculatorServiceInterface $calculatorService */
+        /** @var CalculatorServiceInterface|MockObject $calculatorService */
         $handler = $this->getHandler($calculatorService, $entityManager);
 
         $message = $this->getMessage();
@@ -105,8 +106,7 @@ abstract class AbstractTestCalculateHandler extends TestCase
             ->method('flush')
         ;
 
-        /** @var CalculatorServiceInterface $calculatorService */
-        /** @var EntityManagerInterface $entityManager */
+        /** @var CalculatorServiceInterface|MockObject $calculatorService */
         $handler = $this->getHandler($calculatorService, $entityManager);
 
         $message = $this->getMessage();

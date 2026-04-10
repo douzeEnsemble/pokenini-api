@@ -80,6 +80,7 @@ class TrainerPokemonEloTopQueryOptionsTest extends TestCase
     public function testWrongValueForCount(): void
     {
         $this->expectException(InvalidOptionsException::class);
+        // @phpstan-ignore argument.type
         new TrainerPokemonEloTopQueryOptions([
             'trainer_external_id' => '67865468',
             'dex_slug' => 'demo',

@@ -38,6 +38,10 @@ class ActionLogsController extends AbstractController
             $typeAction = $actionLog['type_action'];
             $period = 1 == $actionLog['row_number'] ? 'current' : 'last';
 
+            if (!array_key_exists($typeAction, $finalActionLogs)) {
+                $finalActionLogs[$typeAction] = [];
+            }
+
             $finalActionLogs[$typeAction][$period] = $actionLog;
         }
 

@@ -32,7 +32,6 @@ class GamesCollectionsAndDexUpdaterServiceTest extends TestCase
         $service->execute();
         $report = $service->getReport();
 
-        $this->assertInstanceOf(Report::class, $report);
         $this->assertEmpty($report->detail);
     }
 

@@ -13,7 +13,15 @@ class ActionLogsService
     ) {}
 
     /**
-     * @return null[][]|string[][]
+     * @return array<int, array{
+     *  type_action: string,
+     *  row_number: int,
+     *  created_at: string,
+     *  done_at: null|string,
+     *  execution_time: null|string,
+     *  details: null|string,
+     *  error_trace: null|string
+     * }>
      */
     public function getLastests(): array
     {

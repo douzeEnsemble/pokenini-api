@@ -44,7 +44,7 @@
         "ext-xml": "*",
         "ext-xmlwriter": "*",
         "hautelook/alice-bundle": "2.16.*",
-        "phpunit/phpunit": "^12.5.16",
+        "phpunit/phpunit": "^12.5.17",
         "symfony/debug-bundle": "7.4.*",
         "symfony/phpunit-bridge": "7.4.*",
         "symfony/stopwatch": "7.4.*",

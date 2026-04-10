@@ -176,16 +176,6 @@ parameters:
 			path: tests/src/Unit/DTO/CollectionsAvailabilitiesTest.php
 
 		-
-			message: "#^Parameter \\#1 \\$values of class App\\\\DTO\\\\ElectionVote constructor expects array\\<array\\<string\\>\\|string\\>, array\\<string, array\\<int, string\\>\\|int\\|string\\> given\\.$#"
-			count: 1
-			path: tests/src/Unit/DTO/ElectionVoteTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$values of class App\\\\DTO\\\\ElectionVote constructor expects array\\<array\\<string\\>\\|string\\>, array\\<string, array\\<int, string\\>\\|string\\|false\\> given\\.$#"
-			count: 2
-			path: tests/src/Unit/DTO/ElectionVoteTest.php
-
-		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$a\\.$#"
 			count: 1
 			path: tests/src/Unit/DTO/GameBundlesAvailabilitiesTest.php
@@ -259,11 +249,6 @@ parameters:
 			message: "#^Parameter \\#1 \\$values of class App\\\\DTO\\\\TrainerPokemonEloQueryOptions constructor expects array\\<int\\|string\\>, array\\<string, int\\|string\\|false\\> given\\.$#"
 			count: 1
 			path: tests/src/Unit/DTO/TrainerPokemonEloQueryOptionsTest.php
-
-		-
-			message: "#^Parameter \\#1 \\$values of class App\\\\DTO\\\\TrainerPokemonEloTopQueryOptions constructor expects array\\<int\\|string\\>, array\\<string, array\\<int, int\\>\\|string\\> given\\.$#"
-			count: 1
-			path: tests/src/Unit/DTO/TrainerPokemonEloTopQueryOptionsTest.php
 
 		-
 			message: "#^Parameter \\#1 \\$values of class App\\\\DTO\\\\TrainerPokemonEloTopQueryOptions constructor expects array\\<int\\|string\\>, array\\<string, int\\|string\\|false\\> given\\.$#"

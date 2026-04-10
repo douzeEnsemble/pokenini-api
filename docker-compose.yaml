@@ -47,7 +47,7 @@ services:
       dockerfile: ./.docker/php/Dockerfile
       target: php_dev
     volumes:
-      - .:/var/www/html
+      - .:/app
     environment:
       - PHP_CS_FIXER_IGNORE_ENV=1
     tty: true
@@ -55,7 +55,7 @@ services:
   web:
     image: nginx:1.28-alpine
     volumes:
-      - .:/var/www/html
+      - .:/app
       - ./.docker/nginx/nginx.conf:/etc/nginx/nginx.conf
       - ./.docker/nginx/conf.d:/etc/nginx/conf.d
     ports:
@@ -68,4 +68,3 @@ volumes:
   db_data_test:
 
   ###< doctrine/doctrine-bundle ###
-

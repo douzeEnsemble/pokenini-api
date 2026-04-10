@@ -11,7 +11,7 @@ use App\Entity\Traits\SoftDeleteable;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @SuppressWarnings(PHPMD.TooManyFields)
+ * @SuppressWarnings("PHPMD.TooManyFields")
  */
 #[ORM\Entity]
 class Pokemon

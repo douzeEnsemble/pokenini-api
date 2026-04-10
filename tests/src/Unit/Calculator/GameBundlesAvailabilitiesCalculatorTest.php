@@ -6,7 +6,6 @@ namespace App\Tests\Unit\Calculator;
 
 use App\Calculator\AbstractCalculator;
 use App\Calculator\GameBundlesAvailabilitiesCalculator;
-use App\DTO\DataChangeReport\Statistic;
 use App\Repository\GameBundlesAvailabilitiesRepository;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
@@ -21,12 +20,21 @@ class GameBundlesAvailabilitiesCalculatorTest extends TestCase
     public function testInit(): void
     {
         $gameBundlesAvailabilitiesRepository = $this->createMock(GameBundlesAvailabilitiesRepository::class);
+        $gameBundlesAvailabilitiesRepository
+            ->expects($this->never())
+            ->method('removeAll')
+        ;
+        $gameBundlesAvailabilitiesRepository
+            ->expects($this->never())
+            ->method('calculate')
+        ;
 
         $service = new GameBundlesAvailabilitiesCalculator($gameBundlesAvailabilitiesRepository);
 
         $service->init();
 
-        $this->assertInstanceOf(Statistic::class, $service->getStatistic());
+        $this->assertSame('game_bundles_availabilities', $service->getStatistic()->slug);
+        $this->assertSame(0, $service->getStatistic()->count);
     }
 
     public function testExecute(): void

@@ -55,6 +55,7 @@ class DexPokemonAvailabilityCalculator
         $this->setGamesValues($values, $rule, $pokemon);
         $this->setCollectionsValues($values, $rule, $pokemon);
 
+        /** @var mixed[][] $values */
         return $values;
     }
 

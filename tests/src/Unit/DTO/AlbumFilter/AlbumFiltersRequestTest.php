@@ -4,9 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\DTO\AlbumFilter;
 
-use App\DTO\AlbumFilter\AlbumFilters;
 use App\DTO\AlbumFilter\AlbumFiltersRequest;
-use App\DTO\AlbumFilter\AlbumFilterValues;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,20 +20,6 @@ class AlbumFiltersRequestTest extends TestCase
         $request = new Request([]);
 
         $filters = AlbumFiltersRequest::albumFiltersFromRequest($request);
-
-        $this->assertInstanceOf(AlbumFilters::class, $filters);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->primaryTypes);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->secondaryTypes);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->anyTypes);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->categoryForms);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->regionalForms);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->specialForms);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->variantForms);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->catchStates);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->originalGameBundles);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleAvailabilities);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleShinyAvailabilities);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->families);
 
         $this->assertEmpty($filters->primaryTypes->values);
         $this->assertEmpty($filters->secondaryTypes->values);
@@ -69,20 +53,6 @@ class AlbumFiltersRequestTest extends TestCase
         ]);
 
         $filters = AlbumFiltersRequest::albumFiltersFromRequest($request);
-
-        $this->assertInstanceOf(AlbumFilters::class, $filters);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->primaryTypes);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->secondaryTypes);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->anyTypes);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->categoryForms);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->regionalForms);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->specialForms);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->variantForms);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->catchStates);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->originalGameBundles);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleAvailabilities);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->gameBundleShinyAvailabilities);
-        $this->assertInstanceOf(AlbumFilterValues::class, $filters->families);
 
         $this->assertCount(2, $filters->primaryTypes->values);
         $this->assertCount(2, $filters->secondaryTypes->values);
