@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\Controller\AlbumIndexFilteredController;
+namespace App\Tests\Integration\Controller\AlbumIndexFilteredController;
 
 use App\Controller\AlbumIndexController;
 use App\Tests\Common\Traits\ReportTrait\AssertReportTrait;

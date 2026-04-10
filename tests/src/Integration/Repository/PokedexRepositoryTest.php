@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\Repository;
+namespace App\Tests\Integration\Repository;
 
 use App\Repository\PokedexRepository;
 use App\Repository\Trait\FiltersTrait;

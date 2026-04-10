@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\Controller;
+namespace App\Tests\Integration\Controller;
 
 use App\Controller\RegionalFormsController;
 use App\Service\RegionalFormsService;

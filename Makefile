@@ -163,25 +163,21 @@ t: tests
 tests-unit: ## Execute unit tests
 	@$(PHP_CONT) vendor/bin/phpunit tests/src/Unit
 
-.PHONY: tests-functional
-tests-functional: ## Execute functional tests
-	@$(PHP_CONT) vendor/bin/phpunit tests/src/Functional
+.PHONY: tests-integration
+tests-integration: ## Execute integration tests
+	@$(PHP_CONT) vendor/bin/phpunit tests/src/Integration
 
 .PHONY: tu
 tu: ## Alias of tests-unit
 tu: tests-unit
 
-.PHONY: tf
-tf: ## Alias of tests-functional
-tf: tests-functional
-
 .PHONY: ti
-ti: ## Alias of tests-functional
-ti: tests-functional
+ti: ## Alias of tests-integration
+ti: tests-integration
 
 .PHONY: tests-api-mocked
 tests-api-mocked: ## Execute tests on the group api-mocked-testing only
-	@$(PHP_CONT) vendor/bin/phpunit tests/src/Functional --group=api-mocked-testing --stop-on-defect --no-progress --no-logging
+	@$(PHP_CONT) vendor/bin/phpunit tests/src/Integration --group=api-mocked-testing --stop-on-defect --no-progress --no-logging
 
 ## —— Quality 👌 ———————————————————————————————————————————————————————————————
 .PHONY: quality

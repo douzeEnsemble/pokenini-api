@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\Updater\Forms;
+namespace App\Tests\Integration\Updater\Forms;
 
 use App\Updater\AbstractUpdater;
 use App\Updater\Forms\CategoryFormsUpdater;
