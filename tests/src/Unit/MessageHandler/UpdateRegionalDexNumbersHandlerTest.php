@@ -25,7 +25,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[UsesClass(UpdateRegionalDexNumbers::class)]
 #[CoversTrait(CalculateHandlerTrait::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class UpdateRegionalDexNumbersHandlerTest extends AbstractTestUpdateHandler
+final class UpdateRegionalDexNumbersHandlerTest extends AbstractTestUpdateHandler
 {
     #[\Override]
     public function getServiceClass(): string

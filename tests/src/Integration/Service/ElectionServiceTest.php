@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @internal
  */
 #[CoversClass(ElectionService::class)]
-class ElectionServiceTest extends KernelTestCase
+final class ElectionServiceTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
 

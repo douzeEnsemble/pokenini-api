@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @internal
  */
 #[CoversClass(AlbumUpsertController::class)]
-class AlbumUpsertControllerTest extends AbstractTestControllerApi
+final class AlbumUpsertControllerTest extends AbstractTestControllerApi
 {
     use GetPokedexTrait;
     use CountTrainerDexTrait;

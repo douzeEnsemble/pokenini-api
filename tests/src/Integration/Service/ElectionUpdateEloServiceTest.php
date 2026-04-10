@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @internal
  */
 #[CoversClass(ElectionUpdateEloService::class)]
-class ElectionUpdateEloServiceTest extends KernelTestCase
+final class ElectionUpdateEloServiceTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use GetTrainerPokemonEloTrait;

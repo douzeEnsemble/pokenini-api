@@ -19,7 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  */
 #[CoversClass(DexAvailabilitiesRepository::class)]
 #[CoversTrait(FiltersTrait::class)]
-class DexAvailabilitiesRepositoryTest extends KernelTestCase
+final class DexAvailabilitiesRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use CountDexAvailabilityTrait;

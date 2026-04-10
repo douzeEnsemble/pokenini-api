@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  */
 #[CoversClass(RegionalFormsController::class)]
 #[CoversClass(RegionalFormsService::class)]
-class RegionalFormsControllerTest extends AbstractTestControllerApi
+final class RegionalFormsControllerTest extends AbstractTestControllerApi
 {
     public function testGetCollection(): void
     {

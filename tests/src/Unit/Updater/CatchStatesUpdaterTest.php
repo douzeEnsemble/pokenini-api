@@ -19,7 +19,7 @@ use Psr\Log\LoggerInterface;
  * @internal
  */
 #[CoversClass(CatchStatesUpdater::class)]
-class CatchStatesUpdaterTest extends TestCase
+final class CatchStatesUpdaterTest extends TestCase
 {
     public function testGettingSpreasheetLog(): void
     {

@@ -12,7 +12,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @internal
  */
 #[CoversClass(DexController::class)]
-class DexControllerTest extends AbstractTestControllerApi
+final class DexControllerTest extends AbstractTestControllerApi
 {
     use GetTrainerDexTrait;
 

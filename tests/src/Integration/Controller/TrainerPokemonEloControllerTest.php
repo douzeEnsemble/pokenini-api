@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @internal
  */
 #[CoversClass(TrainerPokemonEloController::class)]
-class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
+final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
 {
     public function testGetTop(): void
     {

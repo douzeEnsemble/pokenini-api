@@ -11,7 +11,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @internal
  */
 #[CoversClass(PokemonsController::class)]
-class PokemonsControllerTest extends AbstractTestControllerApi
+final class PokemonsControllerTest extends AbstractTestControllerApi
 {
     public function testGetListFromDex(): void
     {

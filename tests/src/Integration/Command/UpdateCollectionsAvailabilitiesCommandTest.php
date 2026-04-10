@@ -26,7 +26,7 @@ use PHPUnit\Framework\Attributes\CoversTrait;
 #[CoversClass(UpdateCollectionsAvailabilities::class)]
 #[CoversClass(AbstractActionMessage::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class UpdateCollectionsAvailabilitiesCommandTest extends AbstractTestCaseCommand
+final class UpdateCollectionsAvailabilitiesCommandTest extends AbstractTestCaseCommand
 {
     use CountCollectionAvailabilityTrait;
     use CountActionLogTrait;

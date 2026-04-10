@@ -15,7 +15,7 @@ use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
  * @internal
  */
 #[CoversClass(TrainerPokemonEloQueryOptions::class)]
-class TrainerPokemonEloQueryOptionsTest extends TestCase
+final class TrainerPokemonEloQueryOptionsTest extends TestCase
 {
     public function testOk(): void
     {

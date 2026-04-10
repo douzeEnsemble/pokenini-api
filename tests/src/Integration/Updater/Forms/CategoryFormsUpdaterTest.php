@@ -12,7 +12,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @internal
  */
 #[CoversClass(CategoryFormsUpdater::class)]
-class CategoryFormsUpdaterTest extends AbstractTestFormsUpdater
+final class CategoryFormsUpdaterTest extends AbstractTestFormsUpdater
 {
     protected int $initialTotalCount = 3;
     protected int $finalTotalCount = 4;

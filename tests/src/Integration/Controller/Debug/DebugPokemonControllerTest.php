@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  */
 #[CoversClass(DebugPokemonController::class)]
 #[CoversClass(DexAvailabilitiesService::class)]
-class DebugPokemonControllerTest extends AbstractTestControllerApi
+final class DebugPokemonControllerTest extends AbstractTestControllerApi
 {
     public function testPokemon(): void
     {

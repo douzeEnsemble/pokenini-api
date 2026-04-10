@@ -14,7 +14,7 @@ use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
  * @internal
  */
 #[CoversClass(TrainerDexAttributes::class)]
-class TrainerDexAttributesTest extends TestCase
+final class TrainerDexAttributesTest extends TestCase
 {
     public function testOk(): void
     {

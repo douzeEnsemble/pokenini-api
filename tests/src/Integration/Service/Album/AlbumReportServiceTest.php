@@ -17,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @internal
  */
 #[CoversClass(AlbumReportService::class)]
-class AlbumReportServiceTest extends KernelTestCase
+final class AlbumReportServiceTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use CountGameBundleAvailabilityTrait;

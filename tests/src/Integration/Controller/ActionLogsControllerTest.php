@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  */
 #[CoversClass(ActionLogsController::class)]
 #[CoversClass(ActionLogsService::class)]
-class ActionLogsControllerTest extends WebTestCase
+final class ActionLogsControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;
 

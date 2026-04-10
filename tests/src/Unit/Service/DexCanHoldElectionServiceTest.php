@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(DexCanHoldElectionService::class)]
-class DexCanHoldElectionServiceTest extends TestCase
+final class DexCanHoldElectionServiceTest extends TestCase
 {
     public function testGet(): void
     {

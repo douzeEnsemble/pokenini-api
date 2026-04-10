@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(A1Notation::class)]
-class A1NotationTest extends TestCase
+final class A1NotationTest extends TestCase
 {
     #[DataProvider('providerIndexToLetter')]
     public function testIndexToLetter(int $index, string $expected): void

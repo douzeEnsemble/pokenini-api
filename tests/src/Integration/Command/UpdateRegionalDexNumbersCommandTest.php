@@ -26,7 +26,7 @@ use PHPUnit\Framework\Attributes\CoversTrait;
 #[CoversClass(UpdateRegionalDexNumbers::class)]
 #[CoversClass(AbstractActionMessage::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class UpdateRegionalDexNumbersCommandTest extends AbstractTestCaseCommand
+final class UpdateRegionalDexNumbersCommandTest extends AbstractTestCaseCommand
 {
     use CountRegionalDexNumberTrait;
     use CountActionLogTrait;

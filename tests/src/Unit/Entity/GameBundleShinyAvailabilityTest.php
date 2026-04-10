@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(GameBundleShinyAvailability::class)]
-class GameBundleShinyAvailabilityTest extends TestCase
+final class GameBundleShinyAvailabilityTest extends TestCase
 {
     public function testCreateAvailable(): void
     {

@@ -15,7 +15,7 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
  * @internal
  */
 #[CoversClass(AlbumFilters::class)]
-class AlbumFiltersTest extends TestCase
+final class AlbumFiltersTest extends TestCase
 {
     public function testCreateFromArrayEmpty(): void
     {

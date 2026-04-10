@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Integration\Repository;
 
-class DexAvailabilitiesRepositoryData
+final class DexAvailabilitiesRepositoryData
 {
     /**
      * @return int[][]|string[][][][]

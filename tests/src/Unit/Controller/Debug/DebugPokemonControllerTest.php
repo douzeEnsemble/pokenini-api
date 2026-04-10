@@ -21,7 +21,7 @@ use Symfony\Component\Serializer\Serializer;
  */
 #[CoversClass(DebugPokemonController::class)]
 #[CoversClass(PokedexService::class)]
-class DebugPokemonControllerTest extends TestCase
+final class DebugPokemonControllerTest extends TestCase
 {
     public function testPokemonCleanCaches(): void
     {

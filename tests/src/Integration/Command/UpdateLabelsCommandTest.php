@@ -26,7 +26,7 @@ use PHPUnit\Framework\Attributes\CoversTrait;
 #[CoversClass(UpdateLabels::class)]
 #[CoversClass(AbstractActionMessage::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class UpdateLabelsCommandTest extends AbstractTestCaseCommand
+final class UpdateLabelsCommandTest extends AbstractTestCaseCommand
 {
     use CounterTableTrait;
     use CountActionLogTrait;

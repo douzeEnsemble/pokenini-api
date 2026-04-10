@@ -25,7 +25,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[UsesClass(CalculatePokemonAvailabilities::class)]
 #[CoversTrait(CalculateHandlerTrait::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class CalculatePokemonAvailabilitiesHandlerTest extends AbstractTestCalculateHandler
+final class CalculatePokemonAvailabilitiesHandlerTest extends AbstractTestCalculateHandler
 {
     #[\Override]
     public function getServiceClass(): string

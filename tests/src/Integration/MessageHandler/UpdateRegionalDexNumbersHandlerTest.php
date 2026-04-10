@@ -21,7 +21,7 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
  */
 #[CoversClass(UpdateRegionalDexNumbersHandler::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class UpdateRegionalDexNumbersHandlerTest extends KernelTestCase
+final class UpdateRegionalDexNumbersHandlerTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use InteractsWithMessenger;

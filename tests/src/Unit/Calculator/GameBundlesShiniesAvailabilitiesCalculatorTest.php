@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(GameBundlesShiniesAvailabilitiesCalculator::class)]
-class GameBundlesShiniesAvailabilitiesCalculatorTest extends TestCase
+final class GameBundlesShiniesAvailabilitiesCalculatorTest extends TestCase
 {
     public function testExecute(): void
     {

@@ -21,7 +21,7 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
  * @internal
  */
 #[CoversClass(AdminUpdateController::class)]
-class AdminUpdateControllerTest extends WebTestCase
+final class AdminUpdateControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;
     use InteractsWithMessenger;

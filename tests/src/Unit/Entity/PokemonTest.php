@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(Pokemon::class)]
-class PokemonTest extends TestCase
+final class PokemonTest extends TestCase
 {
     public function testGetIdentifierDefault(): void
     {

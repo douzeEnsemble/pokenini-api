@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(Report::class)]
-class ReportTest extends TestCase
+final class ReportTest extends TestCase
 {
     public function testConstructor(): void
     {

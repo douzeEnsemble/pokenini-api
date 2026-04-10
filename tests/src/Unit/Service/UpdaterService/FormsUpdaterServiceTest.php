@@ -17,7 +17,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(FormsUpdaterService::class)]
-class FormsUpdaterServiceTest extends TestCase
+final class FormsUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void
     {

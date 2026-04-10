@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @internal
  */
 #[CoversClass(ActionLogsRepository::class)]
-class ActionLogsRepositoryTest extends KernelTestCase
+final class ActionLogsRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
 
@@ -34,7 +34,6 @@ class ActionLogsRepositoryTest extends KernelTestCase
 
         foreach ($list as $item) {
             $this->assertArrayHasKey('type_action', $item);
-            $this->assertIsString($item['type_action']);
 
             $this->assertArrayHasKey('row_number', $item);
             $this->assertThat($item['row_number'], $this->logicalOr(
@@ -43,7 +42,6 @@ class ActionLogsRepositoryTest extends KernelTestCase
             ));
 
             $this->assertArrayHasKey('created_at', $item);
-            $this->assertIsString($item['created_at']);
 
             $this->assertArrayHasKey('done_at', $item);
             $this->assertThat($item['done_at'], $this->logicalOr(

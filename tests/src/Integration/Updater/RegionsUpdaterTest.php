@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  */
 #[CoversClass(RegionsUpdater::class)]
 #[CoversClass(AbstractUpdater::class)]
-class RegionsUpdaterTest extends AbstractTestUpdater
+final class RegionsUpdaterTest extends AbstractTestUpdater
 {
     protected int $initialTotalCount = 10;
     protected int $finalTotalCount = 10;

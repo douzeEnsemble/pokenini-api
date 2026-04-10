@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(ElectionVoteResult::class)]
-class ElectionVoteResultTest extends TestCase
+final class ElectionVoteResultTest extends TestCase
 {
     public function testOk(): void
     {

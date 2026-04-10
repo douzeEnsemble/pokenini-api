@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(PokedexService::class)]
-class PokedexServiceTest extends TestCase
+final class PokedexServiceTest extends TestCase
 {
     public function testGetCatchStateCountsDefinedByTrainer(): void
     {

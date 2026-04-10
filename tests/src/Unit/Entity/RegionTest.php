@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(Region::class)]
-class RegionTest extends TestCase
+final class RegionTest extends TestCase
 {
     public function testGetIdentifierDefault(): void
     {

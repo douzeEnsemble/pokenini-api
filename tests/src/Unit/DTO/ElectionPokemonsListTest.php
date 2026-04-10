@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(ElectionPokemonsList::class)]
-class ElectionPokemonsListTest extends TestCase
+final class ElectionPokemonsListTest extends TestCase
 {
     public function testOk(): void
     {

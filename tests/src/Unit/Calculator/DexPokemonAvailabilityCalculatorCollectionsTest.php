@@ -21,7 +21,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(DexPokemonAvailabilityCalculator::class)]
-class DexPokemonAvailabilityCalculatorCollectionsTest extends TestCase
+final class DexPokemonAvailabilityCalculatorCollectionsTest extends TestCase
 {
     #[DataProvider('providerCalculateIncludingCollectionsValues')]
     public function testCalculateIncludingCollectionsValues(string $rule): void

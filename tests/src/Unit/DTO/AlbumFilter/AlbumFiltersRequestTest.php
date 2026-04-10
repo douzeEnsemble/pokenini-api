@@ -13,7 +13,7 @@ use Symfony\Component\HttpFoundation\Request;
  * @internal
  */
 #[CoversClass(AlbumFiltersRequest::class)]
-class AlbumFiltersRequestTest extends TestCase
+final class AlbumFiltersRequestTest extends TestCase
 {
     public function testAlbumFiltersFromRequestEmpty(): void
     {

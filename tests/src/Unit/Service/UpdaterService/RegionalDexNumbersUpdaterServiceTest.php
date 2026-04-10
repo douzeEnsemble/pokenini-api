@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(RegionalDexNumbersUpdaterService::class)]
-class RegionalDexNumbersUpdaterServiceTest extends TestCase
+final class RegionalDexNumbersUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void
     {

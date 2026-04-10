@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(PokemonAvailabilitiesCalculatorService::class)]
-class PokemonAvailabilitiesCalculatorServiceTest extends TestCase
+final class PokemonAvailabilitiesCalculatorServiceTest extends TestCase
 {
     public function testExecute(): void
     {

@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(CalculateGameBundlesAvailabilities::class)]
-class CalculateGameBundlesAvailabilitiesTest extends TestCase
+final class CalculateGameBundlesAvailabilitiesTest extends TestCase
 {
     public function testSerialize(): void
     {

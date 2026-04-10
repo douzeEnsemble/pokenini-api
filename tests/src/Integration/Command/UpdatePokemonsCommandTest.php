@@ -26,7 +26,7 @@ use PHPUnit\Framework\Attributes\CoversTrait;
 #[CoversClass(UpdatePokemons::class)]
 #[CoversClass(AbstractActionMessage::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class UpdatePokemonsCommandTest extends AbstractTestCaseCommand
+final class UpdatePokemonsCommandTest extends AbstractTestCaseCommand
 {
     use CounterTableTrait;
     use CountActionLogTrait;

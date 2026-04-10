@@ -19,7 +19,7 @@ use PHPUnit\Framework\TestCase;
  */
 #[CoversClass(DexAvailabilitiesCalculator::class)]
 #[CoversClass(AbstractCalculator::class)]
-class DexAvailabilitiesCalculatorTest extends TestCase
+final class DexAvailabilitiesCalculatorTest extends TestCase
 {
     public function testInit(): void
     {

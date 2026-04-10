@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(GetNPokemonsToPickService::class)]
-class GetNPokemonsToPickServiceTest extends TestCase
+final class GetNPokemonsToPickServiceTest extends TestCase
 {
     public function testgetNPokemonsToPick(): void
     {

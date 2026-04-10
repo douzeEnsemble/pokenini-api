@@ -21,7 +21,7 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
  */
 #[CoversClass(UpdateGamesCollectionsAndDexHandler::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class UpdateGamesCollectionsAndDexHandlerTest extends KernelTestCase
+final class UpdateGamesCollectionsAndDexHandlerTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use InteractsWithMessenger;

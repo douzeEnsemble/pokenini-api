@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  */
 #[CoversClass(DebugDexController::class)]
 #[CoversClass(DexAvailabilitiesService::class)]
-class DebugDexControllerTest extends AbstractTestControllerApi
+final class DebugDexControllerTest extends AbstractTestControllerApi
 {
     public function testDex(): void
     {

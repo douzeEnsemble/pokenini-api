@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(TrainerPokemonElo::class)]
-class TrainerPokemonEloTest extends TestCase
+final class TrainerPokemonEloTest extends TestCase
 {
     public function testConstructorAndGetters(): void
     {

@@ -17,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  */
 #[CoversClass(PokedexRepository::class)]
 #[CoversTrait(FiltersTrait::class)]
-class PokedexRepositoryTest extends KernelTestCase
+final class PokedexRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use GetPokedexTrait;

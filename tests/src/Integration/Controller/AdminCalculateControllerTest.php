@@ -18,7 +18,7 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
  * @internal
  */
 #[CoversClass(AdminCalculateController::class)]
-class AdminCalculateControllerTest extends WebTestCase
+final class AdminCalculateControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;
     use InteractsWithMessenger;

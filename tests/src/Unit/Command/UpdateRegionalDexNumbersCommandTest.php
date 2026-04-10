@@ -20,7 +20,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  * @internal
  */
 #[CoversClass(UpdateRegionalDexNumbersCommand::class)]
-class UpdateRegionalDexNumbersCommandTest extends TestCase
+final class UpdateRegionalDexNumbersCommandTest extends TestCase
 {
     public function testFailureOnException(): void
     {

@@ -20,7 +20,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  * @internal
  */
 #[CoversClass(CalculateDexAvailabilitiesCommand::class)]
-class CalculateDexAvailabilitiesCommandTest extends TestCase
+final class CalculateDexAvailabilitiesCommandTest extends TestCase
 {
     public function testFailureOnException(): void
     {

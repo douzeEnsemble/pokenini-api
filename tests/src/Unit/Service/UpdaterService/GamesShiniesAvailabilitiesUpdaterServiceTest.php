@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(GamesShiniesAvailabilitiesUpdaterService::class)]
-class GamesShiniesAvailabilitiesUpdaterServiceTest extends TestCase
+final class GamesShiniesAvailabilitiesUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void
     {

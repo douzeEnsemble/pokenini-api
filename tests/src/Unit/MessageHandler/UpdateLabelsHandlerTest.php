@@ -25,7 +25,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[UsesClass(UpdateLabels::class)]
 #[CoversTrait(CalculateHandlerTrait::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class UpdateLabelsHandlerTest extends AbstractTestUpdateHandler
+final class UpdateLabelsHandlerTest extends AbstractTestUpdateHandler
 {
     #[\Override]
     public function getServiceClass(): string

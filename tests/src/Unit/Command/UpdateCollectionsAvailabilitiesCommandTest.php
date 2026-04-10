@@ -20,7 +20,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  * @internal
  */
 #[CoversClass(UpdateCollectionsAvailabilitiesCommand::class)]
-class UpdateCollectionsAvailabilitiesCommandTest extends TestCase
+final class UpdateCollectionsAvailabilitiesCommandTest extends TestCase
 {
     public function testFailureOnException(): void
     {
