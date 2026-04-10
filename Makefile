@@ -360,7 +360,7 @@ infection: build/coverage/coverage-xml tools/infection/vendor/bin/infection clea
 ## —— Security 🛡️ ———————————————————————————————————————————————————————————————
 .PHONY: security
 security: ## Execute all security commands
-security: composer-audit security-checker
+security: composer-audit security-check
 
 .PHONY: s
 s: ## Alias of security
@@ -371,18 +371,11 @@ composer-audit: ## Execute Composer Audit
 composer-audit: c=audit
 composer-audit: composer
 
-tools/php-security-checker:
-	mkdir tools/php-security-checker
+.PHONY: security-check
+security-check: ## Execute Symfony Security Checker
+security-check:
+	@$(PHP_CONT) symfony security:check
 
-tools/php-security-checker/local-php-security-checker: ## Download the file if needed
-tools/php-security-checker/local-php-security-checker: tools/php-security-checker
-	wget https://github.com/fabpot/local-php-security-checker/releases/download/v2.1.3/local-php-security-checker_linux_amd64 -O tools/php-security-checker/local-php-security-checker
-	chmod a+x tools/php-security-checker/local-php-security-checker
-
-.PHONY: security-checker
-security-checker: ## Execute Security Checker
-security-checker: tools/php-security-checker/local-php-security-checker
-	tools/php-security-checker/local-php-security-checker
 
 ## —— Cleaning 🧽 ———————————————————————————————————————————————————————————————
 .PHONY: clean-unused-files
