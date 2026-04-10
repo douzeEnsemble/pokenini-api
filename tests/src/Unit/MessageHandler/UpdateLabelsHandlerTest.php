@@ -33,14 +33,12 @@ class UpdateLabelsHandlerTest extends AbstractTestUpdateHandler
         return LabelsUpdaterService::class;
     }
 
-    /**
-     * @param LabelsUpdaterService $updaterService
-     */
     #[\Override]
     public function getHandler(
         UpdaterServiceInterface $updaterService,
         EntityManagerInterface $entityManager,
     ): UpdateHandlerInterface {
+        /** @var LabelsUpdaterService $updaterService */
         return new UpdateLabelsHandler(
             $updaterService,
             $entityManager,

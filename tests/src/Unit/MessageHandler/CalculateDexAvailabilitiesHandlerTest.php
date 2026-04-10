@@ -33,14 +33,12 @@ class CalculateDexAvailabilitiesHandlerTest extends AbstractTestCalculateHandler
         return DexAvailabilitiesCalculatorService::class;
     }
 
-    /**
-     * @param DexAvailabilitiesCalculatorService $calculatorService
-     */
     #[\Override]
     public function getHandler(
         CalculatorServiceInterface $calculatorService,
         EntityManagerInterface $entityManager,
     ): CalculateHandlerInterface {
+        /** @var DexAvailabilitiesCalculatorService $calculatorService */
         return new CalculateDexAvailabilitiesHandler(
             $calculatorService,
             $entityManager,

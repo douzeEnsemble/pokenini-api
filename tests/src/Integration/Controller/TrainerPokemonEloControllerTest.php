@@ -204,6 +204,6 @@ class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
             ]
         );
 
-        $this->assertEquals(401, $this->getResponse()->getStatusCode());
+        $this->assertEquals(401, $this->getClientResponse()->getStatusCode());
     }
 }

@@ -15,6 +15,7 @@ abstract class AbstractTestControllerApi extends WebTestCase
 
     protected AbstractBrowser $client;
 
+    #[\Override]
     protected function setUp(): void
     {
         parent::setUp();
@@ -26,7 +27,7 @@ abstract class AbstractTestControllerApi extends WebTestCase
     {
         $this->assertEquals(
             200,
-            $this->getResponse()->getStatusCode()
+            $this->getClientResponse()->getStatusCode()
         );
     }
 
@@ -34,19 +35,19 @@ abstract class AbstractTestControllerApi extends WebTestCase
     {
         $this->assertEquals(
             404,
-            $this->getResponse()->getStatusCode()
+            $this->getClientResponse()->getStatusCode()
         );
     }
 
-    public function getResponse(): Response
+    public function getClientResponse(): Response
     {
         /** @var Response */
         return $this->client->getResponse();
     }
 
-    public function getResponseContent(): string
+    public function getClientResponseContent(): string
     {
-        return (string) $this->getResponse()->getContent();
+        return (string) $this->getClientResponse()->getContent();
     }
 
     /**
@@ -55,7 +56,7 @@ abstract class AbstractTestControllerApi extends WebTestCase
     public function getJsonDecodedResponseContent(): array
     {
         /** @var bool[]|int[]|string[] */
-        return json_decode($this->getResponseContent(), true);
+        return json_decode($this->getClientResponseContent(), true);
     }
 
     /**
@@ -102,6 +103,6 @@ abstract class AbstractTestControllerApi extends WebTestCase
         $this->apiRequest('GET', $route, $params, $options);
 
         /** @var mixed[] */
-        return json_decode((string) $this->getResponse()->getContent(), true);
+        return json_decode((string) $this->getClientResponse()->getContent(), true);
     }
 }

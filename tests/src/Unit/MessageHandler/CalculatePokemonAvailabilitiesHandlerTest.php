@@ -33,14 +33,12 @@ class CalculatePokemonAvailabilitiesHandlerTest extends AbstractTestCalculateHan
         return PokemonAvailabilitiesCalculatorService::class;
     }
 
-    /**
-     * @param PokemonAvailabilitiesCalculatorService $calculatorService
-     */
     #[\Override]
     public function getHandler(
         CalculatorServiceInterface $calculatorService,
         EntityManagerInterface $entityManager,
     ): CalculateHandlerInterface {
+        /** @var PokemonAvailabilitiesCalculatorService $calculatorService */
         return new CalculatePokemonAvailabilitiesHandler(
             $calculatorService,
             $entityManager,

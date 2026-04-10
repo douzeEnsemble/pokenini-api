@@ -31,7 +31,7 @@ class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
         );
 
         $this->assertResponseIsOK();
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
@@ -78,7 +78,7 @@ class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
         );
 
         $this->assertResponseIsOK();
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
@@ -118,7 +118,7 @@ class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
         );
 
         $this->assertResponseIsOK();
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
@@ -158,7 +158,7 @@ class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
         );
 
         $this->assertResponseIsOK();
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
@@ -198,7 +198,7 @@ class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
         );
 
         $this->assertResponseIsOK();
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
@@ -225,7 +225,7 @@ class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
         );
 
         $this->assertResponseIsOK();
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);

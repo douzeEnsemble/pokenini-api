@@ -52,7 +52,12 @@ class ElectionVoteTest extends TestCase
     public function testWrongValueForTrainerExternalId(): void
     {
         $this->expectException(InvalidOptionsException::class);
-        // @phpstan-ignore argument.type
+
+        /**
+         * @psalm-suppress InvalidArgument
+         *
+         * @phpstan-ignore argument.type
+         */
         new ElectionVote([
             'trainer_external_id' => 67865468,
             'dex_slug' => 'demo',
@@ -64,7 +69,12 @@ class ElectionVoteTest extends TestCase
     public function testWrongValueForElectionSlug(): void
     {
         $this->expectException(InvalidOptionsException::class);
-        // @phpstan-ignore argument.type
+
+        /**
+         * @psalm-suppress InvalidArgument
+         *
+         * @phpstan-ignore argument.type
+         */
         new ElectionVote([
             'trainer_external_id' => '67865468',
             'dex_slug' => 'demo',
@@ -77,7 +87,12 @@ class ElectionVoteTest extends TestCase
     public function testWrongValueForDexSlug(): void
     {
         $this->expectException(InvalidOptionsException::class);
-        // @phpstan-ignore argument.type
+
+        /**
+         * @psalm-suppress InvalidArgument
+         *
+         * @phpstan-ignore argument.type
+         */
         new ElectionVote([
             'trainer_external_id' => '67865468',
             'dex_slug' => false,

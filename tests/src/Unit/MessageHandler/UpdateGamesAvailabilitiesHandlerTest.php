@@ -33,14 +33,12 @@ class UpdateGamesAvailabilitiesHandlerTest extends AbstractTestUpdateHandler
         return GamesAvailabilitiesUpdaterService::class;
     }
 
-    /**
-     * @param GamesAvailabilitiesUpdaterService $updaterService
-     */
     #[\Override]
     public function getHandler(
         UpdaterServiceInterface $updaterService,
         EntityManagerInterface $entityManager,
     ): UpdateHandlerInterface {
+        /** @var GamesAvailabilitiesUpdaterService $updaterService */
         return new UpdateGamesAvailabilitiesHandler(
             $updaterService,
             $entityManager,
