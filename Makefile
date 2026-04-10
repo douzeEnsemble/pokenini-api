@@ -203,7 +203,7 @@ docker-compose-fixer: ## Run Docker Compose fixer
 .PHONY: dockerfile-linter
 dockerfile-linter: ## Run Dockerfile linter
 	@find .docker -name 'Dockerfile' | while read -r dockerfile; do \
-		docker run -t --rm -v ${PWD}:/app hadolint/hadolint:2.12.0-alpine hadolint "/app/$$dockerfile"; \
+		$(HADOLINT_CMD) "/app/$$dockerfile"; \
 	done
 
 .PHONY: dotenv-linter
