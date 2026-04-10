@@ -33,14 +33,12 @@ class UpdateGamesCollectionsAndDexHandlerTest extends AbstractTestUpdateHandler
         return GamesCollectionsAndDexUpdaterService::class;
     }
 
-    /**
-     * @param GamesCollectionsAndDexUpdaterService $updaterService
-     */
     #[\Override]
     public function getHandler(
         UpdaterServiceInterface $updaterService,
         EntityManagerInterface $entityManager,
     ): UpdateHandlerInterface {
+        /** @var GamesCollectionsAndDexUpdaterService $updaterService */
         return new UpdateGamesCollectionsAndDexHandler(
             $updaterService,
             $entityManager,

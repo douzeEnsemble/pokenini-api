@@ -22,7 +22,7 @@ class DebugPokemonControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         $this->assertStringNotContainsString('__', $content);
 
@@ -52,7 +52,7 @@ class DebugPokemonControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        $this->assertEmpty($this->getResponseContent());
+        $this->assertEmpty($this->getClientResponseContent());
     }
 
     public function testPokemonCleanCachesNotFound(): void
@@ -68,7 +68,7 @@ class DebugPokemonControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         $this->assertStringNotContainsString('__', $content);
 

@@ -18,6 +18,7 @@ class DexAvailabilitiesCalculatorService extends AbstractCalculatorService
     #[\Override]
     public function execute(): void
     {
+        /** @psalm-suppress UndefinedInterfaceMethod */
         $this->cache->clear();
 
         $this->calculator->execute();

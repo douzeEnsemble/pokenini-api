@@ -33,14 +33,12 @@ class CalculateGameBundlesShiniesAvailabilitiesHandlerTest extends AbstractTestC
         return GameBundlesShiniesAvailabilitiesCalculatorService::class;
     }
 
-    /**
-     * @param GameBundlesShiniesAvailabilitiesCalculatorService $calculatorService
-     */
     #[\Override]
     public function getHandler(
         CalculatorServiceInterface $calculatorService,
         EntityManagerInterface $entityManager,
     ): CalculateHandlerInterface {
+        /** @var GameBundlesShiniesAvailabilitiesCalculatorService $calculatorService */
         return new CalculateGameBundlesShiniesAvailabilitiesHandler(
             $calculatorService,
             $entityManager,

@@ -33,14 +33,12 @@ class UpdateCollectionsAvailabilitiesHandlerTest extends AbstractTestUpdateHandl
         return CollectionsAvailabilitiesUpdaterService::class;
     }
 
-    /**
-     * @param CollectionsAvailabilitiesUpdaterService $updaterService
-     */
     #[\Override]
     public function getHandler(
         UpdaterServiceInterface $updaterService,
         EntityManagerInterface $entityManager,
     ): UpdateHandlerInterface {
+        /** @var CollectionsAvailabilitiesUpdaterService $updaterService */
         return new UpdateCollectionsAvailabilitiesHandler(
             $updaterService,
             $entityManager,

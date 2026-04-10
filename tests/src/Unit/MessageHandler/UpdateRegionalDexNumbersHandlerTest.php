@@ -33,14 +33,12 @@ class UpdateRegionalDexNumbersHandlerTest extends AbstractTestUpdateHandler
         return RegionalDexNumbersUpdaterService::class;
     }
 
-    /**
-     * @param RegionalDexNumbersUpdaterService $updaterService
-     */
     #[\Override]
     public function getHandler(
         UpdaterServiceInterface $updaterService,
         EntityManagerInterface $entityManager,
     ): UpdateHandlerInterface {
+        /** @var RegionalDexNumbersUpdaterService $updaterService */
         return new UpdateRegionalDexNumbersHandler(
             $updaterService,
             $entityManager,

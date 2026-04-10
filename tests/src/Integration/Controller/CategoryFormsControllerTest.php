@@ -55,6 +55,6 @@ class CategoryFormsControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest('GET', '/forms/category', [], ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'treize']);
 
-        $this->assertEquals(401, $this->getResponse()->getStatusCode());
+        $this->assertEquals(401, $this->getClientResponse()->getStatusCode());
     }
 }

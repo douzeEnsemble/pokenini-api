@@ -140,6 +140,8 @@ class TrainerPokemonEloListQueryOptionsTest extends TestCase
     public function testWrongValueForCount(): void
     {
         $this->expectException(InvalidOptionsException::class);
+
+        /** @psalm-suppress InvalidArgument */
         new TrainerPokemonEloListQueryOptions([
             'trainer_external_id' => '67865468',
             'dex_slug' => 'demo',

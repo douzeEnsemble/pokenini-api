@@ -22,7 +22,7 @@ class DebugDexControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         $this->assertStringNotContainsString('__', $content);
 
@@ -54,7 +54,7 @@ class DebugDexControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         $this->assertStringNotContainsString('__', $content);
 

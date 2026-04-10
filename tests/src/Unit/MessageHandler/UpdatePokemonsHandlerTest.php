@@ -33,14 +33,12 @@ class UpdatePokemonsHandlerTest extends AbstractTestUpdateHandler
         return PokemonsUpdaterService::class;
     }
 
-    /**
-     * @param PokemonsUpdaterService $updaterService
-     */
     #[\Override]
     public function getHandler(
         UpdaterServiceInterface $updaterService,
         EntityManagerInterface $entityManager,
     ): UpdateHandlerInterface {
+        /** @var PokemonsUpdaterService $updaterService */
         return new UpdatePokemonsHandler(
             $updaterService,
             $entityManager,

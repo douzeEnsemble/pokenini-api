@@ -23,7 +23,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var bool[][]|int[][][]|null[][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
@@ -106,7 +106,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var bool[][]|int[][][]|null[][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
@@ -191,7 +191,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var bool[][]|int[][][]|null[][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
@@ -274,7 +274,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var bool[][]|int[][][]|null[][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
@@ -357,7 +357,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var bool[][]|int[][][]|null[][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
@@ -423,7 +423,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var bool[][]|int[][][]|null[][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
@@ -489,7 +489,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var bool[][]|int[][][]|null[][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
@@ -531,7 +531,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var bool[][]|int[][][]|null[][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
@@ -573,7 +573,7 @@ class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var bool[][]|int[][][]|null[][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);

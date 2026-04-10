@@ -82,6 +82,8 @@ class TrainerPokemonEloQueryOptionsTest extends TestCase
     public function testWrongValueForElectionSlug(): void
     {
         $this->expectException(InvalidOptionsException::class);
+
+        /** @psalm-suppress InvalidArgument */
         new TrainerPokemonEloQueryOptions([
             'trainer_external_id' => '67865468',
             'dex_slug' => 'demo',
@@ -104,6 +106,8 @@ class TrainerPokemonEloQueryOptionsTest extends TestCase
     public function testWrongValueForCount(): void
     {
         $this->expectException(InvalidOptionsException::class);
+
+        /** @psalm-suppress InvalidArgument */
         new TrainerPokemonEloQueryOptions([
             'trainer_external_id' => '67865468',
             'dex_slug' => 'demo',

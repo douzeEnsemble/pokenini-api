@@ -31,7 +31,7 @@ class GamesTest extends AbstractTestAlbumIndexFilteredController
         );
 
         $this->assertResponseIsOK();
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
@@ -87,7 +87,7 @@ class GamesTest extends AbstractTestAlbumIndexFilteredController
         );
 
         $this->assertResponseIsOK();
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
@@ -113,7 +113,7 @@ class GamesTest extends AbstractTestAlbumIndexFilteredController
         );
 
         $this->assertResponseIsOK();
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
@@ -159,7 +159,7 @@ class GamesTest extends AbstractTestAlbumIndexFilteredController
         );
 
         $this->assertResponseIsOK();
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
@@ -185,7 +185,7 @@ class GamesTest extends AbstractTestAlbumIndexFilteredController
         );
 
         $this->assertResponseIsOK();
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
@@ -249,7 +249,7 @@ class GamesTest extends AbstractTestAlbumIndexFilteredController
         );
 
         $this->assertResponseIsOK();
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
@@ -297,7 +297,7 @@ class GamesTest extends AbstractTestAlbumIndexFilteredController
         );
 
         $this->assertResponseIsOK();
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
@@ -323,7 +323,7 @@ class GamesTest extends AbstractTestAlbumIndexFilteredController
         );
 
         $this->assertResponseIsOK();
-        $content = $this->getResponseContent();
+        $content = $this->getClientResponseContent();
 
         /** @var int[][][]|string[][]|string[][][] $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
