@@ -9,7 +9,7 @@ use App\Entity\DexAvailability;
 use App\Service\DexAvailabilitiesService;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/debogage/dex')]
 class DebugDexController extends AbstractDebugController
