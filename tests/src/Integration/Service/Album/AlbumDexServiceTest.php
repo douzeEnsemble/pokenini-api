@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\Service\Album;
+namespace App\Tests\Integration\Service\Album;
 
 use App\Service\Album\AlbumDexService;
 use App\Tests\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;

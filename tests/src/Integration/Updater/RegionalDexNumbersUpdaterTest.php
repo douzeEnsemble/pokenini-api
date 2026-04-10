@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\Updater;
+namespace App\Tests\Integration\Updater;
 
 use App\Updater\AbstractUpdater;
 use App\Updater\RegionalDexNumbersUpdater;

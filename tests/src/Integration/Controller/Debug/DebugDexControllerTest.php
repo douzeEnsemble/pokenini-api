@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\Controller\Debug;
+namespace App\Tests\Integration\Controller\Debug;
 
 use App\Controller\Debug\DebugDexController;
 use App\Service\DexAvailabilitiesService;
-use App\Tests\Functional\Controller\AbstractTestControllerApi;
+use App\Tests\Integration\Controller\AbstractTestControllerApi;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 /**

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\MessageHandler;
+namespace App\Tests\Integration\MessageHandler;
 
 use App\ActionEnder\ActionEnderTrait;
 use App\Message\UpdateGamesShiniesAvailabilities;

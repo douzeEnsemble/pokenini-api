@@ -11,154 +11,154 @@ parameters:
 			path: src/Service/CalculatorService/DexAvailabilitiesCalculatorService.php
 
 		-
-			message: "#^Property App\\\\Tests\\\\Functional\\\\Controller\\\\AbstractTestControllerApi\\:\\:\\$client with generic class Symfony\\\\Component\\\\BrowserKit\\\\AbstractBrowser does not specify its types\\: TRequest, TResponse$#"
+			message: "#^Property App\\\\Tests\\\\Integration\\\\Controller\\\\AbstractTestControllerApi\\:\\:\\$client with generic class Symfony\\\\Component\\\\BrowserKit\\\\AbstractBrowser does not specify its types\\: TRequest, TResponse$#"
 			count: 1
-			path: tests/src/Functional/Controller/AbstractTestControllerApi.php
+			path: tests/src/Integration/Controller/AbstractTestControllerApi.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$nexistepas\\.$#"
 			count: 2
-			path: tests/src/Functional/Repository/CollectionsAvailabilitiesRepositoryTest.php
+			path: tests/src/Integration/Repository/CollectionsAvailabilitiesRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$pogodynamax\\.$#"
 			count: 2
-			path: tests/src/Functional/Repository/CollectionsAvailabilitiesRepositoryTest.php
+			path: tests/src/Integration/Repository/CollectionsAvailabilitiesRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$pogoshadow\\.$#"
 			count: 2
-			path: tests/src/Functional/Repository/CollectionsAvailabilitiesRepositoryTest.php
+			path: tests/src/Integration/Repository/CollectionsAvailabilitiesRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$goldsilvercrystal\\.$#"
 			count: 3
-			path: tests/src/Functional/Repository/GameBundlesAvailabilitiesRepositoryTest.php
+			path: tests/src/Integration/Repository/GameBundlesAvailabilitiesRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$redgreenblueyellow\\.$#"
 			count: 3
-			path: tests/src/Functional/Repository/GameBundlesAvailabilitiesRepositoryTest.php
+			path: tests/src/Integration/Repository/GameBundlesAvailabilitiesRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesShiniesAvailabilities\\:\\:\\$goldsilvercrystal\\.$#"
 			count: 3
-			path: tests/src/Functional/Repository/GameBundlesShiniesAvailabilitiesRepositoryTest.php
+			path: tests/src/Integration/Repository/GameBundlesShiniesAvailabilitiesRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesShiniesAvailabilities\\:\\:\\$redgreenblueyellow\\.$#"
 			count: 3
-			path: tests/src/Functional/Repository/GameBundlesShiniesAvailabilitiesRepositoryTest.php
+			path: tests/src/Integration/Repository/GameBundlesShiniesAvailabilitiesRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GamesAvailabilities\\:\\:\\$blue\\.$#"
 			count: 2
-			path: tests/src/Functional/Repository/GamesAvailabilitiesRepositoryTest.php
+			path: tests/src/Integration/Repository/GamesAvailabilitiesRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GamesAvailabilities\\:\\:\\$green\\.$#"
 			count: 2
-			path: tests/src/Functional/Repository/GamesAvailabilitiesRepositoryTest.php
+			path: tests/src/Integration/Repository/GamesAvailabilitiesRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GamesAvailabilities\\:\\:\\$nexistepas\\.$#"
 			count: 2
-			path: tests/src/Functional/Repository/GamesAvailabilitiesRepositoryTest.php
+			path: tests/src/Integration/Repository/GamesAvailabilitiesRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GamesAvailabilities\\:\\:\\$red\\.$#"
 			count: 2
-			path: tests/src/Functional/Repository/GamesAvailabilitiesRepositoryTest.php
+			path: tests/src/Integration/Repository/GamesAvailabilitiesRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GamesAvailabilities\\:\\:\\$yellow\\.$#"
 			count: 2
-			path: tests/src/Functional/Repository/GamesAvailabilitiesRepositoryTest.php
+			path: tests/src/Integration/Repository/GamesAvailabilitiesRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GamesShiniesAvailabilities\\:\\:\\$emerald\\.$#"
 			count: 1
-			path: tests/src/Functional/Repository/GamesShiniesAvailabilitiesRepositoryTest.php
+			path: tests/src/Integration/Repository/GamesShiniesAvailabilitiesRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GamesShiniesAvailabilities\\:\\:\\$nexistepas\\.$#"
 			count: 1
-			path: tests/src/Functional/Repository/GamesShiniesAvailabilitiesRepositoryTest.php
+			path: tests/src/Integration/Repository/GamesShiniesAvailabilitiesRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GamesShiniesAvailabilities\\:\\:\\$ruby\\.$#"
 			count: 1
-			path: tests/src/Functional/Repository/GamesShiniesAvailabilitiesRepositoryTest.php
+			path: tests/src/Integration/Repository/GamesShiniesAvailabilitiesRepositoryTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$pogodynamax\\.$#"
 			count: 3
-			path: tests/src/Functional/Service/CollectionsAvailabilitiesServiceTest.php
+			path: tests/src/Integration/Service/CollectionsAvailabilitiesServiceTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$pogoshadow\\.$#"
 			count: 3
-			path: tests/src/Functional/Service/CollectionsAvailabilitiesServiceTest.php
+			path: tests/src/Integration/Service/CollectionsAvailabilitiesServiceTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$goldsilvercrystal\\.$#"
 			count: 3
-			path: tests/src/Functional/Service/GameBundlesAvailabilitiesServiceTest.php
+			path: tests/src/Integration/Service/GameBundlesAvailabilitiesServiceTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesAvailabilities\\:\\:\\$redgreenblueyellow\\.$#"
 			count: 3
-			path: tests/src/Functional/Service/GameBundlesAvailabilitiesServiceTest.php
+			path: tests/src/Integration/Service/GameBundlesAvailabilitiesServiceTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesShiniesAvailabilities\\:\\:\\$goldsilvercrystal\\.$#"
 			count: 3
-			path: tests/src/Functional/Service/GameBundlesShiniesAvailabilitiesServiceTest.php
+			path: tests/src/Integration/Service/GameBundlesShiniesAvailabilitiesServiceTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GameBundlesShiniesAvailabilities\\:\\:\\$redgreenblueyellow\\.$#"
 			count: 3
-			path: tests/src/Functional/Service/GameBundlesShiniesAvailabilitiesServiceTest.php
+			path: tests/src/Integration/Service/GameBundlesShiniesAvailabilitiesServiceTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GamesAvailabilities\\:\\:\\$blue\\.$#"
 			count: 2
-			path: tests/src/Functional/Service/GamesAvailabilitiesServiceTest.php
+			path: tests/src/Integration/Service/GamesAvailabilitiesServiceTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GamesAvailabilities\\:\\:\\$emerald\\.$#"
 			count: 3
-			path: tests/src/Functional/Service/GamesAvailabilitiesServiceTest.php
+			path: tests/src/Integration/Service/GamesAvailabilitiesServiceTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GamesAvailabilities\\:\\:\\$red\\.$#"
 			count: 3
-			path: tests/src/Functional/Service/GamesAvailabilitiesServiceTest.php
+			path: tests/src/Integration/Service/GamesAvailabilitiesServiceTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GamesAvailabilities\\:\\:\\$ruby\\.$#"
 			count: 1
-			path: tests/src/Functional/Service/GamesAvailabilitiesServiceTest.php
+			path: tests/src/Integration/Service/GamesAvailabilitiesServiceTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GamesShiniesAvailabilities\\:\\:\\$blue\\.$#"
 			count: 2
-			path: tests/src/Functional/Service/GamesShiniesAvailabilitiesServiceTest.php
+			path: tests/src/Integration/Service/GamesShiniesAvailabilitiesServiceTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GamesShiniesAvailabilities\\:\\:\\$emerald\\.$#"
 			count: 3
-			path: tests/src/Functional/Service/GamesShiniesAvailabilitiesServiceTest.php
+			path: tests/src/Integration/Service/GamesShiniesAvailabilitiesServiceTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GamesShiniesAvailabilities\\:\\:\\$red\\.$#"
 			count: 3
-			path: tests/src/Functional/Service/GamesShiniesAvailabilitiesServiceTest.php
+			path: tests/src/Integration/Service/GamesShiniesAvailabilitiesServiceTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\GamesShiniesAvailabilities\\:\\:\\$ruby\\.$#"
 			count: 1
-			path: tests/src/Functional/Service/GamesShiniesAvailabilitiesServiceTest.php
+			path: tests/src/Integration/Service/GamesShiniesAvailabilitiesServiceTest.php
 
 		-
 			message: "#^Access to an undefined property App\\\\DTO\\\\CollectionsAvailabilities\\:\\:\\$a\\.$#"

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\Repository\PokedexRepositoryList;
+namespace App\Tests\Integration\Repository\PokedexRepositoryList;
 
 use App\DTO\AlbumFilter\AlbumFilters;
 use App\Repository\PokedexRepository;

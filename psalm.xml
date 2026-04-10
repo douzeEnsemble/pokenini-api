@@ -66,7 +66,7 @@
         </InvalidArgument>
         <MissingOverrideAttribute>
             <errorLevel type="suppress">
-                <file name="tests/src/Functional/Controller/AbstractTestControllerApi.php" />
+                <file name="tests/src/Integration/Controller/AbstractTestControllerApi.php" />
             </errorLevel>
         </MissingOverrideAttribute>
     </issueHandlers>

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Functional\Repository;
+namespace App\Tests\Integration\Repository;
 
 use App\Repository\RegionalFormsRepository;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
