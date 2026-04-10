@@ -159,7 +159,15 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return array{view_count_sum: int, win_count_sum: int, view_count_max: int, win_count_max: int, under_max_view_count: int, max_view_count: int, dex_total_count: int}
+     * @return array{
+     *  view_count_sum: int, 
+     *  win_count_sum: int, 
+     *  view_count_max: int, 
+     *  win_count_max: int, 
+     *  under_max_view_count: int, 
+     *  max_view_count: int, 
+     *  dex_total_count: int
+     * }
      */
     public function getMetrics(
         string $trainerExternalId,
@@ -237,7 +245,15 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             'election_slug' => ParameterType::STRING,
         ];
 
-        /** @var int[]|string[] $result */
+        /** @var array{
+         *  view_count_sum?: int, 
+         *  win_count_sum?: int, 
+         *  view_count_max?: int, 
+         *  win_count_max?: int, 
+         *  under_max_view_count?: int, 
+         *  max_view_count?: int, 
+         *  dex_total_count: int
+         * } $result */
         $result = $this->getEntityManager()->getConnection()->fetchAssociative(
             $sql,
             $params,

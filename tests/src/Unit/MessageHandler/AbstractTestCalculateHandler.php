@@ -61,7 +61,7 @@ abstract class AbstractTestCalculateHandler extends TestCase
             ->method('flush')
         ;
 
-        /** @var CalculatorServiceInterface|MockObject $calculatorService */
+        /** @var CalculatorServiceInterface $calculatorService */
         $handler = $this->getHandler($calculatorService, $entityManager);
 
         $message = $this->getMessage();
@@ -106,7 +106,7 @@ abstract class AbstractTestCalculateHandler extends TestCase
             ->method('flush')
         ;
 
-        /** @var CalculatorServiceInterface|MockObject $calculatorService */
+        /** @var CalculatorServiceInterface $calculatorService */
         $handler = $this->getHandler($calculatorService, $entityManager);
 
         $message = $this->getMessage();

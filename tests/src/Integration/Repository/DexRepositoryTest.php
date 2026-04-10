@@ -123,7 +123,11 @@ final class DexRepositoryTest extends KernelTestCase
     }
 
     /**
-     * @return bool[][]|string[][][]
+     * @return array<string, array{
+     *  includeUnreleasedDex: bool,
+     *  includePremiumDex: bool,
+     *  expectedSlugs: array<int, string>,
+     * }>
      */
     public static function providerGetCanHoldElection(): array
     {

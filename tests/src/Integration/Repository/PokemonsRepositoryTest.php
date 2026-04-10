@@ -115,7 +115,12 @@ final class PokemonsRepositoryTest extends KernelTestCase
     }
 
     /**
-     * @return int[][]|string[][]|string[][][][]
+     * @return array<string, array{
+     *  dexSlug: string,
+     *  electionSlug: string,
+     *  filters: array<string, string[]>,
+     *  expectedCount: int,
+     * }>
      */
     public static function providerGetNToPick(): array
     {
@@ -197,7 +202,12 @@ final class PokemonsRepositoryTest extends KernelTestCase
     }
 
     /**
-     * @return int[][]|string[][]|string[][][][]
+     * @return array<string, array{
+     *  dexSlug: string,
+     *  electionSlug: string,
+     *  filters: array<string, string[]>,
+     *  expectedCount: int,
+     * }>
      */
     public static function providerGetNToVote(): array
     {
