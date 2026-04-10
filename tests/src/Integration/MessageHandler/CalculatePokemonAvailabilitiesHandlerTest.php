@@ -21,7 +21,7 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
  */
 #[CoversClass(CalculatePokemonAvailabilitiesHandler::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class CalculatePokemonAvailabilitiesHandlerTest extends KernelTestCase
+final class CalculatePokemonAvailabilitiesHandlerTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use InteractsWithMessenger;

@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(TrainerDex::class)]
-class TrainerDexTest extends TestCase
+final class TrainerDexTest extends TestCase
 {
     public function testGetIdentifierDefault(): void
     {

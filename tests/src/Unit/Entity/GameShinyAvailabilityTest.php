@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(GameShinyAvailability::class)]
-class GameShinyAvailabilityTest extends TestCase
+final class GameShinyAvailabilityTest extends TestCase
 {
     public function testGetIdentifierDefault(): void
     {

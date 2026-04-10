@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  * @internal
  */
 #[CoversClass(DexCanHoldElectionController::class)]
-class DexCanHoldElectionControllerTest extends WebTestCase
+final class DexCanHoldElectionControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;
 

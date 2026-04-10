@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  */
 #[CoversClass(GamesShiniesAvailabilitiesUpdater::class)]
 #[CoversClass(AbstractUpdater::class)]
-class GamesShiniesAvailabilitiesUpdaterTest extends AbstractTestUpdater
+final class GamesShiniesAvailabilitiesUpdaterTest extends AbstractTestUpdater
 {
     use CountGameShinyAvailabilityTrait;
 

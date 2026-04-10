@@ -20,7 +20,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  * @internal
  */
 #[CoversClass(CalculateGameBundlesShiniesAvailabilitiesCommand::class)]
-class CalculateGameBundlesShiniesAvailabilitiesCommandTest extends TestCase
+final class CalculateGameBundlesShiniesAvailabilitiesCommandTest extends TestCase
 {
     public function testFailureOnException(): void
     {

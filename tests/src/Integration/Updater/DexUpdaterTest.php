@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  */
 #[CoversClass(DexUpdater::class)]
 #[CoversClass(AbstractUpdater::class)]
-class DexUpdaterTest extends AbstractTestUpdater
+final class DexUpdaterTest extends AbstractTestUpdater
 {
     use GetDexTrait;
 

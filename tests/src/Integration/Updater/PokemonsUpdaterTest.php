@@ -15,7 +15,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  */
 #[CoversClass(PokemonsUpdater::class)]
 #[CoversClass(AbstractUpdater::class)]
-class PokemonsUpdaterTest extends AbstractTestUpdater
+final class PokemonsUpdaterTest extends AbstractTestUpdater
 {
     use CountPokemonTrait;
     use GetPokemonTrait;

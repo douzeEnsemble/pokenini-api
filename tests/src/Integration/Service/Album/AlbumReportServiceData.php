@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Integration\Service\Album;
 
-class AlbumReportServiceData
+final class AlbumReportServiceData
 {
     /**
      * @return int[][]|string[][]|string[][][][]

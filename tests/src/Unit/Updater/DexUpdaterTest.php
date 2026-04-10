@@ -17,7 +17,7 @@ use Psr\Log\LoggerInterface;
  * @internal
  */
 #[CoversClass(DexUpdater::class)]
-class DexUpdaterTest extends TestCase
+final class DexUpdaterTest extends TestCase
 {
     public function testExecute(): void
     {

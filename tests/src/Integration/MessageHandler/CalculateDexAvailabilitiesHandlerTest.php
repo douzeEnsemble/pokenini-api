@@ -21,7 +21,7 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
  */
 #[CoversClass(CalculateDexAvailabilitiesHandler::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class CalculateDexAvailabilitiesHandlerTest extends KernelTestCase
+final class CalculateDexAvailabilitiesHandlerTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use InteractsWithMessenger;

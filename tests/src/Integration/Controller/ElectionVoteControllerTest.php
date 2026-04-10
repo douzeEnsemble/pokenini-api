@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  * @internal
  */
 #[CoversClass(ElectionVoteController::class)]
-class ElectionVoteControllerTest extends WebTestCase
+final class ElectionVoteControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;
 

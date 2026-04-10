@@ -31,7 +31,7 @@ use PHPUnit\Framework\Attributes\CoversTrait;
 #[CoversClass(CalculatePokemonAvailabilities::class)]
 #[CoversClass(AbstractActionMessage::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class CalculatePokemonAvailabilitiesCommandTest extends AbstractTestCaseCommand
+final class CalculatePokemonAvailabilitiesCommandTest extends AbstractTestCaseCommand
 {
     use CountPokemonTrait;
     use CountPokemonAvailabilitiesTrait;

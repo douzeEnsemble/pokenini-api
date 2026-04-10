@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(UpdatePokemons::class)]
-class UpdatePokemonsTest extends TestCase
+final class UpdatePokemonsTest extends TestCase
 {
     public function testSerialize(): void
     {

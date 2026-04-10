@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @internal
  */
 #[CoversClass(TrainerPokemonEloRepository::class)]
-class TrainerPokemonEloRepositoryGetEloTest extends KernelTestCase
+final class TrainerPokemonEloRepositoryGetEloTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
 

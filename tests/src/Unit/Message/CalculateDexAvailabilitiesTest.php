@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(CalculateDexAvailabilities::class)]
-class CalculateDexAvailabilitiesTest extends TestCase
+final class CalculateDexAvailabilitiesTest extends TestCase
 {
     public function testSerialize(): void
     {

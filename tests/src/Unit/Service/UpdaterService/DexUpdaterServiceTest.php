@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(DexUpdaterService::class)]
-class DexUpdaterServiceTest extends TestCase
+final class DexUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void
     {

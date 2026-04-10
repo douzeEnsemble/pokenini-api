@@ -25,7 +25,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[UsesClass(UpdateGamesAvailabilities::class)]
 #[CoversTrait(CalculateHandlerTrait::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class UpdateGamesAvailabilitiesHandlerTest extends AbstractTestUpdateHandler
+final class UpdateGamesAvailabilitiesHandlerTest extends AbstractTestUpdateHandler
 {
     #[\Override]
     public function getServiceClass(): string

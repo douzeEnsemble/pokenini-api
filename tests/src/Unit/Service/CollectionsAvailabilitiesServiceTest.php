@@ -16,7 +16,7 @@ use Symfony\Contracts\Cache\CacheInterface;
  * @internal
  */
 #[CoversClass(CollectionsAvailabilitiesService::class)]
-class CollectionsAvailabilitiesServiceTest extends TestCase
+final class CollectionsAvailabilitiesServiceTest extends TestCase
 {
     public function testGetFromPokemonWithCacheHit(): void
     {

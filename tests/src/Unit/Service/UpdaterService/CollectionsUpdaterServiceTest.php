@@ -14,7 +14,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(CollectionsUpdaterService::class)]
-class CollectionsUpdaterServiceTest extends TestCase
+final class CollectionsUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void
     {

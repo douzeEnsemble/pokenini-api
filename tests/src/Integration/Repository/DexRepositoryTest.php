@@ -17,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @internal
  */
 #[CoversClass(DexRepository::class)]
-class DexRepositoryTest extends KernelTestCase
+final class DexRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use CountDexTrait;

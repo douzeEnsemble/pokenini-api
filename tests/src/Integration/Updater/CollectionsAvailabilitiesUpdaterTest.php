@@ -14,7 +14,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  */
 #[CoversClass(CollectionsAvailabilitiesUpdater::class)]
 #[CoversClass(AbstractUpdater::class)]
-class CollectionsAvailabilitiesUpdaterTest extends AbstractTestUpdater
+final class CollectionsAvailabilitiesUpdaterTest extends AbstractTestUpdater
 {
     use CountCollectionAvailabilityTrait;
 

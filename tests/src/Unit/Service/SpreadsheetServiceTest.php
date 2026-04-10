@@ -19,7 +19,7 @@ use Psr\Log\NullLogger;
  * @internal
  */
 #[CoversClass(SpreadsheetService::class)]
-class SpreadsheetServiceTest extends TestCase
+final class SpreadsheetServiceTest extends TestCase
 {
     public function testGet(): void
     {

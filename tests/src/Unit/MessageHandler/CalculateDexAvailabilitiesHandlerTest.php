@@ -25,7 +25,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[UsesClass(CalculateDexAvailabilities::class)]
 #[CoversTrait(CalculateHandlerTrait::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class CalculateDexAvailabilitiesHandlerTest extends AbstractTestCalculateHandler
+final class CalculateDexAvailabilitiesHandlerTest extends AbstractTestCalculateHandler
 {
     #[\Override]
     public function getServiceClass(): string

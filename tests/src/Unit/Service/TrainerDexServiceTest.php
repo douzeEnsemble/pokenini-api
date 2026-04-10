@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(TrainerDexService::class)]
-class TrainerDexServiceTest extends TestCase
+final class TrainerDexServiceTest extends TestCase
 {
     public function testInsertIfNeeded(): void
     {

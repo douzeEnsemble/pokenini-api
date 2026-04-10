@@ -19,7 +19,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  */
 #[CoversClass(PokedexRepository::class)]
 #[CoversTrait(FiltersTrait::class)]
-class FormsTest extends KernelTestCase
+final class FormsTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use GetPokedexTrait;

@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  */
 #[CoversClass(CatchStatesController::class)]
 #[CoversClass(CatchStatesService::class)]
-class CatchStatesControllerTest extends AbstractTestControllerApi
+final class CatchStatesControllerTest extends AbstractTestControllerApi
 {
     public function testGetCollection(): void
     {

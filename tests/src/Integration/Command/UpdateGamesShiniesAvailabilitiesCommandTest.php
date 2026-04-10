@@ -26,7 +26,7 @@ use PHPUnit\Framework\Attributes\CoversTrait;
 #[CoversClass(UpdateGamesShiniesAvailabilities::class)]
 #[CoversClass(AbstractActionMessage::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class UpdateGamesShiniesAvailabilitiesCommandTest extends AbstractTestCaseCommand
+final class UpdateGamesShiniesAvailabilitiesCommandTest extends AbstractTestCaseCommand
 {
     use CountGameShinyAvailabilityTrait;
     use CountActionLogTrait;

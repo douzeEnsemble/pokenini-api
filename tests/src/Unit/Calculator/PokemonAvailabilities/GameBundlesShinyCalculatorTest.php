@@ -13,7 +13,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(GameBundlesShinyCalculator::class)]
-class GameBundlesShinyCalculatorTest extends TestCase
+final class GameBundlesShinyCalculatorTest extends TestCase
 {
     public function testExecute(): void
     {

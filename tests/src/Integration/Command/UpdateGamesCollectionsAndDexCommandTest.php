@@ -26,7 +26,7 @@ use PHPUnit\Framework\Attributes\CoversTrait;
 #[CoversClass(UpdateGamesCollectionsAndDex::class)]
 #[CoversClass(AbstractActionMessage::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class UpdateGamesCollectionsAndDexCommandTest extends AbstractTestCaseCommand
+final class UpdateGamesCollectionsAndDexCommandTest extends AbstractTestCaseCommand
 {
     use CounterTableTrait;
     use CountActionLogTrait;

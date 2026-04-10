@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(GameGeneration::class)]
-class GameGenerationTest extends TestCase
+final class GameGenerationTest extends TestCase
 {
     public function testGetNumber(): void
     {

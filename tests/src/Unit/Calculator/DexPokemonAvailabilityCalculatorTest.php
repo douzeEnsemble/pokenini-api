@@ -21,7 +21,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(DexPokemonAvailabilityCalculator::class)]
-class DexPokemonAvailabilityCalculatorTest extends TestCase
+final class DexPokemonAvailabilityCalculatorTest extends TestCase
 {
     public function testCalculateNotAvailable(): void
     {

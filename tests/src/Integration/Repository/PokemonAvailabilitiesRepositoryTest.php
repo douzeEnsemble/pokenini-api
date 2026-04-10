@@ -15,7 +15,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @internal
  */
 #[CoversClass(PokemonAvailabilitiesRepository::class)]
-class PokemonAvailabilitiesRepositoryTest extends KernelTestCase
+final class PokemonAvailabilitiesRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use CountPokemonAvailabilitiesTrait;

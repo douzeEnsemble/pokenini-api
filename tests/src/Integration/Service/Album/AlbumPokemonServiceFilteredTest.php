@@ -17,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @internal
  */
 #[CoversClass(AlbumPokemonService::class)]
-class AlbumPokemonServiceFilteredTest extends KernelTestCase
+final class AlbumPokemonServiceFilteredTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use CountGameBundleAvailabilityTrait;

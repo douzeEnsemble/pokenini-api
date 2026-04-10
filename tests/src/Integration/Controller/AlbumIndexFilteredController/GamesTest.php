@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @internal
  */
 #[CoversClass(AlbumIndexController::class)]
-class GamesTest extends AbstractTestAlbumIndexFilteredController
+final class GamesTest extends AbstractTestAlbumIndexFilteredController
 {
     use AssertReportTrait;
     use PokemonListTrait;

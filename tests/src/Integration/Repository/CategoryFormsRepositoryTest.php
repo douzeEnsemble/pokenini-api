@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @internal
  */
 #[CoversClass(CategoryFormsRepository::class)]
-class CategoryFormsRepositoryTest extends KernelTestCase
+final class CategoryFormsRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
 

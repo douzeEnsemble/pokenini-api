@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  */
 #[CoversClass(GameGenerationsUpdater::class)]
 #[CoversClass(AbstractUpdater::class)]
-class GameGenerationsUpdaterTest extends AbstractTestUpdater
+final class GameGenerationsUpdaterTest extends AbstractTestUpdater
 {
     protected int $initialTotalCount = 9;
     protected int $finalTotalCount = 9;

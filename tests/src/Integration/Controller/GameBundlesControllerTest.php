@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  */
 #[CoversClass(GameBundlesController::class)]
 #[CoversClass(GameBundlesService::class)]
-class GameBundlesControllerTest extends AbstractTestControllerApi
+final class GameBundlesControllerTest extends AbstractTestControllerApi
 {
     public function testGetCollection(): void
     {

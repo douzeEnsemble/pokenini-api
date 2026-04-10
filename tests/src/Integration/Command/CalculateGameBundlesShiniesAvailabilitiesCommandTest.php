@@ -32,7 +32,7 @@ use PHPUnit\Framework\Attributes\CoversTrait;
 #[CoversClass(AbstractActionMessage::class)]
 #[CoversClass(CalculateGameBundlesShiniesAvailabilitiesHandler::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class CalculateGameBundlesShiniesAvailabilitiesCommandTest extends AbstractTestCaseCommand
+final class CalculateGameBundlesShiniesAvailabilitiesCommandTest extends AbstractTestCaseCommand
 {
     use CountGameShinyAvailabilityTrait;
     use CountGameBundleShinyAvailabilityTrait;

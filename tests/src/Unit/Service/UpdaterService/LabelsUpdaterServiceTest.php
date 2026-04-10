@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(LabelsUpdaterService::class)]
-class LabelsUpdaterServiceTest extends TestCase
+final class LabelsUpdaterServiceTest extends TestCase
 {
     public function testExecute(): void
     {

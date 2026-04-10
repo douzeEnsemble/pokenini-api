@@ -17,7 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @internal
  */
 #[CoversClass(PokemonsRepository::class)]
-class PokemonsRepositoryTest extends KernelTestCase
+final class PokemonsRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use CountPokemonTrait;

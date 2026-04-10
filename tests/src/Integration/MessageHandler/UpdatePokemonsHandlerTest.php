@@ -21,7 +21,7 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
  */
 #[CoversClass(UpdatePokemonsHandler::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class UpdatePokemonsHandlerTest extends KernelTestCase
+final class UpdatePokemonsHandlerTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use InteractsWithMessenger;

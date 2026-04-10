@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @internal
  */
 #[CoversClass(CollectionsAvailabilitiesService::class)]
-class CollectionsAvailabilitiesServiceTest extends KernelTestCase
+final class CollectionsAvailabilitiesServiceTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use CountCollectionAvailabilityTrait;

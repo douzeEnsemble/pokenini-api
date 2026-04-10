@@ -12,7 +12,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @internal
  */
 #[CoversClass(AlbumIndexController::class)]
-class CommonTest extends AbstractTestAlbumIndexFilteredController
+final class CommonTest extends AbstractTestAlbumIndexFilteredController
 {
     use AssertReportTrait;
 

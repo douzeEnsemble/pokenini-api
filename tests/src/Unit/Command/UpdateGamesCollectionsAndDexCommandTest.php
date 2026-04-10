@@ -20,7 +20,7 @@ use Symfony\Contracts\Translation\TranslatorInterface;
  * @internal
  */
 #[CoversClass(UpdateGamesCollectionsAndDexCommand::class)]
-class UpdateGamesCollectionsAndDexCommandTest extends TestCase
+final class UpdateGamesCollectionsAndDexCommandTest extends TestCase
 {
     public function testFailureOnException(): void
     {

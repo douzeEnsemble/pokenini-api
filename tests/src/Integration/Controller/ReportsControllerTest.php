@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  * @internal
  */
 #[CoversClass(ReportsController::class)]
-class ReportsControllerTest extends WebTestCase
+final class ReportsControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;
 

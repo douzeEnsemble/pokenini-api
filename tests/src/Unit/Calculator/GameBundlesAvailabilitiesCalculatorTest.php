@@ -15,7 +15,7 @@ use PHPUnit\Framework\TestCase;
  */
 #[CoversClass(GameBundlesAvailabilitiesCalculator::class)]
 #[CoversClass(AbstractCalculator::class)]
-class GameBundlesAvailabilitiesCalculatorTest extends TestCase
+final class GameBundlesAvailabilitiesCalculatorTest extends TestCase
 {
     public function testInit(): void
     {

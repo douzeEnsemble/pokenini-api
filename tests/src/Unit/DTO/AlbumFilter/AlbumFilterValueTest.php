@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(AlbumFilterValue::class)]
-class AlbumFilterValueTest extends TestCase
+final class AlbumFilterValueTest extends TestCase
 {
     public function testConstruct(): void
     {

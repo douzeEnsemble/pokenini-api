@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(CategoryForm::class)]
-class CategoryFormTest extends TestCase
+final class CategoryFormTest extends TestCase
 {
     public function testGetIdentifierDefault(): void
     {

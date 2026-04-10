@@ -30,7 +30,7 @@ use PHPUnit\Framework\Attributes\CoversTrait;
 #[CoversClass(CalculateGameBundlesAvailabilities::class)]
 #[CoversClass(AbstractActionMessage::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class CalculateGameBundlesAvailabilitiesCommandTest extends AbstractTestCaseCommand
+final class CalculateGameBundlesAvailabilitiesCommandTest extends AbstractTestCaseCommand
 {
     use CountGameAvailabilityTrait;
     use CountGameBundleAvailabilityTrait;

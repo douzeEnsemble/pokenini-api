@@ -14,7 +14,7 @@ use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
  * @internal
  */
 #[CoversClass(DexQueryOptions::class)]
-class DexQueryOptionsTest extends TestCase
+final class DexQueryOptionsTest extends TestCase
 {
     public function testOk(): void
     {

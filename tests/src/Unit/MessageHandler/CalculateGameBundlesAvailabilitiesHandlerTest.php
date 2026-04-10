@@ -25,7 +25,7 @@ use PHPUnit\Framework\Attributes\UsesClass;
 #[UsesClass(CalculateGameBundlesAvailabilities::class)]
 #[CoversTrait(CalculateHandlerTrait::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class CalculateGameBundlesAvailabilitiesHandlerTest extends AbstractTestCalculateHandler
+final class CalculateGameBundlesAvailabilitiesHandlerTest extends AbstractTestCalculateHandler
 {
     #[\Override]
     public function getServiceClass(): string

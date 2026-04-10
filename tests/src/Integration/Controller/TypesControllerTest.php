@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  */
 #[CoversClass(TypesController::class)]
 #[CoversClass(TypesService::class)]
-class TypesControllerTest extends AbstractTestControllerApi
+final class TypesControllerTest extends AbstractTestControllerApi
 {
     public function testGetCollection(): void
     {

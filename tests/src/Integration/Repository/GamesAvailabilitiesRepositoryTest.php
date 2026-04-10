@@ -16,7 +16,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @internal
  */
 #[CoversClass(GamesAvailabilitiesRepository::class)]
-class GamesAvailabilitiesRepositoryTest extends KernelTestCase
+final class GamesAvailabilitiesRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use CountGameAvailabilityTrait;

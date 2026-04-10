@@ -21,7 +21,7 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
  */
 #[CoversClass(CalculateGameBundlesAvailabilitiesHandler::class)]
 #[CoversTrait(ActionEnderTrait::class)]
-class CalculateGameBundlesAvailabilitiesHandlerTest extends KernelTestCase
+final class CalculateGameBundlesAvailabilitiesHandlerTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use InteractsWithMessenger;

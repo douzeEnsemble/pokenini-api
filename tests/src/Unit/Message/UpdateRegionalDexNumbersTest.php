@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(UpdateRegionalDexNumbers::class)]
-class UpdateRegionalDexNumbersTest extends TestCase
+final class UpdateRegionalDexNumbersTest extends TestCase
 {
     public function testSerialize(): void
     {

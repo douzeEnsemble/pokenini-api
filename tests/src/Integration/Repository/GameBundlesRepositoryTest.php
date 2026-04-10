@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @internal
  */
 #[CoversClass(GameBundlesRepository::class)]
-class GameBundlesRepositoryTest extends KernelTestCase
+final class GameBundlesRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
 

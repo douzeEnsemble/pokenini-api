@@ -13,7 +13,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @internal
  */
 #[CoversClass(VariantFormsRepository::class)]
-class VariantFormsRepositoryTest extends KernelTestCase
+final class VariantFormsRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
 

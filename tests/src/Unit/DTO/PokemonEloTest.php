@@ -12,7 +12,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(PokemonElo::class)]
-class PokemonEloTest extends TestCase
+final class PokemonEloTest extends TestCase
 {
     public function testOk(): void
     {

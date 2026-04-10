@@ -14,7 +14,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
  * @internal
  */
 #[CoversClass(TrainerDexRepository::class)]
-class TrainerDexRepositoryInsertIfNeededTest extends KernelTestCase
+final class TrainerDexRepositoryInsertIfNeededTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use CountTrainerDexTrait;
