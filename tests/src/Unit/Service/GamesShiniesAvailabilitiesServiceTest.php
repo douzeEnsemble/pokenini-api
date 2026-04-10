@@ -26,7 +26,9 @@ class GamesShiniesAvailabilitiesServiceTest extends TestCase
         $expectedResult = $this->createMock(GamesShiniesAvailabilities::class);
 
         $cache = $this->createMock(CacheInterface::class);
-        $cache->method('get')
+        $cache
+            ->expects($this->once())
+            ->method('get')
             ->with('gsa-pikachu')
             ->willReturn($expectedResult)
         ;
@@ -51,7 +53,9 @@ class GamesShiniesAvailabilitiesServiceTest extends TestCase
         $expectedResult = $this->createMock(GamesShiniesAvailabilities::class);
 
         $cache = $this->createMock(CacheInterface::class);
-        $cache->method('get')
+        $cache
+            ->expects($this->once())
+            ->method('get')
             ->with('gsa-charizard')
             ->willReturnCallback(function (string $key, callable $callback): mixed {
                 unset($key); // To remove PHPMD.UnusedFormalParameter warning

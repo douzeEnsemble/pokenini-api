@@ -208,11 +208,11 @@ dockerfile-linter: ## Run Dockerfile linter
 
 .PHONY: dotenv-linter
 dotenv-linter: ## Run DotEnv linter
-	$(DOTENV_LINTER_CMD) -r
+	$(DOTENV_LINTER_CMD) check . -r
 
-.PHONY: dotenv-linter
+.PHONY: dotenv-fixer
 dotenv-fixer: ## Run DotEnv fixer
-	$(DOTENV_LINTER_CMD) fix -r --no-backup
+	$(DOTENV_LINTER_CMD) fix . -r --no-backup
 
 .PHONY: code-quality
 code-quality: ## Execute all code quality analyses
@@ -265,6 +265,8 @@ psalm: ## Execute psalm
 psalm: tools/psalm/vendor/bin/psalm
 	@$(PHP_CONT) rm -Rf var/cache/psalm
 	@$(PHP) tools/psalm/vendor/bin/psalm --show-info=false --no-cache --find-unused-psalm-suppress --no-suggestions --taint-analysis
+#	@$(PHP) tools/psalm/vendor/bin/psalm -c psalm.xml --no-diff --show-info=false --no-cache --find-unused-psalm-suppress --no-suggestions
+
 
 .PHONY: psalm-fix
 psalm-fix: ## Execute psalm auto fixing
