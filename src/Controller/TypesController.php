@@ -7,7 +7,7 @@ namespace App\Controller;
 use App\Service\TypesService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/types')]
 class TypesController extends AbstractController

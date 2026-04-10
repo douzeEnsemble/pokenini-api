@@ -7,7 +7,7 @@ namespace App\Controller;
 use App\Service\CatchStatesService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/catch_states')]
 class CatchStatesController extends AbstractController
