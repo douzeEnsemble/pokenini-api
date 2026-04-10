@@ -39,7 +39,7 @@ rebuild: ## Re-builds the Docker images (build with no cache)
 
 .PHONY: start
 start: ## Start the project
-start: install up vendor cc
+start: install up vendor cc data
 
 .PHONY: up
 up: ## Up Docker container
