@@ -7,7 +7,16 @@ namespace App\Tests\Integration\Service\Album;
 final class AlbumReportServiceData
 {
     /**
-     * @return int[][]|string[][]|string[][][][]
+     * @return array<string, array{
+     *  trainerId: string,
+     *  dexSlug: string,
+     *  filters: array<string, array<int, string>>,
+     *  countNo: int,
+     *  countMaybe: int,
+     *  countMaybeNot: int,
+     *  countYes: int,
+     *  countTotal: int,
+     * }>
      *
      * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
      */
@@ -15,65 +24,65 @@ final class AlbumReportServiceData
     {
         return [
             'primary_type' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'primary_types' => [
                         'grass',
                     ],
                 ],
-                6,
-                0,
-                0,
-                0,
-                6,
+                'countNo' => 6,
+                'countMaybe' => 0,
+                'countMaybeNot' => 0,
+                'countYes' => 0,
+                'countTotal' => 6,
             ],
             'primary_type_null' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'primary_types' => [
                         'null',
                     ],
                 ],
-                1,
-                0,
-                0,
-                0,
-                1,
+                'countNo' => 1,
+                'countMaybe' => 0,
+                'countMaybeNot' => 0,
+                'countYes' => 0,
+                'countTotal' => 1,
             ],
             'secondary_type' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'secondary_types' => [
                         'normal',
                     ],
                 ],
-                1,
-                0,
-                2,
-                0,
-                3,
+                'countNo' => 1,
+                'countMaybe' => 0,
+                'countMaybeNot' => 2,
+                'countYes' => 0,
+                'countTotal' => 3,
             ],
             'secondary_type_null' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'secondary_types' => [
                         'null',
                     ],
                 ],
-                1,
-                3,
-                1,
-                4,
-                9,
+                'countNo' => 1,
+                'countMaybe' => 3,
+                'countMaybeNot' => 1,
+                'countYes' => 4,
+                'countTotal' => 9,
             ],
             'primary_and_secondary_types' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'primary_types' => [
                         'bug',
                     ],
@@ -81,45 +90,54 @@ final class AlbumReportServiceData
                         'flying',
                     ],
                 ],
-                1,
-                0,
-                0,
-                2,
-                3,
+                'countNo' => 1,
+                'countMaybe' => 0,
+                'countMaybeNot' => 0,
+                'countYes' => 2,
+                'countTotal' => 3,
             ],
             'any_types' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'any_types' => [
                         'normal',
                     ],
                 ],
-                1,
-                2,
-                2,
-                2,
-                7,
+                'countNo' => 1,
+                'countMaybe' => 2,
+                'countMaybeNot' => 2,
+                'countYes' => 2,
+                'countTotal' => 7,
             ],
             'any_types_null' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'any_types' => [
                         'null',
                     ],
                 ],
-                1,
-                3,
-                1,
-                4,
-                9,
+                'countNo' => 1,
+                'countMaybe' => 3,
+                'countMaybeNot' => 1,
+                'countYes' => 4,
+                'countTotal' => 9,
             ],
         ];
     }
 
     /**
-     * @return int[][]|string[][]|string[][][][]
+     * @return array<string, array{
+     *  trainerId: string,
+     *  dexSlug: string,
+     *  filters: array<string, array<int, string>>,
+     *  countNo: int,
+     *  countMaybe: int,
+     *  countMaybeNot: int,
+     *  countYes: int,
+     *  countTotal: int,
+     * }>
      *
      * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
      */
@@ -127,445 +145,490 @@ final class AlbumReportServiceData
     {
         return [
             'category_form' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'category_forms' => [
                         'starter',
                     ],
                 ],
-                1,
-                0,
-                0,
-                1,
-                2,
+                'countNo' => 1,
+                'countMaybe' => 0,
+                'countMaybeNot' => 0,
+                'countYes' => 1,
+                'countTotal' => 2,
             ],
             'category_form_null' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'category_forms' => [
                         'null',
                     ],
                 ],
-                8,
-                3,
-                3,
-                6,
-                20,
+                'countNo' => 8,
+                'countMaybe' => 3,
+                'countMaybeNot' => 3,
+                'countYes' => 6,
+                'countTotal' => 20,
             ],
             'regional_form' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'regional_forms' => [
                         'alolan',
                     ],
                 ],
-                1,
-                0,
-                2,
-                0,
-                3,
+                'countNo' => 1,
+                'countMaybe' => 0,
+                'countMaybeNot' => 2,
+                'countYes' => 0,
+                'countTotal' => 3,
             ],
             'regional_form_null' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'regional_forms' => [
                         'null',
                     ],
                 ],
-                8,
-                3,
-                1,
-                7,
-                19,
+                'countNo' => 8,
+                'countMaybe' => 3,
+                'countMaybeNot' => 1,
+                'countYes' => 7,
+                'countTotal' => 19,
             ],
             'special_form' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'special_forms' => [
                         'gigantamax',
                     ],
                 ],
-                2,
-                0,
-                0,
-                0,
-                2,
+                'countNo' => 2,
+                'countMaybe' => 0,
+                'countMaybeNot' => 0,
+                'countYes' => 0,
+                'countTotal' => 2,
             ],
             'special_form_null' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'special_forms' => [
                         'null',
                     ],
                 ],
-                5,
-                3,
-                3,
-                7,
-                18,
+                'countNo' => 5,
+                'countMaybe' => 3,
+                'countMaybeNot' => 3,
+                'countYes' => 7,
+                'countTotal' => 18,
             ],
             'special_forms' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'special_forms' => [
                         'gigantamax',
                         'mega',
                     ],
                 ],
-                3,
-                0,
-                0,
-                0,
-                3,
+                'countNo' => 3,
+                'countMaybe' => 0,
+                'countMaybeNot' => 0,
+                'countYes' => 0,
+                'countTotal' => 3,
             ],
             'variant_form' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'variant_forms' => [
                         'gender',
                     ],
                 ],
-                1,
-                2,
-                0,
-                1,
-                4,
+                'countNo' => 1,
+                'countMaybe' => 2,
+                'countMaybeNot' => 0,
+                'countYes' => 1,
+                'countTotal' => 4,
             ],
             'variant_form_null' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'variant_forms' => [
                         'null',
                     ],
                 ],
-                8,
-                1,
-                3,
-                6,
-                18,
+                'countNo' => 8,
+                'countMaybe' => 1,
+                'countMaybeNot' => 3,
+                'countYes' => 6,
+                'countTotal' => 18,
             ],
         ];
     }
 
     /**
-     * @return int[][]|string[][]|string[][][][]
+     * @return array<string, array{
+     *  trainerId: string,
+     *  dexSlug: string,
+     *  filters: array<string, array<int, string>>,
+     *  countNo: int,
+     *  countMaybe: int,
+     *  countMaybeNot: int,
+     *  countYes: int,
+     *  countTotal: int,
+     * }>
      */
     public static function getCatchStatesReportFilteredProvider(): array
     {
         return [
             'catch_state' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'catch_states' => [
                         'maybe',
                     ],
                 ],
-                0,
-                3,
-                0,
-                0,
-                3,
+                'countNo' => 0,
+                'countMaybe' => 3,
+                'countMaybeNot' => 0,
+                'countYes' => 0,
+                'countTotal' => 3,
             ],
             'catch_state_null' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'catch_states' => [
                         'null',
                     ],
                 ],
-                1,
-                0,
-                0,
-                0,
-                1,
+                'countNo' => 1,
+                'countMaybe' => 0,
+                'countMaybeNot' => 0,
+                'countYes' => 0,
+                'countTotal' => 1,
             ],
             'catch_states' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'catch_states' => [
                         'maybe',
                         'maybenot',
                     ],
                 ],
-                0,
-                3,
-                3,
-                0,
-                6,
+                'countNo' => 0,
+                'countMaybe' => 3,
+                'countMaybeNot' => 3,
+                'countYes' => 0,
+                'countTotal' => 6,
             ],
             'catch_state_negative' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'catch_states' => [
                         '!maybe',
                     ],
                 ],
-                9,
-                0,
-                3,
-                7,
-                19,
+                'countNo' => 9,
+                'countMaybe' => 0,
+                'countMaybeNot' => 3,
+                'countYes' => 7,
+                'countTotal' => 19,
             ],
         ];
     }
 
     /**
-     * @return int[][]|string[][]|string[][][][]
+     * @return array<string, array{
+     *  trainerId: string,
+     *  dexSlug: string,
+     *  filters: array<string, array<int, string>>,
+     *  countNo: int,
+     *  countMaybe: int,
+     *  countMaybeNot: int,
+     *  countYes: int,
+     *  countTotal: int,
+     * }>
      */
     public static function getOriginalGamesReportFilteredProvider(): array
     {
         return [
             'original_game_bundles' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'original_game_bundles' => [
                         'redgreenblueyellow',
                     ],
                 ],
-                4,
-                1,
-                1,
-                6,
-                12,
+                'countNo' => 4,
+                'countMaybe' => 1,
+                'countMaybeNot' => 1,
+                'countYes' => 6,
+                'countTotal' => 12,
             ],
             'original_game_bundles_null' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'original_game_bundles' => [
                         'null',
                     ],
                 ],
-                0,
-                0,
-                0,
-                0,
-                0,
+                'countNo' => 0,
+                'countMaybe' => 0,
+                'countMaybeNot' => 0,
+                'countYes' => 0,
+                'countTotal' => 0,
             ],
         ];
     }
 
     /**
-     * @return int[][]|string[][]|string[][][][]
+     * @return array<string, array{
+     *  trainerId: string,
+     *  dexSlug: string,
+     *  filters: array<string, array<int, string>>,
+     *  countNo: int,
+     *  countMaybe: int,
+     *  countMaybeNot: int,
+     *  countYes: int,
+     *  countTotal: int,
+     * }>
      */
     public static function getGamesBundlesReportFilteredProvider(): array
     {
         return [
             'game_bundle_availabilities' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'game_bundle_availabilities' => [
                         'ultrasunultramoon',
                     ],
                 ],
-                0,
-                0,
-                2,
-                0,
-                2,
+                'countNo' => 0,
+                'countMaybe' => 0,
+                'countMaybeNot' => 2,
+                'countYes' => 0,
+                'countTotal' => 2,
             ],
             'game_bundle_availabilities_null' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'game_bundle_availabilities' => [
                         'null',
                     ],
                 ],
-                0,
-                0,
-                0,
-                0,
-                0,
+                'countNo' => 0,
+                'countMaybe' => 0,
+                'countMaybeNot' => 0,
+                'countYes' => 0,
+                'countTotal' => 0,
             ],
             'game_bundle_availabilities_negative' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'game_bundle_availabilities' => [
                         '!ultrasunultramoon',
                     ],
                 ],
-                9,
-                3,
-                1,
-                7,
-                20,
+                'countNo' => 9,
+                'countMaybe' => 3,
+                'countMaybeNot' => 1,
+                'countYes' => 7,
+                'countTotal' => 20,
             ],
             'game_bundle_shiny_availabilities' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'game_bundle_shiny_availabilities' => [
                         'ultrasunultramoon',
                     ],
                 ],
-                0,
-                2,
-                1,
-                1,
-                4,
+                'countNo' => 0,
+                'countMaybe' => 2,
+                'countMaybeNot' => 1,
+                'countYes' => 1,
+                'countTotal' => 4,
             ],
             'game_bundle_shiny_availabilities_null' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'game_bundle_shiny_availabilities' => [
                         'null',
                     ],
                 ],
-                0,
-                0,
-                0,
-                0,
-                0,
+                'countNo' => 0,
+                'countMaybe' => 0,
+                'countMaybeNot' => 0,
+                'countYes' => 0,
+                'countTotal' => 0,
             ],
             'game_bundle_shiny_availabilities_negative' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'game_bundle_shiny_availabilities' => [
                         '!ultrasunultramoon',
                     ],
                 ],
-                9,
-                1,
-                2,
-                6,
-                18,
+                'countNo' => 9,
+                'countMaybe' => 1,
+                'countMaybeNot' => 2,
+                'countYes' => 6,
+                'countTotal' => 18,
             ],
         ];
     }
 
     /**
-     * @return int[][]|string[][]|string[][][][]
+     * @return array<string, array{
+     *  trainerId: string,
+     *  dexSlug: string,
+     *  filters: array<string, array<int, string>>,
+     *  countNo: int,
+     *  countMaybe: int,
+     *  countMaybeNot: int,
+     *  countYes: int,
+     *  countTotal: int,
+     * }>
      */
     public static function getFamiliesReportFilteredProvider(): array
     {
         return [
             'family' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'families' => [
                         'bulbasaur',
                     ],
                 ],
-                6,
-                0,
-                0,
-                0,
-                6,
+                'countNo' => 6,
+                'countMaybe' => 0,
+                'countMaybeNot' => 0,
+                'countYes' => 0,
+                'countTotal' => 6,
             ],
             'family_null' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'families' => [
                         'null',
                     ],
                 ],
-                0,
-                0,
-                0,
-                0,
-                0,
+                'countNo' => 0,
+                'countMaybe' => 0,
+                'countMaybeNot' => 0,
+                'countYes' => 0,
+                'countTotal' => 0,
             ],
             'families' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'families' => [
                         'bulbasaur',
                         'charmander',
                     ],
                 ],
-                6,
-                0,
-                0,
-                3,
-                9,
+                'countNo' => 6,
+                'countMaybe' => 0,
+                'countMaybeNot' => 0,
+                'countYes' => 3,
+                'countTotal' => 9,
             ],
         ];
     }
 
     /**
-     * @return int[][]|string[][]|string[][][][]
+     * @return array<string, array{
+     *  trainerId: string,
+     *  dexSlug: string,
+     *  filters: array<string, array<int, string>>,
+     *  countNo: int,
+     *  countMaybe: int,
+     *  countMaybeNot: int,
+     *  countYes: int,
+     *  countTotal: int,
+     * }>
      */
     public static function getCollectionsReportFilteredProvider(): array
     {
         return [
             'collection_availalibities' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'collection_availabilities' => [
                         'pogoshadow',
                     ],
                 ],
-                1,
-                0,
-                0,
-                0,
-                1,
+                'countNo' => 1,
+                'countMaybe' => 0,
+                'countMaybeNot' => 0,
+                'countYes' => 0,
+                'countTotal' => 1,
             ],
             'collection_availalibities_null' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'collection_availabilities' => [
                         'null',
                     ],
                 ],
-                0,
-                0,
-                0,
-                0,
-                0,
+                'countNo' => 0,
+                'countMaybe' => 0,
+                'countMaybeNot' => 0,
+                'countYes' => 0,
+                'countTotal' => 0,
             ],
             'collections_availalibities' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'collection_availabilities' => [
                         'pogoshadow',
                         'pogoshadowshiny',
                     ],
                 ],
-                1,
-                0,
-                0,
-                0,
-                1,
+                'countNo' => 1,
+                'countMaybe' => 0,
+                'countMaybeNot' => 0,
+                'countYes' => 0,
+                'countTotal' => 1,
             ],
             'collection_availalibities_negative' => [
-                '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                'home',
-                [
+                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dexSlug' => 'home',
+                'filters' => [
                     'collection_availabilities' => [
                         '!pogoshadow',
                     ],
                 ],
-                8,
-                3,
-                3,
-                7,
-                21,
+                'countNo' => 8,
+                'countMaybe' => 3,
+                'countMaybeNot' => 3,
+                'countYes' => 7,
+                'countTotal' => 21,
             ],
         ];
     }

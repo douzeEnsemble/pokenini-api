@@ -88,7 +88,10 @@ final class DexAvailabilitiesRepositoryTest extends KernelTestCase
     }
 
     /**
-     * @return int[][]|string[][][][]
+     * @return array<string, array{
+     *  filters: array<string, array<int, string>>,
+     *  expectedTotalCount: int,
+     * }>
      */
     public static function providerGetTotalFilters(): array
     {

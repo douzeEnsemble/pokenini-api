@@ -446,54 +446,57 @@ final class AlbumPokemonServiceFilteredTest extends KernelTestCase
     }
 
     /**
-     * @return int[][]|string[][]
+     * @return array<string, array{
+     *  filter: string,
+     *  expectedCount: int,
+     * }>
      */
     public static function providerListFilteredNull(): array
     {
         return [
             'primary_types' => [
-                'primary_types',
-                1,
+                'filter' => 'primary_types',
+                'expectedCount' => 1,
             ],
             'secondary_types' => [
-                'secondary_types',
-                9,
+                'filter' => 'secondary_types',
+                'expectedCount' => 9,
             ],
             'category_forms' => [
-                'category_forms',
-                20,
+                'filter' => 'category_forms',
+                'expectedCount' => 20,
             ],
             'regional_forms' => [
-                'regional_forms',
-                19,
+                'filter' => 'regional_forms',
+                'expectedCount' => 19,
             ],
             'special_forms' => [
-                'special_forms',
-                18,
+                'filter' => 'special_forms',
+                'expectedCount' => 18,
             ],
             'variant_forms' => [
-                'variant_forms',
-                18,
+                'filter' => 'variant_forms',
+                'expectedCount' => 18,
             ],
             'catch_states' => [
-                'catch_states',
-                1,
+                'filter' => 'catch_states',
+                'expectedCount' => 1,
             ],
             'original_game_bundles' => [
-                'original_game_bundles',
-                0,
+                'filter' => 'original_game_bundles',
+                'expectedCount' => 0,
             ],
             'game_bundle_availabilities' => [
-                'game_bundle_availabilities',
-                0,
+                'filter' => 'game_bundle_availabilities',
+                'expectedCount' => 0,
             ],
             'game_bundle_shiny_availabilities' => [
-                'game_bundle_shiny_availabilities',
-                0,
+                'filter' => 'game_bundle_shiny_availabilities',
+                'expectedCount' => 0,
             ],
             'collection_availabilities' => [
-                'collection_availabilities',
-                0,
+                'filter' => 'collection_availabilities',
+                'expectedCount' => 0,
             ],
         ];
     }

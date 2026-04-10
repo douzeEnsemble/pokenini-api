@@ -7,7 +7,10 @@ namespace App\Tests\Integration\Repository;
 final class DexAvailabilitiesRepositoryData
 {
     /**
-     * @return int[][]|string[][][][]
+     * @return array<string, array{
+     *  filters: array<string, array<int, string>>,
+     *  expectedTotalCount: int,
+     * }>
      */
     public static function providerGetTotalTypesFilters(): array
     {

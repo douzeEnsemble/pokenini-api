@@ -22,7 +22,10 @@ final class A1NotationTest extends TestCase
     }
 
     /**
-     * @return int[][]|string[][]
+     * @return array<int, array{
+     *  index: int,
+     *  expected: string,
+     * }>
      */
     public static function providerIndexToLetter(): array
     {
@@ -69,7 +72,11 @@ final class A1NotationTest extends TestCase
     }
 
     /**
-     * @return int[][]|string[][]
+     * @return array<int, array{
+     *  rowIndex: int,
+     *  columnIndex: int,
+     *  expected: string,
+     * }>
      */
     public static function providerIndexToA1Notation(): array
     {

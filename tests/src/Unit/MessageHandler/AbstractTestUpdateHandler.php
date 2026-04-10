@@ -61,7 +61,7 @@ abstract class AbstractTestUpdateHandler extends TestCase
             ->method('flush')
         ;
 
-        /** @var MockObject|UpdaterServiceInterface $updaterService */
+        /** @var UpdaterServiceInterface $updaterService */
         $handler = $this->getHandler($updaterService, $entityManager);
 
         $message = $this->getMessage();
@@ -106,7 +106,7 @@ abstract class AbstractTestUpdateHandler extends TestCase
             ->method('flush')
         ;
 
-        /** @var MockObject|UpdaterServiceInterface $updaterService */
+        /** @var UpdaterServiceInterface $updaterService */
         $handler = $this->getHandler($updaterService, $entityManager);
 
         $message = $this->getMessage();

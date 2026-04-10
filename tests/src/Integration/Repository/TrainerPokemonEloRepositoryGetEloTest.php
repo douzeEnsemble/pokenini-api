@@ -37,7 +37,10 @@ final class TrainerPokemonEloRepositoryGetEloTest extends KernelTestCase
     }
 
     /**
-     * @return int[][]|null[][]|string[][]
+     * @return array<string, array{
+     *  pokemonSlug: string,
+     *  expectedElo: int|null,
+     * }>
      */
     public static function providerGetElo(): array
     {
