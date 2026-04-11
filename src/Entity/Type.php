@@ -14,7 +14,7 @@ use App\Entity\Traits\SoftDeleteable;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
-class Type
+final class Type
 {
     use BaseEntityTrait;
     use NamedTrait;

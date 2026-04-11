@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/action_logs')]
-class ActionLogsController extends AbstractController
+final class ActionLogsController extends AbstractController
 {
     public function __construct() {}
 

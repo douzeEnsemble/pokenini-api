@@ -9,6 +9,9 @@ use App\Updater\GameBundlesUpdater;
 use App\Updater\GameGenerationsUpdater;
 use App\Updater\GamesUpdater;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class GamesUpdaterService extends AbstractUpdaterService
 {
     public function __construct(

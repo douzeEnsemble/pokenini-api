@@ -11,7 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
-class CalculatePokemonAvailabilitiesHandler implements CalculateHandlerInterface
+final class CalculatePokemonAvailabilitiesHandler implements CalculateHandlerInterface
 {
     use CalculateHandlerTrait;
 

@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/catch_states')]
-class CatchStatesController extends AbstractController
+final class CatchStatesController extends AbstractController
 {
     #[Route(path: '', methods: ['GET'])]
     public function get(

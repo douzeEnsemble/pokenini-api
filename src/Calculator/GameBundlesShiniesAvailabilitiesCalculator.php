@@ -6,6 +6,9 @@ namespace App\Calculator;
 
 use App\Repository\GameBundlesShiniesAvailabilitiesRepository;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class GameBundlesShiniesAvailabilitiesCalculator extends AbstractCalculator
 {
     protected string $statisticName = 'game_bundles_shinies_availabilities';

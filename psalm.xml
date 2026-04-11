@@ -3,7 +3,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns="https://getpsalm.org/schema/config"
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
-    errorLevel="3"
+    errorLevel="2"
     resolveFromConfigFile="true"
     findUnusedBaselineEntry="true"
     findUnusedCode="false"
@@ -14,6 +14,7 @@
         <directory name="tests"/>
         <ignoreFiles>
             <directory name="vendor"/>
+            <file name="src/Kernel.php" />
             <file name="tests/bootstrap.php"/>
         </ignoreFiles>
     </projectFiles>
@@ -33,5 +34,21 @@
                 <referencedFunction name="PHPUnit\Framework\Attributes\CoversTrait::__construct"/>
             </errorLevel>
         </InvalidArgument>
+
+        <ClassMustBeFinal>
+            <errorLevel type="suppress">
+                <!-- Symfony services -->
+                <directory name="src/Calculator" />
+                <directory name="src/Repository" />
+                <directory name="src/Service" />
+                <directory name="src/Updater" />
+            </errorLevel>
+        </ClassMustBeFinal>
+
+        <MissingConstructor>
+            <errorLevel type="suppress">
+                <directory name="src/Entity" />
+            </errorLevel>
+        </MissingConstructor>
     </issueHandlers>
 </psalm>

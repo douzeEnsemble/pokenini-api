@@ -7,6 +7,9 @@ namespace App\Service\CalculatorService;
 use App\Calculator\GameBundlesAvailabilitiesCalculator;
 use App\DTO\DataChangeReport\Report;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class GameBundlesAvailabilitiesCalculatorService extends AbstractCalculatorService
 {
     public function __construct(

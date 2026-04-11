@@ -8,6 +8,9 @@ use App\Calculator\DexAvailabilitiesCalculator;
 use App\DTO\DataChangeReport\Report;
 use Symfony\Contracts\Cache\CacheInterface;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class DexAvailabilitiesCalculatorService extends AbstractCalculatorService
 {
     public function __construct(

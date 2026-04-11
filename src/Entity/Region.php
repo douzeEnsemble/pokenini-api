@@ -13,7 +13,7 @@ use App\Entity\Traits\SoftDeleteable;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
-class Region
+final class Region
 {
     use BaseEntityTrait;
     use NamedTrait;

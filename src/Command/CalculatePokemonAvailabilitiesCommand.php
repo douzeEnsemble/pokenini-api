@@ -11,7 +11,7 @@ use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[AsCommand(name: 'app:calculate:pokemon_availabilities')]
-class CalculatePokemonAvailabilitiesCommand extends AbstractCalculateCommand
+final class  CalculatePokemonAvailabilitiesCommand extends AbstractCalculateCommand
 {
     public function __construct(
         TranslatorInterface $translator,

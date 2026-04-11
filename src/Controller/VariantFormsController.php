@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/forms/variant')]
-class VariantFormsController extends AbstractController
+final class VariantFormsController extends AbstractController
 {
     #[Route(path: '', methods: ['GET'])]
     public function get(

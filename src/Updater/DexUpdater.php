@@ -6,6 +6,9 @@ namespace App\Updater;
 
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class DexUpdater extends AbstractUpdater
 {
     protected string $sheetName = 'Dex';

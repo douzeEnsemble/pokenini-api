@@ -4,4 +4,4 @@ declare(strict_types=1);
 
 namespace App\Exception;
 
-class InvalidSheetDataException extends \RuntimeException {}
+final class InvalidSheetDataException extends \RuntimeException {}

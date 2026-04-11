@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/election')]
-class TrainerPokemonEloController extends AbstractController
+final class TrainerPokemonEloController extends AbstractController
 {
     #[Route(path: '/top', methods: ['GET'])]
     public function top(

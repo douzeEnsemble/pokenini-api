@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/album')]
-class AlbumIndexController extends AbstractController
+final class AlbumIndexController extends AbstractController
 {
     #[Route(path: '/{trainerExternalId}/{dexSlug}', methods: ['GET'])]
     public function index(

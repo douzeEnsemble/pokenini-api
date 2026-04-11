@@ -11,7 +11,7 @@ use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[AsCommand(name: 'app:update:games_shinies_availabilities')]
-final class UpdateGamesShiniesAvailabilitiesCommand extends AbstractUpdateCommand
+final class   UpdateGamesShiniesAvailabilitiesCommand extends AbstractUpdateCommand
 {
     public function __construct(
         TranslatorInterface $translator,

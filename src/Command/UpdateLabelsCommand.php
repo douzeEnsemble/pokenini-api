@@ -11,7 +11,7 @@ use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[AsCommand(name: 'app:update:labels')]
-final class UpdateLabelsCommand extends AbstractUpdateCommand
+final class   UpdateLabelsCommand extends AbstractUpdateCommand
 {
     public function __construct(
         TranslatorInterface $translator,

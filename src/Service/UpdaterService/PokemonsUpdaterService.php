@@ -7,6 +7,9 @@ namespace App\Service\UpdaterService;
 use App\DTO\DataChangeReport\Report;
 use App\Updater\PokemonsUpdater;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class PokemonsUpdaterService extends AbstractUpdaterService
 {
     public function __construct(

@@ -14,7 +14,7 @@ use Doctrine\ORM\Mapping as ORM;
  * @SuppressWarnings("PHPMD.TooManyFields")
  */
 #[ORM\Entity]
-class Pokemon
+final class Pokemon
 {
     use BaseEntityTrait;
     use NamedTrait;

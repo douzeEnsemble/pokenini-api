@@ -14,7 +14,7 @@ use App\Entity\Traits\SoftDeleteable;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
-class CatchState
+final class CatchState
 {
     use BaseEntityTrait;
     use NamedTrait;

@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/pokemons')]
-class PokemonsController extends AbstractController
+final class PokemonsController extends AbstractController
 {
     #[Route(path: '/to_choose', methods: ['GET'])]
     public function getNPokemonsToChoose(

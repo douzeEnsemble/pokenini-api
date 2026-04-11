@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/types')]
-class TypesController extends AbstractController
+final class TypesController extends AbstractController
 {
     #[Route(path: '', methods: ['GET'])]
     public function get(

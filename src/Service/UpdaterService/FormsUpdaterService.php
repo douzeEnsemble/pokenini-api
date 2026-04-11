@@ -10,6 +10,9 @@ use App\Updater\Forms\RegionalFormsUpdater;
 use App\Updater\Forms\SpecialFormsUpdater;
 use App\Updater\Forms\VariantFormsUpdater;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class FormsUpdaterService extends AbstractUpdaterService
 {
     public function __construct(

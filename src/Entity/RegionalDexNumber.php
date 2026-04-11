@@ -8,7 +8,7 @@ use App\Entity\Traits\BaseEntityTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
-class RegionalDexNumber
+final class RegionalDexNumber
 {
     use BaseEntityTrait;
 

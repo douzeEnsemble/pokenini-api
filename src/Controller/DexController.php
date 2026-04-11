@@ -16,7 +16,7 @@ use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/dex')]
-class DexController extends AbstractController
+final class DexController extends AbstractController
 {
     public function __construct(
         private readonly TrainerDexService $trainerDexService

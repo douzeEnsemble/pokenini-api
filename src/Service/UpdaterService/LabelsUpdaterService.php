@@ -9,6 +9,9 @@ use App\Updater\CatchStatesUpdater;
 use App\Updater\RegionsUpdater;
 use App\Updater\TypesUpdater;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class LabelsUpdaterService extends AbstractUpdaterService
 {
     public function __construct(

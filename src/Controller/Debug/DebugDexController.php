@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/debogage/dex')]
-class DebugDexController extends AbstractDebugController
+final class DebugDexController extends AbstractDebugController
 {
     #[Route(path: '/{slug}', methods: ['GET'])]
     public function dex(

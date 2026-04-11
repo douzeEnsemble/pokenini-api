@@ -7,6 +7,9 @@ namespace App\Service\UpdaterService;
 use App\DTO\DataChangeReport\Report;
 use App\Updater\GamesShiniesAvailabilitiesUpdater;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class GamesShiniesAvailabilitiesUpdaterService extends AbstractUpdaterService
 {
     public function __construct(

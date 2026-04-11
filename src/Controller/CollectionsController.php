@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/collections')]
-class CollectionsController extends AbstractController
+final class CollectionsController extends AbstractController
 {
     #[Route(path: '', methods: ['GET'])]
     public function get(

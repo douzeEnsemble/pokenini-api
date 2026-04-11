@@ -6,6 +6,9 @@ namespace App\Updater;
 
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class CatchStatesUpdater extends AbstractUpdater
 {
     protected string $sheetName = 'Catch state';

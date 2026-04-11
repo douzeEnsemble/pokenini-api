@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\DTO\AlbumReport;
 
-class Report
+final class Report
 {
     /**
      * @param Statistic[] $detail

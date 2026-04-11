@@ -7,7 +7,7 @@ namespace App\DTO;
 /**
  * @psalm-no-seal-properties
  */
-class CollectionsAvailabilities
+final class CollectionsAvailabilities
 {
     /**
      * @param bool[] $collectionsAvailabilities
