@@ -78,7 +78,10 @@ final class DexAvailabilitiesRepositoryData
     }
 
     /**
-     * @return int[][]|string[][][][]
+     * @return array<string, array{
+     *  filters: array<string, array<int, string>>,
+     *  expectedTotalCount: int,
+     * }>
      */
     public static function providerGetTotalFormsFilters(): array
     {
@@ -160,7 +163,10 @@ final class DexAvailabilitiesRepositoryData
     }
 
     /**
-     * @return int[][]|string[][][][]
+     * @return array<string, array{
+     *  filters: array<string, array<int, string>>,
+     *  expectedTotalCount: int,
+     * }>
      */
     public static function providerGetTotalCatchStatesFilters(): array
     {
@@ -194,7 +200,10 @@ final class DexAvailabilitiesRepositoryData
     }
 
     /**
-     * @return int[][]|string[][][][]
+     * @return array<string, array{
+     *  filters: array<string, array<int, string>>,
+     *  expectedTotalCount: int,
+     * }>
      */
     public static function providerGetTotalGamesFilters(): array
     {
@@ -251,7 +260,10 @@ final class DexAvailabilitiesRepositoryData
     }
 
     /**
-     * @return int[][]|string[][][][]
+     * @return array<string, array{
+     *  filters: array<string, array<int, string>>,
+     *  expectedTotalCount: int,
+     * }>
      */
     public static function providerGetTotalCollectionsFilters(): array
     {
@@ -276,7 +288,10 @@ final class DexAvailabilitiesRepositoryData
     }
 
     /**
-     * @return int[][]|string[][][][]
+     * @return array<string, array{
+     *  filters: array<string, array<int, string>>,
+     *  expectedTotalCount: int,
+     * }>
      */
     public static function providerGetTotalFamiliesFilters(): array
     {
@@ -310,7 +325,10 @@ final class DexAvailabilitiesRepositoryData
     }
 
     /**
-     * @return int[][]|string[][][][]
+     * @return array<string, array{
+     *  filters: array<string, array<int, string>>,
+     *  expectedTotalCount: int,
+     * }>
      */
     public static function providerGetTotalEmptyFilters(): array
     {
