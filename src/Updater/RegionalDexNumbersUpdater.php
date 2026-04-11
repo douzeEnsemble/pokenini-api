@@ -12,6 +12,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Psr\Log\LoggerInterface;
 use Symfony\Component\Uid\Uuid;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class RegionalDexNumbersUpdater extends AbstractUpdater
 {
     protected const int RANGE_SIZE = 100;
@@ -93,7 +96,7 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
 
         $values = $this->getSheetValues("'{$this->sheetName}'!{$headerCellsRange}");
 
-        if (!$values) {
+        if (null === $values || [] === $values) {
             throw new InvalidSheetDataException('Spreadsheet is empty');
         }
 

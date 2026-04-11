@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 /**
  * Will be calculated from GameAvailability.
  */
-class GameBundleAvailability
+final class GameBundleAvailability
 {
     use BaseEntityTrait;
 

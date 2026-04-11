@@ -7,6 +7,9 @@ namespace App\Service\UpdaterService;
 use App\DTO\DataChangeReport\Report;
 use App\Updater\CollectionsUpdater;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class CollectionsUpdaterService extends AbstractUpdaterService
 {
     public function __construct(

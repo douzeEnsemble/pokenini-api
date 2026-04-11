@@ -13,7 +13,7 @@ use App\Entity\Traits\SoftDeleteable;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
-class SpecialForm
+final class SpecialForm
 {
     use BaseEntityTrait;
     use NamedTrait;

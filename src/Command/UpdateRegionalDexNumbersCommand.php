@@ -11,7 +11,7 @@ use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[AsCommand(name: 'app:update:regional_dex_numbers')]
-final class UpdateRegionalDexNumbersCommand extends AbstractUpdateCommand
+final class   UpdateRegionalDexNumbersCommand extends AbstractUpdateCommand
 {
     public function __construct(
         TranslatorInterface $translator,

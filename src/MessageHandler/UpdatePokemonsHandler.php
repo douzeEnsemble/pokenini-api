@@ -11,7 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
-class UpdatePokemonsHandler implements UpdateHandlerInterface
+final class UpdatePokemonsHandler implements UpdateHandlerInterface
 {
     use UpdateHandlerTrait;
 

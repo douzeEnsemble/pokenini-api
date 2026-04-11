@@ -11,7 +11,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * Will be calculated from Dex configurations.
  */
-class DexAvailability
+final class DexAvailability
 {
     use BaseEntityTrait;
 

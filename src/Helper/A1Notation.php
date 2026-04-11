@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Helper;
 
-class A1Notation
+final class A1Notation
 {
     private const string LOOKUP = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
 

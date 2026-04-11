@@ -10,7 +10,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/game_bundles')]
-class GameBundlesController extends AbstractController
+final class GameBundlesController extends AbstractController
 {
     #[Route(path: '', methods: ['GET'])]
     public function get(

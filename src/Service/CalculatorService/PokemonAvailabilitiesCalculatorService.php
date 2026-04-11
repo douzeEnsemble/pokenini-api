@@ -8,6 +8,9 @@ use App\Calculator\PokemonAvailabilities\GameBundlesCalculator;
 use App\Calculator\PokemonAvailabilities\GameBundlesShinyCalculator;
 use App\DTO\DataChangeReport\Report;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class PokemonAvailabilitiesCalculatorService extends AbstractCalculatorService
 {
     public function __construct(

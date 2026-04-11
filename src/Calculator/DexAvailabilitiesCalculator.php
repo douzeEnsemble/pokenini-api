@@ -8,6 +8,9 @@ use App\Entity\Dex;
 use App\Repository\DexAvailabilitiesRepository;
 use App\Repository\DexRepository;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class DexAvailabilitiesCalculator extends AbstractCalculator
 {
     protected string $statisticName = 'dex_availabilities';

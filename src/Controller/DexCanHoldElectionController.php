@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/dex')]
-class DexCanHoldElectionController extends AbstractController
+final class DexCanHoldElectionController extends AbstractController
 {
     #[Route(path: '/can_hold_election', methods: ['GET'])]
     public function list(

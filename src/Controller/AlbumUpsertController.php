@@ -14,7 +14,7 @@ use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/album')]
-class AlbumUpsertController extends AbstractController
+final class AlbumUpsertController extends AbstractController
 {
     public function __construct(
         private readonly PokedexService $pokedexService,

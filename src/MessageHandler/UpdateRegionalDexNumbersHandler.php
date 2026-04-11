@@ -11,7 +11,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Messenger\Attribute\AsMessageHandler;
 
 #[AsMessageHandler]
-class UpdateRegionalDexNumbersHandler implements UpdateHandlerInterface
+final class UpdateRegionalDexNumbersHandler implements UpdateHandlerInterface
 {
     use UpdateHandlerTrait;
 

@@ -8,6 +8,9 @@ use App\Calculator\AbstractCalculator;
 use App\Entity\PokemonAvailabilities;
 use App\Repository\PokemonAvailabilitiesRepository;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 class GameBundlesCalculator extends AbstractCalculator
 {
     protected string $statisticName = 'pokemon_availabilities_game_bundle';

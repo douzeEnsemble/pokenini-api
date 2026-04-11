@@ -7,7 +7,7 @@ namespace App\DTO;
 /**
  * @psalm-no-seal-properties
  */
-class GamesShiniesAvailabilities
+final class GamesShiniesAvailabilities
 {
     /**
      * @param bool[] $gamesShiniesAvailabilities

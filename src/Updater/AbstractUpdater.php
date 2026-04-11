@@ -11,6 +11,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use Google\Service\Exception as GoogleServiceException;
 use Psr\Log\LoggerInterface;
 
+/**
+ * @psalm-suppress PropertyNotSetInConstructor
+ */
 abstract class AbstractUpdater implements UpdaterInterface
 {
     protected string $sheetName;
@@ -102,7 +105,7 @@ abstract class AbstractUpdater implements UpdaterInterface
     {
         $values = $this->getSheetValues("'{$this->sheetName}'!{$this->headerCellsRange}");
 
-        if (!$values) {
+        if (null === $values || [] === $values) {
             $this->logger->error(
                 'Spreadsheet is empty',
                 [
@@ -144,7 +147,7 @@ abstract class AbstractUpdater implements UpdaterInterface
     {
         $values = $this->getSheetValues("'{$this->sheetName}'!{$range}");
 
-        if (!$values) {
+        if (null === $values || [] === $values) {
             $this->logger->error(
                 'There is not data in spreadsheet',
                 [

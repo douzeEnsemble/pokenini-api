@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping\UniqueConstraint;
 
 #[ORM\Entity]
 #[UniqueConstraint(name: 'trainer_election_pokemon', columns: ['trainer_external_id', 'dex_id', 'election_slug', 'pokemon_id'])]
-class TrainerPokemonElo
+final class TrainerPokemonElo
 {
     use BaseEntityTrait;
 

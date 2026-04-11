@@ -10,7 +10,7 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
 #[ORM\UniqueConstraint(columns: ['pokemon_id', 'category'])]
-class PokemonAvailabilities
+final class PokemonAvailabilities
 {
     use BaseEntityTrait;
 

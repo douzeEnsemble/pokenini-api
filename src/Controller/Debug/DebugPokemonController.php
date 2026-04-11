@@ -15,7 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/debogage/pokemon')]
-class DebugPokemonController extends AbstractDebugController
+final class DebugPokemonController extends AbstractDebugController
 {
     #[Route(path: '/{slug}', methods: ['GET'])]
     public function pokemon(
