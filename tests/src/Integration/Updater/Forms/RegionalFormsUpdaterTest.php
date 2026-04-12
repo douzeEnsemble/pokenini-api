@@ -24,6 +24,6 @@ final class RegionalFormsUpdaterTest extends AbstractTestFormsUpdater
     protected function getService(): AbstractUpdater
     {
         /** @var RegionalFormsUpdater */
-        return static::getContainer()->get(RegionalFormsUpdater::class);
+        return self::getContainer()->get(RegionalFormsUpdater::class);
     }
 }

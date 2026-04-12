@@ -28,7 +28,7 @@ final class AdminUpdateControllerTest extends WebTestCase
 
     public function testUpdateLabels(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $this->transport('async')->queue()->assertEmpty();
 
@@ -50,7 +50,7 @@ final class AdminUpdateControllerTest extends WebTestCase
 
     public function testUpdateGamesCollectionsAndDex(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $this->transport('async')->queue()->assertEmpty();
 
@@ -72,7 +72,7 @@ final class AdminUpdateControllerTest extends WebTestCase
 
     public function testUpdatePokemons(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $this->transport('async')->queue()->assertEmpty();
 
@@ -94,7 +94,7 @@ final class AdminUpdateControllerTest extends WebTestCase
 
     public function testUpdateGamesAvailabilities(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $this->transport('async')->queue()->assertEmpty();
 
@@ -116,7 +116,7 @@ final class AdminUpdateControllerTest extends WebTestCase
 
     public function testUpdateGamesShiniesAvailabilities(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $this->transport('async')->queue()->assertEmpty();
 
@@ -138,7 +138,7 @@ final class AdminUpdateControllerTest extends WebTestCase
 
     public function testUpdateCollectionsAvailabilities(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $this->transport('async')->queue()->assertEmpty();
 
@@ -160,7 +160,7 @@ final class AdminUpdateControllerTest extends WebTestCase
 
     public function testUpdateRegionalDexNumbers(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $this->transport('async')->queue()->assertEmpty();
 
@@ -182,7 +182,7 @@ final class AdminUpdateControllerTest extends WebTestCase
 
     public function testUpdateCollections(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $this->transport('async')->queue()->assertEmpty();
 
@@ -204,7 +204,7 @@ final class AdminUpdateControllerTest extends WebTestCase
 
     public function testUpdateBadAuth(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $client->request(
             'POST',

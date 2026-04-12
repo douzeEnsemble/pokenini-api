@@ -41,7 +41,7 @@ final class CalculatePokemonAvailabilitiesCommandTest extends AbstractTestCaseCo
     public function testNoPokemonAvailabilities(): void
     {
         /** @var PokemonsRepository $repo */
-        $repo = static::getContainer()->get(PokemonsRepository::class);
+        $repo = self::getContainer()->get(PokemonsRepository::class);
         $repo->removeAll();
 
         $this->assertEquals(0, $this->getPokemonNotDeletedCount());

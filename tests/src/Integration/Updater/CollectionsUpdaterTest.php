@@ -26,6 +26,6 @@ final class CollectionsUpdaterTest extends AbstractTestUpdater
     protected function getService(): AbstractUpdater
     {
         /** @var CollectionsUpdater */
-        return static::getContainer()->get(CollectionsUpdater::class);
+        return self::getContainer()->get(CollectionsUpdater::class);
     }
 }

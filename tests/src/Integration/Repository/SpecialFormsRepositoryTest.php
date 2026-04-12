@@ -26,7 +26,7 @@ final class SpecialFormsRepositoryTest extends KernelTestCase
     public function testGetAll(): void
     {
         /** @var SpecialFormsRepository $repo */
-        $repo = static::getContainer()->get(SpecialFormsRepository::class);
+        $repo = self::getContainer()->get(SpecialFormsRepository::class);
 
         $list = $repo->getAll();
 

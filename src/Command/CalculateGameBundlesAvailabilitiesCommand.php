@@ -11,7 +11,7 @@ use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[AsCommand(name: 'app:calculate:game_bundles_availabilities')]
-final class  CalculateGameBundlesAvailabilitiesCommand extends AbstractCalculateCommand
+final class CalculateGameBundlesAvailabilitiesCommand extends AbstractCalculateCommand
 {
     public function __construct(
         TranslatorInterface $translator,

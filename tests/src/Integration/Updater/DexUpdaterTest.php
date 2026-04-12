@@ -63,6 +63,6 @@ final class DexUpdaterTest extends AbstractTestUpdater
     protected function getService(): AbstractUpdater
     {
         /** @var DexUpdater */
-        return static::getContainer()->get(DexUpdater::class);
+        return self::getContainer()->get(DexUpdater::class);
     }
 }

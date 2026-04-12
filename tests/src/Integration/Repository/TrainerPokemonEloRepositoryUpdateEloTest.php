@@ -28,7 +28,7 @@ final class TrainerPokemonEloRepositoryUpdateEloTest extends KernelTestCase
     public function testUpdateElo(): void
     {
         /** @var TrainerPokemonEloRepository $repo */
-        $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
+        $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
         $repo->updateElo(4556, '7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', '', 'bulbasaur', true);
 
@@ -45,7 +45,7 @@ final class TrainerPokemonEloRepositoryUpdateEloTest extends KernelTestCase
     public function testUpdateNewElo(): void
     {
         /** @var TrainerPokemonEloRepository $repo */
-        $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
+        $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
         $repo->updateElo(1212, '7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', '', 'butterfree-gmax', false);
 
@@ -62,7 +62,7 @@ final class TrainerPokemonEloRepositoryUpdateEloTest extends KernelTestCase
     public function testUpdateWinnerAgain(): void
     {
         /** @var TrainerPokemonEloRepository $repo */
-        $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
+        $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
         $repo->updateElo(1048, '7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow', 'affinee', 'venusaur', true);
 
@@ -79,7 +79,7 @@ final class TrainerPokemonEloRepositoryUpdateEloTest extends KernelTestCase
     public function testUpdateLoserAgain(): void
     {
         /** @var TrainerPokemonEloRepository $repo */
-        $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
+        $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
         $repo->updateElo(956, '7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow', 'affinee', 'butterfree', false);
 

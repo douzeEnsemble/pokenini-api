@@ -34,11 +34,11 @@ final class GamesShiniesAvailabilitiesRepositoryTest extends KernelTestCase
 
         // Using temp variables is for avoid typing conflict
         /** @var GamesShiniesAvailabilitiesRepository $gamesShiniesAvailabilitiesRepo */
-        $gamesShiniesAvailabilitiesRepo = static::getContainer()->get(GamesShiniesAvailabilitiesRepository::class);
+        $gamesShiniesAvailabilitiesRepo = self::getContainer()->get(GamesShiniesAvailabilitiesRepository::class);
         $this->gamesShiniesAvailabilitiesRepo = $gamesShiniesAvailabilitiesRepo;
 
         /** @var PokemonsRepository $pokemonsRepo */
-        $pokemonsRepo = static::getContainer()->get(PokemonsRepository::class);
+        $pokemonsRepo = self::getContainer()->get(PokemonsRepository::class);
         $this->pokemonsRepo = $pokemonsRepo;
     }
 

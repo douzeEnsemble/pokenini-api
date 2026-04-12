@@ -19,7 +19,7 @@ final class ReportsControllerTest extends WebTestCase
 
     public function testReports(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $client->request(
             'GET',

@@ -19,7 +19,7 @@ final class DexCanHoldElectionControllerTest extends WebTestCase
 
     public function testGet(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $client->request(
             'GET',
@@ -102,7 +102,7 @@ final class DexCanHoldElectionControllerTest extends WebTestCase
 
     public function testGetEmpty(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $client->request(
             'GET',

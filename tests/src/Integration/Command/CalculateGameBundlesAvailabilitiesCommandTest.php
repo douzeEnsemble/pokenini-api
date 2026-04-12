@@ -39,7 +39,7 @@ final class CalculateGameBundlesAvailabilitiesCommandTest extends AbstractTestCa
     public function testNoGamesAvailabilities(): void
     {
         /** @var GamesAvailabilitiesRepository $repo */
-        $repo = static::getContainer()->get(GamesAvailabilitiesRepository::class);
+        $repo = self::getContainer()->get(GamesAvailabilitiesRepository::class);
         $repo->removeAll();
 
         $this->assertEquals(0, $this->getGameAvailabilityCount());

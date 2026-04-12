@@ -29,7 +29,7 @@ final class ElectionUpdateEloServiceTest extends KernelTestCase
     public function testVote(): void
     {
         /** @var ElectionUpdateEloService $service */
-        $service = static::getContainer()->get(ElectionUpdateEloService::class);
+        $service = self::getContainer()->get(ElectionUpdateEloService::class);
 
         $results = $service->update(
             new ElectionVote([
@@ -81,7 +81,7 @@ final class ElectionUpdateEloServiceTest extends KernelTestCase
     public function testVoteBis(): void
     {
         /** @var ElectionUpdateEloService $service */
-        $service = static::getContainer()->get(ElectionUpdateEloService::class);
+        $service = self::getContainer()->get(ElectionUpdateEloService::class);
 
         $results = $service->update(
             new ElectionVote([
@@ -144,7 +144,7 @@ final class ElectionUpdateEloServiceTest extends KernelTestCase
     public function testVoteTer(): void
     {
         /** @var ElectionUpdateEloService $service */
-        $service = static::getContainer()->get(ElectionUpdateEloService::class);
+        $service = self::getContainer()->get(ElectionUpdateEloService::class);
 
         $results = $service->update(
             new ElectionVote([
@@ -185,7 +185,7 @@ final class ElectionUpdateEloServiceTest extends KernelTestCase
     public function testVoteAllLosers(): void
     {
         /** @var ElectionUpdateEloService $service */
-        $service = static::getContainer()->get(ElectionUpdateEloService::class);
+        $service = self::getContainer()->get(ElectionUpdateEloService::class);
 
         $results = $service->update(
             new ElectionVote([
@@ -228,7 +228,7 @@ final class ElectionUpdateEloServiceTest extends KernelTestCase
     public function testVoteAllWinners(): void
     {
         /** @var ElectionUpdateEloService $service */
-        $service = static::getContainer()->get(ElectionUpdateEloService::class);
+        $service = self::getContainer()->get(ElectionUpdateEloService::class);
 
         $results = $service->update(
             new ElectionVote([

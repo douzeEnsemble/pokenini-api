@@ -30,7 +30,7 @@ final class AlbumPokemonServiceTest extends KernelTestCase
     public function testListUser12RedGreenBlueYellow(): void
     {
         /** @var AlbumPokemonService $service */
-        $service = static::getContainer()->get(AlbumPokemonService::class);
+        $service = self::getContainer()->get(AlbumPokemonService::class);
 
         $pokemons = $service->get(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
@@ -55,7 +55,7 @@ final class AlbumPokemonServiceTest extends KernelTestCase
     public function testListUser12GoldSilverCrystal(): void
     {
         /** @var AlbumPokemonService $service */
-        $service = static::getContainer()->get(AlbumPokemonService::class);
+        $service = self::getContainer()->get(AlbumPokemonService::class);
 
         $pokemons = $service->get(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
@@ -82,7 +82,7 @@ final class AlbumPokemonServiceTest extends KernelTestCase
     public function testListUser13(): void
     {
         /** @var AlbumPokemonService $service */
-        $service = static::getContainer()->get(AlbumPokemonService::class);
+        $service = self::getContainer()->get(AlbumPokemonService::class);
 
         $pokemons = $service->get(
             'bd307a3ec329e10a2cff8fb87480823da114f8f4',
@@ -107,7 +107,7 @@ final class AlbumPokemonServiceTest extends KernelTestCase
     public function testListUserUnknown(): void
     {
         /** @var AlbumPokemonService $service */
-        $service = static::getContainer()->get(AlbumPokemonService::class);
+        $service = self::getContainer()->get(AlbumPokemonService::class);
 
         $pokemons = $service->get(
             '46546542313186',

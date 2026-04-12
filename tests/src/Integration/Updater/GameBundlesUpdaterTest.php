@@ -25,6 +25,6 @@ final class GameBundlesUpdaterTest extends AbstractTestUpdater
     protected function getService(): AbstractUpdater
     {
         /** @var GameBundlesUpdater */
-        return static::getContainer()->get(GameBundlesUpdater::class);
+        return self::getContainer()->get(GameBundlesUpdater::class);
     }
 }

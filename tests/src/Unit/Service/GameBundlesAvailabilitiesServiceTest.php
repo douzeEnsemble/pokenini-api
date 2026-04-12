@@ -20,10 +20,10 @@ final class GameBundlesAvailabilitiesServiceTest extends TestCase
 {
     public function testGetFromPokemonWithCacheHit(): void
     {
-        $pokemon = $this->createMock(Pokemon::class);
+        $pokemon = new Pokemon();
         $pokemon->slug = 'pikachu';
 
-        $expectedResult = $this->createMock(GameBundlesAvailabilities::class);
+        $expectedResult = new GameBundlesAvailabilities([]);
 
         $cache = $this->createMock(CacheInterface::class);
         $cache
@@ -47,10 +47,10 @@ final class GameBundlesAvailabilitiesServiceTest extends TestCase
 
     public function testGetFromPokemonWithCacheMiss(): void
     {
-        $pokemon = $this->createMock(Pokemon::class);
+        $pokemon = new Pokemon();
         $pokemon->slug = 'charizard';
 
-        $expectedResult = $this->createMock(GameBundlesAvailabilities::class);
+        $expectedResult = new GameBundlesAvailabilities([]);
 
         $cache = $this->createMock(CacheInterface::class);
         $cache

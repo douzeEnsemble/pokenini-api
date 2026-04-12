@@ -25,7 +25,7 @@ final class AdminCalculateControllerTest extends WebTestCase
 
     public function testCalculateGameBundlesAvailabilities(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $this->transport('async')->queue()->assertEmpty();
 
@@ -47,7 +47,7 @@ final class AdminCalculateControllerTest extends WebTestCase
 
     public function testCalculateGameBundlesShiniesAvailabilities(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $this->transport('async')->queue()->assertEmpty();
 
@@ -69,7 +69,7 @@ final class AdminCalculateControllerTest extends WebTestCase
 
     public function testCalculateDexAvailabilities(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $this->transport('async')->queue()->assertEmpty();
 
@@ -91,7 +91,7 @@ final class AdminCalculateControllerTest extends WebTestCase
 
     public function testCalculatePokemonAvailabilities(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $this->transport('async')->queue()->assertEmpty();
 
@@ -113,7 +113,7 @@ final class AdminCalculateControllerTest extends WebTestCase
 
     public function testUpdateBadAuth(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $client->request(
             'POST',

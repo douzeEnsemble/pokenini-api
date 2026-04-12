@@ -11,7 +11,7 @@ use Symfony\Component\Console\Attribute\AsCommand;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
 #[AsCommand(name: 'app:calculate:dex_availabilities')]
-final class  CalculateDexAvailabilitiesCommand extends AbstractCalculateCommand
+final class CalculateDexAvailabilitiesCommand extends AbstractCalculateCommand
 {
     public function __construct(
         TranslatorInterface $translator,

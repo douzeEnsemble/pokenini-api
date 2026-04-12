@@ -28,7 +28,7 @@ final class TrainerDexRepositoryInsertIfNeededTest extends KernelTestCase
     public function testWasNeeded(): void
     {
         /** @var TrainerDexRepository $repo */
-        $repo = static::getContainer()->get(TrainerDexRepository::class);
+        $repo = self::getContainer()->get(TrainerDexRepository::class);
 
         $this->assertEquals(12, $this->getTrainerDexCount());
 
@@ -40,7 +40,7 @@ final class TrainerDexRepositoryInsertIfNeededTest extends KernelTestCase
     public function testWasntNeeded(): void
     {
         /** @var TrainerDexRepository $repo */
-        $repo = static::getContainer()->get(TrainerDexRepository::class);
+        $repo = self::getContainer()->get(TrainerDexRepository::class);
 
         $this->assertEquals(12, $this->getTrainerDexCount());
 
@@ -52,7 +52,7 @@ final class TrainerDexRepositoryInsertIfNeededTest extends KernelTestCase
     public function testWasNeededThenWasnt(): void
     {
         /** @var TrainerDexRepository $repo */
-        $repo = static::getContainer()->get(TrainerDexRepository::class);
+        $repo = self::getContainer()->get(TrainerDexRepository::class);
 
         $this->assertEquals(12, $this->getTrainerDexCount());
 
@@ -68,7 +68,7 @@ final class TrainerDexRepositoryInsertIfNeededTest extends KernelTestCase
     public function testlugOkThenKo(): void
     {
         /** @var TrainerDexRepository $repo */
-        $repo = static::getContainer()->get(TrainerDexRepository::class);
+        $repo = self::getContainer()->get(TrainerDexRepository::class);
 
         $this->assertEquals(12, $this->getTrainerDexCount());
 

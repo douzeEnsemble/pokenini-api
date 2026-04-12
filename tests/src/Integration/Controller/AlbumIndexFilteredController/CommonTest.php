@@ -10,6 +10,8 @@ use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
+ *
+ * @psalm-import-type PokedexResponse from \App\Tests\Common\Types\PokedexTypes
  */
 #[CoversClass(AlbumIndexController::class)]
 final class CommonTest extends AbstractTestAlbumIndexFilteredController
@@ -64,26 +66,23 @@ final class CommonTest extends AbstractTestAlbumIndexFilteredController
         $this->assertResponseIsOK();
         $content = $this->getClientResponseContent();
 
-        /** @var int[][][]|string[][]|string[][][] $data */
+        /** @var PokedexResponse $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('pokemons', $data);
 
-        /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
         $this->assertCount(22, $pokemons);
 
         $this->assertArrayHasKey('filteredReport', $data);
 
-        /** @var int[]|int[][][]|string[][][] $filteredReport */
         $filteredReport = $data['filteredReport'];
 
         $this->assertReport($filteredReport, 9, 3, 3, 7, 22);
 
         $this->assertArrayHasKey('report', $data);
 
-        /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
         $this->assertReport($report, 9, 3, 3, 7, 22);
