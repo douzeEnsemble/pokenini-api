@@ -22,6 +22,14 @@ final class TrainerPokemonEloQueryOptions
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
 
+        /**
+         * @var array{
+         *  trainer_external_id: string,
+         *  dex_slug: string,
+         *  election_slug: string,
+         *  count: int,
+         * }
+         */
         $options = $resolver->resolve($values);
 
         $this->trainerExternalId = $options['trainer_external_id'];

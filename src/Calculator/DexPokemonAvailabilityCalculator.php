@@ -34,6 +34,7 @@ class DexPokemonAvailabilityCalculator
 
         $values = $this->getValues($rule, $pokemon);
 
+        /** @var bool $isGettable */
         $isGettable = $this->expressionLanguage->evaluate($rule, $values);
 
         if (!$isGettable) {

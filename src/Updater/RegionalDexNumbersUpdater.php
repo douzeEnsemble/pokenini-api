@@ -30,7 +30,11 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
      */
     private ?array $regionsCache = null;
 
-    /** @var string[][] */
+    /** @var array<int, array{
+     *  pokemonSlug: string,
+     *  regionSlug: string,
+     *  dexNumber: string
+     * }> */
     private array $records;
 
     public function __construct(
@@ -74,9 +78,6 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
         return $ranges;
     }
 
-    /**
-     * @return string[]
-     */
     #[\Override]
     protected function getHeader(): array
     {
@@ -130,7 +131,7 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
     }
 
     /**
-     * @param string[] $header
+     * @param array<int, string> $header
      */
     #[\Override]
     protected function handleCellRange(array $header, string $cellRange): void
@@ -207,7 +208,7 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
     }
 
     /**
-     * @param string[][] $records
+     * @param array<int, array<string, string>> $records
      */
     private function getFromRecords(array $records): void
     {
@@ -218,7 +219,7 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
     }
 
     /**
-     * @param string[] $record
+     * @param array<string, string> $record
      */
     private function transformRecord(
         array $record

@@ -16,7 +16,7 @@ class GameGenerationsUpdater extends AbstractUpdater
     protected string $statisticName = 'game_generations';
     protected string $headerCellsRange = 'A1:B1';
 
-    /** @var string[] */
+    /** @var array<int, string> */
     protected array $recordsCellsRanges = ['A2:B'];
 
     #[\Override]

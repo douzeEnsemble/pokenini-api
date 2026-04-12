@@ -35,6 +35,24 @@ final class AlbumFilters
     {
         $resolver = new OptionsResolver();
         self::configureOptions($resolver);
+
+        /**
+         * @var array{
+         *  primary_types: AlbumFilterValues,
+         *  secondary_types: AlbumFilterValues,
+         *  any_types: AlbumFilterValues,
+         *  category_forms: AlbumFilterValues,
+         *  regional_forms: AlbumFilterValues,
+         *  special_forms: AlbumFilterValues,
+         *  variant_forms: AlbumFilterValues,
+         *  catch_states: AlbumFilterValues,
+         *  original_game_bundles: AlbumFilterValues,
+         *  game_bundle_availabilities: AlbumFilterValues,
+         *  game_bundle_shiny_availabilities: AlbumFilterValues,
+         *  families: AlbumFilterValues,
+         *  collection_availabilities: AlbumFilterValues,
+         * }
+         */
         $options = $resolver->resolve($data);
 
         return new self(
@@ -54,6 +72,9 @@ final class AlbumFilters
         );
     }
 
+    /**
+     * @SuppressWarnings("PHPMD.UnusedFormalParameter")
+     */
     public static function configureOptions(OptionsResolver $resolver): void
     {
         $defaultsValues = [
@@ -77,9 +98,10 @@ final class AlbumFilters
         foreach (array_keys($defaultsValues) as $key) {
             $resolver->setNormalizer(
                 $key,
+                /**
+                 * @param array<int, null|string> $data
+                 */
                 function (Options $options, array $data): AlbumFilterValues {
-                    unset($options); // To remove PHPMD.UnusedFormalParameter warning
-
                     return self::normalizer($data);
                 }
             );
@@ -87,14 +109,18 @@ final class AlbumFilters
     }
 
     /**
-     * @param string[] $data
+     * @param array<int, null|string> $data
      */
     public static function normalizer(array $data): AlbumFilterValues
     {
         // Remove empty value
         $cleanData = array_filter($data);
 
-        // Replace string null to null
+        /**
+         * Replace string null to null.
+         *
+         * @var array<int, null|string> $newData
+         */
         $newData = array_map(
             fn ($value) => ('null' == $value) ? null : $value,
             $cleanData

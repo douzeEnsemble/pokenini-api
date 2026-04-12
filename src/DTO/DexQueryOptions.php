@@ -19,6 +19,12 @@ final class DexQueryOptions
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
 
+        /**
+         * @var array{
+         *  include_unreleased_dex: bool,
+         *  include_premium_dex: bool,
+         * }
+         */
         $options = $resolver->resolve($values);
 
         $this->includeUnreleasedDex = $options['include_unreleased_dex'];

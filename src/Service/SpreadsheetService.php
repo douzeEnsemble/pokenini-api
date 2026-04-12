@@ -6,6 +6,8 @@ namespace App\Service;
 
 use Google\Client;
 use Google\Service\Sheets;
+use Google\Service\Sheets\Resource\Spreadsheets;
+use Google\Service\Sheets\Resource\SpreadsheetsValues;
 use Google\Service\Sheets\ValueRange;
 
 class SpreadsheetService
@@ -21,7 +23,10 @@ class SpreadsheetService
 
     public function get(string $spreadsheetId, string $range): ?ValueRange
     {
-        return $this->service->spreadsheets_values->get($spreadsheetId, $range);
+        /** @var SpreadsheetsValues $spreadsheetsValues */
+        $spreadsheetsValues = $this->service->spreadsheets_values;
+
+        return $spreadsheetsValues->get($spreadsheetId, $range);
     }
 
     public function getSheetRowCount(string $spreadsheetId, string $sheetTitle): int
@@ -36,7 +41,11 @@ class SpreadsheetService
 
     private function getSheetGridProperties(string $spreadsheetId, string $sheetTitle): Sheets\GridProperties
     {
-        $sheets = $this->service->spreadsheets->get($spreadsheetId)->getSheets();
+        /** @var Spreadsheets $spreadsheets */
+        $spreadsheets = $this->service->spreadsheets;
+
+        /** @var Sheets\Sheet[] $sheets */
+        $sheets = $spreadsheets->get($spreadsheetId)->getSheets();
 
         foreach ($sheets as $sheet) {
             if ($sheet->getProperties()->getTitle() === $sheetTitle) {

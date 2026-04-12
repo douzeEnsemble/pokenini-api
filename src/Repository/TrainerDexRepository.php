@@ -133,6 +133,7 @@ class TrainerDexRepository extends ServiceEntityRepository
                     AND td.trainer_external_id = :trainer_external_id
             SQL;
 
+        /** @var int $count */
         $count = $this->getEntityManager()->getConnection()->fetchOne(
             $sql,
             [

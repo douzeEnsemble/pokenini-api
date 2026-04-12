@@ -11,7 +11,7 @@ abstract class AbstractFormsUpdater extends AbstractUpdater
 {
     protected string $headerCellsRange = 'A1:D1';
 
-    /** @var string[] */
+    /** @var array<int, string> */
     protected array $recordsCellsRanges = ['A2:D'];
 
     #[\Override]
