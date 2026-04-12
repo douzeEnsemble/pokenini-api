@@ -26,6 +26,6 @@ final class CatchStatesUpdaterTest extends AbstractTestUpdater
     protected function getService(): AbstractUpdater
     {
         /** @var CatchStatesUpdater */
-        return static::getContainer()->get(CatchStatesUpdater::class);
+        return self::getContainer()->get(CatchStatesUpdater::class);
     }
 }

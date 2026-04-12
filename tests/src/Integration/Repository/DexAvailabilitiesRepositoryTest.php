@@ -35,7 +35,7 @@ final class DexAvailabilitiesRepositoryTest extends KernelTestCase
         $this->assertGreaterThan(0, $this->getDexAvailabilityCount());
 
         /** @var DexAvailabilitiesRepository $repo */
-        $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
+        $repo = self::getContainer()->get(DexAvailabilitiesRepository::class);
         $repo->removeAll();
 
         $this->assertEquals(0, $this->getDexAvailabilityCount());
@@ -44,7 +44,7 @@ final class DexAvailabilitiesRepositoryTest extends KernelTestCase
     public function testGetTotal(): void
     {
         /** @var DexAvailabilitiesRepository $repo */
-        $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
+        $repo = self::getContainer()->get(DexAvailabilitiesRepository::class);
 
         $totalCount = $repo->getTotal(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
@@ -58,7 +58,7 @@ final class DexAvailabilitiesRepositoryTest extends KernelTestCase
     public function testGetTotalDifferentTrainer(): void
     {
         /** @var DexAvailabilitiesRepository $repo */
-        $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
+        $repo = self::getContainer()->get(DexAvailabilitiesRepository::class);
 
         $totalCount = $repo->getTotal(
             'bd307a3ec329e10a2cff8fb87480823da114f8f4',
@@ -76,7 +76,7 @@ final class DexAvailabilitiesRepositoryTest extends KernelTestCase
     public function testGetTotalFilters(array $filters, int $expectedTotalCount): void
     {
         /** @var DexAvailabilitiesRepository $repo */
-        $repo = static::getContainer()->get(DexAvailabilitiesRepository::class);
+        $repo = self::getContainer()->get(DexAvailabilitiesRepository::class);
 
         $totalCount = $repo->getTotal(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',

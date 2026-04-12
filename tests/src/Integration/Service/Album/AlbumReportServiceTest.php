@@ -39,7 +39,7 @@ final class AlbumReportServiceTest extends KernelTestCase
         int $countTotal,
     ): void {
         /** @var AlbumReportService $service */
-        $service = static::getContainer()->get(AlbumReportService::class);
+        $service = self::getContainer()->get(AlbumReportService::class);
 
         $report = $service->get($trainerId, $dexSlug, AlbumFilters::createFromArray([]));
         $this->assertReport($report, $countNo, $countMaybe, $countMaybeNot, $countYes, $countTotal);
@@ -131,7 +131,7 @@ final class AlbumReportServiceTest extends KernelTestCase
         int $countTotal
     ): void {
         /** @var AlbumReportService $service */
-        $service = static::getContainer()->get(AlbumReportService::class);
+        $service = self::getContainer()->get(AlbumReportService::class);
 
         $report = $service->get($trainerId, $dexSlug, AlbumFilters::createFromArray($filters));
         $this->assertReport($report, $countNo, $countMaybe, $countMaybeNot, $countYes, $countTotal);

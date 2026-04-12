@@ -21,7 +21,7 @@ final class ActionLogsControllerTest extends WebTestCase
 
     public function testActionLogs(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $client->request(
             'GET',

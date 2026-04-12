@@ -24,6 +24,6 @@ final class CategoryFormsUpdaterTest extends AbstractTestFormsUpdater
     protected function getService(): AbstractUpdater
     {
         /** @var CategoryFormsUpdater */
-        return static::getContainer()->get(CategoryFormsUpdater::class);
+        return self::getContainer()->get(CategoryFormsUpdater::class);
     }
 }

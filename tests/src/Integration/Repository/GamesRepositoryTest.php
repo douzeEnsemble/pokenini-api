@@ -26,7 +26,7 @@ final class GamesRepositoryTest extends KernelTestCase
     public function testGetAll(): void
     {
         /** @var GamesRepository $repo */
-        $repo = static::getContainer()->get(GamesRepository::class);
+        $repo = self::getContainer()->get(GamesRepository::class);
 
         $list = $repo->getAllSlugs();
 

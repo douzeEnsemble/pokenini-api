@@ -19,7 +19,7 @@ final class ElectionVoteControllerTest extends WebTestCase
 
     public function testVote(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $client->request(
             'POST',
@@ -78,7 +78,7 @@ final class ElectionVoteControllerTest extends WebTestCase
 
     public function testVoteBis(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $client->request(
             'POST',
@@ -137,7 +137,7 @@ final class ElectionVoteControllerTest extends WebTestCase
 
     public function testVoteAllLosers(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $client->request(
             'POST',
@@ -196,7 +196,7 @@ final class ElectionVoteControllerTest extends WebTestCase
 
     public function testVoteAllWinners(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $client->request(
             'POST',
@@ -255,7 +255,7 @@ final class ElectionVoteControllerTest extends WebTestCase
 
     public function testEmptyData(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $client->request(
             'POST',
@@ -274,7 +274,7 @@ final class ElectionVoteControllerTest extends WebTestCase
 
     public function testEmptyDataBis(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $client->request(
             'POST',
@@ -293,7 +293,7 @@ final class ElectionVoteControllerTest extends WebTestCase
 
     public function testBadVote(): void
     {
-        $client = static::createClient();
+        $client = self::createClient();
 
         $client->request(
             'POST',

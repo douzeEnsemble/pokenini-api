@@ -26,7 +26,7 @@ final class TypesRepositoryTest extends KernelTestCase
     public function testGetAll(): void
     {
         /** @var TypesRepository $repo */
-        $repo = static::getContainer()->get(TypesRepository::class);
+        $repo = self::getContainer()->get(TypesRepository::class);
 
         $list = $repo->getAll();
 

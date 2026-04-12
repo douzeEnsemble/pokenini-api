@@ -15,6 +15,8 @@ use Symfony\Component\Uid\Uuid;
 
 /**
  * @extends ServiceEntityRepository<Pokedex>
+ *
+ * @psalm-import-type PokedexRepositoryItems from \App\Tests\Common\Types\PokedexTypes
  */
 class PokedexRepository extends ServiceEntityRepository
 {
@@ -26,7 +28,7 @@ class PokedexRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return int[][]|string[][]
+     * @return PokedexRepositoryItems
      */
     public function getList(
         string $trainerExternalId,
@@ -58,7 +60,7 @@ class PokedexRepository extends ServiceEntityRepository
             $this->getFiltersTypes(),
         );
 
-        /** @var int[][]|string[][] */
+        /** @var PokedexRepositoryItems */
         return $this->getEntityManager()->getConnection()->fetchAllAssociative(
             $sql,
             $params,

@@ -26,7 +26,7 @@ final class RegionsRepositoryTest extends KernelTestCase
     public function testGetAll(): void
     {
         /** @var RegionsRepository $repo */
-        $repo = static::getContainer()->get(RegionsRepository::class);
+        $repo = self::getContainer()->get(RegionsRepository::class);
 
         $list = $repo->getAllSlugs();
 

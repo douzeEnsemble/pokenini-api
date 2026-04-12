@@ -24,7 +24,7 @@ final class AlbumReportServiceData
     {
         return [
             'primary_type' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'primary_types' => [
@@ -38,7 +38,7 @@ final class AlbumReportServiceData
                 'countTotal' => 6,
             ],
             'primary_type_null' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'primary_types' => [
@@ -52,7 +52,7 @@ final class AlbumReportServiceData
                 'countTotal' => 1,
             ],
             'secondary_type' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'secondary_types' => [
@@ -66,7 +66,7 @@ final class AlbumReportServiceData
                 'countTotal' => 3,
             ],
             'secondary_type_null' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'secondary_types' => [
@@ -80,7 +80,7 @@ final class AlbumReportServiceData
                 'countTotal' => 9,
             ],
             'primary_and_secondary_types' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'primary_types' => [
@@ -97,7 +97,7 @@ final class AlbumReportServiceData
                 'countTotal' => 3,
             ],
             'any_types' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'any_types' => [
@@ -111,7 +111,7 @@ final class AlbumReportServiceData
                 'countTotal' => 7,
             ],
             'any_types_null' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'any_types' => [
@@ -145,7 +145,7 @@ final class AlbumReportServiceData
     {
         return [
             'category_form' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'category_forms' => [
@@ -159,7 +159,7 @@ final class AlbumReportServiceData
                 'countTotal' => 2,
             ],
             'category_form_null' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'category_forms' => [
@@ -173,7 +173,7 @@ final class AlbumReportServiceData
                 'countTotal' => 20,
             ],
             'regional_form' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'regional_forms' => [
@@ -187,7 +187,7 @@ final class AlbumReportServiceData
                 'countTotal' => 3,
             ],
             'regional_form_null' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'regional_forms' => [
@@ -201,7 +201,7 @@ final class AlbumReportServiceData
                 'countTotal' => 19,
             ],
             'special_form' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'special_forms' => [
@@ -215,7 +215,7 @@ final class AlbumReportServiceData
                 'countTotal' => 2,
             ],
             'special_form_null' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'special_forms' => [
@@ -229,7 +229,7 @@ final class AlbumReportServiceData
                 'countTotal' => 18,
             ],
             'special_forms' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'special_forms' => [
@@ -244,7 +244,7 @@ final class AlbumReportServiceData
                 'countTotal' => 3,
             ],
             'variant_form' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'variant_forms' => [
@@ -258,7 +258,7 @@ final class AlbumReportServiceData
                 'countTotal' => 4,
             ],
             'variant_form_null' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'variant_forms' => [
@@ -290,7 +290,7 @@ final class AlbumReportServiceData
     {
         return [
             'catch_state' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'catch_states' => [
@@ -304,7 +304,7 @@ final class AlbumReportServiceData
                 'countTotal' => 3,
             ],
             'catch_state_null' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'catch_states' => [
@@ -318,7 +318,7 @@ final class AlbumReportServiceData
                 'countTotal' => 1,
             ],
             'catch_states' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'catch_states' => [
@@ -333,7 +333,7 @@ final class AlbumReportServiceData
                 'countTotal' => 6,
             ],
             'catch_state_negative' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'catch_states' => [
@@ -365,7 +365,7 @@ final class AlbumReportServiceData
     {
         return [
             'original_game_bundles' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'original_game_bundles' => [
@@ -379,7 +379,7 @@ final class AlbumReportServiceData
                 'countTotal' => 12,
             ],
             'original_game_bundles_null' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'original_game_bundles' => [
@@ -411,7 +411,7 @@ final class AlbumReportServiceData
     {
         return [
             'game_bundle_availabilities' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'game_bundle_availabilities' => [
@@ -425,7 +425,7 @@ final class AlbumReportServiceData
                 'countTotal' => 2,
             ],
             'game_bundle_availabilities_null' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'game_bundle_availabilities' => [
@@ -439,7 +439,7 @@ final class AlbumReportServiceData
                 'countTotal' => 0,
             ],
             'game_bundle_availabilities_negative' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'game_bundle_availabilities' => [
@@ -453,7 +453,7 @@ final class AlbumReportServiceData
                 'countTotal' => 20,
             ],
             'game_bundle_shiny_availabilities' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'game_bundle_shiny_availabilities' => [
@@ -467,7 +467,7 @@ final class AlbumReportServiceData
                 'countTotal' => 4,
             ],
             'game_bundle_shiny_availabilities_null' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'game_bundle_shiny_availabilities' => [
@@ -481,7 +481,7 @@ final class AlbumReportServiceData
                 'countTotal' => 0,
             ],
             'game_bundle_shiny_availabilities_negative' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'game_bundle_shiny_availabilities' => [
@@ -513,7 +513,7 @@ final class AlbumReportServiceData
     {
         return [
             'family' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'families' => [
@@ -527,7 +527,7 @@ final class AlbumReportServiceData
                 'countTotal' => 6,
             ],
             'family_null' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'families' => [
@@ -541,7 +541,7 @@ final class AlbumReportServiceData
                 'countTotal' => 0,
             ],
             'families' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'families' => [
@@ -574,7 +574,7 @@ final class AlbumReportServiceData
     {
         return [
             'collection_availalibities' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'collection_availabilities' => [
@@ -588,7 +588,7 @@ final class AlbumReportServiceData
                 'countTotal' => 1,
             ],
             'collection_availalibities_null' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'collection_availabilities' => [
@@ -602,7 +602,7 @@ final class AlbumReportServiceData
                 'countTotal' => 0,
             ],
             'collections_availalibities' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'collection_availabilities' => [
@@ -617,7 +617,7 @@ final class AlbumReportServiceData
                 'countTotal' => 1,
             ],
             'collection_availalibities_negative' => [
-                'trainerId' =>'7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'trainerId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 'dexSlug' => 'home',
                 'filters' => [
                     'collection_availabilities' => [

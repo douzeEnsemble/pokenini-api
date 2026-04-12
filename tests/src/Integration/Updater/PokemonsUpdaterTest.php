@@ -215,6 +215,6 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
     protected function getService(): AbstractUpdater
     {
         /** @var PokemonsUpdater */
-        return static::getContainer()->get(PokemonsUpdater::class);
+        return self::getContainer()->get(PokemonsUpdater::class);
     }
 }

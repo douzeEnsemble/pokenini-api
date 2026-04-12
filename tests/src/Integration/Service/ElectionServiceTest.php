@@ -27,7 +27,7 @@ final class ElectionServiceTest extends KernelTestCase
     public function testVote(): void
     {
         /** @var ElectionService $service */
-        $service = static::getContainer()->get(ElectionService::class);
+        $service = self::getContainer()->get(ElectionService::class);
 
         $electionVote = new ElectionVote([
             'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
@@ -56,7 +56,7 @@ final class ElectionServiceTest extends KernelTestCase
     public function testVoteBis(): void
     {
         /** @var ElectionService $service */
-        $service = static::getContainer()->get(ElectionService::class);
+        $service = self::getContainer()->get(ElectionService::class);
 
         $electionVote = new ElectionVote([
             'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',

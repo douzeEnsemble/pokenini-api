@@ -7,6 +7,10 @@ namespace App\Service\Album;
 use App\DTO\AlbumFilter\AlbumFilters;
 use App\Repository\PokedexRepository;
 
+/**
+ * @psalm-import-type PokedexRepositoryItems from \App\Tests\Common\Types\PokedexTypes
+ * @psalm-import-type PokedexResponseItems from \App\Tests\Common\Types\PokedexTypes
+ */
 class AlbumPokemonService
 {
     public function __construct(
@@ -14,7 +18,7 @@ class AlbumPokemonService
     ) {}
 
     /**
-     * @return int[][]|string[][]|string[][][]
+     * @return PokedexResponseItems
      */
     public function get(string $trainerExternalId, string $dexSlug, AlbumFilters $albumFilters): array
     {
@@ -28,19 +32,17 @@ class AlbumPokemonService
     }
 
     /**
-     * @param int[][]|string[][] &$pokemons
+     * @param PokedexRepositoryItems &$pokemons
      *
-     * @return int[][]|string[][]|string[][][]
+     * @return PokedexResponseItems
      */
     private function explodesFlatList(array $pokemons): array
     {
         $list = [];
 
         foreach ($pokemons as $pokemon) {
-            /** @var string */
             $gameBundleSlugs = $pokemon['game_bundle_slugs'] ?? '';
 
-            /** @var string */
             $gameBundleSShinylugs = $pokemon['game_bundle_shiny_slugs'] ?? '';
 
             $pokemon['game_bundles'] = array_filter(explode(',', $gameBundleSlugs));

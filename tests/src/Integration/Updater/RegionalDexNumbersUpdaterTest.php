@@ -25,7 +25,7 @@ final class RegionalDexNumbersUpdaterTest extends AbstractTestUpdater
     protected function getService(): AbstractUpdater
     {
         /** @var RegionalDexNumbersUpdater */
-        return static::getContainer()->get(RegionalDexNumbersUpdater::class);
+        return self::getContainer()->get(RegionalDexNumbersUpdater::class);
     }
 
     /**

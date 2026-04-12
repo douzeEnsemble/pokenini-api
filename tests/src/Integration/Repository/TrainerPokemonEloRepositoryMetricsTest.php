@@ -26,7 +26,7 @@ final class TrainerPokemonEloRepositoryMetricsTest extends KernelTestCase
     public function testGetMetrics(): void
     {
         /** @var TrainerPokemonEloRepository $repo */
-        $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
+        $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
         $metrics = $repo->getMetrics('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', '');
 
@@ -47,7 +47,7 @@ final class TrainerPokemonEloRepositoryMetricsTest extends KernelTestCase
     public function testGetMetricsBis(): void
     {
         /** @var TrainerPokemonEloRepository $repo */
-        $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
+        $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
         $metrics = $repo->getMetrics('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow', 'affinee');
 
@@ -68,7 +68,7 @@ final class TrainerPokemonEloRepositoryMetricsTest extends KernelTestCase
     public function testGetMetricsNo(): void
     {
         /** @var TrainerPokemonEloRepository $repo */
-        $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
+        $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
         $metrics = $repo->getMetrics('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow', 'doesntexists');
 

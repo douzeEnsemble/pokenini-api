@@ -7,7 +7,7 @@ namespace App\Tests\Common\Traits\ReportTrait;
 trait AssertReportTrait
 {
     /**
-     * @param int[]|int[][][]|string[][][] $report
+     * @param array{detail: array<int, array{count: int, slug: string, name: string, frenchName: string}>, total: int, totalCaught: int, totalUncaught: int} $report
      */
     protected function assertReport(
         array $report,
@@ -19,7 +19,7 @@ trait AssertReportTrait
     ): void {
         $this->assertArrayHasKey('detail', $report);
 
-        /** @var int[][]|string[][] $reportDetail */
+        /** @var array<int, array{count: int, slug: string, name: string, frenchName: string}> $reportDetail */
         $reportDetail = $report['detail'];
 
         $this->assertArrayHasKey(0, $reportDetail);

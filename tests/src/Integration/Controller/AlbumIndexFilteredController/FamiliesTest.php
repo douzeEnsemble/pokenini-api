@@ -11,6 +11,8 @@ use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
+ *
+ * @psalm-import-type PokedexResponse from \App\Tests\Common\Types\PokedexTypes
  */
 #[CoversClass(AlbumIndexController::class)]
 final class FamiliesTest extends AbstractTestAlbumIndexFilteredController
@@ -33,12 +35,11 @@ final class FamiliesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertResponseIsOK();
         $content = $this->getClientResponseContent();
 
-        /** @var int[][][]|string[][]|string[][][] $data */
+        /** @var PokedexResponse $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('pokemons', $data);
 
-        /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
         $this->assertSameSlugs(
@@ -55,14 +56,12 @@ final class FamiliesTest extends AbstractTestAlbumIndexFilteredController
 
         $this->assertArrayHasKey('filteredReport', $data);
 
-        /** @var int[]|int[][][]|string[][][] $filteredReport */
         $filteredReport = $data['filteredReport'];
 
         $this->assertReport($filteredReport, 6, 0, 0, 0, 6);
 
         $this->assertArrayHasKey('report', $data);
 
-        /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
         $this->assertReport($report, 9, 3, 3, 7, 22);
@@ -83,12 +82,11 @@ final class FamiliesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertResponseIsOK();
         $content = $this->getClientResponseContent();
 
-        /** @var int[][][]|string[][]|string[][][] $data */
+        /** @var PokedexResponse $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('pokemons', $data);
 
-        /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
         $this->assertCount(0, $pokemons);
@@ -110,12 +108,11 @@ final class FamiliesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertResponseIsOK();
         $content = $this->getClientResponseContent();
 
-        /** @var int[][][]|string[][]|string[][][] $data */
+        /** @var PokedexResponse $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertArrayHasKey('pokemons', $data);
 
-        /** @var string[][]|string[][][] $pokemons */
         $pokemons = $data['pokemons'];
 
         $this->assertSameSlugs(
@@ -135,14 +132,12 @@ final class FamiliesTest extends AbstractTestAlbumIndexFilteredController
 
         $this->assertArrayHasKey('filteredReport', $data);
 
-        /** @var int[]|int[][][]|string[][][] $filteredReport */
         $filteredReport = $data['filteredReport'];
 
         $this->assertReport($filteredReport, 6, 0, 0, 3, 9);
 
         $this->assertArrayHasKey('report', $data);
 
-        /** @var int[]|int[][][]|string[][][] $report */
         $report = $data['report'];
 
         $this->assertReport($report, 9, 3, 3, 7, 22);

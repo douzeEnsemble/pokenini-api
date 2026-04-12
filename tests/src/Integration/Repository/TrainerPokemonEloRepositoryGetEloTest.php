@@ -28,7 +28,7 @@ final class TrainerPokemonEloRepositoryGetEloTest extends KernelTestCase
     public function testGetElo(string $pokemonSlug, ?int $expectedElo): void
     {
         /** @var TrainerPokemonEloRepository $repo */
-        $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
+        $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
         $this->assertSame(
             $expectedElo,
@@ -39,7 +39,7 @@ final class TrainerPokemonEloRepositoryGetEloTest extends KernelTestCase
     /**
      * @return array<string, array{
      *  pokemonSlug: string,
-     *  expectedElo: int|null,
+     *  expectedElo: null|int,
      * }>
      */
     public static function providerGetElo(): array

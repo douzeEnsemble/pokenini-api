@@ -25,6 +25,6 @@ final class RegionsUpdaterTest extends AbstractTestUpdater
     protected function getService(): AbstractUpdater
     {
         /** @var RegionsUpdater */
-        return static::getContainer()->get(RegionsUpdater::class);
+        return self::getContainer()->get(RegionsUpdater::class);
     }
 }

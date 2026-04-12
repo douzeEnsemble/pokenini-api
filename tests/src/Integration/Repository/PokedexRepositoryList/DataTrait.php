@@ -4,13 +4,18 @@ declare(strict_types=1);
 
 namespace App\Tests\Integration\Repository\PokedexRepositoryList;
 
+/**
+ * @psalm-import-type PokedexRepositoryItems from \App\Tests\Common\Types\PokedexTypes
+ */
 trait DataTrait
 {
     /**
-     * @param bool[][]|int[][]|null[][]|string[][] $pokedex
+     * @param PokedexRepositoryItems $pokedex
      */
     public function assertPokedexBulbasaur(array $pokedex): void
     {
+        $this->assertArrayHasKey(0, $pokedex);
+
         $this->assertEquals('Bulbasaur', $pokedex[0]['pokemon_name']);
         $this->assertEquals('Bulbizarre', $pokedex[0]['pokemon_french_name']);
         $this->assertEquals('bulbasaur', $pokedex[0]['pokemon_slug']);
@@ -35,10 +40,12 @@ trait DataTrait
     }
 
     /**
-     * @param bool[][]|int[][]|null[][]|string[][] $pokedex
+     * @param PokedexRepositoryItems $pokedex
      */
     public function assertPokedexIvysaur(array $pokedex): void
     {
+        $this->assertArrayHasKey(1, $pokedex);
+
         $this->assertEquals('Ivysaur', $pokedex[1]['pokemon_name']);
         $this->assertEquals('Herbizarre', $pokedex[1]['pokemon_french_name']);
         $this->assertEquals('ivysaur', $pokedex[1]['pokemon_slug']);
@@ -56,10 +63,12 @@ trait DataTrait
     }
 
     /**
-     * @param bool[][]|int[][]|null[][]|string[][] $pokedex
+     * @param PokedexRepositoryItems $pokedex
      */
     public function assertPokedexVenusaur(array $pokedex): void
     {
+        $this->assertArrayHasKey(2, $pokedex);
+
         $this->assertEquals('Venusaur', $pokedex[2]['pokemon_name']);
         $this->assertEquals('Florizarre', $pokedex[2]['pokemon_french_name']);
         $this->assertEquals('venusaur', $pokedex[2]['pokemon_slug']);
@@ -77,10 +86,12 @@ trait DataTrait
     }
 
     /**
-     * @param bool[][]|int[][]|null[][]|string[][] $pokedex
+     * @param PokedexRepositoryItems $pokedex
      */
     public function assertPokedexCaterpie(array $pokedex): void
     {
+        $this->assertArrayHasKey(3, $pokedex);
+
         $this->assertEquals('Caterpie', $pokedex[3]['pokemon_name']);
         $this->assertEquals('Chenipan', $pokedex[3]['pokemon_french_name']);
         $this->assertEquals('caterpie', $pokedex[3]['pokemon_slug']);
@@ -104,17 +115,25 @@ trait DataTrait
     }
 
     /**
-     * @param bool[][]|int[][]|null[][]|string[][] $pokedex
+     * @param PokedexRepositoryItems $pokedex
      */
     public function assertPokedexDouze(array $pokedex): void
     {
+        $this->assertArrayHasKey(6, $pokedex);
+
         $this->assertEquals('Douze', $pokedex[6]['pokemon_name']);
         $this->assertEquals('Douze', $pokedex[6]['pokemon_french_name']);
         $this->assertEquals('douze', $pokedex[6]['pokemon_slug']);
         $this->assertNull($pokedex[6]['catch_state_name']);
         $this->assertNull($pokedex[6]['catch_state_slug']);
+
+        /** @psalm-suppress DocblockTypeContradiction */
         $this->assertNull($pokedex[6]['primary_type_name']);
+
+        /** @psalm-suppress DocblockTypeContradiction */
         $this->assertNull($pokedex[6]['primary_type_french_name']);
+
+        /** @psalm-suppress DocblockTypeContradiction */
         $this->assertNull($pokedex[6]['primary_type_slug']);
         $this->assertNull($pokedex[6]['secondary_type_name']);
         $this->assertNull($pokedex[6]['secondary_type_french_name']);

@@ -35,7 +35,7 @@ final class CatchsStatesTest extends KernelTestCase
     public function testGetListQueryCatchStates(): void
     {
         /** @var PokedexRepository $repo */
-        $repo = static::getContainer()->get(PokedexRepository::class);
+        $repo = self::getContainer()->get(PokedexRepository::class);
 
         $pokedex = $repo->getList(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
@@ -60,7 +60,7 @@ final class CatchsStatesTest extends KernelTestCase
     public function testGetListQueryCatchStatesNegative(): void
     {
         /** @var PokedexRepository $repo */
-        $repo = static::getContainer()->get(PokedexRepository::class);
+        $repo = self::getContainer()->get(PokedexRepository::class);
 
         $pokedex = $repo->getList(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',
@@ -101,7 +101,7 @@ final class CatchsStatesTest extends KernelTestCase
     public function testGetListQueryCatchStatesNegativeNo(): void
     {
         /** @var PokedexRepository $repo */
-        $repo = static::getContainer()->get(PokedexRepository::class);
+        $repo = self::getContainer()->get(PokedexRepository::class);
 
         $pokedex = $repo->getList(
             '7b52009b64fd0a2a49e6d8a939753077792b0554',

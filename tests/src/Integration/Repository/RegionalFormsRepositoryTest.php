@@ -26,7 +26,7 @@ final class RegionalFormsRepositoryTest extends KernelTestCase
     public function testGetAll(): void
     {
         /** @var RegionalFormsRepository $repo */
-        $repo = static::getContainer()->get(RegionalFormsRepository::class);
+        $repo = self::getContainer()->get(RegionalFormsRepository::class);
 
         $list = $repo->getAll();
 

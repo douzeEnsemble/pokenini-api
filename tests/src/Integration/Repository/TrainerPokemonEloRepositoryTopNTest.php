@@ -26,7 +26,7 @@ final class TrainerPokemonEloRepositoryTopNTest extends KernelTestCase
     public function testTop5(): void
     {
         /** @var TrainerPokemonEloRepository $repo */
-        $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
+        $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
         $list = $repo->getTopN('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', '', 5);
 
@@ -63,7 +63,7 @@ final class TrainerPokemonEloRepositoryTopNTest extends KernelTestCase
     public function testTop5Home(): void
     {
         /** @var TrainerPokemonEloRepository $repo */
-        $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
+        $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
         $list = $repo->getTopN('7b52009b64fd0a2a49e6d8a939753077792b0554', 'home', '', 5);
 
@@ -76,7 +76,7 @@ final class TrainerPokemonEloRepositoryTopNTest extends KernelTestCase
     public function testTop5HomeFavorite(): void
     {
         /** @var TrainerPokemonEloRepository $repo */
-        $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
+        $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
         $list = $repo->getTopN('7b52009b64fd0a2a49e6d8a939753077792b0554', 'home', 'favorite', 5);
 
@@ -113,7 +113,7 @@ final class TrainerPokemonEloRepositoryTopNTest extends KernelTestCase
     public function testTop10(): void
     {
         /** @var TrainerPokemonEloRepository $repo */
-        $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
+        $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
         $list = $repo->getTopN('7b52009b64fd0a2a49e6d8a939753077792b0554', 'demo', '', 10);
 
@@ -152,7 +152,7 @@ final class TrainerPokemonEloRepositoryTopNTest extends KernelTestCase
     public function testTopComplete(): void
     {
         /** @var TrainerPokemonEloRepository $repo */
-        $repo = static::getContainer()->get(TrainerPokemonEloRepository::class);
+        $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
         $list = $repo->getTopN('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow', 'favorite', 10);
 

@@ -29,7 +29,7 @@ final class TrainerDexRepositorySetTest extends KernelTestCase
     public function testExistingTrainerDex(): void
     {
         /** @var TrainerDexRepository $repo */
-        $repo = static::getContainer()->get(TrainerDexRepository::class);
+        $repo = self::getContainer()->get(TrainerDexRepository::class);
 
         $this->assertEquals(12, $this->getTrainerDexCount());
 
@@ -45,7 +45,7 @@ final class TrainerDexRepositorySetTest extends KernelTestCase
     public function testNewTrainerDex(): void
     {
         /** @var TrainerDexRepository $repo */
-        $repo = static::getContainer()->get(TrainerDexRepository::class);
+        $repo = self::getContainer()->get(TrainerDexRepository::class);
 
         $this->assertEquals(12, $this->getTrainerDexCount());
 
@@ -61,7 +61,7 @@ final class TrainerDexRepositorySetTest extends KernelTestCase
     public function testExistingCustomTrainerDex(): void
     {
         /** @var TrainerDexRepository $repo */
-        $repo = static::getContainer()->get(TrainerDexRepository::class);
+        $repo = self::getContainer()->get(TrainerDexRepository::class);
 
         $this->assertEquals(12, $this->getTrainerDexCount());
 
