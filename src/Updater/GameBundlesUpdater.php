@@ -16,7 +16,7 @@ class GameBundlesUpdater extends AbstractUpdater
     protected string $statisticName = 'game_bundles';
     protected string $headerCellsRange = 'A1:E1';
 
-    /** @var string[] */
+    /** @var array<int, string> */
     protected array $recordsCellsRanges = ['A2:E'];
 
     #[\Override]

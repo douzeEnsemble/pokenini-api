@@ -13,7 +13,7 @@ final class AlbumFilterValues
     public array $negativeValues = [];
 
     /**
-     * @param null[]|string[] $values
+     * @param array<int, null|string> $values
      */
     public function __construct(array $values)
     {

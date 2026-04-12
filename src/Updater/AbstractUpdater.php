@@ -21,7 +21,7 @@ abstract class AbstractUpdater implements UpdaterInterface
     protected string $statisticName;
     protected string $headerCellsRange;
 
-    /** @var string[] */
+    /** @var array<int, string> */
     protected array $recordsCellsRanges;
 
     protected Statistic $statictic;
@@ -63,7 +63,7 @@ abstract class AbstractUpdater implements UpdaterInterface
     abstract protected function getExpectedHeader(): array;
 
     /**
-     * @param string[] $record
+     * @param array<string, string> $record
      */
     abstract protected function upsertRecord(array $record): void;
 
@@ -76,7 +76,7 @@ abstract class AbstractUpdater implements UpdaterInterface
     }
 
     /**
-     * @param string[] $header
+     * @param array<int, string> $header
      */
     protected function validateHeader(array $header): void
     {
@@ -99,7 +99,7 @@ abstract class AbstractUpdater implements UpdaterInterface
     }
 
     /**
-     * @return string[]
+     * @return array<int, string>
      */
     protected function getHeader(): array
     {
@@ -120,7 +120,7 @@ abstract class AbstractUpdater implements UpdaterInterface
     }
 
     /**
-     * @param string[] $header
+     * @param array<int, string> $header
      */
     protected function handleCellRange(array $header, string $cellRange): void
     {
@@ -129,9 +129,9 @@ abstract class AbstractUpdater implements UpdaterInterface
     }
 
     /**
-     * @param string[] $header
+     * @param array<int, string> $header
      *
-     * @return string[][]
+     * @return array<int, array<string, string>>
      */
     protected function getRecords(array $header, string $range): array
     {
@@ -141,7 +141,7 @@ abstract class AbstractUpdater implements UpdaterInterface
     }
 
     /**
-     * @return string[][]
+     * @return array<int, array<int, string>>
      */
     protected function getRecordsData(string $range): array
     {
@@ -162,10 +162,10 @@ abstract class AbstractUpdater implements UpdaterInterface
     }
 
     /**
-     * @param string[][] $values
-     * @param string[]   $header
+     * @param array<int, array<int, string>> $values
+     * @param array<int, string>             $header
      *
-     * @return string[][]
+     * @return array<int, array<string, string>>
      */
     protected function transformRecords(array $values, array $header): array
     {
@@ -178,7 +178,7 @@ abstract class AbstractUpdater implements UpdaterInterface
     }
 
     /**
-     * @return string[][]
+     * @return array<int, array<int, string>>
      */
     protected function getSheetValues(string $range): ?array
     {
@@ -193,6 +193,7 @@ abstract class AbstractUpdater implements UpdaterInterface
                 // @codeCoverageIgnoreEnd
             }
 
+            /** @var array<int, array<int, string>> */
             return $response->getValues();
         } catch (GoogleServiceException $e) {
             $this->logger->error(
@@ -207,11 +208,13 @@ abstract class AbstractUpdater implements UpdaterInterface
     }
 
     /**
-     * @param string[][] $records
+     * @param array<int, array<string, string>> $records
      */
     protected function upsertRecords(array $records): void
     {
-        array_walk($records, fn (array $record) => $this->upsertRecord($record));
+        foreach ($records as $record) {
+            $this->upsertRecord($record);
+        }
     }
 
     protected function removeExistingRecords(): void

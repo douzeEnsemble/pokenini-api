@@ -25,7 +25,11 @@ class CollectionsAvailabilitiesUpdater extends AbstractUpdater
     protected int $recordsCellsStartRowIndex = 1;
     protected int $recordsCellsStartColumnIndex = 0;
 
-    /** @var string[][] */
+    /** @var array<int, array{
+     *  pokemonSlug: string,
+     *  collectionSlug: string,
+     *  availability: string,
+     * }> */
     private array $records;
 
     /**
@@ -48,9 +52,6 @@ class CollectionsAvailabilitiesUpdater extends AbstractUpdater
         );
     }
 
-    /**
-     * @return string[]
-     */
     #[\Override]
     protected function getHeader(): array
     {
@@ -129,7 +130,7 @@ class CollectionsAvailabilitiesUpdater extends AbstractUpdater
     }
 
     /**
-     * @param string[] $header
+     * @param array<int, string> $header
      */
     #[\Override]
     protected function handleCellRange(array $header, string $cellRange): void
@@ -206,7 +207,7 @@ class CollectionsAvailabilitiesUpdater extends AbstractUpdater
     }
 
     /**
-     * @param string[][] $records
+     * @param array<int, array<string, string>> $records
      */
     private function getFromRecords(array $records): void
     {
@@ -217,7 +218,7 @@ class CollectionsAvailabilitiesUpdater extends AbstractUpdater
     }
 
     /**
-     * @param string[] $record
+     * @param array<string, string> $record
      */
     private function transformRecord(
         array $record

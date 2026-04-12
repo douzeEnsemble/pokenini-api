@@ -30,6 +30,15 @@ final class ElectionVote
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
 
+        /**
+         * @var array{
+         *  trainer_external_id: string,
+         *  dex_slug: string,
+         *  election_slug: string,
+         *  winners_slugs: string[],
+         *  losers_slugs: string[],
+         * } $options
+         */
         $options = $resolver->resolve($values);
 
         $this->trainerExternalId = $options['trainer_external_id'];

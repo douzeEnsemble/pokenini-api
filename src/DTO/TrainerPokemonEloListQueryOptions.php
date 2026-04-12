@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\DTO;
 
 use App\DTO\AlbumFilter\AlbumFilters;
+use App\DTO\AlbumFilter\AlbumFilterValues;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -25,6 +26,27 @@ final class TrainerPokemonEloListQueryOptions
 
         $this->configureOptions($resolver);
 
+        /**
+         * @var array{
+         *  trainer_external_id: string,
+         *  dex_slug: string,
+         *  election_slug: string,
+         *  count: int,
+         *  primary_types: AlbumFilterValues,
+         *  secondary_types: AlbumFilterValues,
+         *  any_types: AlbumFilterValues,
+         *  category_forms: AlbumFilterValues,
+         *  regional_forms: AlbumFilterValues,
+         *  special_forms: AlbumFilterValues,
+         *  variant_forms: AlbumFilterValues,
+         *  catch_states: AlbumFilterValues,
+         *  original_game_bundles: AlbumFilterValues,
+         *  game_bundle_availabilities: AlbumFilterValues,
+         *  game_bundle_shiny_availabilities: AlbumFilterValues,
+         *  families: AlbumFilterValues,
+         *  collection_availabilities: AlbumFilterValues,
+         * }
+         */
         $options = $resolver->resolve($values);
 
         $this->trainerExternalId = $options['trainer_external_id'];

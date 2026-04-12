@@ -29,6 +29,23 @@ final class AlbumFiltersRequest
             'collection_availabilities' => [],
         ]);
 
+        /**
+         * @var array{
+         *  primary_types: string[],
+         *  secondary_types: string[],
+         *  any_types: string[],
+         *  category_forms: string[],
+         *  regional_forms: string[],
+         *  special_forms: string[],
+         *  variant_forms: string[],
+         *  catch_states: string[],
+         *  original_game_bundles: string[],
+         *  game_bundle_availabilities: string[],
+         *  game_bundle_shiny_availabilities: string[],
+         *  families: string[],
+         *  collection_availabilities: string[],
+         * }
+         */
         $options = $resolver->resolve($request->query->all());
 
         return AlbumFilters::createFromArray([

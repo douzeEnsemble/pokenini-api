@@ -19,6 +19,12 @@ final class TrainerDexAttributes
         $resolver = new OptionsResolver();
         $this->configureOptions($resolver);
 
+        /**
+         * @var array{
+         *  is_private: bool,
+         *  is_on_home: bool,
+         * } $options
+         */
         $options = $resolver->resolve($values);
 
         $this->isPrivate = $options['is_private'];

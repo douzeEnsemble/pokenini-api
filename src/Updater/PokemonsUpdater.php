@@ -16,7 +16,7 @@ class PokemonsUpdater extends AbstractUpdater
     protected string $statisticName = 'pokemons';
     protected string $headerCellsRange = 'A1:AF1';
 
-    /** @var string[] */
+    /** @var array<int, string> */
     protected array $recordsCellsRanges = ['A2:AF'];
 
     #[\Override]

@@ -16,7 +16,7 @@ class DexUpdater extends AbstractUpdater
     protected string $statisticName = 'dex';
     protected string $headerCellsRange = 'A1:P1';
 
-    /** @var string[] */
+    /** @var array<int, string> */
     protected array $recordsCellsRanges = ['A2:P'];
 
     #[\Override]
