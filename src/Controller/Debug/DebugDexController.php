@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Controller\Debug;
 
 use App\Entity\Dex;
-use App\Entity\DexAvailability;
 use App\Service\DexAvailabilitiesService;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Component\HttpFoundation\Response;
@@ -38,7 +37,6 @@ final class DebugDexController extends AbstractDebugController
 
         $pokemons = [];
 
-        /** @var DexAvailability $dexAvailability */
         foreach ($dexAvailabilities as $dexAvailability) {
             $pokemons[] = $dexAvailability->pokemon->slug;
         }

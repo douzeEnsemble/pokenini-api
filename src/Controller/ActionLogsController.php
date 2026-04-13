@@ -36,7 +36,6 @@ final class ActionLogsController extends AbstractController
             $details = null;
 
             if (null !== $actionLog['details']) {
-                /** @var string $jsonDetails */
                 $jsonDetails = $actionLog['details'] ?? '';
 
                 /** @var array<string, string> $details */

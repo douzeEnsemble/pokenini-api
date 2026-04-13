@@ -32,7 +32,10 @@ final class LabelsUpdaterServiceTest extends TestCase
         $service = $this->getService();
 
         $service->execute();
-        $service->getReport();
+        $report = $service->getReport();
+
+        $this->assertSame('cs', $report->detail[0]->slug);
+        $this->assertSame(0, $report->detail[0]->count);
     }
 
     public function getService(): LabelsUpdaterService

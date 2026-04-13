@@ -34,7 +34,6 @@ final class CollectionsTest extends KernelTestCase
 
     public function testGetListQueryCollectionAvailabilities(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $pokedex = $repo->getList(
@@ -57,7 +56,6 @@ final class CollectionsTest extends KernelTestCase
 
     public function testGetListQueryCollectionAvailabilitiesNegative(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $pokedex = $repo->getList(

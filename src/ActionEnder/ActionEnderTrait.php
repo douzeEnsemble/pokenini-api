@@ -43,7 +43,6 @@ trait ActionEnderTrait
         /** @var ActionLogsRepository $repo */
         $repo = $this->entityManager->getRepository(ActionLog::class);
 
-        /** @var ?ActionLog $actionLog */
         $actionLog = $repo->find($message->getActionId());
 
         if (null === $actionLog) {

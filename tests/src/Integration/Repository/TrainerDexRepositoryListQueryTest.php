@@ -28,7 +28,6 @@ final class TrainerDexRepositoryListQueryTest extends KernelTestCase
 
     public function testGetListQueryDefault(): void
     {
-        /** @var TrainerDexRepository $repo */
         $repo = self::getContainer()->get(TrainerDexRepository::class);
 
         $dexQueryOptions = new DexQueryOptions();
@@ -41,7 +40,6 @@ final class TrainerDexRepositoryListQueryTest extends KernelTestCase
 
     public function testGetListQueryWithUnreleased(): void
     {
-        /** @var TrainerDexRepository $repo */
         $repo = self::getContainer()->get(TrainerDexRepository::class);
 
         $dexQueryOptions = new DexQueryOptions(['include_unreleased_dex' => true]);
@@ -54,7 +52,6 @@ final class TrainerDexRepositoryListQueryTest extends KernelTestCase
 
     public function testGetListQueryWithPremium(): void
     {
-        /** @var TrainerDexRepository $repo */
         $repo = self::getContainer()->get(TrainerDexRepository::class);
 
         $dexQueryOptions = new DexQueryOptions(['include_premium_dex' => true]);
@@ -67,7 +64,6 @@ final class TrainerDexRepositoryListQueryTest extends KernelTestCase
 
     public function testGetListQueryWithUnreleasedAndPremium(): void
     {
-        /** @var TrainerDexRepository $repo */
         $repo = self::getContainer()->get(TrainerDexRepository::class);
 
         $dexQueryOptions = new DexQueryOptions([

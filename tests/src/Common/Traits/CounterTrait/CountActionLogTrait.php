@@ -10,7 +10,6 @@ trait CountActionLogTrait
 {
     protected function getActionLogCount(): int
     {
-        /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         /** @var int */
@@ -21,7 +20,6 @@ trait CountActionLogTrait
 
     protected function getActionLogToProcessCount(): int
     {
-        /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         /** @var int */
@@ -32,7 +30,6 @@ trait CountActionLogTrait
 
     protected function getActionLogDoneCount(): int
     {
-        /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         /** @var int */

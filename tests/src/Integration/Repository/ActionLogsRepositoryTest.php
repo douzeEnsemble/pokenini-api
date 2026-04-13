@@ -25,7 +25,6 @@ final class ActionLogsRepositoryTest extends KernelTestCase
 
     public function testGetLastests(): void
     {
-        /** @var ActionLogsRepository $repo */
         $repo = self::getContainer()->get(ActionLogsRepository::class);
 
         $list = $repo->getLastests();

@@ -31,7 +31,6 @@ final class PokemonAvailabilitiesRepositoryTest extends KernelTestCase
         $this->assertGreaterThan(0, $this->getPokemonAvailabilitiesCount('game_bundle'));
         $previousCount = $this->getPokemonAvailabilitiesCount('game_bundle_shiny');
 
-        /** @var PokemonAvailabilitiesRepository $repo */
         $repo = self::getContainer()->get(PokemonAvailabilitiesRepository::class);
 
         $repo->removeAllByCategory('game_bundle');
@@ -45,7 +44,6 @@ final class PokemonAvailabilitiesRepositoryTest extends KernelTestCase
 
     public function testCalculateGameBundle(): void
     {
-        /** @var PokemonAvailabilitiesRepository $repo */
         $repo = self::getContainer()->get(PokemonAvailabilitiesRepository::class);
 
         // Clean the database
@@ -65,7 +63,6 @@ final class PokemonAvailabilitiesRepositoryTest extends KernelTestCase
 
     public function testCalculateGameBundleShiny(): void
     {
-        /** @var PokemonAvailabilitiesRepository $repo */
         $repo = self::getContainer()->get(PokemonAvailabilitiesRepository::class);
 
         // Clean the database
@@ -85,7 +82,6 @@ final class PokemonAvailabilitiesRepositoryTest extends KernelTestCase
 
     public function testCalculateUnicity(): void
     {
-        /** @var PokemonAvailabilitiesRepository $repo */
         $repo = self::getContainer()->get(PokemonAvailabilitiesRepository::class);
 
         $this->expectException(UniqueConstraintViolationException::class);

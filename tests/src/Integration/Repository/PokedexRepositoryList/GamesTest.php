@@ -34,7 +34,6 @@ final class GamesTest extends KernelTestCase
 
     public function testGetListQueryOriginalGameBundle(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $pokedex = $repo->getList(
@@ -68,7 +67,6 @@ final class GamesTest extends KernelTestCase
 
     public function testGetListQueryGameBundleAvailabilities(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $pokedex = $repo->getList(
@@ -92,7 +90,6 @@ final class GamesTest extends KernelTestCase
 
     public function testGetListQueryGameBundleAvailabilitiesNegative(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $pokedex = $repo->getList(
@@ -134,7 +131,6 @@ final class GamesTest extends KernelTestCase
 
     public function testGetListQueryGameBundleShinyAvailabilities(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $pokedex = $repo->getList(
@@ -160,7 +156,6 @@ final class GamesTest extends KernelTestCase
 
     public function testGetListQueryGameBundleShinyAvailabilitiesNegative(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $pokedex = $repo->getList(

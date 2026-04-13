@@ -32,14 +32,8 @@ final class GamesShiniesAvailabilitiesRepositoryTest extends KernelTestCase
     {
         self::bootKernel();
 
-        // Using temp variables is for avoid typing conflict
-        /** @var GamesShiniesAvailabilitiesRepository $gamesShiniesAvailabilitiesRepo */
-        $gamesShiniesAvailabilitiesRepo = self::getContainer()->get(GamesShiniesAvailabilitiesRepository::class);
-        $this->gamesShiniesAvailabilitiesRepo = $gamesShiniesAvailabilitiesRepo;
-
-        /** @var PokemonsRepository $pokemonsRepo */
-        $pokemonsRepo = self::getContainer()->get(PokemonsRepository::class);
-        $this->pokemonsRepo = $pokemonsRepo;
+        $this->gamesShiniesAvailabilitiesRepo = self::getContainer()->get(GamesShiniesAvailabilitiesRepository::class);
+        $this->pokemonsRepo = self::getContainer()->get(PokemonsRepository::class);
     }
 
     public function testRemoveAll(): void
@@ -67,7 +61,6 @@ final class GamesShiniesAvailabilitiesRepositoryTest extends KernelTestCase
             return $this->pokemons[$name];
         }
 
-        /** @var ?Pokemon $pokemon */
         $pokemon = $this->pokemonsRepo->findOneBy(['name' => $name]);
 
         $this->assertNotNull($pokemon);

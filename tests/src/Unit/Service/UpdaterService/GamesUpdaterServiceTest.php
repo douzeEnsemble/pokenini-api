@@ -30,7 +30,10 @@ final class GamesUpdaterServiceTest extends TestCase
         $service = $this->getService();
 
         $service->execute();
-        $service->getReport();
+        $report = $service->getReport();
+
+        $this->assertSame('gg', $report->detail[0]->slug);
+        $this->assertSame(0, $report->detail[0]->count);
     }
 
     private function getService(): GamesUpdaterService

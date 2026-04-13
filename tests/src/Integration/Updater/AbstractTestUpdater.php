@@ -78,7 +78,6 @@ abstract class AbstractTestUpdater extends KernelTestCase
 
     protected function getTableCount(): int
     {
-        /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         /** @var int */
@@ -89,7 +88,6 @@ abstract class AbstractTestUpdater extends KernelTestCase
 
     protected function getTableDeletedAtCount(): int
     {
-        /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         /** @var int */

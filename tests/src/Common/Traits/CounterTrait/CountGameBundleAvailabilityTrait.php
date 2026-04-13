@@ -10,7 +10,6 @@ trait CountGameBundleAvailabilityTrait
 {
     protected function getGameBundleAvailabilityCount(): int
     {
-        /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         /** @var int */

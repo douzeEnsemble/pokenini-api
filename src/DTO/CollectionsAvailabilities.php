@@ -24,6 +24,9 @@ final class CollectionsAvailabilities
         return isset($this->collectionsAvailabilities[$collection]);
     }
 
+    /**
+     * @psalm-suppress UnusedParam
+     */
     public function __set(string $collection, bool $value): void
     {
         throw new \Exception('Use constructor please');

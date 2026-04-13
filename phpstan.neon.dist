@@ -1,5 +1,9 @@
 includes:
 	- phpstan-baseline.neon
+	- tools/phpstan/vendor/phpstan/phpstan-doctrine/extension.neon
+	- tools/phpstan/vendor/phpstan/phpstan-doctrine/rules.neon
+	- tools/phpstan/vendor/phpstan/phpstan-symfony/extension.neon
+	- tools/phpstan/vendor/phpstan/phpstan-symfony/rules.neon
 	- tools/phpstan/vendor/phpstan/phpstan-phpunit/extension.neon
 
 parameters:
@@ -8,3 +12,8 @@ parameters:
 		- src
 		- tests
 	treatPhpDocTypesAsCertain: false
+	doctrine:
+		objectManagerLoader: tests/object-manager.php
+		reportUnknownTypes: true
+	symfony:
+		containerXmlPath: var/cache/dev/App_KernelDevDebugContainer.xml

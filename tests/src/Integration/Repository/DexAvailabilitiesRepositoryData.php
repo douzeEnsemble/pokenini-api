@@ -299,10 +299,10 @@ final class DexAvailabilitiesRepositoryData
             'family' => [
                 'filters' => [
                     'families' => [
-                        'maybe',
+                        'douze',
                     ],
                 ],
-                'expectedTotalCount' => 3,
+                'expectedTotalCount' => 1,
             ],
             'family_null' => [
                 'filters' => [
@@ -310,13 +310,13 @@ final class DexAvailabilitiesRepositoryData
                         'null',
                     ],
                 ],
-                'expectedTotalCount' => 1,
+                'expectedTotalCount' => 0,
             ],
             'families' => [
                 'filters' => [
                     'families' => [
-                        'maybe',
-                        'maybenot',
+                        'douze',
+                        'caterpie',
                     ],
                 ],
                 'expectedTotalCount' => 6,

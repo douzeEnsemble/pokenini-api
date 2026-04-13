@@ -6,7 +6,6 @@ namespace App\Command;
 
 use App\ActionEnder\ActionEnderTrait;
 use App\ActionStarter\ActionStarterInterface;
-use App\DTO\DataChangeReport\Statistic;
 use App\Service\UpdaterService\UpdaterServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
@@ -51,7 +50,6 @@ abstract class AbstractUpdateCommand extends Command
             return Command::FAILURE;
         }
 
-        /** @var Statistic $statistic */
         foreach ($report->detail as $statistic) {
             $label = $this->translator->trans("update.{$statistic->slug}");
 

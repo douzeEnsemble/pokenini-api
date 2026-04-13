@@ -27,7 +27,6 @@ final class TrainerPokemonEloRepositoryGetEloTest extends KernelTestCase
     #[DataProvider('providerGetElo')]
     public function testGetElo(string $pokemonSlug, ?int $expectedElo): void
     {
-        /** @var TrainerPokemonEloRepository $repo */
         $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
         $this->assertSame(

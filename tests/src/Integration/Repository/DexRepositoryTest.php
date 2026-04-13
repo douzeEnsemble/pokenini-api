@@ -30,7 +30,6 @@ final class DexRepositoryTest extends KernelTestCase
 
     public function testGetAll(): void
     {
-        /** @var DexRepository $repo */
         $repo = self::getContainer()->get(DexRepository::class);
 
         /** @var Dex[] $dex */
@@ -51,7 +50,6 @@ final class DexRepositoryTest extends KernelTestCase
 
     public function testCountAll(): void
     {
-        /** @var DexRepository $repo */
         $repo = self::getContainer()->get(DexRepository::class);
 
         $this->assertEquals(
@@ -62,7 +60,6 @@ final class DexRepositoryTest extends KernelTestCase
 
     public function testGetData(): void
     {
-        /** @var DexRepository $repo */
         $repo = self::getContainer()->get(DexRepository::class);
 
         $dexRGBY = $repo->getData('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow');
@@ -102,7 +99,6 @@ final class DexRepositoryTest extends KernelTestCase
         bool $includePremiumDex,
         array $expectedSlugs,
     ): void {
-        /** @var DexRepository $repo */
         $repo = self::getContainer()->get(DexRepository::class);
 
         $options = new DexQueryOptions([

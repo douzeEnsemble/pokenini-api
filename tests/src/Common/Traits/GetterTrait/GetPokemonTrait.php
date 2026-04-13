@@ -13,7 +13,6 @@ trait GetPokemonTrait
      */
     protected function getPokemonFromName(string $name): array
     {
-        /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         $sql = 'SELECT * FROM pokemon WHERE name = :name';

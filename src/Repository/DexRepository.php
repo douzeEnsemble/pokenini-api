@@ -7,7 +7,7 @@ namespace App\Repository;
 use App\DTO\DexQueryOptions;
 use App\Entity\Dex;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
-use Doctrine\ORM\AbstractQuery;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -20,7 +20,12 @@ class DexRepository extends ServiceEntityRepository
         parent::__construct($registry, Dex::class);
     }
 
-    public function getQueryAll(): AbstractQuery
+    /**
+     * @return Query<Dex>
+     *
+     * @psalm-suppress TooManyTemplateParams
+     */
+    public function getQueryAll(): Query
     {
         $queryBuilder = $this->createQueryBuilder('d');
 

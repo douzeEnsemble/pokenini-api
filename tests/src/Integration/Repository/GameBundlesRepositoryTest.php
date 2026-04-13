@@ -25,7 +25,6 @@ final class GameBundlesRepositoryTest extends KernelTestCase
 
     public function testGetAll(): void
     {
-        /** @var GameBundlesRepository $repo */
         $repo = self::getContainer()->get(GameBundlesRepository::class);
 
         $list = $repo->getAll();

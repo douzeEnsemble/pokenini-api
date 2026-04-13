@@ -10,7 +10,6 @@ trait HasDexAvailabilityTrait
 {
     protected function hasDexAvailability(string $dexName, string $pokemonSlug): bool
     {
-        /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         $sql = <<< 'SQL'

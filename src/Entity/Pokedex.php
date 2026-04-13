@@ -18,18 +18,11 @@ final class Pokedex
     #[ORM\JoinColumn(nullable: false)]
     public Pokemon $pokemon;
 
-    // #[ORM\ManyToOne]
-    // #[ORM\JoinColumn(nullable: false)]
-    // public Dex $dex;
-
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: true)]
     public ?TrainerDex $trainerDex;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: true)]
-    public CatchState $catchState;
-
-    // #[ORM\Column]
-    // public string $trainerExternalId = '';
+    public ?CatchState $catchState = null;
 }

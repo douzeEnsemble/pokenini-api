@@ -10,7 +10,7 @@ use App\Calculator\DexAvailabilityCalculator;
 use App\Entity\Dex;
 use App\Repository\DexAvailabilitiesRepository;
 use App\Repository\DexRepository;
-use Doctrine\ORM\AbstractQuery;
+use Doctrine\ORM\Query;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
@@ -61,7 +61,7 @@ final class DexAvailabilitiesCalculatorTest extends TestCase
             ->method('removeAll')
         ;
 
-        $dexQuery = $this->createMock(AbstractQuery::class);
+        $dexQuery = $this->createMock(Query::class);
         $dexQuery
             ->expects($this->once())
             ->method('toIterable')
@@ -104,7 +104,7 @@ final class DexAvailabilitiesCalculatorTest extends TestCase
             ->method('removeAll')
         ;
 
-        $dexQuery = $this->createMock(AbstractQuery::class);
+        $dexQuery = $this->createMock(Query::class);
         $dexQuery
             ->expects($this->exactly(2))
             ->method('toIterable')

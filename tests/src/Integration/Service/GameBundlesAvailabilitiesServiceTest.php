@@ -29,10 +29,8 @@ final class GameBundlesAvailabilitiesServiceTest extends KernelTestCase
 
     public function testGetFromPokemon(): void
     {
-        /** @var GameBundlesAvailabilitiesService $service */
         $service = self::getContainer()->get(GameBundlesAvailabilitiesService::class);
 
-        /** @var PokemonsRepository $pokemonsRepo */
         $pokemonsRepo = self::getContainer()->get(PokemonsRepository::class);
 
         /** @var Pokemon $pokemonDouze */

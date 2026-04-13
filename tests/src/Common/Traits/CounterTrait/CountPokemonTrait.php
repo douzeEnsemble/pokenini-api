@@ -10,7 +10,6 @@ trait CountPokemonTrait
 {
     protected function getPokemonCount(): int
     {
-        /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         /** @var int */
@@ -19,7 +18,6 @@ trait CountPokemonTrait
 
     protected function getPokemonNotDeletedCount(): int
     {
-        /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         /** @var int */
@@ -28,7 +26,6 @@ trait CountPokemonTrait
 
     protected function getPokemonDeletedCount(): int
     {
-        /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         /** @var int */

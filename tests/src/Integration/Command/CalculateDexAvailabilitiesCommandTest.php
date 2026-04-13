@@ -40,7 +40,6 @@ final class CalculateDexAvailabilitiesCommandTest extends AbstractTestCaseComman
 
     public function testNoDexAvailabilities(): void
     {
-        /** @var PokemonsRepository $repo */
         $repo = self::getContainer()->get(PokemonsRepository::class);
         $repo->removeAll();
 

@@ -94,5 +94,7 @@ namespace App\Tests\Common\Types;
  *  filteredReport: PokedexResponseReport,
  *  report: PokedexResponseReport,
  * }
+ *
+ * @psalm-suppress UnusedClass
  */
 final class PokedexTypes {}

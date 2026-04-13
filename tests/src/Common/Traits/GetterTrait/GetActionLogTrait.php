@@ -11,7 +11,6 @@ trait GetActionLogTrait
 {
     protected function getIdToProcess(string $type): string
     {
-        /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         $actionLogId = Uuid::v4();

@@ -29,7 +29,6 @@ final class AlbumPokemonServiceTest extends KernelTestCase
 
     public function testListUser12RedGreenBlueYellow(): void
     {
-        /** @var AlbumPokemonService $service */
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
         $pokemons = $service->get(
@@ -54,7 +53,6 @@ final class AlbumPokemonServiceTest extends KernelTestCase
 
     public function testListUser12GoldSilverCrystal(): void
     {
-        /** @var AlbumPokemonService $service */
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
         $pokemons = $service->get(
@@ -81,7 +79,6 @@ final class AlbumPokemonServiceTest extends KernelTestCase
 
     public function testListUser13(): void
     {
-        /** @var AlbumPokemonService $service */
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
         $pokemons = $service->get(
@@ -106,7 +103,6 @@ final class AlbumPokemonServiceTest extends KernelTestCase
 
     public function testListUserUnknown(): void
     {
-        /** @var AlbumPokemonService $service */
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
         $pokemons = $service->get(
