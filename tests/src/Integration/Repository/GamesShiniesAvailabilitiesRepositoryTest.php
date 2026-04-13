@@ -40,7 +40,10 @@ final class GamesShiniesAvailabilitiesRepositoryTest extends KernelTestCase
     {
         $this->assertGreaterThan(0, $this->getGameShinyAvailabilityCount());
 
-        $this->gamesShiniesAvailabilitiesRepo->removeAll();
+        $queryBuilder = $this->gamesShiniesAvailabilitiesRepo->createQueryBuilder('gsa')
+            ->delete()
+        ;
+        $queryBuilder->getQuery()->execute();
 
         $this->assertEquals(0, $this->getGameShinyAvailabilityCount());
     }

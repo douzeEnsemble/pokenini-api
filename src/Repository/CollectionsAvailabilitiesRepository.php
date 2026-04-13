@@ -20,15 +20,6 @@ class CollectionsAvailabilitiesRepository extends ServiceEntityRepository
         parent::__construct($registry, CollectionAvailability::class);
     }
 
-    public function removeAll(): void
-    {
-        $queryBuilder = $this->createQueryBuilder('ca')
-            ->delete()
-        ;
-
-        $queryBuilder->getQuery()->execute();
-    }
-
     /**
      * @return CollectionsAvailabilities dex slug as property and dex availability as value
      */

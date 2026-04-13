@@ -11,13 +11,13 @@ final class Statistic
         public int $count = 0,
     ) {}
 
-    public function increment(): int
+    public function increment(): void
     {
-        return ++$this->count;
+        ++$this->count;
     }
 
-    public function incrementBy(int $increment): int
+    public function incrementBy(int $increment): void
     {
-        return $this->count += $increment;
+        $this->count += $increment;
     }
 }

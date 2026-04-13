@@ -20,15 +20,6 @@ class GamesAvailabilitiesRepository extends ServiceEntityRepository
         parent::__construct($registry, GameAvailability::class);
     }
 
-    public function removeAll(): void
-    {
-        $queryBuilder = $this->createQueryBuilder('ga')
-            ->delete()
-        ;
-
-        $queryBuilder->getQuery()->execute();
-    }
-
     /**
      * @return GamesAvailabilities dex slug as property and dex availability as value
      */

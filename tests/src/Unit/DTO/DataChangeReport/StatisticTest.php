@@ -33,13 +33,15 @@ final class StatisticTest extends TestCase
 
         $this->assertEquals(12, $statisticWithCount->count);
 
-        $this->assertEquals(13, $statisticWithCount->increment());
+        $statisticWithCount->increment();
+        $this->assertEquals(13, $statisticWithCount->count);
 
         $statisticWithoutCount = new Statistic('zero');
 
         $this->assertEquals(0, $statisticWithoutCount->count);
 
-        $this->assertEquals(1, $statisticWithoutCount->increment());
+        $statisticWithoutCount->increment();
+        $this->assertEquals(1, $statisticWithoutCount->count);
     }
 
     public function testIncrementBy(): void
@@ -48,10 +50,10 @@ final class StatisticTest extends TestCase
 
         $this->assertEquals(12, $statistic->count);
 
-        $this->assertEquals(13, $statistic->incrementBy(1));
+        $statistic->incrementBy(1);
+        $this->assertEquals(13, $statistic->count);
 
-        $this->assertEquals(16, $statistic->incrementBy(3));
-
+        $statistic->incrementBy(3);
         $this->assertEquals(16, $statistic->count);
     }
 }

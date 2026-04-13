@@ -40,7 +40,10 @@ final class GamesAvailabilitiesRepositoryTest extends KernelTestCase
     {
         $this->assertGreaterThan(0, $this->getGameAvailabilityCount());
 
-        $this->gamesAvailabilitiesRepo->removeAll();
+        $queryBuilder = $this->gamesAvailabilitiesRepo->createQueryBuilder('ga')
+            ->delete()
+        ;
+        $queryBuilder->getQuery()->execute();
 
         $this->assertEquals(0, $this->getGameAvailabilityCount());
     }

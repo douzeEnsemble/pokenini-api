@@ -41,7 +41,14 @@ final class CalculateDexAvailabilitiesCommandTest extends AbstractTestCaseComman
     public function testNoDexAvailabilities(): void
     {
         $repo = self::getContainer()->get(PokemonsRepository::class);
-        $repo->removeAll();
+        $queryBuilder = $repo->createQueryBuilder('p')
+            ->update()
+            ->set('p.deletedAt', ':now')
+        ;
+
+        /** @psalm-suppress QueryBuilderSetParameter */
+        $queryBuilder->setParameter('now', new \DateTimeImmutable());
+        $queryBuilder->getQuery()->execute();
 
         $this->assertEquals(0, $this->getPokemonNotDeletedCount());
 
