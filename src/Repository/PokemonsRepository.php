@@ -24,18 +24,6 @@ class PokemonsRepository extends ServiceEntityRepository
         parent::__construct($registry, Pokemon::class);
     }
 
-    public function removeAll(): void
-    {
-        /** @psalm-suppress QueryBuilderSetParameter */
-        $queryBuilder = $this->createQueryBuilder('p')
-            ->update()
-            ->set('p.deletedAt', ':now')
-            ->setParameter('now', new \DateTimeImmutable())
-        ;
-
-        $queryBuilder->getQuery()->execute();
-    }
-
     /**
      * @return Query<Pokemon>
      *
@@ -49,16 +37,6 @@ class PokemonsRepository extends ServiceEntityRepository
         $queryBuilder->orderBy('p.nationalDexNumber, p.familyOrder');
 
         return $queryBuilder->getQuery();
-    }
-
-    public function countAll(): int
-    {
-        $queryBuilder = $this->createQueryBuilder('p');
-
-        $queryBuilder->select($queryBuilder->expr()->count('p'));
-
-        /** @var int */
-        return $queryBuilder->getQuery()->getSingleScalarResult();
     }
 
     /**

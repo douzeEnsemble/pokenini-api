@@ -35,17 +35,6 @@ class DexRepository extends ServiceEntityRepository
         return $queryBuilder->getQuery();
     }
 
-    public function countAll(): int
-    {
-        $queryBuilder = $this->createQueryBuilder('d');
-
-        $queryBuilder->select($queryBuilder->expr()->count('d'));
-        $queryBuilder->where($queryBuilder->expr()->isNull('d.deletedAt'));
-
-        /** @var int */
-        return $queryBuilder->getQuery()->getSingleScalarResult();
-    }
-
     /**
      * @return bool[]|string[]
      */

@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<psalm
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns="https://getpsalm.org/schema/config"
+    xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
+    errorLevel="1"
+    resolveFromConfigFile="true"
+    findUnusedCode="true"
+    cacheDirectory="var/cache/psalm"
+>
+    <projectFiles>
+        <directory name="src" />
+        <ignoreFiles>
+            <file name="src/Kernel.php" />
+            <directory name="vendor" />
+        </ignoreFiles>
+    </projectFiles>
+
+    <plugins>
+        <pluginClass class="Psalm\SymfonyPsalmPlugin\Plugin">
+            <containerXml>var/cache/dev/App_KernelDevDebugContainer.xml</containerXml>
+        </pluginClass>
+        <pluginClass class="Psalm\PhpUnitPlugin\Plugin">
+            <containerXml>var/cache/dev/App_KernelDevDebugContainer.xml</containerXml>
+        </pluginClass>
+    </plugins>
+
+    <issueHandlers>
+        <ClassMustBeFinal>
+            <errorLevel type="suppress">
+                <!-- Symfony services -->
+                <directory name="src/Calculator" />
+                <directory name="src/Repository" />
+                <directory name="src/Service" />
+                <directory name="src/Updater" />
+            </errorLevel>
+        </ClassMustBeFinal>
+
+        <MissingConstructor>
+            <errorLevel type="suppress">
+                <directory name="src/Entity" />
+            </errorLevel>
+        </MissingConstructor>
+
+        <PossiblyUnusedProperty>
+            <errorLevel type="suppress">
+                <directory name="src/DTO" />
+                <directory name="src/Entity" />
+            </errorLevel>
+        </PossiblyUnusedProperty>
+
+        <PossiblyUnusedMethod>
+            <errorLevel type="suppress">
+                <directory name="src/DTO" />
+                <directory name="src/Entity" />
+            </errorLevel>
+        </PossiblyUnusedMethod>
+
+        <UnusedClass>
+            <errorLevel type="suppress">
+                <file name="src/Entity/RegionalDexNumber.php" />
+            </errorLevel>
+        </UnusedClass>
+
+        <UnnecessaryVarAnnotation>
+            <errorLevel type="suppress">
+                <file name="src/Service/SpreadsheetService.php" />
+            </errorLevel>
+        </UnnecessaryVarAnnotation>
+    </issueHandlers>
+</psalm>

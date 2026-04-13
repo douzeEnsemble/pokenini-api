@@ -48,16 +48,6 @@ final class DexRepositoryTest extends KernelTestCase
         );
     }
 
-    public function testCountAll(): void
-    {
-        $repo = self::getContainer()->get(DexRepository::class);
-
-        $this->assertEquals(
-            $this->getDexCount() - 1,
-            $repo->countAll()
-        );
-    }
-
     public function testGetData(): void
     {
         $repo = self::getContainer()->get(DexRepository::class);

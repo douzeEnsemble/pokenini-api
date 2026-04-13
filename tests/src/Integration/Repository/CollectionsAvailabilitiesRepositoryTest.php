@@ -40,7 +40,10 @@ final class CollectionsAvailabilitiesRepositoryTest extends KernelTestCase
     {
         $this->assertGreaterThan(0, $this->getCollectionAvailabilityCount());
 
-        $this->collectionsAvailabilitiesRepo->removeAll();
+        $queryBuilder = $this->collectionsAvailabilitiesRepo->createQueryBuilder('ca')
+            ->delete()
+        ;
+        $queryBuilder->getQuery()->execute();
 
         $this->assertEquals(0, $this->getCollectionAvailabilityCount());
     }

@@ -41,7 +41,10 @@ final class CalculateGameBundlesShiniesAvailabilitiesCommandTest extends Abstrac
     public function testNoGamesShiniesAvailabilities(): void
     {
         $repo = self::getContainer()->get(GamesShiniesAvailabilitiesRepository::class);
-        $repo->removeAll();
+        $queryBuilder = $repo->createQueryBuilder('gsa')
+            ->delete()
+        ;
+        $queryBuilder->getQuery()->execute();
 
         $this->assertEquals(0, $this->getGameShinyAvailabilityCount());
 

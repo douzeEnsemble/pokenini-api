@@ -13,6 +13,7 @@ use Psr\Log\LoggerInterface;
 use Symfony\Component\Uid\Uuid;
 
 /**
+ * @psalm-suppress UnusedClass
  * @psalm-suppress PropertyNotSetInConstructor
  */
 class RegionalDexNumbersUpdater extends AbstractUpdater

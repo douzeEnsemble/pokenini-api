@@ -36,7 +36,14 @@ final class PokemonsRepositoryTest extends KernelTestCase
         $this->assertGreaterThan(0, $this->getPokemonNotDeletedCount());
 
         $repo = self::getContainer()->get(PokemonsRepository::class);
-        $repo->removeAll();
+        $queryBuilder = $repo->createQueryBuilder('p')
+            ->update()
+            ->set('p.deletedAt', ':now')
+        ;
+
+        /** @psalm-suppress QueryBuilderSetParameter */
+        $queryBuilder->setParameter('now', new \DateTimeImmutable());
+        $queryBuilder->getQuery()->execute();
 
         $this->assertEquals($initCount, $this->getPokemonCount());
         $this->assertEquals($initCount, $this->getPokemonDeletedCount());
@@ -69,13 +76,6 @@ final class PokemonsRepositoryTest extends KernelTestCase
 
         $this->assertEquals('fire', $pokemons[8]->primaryType?->slug);
         $this->assertEquals('flying', $pokemons[8]->secondaryType?->slug);
-    }
-
-    public function testCountAll(): void
-    {
-        $repo = self::getContainer()->get(PokemonsRepository::class);
-
-        $this->assertEquals($this->getPokemonCount(), $repo->countAll());
     }
 
     /**
