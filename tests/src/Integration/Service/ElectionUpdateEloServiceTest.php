@@ -28,7 +28,6 @@ final class ElectionUpdateEloServiceTest extends KernelTestCase
 
     public function testVote(): void
     {
-        /** @var ElectionUpdateEloService $service */
         $service = self::getContainer()->get(ElectionUpdateEloService::class);
 
         $results = $service->update(
@@ -80,7 +79,6 @@ final class ElectionUpdateEloServiceTest extends KernelTestCase
 
     public function testVoteBis(): void
     {
-        /** @var ElectionUpdateEloService $service */
         $service = self::getContainer()->get(ElectionUpdateEloService::class);
 
         $results = $service->update(
@@ -143,7 +141,6 @@ final class ElectionUpdateEloServiceTest extends KernelTestCase
 
     public function testVoteTer(): void
     {
-        /** @var ElectionUpdateEloService $service */
         $service = self::getContainer()->get(ElectionUpdateEloService::class);
 
         $results = $service->update(
@@ -184,7 +181,6 @@ final class ElectionUpdateEloServiceTest extends KernelTestCase
 
     public function testVoteAllLosers(): void
     {
-        /** @var ElectionUpdateEloService $service */
         $service = self::getContainer()->get(ElectionUpdateEloService::class);
 
         $results = $service->update(
@@ -227,7 +223,6 @@ final class ElectionUpdateEloServiceTest extends KernelTestCase
 
     public function testVoteAllWinners(): void
     {
-        /** @var ElectionUpdateEloService $service */
         $service = self::getContainer()->get(ElectionUpdateEloService::class);
 
         $results = $service->update(

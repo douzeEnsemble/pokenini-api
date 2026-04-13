@@ -51,7 +51,6 @@ class GamesAvailabilitiesRepository extends ServiceEntityRepository
 
         $list = [];
         foreach ($result as $line) {
-            /** @var bool $isAvailable */
             $isAvailable = (
                 '—' !== $line['availability']
                 && '-' !== $line['availability']

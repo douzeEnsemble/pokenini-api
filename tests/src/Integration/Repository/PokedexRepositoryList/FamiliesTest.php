@@ -34,7 +34,6 @@ final class FamiliesTest extends KernelTestCase
 
     public function testGetListQueryFamilies(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $pokedex = $repo->getList(

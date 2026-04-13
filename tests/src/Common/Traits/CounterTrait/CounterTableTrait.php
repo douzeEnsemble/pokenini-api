@@ -10,7 +10,6 @@ trait CounterTableTrait
 {
     protected function getTableCount(string $tableName): int
     {
-        /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         /** @var int */

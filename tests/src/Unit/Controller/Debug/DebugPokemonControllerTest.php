@@ -65,7 +65,7 @@ final class DebugPokemonControllerTest extends TestCase
 
         $controller = new DebugPokemonController(new Serializer());
 
-        $controller->pokemonCaches(
+        $response = $controller->pokemonCaches(
             $gamesAvailabilitiesService,
             $gamesShiniesAvailabilitiesService,
             $gameBundlesAvailabilitiesService,
@@ -73,5 +73,7 @@ final class DebugPokemonControllerTest extends TestCase
             $collectionsAvailabilitiesService,
             $pokemon
         );
+
+        $this->assertEmpty($response->getContent());
     }
 }

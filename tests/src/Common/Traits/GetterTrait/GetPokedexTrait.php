@@ -13,7 +13,6 @@ trait GetPokedexTrait
      */
     protected function getPokedexFromSlugs(string $dexSlug, string $pokemonSlug): array
     {
-        /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         $sql = <<<'SQL'

@@ -34,7 +34,6 @@ final class DexAvailabilitiesRepositoryTest extends KernelTestCase
     {
         $this->assertGreaterThan(0, $this->getDexAvailabilityCount());
 
-        /** @var DexAvailabilitiesRepository $repo */
         $repo = self::getContainer()->get(DexAvailabilitiesRepository::class);
         $repo->removeAll();
 
@@ -43,7 +42,6 @@ final class DexAvailabilitiesRepositoryTest extends KernelTestCase
 
     public function testGetTotal(): void
     {
-        /** @var DexAvailabilitiesRepository $repo */
         $repo = self::getContainer()->get(DexAvailabilitiesRepository::class);
 
         $totalCount = $repo->getTotal(
@@ -57,7 +55,6 @@ final class DexAvailabilitiesRepositoryTest extends KernelTestCase
 
     public function testGetTotalDifferentTrainer(): void
     {
-        /** @var DexAvailabilitiesRepository $repo */
         $repo = self::getContainer()->get(DexAvailabilitiesRepository::class);
 
         $totalCount = $repo->getTotal(
@@ -75,7 +72,6 @@ final class DexAvailabilitiesRepositoryTest extends KernelTestCase
     #[DataProvider('providerGetTotalFilters')]
     public function testGetTotalFilters(array $filters, int $expectedTotalCount): void
     {
-        /** @var DexAvailabilitiesRepository $repo */
         $repo = self::getContainer()->get(DexAvailabilitiesRepository::class);
 
         $totalCount = $repo->getTotal(
@@ -101,6 +97,7 @@ final class DexAvailabilitiesRepositoryTest extends KernelTestCase
             DexAvailabilitiesRepositoryData::providerGetTotalCatchStatesFilters(),
             DexAvailabilitiesRepositoryData::providerGetTotalGamesFilters(),
             DexAvailabilitiesRepositoryData::providerGetTotalCollectionsFilters(),
+            DexAvailabilitiesRepositoryData::providerGetTotalFamiliesFilters(),
             DexAvailabilitiesRepositoryData::providerGetTotalEmptyFilters(),
         );
     }

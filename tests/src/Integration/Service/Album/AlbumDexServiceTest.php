@@ -27,7 +27,6 @@ final class AlbumDexServiceTest extends KernelTestCase
 
     public function testGet(): void
     {
-        /** @var AlbumDexService $service */
         $service = self::getContainer()->get(AlbumDexService::class);
 
         $dexRGBY = $service->get('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow');

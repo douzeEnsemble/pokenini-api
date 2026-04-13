@@ -17,7 +17,6 @@ trait GetTrainerPokemonEloTrait
         string $electionSlug,
         string $pokemonSlug
     ): array {
-        /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         $sql = <<< 'SQL'

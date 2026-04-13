@@ -32,7 +32,6 @@ final class GenericTest extends KernelTestCase
 
     public function testGetListQuery(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $pokedex = $repo->getList(

@@ -13,7 +13,6 @@ trait GetDexTrait
      */
     protected function getDexFromSlug(string $slug): array
     {
-        /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         $sql = <<<'SQL'

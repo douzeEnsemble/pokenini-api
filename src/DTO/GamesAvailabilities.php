@@ -24,6 +24,9 @@ final class GamesAvailabilities
         return isset($this->gamesAvailabilities[$game]);
     }
 
+    /**
+     * @psalm-suppress UnusedParam
+     */
     public function __set(string $game, bool $value): void
     {
         throw new \Exception('Use constructor please');

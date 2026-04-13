@@ -28,7 +28,10 @@ final class CollectionsUpdaterServiceTest extends TestCase
         $service = $this->getService();
 
         $service->execute();
-        $service->getReport();
+        $report = $service->getReport();
+
+        $this->assertSame('c', $report->detail[0]->slug);
+        $this->assertSame(0, $report->detail[0]->count);
     }
 
     private function getService(): CollectionsUpdaterService
@@ -41,7 +44,7 @@ final class CollectionsUpdaterServiceTest extends TestCase
         $collectionsUpdater
             ->expects($this->once())
             ->method('getStatistic')
-            ->willReturn(new Statistic('g'))
+            ->willReturn(new Statistic('c'))
         ;
 
         return new CollectionsUpdaterService(

@@ -10,8 +10,8 @@ use App\Entity\Dex;
 use App\Entity\DexAvailability;
 use App\Entity\Pokemon;
 use App\Repository\PokemonsRepository;
-use Doctrine\ORM\AbstractQuery;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Query;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
@@ -44,7 +44,7 @@ final class DexAvailabilityCalculatorTest extends TestCase
 
         $dex = new Dex();
 
-        $pokemonQuery = $this->createMock(AbstractQuery::class);
+        $pokemonQuery = $this->createMock(Query::class);
         $pokemonQuery
             ->expects($this->once())
             ->method('toIterable')
@@ -105,7 +105,7 @@ final class DexAvailabilityCalculatorTest extends TestCase
 
         $dex = new Dex();
 
-        $pokemonQuery = $this->createMock(AbstractQuery::class);
+        $pokemonQuery = $this->createMock(Query::class);
         $pokemonQuery
             ->expects($this->exactly(2))
             ->method('toIterable')
@@ -171,7 +171,7 @@ final class DexAvailabilityCalculatorTest extends TestCase
 
         $dex = new Dex();
 
-        $pokemonQuery = $this->createMock(AbstractQuery::class);
+        $pokemonQuery = $this->createMock(Query::class);
         $pokemonQuery
             ->expects($this->once())
             ->method('toIterable')

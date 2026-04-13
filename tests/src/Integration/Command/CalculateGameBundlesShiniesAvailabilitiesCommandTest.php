@@ -40,7 +40,6 @@ final class CalculateGameBundlesShiniesAvailabilitiesCommandTest extends Abstrac
 
     public function testNoGamesShiniesAvailabilities(): void
     {
-        /** @var GamesShiniesAvailabilitiesRepository $repo */
         $repo = self::getContainer()->get(GamesShiniesAvailabilitiesRepository::class);
         $repo->removeAll();
 

@@ -34,7 +34,6 @@ final class TypesTest extends KernelTestCase
 
     public function testGetListQueryPrimaryTypeFilter(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $pokedex = $repo->getList(
@@ -62,7 +61,6 @@ final class TypesTest extends KernelTestCase
 
     public function testGetListQuerySecondaryTypeFilter(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $pokedex = $repo->getList(
@@ -87,7 +85,6 @@ final class TypesTest extends KernelTestCase
 
     public function testGetListQueryPrimaryAndSecondaryTypeFilter(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $pokedex = $repo->getList(
@@ -115,7 +112,6 @@ final class TypesTest extends KernelTestCase
 
     public function testGetListQueryAnyTypeFilter(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $pokedex = $repo->getList(

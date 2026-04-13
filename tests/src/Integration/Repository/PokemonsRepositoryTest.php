@@ -35,7 +35,6 @@ final class PokemonsRepositoryTest extends KernelTestCase
         $this->assertEquals(0, $this->getPokemonDeletedCount());
         $this->assertGreaterThan(0, $this->getPokemonNotDeletedCount());
 
-        /** @var PokemonsRepository $repo */
         $repo = self::getContainer()->get(PokemonsRepository::class);
         $repo->removeAll();
 
@@ -46,7 +45,6 @@ final class PokemonsRepositoryTest extends KernelTestCase
 
     public function testGetAll(): void
     {
-        /** @var PokemonsRepository $repo */
         $repo = self::getContainer()->get(PokemonsRepository::class);
 
         /** @var Pokemon[] $pokemons */
@@ -75,7 +73,6 @@ final class PokemonsRepositoryTest extends KernelTestCase
 
     public function testCountAll(): void
     {
-        /** @var PokemonsRepository $repo */
         $repo = self::getContainer()->get(PokemonsRepository::class);
 
         $this->assertEquals($this->getPokemonCount(), $repo->countAll());
@@ -91,7 +88,6 @@ final class PokemonsRepositoryTest extends KernelTestCase
         array $filters,
         int $expectedCount,
     ): void {
-        /** @var PokemonsRepository $repo */
         $repo = self::getContainer()->get(PokemonsRepository::class);
 
         $list = $repo->getNToPick(
@@ -178,7 +174,6 @@ final class PokemonsRepositoryTest extends KernelTestCase
         array $filters,
         int $expectedCount,
     ): void {
-        /** @var PokemonsRepository $repo */
         $repo = self::getContainer()->get(PokemonsRepository::class);
 
         $list = $repo->getNToVote(

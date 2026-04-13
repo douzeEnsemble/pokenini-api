@@ -35,7 +35,6 @@ final class PokedexRepositoryTest extends KernelTestCase
         $this->assertEquals('Maybe', $pokedexBefore['name']);
         $this->assertEquals('maybe', $pokedexBefore['slug']);
 
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $repo->upsert('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow', 'ivysaur', 'yes');
@@ -52,7 +51,6 @@ final class PokedexRepositoryTest extends KernelTestCase
 
         $this->assertEmpty($pokedexBefore);
 
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $repo->upsert('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow', 'douze', 'maybenot');
@@ -65,7 +63,6 @@ final class PokedexRepositoryTest extends KernelTestCase
 
     public function testGetDexUsage(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $counts = $repo->getDexUsage();

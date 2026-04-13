@@ -13,7 +13,6 @@ trait GetTrainerDexTrait
      */
     protected function getTrainerDex(string $trainerExternalId, string $dexSlug): array
     {
-        /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         $sql = <<<'SQL'

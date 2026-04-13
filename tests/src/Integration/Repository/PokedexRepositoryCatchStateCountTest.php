@@ -32,7 +32,6 @@ final class PokedexRepositoryCatchStateCountTest extends KernelTestCase
 
     public function testGetCatchStatesCounts(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $counts = $repo->getCatchStatesCounts(
@@ -81,7 +80,6 @@ final class PokedexRepositoryCatchStateCountTest extends KernelTestCase
         array $filters,
         array $expectedCounts
     ): void {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $counts = $repo->getCatchStatesCounts(
@@ -117,7 +115,6 @@ final class PokedexRepositoryCatchStateCountTest extends KernelTestCase
 
     public function testGetCatchStateCountsDefinedByTrainer(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $counts = $repo->getCatchStateCountsDefinedByTrainer();
@@ -139,7 +136,6 @@ final class PokedexRepositoryCatchStateCountTest extends KernelTestCase
 
     public function testGetCatchStateUsage(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $counts = $repo->getCatchStateUsage();

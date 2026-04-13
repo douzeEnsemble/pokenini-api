@@ -10,7 +10,6 @@ trait HasPokemonAvailabilitiesTrait
 {
     protected function hasPokemonAvailabilities(string $category, string $pokemonSlug): bool
     {
-        /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         $sql = <<< 'SQL'

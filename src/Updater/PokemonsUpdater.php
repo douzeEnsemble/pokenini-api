@@ -181,10 +181,8 @@ class PokemonsUpdater extends AbstractUpdater
      */
     private function transformRecord(array $record): array
     {
-        /** @var bool $isBankable */
         $isBankable = filter_var($record['Bankable'], FILTER_VALIDATE_BOOLEAN);
 
-        /** @var bool $isBankableish */
         $isBankableish = filter_var($record['Bankable-ish'], FILTER_VALIDATE_BOOLEAN);
 
         return [

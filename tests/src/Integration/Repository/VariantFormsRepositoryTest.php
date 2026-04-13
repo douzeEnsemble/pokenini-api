@@ -25,7 +25,6 @@ final class VariantFormsRepositoryTest extends KernelTestCase
 
     public function testGetAll(): void
     {
-        /** @var VariantFormsRepository $repo */
         $repo = self::getContainer()->get(VariantFormsRepository::class);
 
         $list = $repo->getAll();

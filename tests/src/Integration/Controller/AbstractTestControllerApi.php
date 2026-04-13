@@ -88,21 +88,4 @@ abstract class AbstractTestControllerApi extends WebTestCase
             $content
         );
     }
-
-    /**
-     * @param string[]            $params
-     * @param string[]|string[][] $options
-     *
-     * @return mixed[]
-     */
-    public function apiGetContent(
-        string $route,
-        array $params = [],
-        array $options = ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze']
-    ): array {
-        $this->apiRequest('GET', $route, $params, $options);
-
-        /** @var mixed[] */
-        return json_decode((string) $this->getClientResponse()->getContent(), true);
-    }
 }

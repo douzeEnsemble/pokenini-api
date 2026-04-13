@@ -25,7 +25,6 @@ final class CatchStatesRepositoryTest extends KernelTestCase
 
     public function testGetAll(): void
     {
-        /** @var CatchStatesRepository $repo */
         $repo = self::getContainer()->get(CatchStatesRepository::class);
 
         $list = $repo->getAll();

@@ -34,7 +34,6 @@ final class FormsTest extends KernelTestCase
 
     public function testGetListQueryCategoryForm(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $pokedex = $repo->getList(
@@ -58,7 +57,6 @@ final class FormsTest extends KernelTestCase
 
     public function testGetListQueryRegionalForm(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $pokedex = $repo->getList(
@@ -83,7 +81,6 @@ final class FormsTest extends KernelTestCase
 
     public function testGetListQuerySpecialForm(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $pokedex = $repo->getList(
@@ -107,7 +104,6 @@ final class FormsTest extends KernelTestCase
 
     public function testGetListQuerySpecialsForm(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $pokedex = $repo->getList(
@@ -133,7 +129,6 @@ final class FormsTest extends KernelTestCase
 
     public function testGetListQueryVariantForm(): void
     {
-        /** @var PokedexRepository $repo */
         $repo = self::getContainer()->get(PokedexRepository::class);
 
         $pokedex = $repo->getList(

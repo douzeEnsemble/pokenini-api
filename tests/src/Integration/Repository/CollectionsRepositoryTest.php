@@ -25,7 +25,6 @@ final class CollectionsRepositoryTest extends KernelTestCase
 
     public function testGetAllSlug(): void
     {
-        /** @var CollectionsRepository $repo */
         $repo = self::getContainer()->get(CollectionsRepository::class);
 
         $list = $repo->getAllSlugs();
@@ -47,7 +46,6 @@ final class CollectionsRepositoryTest extends KernelTestCase
 
     public function testGetAll(): void
     {
-        /** @var CollectionsRepository $repo */
         $repo = self::getContainer()->get(CollectionsRepository::class);
 
         $list = $repo->getAll();

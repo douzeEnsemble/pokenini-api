@@ -10,7 +10,6 @@ trait CountDexAvailabilityTrait
 {
     protected function getDexAvailabilityCount(): int
     {
-        /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         /** @var int */

@@ -9,7 +9,7 @@ use App\Entity\Pokemon;
 use App\Repository\Trait\FiltersTrait;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\ParameterType;
-use Doctrine\ORM\AbstractQuery;
+use Doctrine\ORM\Query;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -36,7 +36,12 @@ class PokemonsRepository extends ServiceEntityRepository
         $queryBuilder->getQuery()->execute();
     }
 
-    public function getQueryAll(): AbstractQuery
+    /**
+     * @return Query<Pokemon>
+     *
+     * @psalm-suppress TooManyTemplateParams
+     */
+    public function getQueryAll(): Query
     {
         $queryBuilder = $this->createQueryBuilder('p');
 

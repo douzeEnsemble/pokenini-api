@@ -5,8 +5,7 @@
     xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
     errorLevel="1"
     resolveFromConfigFile="true"
-    findUnusedBaselineEntry="true"
-    findUnusedCode="false"
+    findUnusedCode="true"
     cacheDirectory="var/cache/psalm"
 >
     <projectFiles>
@@ -16,6 +15,7 @@
             <directory name="vendor"/>
             <file name="src/Kernel.php" />
             <file name="tests/bootstrap.php"/>
+            <file name="tests/object-manager.php"/>
         </ignoreFiles>
     </projectFiles>
 
@@ -50,5 +50,23 @@
                 <directory name="src/Entity" />
             </errorLevel>
         </MissingConstructor>
+
+        <PossiblyUnusedProperty>
+            <errorLevel type="suppress">
+                <directory name="src/Entity" />
+            </errorLevel>
+        </PossiblyUnusedProperty>
+
+        <PossiblyUnusedMethod>
+            <errorLevel type="suppress">
+                <directory name="src/Controller" />
+            </errorLevel>
+        </PossiblyUnusedMethod>
+
+        <UnnecessaryVarAnnotation>
+            <errorLevel type="suppress">
+                <file name="src/Service/SpreadsheetService.php" />
+            </errorLevel>
+        </UnnecessaryVarAnnotation>
     </issueHandlers>
 </psalm>

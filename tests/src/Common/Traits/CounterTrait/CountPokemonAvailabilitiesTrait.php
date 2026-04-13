@@ -10,7 +10,6 @@ trait CountPokemonAvailabilitiesTrait
 {
     protected function getPokemonAvailabilitiesCount(string $category): int
     {
-        /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         /** @var int */

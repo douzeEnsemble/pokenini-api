@@ -10,7 +10,6 @@ trait CountDexTrait
 {
     protected function getDexCount(): int
     {
-        /** @var Connection $connection */
         $connection = static::getContainer()->get(Connection::class);
 
         /** @var int */
