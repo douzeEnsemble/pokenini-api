@@ -163,8 +163,7 @@ final class ElectionVoteControllerTest extends WebTestCase
                     'trainerExternalId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                     'dexSlug' => 'demo',
                     'electionSlug' => '',
-                    'winnersSlugs' => [
-                    ],
+                    'winnersSlugs' => [],
                     'losersSlugs' => [
                         'caterpie',
                         'metapod',
@@ -172,8 +171,7 @@ final class ElectionVoteControllerTest extends WebTestCase
                     ],
                 ],
                 'pokemonsElo' => [
-                    'winners' => [
-                    ],
+                    'winners' => [],
                     'losers' => [
                         [
                             'pokemonSlug' => 'caterpie',
@@ -227,8 +225,7 @@ final class ElectionVoteControllerTest extends WebTestCase
                         'metapod',
                         'butterfree',
                     ],
-                    'losersSlugs' => [
-                    ],
+                    'losersSlugs' => [],
                 ],
                 'pokemonsElo' => [
                     'winners' => [
@@ -245,8 +242,7 @@ final class ElectionVoteControllerTest extends WebTestCase
                             'elo' => 1016,
                         ],
                     ],
-                    'losers' => [
-                    ],
+                    'losers' => [],
                 ],
             ],
             $data,
