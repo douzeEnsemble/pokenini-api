@@ -70,6 +70,10 @@ final class DexUpdaterTest extends TestCase
         ;
 
         $logger = $this->createMock(LoggerInterface::class);
+        $logger
+            ->expects($this->never())
+            ->method('error')
+        ;
 
         return new DexUpdater(
             $spreadsheetService,

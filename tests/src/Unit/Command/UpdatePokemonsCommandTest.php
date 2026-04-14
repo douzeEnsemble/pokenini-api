@@ -25,6 +25,10 @@ final class UpdatePokemonsCommandTest extends TestCase
     public function testFailureOnException(): void
     {
         $translator = $this->createMock(TranslatorInterface::class);
+        $translator
+            ->expects($this->never())
+            ->method('trans')
+        ;
 
         $actionLog = new ActionLog('UpdatePokemons');
 
@@ -67,7 +71,7 @@ final class UpdatePokemonsCommandTest extends TestCase
             $updaterService,
         );
 
-        $input = $this->createMock(InputInterface::class);
+        $input = $this->createStub(InputInterface::class);
         $output = $this->createMock(OutputInterface::class);
         $output
             ->expects($this->once())

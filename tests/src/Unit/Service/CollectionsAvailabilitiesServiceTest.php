@@ -80,6 +80,10 @@ final class CollectionsAvailabilitiesServiceTest extends TestCase
     public function testCleanCacheFromPokemon(): void
     {
         $repository = $this->createMock(CollectionsAvailabilitiesRepository::class);
+        $repository
+            ->expects($this->never())
+            ->method('getFromPokemon')
+        ;
 
         $cache = $this->createMock(CacheInterface::class);
         $cache

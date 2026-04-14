@@ -80,6 +80,10 @@ final class GamesShiniesAvailabilitiesServiceTest extends TestCase
     public function testCleanCacheFromPokemon(): void
     {
         $repository = $this->createMock(GamesShiniesAvailabilitiesRepository::class);
+        $repository
+            ->expects($this->never())
+            ->method('getFromPokemon')
+        ;
 
         $cache = $this->createMock(CacheInterface::class);
         $cache
