@@ -33,6 +33,10 @@ final class CatchStatesUpdaterTest extends TestCase
         ;
 
         $entityManager = $this->createMock(EntityManagerInterface::class);
+        $entityManager
+            ->expects($this->never())
+            ->method('getConnection')
+        ;
 
         $logger = $this->createMock(LoggerInterface::class);
         $logger
@@ -72,6 +76,10 @@ final class CatchStatesUpdaterTest extends TestCase
         ;
 
         $entityManager = $this->createMock(EntityManagerInterface::class);
+        $entityManager
+            ->expects($this->never())
+            ->method('getConnection')
+        ;
 
         $logger = $this->createMock(LoggerInterface::class);
         $logger
@@ -116,6 +124,10 @@ final class CatchStatesUpdaterTest extends TestCase
         ;
 
         $entityManager = $this->createMock(EntityManagerInterface::class);
+        $entityManager
+            ->expects($this->never())
+            ->method('getConnection')
+        ;
 
         $logger = $this->createMock(LoggerInterface::class);
         $logger
@@ -179,6 +191,10 @@ final class CatchStatesUpdaterTest extends TestCase
         ;
 
         $connection = $this->createMock(Connection::class);
+        $connection
+            ->expects($this->once())
+            ->method('executeStatement')
+        ;
 
         $entityManager = $this->createMock(EntityManagerInterface::class);
         $entityManager
