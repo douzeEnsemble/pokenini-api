@@ -53,8 +53,14 @@ final class GamesShiniesAvailabilitiesRepositoryTest extends KernelTestCase
         $pokemonDeoxys = $this->getPokemon('Deoxys');
 
         $listDeoxys = $this->gamesShiniesAvailabilitiesRepo->getFromPokemon($pokemonDeoxys);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertNull($listDeoxys->nexistepas);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertTrue($listDeoxys->ruby);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertFalse($listDeoxys->emerald);
     }
 

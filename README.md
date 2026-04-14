@@ -65,15 +65,6 @@ file_put_contents('tests/last.html', $client->getCrawler()->html());
 
 [http://localhost:8082/?pgsql=database&username=app&db=app&ns=public]()
 
-### PHPStan baseline
-
-To update the `phpstan-baseline.neon` file
-
-```
-make sh
-tools/phpstan/vendor/bin/phpstan --generate-baseline --memory-limit=-1
-```
-
 ### Docker Image build
 
 ```shell

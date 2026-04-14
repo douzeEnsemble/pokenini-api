@@ -21,7 +21,10 @@ final class GamesShiniesAvailabilitiesTest extends TestCase
             'b' => false,
         ]);
 
+        /** @phpstan-ignore property.notFound */
         $this->assertTrue($object->a);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertFalse($object->b);
     }
 
@@ -31,6 +34,7 @@ final class GamesShiniesAvailabilitiesTest extends TestCase
 
         $object = new GamesShiniesAvailabilities([]);
 
+        /** @phpstan-ignore property.notFound */
         $object->c = true;
     }
 

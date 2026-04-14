@@ -59,7 +59,11 @@ final class TrainerPokemonEloTopQueryOptionsTest extends TestCase
     {
         $this->expectException(InvalidOptionsException::class);
 
-        /** @psalm-suppress InvalidArgument */
+        /**
+         * @psalm-suppress InvalidArgument
+         *
+         * @phpstan-ignore argument.type
+         */
         new TrainerPokemonEloTopQueryOptions([
             'trainer_external_id' => '67865468',
             'dex_slug' => 'demo',

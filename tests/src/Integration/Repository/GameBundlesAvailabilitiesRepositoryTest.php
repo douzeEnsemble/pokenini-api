@@ -94,19 +94,31 @@ final class GameBundlesAvailabilitiesRepositoryTest extends KernelTestCase
         $pokemonDouze = $this->getPokemon('douze');
 
         $listDouze = $this->gameBundleAvailabilityRepo->getFromPokemon($pokemonDouze);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertTrue($listDouze->redgreenblueyellow);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertFalse($listDouze->goldsilvercrystal);
 
         $pokemonBulbasaur = $this->getPokemon('bulbasaur');
 
         $listBulbasaur = $this->gameBundleAvailabilityRepo->getFromPokemon($pokemonBulbasaur);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertTrue($listBulbasaur->redgreenblueyellow);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertTrue($listBulbasaur->goldsilvercrystal);
 
         $pokemonMegaVenusaur = $this->getPokemon('venusaur-mega');
 
         $listMegaVenusaur = $this->gameBundleAvailabilityRepo->getFromPokemon($pokemonMegaVenusaur);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertFalse($listMegaVenusaur->redgreenblueyellow);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertFalse($listMegaVenusaur->goldsilvercrystal);
     }
 

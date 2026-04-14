@@ -37,24 +37,42 @@ final class GamesShiniesAvailabilitiesServiceTest extends KernelTestCase
         $pokemonDouze = $pokemonsRepo->findOneBy(['name' => 'Douze']);
 
         $listDouze = $service->getFromPokemon($pokemonDouze);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertNull($listDouze->red);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertNull($listDouze->blue);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertNull($listDouze->emerald);
 
         /** @var Pokemon $pokemonBulbasaur */
         $pokemonBulbasaur = $pokemonsRepo->findOneBy(['name' => 'Bulbasaur']);
 
         $listBulbasaur = $service->getFromPokemon($pokemonBulbasaur);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertTrue($listBulbasaur->red);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertTrue($listBulbasaur->blue);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertNull($listBulbasaur->emerald);
 
         /** @var Pokemon $pokemonDeoxys */
         $pokemonDeoxys = $pokemonsRepo->findOneBy(['name' => 'Deoxys']);
 
         $listDeoxys = $service->getFromPokemon($pokemonDeoxys);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertNull($listDeoxys->red);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertTrue($listDeoxys->ruby);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertFalse($listDeoxys->emerald);
     }
 }
