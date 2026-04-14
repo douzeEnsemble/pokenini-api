@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace App\Tests\Integration\Controller;
 
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Symfony\Component\BrowserKit\AbstractBrowser;
 use Symfony\Component\HttpFoundation\Response;
 
 abstract class AbstractTestControllerApi extends WebTestCase
 {
     use RefreshDatabaseTrait;
 
-    protected AbstractBrowser $client;
+    protected KernelBrowser $client;
 
     #[\Override]
     protected function setUp(): void

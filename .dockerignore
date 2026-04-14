@@ -37,7 +37,5 @@ vendor/
 coverage.xml
 deptract.yaml
 infection.json5
-phpstan-baseline.neon
-psalm-baseline.xml
 psalm.xml
 phpmd.ruleset.xml

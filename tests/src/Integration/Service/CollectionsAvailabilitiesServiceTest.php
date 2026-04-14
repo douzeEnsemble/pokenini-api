@@ -37,21 +37,33 @@ final class CollectionsAvailabilitiesServiceTest extends KernelTestCase
         $pokemonDouze = $pokemonsRepo->findOneBy(['name' => 'Douze']);
 
         $listDouze = $service->getFromPokemon($pokemonDouze);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertFalse($listDouze->pogoshadow);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertTrue($listDouze->pogodynamax);
 
         /** @var Pokemon $pokemonBulbasaur */
         $pokemonBulbasaur = $pokemonsRepo->findOneBy(['name' => 'Bulbasaur']);
 
         $listBulbasaur = $service->getFromPokemon($pokemonBulbasaur);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertTrue($listBulbasaur->pogoshadow);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertFalse($listBulbasaur->pogodynamax);
 
         /** @var Pokemon $pokemonDeoxys */
         $pokemonDeoxys = $pokemonsRepo->findOneBy(['name' => 'Deoxys']);
 
         $listDeoxys = $service->getFromPokemon($pokemonDeoxys);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertNull($listDeoxys->pogoshadow);
+
+        /** @phpstan-ignore property.notFound */
         $this->assertNull($listDeoxys->pogodynamax);
     }
 }

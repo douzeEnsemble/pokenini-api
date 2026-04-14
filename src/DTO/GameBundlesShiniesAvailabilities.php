@@ -7,6 +7,7 @@ namespace App\DTO;
 /**
  * @psalm-no-seal-properties
  */
+#[\AllowDynamicProperties]
 final class GameBundlesShiniesAvailabilities
 {
     /**
