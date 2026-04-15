@@ -72,44 +72,6 @@ COPY --link \
 	--from=ghcr.io/symfony-cli/symfony-cli:5.17.1 \
 	/usr/local/bin/symfony /usr/local/bin/symfony
 
-## < Install chromedriver
-ENV PANTHER_NO_SANDBOX=1
-ENV PANTHER_NO_REDUCED_MOTION=1
-ENV PANTHER_ERROR_SCREENSHOT_DIR=/app/var/screenshots
-ENV PANTHER_DEVTOOLS=disabled
-ENV PANTHER_CHROME_ARGUMENTS='--disable-dev-shm-usage'
-ENV GNUPGHOME=/usr/local/share/gnupg
-
-# hadolint ignore=DL3018
-RUN apk add --no-cache \
-	gnupg \
-	unzip \
-	wget \
-	chromium \
-	chromium-chromedriver \
-	fontconfig \
-	freetype \
-	libx11 \
-	libxext \
-	libxrender \
-	libxtst
-
-RUN mkdir -p $GNUPGHOME \
-	&& chmod 700 $GNUPGHOME \
-	&& wget -q -nv -O phive.phar https://phar.io/releases/phive.phar \
-	&& wget -q -nv -O phive.phar.asc https://phar.io/releases/phive.phar.asc \
-	&& gpg --refresh-keys \
-	&& gpg --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 0x9D8A98B29B2D5D79 \
-	&& gpg --verify phive.phar.asc phive.phar \
-	&& chmod +x phive.phar \
-	&& mv phive.phar /usr/local/bin/phive
-
-SHELL ["/bin/ash", "-o", "pipefail", "-c"]
-
-RUN (echo "y" | /usr/local/bin/phive install --global bdi) \
-	&& bdi detect /usr/local/bin/
-## > Install chromedriver
-
 FROM php_base AS php_prod
 
 USER www-data
