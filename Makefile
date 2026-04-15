@@ -53,7 +53,7 @@ up-after:
 
 .PHONY: install
 install: ## Install requirements
-install: .env .env.dev.local
+install: .env .env.dev.local build
 
 .PHONY: stop
 stop: ## Stop the project
@@ -61,6 +61,7 @@ stop: ## Stop the project
 
 .PHONY: destruct
 destruct: ## Destruct the project
+destruct: stop
 	$(DOCKER_COMP) down --remove-orphans --volumes database moco.sheets.int moco.sheets.test newman php web --rmi all
 
 .PHONY: logs
@@ -124,7 +125,7 @@ vendor: ## Install vendors according to the current composer.lock file
 
 .PHONY: updates
 updates: ## Updates all composer
-	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader
+	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=./
 	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/deptrac
 	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/infection
 	@$(COMPOSER) update --bump-after-update --with-all-dependencies --optimize-autoloader --working-dir=tools/jsonlint
@@ -141,6 +142,7 @@ sf: ## List all Symfony commands or pass the parameter "c=" to run a given comma
 
 .PHONY: cc
 cc: ## Clear the cache
+cc:
 	@$(SYMFONY) cache:clear --env=dev
 	@$(SYMFONY) cache:clear --env=test
 
@@ -366,7 +368,6 @@ composer-audit: composer
 security-check: ## Execute Symfony Security Checker
 security-check:
 	@$(PHP_CONT) symfony security:check
-
 
 ## —— Cleaning 🧽 ———————————————————————————————————————————————————————————————
 .PHONY: clean-unused-files
