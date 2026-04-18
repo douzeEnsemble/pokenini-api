@@ -53,7 +53,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
       - name: Install
-        uses: ./.github/actions/local-tools-composer
+        uses: ./.github/actions/tools-composer
         with:
           dir: psalm
       - name: Run 
@@ -68,7 +68,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
       - name: Install
-        uses: ./.github/actions/local-tools-composer
+        uses: ./.github/actions/tools-composer
         with:
           dir: phpstan
       - name: Initialize
