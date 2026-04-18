@@ -72,4 +72,4 @@ jobs:
           docker compose up newman --no-recreate --menu=false
       - name: Security / Symfony Security Check
         run: |
-          docker compose exec -T php php symfony security:check
+          docker compose exec -T php symfony security:check
