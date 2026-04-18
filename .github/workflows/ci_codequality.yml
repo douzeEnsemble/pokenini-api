@@ -56,8 +56,10 @@ jobs:
         uses: ./.github/actions/local-tools-composer
         with:
           dir: psalm
-      - name: Run
-        run: tools/psalm/vendor/bin/psalm --show-info=false --no-cache --find-unused-psalm-suppress --no-suggestions --taint-analysis --root=.
+      - name: Run 
+        run: |
+          tools/psalm/vendor/bin/psalm -c psalm.xml  --show-info=false --no-cache --find-unused-psalm-suppress --no-suggestions --root=.
+          tools/psalm/vendor/bin/psalm -c psalm-src-only.xml --show-info=false --no-cache --find-unused-psalm-suppress --no-suggestions --root=.
 
   phpstan:
     name: PHPStan
@@ -87,4 +89,4 @@ jobs:
         with:
           dir: deptrac
       - name: Run
-        run: ./tools/deptrac/vendor/bin/deptrac analyse
+        run: ./tools/deptrac/vendor/bin/deptrac analyse --report-uncovered --fail-on-uncovered
