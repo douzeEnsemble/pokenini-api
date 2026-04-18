@@ -70,3 +70,6 @@ jobs:
       - name: Integration / Run
         run: |
           docker compose up newman --no-recreate --menu=false
+      - name: Security / Symfony Security Check
+        run: |
+          docker compose exec -T php php symfony security:check
