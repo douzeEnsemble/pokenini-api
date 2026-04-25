@@ -100,3 +100,5 @@ RUN set -eux; \
 RUN rm .env \
 	&& touch .env
 ## > Cleanup
+
+RUN chown -R www-data:www-data var/
