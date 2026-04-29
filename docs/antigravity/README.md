@@ -7,8 +7,8 @@ These files are structured as **Knowledge Items (KI)** to help the assistant und
 ## Structure
 
 - `knowledge/`: Contains subdirectories for different knowledge domains.
-  - Each domain has a `metadata.json` describing the item.
-  - The `artifacts/` subdirectory contains the actual analysis in Markdown format.
+- Each domain has a `metadata.json` describing the item.
+- The `artifacts/` subdirectory contains the actual analysis in Markdown format.
 
 ## Portability
 
