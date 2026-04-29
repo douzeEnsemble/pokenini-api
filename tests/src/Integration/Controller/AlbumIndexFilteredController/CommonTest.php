@@ -75,9 +75,9 @@ final class CommonTest extends AbstractTestAlbumIndexFilteredController
 
         $this->assertCount(22, $pokemons);
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 9, 3, 3, 7, 22);
 

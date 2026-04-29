@@ -54,9 +54,9 @@ final class FamiliesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 6, 0, 0, 0, 6);
 
@@ -130,9 +130,9 @@ final class FamiliesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 6, 0, 0, 3, 9);
 

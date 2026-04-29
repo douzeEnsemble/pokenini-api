@@ -49,9 +49,9 @@ final class CollectionsAvailabilitiesTest extends AbstractTestAlbumIndexFiltered
             ],
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 1, 0, 0, 0, 1);
 
@@ -135,9 +135,9 @@ final class CollectionsAvailabilitiesTest extends AbstractTestAlbumIndexFiltered
             ],
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 8, 3, 3, 7, 21);
 

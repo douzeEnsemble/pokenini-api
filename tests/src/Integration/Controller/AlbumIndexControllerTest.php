@@ -86,9 +86,9 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
             $pokemons
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 4, 1, 2, 0, 7);
 
@@ -168,9 +168,9 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
             $pokemons
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 8, 0, 0, 1, 9);
 
@@ -248,9 +248,9 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
             $pokemons
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 6, 0, 0, 1, 7);
 
@@ -328,9 +328,9 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
             $pokemons
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 0, 0, 0, 0, 7);
 
@@ -391,9 +391,9 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
             $pokemons
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 9, 3, 3, 7, 22);
 
@@ -454,9 +454,9 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
             $pokemons
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 11, 0, 0, 0, 11);
 
@@ -567,9 +567,9 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertArrayHasKey('pokemons', $data);
         $this->assertEmpty($data['pokemons']);
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 0, 0, 0, 0, 0);
 

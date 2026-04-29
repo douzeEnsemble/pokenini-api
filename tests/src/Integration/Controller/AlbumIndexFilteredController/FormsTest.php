@@ -50,9 +50,9 @@ final class FormsTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 1, 0, 0, 1, 2);
 
@@ -119,9 +119,9 @@ final class FormsTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 1, 0, 2, 0, 3);
 
@@ -187,9 +187,9 @@ final class FormsTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 2, 0, 0, 0, 2);
 
@@ -257,9 +257,9 @@ final class FormsTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 3, 0, 0, 0, 3);
 
@@ -302,9 +302,9 @@ final class FormsTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 1, 2, 0, 1, 4);
 
