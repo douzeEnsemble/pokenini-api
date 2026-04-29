@@ -46,11 +46,11 @@ namespace App\Tests\Common\Types;
  *      count: int,
  *      slug: string,
  *      name: string,
- *      frenchName: string
+ *      french_name: string
  *  }>,
  *  total: int,
- *  totalCaught: int,
- *  totalUncaught: int
+ *  total_caught: int,
+ *  total_uncaught: int
  * }
  * @psalm-type PokedexResponseItem = array{
  *  pokemon_slug: string,
@@ -91,7 +91,7 @@ namespace App\Tests\Common\Types;
  * @psalm-type PokedexResponse = array{
  *  dex: array<string, mixed>,
  *  pokemons: PokedexResponseItems,
- *  filteredReport: PokedexResponseReport,
+ *  filtered_report: PokedexResponseReport,
  *  report: PokedexResponseReport,
  * }
  *

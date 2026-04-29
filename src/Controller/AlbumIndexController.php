@@ -10,9 +10,10 @@ use App\Service\Album\AlbumDexService;
 use App\Service\Album\AlbumPokemonService;
 use App\Service\Album\AlbumReportService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/album')]
 final class AlbumIndexController extends AbstractController
@@ -25,7 +26,8 @@ final class AlbumIndexController extends AbstractController
         string $trainerExternalId,
         string $dexSlug,
         Request $request,
-    ): JsonResponse {
+        SerializerInterface $serializer,
+    ): Response {
         $albumsFilters = AlbumFiltersRequest::albumFiltersFromRequest($request);
 
         $pokemons = $albumPokemonService->get($trainerExternalId, $dexSlug, $albumsFilters);
@@ -35,12 +37,14 @@ final class AlbumIndexController extends AbstractController
 
         $dex = $albumDexService->get($trainerExternalId, $dexSlug);
 
-        // Better with serializer ?
-        return new JsonResponse([
-            'dex' => $dex,
-            'pokemons' => $pokemons,
-            'report' => $report,
-            'filteredReport' => $filteredReport,
-        ]);
+        return new Response($serializer->serialize(
+            [
+                'dex' => $dex,
+                'pokemons' => $pokemons,
+                'report' => $report,
+                'filtered_report' => $filteredReport,
+            ],
+            'json'
+        ));
     }
 }

@@ -51,9 +51,9 @@ final class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 0, 3, 0, 0, 3);
 
@@ -88,9 +88,9 @@ final class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
 
         $this->assertCount(19, $pokemons);
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 9, 0, 3, 7, 19);
 
@@ -125,9 +125,9 @@ final class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
 
         $this->assertCount(9, $pokemons);
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 9, 0, 0, 0, 9);
 
@@ -162,9 +162,9 @@ final class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
 
         $this->assertCount(13, $pokemons);
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 0, 3, 3, 7, 13);
 
@@ -235,9 +235,9 @@ final class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 0, 3, 3, 0, 6);
 

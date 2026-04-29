@@ -60,9 +60,9 @@ final class GamesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 4, 1, 1, 6, 12);
 
@@ -128,9 +128,9 @@ final class GamesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 0, 0, 2, 0, 2);
 
@@ -214,9 +214,9 @@ final class GamesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 9, 3, 1, 7, 20);
 
@@ -259,9 +259,9 @@ final class GamesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 0, 2, 1, 1, 4);
 
@@ -343,9 +343,9 @@ final class GamesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 9, 1, 2, 6, 18);
 

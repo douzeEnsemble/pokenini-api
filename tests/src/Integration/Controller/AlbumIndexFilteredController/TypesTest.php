@@ -54,9 +54,9 @@ final class TypesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 6, 0, 0, 0, 6);
 
@@ -122,9 +122,9 @@ final class TypesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 1, 0, 2, 0, 3);
 
@@ -194,9 +194,9 @@ final class TypesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 1, 0, 0, 2, 3);
 
@@ -242,9 +242,9 @@ final class TypesTest extends AbstractTestAlbumIndexFilteredController
             ],
         );
 
-        $this->assertArrayHasKey('filteredReport', $data);
+        $this->assertArrayHasKey('filtered_report', $data);
 
-        $filteredReport = $data['filteredReport'];
+        $filteredReport = $data['filtered_report'];
 
         $this->assertReport($filteredReport, 1, 2, 2, 2, 7);
 
