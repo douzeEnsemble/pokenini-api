@@ -28,28 +28,28 @@ final class TypesControllerTest extends AbstractTestControllerApi
 
         $this->assertEquals([
             'name' => 'Normal',
-            'frenchName' => 'Normal',
+            'french_name' => 'Normal',
             'slug' => 'normal',
             'color' => '#A8A878',
         ], $content[0]);
 
         $this->assertEquals([
             'name' => 'Poison',
-            'frenchName' => 'Poison',
+            'french_name' => 'Poison',
             'slug' => 'poison',
             'color' => '#A040A0',
         ], $content[3]);
 
         $this->assertEquals([
             'name' => 'Ghost',
-            'frenchName' => 'Spectre',
+            'french_name' => 'Spectre',
             'slug' => 'ghost',
             'color' => '#705898',
         ], $content[7]);
 
         $this->assertEquals([
             'name' => 'Stellar',
-            'frenchName' => 'Stellaire',
+            'french_name' => 'Stellaire',
             'slug' => 'stellar',
             'color' => '#7CC7B2',
         ], $content[17]);

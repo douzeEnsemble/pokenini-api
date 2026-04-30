@@ -25,7 +25,7 @@ class RegionalFormsRepository extends ServiceEntityRepository
     {
         $sql = <<<'SQL'
             SELECT      name,
-                        french_name as "frenchName",
+                        french_name as "french_name",
                         slug
             FROM        regional_form
             WHERE       deleted_at IS NULL

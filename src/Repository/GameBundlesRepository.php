@@ -25,7 +25,7 @@ class GameBundlesRepository extends ServiceEntityRepository
     {
         $sql = <<<'SQL'
             SELECT      gb.name,
-                        gb.french_name as "frenchName",
+                        gb.french_name as "french_name",
                         gb.slug,
                         gg.slug AS generation_slug
             FROM        game_bundle AS gb

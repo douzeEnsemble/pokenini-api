@@ -28,13 +28,13 @@ final class SpecialFormsControllerTest extends AbstractTestControllerApi
 
         $this->assertEquals([
             'name' => 'Mega',
-            'frenchName' => 'Mega',
+            'french_name' => 'Mega',
             'slug' => 'mega',
         ], $content[0]);
 
         $this->assertEquals([
             'name' => 'Alpha',
-            'frenchName' => 'Baron',
+            'french_name' => 'Baron',
             'slug' => 'alpha',
         ], $content[2]);
     }
