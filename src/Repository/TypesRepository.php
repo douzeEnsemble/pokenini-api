@@ -25,7 +25,7 @@ class TypesRepository extends ServiceEntityRepository
     {
         $sql = <<<'SQL'
             SELECT      name,
-                        french_name as "frenchName",
+                        french_name as "french_name",
                         slug,
                         color
             FROM        type

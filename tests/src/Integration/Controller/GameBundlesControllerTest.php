@@ -28,21 +28,21 @@ final class GameBundlesControllerTest extends AbstractTestControllerApi
 
         $this->assertEquals([
             'name' => 'Red, Green, Blue, Yellow',
-            'frenchName' => 'Rouge, Vert, Bleu, Jaune',
+            'french_name' => 'Rouge, Vert, Bleu, Jaune',
             'slug' => 'redgreenblueyellow',
             'generation_slug' => '1',
         ], $content[0]);
 
         $this->assertEquals([
             'name' => 'Ruby, Sapphire, Emerald',
-            'frenchName' => 'Rubis, Saphir, Émeraude',
+            'french_name' => 'Rubis, Saphir, Émeraude',
             'slug' => 'rubysapphireemerald',
             'generation_slug' => '3',
         ], $content[2]);
 
         $this->assertEquals([
             'name' => 'Black, White',
-            'frenchName' => 'Noir, Blanc',
+            'french_name' => 'Noir, Blanc',
             'slug' => 'blackwhite',
             'generation_slug' => '5',
         ], $content[6]);

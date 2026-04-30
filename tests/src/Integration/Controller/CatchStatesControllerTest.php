@@ -26,28 +26,28 @@ final class CatchStatesControllerTest extends AbstractTestControllerApi
 
         $this->assertEquals([
             'name' => 'No',
-            'frenchName' => 'Non',
+            'french_name' => 'Non',
             'slug' => 'no',
             'color' => '#e57373',
         ], $content[0]);
 
         $this->assertEquals([
             'name' => 'Maybe',
-            'frenchName' => 'Peut être',
+            'french_name' => 'Peut être',
             'slug' => 'maybe',
             'color' => 'blue',
         ], $content[1]);
 
         $this->assertEquals([
             'name' => 'Maybe not',
-            'frenchName' => 'Peut être pas',
+            'french_name' => 'Peut être pas',
             'slug' => 'maybenot',
             'color' => 'yellow',
         ], $content[2]);
 
         $this->assertEquals([
             'name' => 'Yes',
-            'frenchName' => 'Oui',
+            'french_name' => 'Oui',
             'slug' => 'yes',
             'color' => '#66bb6a',
         ], $content[3]);

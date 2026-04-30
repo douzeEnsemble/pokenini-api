@@ -28,13 +28,13 @@ final class RegionalFormsControllerTest extends AbstractTestControllerApi
 
         $this->assertEquals([
             'name' => 'Alolan',
-            'frenchName' => "d'Alola",
+            'french_name' => "d'Alola",
             'slug' => 'alolan',
         ], $content[0]);
 
         $this->assertEquals([
             'name' => 'Hisuian',
-            'frenchName' => 'de Hisui',
+            'french_name' => 'de Hisui',
             'slug' => 'hisuian',
         ], $content[2]);
     }

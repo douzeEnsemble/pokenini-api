@@ -28,13 +28,13 @@ final class CategoryFormsControllerTest extends AbstractTestControllerApi
 
         $this->assertEquals([
             'name' => 'Starter',
-            'frenchName' => 'de Départ',
+            'french_name' => 'de Départ',
             'slug' => 'starter',
         ], $content[0]);
 
         $this->assertEquals([
             'name' => 'Legendary',
-            'frenchName' => 'Légendaire',
+            'french_name' => 'Légendaire',
             'slug' => 'legendary',
         ], $content[2]);
     }

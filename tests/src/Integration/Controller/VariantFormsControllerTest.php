@@ -28,19 +28,19 @@ final class VariantFormsControllerTest extends AbstractTestControllerApi
 
         $this->assertEquals([
             'name' => 'Gender',
-            'frenchName' => 'Sexe',
+            'french_name' => 'Sexe',
             'slug' => 'gender',
         ], $content[0]);
 
         $this->assertEquals([
             'name' => 'Baby',
-            'frenchName' => 'Bébé',
+            'french_name' => 'Bébé',
             'slug' => 'baby',
         ], $content[2]);
 
         $this->assertEquals([
             'name' => 'Unobtainable',
-            'frenchName' => 'Non obtenable',
+            'french_name' => 'Non obtenable',
             'slug' => 'unobtainable',
         ], $content[6]);
     }
