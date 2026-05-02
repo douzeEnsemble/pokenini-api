@@ -1,27 +1,34 @@
 # Data Management
 
-The project uses a hybrid approach to data management: a relational database for application state and Google Sheets as a primary source for reference data.
+The application orchestrates complex Pokémon data by using a combination of a persistent Postgresql database (via Doctrine ORM) and a primary source of truth from an external Google Sheet.
 
-## Relational Database (Doctrine ORM)
+## Doctrine ORM and Postgresql
 
-- **ORM**: Doctrine ORM 3.x.
-- **Migrations**: Symfony Migrations are used to manage schema changes.
-- **Strict Typing**: Entities use PHP 8.4 features and strict typing for properties.
-- **Repositories**: Custom repository methods are used for complex queries.
+- **Migrations**: Database schema changes are managed via Doctrine Migrations (`make init-db` runs `doctrine:migration:migrate`).
+- **Entities**: All database tables are strictly typed Doctrine Entities (`src/Entity`).
+- **Repositories**: Standard Doctrine repositories (`src/Repository`) are used for querying data.
 
-## External Data Synchronization (Google Sheets)
+## Data Synchronization
 
-A significant portion of the data (Pokémon species, game lists, dex lists) is synchronized from a Google Spreadsheet.
+The application features a unique synchronization process to load base data (like pokédex entries, availabilities, games) into the application.
 
-- **SpreadsheetService**: Handles the connection to the Google Sheets API.
-- **Updaters**: Specialized classes (extending `AbstractUpdater`) handle the mapping between spreadsheet rows and database records.
-- **Upsert Strategy**: Updaters use `INSERT ... ON CONFLICT (slug) DO UPDATE` to ensure data is updated if it already exists, preventing duplicates.
-- **Soft Deletion**: Updaters often handle a `deleted_at` column to remove records that are no longer in the spreadsheet.
+- **Google Sheets API**: Data is fetched using the Google API Client (`google/apiclient`).
+- **Updaters**: Classes in `src/Updater` and `src/Calculator` handle data mapping and transformation from external API objects into internal Entities.
+- **Commands**: The `Makefile` defines `make data-app` which runs a sequence of Symfony console commands:
+    - `app:update:labels`
+    - `app:update:games_collections_and_dex`
+    - `app:update:pokemons`
+    - `app:update:regional_dex_numbers`
+    - `app:update:games_availabilities`
+    - `app:update:games_shinies_availabilities`
+    - `app:update:collections_availabilities`
+    - `app:calculate:game_bundles_availabilities`
+    - `app:calculate:game_bundles_shinies_availabilities`
+    - `app:calculate:dex_availabilities`
+    - `app:calculate:pokemon_availabilities`
 
-## Key Update Commands
+These synchronization commands are critical for initializing both the dev environment and ensuring accurate application state.
 
-Data synchronization is triggered via Symfony console commands (defined in `src/Command`), which are also available via `make data-app`.
+## NVD API Key
 
-- `app:update:pokemons`: Syncs Pokémon species data.
-- `app:update:games_collections_and_dex`: Syncs reference data for games and dexes.
-- `app:calculate:*`: Runs post-sync calculations (e.g., availabilities).
+Updating OWAP records requires an NVD API Key. This should be exported in the `.env` configuration (`NVD_API_KEY`).
