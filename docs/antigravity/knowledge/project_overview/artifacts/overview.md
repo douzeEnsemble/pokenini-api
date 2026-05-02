@@ -1,6 +1,6 @@
 # Project Overview: pokenini-api
 
-The `pokenini-api` is a backend application built with **Symfony 8.0** and **PHP 8.4**. It appears to be a Pokémon-related data management system, possibly related to tracking collections, elections (Elo-based rankings), and pokédex data.
+The `pokenini-api` is a backend application built with **Symfony 8.0** and **PHP 8.4**. It manages a Pokémon Living/Alternate/Gender Extended Dex.
 
 ## Technology Stack
 
@@ -8,27 +8,19 @@ The `pokenini-api` is a backend application built with **Symfony 8.0** and **PHP
 - **Framework**: Symfony 8.0
 - **Database / ORM**: Doctrine ORM 3.x
 - **Async Processing**: Symfony Messenger
-- **External API**: Google Sheets API (used for data synchronization)
-- **Quality Tools**:
-    - **Psalm**: Static analysis with strict typing.
-    - **PHPStan**: Static analysis.
-    - **PHP-CS-Fixer**: Coding style enforcement.
-    - **PHPUnit**: Unit and integration testing.
-    - **Infection**: Mutation testing.
-    - **Deptrac**: Dependency analysis.
+- **External API**: Google Sheets API (used extensively for data synchronization via custom commands)
 
-## Core Domain Entities
+## Running the Application
 
-Based on the `src/Entity` directory, the core entities include:
-- `Pokemon`
-- `Dex`
-- `Election`
-- `Trainer` (likely users/collectors)
-- `Album` (likely collections)
-- `Game`, `GameBundle`
+The project uses Docker for its local environment and provides a comprehensive `Makefile` to interact with it.
 
-## Infrastructure
+### Common Commands
+- `make start`: Installs dependencies, builds the docker image, starts the containers, clears cache, and initializes data.
+- `make stop`: Stops the docker containers.
+- `make destruct`: Destroys the containers and volumes.
+- `make sh` / `make bash`: Opens a shell inside the PHP container.
+- `make composer c="<command>"`: Runs Composer commands.
+- `make sf c="<command>"`: Runs Symfony console commands.
 
-- **Docker**: The project includes a Docker setup (`.docker/`, `docker-compose.yaml`).
-- **CI/CD**: GitHub Actions workflows are present.
-- **Makefile**: Comprehensive Makefile for development tasks.
+## Architecture & Data
+The API seems to heavily rely on syncing data from a Google Sheet (using the NVD API Key/Google Sheets client). Data is then stored in a PostgreSQL database using Doctrine. Waiters, Updaters, and Calculators process this data to manage relationships like game availability, shinies availability, collections, and regional dex numbers.
