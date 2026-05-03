@@ -222,7 +222,7 @@ trait FiltersTrait
             $query .= ')';
         }
         if ($filters->gameBundleAvailabilities->values) {
-            $query .= <<<'SUBSQL'
+            $query .= '
                 AND p.id IN (SELECT  gba.pokemon_id
                             FROM    game_bundle_availability AS gba
                                 LEFT JOIN game_bundle AS gb
@@ -230,10 +230,10 @@ trait FiltersTrait
                             WHERE   gba.is_available = TRUE
                                     AND gb.slug IN(:filter_game_bundle_availabilities)
                         )
-                SUBSQL;
+            ';
         }
         if ($filters->gameBundleAvailabilities->negativeValues) {
-            $query .= <<<'SUBSQL'
+            $query .= '
                 AND p.id NOT IN (SELECT  gba.pokemon_id
                             FROM    game_bundle_availability AS gba
                                 LEFT JOIN game_bundle AS gb
@@ -241,10 +241,10 @@ trait FiltersTrait
                             WHERE   gba.is_available = TRUE
                                     AND gb.slug IN(:filter_game_bundle_availabilities_negative)
                         )
-                SUBSQL;
+            ';
         }
         if ($filters->gameBundleShinyAvailabilities->values) {
-            $query .= <<<'SUBSQL'
+            $query .= '
                 AND p.id IN (SELECT  gbsa.pokemon_id
                             FROM    game_bundle_shiny_availability AS gbsa
                                 LEFT JOIN game_bundle AS gb
@@ -252,10 +252,10 @@ trait FiltersTrait
                             WHERE   gbsa.is_available = TRUE
                                     AND gb.slug IN(:filter_game_bundle_shiny_availabilities)
                         )
-                SUBSQL;
+            ';
         }
         if ($filters->gameBundleShinyAvailabilities->negativeValues) {
-            $query .= <<<'SUBSQL'
+            $query .= '
                 AND p.id NOT IN (SELECT  gbsa.pokemon_id
                             FROM    game_bundle_shiny_availability AS gbsa
                                 LEFT JOIN game_bundle AS gb
@@ -263,7 +263,7 @@ trait FiltersTrait
                             WHERE   gbsa.is_available = TRUE
                                     AND gb.slug IN(:filter_game_bundle_shiny_availabilities_negative)
                         )
-                SUBSQL;
+            ';
         }
 
         return $query;
@@ -330,7 +330,7 @@ trait FiltersTrait
         $query = '';
 
         if ($filters->collectionAvailabilities->values) {
-            $query .= <<<'SUBSQL'
+            $query .= "
                 AND p.slug IN (SELECT ca.pokemon_slug
                             FROM    collection_availability AS ca
                                 LEFT JOIN collection AS c
@@ -338,11 +338,11 @@ trait FiltersTrait
                             WHERE   ca.availability NOT IN ('—', '-', '')
                                     AND c.slug IN(:filter_collection_availabilities)
                         )
-                SUBSQL;
+            ";
         }
 
         if ($filters->collectionAvailabilities->negativeValues) {
-            $query .= <<<'SUBSQL'
+            $query .= "
                 AND p.slug NOT IN (SELECT ca.pokemon_slug
                             FROM    collection_availability AS ca
                                 LEFT JOIN collection AS c
@@ -350,7 +350,7 @@ trait FiltersTrait
                             WHERE   ca.availability NOT IN ('—', '-', '')
                                     AND c.slug IN(:filter_collection_availabilities_negative)
                         )
-                SUBSQL;
+            ";
         }
 
         return $query;
