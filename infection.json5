@@ -36,7 +36,7 @@
     testFramework: "phpunit",
     testFrameworkOptions: '--exclude-group="browser-testing"',
     logs: {
-        text: "infection_text.log",
-        summary: "infection_summary.log",
+        "text": "/app/build/infection/infection_text.log",
+        "summary": "/app/build/infection/infection_summary.log",
     },
 }
