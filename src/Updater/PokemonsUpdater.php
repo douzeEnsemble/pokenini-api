@@ -143,6 +143,41 @@ class PokemonsUpdater extends AbstractUpdater
     }
 
     /**
+     * @param string[] $record
+     *
+     * @return bool[]|int[]|string[]
+     */
+    protected function transformRecord(array $record): array
+    {
+        $isBankable = filter_var($record['Bankable'], FILTER_VALIDATE_BOOLEAN);
+
+        $isBankableish = filter_var($record['Bankable-ish'], FILTER_VALIDATE_BOOLEAN);
+
+        return [
+            'name' => $record['Pokémon Nom Complet'],
+            'simplifiedName' => $record['Pokémon Nom simplifié'],
+            'formsLabel' => $record['Forme'],
+            'frenchName' => $record['Pokémon Nom Complet Fr'],
+            'simplifiedFrenchName' => $record['Pokémon Nom simplifié Fr'],
+            'formsFrenchLabel' => $record['Forme Fr'],
+            'nationalDexNumber' => (int) $record['Dex'],
+            'family' => $record['#Family'],
+            'familyOrder' => $record['Family order'],
+            'bankable' => $isBankable,
+            'bankableish' => $isBankableish,
+            'originalGameBundle' => $record['#Games First Appears On'],
+            'variantForm' => $record['#Form variant'],
+            'regionalForm' => $record['#Regional form'],
+            'specialForm' => $record['#Special form'],
+            'categoryForm' => $record['#Category form'],
+            'primaryType' => $record['#Type 1'],
+            'secondaryType' => $record['#Type 2'],
+            'iconName' => $record['Icon'],
+            'slug' => $record['Slug'],
+        ];
+    }
+
+    /**
      * @param bool[]|int[]|string[] $pokemon
      *
      * @return int[]|string[]
@@ -171,41 +206,6 @@ class PokemonsUpdater extends AbstractUpdater
             'secondaryType' => (string) $pokemon['secondaryType'],
             'iconName' => (string) $pokemon['iconName'],
             'slug' => (string) $pokemon['slug'],
-        ];
-    }
-
-    /**
-     * @param string[] $record
-     *
-     * @return bool[]|int[]|string[]
-     */
-    private function transformRecord(array $record): array
-    {
-        $isBankable = filter_var($record['Bankable'], FILTER_VALIDATE_BOOLEAN);
-
-        $isBankableish = filter_var($record['Bankable-ish'], FILTER_VALIDATE_BOOLEAN);
-
-        return [
-            'name' => $record['Pokémon Nom Complet'],
-            'simplifiedName' => $record['Pokémon Nom simplifié'],
-            'formsLabel' => $record['Forme'],
-            'frenchName' => $record['Pokémon Nom Complet Fr'],
-            'simplifiedFrenchName' => $record['Pokémon Nom simplifié Fr'],
-            'formsFrenchLabel' => $record['Forme Fr'],
-            'nationalDexNumber' => (int) $record['Dex'],
-            'family' => $record['#Family'],
-            'familyOrder' => $record['Family order'],
-            'bankable' => $isBankable,
-            'bankableish' => $isBankableish,
-            'originalGameBundle' => $record['#Games First Appears On'],
-            'variantForm' => $record['#Form variant'],
-            'regionalForm' => $record['#Regional form'],
-            'specialForm' => $record['#Special form'],
-            'categoryForm' => $record['#Category form'],
-            'primaryType' => $record['#Type 1'],
-            'secondaryType' => $record['#Type 2'],
-            'iconName' => $record['Icon'],
-            'slug' => $record['Slug'],
         ];
     }
 }

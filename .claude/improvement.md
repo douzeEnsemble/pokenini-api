@@ -2,12 +2,6 @@
 
 ## Qualité du code
 
-### 4 — `AbstractUpdater` : séparation insuffisante entre parsing et persistance
-
-**Problème** : La méthode `upsertRecord()` dans les Updaters gère à la fois la transformation des données et l'exécution SQL. Cela complique les tests unitaires et viole le principe de responsabilité unique.
-**Fichier(s)** : `src/Updater/AbstractUpdater.php`, `src/Updater/PokemonsUpdater.php`
-**Correction** : Introduire une méthode `transformRecord()` (déjà présente dans PokemonsUpdater mais privée) systématiquement testable séparément, et une méthode `persistRecord()` pour l'accès DBAL.
-
 ### 5 — Duplication des patterns `getNToPickSQL()` / `getNToVoteSQL()` dans le repository
 
 **Problème** : Les deux méthodes privées sont quasi-identiques (lecture d'un fichier SQL, throw si échec). Le pattern est dupliqué.
