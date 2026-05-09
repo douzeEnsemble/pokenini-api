@@ -11,10 +11,6 @@ grep -rn "TODO\|FIXME\|HACK\|XXX\|@deprecated\|@todo" src/
 
 ## Haute priorité
 
-- [ ] [haute] Préfixe de route `/istration/update` et `/istration/calculate` tronqué (préfixe `admin` manquant)
-  Fichier : `src/Controller/AdminUpdateController.php:19`, `src/Controller/AdminCalculateController.php:16`
-  Suggestion : Corriger en `/administration/update` et `/administration/calculate` (ou `/admin/update` et `/admin/calculate`), puis mettre à jour les tests d'intégration et la collection Postman en conséquence.
-
 ---
 
 ## Priorité moyenne
