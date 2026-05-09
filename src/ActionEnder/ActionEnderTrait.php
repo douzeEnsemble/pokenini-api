@@ -22,7 +22,7 @@ trait ActionEnderTrait
 
         $actionLog->errorTrace = $errorTrace;
 
-        $this->crimpActionLog($actionLog);
+        $this->finalizeActionLog($actionLog);
     }
 
     private function endActionLog(
@@ -34,7 +34,7 @@ trait ActionEnderTrait
         $json = json_encode($report);
         $actionLog->reportData = false === $json ? '' : $json;
 
-        $this->crimpActionLog($actionLog);
+        $this->finalizeActionLog($actionLog);
     }
 
     private function findActionLog(
@@ -52,7 +52,7 @@ trait ActionEnderTrait
         return $actionLog;
     }
 
-    private function crimpActionLog(ActionLog $actionLog): void
+    private function finalizeActionLog(ActionLog $actionLog): void
     {
         $actionLog->doneAt = new \DateTime();
 
