@@ -83,7 +83,6 @@
 
 | Outil | Version | Action recommandée |
 |-------|---------|-------------------|
-| `local-php-security-checker` | binaire local dans `tools/php-security-checker/` | Surveiller — vérifier régulièrement les mises à jour du binaire |
 | `dclint` | `zavoloklom/dclint:3.1.0-alpine` | OK |
 | `dotenv-linter` | `dotenvlinter/dotenv-linter:4.0.0` | OK |
 | `hadolint` | `hadolint/hadolint:v2.14.0-alpine` | OK |
@@ -104,11 +103,6 @@
 | `ELO_K_FACTOR` | *(non défini dans .env)* | Vérifier qu'une valeur est définie en prod |
 | `ELO_D_DIFFERENCE` | *(non défini dans .env)* | Vérifier qu'une valeur est définie en prod |
 | `TRUSTED_PROXIES` | `127.0.0.1` | Adapter selon la topologie réseau en prod |
-
-## Recommandations globales
-
-3. **Variables ELO manquantes dans `.env`** : `ELO_DEFAULT`, `ELO_K_FACTOR`, `ELO_D_DIFFERENCE` ne sont pas définies dans le `.env` de base — s'assurer qu'elles sont documentées et présentes dans tous les environnements.
-4. **`local-php-security-checker` binaire** : Ce binaire n'est pas géré par un package manager, ce qui peut le laisser obsolète. Envisager de le remplacer par `composer audit` (déjà présent dans `make security`) ou de l'intégrer via un outil géré.
 
 ## Commandes de vérification
 
