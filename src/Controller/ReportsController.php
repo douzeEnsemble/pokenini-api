@@ -12,8 +12,6 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/reports')]
 final class ReportsController extends AbstractController
 {
-    public function __construct() {}
-
     #[Route(path: '', methods: ['GET'])]
     public function get(PokedexService $service): JsonResponse
     {

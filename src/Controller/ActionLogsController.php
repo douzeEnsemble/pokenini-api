@@ -12,8 +12,6 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/action_logs')]
 final class ActionLogsController extends AbstractController
 {
-    public function __construct() {}
-
     #[Route(path: '', methods: ['GET'])]
     public function get(ActionLogsService $service): JsonResponse
     {
