@@ -23,6 +23,3 @@ grep -rn "TODO\|FIXME\|HACK\|XXX\|@deprecated\|@todo" src/
   Fichier : `src/Entity/Pokemon.php:12`
   Suggestion : Évaluer si certains champs peuvent être extraits dans un Value Object ou une entité associée (ex. `PokemonNames` pour les variantes de noms), afin de réduire le nombre de champs sans perte fonctionnelle.
 
-- [ ] [basse] `src/Controller/.gitignore`, `src/Entity/.gitignore`, `src/Repository/.gitignore` vides ou inexpliqués
-  Fichier : `src/Controller/.gitignore`, `src/Entity/.gitignore`, `src/Repository/.gitignore`
-  Suggestion : Documenter pourquoi ces `.gitignore` sont nécessaires, ou les supprimer s'ils sont vides et inutiles.
