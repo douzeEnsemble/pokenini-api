@@ -2,12 +2,6 @@
 
 ## Performance
 
-### 1 — Itération mémoire sur tous les Pokémon dans les calculateurs
-
-**Problème** : `DexAvailabilityCalculator::calculate()` utilise `toIterable()` sur la query, ce qui est bien pour la mémoire, mais appelle `entityManager->flush()` + `clear()` seulement à la fin de la boucle complète. Sur un grand nombre de Pokémon, l'EntityManager accumule toutes les entités avant le flush.
-**Fichier(s)** : `src/Calculator/DexAvailabilityCalculator.php:24-36`
-**Correction** : Batcher les flush/clear tous les N Pokémon (ex. 100) pour libérer la mémoire progressivement et réduire le pic mémoire lors des recalculs complets.
-
 ### 2 — Requêtes N+1 potentielles dans les calculateurs de disponibilités
 
 **Problème** : Certains calculateurs chargent les entités liées (GameBundle, Game) individuellement pour chaque Pokémon, générant potentiellement des requêtes N+1.

@@ -149,6 +149,127 @@ final class DexAvailabilityCalculatorTest extends TestCase
         $this->assertEquals($firstCount, $count);
     }
 
+    public function testCalculateDefaultBatchSizeDoesNotFlushWith99Items(): void
+    {
+        $dex = new Dex();
+        $pokemons = array_fill(0, 99, new Pokemon());
+
+        $entityManager = $this->createMock(EntityManagerInterface::class);
+        $entityManager->expects($this->exactly(99))->method('persist');
+        $entityManager->expects($this->once())->method('flush');
+        $entityManager->expects($this->once())->method('clear');
+        $entityManager->expects($this->never())->method('getReference');
+
+        $pokemonQuery = $this->createMock(Query::class);
+        $pokemonQuery->expects($this->once())->method('toIterable')->willReturn($pokemons);
+
+        $pokemonsRepository = $this->createMock(PokemonsRepository::class);
+        $pokemonsRepository->expects($this->once())->method('getQueryAll')->willReturn($pokemonQuery);
+
+        $dexPokemonAvailabilityCalculator = $this->createMock(DexPokemonAvailabilityCalculator::class);
+        $dexPokemonAvailabilityCalculator
+            ->expects($this->exactly(99))
+            ->method('calculate')
+            ->willReturnCallback(fn (Dex $d, Pokemon $p) => DexAvailability::create($p, $d))
+        ;
+
+        $calculator = new DexAvailabilityCalculator(
+            $pokemonsRepository,
+            $entityManager,
+            $dexPokemonAvailabilityCalculator,
+        );
+
+        $this->assertEquals(99, $calculator->calculate($dex));
+    }
+
+    public function testCalculateDefaultBatchSizeFlushesAfter100Items(): void
+    {
+        $dex = new Dex();
+        $pokemons = array_fill(0, 100, new Pokemon());
+
+        $entityManager = $this->createMock(EntityManagerInterface::class);
+        $entityManager->expects($this->exactly(100))->method('persist');
+        $entityManager->expects($this->exactly(2))->method('flush');
+        $entityManager->expects($this->exactly(2))->method('clear');
+        $entityManager
+            ->expects($this->once())
+            ->method('getReference')
+            ->with(Dex::class)
+            ->willReturn($dex)
+        ;
+
+        $pokemonQuery = $this->createMock(Query::class);
+        $pokemonQuery->expects($this->once())->method('toIterable')->willReturn($pokemons);
+
+        $pokemonsRepository = $this->createMock(PokemonsRepository::class);
+        $pokemonsRepository->expects($this->once())->method('getQueryAll')->willReturn($pokemonQuery);
+
+        $dexPokemonAvailabilityCalculator = $this->createMock(DexPokemonAvailabilityCalculator::class);
+        $dexPokemonAvailabilityCalculator
+            ->expects($this->exactly(100))
+            ->method('calculate')
+            ->willReturnCallback(fn (Dex $d, Pokemon $p) => DexAvailability::create($p, $d))
+        ;
+
+        $calculator = new DexAvailabilityCalculator(
+            $pokemonsRepository,
+            $entityManager,
+            $dexPokemonAvailabilityCalculator,
+        );
+
+        $this->assertEquals(100, $calculator->calculate($dex));
+    }
+
+    public function testCalculateFlushesInBatches(): void
+    {
+        $pokemons = [new Pokemon(), new Pokemon(), new Pokemon(), new Pokemon(), new Pokemon()];
+        $dex = new Dex();
+
+        $entityManager = $this->createMock(EntityManagerInterface::class);
+        $entityManager->expects($this->exactly(5))->method('persist');
+        $entityManager->expects($this->exactly(3))->method('flush');
+        $entityManager->expects($this->exactly(3))->method('clear');
+        $entityManager
+            ->expects($this->exactly(2))
+            ->method('getReference')
+            ->with(Dex::class)
+            ->willReturn($dex)
+        ;
+
+        $pokemonQuery = $this->createMock(Query::class);
+        $pokemonQuery
+            ->expects($this->once())
+            ->method('toIterable')
+            ->willReturn($pokemons)
+        ;
+        $pokemonsRepository = $this->createMock(PokemonsRepository::class);
+        $pokemonsRepository->expects($this->once())->method('getQueryAll')->willReturn($pokemonQuery);
+
+        $dexPokemonAvailabilityCalculator = $this->createMock(DexPokemonAvailabilityCalculator::class);
+        $dexPokemonAvailabilityCalculator
+            ->expects($this->exactly(5))
+            ->method('calculate')
+            ->willReturnOnConsecutiveCalls(
+                DexAvailability::create($pokemons[0], $dex),
+                DexAvailability::create($pokemons[1], $dex),
+                DexAvailability::create($pokemons[2], $dex),
+                DexAvailability::create($pokemons[3], $dex),
+                DexAvailability::create($pokemons[4], $dex),
+            )
+        ;
+
+        $calculator = new DexAvailabilityCalculator(
+            $pokemonsRepository,
+            $entityManager,
+            $dexPokemonAvailabilityCalculator,
+            2,
+        );
+
+        $count = $calculator->calculate($dex);
+
+        $this->assertEquals(5, $count);
+    }
+
     public function testCalculateWithoutAvailabilities(): void
     {
         $pokemonA = new Pokemon();
