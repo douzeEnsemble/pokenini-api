@@ -9,16 +9,16 @@ use App\DTO\DataChangeReport\Statistic;
 abstract class AbstractCalculator implements CalculatorInterface
 {
     protected string $statisticName;
-    protected Statistic $statictic;
+    protected Statistic $statistic;
 
     public function init(): void
     {
-        $this->statictic = new Statistic($this->statisticName);
+        $this->statistic = new Statistic($this->statisticName);
     }
 
     #[\Override]
     public function getStatistic(): Statistic
     {
-        return $this->statictic;
+        return $this->statistic;
     }
 }

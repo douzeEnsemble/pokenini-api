@@ -28,6 +28,6 @@ class GameBundlesShinyCalculator extends AbstractCalculator
 
         $count = $this->repository->calculateGameBundleShiny();
 
-        $this->statictic->incrementBy($count);
+        $this->statistic->incrementBy($count);
     }
 }

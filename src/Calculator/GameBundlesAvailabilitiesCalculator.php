@@ -26,6 +26,6 @@ class GameBundlesAvailabilitiesCalculator extends AbstractCalculator
 
         $count = $this->repository->calculate();
 
-        $this->statictic->incrementBy($count);
+        $this->statistic->incrementBy($count);
     }
 }

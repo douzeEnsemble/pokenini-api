@@ -65,6 +65,6 @@ abstract class AbstractFormsUpdater extends AbstractUpdater
 
         $this->executeQuery($sql, $sqlParameters);
 
-        $this->statictic->increment();
+        $this->statistic->increment();
     }
 }

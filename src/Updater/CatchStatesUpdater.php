@@ -75,6 +75,6 @@ class CatchStatesUpdater extends AbstractUpdater
 
         $this->executeQuery($sql, $sqlParameters);
 
-        $this->statictic->increment();
+        $this->statistic->increment();
     }
 }

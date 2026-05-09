@@ -11,10 +11,6 @@ grep -rn "TODO\|FIXME\|HACK\|XXX\|@deprecated\|@todo" src/
 
 ## Haute priorité
 
-- [ ] [haute] Faute de frappe `$statictic` au lieu de `$statistic` dans les classes abstraites
-  Fichier : `src/Updater/AbstractUpdater.php:27`, `src/Calculator/AbstractCalculator.php:13`
-  Suggestion : Renommer la propriété en `$statistic` dans les deux classes abstraites. Tous les Updaters et Calculators concrets héritent de cette propriété — un sed coordonné suffit. Aucun impact DB.
-
 - [ ] [haute] Préfixe de route `/istration/update` et `/istration/calculate` tronqué (préfixe `admin` manquant)
   Fichier : `src/Controller/AdminUpdateController.php:19`, `src/Controller/AdminCalculateController.php:16`
   Suggestion : Corriger en `/administration/update` et `/administration/calculate` (ou `/admin/update` et `/admin/calculate`), puis mettre à jour les tests d'intégration et la collection Postman en conséquence.
