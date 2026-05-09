@@ -107,7 +107,6 @@
 
 ## Recommandations globales
 
-1. **PostgreSQL 14 → 16/17** : PostgreSQL 14 entre en fin de support fin 2026 ; planifier la migration vers PostgreSQL 16 ou 17 pour rester sur une version maintenue.
 2. **Psalm version épinglée** : `vimeo/psalm: 6.16.1` (sans `^`) bloque les mises à jour automatiques — évaluer le passage à `^6.16` pour recevoir les correctifs.
 3. **Variables ELO manquantes dans `.env`** : `ELO_DEFAULT`, `ELO_K_FACTOR`, `ELO_D_DIFFERENCE` ne sont pas définies dans le `.env` de base — s'assurer qu'elles sont documentées et présentes dans tous les environnements.
 4. **`local-php-security-checker` binaire** : Ce binaire n'est pas géré par un package manager, ce qui peut le laisser obsolète. Envisager de le remplacer par `composer audit` (déjà présent dans `make security`) ou de l'intégrer via un outil géré.
