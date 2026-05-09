@@ -14,8 +14,7 @@
         Throw_: {
             ignore: [
                 "App\\Repository\\TrainerPokemonEloRepository::getTopNSQL",
-                "App\\Repository\\PokemonsRepository::getNToPickSQL",
-                "App\\Repository\\PokemonsRepository::getNToVoteSQL",
+                "App\\Repository\\PokemonsRepository::readSqlFile",
             ],
         },
         RoundingFamily: {
