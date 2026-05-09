@@ -18,8 +18,3 @@ grep -rn "TODO\|FIXME\|HACK\|XXX\|@deprecated\|@todo" src/
 ---
 
 ## Basse priorité
-
-- [ ] [basse] `@SuppressWarnings("PHPMD.TooManyFields")` sur `Pokemon` masque un signal architectural
-  Fichier : `src/Entity/Pokemon.php:12`
-  Suggestion : Évaluer si certains champs peuvent être extraits dans un Value Object ou une entité associée (ex. `PokemonNames` pour les variantes de noms), afin de réduire le nombre de champs sans perte fonctionnelle.
-
