@@ -4,7 +4,7 @@
 
 | Dépendance | Version actuelle | Action recommandée |
 |-----------|-----------------|-------------------|
-| `php` | `>=8.4` (8.5.5 en prod) | OK — PHP 8.5 actif |
+| `php` | `>=8.5.6` (8.5.6 en prod) | OK — PHP 8.5.6 actif |
 | `doctrine/doctrine-bundle` | `^3.2.2` | Surveiller — Doctrine 4.x en préparation |
 | `doctrine/doctrine-migrations-bundle` | `^4.0.0` | OK |
 | `doctrine/orm` | `^3.6.3` | OK |
