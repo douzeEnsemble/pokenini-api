@@ -181,7 +181,7 @@ class GamesAvailabilitiesUpdater extends AbstractUpdater
 
         $this->executeQuery($sql, $sqlParameters);
 
-        $this->statictic->incrementBy($index);
+        $this->statistic->incrementBy($index);
     }
 
     // @codeCoverageIgnoreStart

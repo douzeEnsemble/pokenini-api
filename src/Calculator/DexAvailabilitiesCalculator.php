@@ -34,7 +34,7 @@ class DexAvailabilitiesCalculator extends AbstractCalculator
         foreach ($dexQuery->toIterable() as $dex) {
             $count = $this->dexAvailabilityCalculator->calculate($dex);
 
-            $this->statictic->incrementBy($count);
+            $this->statistic->incrementBy($count);
         }
     }
 }

@@ -24,7 +24,7 @@ abstract class AbstractUpdater implements UpdaterInterface
     /** @var array<int, string> */
     protected array $recordsCellsRanges;
 
-    protected Statistic $statictic;
+    protected Statistic $statistic;
 
     public function __construct(
         protected readonly SpreadsheetService $spreadsheetService,
@@ -36,7 +36,7 @@ abstract class AbstractUpdater implements UpdaterInterface
     #[\Override]
     public function execute(?string $sheetName = null): void
     {
-        $this->statictic = new Statistic($this->statisticName);
+        $this->statistic = new Statistic($this->statisticName);
 
         $this->sheetName = $sheetName ?? $this->sheetName;
 
@@ -54,7 +54,7 @@ abstract class AbstractUpdater implements UpdaterInterface
     #[\Override]
     public function getStatistic(): Statistic
     {
-        return $this->statictic;
+        return $this->statistic;
     }
 
     /**
