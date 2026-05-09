@@ -31,10 +31,6 @@ grep -rn "TODO\|FIXME\|HACK\|XXX\|@deprecated\|@todo" src/
   Fichier : `src/Controller/ActionLogsController.php:33-93`
   Suggestion : Extraire la logique de parsing JSON, splitting et groupement des ActionLogs dans un `ActionLogsService` dédié, et ne garder dans le contrôleur que l'appel au service + la sérialisation.
 
-- [ ] [moyenne] `PokemonsUpdater::getSqlParametersFromPokemon()` transmet `bankableish` comme `int` même quand `null` est attendu
-  Fichier : `src/Updater/PokemonsUpdater.php`
-  Suggestion : Le cast `(int) $pokemon['bankableish']` transforme `null` en `0`, ce qui perd l'information `nullable`. Utiliser `null === $pokemon['bankableish'] ? null : (int) $pokemon['bankableish']` ou adapter le SQL pour gérer correctement les nullables.
-
 ---
 
 ## Basse priorité
