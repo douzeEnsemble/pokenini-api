@@ -1,22 +1,6 @@
 # Améliorations — pokenini-api
 
-## Performance
-
-### 2 — Requêtes N+1 potentielles dans les calculateurs de disponibilités
-
-**Problème** : Certains calculateurs chargent les entités liées (GameBundle, Game) individuellement pour chaque Pokémon, générant potentiellement des requêtes N+1.
-**Fichier(s)** : `src/Calculator/DexPokemonAvailabilityCalculator.php`, `src/Calculator/PokemonAvailabilities/GameBundlesCalculator.php`
-**Correction** : Vérifier les plans d'exécution SQL (via Doctrine Profiler ou `EXPLAIN`) et ajouter des `JOIN FETCH` ou des requêtes de pré-chargement si nécessaire.
-
----
-
 ## Qualité du code
-
-### 3 — Absence de type de retour déclaré sur certains endpoints de contrôleurs
-
-**Problème** : Certains contrôleurs retournent `Response` mais les méthodes ne sont pas toutes annotées avec un type de retour PHP natif explicite — ce qui réduit la valeur de l'analyse statique.
-**Fichier(s)** : `src/Controller/AdminUpdateController.php`, `src/Controller/AdminCalculateController.php`
-**Correction** : S'assurer que toutes les méthodes de contrôleur déclarent `: Response` comme type de retour.
 
 ### 4 — `AbstractUpdater` : séparation insuffisante entre parsing et persistance
 
