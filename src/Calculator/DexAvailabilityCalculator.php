@@ -15,11 +15,14 @@ class DexAvailabilityCalculator
         private readonly PokemonsRepository $pokemonsRepository,
         private readonly EntityManagerInterface $entityManager,
         private readonly DexPokemonAvailabilityCalculator $dexPokemonAvailabilityCalculator,
+        private readonly int $batchSize = 100,
     ) {}
 
     public function calculate(Dex $dex): int
     {
         $count = 0;
+        $batchCount = 0;
+        $dexId = $dex->getIdentifier();
 
         $pokemonQuery = $this->pokemonsRepository->getQueryAll();
 
@@ -32,8 +35,16 @@ class DexAvailabilityCalculator
             }
 
             $this->entityManager->persist($dexAvailability);
-
             ++$count;
+
+            if (++$batchCount >= $this->batchSize) {
+                $this->entityManager->flush();
+                $this->entityManager->clear();
+                $batchCount = 0;
+
+                /** @var Dex $dex */
+                $dex = $this->entityManager->getReference(Dex::class, $dexId);
+            }
         }
 
         $this->entityManager->flush();
