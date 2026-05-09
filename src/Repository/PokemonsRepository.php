@@ -50,7 +50,7 @@ class PokemonsRepository extends ServiceEntityRepository
         AlbumFilters $filters,
         int $defaultElo,
     ): array {
-        $sql = $this->getNToPickSQL();
+        $sql = $this->readSqlFile('pokemons-get_n_to_pick.sql');
         $sql = $this->replaceFilters($sql, $filters);
 
         $params = array_merge(
@@ -94,7 +94,7 @@ class PokemonsRepository extends ServiceEntityRepository
         AlbumFilters $filters,
         int $defaultElo,
     ): array {
-        $sql = $this->getNToVoteSQL();
+        $sql = $this->readSqlFile('pokemons-get_n_to_vote.sql');
         $sql = $this->replaceFilters($sql, $filters);
 
         $params = array_merge(
@@ -127,30 +127,15 @@ class PokemonsRepository extends ServiceEntityRepository
         );
     }
 
-    private function getNToPickSQL(): string
+    private function readSqlFile(string $filename): string
     {
-        $sql = file_get_contents(dirname(__DIR__).'/../resources/sql/pokemons-get_n_to_pick.sql');
+        $sql = file_get_contents(dirname(__DIR__).'/../resources/sql/'.$filename);
 
         if (false === $sql) {
-            // This condition is here form safety reason
+            // This condition is here for safety reason
             // It can never happen
             // @codeCoverageIgnoreStart
-            throw new \RuntimeException('Failed to read SQL file "pokemons-get_n_to_pick.sql"');
-            // @codeCoverageIgnoreEnd
-        }
-
-        return $sql;
-    }
-
-    private function getNToVoteSQL(): string
-    {
-        $sql = file_get_contents(dirname(__DIR__).'/../resources/sql/pokemons-get_n_to_vote.sql');
-
-        if (false === $sql) {
-            // This condition is here form safety reason
-            // It can never happen
-            // @codeCoverageIgnoreStart
-            throw new \RuntimeException('Failed to read SQL file "pokemons-get_n_to_vote.sql"');
+            throw new \RuntimeException("Failed to read SQL file \"{$filename}\"");
             // @codeCoverageIgnoreEnd
         }
 

@@ -2,12 +2,6 @@
 
 ## Qualité du code
 
-### 5 — Duplication des patterns `getNToPickSQL()` / `getNToVoteSQL()` dans le repository
-
-**Problème** : Les deux méthodes privées sont quasi-identiques (lecture d'un fichier SQL, throw si échec). Le pattern est dupliqué.
-**Fichier(s)** : `src/Repository/PokemonsRepository.php:90-115`
-**Correction** : Extraire une méthode privée `readSqlFile(string $filename): string` pour centraliser la logique de lecture + throw.
-
 ---
 
 ## Tests
