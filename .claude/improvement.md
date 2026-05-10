@@ -4,16 +4,6 @@
 
 ---
 
-## Sécurité
-
-### 9 — Endpoints admin non protégés par un rôle dédié
-
-**Problème** : Les endpoints `/istration/update/*` et `/istration/calculate/*` sont derrière le même HTTP Basic Auth que les endpoints utilisateur. Il n'y a pas de rôle `ROLE_ADMIN` dédié.
-**Fichier(s)** : `config/packages/security.yaml`, `src/Controller/AdminUpdateController.php`
-**Correction** : Créer un rôle `ROLE_ADMIN` distinct avec des credentials séparés dans `security.yaml`, et restreindre les routes admin à ce rôle.
-
----
-
 ## Maintenabilité
 
 ### 10 — Absence d'interface ou de contrat sur les entités portant `SoftDeleteable`
