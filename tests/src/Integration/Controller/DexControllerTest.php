@@ -153,7 +153,7 @@ final class DexControllerTest extends AbstractTestControllerApi
             'PUT',
             '/dex/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow',
             [],
-            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
             '{"is_private": true, "is_on_home": true}'
         );
 
@@ -186,7 +186,7 @@ final class DexControllerTest extends AbstractTestControllerApi
             'PUT',
             '/dex/7b52009b64fd0a2a49e6d8a939753077792b0554/homepogopokeball',
             [],
-            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
             '{"is_private": true, "is_on_home": true}'
         );
 
@@ -213,7 +213,7 @@ final class DexControllerTest extends AbstractTestControllerApi
             'PUT',
             '/dex/fa35e192121eabf3dabf9f5ea6abdbcbc107ac3b/redgreenblueyellow',
             [],
-            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
             '{"is_private": true, "is_on_home": false}'
         );
 
@@ -240,7 +240,7 @@ final class DexControllerTest extends AbstractTestControllerApi
             'PUT',
             '/dex/fa35e192121eabf3dabf9f5ea6abdbcbc107ac3b/redgreenblueyellow',
             [],
-            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
             '{"is_private": true}',
         );
 
@@ -263,7 +263,7 @@ final class DexControllerTest extends AbstractTestControllerApi
             'PUT',
             '/dex/fa35e192121eabf3dabf9f5ea6abdbcbc107ac3b/redgreenblueyellow',
             [],
-            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
             '{"is_private": true, "isOnHome": false}',
         );
 
@@ -276,7 +276,7 @@ final class DexControllerTest extends AbstractTestControllerApi
             'PUT',
             '/dex/fa35e192121eabf3dabf9f5ea6abdbcbc107ac3b/redgreenblueyellow',
             [],
-            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
             '',
         );
 

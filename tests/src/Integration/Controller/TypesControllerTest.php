@@ -57,7 +57,7 @@ final class TypesControllerTest extends AbstractTestControllerApi
 
     public function testGetAuth(): void
     {
-        $this->apiRequest('GET', '/types', [], ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze']);
+        $this->apiRequest('GET', '/types', [], ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD]);
 
         $this->assertResponseIsOK();
 
@@ -69,7 +69,7 @@ final class TypesControllerTest extends AbstractTestControllerApi
 
     public function testGetBadAuth(): void
     {
-        $this->apiRequest('GET', '/types', [], ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'treize']);
+        $this->apiRequest('GET', '/types', [], ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => 'treize']);
 
         $this->assertEquals(401, $this->getClientResponse()->getStatusCode());
     }

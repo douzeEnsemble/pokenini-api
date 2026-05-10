@@ -76,8 +76,8 @@ final class PokemonsControllerTest extends AbstractTestControllerApi
                 'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
             ],
             [
-                'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW' => 'douze',
+                'PHP_AUTH_USER' => self::AUTH_USER,
+                'PHP_AUTH_PW' => self::AUTH_PASSWORD,
             ],
         );
 
@@ -97,7 +97,7 @@ final class PokemonsControllerTest extends AbstractTestControllerApi
                 'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
             ],
             [
-                'PHP_AUTH_USER' => 'web',
+                'PHP_AUTH_USER' => self::AUTH_USER,
                 'PHP_AUTH_PW' => 'treize',
             ],
         );

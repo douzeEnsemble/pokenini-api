@@ -38,8 +38,8 @@ final class AdminUpdateControllerTest extends WebTestCase
             [],
             [],
             [
-                'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW' => 'douze',
+                'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
+                'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
             ],
         );
 
@@ -60,8 +60,8 @@ final class AdminUpdateControllerTest extends WebTestCase
             [],
             [],
             [
-                'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW' => 'douze',
+                'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
+                'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
             ],
         );
 
@@ -82,8 +82,8 @@ final class AdminUpdateControllerTest extends WebTestCase
             [],
             [],
             [
-                'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW' => 'douze',
+                'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
+                'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
             ],
         );
 
@@ -104,8 +104,8 @@ final class AdminUpdateControllerTest extends WebTestCase
             [],
             [],
             [
-                'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW' => 'douze',
+                'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
+                'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
             ],
         );
 
@@ -126,8 +126,8 @@ final class AdminUpdateControllerTest extends WebTestCase
             [],
             [],
             [
-                'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW' => 'douze',
+                'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
+                'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
             ],
         );
 
@@ -148,8 +148,8 @@ final class AdminUpdateControllerTest extends WebTestCase
             [],
             [],
             [
-                'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW' => 'douze',
+                'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
+                'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
             ],
         );
 
@@ -170,8 +170,8 @@ final class AdminUpdateControllerTest extends WebTestCase
             [],
             [],
             [
-                'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW' => 'douze',
+                'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
+                'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
             ],
         );
 
@@ -192,8 +192,8 @@ final class AdminUpdateControllerTest extends WebTestCase
             [],
             [],
             [
-                'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW' => 'douze',
+                'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
+                'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
             ],
         );
 
@@ -212,7 +212,7 @@ final class AdminUpdateControllerTest extends WebTestCase
             [],
             [],
             [
-                'PHP_AUTH_USER' => 'web',
+                'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
                 'PHP_AUTH_PW' => 'treize',
             ],
         );

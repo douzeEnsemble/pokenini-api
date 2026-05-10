@@ -13,6 +13,9 @@ abstract class AbstractTestControllerApi extends WebTestCase
 {
     use RefreshDatabaseTrait;
 
+    public const string AUTH_USER = 'web';
+    public const string AUTH_PASSWORD = 'douze';
+
     protected KernelBrowser $client;
 
     #[\Override]
@@ -92,7 +95,7 @@ abstract class AbstractTestControllerApi extends WebTestCase
                         'accept' => 'application/json',
                     ],
                 ],
-                $options ?? ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze']
+                $options ?? ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD]
             ),
             $content
         );
