@@ -21,11 +21,20 @@ make composer c="<args>"
 ### Testing
 ```bash
 make tests              # All tests (unit + integration)
-make tests-unit         # Unit tests only
-make tests-integration  # Integration tests only
+make tests-unit         # Unit tests only  (alias: make tu)
+make tests-integration  # Integration tests only  (alias: make ti)
 make coverage           # Tests + 100% coverage check
 make infection          # Mutation testing (100% MSI required)
 make measures           # Coverage + infection combined
+```
+
+Run a single test or filter by name:
+```bash
+# Single test file
+docker compose exec php php vendor/bin/phpunit tests/src/Unit/DTO/TrainerPokemonEloQueryOptionsTest.php
+
+# Filter by test method name
+docker compose exec php php vendor/bin/phpunit --filter testGetForAPublicDex tests/src/Integration/
 ```
 
 ### Quality
@@ -48,7 +57,7 @@ make sf c="app:calculate:game_bundles_availabilities" # Recalculate derived avai
 
 ### Other
 ```bash
-make integration   # Run Postman/Newman API integration tests
+make integration   # Run Postman/Newman API integration tests (requires full DB init first)
 make cc            # Clear Symfony cache (dev + test)
 make logs          # Tail Docker logs
 make security      # Composer audit + Symfony security checker
@@ -73,6 +82,10 @@ The codebase follows a strict layered architecture enforced by Deptrac (`deptrac
 | Entity | `src/Entity/` | Doctrine ORM mappings, no business logic |
 | Command | `src/Command/` | CLI sync and calculation commands |
 
+### `final` conventions
+- **`final`**: Controller, DTO, Command, Message, Exception — never subclassed
+- **Non-`final`**: Service, Calculator, Repository, Updater — intentionally non-final to allow PHPUnit mocking
+
 ### Data flow: Google Sheets sync
 ```
 Google Sheets API
@@ -85,11 +98,23 @@ Google Sheets API
 ### Async flow: Messenger
 ```
 ActionStarter / Controller
+  → ActionLog created in DB (tracks the action lifecycle)
   → Symfony Messenger (doctrine transport)
   → MessageHandler
   → Service / Updater / Calculator
-  → ActionEnder
+  → ActionEnderTrait::endActionLog() — sets doneAt + JSON report on the ActionLog
 ```
+
+Each async action has a matching quartet: `Message`, `ActionStarter`, `MessageHandler`, and the handler uses `ActionEnderTrait`. See `src/ActionStarter/UpdatePokemonsActionStarter.php` as the canonical example.
+
+### DTOs
+DTOs validate their input via `OptionsResolver` (not Symfony Validator constraints). Validation, type coercion, and defaults are all declared in `configureOptions(OptionsResolver $resolver)`. See `src/DTO/TrainerPokemonEloListQueryOptions.php`.
+
+### Entities
+Entities use public properties directly — no getters or setters. Shared behavior is composed via traits in `src/Entity/Traits/` (`BaseEntityTrait` provides UUID v4 id + `getIdentifier()`; `SoftDeleteable` adds `deletedAt`).
+
+### Complex SQL queries
+Repositories delegate complex queries to SQL files in `resources/sql/` loaded via `SqlFileLoader`. Dynamic filter fragments are injected via a placeholder (`-- {album_filters}`) replaced at runtime by `FiltersTrait`. Add new complex queries as `.sql` files there rather than inline strings.
 
 ### Test environments
 - **Unit tests** (`tests/src/Unit/`): mocked dependencies, no DB
@@ -104,6 +129,9 @@ ActionStarter / Controller
 - **PHPStan level 9** and **Psalm strict** — no untyped properties or return types
 - **Deptrac** — no cross-layer dependency violations
 - All classes use `declare(strict_types=1)`
+- Each test class must have `/** @internal */` + `#[CoversClass(TargetClass::class)]`
+
+Each quality tool is isolated under `tools/<name>/` with its own `composer.json`. Install a tool's dependencies before running it: `make composer c="install --working-dir=tools/phpstan"` (the quality targets in Makefile do this automatically).
 
 ## Key environment variables
 
@@ -115,6 +143,7 @@ ActionStarter / Controller
 | `GOOGLE_CREDENTIALS_PATH` | Path to `resources/auth/credentials.json` (git-ignored) |
 | `MESSENGER_TRANSPORT_DSN` | Doctrine-backed async transport |
 | `ELO_DEFAULT`, `ELO_K_FACTOR`, `ELO_D_DIFFERENCE` | ELO rating config |
+| `WEB_PASSWORD` | Bcrypt-hashed password for the single API user (`web`) |
 
 ## Debugging tip
 
