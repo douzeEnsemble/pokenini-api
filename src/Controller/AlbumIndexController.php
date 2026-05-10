@@ -10,8 +10,8 @@ use App\Service\Album\AlbumDexService;
 use App\Service\Album\AlbumPokemonService;
 use App\Service\Album\AlbumReportService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
@@ -27,24 +27,38 @@ final class AlbumIndexController extends AbstractController
         string $dexSlug,
         Request $request,
         SerializerInterface $serializer,
-    ): Response {
+    ): JsonResponse {
         $albumsFilters = AlbumFiltersRequest::albumFiltersFromRequest($request);
 
-        $pokemons = $albumPokemonService->get($trainerExternalId, $dexSlug, $albumsFilters);
+        $pokemons = $albumPokemonService->get(
+            $trainerExternalId,
+            $dexSlug,
+            $albumsFilters
+        );
 
-        $report = $albumReportService->get($trainerExternalId, $dexSlug, AlbumFilters::createFromArray([]));
-        $filteredReport = $albumReportService->get($trainerExternalId, $dexSlug, $albumsFilters);
+        $report = $albumReportService->get(
+            $trainerExternalId,
+            $dexSlug,
+            AlbumFilters::createFromArray([])
+        );
+        $filteredReport = $albumReportService->get(
+            $trainerExternalId,
+            $dexSlug,
+            $albumsFilters
+        );
 
         $dex = $albumDexService->get($trainerExternalId, $dexSlug);
 
-        return new Response($serializer->serialize(
-            [
-                'dex' => $dex,
-                'pokemons' => $pokemons,
-                'report' => $report,
-                'filtered_report' => $filteredReport,
-            ],
-            'json'
-        ));
+        return JsonResponse::fromJsonString(
+            $serializer->serialize(
+                [
+                    'dex' => $dex,
+                    'pokemons' => $pokemons,
+                    'report' => $report,
+                    'filtered_report' => $filteredReport,
+                ],
+                'json',
+            ),
+        );
     }
 }

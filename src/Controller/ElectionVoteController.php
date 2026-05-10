@@ -7,8 +7,8 @@ namespace App\Controller;
 use App\DTO\ElectionVote;
 use App\Service\ElectionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\SerializerInterface;
@@ -21,7 +21,7 @@ final class ElectionVoteController extends AbstractController
         Request $request,
         ElectionService $electionService,
         SerializerInterface $serializer,
-    ): Response {
+    ): JsonResponse {
         $json = $request->getContent();
 
         if (!$json) {
@@ -43,9 +43,11 @@ final class ElectionVoteController extends AbstractController
 
         $results = $electionService->vote($electionVote);
 
-        return new Response($serializer->serialize(
-            $results,
-            'json'
-        ));
+        return JsonResponse::fromJsonString(
+            $serializer->serialize(
+                $results,
+                'json',
+            ),
+        );
     }
 }

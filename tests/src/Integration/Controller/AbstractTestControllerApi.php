@@ -31,6 +31,15 @@ abstract class AbstractTestControllerApi extends WebTestCase
         );
     }
 
+    public function assertJsonResponseIsOK(): void
+    {
+        $this->assertResponseIsOK();
+        $this->assertEquals(
+            'application/json',
+            $this->getClientResponse()->headers->get('Content-Type')
+        );
+    }
+
     public function assertResponseIsNotFound(): void
     {
         $this->assertEquals(
