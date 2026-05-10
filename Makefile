@@ -100,17 +100,17 @@ init-db: ## Initialize database data
 
 .PHONY: data-app
 data-app: ## Initialize app data
-	$(SYMFONY) app:update:labels
-	$(SYMFONY) app:update:games_collections_and_dex
-	$(SYMFONY) app:update:pokemons
-	$(SYMFONY) app:update:regional_dex_numbers
-	$(SYMFONY) app:update:games_availabilities
-	$(SYMFONY) app:update:games_shinies_availabilities
-	$(SYMFONY) app:update:collections_availabilities
-	$(SYMFONY) app:calculate:game_bundles_availabilities
-	$(SYMFONY) app:calculate:game_bundles_shinies_availabilities
-	$(SYMFONY) app:calculate:dex_availabilities
-	$(SYMFONY) app:calculate:pokemon_availabilities
+	$(SYMFONY) app:update:labels \
+		&& $(SYMFONY) app:update:games_collections_and_dex \
+		&& $(SYMFONY) app:update:pokemons \
+		&& $(SYMFONY) app:update:regional_dex_numbers \
+		&& $(SYMFONY) app:update:games_availabilities \
+		&& $(SYMFONY) app:update:games_shinies_availabilities \
+		&& $(SYMFONY) app:update:collections_availabilities \
+		&& $(SYMFONY) app:calculate:game_bundles_availabilities \
+		&& $(SYMFONY) app:calculate:game_bundles_shinies_availabilities \
+		&& $(SYMFONY) app:calculate:dex_availabilities \
+		&& $(SYMFONY) app:calculate:pokemon_availabilities
 
 ## —— Composer 🧙 ——————————————————————————————————————————————————————————————
 .PHONY: composer
