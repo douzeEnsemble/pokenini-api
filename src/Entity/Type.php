@@ -11,10 +11,11 @@ use App\Entity\Traits\NamedTrait;
 use App\Entity\Traits\OrderedTrait;
 use App\Entity\Traits\SlugifiedTrait;
 use App\Entity\Traits\SoftDeleteable;
+use App\Entity\Traits\SoftDeleteableInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
-final class Type
+final class Type implements SoftDeleteableInterface
 {
     use BaseEntityTrait;
     use NamedTrait;

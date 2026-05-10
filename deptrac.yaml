@@ -219,6 +219,7 @@ parameters:
       - DoctrineDBAL
       - DoctrineORM
       - SymfonyBridgeDoctrine
+      - SymfonySerializer
       - SymfonyUid
       - SymfonyValidator
     AppHelper:
