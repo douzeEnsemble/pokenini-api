@@ -17,7 +17,7 @@ class CollectionsUpdaterService extends AbstractUpdaterService
     ) {}
 
     #[\Override]
-    public function execute(): void
+    public function execute(?string $sheetName = null): void
     {
         $this->collectionsUpdater->execute();
 

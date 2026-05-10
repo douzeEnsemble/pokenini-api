@@ -1,0 +1,10 @@
+{
+  "range": "'wrong_sheet'!A1:AF1",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Invalid",
+      "Headers"
+    ]
+  ]
+}

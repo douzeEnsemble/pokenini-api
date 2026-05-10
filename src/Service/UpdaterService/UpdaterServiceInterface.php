@@ -8,7 +8,7 @@ use App\DTO\DataChangeReport\Report;
 
 interface UpdaterServiceInterface
 {
-    public function execute(): void;
+    public function execute(?string $sheetName = null): void;
 
     public function getReport(): Report;
 }

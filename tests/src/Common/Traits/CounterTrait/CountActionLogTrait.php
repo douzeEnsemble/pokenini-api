@@ -37,4 +37,14 @@ trait CountActionLogTrait
             'SELECT COUNT(*) FROM action_log WHERE done_at IS NOT NULL'
         )->fetchOne();
     }
+
+    protected function getActionLogErrorCount(): int
+    {
+        $connection = static::getContainer()->get(Connection::class);
+
+        /** @var int */
+        return $connection->executeQuery(
+            'SELECT COUNT(*) FROM action_log WHERE error_trace IS NOT NULL'
+        )->fetchOne();
+    }
 }

@@ -18,7 +18,7 @@ class GamesCollectionsAndDexUpdaterService extends AbstractUpdaterService
     ) {}
 
     #[\Override]
-    public function execute(): void
+    public function execute(?string $sheetName = null): void
     {
         $this->gamesUpdaterService->execute();
         $this->dexUpdaterService->execute();
