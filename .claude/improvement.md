@@ -4,16 +4,6 @@
 
 ---
 
-## Tests
-
-### 7 — Absence de tests sur les cas d'erreur des Updaters (InvalidSheetDataException)
-
-**Problème** : Les tests d'intégration des commandes testent le chemin nominal, mais pas les cas où la feuille Google Sheets a des colonnes manquantes ou mal nommées (ce qui lève `InvalidSheetDataException`).
-**Fichier(s)** : `tests/src/Integration/Command/UpdatePokemonsCommandTest.php`
-**Correction** : Ajouter un fichier Moco avec des headers invalides et tester que la commande échoue proprement et enregistre l'erreur dans l'ActionLog.
-
----
-
 ## Sécurité
 
 ### 8 — HTTP Basic Auth avec credentials en clair dans les tests

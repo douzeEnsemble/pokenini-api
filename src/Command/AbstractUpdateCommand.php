@@ -10,6 +10,7 @@ use App\Service\UpdaterService\UpdaterServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\Console\Command\Command;
 use Symfony\Component\Console\Input\InputInterface;
+use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 
@@ -28,16 +29,22 @@ abstract class AbstractUpdateCommand extends Command
 
     abstract protected function getCommandName(): string;
 
-    /**
-     * @SuppressWarnings("PHPMD.UnusedFormalParameter")
-     */
+    #[\Override]
+    protected function configure(): void
+    {
+        $this->addOption('sheet-name', null, InputOption::VALUE_OPTIONAL, 'The sheet name to use');
+    }
+
     #[\Override]
     protected function execute(InputInterface $input, OutputInterface $output): int
     {
         $message = $this->actionStarter->start();
 
+        $rawSheetName = $input->getOption('sheet-name');
+        $sheetName = is_string($rawSheetName) ? $rawSheetName : null;
+
         try {
-            $this->updaterService->execute();
+            $this->updaterService->execute($sheetName);
 
             $report = $this->updaterService->getReport();
 

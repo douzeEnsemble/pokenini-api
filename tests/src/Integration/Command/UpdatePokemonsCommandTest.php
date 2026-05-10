@@ -31,6 +31,17 @@ final class UpdatePokemonsCommandTest extends AbstractTestCaseCommand
     use CounterTableTrait;
     use CountActionLogTrait;
 
+    public function testUpdateWithInvalidSheetFailsAndLogsError(): void
+    {
+        $initialErrorCount = $this->getActionLogErrorCount();
+
+        $commandTester = $this->executeCommand(['--sheet-name' => 'wrong_sheet']);
+
+        $this->assertEquals(1, $commandTester->getStatusCode());
+        $this->assertEquals($initialErrorCount + 1, $this->getActionLogErrorCount());
+        $this->assertStringContainsString('This is not a valid data spreadsheet', $commandTester->getDisplay());
+    }
+
     public function testUpdate(): void
     {
         $this->assertEquals(26, $this->getTableCount('pokemon'));
