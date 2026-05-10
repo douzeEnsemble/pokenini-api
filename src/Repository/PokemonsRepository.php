@@ -7,6 +7,7 @@ namespace App\Repository;
 use App\DTO\AlbumFilter\AlbumFilters;
 use App\Entity\Pokemon;
 use App\Repository\Trait\FiltersTrait;
+use App\Service\SqlFileLoader;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\ParameterType;
 use Doctrine\ORM\Query;
@@ -19,7 +20,7 @@ class PokemonsRepository extends ServiceEntityRepository
 {
     use FiltersTrait;
 
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, private readonly SqlFileLoader $sqlFileLoader)
     {
         parent::__construct($registry, Pokemon::class);
     }
@@ -50,7 +51,7 @@ class PokemonsRepository extends ServiceEntityRepository
         AlbumFilters $filters,
         int $defaultElo,
     ): array {
-        $sql = $this->readSqlFile('pokemons-get_n_to_pick.sql');
+        $sql = $this->sqlFileLoader->load('pokemons-get_n_to_pick.sql');
         $sql = $this->replaceFilters($sql, $filters);
 
         $params = array_merge(
@@ -94,7 +95,7 @@ class PokemonsRepository extends ServiceEntityRepository
         AlbumFilters $filters,
         int $defaultElo,
     ): array {
-        $sql = $this->readSqlFile('pokemons-get_n_to_vote.sql');
+        $sql = $this->sqlFileLoader->load('pokemons-get_n_to_vote.sql');
         $sql = $this->replaceFilters($sql, $filters);
 
         $params = array_merge(
@@ -125,21 +126,6 @@ class PokemonsRepository extends ServiceEntityRepository
             $params,
             $types,
         );
-    }
-
-    private function readSqlFile(string $filename): string
-    {
-        $sql = file_get_contents(dirname(__DIR__).'/../resources/sql/'.$filename);
-
-        if (false === $sql) {
-            // This condition is here for safety reason
-            // It can never happen
-            // @codeCoverageIgnoreStart
-            throw new \RuntimeException("Failed to read SQL file \"{$filename}\"");
-            // @codeCoverageIgnoreEnd
-        }
-
-        return $sql;
     }
 
     private function replaceFilters(string $sql, AlbumFilters $filters): string
