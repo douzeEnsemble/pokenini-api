@@ -8,6 +8,7 @@ services:
             int $eloKFactor: '%env(ELO_K_FACTOR)%'
             int $eloDDifference: '%env(ELO_D_DIFFERENCE)%'
             int $eloDefault: '%env(ELO_DEFAULT)%'
+            string $sqlDir: '%kernel.project_dir%/resources/sql'
             
     App\:
         resource: '../src/'

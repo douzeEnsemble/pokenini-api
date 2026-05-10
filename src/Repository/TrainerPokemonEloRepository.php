@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Repository;
 
 use App\Entity\TrainerPokemonElo;
+use App\Service\SqlFileLoader;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\DBAL\ParameterType;
 use Doctrine\Persistence\ManagerRegistry;
@@ -15,7 +16,7 @@ use Symfony\Component\Uid\Uuid;
  */
 class TrainerPokemonEloRepository extends ServiceEntityRepository
 {
-    public function __construct(ManagerRegistry $registry)
+    public function __construct(ManagerRegistry $registry, private readonly SqlFileLoader $sqlFileLoader)
     {
         parent::__construct($registry, TrainerPokemonElo::class);
     }
@@ -134,7 +135,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
         string $electionSlug,
         int $count,
     ): array {
-        $sql = $this->getTopNSQL();
+        $sql = $this->sqlFileLoader->load('trainer_pokemon_elo-get_top_n.sql');
 
         $params = [
             'trainer_external_id' => $trainerExternalId,
@@ -271,20 +272,5 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             'max_view_count' => $result['max_view_count'] ?? 0,
             'dex_total_count' => $result['dex_total_count'] ?? 0,
         ];
-    }
-
-    private function getTopNSQL(): string
-    {
-        $sql = file_get_contents(dirname(__DIR__).'/../resources/sql/trainer_pokemon_elo-get_top_n.sql');
-
-        if (false === $sql) {
-            // This condition is here form safety reason
-            // It can never happen
-            // @codeCoverageIgnoreStart
-            throw new \RuntimeException('Failed to read SQL file "trainer_pokemon_elo-get_top_n.sql"');
-            // @codeCoverageIgnoreEnd
-        }
-
-        return $sql;
     }
 }

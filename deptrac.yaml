@@ -244,6 +244,7 @@ parameters:
       - AppEntity
       - AppMessage
       - AppRepository
+      - AppService
       - DoctrineDBAL
       - DoctrineORM
       - DoctrinePersistence

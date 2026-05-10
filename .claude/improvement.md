@@ -6,12 +6,6 @@
 
 ## Maintenabilité
 
-### 11 — Les fichiers SQL externalisés ne sont pas typés ni validés
-
-**Problème** : Les fichiers `resources/sql/*.sql` sont lus via `file_get_contents()` sans aucune validation de structure. Un fichier manquant lève une `RuntimeException` couverte par `@codeCoverageIgnoreStart`, ce qui masque ce risque opérationnel.
-**Fichier(s)** : `src/Repository/PokemonsRepository.php:88-104`
-**Correction** : Centraliser la lecture des fichiers SQL dans un `SqlFileRepository` injectable, testable, et intégrer un test de fumée vérifiant que tous les fichiers `.sql` référencés existent bien au démarrage.
-
 ---
 
 ## DevX
