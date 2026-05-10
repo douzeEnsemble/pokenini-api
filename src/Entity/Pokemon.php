@@ -8,13 +8,14 @@ use App\Entity\Traits\BaseEntityTrait;
 use App\Entity\Traits\FrenchNamedTrait;
 use App\Entity\Traits\NamedTrait;
 use App\Entity\Traits\SoftDeleteable;
+use App\Entity\Traits\SoftDeleteableInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * @SuppressWarnings("PHPMD.TooManyFields")
  */
 #[ORM\Entity]
-final class Pokemon
+final class Pokemon implements SoftDeleteableInterface
 {
     use BaseEntityTrait;
     use NamedTrait;

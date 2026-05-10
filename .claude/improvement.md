@@ -6,12 +6,6 @@
 
 ## Maintenabilité
 
-### 10 — Absence d'interface ou de contrat sur les entités portant `SoftDeleteable`
-
-**Problème** : Le soft delete est implémenté via un trait mais aucune interface ne garantit la présence de `$deletedAt` sur les entités concernées. Les repositories qui filtrent `deleted_at IS NULL` doivent le faire manuellement sans vérification statique.
-**Fichier(s)** : `src/Entity/Traits/SoftDeleteable.php`, `src/Repository/PokemonsRepository.php:25`
-**Correction** : Créer une interface `SoftDeleteableInterface` avec `getDeletedAt(): ?\DateTime` et la faire implémenter par les entités qui utilisent le trait.
-
 ### 11 — Les fichiers SQL externalisés ne sont pas typés ni validés
 
 **Problème** : Les fichiers `resources/sql/*.sql` sont lus via `file_get_contents()` sans aucune validation de structure. Un fichier manquant lève une `RuntimeException` couverte par `@codeCoverageIgnoreStart`, ce qui masque ce risque opérationnel.

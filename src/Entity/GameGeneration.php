@@ -8,10 +8,11 @@ use App\Entity\Traits\BaseEntityTrait;
 use App\Entity\Traits\NamedTrait;
 use App\Entity\Traits\SlugifiedTrait;
 use App\Entity\Traits\SoftDeleteable;
+use App\Entity\Traits\SoftDeleteableInterface;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
-final class GameGeneration
+final class GameGeneration implements SoftDeleteableInterface
 {
     use BaseEntityTrait;
     use NamedTrait;
