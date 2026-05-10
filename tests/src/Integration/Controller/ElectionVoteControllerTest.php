@@ -27,8 +27,8 @@ final class ElectionVoteControllerTest extends WebTestCase
             [],
             [],
             [
-                'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW' => 'douze',
+                'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
+                'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
             ],
             '{"trainer_external_id": "12", "dex_slug": "demo", "election_slug": "", "winners_slugs": ["butterfree"], "losers_slugs": ["caterpie", "metapod"]}',
         );
@@ -86,8 +86,8 @@ final class ElectionVoteControllerTest extends WebTestCase
             [],
             [],
             [
-                'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW' => 'douze',
+                'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
+                'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
             ],
             '{"trainer_external_id": "7b52009b64fd0a2a49e6d8a939753077792b0554", "dex_slug": "demo", "election_slug": "", "winners_slugs": ["butterfree"], "losers_slugs": ["caterpie", "metapod"]}',
         );
@@ -145,8 +145,8 @@ final class ElectionVoteControllerTest extends WebTestCase
             [],
             [],
             [
-                'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW' => 'douze',
+                'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
+                'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
             ],
             '{"trainer_external_id": "7b52009b64fd0a2a49e6d8a939753077792b0554", "dex_slug": "demo", "election_slug": "", "winners_slugs": [], "losers_slugs": ["caterpie", "metapod", "butterfree"]}',
         );
@@ -202,8 +202,8 @@ final class ElectionVoteControllerTest extends WebTestCase
             [],
             [],
             [
-                'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW' => 'douze',
+                'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
+                'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
             ],
             '{"trainer_external_id": "7b52009b64fd0a2a49e6d8a939753077792b0554", "dex_slug": "demo", "election_slug": "", "winners_slugs": ["caterpie", "metapod", "butterfree"], "losers_slugs": []}',
         );
@@ -259,8 +259,8 @@ final class ElectionVoteControllerTest extends WebTestCase
             [],
             [],
             [
-                'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW' => 'douze',
+                'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
+                'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
             ],
             '',
         );
@@ -278,8 +278,8 @@ final class ElectionVoteControllerTest extends WebTestCase
             [],
             [],
             [
-                'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW' => 'douze',
+                'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
+                'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
             ],
             '{}',
         );
@@ -297,8 +297,8 @@ final class ElectionVoteControllerTest extends WebTestCase
             [],
             [],
             [
-                'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW' => 'douze',
+                'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
+                'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
             ],
             '{"trainerExternalId": "12", "dex_slug": "demo", "electionSlug": "", "winnersSlugs": "pichu", "losersSlugs": ["pikachu", "raichu"]}',
         );

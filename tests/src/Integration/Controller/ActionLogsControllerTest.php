@@ -33,8 +33,8 @@ final class ActionLogsControllerTest extends WebTestCase
             ],
             [],
             [
-                'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW' => 'douze',
+                'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
+                'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
             ],
         );
 

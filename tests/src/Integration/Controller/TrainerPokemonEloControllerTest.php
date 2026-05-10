@@ -174,8 +174,8 @@ final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
                 'count' => '5',
             ],
             [
-                'PHP_AUTH_USER' => 'web',
-                'PHP_AUTH_PW' => 'douze',
+                'PHP_AUTH_USER' => self::AUTH_USER,
+                'PHP_AUTH_PW' => self::AUTH_PASSWORD,
             ]
         );
 
@@ -199,7 +199,7 @@ final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
                 'count' => '5',
             ],
             [
-                'PHP_AUTH_USER' => 'web',
+                'PHP_AUTH_USER' => self::AUTH_USER,
                 'PHP_AUTH_PW' => 'treize',
             ]
         );

@@ -6,12 +6,6 @@
 
 ## Sécurité
 
-### 8 — HTTP Basic Auth avec credentials en clair dans les tests
-
-**Problème** : Les credentials d'authentification (`web` / `douze`) sont hardcodés dans les tests d'intégration.
-**Fichier(s)** : `tests/src/Integration/Controller/AbstractTestControllerApi.php:57`, `tests/src/Integration/Controller/PokemonsControllerTest.php`
-**Correction** : Extraire les credentials dans des constantes ou des variables d'environnement de test, pour faciliter leur changement sans modifier les tests.
-
 ### 9 — Endpoints admin non protégés par un rôle dédié
 
 **Problème** : Les endpoints `/istration/update/*` et `/istration/calculate/*` sont derrière le même HTTP Basic Auth que les endpoints utilisateur. Il n'y a pas de rôle `ROLE_ADMIN` dédié.

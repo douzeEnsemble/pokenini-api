@@ -31,7 +31,7 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
             'PATCH',
             '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow/ivysaur',
             [],
-            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
             'yes'
         );
 
@@ -51,7 +51,7 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
             'PATCH',
             '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow/ivysaur',
             [],
-            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
             ''
         );
 
@@ -68,7 +68,7 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
             'PATCH',
             '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/douze/ivysaur',
             [],
-            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
             'yes'
         );
 
@@ -85,7 +85,7 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
             'PATCH',
             '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow/treize',
             [],
-            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
             'yes'
         );
 
@@ -104,7 +104,7 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
             'PUT',
             '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow/douze',
             [],
-            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
             'maybenot'
         );
 
@@ -130,7 +130,7 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
             'PUT',
             '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/spoon/douze',
             [],
-            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
             'maybenot'
         );
 
@@ -154,7 +154,7 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
             'PUT',
             '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/douze/ivysaur',
             [],
-            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
             'yes'
         );
 
@@ -171,7 +171,7 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
             'PUT',
             '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow/treize',
             [],
-            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
             'yes'
         );
 
@@ -184,7 +184,7 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
             'PUT',
             '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow/ivysaur',
             [],
-            ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze'],
+            ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
             ''
         );
 
