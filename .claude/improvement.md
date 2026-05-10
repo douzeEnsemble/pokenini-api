@@ -6,12 +6,6 @@
 
 ## Tests
 
-### 6 — Tests d'intégration de contrôleurs sans assertion sur le Content-Type
-
-**Problème** : Les tests de contrôleurs vérifient le code HTTP et la structure JSON, mais pas l'en-tête `Content-Type: application/json` retourné par l'API.
-**Fichier(s)** : `tests/src/Integration/Controller/AbstractTestControllerApi.php`, ex. `PokemonsControllerTest.php`
-**Correction** : Ajouter dans `assertResponseIsOK()` (ou dans une méthode dédiée) une assertion sur `Content-Type`.
-
 ### 7 — Absence de tests sur les cas d'erreur des Updaters (InvalidSheetDataException)
 
 **Problème** : Les tests d'intégration des commandes testent le chemin nominal, mais pas les cas où la feuille Google Sheets a des colonnes manquantes ou mal nommées (ce qui lève `InvalidSheetDataException`).

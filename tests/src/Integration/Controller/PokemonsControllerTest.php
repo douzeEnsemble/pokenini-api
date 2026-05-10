@@ -25,7 +25,7 @@ final class PokemonsControllerTest extends AbstractTestControllerApi
             ]
         );
 
-        $this->assertResponseIsOK();
+        $this->assertJsonResponseIsOK();
 
         $this->assertResponseContent(12);
     }
@@ -42,7 +42,7 @@ final class PokemonsControllerTest extends AbstractTestControllerApi
             ],
         );
 
-        $this->assertResponseIsOK();
+        $this->assertJsonResponseIsOK();
 
         $this->assertResponseContent(7);
     }
@@ -60,7 +60,7 @@ final class PokemonsControllerTest extends AbstractTestControllerApi
             ],
         );
 
-        $this->assertResponseIsOK();
+        $this->assertJsonResponseIsOK();
 
         $this->assertResponseContent(1);
     }
@@ -81,7 +81,7 @@ final class PokemonsControllerTest extends AbstractTestControllerApi
             ],
         );
 
-        $this->assertResponseIsOK();
+        $this->assertJsonResponseIsOK();
 
         $this->assertResponseContent(12);
     }

@@ -23,7 +23,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest('GET', '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow');
 
-        $this->assertResponseIsOK();
+        $this->assertJsonResponseIsOK();
 
         $content = $this->getClientResponseContent();
 
@@ -103,7 +103,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest('GET', '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/goldsilvercrystal');
 
-        $this->assertResponseIsOK();
+        $this->assertJsonResponseIsOK();
 
         $content = $this->getClientResponseContent();
 
@@ -185,7 +185,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest('GET', '/album/bd307a3ec329e10a2cff8fb87480823da114f8f4/redgreenblueyellow');
 
-        $this->assertResponseIsOK();
+        $this->assertJsonResponseIsOK();
 
         $content = $this->getClientResponseContent();
 
@@ -265,7 +265,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest('GET', '/album/46546542313186/redgreenblueyellow');
 
-        $this->assertResponseIsOK();
+        $this->assertJsonResponseIsOK();
 
         $content = $this->getClientResponseContent();
 
@@ -345,7 +345,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest('GET', '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/home');
 
-        $this->assertResponseIsOK();
+        $this->assertJsonResponseIsOK();
 
         $content = $this->getClientResponseContent();
 
@@ -408,7 +408,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest('GET', '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/home_shiny');
 
-        $this->assertResponseIsOK();
+        $this->assertJsonResponseIsOK();
 
         $content = $this->getClientResponseContent();
 
@@ -471,7 +471,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest('GET', '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/home_pogo');
 
-        $this->assertResponseIsOK();
+        $this->assertJsonResponseIsOK();
 
         $content = $this->getClientResponseContent();
 
@@ -513,7 +513,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest('GET', '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/homeshinyot');
 
-        $this->assertResponseIsOK();
+        $this->assertJsonResponseIsOK();
 
         $content = $this->getClientResponseContent();
 
@@ -555,7 +555,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest('GET', '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/homepogo');
 
-        $this->assertResponseIsOK();
+        $this->assertJsonResponseIsOK();
 
         $content = $this->getClientResponseContent();
 
