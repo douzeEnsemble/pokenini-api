@@ -172,15 +172,6 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'empty'!A2:AA2"
-    },
-    "response": {
-      "status": 200,
-      "file": "/var/moco/test/values_%27empty%27%21A2%3AAA2.json"
-    }
-  },
-  {
-    "request": {
       "uri": "/v4/spreadsheets/1-UTDFwlhmHDKDqY2RuzaZ1VKpZWIFzKT5y8s4n1abEQ/values/'empty'!A2:AM2"
     },
     "response": {

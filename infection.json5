@@ -1,15 +1,26 @@
 {
     $schema: "vendor/infection/infection/resources/schema.json",
     source: {
-        directories: ["src"],
+        directories: [
+            "src",
+        ],
     },
     mutators: {
         "@default": true,
         Modulus: {
-            ignore: ["App\\Helper\\A1Notation::indexToLetter"],
+            ignore: [
+                "App\\Helper\\A1Notation::indexToLetter",
+            ],
+        },
+        ReturnRemoval: {
+            ignore: [
+                "App\\Helper\\A1Notation::indexToLetter",
+            ],
         },
         FalseValue: {
-            ignore: ["App\\Entity\\TrainerPokemonElo::__construct"],
+            ignore: [
+                "App\\Entity\\TrainerPokemonElo::__construct",
+            ],
         },
         Throw_: {
             ignore: [
@@ -18,17 +29,23 @@
             ],
         },
         RoundingFamily: {
-            ignoreSourceCodeByRegex: ["\\$this->logger->info.*"],
+            ignoreSourceCodeByRegex: [
+                "\\$this->logger->info.*",
+            ],
         },
         ArrayItem: {
-            ignoreSourceCodeByRegex: ["\\$this->logger->info.*"],
+            ignoreSourceCodeByRegex: [
+                "\\$this->logger->info.*",
+            ],
         },
         "global-ignore": [
             "App\\Updater\\CollectionsAvailabilitiesUpdater::upsertRecord",
             "App\\Updater\\GamesAvailabilitiesUpdater::upsertRecord",
             "App\\Updater\\RegionalDexNumbersUpdater::upsertRecord",
         ],
-        "global-ignoreSourceCodeByRegex": ["\\$query .= <<<'SUBSQL'.*"],
+        "global-ignoreSourceCodeByRegex": [
+            "\\$query .= <<<'SUBSQL'.*",
+        ],
     },
     tmpDir: "/app/var/cache/infection",
     timeout: 30,
