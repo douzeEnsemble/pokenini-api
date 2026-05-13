@@ -353,7 +353,7 @@ infection: build/coverage/coverage-xml tools/infection/vendor/bin/infection clea
 ## —— Security 🛡️ ———————————————————————————————————————————————————————————————
 .PHONY: security
 security: ## Execute all security commands
-security: composer-audit security-check
+security: composer-audit composer-audit-tools security-check
 
 .PHONY: s
 s: ## Alias of security
@@ -363,6 +363,14 @@ s: security
 composer-audit: ## Execute Composer Audit
 composer-audit: c=audit
 composer-audit: composer
+
+.PHONY: composer-audit-tools
+composer-audit-tools: ## Execute Composer Audit on quality tools
+composer-audit-tools:
+	@for tool in tools/deptrac tools/infection tools/jsonlint tools/php-cs-fixer tools/phpmd tools/phpstan tools/psalm; do \
+		echo "Auditing $$tool..."; \
+		$(COMPOSER) audit --working-dir=$$tool; \
+	done
 
 .PHONY: security-check
 security-check: ## Execute Symfony Security Checker
