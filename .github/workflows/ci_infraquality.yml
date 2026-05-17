@@ -69,6 +69,6 @@ jobs:
         uses: actions/checkout@v6
       - name: Check moco file references
         run: |
-          tools/check-moco-refs/check_moco_refs.sh tests/resources/moco/Api/moco.json tests/resources/moco/Api
-          tools/check-moco-refs/check_moco_refs.sh tests/resources/moco/OAuth/moco.json tests/resources/moco/OAuth
+	        tools/check-moco-refs/check_moco_refs.sh tests/resources/moco/Sheets/test tests/resources/moco/Sheets tests/resources/moco/Sheets/test.moco.json tests/resources/moco/Sheets/int.moco.json
+	        tools/check-moco-refs/check_moco_refs.sh tests/resources/moco/Sheets/int tests/resources/moco/Sheets tests/resources/moco/Sheets/int.moco.json
 
