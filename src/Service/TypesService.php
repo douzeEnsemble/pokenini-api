@@ -13,7 +13,7 @@ class TypesService
     ) {}
 
     /**
-     * @return string[][]
+     * @return array<array-key, string>[]
      */
     public function getAll(): array
     {

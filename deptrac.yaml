@@ -36,6 +36,10 @@ parameters:
       collectors:
         - type: classLike
           value: '^App\\Exception\\.*'
+    - name: AppFactory
+      collectors:
+        - type: classLike
+          value: '^App\\Factory\\.*'
     - name: AppHelper
       collectors:
         - type: classLike
@@ -198,6 +202,7 @@ parameters:
       - AppActionStarter
       - AppDTO
       - AppEntity
+      - AppFactory
       - AppRepository
       - AppService
       - DoctrineDBAL
@@ -222,6 +227,8 @@ parameters:
       - SymfonySerializer
       - SymfonyUid
       - SymfonyValidator
+    AppFactory:
+      - AppDTO
     AppHelper:
       - AppHelper
     AppMessage:

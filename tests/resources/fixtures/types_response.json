@@ -1,0 +1,110 @@
+[
+  {
+    "slug": "normal",
+    "name": "Normal",
+    "french_name": "Normal",
+    "color": "#A8A878"
+  },
+  {
+    "slug": "fighting",
+    "name": "Fighting",
+    "french_name": "Combat",
+    "color": "#C03028"
+  },
+  {
+    "slug": "flying",
+    "name": "Flying",
+    "french_name": "Vol",
+    "color": "#A890F0"
+  },
+  {
+    "slug": "poison",
+    "name": "Poison",
+    "french_name": "Poison",
+    "color": "#A040A0"
+  },
+  {
+    "slug": "ground",
+    "name": "Ground",
+    "french_name": "Sol",
+    "color": "#E0C068"
+  },
+  {
+    "slug": "rock",
+    "name": "Rock",
+    "french_name": "Roche",
+    "color": "#B8A038"
+  },
+  {
+    "slug": "bug",
+    "name": "Bug",
+    "french_name": "Insecte",
+    "color": "#A8B820"
+  },
+  {
+    "slug": "ghost",
+    "name": "Ghost",
+    "french_name": "Spectre",
+    "color": "#705898"
+  },
+  {
+    "slug": "steel",
+    "name": "Steel",
+    "french_name": "Acier",
+    "color": "#B8B8D0"
+  },
+  {
+    "slug": "fire",
+    "name": "Fire",
+    "french_name": "Feu",
+    "color": "#F08030"
+  },
+  {
+    "slug": "water",
+    "name": "Water",
+    "french_name": "Eau",
+    "color": "#6890F0"
+  },
+  {
+    "slug": "grass",
+    "name": "Grass",
+    "french_name": "Plante",
+    "color": "#78C850"
+  },
+  {
+    "slug": "electric",
+    "name": "Electric",
+    "french_name": "Electrik",
+    "color": "#F8D030"
+  },
+  {
+    "slug": "psychic",
+    "name": "Psychic",
+    "french_name": "Psy",
+    "color": "#F85888"
+  },
+  {
+    "slug": "ice",
+    "name": "Ice",
+    "french_name": "Glace",
+    "color": "#98D8D8"
+  },
+  {
+    "slug": "dragon",
+    "name": "Dragon",
+    "french_name": "Dragon",
+    "color": "#7038F8"
+  },
+  {
+    "slug": "dark",
+    "name": "Dark",
+    "french_name": "Ténèbre",
+    "color": "#705848"
+  },
+  {
+    "slug": "stellar",
+    "name": "Stellar",
+    "french_name": "Stellaire",
+    "color": "#7CC7B2"
+  }
+]
