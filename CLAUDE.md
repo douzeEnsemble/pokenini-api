@@ -73,6 +73,7 @@ The codebase follows a strict layered architecture enforced by Deptrac (`deptrac
 |-------|------|---------|
 | Controller | `src/Controller/` | REST endpoints (attribute-based routing), no business logic |
 | Service | `src/Service/` | Orchestration, Google Sheets integration |
+| Factory | `src/Factory/` | Transform raw data (SQL results) into Response DTOs |
 | Calculator | `src/Calculator/` | Pure availability and ELO calculations |
 | Updater | `src/Updater/` | Parses Google Sheets data and persists entities |
 | MessageHandler | `src/MessageHandler/` | Async Symfony Messenger handlers |
@@ -109,6 +110,15 @@ Each async action has a matching quartet: `Message`, `ActionStarter`, `MessageHa
 
 ### DTOs
 DTOs validate their input via `OptionsResolver` (not Symfony Validator constraints). Validation, type coercion, and defaults are all declared in `configureOptions(OptionsResolver $resolver)`. See `src/DTO/TrainerPokemonEloListQueryOptions.php`.
+
+**Response DTOs** (`src/DTO/Response/`) are readonly objects used to serialize data to the client. They're always `final` and immutable via constructor promotion. Transformation from SQL results (which may have mixed types) to Response DTOs is done by **Factories** (`src/Factory/`).
+
+### Factories
+Factories transform raw data (typically from SQL queries) into properly-typed Response DTOs. Each factory is a static utility class that normalizes types and handles data mapping. Use factories when:
+- SQL query results have mixed types that need casting to DTO constructor expectations
+- Complex data transformation from database structure to API response format is needed
+
+See `src/Factory/TypeResponseFactory.php` for the canonical example: it converts SQL rows (with mixed types) to `TypeResponse` DTOs by explicitly casting string fields.
 
 ### Entities
 Entities use public properties directly — no getters or setters. Shared behavior is composed via traits in `src/Entity/Traits/` (`BaseEntityTrait` provides UUID v4 id + `getIdentifier()`; `SoftDeleteable` adds `deletedAt`).

@@ -68,5 +68,11 @@
                 <file name="src/Service/SpreadsheetService.php" />
             </errorLevel>
         </UnnecessaryVarAnnotation>
+
+        <MissingOverrideAttribute>
+            <errorLevel type="suppress">
+                <directory name="tests" />
+            </errorLevel>
+        </MissingOverrideAttribute>
     </issueHandlers>
 </psalm>
