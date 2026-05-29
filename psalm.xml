@@ -54,6 +54,7 @@
         <PossiblyUnusedProperty>
             <errorLevel type="suppress">
                 <directory name="src/Entity" />
+                <directory name="src/DTO/Response" />
             </errorLevel>
         </PossiblyUnusedProperty>
 

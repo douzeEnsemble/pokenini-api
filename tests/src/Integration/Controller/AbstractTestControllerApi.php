@@ -63,17 +63,20 @@ abstract class AbstractTestControllerApi extends WebTestCase
     }
 
     /**
-     * @return bool[]|int[]|string[]
+     * @return array<int|string, mixed>
      */
     public function getJsonDecodedResponseContent(): array
     {
-        /** @var bool[]|int[]|string[] */
-        return json_decode($this->getClientResponseContent(), true);
+        $decoded = json_decode($this->getClientResponseContent(), true);
+
+        \assert(\is_array($decoded), 'Expected valid JSON array response');
+
+        return $decoded;
     }
 
     /**
-     * @param string[]|string[][] $params
-     * @param string[]|string[][] $options
+     * @param array<string, int|list<string>|string> $params
+     * @param array<string, int|string>              $options
      */
     public function apiRequest(
         string $method,

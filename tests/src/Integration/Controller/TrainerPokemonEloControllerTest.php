@@ -28,16 +28,41 @@ final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        /** @var string[][] $content */
+        /** @var array<int, array<string, mixed>> $content */
         $content = $this->getJsonDecodedResponseContent();
 
         $this->assertCount(5, $content);
 
-        foreach ($content as $pokemon) {
-            $this->assertArrayHasKey('elo', $pokemon);
-            $this->assertArrayHasKey('pokemon_slug', $pokemon);
-            $this->assertArrayHasKey('pokemon_french_name', $pokemon);
-            $this->assertArrayHasKey('pokemon_icon', $pokemon);
+        foreach ($content as $item) {
+            $this->assertArrayHasKey('elo', $item);
+            $this->assertArrayHasKey('significance', $item);
+            $this->assertArrayHasKey('pokemon', $item);
+            $this->assertArrayHasKey('forms', $item);
+            $this->assertArrayHasKey('types', $item);
+
+            $this->assertIsFloat($item['elo']);
+            $this->assertIsBool($item['significance']);
+
+            $pokemon = $item['pokemon'];
+            $this->assertIsArray($pokemon);
+            $this->assertArrayHasKey('slug', $pokemon);
+            $this->assertArrayHasKey('name', $pokemon);
+            $this->assertArrayHasKey('french_name', $pokemon);
+            $this->assertArrayHasKey('national_dex_number', $pokemon);
+            $this->assertArrayHasKey('icon', $pokemon);
+            $this->assertArrayHasKey('family_order', $pokemon);
+            $this->assertArrayHasKey('family_lead_slug', $pokemon);
+            $this->assertArrayHasKey('original_game_bundle_slug', $pokemon);
+            $this->assertArrayHasKey('order_number', $pokemon);
+
+            $types = $item['types'];
+            $this->assertIsArray($types);
+            $this->assertArrayHasKey('primary', $types);
+            $this->assertIsArray($types['primary']);
+            $this->assertArrayHasKey('slug', $types['primary']);
+            $this->assertArrayHasKey('name', $types['primary']);
+            $this->assertArrayHasKey('french_name', $types['primary']);
+            $this->assertArrayHasKey('color', $types['primary']);
         }
     }
 
@@ -56,16 +81,26 @@ final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        /** @var string[][] $content */
+        /** @var array<int, array<string, mixed>> $content */
         $content = $this->getJsonDecodedResponseContent();
 
         $this->assertCount(5, $content);
 
-        foreach ($content as $pokemon) {
-            $this->assertArrayHasKey('elo', $pokemon);
-            $this->assertArrayHasKey('pokemon_slug', $pokemon);
-            $this->assertArrayHasKey('pokemon_french_name', $pokemon);
-            $this->assertArrayHasKey('pokemon_icon', $pokemon);
+        foreach ($content as $item) {
+            $this->assertArrayHasKey('elo', $item);
+            $this->assertArrayHasKey('significance', $item);
+            $this->assertArrayHasKey('pokemon', $item);
+            $this->assertArrayHasKey('forms', $item);
+            $this->assertArrayHasKey('types', $item);
+
+            $pokemon = $item['pokemon'];
+            $this->assertIsArray($pokemon);
+            $this->assertArrayHasKey('slug', $pokemon);
+            $this->assertArrayHasKey('name', $pokemon);
+            $this->assertArrayHasKey('french_name', $pokemon);
+            $this->assertArrayHasKey('icon', $pokemon);
+            $this->assertIsString($pokemon['slug']);
+            $this->assertIsString($pokemon['french_name']);
         }
     }
 
