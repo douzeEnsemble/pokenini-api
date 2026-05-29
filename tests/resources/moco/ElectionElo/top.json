@@ -1,0 +1,73 @@
+[
+  {
+    "elo": 1250.5,
+    "significance": true,
+    "pokemon": {
+      "slug": "pikachu",
+      "name": "Pikachu",
+      "french_name": "Pikachu",
+      "national_dex_number": 25,
+      "simplified_name": null,
+      "forms_label": null,
+      "simplified_french_name": null,
+      "forms_french_label": null,
+      "icon": "pikachu.png",
+      "family_order": 1,
+      "family_lead_slug": "pichu",
+      "original_game_bundle_slug": "red-blue",
+      "order_number": "9999-0025-001"
+    },
+    "forms": null,
+    "types": {
+      "primary": {
+        "slug": "electric",
+        "name": "Electric",
+        "french_name": "Électrique",
+        "color": "#FFCC33"
+      },
+      "secondary": null
+    }
+  },
+  {
+    "elo": 1200.0,
+    "significance": false,
+    "pokemon": {
+      "slug": "charizard",
+      "name": "Charizard",
+      "french_name": "Dracaufeu",
+      "national_dex_number": 6,
+      "simplified_name": null,
+      "forms_label": null,
+      "simplified_french_name": null,
+      "forms_french_label": null,
+      "icon": "charizard.png",
+      "family_order": 3,
+      "family_lead_slug": "charmander",
+      "original_game_bundle_slug": null,
+      "order_number": "9999-0006-001"
+    },
+    "forms": {
+      "category": null,
+      "regional": {
+        "slug": "galar",
+        "name": "Galar"
+      },
+      "special": null,
+      "variant": null
+    },
+    "types": {
+      "primary": {
+        "slug": "fire",
+        "name": "Fire",
+        "french_name": "Feu",
+        "color": "#F08030"
+      },
+      "secondary": {
+        "slug": "flying",
+        "name": "Flying",
+        "french_name": "Vol",
+        "color": "#A890F0"
+      }
+    }
+  }
+]

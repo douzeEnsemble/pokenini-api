@@ -189,12 +189,16 @@ final class TrainerPokemonEloRepositoryTopNTest extends KernelTestCase
      * @param float[][]|int[][]|string[][]  $list
      * @param bool[]|float[]|int[]|string[] $matches
      */
+    /**
+     * @param array<array<string, mixed>> $list
+     * @param array<int|string, mixed>    $matches
+     */
     private function assertAllKeysMatches(array $list, string $key, array $matches): void
     {
         $this->assertSame(
             $matches,
             array_map(
-                fn ($value) => $value[$key],
+                fn (array $value): mixed => $value[$key],
                 $list,
             ),
         );

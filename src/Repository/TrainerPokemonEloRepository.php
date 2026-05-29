@@ -127,7 +127,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return float[][]|int[][]|string[][]
+     * @return array<array-key, array<string, mixed>>
      */
     public function getTopN(
         string $trainerExternalId,
@@ -151,7 +151,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             'count' => ParameterType::INTEGER,
         ];
 
-        /** @var string[][] */
+        /** @var array<array-key, array<string, mixed>> */
         return $this->getEntityManager()->getConnection()->fetchAllAssociative(
             $sql,
             $params,
