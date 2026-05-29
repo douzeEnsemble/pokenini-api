@@ -21,30 +21,30 @@ final class GameBundlesControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        /** @var string[] $content */
+        /** @var array<int, array<string, mixed>> $content */
         $content = $this->getJsonDecodedResponseContent();
 
         $this->assertCount(19, $content);
 
         $this->assertEquals([
+            'slug' => 'redgreenblueyellow',
             'name' => 'Red, Green, Blue, Yellow',
             'french_name' => 'Rouge, Vert, Bleu, Jaune',
-            'slug' => 'redgreenblueyellow',
-            'generation_slug' => '1',
+            'generation' => ['slug' => '1'],
         ], $content[0]);
 
         $this->assertEquals([
+            'slug' => 'rubysapphireemerald',
             'name' => 'Ruby, Sapphire, Emerald',
             'french_name' => 'Rubis, Saphir, Émeraude',
-            'slug' => 'rubysapphireemerald',
-            'generation_slug' => '3',
+            'generation' => ['slug' => '3'],
         ], $content[2]);
 
         $this->assertEquals([
+            'slug' => 'blackwhite',
             'name' => 'Black, White',
             'french_name' => 'Noir, Blanc',
-            'slug' => 'blackwhite',
-            'generation_slug' => '5',
+            'generation' => ['slug' => '5'],
         ], $content[6]);
     }
 
