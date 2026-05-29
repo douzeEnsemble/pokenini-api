@@ -1,3 +1,8 @@
+ Je souhaite traiter le ticket
+  https://github.com/douzeEnsemble/pokenini-api/issues/256. Inspire toi du plan
+  docs/superpowers/plans/2026-05-25-api-response-restructuring-types.md pour en
+  faire un autre sur un autre endpoint (qui n'a pas été migré)
+
 # Pokémon Living/Alternate/Gender Extended Dex!
 
 ## To Begin
