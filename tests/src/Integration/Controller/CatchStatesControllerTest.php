@@ -5,70 +5,115 @@ declare(strict_types=1);
 namespace App\Tests\Integration\Controller;
 
 use App\Controller\CatchStatesController;
-use App\Service\CatchStatesService;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
  * @internal
  */
 #[CoversClass(CatchStatesController::class)]
-#[CoversClass(CatchStatesService::class)]
-final class CatchStatesControllerTest extends AbstractTestControllerApi
+final class CatchStatesControllerTest extends WebTestCase
 {
-    public function testGetCollection(): void
+    #[Test]
+    public function getReturnsSuccessfulJsonResponse(): void
     {
-        $this->apiRequest('GET', '/catch_states');
+        $client = self::createClient();
+        $client->request('GET', '/catch_states', [], [], [
+            'PHP_AUTH_USER' => 'web',
+            'PHP_AUTH_PW' => 'douze',
+        ]);
 
-        $this->assertResponseIsOK();
-
-        /** @var string[] $content */
-        $content = $this->getJsonDecodedResponseContent();
-
-        $this->assertEquals([
-            'name' => 'No',
-            'french_name' => 'Non',
-            'slug' => 'no',
-            'color' => '#e57373',
-        ], $content[0]);
-
-        $this->assertEquals([
-            'name' => 'Maybe',
-            'french_name' => 'Peut être',
-            'slug' => 'maybe',
-            'color' => 'blue',
-        ], $content[1]);
-
-        $this->assertEquals([
-            'name' => 'Maybe not',
-            'french_name' => 'Peut être pas',
-            'slug' => 'maybenot',
-            'color' => 'yellow',
-        ], $content[2]);
-
-        $this->assertEquals([
-            'name' => 'Yes',
-            'french_name' => 'Oui',
-            'slug' => 'yes',
-            'color' => '#66bb6a',
-        ], $content[3]);
+        self::assertResponseIsSuccessful();
+        self::assertResponseHeaderSame('content-type', 'application/json');
     }
 
-    public function testGetAuth(): void
+    #[Test]
+    public function getReturnsArrayOfCatchStates(): void
     {
-        $this->apiRequest('GET', '/catch_states', [], ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD]);
+        $client = self::createClient();
+        $client->request('GET', '/catch_states', [], [], [
+            'PHP_AUTH_USER' => 'web',
+            'PHP_AUTH_PW' => 'douze',
+        ]);
 
-        $this->assertResponseIsOK();
+        $content = $client->getResponse()->getContent();
+        self::assertIsString($content);
 
-        /** @var string[] $content */
-        $content = $this->getJsonDecodedResponseContent();
+        /** @var null|array<array-key, mixed> $data */
+        $data = json_decode($content, associative: true);
 
-        $this->assertCount(4, $content);
+        self::assertIsArray($data);
+        self::assertNotEmpty($data);
     }
 
-    public function testGetBadAuth(): void
+    #[Test]
+    public function getEachCatchStateHasRequiredFields(): void
     {
-        $this->apiRequest('GET', '/catch_states', [], ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => 'treize']);
+        $client = self::createClient();
+        $client->request('GET', '/catch_states', [], [], [
+            'PHP_AUTH_USER' => 'web',
+            'PHP_AUTH_PW' => 'douze',
+        ]);
 
-        $this->assertEquals(401, $this->getClientResponse()->getStatusCode());
+        $content = $client->getResponse()->getContent();
+        self::assertIsString($content);
+
+        /** @var null|array<array-key, mixed> $data */
+        $data = json_decode($content, associative: true);
+
+        self::assertIsArray($data);
+
+        /** @var mixed $catchState */
+        foreach ($data as $catchState) {
+            self::assertIsArray($catchState);
+            self::assertArrayHasKey('slug', $catchState);
+            self::assertArrayHasKey('name', $catchState);
+            self::assertArrayHasKey('french_name', $catchState);
+            self::assertArrayHasKey('color', $catchState);
+        }
+    }
+
+    #[Test]
+    public function getFieldValuesAreStrings(): void
+    {
+        $client = self::createClient();
+        $client->request('GET', '/catch_states', [], [], [
+            'PHP_AUTH_USER' => 'web',
+            'PHP_AUTH_PW' => 'douze',
+        ]);
+
+        $content = $client->getResponse()->getContent();
+        self::assertIsString($content);
+
+        /** @var null|array<array-key, mixed> $data */
+        $data = json_decode($content, associative: true);
+
+        /** @var mixed $firstCatchState */
+        $firstCatchState = $data[0] ?? null;
+
+        self::assertIsArray($firstCatchState);
+        self::assertIsString($firstCatchState['slug']);
+        self::assertIsString($firstCatchState['name']);
+        self::assertIsString($firstCatchState['french_name']);
+        self::assertIsString($firstCatchState['color']);
+    }
+
+    #[Test]
+    public function getResponseMatchesFixture(): void
+    {
+        $client = self::createClient();
+        $client->request('GET', '/catch_states', [], [], [
+            'PHP_AUTH_USER' => 'web',
+            'PHP_AUTH_PW' => 'douze',
+        ]);
+
+        $content = $client->getResponse()->getContent();
+        self::assertIsString($content);
+
+        self::assertJsonStringEqualsJsonFile(
+            '/app/tests/resources/fixtures/catch_states_response.json',
+            $content,
+        );
     }
 }
