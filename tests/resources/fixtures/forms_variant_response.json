@@ -1,0 +1,37 @@
+[
+    {
+        "slug": "gender",
+        "name": "Gender",
+        "french_name": "Sexe"
+    },
+    {
+        "slug": "alternate",
+        "name": "Alternate",
+        "french_name": "Alternatif"
+    },
+    {
+        "slug": "baby",
+        "name": "Baby",
+        "french_name": "Bébé"
+    },
+    {
+        "slug": "battle",
+        "name": "Battle",
+        "french_name": "Combat"
+    },
+    {
+        "slug": "item",
+        "name": "Item",
+        "french_name": "Objet"
+    },
+    {
+        "slug": "fusion",
+        "name": "Fusion",
+        "french_name": "Fusion"
+    },
+    {
+        "slug": "unobtainable",
+        "name": "Unobtainable",
+        "french_name": "Non obtenable"
+    }
+]

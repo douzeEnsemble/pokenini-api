@@ -19,10 +19,10 @@ final class FormsResponseTest extends TestCase
     #[Test]
     public function constructorInitializesProperties(): void
     {
-        $category = new FormResponse('mega', 'Mega');
-        $regional = new FormResponse('alolan', 'Alolan');
-        $special = new FormResponse('gmax', 'Gigantamax');
-        $variant = new FormResponse('original', 'Original Cap');
+        $category = new FormResponse('mega', 'Mega', '');
+        $regional = new FormResponse('alolan', 'Alolan', '');
+        $special = new FormResponse('gmax', 'Gigantamax', '');
+        $variant = new FormResponse('original', 'Original Cap', '');
 
         $response = new FormsResponse(
             category: $category,

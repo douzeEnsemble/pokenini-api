@@ -21,9 +21,11 @@ final class FormResponseTest extends TestCase
         $response = new FormResponse(
             slug: 'alolan',
             name: 'Alolan Form',
+            frenchName: "Forme d'Alola",
         );
 
         self::assertSame('alolan', $response->slug);
         self::assertSame('Alolan Form', $response->name);
+        self::assertSame("Forme d'Alola", $response->frenchName);
     }
 }
