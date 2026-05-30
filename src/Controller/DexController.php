@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\DTO\DexQueryOptions;
 use App\DTO\TrainerDexAttributes;
+use App\Factory\TrainerDexResponseFactory;
 use App\Service\TrainerDexService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -14,6 +15,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/dex')]
 final class DexController extends AbstractController
@@ -26,19 +28,22 @@ final class DexController extends AbstractController
     public function list(
         string $trainerExternalId,
         Request $request,
+        SerializerInterface $serializer,
     ): JsonResponse {
         $dexQueryOptions = new DexQueryOptions([
             'include_unreleased_dex' => $request->query->getBoolean('include_unreleased_dex', false),
             'include_premium_dex' => $request->query->getBoolean('include_premium_dex', false),
         ]);
 
-        /** @var bool[][]|string[][] $dex */
         $dex = iterator_to_array(
             $this->trainerDexService->getListQuery($trainerExternalId, $dexQueryOptions)
         );
 
-        // Better with serializer ?
-        return new JsonResponse($dex);
+        $responses = TrainerDexResponseFactory::fromSqlRows($dex);
+
+        return JsonResponse::fromJsonString(
+            $serializer->serialize($responses, 'json'),
+        );
     }
 
     #[Route(methods: ['PUT'], path: '/{trainerExternalId}/{dexSlug}')]
