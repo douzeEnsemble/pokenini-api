@@ -137,6 +137,7 @@ final class ElectionEloResponseFactory
     {
         $slugKey = "{$prefix}_slug";
         $nameKey = "{$prefix}_name";
+        $frenchNameKey = "{$prefix}_french_name";
 
         if (empty($row[$slugKey])) {
             return null;
@@ -148,10 +149,13 @@ final class ElectionEloResponseFactory
         /** @var scalar $name */
         $name = $row[$nameKey];
 
+        /** @var scalar $frenchName */
+        $frenchName = $row[$frenchNameKey];
+
         return new FormResponse(
             slug: (string) $slug,
             name: (string) $name,
-            frenchName: '',
+            frenchName: (string) $frenchName,
         );
     }
 
