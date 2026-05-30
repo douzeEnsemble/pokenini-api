@@ -1,0 +1,22 @@
+[
+    {
+        "slug": "mega",
+        "name": "Mega",
+        "french_name": "Mega"
+    },
+    {
+        "slug": "gigantamax",
+        "name": "Gigantamax",
+        "french_name": "Gigamax"
+    },
+    {
+        "slug": "alpha",
+        "name": "Alpha",
+        "french_name": "Baron"
+    },
+    {
+        "slug": "totem",
+        "name": "Totem",
+        "french_name": "Dominant"
+    }
+]

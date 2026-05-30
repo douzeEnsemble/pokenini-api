@@ -151,6 +151,7 @@ final class ElectionEloResponseFactory
         return new FormResponse(
             slug: (string) $slug,
             name: (string) $name,
+            frenchName: '',
         );
     }
 

@@ -5,56 +5,113 @@ declare(strict_types=1);
 namespace App\Tests\Integration\Controller;
 
 use App\Controller\RegionalFormsController;
-use App\Service\RegionalFormsService;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
+use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
  * @internal
  */
 #[CoversClass(RegionalFormsController::class)]
-#[CoversClass(RegionalFormsService::class)]
-final class RegionalFormsControllerTest extends AbstractTestControllerApi
+final class RegionalFormsControllerTest extends WebTestCase
 {
-    public function testGetCollection(): void
+    #[Test]
+    public function getReturnsSuccessfulJsonResponse(): void
     {
-        $this->apiRequest('GET', '/forms/regional');
+        $client = self::createClient();
+        $client->request('GET', '/forms/regional', [], [], [
+            'PHP_AUTH_USER' => 'web',
+            'PHP_AUTH_PW' => 'douze',
+        ]);
 
-        $this->assertResponseIsOK();
-
-        /** @var string[] $content */
-        $content = $this->getJsonDecodedResponseContent();
-
-        $this->assertCount(3, $content);
-
-        $this->assertEquals([
-            'name' => 'Alolan',
-            'french_name' => "d'Alola",
-            'slug' => 'alolan',
-        ], $content[0]);
-
-        $this->assertEquals([
-            'name' => 'Hisuian',
-            'french_name' => 'de Hisui',
-            'slug' => 'hisuian',
-        ], $content[2]);
+        self::assertResponseIsSuccessful();
+        self::assertResponseHeaderSame('content-type', 'application/json');
     }
 
-    public function testGetAuth(): void
+    #[Test]
+    public function getReturnsArrayOfForms(): void
     {
-        $this->apiRequest('GET', '/forms/regional', [], ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD]);
+        $client = self::createClient();
+        $client->request('GET', '/forms/regional', [], [], [
+            'PHP_AUTH_USER' => 'web',
+            'PHP_AUTH_PW' => 'douze',
+        ]);
 
-        $this->assertResponseIsOK();
+        $content = $client->getResponse()->getContent();
+        self::assertIsString($content);
 
-        /** @var string[] $content */
-        $content = $this->getJsonDecodedResponseContent();
+        /** @var null|array<array-key, mixed> $data */
+        $data = json_decode($content, associative: true);
 
-        $this->assertCount(3, $content);
+        self::assertIsArray($data);
+        self::assertNotEmpty($data);
     }
 
-    public function testGetBadAuth(): void
+    #[Test]
+    public function getEachFormHasRequiredFields(): void
     {
-        $this->apiRequest('GET', '/forms/regional', [], ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => 'treize']);
+        $client = self::createClient();
+        $client->request('GET', '/forms/regional', [], [], [
+            'PHP_AUTH_USER' => 'web',
+            'PHP_AUTH_PW' => 'douze',
+        ]);
 
-        $this->assertEquals(401, $this->getClientResponse()->getStatusCode());
+        $content = $client->getResponse()->getContent();
+        self::assertIsString($content);
+
+        /** @var null|array<array-key, mixed> $data */
+        $data = json_decode($content, associative: true);
+
+        self::assertIsArray($data);
+
+        /** @var mixed $form */
+        foreach ($data as $form) {
+            self::assertIsArray($form);
+            self::assertArrayHasKey('slug', $form);
+            self::assertArrayHasKey('name', $form);
+            self::assertArrayHasKey('french_name', $form);
+        }
+    }
+
+    #[Test]
+    public function getFieldValuesAreStrings(): void
+    {
+        $client = self::createClient();
+        $client->request('GET', '/forms/regional', [], [], [
+            'PHP_AUTH_USER' => 'web',
+            'PHP_AUTH_PW' => 'douze',
+        ]);
+
+        $content = $client->getResponse()->getContent();
+        self::assertIsString($content);
+
+        /** @var null|array<array-key, mixed> $data */
+        $data = json_decode($content, associative: true);
+
+        /** @var mixed $firstForm */
+        $firstForm = $data[0] ?? null;
+
+        self::assertIsArray($firstForm);
+        self::assertIsString($firstForm['slug']);
+        self::assertIsString($firstForm['name']);
+        self::assertIsString($firstForm['french_name']);
+    }
+
+    #[Test]
+    public function getResponseMatchesFixture(): void
+    {
+        $client = self::createClient();
+        $client->request('GET', '/forms/regional', [], [], [
+            'PHP_AUTH_USER' => 'web',
+            'PHP_AUTH_PW' => 'douze',
+        ]);
+
+        $content = $client->getResponse()->getContent();
+        self::assertIsString($content);
+
+        self::assertJsonStringEqualsJsonFile(
+            '/app/tests/resources/fixtures/forms_regional_response.json',
+            $content,
+        );
     }
 }

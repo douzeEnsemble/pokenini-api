@@ -25,7 +25,7 @@ final class ElectionEloResponseTest extends TestCase
     {
         $pokemon = $this->makePokemon();
         $forms = new FormsResponse(
-            category: new FormResponse('mega', 'Mega'),
+            category: new FormResponse('mega', 'Mega', ''),
             regional: null,
             special: null,
             variant: null,
