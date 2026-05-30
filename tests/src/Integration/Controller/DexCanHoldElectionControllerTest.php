@@ -5,139 +5,146 @@ declare(strict_types=1);
 namespace App\Tests\Integration\Controller;
 
 use App\Controller\DexCanHoldElectionController;
-use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use App\Factory\DexResponseFactory;
+use App\Service\DexCanHoldElectionService;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
  */
 #[CoversClass(DexCanHoldElectionController::class)]
-final class DexCanHoldElectionControllerTest extends WebTestCase
+#[CoversClass(DexResponseFactory::class)]
+#[CoversClass(DexCanHoldElectionService::class)]
+final class DexCanHoldElectionControllerTest extends AbstractTestControllerApi
 {
-    use RefreshDatabaseTrait;
-
-    public function testGet(): void
+    #[Test]
+    public function listReturnsDexByDefault(): void
     {
-        $client = self::createClient();
+        $this->apiRequest('GET', '/dex/can_hold_election');
 
-        $client->request(
-            'GET',
-            '/dex/can_hold_election',
-            [
-                'include_unreleased_dex' => true,
-                'include_premium_dex' => true,
-            ],
-            [],
-            [
-                'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
-                'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
-            ],
-        );
+        $this->assertResponseIsOK();
 
-        $this->assertResponseStatusCodeSame(200);
+        /** @var array<int, array<string, mixed>> $content */
+        $content = $this->getJsonDecodedResponseContent();
 
-        $content = (string) $client->getResponse()->getContent();
+        $this->assertCount(1, $content);
 
-        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+        $this->assertEquals([
+            'slug' => 'home',
+            'original_slug' => 'home',
+            'name' => 'Home',
+            'french_name' => 'Home',
+            'is_shiny' => false,
+            'is_display_form' => true,
+            'description' => '',
+            'french_description' => '',
+            'is_released' => true,
+            'is_premium' => false,
+            'dex_total_count' => 22,
+        ], $content[0]);
+    }
 
-        $this->assertSame(
-            [
-                [
-                    'slug' => 'homepogo',
-                    'original_slug' => 'homepogo',
-                    'name' => 'Home PoGo',
-                    'french_name' => 'Home PoGo',
-                    'is_shiny' => false,
-                    'is_display_form' => false,
-                    'description' => '',
-                    'french_description' => '',
-                    'is_released' => false,
-                    'is_premium' => false,
-                    'dex_total_count' => 1,
-                ],
-                [
-                    'slug' => 'home',
-                    'original_slug' => 'home',
-                    'name' => 'Home',
-                    'french_name' => 'Home',
-                    'is_shiny' => false,
-                    'is_display_form' => true,
-                    'description' => '',
-                    'french_description' => '',
-                    'is_released' => true,
-                    'is_premium' => false,
-                    'dex_total_count' => 22,
-                ],
-                [
-                    'slug' => 'redgreenblueyellow',
-                    'original_slug' => 'redgreenblueyellow',
-                    'name' => 'Red / Green / Blue / Yellow',
-                    'french_name' => 'Rouge / Vert / Bleu / Jaune',
-                    'is_shiny' => false,
-                    'is_display_form' => true,
-                    'description' => 'The list of obtainable Pokémons in Red, Blue, Yellow and even Green games',
-                    'french_description' => 'La liste des pokémons obtenable dans les jeux Rouge, Bleu, Jaune et même Vert.',
-                    'is_released' => true,
-                    'is_premium' => true,
-                    'dex_total_count' => 7,
-                ],
-                [
-                    'slug' => 'spoon',
-                    'original_slug' => 'spoon',
-                    'name' => 'Spoon',
-                    'french_name' => 'Cuillière',
-                    'is_shiny' => false,
-                    'is_display_form' => true,
-                    'description' => '',
-                    'french_description' => '',
-                    'is_released' => false,
-                    'is_premium' => true,
-                    'dex_total_count' => 1,
-                ],
-            ],
-            $data
+    #[Test]
+    public function listReturnsDexWithAllOptions(): void
+    {
+        $this->apiRequest('GET', '/dex/can_hold_election', [
+            'include_unreleased_dex' => 1,
+            'include_premium_dex' => 1,
+        ]);
+
+        $this->assertResponseIsOK();
+
+        /** @var array<int, array<string, mixed>> $content */
+        $content = $this->getJsonDecodedResponseContent();
+
+        $this->assertCount(4, $content);
+
+        $this->assertEquals([
+            'slug' => 'homepogo',
+            'original_slug' => 'homepogo',
+            'name' => 'Home PoGo',
+            'french_name' => 'Home PoGo',
+            'is_shiny' => false,
+            'is_display_form' => false,
+            'description' => '',
+            'french_description' => '',
+            'is_released' => false,
+            'is_premium' => false,
+            'dex_total_count' => 1,
+        ], $content[0]);
+
+        $this->assertEquals([
+            'slug' => 'home',
+            'original_slug' => 'home',
+            'name' => 'Home',
+            'french_name' => 'Home',
+            'is_shiny' => false,
+            'is_display_form' => true,
+            'description' => '',
+            'french_description' => '',
+            'is_released' => true,
+            'is_premium' => false,
+            'dex_total_count' => 22,
+        ], $content[1]);
+
+        $this->assertEquals([
+            'slug' => 'redgreenblueyellow',
+            'original_slug' => 'redgreenblueyellow',
+            'name' => 'Red / Green / Blue / Yellow',
+            'french_name' => 'Rouge / Vert / Bleu / Jaune',
+            'is_shiny' => false,
+            'is_display_form' => true,
+            'description' => 'The list of obtainable Pokémons in Red, Blue, Yellow and even Green games',
+            'french_description' => 'La liste des pokémons obtenable dans les jeux Rouge, Bleu, Jaune et même Vert.',
+            'is_released' => true,
+            'is_premium' => true,
+            'dex_total_count' => 7,
+        ], $content[2]);
+
+        $this->assertEquals([
+            'slug' => 'spoon',
+            'original_slug' => 'spoon',
+            'name' => 'Spoon',
+            'french_name' => 'Cuillière',
+            'is_shiny' => false,
+            'is_display_form' => true,
+            'description' => '',
+            'french_description' => '',
+            'is_released' => false,
+            'is_premium' => true,
+            'dex_total_count' => 1,
+        ], $content[3]);
+    }
+
+    #[Test]
+    public function listResponseMatchesFixture(): void
+    {
+        $this->apiRequest('GET', '/dex/can_hold_election');
+
+        $this->assertResponseIsOK();
+
+        $content = $this->getClientResponseContent();
+
+        self::assertJsonStringEqualsJsonFile(
+            '/app/tests/resources/fixtures/dex_can_hold_election_response.json',
+            $content,
         );
     }
 
-    public function testGetEmpty(): void
+    #[Test]
+    public function listReturnsOkWithAuth(): void
     {
-        $client = self::createClient();
+        $this->apiRequest('GET', '/dex/can_hold_election', [], ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD]);
 
-        $client->request(
-            'GET',
-            '/dex/can_hold_election',
-            [],
-            [],
-            [
-                'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
-                'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
-            ],
-        );
+        $this->assertResponseIsOK();
+    }
 
-        $this->assertResponseStatusCodeSame(200);
+    #[Test]
+    public function listReturnsBadAuthWith401(): void
+    {
+        $this->apiRequest('GET', '/dex/can_hold_election', [], ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => 'treize']);
 
-        $content = (string) $client->getResponse()->getContent();
-
-        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
-
-        $this->assertSame(
-            [
-                [
-                    'slug' => 'home',
-                    'original_slug' => 'home',
-                    'name' => 'Home',
-                    'french_name' => 'Home',
-                    'is_shiny' => false,
-                    'is_display_form' => true,
-                    'description' => '',
-                    'french_description' => '',
-                    'is_released' => true,
-                    'is_premium' => false,
-                    'dex_total_count' => 22,
-                ],
-            ],
-            $data
-        );
+        $this->assertEquals(401, $this->getClientResponse()->getStatusCode());
     }
 }

@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\DTO\DexQueryOptions;
+use App\Factory\DexResponseFactory;
 use App\Service\DexCanHoldElectionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/dex')]
 final class DexCanHoldElectionController extends AbstractController
@@ -18,6 +20,7 @@ final class DexCanHoldElectionController extends AbstractController
     public function list(
         Request $request,
         DexCanHoldElectionService $service,
+        SerializerInterface $serializer,
     ): JsonResponse {
         $dexQueryOptions = new DexQueryOptions([
             'include_unreleased_dex' => $request->query->getBoolean('include_unreleased_dex', false),
@@ -26,7 +29,10 @@ final class DexCanHoldElectionController extends AbstractController
 
         $dex = $service->get($dexQueryOptions);
 
-        // Better with serializer ?
-        return new JsonResponse($dex);
+        $responses = DexResponseFactory::fromSqlRows($dex);
+
+        return JsonResponse::fromJsonString(
+            $serializer->serialize($responses, 'json'),
+        );
     }
 }
