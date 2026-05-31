@@ -72,6 +72,10 @@ COPY --link \
 	--from=ghcr.io/symfony-cli/symfony-cli:5.17.1 \
 	/usr/local/bin/symfony /usr/local/bin/symfony
 
+RUN addgroup -g 1000 app && adduser -u 1000 -G app -s /bin/sh -D app
+
+USER app
+
 FROM php_base AS php_prod
 
 ENV APP_ENV=prod
