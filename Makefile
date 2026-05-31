@@ -9,14 +9,105 @@ PHP_CONT = $(DOCKER_COMP) exec php
 PHP      = $(PHP_CONT) php
 COMPOSER = $(PHP_CONT) composer
 SYMFONY  = $(PHP) bin/console
-PHPUNIT  = $(PHP) vendor/bin/phpunit
+PHPUNIT  = $(PHP) vendor/bin/phpunit --display-all
 DOCKERCOMPOSE_LINTER_CMD = docker run -t --rm -v ${PWD}:/app zavoloklom/dclint:3.1.0-alpine
 DOTENV_LINTER_CMD = docker run -t --rm -v ${PWD}:/app -w /app dotenvlinter/dotenv-linter:4.0.0
 HADOLINT_CMD = docker run -t --rm -v ${PWD}:/app hadolint/hadolint:v2.14.0-alpine hadolint
 EDITORCONFIG_LINTER_CMD = docker run --rm --volume=${PWD}:/check mstruebing/editorconfig-checker:v3.6.0
 
 # Misc
+SHELL := /bin/bash
 .DEFAULT_GOAL = help
+
+define sequential_runner
+@TOOLS="$(1)"; \
+LABEL="$(2)"; \
+N=0; for t in $$TOOLS; do N=$$((N+1)); done; \
+TMPDIR=$$(mktemp -d); \
+SPINNER=('⠋' '⠙' '⠹' '⠸' '⠼' '⠴' '⠦' '⠧' '⠇' '⠏'); \
+printf "Running $$N $$LABEL sequentially…\n\n"; \
+for tool in $$TOOLS; do \
+	printf "  \033[33m⏳\033[0m  %s\n" "$$tool"; \
+	( $(MAKE) --no-print-directory $$tool > "$$TMPDIR/$$tool.log" 2>&1; echo $$? > "$$TMPDIR/$$tool.exit" ) & \
+	spin_idx=0; \
+	while [ ! -f "$$TMPDIR/$$tool.exit" ]; do \
+		spin_char=$${SPINNER[$$((spin_idx % 10))]}; \
+		printf "\033[1A\r\033[2K  \033[33m%s\033[0m  %s\n" "$$spin_char" "$$tool"; \
+		spin_idx=$$((spin_idx + 1)); \
+		sleep 0.1; \
+	done; \
+	exit_code=$$(cat "$$TMPDIR/$$tool.exit"); \
+	if [ "$$exit_code" -eq 0 ]; then \
+		printf "\033[1A\r\033[2K  \033[32m✔\033[0m  %s\n" "$$tool"; \
+	else \
+		printf "\033[1A\r\033[2K  \033[31m✘\033[0m  %s\n" "$$tool"; \
+		cat "$$TMPDIR/$$tool.log"; \
+		rm -rf "$$TMPDIR"; \
+		exit 1; \
+	fi; \
+done; \
+printf "\n"; \
+rm -rf "$$TMPDIR"
+endef
+
+define parallel_runner
+@TOOLS="$(1)"; \
+LABEL="$(2)"; \
+N=0; for t in $$TOOLS; do N=$$((N+1)); done; \
+TMPDIR=$$(mktemp -d); \
+SPINNER=('⠋' '⠙' '⠹' '⠸' '⠼' '⠴' '⠦' '⠧' '⠇' '⠏'); \
+printf "Launching $$N $$LABEL in parallel…\n\n"; \
+for tool in $$TOOLS; do \
+	printf "  \033[33m⏳\033[0m  %s\n" "$$tool"; \
+done; \
+for tool in $$TOOLS; do \
+	( $(MAKE) --no-print-directory $$tool > "$$TMPDIR/$$tool.log" 2>&1; echo $$? > "$$TMPDIR/$$tool.exit" ) & \
+done; \
+PENDING="$$TOOLS"; \
+FAILED=0; \
+spin_idx=0; \
+while [ -n "$$PENDING" ]; do \
+	spin_char=$${SPINNER[$$((spin_idx % 10))]}; \
+	NEW_PENDING=""; \
+	for tool in $$PENDING; do \
+		idx=0; \
+		for t in $$TOOLS; do \
+			[ "$$t" = "$$tool" ] && break; \
+			idx=$$((idx + 1)); \
+		done; \
+		lines_up=$$((N - idx)); \
+		if [ -f "$$TMPDIR/$$tool.exit" ]; then \
+			exit_code=$$(cat "$$TMPDIR/$$tool.exit"); \
+			if [ "$$exit_code" -eq 0 ]; then \
+				printf "\033[%dA\r\033[2K  \033[32m✔\033[0m  %s\033[%dB\r" "$$lines_up" "$$tool" "$$lines_up"; \
+			else \
+				printf "\033[%dA\r\033[2K  \033[31m✘\033[0m  %s\033[%dB\r" "$$lines_up" "$$tool" "$$lines_up"; \
+				FAILED=1; \
+			fi; \
+		else \
+			printf "\033[%dA\r\033[2K  \033[33m%s\033[0m  %s\033[%dB\r" "$$lines_up" "$$spin_char" "$$tool" "$$lines_up"; \
+			NEW_PENDING="$$NEW_PENDING $$tool"; \
+		fi; \
+	done; \
+	PENDING="$$NEW_PENDING"; \
+	spin_idx=$$((spin_idx + 1)); \
+	[ -n "$$PENDING" ] && sleep 0.1; \
+done; \
+printf "\n"; \
+if [ $$FAILED -eq 0 ]; then \
+	printf "\033[32mAll $$LABEL passed.\033[0m\n"; \
+else \
+	for tool in $$TOOLS; do \
+		exit_code=$$(cat "$$TMPDIR/$$tool.exit"); \
+		if [ "$$exit_code" -ne 0 ]; then \
+			printf "\n\033[31m── %s ──────────────────────────────────────────────────\033[0m\n" "$$tool"; \
+			cat "$$TMPDIR/$$tool.log"; \
+		fi; \
+	done; \
+fi; \
+rm -rf "$$TMPDIR"; \
+[ $$FAILED -eq 0 ]
+endef
 
 ## —— 🎵 🐳 The Symfony-docker Makefile 🐳 🎵 ——————————————————————————————————
 .PHONY: help
@@ -78,8 +169,7 @@ bash: sh
 
 .PHONY: restart-mocks
 restart-mocks: ## Restart Moco mocks
-	$(DOCKER_COMP) restart moco.sheets.int
-	$(DOCKER_COMP) restart moco.sheets.test
+	$(DOCKER_COMP) restart moco.sheets.int moco.sheets.test
 
 ## —— Data 💾 ————————————————————————————————————————————————————————————————
 .PHONY: data
@@ -146,11 +236,21 @@ cc:
 	@$(SYMFONY) cache:clear --env=dev
 	@$(SYMFONY) cache:clear --env=test
 
+## —— CI 🚀 ———————————————————————————————————————————————————————————————————
+.PHONY: all
+all: ## Run all checks (infra-quality, code-quality, tests, measures, security)
+all:
+	$(call parallel_runner,infra-quality code-quality tests measures security,test suites)
+
+.PHONY: a
+a: ## Alias of all
+a: all
+
 ## —— Tests 🧪 ———————————————————————————————————————————————————————————————
 .PHONY: tests
 tests: ## Execute all tests
 tests:
-	$(PHPUNIT) tests/src --display-all
+	$(call parallel_runner,tests-unit tests-integration,test suites)
 
 .PHONY: t
 t: ## Alias of tests
@@ -160,30 +260,23 @@ t: tests
 tests-unit: ## Execute unit tests
 	$(PHPUNIT) tests/src/Unit
 
-.PHONY: tests-integration
-tests-integration: ## Execute integration tests
-	$(PHPUNIT) tests/src/Integration
-
 .PHONY: tu
 tu: ## Alias of tests-unit
 tu: tests-unit
+
+.PHONY: tests-integration
+tests-integration: ## Execute integration tests
+	$(PHPUNIT) tests/src/Integration
 
 .PHONY: ti
 ti: ## Alias of tests-integration
 ti: tests-integration
 
-.PHONY: tests-api-mocked
-tests-api-mocked: ## Execute tests on the group api-mocked-testing only
-	$(PHPUNIT) tests/src/Integration --group=api-mocked-testing
-
-## —— Quality 👌 ———————————————————————————————————————————————————————————————
-.PHONY: quality
-quality: ## Execute all quality analyses
-quality: infra-quality code-quality
-
+## —— Infra Quality 🏗️ ———————————————————————————————————————————————————————————————
 .PHONY: infra-quality
 infra-quality: ## Execute all infra quality analyses
-infra-quality: docker-compose-linter dockerfile-linter dotenv-linter check-moco-refs
+infra-quality:
+	$(call parallel_runner,docker-compose-linter dockerfile-linter dotenv-linter check-moco-refs,infra-quality checks)
 
 .PHONY: iq
 iq: ## Alias of infra-quality
@@ -211,9 +304,11 @@ dotenv-linter: ## Run DotEnv linter
 dotenv-fixer: ## Run DotEnv fixer
 	$(DOTENV_LINTER_CMD) fix . -r --no-backup
 
+## —— Code Quality 🔍 ———————————————————————————————————————————————————————————————
 .PHONY: code-quality
 code-quality: ## Execute all code quality analyses
-code-quality: editorconfig-linter jsonlint validate-autoloader phpcsfixer phpmd psalm phpstan deptrac
+code-quality:
+	$(call parallel_runner,editorconfig-linter jsonlint validate-autoloader phpcsfixer phpmd psalm phpstan deptrac,code-quality checks)
 
 .PHONY: cq
 cq: ## Alias of code-quality
@@ -222,7 +317,7 @@ cq: code-quality
 .PHONY: editorconfig-linter
 editorconfig-linter: ## Execute editorconfig linter
 editorconfig-linter:
-	$(EDITORCONFIG_LINTER_CMD)
+	$(EDITORCONFIG_LINTER_CMD) editorconfig-checker --exclude=".phar"
 
 .PHONY: jsonlint
 jsonlint: ## Execute jsonlint
@@ -261,7 +356,14 @@ phpmd: tools/phpmd/vendor/bin/phpmd
 psalm: ## Execute psalm
 psalm: tools/psalm/vendor/bin/psalm
 	@$(PHP_CONT) rm -Rf var/cache/psalm
+	$(call parallel_runner,psalm-xml psalm-src-xml,psalm analyses)
+
+.PHONY: psalm-xml
+psalm-xml: tools/psalm/vendor/bin/psalm
 	@$(PHP) tools/psalm/vendor/bin/psalm -c psalm.xml --no-diff --show-info=false --no-cache --find-unused-psalm-suppress --no-suggestions
+
+.PHONY: psalm-src-xml
+psalm-src-xml: tools/psalm/vendor/bin/psalm
 	@$(PHP) tools/psalm/vendor/bin/psalm -c psalm-src-only.xml --no-diff --show-info=false --no-cache --find-unused-psalm-suppress --no-suggestions
 
 .PHONY: phpstan
@@ -305,7 +407,9 @@ newman-execute:
 ## —— Measures 📏 ———————————————————————————————————————————————————————————————
 .PHONY: measures
 measures: ## Execute all measures tools
-measures: coverage infection
+measures: clear-build
+	$(call sequential_runner,coverage-generate,coverage generation)
+	$(call parallel_runner,coverage-check infection,measures)
 
 .PHONY: m
 m: ## Alias of measures
@@ -313,22 +417,31 @@ m: measures
 
 .PHONY: clear-build
 clear-build: ## Clear build directory
-	rm -Rf build/coverage*
+	@rm -Rf build/coverage*
+
+.PHONY: coverage-generate
+coverage-generate: ## Generate PHPUnit coverage data (Xdebug)
+coverage-generate: build/coverage/coverage-xml
 
 build/coverage/coverage-xml: ## Generate coverage report
 	$(DOCKER_COMP) exec \
 		-e XDEBUG_MODE=coverage -T php \
 		php vendor/bin/phpunit \
 			--exclude-group="browser-testing" \
+			--no-progress \
 			--coverage-clover=build/coverage/coverage.xml \
 			--coverage-xml=build/coverage/coverage-xml \
 			--log-junit=build/coverage/junit.xml
 
-.PHONY: coverage
-coverage: ## Execute PHPUnit Coverage to check the score
-coverage: clear-build build/coverage/coverage-xml
+.PHONY: coverage-check
+coverage-check: ## Check PHPUnit coverage score (requires build/coverage/coverage-xml)
+coverage-check: build/coverage/coverage-xml
 	@$(PHP_CONT) php tools/coverage/coverage.php build/coverage/coverage.xml 100 true \
 	|| (echo "❌ Coverage check failed, generating HTML report..." && $(MAKE) coverage-html && exit 1)
+
+.PHONY: coverage
+coverage: ## Execute PHPUnit Coverage to check the score
+coverage: clear-build build/coverage/coverage-xml coverage-check
 
 .PHONY: coverage-html
 coverage-html: ## Execute PHPUnit Coverage in HTML
@@ -336,6 +449,7 @@ coverage-html: ## Execute PHPUnit Coverage in HTML
 		-e XDEBUG_MODE=coverage -T php \
 		php vendor/bin/phpunit \
 			--exclude-group="browser-testing" \
+			--no-progress \
 			--coverage-html=build/coverage/coverage-html
 
 .PHONY: clear-infection-cache
@@ -353,7 +467,8 @@ infection: build/coverage/coverage-xml tools/infection/vendor/bin/infection clea
 ## —— Security 🛡️ ———————————————————————————————————————————————————————————————
 .PHONY: security
 security: ## Execute all security commands
-security: composer-audit composer-audit-tools security-check
+security:
+	$(call parallel_runner,composer-audit composer-audit-tools security-check,security checks)
 
 .PHONY: s
 s: ## Alias of security
@@ -415,6 +530,11 @@ tools/infection/vendor/bin/infection: ## Install infection
 
 tools/jsonlint/vendor/bin/jsonlint: ## Install jsonlint
 	@$(COMPOSER) install --working-dir=tools/jsonlint --optimize-autoloader --no-dev
+
+tools/cachetool/cachetool.phar: ## Install cachetool
+	mkdir -p tools/cachetool
+	curl -sLO https://github.com/gordalina/cachetool/releases/download/9.2.1/cachetool.phar --output-dir tools/cachetool
+	chmod +x tools/cachetool/cachetool.phar
 
 ## —— Image 🐳 ———————————————————————————————————————————————————————————————
 img-build: ## Build Docker image
