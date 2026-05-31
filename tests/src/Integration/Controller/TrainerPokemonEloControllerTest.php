@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace App\Tests\Integration\Controller;
 
 use App\Controller\TrainerPokemonEloController;
+use App\Factory\ElectionMetricsResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
  * @internal
  */
 #[CoversClass(TrainerPokemonEloController::class)]
+#[CoversClass(ElectionMetricsResponseFactory::class)]
 final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
 {
     public function testGetTop(): void
@@ -240,5 +242,25 @@ final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
         );
 
         $this->assertEquals(401, $this->getClientResponse()->getStatusCode());
+    }
+
+    public function testGetMetricsMatchesFixture(): void
+    {
+        $this->apiRequest(
+            'GET',
+            '/election/metrics',
+            [
+                'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                'dex_slug' => 'demo',
+                'election_slug' => '',
+            ]
+        );
+
+        $this->assertResponseIsOK();
+
+        self::assertJsonStringEqualsJsonFile(
+            '/app/tests/resources/fixtures/election_metrics_response.json',
+            $this->getClientResponseContent(),
+        );
     }
 }
