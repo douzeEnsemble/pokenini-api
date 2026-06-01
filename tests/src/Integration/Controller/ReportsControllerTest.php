@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Tests\Integration\Controller;
 
 use App\Controller\ReportsController;
-use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
@@ -15,111 +15,151 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 #[CoversClass(ReportsController::class)]
 final class ReportsControllerTest extends WebTestCase
 {
-    use RefreshDatabaseTrait;
-
-    public function testReports(): void
+    #[Test]
+    public function getReturnsSuccessfulJsonResponse(): void
     {
         $client = self::createClient();
+        $client->request('GET', '/reports', [], [], [
+            'PHP_AUTH_USER' => 'web',
+            'PHP_AUTH_PW' => 'douze',
+        ]);
 
-        $client->request(
-            'GET',
-            '/reports',
-            [
-                'headers' => [
-                    'accept' => 'application/json',
-                ],
-            ],
-            [],
-            [
-                'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
-                'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
-            ],
-        );
-
-        $this->assertResponseIsSuccessful();
-
-        $content = (string) $client->getResponse()->getContent();
-
-        /** @var int[][]|string[][] $data */
-        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
-
-        $this->assertEquals(self::getReportsData(), $data);
+        self::assertResponseIsSuccessful();
+        self::assertResponseHeaderSame('content-type', 'application/json');
     }
 
-    /**
-     * @return array<string, array<int, array<string, int|string>>>
-     */
-    private static function getReportsData(): array
+    #[Test]
+    public function getReturnsObjectWithRequiredSections(): void
     {
-        return [
-            'catch_state_counts_defined_by_trainer' => [
-                [
-                    'nb' => 28,
-                    'trainer' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                ],
-                [
-                    'nb' => 3,
-                    'trainer' => 'bd307a3ec329e10a2cff8fb87480823da114f8f4',
-                ],
-            ],
-            'dex_usage' => [
-                [
-                    'nb' => 2,
-                    'name' => 'Red / Green / Blue / Yellow',
-                    'french_name' => 'Rouge / Vert / Bleu / Jaune',
-                ],
-                [
-                    'nb' => 2,
-                    'name' => 'Gold / Silver / Crystal',
-                    'french_name' => 'Or / Argent / Cristal',
-                ],
-                [
-                    'nb' => 2,
-                    'name' => 'Home',
-                    'french_name' => 'Home',
-                ],
-                [
-                    'nb' => 1,
-                    'name' => 'Ruby / Sapphire / Emerald',
-                    'french_name' => 'Rubis / Saphir / Émeraude',
-                ],
-                [
-                    'nb' => 1,
-                    'name' => "Home\nShiny",
-                    'french_name' => "Home\nChromatique",
-                ],
-                [
-                    'nb' => 1,
-                    'name' => 'Home PoGo',
-                    'french_name' => 'Home PoGo',
-                ],
-            ],
-            'catch_state_usage' => [
-                [
-                    'nb' => 11,
-                    'name' => 'No',
-                    'french_name' => 'Non',
-                    'color' => '#e57373',
-                ],
-                [
-                    'nb' => 4,
-                    'name' => 'Maybe',
-                    'french_name' => 'Peut être',
-                    'color' => 'blue',
-                ],
-                [
-                    'nb' => 5,
-                    'name' => 'Maybe not',
-                    'french_name' => 'Peut être pas',
-                    'color' => 'yellow',
-                ],
-                [
-                    'nb' => 11,
-                    'name' => 'Yes',
-                    'french_name' => 'Oui',
-                    'color' => '#66bb6a',
-                ],
-            ],
-        ];
+        $client = self::createClient();
+        $client->request('GET', '/reports', [], [], [
+            'PHP_AUTH_USER' => 'web',
+            'PHP_AUTH_PW' => 'douze',
+        ]);
+
+        $content = $client->getResponse()->getContent();
+        self::assertIsString($content);
+
+        /** @var null|array<string, mixed> $data */
+        $data = json_decode($content, associative: true);
+
+        self::assertIsArray($data);
+        self::assertArrayHasKey('catch_state_counts_defined_by_trainer', $data);
+        self::assertArrayHasKey('dex_usage', $data);
+        self::assertArrayHasKey('catch_state_usage', $data);
+    }
+
+    #[Test]
+    public function getCatchStateCountsHaveCorrectShape(): void
+    {
+        $client = self::createClient();
+        $client->request('GET', '/reports', [], [], [
+            'PHP_AUTH_USER' => 'web',
+            'PHP_AUTH_PW' => 'douze',
+        ]);
+
+        $content = $client->getResponse()->getContent();
+        self::assertIsString($content);
+
+        /** @var null|array<string, mixed> $data */
+        $data = json_decode($content, associative: true);
+
+        self::assertIsArray($data);
+
+        /** @var array<int, mixed> $catchStateCounts */
+        $catchStateCounts = $data['catch_state_counts_defined_by_trainer'];
+
+        /** @var mixed $item */
+        foreach ($catchStateCounts as $item) {
+            self::assertIsArray($item);
+            self::assertArrayHasKey('nb', $item);
+            self::assertArrayHasKey('trainer', $item);
+            self::assertIsInt($item['nb']);
+            self::assertIsString($item['trainer']);
+        }
+    }
+
+    #[Test]
+    public function getDexUsageHasCorrectShape(): void
+    {
+        $client = self::createClient();
+        $client->request('GET', '/reports', [], [], [
+            'PHP_AUTH_USER' => 'web',
+            'PHP_AUTH_PW' => 'douze',
+        ]);
+
+        $content = $client->getResponse()->getContent();
+        self::assertIsString($content);
+
+        /** @var null|array<string, mixed> $data */
+        $data = json_decode($content, associative: true);
+
+        self::assertIsArray($data);
+
+        /** @var array<int, mixed> $dexUsage */
+        $dexUsage = $data['dex_usage'];
+
+        /** @var mixed $item */
+        foreach ($dexUsage as $item) {
+            self::assertIsArray($item);
+            self::assertArrayHasKey('nb', $item);
+            self::assertArrayHasKey('name', $item);
+            self::assertArrayHasKey('french_name', $item);
+            self::assertIsInt($item['nb']);
+            self::assertIsString($item['name']);
+            self::assertIsString($item['french_name']);
+        }
+    }
+
+    #[Test]
+    public function getCatchStateUsageHasCorrectShape(): void
+    {
+        $client = self::createClient();
+        $client->request('GET', '/reports', [], [], [
+            'PHP_AUTH_USER' => 'web',
+            'PHP_AUTH_PW' => 'douze',
+        ]);
+
+        $content = $client->getResponse()->getContent();
+        self::assertIsString($content);
+
+        /** @var null|array<string, mixed> $data */
+        $data = json_decode($content, associative: true);
+
+        self::assertIsArray($data);
+
+        /** @var array<int, mixed> $catchStateUsage */
+        $catchStateUsage = $data['catch_state_usage'];
+
+        /** @var mixed $item */
+        foreach ($catchStateUsage as $item) {
+            self::assertIsArray($item);
+            self::assertArrayHasKey('nb', $item);
+            self::assertArrayHasKey('name', $item);
+            self::assertArrayHasKey('french_name', $item);
+            self::assertArrayHasKey('color', $item);
+            self::assertIsInt($item['nb']);
+            self::assertIsString($item['name']);
+            self::assertIsString($item['french_name']);
+            self::assertIsString($item['color']);
+        }
+    }
+
+    #[Test]
+    public function getResponseMatchesFixture(): void
+    {
+        $client = self::createClient();
+        $client->request('GET', '/reports', [], [], [
+            'PHP_AUTH_USER' => 'web',
+            'PHP_AUTH_PW' => 'douze',
+        ]);
+
+        $content = $client->getResponse()->getContent();
+        self::assertIsString($content);
+
+        self::assertJsonStringEqualsJsonFile(
+            '/app/tests/resources/fixtures/reports_response.json',
+            $content,
+        );
     }
 }

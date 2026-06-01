@@ -194,7 +194,7 @@ class PokedexRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return int[]|string[]
+     * @return list<array<string, mixed>>
      */
     public function getCatchStateCountsDefinedByTrainer(): array
     {
@@ -212,7 +212,7 @@ class PokedexRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return int[]|string[]
+     * @return list<array<string, mixed>>
      */
     public function getDexUsage(): array
     {
@@ -230,7 +230,7 @@ class PokedexRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return int[]|string[]
+     * @return list<array<string, mixed>>
      */
     public function getCatchStateUsage(): array
     {
@@ -248,11 +248,11 @@ class PokedexRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return int[]|string[]
+     * @return list<array<string, mixed>>
      */
     private function getReportsResult(string $sql): array
     {
-        /** @var int[]|string[] */
+        /** @var list<array<string, mixed>> */
         return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
     }
 
