@@ -13,7 +13,7 @@ class PokedexService
     ) {}
 
     /**
-     * @return int[]|string[]
+     * @return list<array<string, mixed>>
      */
     public function getCatchStateCountsDefinedByTrainer(): array
     {
@@ -21,7 +21,7 @@ class PokedexService
     }
 
     /**
-     * @return int[]|string[]
+     * @return list<array<string, mixed>>
      */
     public function getDexUsage(): array
     {
@@ -29,7 +29,7 @@ class PokedexService
     }
 
     /**
-     * @return int[]|string[]
+     * @return list<array<string, mixed>>
      */
     public function getCatchStateUsage(): array
     {
