@@ -663,6 +663,160 @@ final class AlbumData
     }
 
     /**
+     * @return array<array<string, mixed>>
+     */
+    public static function getExpectedRegGreenBlueYellowNestedContent(
+        ?string $bulbasaurCatchState,
+        ?string $ivysaurCatchState,
+        ?string $venusaurCatchState,
+        ?string $caterpieCatchState,
+        ?string $metapodCatchState,
+        ?string $butterfreeCatchState,
+        ?string $douzeCatchState,
+    ): array {
+        /** @var array<array<string, mixed>> $content */
+        $content = self::getExpectedRegGreenBlueYellowContent(
+            $bulbasaurCatchState,
+            $ivysaurCatchState,
+            $venusaurCatchState,
+            $caterpieCatchState,
+            $metapodCatchState,
+            $butterfreeCatchState,
+            $douzeCatchState,
+        );
+
+        return array_map(static fn (array $flat) => self::toNestedFormat($flat), $content);
+    }
+
+    /**
+     * @return array<array<string, mixed>>
+     */
+    public static function getExpectedGoldSilverCrystalNestedContent(
+        ?string $bulbasaurCatchState,
+        ?string $ivysaurCatchState,
+        ?string $venusaurCatchState,
+        ?string $charmanderCatchState,
+        ?string $charmeleonCatchState,
+        ?string $charizardCatchState,
+        ?string $caterpieCatchState,
+        ?string $metapodCatchState,
+        ?string $butterfreeCatchState,
+    ): array {
+        /** @var array<array<string, mixed>> $content */
+        $content = self::getExpectedGoldSilverCrystalContent(
+            $bulbasaurCatchState,
+            $ivysaurCatchState,
+            $venusaurCatchState,
+            $charmanderCatchState,
+            $charmeleonCatchState,
+            $charizardCatchState,
+            $caterpieCatchState,
+            $metapodCatchState,
+            $butterfreeCatchState,
+        );
+
+        return array_map(static fn (array $flat) => self::toNestedFormat($flat), $content);
+    }
+
+    /**
+     * @return array<array<string, mixed>>
+     */
+    public static function getExpectedHomeNestedContent(): array
+    {
+        /** @var array<array<string, mixed>> $content */
+        $content = self::getExpectedHomeContent();
+
+        return array_map(static fn (array $flat) => self::toNestedFormat($flat), $content);
+    }
+
+    /**
+     * @return array<array<string, mixed>>
+     */
+    public static function getExpectedHomeShinyNestedContent(): array
+    {
+        /** @var array<array<string, mixed>> $content */
+        $content = self::getExpectedHomeShinyContent();
+
+        return array_map(static fn (array $flat) => self::toNestedFormat($flat), $content);
+    }
+
+    /**
+     * @param array<string, mixed> $flat
+     *
+     * @return array<string, mixed>
+     */
+    private static function toNestedFormat(array $flat): array
+    {
+        $catchState = null !== ($flat['catch_state_slug'] ?? null)
+            ? [
+                'slug' => $flat['catch_state_slug'],
+                'name' => $flat['catch_state_name'],
+                'french_name' => $flat['catch_state_french_name'],
+            ]
+            : null;
+
+        $categoryForm = null !== ($flat['category_form_slug'] ?? null)
+            ? ['slug' => $flat['category_form_slug'], 'name' => $flat['category_form_name']]
+            : null;
+
+        $regionalForm = null !== ($flat['regional_form_slug'] ?? null)
+            ? ['slug' => $flat['regional_form_slug'], 'name' => $flat['regional_form_name']]
+            : null;
+
+        $specialForm = null !== ($flat['special_form_slug'] ?? null)
+            ? ['slug' => $flat['special_form_slug'], 'name' => $flat['special_form_name']]
+            : null;
+
+        $variantForm = null !== ($flat['variant_form_slug'] ?? null)
+            ? ['slug' => $flat['variant_form_slug'], 'name' => $flat['variant_form_name']]
+            : null;
+
+        $primaryType = null !== ($flat['primary_type_slug'] ?? null)
+            ? [
+                'slug' => $flat['primary_type_slug'],
+                'name' => $flat['primary_type_name'],
+                'french_name' => $flat['primary_type_french_name'],
+            ]
+            : null;
+
+        $secondaryType = null !== ($flat['secondary_type_slug'] ?? null)
+            ? [
+                'slug' => $flat['secondary_type_slug'],
+                'name' => $flat['secondary_type_name'],
+                'french_name' => $flat['secondary_type_french_name'],
+            ]
+            : null;
+
+        return [
+            'pokemon' => [
+                'slug' => $flat['pokemon_slug'],
+                'name' => $flat['pokemon_name'],
+                'french_name' => $flat['pokemon_french_name'],
+                'national_dex_number' => $flat['pokemon_national_dex_number'],
+                'regional_dex_number' => $flat['pokemon_regional_dex_number'] ?? null,
+                'simplified_name' => $flat['pokemon_simplified_name'] ?? null,
+                'forms_label' => $flat['pokemon_forms_label'] ?? null,
+                'simplified_french_name' => $flat['pokemon_simplified_french_name'] ?? null,
+                'forms_french_label' => $flat['pokemon_forms_french_label'] ?? null,
+                'icon' => $flat['pokemon_icon'] ?? null,
+                'family_order' => $flat['pokemon_family_order'],
+                'family_lead_slug' => $flat['family_lead_slug'] ?? null,
+                'original_game_bundle_slug' => $flat['original_game_bundle_slug'] ?? null,
+                'order_number' => $flat['pokemon_order_number'],
+                'game_bundles' => $flat['game_bundles'],
+                'game_bundles_shiny' => $flat['game_bundles_shiny'],
+            ],
+            'catch_state' => $catchState,
+            'category_form' => $categoryForm,
+            'regional_form' => $regionalForm,
+            'special_form' => $specialForm,
+            'variant_form' => $variantForm,
+            'primary_type' => $primaryType,
+            'secondary_type' => $secondaryType,
+        ];
+    }
+
+    /**
      * @return null[]|string[]
      */
     private static function getCatchStateDataFromSlug(?string $catchStateSlug): array

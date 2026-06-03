@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\DTO\AlbumFilter\AlbumFilters;
 use App\DTO\AlbumFilter\AlbumFiltersRequest;
+use App\Factory\AlbumPokemonResponseFactory;
 use App\Service\Album\AlbumDexService;
 use App\Service\Album\AlbumPokemonService;
 use App\Service\Album\AlbumReportService;
@@ -53,7 +54,7 @@ final class AlbumIndexController extends AbstractController
             $serializer->serialize(
                 [
                     'dex' => $dex,
-                    'pokemons' => $pokemons,
+                    'pokemons' => AlbumPokemonResponseFactory::fromSqlRows($pokemons),
                     'report' => $report,
                     'filtered_report' => $filteredReport,
                 ],

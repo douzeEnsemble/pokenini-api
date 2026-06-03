@@ -42,7 +42,7 @@ final class FamiliesTest extends AbstractTestAlbumIndexFilteredController
 
         $pokemons = $data['pokemons'];
 
-        $this->assertSameSlugs(
+        $this->assertResponseSameSlugs(
             $pokemons,
             [
                 'bulbasaur',
@@ -115,7 +115,7 @@ final class FamiliesTest extends AbstractTestAlbumIndexFilteredController
 
         $pokemons = $data['pokemons'];
 
-        $this->assertSameSlugs(
+        $this->assertResponseSameSlugs(
             $pokemons,
             [
                 'bulbasaur',

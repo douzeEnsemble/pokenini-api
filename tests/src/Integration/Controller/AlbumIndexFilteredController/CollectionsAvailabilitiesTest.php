@@ -42,7 +42,7 @@ final class CollectionsAvailabilitiesTest extends AbstractTestAlbumIndexFiltered
 
         $pokemons = $data['pokemons'];
 
-        $this->assertSameSlugs(
+        $this->assertResponseSameSlugs(
             $pokemons,
             [
                 'bulbasaur',
@@ -108,7 +108,7 @@ final class CollectionsAvailabilitiesTest extends AbstractTestAlbumIndexFiltered
 
         $pokemons = $data['pokemons'];
 
-        $this->assertSameSlugs(
+        $this->assertResponseSameSlugs(
             $pokemons,
             [
                 'ivysaur',

@@ -42,7 +42,7 @@ final class TypesTest extends AbstractTestAlbumIndexFilteredController
 
         $pokemons = $data['pokemons'];
 
-        $this->assertSameSlugs(
+        $this->assertResponseSameSlugs(
             $pokemons,
             [
                 'bulbasaur',
@@ -113,7 +113,7 @@ final class TypesTest extends AbstractTestAlbumIndexFilteredController
 
         $pokemons = $data['pokemons'];
 
-        $this->assertSameSlugs(
+        $this->assertResponseSameSlugs(
             $pokemons,
             [
                 'rattata-alola',
@@ -185,7 +185,7 @@ final class TypesTest extends AbstractTestAlbumIndexFilteredController
 
         $pokemons = $data['pokemons'];
 
-        $this->assertSameSlugs(
+        $this->assertResponseSameSlugs(
             $pokemons,
             [
                 'butterfree',
@@ -229,7 +229,7 @@ final class TypesTest extends AbstractTestAlbumIndexFilteredController
 
         $pokemons = $data['pokemons'];
 
-        $this->assertSameSlugs(
+        $this->assertResponseSameSlugs(
             $pokemons,
             [
                 'rattata',

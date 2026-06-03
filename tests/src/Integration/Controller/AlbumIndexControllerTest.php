@@ -74,7 +74,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $pokemons = $data['pokemons'];
 
         $this->assertEquals(
-            AlbumData::getExpectedRegGreenBlueYellowContent(
+            AlbumData::getExpectedRegGreenBlueYellowNestedContent(
                 'no',
                 'maybe',
                 'maybenot',
@@ -154,7 +154,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $pokemons = $data['pokemons'];
 
         $this->assertEquals(
-            AlbumData::getExpectedGoldSilverCrystalContent(
+            AlbumData::getExpectedGoldSilverCrystalNestedContent(
                 'yes',
                 'no',
                 'no',
@@ -236,7 +236,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $pokemons = $data['pokemons'];
 
         $this->assertEquals(
-            AlbumData::getExpectedRegGreenBlueYellowContent(
+            AlbumData::getExpectedRegGreenBlueYellowNestedContent(
                 'yes',
                 null,
                 null,
@@ -316,7 +316,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $pokemons = $data['pokemons'];
 
         $this->assertEquals(
-            AlbumData::getExpectedRegGreenBlueYellowContent(
+            AlbumData::getExpectedRegGreenBlueYellowNestedContent(
                 null,
                 null,
                 null,
@@ -387,7 +387,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $pokemons = $data['pokemons'];
 
         $this->assertEquals(
-            AlbumData::getExpectedHomeContent(),
+            AlbumData::getExpectedHomeNestedContent(),
             $pokemons
         );
 
@@ -450,7 +450,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $pokemons = $data['pokemons'];
 
         $this->assertEquals(
-            AlbumData::getExpectedHomeShinyContent(),
+            AlbumData::getExpectedHomeShinyNestedContent(),
             $pokemons
         );
 
