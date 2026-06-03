@@ -10,6 +10,9 @@ final class PokemonDataResponse
 {
     /**
      * @SuppressWarnings("PHPMD.ExcessiveParameterList")
+     *
+     * @param array<string> $gameBundles
+     * @param array<string> $gameBundlesShiny
      */
     public function __construct(
         public readonly string $slug,
@@ -18,6 +21,8 @@ final class PokemonDataResponse
         public readonly string $frenchName,
         #[SerializedName('national_dex_number')]
         public readonly int $nationalDexNumber,
+        #[SerializedName('regional_dex_number')]
+        public readonly ?int $regionalDexNumber,
         #[SerializedName('simplified_name')]
         public readonly ?string $simplifiedName,
         #[SerializedName('forms_label')]
@@ -35,5 +40,9 @@ final class PokemonDataResponse
         public readonly ?string $originalGameBundleSlug,
         #[SerializedName('order_number')]
         public readonly string $orderNumber,
+        #[SerializedName('game_bundles')]
+        public readonly array $gameBundles,
+        #[SerializedName('game_bundles_shiny')]
+        public readonly array $gameBundlesShiny,
     ) {}
 }

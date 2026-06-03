@@ -42,7 +42,7 @@ final class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
 
         $pokemons = $data['pokemons'];
 
-        $this->assertSameSlugs(
+        $this->assertResponseSameSlugs(
             $pokemons,
             [
                 'caterpie',
@@ -223,7 +223,7 @@ final class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
 
         $pokemons = $data['pokemons'];
 
-        $this->assertSameSlugs(
+        $this->assertResponseSameSlugs(
             $pokemons,
             [
                 'caterpie',

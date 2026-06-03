@@ -69,6 +69,7 @@ final class ElectionEloResponseTest extends TestCase
             name: 'Charizard',
             frenchName: 'Dracaufeu',
             nationalDexNumber: 6,
+            regionalDexNumber: null,
             simplifiedName: null,
             formsLabel: null,
             simplifiedFrenchName: null,
@@ -78,6 +79,8 @@ final class ElectionEloResponseTest extends TestCase
             familyLeadSlug: null,
             originalGameBundleSlug: null,
             orderNumber: '0006.001',
+            gameBundles: [],
+            gameBundlesShiny: [],
         );
     }
 
