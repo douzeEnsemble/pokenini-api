@@ -41,7 +41,7 @@ class PokemonsRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return string[][]
+     * @return array<array<string, mixed>>
      */
     public function getNToPick(
         string $dexSlug,
@@ -76,7 +76,7 @@ class PokemonsRepository extends ServiceEntityRepository
             $this->getFiltersTypes(),
         );
 
-        /** @var string[][] */
+        /** @var array<array<string, mixed>> */
         return $this->getEntityManager()->getConnection()->fetchAllAssociative(
             $sql,
             $params,
@@ -85,7 +85,7 @@ class PokemonsRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return string[][]
+     * @return array<array<string, mixed>>
      */
     public function getNToVote(
         string $dexSlug,
@@ -120,7 +120,7 @@ class PokemonsRepository extends ServiceEntityRepository
             $this->getFiltersTypes(),
         );
 
-        /** @var string[][] */
+        /** @var array<array<string, mixed>> */
         return $this->getEntityManager()->getConnection()->fetchAllAssociative(
             $sql,
             $params,

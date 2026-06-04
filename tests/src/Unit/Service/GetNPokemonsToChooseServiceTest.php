@@ -32,12 +32,8 @@ final class GetNPokemonsToChooseServiceTest extends TestCase
             ->with($queryOptions)
             ->willReturn(
                 [
-                    [
-                        'toto',
-                    ],
-                    [
-                        'titi',
-                    ],
+                    ['pokemon_slug' => 'toto'],
+                    ['pokemon_slug' => 'titi'],
                 ],
             )
         ;
@@ -57,12 +53,8 @@ final class GetNPokemonsToChooseServiceTest extends TestCase
         $this->assertSame('pick', $electionList->getListType());
         $this->assertSame(
             [
-                [
-                    'toto',
-                ],
-                [
-                    'titi',
-                ],
+                ['pokemon_slug' => 'toto'],
+                ['pokemon_slug' => 'titi'],
             ],
             $electionList->getItems(),
         );
@@ -90,12 +82,8 @@ final class GetNPokemonsToChooseServiceTest extends TestCase
             ->with($queryOptions)
             ->willReturn(
                 [
-                    [
-                        'tata',
-                    ],
-                    [
-                        'tutu',
-                    ],
+                    ['pokemon_slug' => 'tata'],
+                    ['pokemon_slug' => 'tutu'],
                 ],
             )
         ;
@@ -110,12 +98,8 @@ final class GetNPokemonsToChooseServiceTest extends TestCase
         $this->assertSame('vote', $electionList->getListType());
         $this->assertSame(
             [
-                [
-                    'tata',
-                ],
-                [
-                    'tutu',
-                ],
+                ['pokemon_slug' => 'tata'],
+                ['pokemon_slug' => 'tutu'],
             ],
             $electionList->getItems(),
         );

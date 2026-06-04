@@ -11,7 +11,7 @@ final class ElectionPokemonsList
     public function __construct(
         #[SerializedName('type')]
         private readonly string $listType,
-        /** @var int[][]|null[][]|string[][] */
+        /** @var array<array<string, mixed>> */
         private readonly array $items,
     ) {}
 
@@ -21,7 +21,7 @@ final class ElectionPokemonsList
     }
 
     /**
-     * @return int[][]|null[][]|string[][]
+     * @return array<array<string, mixed>>
      */
     public function getItems(): array
     {

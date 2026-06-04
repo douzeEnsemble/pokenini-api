@@ -107,7 +107,7 @@ final class PokemonsControllerTest extends AbstractTestControllerApi
 
     private function assertResponseContent(int $expectedCount): void
     {
-        /** @var string[]|string[][][] $content */
+        /** @var array<string, mixed> $content */
         $content = $this->getJsonDecodedResponseContent();
 
         $this->assertArrayHasKey('type', $content);
@@ -115,14 +115,31 @@ final class PokemonsControllerTest extends AbstractTestControllerApi
 
         $this->assertArrayHasKey('items', $content);
 
-        /** @var string[][] $items */
+        /** @var array<array<string, mixed>> $items */
         $items = $content['items'];
         $this->assertCount($expectedCount, $items);
 
-        foreach ($items as $pokemon) {
-            $this->assertArrayHasKey('pokemon_slug', $pokemon);
-            $this->assertArrayHasKey('pokemon_french_name', $pokemon);
-            $this->assertArrayHasKey('pokemon_icon', $pokemon);
+        foreach ($items as $item) {
+            $this->assertArrayHasKey('pokemon', $item);
+            $this->assertIsArray($item['pokemon']);
+
+            /** @var array<string, mixed> $pokemon */
+            $pokemon = $item['pokemon'];
+            $this->assertArrayHasKey('slug', $pokemon);
+            $this->assertArrayHasKey('french_name', $pokemon);
+            $this->assertArrayHasKey('icon', $pokemon);
+            $this->assertArrayHasKey('national_dex_number', $pokemon);
+            $this->assertArrayHasKey('order_number', $pokemon);
+            $this->assertArrayHasKey('game_bundles', $pokemon);
+            $this->assertArrayHasKey('game_bundles_shiny', $pokemon);
+            $this->assertIsArray($pokemon['game_bundles']);
+            $this->assertIsArray($pokemon['game_bundles_shiny']);
+            $this->assertArrayHasKey('category_form', $item);
+            $this->assertArrayHasKey('regional_form', $item);
+            $this->assertArrayHasKey('special_form', $item);
+            $this->assertArrayHasKey('variant_form', $item);
+            $this->assertArrayHasKey('primary_type', $item);
+            $this->assertArrayHasKey('secondary_type', $item);
         }
     }
 }
