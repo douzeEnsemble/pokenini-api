@@ -279,6 +279,30 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
         self::assertNull($response->pokemon->originalGameBundleSlug);
     }
 
+    #[Test]
+    public function fromSqlRowCastsNullableStringFieldsFromNonStringValues(): void
+    {
+        $row = $this->buildRow([
+            'pokemon_simplified_name' => 42,
+            'pokemon_forms_label' => 7,
+            'pokemon_simplified_french_name' => 99,
+            'pokemon_forms_french_label' => 3,
+            'pokemon_icon' => 1,
+            'family_lead_slug' => 55,
+            'original_game_bundle_slug' => 12,
+        ]);
+
+        $response = ElectionPokemonResponseFactory::fromSqlRow($row);
+
+        self::assertSame('42', $response->pokemon->simplifiedName);
+        self::assertSame('7', $response->pokemon->formsLabel);
+        self::assertSame('99', $response->pokemon->simplifiedFrenchName);
+        self::assertSame('3', $response->pokemon->formsFrenchLabel);
+        self::assertSame('1', $response->pokemon->icon);
+        self::assertSame('55', $response->pokemon->familyLeadSlug);
+        self::assertSame('12', $response->pokemon->originalGameBundleSlug);
+    }
+
     /**
      * @param array<string, mixed> $overrides
      *

@@ -41,32 +41,32 @@ final class ElectionVoteControllerTest extends WebTestCase
 
         $this->assertSame(
             [
-                'electionVote' => [
-                    'trainerExternalId' => '12',
-                    'dexSlug' => 'demo',
-                    'electionSlug' => '',
-                    'winnersSlugs' => [
+                'election_vote' => [
+                    'trainer_external_id' => '12',
+                    'dex_slug' => 'demo',
+                    'election_slug' => '',
+                    'winners_slugs' => [
                         'butterfree',
                     ],
-                    'losersSlugs' => [
+                    'losers_slugs' => [
                         'caterpie',
                         'metapod',
                     ],
                 ],
-                'pokemonsElo' => [
+                'pokemons_elo' => [
                     'winners' => [
                         [
-                            'pokemonSlug' => 'butterfree',
+                            'pokemon_slug' => 'butterfree',
                             'elo' => 1016,
                         ],
                     ],
                     'losers' => [
                         [
-                            'pokemonSlug' => 'caterpie',
+                            'pokemon_slug' => 'caterpie',
                             'elo' => 984,
                         ],
                         [
-                            'pokemonSlug' => 'metapod',
+                            'pokemon_slug' => 'metapod',
                             'elo' => 984,
                         ],
                     ],
@@ -100,32 +100,32 @@ final class ElectionVoteControllerTest extends WebTestCase
 
         $this->assertSame(
             [
-                'electionVote' => [
-                    'trainerExternalId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                    'dexSlug' => 'demo',
-                    'electionSlug' => '',
-                    'winnersSlugs' => [
+                'election_vote' => [
+                    'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                    'dex_slug' => 'demo',
+                    'election_slug' => '',
+                    'winners_slugs' => [
                         'butterfree',
                     ],
-                    'losersSlugs' => [
+                    'losers_slugs' => [
                         'caterpie',
                         'metapod',
                     ],
                 ],
-                'pokemonsElo' => [
+                'pokemons_elo' => [
                     'winners' => [
                         [
-                            'pokemonSlug' => 'butterfree',
+                            'pokemon_slug' => 'butterfree',
                             'elo' => 1016,
                         ],
                     ],
                     'losers' => [
                         [
-                            'pokemonSlug' => 'caterpie',
+                            'pokemon_slug' => 'caterpie',
                             'elo' => 984,
                         ],
                         [
-                            'pokemonSlug' => 'metapod',
+                            'pokemon_slug' => 'metapod',
                             'elo' => 984,
                         ],
                     ],
@@ -159,30 +159,30 @@ final class ElectionVoteControllerTest extends WebTestCase
 
         $this->assertSame(
             [
-                'electionVote' => [
-                    'trainerExternalId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                    'dexSlug' => 'demo',
-                    'electionSlug' => '',
-                    'winnersSlugs' => [],
-                    'losersSlugs' => [
+                'election_vote' => [
+                    'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                    'dex_slug' => 'demo',
+                    'election_slug' => '',
+                    'winners_slugs' => [],
+                    'losers_slugs' => [
                         'caterpie',
                         'metapod',
                         'butterfree',
                     ],
                 ],
-                'pokemonsElo' => [
+                'pokemons_elo' => [
                     'winners' => [],
                     'losers' => [
                         [
-                            'pokemonSlug' => 'caterpie',
+                            'pokemon_slug' => 'caterpie',
                             'elo' => 984,
                         ],
                         [
-                            'pokemonSlug' => 'metapod',
+                            'pokemon_slug' => 'metapod',
                             'elo' => 984,
                         ],
                         [
-                            'pokemonSlug' => 'butterfree',
+                            'pokemon_slug' => 'butterfree',
                             'elo' => 984,
                         ],
                     ],
@@ -216,29 +216,29 @@ final class ElectionVoteControllerTest extends WebTestCase
 
         $this->assertSame(
             [
-                'electionVote' => [
-                    'trainerExternalId' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
-                    'dexSlug' => 'demo',
-                    'electionSlug' => '',
-                    'winnersSlugs' => [
+                'election_vote' => [
+                    'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                    'dex_slug' => 'demo',
+                    'election_slug' => '',
+                    'winners_slugs' => [
                         'caterpie',
                         'metapod',
                         'butterfree',
                     ],
-                    'losersSlugs' => [],
+                    'losers_slugs' => [],
                 ],
-                'pokemonsElo' => [
+                'pokemons_elo' => [
                     'winners' => [
                         [
-                            'pokemonSlug' => 'caterpie',
+                            'pokemon_slug' => 'caterpie',
                             'elo' => 1016,
                         ],
                         [
-                            'pokemonSlug' => 'metapod',
+                            'pokemon_slug' => 'metapod',
                             'elo' => 1016,
                         ],
                         [
-                            'pokemonSlug' => 'butterfree',
+                            'pokemon_slug' => 'butterfree',
                             'elo' => 1016,
                         ],
                     ],

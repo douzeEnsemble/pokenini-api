@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\DTO\ElectionVote;
+use App\Factory\ElectionVoteResultResponseFactory;
 use App\Service\ElectionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -45,7 +46,7 @@ final class ElectionVoteController extends AbstractController
 
         return JsonResponse::fromJsonString(
             $serializer->serialize(
-                $results,
+                ElectionVoteResultResponseFactory::fromElectionVoteResult($results),
                 'json',
             ),
         );
