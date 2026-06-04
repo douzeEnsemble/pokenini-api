@@ -101,11 +101,13 @@ final class PokemonsRepositoryTest extends KernelTestCase
 
         $this->assertCount($expectedCount, $list);
 
+        /** @var string $previous */
         $previous = $list[0]['pokemon_slug'];
         $max = count($list);
         for ($i = 1; $i < $max; ++$i) {
             $this->assertNotSame($previous, $list[$i]['pokemon_slug']);
 
+            /** @var string $previous */
             $previous = $list[$i]['pokemon_slug'];
         }
     }
@@ -187,11 +189,13 @@ final class PokemonsRepositoryTest extends KernelTestCase
 
         $this->assertCount($expectedCount, $list);
 
+        /** @var string $previous */
         $previous = $list[0]['pokemon_slug'];
         $max = count($list);
         for ($i = 1; $i < $max; ++$i) {
             $this->assertNotSame($previous, $list[$i]['pokemon_slug']);
 
+            /** @var string $previous */
             $previous = $list[$i]['pokemon_slug'];
         }
     }

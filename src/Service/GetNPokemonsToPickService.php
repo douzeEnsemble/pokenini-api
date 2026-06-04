@@ -15,7 +15,7 @@ class GetNPokemonsToPickService
     ) {}
 
     /**
-     * @return string[][]
+     * @return array<array<string, mixed>>
      */
     public function getNPokemonsToPick(TrainerPokemonEloListQueryOptions $queryOptions): array
     {

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\DTO\TrainerPokemonEloListQueryOptions;
+use App\Factory\ElectionPokemonResponseFactory;
 use App\Service\GetNPokemonsToChooseService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
@@ -27,11 +28,10 @@ final class PokemonsController extends AbstractController
 
         $list = $getNPokemonsToChooseService->getNPokemonsToChoose($queryOptions);
 
+        $response = ElectionPokemonResponseFactory::fromElectionPokemonsList($list);
+
         return JsonResponse::fromJsonString(
-            $serializer->serialize(
-                $list,
-                'json',
-            ),
+            $serializer->serialize($response, 'json'),
         );
     }
 }
