@@ -5,14 +5,17 @@ declare(strict_types=1);
 namespace App\Controller\Debug;
 
 use App\Entity\Pokemon;
+use App\Factory\PokemonAvailabilitiesResponseFactory;
 use App\Service\CollectionsAvailabilitiesService;
 use App\Service\GameBundlesAvailabilitiesService;
 use App\Service\GameBundlesShiniesAvailabilitiesService;
 use App\Service\GamesAvailabilitiesService;
 use App\Service\GamesShiniesAvailabilitiesService;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/debogage/pokemon')]
 final class DebugPokemonController extends AbstractDebugController
@@ -58,23 +61,17 @@ final class DebugPokemonController extends AbstractDebugController
         GameBundlesShiniesAvailabilitiesService $gameBundlesShiniesAvailabilitiesService,
         #[MapEntity(mapping: ['slug' => 'slug'])]
         Pokemon $pokemon,
-    ): Response {
-        $gamesAvailabilities = $gamesAvailabilitiesService->getFromPokemon($pokemon);
-        $gamesShiniesAvailabilities = $gamesShiniesAvailabilitiesService->getFromPokemon($pokemon);
-        $gameBundlesAvailabilities = $gameBundlesAvailabilitiesService->getFromPokemon($pokemon);
-        $gameBundlesShiniesAvailabilities = $gameBundlesShiniesAvailabilitiesService->getFromPokemon($pokemon);
+        SerializerInterface $serializer,
+    ): JsonResponse {
+        $response = PokemonAvailabilitiesResponseFactory::fromAvailabilities(
+            $gamesAvailabilitiesService->getFromPokemon($pokemon),
+            $gamesShiniesAvailabilitiesService->getFromPokemon($pokemon),
+            $gameBundlesAvailabilitiesService->getFromPokemon($pokemon),
+            $gameBundlesShiniesAvailabilitiesService->getFromPokemon($pokemon),
+        );
 
-        return new Response(
-            $this->serialize([
-                'gamesAvailabilities' => $gamesAvailabilities->all(),
-                'gamesShiniesAvailabilities' => $gamesShiniesAvailabilities->all(),
-                'gameBundlesAvailabilities' => $gameBundlesAvailabilities->all(),
-                'gameBundlesShiniesAvailabilities' => $gameBundlesShiniesAvailabilities->all(),
-            ]),
-            Response::HTTP_OK,
-            [
-                'Content-Type' => 'application/json',
-            ]
+        return JsonResponse::fromJsonString(
+            $serializer->serialize($response, 'json'),
         );
     }
 }
