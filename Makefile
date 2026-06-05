@@ -249,11 +249,16 @@ cc:
 .PHONY: all
 all: ## Run all checks (infra-quality, code-quality, tests, measures, security)
 all:
-	$(call parallel_runner,infra-quality code-quality tests measures security,test suites)
+	$(call parallel_runner,infra-quality code-quality tests-measures security,test suites)
 
 .PHONY: a
 a: ## Alias of all
 a: all
+
+.PHONY: tests-measures
+tests-measures: ## Run tests and mesures
+tests-measures:
+	$(call sequential_runner,tests measures,tests-measures)
 
 ## —— Tests 🧪 ———————————————————————————————————————————————————————————————
 .PHONY: tests

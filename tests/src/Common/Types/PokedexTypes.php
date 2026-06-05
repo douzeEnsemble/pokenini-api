@@ -89,7 +89,7 @@ namespace App\Tests\Common\Types;
  * }
  * @psalm-type PokedexResponseItems = array<int, PokedexResponseItem>
  * @psalm-type PokedexResponse = array{
- *  dex: array<string, mixed>,
+ *  dex: array<string, mixed>|null,
  *  pokemons: PokedexResponseItems,
  *  filtered_report: PokedexResponseReport,
  *  report: PokedexResponseReport,
