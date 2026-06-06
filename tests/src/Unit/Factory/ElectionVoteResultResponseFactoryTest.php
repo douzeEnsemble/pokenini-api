@@ -45,12 +45,12 @@ final class ElectionVoteResultResponseFactoryTest extends TestCase
         self::assertSame(['pikachu'], $response->electionVote->winnersSlugs);
         self::assertSame(['caterpie', 'metapod'], $response->electionVote->losersSlugs);
         self::assertCount(1, $response->pokemonsElo->winners);
-        self::assertSame('pikachu', $response->pokemonsElo->winners[0]->pokemonSlug);
+        self::assertSame('pikachu', $response->pokemonsElo->winners[0]->pokemon->slug);
         self::assertSame(1016, $response->pokemonsElo->winners[0]->elo);
         self::assertCount(2, $response->pokemonsElo->losers);
-        self::assertSame('caterpie', $response->pokemonsElo->losers[0]->pokemonSlug);
+        self::assertSame('caterpie', $response->pokemonsElo->losers[0]->pokemon->slug);
         self::assertSame(984, $response->pokemonsElo->losers[0]->elo);
-        self::assertSame('metapod', $response->pokemonsElo->losers[1]->pokemonSlug);
+        self::assertSame('metapod', $response->pokemonsElo->losers[1]->pokemon->slug);
         self::assertSame(984, $response->pokemonsElo->losers[1]->elo);
     }
 
@@ -98,10 +98,10 @@ final class ElectionVoteResultResponseFactoryTest extends TestCase
 
         self::assertCount(3, $response->pokemonsElo->winners);
         self::assertCount(0, $response->pokemonsElo->losers);
-        self::assertSame('caterpie', $response->pokemonsElo->winners[0]->pokemonSlug);
+        self::assertSame('caterpie', $response->pokemonsElo->winners[0]->pokemon->slug);
         self::assertSame(1016, $response->pokemonsElo->winners[0]->elo);
-        self::assertSame('metapod', $response->pokemonsElo->winners[1]->pokemonSlug);
-        self::assertSame('butterfree', $response->pokemonsElo->winners[2]->pokemonSlug);
+        self::assertSame('metapod', $response->pokemonsElo->winners[1]->pokemon->slug);
+        self::assertSame('butterfree', $response->pokemonsElo->winners[2]->pokemon->slug);
     }
 
     #[Test]
@@ -128,8 +128,26 @@ final class ElectionVoteResultResponseFactoryTest extends TestCase
 
         self::assertCount(0, $response->pokemonsElo->winners);
         self::assertCount(3, $response->pokemonsElo->losers);
-        self::assertSame('caterpie', $response->pokemonsElo->losers[0]->pokemonSlug);
-        self::assertSame('metapod', $response->pokemonsElo->losers[1]->pokemonSlug);
-        self::assertSame('butterfree', $response->pokemonsElo->losers[2]->pokemonSlug);
+        self::assertSame('caterpie', $response->pokemonsElo->losers[0]->pokemon->slug);
+        self::assertSame('metapod', $response->pokemonsElo->losers[1]->pokemon->slug);
+        self::assertSame('butterfree', $response->pokemonsElo->losers[2]->pokemon->slug);
+    }
+
+    #[Test]
+    public function fromElectionVoteResultHandlesMissingPokemonEloKeys(): void
+    {
+        $electionVote = new ElectionVote([
+            'trainer_external_id' => 'trainer1',
+            'dex_slug' => 'demo',
+            'election_slug' => '',
+            'winners_slugs' => [],
+            'losers_slugs' => [],
+        ]);
+        $result = new ElectionVoteResult($electionVote, []);
+
+        $response = ElectionVoteResultResponseFactory::fromElectionVoteResult($result);
+
+        self::assertSame([], $response->pokemonsElo->winners);
+        self::assertSame([], $response->pokemonsElo->losers);
     }
 }
