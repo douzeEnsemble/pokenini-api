@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Unit\DTO\Response;
 
 use App\DTO\Response\DexAvailabilitiesResponse;
+use App\DTO\Response\PokemonSlugResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -18,11 +19,18 @@ final class DexAvailabilitiesResponseTest extends TestCase
     #[Test]
     public function constructorInitializesProperties(): void
     {
+        $pokemon1 = new PokemonSlugResponse(slug: 'bulbasaur');
+        $pokemon2 = new PokemonSlugResponse(slug: 'ivysaur');
+
         $response = new DexAvailabilitiesResponse(
-            pokemons: ['bulbasaur', 'ivysaur'],
+            pokemons: [$pokemon1, $pokemon2],
         );
 
-        self::assertSame(['bulbasaur', 'ivysaur'], $response->pokemons);
+        self::assertCount(2, $response->pokemons);
+        self::assertInstanceOf(PokemonSlugResponse::class, $response->pokemons[0]);
+        self::assertInstanceOf(PokemonSlugResponse::class, $response->pokemons[1]);
+        self::assertSame('bulbasaur', $response->pokemons[0]->slug);
+        self::assertSame('ivysaur', $response->pokemons[1]->slug);
     }
 
     #[Test]

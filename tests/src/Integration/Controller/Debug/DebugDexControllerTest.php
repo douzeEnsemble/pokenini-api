@@ -68,14 +68,17 @@ final class DebugDexControllerTest extends AbstractTestControllerApi
 
         $this->assertJson($content);
 
-        /** @var null|array{pokemons: string[]} $data */
+        /** @var null|array{pokemons: array{slug: string}[]} $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertNotNull($data);
 
         $this->assertArrayHasKey('pokemons', $data);
-        $this->assertContains('bulbasaur', $data['pokemons']);
-        $this->assertContains('douze', $data['pokemons']);
+        $this->assertNotEmpty($data['pokemons']);
+
+        $slugs = array_column($data['pokemons'], 'slug');
+        $this->assertContains('bulbasaur', $slugs);
+        $this->assertContains('douze', $slugs);
     }
 
     #[Test]

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Factory;
 
+use App\DTO\Response\PokemonSlugResponse;
 use App\Entity\Dex;
 use App\Entity\DexAvailability;
 use App\Entity\Pokemon;
@@ -33,7 +34,10 @@ final class DexAvailabilitiesResponseFactoryTest extends TestCase
         ]);
 
         self::assertCount(2, $result->pokemons);
-        self::assertSame(['bulbasaur', 'ivysaur'], $result->pokemons);
+        self::assertInstanceOf(PokemonSlugResponse::class, $result->pokemons[0]);
+        self::assertInstanceOf(PokemonSlugResponse::class, $result->pokemons[1]);
+        self::assertSame('bulbasaur', $result->pokemons[0]->slug);
+        self::assertSame('ivysaur', $result->pokemons[1]->slug);
     }
 
     #[Test]

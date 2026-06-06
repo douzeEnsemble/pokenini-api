@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\DTO\Response\DexAvailabilitiesResponse;
+use App\DTO\Response\PokemonSlugResponse;
 use App\Entity\DexAvailability;
 
 final class DexAvailabilitiesResponseFactory
@@ -15,7 +16,9 @@ final class DexAvailabilitiesResponseFactory
     public static function fromDexAvailabilities(array $dexAvailabilities): DexAvailabilitiesResponse
     {
         $pokemons = array_map(
-            static fn (DexAvailability $dexAvailability): string => $dexAvailability->pokemon->slug,
+            static fn (DexAvailability $dexAvailability): PokemonSlugResponse => new PokemonSlugResponse(
+                slug: $dexAvailability->pokemon->slug,
+            ),
             $dexAvailabilities
         );
 
