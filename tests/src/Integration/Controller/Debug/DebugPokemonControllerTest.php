@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Integration\Controller\Debug;
 
 use App\Controller\Debug\DebugPokemonController;
+use App\Factory\PokemonDebugResponseFactory;
 use App\Service\DexAvailabilitiesService;
 use App\Tests\Integration\Controller\AbstractTestControllerApi;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -14,6 +15,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  */
 #[CoversClass(DebugPokemonController::class)]
 #[CoversClass(DexAvailabilitiesService::class)]
+#[CoversClass(PokemonDebugResponseFactory::class)]
 final class DebugPokemonControllerTest extends AbstractTestControllerApi
 {
     public function testPokemon(): void
@@ -31,10 +33,10 @@ final class DebugPokemonControllerTest extends AbstractTestControllerApi
         $this->assertStringContainsString('"slug":"venusaur-mega",', $content);
         $this->assertStringContainsString('"slug":"6",', $content);
         $this->assertStringContainsString('"slug":"xy",', $content);
-        $this->assertStringContainsString('"variantForm":null,', $content);
-        $this->assertStringContainsString('"regionalForm":null,', $content);
+        $this->assertStringContainsString('"variant_form":null,', $content);
+        $this->assertStringContainsString('"regional_form":null,', $content);
         $this->assertStringContainsString('"slug":"mega",', $content);
-        $this->assertStringContainsString('"categoryForm":null,', $content);
+        $this->assertStringContainsString('"category_form":null,', $content);
         $this->assertStringContainsString('"slug":"grass",', $content);
         $this->assertStringContainsString('"slug":"poison",', $content);
     }

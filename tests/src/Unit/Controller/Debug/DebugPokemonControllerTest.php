@@ -11,16 +11,13 @@ use App\Service\GameBundlesAvailabilitiesService;
 use App\Service\GameBundlesShiniesAvailabilitiesService;
 use App\Service\GamesAvailabilitiesService;
 use App\Service\GamesShiniesAvailabilitiesService;
-use App\Service\PokedexService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
-use Symfony\Component\Serializer\Serializer;
 
 /**
  * @internal
  */
 #[CoversClass(DebugPokemonController::class)]
-#[CoversClass(PokedexService::class)]
 final class DebugPokemonControllerTest extends TestCase
 {
     public function testPokemonCleanCaches(): void
@@ -63,7 +60,7 @@ final class DebugPokemonControllerTest extends TestCase
             ->with($pokemon)
         ;
 
-        $controller = new DebugPokemonController(new Serializer());
+        $controller = new DebugPokemonController();
 
         $response = $controller->pokemonCaches(
             $gamesAvailabilitiesService,
