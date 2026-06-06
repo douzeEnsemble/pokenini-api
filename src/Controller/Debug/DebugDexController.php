@@ -5,10 +5,13 @@ declare(strict_types=1);
 namespace App\Controller\Debug;
 
 use App\Entity\Dex;
+use App\Factory\DexAvailabilitiesResponseFactory;
 use App\Service\DexAvailabilitiesService;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/debogage/dex')]
 final class DebugDexController extends AbstractDebugController
@@ -32,21 +35,14 @@ final class DebugDexController extends AbstractDebugController
         #[MapEntity(mapping: ['slug' => 'slug'])]
         Dex $dex,
         DexAvailabilitiesService $dexAvailabilitiesService,
-    ): Response {
+        SerializerInterface $serializer,
+    ): JsonResponse {
         $dexAvailabilities = $dexAvailabilitiesService->getByDex($dex);
 
-        $pokemons = [];
+        $response = DexAvailabilitiesResponseFactory::fromDexAvailabilities($dexAvailabilities);
 
-        foreach ($dexAvailabilities as $dexAvailability) {
-            $pokemons[] = $dexAvailability->pokemon->slug;
-        }
-
-        return new Response(
-            $this->serialize($pokemons),
-            Response::HTTP_OK,
-            [
-                'Content-Type' => 'application/json',
-            ]
+        return JsonResponse::fromJsonString(
+            $serializer->serialize($response, 'json'),
         );
     }
 }

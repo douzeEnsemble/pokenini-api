@@ -229,6 +229,7 @@ parameters:
       - SymfonyValidator
     AppFactory:
       - AppDTO
+      - AppEntity
     AppHelper:
       - AppHelper
     AppMessage:
