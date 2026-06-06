@@ -6,31 +6,32 @@ namespace App\Controller\Debug;
 
 use App\Entity\Pokemon;
 use App\Factory\PokemonAvailabilitiesResponseFactory;
+use App\Factory\PokemonDebugResponseFactory;
 use App\Service\CollectionsAvailabilitiesService;
 use App\Service\GameBundlesAvailabilitiesService;
 use App\Service\GameBundlesShiniesAvailabilitiesService;
 use App\Service\GamesAvailabilitiesService;
 use App\Service\GamesShiniesAvailabilitiesService;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/debogage/pokemon')]
-final class DebugPokemonController extends AbstractDebugController
+final class DebugPokemonController extends AbstractController
 {
     #[Route(path: '/{slug}', methods: ['GET'])]
     public function pokemon(
         #[MapEntity(mapping: ['slug' => 'slug'])]
         Pokemon $pokemon,
-    ): Response {
-        return new Response(
-            $this->serialize($pokemon),
-            Response::HTTP_OK,
-            [
-                'Content-Type' => 'application/json',
-            ]
+        SerializerInterface $serializer,
+    ): JsonResponse {
+        $response = PokemonDebugResponseFactory::fromPokemon($pokemon);
+
+        return JsonResponse::fromJsonString(
+            $serializer->serialize($response, 'json'),
         );
     }
 
