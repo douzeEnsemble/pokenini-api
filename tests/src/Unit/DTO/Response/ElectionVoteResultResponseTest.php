@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\DTO\Response;
 
+use App\DTO\Response\DexSlugResponse;
 use App\DTO\Response\ElectionVoteDataResponse;
 use App\DTO\Response\ElectionVoteResultResponse;
 use App\DTO\Response\PokemonEloResponse;
@@ -24,10 +25,10 @@ final class ElectionVoteResultResponseTest extends TestCase
     {
         $electionVoteData = new ElectionVoteDataResponse(
             trainerExternalId: 'trainer1',
-            dexSlug: 'national',
+            dex: new DexSlugResponse(slug: 'national'),
             electionSlug: '',
-            winnersSlugs: ['pikachu'],
-            losersSlugs: ['magikarp'],
+            winners: [new PokemonSlugResponse(slug: 'pikachu')],
+            losers: [new PokemonSlugResponse(slug: 'magikarp')],
         );
         $pokemonsElo = new PokemonsEloResponse(
             winners: [new PokemonEloResponse(pokemon: new PokemonSlugResponse(slug: 'pikachu'), elo: 1016)],

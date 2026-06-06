@@ -7,6 +7,7 @@ namespace App\Factory;
 use App\DTO\ElectionVote;
 use App\DTO\ElectionVoteResult;
 use App\DTO\PokemonElo;
+use App\DTO\Response\DexSlugResponse;
 use App\DTO\Response\ElectionVoteDataResponse;
 use App\DTO\Response\ElectionVoteResultResponse;
 use App\DTO\Response\PokemonEloResponse;
@@ -27,10 +28,16 @@ final class ElectionVoteResultResponseFactory
     {
         return new ElectionVoteDataResponse(
             trainerExternalId: $vote->trainerExternalId,
-            dexSlug: $vote->dexSlug,
+            dex: new DexSlugResponse(slug: $vote->dexSlug),
             electionSlug: $vote->electionSlug,
-            winnersSlugs: $vote->winnersSlugs,
-            losersSlugs: $vote->losersSlugs,
+            winners: array_map(
+                static fn (string $slug): PokemonSlugResponse => new PokemonSlugResponse(slug: $slug),
+                $vote->winnersSlugs,
+            ),
+            losers: array_map(
+                static fn (string $slug): PokemonSlugResponse => new PokemonSlugResponse(slug: $slug),
+                $vote->losersSlugs,
+            ),
         );
     }
 
