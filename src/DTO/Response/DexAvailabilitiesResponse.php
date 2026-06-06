@@ -7,7 +7,7 @@ namespace App\DTO\Response;
 final class DexAvailabilitiesResponse
 {
     /**
-     * @param string[] $pokemons
+     * @param PokemonSlugResponse[] $pokemons
      */
     public function __construct(
         public readonly array $pokemons,
