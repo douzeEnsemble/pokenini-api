@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Factory;
 
+use App\DTO\Response\DexSlugResponse;
 use App\DTO\Response\TrainerDexResponse;
 
 final class TrainerDexResponseFactory
@@ -50,7 +51,9 @@ final class TrainerDexResponseFactory
         $isCustom = $row['is_custom'];
 
         return new TrainerDexResponse(
-            dexSlug: (string) $dexSlug,
+            dex: new DexSlugResponse(
+                slug: (string) $dexSlug,
+            ),
             name: (string) $name,
             frenchName: (string) $frenchName,
             slug: (string) $slug,
