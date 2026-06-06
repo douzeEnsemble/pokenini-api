@@ -36,7 +36,7 @@ final class TrainerDexResponseFactoryTest extends TestCase
 
         $response = TrainerDexResponseFactory::fromSqlRow($row);
 
-        self::assertSame('home', $response->dexSlug);
+        self::assertSame('home', $response->dex->slug);
         self::assertSame('Home', $response->name);
         self::assertSame('Home', $response->frenchName);
         self::assertSame('home', $response->slug);
@@ -70,7 +70,7 @@ final class TrainerDexResponseFactoryTest extends TestCase
 
         $response = TrainerDexResponseFactory::fromSqlRow($row);
 
-        self::assertSame('123', $response->dexSlug);
+        self::assertSame('123', $response->dex->slug);
         self::assertSame('456', $response->name);
         self::assertSame('789', $response->frenchName);
         self::assertSame('101', $response->slug);
@@ -122,9 +122,9 @@ final class TrainerDexResponseFactoryTest extends TestCase
 
         self::assertCount(2, $responses);
         self::assertContainsOnlyInstancesOf(TrainerDexResponse::class, $responses);
-        self::assertSame('home', $responses[0]->dexSlug);
+        self::assertSame('home', $responses[0]->dex->slug);
         self::assertFalse($responses[0]->isShiny);
-        self::assertSame('homeshiny', $responses[1]->dexSlug);
+        self::assertSame('homeshiny', $responses[1]->dex->slug);
         self::assertTrue($responses[1]->isShiny);
         self::assertTrue($responses[1]->isCustom);
     }

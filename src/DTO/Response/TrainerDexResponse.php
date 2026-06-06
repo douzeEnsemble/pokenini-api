@@ -12,8 +12,7 @@ final class TrainerDexResponse
      * @SuppressWarnings("PHPMD.ExcessiveParameterList")
      */
     public function __construct(
-        #[SerializedName('dex_slug')]
-        public readonly string $dexSlug,
+        public readonly DexSlugResponse $dex,
         public readonly string $name,
         #[SerializedName('french_name')]
         public readonly string $frenchName,

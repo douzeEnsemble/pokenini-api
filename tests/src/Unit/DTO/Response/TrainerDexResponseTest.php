@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\DTO\Response;
 
+use App\DTO\Response\DexSlugResponse;
 use App\DTO\Response\TrainerDexResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -18,8 +19,10 @@ final class TrainerDexResponseTest extends TestCase
     #[Test]
     public function constructorInitializesProperties(): void
     {
+        $dex = new DexSlugResponse(slug: 'home');
+
         $response = new TrainerDexResponse(
-            dexSlug: 'home',
+            dex: $dex,
             name: 'Home',
             frenchName: 'Home',
             slug: 'home',
@@ -33,7 +36,8 @@ final class TrainerDexResponseTest extends TestCase
             isCustom: false,
         );
 
-        self::assertSame('home', $response->dexSlug);
+        self::assertSame($dex, $response->dex);
+        self::assertSame('home', $response->dex->slug);
         self::assertSame('Home', $response->name);
         self::assertSame('Home', $response->frenchName);
         self::assertSame('home', $response->slug);
@@ -50,8 +54,10 @@ final class TrainerDexResponseTest extends TestCase
     #[Test]
     public function propertiesAreReadonly(): void
     {
+        $dex = new DexSlugResponse(slug: 'homepogo');
+
         $response = new TrainerDexResponse(
-            dexSlug: 'homepogo',
+            dex: $dex,
             name: 'Home PoGo',
             frenchName: 'Home PoGo',
             slug: 'home_pogo',
@@ -65,7 +71,8 @@ final class TrainerDexResponseTest extends TestCase
             isCustom: true,
         );
 
-        self::assertSame('homepogo', $response->dexSlug);
+        self::assertSame($dex, $response->dex);
+        self::assertSame('homepogo', $response->dex->slug);
         self::assertSame('Home PoGo', $response->name);
         self::assertSame('Home PoGo', $response->frenchName);
         self::assertSame('home_pogo', $response->slug);
