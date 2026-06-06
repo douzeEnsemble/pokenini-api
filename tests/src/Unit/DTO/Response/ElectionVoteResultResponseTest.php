@@ -8,6 +8,7 @@ use App\DTO\Response\ElectionVoteDataResponse;
 use App\DTO\Response\ElectionVoteResultResponse;
 use App\DTO\Response\PokemonEloResponse;
 use App\DTO\Response\PokemonsEloResponse;
+use App\DTO\Response\PokemonSlugResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -29,8 +30,8 @@ final class ElectionVoteResultResponseTest extends TestCase
             losersSlugs: ['magikarp'],
         );
         $pokemonsElo = new PokemonsEloResponse(
-            winners: [new PokemonEloResponse(pokemonSlug: 'pikachu', elo: 1016)],
-            losers: [new PokemonEloResponse(pokemonSlug: 'magikarp', elo: 984)],
+            winners: [new PokemonEloResponse(pokemon: new PokemonSlugResponse(slug: 'pikachu'), elo: 1016)],
+            losers: [new PokemonEloResponse(pokemon: new PokemonSlugResponse(slug: 'magikarp'), elo: 984)],
         );
 
         $response = new ElectionVoteResultResponse(

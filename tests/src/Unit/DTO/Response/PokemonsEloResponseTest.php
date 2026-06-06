@@ -6,6 +6,7 @@ namespace App\Tests\Unit\DTO\Response;
 
 use App\DTO\Response\PokemonEloResponse;
 use App\DTO\Response\PokemonsEloResponse;
+use App\DTO\Response\PokemonSlugResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -19,8 +20,8 @@ final class PokemonsEloResponseTest extends TestCase
     #[Test]
     public function constructorInitializesProperties(): void
     {
-        $winner = new PokemonEloResponse(pokemonSlug: 'pikachu', elo: 1016);
-        $loser = new PokemonEloResponse(pokemonSlug: 'magikarp', elo: 984);
+        $winner = new PokemonEloResponse(pokemon: new PokemonSlugResponse(slug: 'pikachu'), elo: 1016);
+        $loser = new PokemonEloResponse(pokemon: new PokemonSlugResponse(slug: 'magikarp'), elo: 984);
 
         $response = new PokemonsEloResponse(
             winners: [$winner],

@@ -56,17 +56,17 @@ final class ElectionVoteControllerTest extends WebTestCase
                 'pokemons_elo' => [
                     'winners' => [
                         [
-                            'pokemon_slug' => 'butterfree',
+                            'pokemon' => ['slug' => 'butterfree'],
                             'elo' => 1016,
                         ],
                     ],
                     'losers' => [
                         [
-                            'pokemon_slug' => 'caterpie',
+                            'pokemon' => ['slug' => 'caterpie'],
                             'elo' => 984,
                         ],
                         [
-                            'pokemon_slug' => 'metapod',
+                            'pokemon' => ['slug' => 'metapod'],
                             'elo' => 984,
                         ],
                     ],
@@ -115,17 +115,17 @@ final class ElectionVoteControllerTest extends WebTestCase
                 'pokemons_elo' => [
                     'winners' => [
                         [
-                            'pokemon_slug' => 'butterfree',
+                            'pokemon' => ['slug' => 'butterfree'],
                             'elo' => 1016,
                         ],
                     ],
                     'losers' => [
                         [
-                            'pokemon_slug' => 'caterpie',
+                            'pokemon' => ['slug' => 'caterpie'],
                             'elo' => 984,
                         ],
                         [
-                            'pokemon_slug' => 'metapod',
+                            'pokemon' => ['slug' => 'metapod'],
                             'elo' => 984,
                         ],
                     ],
@@ -174,15 +174,15 @@ final class ElectionVoteControllerTest extends WebTestCase
                     'winners' => [],
                     'losers' => [
                         [
-                            'pokemon_slug' => 'caterpie',
+                            'pokemon' => ['slug' => 'caterpie'],
                             'elo' => 984,
                         ],
                         [
-                            'pokemon_slug' => 'metapod',
+                            'pokemon' => ['slug' => 'metapod'],
                             'elo' => 984,
                         ],
                         [
-                            'pokemon_slug' => 'butterfree',
+                            'pokemon' => ['slug' => 'butterfree'],
                             'elo' => 984,
                         ],
                     ],
@@ -230,15 +230,15 @@ final class ElectionVoteControllerTest extends WebTestCase
                 'pokemons_elo' => [
                     'winners' => [
                         [
-                            'pokemon_slug' => 'caterpie',
+                            'pokemon' => ['slug' => 'caterpie'],
                             'elo' => 1016,
                         ],
                         [
-                            'pokemon_slug' => 'metapod',
+                            'pokemon' => ['slug' => 'metapod'],
                             'elo' => 1016,
                         ],
                         [
-                            'pokemon_slug' => 'butterfree',
+                            'pokemon' => ['slug' => 'butterfree'],
                             'elo' => 1016,
                         ],
                     ],

@@ -11,6 +11,7 @@ use App\DTO\Response\ElectionVoteDataResponse;
 use App\DTO\Response\ElectionVoteResultResponse;
 use App\DTO\Response\PokemonEloResponse;
 use App\DTO\Response\PokemonsEloResponse;
+use App\DTO\Response\PokemonSlugResponse;
 
 final class ElectionVoteResultResponseFactory
 {
@@ -53,7 +54,7 @@ final class ElectionVoteResultResponseFactory
     {
         return array_map(
             static fn (PokemonElo $pokemonElo): PokemonEloResponse => new PokemonEloResponse(
-                pokemonSlug: $pokemonElo->getPokemonSlug(),
+                pokemon: new PokemonSlugResponse(slug: $pokemonElo->getPokemonSlug()),
                 elo: $pokemonElo->getElo(),
             ),
             $pokemonElos,
