@@ -6,6 +6,7 @@ namespace App\Tests\Integration\Controller\Debug;
 
 use App\Controller\Debug\DebugDexController;
 use App\Factory\DexAvailabilitiesResponseFactory;
+use App\Factory\DexDebugResponseFactory;
 use App\Service\DexAvailabilitiesService;
 use App\Tests\Integration\Controller\AbstractTestControllerApi;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -17,6 +18,7 @@ use PHPUnit\Framework\Attributes\Test;
 #[CoversClass(DebugDexController::class)]
 #[CoversClass(DexAvailabilitiesResponseFactory::class)]
 #[CoversClass(DexAvailabilitiesService::class)]
+#[CoversClass(DexDebugResponseFactory::class)]
 final class DebugDexControllerTest extends AbstractTestControllerApi
 {
     #[Test]
