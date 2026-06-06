@@ -9,19 +9,16 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
 final class ElectionVoteDataResponse
 {
     /**
-     * @param string[] $winnersSlugs
-     * @param string[] $losersSlugs
+     * @param PokemonSlugResponse[] $winners
+     * @param PokemonSlugResponse[] $losers
      */
     public function __construct(
         #[SerializedName('trainer_external_id')]
         public readonly string $trainerExternalId,
-        #[SerializedName('dex_slug')]
-        public readonly string $dexSlug,
+        public readonly DexSlugResponse $dex,
         #[SerializedName('election_slug')]
         public readonly string $electionSlug,
-        #[SerializedName('winners_slugs')]
-        public readonly array $winnersSlugs,
-        #[SerializedName('losers_slugs')]
-        public readonly array $losersSlugs,
+        public readonly array $winners,
+        public readonly array $losers,
     ) {}
 }
