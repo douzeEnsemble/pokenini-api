@@ -6,6 +6,7 @@ namespace App\Tests\Unit\Factory;
 
 use App\DTO\Response\AlbumCatchStateResponse;
 use App\DTO\Response\AlbumFormResponse;
+use App\DTO\Response\AlbumFormsResponse;
 use App\DTO\Response\AlbumPokemonResponse;
 use App\DTO\Response\AlbumTypeResponse;
 use App\Factory\AlbumPokemonResponseFactory;
@@ -64,27 +65,29 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
     }
 
     #[Test]
-    public function fromSqlRowBuildsCategoryFormSubObject(): void
+    public function fromSqlRowBuildsFormsObjectWithCategoryForm(): void
     {
         $result = AlbumPokemonResponseFactory::fromSqlRow($this->getBulbasaurRow());
 
-        self::assertInstanceOf(AlbumFormResponse::class, $result->categoryForm);
-        self::assertSame('starter', $result->categoryForm->slug);
-        self::assertSame('Starter', $result->categoryForm->name);
+        self::assertInstanceOf(AlbumFormsResponse::class, $result->forms);
+        self::assertInstanceOf(AlbumFormResponse::class, $result->forms->category);
+        self::assertSame('starter', $result->forms->category->slug);
+        self::assertSame('Starter', $result->forms->category->name);
+        self::assertNull($result->forms->regional);
+        self::assertNull($result->forms->special);
+        self::assertNull($result->forms->variant);
     }
 
     #[Test]
-    public function fromSqlRowSetsNullFormsWhenNotSet(): void
+    public function fromSqlRowSetsNullFormsWhenNoFormsPresent(): void
     {
-        $result = AlbumPokemonResponseFactory::fromSqlRow($this->getBulbasaurRow());
+        $result = AlbumPokemonResponseFactory::fromSqlRow($this->getDouzeRow());
 
-        self::assertNull($result->regionalForm);
-        self::assertNull($result->specialForm);
-        self::assertNull($result->variantForm);
+        self::assertNull($result->forms);
     }
 
     #[Test]
-    public function fromSqlRowBuildsSpecialFormSubObject(): void
+    public function fromSqlRowBuildsFormsObjectWithSpecialForm(): void
     {
         $row = $this->getBulbasaurRow();
         $row['category_form_slug'] = null;
@@ -94,14 +97,17 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
 
         $result = AlbumPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertNull($result->categoryForm);
-        self::assertInstanceOf(AlbumFormResponse::class, $result->specialForm);
-        self::assertSame('mega', $result->specialForm->slug);
-        self::assertSame('Mega', $result->specialForm->name);
+        self::assertInstanceOf(AlbumFormsResponse::class, $result->forms);
+        self::assertNull($result->forms->category);
+        self::assertNull($result->forms->regional);
+        self::assertInstanceOf(AlbumFormResponse::class, $result->forms->special);
+        self::assertSame('mega', $result->forms->special->slug);
+        self::assertSame('Mega', $result->forms->special->name);
+        self::assertNull($result->forms->variant);
     }
 
     #[Test]
-    public function fromSqlRowBuildsVariantFormSubObject(): void
+    public function fromSqlRowBuildsFormsObjectWithVariantForm(): void
     {
         $row = $this->getBulbasaurRow();
         $row['category_form_slug'] = null;
@@ -111,13 +117,17 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
 
         $result = AlbumPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertInstanceOf(AlbumFormResponse::class, $result->variantForm);
-        self::assertSame('gender', $result->variantForm->slug);
-        self::assertSame('Gender', $result->variantForm->name);
+        self::assertInstanceOf(AlbumFormsResponse::class, $result->forms);
+        self::assertNull($result->forms->category);
+        self::assertNull($result->forms->regional);
+        self::assertNull($result->forms->special);
+        self::assertInstanceOf(AlbumFormResponse::class, $result->forms->variant);
+        self::assertSame('gender', $result->forms->variant->slug);
+        self::assertSame('Gender', $result->forms->variant->name);
     }
 
     #[Test]
-    public function fromSqlRowBuildsRegionalFormSubObject(): void
+    public function fromSqlRowBuildsFormsObjectWithRegionalForm(): void
     {
         $row = $this->getBulbasaurRow();
         $row['category_form_slug'] = null;
@@ -127,44 +137,41 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
 
         $result = AlbumPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertInstanceOf(AlbumFormResponse::class, $result->regionalForm);
-        self::assertSame('alolan', $result->regionalForm->slug);
-        self::assertSame('Alolan', $result->regionalForm->name);
+        self::assertInstanceOf(AlbumFormsResponse::class, $result->forms);
+        self::assertNull($result->forms->category);
+        self::assertInstanceOf(AlbumFormResponse::class, $result->forms->regional);
+        self::assertSame('alolan', $result->forms->regional->slug);
+        self::assertSame('Alolan', $result->forms->regional->name);
+        self::assertNull($result->forms->special);
+        self::assertNull($result->forms->variant);
     }
 
     #[Test]
-    public function fromSqlRowBuildsPrimaryTypeSubObject(): void
+    public function fromSqlRowBuildsTypesObjectWithPrimaryAndSecondaryType(): void
     {
         $result = AlbumPokemonResponseFactory::fromSqlRow($this->getBulbasaurRow());
 
-        self::assertInstanceOf(AlbumTypeResponse::class, $result->primaryType);
-        self::assertSame('grass', $result->primaryType->slug);
-        self::assertSame('Grass', $result->primaryType->name);
-        self::assertSame('Plante', $result->primaryType->frenchName);
+        self::assertInstanceOf(AlbumTypeResponse::class, $result->types->primary);
+        self::assertSame('grass', $result->types->primary->slug);
+        self::assertSame('Grass', $result->types->primary->name);
+        self::assertSame('Plante', $result->types->primary->frenchName);
+        self::assertInstanceOf(AlbumTypeResponse::class, $result->types->secondary);
+        self::assertSame('poison', $result->types->secondary->slug);
+        self::assertSame('Poison', $result->types->secondary->name);
+        self::assertSame('Poison', $result->types->secondary->frenchName);
     }
 
     #[Test]
-    public function fromSqlRowBuildsSecondaryTypeSubObject(): void
-    {
-        $result = AlbumPokemonResponseFactory::fromSqlRow($this->getBulbasaurRow());
-
-        self::assertInstanceOf(AlbumTypeResponse::class, $result->secondaryType);
-        self::assertSame('poison', $result->secondaryType->slug);
-        self::assertSame('Poison', $result->secondaryType->name);
-        self::assertSame('Poison', $result->secondaryType->frenchName);
-    }
-
-    #[Test]
-    public function fromSqlRowSetsNullPrimaryTypeWhenAbsent(): void
+    public function fromSqlRowBuildsTypesObjectWithNullTypesWhenAbsent(): void
     {
         $result = AlbumPokemonResponseFactory::fromSqlRow($this->getDouzeRow());
 
-        self::assertNull($result->primaryType);
-        self::assertNull($result->secondaryType);
+        self::assertNull($result->types->primary);
+        self::assertNull($result->types->secondary);
     }
 
     #[Test]
-    public function fromSqlRowSetsNullSecondaryTypeForSingleTypePokemon(): void
+    public function fromSqlRowBuildsTypesObjectWithNullSecondaryForSingleTypePokemon(): void
     {
         $row = $this->getBulbasaurRow();
         $row['secondary_type_slug'] = null;
@@ -173,8 +180,8 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
 
         $result = AlbumPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertInstanceOf(AlbumTypeResponse::class, $result->primaryType);
-        self::assertNull($result->secondaryType);
+        self::assertInstanceOf(AlbumTypeResponse::class, $result->types->primary);
+        self::assertNull($result->types->secondary);
     }
 
     #[Test]

@@ -6,8 +6,10 @@ namespace App\Tests\Unit\DTO\Response;
 
 use App\DTO\Response\AlbumCatchStateResponse;
 use App\DTO\Response\AlbumFormResponse;
+use App\DTO\Response\AlbumFormsResponse;
 use App\DTO\Response\AlbumPokemonResponse;
 use App\DTO\Response\AlbumTypeResponse;
+use App\DTO\Response\AlbumTypesResponse;
 use App\DTO\Response\PokemonDataResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -41,33 +43,32 @@ final class AlbumPokemonResponseTest extends TestCase
             gameBundlesShiny: [],
         );
         $catchState = new AlbumCatchStateResponse('no', 'No', 'Non');
-        $categoryForm = new AlbumFormResponse('starter', 'Starter');
-        $primaryType = new AlbumTypeResponse('grass', 'Grass', 'Plante');
-        $secondaryType = new AlbumTypeResponse('poison', 'Poison', 'Poison');
+        $forms = new AlbumFormsResponse(
+            category: new AlbumFormResponse('starter', 'Starter'),
+            regional: null,
+            special: null,
+            variant: null,
+        );
+        $types = new AlbumTypesResponse(
+            primary: new AlbumTypeResponse('grass', 'Grass', 'Plante'),
+            secondary: new AlbumTypeResponse('poison', 'Poison', 'Poison'),
+        );
 
         $response = new AlbumPokemonResponse(
             pokemon: $pokemon,
             catchState: $catchState,
-            categoryForm: $categoryForm,
-            regionalForm: null,
-            specialForm: null,
-            variantForm: null,
-            primaryType: $primaryType,
-            secondaryType: $secondaryType,
+            forms: $forms,
+            types: $types,
         );
 
         self::assertSame($pokemon, $response->pokemon);
         self::assertSame($catchState, $response->catchState);
-        self::assertSame($categoryForm, $response->categoryForm);
-        self::assertNull($response->regionalForm);
-        self::assertNull($response->specialForm);
-        self::assertNull($response->variantForm);
-        self::assertSame($primaryType, $response->primaryType);
-        self::assertSame($secondaryType, $response->secondaryType);
+        self::assertSame($forms, $response->forms);
+        self::assertSame($types, $response->types);
     }
 
     #[Test]
-    public function constructorAcceptsAllNullablePropertiesAsNull(): void
+    public function constructorAcceptsNullablePropertiesAsNull(): void
     {
         $pokemon = new PokemonDataResponse(
             slug: 'douze',
@@ -87,25 +88,18 @@ final class AlbumPokemonResponseTest extends TestCase
             gameBundles: ['un', 'dos', 'tres'],
             gameBundlesShiny: [],
         );
+        $types = new AlbumTypesResponse(primary: null, secondary: null);
 
         $response = new AlbumPokemonResponse(
             pokemon: $pokemon,
             catchState: null,
-            categoryForm: null,
-            regionalForm: null,
-            specialForm: null,
-            variantForm: null,
-            primaryType: null,
-            secondaryType: null,
+            forms: null,
+            types: $types,
         );
 
         self::assertSame($pokemon, $response->pokemon);
         self::assertNull($response->catchState);
-        self::assertNull($response->categoryForm);
-        self::assertNull($response->regionalForm);
-        self::assertNull($response->specialForm);
-        self::assertNull($response->variantForm);
-        self::assertNull($response->primaryType);
-        self::assertNull($response->secondaryType);
+        self::assertNull($response->forms);
+        self::assertSame($types, $response->types);
     }
 }

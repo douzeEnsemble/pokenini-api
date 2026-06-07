@@ -7,6 +7,7 @@ namespace App\Tests\Unit\Factory;
 use App\DTO\Response\AlbumDexResponse;
 use App\DTO\Response\AlbumPokemonResponse;
 use App\DTO\Response\AlbumReportResponse;
+use App\DTO\Response\AlbumTypesResponse;
 use App\DTO\Response\PokemonDataResponse;
 use App\Factory\AlbumIndexResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -94,12 +95,8 @@ final class AlbumIndexResponseFactoryTest extends TestCase
                 gameBundlesShiny: [],
             ),
             catchState: null,
-            categoryForm: null,
-            regionalForm: null,
-            specialForm: null,
-            variantForm: null,
-            primaryType: null,
-            secondaryType: null,
+            forms: null,
+            types: new AlbumTypesResponse(primary: null, secondary: null),
         );
     }
 }
