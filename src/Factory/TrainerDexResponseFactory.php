@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Factory;
 
+use App\DTO\Response\DexFlagsResponse;
 use App\DTO\Response\DexSlugResponse;
 use App\DTO\Response\TrainerDexResponse;
 
@@ -57,14 +58,16 @@ final class TrainerDexResponseFactory
             name: (string) $name,
             frenchName: (string) $frenchName,
             slug: (string) $slug,
-            isShiny: (bool) $isShiny,
-            isPrivate: (bool) $isPrivate,
-            isOnHome: (bool) $isOnHome,
-            isDisplayForm: (bool) $isDisplayForm,
+            flags: new DexFlagsResponse(
+                isShiny: (bool) $isShiny,
+                isPrivate: (bool) $isPrivate,
+                isOnHome: (bool) $isOnHome,
+                isDisplayForm: (bool) $isDisplayForm,
+                isReleased: (bool) $isReleased,
+                isPremium: (bool) $isPremium,
+                isCustom: (bool) $isCustom,
+            ),
             displayTemplate: (string) $displayTemplate,
-            isReleased: (bool) $isReleased,
-            isPremium: (bool) $isPremium,
-            isCustom: (bool) $isCustom,
         );
     }
 

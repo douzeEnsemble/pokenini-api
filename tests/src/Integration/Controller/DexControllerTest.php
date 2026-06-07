@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Integration\Controller;
 
 use App\Controller\DexController;
+use App\DTO\Response\DexFlagsResponse;
 use App\Factory\TrainerDexResponseFactory;
 use App\Tests\Common\Traits\GetterTrait\GetTrainerDexTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -14,6 +15,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  */
 #[CoversClass(DexController::class)]
 #[CoversClass(TrainerDexResponseFactory::class)]
+#[CoversClass(DexFlagsResponse::class)]
 final class DexControllerTest extends AbstractTestControllerApi
 {
     use GetTrainerDexTrait;
@@ -26,7 +28,7 @@ final class DexControllerTest extends AbstractTestControllerApi
 
         $content = $this->getClientResponseContent();
 
-        /** @var int[][][]|string[][]|string[][][] $data */
+        /** @var array<int, array<string, array<string, bool>|array<string, string>|string>> $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertEquals(
@@ -49,7 +51,7 @@ final class DexControllerTest extends AbstractTestControllerApi
 
         $content = $this->getClientResponseContent();
 
-        /** @var int[][][]|string[][]|string[][][] $data */
+        /** @var array<int, array<string, array<string, bool>|array<string, string>|string>> $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertEquals(
@@ -72,7 +74,7 @@ final class DexControllerTest extends AbstractTestControllerApi
 
         $content = $this->getClientResponseContent();
 
-        /** @var int[][][]|string[][]|string[][][] $data */
+        /** @var array<int, array<string, array<string, bool>|array<string, string>|string>> $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertEquals(
@@ -96,7 +98,7 @@ final class DexControllerTest extends AbstractTestControllerApi
 
         $content = $this->getClientResponseContent();
 
-        /** @var int[][][]|string[][]|string[][][] $data */
+        /** @var array<int, array<string, array<string, bool>|array<string, string>|string>> $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertEquals(
@@ -113,7 +115,7 @@ final class DexControllerTest extends AbstractTestControllerApi
 
         $content = $this->getClientResponseContent();
 
-        /** @var int[][][]|string[][]|string[][][] $data */
+        /** @var array<int, array<string, array<string, bool>|array<string, string>|string>> $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertEquals(
@@ -130,7 +132,7 @@ final class DexControllerTest extends AbstractTestControllerApi
 
         $content = $this->getClientResponseContent();
 
-        /** @var int[][][]|string[][]|string[][][] $data */
+        /** @var array<int, array<string, array<string, bool>|array<string, string>|string>> $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertEquals(
