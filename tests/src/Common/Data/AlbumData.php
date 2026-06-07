@@ -747,46 +747,6 @@ final class AlbumData
      */
     private static function toNestedFormat(array $flat): array
     {
-        $catchState = null !== ($flat['catch_state_slug'] ?? null)
-            ? [
-                'slug' => $flat['catch_state_slug'],
-                'name' => $flat['catch_state_name'],
-                'french_name' => $flat['catch_state_french_name'],
-            ]
-            : null;
-
-        $categoryForm = null !== ($flat['category_form_slug'] ?? null)
-            ? ['slug' => $flat['category_form_slug'], 'name' => $flat['category_form_name']]
-            : null;
-
-        $regionalForm = null !== ($flat['regional_form_slug'] ?? null)
-            ? ['slug' => $flat['regional_form_slug'], 'name' => $flat['regional_form_name']]
-            : null;
-
-        $specialForm = null !== ($flat['special_form_slug'] ?? null)
-            ? ['slug' => $flat['special_form_slug'], 'name' => $flat['special_form_name']]
-            : null;
-
-        $variantForm = null !== ($flat['variant_form_slug'] ?? null)
-            ? ['slug' => $flat['variant_form_slug'], 'name' => $flat['variant_form_name']]
-            : null;
-
-        $primaryType = null !== ($flat['primary_type_slug'] ?? null)
-            ? [
-                'slug' => $flat['primary_type_slug'],
-                'name' => $flat['primary_type_name'],
-                'french_name' => $flat['primary_type_french_name'],
-            ]
-            : null;
-
-        $secondaryType = null !== ($flat['secondary_type_slug'] ?? null)
-            ? [
-                'slug' => $flat['secondary_type_slug'],
-                'name' => $flat['secondary_type_name'],
-                'french_name' => $flat['secondary_type_french_name'],
-            ]
-            : null;
-
         return [
             'pokemon' => [
                 'slug' => $flat['pokemon_slug'],
@@ -806,13 +766,85 @@ final class AlbumData
                 'game_bundles' => $flat['game_bundles'],
                 'game_bundles_shiny' => $flat['game_bundles_shiny'],
             ],
-            'catch_state' => $catchState,
-            'category_form' => $categoryForm,
-            'regional_form' => $regionalForm,
-            'special_form' => $specialForm,
-            'variant_form' => $variantForm,
-            'primary_type' => $primaryType,
-            'secondary_type' => $secondaryType,
+            'catch_state' => self::buildNestedCatchState($flat),
+            'forms' => self::buildNestedForms($flat),
+            'types' => self::buildNestedTypes($flat),
+        ];
+    }
+
+    /**
+     * @param array<string, mixed> $flat
+     *
+     * @return null|array<string, mixed>
+     */
+    private static function buildNestedCatchState(array $flat): ?array
+    {
+        if (null === ($flat['catch_state_slug'] ?? null)) {
+            return null;
+        }
+
+        return [
+            'slug' => $flat['catch_state_slug'],
+            'name' => $flat['catch_state_name'],
+            'french_name' => $flat['catch_state_french_name'],
+        ];
+    }
+
+    /**
+     * @param array<string, mixed> $flat
+     *
+     * @return null|array<string, null|array<string, mixed>>
+     */
+    private static function buildNestedForms(array $flat): ?array
+    {
+        $hasAnyForm = null !== ($flat['category_form_slug'] ?? null)
+            || null !== ($flat['regional_form_slug'] ?? null)
+            || null !== ($flat['special_form_slug'] ?? null)
+            || null !== ($flat['variant_form_slug'] ?? null);
+
+        if (!$hasAnyForm) {
+            return null;
+        }
+
+        return [
+            'category' => self::buildNestedForm('category_form', $flat),
+            'regional' => self::buildNestedForm('regional_form', $flat),
+            'special' => self::buildNestedForm('special_form', $flat),
+            'variant' => self::buildNestedForm('variant_form', $flat),
+        ];
+    }
+
+    /**
+     * @param array<string, mixed> $flat
+     *
+     * @return null|array<string, mixed>
+     */
+    private static function buildNestedForm(string $prefix, array $flat): ?array
+    {
+        if (null === ($flat["{$prefix}_slug"] ?? null)) {
+            return null;
+        }
+
+        return [
+            'slug' => $flat["{$prefix}_slug"],
+            'name' => $flat["{$prefix}_name"],
+        ];
+    }
+
+    /**
+     * @param array<string, mixed> $flat
+     *
+     * @return array<string, null|array<string, mixed>>
+     */
+    private static function buildNestedTypes(array $flat): array
+    {
+        return [
+            'primary' => null !== ($flat['primary_type_slug'] ?? null)
+                ? ['slug' => $flat['primary_type_slug'], 'name' => $flat['primary_type_name'], 'french_name' => $flat['primary_type_french_name']]
+                : null,
+            'secondary' => null !== ($flat['secondary_type_slug'] ?? null)
+                ? ['slug' => $flat['secondary_type_slug'], 'name' => $flat['secondary_type_name'], 'french_name' => $flat['secondary_type_french_name']]
+                : null,
         ];
     }
 

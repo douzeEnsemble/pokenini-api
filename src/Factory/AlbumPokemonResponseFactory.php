@@ -6,8 +6,10 @@ namespace App\Factory;
 
 use App\DTO\Response\AlbumCatchStateResponse;
 use App\DTO\Response\AlbumFormResponse;
+use App\DTO\Response\AlbumFormsResponse;
 use App\DTO\Response\AlbumPokemonResponse;
 use App\DTO\Response\AlbumTypeResponse;
+use App\DTO\Response\AlbumTypesResponse;
 use App\DTO\Response\PokemonDataResponse;
 
 final class AlbumPokemonResponseFactory
@@ -20,12 +22,8 @@ final class AlbumPokemonResponseFactory
         return new AlbumPokemonResponse(
             pokemon: self::buildPokemon($row),
             catchState: self::buildCatchState($row),
-            categoryForm: self::buildForm('category_form', $row),
-            regionalForm: self::buildForm('regional_form', $row),
-            specialForm: self::buildForm('special_form', $row),
-            variantForm: self::buildForm('variant_form', $row),
-            primaryType: self::buildType('primary_type', $row),
-            secondaryType: self::buildType('secondary_type', $row),
+            forms: self::buildForms($row),
+            types: self::buildTypes($row),
         );
     }
 
@@ -140,6 +138,28 @@ final class AlbumPokemonResponseFactory
     /**
      * @param array<string, mixed> $row
      */
+    private static function buildForms(array $row): ?AlbumFormsResponse
+    {
+        $hasAnyForm = !empty($row['category_form_slug'])
+            || !empty($row['regional_form_slug'])
+            || !empty($row['special_form_slug'])
+            || !empty($row['variant_form_slug']);
+
+        if (!$hasAnyForm) {
+            return null;
+        }
+
+        return new AlbumFormsResponse(
+            category: self::buildForm('category_form', $row),
+            regional: self::buildForm('regional_form', $row),
+            special: self::buildForm('special_form', $row),
+            variant: self::buildForm('variant_form', $row),
+        );
+    }
+
+    /**
+     * @param array<string, mixed> $row
+     */
     private static function buildForm(string $prefix, array $row): ?AlbumFormResponse
     {
         $slugKey = "{$prefix}_slug";
@@ -158,6 +178,17 @@ final class AlbumPokemonResponseFactory
         return new AlbumFormResponse(
             slug: (string) $slug,
             name: (string) $name,
+        );
+    }
+
+    /**
+     * @param array<string, mixed> $row
+     */
+    private static function buildTypes(array $row): AlbumTypesResponse
+    {
+        return new AlbumTypesResponse(
+            primary: self::buildType('primary_type', $row),
+            secondary: self::buildType('secondary_type', $row),
         );
     }
 
