@@ -134,12 +134,28 @@ final class PokemonsControllerTest extends AbstractTestControllerApi
             $this->assertArrayHasKey('game_bundles_shiny', $pokemon);
             $this->assertIsArray($pokemon['game_bundles']);
             $this->assertIsArray($pokemon['game_bundles_shiny']);
-            $this->assertArrayHasKey('category_form', $item);
-            $this->assertArrayHasKey('regional_form', $item);
-            $this->assertArrayHasKey('special_form', $item);
-            $this->assertArrayHasKey('variant_form', $item);
-            $this->assertArrayHasKey('primary_type', $item);
-            $this->assertArrayHasKey('secondary_type', $item);
+
+            $this->assertArrayHasKey('forms', $item);
+
+            $this->assertArrayHasKey('types', $item);
+            $this->assertIsArray($item['types']);
+
+            /** @var array<string, mixed> $types */
+            $types = $item['types'];
+            $this->assertArrayHasKey('primary', $types);
+            $this->assertArrayHasKey('secondary', $types);
+
+            if (null !== $types['primary']) {
+                $this->assertIsArray($types['primary']);
+
+                /** @var array<string, mixed> $primary */
+                $primary = $types['primary'];
+                $this->assertArrayHasKey('slug', $primary);
+                $this->assertArrayHasKey('name', $primary);
+                $this->assertArrayHasKey('french_name', $primary);
+                $this->assertArrayHasKey('color', $primary);
+                $this->assertSame('', $primary['color']);
+            }
         }
     }
 }

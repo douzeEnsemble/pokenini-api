@@ -4,10 +4,12 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\DTO\Response;
 
-use App\DTO\Response\AlbumTypeResponse;
 use App\DTO\Response\ElectionPokemonResponse;
 use App\DTO\Response\FormResponse;
+use App\DTO\Response\FormsResponse;
 use App\DTO\Response\PokemonDataResponse;
+use App\DTO\Response\TypeResponse;
+use App\DTO\Response\TypesResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -22,52 +24,46 @@ final class ElectionPokemonResponseTest extends TestCase
     public function constructorInitializesAllProperties(): void
     {
         $pokemon = $this->buildPokemon();
-        $categoryForm = new FormResponse('starter', 'Starter', 'Partant');
-        $regionalForm = new FormResponse('alolan', 'Alolan', 'Alolan FR');
-        $primaryType = new AlbumTypeResponse('grass', 'Grass', 'Plante');
-        $secondaryType = new AlbumTypeResponse('poison', 'Poison', 'Poison');
+        $forms = new FormsResponse(
+            category: new FormResponse('starter', 'Starter', 'Partant'),
+            regional: null,
+            special: null,
+            variant: null,
+        );
+        $types = new TypesResponse(
+            primary: new TypeResponse('grass', 'Grass', 'Plante', ''),
+            secondary: new TypeResponse('poison', 'Poison', 'Poison', ''),
+        );
 
         $response = new ElectionPokemonResponse(
             pokemon: $pokemon,
-            categoryForm: $categoryForm,
-            regionalForm: $regionalForm,
-            specialForm: null,
-            variantForm: null,
-            primaryType: $primaryType,
-            secondaryType: $secondaryType,
+            forms: $forms,
+            types: $types,
         );
 
         self::assertSame($pokemon, $response->pokemon);
-        self::assertSame($categoryForm, $response->categoryForm);
-        self::assertSame($regionalForm, $response->regionalForm);
-        self::assertNull($response->specialForm);
-        self::assertNull($response->variantForm);
-        self::assertSame($primaryType, $response->primaryType);
-        self::assertSame($secondaryType, $response->secondaryType);
+        self::assertSame($forms, $response->forms);
+        self::assertSame($types, $response->types);
     }
 
     #[Test]
-    public function constructorAcceptsAllNullablePropertiesAsNull(): void
+    public function constructorAcceptsNullForms(): void
     {
         $pokemon = $this->buildPokemon();
+        $types = new TypesResponse(
+            primary: new TypeResponse('grass', 'Grass', 'Plante', ''),
+            secondary: null,
+        );
 
         $response = new ElectionPokemonResponse(
             pokemon: $pokemon,
-            categoryForm: null,
-            regionalForm: null,
-            specialForm: null,
-            variantForm: null,
-            primaryType: null,
-            secondaryType: null,
+            forms: null,
+            types: $types,
         );
 
         self::assertSame($pokemon, $response->pokemon);
-        self::assertNull($response->categoryForm);
-        self::assertNull($response->regionalForm);
-        self::assertNull($response->specialForm);
-        self::assertNull($response->variantForm);
-        self::assertNull($response->primaryType);
-        self::assertNull($response->secondaryType);
+        self::assertNull($response->forms);
+        self::assertSame($types, $response->types);
     }
 
     private function buildPokemon(): PokemonDataResponse

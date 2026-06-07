@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\DTO\ElectionPokemonsList;
-use App\DTO\Response\AlbumTypeResponse;
 use App\DTO\Response\ElectionPokemonResponse;
 use App\DTO\Response\ElectionPokemonsListResponse;
 use App\DTO\Response\FormResponse;
+use App\DTO\Response\FormsResponse;
 use App\DTO\Response\PokemonDataResponse;
+use App\DTO\Response\TypeResponse;
+use App\DTO\Response\TypesResponse;
 
 final class ElectionPokemonResponseFactory
 {
@@ -28,12 +30,8 @@ final class ElectionPokemonResponseFactory
     {
         return new ElectionPokemonResponse(
             pokemon: self::buildPokemon($row),
-            categoryForm: self::buildForm('category_form', $row),
-            regionalForm: self::buildForm('regional_form', $row),
-            specialForm: self::buildForm('special_form', $row),
-            variantForm: self::buildForm('variant_form', $row),
-            primaryType: self::buildType('primary_type', $row),
-            secondaryType: self::buildType('secondary_type', $row),
+            forms: self::buildForms($row),
+            types: self::buildTypes($row),
         );
     }
 
@@ -114,6 +112,28 @@ final class ElectionPokemonResponseFactory
     /**
      * @param array<string, mixed> $row
      */
+    private static function buildForms(array $row): ?FormsResponse
+    {
+        $hasAnyForm = !empty($row['category_form_slug'])
+            || !empty($row['regional_form_slug'])
+            || !empty($row['special_form_slug'])
+            || !empty($row['variant_form_slug']);
+
+        if (!$hasAnyForm) {
+            return null;
+        }
+
+        return new FormsResponse(
+            category: self::buildForm('category_form', $row),
+            regional: self::buildForm('regional_form', $row),
+            special: self::buildForm('special_form', $row),
+            variant: self::buildForm('variant_form', $row),
+        );
+    }
+
+    /**
+     * @param array<string, mixed> $row
+     */
     private static function buildForm(string $prefix, array $row): ?FormResponse
     {
         $slugKey = "{$prefix}_slug";
@@ -143,7 +163,18 @@ final class ElectionPokemonResponseFactory
     /**
      * @param array<string, mixed> $row
      */
-    private static function buildType(string $prefix, array $row): ?AlbumTypeResponse
+    private static function buildTypes(array $row): TypesResponse
+    {
+        return new TypesResponse(
+            primary: self::buildType('primary_type', $row),
+            secondary: self::buildType('secondary_type', $row),
+        );
+    }
+
+    /**
+     * @param array<string, mixed> $row
+     */
+    private static function buildType(string $prefix, array $row): ?TypeResponse
     {
         $slugKey = "{$prefix}_slug";
         $nameKey = "{$prefix}_name";
@@ -162,10 +193,11 @@ final class ElectionPokemonResponseFactory
         /** @var scalar $frenchName */
         $frenchName = $row[$frenchNameKey];
 
-        return new AlbumTypeResponse(
+        return new TypeResponse(
             slug: (string) $slug,
             name: (string) $name,
             frenchName: (string) $frenchName,
+            color: '',
         );
     }
 }
