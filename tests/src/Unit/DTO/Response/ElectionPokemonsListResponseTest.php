@@ -7,6 +7,7 @@ namespace App\Tests\Unit\DTO\Response;
 use App\DTO\Response\ElectionPokemonResponse;
 use App\DTO\Response\ElectionPokemonsListResponse;
 use App\DTO\Response\PokemonDataResponse;
+use App\DTO\Response\TypesResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -78,12 +79,8 @@ final class ElectionPokemonsListResponseTest extends TestCase
 
         return new ElectionPokemonResponse(
             pokemon: $pokemon,
-            categoryForm: null,
-            regionalForm: null,
-            specialForm: null,
-            variantForm: null,
-            primaryType: null,
-            secondaryType: null,
+            forms: null,
+            types: new TypesResponse(primary: null, secondary: null),
         );
     }
 }

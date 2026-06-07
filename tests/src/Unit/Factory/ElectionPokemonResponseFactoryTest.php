@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Factory;
 
 use App\DTO\ElectionPokemonsList;
-use App\DTO\Response\AlbumTypeResponse;
+use App\DTO\Response\ElectionPokemonResponse;
 use App\DTO\Response\FormResponse;
+use App\DTO\Response\FormsResponse;
+use App\DTO\Response\TypeResponse;
 use App\Factory\ElectionPokemonResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -72,14 +74,11 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertNull($response->categoryForm);
-        self::assertNull($response->regionalForm);
-        self::assertNull($response->specialForm);
-        self::assertNull($response->variantForm);
+        self::assertNull($response->forms);
     }
 
     #[Test]
-    public function fromSqlRowWithCategoryFormReturnsCategoryFormResponse(): void
+    public function fromSqlRowWithCategoryFormBuildsFormsResponse(): void
     {
         $row = $this->buildRow([
             'category_form_slug' => 'starter',
@@ -89,17 +88,18 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertInstanceOf(FormResponse::class, $response->categoryForm);
-        self::assertSame('starter', $response->categoryForm->slug);
-        self::assertSame('Starter', $response->categoryForm->name);
-        self::assertSame('Partant', $response->categoryForm->frenchName);
-        self::assertNull($response->regionalForm);
-        self::assertNull($response->specialForm);
-        self::assertNull($response->variantForm);
+        self::assertInstanceOf(FormsResponse::class, $response->forms);
+        self::assertInstanceOf(FormResponse::class, $response->forms->category);
+        self::assertSame('starter', $response->forms->category->slug);
+        self::assertSame('Starter', $response->forms->category->name);
+        self::assertSame('Partant', $response->forms->category->frenchName);
+        self::assertNull($response->forms->regional);
+        self::assertNull($response->forms->special);
+        self::assertNull($response->forms->variant);
     }
 
     #[Test]
-    public function fromSqlRowWithRegionalFormReturnsRegionalFormResponse(): void
+    public function fromSqlRowWithRegionalFormBuildsFormsResponse(): void
     {
         $row = $this->buildRow([
             'regional_form_slug' => 'alolan',
@@ -109,17 +109,18 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertNull($response->categoryForm);
-        self::assertInstanceOf(FormResponse::class, $response->regionalForm);
-        self::assertSame('alolan', $response->regionalForm->slug);
-        self::assertSame('Alolan', $response->regionalForm->name);
-        self::assertSame('Alolan FR', $response->regionalForm->frenchName);
-        self::assertNull($response->specialForm);
-        self::assertNull($response->variantForm);
+        self::assertInstanceOf(FormsResponse::class, $response->forms);
+        self::assertNull($response->forms->category);
+        self::assertInstanceOf(FormResponse::class, $response->forms->regional);
+        self::assertSame('alolan', $response->forms->regional->slug);
+        self::assertSame('Alolan', $response->forms->regional->name);
+        self::assertSame('Alolan FR', $response->forms->regional->frenchName);
+        self::assertNull($response->forms->special);
+        self::assertNull($response->forms->variant);
     }
 
     #[Test]
-    public function fromSqlRowWithSpecialFormReturnsSpecialFormResponse(): void
+    public function fromSqlRowWithSpecialFormBuildsFormsResponse(): void
     {
         $row = $this->buildRow([
             'special_form_slug' => 'mega',
@@ -129,17 +130,18 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertNull($response->categoryForm);
-        self::assertNull($response->regionalForm);
-        self::assertInstanceOf(FormResponse::class, $response->specialForm);
-        self::assertSame('mega', $response->specialForm->slug);
-        self::assertSame('Mega', $response->specialForm->name);
-        self::assertSame('Méga', $response->specialForm->frenchName);
-        self::assertNull($response->variantForm);
+        self::assertInstanceOf(FormsResponse::class, $response->forms);
+        self::assertNull($response->forms->category);
+        self::assertNull($response->forms->regional);
+        self::assertInstanceOf(FormResponse::class, $response->forms->special);
+        self::assertSame('mega', $response->forms->special->slug);
+        self::assertSame('Mega', $response->forms->special->name);
+        self::assertSame('Méga', $response->forms->special->frenchName);
+        self::assertNull($response->forms->variant);
     }
 
     #[Test]
-    public function fromSqlRowWithVariantFormReturnsVariantFormResponse(): void
+    public function fromSqlRowWithVariantFormBuildsFormsResponse(): void
     {
         $row = $this->buildRow([
             'variant_form_slug' => 'shiny',
@@ -149,13 +151,14 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertNull($response->categoryForm);
-        self::assertNull($response->regionalForm);
-        self::assertNull($response->specialForm);
-        self::assertInstanceOf(FormResponse::class, $response->variantForm);
-        self::assertSame('shiny', $response->variantForm->slug);
-        self::assertSame('Shiny', $response->variantForm->name);
-        self::assertSame('Chromatique', $response->variantForm->frenchName);
+        self::assertInstanceOf(FormsResponse::class, $response->forms);
+        self::assertNull($response->forms->category);
+        self::assertNull($response->forms->regional);
+        self::assertNull($response->forms->special);
+        self::assertInstanceOf(FormResponse::class, $response->forms->variant);
+        self::assertSame('shiny', $response->forms->variant->slug);
+        self::assertSame('Shiny', $response->forms->variant->name);
+        self::assertSame('Chromatique', $response->forms->variant->frenchName);
     }
 
     #[Test]
@@ -165,11 +168,12 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertInstanceOf(AlbumTypeResponse::class, $response->primaryType);
-        self::assertSame('grass', $response->primaryType->slug);
-        self::assertSame('Grass', $response->primaryType->name);
-        self::assertSame('Plante', $response->primaryType->frenchName);
-        self::assertNull($response->secondaryType);
+        self::assertInstanceOf(TypeResponse::class, $response->types->primary);
+        self::assertSame('grass', $response->types->primary->slug);
+        self::assertSame('Grass', $response->types->primary->name);
+        self::assertSame('Plante', $response->types->primary->frenchName);
+        self::assertSame('', $response->types->primary->color);
+        self::assertNull($response->types->secondary);
     }
 
     #[Test]
@@ -183,14 +187,15 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertInstanceOf(AlbumTypeResponse::class, $response->secondaryType);
-        self::assertSame('poison', $response->secondaryType->slug);
-        self::assertSame('Poison', $response->secondaryType->name);
-        self::assertSame('Poison', $response->secondaryType->frenchName);
+        self::assertInstanceOf(TypeResponse::class, $response->types->secondary);
+        self::assertSame('poison', $response->types->secondary->slug);
+        self::assertSame('Poison', $response->types->secondary->name);
+        self::assertSame('Poison', $response->types->secondary->frenchName);
+        self::assertSame('', $response->types->secondary->color);
     }
 
     #[Test]
-    public function fromSqlRowWithNoPrimaryTypeReturnsNullTypes(): void
+    public function fromSqlRowWithNoPrimaryTypeReturnsBothTypesNull(): void
     {
         $row = $this->buildRow([
             'primary_type_slug' => null,
@@ -200,8 +205,8 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertNull($response->primaryType);
-        self::assertNull($response->secondaryType);
+        self::assertNull($response->types->primary);
+        self::assertNull($response->types->secondary);
     }
 
     #[Test]
@@ -215,6 +220,7 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
         $responses = ElectionPokemonResponseFactory::fromSqlRows($rows);
 
         self::assertCount(2, $responses);
+        self::assertContainsOnlyInstancesOf(ElectionPokemonResponse::class, $responses);
         self::assertSame('bulbasaur', $responses[0]->pokemon->slug);
         self::assertSame('charmander', $responses[1]->pokemon->slug);
     }
