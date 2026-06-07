@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\DTO\Response\ElectionMetricsResponse;
+use App\DTO\Response\ElectionViewCountResponse;
+use App\DTO\Response\ElectionWinCountResponse;
 
 final class ElectionMetricsResponseFactory
 {
@@ -37,10 +39,14 @@ final class ElectionMetricsResponseFactory
         $dexTotalCount = $data['dex_total_count'];
 
         return new ElectionMetricsResponse(
-            viewCountSum: (int) $viewCountSum,
-            winCountSum: (int) $winCountSum,
-            viewCountMax: (int) $viewCountMax,
-            winCountMax: (int) $winCountMax,
+            viewCount: new ElectionViewCountResponse(
+                sum: (int) $viewCountSum,
+                max: (int) $viewCountMax,
+            ),
+            winCount: new ElectionWinCountResponse(
+                sum: (int) $winCountSum,
+                max: (int) $winCountMax,
+            ),
             underMaxViewCount: (int) $underMaxViewCount,
             maxViewCount: (int) $maxViewCount,
             dexTotalCount: (int) $dexTotalCount,

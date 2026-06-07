@@ -30,10 +30,10 @@ final class ElectionMetricsResponseFactoryTest extends TestCase
 
         $response = ElectionMetricsResponseFactory::fromArray($data);
 
-        self::assertSame(9, $response->viewCountSum);
-        self::assertSame(6, $response->winCountSum);
-        self::assertSame(3, $response->viewCountMax);
-        self::assertSame(3, $response->winCountMax);
+        self::assertSame(9, $response->viewCount->sum);
+        self::assertSame(3, $response->viewCount->max);
+        self::assertSame(6, $response->winCount->sum);
+        self::assertSame(3, $response->winCount->max);
         self::assertSame(1, $response->underMaxViewCount);
         self::assertSame(1, $response->maxViewCount);
         self::assertSame(7, $response->dexTotalCount);
@@ -54,10 +54,10 @@ final class ElectionMetricsResponseFactoryTest extends TestCase
 
         $response = ElectionMetricsResponseFactory::fromArray($data);
 
-        self::assertSame(0, $response->viewCountSum);
-        self::assertSame(0, $response->winCountSum);
-        self::assertSame(0, $response->viewCountMax);
-        self::assertSame(0, $response->winCountMax);
+        self::assertSame(0, $response->viewCount->sum);
+        self::assertSame(0, $response->viewCount->max);
+        self::assertSame(0, $response->winCount->sum);
+        self::assertSame(0, $response->winCount->max);
         self::assertSame(15, $response->underMaxViewCount);
         self::assertSame(15, $response->maxViewCount);
         self::assertSame(21, $response->dexTotalCount);
@@ -78,10 +78,10 @@ final class ElectionMetricsResponseFactoryTest extends TestCase
 
         $response = ElectionMetricsResponseFactory::fromArray($data);
 
-        self::assertSame(100000, $response->viewCountSum);
-        self::assertSame(75000, $response->winCountSum);
-        self::assertSame(500, $response->viewCountMax);
-        self::assertSame(499, $response->winCountMax);
+        self::assertSame(100000, $response->viewCount->sum);
+        self::assertSame(500, $response->viewCount->max);
+        self::assertSame(75000, $response->winCount->sum);
+        self::assertSame(499, $response->winCount->max);
         self::assertSame(3, $response->underMaxViewCount);
         self::assertSame(2, $response->maxViewCount);
         self::assertSame(1025, $response->dexTotalCount);
@@ -102,10 +102,10 @@ final class ElectionMetricsResponseFactoryTest extends TestCase
 
         $response = ElectionMetricsResponseFactory::fromArray($data);
 
-        self::assertSame(9, $response->viewCountSum);
-        self::assertSame(6, $response->winCountSum);
-        self::assertSame(3, $response->viewCountMax);
-        self::assertSame(3, $response->winCountMax);
+        self::assertSame(9, $response->viewCount->sum);
+        self::assertSame(3, $response->viewCount->max);
+        self::assertSame(6, $response->winCount->sum);
+        self::assertSame(3, $response->winCount->max);
         self::assertSame(1, $response->underMaxViewCount);
         self::assertSame(1, $response->maxViewCount);
         self::assertSame(7, $response->dexTotalCount);

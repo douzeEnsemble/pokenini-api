@@ -5,6 +5,8 @@ declare(strict_types=1);
 namespace App\Tests\Integration\Controller;
 
 use App\Controller\TrainerPokemonEloController;
+use App\DTO\Response\ElectionViewCountResponse;
+use App\DTO\Response\ElectionWinCountResponse;
 use App\Factory\ElectionMetricsResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 
@@ -13,6 +15,8 @@ use PHPUnit\Framework\Attributes\CoversClass;
  */
 #[CoversClass(TrainerPokemonEloController::class)]
 #[CoversClass(ElectionMetricsResponseFactory::class)]
+#[CoversClass(ElectionViewCountResponse::class)]
+#[CoversClass(ElectionWinCountResponse::class)]
 final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
 {
     public function testGetTop(): void
@@ -120,15 +124,13 @@ final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        /** @var float[]|int[] $content */
+        /** @var array<string, array<string, int>|int> $content */
         $content = $this->getJsonDecodedResponseContent();
 
         $this->assertSame(
             [
-                'view_count_sum' => 0,
-                'win_count_sum' => 0,
-                'view_count_max' => 0,
-                'win_count_max' => 0,
+                'view_count' => ['sum' => 0, 'max' => 0],
+                'win_count' => ['sum' => 0, 'max' => 0],
                 'under_max_view_count' => 15,
                 'max_view_count' => 15,
                 'dex_total_count' => 21,
@@ -151,15 +153,13 @@ final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        /** @var float[]|int[] $content */
+        /** @var array<string, array<string, int>|int> $content */
         $content = $this->getJsonDecodedResponseContent();
 
         $this->assertSame(
             [
-                'view_count_sum' => 9,
-                'win_count_sum' => 6,
-                'view_count_max' => 3,
-                'win_count_max' => 3,
+                'view_count' => ['sum' => 9, 'max' => 3],
+                'win_count' => ['sum' => 6, 'max' => 3],
                 'under_max_view_count' => 1,
                 'max_view_count' => 1,
                 'dex_total_count' => 7,
@@ -182,15 +182,13 @@ final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        /** @var float[]|int[] $content */
+        /** @var array<string, array<string, int>|int> $content */
         $content = $this->getJsonDecodedResponseContent();
 
         $this->assertSame(
             [
-                'view_count_sum' => 0,
-                'win_count_sum' => 0,
-                'view_count_max' => 0,
-                'win_count_max' => 0,
+                'view_count' => ['sum' => 0, 'max' => 0],
+                'win_count' => ['sum' => 0, 'max' => 0],
                 'under_max_view_count' => 7,
                 'max_view_count' => 0,
                 'dex_total_count' => 7,
