@@ -40,14 +40,14 @@ final class TrainerDexResponseFactoryTest extends TestCase
         self::assertSame('Home', $response->name);
         self::assertSame('Home', $response->frenchName);
         self::assertSame('home', $response->slug);
-        self::assertFalse($response->isShiny);
-        self::assertTrue($response->isPrivate);
-        self::assertFalse($response->isOnHome);
-        self::assertTrue($response->isDisplayForm);
+        self::assertFalse($response->flags->isShiny);
+        self::assertTrue($response->flags->isPrivate);
+        self::assertFalse($response->flags->isOnHome);
+        self::assertTrue($response->flags->isDisplayForm);
         self::assertSame('box', $response->displayTemplate);
-        self::assertTrue($response->isReleased);
-        self::assertFalse($response->isPremium);
-        self::assertFalse($response->isCustom);
+        self::assertTrue($response->flags->isReleased);
+        self::assertFalse($response->flags->isPremium);
+        self::assertFalse($response->flags->isCustom);
     }
 
     #[Test]
@@ -74,14 +74,14 @@ final class TrainerDexResponseFactoryTest extends TestCase
         self::assertSame('456', $response->name);
         self::assertSame('789', $response->frenchName);
         self::assertSame('101', $response->slug);
-        self::assertFalse($response->isShiny);
-        self::assertTrue($response->isPrivate);
-        self::assertFalse($response->isOnHome);
-        self::assertTrue($response->isDisplayForm);
+        self::assertFalse($response->flags->isShiny);
+        self::assertTrue($response->flags->isPrivate);
+        self::assertFalse($response->flags->isOnHome);
+        self::assertTrue($response->flags->isDisplayForm);
         self::assertSame('202', $response->displayTemplate);
-        self::assertTrue($response->isReleased);
-        self::assertFalse($response->isPremium);
-        self::assertFalse($response->isCustom);
+        self::assertTrue($response->flags->isReleased);
+        self::assertFalse($response->flags->isPremium);
+        self::assertFalse($response->flags->isCustom);
     }
 
     #[Test]
@@ -123,10 +123,10 @@ final class TrainerDexResponseFactoryTest extends TestCase
         self::assertCount(2, $responses);
         self::assertContainsOnlyInstancesOf(TrainerDexResponse::class, $responses);
         self::assertSame('home', $responses[0]->dex->slug);
-        self::assertFalse($responses[0]->isShiny);
+        self::assertFalse($responses[0]->flags->isShiny);
         self::assertSame('homeshiny', $responses[1]->dex->slug);
-        self::assertTrue($responses[1]->isShiny);
-        self::assertTrue($responses[1]->isCustom);
+        self::assertTrue($responses[1]->flags->isShiny);
+        self::assertTrue($responses[1]->flags->isCustom);
     }
 
     #[Test]
