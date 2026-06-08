@@ -25,10 +25,6 @@ final class AlbumDexResponseFactoryTest extends TestCase
         self::assertSame('redgreenblueyellow', $result->originalSlug);
         self::assertSame('Red / Green / Blue / Yellow', $result->name);
         self::assertSame('Rouge / Vert / Bleu / Jaune', $result->frenchName);
-        self::assertFalse($result->isShiny);
-        self::assertFalse($result->isPrivate);
-        self::assertFalse($result->isOnHome);
-        self::assertTrue($result->isDisplayForm);
         self::assertSame('box', $result->displayTemplate);
         self::assertSame('(p.bankable or p.bankableish) and ba?.redgreenblueyellow', $result->selectionRule);
         self::assertSame(
@@ -40,9 +36,34 @@ final class AlbumDexResponseFactoryTest extends TestCase
             $result->frenchDescription,
         );
         self::assertSame('20230221.085100', $result->version);
-        self::assertTrue($result->isReleased);
-        self::assertFalse($result->isPremium);
-        self::assertFalse($result->isCustom);
+    }
+
+    #[Test]
+    public function fromSqlRowBuildsFlagsSubObjectForReleasedDex(): void
+    {
+        $result = AlbumDexResponseFactory::fromSqlRow($this->getRedGreenBlueYellowRow());
+
+        self::assertFalse($result->flags->isShiny);
+        self::assertFalse($result->flags->isPrivate);
+        self::assertFalse($result->flags->isOnHome);
+        self::assertTrue($result->flags->isDisplayForm);
+        self::assertTrue($result->flags->isReleased);
+        self::assertFalse($result->flags->isPremium);
+        self::assertFalse($result->flags->isCustom);
+    }
+
+    #[Test]
+    public function fromSqlRowBuildsFlagsSubObjectForPrivateDex(): void
+    {
+        $result = AlbumDexResponseFactory::fromSqlRow($this->getHomeRow());
+
+        self::assertFalse($result->flags->isShiny);
+        self::assertTrue($result->flags->isPrivate);
+        self::assertFalse($result->flags->isOnHome);
+        self::assertTrue($result->flags->isDisplayForm);
+        self::assertTrue($result->flags->isReleased);
+        self::assertFalse($result->flags->isPremium);
+        self::assertFalse($result->flags->isCustom);
     }
 
     #[Test]
@@ -102,18 +123,18 @@ final class AlbumDexResponseFactoryTest extends TestCase
         self::assertSame('456', $result->originalSlug);
         self::assertSame('789', $result->name);
         self::assertSame('101', $result->frenchName);
-        self::assertFalse($result->isShiny);
-        self::assertTrue($result->isPrivate);
-        self::assertFalse($result->isOnHome);
-        self::assertTrue($result->isDisplayForm);
+        self::assertFalse($result->flags->isShiny);
+        self::assertTrue($result->flags->isPrivate);
+        self::assertFalse($result->flags->isOnHome);
+        self::assertTrue($result->flags->isDisplayForm);
         self::assertSame('202', $result->displayTemplate);
         self::assertSame('303', $result->selectionRule);
         self::assertSame('404', $result->description);
         self::assertSame('505', $result->frenchDescription);
         self::assertSame('606', $result->version);
-        self::assertTrue($result->isReleased);
-        self::assertFalse($result->isPremium);
-        self::assertFalse($result->isCustom);
+        self::assertTrue($result->flags->isReleased);
+        self::assertFalse($result->flags->isPremium);
+        self::assertFalse($result->flags->isCustom);
     }
 
     #[Test]

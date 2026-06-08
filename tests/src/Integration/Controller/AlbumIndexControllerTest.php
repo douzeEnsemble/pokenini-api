@@ -41,14 +41,12 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertEquals('Red / Green / Blue / Yellow', $data['dex']['name']);
         $this->assertArrayHasKey('french_name', $data['dex']);
         $this->assertEquals('Rouge / Vert / Bleu / Jaune', $data['dex']['french_name']);
-        $this->assertArrayHasKey('is_shiny', $data['dex']);
-        $this->assertFalse($data['dex']['is_shiny']);
-        $this->assertArrayHasKey('is_private', $data['dex']);
-        $this->assertFalse($data['dex']['is_private']);
-        $this->assertArrayHasKey('is_on_home', $data['dex']);
-        $this->assertFalse($data['dex']['is_on_home']);
-        $this->assertArrayHasKey('is_display_form', $data['dex']);
-        $this->assertTrue($data['dex']['is_display_form']);
+        $this->assertArrayHasKey('flags', $data['dex']);
+        $this->assertIsArray($data['dex']['flags']);
+        $this->assertFalse($data['dex']['flags']['is_shiny']);
+        $this->assertFalse($data['dex']['flags']['is_private']);
+        $this->assertFalse($data['dex']['flags']['is_on_home']);
+        $this->assertTrue($data['dex']['flags']['is_display_form']);
         $this->assertArrayHasKey('display_template', $data['dex']);
         $this->assertEquals('box', $data['dex']['display_template']);
         $this->assertArrayHasKey('region', $data['dex']);
@@ -67,8 +65,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         );
         $this->assertArrayHasKey('version', $data['dex']);
         $this->assertEquals('20230221.085100', $data['dex']['version']);
-        $this->assertArrayHasKey('is_released', $data['dex']);
-        $this->assertTrue($data['dex']['is_released']);
+        $this->assertTrue($data['dex']['flags']['is_released']);
 
         $this->assertArrayHasKey('pokemons', $data);
 
@@ -122,14 +119,12 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertEquals('Gold / Silver / Crystal', $data['dex']['name']);
         $this->assertArrayHasKey('french_name', $data['dex']);
         $this->assertEquals('Or / Argent / Cristal', $data['dex']['french_name']);
-        $this->assertArrayHasKey('is_shiny', $data['dex']);
-        $this->assertFalse($data['dex']['is_shiny']);
-        $this->assertArrayHasKey('is_private', $data['dex']);
-        $this->assertTrue($data['dex']['is_private']);
-        $this->assertArrayHasKey('is_on_home', $data['dex']);
-        $this->assertFalse($data['dex']['is_on_home']);
-        $this->assertArrayHasKey('is_display_form', $data['dex']);
-        $this->assertTrue($data['dex']['is_display_form']);
+        $this->assertArrayHasKey('flags', $data['dex']);
+        $this->assertIsArray($data['dex']['flags']);
+        $this->assertFalse($data['dex']['flags']['is_shiny']);
+        $this->assertTrue($data['dex']['flags']['is_private']);
+        $this->assertFalse($data['dex']['flags']['is_on_home']);
+        $this->assertTrue($data['dex']['flags']['is_display_form']);
         $this->assertArrayHasKey('display_template', $data['dex']);
         $this->assertEquals('box', $data['dex']['display_template']);
         $this->assertArrayHasKey('region', $data['dex']);
@@ -148,8 +143,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         );
         $this->assertArrayHasKey('version', $data['dex']);
         $this->assertEquals('20230221.085100', $data['dex']['version']);
-        $this->assertArrayHasKey('is_released', $data['dex']);
-        $this->assertFalse($data['dex']['is_released']);
+        $this->assertFalse($data['dex']['flags']['is_released']);
 
         $this->assertArrayHasKey('pokemons', $data);
 
@@ -205,14 +199,12 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertEquals('Red / Green / Blue / Yellow', $data['dex']['name']);
         $this->assertArrayHasKey('french_name', $data['dex']);
         $this->assertEquals('Rouge / Vert / Bleu / Jaune', $data['dex']['french_name']);
-        $this->assertArrayHasKey('is_shiny', $data['dex']);
-        $this->assertFalse($data['dex']['is_shiny']);
-        $this->assertArrayHasKey('is_private', $data['dex']);
-        $this->assertTrue($data['dex']['is_private']);
-        $this->assertArrayHasKey('is_on_home', $data['dex']);
-        $this->assertFalse($data['dex']['is_on_home']);
-        $this->assertArrayHasKey('is_display_form', $data['dex']);
-        $this->assertTrue($data['dex']['is_display_form']);
+        $this->assertArrayHasKey('flags', $data['dex']);
+        $this->assertIsArray($data['dex']['flags']);
+        $this->assertFalse($data['dex']['flags']['is_shiny']);
+        $this->assertTrue($data['dex']['flags']['is_private']);
+        $this->assertFalse($data['dex']['flags']['is_on_home']);
+        $this->assertTrue($data['dex']['flags']['is_display_form']);
         $this->assertArrayHasKey('display_template', $data['dex']);
         $this->assertEquals('box', $data['dex']['display_template']);
         $this->assertArrayHasKey('region', $data['dex']);
@@ -231,8 +223,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         );
         $this->assertArrayHasKey('version', $data['dex']);
         $this->assertEquals('20230221.085100', $data['dex']['version']);
-        $this->assertArrayHasKey('is_released', $data['dex']);
-        $this->assertTrue($data['dex']['is_released']);
+        $this->assertTrue($data['dex']['flags']['is_released']);
 
         $this->assertArrayHasKey('pokemons', $data);
 
@@ -286,14 +277,12 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertEquals('Red / Green / Blue / Yellow', $data['dex']['name']);
         $this->assertArrayHasKey('french_name', $data['dex']);
         $this->assertEquals('Rouge / Vert / Bleu / Jaune', $data['dex']['french_name']);
-        $this->assertArrayHasKey('is_shiny', $data['dex']);
-        $this->assertFalse($data['dex']['is_shiny']);
-        $this->assertArrayHasKey('is_private', $data['dex']);
-        $this->assertTrue($data['dex']['is_private']);
-        $this->assertArrayHasKey('is_on_home', $data['dex']);
-        $this->assertFalse($data['dex']['is_on_home']);
-        $this->assertArrayHasKey('is_display_form', $data['dex']);
-        $this->assertTrue($data['dex']['is_display_form']);
+        $this->assertArrayHasKey('flags', $data['dex']);
+        $this->assertIsArray($data['dex']['flags']);
+        $this->assertFalse($data['dex']['flags']['is_shiny']);
+        $this->assertTrue($data['dex']['flags']['is_private']);
+        $this->assertFalse($data['dex']['flags']['is_on_home']);
+        $this->assertTrue($data['dex']['flags']['is_display_form']);
         $this->assertArrayHasKey('display_template', $data['dex']);
         $this->assertEquals('box', $data['dex']['display_template']);
         $this->assertArrayHasKey('region', $data['dex']);
@@ -312,8 +301,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         );
         $this->assertArrayHasKey('version', $data['dex']);
         $this->assertEquals('20230221.085100', $data['dex']['version']);
-        $this->assertArrayHasKey('is_released', $data['dex']);
-        $this->assertTrue($data['dex']['is_released']);
+        $this->assertTrue($data['dex']['flags']['is_released']);
 
         $this->assertArrayHasKey('pokemons', $data);
 
@@ -366,12 +354,11 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertEquals('Home', $data['dex']['name']);
         $this->assertArrayHasKey('french_name', $data['dex']);
         $this->assertEquals('Home', $data['dex']['french_name']);
-        $this->assertArrayHasKey('is_shiny', $data['dex']);
-        $this->assertFalse($data['dex']['is_shiny']);
-        $this->assertArrayHasKey('is_private', $data['dex']);
-        $this->assertTrue($data['dex']['is_private']);
-        $this->assertArrayHasKey('is_display_form', $data['dex']);
-        $this->assertTrue($data['dex']['is_display_form']);
+        $this->assertArrayHasKey('flags', $data['dex']);
+        $this->assertIsArray($data['dex']['flags']);
+        $this->assertFalse($data['dex']['flags']['is_shiny']);
+        $this->assertTrue($data['dex']['flags']['is_private']);
+        $this->assertTrue($data['dex']['flags']['is_display_form']);
         $this->assertArrayHasKey('display_template', $data['dex']);
         $this->assertEquals('box', $data['dex']['display_template']);
         $this->assertArrayHasKey('region', $data['dex']);
@@ -382,8 +369,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertEquals('', $data['dex']['french_description']);
         $this->assertArrayHasKey('version', $data['dex']);
         $this->assertEquals('20230421.123456', $data['dex']['version']);
-        $this->assertArrayHasKey('is_released', $data['dex']);
-        $this->assertTrue($data['dex']['is_released']);
+        $this->assertTrue($data['dex']['flags']['is_released']);
 
         $this->assertArrayHasKey('pokemons', $data);
 
@@ -428,12 +414,11 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertEquals("Home\nShiny", $data['dex']['name']);
         $this->assertArrayHasKey('french_name', $data['dex']);
         $this->assertEquals("Home\nChromatique", $data['dex']['french_name']);
-        $this->assertArrayHasKey('is_shiny', $data['dex']);
-        $this->assertTrue($data['dex']['is_shiny']);
-        $this->assertArrayHasKey('is_private', $data['dex']);
-        $this->assertTrue($data['dex']['is_private']);
-        $this->assertArrayHasKey('is_display_form', $data['dex']);
-        $this->assertTrue($data['dex']['is_display_form']);
+        $this->assertArrayHasKey('flags', $data['dex']);
+        $this->assertIsArray($data['dex']['flags']);
+        $this->assertTrue($data['dex']['flags']['is_shiny']);
+        $this->assertTrue($data['dex']['flags']['is_private']);
+        $this->assertTrue($data['dex']['flags']['is_display_form']);
         $this->assertArrayHasKey('display_template', $data['dex']);
         $this->assertEquals('box', $data['dex']['display_template']);
         $this->assertArrayHasKey('region', $data['dex']);
@@ -444,8 +429,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertEquals('', $data['dex']['french_description']);
         $this->assertArrayHasKey('version', $data['dex']);
         $this->assertEquals('20230321.123456', $data['dex']['version']);
-        $this->assertArrayHasKey('is_released', $data['dex']);
-        $this->assertTrue($data['dex']['is_released']);
+        $this->assertTrue($data['dex']['flags']['is_released']);
 
         $this->assertArrayHasKey('pokemons', $data);
 
@@ -490,12 +474,11 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertEquals('Home PoGo', $data['dex']['name']);
         $this->assertArrayHasKey('french_name', $data['dex']);
         $this->assertEquals('Home PoGo', $data['dex']['french_name']);
-        $this->assertArrayHasKey('is_shiny', $data['dex']);
-        $this->assertFalse($data['dex']['is_shiny']);
-        $this->assertArrayHasKey('is_private', $data['dex']);
-        $this->assertFalse($data['dex']['is_private']);
-        $this->assertArrayHasKey('is_display_form', $data['dex']);
-        $this->assertFalse($data['dex']['is_display_form']);
+        $this->assertArrayHasKey('flags', $data['dex']);
+        $this->assertIsArray($data['dex']['flags']);
+        $this->assertFalse($data['dex']['flags']['is_shiny']);
+        $this->assertFalse($data['dex']['flags']['is_private']);
+        $this->assertFalse($data['dex']['flags']['is_display_form']);
         $this->assertArrayHasKey('display_template', $data['dex']);
         $this->assertEquals('list-7', $data['dex']['display_template']);
         $this->assertArrayHasKey('region', $data['dex']);
@@ -506,8 +489,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertEquals('', $data['dex']['french_description']);
         $this->assertArrayHasKey('version', $data['dex']);
         $this->assertEquals('20230321.121212', $data['dex']['version']);
-        $this->assertArrayHasKey('is_released', $data['dex']);
-        $this->assertFalse($data['dex']['is_released']);
+        $this->assertFalse($data['dex']['flags']['is_released']);
     }
 
     public function testListHomeShinyOT(): void
@@ -531,12 +513,11 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertEquals('Home Shiny OT', $data['dex']['name']);
         $this->assertArrayHasKey('french_name', $data['dex']);
         $this->assertEquals('Home Chromatique OT', $data['dex']['french_name']);
-        $this->assertArrayHasKey('is_shiny', $data['dex']);
-        $this->assertTrue($data['dex']['is_shiny']);
-        $this->assertArrayHasKey('is_private', $data['dex']);
-        $this->assertTrue($data['dex']['is_private']);
-        $this->assertArrayHasKey('is_display_form', $data['dex']);
-        $this->assertTrue($data['dex']['is_display_form']);
+        $this->assertArrayHasKey('flags', $data['dex']);
+        $this->assertIsArray($data['dex']['flags']);
+        $this->assertTrue($data['dex']['flags']['is_shiny']);
+        $this->assertTrue($data['dex']['flags']['is_private']);
+        $this->assertTrue($data['dex']['flags']['is_display_form']);
         $this->assertArrayHasKey('display_template', $data['dex']);
         $this->assertEquals('box', $data['dex']['display_template']);
         $this->assertArrayHasKey('region', $data['dex']);
@@ -547,8 +528,7 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertEquals('', $data['dex']['french_description']);
         $this->assertArrayHasKey('version', $data['dex']);
         $this->assertEquals('20230321.123456', $data['dex']['version']);
-        $this->assertArrayHasKey('is_released', $data['dex']);
-        $this->assertTrue($data['dex']['is_released']);
+        $this->assertTrue($data['dex']['flags']['is_released']);
     }
 
     public function testListMultipleHomePoGo(): void

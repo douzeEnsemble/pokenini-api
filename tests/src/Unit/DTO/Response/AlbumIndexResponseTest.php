@@ -7,6 +7,7 @@ namespace App\Tests\Unit\DTO\Response;
 use App\DTO\Response\AlbumDexResponse;
 use App\DTO\Response\AlbumIndexResponse;
 use App\DTO\Response\AlbumReportResponse;
+use App\DTO\Response\DexFlagsResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -25,19 +26,21 @@ final class AlbumIndexResponseTest extends TestCase
             originalSlug: 'national',
             name: 'National',
             frenchName: 'National',
-            isShiny: false,
-            isPrivate: false,
-            isOnHome: true,
-            isDisplayForm: false,
+            flags: new DexFlagsResponse(
+                isShiny: false,
+                isPrivate: false,
+                isOnHome: true,
+                isDisplayForm: false,
+                isReleased: true,
+                isPremium: false,
+                isCustom: false,
+            ),
             displayTemplate: 'list',
             region: null,
             selectionRule: '',
             description: 'Test dex',
             frenchDescription: 'Dex de test',
             version: '1.0',
-            isReleased: true,
-            isPremium: false,
-            isCustom: false,
         );
         $report = new AlbumReportResponse(total: 10, totalCaught: 5, totalUncaught: 3, detail: []);
         $filteredReport = new AlbumReportResponse(total: 5, totalCaught: 2, totalUncaught: 2, detail: []);
