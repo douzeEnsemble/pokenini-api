@@ -33,10 +33,12 @@ final class DebugPokemonControllerTest extends AbstractTestControllerApi
         $this->assertStringContainsString('"slug":"venusaur-mega",', $content);
         $this->assertStringContainsString('"slug":"6",', $content);
         $this->assertStringContainsString('"slug":"xy",', $content);
-        $this->assertStringContainsString('"variant_form":null,', $content);
-        $this->assertStringContainsString('"regional_form":null,', $content);
+        $this->assertStringContainsString('"forms":{', $content);
+        $this->assertStringContainsString('"variant":null', $content);
+        $this->assertStringContainsString('"regional":null', $content);
+        $this->assertStringContainsString('"category":null', $content);
         $this->assertStringContainsString('"slug":"mega",', $content);
-        $this->assertStringContainsString('"category_form":null,', $content);
+        $this->assertStringContainsString('"types":{', $content);
         $this->assertStringContainsString('"slug":"grass",', $content);
         $this->assertStringContainsString('"slug":"poison",', $content);
     }
