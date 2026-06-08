@@ -36,18 +36,8 @@ final class PokemonDebugResponse
         public readonly int $familyOrder,
         #[SerializedName('original_game_bundle')]
         public readonly GameBundleDebugResponse $originalGameBundle,
-        #[SerializedName('variant_form')]
-        public readonly ?FormDebugResponse $variantForm,
-        #[SerializedName('regional_form')]
-        public readonly ?FormDebugResponse $regionalForm,
-        #[SerializedName('special_form')]
-        public readonly ?FormDebugResponse $specialForm,
-        #[SerializedName('category_form')]
-        public readonly ?FormDebugResponse $categoryForm,
-        #[SerializedName('primary_type')]
-        public readonly ?TypeDebugResponse $primaryType,
-        #[SerializedName('secondary_type')]
-        public readonly ?TypeDebugResponse $secondaryType,
+        public readonly ?PokemonDebugFormsResponse $forms,
+        public readonly PokemonDebugTypesResponse $types,
         #[SerializedName('deleted_at')]
         public readonly ?string $deletedAt,
     ) {}

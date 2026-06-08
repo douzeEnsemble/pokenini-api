@@ -7,7 +7,9 @@ namespace App\Tests\Unit\DTO\Response;
 use App\DTO\Response\FormDebugResponse;
 use App\DTO\Response\GameBundleDebugResponse;
 use App\DTO\Response\GameGenerationDebugResponse;
+use App\DTO\Response\PokemonDebugFormsResponse;
 use App\DTO\Response\PokemonDebugResponse;
+use App\DTO\Response\PokemonDebugTypesResponse;
 use App\DTO\Response\TypeDebugResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -26,6 +28,8 @@ final class PokemonDebugResponseTest extends TestCase
         $gameBundle = new GameBundleDebugResponse(null, 'xy', 'X/Y', 'X/Y', 6, $generation, null);
         $form = new FormDebugResponse(null, 'mega', 'Mega', 'Méga', 2, null);
         $type = new TypeDebugResponse(null, 'grass', 'Grass', 'Plante', 3, '#78C850', null);
+        $forms = new PokemonDebugFormsResponse(category: null, regional: null, special: $form, variant: null);
+        $types = new PokemonDebugTypesResponse(primary: $type, secondary: null);
 
         $response = new PokemonDebugResponse(
             identifier: '550e8400-e29b-41d4-a716-446655440000',
@@ -43,12 +47,8 @@ final class PokemonDebugResponseTest extends TestCase
             iconName: 'venusaur-mega',
             familyOrder: 3,
             originalGameBundle: $gameBundle,
-            variantForm: null,
-            regionalForm: null,
-            specialForm: $form,
-            categoryForm: null,
-            primaryType: $type,
-            secondaryType: null,
+            forms: $forms,
+            types: $types,
             deletedAt: '2024-03-01T00:00:00+00:00',
         );
 
@@ -67,12 +67,8 @@ final class PokemonDebugResponseTest extends TestCase
         self::assertSame('venusaur-mega', $response->iconName);
         self::assertSame(3, $response->familyOrder);
         self::assertSame($gameBundle, $response->originalGameBundle);
-        self::assertNull($response->variantForm);
-        self::assertNull($response->regionalForm);
-        self::assertSame($form, $response->specialForm);
-        self::assertNull($response->categoryForm);
-        self::assertSame($type, $response->primaryType);
-        self::assertNull($response->secondaryType);
+        self::assertSame($forms, $response->forms);
+        self::assertSame($types, $response->types);
         self::assertSame('2024-03-01T00:00:00+00:00', $response->deletedAt);
     }
 
@@ -81,6 +77,7 @@ final class PokemonDebugResponseTest extends TestCase
     {
         $generation = new GameGenerationDebugResponse(null, '1', '1', null);
         $gameBundle = new GameBundleDebugResponse(null, 'redgreenblueyellow', 'RBY', 'RBY', 1, $generation, null);
+        $types = new PokemonDebugTypesResponse(primary: null, secondary: null);
 
         $response = new PokemonDebugResponse(
             identifier: null,
@@ -98,23 +95,14 @@ final class PokemonDebugResponseTest extends TestCase
             iconName: 'bulbasaur',
             familyOrder: 0,
             originalGameBundle: $gameBundle,
-            variantForm: null,
-            regionalForm: null,
-            specialForm: null,
-            categoryForm: null,
-            primaryType: null,
-            secondaryType: null,
+            forms: null,
+            types: $types,
             deletedAt: null,
         );
 
         self::assertNull($response->identifier);
         self::assertNull($response->bankableish);
-        self::assertNull($response->variantForm);
-        self::assertNull($response->regionalForm);
-        self::assertNull($response->specialForm);
-        self::assertNull($response->categoryForm);
-        self::assertNull($response->primaryType);
-        self::assertNull($response->secondaryType);
+        self::assertNull($response->forms);
         self::assertNull($response->deletedAt);
     }
 }

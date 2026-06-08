@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Factory;
 
+use App\DTO\Response\FormDebugResponse;
+use App\DTO\Response\PokemonDebugFormsResponse;
+use App\DTO\Response\TypeDebugResponse;
 use App\Entity\CategoryForm;
 use App\Entity\GameBundle;
 use App\Entity\GameGeneration;
@@ -20,6 +23,9 @@ use Symfony\Component\Uid\Uuid;
 
 /**
  * @internal
+ *
+ * @SuppressWarnings("PHPMD.TooManyPublicMethods")
+ * @SuppressWarnings("PHPMD.CouplingBetweenObjects")
  */
 #[CoversClass(PokemonDebugResponseFactory::class)]
 final class PokemonDebugResponseFactoryTest extends TestCase
@@ -45,13 +51,28 @@ final class PokemonDebugResponseFactoryTest extends TestCase
         self::assertNull($result->bankableish);
         self::assertSame('bulbasaur', $result->iconName);
         self::assertSame(0, $result->familyOrder);
-        self::assertNull($result->variantForm);
-        self::assertNull($result->regionalForm);
-        self::assertNull($result->specialForm);
-        self::assertNull($result->categoryForm);
-        self::assertNull($result->primaryType);
-        self::assertNull($result->secondaryType);
         self::assertNull($result->deletedAt);
+    }
+
+    #[Test]
+    public function fromPokemonWithNoFormsSetsFormsToNull(): void
+    {
+        $pokemon = $this->buildBasePokemon();
+
+        $result = PokemonDebugResponseFactory::fromPokemon($pokemon);
+
+        self::assertNull($result->forms);
+    }
+
+    #[Test]
+    public function fromPokemonAlwaysBuildsTypesObject(): void
+    {
+        $pokemon = $this->buildBasePokemon();
+
+        $result = PokemonDebugResponseFactory::fromPokemon($pokemon);
+
+        self::assertNull($result->types->primary);
+        self::assertNull($result->types->secondary);
     }
 
     #[Test]
@@ -74,7 +95,7 @@ final class PokemonDebugResponseFactoryTest extends TestCase
     }
 
     #[Test]
-    public function fromPokemonWithVariantFormMapsFormFields(): void
+    public function fromPokemonWithVariantFormBuildsFormsObject(): void
     {
         $variantForm = new VariantForm();
         $variantForm->slug = 'gender';
@@ -87,17 +108,21 @@ final class PokemonDebugResponseFactoryTest extends TestCase
 
         $result = PokemonDebugResponseFactory::fromPokemon($pokemon);
 
-        self::assertNotNull($result->variantForm);
-        self::assertSame('gender', $result->variantForm->slug);
-        self::assertSame('Gender', $result->variantForm->name);
-        self::assertSame('Genre', $result->variantForm->frenchName);
-        self::assertSame(1, $result->variantForm->orderNumber);
-        self::assertNull($result->variantForm->identifier);
-        self::assertNull($result->variantForm->deletedAt);
+        self::assertInstanceOf(PokemonDebugFormsResponse::class, $result->forms);
+        self::assertInstanceOf(FormDebugResponse::class, $result->forms->variant);
+        self::assertSame('gender', $result->forms->variant->slug);
+        self::assertSame('Gender', $result->forms->variant->name);
+        self::assertSame('Genre', $result->forms->variant->frenchName);
+        self::assertSame(1, $result->forms->variant->orderNumber);
+        self::assertNull($result->forms->variant->identifier);
+        self::assertNull($result->forms->variant->deletedAt);
+        self::assertNull($result->forms->category);
+        self::assertNull($result->forms->regional);
+        self::assertNull($result->forms->special);
     }
 
     #[Test]
-    public function fromPokemonWithRegionalFormMapsFormFields(): void
+    public function fromPokemonWithRegionalFormBuildsFormsObject(): void
     {
         $regionalForm = new RegionalForm();
         $regionalForm->slug = 'alolan';
@@ -110,15 +135,21 @@ final class PokemonDebugResponseFactoryTest extends TestCase
 
         $result = PokemonDebugResponseFactory::fromPokemon($pokemon);
 
-        self::assertNotNull($result->regionalForm);
-        self::assertSame('alolan', $result->regionalForm->slug);
-        self::assertSame('Alolan', $result->regionalForm->name);
-        self::assertSame("d'Alola", $result->regionalForm->frenchName);
-        self::assertSame(2, $result->regionalForm->orderNumber);
+        self::assertInstanceOf(PokemonDebugFormsResponse::class, $result->forms);
+        self::assertInstanceOf(FormDebugResponse::class, $result->forms->regional);
+        self::assertSame('alolan', $result->forms->regional->slug);
+        self::assertSame('Alolan', $result->forms->regional->name);
+        self::assertSame("d'Alola", $result->forms->regional->frenchName);
+        self::assertSame(2, $result->forms->regional->orderNumber);
+        self::assertNull($result->forms->regional->identifier);
+        self::assertNull($result->forms->regional->deletedAt);
+        self::assertNull($result->forms->category);
+        self::assertNull($result->forms->special);
+        self::assertNull($result->forms->variant);
     }
 
     #[Test]
-    public function fromPokemonWithSpecialFormMapsFormFields(): void
+    public function fromPokemonWithSpecialFormBuildsFormsObject(): void
     {
         $specialForm = new SpecialForm();
         $specialForm->slug = 'mega';
@@ -131,15 +162,21 @@ final class PokemonDebugResponseFactoryTest extends TestCase
 
         $result = PokemonDebugResponseFactory::fromPokemon($pokemon);
 
-        self::assertNotNull($result->specialForm);
-        self::assertSame('mega', $result->specialForm->slug);
-        self::assertSame('Mega', $result->specialForm->name);
-        self::assertSame('Méga', $result->specialForm->frenchName);
-        self::assertSame(3, $result->specialForm->orderNumber);
+        self::assertInstanceOf(PokemonDebugFormsResponse::class, $result->forms);
+        self::assertInstanceOf(FormDebugResponse::class, $result->forms->special);
+        self::assertSame('mega', $result->forms->special->slug);
+        self::assertSame('Mega', $result->forms->special->name);
+        self::assertSame('Méga', $result->forms->special->frenchName);
+        self::assertSame(3, $result->forms->special->orderNumber);
+        self::assertNull($result->forms->special->identifier);
+        self::assertNull($result->forms->special->deletedAt);
+        self::assertNull($result->forms->category);
+        self::assertNull($result->forms->regional);
+        self::assertNull($result->forms->variant);
     }
 
     #[Test]
-    public function fromPokemonWithCategoryFormMapsFormFields(): void
+    public function fromPokemonWithCategoryFormBuildsFormsObject(): void
     {
         $categoryForm = new CategoryForm();
         $categoryForm->slug = 'starter';
@@ -152,15 +189,65 @@ final class PokemonDebugResponseFactoryTest extends TestCase
 
         $result = PokemonDebugResponseFactory::fromPokemon($pokemon);
 
-        self::assertNotNull($result->categoryForm);
-        self::assertSame('starter', $result->categoryForm->slug);
-        self::assertSame('Starter', $result->categoryForm->name);
-        self::assertSame('Starter', $result->categoryForm->frenchName);
-        self::assertSame(4, $result->categoryForm->orderNumber);
+        self::assertInstanceOf(PokemonDebugFormsResponse::class, $result->forms);
+        self::assertInstanceOf(FormDebugResponse::class, $result->forms->category);
+        self::assertSame('starter', $result->forms->category->slug);
+        self::assertSame('Starter', $result->forms->category->name);
+        self::assertSame('Starter', $result->forms->category->frenchName);
+        self::assertSame(4, $result->forms->category->orderNumber);
+        self::assertNull($result->forms->regional);
+        self::assertNull($result->forms->special);
+        self::assertNull($result->forms->variant);
     }
 
     #[Test]
-    public function fromPokemonWithPrimaryTypeMapsTypeFields(): void
+    public function fromPokemonWithAllFormsBuildsFormsObjectWithAllSlotsFilled(): void
+    {
+        $variantForm = new VariantForm();
+        $variantForm->slug = 'gender';
+        $variantForm->name = 'Gender';
+        $variantForm->frenchName = 'Genre';
+        $variantForm->orderNumber = 1;
+
+        $regionalForm = new RegionalForm();
+        $regionalForm->slug = 'alolan';
+        $regionalForm->name = 'Alolan';
+        $regionalForm->frenchName = "d'Alola";
+        $regionalForm->orderNumber = 2;
+
+        $specialForm = new SpecialForm();
+        $specialForm->slug = 'mega';
+        $specialForm->name = 'Mega';
+        $specialForm->frenchName = 'Méga';
+        $specialForm->orderNumber = 3;
+
+        $categoryForm = new CategoryForm();
+        $categoryForm->slug = 'starter';
+        $categoryForm->name = 'Starter';
+        $categoryForm->frenchName = 'Starter';
+        $categoryForm->orderNumber = 4;
+
+        $pokemon = $this->buildBasePokemon();
+        $pokemon->variantForm = $variantForm;
+        $pokemon->regionalForm = $regionalForm;
+        $pokemon->specialForm = $specialForm;
+        $pokemon->categoryForm = $categoryForm;
+
+        $result = PokemonDebugResponseFactory::fromPokemon($pokemon);
+
+        self::assertInstanceOf(PokemonDebugFormsResponse::class, $result->forms);
+        self::assertInstanceOf(FormDebugResponse::class, $result->forms->category);
+        self::assertInstanceOf(FormDebugResponse::class, $result->forms->regional);
+        self::assertInstanceOf(FormDebugResponse::class, $result->forms->special);
+        self::assertInstanceOf(FormDebugResponse::class, $result->forms->variant);
+        self::assertSame('starter', $result->forms->category->slug);
+        self::assertSame('alolan', $result->forms->regional->slug);
+        self::assertSame('mega', $result->forms->special->slug);
+        self::assertSame('gender', $result->forms->variant->slug);
+    }
+
+    #[Test]
+    public function fromPokemonWithPrimaryTypeBuildsTypesObject(): void
     {
         $type = new Type();
         $type->slug = 'grass';
@@ -174,18 +261,19 @@ final class PokemonDebugResponseFactoryTest extends TestCase
 
         $result = PokemonDebugResponseFactory::fromPokemon($pokemon);
 
-        self::assertNotNull($result->primaryType);
-        self::assertSame('grass', $result->primaryType->slug);
-        self::assertSame('Grass', $result->primaryType->name);
-        self::assertSame('Plante', $result->primaryType->frenchName);
-        self::assertSame(3, $result->primaryType->orderNumber);
-        self::assertSame('#78C850', $result->primaryType->color);
-        self::assertNull($result->primaryType->identifier);
-        self::assertNull($result->primaryType->deletedAt);
+        self::assertInstanceOf(TypeDebugResponse::class, $result->types->primary);
+        self::assertSame('grass', $result->types->primary->slug);
+        self::assertSame('Grass', $result->types->primary->name);
+        self::assertSame('Plante', $result->types->primary->frenchName);
+        self::assertSame(3, $result->types->primary->orderNumber);
+        self::assertSame('#78C850', $result->types->primary->color);
+        self::assertNull($result->types->primary->identifier);
+        self::assertNull($result->types->primary->deletedAt);
+        self::assertNull($result->types->secondary);
     }
 
     #[Test]
-    public function fromPokemonWithSecondaryTypeMapsTypeFields(): void
+    public function fromPokemonWithSecondaryTypeBuildsTypesObject(): void
     {
         $type = new Type();
         $type->slug = 'poison';
@@ -199,12 +287,13 @@ final class PokemonDebugResponseFactoryTest extends TestCase
 
         $result = PokemonDebugResponseFactory::fromPokemon($pokemon);
 
-        self::assertNotNull($result->secondaryType);
-        self::assertSame('poison', $result->secondaryType->slug);
-        self::assertSame('Poison', $result->secondaryType->name);
-        self::assertSame('Poison', $result->secondaryType->frenchName);
-        self::assertSame(4, $result->secondaryType->orderNumber);
-        self::assertSame('#A040A0', $result->secondaryType->color);
+        self::assertInstanceOf(TypeDebugResponse::class, $result->types->secondary);
+        self::assertSame('poison', $result->types->secondary->slug);
+        self::assertSame('Poison', $result->types->secondary->name);
+        self::assertSame('Poison', $result->types->secondary->frenchName);
+        self::assertSame(4, $result->types->secondary->orderNumber);
+        self::assertSame('#A040A0', $result->types->secondary->color);
+        self::assertNull($result->types->primary);
     }
 
     #[Test]
@@ -308,8 +397,9 @@ final class PokemonDebugResponseFactoryTest extends TestCase
 
         $result = PokemonDebugResponseFactory::fromPokemon($pokemon);
 
-        self::assertNotNull($result->variantForm);
-        self::assertSame('2024-06-01T00:00:00+00:00', $result->variantForm->deletedAt);
+        self::assertNotNull($result->forms);
+        self::assertNotNull($result->forms->variant);
+        self::assertSame('2024-06-01T00:00:00+00:00', $result->forms->variant->deletedAt);
     }
 
     #[Test]
@@ -331,8 +421,9 @@ final class PokemonDebugResponseFactoryTest extends TestCase
 
         $result = PokemonDebugResponseFactory::fromPokemon($pokemon);
 
-        self::assertNotNull($result->variantForm);
-        self::assertSame('550e8400-e29b-41d4-a716-446655440011', $result->variantForm->identifier);
+        self::assertNotNull($result->forms);
+        self::assertNotNull($result->forms->variant);
+        self::assertSame('550e8400-e29b-41d4-a716-446655440011', $result->forms->variant->identifier);
     }
 
     #[Test]
@@ -351,8 +442,8 @@ final class PokemonDebugResponseFactoryTest extends TestCase
 
         $result = PokemonDebugResponseFactory::fromPokemon($pokemon);
 
-        self::assertNotNull($result->primaryType);
-        self::assertSame('2024-07-01T00:00:00+00:00', $result->primaryType->deletedAt);
+        self::assertNotNull($result->types->primary);
+        self::assertSame('2024-07-01T00:00:00+00:00', $result->types->primary->deletedAt);
     }
 
     #[Test]
@@ -375,8 +466,8 @@ final class PokemonDebugResponseFactoryTest extends TestCase
 
         $result = PokemonDebugResponseFactory::fromPokemon($pokemon);
 
-        self::assertNotNull($result->primaryType);
-        self::assertSame('550e8400-e29b-41d4-a716-446655440022', $result->primaryType->identifier);
+        self::assertNotNull($result->types->primary);
+        self::assertSame('550e8400-e29b-41d4-a716-446655440022', $result->types->primary->identifier);
     }
 
     private function buildBaseGameBundle(): GameBundle

@@ -7,7 +7,9 @@ namespace App\Factory;
 use App\DTO\Response\FormDebugResponse;
 use App\DTO\Response\GameBundleDebugResponse;
 use App\DTO\Response\GameGenerationDebugResponse;
+use App\DTO\Response\PokemonDebugFormsResponse;
 use App\DTO\Response\PokemonDebugResponse;
+use App\DTO\Response\PokemonDebugTypesResponse;
 use App\DTO\Response\TypeDebugResponse;
 use App\Entity\CategoryForm;
 use App\Entity\GameBundle;
@@ -41,13 +43,36 @@ final class PokemonDebugResponseFactory
             iconName: $pokemon->iconName,
             familyOrder: $pokemon->familyOrder,
             originalGameBundle: self::buildGameBundle($pokemon->originalGameBundle),
-            variantForm: null !== $pokemon->variantForm ? self::buildForm($pokemon->variantForm) : null,
-            regionalForm: null !== $pokemon->regionalForm ? self::buildForm($pokemon->regionalForm) : null,
-            specialForm: null !== $pokemon->specialForm ? self::buildForm($pokemon->specialForm) : null,
-            categoryForm: null !== $pokemon->categoryForm ? self::buildForm($pokemon->categoryForm) : null,
-            primaryType: null !== $pokemon->primaryType ? self::buildType($pokemon->primaryType) : null,
-            secondaryType: null !== $pokemon->secondaryType ? self::buildType($pokemon->secondaryType) : null,
+            forms: self::buildForms($pokemon),
+            types: self::buildTypes($pokemon),
             deletedAt: $pokemon->deletedAt?->format(DATE_ATOM),
+        );
+    }
+
+    private static function buildForms(Pokemon $pokemon): ?PokemonDebugFormsResponse
+    {
+        if (
+            null === $pokemon->variantForm
+            && null === $pokemon->regionalForm
+            && null === $pokemon->specialForm
+            && null === $pokemon->categoryForm
+        ) {
+            return null;
+        }
+
+        return new PokemonDebugFormsResponse(
+            category: null !== $pokemon->categoryForm ? self::buildForm($pokemon->categoryForm) : null,
+            regional: null !== $pokemon->regionalForm ? self::buildForm($pokemon->regionalForm) : null,
+            special: null !== $pokemon->specialForm ? self::buildForm($pokemon->specialForm) : null,
+            variant: null !== $pokemon->variantForm ? self::buildForm($pokemon->variantForm) : null,
+        );
+    }
+
+    private static function buildTypes(Pokemon $pokemon): PokemonDebugTypesResponse
+    {
+        return new PokemonDebugTypesResponse(
+            primary: null !== $pokemon->primaryType ? self::buildType($pokemon->primaryType) : null,
+            secondary: null !== $pokemon->secondaryType ? self::buildType($pokemon->secondaryType) : null,
         );
     }
 
