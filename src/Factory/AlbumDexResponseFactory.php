@@ -6,6 +6,7 @@ namespace App\Factory;
 
 use App\DTO\Response\AlbumDexResponse;
 use App\DTO\Response\AlbumRegionResponse;
+use App\DTO\Response\DexFlagsResponse;
 
 final class AlbumDexResponseFactory
 {
@@ -26,18 +27,6 @@ final class AlbumDexResponseFactory
         /** @var scalar $frenchName */
         $frenchName = $row['french_name'];
 
-        /** @var scalar $isShiny */
-        $isShiny = $row['is_shiny'];
-
-        /** @var scalar $isPrivate */
-        $isPrivate = $row['is_private'];
-
-        /** @var scalar $isOnHome */
-        $isOnHome = $row['is_on_home'];
-
-        /** @var scalar $isDisplayForm */
-        $isDisplayForm = $row['is_display_form'];
-
         /** @var scalar $displayTemplate */
         $displayTemplate = $row['display_template'];
 
@@ -53,6 +42,38 @@ final class AlbumDexResponseFactory
         /** @var scalar $version */
         $version = $row['version'];
 
+        return new AlbumDexResponse(
+            slug: (string) $slug,
+            originalSlug: (string) $originalSlug,
+            name: (string) $name,
+            frenchName: (string) $frenchName,
+            flags: self::buildFlags($row),
+            displayTemplate: (string) $displayTemplate,
+            region: self::buildRegion($row),
+            selectionRule: (string) $selectionRule,
+            description: (string) $description,
+            frenchDescription: (string) $frenchDescription,
+            version: (string) $version,
+        );
+    }
+
+    /**
+     * @param array<array-key, mixed> $row
+     */
+    private static function buildFlags(array $row): DexFlagsResponse
+    {
+        /** @var scalar $isShiny */
+        $isShiny = $row['is_shiny'];
+
+        /** @var scalar $isPrivate */
+        $isPrivate = $row['is_private'];
+
+        /** @var scalar $isOnHome */
+        $isOnHome = $row['is_on_home'];
+
+        /** @var scalar $isDisplayForm */
+        $isDisplayForm = $row['is_display_form'];
+
         /** @var scalar $isReleased */
         $isReleased = $row['is_released'];
 
@@ -62,21 +83,11 @@ final class AlbumDexResponseFactory
         /** @var scalar $isCustom */
         $isCustom = $row['is_custom'];
 
-        return new AlbumDexResponse(
-            slug: (string) $slug,
-            originalSlug: (string) $originalSlug,
-            name: (string) $name,
-            frenchName: (string) $frenchName,
+        return new DexFlagsResponse(
             isShiny: (bool) $isShiny,
             isPrivate: (bool) $isPrivate,
             isOnHome: (bool) $isOnHome,
             isDisplayForm: (bool) $isDisplayForm,
-            displayTemplate: (string) $displayTemplate,
-            region: self::buildRegion($row),
-            selectionRule: (string) $selectionRule,
-            description: (string) $description,
-            frenchDescription: (string) $frenchDescription,
-            version: (string) $version,
             isReleased: (bool) $isReleased,
             isPremium: (bool) $isPremium,
             isCustom: (bool) $isCustom,

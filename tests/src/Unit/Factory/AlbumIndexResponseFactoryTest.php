@@ -8,6 +8,7 @@ use App\DTO\Response\AlbumDexResponse;
 use App\DTO\Response\AlbumPokemonResponse;
 use App\DTO\Response\AlbumReportResponse;
 use App\DTO\Response\AlbumTypesResponse;
+use App\DTO\Response\DexFlagsResponse;
 use App\DTO\Response\PokemonDataResponse;
 use App\Factory\AlbumIndexResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -57,19 +58,21 @@ final class AlbumIndexResponseFactoryTest extends TestCase
             originalSlug: 'national',
             name: 'National',
             frenchName: 'National',
-            isShiny: false,
-            isPrivate: false,
-            isOnHome: true,
-            isDisplayForm: false,
+            flags: new DexFlagsResponse(
+                isShiny: false,
+                isPrivate: false,
+                isOnHome: true,
+                isDisplayForm: false,
+                isReleased: true,
+                isPremium: false,
+                isCustom: false,
+            ),
             displayTemplate: 'list',
             region: null,
             selectionRule: '',
             description: '',
             frenchDescription: '',
             version: '1.0',
-            isReleased: true,
-            isPremium: false,
-            isCustom: false,
         );
     }
 
