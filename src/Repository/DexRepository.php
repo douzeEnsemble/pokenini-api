@@ -102,11 +102,14 @@ class DexRepository extends ServiceEntityRepository
                             d.name AS "name",
                             d.french_name AS "french_name",
                             d.is_shiny AS "is_shiny",
+                            false AS "is_private",
+                            false AS "is_on_home",
                             d.is_display_form AS "is_display_form",
-                            d.description AS "description",
-                            d.french_description AS "french_description",
                             d.is_released AS "is_released",
                             d.is_premium AS "is_premium",
+                            false AS "is_custom",
+                            d.description AS "description",
+                            d.french_description AS "french_description",
                             COUNT(1) AS dex_total_count
                 FROM        dex AS d
                     LEFT JOIN dex_availability AS da

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Factory;
 
+use App\DTO\Response\DexFlagsResponse;
 use App\DTO\Response\DexResponse;
 
 final class DexResponseFactory
@@ -30,20 +31,29 @@ final class DexResponseFactory
         /** @var scalar $isShiny */
         $isShiny = $row['is_shiny'];
 
+        /** @var scalar $isPrivate */
+        $isPrivate = $row['is_private'];
+
+        /** @var scalar $isOnHome */
+        $isOnHome = $row['is_on_home'];
+
         /** @var scalar $isDisplayForm */
         $isDisplayForm = $row['is_display_form'];
-
-        /** @var scalar $description */
-        $description = $row['description'];
-
-        /** @var scalar $frenchDescription */
-        $frenchDescription = $row['french_description'];
 
         /** @var scalar $isReleased */
         $isReleased = $row['is_released'];
 
         /** @var scalar $isPremium */
         $isPremium = $row['is_premium'];
+
+        /** @var scalar $isCustom */
+        $isCustom = $row['is_custom'];
+
+        /** @var scalar $description */
+        $description = $row['description'];
+
+        /** @var scalar $frenchDescription */
+        $frenchDescription = $row['french_description'];
 
         /** @var scalar $dexTotalCount */
         $dexTotalCount = $row['dex_total_count'];
@@ -53,12 +63,17 @@ final class DexResponseFactory
             originalSlug: (string) $originalSlug,
             name: (string) $name,
             frenchName: (string) $frenchName,
-            isShiny: (bool) $isShiny,
-            isDisplayForm: (bool) $isDisplayForm,
+            flags: new DexFlagsResponse(
+                isShiny: (bool) $isShiny,
+                isPrivate: (bool) $isPrivate,
+                isOnHome: (bool) $isOnHome,
+                isDisplayForm: (bool) $isDisplayForm,
+                isReleased: (bool) $isReleased,
+                isPremium: (bool) $isPremium,
+                isCustom: (bool) $isCustom,
+            ),
             description: (string) $description,
             frenchDescription: (string) $frenchDescription,
-            isReleased: (bool) $isReleased,
-            isPremium: (bool) $isPremium,
             dexTotalCount: (int) $dexTotalCount,
         );
     }
