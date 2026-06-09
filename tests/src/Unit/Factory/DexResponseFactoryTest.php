@@ -25,11 +25,14 @@ final class DexResponseFactoryTest extends TestCase
             'name' => 'Home',
             'french_name' => 'Home',
             'is_shiny' => false,
+            'is_private' => false,
+            'is_on_home' => false,
             'is_display_form' => true,
-            'description' => 'The National Dex in Home',
-            'french_description' => 'Le Pokédex National dans Home',
             'is_released' => true,
             'is_premium' => false,
+            'is_custom' => false,
+            'description' => 'The National Dex in Home',
+            'french_description' => 'Le Pokédex National dans Home',
             'dex_total_count' => 22,
         ];
 
@@ -39,12 +42,15 @@ final class DexResponseFactoryTest extends TestCase
         self::assertSame('home', $response->originalSlug);
         self::assertSame('Home', $response->name);
         self::assertSame('Home', $response->frenchName);
-        self::assertFalse($response->isShiny);
-        self::assertTrue($response->isDisplayForm);
+        self::assertFalse($response->flags->isShiny);
+        self::assertFalse($response->flags->isPrivate);
+        self::assertFalse($response->flags->isOnHome);
+        self::assertTrue($response->flags->isDisplayForm);
+        self::assertTrue($response->flags->isReleased);
+        self::assertFalse($response->flags->isPremium);
+        self::assertFalse($response->flags->isCustom);
         self::assertSame('The National Dex in Home', $response->description);
         self::assertSame('Le Pokédex National dans Home', $response->frenchDescription);
-        self::assertTrue($response->isReleased);
-        self::assertFalse($response->isPremium);
         self::assertSame(22, $response->dexTotalCount);
     }
 
@@ -57,11 +63,14 @@ final class DexResponseFactoryTest extends TestCase
             'name' => 789,
             'french_name' => 101,
             'is_shiny' => 0,
+            'is_private' => 0,
+            'is_on_home' => 0,
             'is_display_form' => 1,
-            'description' => 202,
-            'french_description' => 303,
             'is_released' => 1,
             'is_premium' => 0,
+            'is_custom' => 0,
+            'description' => 202,
+            'french_description' => 303,
             'dex_total_count' => '7',
         ];
 
@@ -71,12 +80,15 @@ final class DexResponseFactoryTest extends TestCase
         self::assertSame('456', $response->originalSlug);
         self::assertSame('789', $response->name);
         self::assertSame('101', $response->frenchName);
-        self::assertFalse($response->isShiny);
-        self::assertTrue($response->isDisplayForm);
+        self::assertFalse($response->flags->isShiny);
+        self::assertFalse($response->flags->isPrivate);
+        self::assertFalse($response->flags->isOnHome);
+        self::assertTrue($response->flags->isDisplayForm);
+        self::assertTrue($response->flags->isReleased);
+        self::assertFalse($response->flags->isPremium);
+        self::assertFalse($response->flags->isCustom);
         self::assertSame('202', $response->description);
         self::assertSame('303', $response->frenchDescription);
-        self::assertTrue($response->isReleased);
-        self::assertFalse($response->isPremium);
         self::assertSame(7, $response->dexTotalCount);
     }
 
@@ -90,11 +102,14 @@ final class DexResponseFactoryTest extends TestCase
                 'name' => 'Home',
                 'french_name' => 'Home',
                 'is_shiny' => false,
+                'is_private' => false,
+                'is_on_home' => false,
                 'is_display_form' => true,
-                'description' => '',
-                'french_description' => '',
                 'is_released' => true,
                 'is_premium' => false,
+                'is_custom' => false,
+                'description' => '',
+                'french_description' => '',
                 'dex_total_count' => 22,
             ],
             [
@@ -103,11 +118,14 @@ final class DexResponseFactoryTest extends TestCase
                 'name' => 'Red / Green / Blue / Yellow',
                 'french_name' => 'Rouge / Vert / Bleu / Jaune',
                 'is_shiny' => false,
+                'is_private' => false,
+                'is_on_home' => false,
                 'is_display_form' => true,
-                'description' => '',
-                'french_description' => '',
                 'is_released' => true,
                 'is_premium' => true,
+                'is_custom' => false,
+                'description' => '',
+                'french_description' => '',
                 'dex_total_count' => 7,
             ],
         ];
@@ -118,8 +136,10 @@ final class DexResponseFactoryTest extends TestCase
         self::assertContainsOnlyInstancesOf(DexResponse::class, $responses);
         self::assertSame('home', $responses[0]->slug);
         self::assertSame(22, $responses[0]->dexTotalCount);
+        self::assertFalse($responses[0]->flags->isPrivate);
         self::assertSame('redgreenblueyellow', $responses[1]->slug);
         self::assertSame(7, $responses[1]->dexTotalCount);
+        self::assertTrue($responses[1]->flags->isPremium);
     }
 
     #[Test]
