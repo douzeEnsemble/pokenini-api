@@ -10,6 +10,7 @@ use App\DTO\Response\AlbumFormsResponse;
 use App\DTO\Response\AlbumPokemonResponse;
 use App\DTO\Response\AlbumTypeResponse;
 use App\DTO\Response\AlbumTypesResponse;
+use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\PokemonDataResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -39,7 +40,7 @@ final class AlbumPokemonResponseTest extends TestCase
             familyLeadSlug: 'bulbasaur',
             originalGameBundleSlug: 'redgreenblueyellow',
             orderNumber: '0001-0001-000',
-            gameBundles: ['redgreenblueyellow'],
+            gameBundles: [new GameBundleSlugResponse(slug: 'redgreenblueyellow')],
             gameBundlesShiny: [],
         );
         $catchState = new AlbumCatchStateResponse('no', 'No', 'Non');
@@ -85,7 +86,11 @@ final class AlbumPokemonResponseTest extends TestCase
             familyLeadSlug: 'douze',
             originalGameBundleSlug: 'redgreenblueyellow',
             orderNumber: '9999-9912-000',
-            gameBundles: ['un', 'dos', 'tres'],
+            gameBundles: [
+                new GameBundleSlugResponse(slug: 'un'),
+                new GameBundleSlugResponse(slug: 'dos'),
+                new GameBundleSlugResponse(slug: 'tres'),
+            ],
             gameBundlesShiny: [],
         );
         $types = new AlbumTypesResponse(primary: null, secondary: null);

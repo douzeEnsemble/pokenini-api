@@ -747,6 +747,12 @@ final class AlbumData
      */
     private static function toNestedFormat(array $flat): array
     {
+        /** @var array<string> $gameBundles */
+        $gameBundles = (array) $flat['game_bundles'];
+
+        /** @var array<string> $gameBundlesShiny */
+        $gameBundlesShiny = (array) $flat['game_bundles_shiny'];
+
         return [
             'pokemon' => [
                 'slug' => $flat['pokemon_slug'],
@@ -763,8 +769,8 @@ final class AlbumData
                 'family_lead_slug' => $flat['family_lead_slug'] ?? null,
                 'original_game_bundle_slug' => $flat['original_game_bundle_slug'] ?? null,
                 'order_number' => $flat['pokemon_order_number'],
-                'game_bundles' => $flat['game_bundles'],
-                'game_bundles_shiny' => $flat['game_bundles_shiny'],
+                'game_bundles' => array_map(static fn (string $slug): array => ['slug' => $slug], $gameBundles),
+                'game_bundles_shiny' => array_map(static fn (string $slug): array => ['slug' => $slug], $gameBundlesShiny),
             ],
             'catch_state' => self::buildNestedCatchState($flat),
             'forms' => self::buildNestedForms($flat),

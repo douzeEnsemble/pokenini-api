@@ -11,8 +11,8 @@ final class PokemonDataResponse
     /**
      * @SuppressWarnings("PHPMD.ExcessiveParameterList")
      *
-     * @param array<string> $gameBundles
-     * @param array<string> $gameBundlesShiny
+     * @param array<GameBundleSlugResponse> $gameBundles
+     * @param array<GameBundleSlugResponse> $gameBundlesShiny
      */
     public function __construct(
         public readonly string $slug,

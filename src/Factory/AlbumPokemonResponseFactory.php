@@ -10,6 +10,7 @@ use App\DTO\Response\AlbumFormsResponse;
 use App\DTO\Response\AlbumPokemonResponse;
 use App\DTO\Response\AlbumTypeResponse;
 use App\DTO\Response\AlbumTypesResponse;
+use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\PokemonDataResponse;
 
 final class AlbumPokemonResponseFactory
@@ -84,11 +85,21 @@ final class AlbumPokemonResponseFactory
         /** @var scalar $orderNumber */
         $orderNumber = $row['pokemon_order_number'];
 
-        /** @var array<string> $gameBundles */
-        $gameBundles = (array) $row['game_bundles'];
+        /** @var array<string> $gameBundleSlugs */
+        $gameBundleSlugs = (array) $row['game_bundles'];
 
-        /** @var array<string> $gameBundlesShiny */
-        $gameBundlesShiny = (array) $row['game_bundles_shiny'];
+        $gameBundles = array_map(
+            static fn (string $slug): GameBundleSlugResponse => new GameBundleSlugResponse(slug: $slug),
+            $gameBundleSlugs,
+        );
+
+        /** @var array<string> $gameBundlesShinySlugs */
+        $gameBundlesShinySlugs = (array) $row['game_bundles_shiny'];
+
+        $gameBundlesShiny = array_map(
+            static fn (string $slug): GameBundleSlugResponse => new GameBundleSlugResponse(slug: $slug),
+            $gameBundlesShinySlugs,
+        );
 
         return new PokemonDataResponse(
             slug: (string) $slug,

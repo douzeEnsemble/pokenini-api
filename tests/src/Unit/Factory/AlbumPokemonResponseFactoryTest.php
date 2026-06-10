@@ -9,6 +9,7 @@ use App\DTO\Response\AlbumFormResponse;
 use App\DTO\Response\AlbumFormsResponse;
 use App\DTO\Response\AlbumPokemonResponse;
 use App\DTO\Response\AlbumTypeResponse;
+use App\DTO\Response\GameBundleSlugResponse;
 use App\Factory\AlbumPokemonResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -41,8 +42,14 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
         self::assertSame('bulbasaur', $result->pokemon->familyLeadSlug);
         self::assertSame('redgreenblueyellow', $result->pokemon->originalGameBundleSlug);
         self::assertSame('0001-0001-000', $result->pokemon->orderNumber);
-        self::assertSame(['redgreenblueyellow', 'goldsilvercrystal'], $result->pokemon->gameBundles);
-        self::assertSame(['redgreenblueyellow'], $result->pokemon->gameBundlesShiny);
+        self::assertCount(2, $result->pokemon->gameBundles);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles[0]);
+        self::assertSame('redgreenblueyellow', $result->pokemon->gameBundles[0]->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles[1]);
+        self::assertSame('goldsilvercrystal', $result->pokemon->gameBundles[1]->slug);
+        self::assertCount(1, $result->pokemon->gameBundlesShiny);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundlesShiny[0]);
+        self::assertSame('redgreenblueyellow', $result->pokemon->gameBundlesShiny[0]->slug);
     }
 
     #[Test]

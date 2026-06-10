@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\DTO\Response;
 
+use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\PokemonDataResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -18,6 +19,14 @@ final class PokemonDataResponseTest extends TestCase
     #[Test]
     public function constructorInitializesAllProperties(): void
     {
+        $gameBundles = [
+            new GameBundleSlugResponse(slug: 'rby'),
+            new GameBundleSlugResponse(slug: 'gsc'),
+        ];
+        $gameBundlesShiny = [
+            new GameBundleSlugResponse(slug: 'rby'),
+        ];
+
         $response = new PokemonDataResponse(
             slug: 'pikachu',
             name: 'Pikachu',
@@ -33,8 +42,8 @@ final class PokemonDataResponseTest extends TestCase
             familyLeadSlug: 'pichu',
             originalGameBundleSlug: 'rby',
             orderNumber: '0025.001',
-            gameBundles: ['rby', 'gsc'],
-            gameBundlesShiny: ['rby'],
+            gameBundles: $gameBundles,
+            gameBundlesShiny: $gameBundlesShiny,
         );
 
         self::assertSame('pikachu', $response->slug);
@@ -51,8 +60,14 @@ final class PokemonDataResponseTest extends TestCase
         self::assertSame('pichu', $response->familyLeadSlug);
         self::assertSame('rby', $response->originalGameBundleSlug);
         self::assertSame('0025.001', $response->orderNumber);
-        self::assertSame(['rby', 'gsc'], $response->gameBundles);
-        self::assertSame(['rby'], $response->gameBundlesShiny);
+        self::assertCount(2, $response->gameBundles);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $response->gameBundles[0]);
+        self::assertSame('rby', $response->gameBundles[0]->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $response->gameBundles[1]);
+        self::assertSame('gsc', $response->gameBundles[1]->slug);
+        self::assertCount(1, $response->gameBundlesShiny);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $response->gameBundlesShiny[0]);
+        self::assertSame('rby', $response->gameBundlesShiny[0]->slug);
     }
 
     #[Test]
