@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\DTO\Response;
 
+use App\DTO\Response\AlbumCatchStateResponse;
 use App\DTO\Response\AlbumReportResponse;
 use App\DTO\Response\AlbumReportStatisticResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -19,10 +20,9 @@ final class AlbumReportResponseTest extends TestCase
     #[Test]
     public function constructorInitializesProperties(): void
     {
+        $catchState = new AlbumCatchStateResponse(slug: 'yes', name: 'Yes', frenchName: 'Oui');
         $statistic = new AlbumReportStatisticResponse(
-            slug: 'yes',
-            name: 'Yes',
-            frenchName: 'Oui',
+            catchState: $catchState,
             count: 5,
         );
         $response = new AlbumReportResponse(

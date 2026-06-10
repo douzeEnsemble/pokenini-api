@@ -671,10 +671,10 @@ Exemple de réponse (`200`, tronquée à un pokémon) :
     "total_caught": 0,
     "total_uncaught": 7,
     "detail": [
-      { "slug": "no", "name": "No", "french_name": "Non", "count": 4 },
-      { "slug": "maybe", "name": "Maybe", "french_name": "Peut être", "count": 1 },
-      { "slug": "maybenot", "name": "Maybe not", "french_name": "Peut être pas", "count": 2 },
-      { "slug": "yes", "name": "Yes", "french_name": "Oui", "count": 0 }
+      { "catch_state": { "slug": "no", "name": "No", "french_name": "Non" }, "count": 4 },
+      { "catch_state": { "slug": "maybe", "name": "Maybe", "french_name": "Peut être" }, "count": 1 },
+      { "catch_state": { "slug": "maybenot", "name": "Maybe not", "french_name": "Peut être pas" }, "count": 2 },
+      { "catch_state": { "slug": "yes", "name": "Yes", "french_name": "Oui" }, "count": 0 }
     ]
   },
   "filtered_report": {
@@ -682,10 +682,10 @@ Exemple de réponse (`200`, tronquée à un pokémon) :
     "total_caught": 0,
     "total_uncaught": 7,
     "detail": [
-      { "slug": "no", "name": "No", "french_name": "Non", "count": 4 },
-      { "slug": "maybe", "name": "Maybe", "french_name": "Peut être", "count": 1 },
-      { "slug": "maybenot", "name": "Maybe not", "french_name": "Peut être pas", "count": 2 },
-      { "slug": "yes", "name": "Yes", "french_name": "Oui", "count": 0 }
+      { "catch_state": { "slug": "no", "name": "No", "french_name": "Non" }, "count": 4 },
+      { "catch_state": { "slug": "maybe", "name": "Maybe", "french_name": "Peut être" }, "count": 1 },
+      { "catch_state": { "slug": "maybenot", "name": "Maybe not", "french_name": "Peut être pas" }, "count": 2 },
+      { "catch_state": { "slug": "yes", "name": "Yes", "french_name": "Oui" }, "count": 0 }
     ]
   }
 }

@@ -44,9 +44,11 @@ namespace App\Tests\Common\Types;
  * @psalm-type PokedexResponseReport = array{
  *  detail: array<int, array{
  *      count: int,
- *      slug: string,
- *      name: string,
- *      french_name: string
+ *      catch_state: array{
+ *          slug: string,
+ *          name: string,
+ *          french_name: string
+ *      }
  *  }>,
  *  total: int,
  *  total_caught: int,

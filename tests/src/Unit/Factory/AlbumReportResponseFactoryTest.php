@@ -34,7 +34,7 @@ final class AlbumReportResponseFactoryTest extends TestCase
     }
 
     #[Test]
-    public function fromReportMapsStatisticFieldsCorrectly(): void
+    public function fromReportMapsStatisticCatchStateCorrectly(): void
     {
         $stat = new Statistic('maybe', 'Maybe', 'Peut être', 7);
         $report = new Report(7, 0, 7, [$stat]);
@@ -43,10 +43,10 @@ final class AlbumReportResponseFactoryTest extends TestCase
 
         $detail = $result->detail[0];
         self::assertInstanceOf(AlbumReportStatisticResponse::class, $detail);
-        self::assertSame('maybe', $detail->slug);
-        self::assertSame('Maybe', $detail->name);
-        self::assertSame('Peut être', $detail->frenchName);
         self::assertSame(7, $detail->count);
+        self::assertSame('maybe', $detail->catchState->slug);
+        self::assertSame('Maybe', $detail->catchState->name);
+        self::assertSame('Peut être', $detail->catchState->frenchName);
     }
 
     #[Test]
