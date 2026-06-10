@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\DTO\Response;
 
+use App\DTO\Response\DexDebugFlagsResponse;
 use App\DTO\Response\DexDebugResponse;
 use App\DTO\Response\RegionResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -28,6 +29,14 @@ final class DexDebugResponseTest extends TestCase
             deletedAt: null,
         );
 
+        $flags = new DexDebugFlagsResponse(
+            isShiny: false,
+            isPremium: true,
+            isDisplayForm: false,
+            isReleased: true,
+            canHoldElection: false,
+        );
+
         $response = new DexDebugResponse(
             identifier: '550e8400-e29b-41d4-a716-446655440000',
             slug: 'redgreenblueyellow',
@@ -35,15 +44,11 @@ final class DexDebugResponseTest extends TestCase
             frenchName: 'Rouge/Vert/Bleu/Jaune',
             orderNumber: 1,
             selectionRule: '{"type":"all"}',
-            isShiny: false,
-            isPremium: true,
-            isDisplayForm: false,
+            flags: $flags,
             displayTemplate: 'box',
             region: $region,
             description: 'First generation',
             frenchDescription: 'Première génération',
-            isReleased: true,
-            canHoldElection: false,
             lastChangedAt: '2024-01-15T10:30:00+00:00',
             electionOrderNumber: 5,
             deletedAt: '2024-03-01T00:00:00+00:00',
@@ -55,15 +60,16 @@ final class DexDebugResponseTest extends TestCase
         self::assertSame('Rouge/Vert/Bleu/Jaune', $response->frenchName);
         self::assertSame(1, $response->orderNumber);
         self::assertSame('{"type":"all"}', $response->selectionRule);
-        self::assertFalse($response->isShiny);
-        self::assertTrue($response->isPremium);
-        self::assertFalse($response->isDisplayForm);
+        self::assertSame($flags, $response->flags);
+        self::assertFalse($response->flags->isShiny);
+        self::assertTrue($response->flags->isPremium);
+        self::assertFalse($response->flags->isDisplayForm);
+        self::assertTrue($response->flags->isReleased);
+        self::assertFalse($response->flags->canHoldElection);
         self::assertSame('box', $response->displayTemplate);
         self::assertSame($region, $response->region);
         self::assertSame('First generation', $response->description);
         self::assertSame('Première génération', $response->frenchDescription);
-        self::assertTrue($response->isReleased);
-        self::assertFalse($response->canHoldElection);
         self::assertSame('2024-01-15T10:30:00+00:00', $response->lastChangedAt);
         self::assertSame(5, $response->electionOrderNumber);
         self::assertSame('2024-03-01T00:00:00+00:00', $response->deletedAt);
@@ -72,6 +78,14 @@ final class DexDebugResponseTest extends TestCase
     #[Test]
     public function constructorAcceptsNullablePropertiesAsNull(): void
     {
+        $flags = new DexDebugFlagsResponse(
+            isShiny: true,
+            isPremium: false,
+            isDisplayForm: true,
+            isReleased: false,
+            canHoldElection: true,
+        );
+
         $response = new DexDebugResponse(
             identifier: null,
             slug: 'home',
@@ -79,15 +93,11 @@ final class DexDebugResponseTest extends TestCase
             frenchName: 'Home',
             orderNumber: 99,
             selectionRule: '',
-            isShiny: true,
-            isPremium: false,
-            isDisplayForm: true,
+            flags: $flags,
             displayTemplate: 'list',
             region: null,
             description: '',
             frenchDescription: '',
-            isReleased: false,
-            canHoldElection: true,
             lastChangedAt: '2024-06-01T00:00:00+00:00',
             electionOrderNumber: 0,
             deletedAt: null,
@@ -96,10 +106,10 @@ final class DexDebugResponseTest extends TestCase
         self::assertNull($response->identifier);
         self::assertNull($response->region);
         self::assertNull($response->deletedAt);
-        self::assertTrue($response->isShiny);
-        self::assertFalse($response->isPremium);
-        self::assertTrue($response->isDisplayForm);
-        self::assertFalse($response->isReleased);
-        self::assertTrue($response->canHoldElection);
+        self::assertTrue($response->flags->isShiny);
+        self::assertFalse($response->flags->isPremium);
+        self::assertTrue($response->flags->isDisplayForm);
+        self::assertFalse($response->flags->isReleased);
+        self::assertTrue($response->flags->canHoldElection);
     }
 }

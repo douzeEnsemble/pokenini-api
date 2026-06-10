@@ -21,22 +21,13 @@ final class DexDebugResponse
         public readonly int $orderNumber,
         #[SerializedName('selection_rule')]
         public readonly string $selectionRule,
-        #[SerializedName('is_shiny')]
-        public readonly bool $isShiny,
-        #[SerializedName('is_premium')]
-        public readonly bool $isPremium,
-        #[SerializedName('is_display_form')]
-        public readonly bool $isDisplayForm,
+        public readonly DexDebugFlagsResponse $flags,
         #[SerializedName('display_template')]
         public readonly string $displayTemplate,
         public readonly ?RegionResponse $region,
         public readonly string $description,
         #[SerializedName('french_description')]
         public readonly string $frenchDescription,
-        #[SerializedName('is_released')]
-        public readonly bool $isReleased,
-        #[SerializedName('can_hold_election')]
-        public readonly bool $canHoldElection,
         #[SerializedName('last_changed_at')]
         public readonly string $lastChangedAt,
         #[SerializedName('election_order_number')]
