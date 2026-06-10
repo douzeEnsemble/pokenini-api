@@ -34,7 +34,7 @@ final class DebugDexControllerTest extends AbstractTestControllerApi
 
         $this->assertJson($content);
 
-        /** @var null|string[][]|string[][][] $data */
+        /** @var null|array<string, mixed> $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
         $this->assertNotNull($data);
@@ -43,8 +43,27 @@ final class DebugDexControllerTest extends AbstractTestControllerApi
         $this->assertEquals('redgreenblueyellow', $data['slug']);
 
         $this->assertArrayHasKey('region', $data);
-        $this->assertArrayHasKey('identifier', $data['region']);
-        $this->assertEquals('kanto', $data['region']['slug']);
+
+        /** @var array<string, mixed> $region */
+        $region = $data['region'];
+        $this->assertArrayHasKey('identifier', $region);
+        $this->assertEquals('kanto', $region['slug']);
+
+        $this->assertArrayHasKey('flags', $data);
+
+        /** @var array<string, mixed> $flags */
+        $flags = $data['flags'];
+        $this->assertArrayHasKey('is_shiny', $flags);
+        $this->assertArrayHasKey('is_premium', $flags);
+        $this->assertArrayHasKey('is_display_form', $flags);
+        $this->assertArrayHasKey('is_released', $flags);
+        $this->assertArrayHasKey('can_hold_election', $flags);
+
+        $this->assertArrayNotHasKey('is_shiny', $data);
+        $this->assertArrayNotHasKey('is_premium', $data);
+        $this->assertArrayNotHasKey('is_display_form', $data);
+        $this->assertArrayNotHasKey('is_released', $data);
+        $this->assertArrayNotHasKey('can_hold_election', $data);
     }
 
     #[Test]

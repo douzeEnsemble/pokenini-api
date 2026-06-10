@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Factory;
 
+use App\DTO\Response\DexDebugFlagsResponse;
 use App\DTO\Response\DexDebugResponse;
 use App\DTO\Response\RegionResponse;
 use App\Entity\Dex;
@@ -20,18 +21,25 @@ final class DexDebugResponseFactory
             frenchName: $dex->frenchName,
             orderNumber: $dex->orderNumber,
             selectionRule: $dex->selectionRule,
-            isShiny: $dex->isShiny,
-            isPremium: $dex->isPremium,
-            isDisplayForm: $dex->isDisplayForm,
+            flags: self::buildFlags($dex),
             displayTemplate: $dex->displayTemplate,
             region: null !== $dex->region ? self::buildRegion($dex->region) : null,
             description: $dex->description,
             frenchDescription: $dex->frenchDescription,
-            isReleased: $dex->isReleased,
-            canHoldElection: $dex->canHoldElection,
             lastChangedAt: $dex->lastChangedAt->format(\DateTime::ATOM),
             electionOrderNumber: $dex->electionOrderNumber,
             deletedAt: $dex->deletedAt?->format(\DateTime::ATOM),
+        );
+    }
+
+    private static function buildFlags(Dex $dex): DexDebugFlagsResponse
+    {
+        return new DexDebugFlagsResponse(
+            isShiny: $dex->isShiny,
+            isPremium: $dex->isPremium,
+            isDisplayForm: $dex->isDisplayForm,
+            isReleased: $dex->isReleased,
+            canHoldElection: $dex->canHoldElection,
         );
     }
 

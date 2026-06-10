@@ -53,14 +53,14 @@ final class DexDebugResponseFactoryTest extends TestCase
         self::assertSame('Rouge/Vert/Bleu/Jaune', $result->frenchName);
         self::assertSame(1, $result->orderNumber);
         self::assertSame('{"type":"all"}', $result->selectionRule);
-        self::assertFalse($result->isShiny);
-        self::assertTrue($result->isPremium);
-        self::assertFalse($result->isDisplayForm);
+        self::assertFalse($result->flags->isShiny);
+        self::assertTrue($result->flags->isPremium);
+        self::assertFalse($result->flags->isDisplayForm);
+        self::assertTrue($result->flags->isReleased);
+        self::assertFalse($result->flags->canHoldElection);
         self::assertSame('box', $result->displayTemplate);
         self::assertSame('First generation', $result->description);
         self::assertSame('Première génération', $result->frenchDescription);
-        self::assertTrue($result->isReleased);
-        self::assertFalse($result->canHoldElection);
         self::assertSame('2024-01-15T10:30:00+00:00', $result->lastChangedAt);
         self::assertSame(5, $result->electionOrderNumber);
         self::assertNull($result->deletedAt);
@@ -98,11 +98,11 @@ final class DexDebugResponseFactoryTest extends TestCase
         $result = DexDebugResponseFactory::fromDex($dex);
 
         self::assertNull($result->region);
-        self::assertTrue($result->isShiny);
-        self::assertFalse($result->isPremium);
-        self::assertTrue($result->isDisplayForm);
-        self::assertFalse($result->isReleased);
-        self::assertTrue($result->canHoldElection);
+        self::assertTrue($result->flags->isShiny);
+        self::assertFalse($result->flags->isPremium);
+        self::assertTrue($result->flags->isDisplayForm);
+        self::assertFalse($result->flags->isReleased);
+        self::assertTrue($result->flags->canHoldElection);
     }
 
     #[Test]
