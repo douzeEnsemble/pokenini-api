@@ -27,42 +27,34 @@ trait AssertReportTrait
         $this->assertArrayHasKey(0, $reportDetail);
         $this->assertArrayHasKey('count', $reportDetail[0]);
         $this->assertEquals($countNo, $reportDetail[0]['count']);
-        $this->assertArrayHasKey('slug', $reportDetail[0]);
-        $this->assertEquals('no', $reportDetail[0]['slug']);
-        $this->assertArrayHasKey('name', $reportDetail[0]);
-        $this->assertEquals('No', $reportDetail[0]['name']);
-        $this->assertArrayHasKey('french_name', $reportDetail[0]);
-        $this->assertEquals('Non', $reportDetail[0]['french_name']);
+        $this->assertArrayHasKey('catch_state', $reportDetail[0]);
+        $this->assertEquals('no', $reportDetail[0]['catch_state']['slug']);
+        $this->assertEquals('No', $reportDetail[0]['catch_state']['name']);
+        $this->assertEquals('Non', $reportDetail[0]['catch_state']['french_name']);
 
         $this->assertArrayHasKey(1, $reportDetail);
         $this->assertArrayHasKey('count', $reportDetail[1]);
         $this->assertEquals($countMaybe, $reportDetail[1]['count']);
-        $this->assertArrayHasKey('slug', $reportDetail[1]);
-        $this->assertEquals('maybe', $reportDetail[1]['slug']);
-        $this->assertArrayHasKey('name', $reportDetail[1]);
-        $this->assertEquals('Maybe', $reportDetail[1]['name']);
-        $this->assertArrayHasKey('french_name', $reportDetail[1]);
-        $this->assertEquals('Peut être', $reportDetail[1]['french_name']);
+        $this->assertArrayHasKey('catch_state', $reportDetail[1]);
+        $this->assertEquals('maybe', $reportDetail[1]['catch_state']['slug']);
+        $this->assertEquals('Maybe', $reportDetail[1]['catch_state']['name']);
+        $this->assertEquals('Peut être', $reportDetail[1]['catch_state']['french_name']);
 
         $this->assertArrayHasKey(2, $reportDetail);
         $this->assertArrayHasKey('count', $reportDetail[2]);
         $this->assertEquals($countMaybeNot, $reportDetail[2]['count']);
-        $this->assertArrayHasKey('slug', $reportDetail[2]);
-        $this->assertEquals('maybenot', $reportDetail[2]['slug']);
-        $this->assertArrayHasKey('name', $reportDetail[2]);
-        $this->assertEquals('Maybe not', $reportDetail[2]['name']);
-        $this->assertArrayHasKey('french_name', $reportDetail[2]);
-        $this->assertEquals('Peut être pas', $reportDetail[2]['french_name']);
+        $this->assertArrayHasKey('catch_state', $reportDetail[2]);
+        $this->assertEquals('maybenot', $reportDetail[2]['catch_state']['slug']);
+        $this->assertEquals('Maybe not', $reportDetail[2]['catch_state']['name']);
+        $this->assertEquals('Peut être pas', $reportDetail[2]['catch_state']['french_name']);
 
         $this->assertArrayHasKey(3, $reportDetail);
         $this->assertArrayHasKey('count', $reportDetail[3]);
         $this->assertEquals($countYes, $reportDetail[3]['count']);
-        $this->assertArrayHasKey('slug', $reportDetail[3]);
-        $this->assertEquals('yes', $reportDetail[3]['slug']);
-        $this->assertArrayHasKey('name', $reportDetail[3]);
-        $this->assertEquals('Yes', $reportDetail[3]['name']);
-        $this->assertArrayHasKey('french_name', $reportDetail[3]);
-        $this->assertEquals('Oui', $reportDetail[3]['french_name']);
+        $this->assertArrayHasKey('catch_state', $reportDetail[3]);
+        $this->assertEquals('yes', $reportDetail[3]['catch_state']['slug']);
+        $this->assertEquals('Yes', $reportDetail[3]['catch_state']['name']);
+        $this->assertEquals('Oui', $reportDetail[3]['catch_state']['french_name']);
 
         $this->assertArrayHasKey('total', $report);
         $this->assertEquals($countTotal, $report['total']);

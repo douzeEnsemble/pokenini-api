@@ -6,6 +6,7 @@ namespace App\Factory;
 
 use App\DTO\AlbumReport\Report;
 use App\DTO\AlbumReport\Statistic;
+use App\DTO\Response\AlbumCatchStateResponse;
 use App\DTO\Response\AlbumReportResponse;
 use App\DTO\Response\AlbumReportStatisticResponse;
 
@@ -24,9 +25,11 @@ final class AlbumReportResponseFactory
     private static function fromStatistic(Statistic $statistic): AlbumReportStatisticResponse
     {
         return new AlbumReportStatisticResponse(
-            slug: $statistic->slug,
-            name: $statistic->name,
-            frenchName: $statistic->frenchName,
+            catchState: new AlbumCatchStateResponse(
+                slug: $statistic->slug,
+                name: $statistic->name,
+                frenchName: $statistic->frenchName,
+            ),
             count: $statistic->count,
         );
     }

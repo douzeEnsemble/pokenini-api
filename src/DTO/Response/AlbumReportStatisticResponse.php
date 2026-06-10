@@ -9,10 +9,8 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
 final class AlbumReportStatisticResponse
 {
     public function __construct(
-        public readonly string $slug,
-        public readonly string $name,
-        #[SerializedName('french_name')]
-        public readonly string $frenchName,
+        #[SerializedName('catch_state')]
+        public readonly AlbumCatchStateResponse $catchState,
         public readonly int $count,
     ) {}
 }
