@@ -10,7 +10,7 @@ Documentation exhaustive des endpoints REST exposés par `pokenini-api` (Symfony
 - Sans authentification valide : **401 Unauthorized** sur n'importe quelle route.
 - **Base URL** : aucun préfixe global de route (ni version, ni locale) — `config/routes.yaml` charge simplement les attributs de `src/Controller/`.
   Dans les tests Postman/Newman la base est `http://web:8080`.
-- Toutes les réponses JSON sont en `Content-Type: application/json`. Les clés sont en `snake_case` (via `#[SerializedName]`), **sauf** la réponse de `/debogage/pokemon/{slug}/availabilities` qui est en `camelCase`.
+- Toutes les réponses JSON sont en `Content-Type: application/json`. Les clés sont en `snake_case` (via `#[SerializedName]`).
 
 ```bash
 # Forme générale d'un appel
@@ -1287,7 +1287,7 @@ Codes de statut : `200`, `401`, `404`.
 
 ### 35. GET `/debogage/pokemon/{slug}/availabilities`
 
-Disponibilités calculées d'un pokémon, par jeu et par bundle (normal et shiny). **Attention : clés en `camelCase`** (pas de `SerializedName` sur ce DTO) ; chaque map associe un slug de jeu/bundle à un booléen.
+Disponibilités calculées d'un pokémon, par jeu et par bundle (normal et shiny). Chaque liste contient des objets `{ game | game_bundle, is_available }`.
 
 Exemple de requête :
 
@@ -1299,24 +1299,24 @@ Exemple de réponse (`200`, tronquée) :
 
 ```json
 {
-  "gamesAvailabilities": {
-    "x": true,
-    "y": true,
-    "omegaruby": true,
-    "alphasapphire": true
-  },
-  "gamesShiniesAvailabilities": {
-    "x": true,
-    "y": true
-  },
-  "gameBundlesAvailabilities": {
-    "goldsilvercrystal": false,
-    "xy": true
-  },
-  "gameBundlesShiniesAvailabilities": {
-    "goldsilvercrystal": false,
-    "xy": true
-  }
+  "games_availabilities": [
+    { "game": { "slug": "x" }, "is_available": true },
+    { "game": { "slug": "y" }, "is_available": true },
+    { "game": { "slug": "omegaruby" }, "is_available": true },
+    { "game": { "slug": "alphasapphire" }, "is_available": true }
+  ],
+  "games_shinies_availabilities": [
+    { "game": { "slug": "x" }, "is_available": true },
+    { "game": { "slug": "y" }, "is_available": true }
+  ],
+  "game_bundles_availabilities": [
+    { "game_bundle": { "slug": "goldsilvercrystal" }, "is_available": false },
+    { "game_bundle": { "slug": "xy" }, "is_available": true }
+  ],
+  "game_bundles_shinies_availabilities": [
+    { "game_bundle": { "slug": "goldsilvercrystal" }, "is_available": false },
+    { "game_bundle": { "slug": "xy" }, "is_available": true }
+  ]
 }
 ```
 
