@@ -53,6 +53,8 @@ make phpcsfixer-fix   # auto-fix
 | ActionStarters | `ActionStarter` |
 | Messages | *(nom de l'action, ex. `UpdatePokemons`)* |
 | DTOs de requête | `QueryOptions` |
+| DTOs de réponse | `Response` |
+| Factories | `Factory` (le plus souvent `…ResponseFactory`) |
 | Tests | `Test` |
 
 ### Avertissement connu
@@ -159,6 +161,16 @@ Référence : `src/Repository/PokemonsRepository.php:90-110`
 Le `FiltersTrait` injecte dynamiquement des clauses SQL dans le placeholder `-- {album_filters}`.
 
 Référence : `src/Repository/Trait/FiltersTrait.php`
+
+### 7. Réponses API : DTO Response + Factory + Serializer
+
+Chaque endpoint qui retourne du contenu sérialise un DTO immutable de `src/DTO/Response/`
+(classe `final`, propriétés `public readonly`, clés snake_case via `#[SerializedName]`
+uniquement quand le nom PHP diffère de la clé JSON). Une `Factory` statique de `src/Factory/`
+transforme les données brutes (lignes SQL `mixed`, entités, value-objects) en DTOs typés ;
+le contrôleur fait `JsonResponse::fromJsonString($serializer->serialize($response, 'json'))`.
+
+Référence : `src/Factory/TypeResponseFactory.php`, `src/Controller/TypesController.php`
 
 ## Annotations et style
 

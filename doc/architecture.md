@@ -28,10 +28,12 @@ pokenini-api/
 │   ├── DTO/                     Query params validés (OptionsResolver) + réponses
 │   │   ├── AlbumFilter/         Filtres de l'album
 │   │   ├── AlbumReport/         DTO rapport album
-│   │   └── DataChangeReport/    DTO rapport de synchronisation
+│   │   ├── DataChangeReport/    DTO rapport de synchronisation
+│   │   └── Response/            DTOs de réponse immutables (sérialisés en JSON)
 │   ├── Entity/                  Entités Doctrine ORM
 │   │   └── Traits/              Traits réutilisables (UUID, softdelete, nom, ordre...)
 │   ├── Exception/               Exceptions métier
+│   ├── Factory/                 Transforme données brutes (SQL, entités) → DTOs Response
 │   ├── Helper/                  Utilitaires purs (notation A1 Google Sheets)
 │   ├── Message/                 Messages Symfony Messenger (POPO)
 │   ├── MessageHandler/          Handlers async (orchestrent l'exécution)
@@ -76,7 +78,8 @@ pokenini-api/
 
 | Couche | Rôle | Dépendances autorisées | Exemple de fichier |
 |--------|------|----------------------|-------------------|
-| **Controller** | Endpoints REST, pas de logique métier, reçoit Request et délègue | Service, ActionStarter, DTO, Serializer | `src/Controller/PokemonsController.php` |
+| **Controller** | Endpoints REST, pas de logique métier, reçoit Request et délègue | Service, ActionStarter, Factory, DTO, Serializer | `src/Controller/PokemonsController.php` |
+| **Factory** | Transforme données brutes (lignes SQL, entités) en DTOs Response typés | DTO, Entity | `src/Factory/TypeResponseFactory.php` |
 | **Service** | Orchestration métier, appels Google Sheets | Calculator, Updater, Repository, DTO | `src/Service/ElectionService.php` |
 | **CalculatorService** | Façade pour les calculateurs (pattern Command) | Calculator, Repository, DTO | `src/Service/CalculatorService/DexAvailabilitiesCalculatorService.php` |
 | **UpdaterService** | Façade pour les updaters | Updater, Repository | `src/Service/UpdaterService/PokemonsUpdaterService.php` |
@@ -177,7 +180,8 @@ bin/console app:calculate:dex_availabilities
 
 | Couche | Peut dépendre de |
 |--------|-----------------|
-| Controller | Service, ActionStarter, DTO, Serializer, Messenger |
+| Controller | Service, ActionStarter, Factory, DTO, Serializer, Messenger |
+| Factory | DTO, Entity |
 | Command | ActionStarter, ActionEnder, Service, EntityManager |
 | Service | Calculator, Updater, Repository, DTO, Google API |
 | CalculatorService | Calculator, Repository |

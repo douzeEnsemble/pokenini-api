@@ -8,6 +8,10 @@ use App\DTO\GameBundlesAvailabilities;
 use App\DTO\GameBundlesShiniesAvailabilities;
 use App\DTO\GamesAvailabilities;
 use App\DTO\GamesShiniesAvailabilities;
+use App\DTO\Response\GameAvailabilityResponse;
+use App\DTO\Response\GameBundleAvailabilityResponse;
+use App\DTO\Response\GameBundleSlugResponse;
+use App\DTO\Response\GameSlugResponse;
 use App\DTO\Response\PokemonAvailabilitiesResponse;
 
 final class PokemonAvailabilitiesResponseFactory
@@ -19,10 +23,48 @@ final class PokemonAvailabilitiesResponseFactory
         GameBundlesShiniesAvailabilities $gameBundlesShiniesAvailabilities,
     ): PokemonAvailabilitiesResponse {
         return new PokemonAvailabilitiesResponse(
-            gamesAvailabilities: $gamesAvailabilities->all(),
-            gamesShiniesAvailabilities: $gamesShiniesAvailabilities->all(),
-            gameBundlesAvailabilities: $gameBundlesAvailabilities->all(),
-            gameBundlesShiniesAvailabilities: $gameBundlesShiniesAvailabilities->all(),
+            gamesAvailabilities: self::gameAvailabilitiesFromMap($gamesAvailabilities->all()),
+            gamesShiniesAvailabilities: self::gameAvailabilitiesFromMap($gamesShiniesAvailabilities->all()),
+            gameBundlesAvailabilities: self::gameBundleAvailabilitiesFromMap($gameBundlesAvailabilities->all()),
+            gameBundlesShiniesAvailabilities: self::gameBundleAvailabilitiesFromMap(
+                $gameBundlesShiniesAvailabilities->all(),
+            ),
         );
+    }
+
+    /**
+     * @param bool[] $map
+     *
+     * @return GameAvailabilityResponse[]
+     */
+    private static function gameAvailabilitiesFromMap(array $map): array
+    {
+        $availabilities = [];
+        foreach ($map as $slug => $isAvailable) {
+            $availabilities[] = new GameAvailabilityResponse(
+                game: new GameSlugResponse(slug: (string) $slug),
+                isAvailable: $isAvailable,
+            );
+        }
+
+        return $availabilities;
+    }
+
+    /**
+     * @param bool[] $map
+     *
+     * @return GameBundleAvailabilityResponse[]
+     */
+    private static function gameBundleAvailabilitiesFromMap(array $map): array
+    {
+        $availabilities = [];
+        foreach ($map as $slug => $isAvailable) {
+            $availabilities[] = new GameBundleAvailabilityResponse(
+                gameBundle: new GameBundleSlugResponse(slug: (string) $slug),
+                isAvailable: $isAvailable,
+            );
+        }
+
+        return $availabilities;
     }
 }

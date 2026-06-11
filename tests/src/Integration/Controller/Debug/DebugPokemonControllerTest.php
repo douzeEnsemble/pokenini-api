@@ -78,26 +78,42 @@ final class DebugPokemonControllerTest extends AbstractTestControllerApi
 
         $this->assertJson($content);
 
-        /** @var ?bool[][] $data */
+        /** @var null|array<string, mixed> $data */
         $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
 
-        $this->assertNotNull($data);
+        $this->assertIsArray($data);
 
-        $this->assertArrayHasKey('gamesAvailabilities', $data);
-        $this->assertArrayNotHasKey('blue', $data['gamesAvailabilities']);
-        $this->assertArrayNotHasKey('gold', $data['gamesAvailabilities']);
-        $this->assertArrayHasKey('x', $data['gamesAvailabilities']);
+        $this->assertArrayHasKey('games_availabilities', $data);
+        $gamesSlugs = $this->getGameSlugs($data['games_availabilities']);
+        $this->assertNotContains('blue', $gamesSlugs);
+        $this->assertNotContains('gold', $gamesSlugs);
+        $this->assertContains('x', $gamesSlugs);
 
-        $this->assertArrayHasKey('gamesShiniesAvailabilities', $data);
-        $this->assertArrayNotHasKey('blue', $data['gamesShiniesAvailabilities']);
-        $this->assertArrayNotHasKey('gold', $data['gamesShiniesAvailabilities']);
-        $this->assertArrayHasKey('x', $data['gamesShiniesAvailabilities']);
+        $this->assertArrayHasKey('games_shinies_availabilities', $data);
+        $gamesShiniesSlugs = $this->getGameSlugs($data['games_shinies_availabilities']);
+        $this->assertNotContains('blue', $gamesShiniesSlugs);
+        $this->assertNotContains('gold', $gamesShiniesSlugs);
+        $this->assertContains('x', $gamesShiniesSlugs);
 
-        $this->assertArrayHasKey('gameBundlesAvailabilities', $data);
-        $this->assertArrayHasKey('goldsilvercrystal', $data['gameBundlesAvailabilities']);
+        $this->assertArrayHasKey('game_bundles_availabilities', $data);
+        $gameBundlesSlugs = $this->getGameBundleSlugs($data['game_bundles_availabilities']);
+        $this->assertContains('goldsilvercrystal', $gameBundlesSlugs);
 
-        $this->assertArrayHasKey('gameBundlesShiniesAvailabilities', $data);
-        $this->assertArrayHasKey('goldsilvercrystal', $data['gameBundlesShiniesAvailabilities']);
+        $this->assertArrayHasKey('game_bundles_shinies_availabilities', $data);
+        $gameBundlesShiniesSlugs = $this->getGameBundleSlugs($data['game_bundles_shinies_availabilities']);
+        $this->assertContains('goldsilvercrystal', $gameBundlesShiniesSlugs);
+
+        /** @var mixed $availabilities */
+        foreach ($data as $availabilities) {
+            $this->assertIsArray($availabilities);
+
+            /** @var mixed $availability */
+            foreach ($availabilities as $availability) {
+                $this->assertIsArray($availability);
+                $this->assertArrayHasKey('is_available', $availability);
+                $this->assertIsBool($availability['is_available']);
+            }
+        }
     }
 
     public function testPokemonAvailabilitiesNotFound(): void
@@ -105,5 +121,49 @@ final class DebugPokemonControllerTest extends AbstractTestControllerApi
         $this->apiRequest('GET', '/debogage/pokemon/venusaur-mega-x/availabilities');
 
         $this->assertResponseStatusCodeSame(404);
+    }
+
+    /**
+     * @return string[]
+     */
+    private function getGameSlugs(mixed $availabilities): array
+    {
+        $this->assertIsArray($availabilities);
+
+        $slugs = [];
+
+        /** @var mixed $availability */
+        foreach ($availabilities as $availability) {
+            $this->assertIsArray($availability);
+            $this->assertArrayHasKey('game', $availability);
+            $this->assertIsArray($availability['game']);
+            $this->assertArrayHasKey('slug', $availability['game']);
+            $this->assertIsString($availability['game']['slug']);
+            $slugs[] = $availability['game']['slug'];
+        }
+
+        return $slugs;
+    }
+
+    /**
+     * @return string[]
+     */
+    private function getGameBundleSlugs(mixed $availabilities): array
+    {
+        $this->assertIsArray($availabilities);
+
+        $slugs = [];
+
+        /** @var mixed $availability */
+        foreach ($availabilities as $availability) {
+            $this->assertIsArray($availability);
+            $this->assertArrayHasKey('game_bundle', $availability);
+            $this->assertIsArray($availability['game_bundle']);
+            $this->assertArrayHasKey('slug', $availability['game_bundle']);
+            $this->assertIsString($availability['game_bundle']['slug']);
+            $slugs[] = $availability['game_bundle']['slug'];
+        }
+
+        return $slugs;
     }
 }
