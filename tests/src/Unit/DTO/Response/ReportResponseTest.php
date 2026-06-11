@@ -6,7 +6,10 @@ namespace App\Tests\Unit\DTO\Response;
 
 use App\DTO\Response\CatchStateUsageResponse;
 use App\DTO\Response\DexUsageResponse;
+use App\DTO\Response\ReportCatchStateResponse;
+use App\DTO\Response\ReportDexResponse;
 use App\DTO\Response\ReportResponse;
+use App\DTO\Response\ReportTrainerResponse;
 use App\DTO\Response\TrainerCatchStateCountResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -21,9 +24,18 @@ final class ReportResponseTest extends TestCase
     #[Test]
     public function constructorInitializesProperties(): void
     {
-        $counts = [new TrainerCatchStateCountResponse(count: 28, trainer: 'abc')];
-        $dexUsage = [new DexUsageResponse(count: 2, name: 'Home', frenchName: 'Home')];
-        $catchStateUsage = [new CatchStateUsageResponse(count: 11, name: 'No', frenchName: 'Non', color: '#e57373')];
+        $counts = [new TrainerCatchStateCountResponse(
+            count: 28,
+            trainer: new ReportTrainerResponse(externalId: 'abc'),
+        )];
+        $dexUsage = [new DexUsageResponse(
+            count: 2,
+            dex: new ReportDexResponse(name: 'Home', frenchName: 'Home'),
+        )];
+        $catchStateUsage = [new CatchStateUsageResponse(
+            count: 11,
+            catchState: new ReportCatchStateResponse(name: 'No', frenchName: 'Non', color: '#e57373'),
+        )];
 
         $response = new ReportResponse(
             catchStateCountsDefinedByTrainer: $counts,

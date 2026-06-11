@@ -26,7 +26,7 @@ final class ReportResponseFactoryTest extends TestCase
         $response = ReportResponseFactory::fromCatchStateCountRow($row);
 
         self::assertSame(28, $response->count);
-        self::assertSame('7b52009b64fd0a2a49e6d8a939753077792b0554', $response->trainer);
+        self::assertSame('7b52009b64fd0a2a49e6d8a939753077792b0554', $response->trainer->externalId);
     }
 
     #[Test]
@@ -37,7 +37,7 @@ final class ReportResponseFactoryTest extends TestCase
         $response = ReportResponseFactory::fromCatchStateCountRow($row);
 
         self::assertSame(5, $response->count);
-        self::assertSame('abc', $response->trainer);
+        self::assertSame('abc', $response->trainer->externalId);
     }
 
     #[Test]
@@ -48,8 +48,8 @@ final class ReportResponseFactoryTest extends TestCase
         $response = ReportResponseFactory::fromDexUsageRow($row);
 
         self::assertSame(2, $response->count);
-        self::assertSame('Red / Green', $response->name);
-        self::assertSame('Rouge / Vert', $response->frenchName);
+        self::assertSame('Red / Green', $response->dex->name);
+        self::assertSame('Rouge / Vert', $response->dex->frenchName);
     }
 
     #[Test]
@@ -60,8 +60,8 @@ final class ReportResponseFactoryTest extends TestCase
         $response = ReportResponseFactory::fromDexUsageRow($row);
 
         self::assertSame(3, $response->count);
-        self::assertSame('123', $response->name);
-        self::assertSame('456', $response->frenchName);
+        self::assertSame('123', $response->dex->name);
+        self::assertSame('456', $response->dex->frenchName);
     }
 
     #[Test]
@@ -72,22 +72,22 @@ final class ReportResponseFactoryTest extends TestCase
         $response = ReportResponseFactory::fromCatchStateUsageRow($row);
 
         self::assertSame(11, $response->count);
-        self::assertSame('No', $response->name);
-        self::assertSame('Non', $response->frenchName);
-        self::assertSame('#e57373', $response->color);
+        self::assertSame('No', $response->catchState->name);
+        self::assertSame('Non', $response->catchState->frenchName);
+        self::assertSame('#e57373', $response->catchState->color);
     }
 
     #[Test]
     public function fromCatchStateUsageRowCastsToCorrectTypes(): void
     {
-        $row = ['nb' => '4', 'name' => 789, 'french_name' => 0, 'color' => 'blue'];
+        $row = ['nb' => '4', 'name' => 789, 'french_name' => 0, 'color' => 16711680];
 
         $response = ReportResponseFactory::fromCatchStateUsageRow($row);
 
         self::assertSame(4, $response->count);
-        self::assertSame('789', $response->name);
-        self::assertSame('0', $response->frenchName);
-        self::assertSame('blue', $response->color);
+        self::assertSame('789', $response->catchState->name);
+        self::assertSame('0', $response->catchState->frenchName);
+        self::assertSame('16711680', $response->catchState->color);
     }
 
     #[Test]

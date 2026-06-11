@@ -72,10 +72,12 @@ final class ReportsControllerTest extends WebTestCase
         /** @var mixed $item */
         foreach ($catchStateCounts as $item) {
             self::assertIsArray($item);
-            self::assertArrayHasKey('nb', $item);
+            self::assertArrayHasKey('count', $item);
+            self::assertIsInt($item['count']);
             self::assertArrayHasKey('trainer', $item);
-            self::assertIsInt($item['nb']);
-            self::assertIsString($item['trainer']);
+            self::assertIsArray($item['trainer']);
+            self::assertArrayHasKey('external_id', $item['trainer']);
+            self::assertIsString($item['trainer']['external_id']);
         }
     }
 
@@ -102,12 +104,14 @@ final class ReportsControllerTest extends WebTestCase
         /** @var mixed $item */
         foreach ($dexUsage as $item) {
             self::assertIsArray($item);
-            self::assertArrayHasKey('nb', $item);
-            self::assertArrayHasKey('name', $item);
-            self::assertArrayHasKey('french_name', $item);
-            self::assertIsInt($item['nb']);
-            self::assertIsString($item['name']);
-            self::assertIsString($item['french_name']);
+            self::assertArrayHasKey('count', $item);
+            self::assertIsInt($item['count']);
+            self::assertArrayHasKey('dex', $item);
+            self::assertIsArray($item['dex']);
+            self::assertArrayHasKey('name', $item['dex']);
+            self::assertArrayHasKey('french_name', $item['dex']);
+            self::assertIsString($item['dex']['name']);
+            self::assertIsString($item['dex']['french_name']);
         }
     }
 
@@ -134,14 +138,16 @@ final class ReportsControllerTest extends WebTestCase
         /** @var mixed $item */
         foreach ($catchStateUsage as $item) {
             self::assertIsArray($item);
-            self::assertArrayHasKey('nb', $item);
-            self::assertArrayHasKey('name', $item);
-            self::assertArrayHasKey('french_name', $item);
-            self::assertArrayHasKey('color', $item);
-            self::assertIsInt($item['nb']);
-            self::assertIsString($item['name']);
-            self::assertIsString($item['french_name']);
-            self::assertIsString($item['color']);
+            self::assertArrayHasKey('count', $item);
+            self::assertIsInt($item['count']);
+            self::assertArrayHasKey('catch_state', $item);
+            self::assertIsArray($item['catch_state']);
+            self::assertArrayHasKey('name', $item['catch_state']);
+            self::assertArrayHasKey('french_name', $item['catch_state']);
+            self::assertArrayHasKey('color', $item['catch_state']);
+            self::assertIsString($item['catch_state']['name']);
+            self::assertIsString($item['catch_state']['french_name']);
+            self::assertIsString($item['catch_state']['color']);
         }
     }
 

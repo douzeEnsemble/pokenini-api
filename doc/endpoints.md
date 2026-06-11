@@ -364,38 +364,50 @@ Exemple de réponse (`200`) :
 {
   "catch_state_counts_defined_by_trainer": [
     {
-      "nb": 28,
-      "trainer": "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      "count": 28,
+      "trainer": {
+        "external_id": "7b52009b64fd0a2a49e6d8a939753077792b0554"
+      }
     },
     {
-      "nb": 3,
-      "trainer": "bd307a3ec329e10a2cff8fb87480823da114f8f4"
+      "count": 3,
+      "trainer": {
+        "external_id": "bd307a3ec329e10a2cff8fb87480823da114f8f4"
+      }
     }
   ],
   "dex_usage": [
     {
-      "nb": 2,
-      "name": "Red / Green / Blue / Yellow",
-      "french_name": "Rouge / Vert / Bleu / Jaune"
+      "count": 2,
+      "dex": {
+        "name": "Red / Green / Blue / Yellow",
+        "french_name": "Rouge / Vert / Bleu / Jaune"
+      }
     },
     {
-      "nb": 2,
-      "name": "Home",
-      "french_name": "Home"
+      "count": 2,
+      "dex": {
+        "name": "Home",
+        "french_name": "Home"
+      }
     }
   ],
   "catch_state_usage": [
     {
-      "nb": 11,
-      "name": "No",
-      "french_name": "Non",
-      "color": "#e57373"
+      "count": 11,
+      "catch_state": {
+        "name": "No",
+        "french_name": "Non",
+        "color": "#e57373"
+      }
     },
     {
-      "nb": 11,
-      "name": "Yes",
-      "french_name": "Oui",
-      "color": "#66bb6a"
+      "count": 11,
+      "catch_state": {
+        "name": "Yes",
+        "french_name": "Oui",
+        "color": "#66bb6a"
+      }
     }
   ]
 }
