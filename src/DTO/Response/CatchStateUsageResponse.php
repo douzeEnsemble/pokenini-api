@@ -9,11 +9,8 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
 final class CatchStateUsageResponse
 {
     public function __construct(
-        #[SerializedName('nb')]
         public readonly int $count,
-        public readonly string $name,
-        #[SerializedName('french_name')]
-        public readonly string $frenchName,
-        public readonly string $color,
+        #[SerializedName('catch_state')]
+        public readonly ReportCatchStateResponse $catchState,
     ) {}
 }

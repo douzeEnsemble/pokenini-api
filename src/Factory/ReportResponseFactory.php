@@ -6,7 +6,10 @@ namespace App\Factory;
 
 use App\DTO\Response\CatchStateUsageResponse;
 use App\DTO\Response\DexUsageResponse;
+use App\DTO\Response\ReportCatchStateResponse;
+use App\DTO\Response\ReportDexResponse;
 use App\DTO\Response\ReportResponse;
+use App\DTO\Response\ReportTrainerResponse;
 use App\DTO\Response\TrainerCatchStateCountResponse;
 
 final class ReportResponseFactory
@@ -24,7 +27,9 @@ final class ReportResponseFactory
 
         return new TrainerCatchStateCountResponse(
             count: (int) $count,
-            trainer: (string) $trainer,
+            trainer: new ReportTrainerResponse(
+                externalId: (string) $trainer,
+            ),
         );
     }
 
@@ -44,8 +49,10 @@ final class ReportResponseFactory
 
         return new DexUsageResponse(
             count: (int) $count,
-            name: (string) $name,
-            frenchName: (string) $frenchName,
+            dex: new ReportDexResponse(
+                name: (string) $name,
+                frenchName: (string) $frenchName,
+            ),
         );
     }
 
@@ -68,9 +75,11 @@ final class ReportResponseFactory
 
         return new CatchStateUsageResponse(
             count: (int) $count,
-            name: (string) $name,
-            frenchName: (string) $frenchName,
-            color: (string) $color,
+            catchState: new ReportCatchStateResponse(
+                name: (string) $name,
+                frenchName: (string) $frenchName,
+                color: (string) $color,
+            ),
         );
     }
 
