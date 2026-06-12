@@ -169,6 +169,8 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
         self::assertSame('poison', $result->types->secondary->slug);
         self::assertSame('Poison', $result->types->secondary->name);
         self::assertSame('Poison', $result->types->secondary->frenchName);
+        self::assertSame('#78C850', $result->types->primary->color);
+        self::assertSame('#A040A0', $result->types->secondary->color);
     }
 
     #[Test]
@@ -192,6 +194,21 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
 
         self::assertInstanceOf(AlbumTypeResponse::class, $result->types->primary);
         self::assertNull($result->types->secondary);
+    }
+
+    #[Test]
+    public function fromSqlRowCastsTypeColorToString(): void
+    {
+        $row = $this->getBulbasaurRow();
+        $row['primary_type_color'] = 42;
+        $row['secondary_type_color'] = 99;
+
+        $result = AlbumPokemonResponseFactory::fromSqlRow($row);
+
+        self::assertInstanceOf(AlbumTypeResponse::class, $result->types->primary);
+        self::assertInstanceOf(AlbumTypeResponse::class, $result->types->secondary);
+        self::assertSame('42', $result->types->primary->color);
+        self::assertSame('99', $result->types->secondary->color);
     }
 
     #[Test]
@@ -325,6 +342,8 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
             'secondary_type_slug' => 'poison',
             'secondary_type_name' => 'Poison',
             'secondary_type_french_name' => 'Poison',
+            'primary_type_color' => '#78C850',
+            'secondary_type_color' => '#A040A0',
             'original_game_bundle_slug' => 'redgreenblueyellow',
             'game_bundles' => ['redgreenblueyellow', 'goldsilvercrystal'],
             'game_bundles_shiny' => ['redgreenblueyellow'],
@@ -367,6 +386,8 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
             'secondary_type_slug' => null,
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
+            'primary_type_color' => null,
+            'secondary_type_color' => null,
             'original_game_bundle_slug' => 'redgreenblueyellow',
             'game_bundles' => ['un', 'dos', 'tres'],
             'game_bundles_shiny' => [],
