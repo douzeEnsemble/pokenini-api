@@ -64,6 +64,7 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
         self::assertSame('no', $result->catchState->slug);
         self::assertSame('No', $result->catchState->name);
         self::assertSame('Non', $result->catchState->frenchName);
+        self::assertSame('#e57373', $result->catchState->color);
     }
 
     #[Test]
@@ -72,6 +73,18 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
         $result = AlbumPokemonResponseFactory::fromSqlRow($this->getDouzeRow());
 
         self::assertNull($result->catchState);
+    }
+
+    #[Test]
+    public function fromSqlRowCastsCatchStateColorToString(): void
+    {
+        $row = $this->getBulbasaurRow();
+        $row['catch_state_color'] = 0xE57373;
+
+        $result = AlbumPokemonResponseFactory::fromSqlRow($row);
+
+        self::assertInstanceOf(AlbumCatchStateResponse::class, $result->catchState);
+        self::assertSame((string) 0xE57373, $result->catchState->color);
     }
 
     #[Test]
@@ -334,6 +347,7 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
             'catch_state_slug' => 'no',
             'catch_state_name' => 'No',
             'catch_state_french_name' => 'Non',
+            'catch_state_color' => '#e57373',
             'family_lead_slug' => 'bulbasaur',
             'pokemon_family_order' => 0,
             'primary_type_slug' => 'grass',
@@ -378,6 +392,7 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
             'catch_state_slug' => null,
             'catch_state_name' => null,
             'catch_state_french_name' => null,
+            'catch_state_color' => null,
             'family_lead_slug' => 'douze',
             'pokemon_family_order' => 0,
             'primary_type_slug' => null,

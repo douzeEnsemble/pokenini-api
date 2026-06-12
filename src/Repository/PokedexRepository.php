@@ -80,7 +80,7 @@ class PokedexRepository extends ServiceEntityRepository
 
         $sql = <<<SQL
             SELECT  COUNT(dex_availability_id) AS count,
-                    cs.slug AS slug, cs.name AS name, cs.french_name AS french_name
+                    cs.slug AS slug, cs.name AS name, cs.french_name AS french_name, cs.color AS color
             FROM    catch_state AS cs
                     LEFT JOIN (
                     SELECT  da.id AS dex_availability_id,
@@ -122,7 +122,7 @@ class PokedexRepository extends ServiceEntityRepository
                 ) AS t
                         ON cs.id = t.catch_state_id
             WHERE   cs.deleted_at IS NULL
-            GROUP BY cs.slug, cs.name, cs.french_name, cs.order_number
+            GROUP BY cs.slug, cs.name, cs.french_name, cs.color, cs.order_number
             ORDER BY cs.order_number
             SQL;
 
@@ -281,6 +281,7 @@ class PokedexRepository extends ServiceEntityRepository
                     cs.slug AS catch_state_slug,
                     cs.name AS catch_state_name,
                     cs.french_name AS catch_state_french_name,
+                    cs.color AS catch_state_color,
                     rdn.dex_number AS pokemon_regional_dex_number,
                     pt.slug AS primary_type_slug,
                     pt.name AS primary_type_name,

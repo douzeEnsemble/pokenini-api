@@ -22,11 +22,13 @@ final class AlbumCatchStateResponseTest extends TestCase
             slug: 'yes',
             name: 'Yes',
             frenchName: 'Oui',
+            color: '#e57373',
         );
 
         self::assertSame('yes', $response->slug);
         self::assertSame('Yes', $response->name);
         self::assertSame('Oui', $response->frenchName);
+        self::assertSame('#e57373', $response->color);
     }
 
     #[Test]
@@ -36,10 +38,12 @@ final class AlbumCatchStateResponseTest extends TestCase
             slug: 'maybe',
             name: 'Maybe',
             frenchName: 'Peut être',
+            color: '#e57373',
         );
 
         self::assertSame('maybe', $response->slug);
         self::assertSame('Maybe', $response->name);
         self::assertSame('Peut être', $response->frenchName);
+        self::assertSame('#e57373', $response->color);
     }
 }

@@ -19,7 +19,7 @@ final class AlbumReportStatisticResponseTest extends TestCase
     #[Test]
     public function constructorInitializesProperties(): void
     {
-        $catchState = new AlbumCatchStateResponse(slug: 'yes', name: 'Yes', frenchName: 'Oui');
+        $catchState = new AlbumCatchStateResponse(slug: 'yes', name: 'Yes', frenchName: 'Oui', color: '#e57373');
         $response = new AlbumReportStatisticResponse(
             catchState: $catchState,
             count: 7,
@@ -32,7 +32,7 @@ final class AlbumReportStatisticResponseTest extends TestCase
     #[Test]
     public function constructorAcceptsOtherValues(): void
     {
-        $catchState = new AlbumCatchStateResponse(slug: 'no', name: 'No', frenchName: 'Non');
+        $catchState = new AlbumCatchStateResponse(slug: 'no', name: 'No', frenchName: 'Non', color: '#e57373');
         $response = new AlbumReportStatisticResponse(
             catchState: $catchState,
             count: 3,

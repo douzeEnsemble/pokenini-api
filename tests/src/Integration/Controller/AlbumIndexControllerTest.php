@@ -96,6 +96,12 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertIsString($firstPokemonPrimaryType['color']);
         $this->assertMatchesRegularExpression('/^#[0-9A-Fa-f]{6}$/', $firstPokemonPrimaryType['color']);
 
+        /** @var array<string, mixed> $firstPokemonCatchState */
+        $firstPokemonCatchState = $firstPokemon['catch_state'];
+        $this->assertArrayHasKey('color', $firstPokemonCatchState);
+        $this->assertIsString($firstPokemonCatchState['color']);
+        $this->assertSame('#e57373', $firstPokemonCatchState['color']);
+
         $this->assertArrayHasKey('filtered_report', $data);
 
         $filteredReport = $data['filtered_report'];

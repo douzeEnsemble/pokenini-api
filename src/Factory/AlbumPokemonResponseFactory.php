@@ -144,10 +144,14 @@ final class AlbumPokemonResponseFactory
         /** @var scalar $frenchName */
         $frenchName = $row['catch_state_french_name'];
 
+        /** @var scalar $color */
+        $color = $row['catch_state_color'];
+
         return new AlbumCatchStateResponse(
             slug: (string) $slug,
             name: (string) $name,
             frenchName: (string) $frenchName,
+            color: (string) $color,
         );
     }
 

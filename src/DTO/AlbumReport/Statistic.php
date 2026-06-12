@@ -15,6 +15,8 @@ final class Statistic
         public string $name,
         #[SerializedName('french_name')]
         public string $frenchName,
+        #[SerializedName('color')]
+        public string $color,
         #[SerializedName('count')]
         public int $count = 0,
     ) {}

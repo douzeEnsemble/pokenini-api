@@ -44,7 +44,7 @@ final class AlbumPokemonResponseTest extends TestCase
             gameBundles: [new GameBundleSlugResponse(slug: 'redgreenblueyellow')],
             gameBundlesShiny: [],
         );
-        $catchState = new AlbumCatchStateResponse('no', 'No', 'Non');
+        $catchState = new AlbumCatchStateResponse('no', 'No', 'Non', '#e57373');
         $forms = new AlbumFormsResponse(
             category: new AlbumFormResponse('starter', 'Starter'),
             regional: null,
