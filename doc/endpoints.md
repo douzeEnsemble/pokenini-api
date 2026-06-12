@@ -649,8 +649,8 @@ Exemple de réponse (`200`, tronquée à un pokémon) :
         "forms_french_label": "",
         "icon": "bulbasaur",
         "family_order": 0,
-        "family_lead_slug": "bulbasaur",
-        "original_game_bundle_slug": "redgreenblueyellow",
+        "family_lead": { "slug": "bulbasaur" },
+        "original_game_bundle": { "slug": "redgreenblueyellow" },
         "order_number": "0001-0001-000",
         "game_bundles": [
           { "slug": "redgreenblueyellow" },
@@ -802,8 +802,8 @@ Exemple de réponse (`200`, tronquée à un item) :
         "forms_french_label": "",
         "icon": "bulbasaur",
         "family_order": 0,
-        "family_lead_slug": "bulbasaur",
-        "original_game_bundle_slug": "redgreenblueyellow",
+        "family_lead": { "slug": "bulbasaur" },
+        "original_game_bundle": { "slug": "redgreenblueyellow" },
         "order_number": "9999-0001-000",
         "game_bundles": [
           { "slug": "redgreenblueyellow" }
@@ -938,8 +938,8 @@ Exemple de réponse (`200`, tronquée à un item) :
       "forms_french_label": "",
       "icon": "butterfree",
       "family_order": 2,
-      "family_lead_slug": "caterpie",
-      "original_game_bundle_slug": "redgreenblueyellow",
+      "family_lead": { "slug": "caterpie" },
+      "original_game_bundle": { "slug": "redgreenblueyellow" },
       "order_number": "9999-0012-002",
       "game_bundles": [
         { "slug": "redgreenblueyellow" }

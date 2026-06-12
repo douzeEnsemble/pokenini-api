@@ -7,7 +7,9 @@ namespace App\Factory;
 use App\DTO\Response\ElectionEloResponse;
 use App\DTO\Response\FormResponse;
 use App\DTO\Response\FormsResponse;
+use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\PokemonDataResponse;
+use App\DTO\Response\PokemonSlugResponse;
 use App\DTO\Response\TypeResponse;
 use App\DTO\Response\TypesResponse;
 
@@ -103,8 +105,12 @@ final class ElectionEloResponseFactory
             formsFrenchLabel: null !== $formsFrenchLabel ? (string) $formsFrenchLabel : null,
             icon: null !== $icon ? (string) $icon : null,
             familyOrder: (int) $familyOrder,
-            familyLeadSlug: null !== $familyLeadSlug ? (string) $familyLeadSlug : null,
-            originalGameBundleSlug: null !== $originalGameBundleSlug ? (string) $originalGameBundleSlug : null,
+            familyLead: null !== $familyLeadSlug
+                ? new PokemonSlugResponse(slug: (string) $familyLeadSlug)
+                : null,
+            originalGameBundle: null !== $originalGameBundleSlug
+                ? new GameBundleSlugResponse(slug: (string) $originalGameBundleSlug)
+                : null,
             orderNumber: (string) $orderNumber,
             gameBundles: [],
             gameBundlesShiny: [],

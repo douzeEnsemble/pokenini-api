@@ -13,8 +13,8 @@
       "forms_french_label": null,
       "icon": "pikachu.png",
       "family_order": 1,
-      "family_lead_slug": "pichu",
-      "original_game_bundle_slug": "red-blue",
+      "family_lead": { "slug": "pichu" },
+      "original_game_bundle": { "slug": "red-blue" },
       "order_number": "9999-0025-001"
     },
     "forms": null,
@@ -42,8 +42,8 @@
       "forms_french_label": null,
       "icon": "charizard.png",
       "family_order": 3,
-      "family_lead_slug": "charmander",
-      "original_game_bundle_slug": null,
+      "family_lead": { "slug": "charmander" },
+      "original_game_bundle": null,
       "order_number": "9999-0006-001"
     },
     "forms": {

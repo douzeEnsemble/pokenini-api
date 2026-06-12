@@ -7,6 +7,8 @@ namespace App\Tests\Unit\Factory;
 use App\DTO\Response\ElectionEloResponse;
 use App\DTO\Response\FormResponse;
 use App\DTO\Response\FormsResponse;
+use App\DTO\Response\GameBundleSlugResponse;
+use App\DTO\Response\PokemonSlugResponse;
 use App\Factory\ElectionEloResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -306,8 +308,10 @@ final class ElectionEloResponseFactoryTest extends TestCase
         self::assertSame('1', $response->pokemon->simplifiedFrenchName);
         self::assertSame('99', $response->pokemon->formsFrenchLabel);
         self::assertSame('7', $response->pokemon->icon);
-        self::assertSame('77', $response->pokemon->familyLeadSlug);
-        self::assertSame('55', $response->pokemon->originalGameBundleSlug);
+        self::assertInstanceOf(PokemonSlugResponse::class, $response->pokemon->familyLead);
+        self::assertSame('77', $response->pokemon->familyLead->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $response->pokemon->originalGameBundle);
+        self::assertSame('55', $response->pokemon->originalGameBundle->slug);
     }
 
     #[Test]
@@ -358,6 +362,8 @@ final class ElectionEloResponseFactoryTest extends TestCase
         self::assertSame('Forme d\'Alola', $response->forms->regional->frenchName);
         self::assertNull($response->forms->special);
         self::assertNull($response->forms->variant);
+        self::assertNull($response->pokemon->familyLead);
+        self::assertNull($response->pokemon->originalGameBundle);
     }
 
     #[Test]

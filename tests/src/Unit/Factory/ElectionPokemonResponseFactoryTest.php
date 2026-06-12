@@ -8,6 +8,8 @@ use App\DTO\ElectionPokemonsList;
 use App\DTO\Response\ElectionPokemonResponse;
 use App\DTO\Response\FormResponse;
 use App\DTO\Response\FormsResponse;
+use App\DTO\Response\GameBundleSlugResponse;
+use App\DTO\Response\PokemonSlugResponse;
 use App\DTO\Response\TypeResponse;
 use App\Factory\ElectionPokemonResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -38,8 +40,10 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
         self::assertSame('', $response->pokemon->formsFrenchLabel);
         self::assertSame('bulbasaur', $response->pokemon->icon);
         self::assertSame(0, $response->pokemon->familyOrder);
-        self::assertSame('bulbasaur', $response->pokemon->familyLeadSlug);
-        self::assertSame('redgreenblueyellow', $response->pokemon->originalGameBundleSlug);
+        self::assertInstanceOf(PokemonSlugResponse::class, $response->pokemon->familyLead);
+        self::assertSame('bulbasaur', $response->pokemon->familyLead->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $response->pokemon->originalGameBundle);
+        self::assertSame('redgreenblueyellow', $response->pokemon->originalGameBundle->slug);
         self::assertSame('9999-0001-000', $response->pokemon->orderNumber);
         self::assertSame([], $response->pokemon->gameBundles);
         self::assertSame([], $response->pokemon->gameBundlesShiny);
@@ -281,8 +285,8 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
         self::assertNull($response->pokemon->simplifiedFrenchName);
         self::assertNull($response->pokemon->formsFrenchLabel);
         self::assertNull($response->pokemon->icon);
-        self::assertNull($response->pokemon->familyLeadSlug);
-        self::assertNull($response->pokemon->originalGameBundleSlug);
+        self::assertNull($response->pokemon->familyLead);
+        self::assertNull($response->pokemon->originalGameBundle);
     }
 
     #[Test]
@@ -305,8 +309,10 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
         self::assertSame('99', $response->pokemon->simplifiedFrenchName);
         self::assertSame('3', $response->pokemon->formsFrenchLabel);
         self::assertSame('1', $response->pokemon->icon);
-        self::assertSame('55', $response->pokemon->familyLeadSlug);
-        self::assertSame('12', $response->pokemon->originalGameBundleSlug);
+        self::assertInstanceOf(PokemonSlugResponse::class, $response->pokemon->familyLead);
+        self::assertSame('55', $response->pokemon->familyLead->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $response->pokemon->originalGameBundle);
+        self::assertSame('12', $response->pokemon->originalGameBundle->slug);
     }
 
     /**

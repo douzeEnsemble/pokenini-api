@@ -12,6 +12,7 @@ use App\DTO\Response\AlbumTypeResponse;
 use App\DTO\Response\AlbumTypesResponse;
 use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\PokemonDataResponse;
+use App\DTO\Response\PokemonSlugResponse;
 
 final class AlbumPokemonResponseFactory
 {
@@ -113,8 +114,12 @@ final class AlbumPokemonResponseFactory
             formsFrenchLabel: null !== $formsFrenchLabel ? (string) $formsFrenchLabel : null,
             icon: null !== $icon ? (string) $icon : null,
             familyOrder: (int) $familyOrder,
-            familyLeadSlug: null !== $familyLeadSlug ? (string) $familyLeadSlug : null,
-            originalGameBundleSlug: null !== $originalGameBundleSlug ? (string) $originalGameBundleSlug : null,
+            familyLead: null !== $familyLeadSlug
+                ? new PokemonSlugResponse(slug: (string) $familyLeadSlug)
+                : null,
+            originalGameBundle: null !== $originalGameBundleSlug
+                ? new GameBundleSlugResponse(slug: (string) $originalGameBundleSlug)
+                : null,
             orderNumber: (string) $orderNumber,
             gameBundles: $gameBundles,
             gameBundlesShiny: $gameBundlesShiny,
