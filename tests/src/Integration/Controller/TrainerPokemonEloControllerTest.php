@@ -69,6 +69,8 @@ final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
             $this->assertArrayHasKey('name', $types['primary']);
             $this->assertArrayHasKey('french_name', $types['primary']);
             $this->assertArrayHasKey('color', $types['primary']);
+            $this->assertIsString($types['primary']['color']);
+            $this->assertMatchesRegularExpression('/^#[0-9A-Fa-f]{6}$/', $types['primary']['color']);
         }
     }
 
