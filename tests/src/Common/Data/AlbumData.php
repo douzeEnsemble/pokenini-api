@@ -766,8 +766,12 @@ final class AlbumData
                 'forms_french_label' => $flat['pokemon_forms_french_label'] ?? null,
                 'icon' => $flat['pokemon_icon'] ?? null,
                 'family_order' => $flat['pokemon_family_order'],
-                'family_lead_slug' => $flat['family_lead_slug'] ?? null,
-                'original_game_bundle_slug' => $flat['original_game_bundle_slug'] ?? null,
+                'family_lead' => null !== ($flat['family_lead_slug'] ?? null)
+                    ? ['slug' => $flat['family_lead_slug']]
+                    : null,
+                'original_game_bundle' => null !== ($flat['original_game_bundle_slug'] ?? null)
+                    ? ['slug' => $flat['original_game_bundle_slug']]
+                    : null,
                 'order_number' => $flat['pokemon_order_number'],
                 'game_bundles' => array_map(static fn (string $slug): array => ['slug' => $slug], $gameBundles),
                 'game_bundles_shiny' => array_map(static fn (string $slug): array => ['slug' => $slug], $gameBundlesShiny),

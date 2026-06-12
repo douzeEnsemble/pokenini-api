@@ -6,7 +6,9 @@ namespace App\Tests\Unit\DTO\Response;
 
 use App\DTO\Response\ElectionPokemonResponse;
 use App\DTO\Response\ElectionPokemonsListResponse;
+use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\PokemonDataResponse;
+use App\DTO\Response\PokemonSlugResponse;
 use App\DTO\Response\TypesResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -70,8 +72,8 @@ final class ElectionPokemonsListResponseTest extends TestCase
             formsFrenchLabel: '',
             icon: 'bulbasaur',
             familyOrder: 0,
-            familyLeadSlug: 'bulbasaur',
-            originalGameBundleSlug: 'redgreenblueyellow',
+            familyLead: new PokemonSlugResponse(slug: 'bulbasaur'),
+            originalGameBundle: new GameBundleSlugResponse(slug: 'redgreenblueyellow'),
             orderNumber: '9999-0001-000',
             gameBundles: [],
             gameBundlesShiny: [],

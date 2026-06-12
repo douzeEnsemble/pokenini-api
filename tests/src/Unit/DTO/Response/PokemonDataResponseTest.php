@@ -6,6 +6,7 @@ namespace App\Tests\Unit\DTO\Response;
 
 use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\PokemonDataResponse;
+use App\DTO\Response\PokemonSlugResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -39,8 +40,8 @@ final class PokemonDataResponseTest extends TestCase
             formsFrenchLabel: 'Casquette Originale',
             icon: 'pikachu.png',
             familyOrder: 1,
-            familyLeadSlug: 'pichu',
-            originalGameBundleSlug: 'rby',
+            familyLead: new PokemonSlugResponse(slug: 'pichu'),
+            originalGameBundle: new GameBundleSlugResponse(slug: 'rby'),
             orderNumber: '0025.001',
             gameBundles: $gameBundles,
             gameBundlesShiny: $gameBundlesShiny,
@@ -57,8 +58,10 @@ final class PokemonDataResponseTest extends TestCase
         self::assertSame('Casquette Originale', $response->formsFrenchLabel);
         self::assertSame('pikachu.png', $response->icon);
         self::assertSame(1, $response->familyOrder);
-        self::assertSame('pichu', $response->familyLeadSlug);
-        self::assertSame('rby', $response->originalGameBundleSlug);
+        self::assertInstanceOf(PokemonSlugResponse::class, $response->familyLead);
+        self::assertSame('pichu', $response->familyLead->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $response->originalGameBundle);
+        self::assertSame('rby', $response->originalGameBundle->slug);
         self::assertSame('0025.001', $response->orderNumber);
         self::assertCount(2, $response->gameBundles);
         self::assertInstanceOf(GameBundleSlugResponse::class, $response->gameBundles[0]);
@@ -85,8 +88,8 @@ final class PokemonDataResponseTest extends TestCase
             formsFrenchLabel: null,
             icon: null,
             familyOrder: 1,
-            familyLeadSlug: null,
-            originalGameBundleSlug: null,
+            familyLead: null,
+            originalGameBundle: null,
             orderNumber: '0001.001',
             gameBundles: [],
             gameBundlesShiny: [],
@@ -98,8 +101,8 @@ final class PokemonDataResponseTest extends TestCase
         self::assertNull($response->simplifiedFrenchName);
         self::assertNull($response->formsFrenchLabel);
         self::assertNull($response->icon);
-        self::assertNull($response->familyLeadSlug);
-        self::assertNull($response->originalGameBundleSlug);
+        self::assertNull($response->familyLead);
+        self::assertNull($response->originalGameBundle);
         self::assertSame([], $response->gameBundles);
         self::assertSame([], $response->gameBundlesShiny);
     }

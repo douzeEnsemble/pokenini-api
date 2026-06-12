@@ -12,6 +12,7 @@ use App\DTO\Response\AlbumTypeResponse;
 use App\DTO\Response\AlbumTypesResponse;
 use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\PokemonDataResponse;
+use App\DTO\Response\PokemonSlugResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -37,8 +38,8 @@ final class AlbumPokemonResponseTest extends TestCase
             formsFrenchLabel: '',
             icon: 'bulbasaur',
             familyOrder: 0,
-            familyLeadSlug: 'bulbasaur',
-            originalGameBundleSlug: 'redgreenblueyellow',
+            familyLead: new PokemonSlugResponse(slug: 'bulbasaur'),
+            originalGameBundle: new GameBundleSlugResponse(slug: 'redgreenblueyellow'),
             orderNumber: '0001-0001-000',
             gameBundles: [new GameBundleSlugResponse(slug: 'redgreenblueyellow')],
             gameBundlesShiny: [],
@@ -83,8 +84,8 @@ final class AlbumPokemonResponseTest extends TestCase
             formsFrenchLabel: '',
             icon: 'douze',
             familyOrder: 0,
-            familyLeadSlug: 'douze',
-            originalGameBundleSlug: 'redgreenblueyellow',
+            familyLead: new PokemonSlugResponse(slug: 'douze'),
+            originalGameBundle: new GameBundleSlugResponse(slug: 'redgreenblueyellow'),
             orderNumber: '9999-9912-000',
             gameBundles: [
                 new GameBundleSlugResponse(slug: 'un'),

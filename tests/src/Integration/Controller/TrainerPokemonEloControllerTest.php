@@ -57,8 +57,8 @@ final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
             $this->assertArrayHasKey('national_dex_number', $pokemon);
             $this->assertArrayHasKey('icon', $pokemon);
             $this->assertArrayHasKey('family_order', $pokemon);
-            $this->assertArrayHasKey('family_lead_slug', $pokemon);
-            $this->assertArrayHasKey('original_game_bundle_slug', $pokemon);
+            $this->assertArrayHasKey('family_lead', $pokemon);
+            $this->assertArrayHasKey('original_game_bundle', $pokemon);
             $this->assertArrayHasKey('order_number', $pokemon);
 
             $types = $item['types'];

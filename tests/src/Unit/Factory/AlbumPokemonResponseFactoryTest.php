@@ -10,6 +10,7 @@ use App\DTO\Response\AlbumFormsResponse;
 use App\DTO\Response\AlbumPokemonResponse;
 use App\DTO\Response\AlbumTypeResponse;
 use App\DTO\Response\GameBundleSlugResponse;
+use App\DTO\Response\PokemonSlugResponse;
 use App\Factory\AlbumPokemonResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -39,8 +40,10 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
         self::assertSame('', $result->pokemon->formsFrenchLabel);
         self::assertSame('bulbasaur', $result->pokemon->icon);
         self::assertSame(0, $result->pokemon->familyOrder);
-        self::assertSame('bulbasaur', $result->pokemon->familyLeadSlug);
-        self::assertSame('redgreenblueyellow', $result->pokemon->originalGameBundleSlug);
+        self::assertInstanceOf(PokemonSlugResponse::class, $result->pokemon->familyLead);
+        self::assertSame('bulbasaur', $result->pokemon->familyLead->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->originalGameBundle);
+        self::assertSame('redgreenblueyellow', $result->pokemon->originalGameBundle->slug);
         self::assertSame('0001-0001-000', $result->pokemon->orderNumber);
         self::assertCount(2, $result->pokemon->gameBundles);
         self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles[0]);
@@ -231,8 +234,23 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
         self::assertSame('99', $result->pokemon->simplifiedFrenchName);
         self::assertSame('0', $result->pokemon->formsFrenchLabel);
         self::assertSame('7', $result->pokemon->icon);
-        self::assertSame('123', $result->pokemon->familyLeadSlug);
-        self::assertSame('456', $result->pokemon->originalGameBundleSlug);
+        self::assertInstanceOf(PokemonSlugResponse::class, $result->pokemon->familyLead);
+        self::assertSame('123', $result->pokemon->familyLead->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->originalGameBundle);
+        self::assertSame('456', $result->pokemon->originalGameBundle->slug);
+    }
+
+    #[Test]
+    public function fromSqlRowSetsNullFamilyLeadAndOriginalGameBundleWhenNull(): void
+    {
+        $row = $this->getBulbasaurRow();
+        $row['family_lead_slug'] = null;
+        $row['original_game_bundle_slug'] = null;
+
+        $result = AlbumPokemonResponseFactory::fromSqlRow($row);
+
+        self::assertNull($result->pokemon->familyLead);
+        self::assertNull($result->pokemon->originalGameBundle);
     }
 
     #[Test]

@@ -34,10 +34,10 @@ final class PokemonDataResponse
         public readonly ?string $icon,
         #[SerializedName('family_order')]
         public readonly int $familyOrder,
-        #[SerializedName('family_lead_slug')]
-        public readonly ?string $familyLeadSlug,
-        #[SerializedName('original_game_bundle_slug')]
-        public readonly ?string $originalGameBundleSlug,
+        #[SerializedName('family_lead')]
+        public readonly ?PokemonSlugResponse $familyLead,
+        #[SerializedName('original_game_bundle')]
+        public readonly ?GameBundleSlugResponse $originalGameBundle,
         #[SerializedName('order_number')]
         public readonly string $orderNumber,
         #[SerializedName('game_bundles')]
