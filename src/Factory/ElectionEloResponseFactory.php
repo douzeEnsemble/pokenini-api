@@ -187,6 +187,7 @@ final class ElectionEloResponseFactory
         $slugKey = "{$prefix}_slug";
         $nameKey = "{$prefix}_name";
         $frenchNameKey = "{$prefix}_french_name";
+        $colorKey = "{$prefix}_color";
 
         if (empty($row[$slugKey])) {
             return null;
@@ -201,11 +202,14 @@ final class ElectionEloResponseFactory
         /** @var scalar $frenchName */
         $frenchName = $row[$frenchNameKey];
 
+        /** @var scalar $color */
+        $color = $row[$colorKey];
+
         return new TypeResponse(
             slug: (string) $slug,
             name: (string) $name,
             frenchName: (string) $frenchName,
-            color: '',
+            color: (string) $color,
         );
     }
 }

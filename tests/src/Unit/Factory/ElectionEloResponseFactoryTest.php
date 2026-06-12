@@ -54,9 +54,11 @@ final class ElectionEloResponseFactoryTest extends TestCase
             'primary_type_slug' => 'electric',
             'primary_type_name' => 'Electric',
             'primary_type_french_name' => 'Électrique',
+            'primary_type_color' => '#FFCC33',
             'secondary_type_slug' => null,
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
+            'secondary_type_color' => null,
         ];
 
         $response = ElectionEloResponseFactory::fromSqlRow($row);
@@ -68,6 +70,7 @@ final class ElectionEloResponseFactoryTest extends TestCase
         self::assertNull($response->forms);
         self::assertNotNull($response->types->primary);
         self::assertSame('electric', $response->types->primary->slug);
+        self::assertSame('#FFCC33', $response->types->primary->color);
         self::assertNull($response->types->secondary);
     }
 
@@ -105,9 +108,11 @@ final class ElectionEloResponseFactoryTest extends TestCase
             'primary_type_slug' => 'electric',
             'primary_type_name' => 'Electric',
             'primary_type_french_name' => 'Électrique',
+            'primary_type_color' => '#FFCC33',
             'secondary_type_slug' => 'fire',
             'secondary_type_name' => 'Fire',
             'secondary_type_french_name' => 'Feu',
+            'secondary_type_color' => '#F08030',
         ];
 
         $response = ElectionEloResponseFactory::fromSqlRow($row);
@@ -122,6 +127,9 @@ final class ElectionEloResponseFactoryTest extends TestCase
         self::assertNull($response->forms->variant);
         self::assertNotNull($response->types->secondary);
         self::assertSame('fire', $response->types->secondary->slug);
+        self::assertNotNull($response->types->primary);
+        self::assertSame('#FFCC33', $response->types->primary->color);
+        self::assertSame('#F08030', $response->types->secondary->color);
     }
 
     #[Test]
@@ -158,14 +166,20 @@ final class ElectionEloResponseFactoryTest extends TestCase
             'primary_type_slug' => 'grass',
             'primary_type_name' => 'Grass',
             'primary_type_french_name' => 'Plante',
+            'primary_type_color' => '#78C850',
             'secondary_type_slug' => 'poison',
             'secondary_type_name' => 'Poison',
             'secondary_type_french_name' => 'Poison',
+            'secondary_type_color' => '#A040A0',
         ];
 
         $response = ElectionEloResponseFactory::fromSqlRow($row);
 
         self::assertFalse($response->significance);
+        self::assertNotNull($response->types->primary);
+        self::assertSame('#78C850', $response->types->primary->color);
+        self::assertNotNull($response->types->secondary);
+        self::assertSame('#A040A0', $response->types->secondary->color);
     }
 
     #[Test]
@@ -203,9 +217,11 @@ final class ElectionEloResponseFactoryTest extends TestCase
                 'primary_type_slug' => 'electric',
                 'primary_type_name' => 'Electric',
                 'primary_type_french_name' => 'Électrique',
+                'primary_type_color' => '#FFCC33',
                 'secondary_type_slug' => null,
                 'secondary_type_name' => null,
                 'secondary_type_french_name' => null,
+                'secondary_type_color' => null,
             ],
             [
                 'elo' => 1150.0,
@@ -238,9 +254,11 @@ final class ElectionEloResponseFactoryTest extends TestCase
                 'primary_type_slug' => 'fire',
                 'primary_type_name' => 'Fire',
                 'primary_type_french_name' => 'Feu',
+                'primary_type_color' => '#F08030',
                 'secondary_type_slug' => 'flying',
                 'secondary_type_name' => 'Flying',
                 'secondary_type_french_name' => 'Vol',
+                'secondary_type_color' => '#A890F0',
             ],
         ];
 
@@ -252,6 +270,12 @@ final class ElectionEloResponseFactoryTest extends TestCase
         self::assertSame('charizard', $responses[1]->pokemon->slug);
         self::assertSame(1200.0, $responses[0]->elo);
         self::assertSame(1150.0, $responses[1]->elo);
+        self::assertNotNull($responses[0]->types->primary);
+        self::assertSame('#FFCC33', $responses[0]->types->primary->color);
+        self::assertNotNull($responses[1]->types->primary);
+        self::assertSame('#F08030', $responses[1]->types->primary->color);
+        self::assertNotNull($responses[1]->types->secondary);
+        self::assertSame('#A890F0', $responses[1]->types->secondary->color);
     }
 
     #[Test]
@@ -296,9 +320,11 @@ final class ElectionEloResponseFactoryTest extends TestCase
             'primary_type_slug' => 'normal',
             'primary_type_name' => 'Normal',
             'primary_type_french_name' => 'Normal',
+            'primary_type_color' => 42,
             'secondary_type_slug' => null,
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
+            'secondary_type_color' => null,
         ];
 
         $response = ElectionEloResponseFactory::fromSqlRow($row);
@@ -312,6 +338,8 @@ final class ElectionEloResponseFactoryTest extends TestCase
         self::assertSame('77', $response->pokemon->familyLead->slug);
         self::assertInstanceOf(GameBundleSlugResponse::class, $response->pokemon->originalGameBundle);
         self::assertSame('55', $response->pokemon->originalGameBundle->slug);
+        self::assertNotNull($response->types->primary);
+        self::assertSame('42', $response->types->primary->color);
     }
 
     #[Test]
@@ -348,9 +376,11 @@ final class ElectionEloResponseFactoryTest extends TestCase
             'primary_type_slug' => 'ice',
             'primary_type_name' => 'Ice',
             'primary_type_french_name' => 'Glace',
+            'primary_type_color' => '#98D8D8',
             'secondary_type_slug' => null,
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
+            'secondary_type_color' => null,
         ];
 
         $response = ElectionEloResponseFactory::fromSqlRow($row);
@@ -364,6 +394,8 @@ final class ElectionEloResponseFactoryTest extends TestCase
         self::assertNull($response->forms->variant);
         self::assertNull($response->pokemon->familyLead);
         self::assertNull($response->pokemon->originalGameBundle);
+        self::assertNotNull($response->types->primary);
+        self::assertSame('#98D8D8', $response->types->primary->color);
     }
 
     #[Test]
@@ -400,9 +432,11 @@ final class ElectionEloResponseFactoryTest extends TestCase
             'primary_type_slug' => 'psychic',
             'primary_type_name' => 'Psychic',
             'primary_type_french_name' => 'Psy',
+            'primary_type_color' => '#F85888',
             'secondary_type_slug' => null,
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
+            'secondary_type_color' => null,
         ];
 
         $response = ElectionEloResponseFactory::fromSqlRow($row);
@@ -410,5 +444,7 @@ final class ElectionEloResponseFactoryTest extends TestCase
         self::assertSame(1350.75, $response->elo);
         self::assertSame(65, $response->pokemon->nationalDexNumber);
         self::assertSame(4, $response->pokemon->familyOrder);
+        self::assertNotNull($response->types->primary);
+        self::assertSame('#F85888', $response->types->primary->color);
     }
 }
