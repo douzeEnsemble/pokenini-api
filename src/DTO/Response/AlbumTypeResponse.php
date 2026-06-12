@@ -13,5 +13,6 @@ final class AlbumTypeResponse
         public readonly string $name,
         #[SerializedName('french_name')]
         public readonly string $frenchName,
+        public readonly string $color,
     ) {}
 }

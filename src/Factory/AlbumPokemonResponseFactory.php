@@ -216,6 +216,7 @@ final class AlbumPokemonResponseFactory
         $slugKey = "{$prefix}_slug";
         $nameKey = "{$prefix}_name";
         $frenchNameKey = "{$prefix}_french_name";
+        $colorKey = "{$prefix}_color";
 
         if (empty($row[$slugKey])) {
             return null;
@@ -230,10 +231,14 @@ final class AlbumPokemonResponseFactory
         /** @var scalar $frenchName */
         $frenchName = $row[$frenchNameKey];
 
+        /** @var scalar $color */
+        $color = $row[$colorKey];
+
         return new AlbumTypeResponse(
             slug: (string) $slug,
             name: (string) $name,
             frenchName: (string) $frenchName,
+            color: (string) $color,
         );
     }
 }

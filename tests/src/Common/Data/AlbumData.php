@@ -221,9 +221,11 @@ final class AlbumData
                 'primary_type_slug' => 'grass',
                 'primary_type_name' => 'Grass',
                 'primary_type_french_name' => 'Plante',
+                'primary_type_color' => '#78C850',
                 'secondary_type_slug' => 'poison',
                 'secondary_type_name' => 'Poison',
                 'secondary_type_french_name' => 'Poison',
+                'secondary_type_color' => '#A040A0',
                 'original_game_bundle_slug' => 'diamondpearlplatinium',
                 'game_bundles' => [
                     'redgreenblueyellow',
@@ -262,9 +264,11 @@ final class AlbumData
                 'primary_type_slug' => 'grass',
                 'primary_type_name' => 'Grass',
                 'primary_type_french_name' => 'Plante',
+                'primary_type_color' => '#78C850',
                 'secondary_type_slug' => 'poison',
                 'secondary_type_name' => 'Poison',
                 'secondary_type_french_name' => 'Poison',
+                'secondary_type_color' => '#A040A0',
                 'original_game_bundle_slug' => 'xy',
                 'game_bundles' => [
                     'redgreenblueyellow',
@@ -303,9 +307,11 @@ final class AlbumData
                 'primary_type_slug' => 'grass',
                 'primary_type_name' => 'Grass',
                 'primary_type_french_name' => 'Plante',
+                'primary_type_color' => '#78C850',
                 'secondary_type_slug' => 'poison',
                 'secondary_type_name' => 'Poison',
                 'secondary_type_french_name' => 'Poison',
+                'secondary_type_color' => '#A040A0',
                 'original_game_bundle_slug' => 'swordshield',
                 'game_bundles' => [
                     'redgreenblueyellow',
@@ -368,9 +374,11 @@ final class AlbumData
                 'primary_type_slug' => 'bug',
                 'primary_type_name' => 'Bug',
                 'primary_type_french_name' => 'Insecte',
+                'primary_type_color' => '#A8B820',
                 'secondary_type_slug' => 'flying',
                 'secondary_type_name' => 'Flying',
                 'secondary_type_french_name' => 'Vol',
+                'secondary_type_color' => '#A890F0',
                 'original_game_bundle_slug' => 'diamondpearlplatinium',
                 'game_bundles' => [],
                 'game_bundles_shiny' => [],
@@ -403,9 +411,11 @@ final class AlbumData
                 'primary_type_slug' => 'bug',
                 'primary_type_name' => 'Bug',
                 'primary_type_french_name' => 'Insecte',
+                'primary_type_color' => '#A8B820',
                 'secondary_type_slug' => 'flying',
                 'secondary_type_name' => 'Flying',
                 'secondary_type_french_name' => 'Vol',
+                'secondary_type_color' => '#A890F0',
                 'original_game_bundle_slug' => 'swordshield',
                 'game_bundles' => [],
                 'game_bundles_shiny' => [],
@@ -488,9 +498,11 @@ final class AlbumData
                 'primary_type_slug' => 'grass',
                 'primary_type_name' => 'Grass',
                 'primary_type_french_name' => 'Plante',
+                'primary_type_color' => '#78C850',
                 'secondary_type_slug' => 'poison',
                 'secondary_type_name' => 'Poison',
                 'secondary_type_french_name' => 'Poison',
+                'secondary_type_color' => '#A040A0',
                 'original_game_bundle_slug' => 'diamondpearlplatinium',
                 'game_bundles' => [
                     'redgreenblueyellow',
@@ -529,9 +541,11 @@ final class AlbumData
                 'primary_type_slug' => 'grass',
                 'primary_type_name' => 'Grass',
                 'primary_type_french_name' => 'Plante',
+                'primary_type_color' => '#78C850',
                 'secondary_type_slug' => 'poison',
                 'secondary_type_name' => 'Poison',
                 'secondary_type_french_name' => 'Poison',
+                'secondary_type_color' => '#A040A0',
                 'original_game_bundle_slug' => 'xy',
                 'game_bundles' => [
                     'redgreenblueyellow',
@@ -570,9 +584,11 @@ final class AlbumData
                 'primary_type_slug' => 'grass',
                 'primary_type_name' => 'Grass',
                 'primary_type_french_name' => 'Plante',
+                'primary_type_color' => '#78C850',
                 'secondary_type_slug' => 'poison',
                 'secondary_type_name' => 'Poison',
                 'secondary_type_french_name' => 'Poison',
+                'secondary_type_color' => '#A040A0',
                 'original_game_bundle_slug' => 'swordshield',
                 'game_bundles' => [
                     'redgreenblueyellow',
@@ -617,9 +633,11 @@ final class AlbumData
                 'primary_type_slug' => 'bug',
                 'primary_type_name' => 'Bug',
                 'primary_type_french_name' => 'Insecte',
+                'primary_type_color' => '#A8B820',
                 'secondary_type_slug' => 'flying',
                 'secondary_type_name' => 'Flying',
                 'secondary_type_french_name' => 'Vol',
+                'secondary_type_color' => '#A890F0',
                 'original_game_bundle_slug' => 'diamondpearlplatinium',
                 'game_bundles' => [],
                 'game_bundles_shiny' => [],
@@ -652,9 +670,11 @@ final class AlbumData
                 'primary_type_slug' => 'bug',
                 'primary_type_name' => 'Bug',
                 'primary_type_french_name' => 'Insecte',
+                'primary_type_color' => '#A8B820',
                 'secondary_type_slug' => 'flying',
                 'secondary_type_name' => 'Flying',
                 'secondary_type_french_name' => 'Vol',
+                'secondary_type_color' => '#A890F0',
                 'original_game_bundle_slug' => 'swordshield',
                 'game_bundles' => [],
                 'game_bundles_shiny' => [],
@@ -850,10 +870,10 @@ final class AlbumData
     {
         return [
             'primary' => null !== ($flat['primary_type_slug'] ?? null)
-                ? ['slug' => $flat['primary_type_slug'], 'name' => $flat['primary_type_name'], 'french_name' => $flat['primary_type_french_name']]
+                ? ['slug' => $flat['primary_type_slug'], 'name' => $flat['primary_type_name'], 'french_name' => $flat['primary_type_french_name'], 'color' => $flat['primary_type_color']]
                 : null,
             'secondary' => null !== ($flat['secondary_type_slug'] ?? null)
-                ? ['slug' => $flat['secondary_type_slug'], 'name' => $flat['secondary_type_name'], 'french_name' => $flat['secondary_type_french_name']]
+                ? ['slug' => $flat['secondary_type_slug'], 'name' => $flat['secondary_type_name'], 'french_name' => $flat['secondary_type_french_name'], 'color' => $flat['secondary_type_color']]
                 : null,
         ];
     }

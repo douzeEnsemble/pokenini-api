@@ -19,8 +19,8 @@ final class AlbumTypesResponseTest extends TestCase
     #[Test]
     public function constructorInitializesProperties(): void
     {
-        $primary = new AlbumTypeResponse('grass', 'Grass', 'Plante');
-        $secondary = new AlbumTypeResponse('poison', 'Poison', 'Poison');
+        $primary = new AlbumTypeResponse('grass', 'Grass', 'Plante', '#78C850');
+        $secondary = new AlbumTypeResponse('poison', 'Poison', 'Poison', '#A040A0');
 
         $response = new AlbumTypesResponse(
             primary: $primary,
