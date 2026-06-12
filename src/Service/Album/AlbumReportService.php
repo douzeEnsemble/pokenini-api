@@ -37,10 +37,11 @@ class AlbumReportService
 
         foreach ($catchStatesCounts as $catchStatesCount) {
             $detail[] = new Statistic(
-                (string) $catchStatesCount['slug'],
-                (string) $catchStatesCount['name'],
-                (string) $catchStatesCount['french_name'],
-                (int) $catchStatesCount['count'],
+                slug: (string) $catchStatesCount['slug'],
+                name: (string) $catchStatesCount['name'],
+                frenchName: (string) $catchStatesCount['french_name'],
+                color: (string) $catchStatesCount['color'],
+                count: (int) $catchStatesCount['count'],
             );
 
             if ('yes' === $catchStatesCount['slug']) {

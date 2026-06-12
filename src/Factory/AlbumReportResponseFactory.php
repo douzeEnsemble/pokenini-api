@@ -29,6 +29,7 @@ final class AlbumReportResponseFactory
                 slug: $statistic->slug,
                 name: $statistic->name,
                 frenchName: $statistic->frenchName,
+                color: $statistic->color,
             ),
             count: $statistic->count,
         );

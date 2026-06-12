@@ -28,6 +28,7 @@ namespace App\Tests\Common\Types;
  *  catch_state_slug: string|null,
  *  catch_state_name: string|null,
  *  catch_state_french_name: string|null,
+ *  catch_state_color: string|null,
  *  pokemon_regional_dex_number: string|null,
  *  primary_type_slug: string,
  *  primary_type_name: string,
@@ -49,7 +50,8 @@ namespace App\Tests\Common\Types;
  *      catch_state: array{
  *          slug: string,
  *          name: string,
- *          french_name: string
+ *          french_name: string,
+ *          color: string
  *      }
  *  }>,
  *  total: int,
@@ -79,6 +81,7 @@ namespace App\Tests\Common\Types;
  *  catch_state_slug: string|null,
  *  catch_state_name: string|null,
  *  catch_state_french_name: string|null,
+ *  catch_state_color: string|null,
  *  pokemon_regional_dex_number: string|null,
  *  primary_type_slug: string,
  *  primary_type_name: string,

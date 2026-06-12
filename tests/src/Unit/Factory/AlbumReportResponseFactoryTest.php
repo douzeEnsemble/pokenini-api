@@ -21,8 +21,8 @@ final class AlbumReportResponseFactoryTest extends TestCase
     #[Test]
     public function fromReportMapsAllTotalsCorrectly(): void
     {
-        $stat1 = new Statistic('no', 'No', 'Non', 3);
-        $stat2 = new Statistic('yes', 'Yes', 'Oui', 5);
+        $stat1 = new Statistic(slug: 'no', name: 'No', frenchName: 'Non', color: '#e57373', count: 3);
+        $stat2 = new Statistic(slug: 'yes', name: 'Yes', frenchName: 'Oui', color: '#66bb6a', count: 5);
         $report = new Report(10, 5, 2, [$stat1, $stat2]);
 
         $result = AlbumReportResponseFactory::fromReport($report);
@@ -36,7 +36,7 @@ final class AlbumReportResponseFactoryTest extends TestCase
     #[Test]
     public function fromReportMapsStatisticCatchStateCorrectly(): void
     {
-        $stat = new Statistic('maybe', 'Maybe', 'Peut être', 7);
+        $stat = new Statistic(slug: 'maybe', name: 'Maybe', frenchName: 'Peut être', color: 'blue', count: 7);
         $report = new Report(7, 0, 7, [$stat]);
 
         $result = AlbumReportResponseFactory::fromReport($report);
@@ -47,6 +47,7 @@ final class AlbumReportResponseFactoryTest extends TestCase
         self::assertSame('maybe', $detail->catchState->slug);
         self::assertSame('Maybe', $detail->catchState->name);
         self::assertSame('Peut être', $detail->catchState->frenchName);
+        self::assertSame('blue', $detail->catchState->color);
     }
 
     #[Test]

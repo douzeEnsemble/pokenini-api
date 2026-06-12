@@ -22,8 +22,8 @@ final class ReportTest extends TestCase
             1,
             5,
             [
-                new Statistic('no', 'No', 'Non', 1),
-                new Statistic('yes', 'Yes', 'Yes', 1),
+                new Statistic(slug: 'no', name: 'No', frenchName: 'Non', color: '#e57373', count: 1),
+                new Statistic(slug: 'yes', name: 'Yes', frenchName: 'Yes', color: '#81c784', count: 1),
             ]
         );
 

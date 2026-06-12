@@ -31,6 +31,7 @@ trait AssertReportTrait
         $this->assertEquals('no', $reportDetail[0]['catch_state']['slug']);
         $this->assertEquals('No', $reportDetail[0]['catch_state']['name']);
         $this->assertEquals('Non', $reportDetail[0]['catch_state']['french_name']);
+        $this->assertEquals('#e57373', $reportDetail[0]['catch_state']['color']);
 
         $this->assertArrayHasKey(1, $reportDetail);
         $this->assertArrayHasKey('count', $reportDetail[1]);
@@ -39,6 +40,7 @@ trait AssertReportTrait
         $this->assertEquals('maybe', $reportDetail[1]['catch_state']['slug']);
         $this->assertEquals('Maybe', $reportDetail[1]['catch_state']['name']);
         $this->assertEquals('Peut être', $reportDetail[1]['catch_state']['french_name']);
+        $this->assertEquals('blue', $reportDetail[1]['catch_state']['color']);
 
         $this->assertArrayHasKey(2, $reportDetail);
         $this->assertArrayHasKey('count', $reportDetail[2]);
@@ -47,6 +49,7 @@ trait AssertReportTrait
         $this->assertEquals('maybenot', $reportDetail[2]['catch_state']['slug']);
         $this->assertEquals('Maybe not', $reportDetail[2]['catch_state']['name']);
         $this->assertEquals('Peut être pas', $reportDetail[2]['catch_state']['french_name']);
+        $this->assertEquals('yellow', $reportDetail[2]['catch_state']['color']);
 
         $this->assertArrayHasKey(3, $reportDetail);
         $this->assertArrayHasKey('count', $reportDetail[3]);
@@ -55,6 +58,7 @@ trait AssertReportTrait
         $this->assertEquals('yes', $reportDetail[3]['catch_state']['slug']);
         $this->assertEquals('Yes', $reportDetail[3]['catch_state']['name']);
         $this->assertEquals('Oui', $reportDetail[3]['catch_state']['french_name']);
+        $this->assertEquals('#66bb6a', $reportDetail[3]['catch_state']['color']);
 
         $this->assertArrayHasKey('total', $report);
         $this->assertEquals($countTotal, $report['total']);

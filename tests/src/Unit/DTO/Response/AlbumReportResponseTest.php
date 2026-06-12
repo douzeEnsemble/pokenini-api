@@ -20,7 +20,7 @@ final class AlbumReportResponseTest extends TestCase
     #[Test]
     public function constructorInitializesProperties(): void
     {
-        $catchState = new AlbumCatchStateResponse(slug: 'yes', name: 'Yes', frenchName: 'Oui');
+        $catchState = new AlbumCatchStateResponse(slug: 'yes', name: 'Yes', frenchName: 'Oui', color: '#e57373');
         $statistic = new AlbumReportStatisticResponse(
             catchState: $catchState,
             count: 5,
