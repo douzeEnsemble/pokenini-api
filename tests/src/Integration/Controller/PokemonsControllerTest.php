@@ -154,7 +154,8 @@ final class PokemonsControllerTest extends AbstractTestControllerApi
                 $this->assertArrayHasKey('name', $primary);
                 $this->assertArrayHasKey('french_name', $primary);
                 $this->assertArrayHasKey('color', $primary);
-                $this->assertSame('', $primary['color']);
+                $this->assertIsString($primary['color']);
+                $this->assertMatchesRegularExpression('/^#[0-9A-Fa-f]{6}$/', $primary['color']);
             }
         }
     }

@@ -176,7 +176,7 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
         self::assertSame('grass', $response->types->primary->slug);
         self::assertSame('Grass', $response->types->primary->name);
         self::assertSame('Plante', $response->types->primary->frenchName);
-        self::assertSame('', $response->types->primary->color);
+        self::assertSame('#78C850', $response->types->primary->color);
         self::assertNull($response->types->secondary);
     }
 
@@ -187,6 +187,7 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
             'secondary_type_slug' => 'poison',
             'secondary_type_name' => 'Poison',
             'secondary_type_french_name' => 'Poison',
+            'secondary_type_color' => '#A040A0',
         ]);
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
@@ -195,7 +196,20 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
         self::assertSame('poison', $response->types->secondary->slug);
         self::assertSame('Poison', $response->types->secondary->name);
         self::assertSame('Poison', $response->types->secondary->frenchName);
-        self::assertSame('', $response->types->secondary->color);
+        self::assertSame('#A040A0', $response->types->secondary->color);
+    }
+
+    #[Test]
+    public function fromSqlRowCastsColorToString(): void
+    {
+        $row = $this->buildRow([
+            'primary_type_color' => 42,
+        ]);
+
+        $response = ElectionPokemonResponseFactory::fromSqlRow($row);
+
+        self::assertNotNull($response->types->primary);
+        self::assertSame('42', $response->types->primary->color);
     }
 
     #[Test]
@@ -349,9 +363,11 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
             'primary_type_slug' => 'grass',
             'primary_type_name' => 'Grass',
             'primary_type_french_name' => 'Plante',
+            'primary_type_color' => '#78C850',
             'secondary_type_slug' => null,
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
+            'secondary_type_color' => null,
             'original_game_bundle_slug' => 'redgreenblueyellow',
             'pokemon_order_number' => '9999-0001-000',
         ], $overrides);
