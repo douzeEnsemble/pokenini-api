@@ -86,20 +86,26 @@ final class AlbumPokemonResponseFactory
         /** @var scalar $orderNumber */
         $orderNumber = $row['pokemon_order_number'];
 
+        /** @var null|scalar $gameBundleSlugsRaw */
+        $gameBundleSlugsRaw = $row['game_bundle_slugs'] ?? null;
+
         /** @var array<string> $gameBundleSlugs */
-        $gameBundleSlugs = (array) $row['game_bundles'];
+        $gameBundleSlugs = array_values(array_filter(explode(',', (string) ($gameBundleSlugsRaw ?? ''))));
 
         $gameBundles = array_map(
             static fn (string $slug): GameBundleSlugResponse => new GameBundleSlugResponse(slug: $slug),
             $gameBundleSlugs,
         );
 
-        /** @var array<string> $gameBundlesShinySlugs */
-        $gameBundlesShinySlugs = (array) $row['game_bundles_shiny'];
+        /** @var null|scalar $gameBundleShinySlugRaw */
+        $gameBundleShinySlugRaw = $row['game_bundle_shiny_slugs'] ?? null;
+
+        /** @var array<string> $gameBundleShinySlugs */
+        $gameBundleShinySlugs = array_values(array_filter(explode(',', (string) ($gameBundleShinySlugRaw ?? ''))));
 
         $gameBundlesShiny = array_map(
             static fn (string $slug): GameBundleSlugResponse => new GameBundleSlugResponse(slug: $slug),
-            $gameBundlesShinySlugs,
+            $gameBundleShinySlugs,
         );
 
         return new PokemonDataResponse(

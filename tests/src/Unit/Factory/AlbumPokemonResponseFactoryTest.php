@@ -21,6 +21,7 @@ use PHPUnit\Framework\TestCase;
  *
  * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
  * @SuppressWarnings("PHPMD.TooManyPublicMethods")
+ * @SuppressWarnings("PHPMD.TooManyMethods")
  */
 #[CoversClass(AlbumPokemonResponseFactory::class)]
 final class AlbumPokemonResponseFactoryTest extends TestCase
@@ -254,16 +255,59 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
     }
 
     #[Test]
-    public function fromSqlRowCastsNullGameBundlesToEmptyArray(): void
+    public function fromSqlRowParsesNullGameBundleSlugsAsEmptyArrayForBothFields(): void
     {
         $row = $this->getBulbasaurRow();
-        $row['game_bundles'] = null;
-        $row['game_bundles_shiny'] = null;
+        $row['game_bundle_slugs'] = null;
+        $row['game_bundle_shiny_slugs'] = null;
 
         $result = AlbumPokemonResponseFactory::fromSqlRow($row);
 
         self::assertSame([], $result->pokemon->gameBundles);
         self::assertSame([], $result->pokemon->gameBundlesShiny);
+    }
+
+    #[Test]
+    public function fromSqlRowParsesEmptyGameBundleSlugsAsEmptyArray(): void
+    {
+        $row = $this->getBulbasaurRow();
+        $row['game_bundle_slugs'] = '';
+        $row['game_bundle_shiny_slugs'] = '';
+
+        $result = AlbumPokemonResponseFactory::fromSqlRow($row);
+
+        self::assertSame([], $result->pokemon->gameBundles);
+        self::assertSame([], $result->pokemon->gameBundlesShiny);
+    }
+
+    #[Test]
+    public function fromSqlRowParsesPopulatedGameBundleSlugs(): void
+    {
+        $row = $this->getBulbasaurRow();
+        $row['game_bundle_slugs'] = 'redgreenblueyellow,goldsilvercrystal';
+
+        $result = AlbumPokemonResponseFactory::fromSqlRow($row);
+
+        self::assertCount(2, $result->pokemon->gameBundles);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles[0]);
+        self::assertSame('redgreenblueyellow', $result->pokemon->gameBundles[0]->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles[1]);
+        self::assertSame('goldsilvercrystal', $result->pokemon->gameBundles[1]->slug);
+    }
+
+    #[Test]
+    public function fromSqlRowParsesPopulatedGameBundleShinySlugs(): void
+    {
+        $row = $this->getBulbasaurRow();
+        $row['game_bundle_shiny_slugs'] = 'redgreenblueyellow,goldsilvercrystal';
+
+        $result = AlbumPokemonResponseFactory::fromSqlRow($row);
+
+        self::assertCount(2, $result->pokemon->gameBundlesShiny);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundlesShiny[0]);
+        self::assertSame('redgreenblueyellow', $result->pokemon->gameBundlesShiny[0]->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundlesShiny[1]);
+        self::assertSame('goldsilvercrystal', $result->pokemon->gameBundlesShiny[1]->slug);
     }
 
     #[Test]
@@ -317,6 +361,36 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
         self::assertSame(1, $result->pokemon->nationalDexNumber);
         self::assertSame(1, $result->pokemon->regionalDexNumber);
         self::assertSame(0, $result->pokemon->familyOrder);
+    }
+
+    #[Test]
+    public function fromSqlRowReindexesGameBundlesAfterFilter(): void
+    {
+        $row = $this->getBulbasaurRow();
+        $row['game_bundle_slugs'] = 'redgreenblueyellow,,goldsilvercrystal';
+
+        $result = AlbumPokemonResponseFactory::fromSqlRow($row);
+
+        self::assertCount(2, $result->pokemon->gameBundles);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles[0]);
+        self::assertSame('redgreenblueyellow', $result->pokemon->gameBundles[0]->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles[1]);
+        self::assertSame('goldsilvercrystal', $result->pokemon->gameBundles[1]->slug);
+    }
+
+    #[Test]
+    public function fromSqlRowReindexesGameBundleShinyAfterFilter(): void
+    {
+        $row = $this->getBulbasaurRow();
+        $row['game_bundle_shiny_slugs'] = 'redgreenblueyellow,,goldsilvercrystal';
+
+        $result = AlbumPokemonResponseFactory::fromSqlRow($row);
+
+        self::assertCount(2, $result->pokemon->gameBundlesShiny);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundlesShiny[0]);
+        self::assertSame('redgreenblueyellow', $result->pokemon->gameBundlesShiny[0]->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundlesShiny[1]);
+        self::assertSame('goldsilvercrystal', $result->pokemon->gameBundlesShiny[1]->slug);
     }
 
     #[Test]
@@ -381,8 +455,8 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
             'primary_type_color' => '#78C850',
             'secondary_type_color' => '#A040A0',
             'original_game_bundle_slug' => 'redgreenblueyellow',
-            'game_bundles' => ['redgreenblueyellow', 'goldsilvercrystal'],
-            'game_bundles_shiny' => ['redgreenblueyellow'],
+            'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+            'game_bundle_shiny_slugs' => 'redgreenblueyellow',
         ];
     }
 
@@ -426,8 +500,8 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
             'primary_type_color' => null,
             'secondary_type_color' => null,
             'original_game_bundle_slug' => 'redgreenblueyellow',
-            'game_bundles' => ['un', 'dos', 'tres'],
-            'game_bundles_shiny' => [],
+            'game_bundle_slugs' => 'un,dos,tres',
+            'game_bundle_shiny_slugs' => '',
         ];
     }
 }
