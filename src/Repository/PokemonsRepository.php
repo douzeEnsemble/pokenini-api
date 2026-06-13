@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use App\DTO\AlbumFilter\AlbumFilters;
 use App\Entity\Pokemon;
+use App\Entity\PokemonAvailabilities;
 use App\Repository\Trait\FiltersTrait;
 use App\Service\SqlFileLoader;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -61,6 +62,8 @@ class PokemonsRepository extends ServiceEntityRepository
                 'election_slug' => $electionSlug,
                 'count' => $count,
                 'default_elo' => $defaultElo,
+                'pokemon_availabilities_game_bundle_category' => PokemonAvailabilities::CATEGORY_GAME_BUNDLE,
+                'pokemon_availabilities_game_bundle_shiny_category' => PokemonAvailabilities::CATEGORY_GAME_BUNDLE_SHINY,
             ],
             $this->getFiltersParameters($filters),
         );
@@ -72,6 +75,8 @@ class PokemonsRepository extends ServiceEntityRepository
                 'dex_slug' => ParameterType::STRING,
                 'count' => ParameterType::INTEGER,
                 'default_elo' => ParameterType::INTEGER,
+                'pokemon_availabilities_game_bundle_category' => ParameterType::STRING,
+                'pokemon_availabilities_game_bundle_shiny_category' => ParameterType::STRING,
             ],
             $this->getFiltersTypes(),
         );
@@ -105,6 +110,8 @@ class PokemonsRepository extends ServiceEntityRepository
                 'election_slug' => $electionSlug,
                 'count' => $count,
                 'default_elo' => $defaultElo,
+                'pokemon_availabilities_game_bundle_category' => PokemonAvailabilities::CATEGORY_GAME_BUNDLE,
+                'pokemon_availabilities_game_bundle_shiny_category' => PokemonAvailabilities::CATEGORY_GAME_BUNDLE_SHINY,
             ],
             $this->getFiltersParameters($filters),
         );
@@ -116,6 +123,8 @@ class PokemonsRepository extends ServiceEntityRepository
                 'dex_slug' => ParameterType::STRING,
                 'count' => ParameterType::INTEGER,
                 'default_elo' => ParameterType::INTEGER,
+                'pokemon_availabilities_game_bundle_category' => ParameterType::STRING,
+                'pokemon_availabilities_game_bundle_shiny_category' => ParameterType::STRING,
             ],
             $this->getFiltersTypes(),
         );

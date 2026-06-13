@@ -135,6 +135,18 @@ final class PokemonsControllerTest extends AbstractTestControllerApi
             $this->assertIsArray($pokemon['game_bundles']);
             $this->assertIsArray($pokemon['game_bundles_shiny']);
 
+            /** @var array<string, mixed> $gameBundle */
+            foreach ($pokemon['game_bundles'] as $gameBundle) {
+                $this->assertArrayHasKey('slug', $gameBundle);
+                $this->assertIsString($gameBundle['slug']);
+            }
+
+            /** @var array<string, mixed> $gameBundleShiny */
+            foreach ($pokemon['game_bundles_shiny'] as $gameBundleShiny) {
+                $this->assertArrayHasKey('slug', $gameBundleShiny);
+                $this->assertIsString($gameBundleShiny['slug']);
+            }
+
             $this->assertArrayHasKey('forms', $item);
 
             $this->assertArrayHasKey('types', $item);

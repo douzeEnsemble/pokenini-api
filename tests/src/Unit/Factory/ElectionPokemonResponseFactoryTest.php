@@ -18,6 +18,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
+ *
+ * @SuppressWarnings("PHPMD.TooManyPublicMethods")
  */
 #[CoversClass(ElectionPokemonResponseFactory::class)]
 final class ElectionPokemonResponseFactoryTest extends TestCase
@@ -329,6 +331,88 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
         self::assertSame('12', $response->pokemon->originalGameBundle->slug);
     }
 
+    #[Test]
+    public function fromSqlRowBuildsEmptyGameBundlesWhenSlugsAreNull(): void
+    {
+        $row = $this->buildRow([
+            'game_bundle_slugs' => null,
+            'game_bundle_shiny_slugs' => null,
+        ]);
+
+        $response = ElectionPokemonResponseFactory::fromSqlRow($row);
+
+        self::assertSame([], $response->pokemon->gameBundles);
+        self::assertSame([], $response->pokemon->gameBundlesShiny);
+    }
+
+    #[Test]
+    public function fromSqlRowBuildsEmptyGameBundlesWhenSlugsAreEmptyString(): void
+    {
+        $row = $this->buildRow([
+            'game_bundle_slugs' => '',
+            'game_bundle_shiny_slugs' => '',
+        ]);
+
+        $response = ElectionPokemonResponseFactory::fromSqlRow($row);
+
+        self::assertSame([], $response->pokemon->gameBundles);
+        self::assertSame([], $response->pokemon->gameBundlesShiny);
+    }
+
+    #[Test]
+    public function fromSqlRowBuildsPopulatedGameBundlesFromCommaSeparatedSlugs(): void
+    {
+        $row = $this->buildRow([
+            'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+            'game_bundle_shiny_slugs' => null,
+        ]);
+
+        $response = ElectionPokemonResponseFactory::fromSqlRow($row);
+
+        self::assertCount(2, $response->pokemon->gameBundles);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $response->pokemon->gameBundles[0]);
+        self::assertSame('redgreenblueyellow', $response->pokemon->gameBundles[0]->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $response->pokemon->gameBundles[1]);
+        self::assertSame('goldsilvercrystal', $response->pokemon->gameBundles[1]->slug);
+        self::assertSame([], $response->pokemon->gameBundlesShiny);
+    }
+
+    #[Test]
+    public function fromSqlRowBuildsPopulatedGameBundlesShinyFromCommaSeparatedSlugs(): void
+    {
+        $row = $this->buildRow([
+            'game_bundle_slugs' => null,
+            'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+        ]);
+
+        $response = ElectionPokemonResponseFactory::fromSqlRow($row);
+
+        self::assertSame([], $response->pokemon->gameBundles);
+        self::assertCount(2, $response->pokemon->gameBundlesShiny);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $response->pokemon->gameBundlesShiny[0]);
+        self::assertSame('redgreenblueyellow', $response->pokemon->gameBundlesShiny[0]->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $response->pokemon->gameBundlesShiny[1]);
+        self::assertSame('goldsilvercrystal', $response->pokemon->gameBundlesShiny[1]->slug);
+    }
+
+    #[Test]
+    public function fromSqlRowReindexesGameBundleArrayKeysAfterFilteringEmptySlugs(): void
+    {
+        $row = $this->buildRow([
+            'game_bundle_slugs' => ',redgreenblueyellow',
+            'game_bundle_shiny_slugs' => ',goldsilvercrystal',
+        ]);
+
+        $response = ElectionPokemonResponseFactory::fromSqlRow($row);
+
+        self::assertCount(1, $response->pokemon->gameBundles);
+        self::assertArrayHasKey(0, $response->pokemon->gameBundles);
+        self::assertSame('redgreenblueyellow', $response->pokemon->gameBundles[0]->slug);
+        self::assertCount(1, $response->pokemon->gameBundlesShiny);
+        self::assertArrayHasKey(0, $response->pokemon->gameBundlesShiny);
+        self::assertSame('goldsilvercrystal', $response->pokemon->gameBundlesShiny[0]->slug);
+    }
+
     /**
      * @param array<string, mixed> $overrides
      *
@@ -370,6 +454,8 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
             'secondary_type_color' => null,
             'original_game_bundle_slug' => 'redgreenblueyellow',
             'pokemon_order_number' => '9999-0001-000',
+            'game_bundle_slugs' => null,
+            'game_bundle_shiny_slugs' => null,
         ], $overrides);
     }
 }
