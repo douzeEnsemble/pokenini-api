@@ -19,6 +19,9 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
 {
     use AssertReportTrait;
 
+    /**
+     * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
+     */
     public function testListUser12RedGreenBlueYellow(): void
     {
         $this->apiRequest('GET', '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow');
@@ -70,6 +73,8 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertArrayHasKey('pokemons', $data);
 
         $pokemons = $data['pokemons'];
+
+        $this->assertPokemonsHaveGameBundlesStructure($pokemons);
 
         $this->assertEquals(
             AlbumData::getExpectedRegGreenBlueYellowNestedContent(
@@ -171,6 +176,8 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $pokemons = $data['pokemons'];
 
+        $this->assertPokemonsHaveGameBundlesStructure($pokemons);
+
         $this->assertEquals(
             AlbumData::getExpectedGoldSilverCrystalNestedContent(
                 'yes',
@@ -251,6 +258,8 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $pokemons = $data['pokemons'];
 
+        $this->assertPokemonsHaveGameBundlesStructure($pokemons);
+
         $this->assertEquals(
             AlbumData::getExpectedRegGreenBlueYellowNestedContent(
                 'yes',
@@ -329,6 +338,8 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $pokemons = $data['pokemons'];
 
+        $this->assertPokemonsHaveGameBundlesStructure($pokemons);
+
         $this->assertEquals(
             AlbumData::getExpectedRegGreenBlueYellowNestedContent(
                 null,
@@ -397,6 +408,8 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $pokemons = $data['pokemons'];
 
+        $this->assertPokemonsHaveGameBundlesStructure($pokemons);
+
         $this->assertEquals(
             AlbumData::getExpectedHomeNestedContent(),
             $pokemons
@@ -457,6 +470,8 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
 
         $pokemons = $data['pokemons'];
 
+        $this->assertPokemonsHaveGameBundlesStructure($pokemons);
+
         $this->assertEquals(
             AlbumData::getExpectedHomeShinyNestedContent(),
             $pokemons
@@ -512,6 +527,12 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertArrayHasKey('version', $data['dex']);
         $this->assertEquals('20230321.121212', $data['dex']['version']);
         $this->assertFalse($data['dex']['flags']['is_released']);
+
+        $this->assertArrayHasKey('pokemons', $data);
+
+        $pokemons = $data['pokemons'];
+
+        $this->assertPokemonsHaveGameBundlesStructure($pokemons);
     }
 
     public function testListHomeShinyOT(): void
@@ -551,6 +572,12 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertArrayHasKey('version', $data['dex']);
         $this->assertEquals('20230321.123456', $data['dex']['version']);
         $this->assertTrue($data['dex']['flags']['is_released']);
+
+        $this->assertArrayHasKey('pokemons', $data);
+
+        $pokemons = $data['pokemons'];
+
+        $this->assertPokemonsHaveGameBundlesStructure($pokemons);
     }
 
     public function testListMultipleHomePoGo(): void
@@ -567,7 +594,11 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertArrayHasKey('dex', $data);
         $this->assertNull($data['dex']);
         $this->assertArrayHasKey('pokemons', $data);
-        $this->assertEmpty($data['pokemons']);
+
+        /** @var array<array<string, mixed>> $pokemons */
+        $pokemons = $data['pokemons'];
+        $this->assertEmpty($pokemons);
+        $this->assertPokemonsHaveGameBundlesStructure($pokemons);
 
         $this->assertArrayHasKey('filtered_report', $data);
 
@@ -606,5 +637,36 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->apiRequest('GET', '/album/home', []);
 
         $this->assertResponseIsNotFound();
+    }
+
+    /**
+     * @param array<array<string, mixed>> $pokemons
+     */
+    private function assertPokemonsHaveGameBundlesStructure(array $pokemons): void
+    {
+        foreach ($pokemons as $pokemon) {
+            $this->assertArrayHasKey('pokemon', $pokemon);
+
+            /** @var array<string, mixed> $pokemonData */
+            $pokemonData = $pokemon['pokemon'];
+
+            $this->assertArrayHasKey('game_bundles', $pokemonData);
+            $this->assertIsArray($pokemonData['game_bundles']);
+
+            $this->assertArrayHasKey('game_bundles_shiny', $pokemonData);
+            $this->assertIsArray($pokemonData['game_bundles_shiny']);
+
+            /** @var array<string, mixed> $gameBundle */
+            foreach ($pokemonData['game_bundles'] as $gameBundle) {
+                $this->assertArrayHasKey('slug', $gameBundle);
+                $this->assertIsString($gameBundle['slug']);
+            }
+
+            /** @var array<string, mixed> $gameBundleShiny */
+            foreach ($pokemonData['game_bundles_shiny'] as $gameBundleShiny) {
+                $this->assertArrayHasKey('slug', $gameBundleShiny);
+                $this->assertIsString($gameBundleShiny['slug']);
+            }
+        }
     }
 }

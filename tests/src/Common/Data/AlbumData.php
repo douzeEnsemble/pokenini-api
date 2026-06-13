@@ -232,14 +232,8 @@ final class AlbumData
                 'secondary_type_french_name' => 'Poison',
                 'secondary_type_color' => '#A040A0',
                 'original_game_bundle_slug' => 'diamondpearlplatinium',
-                'game_bundles' => [
-                    'redgreenblueyellow',
-                    'goldsilvercrystal',
-                ],
-                'game_bundles_shiny' => [
-                    'redgreenblueyellow',
-                    'goldsilvercrystal',
-                ],
+                'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+                'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
             ],
             [
                 'pokemon_national_dex_number' => 3,
@@ -280,14 +274,8 @@ final class AlbumData
                 'secondary_type_french_name' => 'Poison',
                 'secondary_type_color' => '#A040A0',
                 'original_game_bundle_slug' => 'xy',
-                'game_bundles' => [
-                    'redgreenblueyellow',
-                    'goldsilvercrystal',
-                ],
-                'game_bundles_shiny' => [
-                    'redgreenblueyellow',
-                    'goldsilvercrystal',
-                ],
+                'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+                'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
             ],
             [
                 'pokemon_national_dex_number' => 3,
@@ -328,14 +316,8 @@ final class AlbumData
                 'secondary_type_french_name' => 'Poison',
                 'secondary_type_color' => '#A040A0',
                 'original_game_bundle_slug' => 'swordshield',
-                'game_bundles' => [
-                    'redgreenblueyellow',
-                    'goldsilvercrystal',
-                ],
-                'game_bundles_shiny' => [
-                    'redgreenblueyellow',
-                    'goldsilvercrystal',
-                ],
+                'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+                'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
             ],
             array_merge(
                 PokemonData::getCharmanderData(),
@@ -400,8 +382,8 @@ final class AlbumData
                 'secondary_type_french_name' => 'Vol',
                 'secondary_type_color' => '#A890F0',
                 'original_game_bundle_slug' => 'diamondpearlplatinium',
-                'game_bundles' => [],
-                'game_bundles_shiny' => [],
+                'game_bundle_slugs' => '',
+                'game_bundle_shiny_slugs' => '',
             ],
             [
                 'pokemon_national_dex_number' => 12,
@@ -442,8 +424,8 @@ final class AlbumData
                 'secondary_type_french_name' => 'Vol',
                 'secondary_type_color' => '#A890F0',
                 'original_game_bundle_slug' => 'swordshield',
-                'game_bundles' => [],
-                'game_bundles_shiny' => [],
+                'game_bundle_slugs' => '',
+                'game_bundle_shiny_slugs' => '',
             ],
             array_merge(
                 PokemonData::getRattataData(),
@@ -534,14 +516,8 @@ final class AlbumData
                 'secondary_type_french_name' => 'Poison',
                 'secondary_type_color' => '#A040A0',
                 'original_game_bundle_slug' => 'diamondpearlplatinium',
-                'game_bundles' => [
-                    'redgreenblueyellow',
-                    'goldsilvercrystal',
-                ],
-                'game_bundles_shiny' => [
-                    'redgreenblueyellow',
-                    'goldsilvercrystal',
-                ],
+                'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+                'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
             ],
             [
                 'pokemon_national_dex_number' => 3,
@@ -582,14 +558,8 @@ final class AlbumData
                 'secondary_type_french_name' => 'Poison',
                 'secondary_type_color' => '#A040A0',
                 'original_game_bundle_slug' => 'xy',
-                'game_bundles' => [
-                    'redgreenblueyellow',
-                    'goldsilvercrystal',
-                ],
-                'game_bundles_shiny' => [
-                    'redgreenblueyellow',
-                    'goldsilvercrystal',
-                ],
+                'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+                'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
             ],
             [
                 'pokemon_national_dex_number' => 3,
@@ -630,14 +600,8 @@ final class AlbumData
                 'secondary_type_french_name' => 'Poison',
                 'secondary_type_color' => '#A040A0',
                 'original_game_bundle_slug' => 'swordshield',
-                'game_bundles' => [
-                    'redgreenblueyellow',
-                    'goldsilvercrystal',
-                ],
-                'game_bundles_shiny' => [
-                    'redgreenblueyellow',
-                    'goldsilvercrystal',
-                ],
+                'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+                'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
             ],
             array_merge(
                 PokemonData::getCaterpieData(),
@@ -684,8 +648,8 @@ final class AlbumData
                 'secondary_type_french_name' => 'Vol',
                 'secondary_type_color' => '#A890F0',
                 'original_game_bundle_slug' => 'diamondpearlplatinium',
-                'game_bundles' => [],
-                'game_bundles_shiny' => [],
+                'game_bundle_slugs' => '',
+                'game_bundle_shiny_slugs' => '',
             ],
             [
                 'pokemon_national_dex_number' => 12,
@@ -726,8 +690,8 @@ final class AlbumData
                 'secondary_type_french_name' => 'Vol',
                 'secondary_type_color' => '#A890F0',
                 'original_game_bundle_slug' => 'swordshield',
-                'game_bundles' => [],
-                'game_bundles_shiny' => [],
+                'game_bundle_slugs' => '',
+                'game_bundle_shiny_slugs' => '',
             ],
         ];
     }
@@ -817,11 +781,17 @@ final class AlbumData
      */
     private static function toNestedFormat(array $flat): array
     {
+        /** @var null|scalar $gameBundleSlugsRaw */
+        $gameBundleSlugsRaw = $flat['game_bundle_slugs'] ?? null;
+
         /** @var array<string> $gameBundles */
-        $gameBundles = (array) $flat['game_bundles'];
+        $gameBundles = array_values(array_filter(explode(',', (string) ($gameBundleSlugsRaw ?? ''))));
+
+        /** @var null|scalar $gameBundlesShinySlugsRaw */
+        $gameBundlesShinySlugsRaw = $flat['game_bundle_shiny_slugs'] ?? null;
 
         /** @var array<string> $gameBundlesShiny */
-        $gameBundlesShiny = (array) $flat['game_bundles_shiny'];
+        $gameBundlesShiny = array_values(array_filter(explode(',', (string) ($gameBundlesShinySlugsRaw ?? ''))));
 
         return [
             'pokemon' => [
