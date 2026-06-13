@@ -59,6 +59,8 @@ final class ElectionEloResponseFactoryTest extends TestCase
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
             'secondary_type_color' => null,
+            'game_bundle_slugs' => null,
+            'game_bundle_shiny_slugs' => null,
         ];
 
         $response = ElectionEloResponseFactory::fromSqlRow($row);
@@ -113,6 +115,8 @@ final class ElectionEloResponseFactoryTest extends TestCase
             'secondary_type_name' => 'Fire',
             'secondary_type_french_name' => 'Feu',
             'secondary_type_color' => '#F08030',
+            'game_bundle_slugs' => null,
+            'game_bundle_shiny_slugs' => null,
         ];
 
         $response = ElectionEloResponseFactory::fromSqlRow($row);
@@ -171,6 +175,8 @@ final class ElectionEloResponseFactoryTest extends TestCase
             'secondary_type_name' => 'Poison',
             'secondary_type_french_name' => 'Poison',
             'secondary_type_color' => '#A040A0',
+            'game_bundle_slugs' => null,
+            'game_bundle_shiny_slugs' => null,
         ];
 
         $response = ElectionEloResponseFactory::fromSqlRow($row);
@@ -222,6 +228,8 @@ final class ElectionEloResponseFactoryTest extends TestCase
                 'secondary_type_name' => null,
                 'secondary_type_french_name' => null,
                 'secondary_type_color' => null,
+                'game_bundle_slugs' => null,
+                'game_bundle_shiny_slugs' => null,
             ],
             [
                 'elo' => 1150.0,
@@ -259,6 +267,8 @@ final class ElectionEloResponseFactoryTest extends TestCase
                 'secondary_type_name' => 'Flying',
                 'secondary_type_french_name' => 'Vol',
                 'secondary_type_color' => '#A890F0',
+                'game_bundle_slugs' => null,
+                'game_bundle_shiny_slugs' => null,
             ],
         ];
 
@@ -325,6 +335,8 @@ final class ElectionEloResponseFactoryTest extends TestCase
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
             'secondary_type_color' => null,
+            'game_bundle_slugs' => null,
+            'game_bundle_shiny_slugs' => null,
         ];
 
         $response = ElectionEloResponseFactory::fromSqlRow($row);
@@ -381,6 +393,8 @@ final class ElectionEloResponseFactoryTest extends TestCase
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
             'secondary_type_color' => null,
+            'game_bundle_slugs' => null,
+            'game_bundle_shiny_slugs' => null,
         ];
 
         $response = ElectionEloResponseFactory::fromSqlRow($row);
@@ -437,6 +451,8 @@ final class ElectionEloResponseFactoryTest extends TestCase
             'secondary_type_name' => null,
             'secondary_type_french_name' => null,
             'secondary_type_color' => null,
+            'game_bundle_slugs' => null,
+            'game_bundle_shiny_slugs' => null,
         ];
 
         $response = ElectionEloResponseFactory::fromSqlRow($row);
@@ -446,5 +462,207 @@ final class ElectionEloResponseFactoryTest extends TestCase
         self::assertSame(4, $response->pokemon->familyOrder);
         self::assertNotNull($response->types->primary);
         self::assertSame('#F85888', $response->types->primary->color);
+    }
+
+    #[Test]
+    public function fromSqlRowBuildsEmptyGameBundlesWhenSlugsAreNull(): void
+    {
+        $row = [
+            'elo' => 1200.0,
+            'significance' => false,
+            'pokemon_slug' => 'pikachu',
+            'pokemon_name' => 'Pikachu',
+            'pokemon_french_name' => 'Pikachu',
+            'pokemon_national_dex_number' => 25,
+            'pokemon_simplified_name' => null,
+            'pokemon_forms_label' => null,
+            'pokemon_simplified_french_name' => null,
+            'pokemon_forms_french_label' => null,
+            'pokemon_icon' => 'pikachu.png',
+            'pokemon_family_order' => 1,
+            'family_lead_slug' => null,
+            'original_game_bundle_slug' => null,
+            'pokemon_order_number' => '9999-0025-001',
+            'category_form_slug' => null,
+            'category_form_name' => null,
+            'category_form_french_name' => null,
+            'regional_form_slug' => null,
+            'regional_form_name' => null,
+            'regional_form_french_name' => null,
+            'special_form_slug' => null,
+            'special_form_name' => null,
+            'special_form_french_name' => null,
+            'variant_form_slug' => null,
+            'variant_form_name' => null,
+            'variant_form_french_name' => null,
+            'primary_type_slug' => 'electric',
+            'primary_type_name' => 'Electric',
+            'primary_type_french_name' => 'Électrique',
+            'primary_type_color' => '#FFCC33',
+            'secondary_type_slug' => null,
+            'secondary_type_name' => null,
+            'secondary_type_french_name' => null,
+            'secondary_type_color' => null,
+            'game_bundle_slugs' => null,
+            'game_bundle_shiny_slugs' => null,
+        ];
+
+        $response = ElectionEloResponseFactory::fromSqlRow($row);
+
+        self::assertSame([], $response->pokemon->gameBundles);
+        self::assertSame([], $response->pokemon->gameBundlesShiny);
+    }
+
+    #[Test]
+    public function fromSqlRowBuildsEmptyGameBundlesWhenSlugsAreEmptyString(): void
+    {
+        $row = [
+            'elo' => 1200.0,
+            'significance' => false,
+            'pokemon_slug' => 'pikachu',
+            'pokemon_name' => 'Pikachu',
+            'pokemon_french_name' => 'Pikachu',
+            'pokemon_national_dex_number' => 25,
+            'pokemon_simplified_name' => null,
+            'pokemon_forms_label' => null,
+            'pokemon_simplified_french_name' => null,
+            'pokemon_forms_french_label' => null,
+            'pokemon_icon' => 'pikachu.png',
+            'pokemon_family_order' => 1,
+            'family_lead_slug' => null,
+            'original_game_bundle_slug' => null,
+            'pokemon_order_number' => '9999-0025-001',
+            'category_form_slug' => null,
+            'category_form_name' => null,
+            'category_form_french_name' => null,
+            'regional_form_slug' => null,
+            'regional_form_name' => null,
+            'regional_form_french_name' => null,
+            'special_form_slug' => null,
+            'special_form_name' => null,
+            'special_form_french_name' => null,
+            'variant_form_slug' => null,
+            'variant_form_name' => null,
+            'variant_form_french_name' => null,
+            'primary_type_slug' => 'electric',
+            'primary_type_name' => 'Electric',
+            'primary_type_french_name' => 'Électrique',
+            'primary_type_color' => '#FFCC33',
+            'secondary_type_slug' => null,
+            'secondary_type_name' => null,
+            'secondary_type_french_name' => null,
+            'secondary_type_color' => null,
+            'game_bundle_slugs' => '',
+            'game_bundle_shiny_slugs' => '',
+        ];
+
+        $response = ElectionEloResponseFactory::fromSqlRow($row);
+
+        self::assertSame([], $response->pokemon->gameBundles);
+        self::assertSame([], $response->pokemon->gameBundlesShiny);
+    }
+
+    #[Test]
+    public function fromSqlRowBuildsPopulatedGameBundlesFromCommaSeparatedSlugs(): void
+    {
+        $row = [
+            'elo' => 1200.0,
+            'significance' => false,
+            'pokemon_slug' => 'pikachu',
+            'pokemon_name' => 'Pikachu',
+            'pokemon_french_name' => 'Pikachu',
+            'pokemon_national_dex_number' => 25,
+            'pokemon_simplified_name' => null,
+            'pokemon_forms_label' => null,
+            'pokemon_simplified_french_name' => null,
+            'pokemon_forms_french_label' => null,
+            'pokemon_icon' => 'pikachu.png',
+            'pokemon_family_order' => 1,
+            'family_lead_slug' => null,
+            'original_game_bundle_slug' => null,
+            'pokemon_order_number' => '9999-0025-001',
+            'category_form_slug' => null,
+            'category_form_name' => null,
+            'category_form_french_name' => null,
+            'regional_form_slug' => null,
+            'regional_form_name' => null,
+            'regional_form_french_name' => null,
+            'special_form_slug' => null,
+            'special_form_name' => null,
+            'special_form_french_name' => null,
+            'variant_form_slug' => null,
+            'variant_form_name' => null,
+            'variant_form_french_name' => null,
+            'primary_type_slug' => 'electric',
+            'primary_type_name' => 'Electric',
+            'primary_type_french_name' => 'Électrique',
+            'primary_type_color' => '#FFCC33',
+            'secondary_type_slug' => null,
+            'secondary_type_name' => null,
+            'secondary_type_french_name' => null,
+            'secondary_type_color' => null,
+            'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+            'game_bundle_shiny_slugs' => null,
+        ];
+
+        $response = ElectionEloResponseFactory::fromSqlRow($row);
+
+        self::assertCount(2, $response->pokemon->gameBundles);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $response->pokemon->gameBundles[0]);
+        self::assertSame('redgreenblueyellow', $response->pokemon->gameBundles[0]->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $response->pokemon->gameBundles[1]);
+        self::assertSame('goldsilvercrystal', $response->pokemon->gameBundles[1]->slug);
+        self::assertSame([], $response->pokemon->gameBundlesShiny);
+    }
+
+    #[Test]
+    public function fromSqlRowBuildsPopulatedGameBundlesShinyFromCommaSeparatedSlugs(): void
+    {
+        $row = [
+            'elo' => 1200.0,
+            'significance' => false,
+            'pokemon_slug' => 'pikachu',
+            'pokemon_name' => 'Pikachu',
+            'pokemon_french_name' => 'Pikachu',
+            'pokemon_national_dex_number' => 25,
+            'pokemon_simplified_name' => null,
+            'pokemon_forms_label' => null,
+            'pokemon_simplified_french_name' => null,
+            'pokemon_forms_french_label' => null,
+            'pokemon_icon' => 'pikachu.png',
+            'pokemon_family_order' => 1,
+            'family_lead_slug' => null,
+            'original_game_bundle_slug' => null,
+            'pokemon_order_number' => '9999-0025-001',
+            'category_form_slug' => null,
+            'category_form_name' => null,
+            'category_form_french_name' => null,
+            'regional_form_slug' => null,
+            'regional_form_name' => null,
+            'regional_form_french_name' => null,
+            'special_form_slug' => null,
+            'special_form_name' => null,
+            'special_form_french_name' => null,
+            'variant_form_slug' => null,
+            'variant_form_name' => null,
+            'variant_form_french_name' => null,
+            'primary_type_slug' => 'electric',
+            'primary_type_name' => 'Electric',
+            'primary_type_french_name' => 'Électrique',
+            'primary_type_color' => '#FFCC33',
+            'secondary_type_slug' => null,
+            'secondary_type_name' => null,
+            'secondary_type_french_name' => null,
+            'secondary_type_color' => null,
+            'game_bundle_slugs' => null,
+            'game_bundle_shiny_slugs' => 'heartgoldsoulsilver',
+        ];
+
+        $response = ElectionEloResponseFactory::fromSqlRow($row);
+
+        self::assertSame([], $response->pokemon->gameBundles);
+        self::assertCount(1, $response->pokemon->gameBundlesShiny);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $response->pokemon->gameBundlesShiny[0]);
+        self::assertSame('heartgoldsoulsilver', $response->pokemon->gameBundlesShiny[0]->slug);
     }
 }

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Repository;
 
+use App\Entity\PokemonAvailabilities;
 use App\Entity\TrainerPokemonElo;
 use App\Service\SqlFileLoader;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
@@ -142,6 +143,8 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             'dex_slug' => $dexSlug,
             'election_slug' => $electionSlug,
             'count' => $count,
+            'pokemon_availabilities_game_bundle_category' => PokemonAvailabilities::CATEGORY_GAME_BUNDLE,
+            'pokemon_availabilities_game_bundle_shiny_category' => PokemonAvailabilities::CATEGORY_GAME_BUNDLE_SHINY,
         ];
 
         $types = [
@@ -149,6 +152,8 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             'dex_slug' => ParameterType::STRING,
             'election_slug' => ParameterType::STRING,
             'count' => ParameterType::INTEGER,
+            'pokemon_availabilities_game_bundle_category' => ParameterType::STRING,
+            'pokemon_availabilities_game_bundle_shiny_category' => ParameterType::STRING,
         ];
 
         /** @var array<array-key, array<string, mixed>> */

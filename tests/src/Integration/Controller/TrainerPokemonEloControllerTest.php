@@ -7,6 +7,7 @@ namespace App\Tests\Integration\Controller;
 use App\Controller\TrainerPokemonEloController;
 use App\DTO\Response\ElectionViewCountResponse;
 use App\DTO\Response\ElectionWinCountResponse;
+use App\Factory\ElectionEloResponseFactory;
 use App\Factory\ElectionMetricsResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 
@@ -14,6 +15,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @internal
  */
 #[CoversClass(TrainerPokemonEloController::class)]
+#[CoversClass(ElectionEloResponseFactory::class)]
 #[CoversClass(ElectionMetricsResponseFactory::class)]
 #[CoversClass(ElectionViewCountResponse::class)]
 #[CoversClass(ElectionWinCountResponse::class)]
@@ -71,6 +73,23 @@ final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
             $this->assertArrayHasKey('color', $types['primary']);
             $this->assertIsString($types['primary']['color']);
             $this->assertMatchesRegularExpression('/^#[0-9A-Fa-f]{6}$/', $types['primary']['color']);
+
+            $this->assertArrayHasKey('game_bundles', $pokemon);
+            $this->assertIsArray($pokemon['game_bundles']);
+            $this->assertArrayHasKey('game_bundles_shiny', $pokemon);
+            $this->assertIsArray($pokemon['game_bundles_shiny']);
+
+            /** @var array<string, mixed> $gameBundle */
+            foreach ($pokemon['game_bundles'] as $gameBundle) {
+                $this->assertArrayHasKey('slug', $gameBundle);
+                $this->assertIsString($gameBundle['slug']);
+            }
+
+            /** @var array<string, mixed> $gameBundleShiny */
+            foreach ($pokemon['game_bundles_shiny'] as $gameBundleShiny) {
+                $this->assertArrayHasKey('slug', $gameBundleShiny);
+                $this->assertIsString($gameBundleShiny['slug']);
+            }
         }
     }
 
@@ -109,6 +128,23 @@ final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
             $this->assertArrayHasKey('icon', $pokemon);
             $this->assertIsString($pokemon['slug']);
             $this->assertIsString($pokemon['french_name']);
+
+            $this->assertArrayHasKey('game_bundles', $pokemon);
+            $this->assertIsArray($pokemon['game_bundles']);
+            $this->assertArrayHasKey('game_bundles_shiny', $pokemon);
+            $this->assertIsArray($pokemon['game_bundles_shiny']);
+
+            /** @var array<string, mixed> $gameBundle */
+            foreach ($pokemon['game_bundles'] as $gameBundle) {
+                $this->assertArrayHasKey('slug', $gameBundle);
+                $this->assertIsString($gameBundle['slug']);
+            }
+
+            /** @var array<string, mixed> $gameBundleShiny */
+            foreach ($pokemon['game_bundles_shiny'] as $gameBundleShiny) {
+                $this->assertArrayHasKey('slug', $gameBundleShiny);
+                $this->assertIsString($gameBundleShiny['slug']);
+            }
         }
     }
 
