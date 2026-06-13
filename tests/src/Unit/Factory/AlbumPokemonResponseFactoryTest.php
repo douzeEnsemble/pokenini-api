@@ -20,6 +20,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  *
  * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
+ * @SuppressWarnings("PHPMD.TooManyPublicMethods")
  */
 #[CoversClass(AlbumPokemonResponseFactory::class)]
 final class AlbumPokemonResponseFactoryTest extends TestCase
@@ -96,6 +97,7 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
         self::assertInstanceOf(AlbumFormResponse::class, $result->forms->category);
         self::assertSame('starter', $result->forms->category->slug);
         self::assertSame('Starter', $result->forms->category->name);
+        self::assertSame('de Départ', $result->forms->category->frenchName);
         self::assertNull($result->forms->regional);
         self::assertNull($result->forms->special);
         self::assertNull($result->forms->variant);
@@ -117,6 +119,7 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
         $row['category_form_name'] = null;
         $row['special_form_slug'] = 'mega';
         $row['special_form_name'] = 'Mega';
+        $row['special_form_french_name'] = 'Mega';
 
         $result = AlbumPokemonResponseFactory::fromSqlRow($row);
 
@@ -126,6 +129,7 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
         self::assertInstanceOf(AlbumFormResponse::class, $result->forms->special);
         self::assertSame('mega', $result->forms->special->slug);
         self::assertSame('Mega', $result->forms->special->name);
+        self::assertSame('Mega', $result->forms->special->frenchName);
         self::assertNull($result->forms->variant);
     }
 
@@ -137,6 +141,7 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
         $row['category_form_name'] = null;
         $row['variant_form_slug'] = 'gender';
         $row['variant_form_name'] = 'Gender';
+        $row['variant_form_french_name'] = 'Sexe';
 
         $result = AlbumPokemonResponseFactory::fromSqlRow($row);
 
@@ -147,6 +152,7 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
         self::assertInstanceOf(AlbumFormResponse::class, $result->forms->variant);
         self::assertSame('gender', $result->forms->variant->slug);
         self::assertSame('Gender', $result->forms->variant->name);
+        self::assertSame('Sexe', $result->forms->variant->frenchName);
     }
 
     #[Test]
@@ -157,6 +163,7 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
         $row['category_form_name'] = null;
         $row['regional_form_slug'] = 'alolan';
         $row['regional_form_name'] = 'Alolan';
+        $row['regional_form_french_name'] = "d'Alola";
 
         $result = AlbumPokemonResponseFactory::fromSqlRow($row);
 
@@ -165,8 +172,22 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
         self::assertInstanceOf(AlbumFormResponse::class, $result->forms->regional);
         self::assertSame('alolan', $result->forms->regional->slug);
         self::assertSame('Alolan', $result->forms->regional->name);
+        self::assertSame("d'Alola", $result->forms->regional->frenchName);
         self::assertNull($result->forms->special);
         self::assertNull($result->forms->variant);
+    }
+
+    #[Test]
+    public function fromSqlRowCastsFormFrenchNameToString(): void
+    {
+        $row = $this->getBulbasaurRow();
+        $row['category_form_french_name'] = 42;
+
+        $result = AlbumPokemonResponseFactory::fromSqlRow($row);
+
+        self::assertInstanceOf(AlbumFormsResponse::class, $result->forms);
+        self::assertInstanceOf(AlbumFormResponse::class, $result->forms->category);
+        self::assertSame('42', $result->forms->category->frenchName);
     }
 
     #[Test]
@@ -338,6 +359,7 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
             'pokemon_icon' => 'bulbasaur',
             'category_form_slug' => 'starter',
             'category_form_name' => 'Starter',
+            'category_form_french_name' => 'de Départ',
             'regional_form_slug' => null,
             'regional_form_name' => null,
             'special_form_slug' => null,

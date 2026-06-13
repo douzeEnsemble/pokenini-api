@@ -667,7 +667,7 @@ Exemple de réponse (`200`, tronquée à un pokémon) :
         "french_name": "Non"
       },
       "forms": {
-        "category": { "slug": "starter", "name": "Starter" },
+        "category": { "slug": "starter", "name": "Starter", "french_name": "de Départ" },
         "regional": null,
         "special": null,
         "variant": null

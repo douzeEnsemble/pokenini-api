@@ -21,10 +21,12 @@ final class AlbumFormResponseTest extends TestCase
         $response = new AlbumFormResponse(
             slug: 'mega',
             name: 'Mega',
+            frenchName: 'Mega',
         );
 
         self::assertSame('mega', $response->slug);
         self::assertSame('Mega', $response->name);
+        self::assertSame('Mega', $response->frenchName);
     }
 
     #[Test]
@@ -33,9 +35,11 @@ final class AlbumFormResponseTest extends TestCase
         $response = new AlbumFormResponse(
             slug: 'starter',
             name: 'Starter',
+            frenchName: 'de Départ',
         );
 
         self::assertSame('starter', $response->slug);
         self::assertSame('Starter', $response->name);
+        self::assertSame('de Départ', $response->frenchName);
     }
 }
