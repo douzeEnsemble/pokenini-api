@@ -93,6 +93,28 @@ final class ElectionEloResponseFactory
         /** @var scalar $orderNumber */
         $orderNumber = $row['pokemon_order_number'];
 
+        /** @var null|scalar $gameBundleSlugsRaw */
+        $gameBundleSlugsRaw = $row['game_bundle_slugs'] ?? null;
+
+        /** @var array<string> $gameBundleSlugs */
+        $gameBundleSlugs = array_values(array_filter(explode(',', (string) ($gameBundleSlugsRaw ?? ''))));
+
+        $gameBundles = array_map(
+            static fn (string $slug): GameBundleSlugResponse => new GameBundleSlugResponse(slug: $slug),
+            $gameBundleSlugs,
+        );
+
+        /** @var null|scalar $gameBundleShinySlugRaw */
+        $gameBundleShinySlugRaw = $row['game_bundle_shiny_slugs'] ?? null;
+
+        /** @var array<string> $gameBundleShinySlugs */
+        $gameBundleShinySlugs = array_values(array_filter(explode(',', (string) ($gameBundleShinySlugRaw ?? ''))));
+
+        $gameBundlesShiny = array_map(
+            static fn (string $slug): GameBundleSlugResponse => new GameBundleSlugResponse(slug: $slug),
+            $gameBundleShinySlugs,
+        );
+
         return new PokemonDataResponse(
             slug: (string) $slug,
             name: (string) $name,
@@ -112,8 +134,8 @@ final class ElectionEloResponseFactory
                 ? new GameBundleSlugResponse(slug: (string) $originalGameBundleSlug)
                 : null,
             orderNumber: (string) $orderNumber,
-            gameBundles: [],
-            gameBundlesShiny: [],
+            gameBundles: $gameBundles,
+            gameBundlesShiny: $gameBundlesShiny,
         );
     }
 
