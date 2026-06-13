@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Factory;
 
+use App\DTO\Response\ElectionMetricsCompletionResponse;
 use App\DTO\Response\ElectionMetricsResponse;
 use App\DTO\Response\ElectionViewCountResponse;
 use App\DTO\Response\ElectionWinCountResponse;
@@ -29,11 +30,11 @@ final class ElectionMetricsResponseFactory
         /** @var scalar $winCountMax */
         $winCountMax = $data['win_count_max'];
 
-        /** @var scalar $underMaxViewCount */
-        $underMaxViewCount = $data['under_max_view_count'];
+        /** @var scalar $atMaxCount */
+        $atMaxCount = $data['max_view_count'];
 
-        /** @var scalar $maxViewCount */
-        $maxViewCount = $data['max_view_count'];
+        /** @var scalar $underMaxCount */
+        $underMaxCount = $data['under_max_view_count'];
 
         /** @var scalar $dexTotalCount */
         $dexTotalCount = $data['dex_total_count'];
@@ -47,8 +48,10 @@ final class ElectionMetricsResponseFactory
                 sum: (int) $winCountSum,
                 max: (int) $winCountMax,
             ),
-            underMaxViewCount: (int) $underMaxViewCount,
-            maxViewCount: (int) $maxViewCount,
+            completion: new ElectionMetricsCompletionResponse(
+                atMaxCount: (int) $atMaxCount,
+                underMaxCount: (int) $underMaxCount,
+            ),
             dexTotalCount: (int) $dexTotalCount,
         );
     }

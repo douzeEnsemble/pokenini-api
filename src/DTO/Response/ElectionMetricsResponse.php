@@ -13,10 +13,8 @@ final class ElectionMetricsResponse
         public readonly ElectionViewCountResponse $viewCount,
         #[SerializedName('win_count')]
         public readonly ElectionWinCountResponse $winCount,
-        #[SerializedName('under_max_view_count')]
-        public readonly int $underMaxViewCount,
-        #[SerializedName('max_view_count')]
-        public readonly int $maxViewCount,
+        #[SerializedName('completion')]
+        public readonly ElectionMetricsCompletionResponse $completion,
         #[SerializedName('dex_total_count')]
         public readonly int $dexTotalCount,
     ) {}

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\DTO\Response;
 
+use App\DTO\Response\ElectionMetricsCompletionResponse;
 use App\DTO\Response\ElectionMetricsResponse;
 use App\DTO\Response\ElectionViewCountResponse;
 use App\DTO\Response\ElectionWinCountResponse;
@@ -22,19 +23,18 @@ final class ElectionMetricsResponseTest extends TestCase
     {
         $viewCount = new ElectionViewCountResponse(sum: 9, max: 3);
         $winCount = new ElectionWinCountResponse(sum: 6, max: 3);
+        $completion = new ElectionMetricsCompletionResponse(atMaxCount: 1, underMaxCount: 1);
 
         $response = new ElectionMetricsResponse(
             viewCount: $viewCount,
             winCount: $winCount,
-            underMaxViewCount: 1,
-            maxViewCount: 1,
+            completion: $completion,
             dexTotalCount: 7,
         );
 
         self::assertSame($viewCount, $response->viewCount);
         self::assertSame($winCount, $response->winCount);
-        self::assertSame(1, $response->underMaxViewCount);
-        self::assertSame(1, $response->maxViewCount);
+        self::assertSame($completion, $response->completion);
         self::assertSame(7, $response->dexTotalCount);
     }
 
@@ -43,19 +43,18 @@ final class ElectionMetricsResponseTest extends TestCase
     {
         $viewCount = new ElectionViewCountResponse(sum: 0, max: 0);
         $winCount = new ElectionWinCountResponse(sum: 0, max: 0);
+        $completion = new ElectionMetricsCompletionResponse(atMaxCount: 21, underMaxCount: 21);
 
         $response = new ElectionMetricsResponse(
             viewCount: $viewCount,
             winCount: $winCount,
-            underMaxViewCount: 21,
-            maxViewCount: 21,
+            completion: $completion,
             dexTotalCount: 21,
         );
 
         self::assertSame($viewCount, $response->viewCount);
         self::assertSame($winCount, $response->winCount);
-        self::assertSame(21, $response->underMaxViewCount);
-        self::assertSame(21, $response->maxViewCount);
+        self::assertSame($completion, $response->completion);
         self::assertSame(21, $response->dexTotalCount);
     }
 }

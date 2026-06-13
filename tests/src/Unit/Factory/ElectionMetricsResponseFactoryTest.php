@@ -34,8 +34,8 @@ final class ElectionMetricsResponseFactoryTest extends TestCase
         self::assertSame(3, $response->viewCount->max);
         self::assertSame(6, $response->winCount->sum);
         self::assertSame(3, $response->winCount->max);
-        self::assertSame(1, $response->underMaxViewCount);
-        self::assertSame(1, $response->maxViewCount);
+        self::assertSame(1, $response->completion->atMaxCount);
+        self::assertSame(1, $response->completion->underMaxCount);
         self::assertSame(7, $response->dexTotalCount);
     }
 
@@ -58,8 +58,8 @@ final class ElectionMetricsResponseFactoryTest extends TestCase
         self::assertSame(0, $response->viewCount->max);
         self::assertSame(0, $response->winCount->sum);
         self::assertSame(0, $response->winCount->max);
-        self::assertSame(15, $response->underMaxViewCount);
-        self::assertSame(15, $response->maxViewCount);
+        self::assertSame(15, $response->completion->atMaxCount);
+        self::assertSame(15, $response->completion->underMaxCount);
         self::assertSame(21, $response->dexTotalCount);
     }
 
@@ -82,8 +82,8 @@ final class ElectionMetricsResponseFactoryTest extends TestCase
         self::assertSame(500, $response->viewCount->max);
         self::assertSame(75000, $response->winCount->sum);
         self::assertSame(499, $response->winCount->max);
-        self::assertSame(3, $response->underMaxViewCount);
-        self::assertSame(2, $response->maxViewCount);
+        self::assertSame(2, $response->completion->atMaxCount);
+        self::assertSame(3, $response->completion->underMaxCount);
         self::assertSame(1025, $response->dexTotalCount);
     }
 
@@ -106,8 +106,8 @@ final class ElectionMetricsResponseFactoryTest extends TestCase
         self::assertSame(3, $response->viewCount->max);
         self::assertSame(6, $response->winCount->sum);
         self::assertSame(3, $response->winCount->max);
-        self::assertSame(1, $response->underMaxViewCount);
-        self::assertSame(1, $response->maxViewCount);
+        self::assertSame(1, $response->completion->atMaxCount);
+        self::assertSame(1, $response->completion->underMaxCount);
         self::assertSame(7, $response->dexTotalCount);
     }
 }
