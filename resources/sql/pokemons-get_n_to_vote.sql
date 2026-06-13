@@ -52,6 +52,8 @@ SELECT p.slug AS pokemon_slug,
     st.french_name AS secondary_type_french_name,
     st.color AS secondary_type_color,
     ogb.slug AS original_game_bundle_slug,
+    pagb.items AS game_bundle_slugs,
+    pagbs.items AS game_bundle_shiny_slugs,
     CONCAT(
         '9999',
         '-',
@@ -68,6 +70,10 @@ FROM pokemon AS p
     LEFT JOIN "type" AS st ON p.secondary_type_id = st.id
     LEFT JOIN pokemon AS pp ON p.family = pp.slug
     LEFT JOIN game_bundle AS ogb ON p.original_game_bundle_id = ogb.id
+    LEFT JOIN pokemon_availabilities AS pagb
+        ON p.id = pagb.pokemon_id AND pagb.category = :pokemon_availabilities_game_bundle_category
+    LEFT JOIN pokemon_availabilities AS pagbs
+        ON p.id = pagbs.pokemon_id AND pagbs.category = :pokemon_availabilities_game_bundle_shiny_category
     JOIN dex_availability AS da ON p.id = da.pokemon_id
     JOIN dex AS d ON da.dex_id = d.id
     AND d.slug = :dex_slug
