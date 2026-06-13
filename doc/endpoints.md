@@ -664,7 +664,8 @@ Exemple de réponse (`200`, tronquée à un pokémon) :
       "catch_state": {
         "slug": "no",
         "name": "No",
-        "french_name": "Non"
+        "french_name": "Non",
+        "color": "#e57373"
       },
       "forms": {
         "category": { "slug": "starter", "name": "Starter", "french_name": "de Départ" },
@@ -673,8 +674,8 @@ Exemple de réponse (`200`, tronquée à un pokémon) :
         "variant": null
       },
       "types": {
-        "primary": { "slug": "grass", "name": "Grass", "french_name": "Plante" },
-        "secondary": { "slug": "poison", "name": "Poison", "french_name": "Poison" }
+        "primary": { "slug": "grass", "name": "Grass", "french_name": "Plante", "color": "#78C850" },
+        "secondary": { "slug": "poison", "name": "Poison", "french_name": "Poison", "color": "#A040A0" }
       }
     }
   ],
@@ -683,10 +684,10 @@ Exemple de réponse (`200`, tronquée à un pokémon) :
     "total_caught": 0,
     "total_uncaught": 7,
     "detail": [
-      { "catch_state": { "slug": "no", "name": "No", "french_name": "Non" }, "count": 4 },
-      { "catch_state": { "slug": "maybe", "name": "Maybe", "french_name": "Peut être" }, "count": 1 },
-      { "catch_state": { "slug": "maybenot", "name": "Maybe not", "french_name": "Peut être pas" }, "count": 2 },
-      { "catch_state": { "slug": "yes", "name": "Yes", "french_name": "Oui" }, "count": 0 }
+      { "catch_state": { "slug": "no", "name": "No", "french_name": "Non", "color": "#e57373" }, "count": 4 },
+      { "catch_state": { "slug": "maybe", "name": "Maybe", "french_name": "Peut être", "color": "blue" }, "count": 1 },
+      { "catch_state": { "slug": "maybenot", "name": "Maybe not", "french_name": "Peut être pas", "color": "yellow" }, "count": 2 },
+      { "catch_state": { "slug": "yes", "name": "Yes", "french_name": "Oui", "color": "#66bb6a" }, "count": 0 }
     ]
   },
   "filtered_report": {
@@ -694,10 +695,10 @@ Exemple de réponse (`200`, tronquée à un pokémon) :
     "total_caught": 0,
     "total_uncaught": 7,
     "detail": [
-      { "catch_state": { "slug": "no", "name": "No", "french_name": "Non" }, "count": 4 },
-      { "catch_state": { "slug": "maybe", "name": "Maybe", "french_name": "Peut être" }, "count": 1 },
-      { "catch_state": { "slug": "maybenot", "name": "Maybe not", "french_name": "Peut être pas" }, "count": 2 },
-      { "catch_state": { "slug": "yes", "name": "Yes", "french_name": "Oui" }, "count": 0 }
+      { "catch_state": { "slug": "no", "name": "No", "french_name": "Non", "color": "#e57373" }, "count": 4 },
+      { "catch_state": { "slug": "maybe", "name": "Maybe", "french_name": "Peut être", "color": "blue" }, "count": 1 },
+      { "catch_state": { "slug": "maybenot", "name": "Maybe not", "french_name": "Peut être pas", "color": "yellow" }, "count": 2 },
+      { "catch_state": { "slug": "yes", "name": "Yes", "french_name": "Oui", "color": "#66bb6a" }, "count": 0 }
     ]
   }
 }
