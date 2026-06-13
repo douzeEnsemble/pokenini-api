@@ -7,7 +7,7 @@ Voir les plans existants dans `docs/superpowers/plans/` pour le pattern DTO + Fa
 
 ## À traiter
 
-- [ ] **`GET /election/metrics`** — `max_view_count` et `under_max_view_count` regroupés sous `completion`
+- [x] **`GET /election/metrics`** — `max_view_count` et `under_max_view_count` regroupés sous `completion`
 
   Ces deux champs sont des **compteurs de pokémons** (pas des valeurs de vues) : `max_view_count` = nombre de pokémons au maximum de vues avec 100% de victoires ; `under_max_view_count` = idem à `max - 1` vue. Ils forment une paire logique de complétion d'élection, distincte de `view_count.max` (qui est la valeur maximale brute).
 

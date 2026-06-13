@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Integration\Controller;
 
 use App\Controller\TrainerPokemonEloController;
+use App\DTO\Response\ElectionMetricsCompletionResponse;
 use App\DTO\Response\ElectionViewCountResponse;
 use App\DTO\Response\ElectionWinCountResponse;
 use App\Factory\ElectionEloResponseFactory;
@@ -17,6 +18,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(TrainerPokemonEloController::class)]
 #[CoversClass(ElectionEloResponseFactory::class)]
 #[CoversClass(ElectionMetricsResponseFactory::class)]
+#[CoversClass(ElectionMetricsCompletionResponse::class)]
 #[CoversClass(ElectionViewCountResponse::class)]
 #[CoversClass(ElectionWinCountResponse::class)]
 final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
@@ -169,8 +171,7 @@ final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
             [
                 'view_count' => ['sum' => 0, 'max' => 0],
                 'win_count' => ['sum' => 0, 'max' => 0],
-                'under_max_view_count' => 15,
-                'max_view_count' => 15,
+                'completion' => ['at_max_count' => 15, 'under_max_count' => 15],
                 'dex_total_count' => 21,
             ],
             $content,
@@ -198,8 +199,7 @@ final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
             [
                 'view_count' => ['sum' => 9, 'max' => 3],
                 'win_count' => ['sum' => 6, 'max' => 3],
-                'under_max_view_count' => 1,
-                'max_view_count' => 1,
+                'completion' => ['at_max_count' => 1, 'under_max_count' => 1],
                 'dex_total_count' => 7,
             ],
             $content,
@@ -227,8 +227,7 @@ final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
             [
                 'view_count' => ['sum' => 0, 'max' => 0],
                 'win_count' => ['sum' => 0, 'max' => 0],
-                'under_max_view_count' => 7,
-                'max_view_count' => 0,
+                'completion' => ['at_max_count' => 0, 'under_max_count' => 7],
                 'dex_total_count' => 7,
             ],
             $content,
