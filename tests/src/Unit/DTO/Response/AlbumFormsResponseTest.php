@@ -19,10 +19,10 @@ final class AlbumFormsResponseTest extends TestCase
     #[Test]
     public function constructorInitializesProperties(): void
     {
-        $category = new AlbumFormResponse('starter', 'Starter');
-        $regional = new AlbumFormResponse('alolan', 'Alolan');
-        $special = new AlbumFormResponse('mega', 'Mega');
-        $variant = new AlbumFormResponse('gender', 'Gender');
+        $category = new AlbumFormResponse('starter', 'Starter', 'de Départ');
+        $regional = new AlbumFormResponse('alolan', 'Alolan', "d'Alola");
+        $special = new AlbumFormResponse('mega', 'Mega', 'Mega');
+        $variant = new AlbumFormResponse('gender', 'Gender', 'Sexe');
 
         $response = new AlbumFormsResponse(
             category: $category,

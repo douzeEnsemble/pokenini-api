@@ -102,6 +102,10 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertIsString($firstPokemonCatchState['color']);
         $this->assertSame('#e57373', $firstPokemonCatchState['color']);
 
+        /** @var array<string, array<string, mixed>> $firstPokemonForms */
+        $firstPokemonForms = $firstPokemon['forms'];
+        $this->assertSame('de Départ', $firstPokemonForms['category']['french_name']);
+
         $this->assertArrayHasKey('filtered_report', $data);
 
         $filteredReport = $data['filtered_report'];

@@ -46,7 +46,7 @@ final class AlbumPokemonResponseTest extends TestCase
         );
         $catchState = new AlbumCatchStateResponse('no', 'No', 'Non', '#e57373');
         $forms = new AlbumFormsResponse(
-            category: new AlbumFormResponse('starter', 'Starter'),
+            category: new AlbumFormResponse('starter', 'Starter', 'de Départ'),
             regional: null,
             special: null,
             variant: null,
