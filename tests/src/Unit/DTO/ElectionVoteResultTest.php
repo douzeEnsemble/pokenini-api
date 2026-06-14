@@ -19,7 +19,7 @@ final class ElectionVoteResultTest extends TestCase
     public function testOk(): void
     {
         $electionVote = new ElectionVote([
-            'trainer_external_id' => '67865468',
+            'trainer' => ['external_id' => '67865468'],
             'election_slug' => 'douze',
             'winners_slugs' => ['pikachu'],
             'losers_slugs' => ['pichu', 'raichu'],

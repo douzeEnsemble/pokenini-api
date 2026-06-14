@@ -13,8 +13,7 @@ final class ElectionVoteDataResponse
      * @param PokemonSlugResponse[] $losers
      */
     public function __construct(
-        #[SerializedName('trainer_external_id')]
-        public readonly string $trainerExternalId,
+        public readonly TrainerExternalIdResponse $trainer,
         public readonly DexSlugResponse $dex,
         #[SerializedName('election_slug')]
         public readonly string $electionSlug,

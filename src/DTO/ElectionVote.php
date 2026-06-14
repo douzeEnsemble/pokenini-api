@@ -23,7 +23,7 @@ final class ElectionVote
     public array $losersSlugs;
 
     /**
-     * @param string[]|string[][] $values
+     * @param array<string, mixed> $values
      */
     public function __construct(array $values = [])
     {
@@ -32,7 +32,7 @@ final class ElectionVote
 
         /**
          * @var array{
-         *  trainer_external_id: string,
+         *  trainer: array<string, mixed>,
          *  dex_slug: string,
          *  election_slug: string,
          *  winners_slugs: string[],
@@ -41,7 +41,11 @@ final class ElectionVote
          */
         $options = $resolver->resolve($values);
 
-        $this->trainerExternalId = $options['trainer_external_id'];
+        if (!isset($options['trainer']['external_id']) || !is_string($options['trainer']['external_id'])) {
+            throw new \InvalidArgumentException('trainer.external_id must be a string');
+        }
+
+        $this->trainerExternalId = $options['trainer']['external_id'];
         $this->dexSlug = $options['dex_slug'];
         $this->electionSlug = $options['election_slug'];
         $this->winnersSlugs = $options['winners_slugs'];
@@ -50,8 +54,8 @@ final class ElectionVote
 
     private function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setRequired('trainer_external_id');
-        $resolver->setAllowedTypes('trainer_external_id', 'string');
+        $resolver->setRequired('trainer');
+        $resolver->setAllowedTypes('trainer', 'array');
 
         $resolver->setDefault('election_slug', '');
         $resolver->setAllowedTypes('election_slug', 'string');
