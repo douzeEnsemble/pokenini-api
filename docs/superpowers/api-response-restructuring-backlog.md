@@ -36,7 +36,7 @@ Voir les plans existants dans `docs/superpowers/plans/` pour le pattern DTO + Fa
 
 ---
 
-- [ ] **`GET /action_logs`** — clés dynamiques en top-level → array avec `action_type`
+- [x] **`GET /action_logs`** — clés dynamiques en top-level → array avec `action_type`
 
   **Avant**
   ```json

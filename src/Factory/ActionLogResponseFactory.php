@@ -50,7 +50,7 @@ final class ActionLogResponseFactory
     /**
      * @param array<int, array<array-key, mixed>> $rows
      *
-     * @return array<string, ActionLogResponse>
+     * @return list<ActionLogResponse>
      */
     public static function fromSqlRows(array $rows): array
     {
@@ -72,9 +72,12 @@ final class ActionLogResponseFactory
             $grouped[$typeActionStr][$period] = self::fromSqlRow($row);
         }
 
+        ksort($grouped);
+
         $result = [];
         foreach ($grouped as $typeAction => $entries) {
-            $result[$typeAction] = new ActionLogResponse(
+            $result[] = new ActionLogResponse(
+                actionType: $typeAction,
                 current: $entries['current'],
                 last: $entries['last'],
             );
