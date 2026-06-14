@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Integration\Controller;
 
 use App\Controller\TrainerPokemonEloController;
+use App\DTO\Response\ElectionEloScoreResponse;
 use App\DTO\Response\ElectionMetricsCompletionResponse;
 use App\DTO\Response\ElectionViewCountResponse;
 use App\DTO\Response\ElectionWinCountResponse;
@@ -20,6 +21,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(ElectionMetricsResponseFactory::class)]
 #[CoversClass(ElectionMetricsCompletionResponse::class)]
 #[CoversClass(ElectionViewCountResponse::class)]
+#[CoversClass(ElectionEloScoreResponse::class)]
 #[CoversClass(ElectionWinCountResponse::class)]
 final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
 {
@@ -44,14 +46,16 @@ final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
         $this->assertCount(5, $content);
 
         foreach ($content as $item) {
-            $this->assertArrayHasKey('elo', $item);
-            $this->assertArrayHasKey('significance', $item);
+            $this->assertArrayHasKey('score', $item);
+            $this->assertIsArray($item['score']);
+            $this->assertArrayHasKey('elo', $item['score']);
+            $this->assertArrayHasKey('significance', $item['score']);
             $this->assertArrayHasKey('pokemon', $item);
             $this->assertArrayHasKey('forms', $item);
             $this->assertArrayHasKey('types', $item);
 
-            $this->assertIsFloat($item['elo']);
-            $this->assertIsBool($item['significance']);
+            $this->assertIsFloat($item['score']['elo']);
+            $this->assertIsBool($item['score']['significance']);
 
             $pokemon = $item['pokemon'];
             $this->assertIsArray($pokemon);
@@ -116,11 +120,16 @@ final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
         $this->assertCount(5, $content);
 
         foreach ($content as $item) {
-            $this->assertArrayHasKey('elo', $item);
-            $this->assertArrayHasKey('significance', $item);
+            $this->assertArrayHasKey('score', $item);
+            $this->assertIsArray($item['score']);
+            $this->assertArrayHasKey('elo', $item['score']);
+            $this->assertArrayHasKey('significance', $item['score']);
             $this->assertArrayHasKey('pokemon', $item);
             $this->assertArrayHasKey('forms', $item);
             $this->assertArrayHasKey('types', $item);
+
+            $this->assertIsFloat($item['score']['elo']);
+            $this->assertIsBool($item['score']['significance']);
 
             $pokemon = $item['pokemon'];
             $this->assertIsArray($pokemon);

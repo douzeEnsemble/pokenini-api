@@ -1,7 +1,6 @@
 [
   {
-    "elo": 1250.5,
-    "significance": true,
+    "score": { "elo": 1250.5, "significance": true },
     "pokemon": {
       "slug": "pikachu",
       "name": "Pikachu",
@@ -29,8 +28,7 @@
     }
   },
   {
-    "elo": 1200.0,
-    "significance": false,
+    "score": { "elo": 1200.0, "significance": false },
     "pokemon": {
       "slug": "charizard",
       "name": "Charizard",

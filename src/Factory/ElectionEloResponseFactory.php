@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\DTO\Response\ElectionEloResponse;
+use App\DTO\Response\ElectionEloScoreResponse;
 use App\DTO\Response\FormResponse;
 use App\DTO\Response\FormsResponse;
 use App\DTO\Response\GameBundleSlugResponse;
@@ -32,8 +33,10 @@ final class ElectionEloResponseFactory
             pokemon: self::buildPokemonData($row),
             forms: self::buildForms($row),
             types: self::buildTypes($row),
-            elo: (float) $elo,
-            significance: (bool) $significance,
+            score: new ElectionEloScoreResponse(
+                elo: (float) $elo,
+                significance: (bool) $significance,
+            ),
         );
     }
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Unit\DTO\Response;
 
 use App\DTO\Response\ElectionEloResponse;
+use App\DTO\Response\ElectionEloScoreResponse;
 use App\DTO\Response\FormResponse;
 use App\DTO\Response\FormsResponse;
 use App\DTO\Response\PokemonDataResponse;
@@ -36,15 +37,14 @@ final class ElectionEloResponseTest extends TestCase
             pokemon: $pokemon,
             forms: $forms,
             types: $types,
-            elo: 1523.75,
-            significance: true,
+            score: new ElectionEloScoreResponse(elo: 1523.75, significance: true),
         );
 
         self::assertSame($pokemon, $response->pokemon);
         self::assertSame($forms, $response->forms);
         self::assertSame($types, $response->types);
-        self::assertSame(1523.75, $response->elo);
-        self::assertTrue($response->significance);
+        self::assertSame(1523.75, $response->score->elo);
+        self::assertTrue($response->score->significance);
     }
 
     #[Test]
@@ -54,12 +54,11 @@ final class ElectionEloResponseTest extends TestCase
             pokemon: $this->makePokemon(),
             forms: null,
             types: $this->makeTypes(),
-            elo: 1000.0,
-            significance: false,
+            score: new ElectionEloScoreResponse(elo: 1000.0, significance: false),
         );
 
         self::assertNull($response->forms);
-        self::assertFalse($response->significance);
+        self::assertFalse($response->score->significance);
     }
 
     private function makePokemon(): PokemonDataResponse

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Factory;
 
 use App\DTO\Response\ElectionEloResponse;
+use App\DTO\Response\ElectionEloScoreResponse;
 use App\DTO\Response\FormResponse;
 use App\DTO\Response\FormsResponse;
 use App\DTO\Response\GameBundleSlugResponse;
@@ -18,6 +19,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(ElectionEloResponseFactory::class)]
+#[CoversClass(ElectionEloScoreResponse::class)]
 final class ElectionEloResponseFactoryTest extends TestCase
 {
     #[Test]
@@ -65,8 +67,8 @@ final class ElectionEloResponseFactoryTest extends TestCase
 
         $response = ElectionEloResponseFactory::fromSqlRow($row);
 
-        self::assertSame(1200.5, $response->elo);
-        self::assertTrue($response->significance);
+        self::assertSame(1200.5, $response->score->elo);
+        self::assertTrue($response->score->significance);
         self::assertSame('pikachu', $response->pokemon->slug);
         self::assertSame('Pikachu', $response->pokemon->name);
         self::assertNull($response->forms);
@@ -181,7 +183,7 @@ final class ElectionEloResponseFactoryTest extends TestCase
 
         $response = ElectionEloResponseFactory::fromSqlRow($row);
 
-        self::assertFalse($response->significance);
+        self::assertFalse($response->score->significance);
         self::assertNotNull($response->types->primary);
         self::assertSame('#78C850', $response->types->primary->color);
         self::assertNotNull($response->types->secondary);
@@ -278,8 +280,8 @@ final class ElectionEloResponseFactoryTest extends TestCase
         self::assertContainsOnlyInstancesOf(ElectionEloResponse::class, $responses);
         self::assertSame('pikachu', $responses[0]->pokemon->slug);
         self::assertSame('charizard', $responses[1]->pokemon->slug);
-        self::assertSame(1200.0, $responses[0]->elo);
-        self::assertSame(1150.0, $responses[1]->elo);
+        self::assertSame(1200.0, $responses[0]->score->elo);
+        self::assertSame(1150.0, $responses[1]->score->elo);
         self::assertNotNull($responses[0]->types->primary);
         self::assertSame('#FFCC33', $responses[0]->types->primary->color);
         self::assertNotNull($responses[1]->types->primary);
@@ -457,7 +459,7 @@ final class ElectionEloResponseFactoryTest extends TestCase
 
         $response = ElectionEloResponseFactory::fromSqlRow($row);
 
-        self::assertSame(1350.75, $response->elo);
+        self::assertSame(1350.75, $response->score->elo);
         self::assertSame(65, $response->pokemon->nationalDexNumber);
         self::assertSame(4, $response->pokemon->familyOrder);
         self::assertNotNull($response->types->primary);
