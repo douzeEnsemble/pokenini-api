@@ -138,7 +138,7 @@ Voir les plans existants dans `docs/superpowers/plans/` pour le pattern DTO + Fa
 
 ---
 
-- [ ] **`GET /election/top`** — `elo` + `significance` épars → `score: { elo, significance }` *(breaking change)*
+- [x] **`GET /election/top`** — `elo` + `significance` épars → `score: { elo, significance }` *(breaking change)*
 
   Deux propriétés de score au même niveau que `pokemon`, `forms`, `types`.
 

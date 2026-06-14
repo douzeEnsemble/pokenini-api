@@ -10,7 +10,6 @@ final class ElectionEloResponse
         public readonly PokemonDataResponse $pokemon,
         public readonly ?FormsResponse $forms,
         public readonly TypesResponse $types,
-        public readonly float $elo,
-        public readonly bool $significance,
+        public readonly ElectionEloScoreResponse $score,
     ) {}
 }
