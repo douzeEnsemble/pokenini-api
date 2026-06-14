@@ -121,6 +121,152 @@ Voir les plans existants dans `docs/superpowers/plans/` pour le pattern DTO + Fa
 
 - [x] **`GET /debogage/pokemon/{slug}/availabilities`** — 4 listes plates → groupées par dimension *(breaking change)*
 
+---
+
+- [ ] **`POST /election/vote`** — `election_vote.trainer_external_id` plat → `trainer: { external_id }` *(breaking change)*
+
+  Incohérent avec `/reports` où le trainer est `{ external_id: "..." }`.
+
+  **Avant**
+  ```json
+  { "election_vote": { "trainer_external_id": "7b52009b...", "dex": { "slug": "demo" }, ... } }
+  ```
+  **Après**
+  ```json
+  { "election_vote": { "trainer": { "external_id": "7b52009b..." }, "dex": { "slug": "demo" }, ... } }
+  ```
+
+---
+
+- [ ] **`GET /election/top`** — `elo` + `significance` épars → `score: { elo, significance }` *(breaking change)*
+
+  Deux propriétés de score au même niveau que `pokemon`, `forms`, `types`.
+
+  **Avant**
+  ```json
+  { "pokemon": {...}, "forms": {...}, "types": {...}, "elo": 1016.0, "significance": true }
+  ```
+  **Après**
+  ```json
+  { "pokemon": {...}, "forms": {...}, "types": {...}, "score": { "elo": 1016.0, "significance": true } }
+  ```
+
+---
+
+- [ ] **`GET /album` + `GET /pokemons/to_choose` + `GET /election/top`** — `pokemon.game_bundles` + `pokemon.game_bundles_shiny` → `game_bundles: { normal, shiny }` *(breaking change)*
+
+  Même logique que le refactoring de `/debogage/pokemon/{slug}/availabilities` déjà traité.
+
+  **Avant**
+  ```json
+  {
+    "game_bundles": [{ "slug": "redgreenblueyellow" }],
+    "game_bundles_shiny": [{ "slug": "redgreenblueyellow" }]
+  }
+  ```
+  **Après**
+  ```json
+  {
+    "game_bundles": {
+      "normal": [{ "slug": "redgreenblueyellow" }],
+      "shiny": [{ "slug": "redgreenblueyellow" }]
+    }
+  }
+  ```
+
+---
+
+- [ ] **`GET /album` + `GET /pokemons/to_choose` + `GET /election/top`** — 6 champs de noms épars dans `pokemon` → `labels: {...}` *(breaking change)*
+
+  `name`, `french_name`, `simplified_name`, `simplified_french_name`, `forms_label`, `forms_french_label` tous au même niveau top de l'objet pokemon.
+
+  **Avant**
+  ```json
+  {
+    "slug": "bulbasaur",
+    "name": "Bulbasaur",
+    "french_name": "Bulbizarre",
+    "simplified_name": "Bulbasaur",
+    "simplified_french_name": "Bulbizarre",
+    "forms_label": "",
+    "forms_french_label": ""
+  }
+  ```
+  **Après**
+  ```json
+  {
+    "slug": "bulbasaur",
+    "labels": {
+      "name": "Bulbasaur",
+      "french_name": "Bulbizarre",
+      "simplified_name": "Bulbasaur",
+      "simplified_french_name": "Bulbizarre",
+      "forms_label": "",
+      "forms_french_label": ""
+    }
+  }
+  ```
+
+---
+
+- [ ] **`GET /dex/{trainerExternalId}/list`** — `name`, `french_name`, `slug`, `display_template` mélangés avec `dex: { slug }` → `settings: {...}` *(breaking change)*
+
+  La distinction entre les données du dex d'origine et les overrides du trainer n'est pas lisible.
+
+  **Avant**
+  ```json
+  {
+    "dex": { "slug": "rubysapphireemerald" },
+    "name": "Ruby / Sapphire / Emerald",
+    "french_name": "Rubis / Saphir / Émeraude",
+    "slug": "rubysapphireemerald",
+    "flags": {...},
+    "display_template": "box"
+  }
+  ```
+  **Après**
+  ```json
+  {
+    "dex": { "slug": "rubysapphireemerald" },
+    "settings": {
+      "name": "Ruby / Sapphire / Emerald",
+      "french_name": "Rubis / Saphir / Émeraude",
+      "slug": "rubysapphireemerald",
+      "display_template": "box"
+    },
+    "flags": {...}
+  }
+  ```
+
+---
+
+- [ ] **`/forms/category` + `/forms/regional` + `/forms/special` + `/forms/variant`** — 4 endpoints identiques → 1 endpoint `/forms` *(breaking change)*
+
+  4 appels réseau distincts pour une même ressource logique.
+
+  **Après**
+  ```json
+  {
+    "category": [{ "slug": "starter", "name": "Starter", "french_name": "de Départ" }],
+    "regional": [{ "slug": "alolan", "name": "Alolan", "french_name": "d'Alola" }],
+    "special": [{ "slug": "mega", "name": "Mega", "french_name": "Mega" }],
+    "variant": [{ "slug": "gender", "name": "Gender", "french_name": "Sexe" }]
+  }
+  ```
+
+---
+
+- [ ] **`GET /debogage/dex/{slug}`** — `order_number` + `election_order_number` épars → `ordering: { main, election }` *(breaking change, endpoint debug)*
+
+  **Avant**
+  ```json
+  { "order_number": 10, "election_order_number": 0, ... }
+  ```
+  **Après**
+  ```json
+  { "ordering": { "main": 10, "election": 0 }, ... }
+  ```
+
   **Avant**
   ```json
   {
