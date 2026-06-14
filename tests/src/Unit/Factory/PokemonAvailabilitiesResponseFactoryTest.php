@@ -10,6 +10,8 @@ use App\DTO\GamesAvailabilities;
 use App\DTO\GamesShiniesAvailabilities;
 use App\DTO\Response\GameAvailabilityResponse;
 use App\DTO\Response\GameBundleAvailabilityResponse;
+use App\DTO\Response\GameBundlesAvailabilitiesGroupResponse;
+use App\DTO\Response\GamesAvailabilitiesGroupResponse;
 use App\Factory\PokemonAvailabilitiesResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -19,6 +21,8 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(PokemonAvailabilitiesResponseFactory::class)]
+#[CoversClass(GamesAvailabilitiesGroupResponse::class)]
+#[CoversClass(GameBundlesAvailabilitiesGroupResponse::class)]
 final class PokemonAvailabilitiesResponseFactoryTest extends TestCase
 {
     #[Test]
@@ -31,25 +35,25 @@ final class PokemonAvailabilitiesResponseFactoryTest extends TestCase
             new GameBundlesShiniesAvailabilities(['bundlesshinies-key' => false]),
         );
 
-        self::assertCount(1, $response->gamesAvailabilities);
-        self::assertInstanceOf(GameAvailabilityResponse::class, $response->gamesAvailabilities[0]);
-        self::assertSame('games-key', $response->gamesAvailabilities[0]->game->slug);
-        self::assertTrue($response->gamesAvailabilities[0]->isAvailable);
+        self::assertCount(1, $response->games->normal);
+        self::assertInstanceOf(GameAvailabilityResponse::class, $response->games->normal[0]);
+        self::assertSame('games-key', $response->games->normal[0]->game->slug);
+        self::assertTrue($response->games->normal[0]->isAvailable);
 
-        self::assertCount(1, $response->gamesShiniesAvailabilities);
-        self::assertInstanceOf(GameAvailabilityResponse::class, $response->gamesShiniesAvailabilities[0]);
-        self::assertSame('shinies-key', $response->gamesShiniesAvailabilities[0]->game->slug);
-        self::assertFalse($response->gamesShiniesAvailabilities[0]->isAvailable);
+        self::assertCount(1, $response->games->shiny);
+        self::assertInstanceOf(GameAvailabilityResponse::class, $response->games->shiny[0]);
+        self::assertSame('shinies-key', $response->games->shiny[0]->game->slug);
+        self::assertFalse($response->games->shiny[0]->isAvailable);
 
-        self::assertCount(1, $response->gameBundlesAvailabilities);
-        self::assertInstanceOf(GameBundleAvailabilityResponse::class, $response->gameBundlesAvailabilities[0]);
-        self::assertSame('bundles-key', $response->gameBundlesAvailabilities[0]->gameBundle->slug);
-        self::assertTrue($response->gameBundlesAvailabilities[0]->isAvailable);
+        self::assertCount(1, $response->gameBundles->normal);
+        self::assertInstanceOf(GameBundleAvailabilityResponse::class, $response->gameBundles->normal[0]);
+        self::assertSame('bundles-key', $response->gameBundles->normal[0]->gameBundle->slug);
+        self::assertTrue($response->gameBundles->normal[0]->isAvailable);
 
-        self::assertCount(1, $response->gameBundlesShiniesAvailabilities);
-        self::assertInstanceOf(GameBundleAvailabilityResponse::class, $response->gameBundlesShiniesAvailabilities[0]);
-        self::assertSame('bundlesshinies-key', $response->gameBundlesShiniesAvailabilities[0]->gameBundle->slug);
-        self::assertFalse($response->gameBundlesShiniesAvailabilities[0]->isAvailable);
+        self::assertCount(1, $response->gameBundles->shiny);
+        self::assertInstanceOf(GameBundleAvailabilityResponse::class, $response->gameBundles->shiny[0]);
+        self::assertSame('bundlesshinies-key', $response->gameBundles->shiny[0]->gameBundle->slug);
+        self::assertFalse($response->gameBundles->shiny[0]->isAvailable);
     }
 
     #[Test]
@@ -62,22 +66,22 @@ final class PokemonAvailabilitiesResponseFactoryTest extends TestCase
             new GameBundlesShiniesAvailabilities([]),
         );
 
-        self::assertCount(3, $response->gamesAvailabilities);
-        self::assertSame('x', $response->gamesAvailabilities[0]->game->slug);
-        self::assertTrue($response->gamesAvailabilities[0]->isAvailable);
-        self::assertSame('y', $response->gamesAvailabilities[1]->game->slug);
-        self::assertFalse($response->gamesAvailabilities[1]->isAvailable);
-        self::assertSame('omegaruby', $response->gamesAvailabilities[2]->game->slug);
-        self::assertTrue($response->gamesAvailabilities[2]->isAvailable);
+        self::assertCount(3, $response->games->normal);
+        self::assertSame('x', $response->games->normal[0]->game->slug);
+        self::assertTrue($response->games->normal[0]->isAvailable);
+        self::assertSame('y', $response->games->normal[1]->game->slug);
+        self::assertFalse($response->games->normal[1]->isAvailable);
+        self::assertSame('omegaruby', $response->games->normal[2]->game->slug);
+        self::assertTrue($response->games->normal[2]->isAvailable);
 
-        self::assertCount(2, $response->gameBundlesAvailabilities);
-        self::assertSame('goldsilvercrystal', $response->gameBundlesAvailabilities[0]->gameBundle->slug);
-        self::assertFalse($response->gameBundlesAvailabilities[0]->isAvailable);
-        self::assertSame('xy', $response->gameBundlesAvailabilities[1]->gameBundle->slug);
-        self::assertTrue($response->gameBundlesAvailabilities[1]->isAvailable);
+        self::assertCount(2, $response->gameBundles->normal);
+        self::assertSame('goldsilvercrystal', $response->gameBundles->normal[0]->gameBundle->slug);
+        self::assertFalse($response->gameBundles->normal[0]->isAvailable);
+        self::assertSame('xy', $response->gameBundles->normal[1]->gameBundle->slug);
+        self::assertTrue($response->gameBundles->normal[1]->isAvailable);
 
-        self::assertSame([], $response->gamesShiniesAvailabilities);
-        self::assertSame([], $response->gameBundlesShiniesAvailabilities);
+        self::assertSame([], $response->games->shiny);
+        self::assertSame([], $response->gameBundles->shiny);
     }
 
     #[Test]
@@ -90,11 +94,11 @@ final class PokemonAvailabilitiesResponseFactoryTest extends TestCase
             new GameBundlesShiniesAvailabilities([]),
         );
 
-        self::assertSame('123', $response->gamesAvailabilities[0]->game->slug);
-        self::assertSame('456', $response->gameBundlesAvailabilities[0]->gameBundle->slug);
+        self::assertSame('123', $response->games->normal[0]->game->slug);
+        self::assertSame('456', $response->gameBundles->normal[0]->gameBundle->slug);
 
-        self::assertSame([], $response->gamesShiniesAvailabilities);
-        self::assertSame([], $response->gameBundlesShiniesAvailabilities);
+        self::assertSame([], $response->games->shiny);
+        self::assertSame([], $response->gameBundles->shiny);
     }
 
     #[Test]
@@ -107,9 +111,9 @@ final class PokemonAvailabilitiesResponseFactoryTest extends TestCase
             new GameBundlesShiniesAvailabilities([]),
         );
 
-        self::assertSame([], $response->gamesAvailabilities);
-        self::assertSame([], $response->gamesShiniesAvailabilities);
-        self::assertSame([], $response->gameBundlesAvailabilities);
-        self::assertSame([], $response->gameBundlesShiniesAvailabilities);
+        self::assertSame([], $response->games->normal);
+        self::assertSame([], $response->games->shiny);
+        self::assertSame([], $response->gameBundles->normal);
+        self::assertSame([], $response->gameBundles->shiny);
     }
 }
