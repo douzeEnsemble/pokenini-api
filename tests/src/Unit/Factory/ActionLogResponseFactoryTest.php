@@ -113,10 +113,10 @@ final class ActionLogResponseFactoryTest extends TestCase
 
         $result = ActionLogResponseFactory::fromSqlRows($rows);
 
-        self::assertArrayHasKey('update_pokemons', $result);
-        self::assertNotNull($result['update_pokemons']->current);
-        self::assertNull($result['update_pokemons']->last);
-        self::assertSame('2026-05-25 10:00:00+00', $result['update_pokemons']->current->createdAt);
+        $entry = $this->findByActionType($result, 'update_pokemons');
+        self::assertNotNull($entry->current);
+        self::assertNull($entry->last);
+        self::assertSame('2026-05-25 10:00:00+00', $entry->current->createdAt);
     }
 
     #[Test]
@@ -136,10 +136,10 @@ final class ActionLogResponseFactoryTest extends TestCase
 
         $result = ActionLogResponseFactory::fromSqlRows($rows);
 
-        self::assertArrayHasKey('update_pokemons', $result);
-        self::assertNull($result['update_pokemons']->current);
-        self::assertNotNull($result['update_pokemons']->last);
-        self::assertSame('2026-05-24 09:00:00+00', $result['update_pokemons']->last->createdAt);
+        $entry = $this->findByActionType($result, 'update_pokemons');
+        self::assertNull($entry->current);
+        self::assertNotNull($entry->last);
+        self::assertSame('2026-05-24 09:00:00+00', $entry->last->createdAt);
     }
 
     #[Test]
@@ -169,11 +169,12 @@ final class ActionLogResponseFactoryTest extends TestCase
         $result = ActionLogResponseFactory::fromSqlRows($rows);
 
         self::assertCount(1, $result);
-        self::assertArrayHasKey('update_pokemons', $result);
-        self::assertNotNull($result['update_pokemons']->current);
-        self::assertNotNull($result['update_pokemons']->last);
-        self::assertSame('2026-05-25 10:00:00+00', $result['update_pokemons']->current->createdAt);
-        self::assertSame('2026-05-24 09:00:00+00', $result['update_pokemons']->last->createdAt);
+        $entry = $result[0];
+        self::assertSame('update_pokemons', $entry->actionType);
+        self::assertNotNull($entry->current);
+        self::assertNotNull($entry->last);
+        self::assertSame('2026-05-25 10:00:00+00', $entry->current->createdAt);
+        self::assertSame('2026-05-24 09:00:00+00', $entry->last->createdAt);
     }
 
     #[Test]
@@ -203,10 +204,8 @@ final class ActionLogResponseFactoryTest extends TestCase
         $result = ActionLogResponseFactory::fromSqlRows($rows);
 
         self::assertCount(2, $result);
-        self::assertArrayHasKey('update_pokemons', $result);
-        self::assertArrayHasKey('update_labels', $result);
-        self::assertInstanceOf(ActionLogResponse::class, $result['update_pokemons']);
-        self::assertInstanceOf(ActionLogResponse::class, $result['update_labels']);
+        self::assertSame('update_labels', $result[0]->actionType);
+        self::assertSame('update_pokemons', $result[1]->actionType);
     }
 
     #[Test]
@@ -215,5 +214,60 @@ final class ActionLogResponseFactoryTest extends TestCase
         $result = ActionLogResponseFactory::fromSqlRows([]);
 
         self::assertCount(0, $result);
+    }
+
+    #[Test]
+    public function fromSqlRowsReturnsAlphabeticallySortedList(): void
+    {
+        $rows = [
+            [
+                'type_action' => 'update_pokemons',
+                'row_number' => 1,
+                'created_at' => '2026-05-25 10:00:00+00',
+                'done_at' => null,
+                'execution_time' => null,
+                'details' => null,
+                'error_trace' => null,
+            ],
+            [
+                'type_action' => 'calculate_dex_availabilities',
+                'row_number' => 1,
+                'created_at' => '2026-05-25 09:00:00+00',
+                'done_at' => null,
+                'execution_time' => null,
+                'details' => null,
+                'error_trace' => null,
+            ],
+            [
+                'type_action' => 'update_labels',
+                'row_number' => 1,
+                'created_at' => '2026-05-25 08:00:00+00',
+                'done_at' => null,
+                'execution_time' => null,
+                'details' => null,
+                'error_trace' => null,
+            ],
+        ];
+
+        $result = ActionLogResponseFactory::fromSqlRows($rows);
+
+        self::assertCount(3, $result);
+        self::assertSame('calculate_dex_availabilities', $result[0]->actionType);
+        self::assertSame('update_labels', $result[1]->actionType);
+        self::assertSame('update_pokemons', $result[2]->actionType);
+    }
+
+    /**
+     * @param list<ActionLogResponse> $list
+     */
+    private function findByActionType(array $list, string $actionType): ActionLogResponse
+    {
+        foreach ($list as $entry) {
+            if ($entry->actionType === $actionType) {
+                return $entry;
+            }
+        }
+
+        self::fail(sprintf('No ActionLogResponse found with actionType "%s".', $actionType));
     }
 }

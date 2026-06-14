@@ -21,7 +21,7 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
  *     details: array<string, string>|null,
  *     error_trace: string|null
  * }
- * @psalm-type ActionLogData = array<string, array{current: ActionLogEntry|null, last: ActionLogEntry|null}>
+ * @psalm-type ActionLogData = list<array{action_type: string, current: ActionLogEntry|null, last: ActionLogEntry|null}>
  */
 #[CoversClass(ActionLogsController::class)]
 #[CoversClass(ActionLogResponseFactory::class)]
@@ -89,8 +89,8 @@ final class ActionLogsControllerTest extends WebTestCase
      */
     private function assertThereIsNoLast(array $data, string $key): void
     {
-        $this->assertArrayHasKey($key, $data);
-        $this->assertNull($data[$key]['last']);
+        $entry = $this->findByActionType($data, $key);
+        $this->assertNull($entry['last']);
     }
 
     /**
@@ -98,8 +98,8 @@ final class ActionLogsControllerTest extends WebTestCase
      */
     private function assertCurrentIsNotDone(array $data, string $key): void
     {
-        $this->assertArrayHasKey($key, $data);
-        $this->assertIsNotDone($data[$key]['current']);
+        $entry = $this->findByActionType($data, $key);
+        $this->assertIsNotDone($entry['current']);
     }
 
     /**
@@ -107,8 +107,8 @@ final class ActionLogsControllerTest extends WebTestCase
      */
     private function assertCurrentIsDone(array $data, string $key): void
     {
-        $this->assertArrayHasKey($key, $data);
-        $this->assertIsDone($data[$key]['current']);
+        $entry = $this->findByActionType($data, $key);
+        $this->assertIsDone($entry['current']);
     }
 
     /**
@@ -116,8 +116,8 @@ final class ActionLogsControllerTest extends WebTestCase
      */
     private function assertCurrentIsFailed(array $data, string $key): void
     {
-        $this->assertArrayHasKey($key, $data);
-        $this->assertIsFailed($data[$key]['current']);
+        $entry = $this->findByActionType($data, $key);
+        $this->assertIsFailed($entry['current']);
     }
 
     /**
@@ -125,8 +125,8 @@ final class ActionLogsControllerTest extends WebTestCase
      */
     private function assertLastIsNotDone(array $data, string $key): void
     {
-        $this->assertArrayHasKey($key, $data);
-        $this->assertIsNotDone($data[$key]['last']);
+        $entry = $this->findByActionType($data, $key);
+        $this->assertIsNotDone($entry['last']);
     }
 
     /**
@@ -134,8 +134,8 @@ final class ActionLogsControllerTest extends WebTestCase
      */
     private function assertLastIsDone(array $data, string $key): void
     {
-        $this->assertArrayHasKey($key, $data);
-        $this->assertIsDone($data[$key]['last']);
+        $entry = $this->findByActionType($data, $key);
+        $this->assertIsDone($entry['last']);
     }
 
     /**
@@ -143,8 +143,24 @@ final class ActionLogsControllerTest extends WebTestCase
      */
     private function assertLastIsFailed(array $data, string $key): void
     {
-        $this->assertArrayHasKey($key, $data);
-        $this->assertIsFailed($data[$key]['last']);
+        $entry = $this->findByActionType($data, $key);
+        $this->assertIsFailed($entry['last']);
+    }
+
+    /**
+     * @param ActionLogData $data
+     *
+     * @return array{action_type: string, current: null|ActionLogEntry, last: null|ActionLogEntry}
+     */
+    private function findByActionType(array $data, string $actionType): array
+    {
+        foreach ($data as $entry) {
+            if ($entry['action_type'] === $actionType) {
+                return $entry;
+            }
+        }
+
+        $this->fail(sprintf('No action log entry found with action_type "%s".', $actionType));
     }
 
     /**

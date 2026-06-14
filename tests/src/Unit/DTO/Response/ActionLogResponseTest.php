@@ -34,8 +34,9 @@ final class ActionLogResponseTest extends TestCase
             errorTrace: null,
         );
 
-        $response = new ActionLogResponse(current: $current, last: $last);
+        $response = new ActionLogResponse(actionType: 'update_pokemons', current: $current, last: $last);
 
+        self::assertSame('update_pokemons', $response->actionType);
         self::assertSame($current, $response->current);
         self::assertSame($last, $response->last);
     }
@@ -43,8 +44,9 @@ final class ActionLogResponseTest extends TestCase
     #[Test]
     public function constructorAcceptsNullEntries(): void
     {
-        $response = new ActionLogResponse(current: null, last: null);
+        $response = new ActionLogResponse(actionType: 'update_pokemons', current: null, last: null);
 
+        self::assertSame('update_pokemons', $response->actionType);
         self::assertNull($response->current);
         self::assertNull($response->last);
     }
