@@ -27,9 +27,8 @@ final class PokemonDebugResponse
         public readonly string $formsFrenchLabel,
         #[SerializedName('national_dex_number')]
         public readonly int $nationalDexNumber,
-        public readonly string $family,
-        public readonly bool $bankable,
-        public readonly ?bool $bankableish,
+        public readonly PokemonDebugFamilyResponse $family,
+        public readonly PokemonDebugBankResponse $bank,
         #[SerializedName('icon_name')]
         public readonly string $iconName,
         #[SerializedName('family_order')]

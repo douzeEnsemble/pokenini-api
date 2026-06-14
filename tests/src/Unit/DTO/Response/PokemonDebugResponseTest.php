@@ -7,6 +7,8 @@ namespace App\Tests\Unit\DTO\Response;
 use App\DTO\Response\FormDebugResponse;
 use App\DTO\Response\GameBundleDebugResponse;
 use App\DTO\Response\GameGenerationDebugResponse;
+use App\DTO\Response\PokemonDebugBankResponse;
+use App\DTO\Response\PokemonDebugFamilyResponse;
 use App\DTO\Response\PokemonDebugFormsResponse;
 use App\DTO\Response\PokemonDebugResponse;
 use App\DTO\Response\PokemonDebugTypesResponse;
@@ -30,6 +32,8 @@ final class PokemonDebugResponseTest extends TestCase
         $type = new TypeDebugResponse(null, 'grass', 'Grass', 'Plante', 3, '#78C850', null);
         $forms = new PokemonDebugFormsResponse(category: null, regional: null, special: $form, variant: null);
         $types = new PokemonDebugTypesResponse(primary: $type, secondary: null);
+        $family = new PokemonDebugFamilyResponse(slug: 'bulbasaur');
+        $bank = new PokemonDebugBankResponse(bankable: true, bankableish: false);
 
         $response = new PokemonDebugResponse(
             identifier: '550e8400-e29b-41d4-a716-446655440000',
@@ -41,9 +45,8 @@ final class PokemonDebugResponseTest extends TestCase
             formsLabel: 'Mega',
             formsFrenchLabel: 'Méga',
             nationalDexNumber: 3,
-            family: 'bulbasaur',
-            bankable: true,
-            bankableish: false,
+            family: $family,
+            bank: $bank,
             iconName: 'venusaur-mega',
             familyOrder: 3,
             originalGameBundle: $gameBundle,
@@ -61,9 +64,8 @@ final class PokemonDebugResponseTest extends TestCase
         self::assertSame('Mega', $response->formsLabel);
         self::assertSame('Méga', $response->formsFrenchLabel);
         self::assertSame(3, $response->nationalDexNumber);
-        self::assertSame('bulbasaur', $response->family);
-        self::assertTrue($response->bankable);
-        self::assertFalse($response->bankableish);
+        self::assertSame($family, $response->family);
+        self::assertSame($bank, $response->bank);
         self::assertSame('venusaur-mega', $response->iconName);
         self::assertSame(3, $response->familyOrder);
         self::assertSame($gameBundle, $response->originalGameBundle);
@@ -78,6 +80,8 @@ final class PokemonDebugResponseTest extends TestCase
         $generation = new GameGenerationDebugResponse(null, '1', '1', null);
         $gameBundle = new GameBundleDebugResponse(null, 'redgreenblueyellow', 'RBY', 'RBY', 1, $generation, null);
         $types = new PokemonDebugTypesResponse(primary: null, secondary: null);
+        $family = new PokemonDebugFamilyResponse(slug: 'bulbasaur');
+        $bank = new PokemonDebugBankResponse(bankable: true, bankableish: null);
 
         $response = new PokemonDebugResponse(
             identifier: null,
@@ -89,9 +93,8 @@ final class PokemonDebugResponseTest extends TestCase
             formsLabel: '',
             formsFrenchLabel: '',
             nationalDexNumber: 1,
-            family: 'bulbasaur',
-            bankable: true,
-            bankableish: null,
+            family: $family,
+            bank: $bank,
             iconName: 'bulbasaur',
             familyOrder: 0,
             originalGameBundle: $gameBundle,
@@ -101,7 +104,7 @@ final class PokemonDebugResponseTest extends TestCase
         );
 
         self::assertNull($response->identifier);
-        self::assertNull($response->bankableish);
+        self::assertNull($response->bank->bankableish);
         self::assertNull($response->forms);
         self::assertNull($response->deletedAt);
     }

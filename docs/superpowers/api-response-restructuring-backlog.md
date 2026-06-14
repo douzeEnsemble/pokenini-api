@@ -99,7 +99,7 @@ Voir les plans existants dans `docs/superpowers/plans/` pour le pattern DTO + Fa
 
 ---
 
-- [ ] **`GET /debogage/pokemon/{slug}`** — `family` plate + `bankable`/`bankableish` épars
+- [x] **`GET /debogage/pokemon/{slug}`** — `family` plate + `bankable`/`bankableish` épars
 
   **Avant**
   ```json
