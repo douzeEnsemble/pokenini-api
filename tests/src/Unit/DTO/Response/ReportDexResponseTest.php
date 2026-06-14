@@ -19,10 +19,12 @@ final class ReportDexResponseTest extends TestCase
     public function constructorInitializesProperties(): void
     {
         $response = new ReportDexResponse(
+            slug: 'home',
             name: 'Home',
             frenchName: 'Home',
         );
 
+        self::assertSame('home', $response->slug);
         self::assertSame('Home', $response->name);
         self::assertSame('Home', $response->frenchName);
     }
@@ -31,10 +33,12 @@ final class ReportDexResponseTest extends TestCase
     public function propertiesAreReadonly(): void
     {
         $response = new ReportDexResponse(
+            slug: 'rubysapphireemerald',
             name: 'Ruby / Sapphire / Emerald',
             frenchName: 'Rubis / Saphir / Émeraude',
         );
 
+        self::assertSame('rubysapphireemerald', $response->slug);
         self::assertSame('Ruby / Sapphire / Emerald', $response->name);
         self::assertSame('Rubis / Saphir / Émeraude', $response->frenchName);
     }

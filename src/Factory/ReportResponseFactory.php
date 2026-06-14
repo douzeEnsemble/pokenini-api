@@ -41,6 +41,9 @@ final class ReportResponseFactory
         /** @var scalar $count */
         $count = $row['nb'];
 
+        /** @var scalar $slug */
+        $slug = $row['slug'];
+
         /** @var scalar $name */
         $name = $row['name'];
 
@@ -50,6 +53,7 @@ final class ReportResponseFactory
         return new DexUsageResponse(
             count: (int) $count,
             dex: new ReportDexResponse(
+                slug: (string) $slug,
                 name: (string) $name,
                 frenchName: (string) $frenchName,
             ),
@@ -64,6 +68,9 @@ final class ReportResponseFactory
         /** @var scalar $count */
         $count = $row['nb'];
 
+        /** @var scalar $slug */
+        $slug = $row['slug'];
+
         /** @var scalar $name */
         $name = $row['name'];
 
@@ -76,6 +83,7 @@ final class ReportResponseFactory
         return new CatchStateUsageResponse(
             count: (int) $count,
             catchState: new ReportCatchStateResponse(
+                slug: (string) $slug,
                 name: (string) $name,
                 frenchName: (string) $frenchName,
                 color: (string) $color,

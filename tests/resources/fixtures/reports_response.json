@@ -17,6 +17,7 @@
     {
       "count": 2,
       "dex": {
+        "slug": "redgreenblueyellow",
         "name": "Red / Green / Blue / Yellow",
         "french_name": "Rouge / Vert / Bleu / Jaune"
       }
@@ -24,6 +25,7 @@
     {
       "count": 2,
       "dex": {
+        "slug": "goldsilvercrystal",
         "name": "Gold / Silver / Crystal",
         "french_name": "Or / Argent / Cristal"
       }
@@ -31,6 +33,7 @@
     {
       "count": 2,
       "dex": {
+        "slug": "home",
         "name": "Home",
         "french_name": "Home"
       }
@@ -38,6 +41,7 @@
     {
       "count": 1,
       "dex": {
+        "slug": "rubysapphireemerald",
         "name": "Ruby / Sapphire / Emerald",
         "french_name": "Rubis / Saphir / Émeraude"
       }
@@ -45,6 +49,7 @@
     {
       "count": 1,
       "dex": {
+        "slug": "homeshiny",
         "name": "Home\nShiny",
         "french_name": "Home\nChromatique"
       }
@@ -52,6 +57,7 @@
     {
       "count": 1,
       "dex": {
+        "slug": "homepogo",
         "name": "Home PoGo",
         "french_name": "Home PoGo"
       }
@@ -61,6 +67,7 @@
     {
       "count": 11,
       "catch_state": {
+        "slug": "no",
         "name": "No",
         "french_name": "Non",
         "color": "#e57373"
@@ -69,6 +76,7 @@
     {
       "count": 4,
       "catch_state": {
+        "slug": "maybe",
         "name": "Maybe",
         "french_name": "Peut être",
         "color": "blue"
@@ -77,6 +85,7 @@
     {
       "count": 5,
       "catch_state": {
+        "slug": "maybenot",
         "name": "Maybe not",
         "french_name": "Peut être pas",
         "color": "yellow"
@@ -85,6 +94,7 @@
     {
       "count": 11,
       "catch_state": {
+        "slug": "yes",
         "name": "Yes",
         "french_name": "Oui",
         "color": "#66bb6a"

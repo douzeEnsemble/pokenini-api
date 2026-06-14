@@ -43,11 +43,12 @@ final class ReportResponseFactoryTest extends TestCase
     #[Test]
     public function fromDexUsageRowTransformsRowCorrectly(): void
     {
-        $row = ['nb' => 2, 'name' => 'Red / Green', 'french_name' => 'Rouge / Vert'];
+        $row = ['nb' => 2, 'slug' => 'home', 'name' => 'Red / Green', 'french_name' => 'Rouge / Vert'];
 
         $response = ReportResponseFactory::fromDexUsageRow($row);
 
         self::assertSame(2, $response->count);
+        self::assertSame('home', $response->dex->slug);
         self::assertSame('Red / Green', $response->dex->name);
         self::assertSame('Rouge / Vert', $response->dex->frenchName);
     }
@@ -55,11 +56,12 @@ final class ReportResponseFactoryTest extends TestCase
     #[Test]
     public function fromDexUsageRowCastsToCorrectTypes(): void
     {
-        $row = ['nb' => '3', 'name' => 123, 'french_name' => 456];
+        $row = ['nb' => '3', 'slug' => 123, 'name' => 123, 'french_name' => 456];
 
         $response = ReportResponseFactory::fromDexUsageRow($row);
 
         self::assertSame(3, $response->count);
+        self::assertSame('123', $response->dex->slug);
         self::assertSame('123', $response->dex->name);
         self::assertSame('456', $response->dex->frenchName);
     }
@@ -67,11 +69,12 @@ final class ReportResponseFactoryTest extends TestCase
     #[Test]
     public function fromCatchStateUsageRowTransformsRowCorrectly(): void
     {
-        $row = ['nb' => 11, 'name' => 'No', 'french_name' => 'Non', 'color' => '#e57373'];
+        $row = ['nb' => 11, 'slug' => 'no', 'name' => 'No', 'french_name' => 'Non', 'color' => '#e57373'];
 
         $response = ReportResponseFactory::fromCatchStateUsageRow($row);
 
         self::assertSame(11, $response->count);
+        self::assertSame('no', $response->catchState->slug);
         self::assertSame('No', $response->catchState->name);
         self::assertSame('Non', $response->catchState->frenchName);
         self::assertSame('#e57373', $response->catchState->color);
@@ -80,11 +83,12 @@ final class ReportResponseFactoryTest extends TestCase
     #[Test]
     public function fromCatchStateUsageRowCastsToCorrectTypes(): void
     {
-        $row = ['nb' => '4', 'name' => 789, 'french_name' => 0, 'color' => 16711680];
+        $row = ['nb' => '4', 'slug' => 456, 'name' => 789, 'french_name' => 0, 'color' => 16711680];
 
         $response = ReportResponseFactory::fromCatchStateUsageRow($row);
 
         self::assertSame(4, $response->count);
+        self::assertSame('456', $response->catchState->slug);
         self::assertSame('789', $response->catchState->name);
         self::assertSame('0', $response->catchState->frenchName);
         self::assertSame('16711680', $response->catchState->color);
@@ -98,10 +102,10 @@ final class ReportResponseFactoryTest extends TestCase
             ['nb' => 3, 'trainer' => 'bd307a3ec329e10a2cff8fb87480823da114f8f4'],
         ];
         $dexUsage = [
-            ['nb' => 2, 'name' => 'Home', 'french_name' => 'Home'],
+            ['nb' => 2, 'slug' => 'home', 'name' => 'Home', 'french_name' => 'Home'],
         ];
         $catchStateUsage = [
-            ['nb' => 11, 'name' => 'No', 'french_name' => 'Non', 'color' => '#e57373'],
+            ['nb' => 11, 'slug' => 'no', 'name' => 'No', 'french_name' => 'Non', 'color' => '#e57373'],
         ];
 
         $report = ReportResponseFactory::fromServiceArrays($catchStateCounts, $dexUsage, $catchStateUsage);

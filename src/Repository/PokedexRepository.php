@@ -218,10 +218,10 @@ class PokedexRepository extends ServiceEntityRepository
     {
         $sql = <<<'SQL'
             SELECT      COUNT(DISTINCT td.trainer_external_id) AS nb,
-                            d.name, d.french_name
+                            d.slug, d.name, d.french_name
             FROM        dex AS d
                     JOIN trainer_dex AS td ON d.id = td.dex_id
-            GROUP BY    d.name, d.french_name, d.order_number
+            GROUP BY    d.slug, d.name, d.french_name, d.order_number
             HAVING      COUNT(DISTINCT td.trainer_external_id) > 0
             ORDER BY    nb DESC, d.order_number
             SQL;
@@ -236,11 +236,11 @@ class PokedexRepository extends ServiceEntityRepository
     {
         $sql = <<<'SQL'
             SELECT      COUNT(*) AS nb,
-                        cs.name, cs.french_name, cs.color
+                        cs.slug, cs.name, cs.french_name, cs.color
             FROM        pokedex AS p
                     LEFT JOIN catch_state AS cs
                         ON p.catch_state_id = cs.id
-            GROUP BY    cs.name, cs.french_name, cs.order_number, cs.color
+            GROUP BY    cs.slug, cs.name, cs.french_name, cs.order_number, cs.color
             ORDER BY    cs.order_number
             SQL;
 

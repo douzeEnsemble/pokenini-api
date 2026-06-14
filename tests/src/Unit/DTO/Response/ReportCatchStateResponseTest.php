@@ -19,11 +19,13 @@ final class ReportCatchStateResponseTest extends TestCase
     public function constructorInitializesProperties(): void
     {
         $response = new ReportCatchStateResponse(
+            slug: 'no',
             name: 'No',
             frenchName: 'Non',
             color: '#e57373',
         );
 
+        self::assertSame('no', $response->slug);
         self::assertSame('No', $response->name);
         self::assertSame('Non', $response->frenchName);
         self::assertSame('#e57373', $response->color);
@@ -33,11 +35,13 @@ final class ReportCatchStateResponseTest extends TestCase
     public function propertiesAreReadonly(): void
     {
         $response = new ReportCatchStateResponse(
+            slug: 'maybe',
             name: 'Maybe',
             frenchName: 'Peut être',
             color: 'blue',
         );
 
+        self::assertSame('maybe', $response->slug);
         self::assertSame('Maybe', $response->name);
         self::assertSame('Peut être', $response->frenchName);
         self::assertSame('blue', $response->color);

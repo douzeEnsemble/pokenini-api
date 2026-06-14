@@ -108,8 +108,10 @@ final class ReportsControllerTest extends WebTestCase
             self::assertIsInt($item['count']);
             self::assertArrayHasKey('dex', $item);
             self::assertIsArray($item['dex']);
+            self::assertArrayHasKey('slug', $item['dex']);
             self::assertArrayHasKey('name', $item['dex']);
             self::assertArrayHasKey('french_name', $item['dex']);
+            self::assertIsString($item['dex']['slug']);
             self::assertIsString($item['dex']['name']);
             self::assertIsString($item['dex']['french_name']);
         }
@@ -142,9 +144,11 @@ final class ReportsControllerTest extends WebTestCase
             self::assertIsInt($item['count']);
             self::assertArrayHasKey('catch_state', $item);
             self::assertIsArray($item['catch_state']);
+            self::assertArrayHasKey('slug', $item['catch_state']);
             self::assertArrayHasKey('name', $item['catch_state']);
             self::assertArrayHasKey('french_name', $item['catch_state']);
             self::assertArrayHasKey('color', $item['catch_state']);
+            self::assertIsString($item['catch_state']['slug']);
             self::assertIsString($item['catch_state']['name']);
             self::assertIsString($item['catch_state']['french_name']);
             self::assertIsString($item['catch_state']['color']);

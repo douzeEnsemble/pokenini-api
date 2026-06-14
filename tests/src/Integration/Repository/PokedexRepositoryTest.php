@@ -71,31 +71,37 @@ final class PokedexRepositoryTest extends KernelTestCase
             [
                 [
                     'nb' => 2,
+                    'slug' => 'redgreenblueyellow',
                     'name' => 'Red / Green / Blue / Yellow',
                     'french_name' => 'Rouge / Vert / Bleu / Jaune',
                 ],
                 [
                     'nb' => 2,
+                    'slug' => 'goldsilvercrystal',
                     'name' => 'Gold / Silver / Crystal',
                     'french_name' => 'Or / Argent / Cristal',
                 ],
                 [
                     'nb' => 2,
+                    'slug' => 'home',
                     'name' => 'Home',
                     'french_name' => 'Home',
                 ],
                 [
                     'nb' => 1,
+                    'slug' => 'rubysapphireemerald',
                     'name' => 'Ruby / Sapphire / Emerald',
                     'french_name' => 'Rubis / Saphir / Émeraude',
                 ],
                 [
                     'nb' => 1,
+                    'slug' => 'homeshiny',
                     'name' => "Home\nShiny",
                     'french_name' => "Home\nChromatique",
                 ],
                 [
                     'nb' => 1,
+                    'slug' => 'homepogo',
                     'name' => 'Home PoGo',
                     'french_name' => 'Home PoGo',
                 ],
