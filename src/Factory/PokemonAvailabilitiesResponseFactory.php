@@ -10,7 +10,9 @@ use App\DTO\GamesAvailabilities;
 use App\DTO\GamesShiniesAvailabilities;
 use App\DTO\Response\GameAvailabilityResponse;
 use App\DTO\Response\GameBundleAvailabilityResponse;
+use App\DTO\Response\GameBundlesAvailabilitiesGroupResponse;
 use App\DTO\Response\GameBundleSlugResponse;
+use App\DTO\Response\GamesAvailabilitiesGroupResponse;
 use App\DTO\Response\GameSlugResponse;
 use App\DTO\Response\PokemonAvailabilitiesResponse;
 
@@ -23,11 +25,13 @@ final class PokemonAvailabilitiesResponseFactory
         GameBundlesShiniesAvailabilities $gameBundlesShiniesAvailabilities,
     ): PokemonAvailabilitiesResponse {
         return new PokemonAvailabilitiesResponse(
-            gamesAvailabilities: self::gameAvailabilitiesFromMap($gamesAvailabilities->all()),
-            gamesShiniesAvailabilities: self::gameAvailabilitiesFromMap($gamesShiniesAvailabilities->all()),
-            gameBundlesAvailabilities: self::gameBundleAvailabilitiesFromMap($gameBundlesAvailabilities->all()),
-            gameBundlesShiniesAvailabilities: self::gameBundleAvailabilitiesFromMap(
-                $gameBundlesShiniesAvailabilities->all(),
+            games: new GamesAvailabilitiesGroupResponse(
+                normal: self::gameAvailabilitiesFromMap($gamesAvailabilities->all()),
+                shiny: self::gameAvailabilitiesFromMap($gamesShiniesAvailabilities->all()),
+            ),
+            gameBundles: new GameBundlesAvailabilitiesGroupResponse(
+                normal: self::gameBundleAvailabilitiesFromMap($gameBundlesAvailabilities->all()),
+                shiny: self::gameBundleAvailabilitiesFromMap($gameBundlesShiniesAvailabilities->all()),
             ),
         );
     }

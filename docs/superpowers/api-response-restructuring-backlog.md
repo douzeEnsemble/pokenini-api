@@ -119,7 +119,7 @@ Voir les plans existants dans `docs/superpowers/plans/` pour le pattern DTO + Fa
 
 ---
 
-- [ ] **`GET /debogage/pokemon/{slug}/availabilities`** — 4 listes plates → groupées par dimension *(breaking change)*
+- [x] **`GET /debogage/pokemon/{slug}/availabilities`** — 4 listes plates → groupées par dimension *(breaking change)*
 
   **Avant**
   ```json
