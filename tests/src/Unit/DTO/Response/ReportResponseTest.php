@@ -30,11 +30,11 @@ final class ReportResponseTest extends TestCase
         )];
         $dexUsage = [new DexUsageResponse(
             count: 2,
-            dex: new ReportDexResponse(name: 'Home', frenchName: 'Home'),
+            dex: new ReportDexResponse(slug: 'home', name: 'Home', frenchName: 'Home'),
         )];
         $catchStateUsage = [new CatchStateUsageResponse(
             count: 11,
-            catchState: new ReportCatchStateResponse(name: 'No', frenchName: 'Non', color: '#e57373'),
+            catchState: new ReportCatchStateResponse(slug: 'no', name: 'No', frenchName: 'Non', color: '#e57373'),
         )];
 
         $response = new ReportResponse(

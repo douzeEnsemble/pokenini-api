@@ -19,7 +19,7 @@ final class CatchStateUsageResponseTest extends TestCase
     #[Test]
     public function constructorInitializesProperties(): void
     {
-        $catchState = new ReportCatchStateResponse(name: 'No', frenchName: 'Non', color: '#e57373');
+        $catchState = new ReportCatchStateResponse(slug: 'no', name: 'No', frenchName: 'Non', color: '#e57373');
         $response = new CatchStateUsageResponse(
             count: 11,
             catchState: $catchState,
@@ -32,7 +32,7 @@ final class CatchStateUsageResponseTest extends TestCase
     #[Test]
     public function propertiesAreReadonly(): void
     {
-        $catchState = new ReportCatchStateResponse(name: 'Maybe', frenchName: 'Peut être', color: 'blue');
+        $catchState = new ReportCatchStateResponse(slug: 'maybe', name: 'Maybe', frenchName: 'Peut être', color: 'blue');
         $response = new CatchStateUsageResponse(
             count: 4,
             catchState: $catchState,

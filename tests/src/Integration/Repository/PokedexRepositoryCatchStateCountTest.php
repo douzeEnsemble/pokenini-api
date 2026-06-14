@@ -148,24 +148,28 @@ final class PokedexRepositoryCatchStateCountTest extends KernelTestCase
             [
                 [
                     'nb' => 11,
+                    'slug' => 'no',
                     'name' => 'No',
                     'french_name' => 'Non',
                     'color' => '#e57373',
                 ],
                 [
                     'nb' => 4,
+                    'slug' => 'maybe',
                     'name' => 'Maybe',
                     'french_name' => 'Peut être',
                     'color' => 'blue',
                 ],
                 [
                     'nb' => 5,
+                    'slug' => 'maybenot',
                     'name' => 'Maybe not',
                     'french_name' => 'Peut être pas',
                     'color' => 'yellow',
                 ],
                 [
                     'nb' => 11,
+                    'slug' => 'yes',
                     'name' => 'Yes',
                     'french_name' => 'Oui',
                     'color' => '#66bb6a',

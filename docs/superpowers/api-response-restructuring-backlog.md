@@ -70,7 +70,7 @@ Voir les plans existants dans `docs/superpowers/plans/` pour le pattern DTO + Fa
 
 ---
 
-- [ ] **`GET /reports`** — `slug` manquant dans `dex_usage.dex` et `catch_state_usage.catch_state`
+- [x] **`GET /reports`** — `slug` manquant dans `dex_usage.dex` et `catch_state_usage.catch_state`
 
   Les deux sont incohérents avec les autres endpoints. À vérifier : la requête SQL actuelle jointure peut-être uniquement `name`/`french_name` — une modification SQL peut être nécessaire en plus du DTO.
 

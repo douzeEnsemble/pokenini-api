@@ -19,7 +19,7 @@ final class DexUsageResponseTest extends TestCase
     #[Test]
     public function constructorInitializesProperties(): void
     {
-        $dex = new ReportDexResponse(name: 'Home', frenchName: 'Home');
+        $dex = new ReportDexResponse(slug: 'home', name: 'Home', frenchName: 'Home');
         $response = new DexUsageResponse(
             count: 2,
             dex: $dex,
@@ -32,7 +32,7 @@ final class DexUsageResponseTest extends TestCase
     #[Test]
     public function propertiesAreReadonly(): void
     {
-        $dex = new ReportDexResponse(name: 'Ruby / Sapphire / Emerald', frenchName: 'Rubis / Saphir / Émeraude');
+        $dex = new ReportDexResponse(slug: 'rubysapphireemerald', name: 'Ruby / Sapphire / Emerald', frenchName: 'Rubis / Saphir / Émeraude');
         $response = new DexUsageResponse(
             count: 1,
             dex: $dex,

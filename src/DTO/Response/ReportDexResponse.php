@@ -9,6 +9,7 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
 final class ReportDexResponse
 {
     public function __construct(
+        public readonly string $slug,
         public readonly string $name,
         #[SerializedName('french_name')]
         public readonly string $frenchName,
