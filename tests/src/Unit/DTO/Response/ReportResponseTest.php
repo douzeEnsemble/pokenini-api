@@ -9,8 +9,8 @@ use App\DTO\Response\DexUsageResponse;
 use App\DTO\Response\ReportCatchStateResponse;
 use App\DTO\Response\ReportDexResponse;
 use App\DTO\Response\ReportResponse;
-use App\DTO\Response\ReportTrainerResponse;
 use App\DTO\Response\TrainerCatchStateCountResponse;
+use App\DTO\Response\TrainerExternalIdResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -26,7 +26,7 @@ final class ReportResponseTest extends TestCase
     {
         $counts = [new TrainerCatchStateCountResponse(
             count: 28,
-            trainer: new ReportTrainerResponse(externalId: 'abc'),
+            trainer: new TrainerExternalIdResponse(externalId: 'abc'),
         )];
         $dexUsage = [new DexUsageResponse(
             count: 2,

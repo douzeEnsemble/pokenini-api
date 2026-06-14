@@ -10,6 +10,7 @@ use App\DTO\Response\ElectionVoteResultResponse;
 use App\DTO\Response\PokemonEloResponse;
 use App\DTO\Response\PokemonsEloResponse;
 use App\DTO\Response\PokemonSlugResponse;
+use App\DTO\Response\TrainerExternalIdResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -24,7 +25,7 @@ final class ElectionVoteResultResponseTest extends TestCase
     public function constructorInitializesProperties(): void
     {
         $electionVoteData = new ElectionVoteDataResponse(
-            trainerExternalId: 'trainer1',
+            trainer: new TrainerExternalIdResponse(externalId: 'trainer1'),
             dex: new DexSlugResponse(slug: 'national'),
             electionSlug: '',
             winners: [new PokemonSlugResponse(slug: 'pikachu')],

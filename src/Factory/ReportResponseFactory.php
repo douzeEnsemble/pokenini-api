@@ -9,8 +9,8 @@ use App\DTO\Response\DexUsageResponse;
 use App\DTO\Response\ReportCatchStateResponse;
 use App\DTO\Response\ReportDexResponse;
 use App\DTO\Response\ReportResponse;
-use App\DTO\Response\ReportTrainerResponse;
 use App\DTO\Response\TrainerCatchStateCountResponse;
+use App\DTO\Response\TrainerExternalIdResponse;
 
 final class ReportResponseFactory
 {
@@ -27,7 +27,7 @@ final class ReportResponseFactory
 
         return new TrainerCatchStateCountResponse(
             count: (int) $count,
-            trainer: new ReportTrainerResponse(
+            trainer: new TrainerExternalIdResponse(
                 externalId: (string) $trainer,
             ),
         );

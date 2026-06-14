@@ -19,7 +19,7 @@ final class ElectionVoteTest extends TestCase
     public function testOk(): void
     {
         $attributes = new ElectionVote([
-            'trainer_external_id' => '67865468',
+            'trainer' => ['external_id' => '67865468'],
             'dex_slug' => 'demo',
             'election_slug' => 'douze',
             'winners_slugs' => ['pikachu'],
@@ -36,7 +36,7 @@ final class ElectionVoteTest extends TestCase
     public function testMissingElectionSlug(): void
     {
         $attributes = new ElectionVote([
-            'trainer_external_id' => '67865468',
+            'trainer' => ['external_id' => '67865468'],
             'dex_slug' => 'demo',
             'winners_slugs' => ['pikachu'],
             'losers_slugs' => ['pichu', 'raichu'],
@@ -49,17 +49,24 @@ final class ElectionVoteTest extends TestCase
         $this->assertSame(['pichu', 'raichu'], $attributes->losersSlugs);
     }
 
-    public function testWrongValueForTrainerExternalId(): void
+    public function testWrongTypeForTrainer(): void
     {
         $this->expectException(InvalidOptionsException::class);
 
-        /**
-         * @psalm-suppress InvalidArgument
-         *
-         * @phpstan-ignore argument.type
-         */
         new ElectionVote([
-            'trainer_external_id' => 67865468,
+            'trainer' => 'not-an-array',
+            'dex_slug' => 'demo',
+            'winners_slugs' => ['pikachu'],
+            'losers_slugs' => ['pichu', 'raichu'],
+        ]);
+    }
+
+    public function testWrongTypeForTrainerExternalId(): void
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        new ElectionVote([
+            'trainer' => ['external_id' => 12345],
             'dex_slug' => 'demo',
             'winners_slugs' => ['pikachu'],
             'losers_slugs' => ['pichu', 'raichu'],
@@ -70,13 +77,8 @@ final class ElectionVoteTest extends TestCase
     {
         $this->expectException(InvalidOptionsException::class);
 
-        /**
-         * @psalm-suppress InvalidArgument
-         *
-         * @phpstan-ignore argument.type
-         */
         new ElectionVote([
-            'trainer_external_id' => '67865468',
+            'trainer' => ['external_id' => '67865468'],
             'dex_slug' => 'demo',
             'election_slug' => false,
             'winners_slugs' => ['pikachu'],
@@ -88,13 +90,8 @@ final class ElectionVoteTest extends TestCase
     {
         $this->expectException(InvalidOptionsException::class);
 
-        /**
-         * @psalm-suppress InvalidArgument
-         *
-         * @phpstan-ignore argument.type
-         */
         new ElectionVote([
-            'trainer_external_id' => '67865468',
+            'trainer' => ['external_id' => '67865468'],
             'dex_slug' => false,
             'election_slug' => 'fav',
             'winners_slugs' => ['pikachu'],
@@ -106,7 +103,7 @@ final class ElectionVoteTest extends TestCase
     {
         $this->expectException(InvalidOptionsException::class);
         new ElectionVote([
-            'trainer_external_id' => '67865468',
+            'trainer' => ['external_id' => '67865468'],
             'dex_slug' => 'demo',
             'winners_slugs' => 'pikachu',
             'losers_slugs' => ['pichu', 'raichu'],
@@ -117,7 +114,7 @@ final class ElectionVoteTest extends TestCase
     {
         $this->expectException(InvalidOptionsException::class);
         new ElectionVote([
-            'trainer_external_id' => '67865468',
+            'trainer' => ['external_id' => '67865468'],
             'dex_slug' => 'demo',
             'winners_slugs' => ['pikachu'],
             'losers_slugs' => 'pichu',
@@ -128,7 +125,7 @@ final class ElectionVoteTest extends TestCase
     {
         $this->expectException(UndefinedOptionsException::class);
         new ElectionVote([
-            'trainer_external_id' => '67865468',
+            'trainer' => ['external_id' => '67865468'],
             'dex_slug' => 'demo',
             'election_slug' => 'douze',
             'winners_slugs' => ['pikachu'],

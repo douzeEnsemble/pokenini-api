@@ -22,7 +22,7 @@ final class ElectionVoteResultResponseFactoryTest extends TestCase
     public function fromElectionVoteResultTransformsAllFields(): void
     {
         $electionVote = new ElectionVote([
-            'trainer_external_id' => 'trainer42',
+            'trainer' => ['external_id' => 'trainer42'],
             'dex_slug' => 'national',
             'election_slug' => 'gen1',
             'winners_slugs' => ['pikachu'],
@@ -39,7 +39,7 @@ final class ElectionVoteResultResponseFactoryTest extends TestCase
 
         $response = ElectionVoteResultResponseFactory::fromElectionVoteResult($result);
 
-        self::assertSame('trainer42', $response->electionVote->trainerExternalId);
+        self::assertSame('trainer42', $response->electionVote->trainer->externalId);
         self::assertSame('national', $response->electionVote->dex->slug);
         self::assertSame('gen1', $response->electionVote->electionSlug);
         self::assertCount(1, $response->electionVote->winners);
@@ -61,7 +61,7 @@ final class ElectionVoteResultResponseFactoryTest extends TestCase
     public function fromElectionVoteResultHandlesEmptyPokemonLists(): void
     {
         $electionVote = new ElectionVote([
-            'trainer_external_id' => 'trainer1',
+            'trainer' => ['external_id' => 'trainer1'],
             'dex_slug' => '',
             'election_slug' => '',
             'winners_slugs' => [],
@@ -71,6 +71,7 @@ final class ElectionVoteResultResponseFactoryTest extends TestCase
 
         $response = ElectionVoteResultResponseFactory::fromElectionVoteResult($result);
 
+        self::assertSame('trainer1', $response->electionVote->trainer->externalId);
         self::assertSame('', $response->electionVote->dex->slug);
         self::assertSame([], $response->electionVote->winners);
         self::assertSame([], $response->electionVote->losers);
@@ -82,7 +83,7 @@ final class ElectionVoteResultResponseFactoryTest extends TestCase
     public function fromElectionVoteResultHandlesAllWinners(): void
     {
         $electionVote = new ElectionVote([
-            'trainer_external_id' => 'trainer1',
+            'trainer' => ['external_id' => 'trainer1'],
             'dex_slug' => 'demo',
             'election_slug' => '',
             'winners_slugs' => ['caterpie', 'metapod', 'butterfree'],
@@ -118,7 +119,7 @@ final class ElectionVoteResultResponseFactoryTest extends TestCase
     public function fromElectionVoteResultHandlesAllLosers(): void
     {
         $electionVote = new ElectionVote([
-            'trainer_external_id' => 'trainer1',
+            'trainer' => ['external_id' => 'trainer1'],
             'dex_slug' => 'demo',
             'election_slug' => '',
             'winners_slugs' => [],
@@ -152,7 +153,7 @@ final class ElectionVoteResultResponseFactoryTest extends TestCase
     public function fromElectionVoteResultHandlesMissingPokemonEloKeys(): void
     {
         $electionVote = new ElectionVote([
-            'trainer_external_id' => 'trainer1',
+            'trainer' => ['external_id' => 'trainer1'],
             'dex_slug' => 'demo',
             'election_slug' => '',
             'winners_slugs' => [],

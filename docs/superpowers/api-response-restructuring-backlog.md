@@ -123,7 +123,7 @@ Voir les plans existants dans `docs/superpowers/plans/` pour le pattern DTO + Fa
 
 ---
 
-- [ ] **`POST /election/vote`** — `election_vote.trainer_external_id` plat → `trainer: { external_id }` *(breaking change)*
+- [x] **`POST /election/vote`** — `election_vote.trainer_external_id` plat → `trainer: { external_id }` *(breaking change)*
 
   Incohérent avec `/reports` où le trainer est `{ external_id: "..." }`.
 

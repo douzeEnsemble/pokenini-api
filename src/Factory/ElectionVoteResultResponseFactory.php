@@ -13,6 +13,7 @@ use App\DTO\Response\ElectionVoteResultResponse;
 use App\DTO\Response\PokemonEloResponse;
 use App\DTO\Response\PokemonsEloResponse;
 use App\DTO\Response\PokemonSlugResponse;
+use App\DTO\Response\TrainerExternalIdResponse;
 
 final class ElectionVoteResultResponseFactory
 {
@@ -27,7 +28,7 @@ final class ElectionVoteResultResponseFactory
     private static function buildElectionVoteData(ElectionVote $vote): ElectionVoteDataResponse
     {
         return new ElectionVoteDataResponse(
-            trainerExternalId: $vote->trainerExternalId,
+            trainer: new TrainerExternalIdResponse(externalId: $vote->trainerExternalId),
             dex: new DexSlugResponse(slug: $vote->dexSlug),
             electionSlug: $vote->electionSlug,
             winners: array_map(

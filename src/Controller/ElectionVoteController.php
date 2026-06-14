@@ -29,7 +29,7 @@ final class ElectionVoteController extends AbstractController
             throw new BadRequestHttpException();
         }
 
-        /** @var string[]|string[][] */
+        /** @var array<string, mixed> */
         $content = json_decode($json, true);
 
         if (!$content) {

@@ -30,7 +30,7 @@ final class ElectionVoteControllerTest extends WebTestCase
                 'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
                 'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
             ],
-            '{"trainer_external_id": "12", "dex_slug": "demo", "election_slug": "", "winners_slugs": ["butterfree"], "losers_slugs": ["caterpie", "metapod"]}',
+            '{"trainer": {"external_id": "12"}, "dex_slug": "demo", "election_slug": "", "winners_slugs": ["butterfree"], "losers_slugs": ["caterpie", "metapod"]}',
         );
 
         $this->assertResponseStatusCodeSame(200);
@@ -42,7 +42,7 @@ final class ElectionVoteControllerTest extends WebTestCase
         $this->assertSame(
             [
                 'election_vote' => [
-                    'trainer_external_id' => '12',
+                    'trainer' => ['external_id' => '12'],
                     'dex' => ['slug' => 'demo'],
                     'election_slug' => '',
                     'winners' => [
@@ -89,7 +89,7 @@ final class ElectionVoteControllerTest extends WebTestCase
                 'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
                 'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
             ],
-            '{"trainer_external_id": "7b52009b64fd0a2a49e6d8a939753077792b0554", "dex_slug": "demo", "election_slug": "", "winners_slugs": ["butterfree"], "losers_slugs": ["caterpie", "metapod"]}',
+            '{"trainer": {"external_id": "7b52009b64fd0a2a49e6d8a939753077792b0554"}, "dex_slug": "demo", "election_slug": "", "winners_slugs": ["butterfree"], "losers_slugs": ["caterpie", "metapod"]}',
         );
 
         $this->assertResponseStatusCodeSame(200);
@@ -101,7 +101,7 @@ final class ElectionVoteControllerTest extends WebTestCase
         $this->assertSame(
             [
                 'election_vote' => [
-                    'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                    'trainer' => ['external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554'],
                     'dex' => ['slug' => 'demo'],
                     'election_slug' => '',
                     'winners' => [
@@ -148,7 +148,7 @@ final class ElectionVoteControllerTest extends WebTestCase
                 'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
                 'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
             ],
-            '{"trainer_external_id": "7b52009b64fd0a2a49e6d8a939753077792b0554", "dex_slug": "demo", "election_slug": "", "winners_slugs": [], "losers_slugs": ["caterpie", "metapod", "butterfree"]}',
+            '{"trainer": {"external_id": "7b52009b64fd0a2a49e6d8a939753077792b0554"}, "dex_slug": "demo", "election_slug": "", "winners_slugs": [], "losers_slugs": ["caterpie", "metapod", "butterfree"]}',
         );
 
         $this->assertResponseStatusCodeSame(200);
@@ -160,7 +160,7 @@ final class ElectionVoteControllerTest extends WebTestCase
         $this->assertSame(
             [
                 'election_vote' => [
-                    'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                    'trainer' => ['external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554'],
                     'dex' => ['slug' => 'demo'],
                     'election_slug' => '',
                     'winners' => [],
@@ -205,7 +205,7 @@ final class ElectionVoteControllerTest extends WebTestCase
                 'PHP_AUTH_USER' => AbstractTestControllerApi::AUTH_USER,
                 'PHP_AUTH_PW' => AbstractTestControllerApi::AUTH_PASSWORD,
             ],
-            '{"trainer_external_id": "7b52009b64fd0a2a49e6d8a939753077792b0554", "dex_slug": "demo", "election_slug": "", "winners_slugs": ["caterpie", "metapod", "butterfree"], "losers_slugs": []}',
+            '{"trainer": {"external_id": "7b52009b64fd0a2a49e6d8a939753077792b0554"}, "dex_slug": "demo", "election_slug": "", "winners_slugs": ["caterpie", "metapod", "butterfree"], "losers_slugs": []}',
         );
 
         $this->assertResponseStatusCodeSame(200);
@@ -217,7 +217,7 @@ final class ElectionVoteControllerTest extends WebTestCase
         $this->assertSame(
             [
                 'election_vote' => [
-                    'trainer_external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
+                    'trainer' => ['external_id' => '7b52009b64fd0a2a49e6d8a939753077792b0554'],
                     'dex' => ['slug' => 'demo'],
                     'election_slug' => '',
                     'winners' => [

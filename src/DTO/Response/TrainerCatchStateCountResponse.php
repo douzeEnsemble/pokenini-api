@@ -8,6 +8,6 @@ final class TrainerCatchStateCountResponse
 {
     public function __construct(
         public readonly int $count,
-        public readonly ReportTrainerResponse $trainer,
+        public readonly TrainerExternalIdResponse $trainer,
     ) {}
 }
