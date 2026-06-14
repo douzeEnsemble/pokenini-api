@@ -7,6 +7,8 @@ namespace App\Factory;
 use App\DTO\Response\FormDebugResponse;
 use App\DTO\Response\GameBundleDebugResponse;
 use App\DTO\Response\GameGenerationDebugResponse;
+use App\DTO\Response\PokemonDebugBankResponse;
+use App\DTO\Response\PokemonDebugFamilyResponse;
 use App\DTO\Response\PokemonDebugFormsResponse;
 use App\DTO\Response\PokemonDebugResponse;
 use App\DTO\Response\PokemonDebugTypesResponse;
@@ -37,9 +39,8 @@ final class PokemonDebugResponseFactory
             formsLabel: $pokemon->formsLabel,
             formsFrenchLabel: $pokemon->formsFrenchLabel,
             nationalDexNumber: $pokemon->nationalDexNumber,
-            family: $pokemon->family,
-            bankable: $pokemon->bankable,
-            bankableish: $pokemon->bankableish,
+            family: new PokemonDebugFamilyResponse(slug: $pokemon->family),
+            bank: new PokemonDebugBankResponse(bankable: $pokemon->bankable, bankableish: $pokemon->bankableish),
             iconName: $pokemon->iconName,
             familyOrder: $pokemon->familyOrder,
             originalGameBundle: self::buildGameBundle($pokemon->originalGameBundle),

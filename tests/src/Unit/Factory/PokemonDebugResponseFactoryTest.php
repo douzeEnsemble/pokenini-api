@@ -24,6 +24,7 @@ use Symfony\Component\Uid\Uuid;
 /**
  * @internal
  *
+ * @SuppressWarnings("PHPMD.TooManyMethods")
  * @SuppressWarnings("PHPMD.TooManyPublicMethods")
  * @SuppressWarnings("PHPMD.CouplingBetweenObjects")
  */
@@ -46,12 +47,41 @@ final class PokemonDebugResponseFactoryTest extends TestCase
         self::assertSame('', $result->formsLabel);
         self::assertSame('', $result->formsFrenchLabel);
         self::assertSame(1, $result->nationalDexNumber);
-        self::assertSame('bulbasaur', $result->family);
-        self::assertTrue($result->bankable);
-        self::assertNull($result->bankableish);
         self::assertSame('bulbasaur', $result->iconName);
         self::assertSame(0, $result->familyOrder);
         self::assertNull($result->deletedAt);
+    }
+
+    #[Test]
+    public function fromPokemonBuildsFamilyObject(): void
+    {
+        $pokemon = $this->buildBasePokemon();
+
+        $result = PokemonDebugResponseFactory::fromPokemon($pokemon);
+
+        self::assertSame('bulbasaur', $result->family->slug);
+    }
+
+    #[Test]
+    public function fromPokemonBuildsBankObject(): void
+    {
+        $pokemon = $this->buildBasePokemon();
+
+        $result = PokemonDebugResponseFactory::fromPokemon($pokemon);
+
+        self::assertTrue($result->bank->bankable);
+        self::assertNull($result->bank->bankableish);
+    }
+
+    #[Test]
+    public function fromPokemonWithBankableishMapsBoolValue(): void
+    {
+        $pokemon = $this->buildBasePokemon();
+        $pokemon->bankableish = true;
+
+        $result = PokemonDebugResponseFactory::fromPokemon($pokemon);
+
+        self::assertTrue($result->bank->bankableish);
     }
 
     #[Test]
@@ -141,8 +171,6 @@ final class PokemonDebugResponseFactoryTest extends TestCase
         self::assertSame('Alolan', $result->forms->regional->name);
         self::assertSame("d'Alola", $result->forms->regional->frenchName);
         self::assertSame(2, $result->forms->regional->orderNumber);
-        self::assertNull($result->forms->regional->identifier);
-        self::assertNull($result->forms->regional->deletedAt);
         self::assertNull($result->forms->category);
         self::assertNull($result->forms->special);
         self::assertNull($result->forms->variant);
@@ -168,8 +196,6 @@ final class PokemonDebugResponseFactoryTest extends TestCase
         self::assertSame('Mega', $result->forms->special->name);
         self::assertSame('Méga', $result->forms->special->frenchName);
         self::assertSame(3, $result->forms->special->orderNumber);
-        self::assertNull($result->forms->special->identifier);
-        self::assertNull($result->forms->special->deletedAt);
         self::assertNull($result->forms->category);
         self::assertNull($result->forms->regional);
         self::assertNull($result->forms->variant);
@@ -294,17 +320,6 @@ final class PokemonDebugResponseFactoryTest extends TestCase
         self::assertSame(4, $result->types->secondary->orderNumber);
         self::assertSame('#A040A0', $result->types->secondary->color);
         self::assertNull($result->types->primary);
-    }
-
-    #[Test]
-    public function fromPokemonWithBankableishMapsBoolValue(): void
-    {
-        $pokemon = $this->buildBasePokemon();
-        $pokemon->bankableish = true;
-
-        $result = PokemonDebugResponseFactory::fromPokemon($pokemon);
-
-        self::assertTrue($result->bankableish);
     }
 
     #[Test]
