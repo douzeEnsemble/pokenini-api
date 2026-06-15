@@ -6,6 +6,7 @@ namespace App\Tests\Integration\Controller;
 
 use App\Controller\DexController;
 use App\DTO\Response\DexFlagsResponse;
+use App\DTO\Response\TrainerDexSettingsResponse;
 use App\Factory\TrainerDexResponseFactory;
 use App\Tests\Common\Traits\GetterTrait\GetTrainerDexTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -16,6 +17,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(DexController::class)]
 #[CoversClass(TrainerDexResponseFactory::class)]
 #[CoversClass(DexFlagsResponse::class)]
+#[CoversClass(TrainerDexSettingsResponse::class)]
 final class DexControllerTest extends AbstractTestControllerApi
 {
     use GetTrainerDexTrait;

@@ -209,7 +209,7 @@ Voir les plans existants dans `docs/superpowers/plans/` pour le pattern DTO + Fa
 
 ---
 
-- [ ] **`GET /dex/{trainerExternalId}/list`** — `name`, `french_name`, `slug`, `display_template` mélangés avec `dex: { slug }` → `settings: {...}` *(breaking change)*
+- [x] **`GET /dex/{trainerExternalId}/list`** — `name`, `french_name`, `slug`, `display_template` mélangés avec `dex: { slug }` → `settings: {...}` *(breaking change)*
 
   La distinction entre les données du dex d'origine et les overrides du trainer n'est pas lisible.
 
