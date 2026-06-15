@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\DTO\Response;
 
+use App\DTO\Response\GameBundlesGroupResponse;
 use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\PokemonDataResponse;
 use App\DTO\Response\PokemonSlugResponse;
@@ -20,11 +21,11 @@ final class PokemonDataResponseTest extends TestCase
     #[Test]
     public function constructorInitializesAllProperties(): void
     {
-        $gameBundles = [
+        $normalBundles = [
             new GameBundleSlugResponse(slug: 'rby'),
             new GameBundleSlugResponse(slug: 'gsc'),
         ];
-        $gameBundlesShiny = [
+        $shinyBundles = [
             new GameBundleSlugResponse(slug: 'rby'),
         ];
 
@@ -43,8 +44,7 @@ final class PokemonDataResponseTest extends TestCase
             familyLead: new PokemonSlugResponse(slug: 'pichu'),
             originalGameBundle: new GameBundleSlugResponse(slug: 'rby'),
             orderNumber: '0025.001',
-            gameBundles: $gameBundles,
-            gameBundlesShiny: $gameBundlesShiny,
+            gameBundles: new GameBundlesGroupResponse(normal: $normalBundles, shiny: $shinyBundles),
         );
 
         self::assertSame('pikachu', $response->slug);
@@ -63,14 +63,14 @@ final class PokemonDataResponseTest extends TestCase
         self::assertInstanceOf(GameBundleSlugResponse::class, $response->originalGameBundle);
         self::assertSame('rby', $response->originalGameBundle->slug);
         self::assertSame('0025.001', $response->orderNumber);
-        self::assertCount(2, $response->gameBundles);
-        self::assertInstanceOf(GameBundleSlugResponse::class, $response->gameBundles[0]);
-        self::assertSame('rby', $response->gameBundles[0]->slug);
-        self::assertInstanceOf(GameBundleSlugResponse::class, $response->gameBundles[1]);
-        self::assertSame('gsc', $response->gameBundles[1]->slug);
-        self::assertCount(1, $response->gameBundlesShiny);
-        self::assertInstanceOf(GameBundleSlugResponse::class, $response->gameBundlesShiny[0]);
-        self::assertSame('rby', $response->gameBundlesShiny[0]->slug);
+        self::assertCount(2, $response->gameBundles->normal);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $response->gameBundles->normal[0]);
+        self::assertSame('rby', $response->gameBundles->normal[0]->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $response->gameBundles->normal[1]);
+        self::assertSame('gsc', $response->gameBundles->normal[1]->slug);
+        self::assertCount(1, $response->gameBundles->shiny);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $response->gameBundles->shiny[0]);
+        self::assertSame('rby', $response->gameBundles->shiny[0]->slug);
     }
 
     #[Test]
@@ -91,8 +91,7 @@ final class PokemonDataResponseTest extends TestCase
             familyLead: null,
             originalGameBundle: null,
             orderNumber: '0001.001',
-            gameBundles: [],
-            gameBundlesShiny: [],
+            gameBundles: new GameBundlesGroupResponse(normal: [], shiny: []),
         );
 
         self::assertNull($response->regionalDexNumber);
@@ -103,7 +102,7 @@ final class PokemonDataResponseTest extends TestCase
         self::assertNull($response->icon);
         self::assertNull($response->familyLead);
         self::assertNull($response->originalGameBundle);
-        self::assertSame([], $response->gameBundles);
-        self::assertSame([], $response->gameBundlesShiny);
+        self::assertSame([], $response->gameBundles->normal);
+        self::assertSame([], $response->gameBundles->shiny);
     }
 }

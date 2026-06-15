@@ -9,6 +9,7 @@ use App\DTO\Response\ElectionPokemonResponse;
 use App\DTO\Response\ElectionPokemonsListResponse;
 use App\DTO\Response\FormResponse;
 use App\DTO\Response\FormsResponse;
+use App\DTO\Response\GameBundlesGroupResponse;
 use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\PokemonDataResponse;
 use App\DTO\Response\PokemonSlugResponse;
@@ -132,8 +133,10 @@ final class ElectionPokemonResponseFactory
                 ? new GameBundleSlugResponse(slug: (string) $originalGameBundleSlug)
                 : null,
             orderNumber: (string) $orderNumber,
-            gameBundles: $gameBundles,
-            gameBundlesShiny: $gameBundlesShiny,
+            gameBundles: new GameBundlesGroupResponse(
+                normal: $gameBundles,
+                shiny: $gameBundlesShiny,
+            ),
         );
     }
 

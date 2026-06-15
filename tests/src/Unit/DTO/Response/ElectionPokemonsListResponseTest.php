@@ -6,6 +6,7 @@ namespace App\Tests\Unit\DTO\Response;
 
 use App\DTO\Response\ElectionPokemonResponse;
 use App\DTO\Response\ElectionPokemonsListResponse;
+use App\DTO\Response\GameBundlesGroupResponse;
 use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\PokemonDataResponse;
 use App\DTO\Response\PokemonSlugResponse;
@@ -75,8 +76,7 @@ final class ElectionPokemonsListResponseTest extends TestCase
             familyLead: new PokemonSlugResponse(slug: 'bulbasaur'),
             originalGameBundle: new GameBundleSlugResponse(slug: 'redgreenblueyellow'),
             orderNumber: '9999-0001-000',
-            gameBundles: [],
-            gameBundlesShiny: [],
+            gameBundles: new GameBundlesGroupResponse(normal: [], shiny: []),
         );
 
         return new ElectionPokemonResponse(

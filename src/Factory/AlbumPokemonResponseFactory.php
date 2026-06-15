@@ -10,6 +10,7 @@ use App\DTO\Response\AlbumFormsResponse;
 use App\DTO\Response\AlbumPokemonResponse;
 use App\DTO\Response\AlbumTypeResponse;
 use App\DTO\Response\AlbumTypesResponse;
+use App\DTO\Response\GameBundlesGroupResponse;
 use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\PokemonDataResponse;
 use App\DTO\Response\PokemonSlugResponse;
@@ -127,8 +128,10 @@ final class AlbumPokemonResponseFactory
                 ? new GameBundleSlugResponse(slug: (string) $originalGameBundleSlug)
                 : null,
             orderNumber: (string) $orderNumber,
-            gameBundles: $gameBundles,
-            gameBundlesShiny: $gameBundlesShiny,
+            gameBundles: new GameBundlesGroupResponse(
+                normal: $gameBundles,
+                shiny: $gameBundlesShiny,
+            ),
         );
     }
 

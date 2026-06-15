@@ -10,9 +10,6 @@ final class PokemonDataResponse
 {
     /**
      * @SuppressWarnings("PHPMD.ExcessiveParameterList")
-     *
-     * @param array<GameBundleSlugResponse> $gameBundles
-     * @param array<GameBundleSlugResponse> $gameBundlesShiny
      */
     public function __construct(
         public readonly string $slug,
@@ -41,8 +38,6 @@ final class PokemonDataResponse
         #[SerializedName('order_number')]
         public readonly string $orderNumber,
         #[SerializedName('game_bundles')]
-        public readonly array $gameBundles,
-        #[SerializedName('game_bundles_shiny')]
-        public readonly array $gameBundlesShiny,
+        public readonly GameBundlesGroupResponse $gameBundles,
     ) {}
 }

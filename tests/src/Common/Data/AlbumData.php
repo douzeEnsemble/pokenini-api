@@ -813,8 +813,10 @@ final class AlbumData
                     ? ['slug' => $flat['original_game_bundle_slug']]
                     : null,
                 'order_number' => $flat['pokemon_order_number'],
-                'game_bundles' => array_map(static fn (string $slug): array => ['slug' => $slug], $gameBundles),
-                'game_bundles_shiny' => array_map(static fn (string $slug): array => ['slug' => $slug], $gameBundlesShiny),
+                'game_bundles' => [
+                    'normal' => array_map(static fn (string $slug): array => ['slug' => $slug], $gameBundles),
+                    'shiny' => array_map(static fn (string $slug): array => ['slug' => $slug], $gameBundlesShiny),
+                ],
             ],
             'catch_state' => self::buildNestedCatchState($flat),
             'forms' => self::buildNestedForms($flat),

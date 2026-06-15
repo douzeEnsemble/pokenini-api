@@ -47,14 +47,14 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
         self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->originalGameBundle);
         self::assertSame('redgreenblueyellow', $result->pokemon->originalGameBundle->slug);
         self::assertSame('0001-0001-000', $result->pokemon->orderNumber);
-        self::assertCount(2, $result->pokemon->gameBundles);
-        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles[0]);
-        self::assertSame('redgreenblueyellow', $result->pokemon->gameBundles[0]->slug);
-        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles[1]);
-        self::assertSame('goldsilvercrystal', $result->pokemon->gameBundles[1]->slug);
-        self::assertCount(1, $result->pokemon->gameBundlesShiny);
-        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundlesShiny[0]);
-        self::assertSame('redgreenblueyellow', $result->pokemon->gameBundlesShiny[0]->slug);
+        self::assertCount(2, $result->pokemon->gameBundles->normal);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles->normal[0]);
+        self::assertSame('redgreenblueyellow', $result->pokemon->gameBundles->normal[0]->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles->normal[1]);
+        self::assertSame('goldsilvercrystal', $result->pokemon->gameBundles->normal[1]->slug);
+        self::assertCount(1, $result->pokemon->gameBundles->shiny);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles->shiny[0]);
+        self::assertSame('redgreenblueyellow', $result->pokemon->gameBundles->shiny[0]->slug);
     }
 
     #[Test]
@@ -263,8 +263,8 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
 
         $result = AlbumPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertSame([], $result->pokemon->gameBundles);
-        self::assertSame([], $result->pokemon->gameBundlesShiny);
+        self::assertSame([], $result->pokemon->gameBundles->normal);
+        self::assertSame([], $result->pokemon->gameBundles->shiny);
     }
 
     #[Test]
@@ -276,8 +276,8 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
 
         $result = AlbumPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertSame([], $result->pokemon->gameBundles);
-        self::assertSame([], $result->pokemon->gameBundlesShiny);
+        self::assertSame([], $result->pokemon->gameBundles->normal);
+        self::assertSame([], $result->pokemon->gameBundles->shiny);
     }
 
     #[Test]
@@ -288,11 +288,11 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
 
         $result = AlbumPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertCount(2, $result->pokemon->gameBundles);
-        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles[0]);
-        self::assertSame('redgreenblueyellow', $result->pokemon->gameBundles[0]->slug);
-        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles[1]);
-        self::assertSame('goldsilvercrystal', $result->pokemon->gameBundles[1]->slug);
+        self::assertCount(2, $result->pokemon->gameBundles->normal);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles->normal[0]);
+        self::assertSame('redgreenblueyellow', $result->pokemon->gameBundles->normal[0]->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles->normal[1]);
+        self::assertSame('goldsilvercrystal', $result->pokemon->gameBundles->normal[1]->slug);
     }
 
     #[Test]
@@ -303,11 +303,11 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
 
         $result = AlbumPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertCount(2, $result->pokemon->gameBundlesShiny);
-        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundlesShiny[0]);
-        self::assertSame('redgreenblueyellow', $result->pokemon->gameBundlesShiny[0]->slug);
-        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundlesShiny[1]);
-        self::assertSame('goldsilvercrystal', $result->pokemon->gameBundlesShiny[1]->slug);
+        self::assertCount(2, $result->pokemon->gameBundles->shiny);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles->shiny[0]);
+        self::assertSame('redgreenblueyellow', $result->pokemon->gameBundles->shiny[0]->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles->shiny[1]);
+        self::assertSame('goldsilvercrystal', $result->pokemon->gameBundles->shiny[1]->slug);
     }
 
     #[Test]
@@ -371,11 +371,11 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
 
         $result = AlbumPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertCount(2, $result->pokemon->gameBundles);
-        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles[0]);
-        self::assertSame('redgreenblueyellow', $result->pokemon->gameBundles[0]->slug);
-        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles[1]);
-        self::assertSame('goldsilvercrystal', $result->pokemon->gameBundles[1]->slug);
+        self::assertCount(2, $result->pokemon->gameBundles->normal);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles->normal[0]);
+        self::assertSame('redgreenblueyellow', $result->pokemon->gameBundles->normal[0]->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles->normal[1]);
+        self::assertSame('goldsilvercrystal', $result->pokemon->gameBundles->normal[1]->slug);
     }
 
     #[Test]
@@ -386,11 +386,11 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
 
         $result = AlbumPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertCount(2, $result->pokemon->gameBundlesShiny);
-        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundlesShiny[0]);
-        self::assertSame('redgreenblueyellow', $result->pokemon->gameBundlesShiny[0]->slug);
-        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundlesShiny[1]);
-        self::assertSame('goldsilvercrystal', $result->pokemon->gameBundlesShiny[1]->slug);
+        self::assertCount(2, $result->pokemon->gameBundles->shiny);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles->shiny[0]);
+        self::assertSame('redgreenblueyellow', $result->pokemon->gameBundles->shiny[0]->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $result->pokemon->gameBundles->shiny[1]);
+        self::assertSame('goldsilvercrystal', $result->pokemon->gameBundles->shiny[1]->slug);
     }
 
     #[Test]
