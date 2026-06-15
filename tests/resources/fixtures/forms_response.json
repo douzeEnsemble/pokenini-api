@@ -1,0 +1,27 @@
+{
+    "category": [
+        {"slug": "starter", "name": "Starter", "french_name": "de Départ"},
+        {"slug": "mythical", "name": "Mythical", "french_name": "Fabuleux"},
+        {"slug": "legendary", "name": "Legendary", "french_name": "Légendaire"}
+    ],
+    "regional": [
+        {"slug": "alolan", "name": "Alolan", "french_name": "d'Alola"},
+        {"slug": "galarian", "name": "Galarian", "french_name": "de Galar"},
+        {"slug": "hisuian", "name": "Hisuian", "french_name": "de Hisui"}
+    ],
+    "special": [
+        {"slug": "mega", "name": "Mega", "french_name": "Mega"},
+        {"slug": "gigantamax", "name": "Gigantamax", "french_name": "Gigamax"},
+        {"slug": "alpha", "name": "Alpha", "french_name": "Baron"},
+        {"slug": "totem", "name": "Totem", "french_name": "Dominant"}
+    ],
+    "variant": [
+        {"slug": "gender", "name": "Gender", "french_name": "Sexe"},
+        {"slug": "alternate", "name": "Alternate", "french_name": "Alternatif"},
+        {"slug": "baby", "name": "Baby", "french_name": "Bébé"},
+        {"slug": "battle", "name": "Battle", "french_name": "Combat"},
+        {"slug": "item", "name": "Item", "french_name": "Objet"},
+        {"slug": "fusion", "name": "Fusion", "french_name": "Fusion"},
+        {"slug": "unobtainable", "name": "Unobtainable", "french_name": "Non obtenable"}
+    ]
+}

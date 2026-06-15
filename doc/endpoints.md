@@ -25,38 +25,35 @@ curl -u web:douze http://web:8080/types
 | 2 | GET | `/catch_states` | Liste des états de capture |
 | 3 | GET | `/collections` | Liste des collections |
 | 4 | GET | `/game_bundles` | Liste des bundles de jeux |
-| 5 | GET | `/forms/category` | Formes « catégorie » |
-| 6 | GET | `/forms/regional` | Formes régionales |
-| 7 | GET | `/forms/special` | Formes spéciales |
-| 8 | GET | `/forms/variant` | Formes variantes |
-| 9 | GET | `/reports` | Statistiques d'usage globales |
-| 10 | GET | `/dex/can_hold_election` | Dex pouvant tenir une élection |
-| 11 | GET | `/dex/{trainerExternalId}/list` | Liste des dex d'un dresseur |
-| 12 | PUT | `/dex/{trainerExternalId}/{dexSlug}` | Modifier les attributs d'un dex de dresseur |
-| 13 | GET | `/album/{trainerExternalId}/{dexSlug}` | Album (dex + pokémons + rapports), filtrable |
-| 14 | PUT | `/album/{trainerExternalId}/{dexSlug}/{pokemonSlug}` | Créer l'état de capture d'un pokémon |
-| 15 | PATCH | `/album/{trainerExternalId}/{dexSlug}/{pokemonSlug}` | Mettre à jour l'état de capture d'un pokémon |
-| 16 | GET | `/pokemons/to_choose` | N pokémons à départager (élection) |
-| 17 | POST | `/election/vote` | Enregistrer un vote d'élection (ELO) |
-| 18 | GET | `/election/top` | Top N ELO d'une élection |
-| 19 | GET | `/election/metrics` | Métriques d'une élection |
-| 20 | GET | `/action_logs` | Journal des dernières actions asynchrones |
-| 21 | POST | `/istration/calculate/game_bundles_availabilities` | (Async) Calcul disponibilités par bundle |
-| 22 | POST | `/istration/calculate/game_bundles_shinies_availabilities` | (Async) Calcul disponibilités shiny par bundle |
-| 23 | POST | `/istration/calculate/dex_availabilities` | (Async) Calcul disponibilités par dex |
-| 24 | POST | `/istration/calculate/pokemon_availabilities` | (Async) Calcul disponibilités par pokémon |
-| 25 | POST | `/istration/update/labels` | (Async) Sync labels depuis Google Sheets |
-| 26 | POST | `/istration/update/games_collections_and_dex` | (Async) Sync jeux, collections et dex |
-| 27 | POST | `/istration/update/pokemons` | (Async) Sync pokémons |
-| 28 | POST | `/istration/update/regional_dex_numbers` | (Async) Sync numéros de dex régionaux |
-| 29 | POST | `/istration/update/games_availabilities` | (Async) Sync disponibilités par jeu |
-| 30 | POST | `/istration/update/games_shinies_availabilities` | (Async) Sync disponibilités shiny par jeu |
-| 31 | POST | `/istration/update/collections_availabilities` | (Async) Sync disponibilités par collection |
-| 32 | GET | `/debogage/dex/{slug}` | (Debug) Détail brut d'un dex |
-| 33 | GET | `/debogage/dex/{slug}/availabilities` | (Debug) Pokémons disponibles dans un dex |
-| 34 | GET | `/debogage/pokemon/{slug}` | (Debug) Détail brut d'un pokémon |
-| 35 | GET | `/debogage/pokemon/{slug}/availabilities` | (Debug) Disponibilités d'un pokémon |
-| 36 | DELETE | `/debogage/pokemon/{slug}/caches` | (Debug) Purge des caches de disponibilités d'un pokémon |
+| 5 | GET | `/forms` | Toutes les formes groupées par type |
+| 6 | GET | `/reports` | Statistiques d'usage globales |
+| 7 | GET | `/dex/can_hold_election` | Dex pouvant tenir une élection |
+| 8 | GET | `/dex/{trainerExternalId}/list` | Liste des dex d'un dresseur |
+| 9 | PUT | `/dex/{trainerExternalId}/{dexSlug}` | Modifier les attributs d'un dex de dresseur |
+| 10 | GET | `/album/{trainerExternalId}/{dexSlug}` | Album (dex + pokémons + rapports), filtrable |
+| 11 | PUT | `/album/{trainerExternalId}/{dexSlug}/{pokemonSlug}` | Créer l'état de capture d'un pokémon |
+| 12 | PATCH | `/album/{trainerExternalId}/{dexSlug}/{pokemonSlug}` | Mettre à jour l'état de capture d'un pokémon |
+| 13 | GET | `/pokemons/to_choose` | N pokémons à départager (élection) |
+| 14 | POST | `/election/vote` | Enregistrer un vote d'élection (ELO) |
+| 15 | GET | `/election/top` | Top N ELO d'une élection |
+| 16 | GET | `/election/metrics` | Métriques d'une élection |
+| 17 | GET | `/action_logs` | Journal des dernières actions asynchrones |
+| 18 | POST | `/istration/calculate/game_bundles_availabilities` | (Async) Calcul disponibilités par bundle |
+| 19 | POST | `/istration/calculate/game_bundles_shinies_availabilities` | (Async) Calcul disponibilités shiny par bundle |
+| 20 | POST | `/istration/calculate/dex_availabilities` | (Async) Calcul disponibilités par dex |
+| 21 | POST | `/istration/calculate/pokemon_availabilities` | (Async) Calcul disponibilités par pokémon |
+| 22 | POST | `/istration/update/labels` | (Async) Sync labels depuis Google Sheets |
+| 23 | POST | `/istration/update/games_collections_and_dex` | (Async) Sync jeux, collections et dex |
+| 24 | POST | `/istration/update/pokemons` | (Async) Sync pokémons |
+| 25 | POST | `/istration/update/regional_dex_numbers` | (Async) Sync numéros de dex régionaux |
+| 26 | POST | `/istration/update/games_availabilities` | (Async) Sync disponibilités par jeu |
+| 27 | POST | `/istration/update/games_shinies_availabilities` | (Async) Sync disponibilités shiny par jeu |
+| 28 | POST | `/istration/update/collections_availabilities` | (Async) Sync disponibilités par collection |
+| 29 | GET | `/debogage/dex/{slug}` | (Debug) Détail brut d'un dex |
+| 30 | GET | `/debogage/dex/{slug}/availabilities` | (Debug) Pokémons disponibles dans un dex |
+| 31 | GET | `/debogage/pokemon/{slug}` | (Debug) Détail brut d'un pokémon |
+| 32 | GET | `/debogage/pokemon/{slug}/availabilities` | (Debug) Disponibilités d'un pokémon |
+| 33 | DELETE | `/debogage/pokemon/{slug}/caches` | (Debug) Purge des caches de disponibilités d'un pokémon |
 
 > **Note** : le préfixe d'administration est littéralement `/istration` (et non `/administration`), et le préfixe de debug est `/debogage`.
 
@@ -220,133 +217,46 @@ Codes de statut : `200`, `401`.
 
 ---
 
-### 5. GET `/forms/category`
+### 5. GET `/forms`
 
-Formes « catégorie » (starter, mythique, légendaire…).
+Toutes les formes groupées par type : catégorie, régionale, spéciale, variante.
 
 **Paramètres** : aucun.
 
 Exemple de requête :
 
 ```bash
-curl -u web:douze http://web:8080/forms/category
+curl -u web:douze http://web:8080/forms
 ```
 
 Exemple de réponse (`200`) :
 
 ```json
-[
-  {
-    "slug": "starter",
-    "name": "Starter",
-    "french_name": "de Départ"
-  },
-  {
-    "slug": "mythical",
-    "name": "Mythical",
-    "french_name": "Fabuleux"
-  }
-]
+{
+  "category": [
+    { "slug": "starter", "name": "Starter", "french_name": "de Départ" },
+    { "slug": "mythical", "name": "Mythical", "french_name": "Fabuleux" }
+  ],
+  "regional": [
+    { "slug": "alolan", "name": "Alolan", "french_name": "d'Alola" },
+    { "slug": "galarian", "name": "Galarian", "french_name": "de Galar" }
+  ],
+  "special": [
+    { "slug": "mega", "name": "Mega", "french_name": "Mega" },
+    { "slug": "gigantamax", "name": "Gigantamax", "french_name": "Gigamax" }
+  ],
+  "variant": [
+    { "slug": "gender", "name": "Gender", "french_name": "Sexe" },
+    { "slug": "alternate", "name": "Alternate", "french_name": "Alternatif" }
+  ]
+}
 ```
 
 Codes de statut : `200`, `401`.
 
 ---
 
-### 6. GET `/forms/regional`
-
-Formes régionales (Alola, Galar, Hisui…). Même structure que `/forms/category`.
-
-Exemple de requête :
-
-```bash
-curl -u web:douze http://web:8080/forms/regional
-```
-
-Exemple de réponse (`200`) :
-
-```json
-[
-  {
-    "slug": "alolan",
-    "name": "Alolan",
-    "french_name": "d'Alola"
-  },
-  {
-    "slug": "galarian",
-    "name": "Galarian",
-    "french_name": "de Galar"
-  }
-]
-```
-
-Codes de statut : `200`, `401`.
-
----
-
-### 7. GET `/forms/special`
-
-Formes spéciales (Méga, Gigamax…). Même structure que `/forms/category`.
-
-Exemple de requête :
-
-```bash
-curl -u web:douze http://web:8080/forms/special
-```
-
-Exemple de réponse (`200`) :
-
-```json
-[
-  {
-    "slug": "mega",
-    "name": "Mega",
-    "french_name": "Mega"
-  },
-  {
-    "slug": "gigantamax",
-    "name": "Gigantamax",
-    "french_name": "Gigamax"
-  }
-]
-```
-
-Codes de statut : `200`, `401`.
-
----
-
-### 8. GET `/forms/variant`
-
-Formes variantes (sexe, forme alternative…). Même structure que `/forms/category`.
-
-Exemple de requête :
-
-```bash
-curl -u web:douze http://web:8080/forms/variant
-```
-
-Exemple de réponse (`200`) :
-
-```json
-[
-  {
-    "slug": "gender",
-    "name": "Gender",
-    "french_name": "Sexe"
-  },
-  {
-    "slug": "alternate",
-    "name": "Alternate",
-    "french_name": "Alternatif"
-  }
-]
-```
-
-Codes de statut : `200`, `401`.
-
----
-
-### 9. GET `/reports`
+### 6. GET `/reports`
 
 Statistiques d'usage globales : nombre d'états de capture définis par dresseur, usage des dex, usage des états de capture.
 
@@ -419,7 +329,7 @@ Codes de statut : `200`, `401`.
 
 ## Dex
 
-### 10. GET `/dex/can_hold_election`
+### 7. GET `/dex/can_hold_election`
 
 Liste des dex éligibles à une élection (flag `can_hold_election`).
 
@@ -465,7 +375,7 @@ Codes de statut : `200`, `401`.
 
 ---
 
-### 11. GET `/dex/{trainerExternalId}/list`
+### 8. GET `/dex/{trainerExternalId}/list`
 
 Liste des dex d'un dresseur (avec ses personnalisations éventuelles : dex custom, slug personnalisé…).
 
@@ -531,7 +441,7 @@ Codes de statut : `200`, `401`.
 
 ---
 
-### 12. PUT `/dex/{trainerExternalId}/{dexSlug}`
+### 9. PUT `/dex/{trainerExternalId}/{dexSlug}`
 
 Modifie les attributs du dex d'un dresseur (visibilité, affichage sur la home).
 
@@ -566,7 +476,7 @@ Codes de statut : `200`, `400` (corps absent, JSON invalide ou champ inconnu/mal
 
 ## Album
 
-### 13. GET `/album/{trainerExternalId}/{dexSlug}`
+### 10. GET `/album/{trainerExternalId}/{dexSlug}`
 
 Retourne l'album d'un dresseur pour un dex : le dex, la liste des pokémons (avec état de capture), un rapport global et un rapport filtré.
 
@@ -713,7 +623,7 @@ Codes de statut : `200`, `401`.
 
 ---
 
-### 14. PUT `/album/{trainerExternalId}/{dexSlug}/{pokemonSlug}`
+### 11. PUT `/album/{trainerExternalId}/{dexSlug}/{pokemonSlug}`
 
 Crée (upsert) l'état de capture d'un pokémon dans l'album d'un dresseur. Crée aussi l'association dresseur/dex si elle n'existe pas encore.
 
@@ -742,7 +652,7 @@ Codes de statut : `201`, `400` (corps vide ou slug inexistant — violation de c
 
 ---
 
-### 15. PATCH `/album/{trainerExternalId}/{dexSlug}/{pokemonSlug}`
+### 12. PATCH `/album/{trainerExternalId}/{dexSlug}/{pokemonSlug}`
 
 Identique au PUT (même upsert), mais répond `200` au lieu de `201`.
 
@@ -763,7 +673,7 @@ Codes de statut : `200`, `400`, `401`.
 
 ## Élections (ELO)
 
-### 16. GET `/pokemons/to_choose`
+### 13. GET `/pokemons/to_choose`
 
 Retourne N pokémons à présenter au dresseur pour une élection. Le champ `type` indique le mode : `pick` (premier passage, sélection) ou `vote` (départage ELO).
 
@@ -832,7 +742,7 @@ Codes de statut : `200`, `401`, `500` (paramètre requis manquant — erreur `Op
 
 ---
 
-### 17. POST `/election/vote`
+### 14. POST `/election/vote`
 
 Enregistre un vote d'élection : les gagnants et les perdants d'un duel/sélection. Met à jour les scores ELO et retourne les nouveaux scores.
 
@@ -902,7 +812,7 @@ Codes de statut : `200`, `400` (corps vide, JSON invalide ou champ requis manqua
 
 ---
 
-### 18. GET `/election/top`
+### 15. GET `/election/top`
 
 Top N des pokémons d'une élection, triés par score ELO.
 
@@ -964,7 +874,7 @@ Codes de statut : `200`, `401`, `500` (paramètre requis manquant).
 
 ---
 
-### 19. GET `/election/metrics`
+### 16. GET `/election/metrics`
 
 Métriques d'avancement d'une élection (vues, victoires, plafonds).
 
@@ -1008,7 +918,7 @@ Codes de statut : `200`, `401`, `500` (paramètre requis manquant).
 
 ## Suivi des actions asynchrones
 
-### 20. GET `/action_logs`
+### 17. GET `/action_logs`
 
 Journal des deux dernières exécutions (`current` et `last`) de chaque action asynchrone (déclenchées par les endpoints `/istration/...`). La réponse est un objet indexé par le type d'action.
 
@@ -1090,22 +1000,22 @@ Codes de statut : `201`, `401`.
 
 | # | Chemin | Action (clé dans `/action_logs`) | Description |
 |---|--------|----------------------------------|-------------|
-| 21 | POST `/istration/calculate/game_bundles_availabilities` | `calculate_game_bundles_availabilities` | Recalcule les disponibilités agrégées par bundle de jeux |
-| 22 | POST `/istration/calculate/game_bundles_shinies_availabilities` | `calculate_game_bundles_shinies_availabilities` | Recalcule les disponibilités shiny agrégées par bundle |
-| 23 | POST `/istration/calculate/dex_availabilities` | `calculate_dex_availabilities` | Recalcule les pokémons disponibles par dex |
-| 24 | POST `/istration/calculate/pokemon_availabilities` | `calculate_pokemon_availabilities` | Recalcule les disponibilités par pokémon |
+| 18 | POST `/istration/calculate/game_bundles_availabilities` | `calculate_game_bundles_availabilities` | Recalcule les disponibilités agrégées par bundle de jeux |
+| 19 | POST `/istration/calculate/game_bundles_shinies_availabilities` | `calculate_game_bundles_shinies_availabilities` | Recalcule les disponibilités shiny agrégées par bundle |
+| 20 | POST `/istration/calculate/dex_availabilities` | `calculate_dex_availabilities` | Recalcule les pokémons disponibles par dex |
+| 21 | POST `/istration/calculate/pokemon_availabilities` | `calculate_pokemon_availabilities` | Recalcule les disponibilités par pokémon |
 
 ### Synchronisations Google Sheets (`/istration/update`)
 
 | # | Chemin | Action (clé dans `/action_logs`) | Description |
 |---|--------|----------------------------------|-------------|
-| 25 | POST `/istration/update/labels` | `update_labels` | Sync des labels (noms, formes) |
-| 26 | POST `/istration/update/games_collections_and_dex` | `update_games_collections_and_dex` | Sync des jeux, collections et dex |
-| 27 | POST `/istration/update/pokemons` | `update_pokemons` | Sync des pokémons |
-| 28 | POST `/istration/update/regional_dex_numbers` | `update_regional_dex_numbers` | Sync des numéros de dex régionaux |
-| 29 | POST `/istration/update/games_availabilities` | `update_games_availabilities` | Sync des disponibilités par jeu |
-| 30 | POST `/istration/update/games_shinies_availabilities` | `update_games_shinies_availabilities` | Sync des disponibilités shiny par jeu |
-| 31 | POST `/istration/update/collections_availabilities` | `update_collections_availabilities` | Sync des disponibilités par collection |
+| 22 | POST `/istration/update/labels` | `update_labels` | Sync des labels (noms, formes) |
+| 23 | POST `/istration/update/games_collections_and_dex` | `update_games_collections_and_dex` | Sync des jeux, collections et dex |
+| 24 | POST `/istration/update/pokemons` | `update_pokemons` | Sync des pokémons |
+| 25 | POST `/istration/update/regional_dex_numbers` | `update_regional_dex_numbers` | Sync des numéros de dex régionaux |
+| 26 | POST `/istration/update/games_availabilities` | `update_games_availabilities` | Sync des disponibilités par jeu |
+| 27 | POST `/istration/update/games_shinies_availabilities` | `update_games_shinies_availabilities` | Sync des disponibilités shiny par jeu |
+| 28 | POST `/istration/update/collections_availabilities` | `update_collections_availabilities` | Sync des disponibilités par collection |
 
 ---
 
@@ -1113,7 +1023,7 @@ Codes de statut : `201`, `401`.
 
 Les entités sont résolues par slug via `#[MapEntity]` : un slug inconnu produit un **404**.
 
-### 32. GET `/debogage/dex/{slug}`
+### 29. GET `/debogage/dex/{slug}`
 
 Détail brut d'un dex (toutes colonnes, y compris `identifier` UUID et `deleted_at`).
 
@@ -1167,7 +1077,7 @@ Codes de statut : `200`, `401`, `404`.
 
 ---
 
-### 33. GET `/debogage/dex/{slug}/availabilities`
+### 30. GET `/debogage/dex/{slug}/availabilities`
 
 Liste des slugs de pokémons disponibles dans un dex (résultat du calcul `dex_availabilities`).
 
@@ -1197,7 +1107,7 @@ Codes de statut : `200`, `401`, `404`.
 
 ---
 
-### 34. GET `/debogage/pokemon/{slug}`
+### 31. GET `/debogage/pokemon/{slug}`
 
 Détail brut d'un pokémon (toutes colonnes, formes et types détaillés).
 
@@ -1286,7 +1196,7 @@ Codes de statut : `200`, `401`, `404`.
 
 ---
 
-### 35. GET `/debogage/pokemon/{slug}/availabilities`
+### 32. GET `/debogage/pokemon/{slug}/availabilities`
 
 Disponibilités calculées d'un pokémon, par jeu et par bundle (normal et shiny). Chaque liste contient des objets `{ game | game_bundle, is_available }`.
 
@@ -1325,7 +1235,7 @@ Codes de statut : `200`, `401`, `404`.
 
 ---
 
-### 36. DELETE `/debogage/pokemon/{slug}/caches`
+### 33. DELETE `/debogage/pokemon/{slug}/caches`
 
 Purge les caches de disponibilités d'un pokémon (jeux, jeux shiny, bundles, bundles shiny, collections).
 

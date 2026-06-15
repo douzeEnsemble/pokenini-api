@@ -240,7 +240,7 @@ Voir les plans existants dans `docs/superpowers/plans/` pour le pattern DTO + Fa
 
 ---
 
-- [ ] **`/forms/category` + `/forms/regional` + `/forms/special` + `/forms/variant`** — 4 endpoints identiques → 1 endpoint `/forms` *(breaking change)*
+- [x] **`/forms/category` + `/forms/regional` + `/forms/special` + `/forms/variant`** — 4 endpoints identiques → 1 endpoint `/forms` *(breaking change)*
 
   4 appels réseau distincts pour une même ressource logique.
 
