@@ -13,6 +13,7 @@ use App\DTO\Response\AlbumTypesResponse;
 use App\DTO\Response\GameBundlesGroupResponse;
 use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\PokemonDataResponse;
+use App\DTO\Response\PokemonLabelsResponse;
 use App\DTO\Response\PokemonSlugResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -29,14 +30,16 @@ final class AlbumPokemonResponseTest extends TestCase
     {
         $pokemon = new PokemonDataResponse(
             slug: 'bulbasaur',
-            name: 'Bulbasaur',
-            frenchName: 'Bulbizarre',
+            labels: new PokemonLabelsResponse(
+                name: 'Bulbasaur',
+                frenchName: 'Bulbizarre',
+                simplifiedName: 'Bulbasaur',
+                simplifiedFrenchName: 'Bulbizarre',
+                formsLabel: '',
+                formsFrenchLabel: '',
+            ),
             nationalDexNumber: 1,
             regionalDexNumber: 1,
-            simplifiedName: 'Bulbasaur',
-            formsLabel: '',
-            simplifiedFrenchName: 'Bulbizarre',
-            formsFrenchLabel: '',
             icon: 'bulbasaur',
             familyOrder: 0,
             familyLead: new PokemonSlugResponse(slug: 'bulbasaur'),
@@ -77,14 +80,16 @@ final class AlbumPokemonResponseTest extends TestCase
     {
         $pokemon = new PokemonDataResponse(
             slug: 'douze',
-            name: 'Douze',
-            frenchName: 'Douze',
+            labels: new PokemonLabelsResponse(
+                name: 'Douze',
+                frenchName: 'Douze',
+                simplifiedName: 'Douze',
+                simplifiedFrenchName: 'Douze',
+                formsLabel: '',
+                formsFrenchLabel: '',
+            ),
             nationalDexNumber: 9912,
             regionalDexNumber: null,
-            simplifiedName: 'Douze',
-            formsLabel: '',
-            simplifiedFrenchName: 'Douze',
-            formsFrenchLabel: '',
             icon: 'douze',
             familyOrder: 0,
             familyLead: new PokemonSlugResponse(slug: 'douze'),

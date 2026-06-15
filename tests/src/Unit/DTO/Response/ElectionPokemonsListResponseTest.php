@@ -9,6 +9,7 @@ use App\DTO\Response\ElectionPokemonsListResponse;
 use App\DTO\Response\GameBundlesGroupResponse;
 use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\PokemonDataResponse;
+use App\DTO\Response\PokemonLabelsResponse;
 use App\DTO\Response\PokemonSlugResponse;
 use App\DTO\Response\TypesResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -63,14 +64,16 @@ final class ElectionPokemonsListResponseTest extends TestCase
     {
         $pokemon = new PokemonDataResponse(
             slug: 'bulbasaur',
-            name: 'Bulbasaur',
-            frenchName: 'Bulbizarre',
+            labels: new PokemonLabelsResponse(
+                name: 'Bulbasaur',
+                frenchName: 'Bulbizarre',
+                simplifiedName: 'Bulbasaur',
+                simplifiedFrenchName: 'Bulbizarre',
+                formsLabel: '',
+                formsFrenchLabel: '',
+            ),
             nationalDexNumber: 1,
             regionalDexNumber: null,
-            simplifiedName: 'Bulbasaur',
-            formsLabel: '',
-            simplifiedFrenchName: 'Bulbizarre',
-            formsFrenchLabel: '',
             icon: 'bulbasaur',
             familyOrder: 0,
             familyLead: new PokemonSlugResponse(slug: 'bulbasaur'),

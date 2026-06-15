@@ -176,7 +176,7 @@ Voir les plans existants dans `docs/superpowers/plans/` pour le pattern DTO + Fa
 
 ---
 
-- [ ] **`GET /album` + `GET /pokemons/to_choose` + `GET /election/top`** — 6 champs de noms épars dans `pokemon` → `labels: {...}` *(breaking change)*
+- [x] **`GET /album` + `GET /pokemons/to_choose` + `GET /election/top`** — 6 champs de noms épars dans `pokemon` → `labels: {...}` *(breaking change)*
 
   `name`, `french_name`, `simplified_name`, `simplified_french_name`, `forms_label`, `forms_french_label` tous au même niveau top de l'objet pokemon.
 

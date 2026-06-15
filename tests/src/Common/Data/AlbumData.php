@@ -796,14 +796,16 @@ final class AlbumData
         return [
             'pokemon' => [
                 'slug' => $flat['pokemon_slug'],
-                'name' => $flat['pokemon_name'],
-                'french_name' => $flat['pokemon_french_name'],
+                'labels' => [
+                    'name' => $flat['pokemon_name'],
+                    'french_name' => $flat['pokemon_french_name'],
+                    'simplified_name' => $flat['pokemon_simplified_name'] ?? null,
+                    'simplified_french_name' => $flat['pokemon_simplified_french_name'] ?? null,
+                    'forms_label' => $flat['pokemon_forms_label'] ?? null,
+                    'forms_french_label' => $flat['pokemon_forms_french_label'] ?? null,
+                ],
                 'national_dex_number' => $flat['pokemon_national_dex_number'],
                 'regional_dex_number' => $flat['pokemon_regional_dex_number'] ?? null,
-                'simplified_name' => $flat['pokemon_simplified_name'] ?? null,
-                'forms_label' => $flat['pokemon_forms_label'] ?? null,
-                'simplified_french_name' => $flat['pokemon_simplified_french_name'] ?? null,
-                'forms_french_label' => $flat['pokemon_forms_french_label'] ?? null,
                 'icon' => $flat['pokemon_icon'] ?? null,
                 'family_order' => $flat['pokemon_family_order'],
                 'family_lead' => null !== ($flat['family_lead_slug'] ?? null)

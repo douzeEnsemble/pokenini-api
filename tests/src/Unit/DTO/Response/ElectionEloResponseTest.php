@@ -10,6 +10,7 @@ use App\DTO\Response\FormResponse;
 use App\DTO\Response\FormsResponse;
 use App\DTO\Response\GameBundlesGroupResponse;
 use App\DTO\Response\PokemonDataResponse;
+use App\DTO\Response\PokemonLabelsResponse;
 use App\DTO\Response\TypeResponse;
 use App\DTO\Response\TypesResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -66,14 +67,16 @@ final class ElectionEloResponseTest extends TestCase
     {
         return new PokemonDataResponse(
             slug: 'charizard',
-            name: 'Charizard',
-            frenchName: 'Dracaufeu',
+            labels: new PokemonLabelsResponse(
+                name: 'Charizard',
+                frenchName: 'Dracaufeu',
+                simplifiedName: null,
+                simplifiedFrenchName: null,
+                formsLabel: null,
+                formsFrenchLabel: null,
+            ),
             nationalDexNumber: 6,
             regionalDexNumber: null,
-            simplifiedName: null,
-            formsLabel: null,
-            simplifiedFrenchName: null,
-            formsFrenchLabel: null,
             icon: null,
             familyOrder: 1,
             familyLead: null,

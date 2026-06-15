@@ -126,7 +126,7 @@ final class PokemonsControllerTest extends AbstractTestControllerApi
             /** @var array<string, mixed> $pokemon */
             $pokemon = $item['pokemon'];
             $this->assertArrayHasKey('slug', $pokemon);
-            $this->assertArrayHasKey('french_name', $pokemon);
+            $this->assertArrayHasKey('labels', $pokemon);
             $this->assertArrayHasKey('icon', $pokemon);
             $this->assertArrayHasKey('national_dex_number', $pokemon);
             $this->assertArrayHasKey('order_number', $pokemon);

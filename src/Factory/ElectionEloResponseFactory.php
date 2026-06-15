@@ -11,6 +11,7 @@ use App\DTO\Response\FormsResponse;
 use App\DTO\Response\GameBundlesGroupResponse;
 use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\PokemonDataResponse;
+use App\DTO\Response\PokemonLabelsResponse;
 use App\DTO\Response\PokemonSlugResponse;
 use App\DTO\Response\TypeResponse;
 use App\DTO\Response\TypesResponse;
@@ -121,14 +122,16 @@ final class ElectionEloResponseFactory
 
         return new PokemonDataResponse(
             slug: (string) $slug,
-            name: (string) $name,
-            frenchName: (string) $frenchName,
+            labels: new PokemonLabelsResponse(
+                name: (string) $name,
+                frenchName: (string) $frenchName,
+                simplifiedName: null !== $simplifiedName ? (string) $simplifiedName : null,
+                simplifiedFrenchName: null !== $simplifiedFrenchName ? (string) $simplifiedFrenchName : null,
+                formsLabel: null !== $formsLabel ? (string) $formsLabel : null,
+                formsFrenchLabel: null !== $formsFrenchLabel ? (string) $formsFrenchLabel : null,
+            ),
             nationalDexNumber: (int) $nationalDexNumber,
             regionalDexNumber: null,
-            simplifiedName: null !== $simplifiedName ? (string) $simplifiedName : null,
-            formsLabel: null !== $formsLabel ? (string) $formsLabel : null,
-            simplifiedFrenchName: null !== $simplifiedFrenchName ? (string) $simplifiedFrenchName : null,
-            formsFrenchLabel: null !== $formsFrenchLabel ? (string) $formsFrenchLabel : null,
             icon: null !== $icon ? (string) $icon : null,
             familyOrder: (int) $familyOrder,
             familyLead: null !== $familyLeadSlug

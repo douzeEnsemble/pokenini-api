@@ -32,14 +32,14 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
         self::assertSame('bulbasaur', $response->pokemon->slug);
-        self::assertSame('Bulbasaur', $response->pokemon->name);
-        self::assertSame('Bulbizarre', $response->pokemon->frenchName);
+        self::assertSame('Bulbasaur', $response->pokemon->labels->name);
+        self::assertSame('Bulbizarre', $response->pokemon->labels->frenchName);
         self::assertSame(1, $response->pokemon->nationalDexNumber);
         self::assertNull($response->pokemon->regionalDexNumber);
-        self::assertSame('Bulbasaur', $response->pokemon->simplifiedName);
-        self::assertSame('', $response->pokemon->formsLabel);
-        self::assertSame('Bulbizarre', $response->pokemon->simplifiedFrenchName);
-        self::assertSame('', $response->pokemon->formsFrenchLabel);
+        self::assertSame('Bulbasaur', $response->pokemon->labels->simplifiedName);
+        self::assertSame('', $response->pokemon->labels->formsLabel);
+        self::assertSame('Bulbizarre', $response->pokemon->labels->simplifiedFrenchName);
+        self::assertSame('', $response->pokemon->labels->formsFrenchLabel);
         self::assertSame('bulbasaur', $response->pokemon->icon);
         self::assertSame(0, $response->pokemon->familyOrder);
         self::assertInstanceOf(PokemonSlugResponse::class, $response->pokemon->familyLead);
@@ -66,8 +66,8 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
         self::assertSame('1', $response->pokemon->slug);
-        self::assertSame('2', $response->pokemon->name);
-        self::assertSame('3', $response->pokemon->frenchName);
+        self::assertSame('2', $response->pokemon->labels->name);
+        self::assertSame('3', $response->pokemon->labels->frenchName);
         self::assertSame(42, $response->pokemon->nationalDexNumber);
         self::assertSame(5, $response->pokemon->familyOrder);
         self::assertSame('99', $response->pokemon->orderNumber);
@@ -296,10 +296,10 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertNull($response->pokemon->simplifiedName);
-        self::assertNull($response->pokemon->formsLabel);
-        self::assertNull($response->pokemon->simplifiedFrenchName);
-        self::assertNull($response->pokemon->formsFrenchLabel);
+        self::assertNull($response->pokemon->labels->simplifiedName);
+        self::assertNull($response->pokemon->labels->formsLabel);
+        self::assertNull($response->pokemon->labels->simplifiedFrenchName);
+        self::assertNull($response->pokemon->labels->formsFrenchLabel);
         self::assertNull($response->pokemon->icon);
         self::assertNull($response->pokemon->familyLead);
         self::assertNull($response->pokemon->originalGameBundle);
@@ -320,10 +320,10 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertSame('42', $response->pokemon->simplifiedName);
-        self::assertSame('7', $response->pokemon->formsLabel);
-        self::assertSame('99', $response->pokemon->simplifiedFrenchName);
-        self::assertSame('3', $response->pokemon->formsFrenchLabel);
+        self::assertSame('42', $response->pokemon->labels->simplifiedName);
+        self::assertSame('7', $response->pokemon->labels->formsLabel);
+        self::assertSame('99', $response->pokemon->labels->simplifiedFrenchName);
+        self::assertSame('3', $response->pokemon->labels->formsFrenchLabel);
         self::assertSame('1', $response->pokemon->icon);
         self::assertInstanceOf(PokemonSlugResponse::class, $response->pokemon->familyLead);
         self::assertSame('55', $response->pokemon->familyLead->slug);
