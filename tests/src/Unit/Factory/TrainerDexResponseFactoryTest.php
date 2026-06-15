@@ -37,14 +37,14 @@ final class TrainerDexResponseFactoryTest extends TestCase
         $response = TrainerDexResponseFactory::fromSqlRow($row);
 
         self::assertSame('home', $response->dex->slug);
-        self::assertSame('Home', $response->name);
-        self::assertSame('Home', $response->frenchName);
-        self::assertSame('home', $response->slug);
+        self::assertSame('Home', $response->settings->name);
+        self::assertSame('Home', $response->settings->frenchName);
+        self::assertSame('home', $response->settings->slug);
+        self::assertSame('box', $response->settings->displayTemplate);
         self::assertFalse($response->flags->isShiny);
         self::assertTrue($response->flags->isPrivate);
         self::assertFalse($response->flags->isOnHome);
         self::assertTrue($response->flags->isDisplayForm);
-        self::assertSame('box', $response->displayTemplate);
         self::assertTrue($response->flags->isReleased);
         self::assertFalse($response->flags->isPremium);
         self::assertFalse($response->flags->isCustom);
@@ -71,14 +71,14 @@ final class TrainerDexResponseFactoryTest extends TestCase
         $response = TrainerDexResponseFactory::fromSqlRow($row);
 
         self::assertSame('123', $response->dex->slug);
-        self::assertSame('456', $response->name);
-        self::assertSame('789', $response->frenchName);
-        self::assertSame('101', $response->slug);
+        self::assertSame('456', $response->settings->name);
+        self::assertSame('789', $response->settings->frenchName);
+        self::assertSame('101', $response->settings->slug);
+        self::assertSame('202', $response->settings->displayTemplate);
         self::assertFalse($response->flags->isShiny);
         self::assertTrue($response->flags->isPrivate);
         self::assertFalse($response->flags->isOnHome);
         self::assertTrue($response->flags->isDisplayForm);
-        self::assertSame('202', $response->displayTemplate);
         self::assertTrue($response->flags->isReleased);
         self::assertFalse($response->flags->isPremium);
         self::assertFalse($response->flags->isCustom);

@@ -7,6 +7,7 @@ namespace App\Factory;
 use App\DTO\Response\DexFlagsResponse;
 use App\DTO\Response\DexSlugResponse;
 use App\DTO\Response\TrainerDexResponse;
+use App\DTO\Response\TrainerDexSettingsResponse;
 
 final class TrainerDexResponseFactory
 {
@@ -55,9 +56,12 @@ final class TrainerDexResponseFactory
             dex: new DexSlugResponse(
                 slug: (string) $dexSlug,
             ),
-            name: (string) $name,
-            frenchName: (string) $frenchName,
-            slug: (string) $slug,
+            settings: new TrainerDexSettingsResponse(
+                name: (string) $name,
+                frenchName: (string) $frenchName,
+                slug: (string) $slug,
+                displayTemplate: (string) $displayTemplate,
+            ),
             flags: new DexFlagsResponse(
                 isShiny: (bool) $isShiny,
                 isPrivate: (bool) $isPrivate,
@@ -67,7 +71,6 @@ final class TrainerDexResponseFactory
                 isPremium: (bool) $isPremium,
                 isCustom: (bool) $isCustom,
             ),
-            displayTemplate: (string) $displayTemplate,
         );
     }
 
