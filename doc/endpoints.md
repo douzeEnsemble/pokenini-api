@@ -906,8 +906,10 @@ Exemple de réponse (`200`) :
     "sum": 0,
     "max": 0
   },
-  "under_max_view_count": 15,
-  "max_view_count": 15,
+  "completion": {
+    "at_max_count": 15,
+    "under_max_count": 15
+  },
   "dex_total_count": 21
 }
 ```
