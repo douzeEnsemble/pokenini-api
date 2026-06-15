@@ -153,7 +153,7 @@ Voir les plans existants dans `docs/superpowers/plans/` pour le pattern DTO + Fa
 
 ---
 
-- [ ] **`GET /album` + `GET /pokemons/to_choose` + `GET /election/top`** — `pokemon.game_bundles` + `pokemon.game_bundles_shiny` → `game_bundles: { normal, shiny }` *(breaking change)*
+- [x] **`GET /album` + `GET /pokemons/to_choose` + `GET /election/top`** — `pokemon.game_bundles` + `pokemon.game_bundles_shiny` → `game_bundles: { normal, shiny }` *(breaking change)*
 
   Même logique que le refactoring de `/debogage/pokemon/{slug}/availabilities` déjà traité.
 

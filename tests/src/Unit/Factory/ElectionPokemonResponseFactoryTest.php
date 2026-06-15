@@ -47,8 +47,8 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
         self::assertInstanceOf(GameBundleSlugResponse::class, $response->pokemon->originalGameBundle);
         self::assertSame('redgreenblueyellow', $response->pokemon->originalGameBundle->slug);
         self::assertSame('9999-0001-000', $response->pokemon->orderNumber);
-        self::assertSame([], $response->pokemon->gameBundles);
-        self::assertSame([], $response->pokemon->gameBundlesShiny);
+        self::assertSame([], $response->pokemon->gameBundles->normal);
+        self::assertSame([], $response->pokemon->gameBundles->shiny);
     }
 
     #[Test]
@@ -341,8 +341,8 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertSame([], $response->pokemon->gameBundles);
-        self::assertSame([], $response->pokemon->gameBundlesShiny);
+        self::assertSame([], $response->pokemon->gameBundles->normal);
+        self::assertSame([], $response->pokemon->gameBundles->shiny);
     }
 
     #[Test]
@@ -355,8 +355,8 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertSame([], $response->pokemon->gameBundles);
-        self::assertSame([], $response->pokemon->gameBundlesShiny);
+        self::assertSame([], $response->pokemon->gameBundles->normal);
+        self::assertSame([], $response->pokemon->gameBundles->shiny);
     }
 
     #[Test]
@@ -369,12 +369,12 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertCount(2, $response->pokemon->gameBundles);
-        self::assertInstanceOf(GameBundleSlugResponse::class, $response->pokemon->gameBundles[0]);
-        self::assertSame('redgreenblueyellow', $response->pokemon->gameBundles[0]->slug);
-        self::assertInstanceOf(GameBundleSlugResponse::class, $response->pokemon->gameBundles[1]);
-        self::assertSame('goldsilvercrystal', $response->pokemon->gameBundles[1]->slug);
-        self::assertSame([], $response->pokemon->gameBundlesShiny);
+        self::assertCount(2, $response->pokemon->gameBundles->normal);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $response->pokemon->gameBundles->normal[0]);
+        self::assertSame('redgreenblueyellow', $response->pokemon->gameBundles->normal[0]->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $response->pokemon->gameBundles->normal[1]);
+        self::assertSame('goldsilvercrystal', $response->pokemon->gameBundles->normal[1]->slug);
+        self::assertSame([], $response->pokemon->gameBundles->shiny);
     }
 
     #[Test]
@@ -387,12 +387,12 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertSame([], $response->pokemon->gameBundles);
-        self::assertCount(2, $response->pokemon->gameBundlesShiny);
-        self::assertInstanceOf(GameBundleSlugResponse::class, $response->pokemon->gameBundlesShiny[0]);
-        self::assertSame('redgreenblueyellow', $response->pokemon->gameBundlesShiny[0]->slug);
-        self::assertInstanceOf(GameBundleSlugResponse::class, $response->pokemon->gameBundlesShiny[1]);
-        self::assertSame('goldsilvercrystal', $response->pokemon->gameBundlesShiny[1]->slug);
+        self::assertSame([], $response->pokemon->gameBundles->normal);
+        self::assertCount(2, $response->pokemon->gameBundles->shiny);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $response->pokemon->gameBundles->shiny[0]);
+        self::assertSame('redgreenblueyellow', $response->pokemon->gameBundles->shiny[0]->slug);
+        self::assertInstanceOf(GameBundleSlugResponse::class, $response->pokemon->gameBundles->shiny[1]);
+        self::assertSame('goldsilvercrystal', $response->pokemon->gameBundles->shiny[1]->slug);
     }
 
     #[Test]
@@ -405,12 +405,12 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertCount(1, $response->pokemon->gameBundles);
-        self::assertArrayHasKey(0, $response->pokemon->gameBundles);
-        self::assertSame('redgreenblueyellow', $response->pokemon->gameBundles[0]->slug);
-        self::assertCount(1, $response->pokemon->gameBundlesShiny);
-        self::assertArrayHasKey(0, $response->pokemon->gameBundlesShiny);
-        self::assertSame('goldsilvercrystal', $response->pokemon->gameBundlesShiny[0]->slug);
+        self::assertCount(1, $response->pokemon->gameBundles->normal);
+        self::assertArrayHasKey(0, $response->pokemon->gameBundles->normal);
+        self::assertSame('redgreenblueyellow', $response->pokemon->gameBundles->normal[0]->slug);
+        self::assertCount(1, $response->pokemon->gameBundles->shiny);
+        self::assertArrayHasKey(0, $response->pokemon->gameBundles->shiny);
+        self::assertSame('goldsilvercrystal', $response->pokemon->gameBundles->shiny[0]->slug);
     }
 
     /**

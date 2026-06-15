@@ -653,17 +653,21 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
             $this->assertArrayHasKey('game_bundles', $pokemonData);
             $this->assertIsArray($pokemonData['game_bundles']);
 
-            $this->assertArrayHasKey('game_bundles_shiny', $pokemonData);
-            $this->assertIsArray($pokemonData['game_bundles_shiny']);
+            /** @var array<string, mixed> $gameBundles */
+            $gameBundles = $pokemonData['game_bundles'];
+            $this->assertArrayHasKey('normal', $gameBundles);
+            $this->assertArrayHasKey('shiny', $gameBundles);
+            $this->assertIsArray($gameBundles['normal']);
+            $this->assertIsArray($gameBundles['shiny']);
 
             /** @var array<string, mixed> $gameBundle */
-            foreach ($pokemonData['game_bundles'] as $gameBundle) {
+            foreach ($gameBundles['normal'] as $gameBundle) {
                 $this->assertArrayHasKey('slug', $gameBundle);
                 $this->assertIsString($gameBundle['slug']);
             }
 
             /** @var array<string, mixed> $gameBundleShiny */
-            foreach ($pokemonData['game_bundles_shiny'] as $gameBundleShiny) {
+            foreach ($gameBundles['shiny'] as $gameBundleShiny) {
                 $this->assertArrayHasKey('slug', $gameBundleShiny);
                 $this->assertIsString($gameBundleShiny['slug']);
             }

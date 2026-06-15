@@ -9,6 +9,7 @@ use App\DTO\Response\AlbumPokemonResponse;
 use App\DTO\Response\AlbumReportResponse;
 use App\DTO\Response\AlbumTypesResponse;
 use App\DTO\Response\DexFlagsResponse;
+use App\DTO\Response\GameBundlesGroupResponse;
 use App\DTO\Response\PokemonDataResponse;
 use App\Factory\AlbumIndexResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -94,8 +95,7 @@ final class AlbumIndexResponseFactoryTest extends TestCase
                 familyLead: null,
                 originalGameBundle: null,
                 orderNumber: '001',
-                gameBundles: [],
-                gameBundlesShiny: [],
+                gameBundles: new GameBundlesGroupResponse(normal: [], shiny: []),
             ),
             catchState: null,
             forms: null,

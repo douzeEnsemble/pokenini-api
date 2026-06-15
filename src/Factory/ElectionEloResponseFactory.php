@@ -8,6 +8,7 @@ use App\DTO\Response\ElectionEloResponse;
 use App\DTO\Response\ElectionEloScoreResponse;
 use App\DTO\Response\FormResponse;
 use App\DTO\Response\FormsResponse;
+use App\DTO\Response\GameBundlesGroupResponse;
 use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\PokemonDataResponse;
 use App\DTO\Response\PokemonSlugResponse;
@@ -137,8 +138,10 @@ final class ElectionEloResponseFactory
                 ? new GameBundleSlugResponse(slug: (string) $originalGameBundleSlug)
                 : null,
             orderNumber: (string) $orderNumber,
-            gameBundles: $gameBundles,
-            gameBundlesShiny: $gameBundlesShiny,
+            gameBundles: new GameBundlesGroupResponse(
+                normal: $gameBundles,
+                shiny: $gameBundlesShiny,
+            ),
         );
     }
 

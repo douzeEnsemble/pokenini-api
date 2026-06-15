@@ -10,6 +10,7 @@ use App\DTO\Response\AlbumFormsResponse;
 use App\DTO\Response\AlbumPokemonResponse;
 use App\DTO\Response\AlbumTypeResponse;
 use App\DTO\Response\AlbumTypesResponse;
+use App\DTO\Response\GameBundlesGroupResponse;
 use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\PokemonDataResponse;
 use App\DTO\Response\PokemonSlugResponse;
@@ -41,8 +42,10 @@ final class AlbumPokemonResponseTest extends TestCase
             familyLead: new PokemonSlugResponse(slug: 'bulbasaur'),
             originalGameBundle: new GameBundleSlugResponse(slug: 'redgreenblueyellow'),
             orderNumber: '0001-0001-000',
-            gameBundles: [new GameBundleSlugResponse(slug: 'redgreenblueyellow')],
-            gameBundlesShiny: [],
+            gameBundles: new GameBundlesGroupResponse(
+                normal: [new GameBundleSlugResponse(slug: 'redgreenblueyellow')],
+                shiny: [],
+            ),
         );
         $catchState = new AlbumCatchStateResponse('no', 'No', 'Non', '#e57373');
         $forms = new AlbumFormsResponse(
@@ -87,12 +90,14 @@ final class AlbumPokemonResponseTest extends TestCase
             familyLead: new PokemonSlugResponse(slug: 'douze'),
             originalGameBundle: new GameBundleSlugResponse(slug: 'redgreenblueyellow'),
             orderNumber: '9999-9912-000',
-            gameBundles: [
-                new GameBundleSlugResponse(slug: 'un'),
-                new GameBundleSlugResponse(slug: 'dos'),
-                new GameBundleSlugResponse(slug: 'tres'),
-            ],
-            gameBundlesShiny: [],
+            gameBundles: new GameBundlesGroupResponse(
+                normal: [
+                    new GameBundleSlugResponse(slug: 'un'),
+                    new GameBundleSlugResponse(slug: 'dos'),
+                    new GameBundleSlugResponse(slug: 'tres'),
+                ],
+                shiny: [],
+            ),
         );
         $types = new AlbumTypesResponse(primary: null, secondary: null);
 

@@ -8,6 +8,7 @@ use App\DTO\Response\ElectionEloResponse;
 use App\DTO\Response\ElectionEloScoreResponse;
 use App\DTO\Response\FormResponse;
 use App\DTO\Response\FormsResponse;
+use App\DTO\Response\GameBundlesGroupResponse;
 use App\DTO\Response\PokemonDataResponse;
 use App\DTO\Response\TypeResponse;
 use App\DTO\Response\TypesResponse;
@@ -78,8 +79,7 @@ final class ElectionEloResponseTest extends TestCase
             familyLead: null,
             originalGameBundle: null,
             orderNumber: '0006.001',
-            gameBundles: [],
-            gameBundlesShiny: [],
+            gameBundles: new GameBundlesGroupResponse(normal: [], shiny: []),
         );
     }
 
