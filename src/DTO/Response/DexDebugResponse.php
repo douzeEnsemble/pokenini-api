@@ -17,10 +17,9 @@ final class DexDebugResponse
         public readonly string $name,
         #[SerializedName('french_name')]
         public readonly string $frenchName,
-        #[SerializedName('order_number')]
-        public readonly int $orderNumber,
         #[SerializedName('selection_rule')]
         public readonly string $selectionRule,
+        public readonly DexDebugOrderingResponse $ordering,
         public readonly DexDebugFlagsResponse $flags,
         #[SerializedName('display_template')]
         public readonly string $displayTemplate,
@@ -30,8 +29,6 @@ final class DexDebugResponse
         public readonly string $frenchDescription,
         #[SerializedName('last_changed_at')]
         public readonly string $lastChangedAt,
-        #[SerializedName('election_order_number')]
-        public readonly int $electionOrderNumber,
         #[SerializedName('deleted_at')]
         public readonly ?string $deletedAt,
     ) {}

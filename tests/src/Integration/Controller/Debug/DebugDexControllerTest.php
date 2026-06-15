@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Integration\Controller\Debug;
 
 use App\Controller\Debug\DebugDexController;
+use App\DTO\Response\DexDebugOrderingResponse;
 use App\Factory\DexAvailabilitiesResponseFactory;
 use App\Factory\DexDebugResponseFactory;
 use App\Service\DexAvailabilitiesService;
@@ -18,6 +19,7 @@ use PHPUnit\Framework\Attributes\Test;
 #[CoversClass(DebugDexController::class)]
 #[CoversClass(DexAvailabilitiesResponseFactory::class)]
 #[CoversClass(DexAvailabilitiesService::class)]
+#[CoversClass(DexDebugOrderingResponse::class)]
 #[CoversClass(DexDebugResponseFactory::class)]
 final class DebugDexControllerTest extends AbstractTestControllerApi
 {
@@ -64,6 +66,16 @@ final class DebugDexControllerTest extends AbstractTestControllerApi
         $this->assertArrayNotHasKey('is_display_form', $data);
         $this->assertArrayNotHasKey('is_released', $data);
         $this->assertArrayNotHasKey('can_hold_election', $data);
+
+        $this->assertArrayHasKey('ordering', $data);
+
+        /** @var array<string, int> $ordering */
+        $ordering = $data['ordering'];
+        $this->assertArrayHasKey('main', $ordering);
+        $this->assertArrayHasKey('election', $ordering);
+
+        $this->assertArrayNotHasKey('order_number', $data);
+        $this->assertArrayNotHasKey('election_order_number', $data);
     }
 
     #[Test]

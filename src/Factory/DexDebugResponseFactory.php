@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\DTO\Response\DexDebugFlagsResponse;
+use App\DTO\Response\DexDebugOrderingResponse;
 use App\DTO\Response\DexDebugResponse;
 use App\DTO\Response\RegionResponse;
 use App\Entity\Dex;
@@ -19,16 +20,23 @@ final class DexDebugResponseFactory
             slug: $dex->slug,
             name: $dex->name,
             frenchName: $dex->frenchName,
-            orderNumber: $dex->orderNumber,
             selectionRule: $dex->selectionRule,
+            ordering: self::buildOrdering($dex),
             flags: self::buildFlags($dex),
             displayTemplate: $dex->displayTemplate,
             region: null !== $dex->region ? self::buildRegion($dex->region) : null,
             description: $dex->description,
             frenchDescription: $dex->frenchDescription,
             lastChangedAt: $dex->lastChangedAt->format(\DateTime::ATOM),
-            electionOrderNumber: $dex->electionOrderNumber,
             deletedAt: $dex->deletedAt?->format(\DateTime::ATOM),
+        );
+    }
+
+    private static function buildOrdering(Dex $dex): DexDebugOrderingResponse
+    {
+        return new DexDebugOrderingResponse(
+            main: $dex->orderNumber,
+            election: $dex->electionOrderNumber,
         );
     }
 

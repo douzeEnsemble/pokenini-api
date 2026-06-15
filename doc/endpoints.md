@@ -1047,8 +1047,11 @@ Exemple de réponse (`200`) :
   "slug": "redgreenblueyellow",
   "name": "Red / Green / Blue / Yellow",
   "french_name": "Rouge / Vert / Bleu / Jaune",
-  "order_number": 10,
   "selection_rule": "",
+  "ordering": {
+    "main": 10,
+    "election": 0
+  },
   "flags": {
     "is_shiny": false,
     "is_premium": false,
@@ -1068,7 +1071,6 @@ Exemple de réponse (`200`) :
   "description": "First generation Pokédex",
   "french_description": "Pokédex de la première génération",
   "last_changed_at": "20230221.085100",
-  "election_order_number": 0,
   "deleted_at": null
 }
 ```
