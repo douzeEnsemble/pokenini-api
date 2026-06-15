@@ -7,6 +7,7 @@ namespace App\Tests\Unit\DTO\Response;
 use App\DTO\Response\GameBundlesGroupResponse;
 use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\PokemonDataResponse;
+use App\DTO\Response\PokemonLabelsResponse;
 use App\DTO\Response\PokemonSlugResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -29,16 +30,20 @@ final class PokemonDataResponseTest extends TestCase
             new GameBundleSlugResponse(slug: 'rby'),
         ];
 
-        $response = new PokemonDataResponse(
-            slug: 'pikachu',
+        $labels = new PokemonLabelsResponse(
             name: 'Pikachu',
             frenchName: 'Pikachu',
+            simplifiedName: 'Pikachu Base',
+            simplifiedFrenchName: 'Pikachu Base FR',
+            formsLabel: 'Original Cap',
+            formsFrenchLabel: 'Casquette Originale',
+        );
+
+        $response = new PokemonDataResponse(
+            slug: 'pikachu',
+            labels: $labels,
             nationalDexNumber: 25,
             regionalDexNumber: 35,
-            simplifiedName: 'Pikachu Base',
-            formsLabel: 'Original Cap',
-            simplifiedFrenchName: 'Pikachu Base FR',
-            formsFrenchLabel: 'Casquette Originale',
             icon: 'pikachu.png',
             familyOrder: 1,
             familyLead: new PokemonSlugResponse(slug: 'pichu'),
@@ -48,14 +53,14 @@ final class PokemonDataResponseTest extends TestCase
         );
 
         self::assertSame('pikachu', $response->slug);
-        self::assertSame('Pikachu', $response->name);
-        self::assertSame('Pikachu', $response->frenchName);
+        self::assertSame('Pikachu', $response->labels->name);
+        self::assertSame('Pikachu', $response->labels->frenchName);
+        self::assertSame('Pikachu Base', $response->labels->simplifiedName);
+        self::assertSame('Pikachu Base FR', $response->labels->simplifiedFrenchName);
+        self::assertSame('Original Cap', $response->labels->formsLabel);
+        self::assertSame('Casquette Originale', $response->labels->formsFrenchLabel);
         self::assertSame(25, $response->nationalDexNumber);
         self::assertSame(35, $response->regionalDexNumber);
-        self::assertSame('Pikachu Base', $response->simplifiedName);
-        self::assertSame('Original Cap', $response->formsLabel);
-        self::assertSame('Pikachu Base FR', $response->simplifiedFrenchName);
-        self::assertSame('Casquette Originale', $response->formsFrenchLabel);
         self::assertSame('pikachu.png', $response->icon);
         self::assertSame(1, $response->familyOrder);
         self::assertInstanceOf(PokemonSlugResponse::class, $response->familyLead);
@@ -76,16 +81,20 @@ final class PokemonDataResponseTest extends TestCase
     #[Test]
     public function constructorAcceptsNullablePropertiesAsNull(): void
     {
-        $response = new PokemonDataResponse(
-            slug: 'bulbasaur',
+        $labels = new PokemonLabelsResponse(
             name: 'Bulbasaur',
             frenchName: 'Bulbizarre',
+            simplifiedName: null,
+            simplifiedFrenchName: null,
+            formsLabel: null,
+            formsFrenchLabel: null,
+        );
+
+        $response = new PokemonDataResponse(
+            slug: 'bulbasaur',
+            labels: $labels,
             nationalDexNumber: 1,
             regionalDexNumber: null,
-            simplifiedName: null,
-            formsLabel: null,
-            simplifiedFrenchName: null,
-            formsFrenchLabel: null,
             icon: null,
             familyOrder: 1,
             familyLead: null,
@@ -95,10 +104,10 @@ final class PokemonDataResponseTest extends TestCase
         );
 
         self::assertNull($response->regionalDexNumber);
-        self::assertNull($response->simplifiedName);
-        self::assertNull($response->formsLabel);
-        self::assertNull($response->simplifiedFrenchName);
-        self::assertNull($response->formsFrenchLabel);
+        self::assertNull($response->labels->simplifiedName);
+        self::assertNull($response->labels->simplifiedFrenchName);
+        self::assertNull($response->labels->formsLabel);
+        self::assertNull($response->labels->formsFrenchLabel);
         self::assertNull($response->icon);
         self::assertNull($response->familyLead);
         self::assertNull($response->originalGameBundle);

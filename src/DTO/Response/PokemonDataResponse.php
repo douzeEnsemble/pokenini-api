@@ -13,21 +13,11 @@ final class PokemonDataResponse
      */
     public function __construct(
         public readonly string $slug,
-        public readonly string $name,
-        #[SerializedName('french_name')]
-        public readonly string $frenchName,
+        public readonly PokemonLabelsResponse $labels,
         #[SerializedName('national_dex_number')]
         public readonly int $nationalDexNumber,
         #[SerializedName('regional_dex_number')]
         public readonly ?int $regionalDexNumber,
-        #[SerializedName('simplified_name')]
-        public readonly ?string $simplifiedName,
-        #[SerializedName('forms_label')]
-        public readonly ?string $formsLabel,
-        #[SerializedName('simplified_french_name')]
-        public readonly ?string $simplifiedFrenchName,
-        #[SerializedName('forms_french_label')]
-        public readonly ?string $formsFrenchLabel,
         public readonly ?string $icon,
         #[SerializedName('family_order')]
         public readonly int $familyOrder,

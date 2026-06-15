@@ -70,7 +70,7 @@ final class ElectionEloResponseFactoryTest extends TestCase
         self::assertSame(1200.5, $response->score->elo);
         self::assertTrue($response->score->significance);
         self::assertSame('pikachu', $response->pokemon->slug);
-        self::assertSame('Pikachu', $response->pokemon->name);
+        self::assertSame('Pikachu', $response->pokemon->labels->name);
         self::assertNull($response->forms);
         self::assertNotNull($response->types->primary);
         self::assertSame('electric', $response->types->primary->slug);
@@ -343,10 +343,10 @@ final class ElectionEloResponseFactoryTest extends TestCase
 
         $response = ElectionEloResponseFactory::fromSqlRow($row);
 
-        self::assertSame('133', $response->pokemon->simplifiedName);
-        self::assertSame('42', $response->pokemon->formsLabel);
-        self::assertSame('1', $response->pokemon->simplifiedFrenchName);
-        self::assertSame('99', $response->pokemon->formsFrenchLabel);
+        self::assertSame('133', $response->pokemon->labels->simplifiedName);
+        self::assertSame('42', $response->pokemon->labels->formsLabel);
+        self::assertSame('1', $response->pokemon->labels->simplifiedFrenchName);
+        self::assertSame('99', $response->pokemon->labels->formsFrenchLabel);
         self::assertSame('7', $response->pokemon->icon);
         self::assertInstanceOf(PokemonSlugResponse::class, $response->pokemon->familyLead);
         self::assertSame('77', $response->pokemon->familyLead->slug);

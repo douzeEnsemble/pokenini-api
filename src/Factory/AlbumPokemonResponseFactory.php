@@ -13,6 +13,7 @@ use App\DTO\Response\AlbumTypesResponse;
 use App\DTO\Response\GameBundlesGroupResponse;
 use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\PokemonDataResponse;
+use App\DTO\Response\PokemonLabelsResponse;
 use App\DTO\Response\PokemonSlugResponse;
 
 final class AlbumPokemonResponseFactory
@@ -54,12 +55,6 @@ final class AlbumPokemonResponseFactory
         /** @var scalar $frenchName */
         $frenchName = $row['pokemon_french_name'];
 
-        /** @var scalar $nationalDexNumber */
-        $nationalDexNumber = $row['pokemon_national_dex_number'];
-
-        /** @var null|scalar $regionalDexNumber */
-        $regionalDexNumber = $row['pokemon_regional_dex_number'] ?? null;
-
         /** @var null|scalar $simplifiedName */
         $simplifiedName = $row['pokemon_simplified_name'] ?? null;
 
@@ -71,6 +66,12 @@ final class AlbumPokemonResponseFactory
 
         /** @var null|scalar $formsFrenchLabel */
         $formsFrenchLabel = $row['pokemon_forms_french_label'] ?? null;
+
+        /** @var scalar $nationalDexNumber */
+        $nationalDexNumber = $row['pokemon_national_dex_number'];
+
+        /** @var null|scalar $regionalDexNumber */
+        $regionalDexNumber = $row['pokemon_regional_dex_number'] ?? null;
 
         /** @var null|scalar $icon */
         $icon = $row['pokemon_icon'] ?? null;
@@ -111,14 +112,16 @@ final class AlbumPokemonResponseFactory
 
         return new PokemonDataResponse(
             slug: (string) $slug,
-            name: (string) $name,
-            frenchName: (string) $frenchName,
+            labels: new PokemonLabelsResponse(
+                name: (string) $name,
+                frenchName: (string) $frenchName,
+                simplifiedName: null !== $simplifiedName ? (string) $simplifiedName : null,
+                simplifiedFrenchName: null !== $simplifiedFrenchName ? (string) $simplifiedFrenchName : null,
+                formsLabel: null !== $formsLabel ? (string) $formsLabel : null,
+                formsFrenchLabel: null !== $formsFrenchLabel ? (string) $formsFrenchLabel : null,
+            ),
             nationalDexNumber: (int) $nationalDexNumber,
             regionalDexNumber: null !== $regionalDexNumber ? (int) $regionalDexNumber : null,
-            simplifiedName: null !== $simplifiedName ? (string) $simplifiedName : null,
-            formsLabel: null !== $formsLabel ? (string) $formsLabel : null,
-            simplifiedFrenchName: null !== $simplifiedFrenchName ? (string) $simplifiedFrenchName : null,
-            formsFrenchLabel: null !== $formsFrenchLabel ? (string) $formsFrenchLabel : null,
             icon: null !== $icon ? (string) $icon : null,
             familyOrder: (int) $familyOrder,
             familyLead: null !== $familyLeadSlug

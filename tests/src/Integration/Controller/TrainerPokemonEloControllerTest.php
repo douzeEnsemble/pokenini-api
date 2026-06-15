@@ -60,8 +60,7 @@ final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
             $pokemon = $item['pokemon'];
             $this->assertIsArray($pokemon);
             $this->assertArrayHasKey('slug', $pokemon);
-            $this->assertArrayHasKey('name', $pokemon);
-            $this->assertArrayHasKey('french_name', $pokemon);
+            $this->assertArrayHasKey('labels', $pokemon);
             $this->assertArrayHasKey('national_dex_number', $pokemon);
             $this->assertArrayHasKey('icon', $pokemon);
             $this->assertArrayHasKey('family_order', $pokemon);
@@ -139,11 +138,13 @@ final class TrainerPokemonEloControllerTest extends AbstractTestControllerApi
             $pokemon = $item['pokemon'];
             $this->assertIsArray($pokemon);
             $this->assertArrayHasKey('slug', $pokemon);
-            $this->assertArrayHasKey('name', $pokemon);
-            $this->assertArrayHasKey('french_name', $pokemon);
+            $this->assertArrayHasKey('labels', $pokemon);
             $this->assertArrayHasKey('icon', $pokemon);
             $this->assertIsString($pokemon['slug']);
-            $this->assertIsString($pokemon['french_name']);
+
+            /** @var array<string, mixed> $labels */
+            $labels = $pokemon['labels'];
+            $this->assertIsString($labels['french_name']);
 
             $this->assertArrayHasKey('game_bundles', $pokemon);
             $this->assertIsArray($pokemon['game_bundles']);

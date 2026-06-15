@@ -11,6 +11,7 @@ use App\DTO\Response\AlbumTypesResponse;
 use App\DTO\Response\DexFlagsResponse;
 use App\DTO\Response\GameBundlesGroupResponse;
 use App\DTO\Response\PokemonDataResponse;
+use App\DTO\Response\PokemonLabelsResponse;
 use App\Factory\AlbumIndexResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -82,14 +83,16 @@ final class AlbumIndexResponseFactoryTest extends TestCase
         return new AlbumPokemonResponse(
             pokemon: new PokemonDataResponse(
                 slug: 'bulbasaur',
-                name: 'Bulbasaur',
-                frenchName: 'Bulbizarre',
+                labels: new PokemonLabelsResponse(
+                    name: 'Bulbasaur',
+                    frenchName: 'Bulbizarre',
+                    simplifiedName: null,
+                    simplifiedFrenchName: null,
+                    formsLabel: null,
+                    formsFrenchLabel: null,
+                ),
                 nationalDexNumber: 1,
                 regionalDexNumber: null,
-                simplifiedName: null,
-                formsLabel: null,
-                simplifiedFrenchName: null,
-                formsFrenchLabel: null,
                 icon: null,
                 familyOrder: 1,
                 familyLead: null,

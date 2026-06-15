@@ -32,14 +32,14 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
         $result = AlbumPokemonResponseFactory::fromSqlRow($this->getBulbasaurRow());
 
         self::assertSame('bulbasaur', $result->pokemon->slug);
-        self::assertSame('Bulbasaur', $result->pokemon->name);
-        self::assertSame('Bulbizarre', $result->pokemon->frenchName);
+        self::assertSame('Bulbasaur', $result->pokemon->labels->name);
+        self::assertSame('Bulbizarre', $result->pokemon->labels->frenchName);
         self::assertSame(1, $result->pokemon->nationalDexNumber);
         self::assertSame(1, $result->pokemon->regionalDexNumber);
-        self::assertSame('Bulbasaur', $result->pokemon->simplifiedName);
-        self::assertSame('', $result->pokemon->formsLabel);
-        self::assertSame('Bulbizarre', $result->pokemon->simplifiedFrenchName);
-        self::assertSame('', $result->pokemon->formsFrenchLabel);
+        self::assertSame('Bulbasaur', $result->pokemon->labels->simplifiedName);
+        self::assertSame('', $result->pokemon->labels->formsLabel);
+        self::assertSame('Bulbizarre', $result->pokemon->labels->simplifiedFrenchName);
+        self::assertSame('', $result->pokemon->labels->formsFrenchLabel);
         self::assertSame('bulbasaur', $result->pokemon->icon);
         self::assertSame(0, $result->pokemon->familyOrder);
         self::assertInstanceOf(PokemonSlugResponse::class, $result->pokemon->familyLead);
@@ -324,10 +324,10 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
 
         $result = AlbumPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertSame('42', $result->pokemon->simplifiedName);
-        self::assertSame('1', $result->pokemon->formsLabel);
-        self::assertSame('99', $result->pokemon->simplifiedFrenchName);
-        self::assertSame('0', $result->pokemon->formsFrenchLabel);
+        self::assertSame('42', $result->pokemon->labels->simplifiedName);
+        self::assertSame('1', $result->pokemon->labels->formsLabel);
+        self::assertSame('99', $result->pokemon->labels->simplifiedFrenchName);
+        self::assertSame('0', $result->pokemon->labels->formsFrenchLabel);
         self::assertSame('7', $result->pokemon->icon);
         self::assertInstanceOf(PokemonSlugResponse::class, $result->pokemon->familyLead);
         self::assertSame('123', $result->pokemon->familyLead->slug);
