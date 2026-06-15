@@ -51,8 +51,8 @@ final class DexDebugResponseFactoryTest extends TestCase
         self::assertSame('redgreenblueyellow', $result->slug);
         self::assertSame('Red/Green/Blue/Yellow', $result->name);
         self::assertSame('Rouge/Vert/Bleu/Jaune', $result->frenchName);
-        self::assertSame(1, $result->orderNumber);
         self::assertSame('{"type":"all"}', $result->selectionRule);
+        self::assertSame(1, $result->ordering->main);
         self::assertFalse($result->flags->isShiny);
         self::assertTrue($result->flags->isPremium);
         self::assertFalse($result->flags->isDisplayForm);
@@ -62,7 +62,7 @@ final class DexDebugResponseFactoryTest extends TestCase
         self::assertSame('First generation', $result->description);
         self::assertSame('Première génération', $result->frenchDescription);
         self::assertSame('2024-01-15T10:30:00+00:00', $result->lastChangedAt);
-        self::assertSame(5, $result->electionOrderNumber);
+        self::assertSame(5, $result->ordering->election);
         self::assertNull($result->deletedAt);
 
         self::assertNotNull($result->region);

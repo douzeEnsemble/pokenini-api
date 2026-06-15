@@ -256,7 +256,7 @@ Voir les plans existants dans `docs/superpowers/plans/` pour le pattern DTO + Fa
 
 ---
 
-- [ ] **`GET /debogage/dex/{slug}`** — `order_number` + `election_order_number` épars → `ordering: { main, election }` *(breaking change, endpoint debug)*
+- [x] **`GET /debogage/dex/{slug}`** — `order_number` + `election_order_number` épars → `ordering: { main, election }` *(breaking change, endpoint debug)*
 
   **Avant**
   ```json
