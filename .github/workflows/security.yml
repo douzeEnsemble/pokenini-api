@@ -29,12 +29,31 @@ jobs:
           - jsonlint
           - php-cs-fixer
           - phpmd
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Install tool
+        uses: ./.github/actions/tools-composer
+        with:
+          dir: ${{ matrix.tool }}
+      - name: Audit
+        shell: bash
+        run: composer audit --working-dir=tools/${{ matrix.tool }}
+
+  tools-composer-audit-with-app:
+    name: Tools Composer Audit with App (${{ matrix.tool }})
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tool:
           - phpstan
           - psalm
     steps:
       - name: Checkout
         uses: actions/checkout@v6
       - name: Install
+        uses: ./.github/actions/local-composer
+      - name: Install tool
         uses: ./.github/actions/tools-composer
         with:
           dir: ${{ matrix.tool }}
