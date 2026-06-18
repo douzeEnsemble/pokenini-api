@@ -8,9 +8,6 @@ runs:
       shell: bash
       run: cp .env.ci .env
 
-    - name: Prepare
-      uses: ./.github/actions/tools-composer
-
     - name: Setup PHP
       uses: shivammathur/setup-php@verbose
       with:
