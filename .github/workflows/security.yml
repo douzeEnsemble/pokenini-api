@@ -19,18 +19,25 @@ jobs:
         run: composer audit
 
   tools-composer-audit:
-    name: Tools Composer Audit
+    name: Tools Composer Audit (${{ matrix.tool }})
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        tool:
+          - deptrac
+          - infection
+          - jsonlint
+          - php-cs-fixer
+          - phpmd
+          - phpstan
+          - psalm
     steps:
       - name: Checkout
         uses: actions/checkout@v6
       - name: Install
-        uses: ./.github/actions/local-tools-composer
-      - name: Run
-        run: |
-          for dir in tools/*/; do
-            if [ -f "${dir}composer.json" ]; then
-              echo "==> Auditing ${dir}"
-              composer audit --working-dir="${dir}"
-            fi
-          done
+        uses: ./.github/actions/tools-composer
+        with:
+          dir: ${{ matrix.tool }}
+      - name: Audit
+        shell: bash
+        run: composer audit --working-dir=tools/${{ matrix.tool }}
