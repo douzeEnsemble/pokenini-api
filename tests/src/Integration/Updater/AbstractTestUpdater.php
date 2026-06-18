@@ -32,7 +32,7 @@ abstract class AbstractTestUpdater extends KernelTestCase
         $service = $this->getService();
 
         $this->expectException(InvalidSheetDataException::class);
-        $this->expectExceptionMessage('Spreadsheet is empty');
+        $this->expectExceptionMessageIsOrContains('Spreadsheet is empty');
 
         $service->execute('empty');
     }
@@ -42,7 +42,7 @@ abstract class AbstractTestUpdater extends KernelTestCase
         $service = $this->getService();
 
         $this->expectException(InvalidSheetDataException::class);
-        $this->expectExceptionMessage('This is not a valid data spreadsheet');
+        $this->expectExceptionMessageIsOrContains('This is not a valid data spreadsheet');
 
         $service->execute('wrong_sheet');
     }

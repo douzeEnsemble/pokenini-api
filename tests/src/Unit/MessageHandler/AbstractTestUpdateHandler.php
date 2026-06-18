@@ -120,7 +120,7 @@ abstract class AbstractTestUpdateHandler extends TestCase
         $message = $this->getMessage();
 
         $this->expectException(\Exception::class);
-        $this->expectExceptionMessage('Ya un blèm !');
+        $this->expectExceptionMessageIsOrContains('Ya un blèm !');
 
         $handler->update($message);
 

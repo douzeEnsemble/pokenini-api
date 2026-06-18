@@ -71,7 +71,7 @@ final class SpreadsheetServiceTest extends TestCase
         $service = $this->getServiceForGettingProperties();
 
         $this->expectException(\InvalidArgumentException::class);
-        $this->expectExceptionMessage('Cannot find sheet Tutu in spreadsheet azertyuiop');
+        $this->expectExceptionMessageIsOrContains('Cannot find sheet Tutu in spreadsheet azertyuiop');
 
         $service->getSheetColumnCount('azertyuiop', 'Tutu');
     }

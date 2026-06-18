@@ -48,7 +48,7 @@ final class SqlFileLoaderTest extends TestCase
         $loader = new SqlFileLoader($this->tempDir);
 
         $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage('Failed to read SQL file "missing.sql"');
+        $this->expectExceptionMessageIsOrContains('Failed to read SQL file "missing.sql"');
         $loader->load('missing.sql');
     }
 
