@@ -26,7 +26,3 @@ runs:
       with:
         path: vendor
         key: composer-${{ hashFiles('composer.lock') }}
-
-    - name: Run app's composer install
-      shell: bash
-      run: composer install --no-interaction --prefer-dist --working-dir=. --optimize-autoloader
