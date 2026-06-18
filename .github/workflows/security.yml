@@ -11,17 +11,23 @@ jobs:
     name: Composer Audit
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - run: composer audit
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Install
+        uses: ./.github/actions/tools-composer
+      - name: Run
+        run: composer audit
 
   tools-composer-audit:
     name: Tools Composer Audit
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v6
-      - name: Prepare
-        uses: ./.github/actions/local-php
-      - run: |
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Install
+        uses: ./.github/actions/local-tools-composer
+      - name: Run
+        run: |
           for dir in tools/*/; do
             if [ -f "${dir}composer.json" ]; then
               echo "==> Auditing ${dir}"
