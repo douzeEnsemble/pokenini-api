@@ -58,7 +58,7 @@ final class CatchStatesUpdaterTest extends TestCase
         );
 
         $this->expectException(InvalidSheetDataException::class);
-        $this->expectExceptionMessage("Can't get data for range 'douze'!A1:E1");
+        $this->expectExceptionMessageIsOrContains("Can't get data for range 'douze'!A1:E1");
 
         $updater->execute('douze');
     }
@@ -101,7 +101,7 @@ final class CatchStatesUpdaterTest extends TestCase
         );
 
         $this->expectException(InvalidSheetDataException::class);
-        $this->expectExceptionMessage('Spreadsheet is empty');
+        $this->expectExceptionMessageIsOrContains('Spreadsheet is empty');
 
         $updater->execute('douze');
     }
@@ -159,7 +159,7 @@ final class CatchStatesUpdaterTest extends TestCase
         );
 
         $this->expectException(InvalidSheetDataException::class);
-        $this->expectExceptionMessage('This is not a valid data spreadsheet');
+        $this->expectExceptionMessageIsOrContains('This is not a valid data spreadsheet');
 
         $updater->execute('douze');
     }
@@ -223,7 +223,7 @@ final class CatchStatesUpdaterTest extends TestCase
         );
 
         $this->expectException(InvalidSheetDataException::class);
-        $this->expectExceptionMessage('There is not data in spreadsheet');
+        $this->expectExceptionMessageIsOrContains('There is not data in spreadsheet');
 
         $updater->execute('douze');
     }

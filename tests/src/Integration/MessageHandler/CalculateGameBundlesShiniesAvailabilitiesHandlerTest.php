@@ -75,7 +75,7 @@ final class CalculateGameBundlesShiniesAvailabilitiesHandlerTest extends KernelT
         $transport->queue()->assertContains(CalculateGameBundlesShiniesAvailabilities::class, 1);
 
         $this->expectException(\RuntimeException::class);
-        $this->expectExceptionMessage("Can't find ActionLog #0a35b132-fa1d-4528-b866-dadac5876e1c");
+        $this->expectExceptionMessageIsOrContains("Can't find ActionLog #0a35b132-fa1d-4528-b866-dadac5876e1c");
 
         $transport->process(1);
     }
