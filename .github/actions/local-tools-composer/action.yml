@@ -9,7 +9,7 @@ runs:
   using: "composite"
   steps:
     - name: Prepare
-      uses: ./.github/actions/local-tools-composer
+      uses: ./.github/actions/local-php
 
     - name: Cache composer dependencies
       uses: actions/cache@v5
