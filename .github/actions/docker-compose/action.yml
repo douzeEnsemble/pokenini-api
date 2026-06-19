@@ -35,7 +35,7 @@ runs:
 
     - name: Composer install
       shell: bash
-      run: docker compose exec -T php composer install --prefer-dist --no-progress --no-interaction
+      run: docker compose exec -T -u root php composer install --prefer-dist --no-progress --no-interaction
 
     - name: Create test database
       shell: bash
