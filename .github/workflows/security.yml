@@ -13,7 +13,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Install
+      - name: Composer install
         uses: ./.github/actions/local-composer
       - name: Run
         run: composer audit
@@ -32,7 +32,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Install tool
+      - name: Tool's Composer install
         uses: ./.github/actions/tools-composer
         with:
           dir: ${{ matrix.tool }}
@@ -51,9 +51,9 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
-      - name: Install
+      - name: Composer install
         uses: ./.github/actions/local-composer
-      - name: Install tool
+      - name: Tool's Composer install
         uses: ./.github/actions/tools-composer
         with:
           dir: ${{ matrix.tool }}
