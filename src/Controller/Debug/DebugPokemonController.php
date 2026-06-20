@@ -4,6 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller\Debug;
 
+use App\DTO\Response\PokemonAvailabilitiesResponse;
+use App\DTO\Response\PokemonDebugResponse;
 use App\Entity\Pokemon;
 use App\Factory\PokemonAvailabilitiesResponseFactory;
 use App\Factory\PokemonDebugResponseFactory;
@@ -14,25 +16,20 @@ use App\Service\GamesAvailabilitiesService;
 use App\Service\GamesShiniesAvailabilitiesService;
 use Symfony\Bridge\Doctrine\Attribute\MapEntity;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\Serialize;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/debogage/pokemon')]
 final class DebugPokemonController extends AbstractController
 {
     #[Route(path: '/{slug}', methods: ['GET'])]
+    #[Serialize]
     public function pokemon(
         #[MapEntity(mapping: ['slug' => 'slug'])]
         Pokemon $pokemon,
-        SerializerInterface $serializer,
-    ): JsonResponse {
-        $response = PokemonDebugResponseFactory::fromPokemon($pokemon);
-
-        return JsonResponse::fromJsonString(
-            $serializer->serialize($response, 'json'),
-        );
+    ): PokemonDebugResponse {
+        return PokemonDebugResponseFactory::fromPokemon($pokemon);
     }
 
     #[Route(path: '/{slug}/caches', methods: ['DELETE'])]
@@ -55,6 +52,7 @@ final class DebugPokemonController extends AbstractController
     }
 
     #[Route(path: '/{slug}/availabilities', methods: ['GET'])]
+    #[Serialize]
     public function pokemonAvailabilities(
         GamesAvailabilitiesService $gamesAvailabilitiesService,
         GamesShiniesAvailabilitiesService $gamesShiniesAvailabilitiesService,
@@ -62,17 +60,12 @@ final class DebugPokemonController extends AbstractController
         GameBundlesShiniesAvailabilitiesService $gameBundlesShiniesAvailabilitiesService,
         #[MapEntity(mapping: ['slug' => 'slug'])]
         Pokemon $pokemon,
-        SerializerInterface $serializer,
-    ): JsonResponse {
-        $response = PokemonAvailabilitiesResponseFactory::fromAvailabilities(
+    ): PokemonAvailabilitiesResponse {
+        return PokemonAvailabilitiesResponseFactory::fromAvailabilities(
             $gamesAvailabilitiesService->getFromPokemon($pokemon),
             $gamesShiniesAvailabilitiesService->getFromPokemon($pokemon),
             $gameBundlesAvailabilitiesService->getFromPokemon($pokemon),
             $gameBundlesShiniesAvailabilitiesService->getFromPokemon($pokemon),
-        );
-
-        return JsonResponse::fromJsonString(
-            $serializer->serialize($response, 'json'),
         );
     }
 }

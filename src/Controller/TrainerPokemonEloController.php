@@ -4,25 +4,27 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\DTO\Response\ElectionEloResponse;
+use App\DTO\Response\ElectionMetricsResponse;
 use App\DTO\TrainerPokemonEloQueryOptions;
 use App\Factory\ElectionEloResponseFactory;
 use App\Factory\ElectionMetricsResponseFactory;
 use App\Repository\TrainerPokemonEloRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Attribute\Serialize;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/election')]
 final class TrainerPokemonEloController extends AbstractController
 {
+    /** @return ElectionEloResponse[] */
     #[Route(path: '/top', methods: ['GET'])]
+    #[Serialize]
     public function top(
         Request $request,
         TrainerPokemonEloRepository $trainerPokemonEloRepository,
-        SerializerInterface $serializer,
-    ): JsonResponse {
+    ): array {
         /** @var array<int|string> $params */
         $params = $request->query->all();
         $queryOptions = new TrainerPokemonEloQueryOptions($params);
@@ -34,19 +36,15 @@ final class TrainerPokemonEloController extends AbstractController
             $queryOptions->count,
         );
 
-        $responses = ElectionEloResponseFactory::fromSqlRows($rows);
-
-        return JsonResponse::fromJsonString(
-            $serializer->serialize($responses, 'json'),
-        );
+        return ElectionEloResponseFactory::fromSqlRows($rows);
     }
 
     #[Route(path: '/metrics', methods: ['GET'])]
+    #[Serialize]
     public function metrics(
         Request $request,
         TrainerPokemonEloRepository $trainerPokemonEloRepository,
-        SerializerInterface $serializer,
-    ): JsonResponse {
+    ): ElectionMetricsResponse {
         /** @var array<int|string> $params */
         $params = $request->query->all();
         $queryOptions = new TrainerPokemonEloQueryOptions($params);
@@ -57,10 +55,6 @@ final class TrainerPokemonEloController extends AbstractController
             $queryOptions->electionSlug,
         );
 
-        $response = ElectionMetricsResponseFactory::fromArray($metrics);
-
-        return JsonResponse::fromJsonString(
-            $serializer->serialize($response, 'json'),
-        );
+        return ElectionMetricsResponseFactory::fromArray($metrics);
     }
 }

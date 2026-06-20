@@ -4,27 +4,23 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\DTO\Response\GameBundleResponse;
 use App\Factory\GameBundleResponseFactory;
 use App\Service\GameBundlesService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpKernel\Attribute\Serialize;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/game_bundles')]
 final class GameBundlesController extends AbstractController
 {
+    /** @return GameBundleResponse[] */
     #[Route(path: '', methods: ['GET'])]
-    public function get(
-        GameBundlesService $service,
-        SerializerInterface $serializer,
-    ): JsonResponse {
+    #[Serialize]
+    public function get(GameBundlesService $service): array
+    {
         $gameBundles = $service->getAll();
 
-        $responses = GameBundleResponseFactory::fromSqlRows($gameBundles);
-
-        return JsonResponse::fromJsonString(
-            $serializer->serialize($responses, 'json'),
-        );
+        return GameBundleResponseFactory::fromSqlRows($gameBundles);
     }
 }
