@@ -5,6 +5,8 @@ framework:
     transports:
       async:
         dsn: "%env(MESSENGER_TRANSPORT_DSN)%"
+        options:
+          reset_on_message: true
         retry_strategy:
           max_retries: 0
       failed: "doctrine://default?queue_name=failed"
