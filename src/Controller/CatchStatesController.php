@@ -4,27 +4,23 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\DTO\Response\CatchStateResponse;
 use App\Factory\CatchStateResponseFactory;
 use App\Service\CatchStatesService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpKernel\Attribute\Serialize;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/catch_states')]
 final class CatchStatesController extends AbstractController
 {
+    /** @return CatchStateResponse[] */
     #[Route(path: '', methods: ['GET'])]
-    public function get(
-        CatchStatesService $service,
-        SerializerInterface $serializer,
-    ): JsonResponse {
+    #[Serialize]
+    public function get(CatchStatesService $service): array
+    {
         $catchStates = $service->getAll();
 
-        $responses = CatchStateResponseFactory::fromSqlRows($catchStates);
-
-        return JsonResponse::fromJsonString(
-            $serializer->serialize($responses, 'json'),
-        );
+        return CatchStateResponseFactory::fromSqlRows($catchStates);
     }
 }

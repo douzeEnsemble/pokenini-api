@@ -5,24 +5,24 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\DTO\ElectionVote;
+use App\DTO\Response\ElectionVoteResultResponse;
 use App\Factory\ElectionVoteResultResponseFactory;
 use App\Service\ElectionService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Attribute\Serialize;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Attribute\Route;
-use Symfony\Component\Serializer\SerializerInterface;
 
 #[Route('/election')]
 final class ElectionVoteController extends AbstractController
 {
     #[Route(path: '/vote', methods: ['POST'])]
+    #[Serialize]
     public function vote(
         Request $request,
         ElectionService $electionService,
-        SerializerInterface $serializer,
-    ): JsonResponse {
+    ): ElectionVoteResultResponse {
         $json = $request->getContent();
 
         if (!$json) {
@@ -44,11 +44,6 @@ final class ElectionVoteController extends AbstractController
 
         $results = $electionService->vote($electionVote);
 
-        return JsonResponse::fromJsonString(
-            $serializer->serialize(
-                ElectionVoteResultResponseFactory::fromElectionVoteResult($results),
-                'json',
-            ),
-        );
+        return ElectionVoteResultResponseFactory::fromElectionVoteResult($results);
     }
 }
