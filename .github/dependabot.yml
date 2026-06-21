@@ -6,22 +6,6 @@ updates:
     schedule:
       interval: "weekly"
   - package-ecosystem: "composer"
-    directory: "/tools/check-moco-refs"
-    schedule:
-      interval: "weekly"
-  - package-ecosystem: "composer"
-    directory: "/tools/clean-moco-routes"
-    schedule:
-      interval: "weekly"
-  - package-ecosystem: "composer"
-    directory: "/tools/clean-unused-files"
-    schedule:
-      interval: "weekly"
-  - package-ecosystem: "composer"
-    directory: "/tools/coverage"
-    schedule:
-      interval: "weekly"
-  - package-ecosystem: "composer"
     directory: "/tools/deptrac"
     schedule:
       interval: "weekly"
