@@ -839,33 +839,35 @@ Exemple de réponse (`200`, tronquée à un item) :
   {
     "pokemon": {
       "slug": "butterfree",
-      "name": "Butterfree",
-      "french_name": "Papilusion",
+      "labels": {
+        "name": "Butterfree",
+        "french_name": "Papilusion",
+        "simplified_name": "Butterfree",
+        "simplified_french_name": "Papilusion",
+        "forms_label": null,
+        "forms_french_label": null
+      },
       "national_dex_number": 12,
       "regional_dex_number": null,
-      "simplified_name": "Butterfree",
-      "forms_label": "",
-      "simplified_french_name": "Papilusion",
-      "forms_french_label": "",
       "icon": "butterfree",
       "family_order": 2,
       "family_lead": { "slug": "caterpie" },
       "original_game_bundle": { "slug": "redgreenblueyellow" },
       "order_number": "9999-0012-002",
-      "game_bundles": [
-        { "slug": "redgreenblueyellow" }
-      ],
-      "game_bundles_shiny": [
-        { "slug": "redgreenblueyellow" }
-      ]
+      "game_bundles": {
+        "normal": [{ "slug": "redgreenblueyellow" }],
+        "shiny": [{ "slug": "redgreenblueyellow" }]
+      }
     },
     "forms": null,
     "types": {
       "primary": { "slug": "bug", "name": "Bug", "french_name": "Insecte", "color": "#A8B820" },
       "secondary": { "slug": "flying", "name": "Flying", "french_name": "Vol", "color": "#A890F0" }
     },
-    "elo": 1016.0,
-    "significance": true
+    "score": {
+      "elo": 1016.0,
+      "significance": true
+    }
   }
 ]
 ```
