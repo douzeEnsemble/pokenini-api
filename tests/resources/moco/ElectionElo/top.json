@@ -1,20 +1,26 @@
 [
   {
-    "score": { "elo": 1250.5, "significance": true },
     "pokemon": {
       "slug": "pikachu",
-      "name": "Pikachu",
-      "french_name": "Pikachu",
+      "labels": {
+        "name": "Pikachu",
+        "french_name": "Pikachu",
+        "simplified_name": null,
+        "simplified_french_name": null,
+        "forms_label": null,
+        "forms_french_label": null
+      },
       "national_dex_number": 25,
-      "simplified_name": null,
-      "forms_label": null,
-      "simplified_french_name": null,
-      "forms_french_label": null,
+      "regional_dex_number": null,
       "icon": "pikachu.png",
       "family_order": 1,
       "family_lead": { "slug": "pichu" },
       "original_game_bundle": { "slug": "red-blue" },
-      "order_number": "9999-0025-001"
+      "order_number": "9999-0025-001",
+      "game_bundles": {
+        "normal": [{ "slug": "red-blue" }],
+        "shiny": [{ "slug": "red-blue" }]
+      }
     },
     "forms": null,
     "types": {
@@ -25,30 +31,38 @@
         "color": "#FFCC33"
       },
       "secondary": null
-    }
+    },
+    "score": { "elo": 1250.5, "significance": true }
   },
   {
-    "score": { "elo": 1200.0, "significance": false },
     "pokemon": {
       "slug": "charizard",
-      "name": "Charizard",
-      "french_name": "Dracaufeu",
+      "labels": {
+        "name": "Charizard",
+        "french_name": "Dracaufeu",
+        "simplified_name": null,
+        "simplified_french_name": null,
+        "forms_label": null,
+        "forms_french_label": null
+      },
       "national_dex_number": 6,
-      "simplified_name": null,
-      "forms_label": null,
-      "simplified_french_name": null,
-      "forms_french_label": null,
+      "regional_dex_number": null,
       "icon": "charizard.png",
       "family_order": 3,
       "family_lead": { "slug": "charmander" },
       "original_game_bundle": null,
-      "order_number": "9999-0006-001"
+      "order_number": "9999-0006-003",
+      "game_bundles": {
+        "normal": [],
+        "shiny": []
+      }
     },
     "forms": {
       "category": null,
       "regional": {
         "slug": "galar",
-        "name": "Galar"
+        "name": "Galar",
+        "french_name": "Galar"
       },
       "special": null,
       "variant": null
@@ -66,6 +80,7 @@
         "french_name": "Vol",
         "color": "#A890F0"
       }
-    }
+    },
+    "score": { "elo": 1200.0, "significance": false }
   }
 ]
