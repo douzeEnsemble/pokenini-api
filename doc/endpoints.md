@@ -404,9 +404,12 @@ Exemple de réponse (`200`) :
 [
   {
     "dex": { "slug": "rubysapphireemerald" },
-    "name": "Ruby / Sapphire / Emerald",
-    "french_name": "Rubis / Saphir / Émeraude",
-    "slug": "rubysapphireemerald",
+    "settings": {
+      "name": "Ruby / Sapphire / Emerald",
+      "french_name": "Rubis / Saphir / Émeraude",
+      "slug": "rubysapphireemerald",
+      "display_template": "box"
+    },
     "flags": {
       "is_shiny": false,
       "is_private": true,
@@ -415,14 +418,16 @@ Exemple de réponse (`200`) :
       "is_released": true,
       "is_premium": false,
       "is_custom": false
-    },
-    "display_template": "box"
+    }
   },
   {
     "dex": { "slug": "homeshiny" },
-    "name": "Home\nShiny",
-    "french_name": "Home\nChromatique",
-    "slug": "home_shiny",
+    "settings": {
+      "name": "Home\nShiny",
+      "french_name": "Home\nChromatique",
+      "slug": "home_shiny",
+      "display_template": "box"
+    },
     "flags": {
       "is_shiny": true,
       "is_private": true,
@@ -431,8 +436,7 @@ Exemple de réponse (`200`) :
       "is_released": true,
       "is_premium": true,
       "is_custom": true
-    },
-    "display_template": "box"
+    }
   }
 ]
 ```
@@ -549,27 +553,31 @@ Exemple de réponse (`200`, tronquée à un pokémon) :
     {
       "pokemon": {
         "slug": "bulbasaur",
-        "name": "Bulbasaur",
-        "french_name": "Bulbizarre",
+        "labels": {
+          "name": "Bulbasaur",
+          "french_name": "Bulbizarre",
+          "simplified_name": "Bulbasaur",
+          "simplified_french_name": "Bulbizarre",
+          "forms_label": "",
+          "forms_french_label": ""
+        },
         "national_dex_number": 1,
         "regional_dex_number": 1,
-        "simplified_name": "Bulbasaur",
-        "forms_label": "",
-        "simplified_french_name": "Bulbizarre",
-        "forms_french_label": "",
         "icon": "bulbasaur",
         "family_order": 0,
         "family_lead": { "slug": "bulbasaur" },
         "original_game_bundle": { "slug": "redgreenblueyellow" },
         "order_number": "0001-0001-000",
-        "game_bundles": [
-          { "slug": "redgreenblueyellow" },
-          { "slug": "goldsilvercrystal" }
-        ],
-        "game_bundles_shiny": [
-          { "slug": "redgreenblueyellow" },
-          { "slug": "goldsilvercrystal" }
-        ]
+        "game_bundles": {
+          "normal": [
+            { "slug": "redgreenblueyellow" },
+            { "slug": "goldsilvercrystal" }
+          ],
+          "shiny": [
+            { "slug": "redgreenblueyellow" },
+            { "slug": "goldsilvercrystal" }
+          ]
+        }
       },
       "catch_state": {
         "slug": "no",
@@ -703,25 +711,25 @@ Exemple de réponse (`200`, tronquée à un item) :
     {
       "pokemon": {
         "slug": "bulbasaur",
-        "name": "Bulbasaur",
-        "french_name": "Bulbizarre",
+        "labels": {
+          "name": "Bulbasaur",
+          "french_name": "Bulbizarre",
+          "simplified_name": "Bulbasaur",
+          "simplified_french_name": "Bulbizarre",
+          "forms_label": "",
+          "forms_french_label": ""
+        },
         "national_dex_number": 1,
         "regional_dex_number": null,
-        "simplified_name": "Bulbasaur",
-        "forms_label": "",
-        "simplified_french_name": "Bulbizarre",
-        "forms_french_label": "",
         "icon": "bulbasaur",
         "family_order": 0,
         "family_lead": { "slug": "bulbasaur" },
         "original_game_bundle": { "slug": "redgreenblueyellow" },
         "order_number": "9999-0001-000",
-        "game_bundles": [
-          { "slug": "redgreenblueyellow" }
-        ],
-        "game_bundles_shiny": [
-          { "slug": "redgreenblueyellow" }
-        ]
+        "game_bundles": {
+          "normal": [{ "slug": "redgreenblueyellow" }],
+          "shiny": [{ "slug": "redgreenblueyellow" }]
+        }
       },
       "forms": {
         "category": { "slug": "starter", "name": "Starter", "french_name": "de Départ" },
@@ -776,7 +784,7 @@ Exemple de réponse (`200`) :
 ```json
 {
   "election_vote": {
-    "trainer_external_id": "7b52009b64fd0a2a49e6d8a939753077792b0554",
+    "trainer": { "external_id": "7b52009b64fd0a2a49e6d8a939753077792b0554" },
     "dex": { "slug": "demo" },
     "election_slug": "",
     "winners": [
