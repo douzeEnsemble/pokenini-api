@@ -26,7 +26,8 @@ final class ActionLogResponseFactory
         $rawExecutionTime = $row['execution_time'];
         $executionTime = null;
         if (null !== $rawExecutionTime) {
-            [$executionTime] = explode('.', (string) $rawExecutionTime);
+            [$intPart] = explode('.', (string) $rawExecutionTime);
+            $executionTime = (int) $intPart;
         }
 
         /** @var scalar $createdAt */
