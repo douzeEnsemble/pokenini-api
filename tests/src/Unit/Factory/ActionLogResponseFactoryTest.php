@@ -33,7 +33,7 @@ final class ActionLogResponseFactoryTest extends TestCase
 
         self::assertSame('2026-05-25 10:00:00+00', $entry->createdAt);
         self::assertSame('2026-05-25 10:01:00+00', $entry->doneAt);
-        self::assertSame('60', $entry->executionTime);
+        self::assertSame(60, $entry->executionTime);
         self::assertSame(['nb_pokemons' => '1008'], $entry->details);
         self::assertNull($entry->errorTrace);
     }
@@ -93,7 +93,7 @@ final class ActionLogResponseFactoryTest extends TestCase
 
         $entry = ActionLogResponseFactory::fromSqlRow($row);
 
-        self::assertSame('1', $entry->executionTime);
+        self::assertSame(1, $entry->executionTime);
     }
 
     #[Test]

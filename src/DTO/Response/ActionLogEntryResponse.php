@@ -17,7 +17,7 @@ final class ActionLogEntryResponse
         #[SerializedName('done_at')]
         public readonly ?string $doneAt,
         #[SerializedName('execution_time')]
-        public readonly ?string $executionTime,
+        public readonly ?int $executionTime,
         public readonly ?array $details,
         #[SerializedName('error_trace')]
         public readonly ?string $errorTrace,

@@ -21,14 +21,14 @@ final class ActionLogEntryResponseTest extends TestCase
         $response = new ActionLogEntryResponse(
             createdAt: '2026-05-25 10:00:00+00',
             doneAt: '2026-05-25 10:01:00+00',
-            executionTime: '60',
+            executionTime: 60,
             details: ['nb_pokemons' => '1008'],
             errorTrace: null,
         );
 
         self::assertSame('2026-05-25 10:00:00+00', $response->createdAt);
         self::assertSame('2026-05-25 10:01:00+00', $response->doneAt);
-        self::assertSame('60', $response->executionTime);
+        self::assertSame(60, $response->executionTime);
         self::assertSame(['nb_pokemons' => '1008'], $response->details);
         self::assertNull($response->errorTrace);
     }

@@ -22,7 +22,7 @@ final class ActionLogResponseTest extends TestCase
         $current = new ActionLogEntryResponse(
             createdAt: '2026-05-25 10:00:00+00',
             doneAt: '2026-05-25 10:01:00+00',
-            executionTime: '60',
+            executionTime: 60,
             details: null,
             errorTrace: null,
         );
