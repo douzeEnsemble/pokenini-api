@@ -40,7 +40,8 @@ class CollectionsRepository extends ServiceEntityRepository
         $sql = <<<'SQL'
             SELECT      name,
                         french_name as "french_name",
-                        slug
+                        slug,
+                        order_number
             FROM        collection
             WHERE       deleted_at IS NULL
             ORDER BY    order_number
