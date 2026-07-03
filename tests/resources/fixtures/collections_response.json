@@ -2,41 +2,49 @@
   {
     "slug": "swshdynamaxadventuresbosses",
     "name": "Sword, Shield - Dynamax Adventures bosses",
-    "french_name": "Sword, Shield - Boss des expéditions Dynamax"
+    "french_name": "Sword, Shield - Boss des expéditions Dynamax",
+    "order_number": 11
   },
   {
     "slug": "svmassoutbreakspaldea",
     "name": "Scarlet, Violet - Paldea's outbreaks",
-    "french_name": "Scarlet, Violet - Apparitions massives de Paldea"
+    "french_name": "Scarlet, Violet - Apparitions massives de Paldea",
+    "order_number": 20
   },
   {
     "slug": "svmassoutbreakskitakami",
     "name": "Scarlet, Violet - Kitakami's outbreaks",
-    "french_name": "Scarlet, Violet - Apparitions massives de Kitakami"
+    "french_name": "Scarlet, Violet - Apparitions massives de Kitakami",
+    "order_number": 21
   },
   {
     "slug": "svmassoutbreaksterrarium",
     "name": "Scarlet, Violet - Terrarium's outbreaks",
-    "french_name": "Scarlet, Violet - Apparitions massives du Terrarium"
+    "french_name": "Scarlet, Violet - Apparitions massives du Terrarium",
+    "order_number": 22
   },
   {
     "slug": "svtransferable",
     "name": "Scarlet, Violet - Transferable",
-    "french_name": "Scarlet, Violet - Transférable"
+    "french_name": "Scarlet, Violet - Transférable",
+    "order_number": 23
   },
   {
     "slug": "pogoshadow",
     "name": "Pokemon Go - Shadow",
-    "french_name": "Pokemon Go - Obscurs"
+    "french_name": "Pokemon Go - Obscurs",
+    "order_number": 50
   },
   {
     "slug": "pogoshadowshiny",
     "name": "Pokemon Go - Shiny Shadow",
-    "french_name": "Pokemon Go - Obscurs Chromatique"
+    "french_name": "Pokemon Go - Obscurs Chromatique",
+    "order_number": 51
   },
   {
     "slug": "pogodynamax",
     "name": "Pokemon Go - Dynamax",
-    "french_name": "Pokemon Go - Dynamax"
+    "french_name": "Pokemon Go - Dynamax",
+    "order_number": 52
   }
 ]

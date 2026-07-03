@@ -13,5 +13,7 @@ final class CollectionResponse
         public readonly string $name,
         #[SerializedName('french_name')]
         public readonly string $frenchName,
+        #[SerializedName('order_number')]
+        public readonly int $orderNumber,
     ) {}
 }

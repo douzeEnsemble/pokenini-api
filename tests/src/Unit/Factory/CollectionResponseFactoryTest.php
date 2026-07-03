@@ -23,6 +23,7 @@ final class CollectionResponseFactoryTest extends TestCase
             'slug' => 'swshdynamaxadventuresbosses',
             'name' => 'Sword, Shield - Dynamax Adventures bosses',
             'french_name' => 'Sword, Shield - Boss des expéditions Dynamax',
+            'order_number' => 11,
         ];
 
         $response = CollectionResponseFactory::fromSqlRow($row);
@@ -30,6 +31,7 @@ final class CollectionResponseFactoryTest extends TestCase
         self::assertSame('swshdynamaxadventuresbosses', $response->slug);
         self::assertSame('Sword, Shield - Dynamax Adventures bosses', $response->name);
         self::assertSame('Sword, Shield - Boss des expéditions Dynamax', $response->frenchName);
+        self::assertSame(11, $response->orderNumber);
     }
 
     #[Test]
@@ -39,6 +41,7 @@ final class CollectionResponseFactoryTest extends TestCase
             'slug' => 123,
             'name' => 456,
             'french_name' => 789,
+            'order_number' => '42',
         ];
 
         $response = CollectionResponseFactory::fromSqlRow($row);
@@ -46,6 +49,7 @@ final class CollectionResponseFactoryTest extends TestCase
         self::assertSame('123', $response->slug);
         self::assertSame('456', $response->name);
         self::assertSame('789', $response->frenchName);
+        self::assertSame(42, $response->orderNumber);
     }
 
     #[Test]
@@ -56,11 +60,13 @@ final class CollectionResponseFactoryTest extends TestCase
                 'slug' => 'swshdynamaxadventuresbosses',
                 'name' => 'Sword, Shield - Dynamax Adventures bosses',
                 'french_name' => 'Sword, Shield - Boss des expéditions Dynamax',
+                'order_number' => 11,
             ],
             [
                 'slug' => 'pogodynamax',
                 'name' => 'Pokemon Go - Dynamax',
                 'french_name' => 'Pokemon Go - Dynamax',
+                'order_number' => 52,
             ],
         ];
 

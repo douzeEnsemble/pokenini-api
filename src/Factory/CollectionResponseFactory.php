@@ -24,10 +24,14 @@ final class CollectionResponseFactory
         /** @var scalar $frenchName */
         $frenchName = $row['french_name'];
 
+        /** @var scalar $orderNumber */
+        $orderNumber = $row['order_number'];
+
         return new CollectionResponse(
             slug: (string) $slug,
             name: (string) $name,
             frenchName: (string) $frenchName,
+            orderNumber: (int) $orderNumber,
         );
     }
 

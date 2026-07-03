@@ -22,11 +22,13 @@ final class CollectionResponseTest extends TestCase
             slug: 'pogodynamax',
             name: 'Pokemon Go - Dynamax',
             frenchName: 'Pokemon Go - Dynamax',
+            orderNumber: 52,
         );
 
         self::assertSame('pogodynamax', $response->slug);
         self::assertSame('Pokemon Go - Dynamax', $response->name);
         self::assertSame('Pokemon Go - Dynamax', $response->frenchName);
+        self::assertSame(52, $response->orderNumber);
     }
 
     #[Test]
@@ -36,10 +38,12 @@ final class CollectionResponseTest extends TestCase
             slug: 'scarletviolet',
             name: 'Scarlet & Violet',
             frenchName: 'Écarlate & Violet',
+            orderNumber: 1,
         );
 
         self::assertSame('scarletviolet', $response->slug);
         self::assertSame('Scarlet & Violet', $response->name);
         self::assertSame('Écarlate & Violet', $response->frenchName);
+        self::assertSame(1, $response->orderNumber);
     }
 }

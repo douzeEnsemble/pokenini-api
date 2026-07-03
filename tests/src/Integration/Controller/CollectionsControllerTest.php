@@ -34,18 +34,21 @@ final class CollectionsControllerTest extends AbstractTestControllerApi
             'slug' => 'swshdynamaxadventuresbosses',
             'name' => 'Sword, Shield - Dynamax Adventures bosses',
             'french_name' => 'Sword, Shield - Boss des expéditions Dynamax',
+            'order_number' => 11,
         ], $content[0]);
 
         $this->assertEquals([
             'slug' => 'svmassoutbreaksterrarium',
             'name' => "Scarlet, Violet - Terrarium's outbreaks",
             'french_name' => 'Scarlet, Violet - Apparitions massives du Terrarium',
+            'order_number' => 22,
         ], $content[3]);
 
         $this->assertEquals([
             'slug' => 'pogodynamax',
             'name' => 'Pokemon Go - Dynamax',
             'french_name' => 'Pokemon Go - Dynamax',
+            'order_number' => 52,
         ], $content[7]);
     }
 
