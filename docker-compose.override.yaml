@@ -1,0 +1,11 @@
+networks:
+  pokenini-local:
+    external: true
+
+services:
+  web:
+    networks:
+      default: {}
+      pokenini-local:
+        aliases:
+          - api.pokenini.local
