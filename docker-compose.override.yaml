@@ -3,6 +3,12 @@ networks:
     external: true
 
 services:
+  php:
+    networks:
+      default:
+        aliases:
+          - api-php
+
   web:
     networks:
       default: {}
