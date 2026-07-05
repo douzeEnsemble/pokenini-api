@@ -211,6 +211,10 @@ data-app: ## Initialize app data
 		&& $(SYMFONY) app:calculate:dex_availabilities \
 		&& $(SYMFONY) app:calculate:pokemon_availabilities
 
+.PHONY: data-fixtures-app
+data-fixtures-app: ## Initialize app fixtures data
+	$(SYMFONY) hautelook:fixtures:load --no-interaction --env=dev
+
 ## —— Composer 🧙 ——————————————————————————————————————————————————————————————
 .PHONY: composer
 composer: ## Run composer, pass the parameter "c=" to run a given command, example: make composer c='req symfony/orm-pack'
