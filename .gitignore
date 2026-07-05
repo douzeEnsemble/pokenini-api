@@ -46,3 +46,4 @@ tools/*/node_modules
 tools/*/var
 
 /.deptrac.cache
+/docker-compose.override.yaml
