@@ -29,51 +29,51 @@ final class TrainerDexRepositoryInsertIfNeededTest extends KernelTestCase
     {
         $repo = self::getContainer()->get(TrainerDexRepository::class);
 
-        $this->assertEquals(12, $this->getTrainerDexCount());
+        $this->assertEquals(34, $this->getTrainerDexCount());
 
         $repo->insertIfNeeded('7b52009b64fd0a2a49e6d8a939753077792b0554', 'spoon');
 
-        $this->assertEquals(13, $this->getTrainerDexCount());
+        $this->assertEquals(35, $this->getTrainerDexCount());
     }
 
     public function testWasntNeeded(): void
     {
         $repo = self::getContainer()->get(TrainerDexRepository::class);
 
-        $this->assertEquals(12, $this->getTrainerDexCount());
+        $this->assertEquals(34, $this->getTrainerDexCount());
 
         $repo->insertIfNeeded('7b52009b64fd0a2a49e6d8a939753077792b0554', 'douze');
 
-        $this->assertEquals(12, $this->getTrainerDexCount());
+        $this->assertEquals(34, $this->getTrainerDexCount());
     }
 
     public function testWasNeededThenWasnt(): void
     {
         $repo = self::getContainer()->get(TrainerDexRepository::class);
 
-        $this->assertEquals(12, $this->getTrainerDexCount());
+        $this->assertEquals(34, $this->getTrainerDexCount());
 
         $repo->insertIfNeeded('7b52009b64fd0a2a49e6d8a939753077792b0554', 'spoon');
 
-        $this->assertEquals(13, $this->getTrainerDexCount());
+        $this->assertEquals(35, $this->getTrainerDexCount());
 
         $repo->insertIfNeeded('7b52009b64fd0a2a49e6d8a939753077792b0554', 'spoon');
 
-        $this->assertEquals(13, $this->getTrainerDexCount());
+        $this->assertEquals(35, $this->getTrainerDexCount());
     }
 
     public function testlugOkThenKo(): void
     {
         $repo = self::getContainer()->get(TrainerDexRepository::class);
 
-        $this->assertEquals(12, $this->getTrainerDexCount());
+        $this->assertEquals(34, $this->getTrainerDexCount());
 
         $repo->insertIfNeeded('7b52009b64fd0a2a49e6d8a939753077792b0554', 'spoon');
 
-        $this->assertEquals(13, $this->getTrainerDexCount());
+        $this->assertEquals(35, $this->getTrainerDexCount());
 
         $repo->insertIfNeeded('7b52009b64fd0a2a49e6d8a939753077792b0554', 'spoon');
 
-        $this->assertEquals(13, $this->getTrainerDexCount());
+        $this->assertEquals(35, $this->getTrainerDexCount());
     }
 }

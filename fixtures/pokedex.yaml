@@ -153,3 +153,291 @@ App\Entity\Pokedex:
     pokemon: "@pokemon_bulbasaur"
     catchState: "@catchstate_yes"
     trainerDex: "@trainerdex_u13_home"
+
+  # admin: full duplicate of the u12 dataset above
+  pokedex_admin_redgreenblueyellow_bulbasaur:
+    pokemon: "@pokemon_bulbasaur"
+    catchState: "@catchstate_no"
+    trainerDex: "@trainerdex_admin_redgreenblueyellow"
+
+  pokedex_admin_redgreenblueyellow_ivysaur:
+    pokemon: "@pokemon_ivysaur"
+    catchState: "@catchstate_maybe"
+    trainerDex: "@trainerdex_admin_redgreenblueyellow"
+
+  pokedex_admin_redgreenblueyellow_venusaur:
+    pokemon: "@pokemon_venusaur"
+    catchState: "@catchstate_maybenot"
+    trainerDex: "@trainerdex_admin_redgreenblueyellow"
+
+  pokedex_admin_redgreenblueyellow_caterpie:
+    pokemon: "@pokemon_caterpie"
+    catchState: "@catchstate_maybenot"
+    trainerDex: "@trainerdex_admin_redgreenblueyellow"
+
+  pokedex_admin_goldsilvercrystal_bulbasaur:
+    pokemon: "@pokemon_bulbasaur"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_admin_goldsilvercrystal"
+
+  pokedex_admin_goldsilvercrystal_ivysaur:
+    pokemon: "@pokemon_ivysaur"
+    catchState: "@catchstate_no"
+    trainerDex: "@trainerdex_admin_goldsilvercrystal"
+
+  pokedex_admin_goldsilvercrystal_venusaur:
+    pokemon: "@pokemon_venusaur"
+    catchState: "@catchstate_no"
+    trainerDex: "@trainerdex_admin_goldsilvercrystal"
+
+  pokedex_admin_home_bulbasaur:
+    pokemon: "@pokemon_bulbasaur"
+    catchState: "@catchstate_no"
+    trainerDex: "@trainerdex_admin_home"
+
+  pokedex_admin_home_ivysaur:
+    pokemon: "@pokemon_ivysaur"
+    catchState: "@catchstate_no"
+    trainerDex: "@trainerdex_admin_home"
+
+  pokedex_admin_home_venusaur:
+    pokemon: "@pokemon_venusaur"
+    catchState: "@catchstate_no"
+    trainerDex: "@trainerdex_admin_home"
+
+  pokedex_admin_home_venusaurf:
+    pokemon: "@pokemon_venusaur_f"
+    catchState: "@catchstate_no"
+    trainerDex: "@trainerdex_admin_home"
+
+  pokedex_admin_home_venusaurmega:
+    pokemon: "@pokemon_venusaur_mega"
+    catchState: "@catchstate_no"
+    trainerDex: "@trainerdex_admin_home"
+
+  pokedex_admin_home_venusaurgigantamax:
+    pokemon: "@pokemon_venusaur_gigantamax"
+    catchState: "@catchstate_no"
+    trainerDex: "@trainerdex_admin_home"
+
+  pokedex_admin_home_rattata:
+    pokemon: "@pokemon_rattata"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_admin_home"
+
+  pokedex_admin_home_rattataf:
+    pokemon: "@pokemon_rattata_f"
+    catchState: "@catchstate_maybe"
+    trainerDex: "@trainerdex_admin_home"
+
+  pokedex_admin_home_rattataalola:
+    pokemon: "@pokemon_rattata_alola"
+    catchState: "@catchstate_maybenot"
+    trainerDex: "@trainerdex_admin_home"
+
+  pokedex_admin_home_raticate:
+    pokemon: "@pokemon_raticate"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_admin_home"
+
+  pokedex_admin_home_raticatef:
+    pokemon: "@pokemon_raticate_f"
+    catchState: "@catchstate_maybe"
+    trainerDex: "@trainerdex_admin_home"
+
+  pokedex_admin_home_raticatealola:
+    pokemon: "@pokemon_raticate_alola"
+    catchState: "@catchstate_maybenot"
+    trainerDex: "@trainerdex_admin_home"
+
+  pokedex_admin_home_raticate_alola_totem:
+    pokemon: "@pokemon_raticate_alola_totem"
+    catchState: "@catchstate_no"
+    trainerDex: "@trainerdex_admin_home"
+
+  pokedex_admin_home_charmander:
+    pokemon: "@pokemon_charmander"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_admin_home"
+
+  pokedex_admin_home_charmeleon:
+    pokemon: "@pokemon_charmeleon"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_admin_home"
+
+  pokedex_admin_home_charizard:
+    pokemon: "@pokemon_charizard"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_admin_home"
+
+  pokedex_admin_home_caterpie:
+    pokemon: "@pokemon_caterpie"
+    catchState: "@catchstate_maybe"
+    trainerDex: "@trainerdex_admin_home"
+
+  pokedex_admin_home_metapod:
+    pokemon: "@pokemon_metapod"
+    catchState: "@catchstate_maybenot"
+    trainerDex: "@trainerdex_admin_home"
+
+  pokedex_admin_home_butterfree:
+    pokemon: "@pokemon_butterfree"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_admin_home"
+
+  pokedex_admin_home_butterfree_f:
+    pokemon: "@pokemon_butterfree_f"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_admin_home"
+
+  pokedex_admin_home_butterfree_gigantamax:
+    pokemon: "@pokemon_butterfree_gigantamax"
+    catchState: "@catchstate_no"
+    trainerDex: "@trainerdex_admin_home"
+
+  # collector: same shape as admin but with a few entries missing from each group
+  pokedex_collector_redgreenblueyellow_bulbasaur:
+    pokemon: "@pokemon_bulbasaur"
+    catchState: "@catchstate_no"
+    trainerDex: "@trainerdex_collector_redgreenblueyellow"
+
+  pokedex_collector_redgreenblueyellow_ivysaur:
+    pokemon: "@pokemon_ivysaur"
+    catchState: "@catchstate_maybe"
+    trainerDex: "@trainerdex_collector_redgreenblueyellow"
+
+  pokedex_collector_redgreenblueyellow_venusaur:
+    pokemon: "@pokemon_venusaur"
+    catchState: "@catchstate_maybenot"
+    trainerDex: "@trainerdex_collector_redgreenblueyellow"
+
+  pokedex_collector_goldsilvercrystal_bulbasaur:
+    pokemon: "@pokemon_bulbasaur"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_collector_goldsilvercrystal"
+
+  pokedex_collector_goldsilvercrystal_ivysaur:
+    pokemon: "@pokemon_ivysaur"
+    catchState: "@catchstate_no"
+    trainerDex: "@trainerdex_collector_goldsilvercrystal"
+
+  pokedex_collector_home_bulbasaur:
+    pokemon: "@pokemon_bulbasaur"
+    catchState: "@catchstate_no"
+    trainerDex: "@trainerdex_collector_home"
+
+  pokedex_collector_home_ivysaur:
+    pokemon: "@pokemon_ivysaur"
+    catchState: "@catchstate_no"
+    trainerDex: "@trainerdex_collector_home"
+
+  pokedex_collector_home_venusaur:
+    pokemon: "@pokemon_venusaur"
+    catchState: "@catchstate_no"
+    trainerDex: "@trainerdex_collector_home"
+
+  pokedex_collector_home_rattata:
+    pokemon: "@pokemon_rattata"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_collector_home"
+
+  pokedex_collector_home_rattataf:
+    pokemon: "@pokemon_rattata_f"
+    catchState: "@catchstate_maybe"
+    trainerDex: "@trainerdex_collector_home"
+
+  pokedex_collector_home_raticate:
+    pokemon: "@pokemon_raticate"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_collector_home"
+
+  pokedex_collector_home_charmander:
+    pokemon: "@pokemon_charmander"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_collector_home"
+
+  pokedex_collector_home_charmeleon:
+    pokemon: "@pokemon_charmeleon"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_collector_home"
+
+  pokedex_collector_home_charizard:
+    pokemon: "@pokemon_charizard"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_collector_home"
+
+  pokedex_collector_home_caterpie:
+    pokemon: "@pokemon_caterpie"
+    catchState: "@catchstate_maybe"
+    trainerDex: "@trainerdex_collector_home"
+
+  pokedex_collector_home_butterfree:
+    pokemon: "@pokemon_butterfree"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_collector_home"
+
+  # trainer: same shape but with a different set of Pokémon per dex
+  pokedex_trainer_redgreenblueyellow_douze:
+    pokemon: "@pokemon_douze"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_trainer_redgreenblueyellow"
+
+  pokedex_trainer_goldsilvercrystal_deoxys:
+    pokemon: "@pokemon_deoxys"
+    catchState: "@catchstate_maybe"
+    trainerDex: "@trainerdex_trainer_goldsilvercrystal"
+
+  pokedex_trainer_rubysapphireemeraldshiny_deoxysattack:
+    pokemon: "@pokemon_deoxys_attack"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_trainer_rubysapphireemeraldshiny"
+
+  pokedex_trainer_rubysapphireemeraldshiny_deoxysdefense:
+    pokemon: "@pokemon_deoxys_defense"
+    catchState: "@catchstate_maybe"
+    trainerDex: "@trainerdex_trainer_rubysapphireemeraldshiny"
+
+  pokedex_trainer_rubysapphireemeraldshiny_deoxysspeed:
+    pokemon: "@pokemon_deoxys_speed"
+    catchState: "@catchstate_maybenot"
+    trainerDex: "@trainerdex_trainer_rubysapphireemeraldshiny"
+
+  pokedex_trainer_home_douze:
+    pokemon: "@pokemon_douze"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_trainer_home"
+
+  pokedex_trainer_home_deoxys:
+    pokemon: "@pokemon_deoxys"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_trainer_home"
+
+  pokedex_trainer_home_deoxysattack:
+    pokemon: "@pokemon_deoxys_attack"
+    catchState: "@catchstate_maybe"
+    trainerDex: "@trainerdex_trainer_home"
+
+  pokedex_trainer_home_deoxysdefense:
+    pokemon: "@pokemon_deoxys_defense"
+    catchState: "@catchstate_maybenot"
+    trainerDex: "@trainerdex_trainer_home"
+
+  pokedex_trainer_home_deoxysspeed:
+    pokemon: "@pokemon_deoxys_speed"
+    catchState: "@catchstate_no"
+    trainerDex: "@trainerdex_trainer_home"
+
+  pokedex_trainer_home_pogo_rattata:
+    pokemon: "@pokemon_rattata"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_trainer_home_pogo"
+
+  pokedex_trainer_home_pogo_raticate:
+    pokemon: "@pokemon_raticate"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_trainer_home_pogo"
+
+  pokedex_trainer_demo_charizard:
+    pokemon: "@pokemon_charizard"
+    catchState: "@catchstate_yes"
+    trainerDex: "@trainerdex_trainer_demo"
