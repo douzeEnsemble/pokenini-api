@@ -41,21 +41,21 @@ final class PokedexRepositoryTest extends KernelTestCase
 
         $pokedexAfter = $this->getPokedexFromSlugs('redgreenblueyellow', 'ivysaur');
 
-        $this->assertEquals('Yes', $pokedexAfter['name']);
-        $this->assertEquals('yes', $pokedexAfter['slug']);
+        $this->assertEquals('Maybe', $pokedexAfter['name']);
+        $this->assertEquals('maybe', $pokedexAfter['slug']);
     }
 
     public function testInsert(): void
     {
-        $pokedexBefore = $this->getPokedexFromSlugs('redgreenblueyellow', 'douze');
+        $pokedexBefore = $this->getPokedexFromSlugs('goldsilvercrystal', 'douze');
 
         $this->assertEmpty($pokedexBefore);
 
         $repo = self::getContainer()->get(PokedexRepository::class);
 
-        $repo->upsert('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow', 'douze', 'maybenot');
+        $repo->upsert('7b52009b64fd0a2a49e6d8a939753077792b0554', 'goldsilvercrystal', 'douze', 'maybenot');
 
-        $pokedexAfter = $this->getPokedexFromSlugs('redgreenblueyellow', 'douze');
+        $pokedexAfter = $this->getPokedexFromSlugs('goldsilvercrystal', 'douze');
 
         $this->assertEquals('Maybe not', $pokedexAfter['name']);
         $this->assertEquals('maybenot', $pokedexAfter['slug']);
@@ -70,40 +70,52 @@ final class PokedexRepositoryTest extends KernelTestCase
         $this->assertEquals(
             [
                 [
-                    'nb' => 2,
+                    'nb' => 5,
                     'slug' => 'redgreenblueyellow',
                     'name' => 'Red / Green / Blue / Yellow',
                     'french_name' => 'Rouge / Vert / Bleu / Jaune',
                 ],
                 [
-                    'nb' => 2,
+                    'nb' => 5,
                     'slug' => 'goldsilvercrystal',
                     'name' => 'Gold / Silver / Crystal',
                     'french_name' => 'Or / Argent / Cristal',
                 ],
                 [
-                    'nb' => 2,
+                    'nb' => 5,
                     'slug' => 'home',
                     'name' => 'Home',
                     'french_name' => 'Home',
                 ],
                 [
-                    'nb' => 1,
+                    'nb' => 4,
+                    'slug' => 'homepogo',
+                    'name' => 'Home PoGo',
+                    'french_name' => 'Home PoGo',
+                ],
+                [
+                    'nb' => 3,
                     'slug' => 'rubysapphireemerald',
                     'name' => 'Ruby / Sapphire / Emerald',
                     'french_name' => 'Rubis / Saphir / Émeraude',
                 ],
                 [
-                    'nb' => 1,
+                    'nb' => 3,
                     'slug' => 'homeshiny',
                     'name' => "Home\nShiny",
                     'french_name' => "Home\nChromatique",
                 ],
                 [
                     'nb' => 1,
-                    'slug' => 'homepogo',
-                    'name' => 'Home PoGo',
-                    'french_name' => 'Home PoGo',
+                    'slug' => 'demo',
+                    'name' => 'Demo',
+                    'french_name' => 'Démo',
+                ],
+                [
+                    'nb' => 1,
+                    'slug' => 'rubysapphireemeraldshiny',
+                    'name' => 'Ruby / Sapphire / Emerald: Shiny',
+                    'french_name' => 'Rubis / Saphir / Émeraude: Chromatique',
                 ],
             ],
             $counts

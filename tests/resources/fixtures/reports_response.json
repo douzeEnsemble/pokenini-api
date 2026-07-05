@@ -7,6 +7,24 @@
       }
     },
     {
+      "count": 28,
+      "trainer": {
+        "external_id": "d033e22ae348aeb5660fc2140aec35850c4da997"
+      }
+    },
+    {
+      "count": 16,
+      "trainer": {
+        "external_id": "e9b14f010c91507ddbdd32bd28911ba8a9f3d30f"
+      }
+    },
+    {
+      "count": 13,
+      "trainer": {
+        "external_id": "297e1479cf75d300a89a5b6ec208fd979209878b"
+      }
+    },
+    {
       "count": 3,
       "trainer": {
         "external_id": "bd307a3ec329e10a2cff8fb87480823da114f8f4"
@@ -15,7 +33,7 @@
   ],
   "dex_usage": [
     {
-      "count": 2,
+      "count": 5,
       "dex": {
         "slug": "redgreenblueyellow",
         "name": "Red / Green / Blue / Yellow",
@@ -23,7 +41,7 @@
       }
     },
     {
-      "count": 2,
+      "count": 5,
       "dex": {
         "slug": "goldsilvercrystal",
         "name": "Gold / Silver / Crystal",
@@ -31,7 +49,7 @@
       }
     },
     {
-      "count": 2,
+      "count": 5,
       "dex": {
         "slug": "home",
         "name": "Home",
@@ -39,7 +57,15 @@
       }
     },
     {
-      "count": 1,
+      "count": 4,
+      "dex": {
+        "slug": "homepogo",
+        "name": "Home PoGo",
+        "french_name": "Home PoGo"
+      }
+    },
+    {
+      "count": 3,
       "dex": {
         "slug": "rubysapphireemerald",
         "name": "Ruby / Sapphire / Emerald",
@@ -47,7 +73,7 @@
       }
     },
     {
-      "count": 1,
+      "count": 3,
       "dex": {
         "slug": "homeshiny",
         "name": "Home\nShiny",
@@ -57,15 +83,23 @@
     {
       "count": 1,
       "dex": {
-        "slug": "homepogo",
-        "name": "Home PoGo",
-        "french_name": "Home PoGo"
+        "slug": "demo",
+        "name": "Demo",
+        "french_name": "Démo"
+      }
+    },
+    {
+      "count": 1,
+      "dex": {
+        "slug": "rubysapphireemeraldshiny",
+        "name": "Ruby / Sapphire / Emerald: Shiny",
+        "french_name": "Rubis / Saphir / Émeraude: Chromatique"
       }
     }
   ],
   "catch_state_usage": [
     {
-      "count": 11,
+      "count": 28,
       "catch_state": {
         "slug": "no",
         "name": "No",
@@ -74,7 +108,7 @@
       }
     },
     {
-      "count": 4,
+      "count": 14,
       "catch_state": {
         "slug": "maybe",
         "name": "Maybe",
@@ -83,7 +117,7 @@
       }
     },
     {
-      "count": 5,
+      "count": 13,
       "catch_state": {
         "slug": "maybenot",
         "name": "Maybe not",
@@ -92,7 +126,7 @@
       }
     },
     {
-      "count": 11,
+      "count": 33,
       "catch_state": {
         "slug": "yes",
         "name": "Yes",

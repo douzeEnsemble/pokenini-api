@@ -130,6 +130,18 @@ final class PokedexRepositoryCatchStateCountTest extends KernelTestCase
                     'trainer' => '7b52009b64fd0a2a49e6d8a939753077792b0554',
                 ],
                 [
+                    'nb' => 28,
+                    'trainer' => 'd033e22ae348aeb5660fc2140aec35850c4da997',
+                ],
+                [
+                    'nb' => 16,
+                    'trainer' => 'e9b14f010c91507ddbdd32bd28911ba8a9f3d30f',
+                ],
+                [
+                    'nb' => 13,
+                    'trainer' => '297e1479cf75d300a89a5b6ec208fd979209878b',
+                ],
+                [
                     'nb' => 3,
                     'trainer' => 'bd307a3ec329e10a2cff8fb87480823da114f8f4',
                 ],
@@ -147,28 +159,28 @@ final class PokedexRepositoryCatchStateCountTest extends KernelTestCase
         $this->assertEquals(
             [
                 [
-                    'nb' => 11,
+                    'nb' => 28,
                     'slug' => 'no',
                     'name' => 'No',
                     'french_name' => 'Non',
                     'color' => '#e57373',
                 ],
                 [
-                    'nb' => 4,
+                    'nb' => 14,
                     'slug' => 'maybe',
                     'name' => 'Maybe',
                     'french_name' => 'Peut être',
                     'color' => 'blue',
                 ],
                 [
-                    'nb' => 5,
+                    'nb' => 13,
                     'slug' => 'maybenot',
                     'name' => 'Maybe not',
                     'french_name' => 'Peut être pas',
                     'color' => 'yellow',
                 ],
                 [
-                    'nb' => 11,
+                    'nb' => 33,
                     'slug' => 'yes',
                     'name' => 'Yes',
                     'french_name' => 'Oui',

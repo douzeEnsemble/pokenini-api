@@ -25,7 +25,7 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         $this->assertArrayHasKey('slug', $pokedexBefore);
         $this->assertEquals('maybe', $pokedexBefore['slug']);
 
-        $this->assertEquals(12, $this->getTrainerDexCount());
+        $this->assertEquals(34, $this->getTrainerDexCount());
 
         $this->apiRequest(
             'PATCH',
@@ -40,9 +40,9 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         $pokedexAfter = $this->getPokedexFromSlugs('redgreenblueyellow', 'ivysaur');
 
         $this->assertArrayHasKey('slug', $pokedexAfter);
-        $this->assertEquals('yes', $pokedexAfter['slug']);
+        $this->assertEquals('maybe', $pokedexAfter['slug']);
 
-        $this->assertEquals(12, $this->getTrainerDexCount());
+        $this->assertEquals(34, $this->getTrainerDexCount());
     }
 
     public function testUpdateEmpty(): void
@@ -94,15 +94,15 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
 
     public function testCreate(): void
     {
-        $pokedexBefore = $this->getPokedexFromSlugs('redgreenblueyellow', 'douze');
+        $pokedexBefore = $this->getPokedexFromSlugs('goldsilvercrystal', 'douze');
 
         $this->assertEmpty($pokedexBefore);
 
-        $this->assertEquals(12, $this->getTrainerDexCount());
+        $this->assertEquals(34, $this->getTrainerDexCount());
 
         $this->apiRequest(
             'PUT',
-            '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow/douze',
+            '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/goldsilvercrystal/douze',
             [],
             ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
             'maybenot'
@@ -110,12 +110,12 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsSuccessful();
 
-        $pokedexAfter = $this->getPokedexFromSlugs('redgreenblueyellow', 'douze');
+        $pokedexAfter = $this->getPokedexFromSlugs('goldsilvercrystal', 'douze');
 
         $this->assertArrayHasKey('slug', $pokedexAfter);
         $this->assertEquals('maybenot', $pokedexAfter['slug']);
 
-        $this->assertEquals(12, $this->getTrainerDexCount());
+        $this->assertEquals(34, $this->getTrainerDexCount());
     }
 
     public function testCreateNonExistingTrainerDex(): void
@@ -124,7 +124,7 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
 
         $this->assertEmpty($pokedexBefore);
 
-        $this->assertEquals(12, $this->getTrainerDexCount());
+        $this->assertEquals(34, $this->getTrainerDexCount());
 
         $this->apiRequest(
             'PUT',
@@ -141,7 +141,7 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         $this->assertArrayHasKey('slug', $pokedexAfter);
         $this->assertEquals('maybenot', $pokedexAfter['slug']);
 
-        $this->assertEquals(13, $this->getTrainerDexCount());
+        $this->assertEquals(35, $this->getTrainerDexCount());
     }
 
     public function testCreateNonExistingDex(): void
