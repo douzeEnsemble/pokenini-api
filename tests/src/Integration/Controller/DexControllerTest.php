@@ -22,21 +22,23 @@ final class DexControllerTest extends AbstractTestControllerApi
 {
     use GetTrainerDexTrait;
 
+    /** @var array<string, array<string, mixed>> */
+    private array $lastResponseReportsBySlug = [];
+
     public function testListUser12(): void
     {
         $this->apiRequest('GET', '/dex/7b52009b64fd0a2a49e6d8a939753077792b0554/list');
 
         $this->assertResponseIsOK();
 
-        $content = $this->getClientResponseContent();
-
-        /** @var array<int, array<string, array<string, bool>|array<string, string>|string>> $data */
-        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+        $data = $this->getJsonDecodedResponseContentStrippedOfReports();
 
         $this->assertEquals(
             DexControllerTestData::getUser12Content(),
             $data
         );
+        $this->assertKnownReport('home', 9, 3, 3, 7, 22);
+        $this->assertKnownReport('home_shiny', 11, 0, 0, 0, 11);
     }
 
     public function testListUser12WithUnReleased(): void
@@ -51,15 +53,14 @@ final class DexControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        $content = $this->getClientResponseContent();
-
-        /** @var array<int, array<string, array<string, bool>|array<string, string>|string>> $data */
-        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+        $data = $this->getJsonDecodedResponseContentStrippedOfReports();
 
         $this->assertEquals(
             DexControllerTestData::getUser12ContentWithUnreleased(),
             $data
         );
+        $this->assertKnownReport('home', 9, 3, 3, 7, 22);
+        $this->assertKnownReport('goldsilvercrystal', 8, 0, 0, 1, 9);
     }
 
     public function testListUser12WithPremium(): void
@@ -74,15 +75,13 @@ final class DexControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        $content = $this->getClientResponseContent();
-
-        /** @var array<int, array<string, array<string, bool>|array<string, string>|string>> $data */
-        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+        $data = $this->getJsonDecodedResponseContentStrippedOfReports();
 
         $this->assertEquals(
             DexControllerTestData::getUser12ContentWithPremium(),
             $data
         );
+        $this->assertKnownReport('home', 9, 3, 3, 7, 22);
     }
 
     public function testListUser12WithUnreleasedAndPremium(): void
@@ -98,15 +97,14 @@ final class DexControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        $content = $this->getClientResponseContent();
-
-        /** @var array<int, array<string, array<string, bool>|array<string, string>|string>> $data */
-        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+        $data = $this->getJsonDecodedResponseContentStrippedOfReports();
 
         $this->assertEquals(
             DexControllerTestData::getUser12ContentWithUnreleasedAndPremium(),
             $data
         );
+        $this->assertKnownReport('home', 9, 3, 3, 7, 22);
+        $this->assertKnownReport('goldsilvercrystal', 8, 0, 0, 1, 9);
     }
 
     public function testListUser13(): void
@@ -115,15 +113,13 @@ final class DexControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        $content = $this->getClientResponseContent();
-
-        /** @var array<int, array<string, array<string, bool>|array<string, string>|string>> $data */
-        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+        $data = $this->getJsonDecodedResponseContentStrippedOfReports();
 
         $this->assertEquals(
             DexControllerTestData::getUser13Content(),
             $data
         );
+        $this->assertReportShapeIsWellFormed();
     }
 
     public function testListUserUnknown(): void
@@ -132,15 +128,13 @@ final class DexControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        $content = $this->getClientResponseContent();
-
-        /** @var array<int, array<string, array<string, bool>|array<string, string>|string>> $data */
-        $data = json_decode($content, true, 512, JSON_THROW_ON_ERROR);
+        $data = $this->getJsonDecodedResponseContentStrippedOfReports();
 
         $this->assertEquals(
             DexControllerTestData::getUserUnknownContent(),
             $data
         );
+        $this->assertReportShapeIsWellFormed();
     }
 
     public function testUpdate(): void
@@ -287,5 +281,67 @@ final class DexControllerTest extends AbstractTestControllerApi
         );
 
         $this->assertResponseStatusCodeSame(400);
+    }
+
+    /**
+     * @return array<int, array<string, array<string, bool>|string|string[]>>
+     */
+    private function getJsonDecodedResponseContentStrippedOfReports(): array
+    {
+        /** @var array<int, array<string, mixed>> $data */
+        $data = $this->getJsonDecodedResponseContent();
+
+        $this->lastResponseReportsBySlug = [];
+        foreach ($data as $index => $entry) {
+            /** @var array{report: array<string, mixed>, settings: array{slug: string}} $typedEntry */
+            $typedEntry = $entry;
+            $this->lastResponseReportsBySlug[$typedEntry['settings']['slug']] = $typedEntry['report'];
+            unset($data[$index]['report']);
+        }
+
+        /** @var array<int, array<string, array<string, bool>|string|string[]>> */
+        return $data;
+    }
+
+    private function assertKnownReport(
+        string $dexSlug,
+        int $countNo,
+        int $countMaybe,
+        int $countMaybeNot,
+        int $countYes,
+        int $countTotal
+    ): void {
+        $this->assertArrayHasKey($dexSlug, $this->lastResponseReportsBySlug);
+
+        /** @var array{total: int, total_caught: int, total_uncaught: int, detail: array<int, array{catch_state: array{slug: string}, count: int}>} $report */
+        $report = $this->lastResponseReportsBySlug[$dexSlug];
+
+        $this->assertSame($countTotal, $report['total']);
+        $this->assertSame($countYes, $report['total_caught']);
+        $this->assertSame($countTotal - $countMaybe - $countMaybeNot - $countYes, $report['total_uncaught']);
+
+        $countsBySlug = [];
+        foreach ($report['detail'] as $line) {
+            $countsBySlug[$line['catch_state']['slug']] = $line['count'];
+        }
+        $this->assertEquals(
+            ['no' => $countNo, 'maybe' => $countMaybe, 'maybenot' => $countMaybeNot, 'yes' => $countYes],
+            $countsBySlug
+        );
+    }
+
+    private function assertReportShapeIsWellFormed(): void
+    {
+        $this->assertNotEmpty($this->lastResponseReportsBySlug);
+
+        foreach ($this->lastResponseReportsBySlug as $rawReport) {
+            /** @var array{total: int, total_caught: int, total_uncaught: int, detail: array<int, array{catch_state: array{slug: string}, count: int}>} $report */
+            $report = $rawReport;
+            $this->assertGreaterThanOrEqual(0, $report['total']);
+            // A dex slug absent from AlbumReportService::getBatch()'s result falls back to an
+            // empty default Report (TrainerDexResponseFactory::fromSqlRows()); every other dex
+            // reports one count per catch state (no/maybe/maybenot/yes).
+            $this->assertContains(\count($report['detail']), [0, 4]);
+        }
     }
 }
