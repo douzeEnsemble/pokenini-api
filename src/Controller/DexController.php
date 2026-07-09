@@ -8,6 +8,7 @@ use App\DTO\DexQueryOptions;
 use App\DTO\Response\TrainerDexResponse;
 use App\DTO\TrainerDexAttributes;
 use App\Factory\TrainerDexResponseFactory;
+use App\Service\Album\AlbumReportService;
 use App\Service\TrainerDexService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -21,7 +22,8 @@ use Symfony\Component\Routing\Attribute\Route;
 final class DexController extends AbstractController
 {
     public function __construct(
-        private readonly TrainerDexService $trainerDexService
+        private readonly TrainerDexService $trainerDexService,
+        private readonly AlbumReportService $albumReportService,
     ) {}
 
     /** @return TrainerDexResponse[] */
@@ -40,7 +42,9 @@ final class DexController extends AbstractController
             $this->trainerDexService->getListQuery($trainerExternalId, $dexQueryOptions)
         );
 
-        return TrainerDexResponseFactory::fromSqlRows($dex);
+        $reports = $this->albumReportService->getBatch($trainerExternalId);
+
+        return TrainerDexResponseFactory::fromSqlRows($dex, $reports);
     }
 
     #[Route(methods: ['PUT'], path: '/{trainerExternalId}/{dexSlug}')]
