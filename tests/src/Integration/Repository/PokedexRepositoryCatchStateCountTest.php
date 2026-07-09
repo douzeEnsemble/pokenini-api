@@ -75,6 +75,31 @@ final class PokedexRepositoryCatchStateCountTest extends KernelTestCase
         );
     }
 
+    public function testGetBatchedCatchStatesCounts(): void
+    {
+        $repo = self::getContainer()->get(PokedexRepository::class);
+
+        $counts = $repo->getBatchedCatchStatesCounts('7b52009b64fd0a2a49e6d8a939753077792b0554');
+
+        $byDexSlugAndCatchState = [];
+        foreach ($counts as $row) {
+            $byDexSlugAndCatchState[$row['dex_slug']][$row['slug']] = $row['count'];
+        }
+
+        $this->assertEquals(
+            ['no' => 9, 'maybe' => 3, 'maybenot' => 3, 'yes' => 7],
+            $byDexSlugAndCatchState['home']
+        );
+        $this->assertEquals(
+            ['no' => 11, 'maybe' => 0, 'maybenot' => 0, 'yes' => 0],
+            $byDexSlugAndCatchState['home_shiny']
+        );
+        $this->assertEquals(
+            ['no' => 8, 'maybe' => 0, 'maybenot' => 0, 'yes' => 1],
+            $byDexSlugAndCatchState['goldsilvercrystal']
+        );
+    }
+
     /**
      * @param array<string, array<int, string>> $filters
      * @param array<int, int>                   $expectedCounts

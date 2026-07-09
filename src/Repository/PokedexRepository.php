@@ -150,6 +150,56 @@ class PokedexRepository extends ServiceEntityRepository
         );
     }
 
+    /**
+     * @return array<int, array{dex_slug: string, slug: string, name: string, french_name: string, color: string, count: int}>
+     */
+    public function getBatchedCatchStatesCounts(string $trainerExternalId): array
+    {
+        $sql = <<<'SQL'
+            SELECT      all_combinations.dex_slug,
+                        cs.slug AS slug, cs.name AS name, cs.french_name AS french_name, cs.color AS color,
+                        COALESCE(counts.count, 0) AS count
+            FROM        (
+                        SELECT DISTINCT COALESCE(NULLIF(td.slug, ''), d.slug) AS dex_slug
+                        FROM dex AS d
+                        LEFT JOIN trainer_dex AS td
+                            ON d.id = td.dex_id AND td.trainer_external_id = :trainer_external_id
+                        WHERE d.deleted_at IS NULL
+                        ) AS all_combinations
+                    CROSS JOIN catch_state AS cs
+                    LEFT JOIN (
+                        SELECT      COALESCE(NULLIF(td.slug, ''), d.slug) AS dex_slug,
+                                    cs2.slug,
+                                    COUNT(da.id) AS count
+                        FROM        dex_availability AS da
+                                JOIN dex AS d
+                                    ON da.dex_id = d.id
+                                LEFT JOIN trainer_dex AS td
+                                    ON d.id = td.dex_id AND td.trainer_external_id = :trainer_external_id
+                                LEFT JOIN pokedex AS pd
+                                    ON pd.trainer_dex_id = td.id AND pd.pokemon_id = da.pokemon_id
+                                JOIN catch_state AS cs2
+                                    ON cs2.id = COALESCE(
+                                        pd.catch_state_id,
+                                        (SELECT id FROM catch_state WHERE slug = 'no')
+                                    )
+                        WHERE       d.deleted_at IS NULL
+                                AND cs2.deleted_at IS NULL
+                        GROUP BY    COALESCE(NULLIF(td.slug, ''), d.slug), cs2.slug
+                        ) AS counts
+                        ON all_combinations.dex_slug = counts.dex_slug AND cs.slug = counts.slug
+            WHERE       cs.deleted_at IS NULL
+            ORDER BY    all_combinations.dex_slug, cs.order_number
+            SQL;
+
+        /** @var array<int, array{dex_slug: string, slug: string, name: string, french_name: string, color: string, count: int}> */
+        return $this->getEntityManager()->getConnection()->fetchAllAssociative(
+            $sql,
+            ['trainer_external_id' => $trainerExternalId],
+            ['trainer_external_id' => ParameterType::STRING],
+        );
+    }
+
     public function upsert(
         string $trainerExternalId,
         string $dexSlug,
