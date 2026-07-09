@@ -78,7 +78,7 @@ final class TrainerDexResponseFactory
 
     /**
      * @param array<array-key, array<array-key, mixed>> $rows
-     * @param array<string, Report>                      $reports keyed by the row's effective dex slug (`slug`, not `dex_slug`)
+     * @param array<string, Report>                     $reports keyed by the row's effective dex slug (`slug`, not `dex_slug`)
      *
      * @return TrainerDexResponse[]
      */
