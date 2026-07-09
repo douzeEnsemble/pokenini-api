@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\DTO\Response;
 
+use App\DTO\Response\AlbumReportResponse;
 use App\DTO\Response\DexFlagsResponse;
 use App\DTO\Response\DexSlugResponse;
 use App\DTO\Response\TrainerDexResponse;
@@ -37,11 +38,13 @@ final class TrainerDexResponseTest extends TestCase
             isPremium: false,
             isCustom: false,
         );
+        $report = new AlbumReportResponse(total: 22, totalCaught: 7, totalUncaught: 9, detail: []);
 
         $response = new TrainerDexResponse(
             dex: $dex,
             settings: $settings,
             flags: $flags,
+            report: $report,
         );
 
         self::assertSame($dex, $response->dex);
@@ -59,6 +62,8 @@ final class TrainerDexResponseTest extends TestCase
         self::assertTrue($response->flags->isReleased);
         self::assertFalse($response->flags->isPremium);
         self::assertFalse($response->flags->isCustom);
+        self::assertSame($report, $response->report);
+        self::assertSame(22, $response->report->total);
     }
 
     #[Test]
@@ -80,11 +85,13 @@ final class TrainerDexResponseTest extends TestCase
             isPremium: true,
             isCustom: true,
         );
+        $report = new AlbumReportResponse(total: 0, totalCaught: 0, totalUncaught: 0, detail: []);
 
         $response = new TrainerDexResponse(
             dex: $dex,
             settings: $settings,
             flags: $flags,
+            report: $report,
         );
 
         self::assertSame($dex, $response->dex);
@@ -102,5 +109,7 @@ final class TrainerDexResponseTest extends TestCase
         self::assertFalse($response->flags->isReleased);
         self::assertTrue($response->flags->isPremium);
         self::assertTrue($response->flags->isCustom);
+        self::assertSame($report, $response->report);
+        self::assertSame(0, $response->report->total);
     }
 }
