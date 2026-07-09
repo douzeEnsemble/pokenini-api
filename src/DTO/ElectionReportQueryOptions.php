@@ -7,10 +7,8 @@ namespace App\DTO;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-final class TrainerPokemonEloTopQueryOptions
+final class ElectionReportQueryOptions
 {
-    public string $trainerExternalId;
-    public string $dexSlug;
     public string $electionSlug;
     public int $count;
 
@@ -24,32 +22,22 @@ final class TrainerPokemonEloTopQueryOptions
 
         /**
          * @var array{
-         *  trainer_external_id: string,
-         *  dex_slug: string,
          *  election_slug: string,
          *  count: int,
          * }
          */
         $options = $resolver->resolve($values);
 
-        $this->trainerExternalId = $options['trainer_external_id'];
-        $this->dexSlug = $options['dex_slug'];
         $this->electionSlug = $options['election_slug'];
         $this->count = $options['count'];
     }
 
     private function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setRequired('trainer_external_id');
-        $resolver->setAllowedTypes('trainer_external_id', 'string');
-
-        $resolver->setDefault('dex_slug', '');
-        $resolver->setAllowedTypes('dex_slug', 'string');
-
         $resolver->setDefault('election_slug', '');
         $resolver->setAllowedTypes('election_slug', 'string');
 
-        $resolver->setRequired('count');
+        $resolver->setDefault('count', 5);
         $resolver->setAllowedTypes('count', ['int', 'string']);
         $resolver->setNormalizer('count', function (Options $options, string $value): int {
             unset($options); // To remove PHPMD.UnusedFormalParameter warning

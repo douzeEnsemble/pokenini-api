@@ -21,5 +21,6 @@ final class DexResponse
         public readonly string $frenchDescription,
         #[SerializedName('dex_total_count')]
         public readonly int $dexTotalCount,
+        public readonly ElectionReportResponse $report,
     ) {}
 }

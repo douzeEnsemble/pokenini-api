@@ -4,17 +4,28 @@ declare(strict_types=1);
 
 namespace App\Factory;
 
+use App\DTO\ElectionReport\Report;
 use App\DTO\Response\DexFlagsResponse;
 use App\DTO\Response\DexResponse;
 
 final class DexResponseFactory
 {
+    private const array EMPTY_METRICS = [
+        'view_count_sum' => 0,
+        'win_count_sum' => 0,
+        'view_count_max' => 0,
+        'win_count_max' => 0,
+        'under_max_view_count' => 0,
+        'max_view_count' => 0,
+        'dex_total_count' => 0,
+    ];
+
     /**
      * Transform a single SQL row into DexResponse DTO.
      *
      * @param array<array-key, mixed> $row
      */
-    public static function fromSqlRow(array $row): DexResponse
+    public static function fromSqlRow(array $row, Report $report): DexResponse
     {
         /** @var scalar $slug */
         $slug = $row['slug'];
@@ -75,6 +86,7 @@ final class DexResponseFactory
             description: (string) $description,
             frenchDescription: (string) $frenchDescription,
             dexTotalCount: (int) $dexTotalCount,
+            report: ElectionReportResponseFactory::fromReport($report),
         );
     }
 
@@ -82,11 +94,18 @@ final class DexResponseFactory
      * Transform multiple SQL rows into DexResponse DTOs.
      *
      * @param array<array-key, array<array-key, mixed>> $rows
+     * @param array<string, Report>                     $reports keyed by dex slug
      *
      * @return DexResponse[]
      */
-    public static function fromSqlRows(array $rows): array
+    public static function fromSqlRows(array $rows, array $reports): array
     {
-        return array_map(self::fromSqlRow(...), $rows);
+        return array_map(
+            static fn (array $row): DexResponse => self::fromSqlRow(
+                $row,
+                $reports[(string) $row['slug']] ?? new Report([], self::EMPTY_METRICS),
+            ),
+            $rows,
+        );
     }
 }
