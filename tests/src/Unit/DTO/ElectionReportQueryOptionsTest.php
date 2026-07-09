@@ -48,4 +48,16 @@ final class ElectionReportQueryOptionsTest extends TestCase
 
         new ElectionReportQueryOptions(['unknown' => 'value']);
     }
+
+    public function testInvalidCountType(): void
+    {
+        $this->expectException(InvalidOptionsException::class);
+
+        /**
+         * @psalm-suppress InvalidArgument
+         *
+         * @phpstan-ignore argument.type
+         */
+        new ElectionReportQueryOptions(['count' => 5.4]);
+    }
 }

@@ -93,7 +93,12 @@ final class ElectionReportServiceTest extends KernelTestCase
 
         $rows = $service->getEligibleDex(new DexQueryOptions());
 
-        $slugs = array_map(static fn (array $row): string => (string) $row['slug'], $rows);
+        $slugs = array_map(static function (array $row): string {
+            /** @var scalar $slug */
+            $slug = $row['slug'];
+
+            return (string) $slug;
+        }, $rows);
 
         $this->assertSame(['home'], $slugs);
     }
@@ -109,7 +114,12 @@ final class ElectionReportServiceTest extends KernelTestCase
 
         $rows = $service->getEligibleDex($options);
 
-        $slugs = array_map(static fn (array $row): string => (string) $row['slug'], $rows);
+        $slugs = array_map(static function (array $row): string {
+            /** @var scalar $slug */
+            $slug = $row['slug'];
+
+            return (string) $slug;
+        }, $rows);
 
         $this->assertSame(['homepogo', 'home', 'redgreenblueyellow', 'spoon'], $slugs);
     }

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Factory;
 
 use App\DTO\ElectionReport\Report;
-use App\DTO\Response\ElectionReportResponse;
 use App\Factory\ElectionReportResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -75,7 +74,6 @@ final class ElectionReportResponseFactoryTest extends TestCase
 
         $response = ElectionReportResponseFactory::fromReport($report);
 
-        $this->assertInstanceOf(ElectionReportResponse::class, $response);
         $this->assertCount(1, $response->top);
         $this->assertSame('pikachu', $response->top[0]->pokemon->slug);
         $this->assertSame(1200.5, $response->top[0]->score->elo);
