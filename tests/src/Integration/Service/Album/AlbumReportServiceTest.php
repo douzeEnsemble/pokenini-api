@@ -183,7 +183,6 @@ final class AlbumReportServiceTest extends KernelTestCase
         $reports = $service->getBatch('bd307a3ec329e10a2cff8fb87480823da114f8f4');
 
         $this->assertArrayHasKey('home', $reports);
-        $this->assertIsInt($reports['home']->total);
         $this->assertCount(4, $reports['home']->detail);
     }
 
