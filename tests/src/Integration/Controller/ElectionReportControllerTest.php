@@ -189,7 +189,7 @@ final class ElectionReportControllerTest extends AbstractTestControllerApi
         $this->assertCount(4, $content);
         $this->assertSame(
             ['homepogo', 'home', 'redgreenblueyellow', 'spoon'],
-            array_map(static fn (array $item): string => (string) $item['slug'], $content),
+            array_map(static fn (array $item): string => $item['slug'], $content),
         );
 
         foreach ($content as $item) {
@@ -210,7 +210,6 @@ final class ElectionReportControllerTest extends AbstractTestControllerApi
 
         $content = $this->getJsonDecodedResponseContent();
 
-        $this->assertIsArray($content);
         $this->assertArrayNotHasKey('top', $content);
         $this->assertArrayNotHasKey('metrics', $content);
     }
