@@ -55,4 +55,49 @@ class AlbumReportService
 
         return new Report($total, $totalCaught, $totalUncaught, $detail);
     }
+
+    /**
+     * @return array<string, Report>
+     */
+    public function getBatch(string $trainerExternalId): array
+    {
+        $totals = $this->dexAvailabilitiesRepository->getBatchedTotal($trainerExternalId);
+        $catchStatesCounts = $this->pokedexRepository->getBatchedCatchStatesCounts($trainerExternalId);
+
+        $detailRowsByDexSlug = [];
+        foreach ($catchStatesCounts as $row) {
+            $detailRowsByDexSlug[(string) $row['dex_slug']][] = $row;
+        }
+
+        $reports = [];
+        foreach ($totals as $totalRow) {
+            $dexSlug = (string) $totalRow['dex_slug'];
+            $total = (int) $totalRow['total'];
+            $totalCaught = 0;
+            $totalUncaught = $total;
+            $detail = [];
+
+            foreach ($detailRowsByDexSlug[$dexSlug] ?? [] as $row) {
+                $detail[] = new Statistic(
+                    slug: (string) $row['slug'],
+                    name: (string) $row['name'],
+                    frenchName: (string) $row['french_name'],
+                    color: (string) $row['color'],
+                    count: (int) $row['count'],
+                );
+
+                if ('yes' === $row['slug']) {
+                    $totalCaught = (int) $row['count'];
+                }
+
+                if ('no' !== $row['slug']) {
+                    $totalUncaught -= (int) $row['count'];
+                }
+            }
+
+            $reports[$dexSlug] = new Report($total, $totalCaught, $totalUncaught, $detail);
+        }
+
+        return $reports;
+    }
 }
