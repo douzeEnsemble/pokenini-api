@@ -101,4 +101,34 @@ final class DexAvailabilitiesRepositoryTest extends KernelTestCase
             DexAvailabilitiesRepositoryData::providerGetTotalEmptyFilters(),
         );
     }
+
+    public function testGetBatchedTotal(): void
+    {
+        $repo = self::getContainer()->get(DexAvailabilitiesRepository::class);
+
+        $rows = $repo->getBatchedTotal('7b52009b64fd0a2a49e6d8a939753077792b0554');
+
+        $byDexSlug = [];
+        foreach ($rows as $row) {
+            $byDexSlug[$row['dex_slug']] = $row['total'];
+        }
+
+        $this->assertSame(22, $byDexSlug['home']);
+        $this->assertSame(9, $byDexSlug['goldsilvercrystal']);
+        $this->assertSame(11, $byDexSlug['home_shiny']);
+    }
+
+    public function testGetBatchedTotalDifferentTrainer(): void
+    {
+        $repo = self::getContainer()->get(DexAvailabilitiesRepository::class);
+
+        $rows = $repo->getBatchedTotal('bd307a3ec329e10a2cff8fb87480823da114f8f4');
+
+        $byDexSlug = [];
+        foreach ($rows as $row) {
+            $byDexSlug[$row['dex_slug']] = $row['total'];
+        }
+
+        $this->assertSame(22, $byDexSlug['home']);
+    }
 }

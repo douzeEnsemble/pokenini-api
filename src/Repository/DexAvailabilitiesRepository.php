@@ -97,4 +97,29 @@ class DexAvailabilitiesRepository extends ServiceEntityRepository
             $types,
         );
     }
+
+    /**
+     * @return array<int, array{dex_slug: string, total: int}>
+     */
+    public function getBatchedTotal(string $trainerExternalId): array
+    {
+        $sql = <<<'SQL'
+            SELECT      COALESCE(NULLIF(td.slug, ''), d.slug) AS dex_slug,
+                        COUNT(DISTINCT da.pokemon_id) AS total
+            FROM        dex_availability AS da
+                    JOIN dex AS d
+                        ON da.dex_id = d.id
+                    LEFT JOIN trainer_dex AS td
+                        ON d.id = td.dex_id AND td.trainer_external_id = :trainer_external_id
+            WHERE       d.deleted_at IS NULL
+            GROUP BY    COALESCE(NULLIF(td.slug, ''), d.slug)
+            SQL;
+
+        /** @var array<int, array{dex_slug: string, total: int}> */
+        return $this->getEntityManager()->getConnection()->fetchAllAssociative(
+            $sql,
+            ['trainer_external_id' => $trainerExternalId],
+            ['trainer_external_id' => ParameterType::STRING],
+        );
+    }
 }
