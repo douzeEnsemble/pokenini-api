@@ -160,6 +160,33 @@ final class AlbumReportServiceTest extends KernelTestCase
         );
     }
 
+    public function testGetBatch(): void
+    {
+        $service = self::getContainer()->get(AlbumReportService::class);
+
+        $reports = $service->getBatch('7b52009b64fd0a2a49e6d8a939753077792b0554');
+
+        $this->assertArrayHasKey('home', $reports);
+        $this->assertReport($reports['home'], 9, 3, 3, 7, 22);
+
+        $this->assertArrayHasKey('home_shiny', $reports);
+        $this->assertReport($reports['home_shiny'], 11, 0, 0, 0, 11);
+
+        $this->assertArrayHasKey('goldsilvercrystal', $reports);
+        $this->assertReport($reports['goldsilvercrystal'], 8, 0, 0, 1, 9);
+    }
+
+    public function testGetBatchDifferentTrainer(): void
+    {
+        $service = self::getContainer()->get(AlbumReportService::class);
+
+        $reports = $service->getBatch('bd307a3ec329e10a2cff8fb87480823da114f8f4');
+
+        $this->assertArrayHasKey('home', $reports);
+        $this->assertIsInt($reports['home']->total);
+        $this->assertCount(4, $reports['home']->detail);
+    }
+
     private function assertReport(
         Report $report,
         int $countNo,
