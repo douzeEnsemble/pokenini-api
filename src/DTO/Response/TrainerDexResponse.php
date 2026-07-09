@@ -10,5 +10,6 @@ final class TrainerDexResponse
         public readonly DexSlugResponse $dex,
         public readonly TrainerDexSettingsResponse $settings,
         public readonly DexFlagsResponse $flags,
+        public readonly AlbumReportResponse $report,
     ) {}
 }
