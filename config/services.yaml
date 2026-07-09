@@ -16,3 +16,9 @@ services:
             - '../src/DependencyInjection/'
             - '../src/Entity/'
             - '../src/Kernel.php'
+
+    # public: true until a controller consumes this service (added in a later task in this
+    # same plan) — with zero consumers, Symfony's compiler drops the service definition
+    # entirely, which breaks direct retrieval via self::getContainer()->get() in tests.
+    App\Service\Election\ElectionReportService:
+        public: true

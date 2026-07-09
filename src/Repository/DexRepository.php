@@ -82,7 +82,7 @@ class DexRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return bool[][]|int[][]|string[][]
+     * @return array<array-key, array<string, mixed>>
      */
     public function getCanHoldElection(DexQueryOptions $options): array
     {
@@ -121,7 +121,7 @@ class DexRepository extends ServiceEntityRepository
                 ORDER BY    d.election_order_number ASC, d.slug ASC
             SQL;
 
-        /** @var bool[][]|int[][]|string[][] */
+        /** @var array<array-key, array<string, mixed>> */
         return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql, []);
     }
 }

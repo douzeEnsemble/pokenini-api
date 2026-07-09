@@ -4,8 +4,10 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\DTO\Response;
 
+use App\DTO\ElectionReport\Report;
 use App\DTO\Response\DexFlagsResponse;
 use App\DTO\Response\DexResponse;
+use App\Factory\ElectionReportResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -28,6 +30,15 @@ final class DexResponseTest extends TestCase
             isPremium: false,
             isCustom: false,
         );
+        $report = ElectionReportResponseFactory::fromReport(new Report([], [
+            'view_count_sum' => 0,
+            'win_count_sum' => 0,
+            'view_count_max' => 0,
+            'win_count_max' => 0,
+            'under_max_view_count' => 22,
+            'max_view_count' => 0,
+            'dex_total_count' => 22,
+        ]));
 
         $response = new DexResponse(
             slug: 'home',
@@ -38,6 +49,7 @@ final class DexResponseTest extends TestCase
             description: 'The National Dex in Home',
             frenchDescription: 'Le Pokédex National dans Home',
             dexTotalCount: 22,
+            report: $report,
         );
 
         self::assertSame('home', $response->slug);
@@ -48,6 +60,7 @@ final class DexResponseTest extends TestCase
         self::assertSame('The National Dex in Home', $response->description);
         self::assertSame('Le Pokédex National dans Home', $response->frenchDescription);
         self::assertSame(22, $response->dexTotalCount);
+        self::assertSame($report, $response->report);
     }
 
     #[Test]
@@ -62,6 +75,15 @@ final class DexResponseTest extends TestCase
             isPremium: true,
             isCustom: false,
         );
+        $report = ElectionReportResponseFactory::fromReport(new Report([], [
+            'view_count_sum' => 0,
+            'win_count_sum' => 0,
+            'view_count_max' => 0,
+            'win_count_max' => 0,
+            'under_max_view_count' => 7,
+            'max_view_count' => 0,
+            'dex_total_count' => 7,
+        ]));
 
         $response = new DexResponse(
             slug: 'redgreenblueyellow',
@@ -72,6 +94,7 @@ final class DexResponseTest extends TestCase
             description: '',
             frenchDescription: '',
             dexTotalCount: 7,
+            report: $report,
         );
 
         self::assertSame('redgreenblueyellow', $response->slug);
@@ -84,5 +107,6 @@ final class DexResponseTest extends TestCase
         self::assertTrue($response->flags->isReleased);
         self::assertTrue($response->flags->isPremium);
         self::assertSame(7, $response->dexTotalCount);
+        self::assertSame($report, $response->report);
     }
 }

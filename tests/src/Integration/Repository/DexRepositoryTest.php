@@ -101,7 +101,12 @@ final class DexRepositoryTest extends KernelTestCase
         $this->assertCount(count($expectedSlugs), $list);
 
         $slugs = array_map(
-            static fn (array $item): string => (string) $item['slug'],
+            static function (array $item): string {
+                /** @var scalar $slug */
+                $slug = $item['slug'];
+
+                return (string) $slug;
+            },
             $list
         );
 

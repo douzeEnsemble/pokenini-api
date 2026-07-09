@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Factory;
 
+use App\DTO\ElectionReport\Report;
 use App\DTO\Response\DexResponse;
 use App\Factory\DexResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -16,6 +17,16 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(DexResponseFactory::class)]
 final class DexResponseFactoryTest extends TestCase
 {
+    private const array ZERO_METRICS = [
+        'view_count_sum' => 0,
+        'win_count_sum' => 0,
+        'view_count_max' => 0,
+        'win_count_max' => 0,
+        'under_max_view_count' => 0,
+        'max_view_count' => 0,
+        'dex_total_count' => 0,
+    ];
+
     #[Test]
     public function fromSqlRowTransformsSingleRowCorrectly(): void
     {
@@ -35,8 +46,9 @@ final class DexResponseFactoryTest extends TestCase
             'french_description' => 'Le Pokédex National dans Home',
             'dex_total_count' => 22,
         ];
+        $report = new Report([], array_merge(self::ZERO_METRICS, ['dex_total_count' => 22]));
 
-        $response = DexResponseFactory::fromSqlRow($row);
+        $response = DexResponseFactory::fromSqlRow($row, $report);
 
         self::assertSame('home', $response->slug);
         self::assertSame('home', $response->originalSlug);
@@ -52,6 +64,7 @@ final class DexResponseFactoryTest extends TestCase
         self::assertSame('The National Dex in Home', $response->description);
         self::assertSame('Le Pokédex National dans Home', $response->frenchDescription);
         self::assertSame(22, $response->dexTotalCount);
+        self::assertSame(22, $response->report->metrics->dexTotalCount);
     }
 
     #[Test]
@@ -73,8 +86,9 @@ final class DexResponseFactoryTest extends TestCase
             'french_description' => 303,
             'dex_total_count' => '7',
         ];
+        $report = new Report([], self::ZERO_METRICS);
 
-        $response = DexResponseFactory::fromSqlRow($row);
+        $response = DexResponseFactory::fromSqlRow($row, $report);
 
         self::assertSame('123', $response->slug);
         self::assertSame('456', $response->originalSlug);
@@ -129,23 +143,57 @@ final class DexResponseFactoryTest extends TestCase
                 'dex_total_count' => 7,
             ],
         ];
+        $reports = [
+            'home' => new Report([], array_merge(self::ZERO_METRICS, ['dex_total_count' => 22])),
+            'redgreenblueyellow' => new Report([], array_merge(self::ZERO_METRICS, ['dex_total_count' => 7])),
+        ];
 
-        $responses = DexResponseFactory::fromSqlRows($rows);
+        $responses = DexResponseFactory::fromSqlRows($rows, $reports);
 
         self::assertCount(2, $responses);
         self::assertContainsOnlyInstancesOf(DexResponse::class, $responses);
         self::assertSame('home', $responses[0]->slug);
         self::assertSame(22, $responses[0]->dexTotalCount);
+        self::assertSame(22, $responses[0]->report->metrics->dexTotalCount);
         self::assertFalse($responses[0]->flags->isPrivate);
         self::assertSame('redgreenblueyellow', $responses[1]->slug);
         self::assertSame(7, $responses[1]->dexTotalCount);
+        self::assertSame(7, $responses[1]->report->metrics->dexTotalCount);
         self::assertTrue($responses[1]->flags->isPremium);
+    }
+
+    #[Test]
+    public function fromSqlRowsFallsBackToEmptyReportWhenMissingFromMap(): void
+    {
+        $rows = [
+            [
+                'slug' => 'spoon',
+                'original_slug' => 'spoon',
+                'name' => 'Spoon',
+                'french_name' => 'Cuillière',
+                'is_shiny' => false,
+                'is_private' => false,
+                'is_on_home' => false,
+                'is_display_form' => true,
+                'is_released' => false,
+                'is_premium' => true,
+                'is_custom' => false,
+                'description' => '',
+                'french_description' => '',
+                'dex_total_count' => 1,
+            ],
+        ];
+
+        $responses = DexResponseFactory::fromSqlRows($rows, []);
+
+        self::assertSame([], $responses[0]->report->top);
+        self::assertSame(0, $responses[0]->report->metrics->dexTotalCount);
     }
 
     #[Test]
     public function fromSqlRowsHandlesEmptyArray(): void
     {
-        $responses = DexResponseFactory::fromSqlRows([]);
+        $responses = DexResponseFactory::fromSqlRows([], []);
 
         self::assertCount(0, $responses);
     }
