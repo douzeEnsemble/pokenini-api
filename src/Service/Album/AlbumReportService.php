@@ -66,32 +66,32 @@ class AlbumReportService
 
         $detailRowsByDexSlug = [];
         foreach ($catchStatesCounts as $row) {
-            $detailRowsByDexSlug[(string) $row['dex_slug']][] = $row;
+            $detailRowsByDexSlug[$row['dex_slug']][] = $row;
         }
 
         $reports = [];
         foreach ($totals as $totalRow) {
-            $dexSlug = (string) $totalRow['dex_slug'];
-            $total = (int) $totalRow['total'];
+            $dexSlug = $totalRow['dex_slug'];
+            $total = $totalRow['total'];
             $totalCaught = 0;
             $totalUncaught = $total;
             $detail = [];
 
             foreach ($detailRowsByDexSlug[$dexSlug] ?? [] as $row) {
                 $detail[] = new Statistic(
-                    slug: (string) $row['slug'],
-                    name: (string) $row['name'],
-                    frenchName: (string) $row['french_name'],
-                    color: (string) $row['color'],
-                    count: (int) $row['count'],
+                    slug: $row['slug'],
+                    name: $row['name'],
+                    frenchName: $row['french_name'],
+                    color: $row['color'],
+                    count: $row['count'],
                 );
 
                 if ('yes' === $row['slug']) {
-                    $totalCaught = (int) $row['count'];
+                    $totalCaught = $row['count'];
                 }
 
                 if ('no' !== $row['slug']) {
-                    $totalUncaught -= (int) $row['count'];
+                    $totalUncaught -= $row['count'];
                 }
             }
 
