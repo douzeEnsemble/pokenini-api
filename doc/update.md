@@ -4,7 +4,7 @@
 
 | Dépendance | Version actuelle | Action recommandée |
 |-----------|-----------------|-------------------|
-| `php` | `>=8.5.6` (8.5.6 en prod) | OK — PHP 8.5.6 actif |
+| `php` | `>=8.5.8` (8.5.8 en prod) | OK — PHP 8.5.8 actif |
 | `doctrine/doctrine-bundle` | `^3.2.2` | Surveiller — Doctrine 4.x en préparation |
 | `doctrine/doctrine-migrations-bundle` | `^4.0.0` | OK |
 | `doctrine/orm` | `^3.6.3` | OK |
@@ -64,7 +64,7 @@
 
 | Service | Image | Version actuelle | Action recommandée |
 |---------|-------|-----------------|-------------------|
-| php | `php:fpm-alpine` | 8.5.5-fpm-alpine3.23 | OK — version récente |
+| php | `php:fpm-alpine` | 8.5.8-fpm-alpine3.24 | OK — version récente |
 | nginx | `nginx:alpine` | 1.29.8-alpine3.23 | OK |
 | postgres | `postgres:alpine` | 14.22-alpine3.23 | **Mettre à jour** — PostgreSQL 14 entre en EOL fin 2026 ; migrer vers 16 ou 17 |
 | adminer | `adminer:fastcgi` | 5.4.2-fastcgi | OK |
