@@ -2,7 +2,7 @@
 
 ## Langage et framework
 
-- **PHP 8.5** (image `php:8.5.5-fpm-alpine3.23`)
+- **PHP 8.5** (image `php:8.5.8-fpm-alpine3.24`)
 - **Symfony 8.0** (tous les composants en `8.0.*`)
 - **Doctrine ORM 3.6+** avec migrations
 - Outils qualité actifs (tous en standalone dans `tools/`) :
