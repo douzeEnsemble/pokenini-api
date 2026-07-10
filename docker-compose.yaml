@@ -8,7 +8,7 @@ services:
     restart: always
 
   database:
-    image: postgres:18.4-alpine3.23
+    image: postgres:18.4-alpine3.24
     volumes:
       - db_data:/var/lib/postgresql
     environment:
