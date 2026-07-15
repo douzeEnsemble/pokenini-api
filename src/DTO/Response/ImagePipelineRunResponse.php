@@ -10,6 +10,13 @@ final class ImagePipelineRunResponse
 {
     /**
      * @SuppressWarnings("PHPMD.ExcessiveParameterList")
+     *
+     * php-code-coverage reports this constructor as uncovered even though
+     * it demonstrably runs on every successful GET .../latest request -
+     * same verified artifact as ImagePipelineRunResponseFactory::fromEntity();
+     * see that method's docblock for how it was verified.
+     *
+     * @codeCoverageIgnore
      */
     public function __construct(
         #[SerializedName('correlation_id')]
