@@ -8,8 +8,11 @@ use App\Entity\Traits\BaseEntityTrait;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @SuppressWarnings("PHPMD.TooManyFields")
+ */
 #[ORM\Entity]
-class ImagePipelineRun
+final class ImagePipelineRun
 {
     use BaseEntityTrait;
 
