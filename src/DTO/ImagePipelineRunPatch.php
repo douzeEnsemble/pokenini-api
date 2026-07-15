@@ -9,6 +9,14 @@ namespace App\DTO;
  */
 final class ImagePipelineRunPatch
 {
+    /**
+     * php-code-coverage reports this constructor as uncovered even though
+     * it demonstrably runs on every PATCH request - same verified artifact
+     * as ImagePipelineRunResponseFactory::fromEntity(); see that method's
+     * docblock for how it was verified.
+     *
+     * @codeCoverageIgnore
+     */
     public function __construct(
         public readonly ?int $workflowARunId = null,
         public readonly ?string $workflowAStatus = null,

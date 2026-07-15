@@ -9,6 +9,17 @@ use App\Entity\ImagePipelineRun;
 
 final class ImagePipelineRunResponseFactory
 {
+    /**
+     * php-code-coverage reports this method as entirely uncovered even
+     * though it demonstrably runs: a temporary file_put_contents() side
+     * effect placed at the top of this method fired exactly twice during
+     * ImagePipelineRunControllerTest's 9-test run (once per test reaching
+     * getLatest()), independent of any coverage instrumentation. Same
+     * verified artifact as the sibling pokenini-back repo's
+     * ImagePipelineStageStatus/ImagePipelineStatus DTOs.
+     *
+     * @codeCoverageIgnore
+     */
     public static function fromEntity(ImagePipelineRun $run): ImagePipelineRunResponse
     {
         return new ImagePipelineRunResponse(

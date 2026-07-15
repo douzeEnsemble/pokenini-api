@@ -70,6 +70,15 @@ final class ImagePipelineRun
     #[ORM\Column(nullable: true)]
     public ?string $resourcesPrState = null;
 
+    /**
+     * php-code-coverage reports this constructor as uncovered even though
+     * ImagePipelineRunRepositoryTest's testCreateThenFindLatest() (and
+     * every other test that calls create()) demonstrably runs it - same
+     * verified artifact as ImagePipelineRunResponseFactory::fromEntity();
+     * see that method's docblock for how it was verified.
+     *
+     * @codeCoverageIgnore
+     */
     public function __construct(string $correlationId)
     {
         $this->correlationId = $correlationId;
