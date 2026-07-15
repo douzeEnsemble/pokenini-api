@@ -42,8 +42,8 @@ final class ImagePipelineRunControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsSuccessful();
 
-        $content = $this->getClientResponseContent();
-        $data = json_decode($content, true, flags: JSON_THROW_ON_ERROR);
+        /** @var array<string, mixed> $data */
+        $data = $this->getJsonDecodedResponseContent();
 
         $this->assertSame('corr-1', $data['correlation_id']);
         $this->assertNull($data['workflow_a_run_id']);
@@ -137,7 +137,9 @@ final class ImagePipelineRunControllerTest extends AbstractTestControllerApi
         $this->assertResponseIsSuccessful();
 
         $this->apiRequest('GET', '/istration/image-pipeline-runs/latest');
-        $data = json_decode($this->getClientResponseContent(), true, flags: JSON_THROW_ON_ERROR);
+
+        /** @var array<string, mixed> $data */
+        $data = $this->getJsonDecodedResponseContent();
 
         $this->assertSame(99, $data['workflow_a_run_id']);
         $this->assertSame('completed', $data['workflow_a_status']);

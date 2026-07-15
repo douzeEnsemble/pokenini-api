@@ -8,6 +8,9 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
 
 final class ImagePipelineRunResponse
 {
+    /**
+     * @SuppressWarnings("PHPMD.ExcessiveParameterList")
+     */
     public function __construct(
         #[SerializedName('correlation_id')]
         public readonly string $correlationId,
