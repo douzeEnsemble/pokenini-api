@@ -110,7 +110,6 @@ class ImagePipelineRunRepository extends ServiceEntityRepository
         /** @var ?ImagePipelineRun */
         return $this->createQueryBuilder('r')
             ->orderBy('r.createdAt', 'DESC')
-            ->addOrderBy('r.identifier', 'DESC')
             ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult()
