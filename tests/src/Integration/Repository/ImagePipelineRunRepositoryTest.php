@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Tests\Integration\Repository;
 
 use App\DTO\ImagePipelineRunPatch;
-use App\Exception\ImagePipelineRunNotFoundException;
 use App\Repository\ImagePipelineRunRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
@@ -153,12 +152,10 @@ final class ImagePipelineRunRepositoryTest extends KernelTestCase
         $this->assertSame('merged', $run->resourcesPrState);
     }
 
-    public function testUpdateFieldsThrowsWhenCorrelationIdUnknown(): void
+    public function testUpdateFieldsReturnsFalseWhenCorrelationIdUnknown(): void
     {
         $repo = self::getContainer()->get(ImagePipelineRunRepository::class);
 
-        $this->expectException(ImagePipelineRunNotFoundException::class);
-
-        $repo->updateFields('does-not-exist', new ImagePipelineRunPatch(workflowARunId: 1));
+        $this->assertFalse($repo->updateFields('does-not-exist', new ImagePipelineRunPatch(workflowARunId: 1)));
     }
 }
