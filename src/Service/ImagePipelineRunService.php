@@ -19,9 +19,9 @@ class ImagePipelineRunService
         $this->repository->create($correlationId);
     }
 
-    public function updateFields(string $correlationId, ImagePipelineRunPatch $patch): void
+    public function updateFields(string $correlationId, ImagePipelineRunPatch $patch): bool
     {
-        $this->repository->updateFields($correlationId, $patch);
+        return $this->repository->updateFields($correlationId, $patch);
     }
 
     public function findLatest(): ?ImagePipelineRun

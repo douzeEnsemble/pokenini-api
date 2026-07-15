@@ -66,10 +66,10 @@ final class ImagePipelineRunController extends AbstractController
             resourcesPrState: isset($data['resourcesPrState']) ? (string) $data['resourcesPrState'] : null,
         );
 
-        try {
-            $this->service->updateFields($correlationId, $patch);
-        } catch (\App\Exception\ImagePipelineRunNotFoundException $e) {
-            throw new NotFoundHttpException(previous: $e);
+        $updated = $this->service->updateFields($correlationId, $patch);
+
+        if (!$updated) {
+            throw new NotFoundHttpException();
         }
 
         return new Response();

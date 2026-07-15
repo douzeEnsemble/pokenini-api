@@ -6,7 +6,6 @@ namespace App\Repository;
 
 use App\DTO\ImagePipelineRunPatch;
 use App\Entity\ImagePipelineRun;
-use App\Exception\ImagePipelineRunNotFoundException;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -32,12 +31,12 @@ class ImagePipelineRunRepository extends ServiceEntityRepository
      * @SuppressWarnings("PHPMD.CyclomaticComplexity")
      * @SuppressWarnings("PHPMD.NPathComplexity")
      */
-    public function updateFields(string $correlationId, ImagePipelineRunPatch $patch): void
+    public function updateFields(string $correlationId, ImagePipelineRunPatch $patch): bool
     {
         $run = $this->findOneBy(['correlationId' => $correlationId]);
 
         if (null === $run) {
-            throw new ImagePipelineRunNotFoundException($correlationId);
+            return false;
         }
 
         if (null !== $patch->workflowARunId) {
@@ -103,6 +102,8 @@ class ImagePipelineRunRepository extends ServiceEntityRepository
         $run->updatedAt = new \DateTime();
 
         $this->getEntityManager()->flush();
+
+        return true;
     }
 
     public function findLatest(): ?ImagePipelineRun

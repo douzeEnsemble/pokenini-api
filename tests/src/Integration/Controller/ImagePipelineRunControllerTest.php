@@ -5,59 +5,27 @@ declare(strict_types=1);
 namespace App\Tests\Integration\Controller;
 
 use App\Controller\ImagePipelineRunController;
-use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
-use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
  * @internal
  */
 #[CoversClass(ImagePipelineRunController::class)]
-final class ImagePipelineRunControllerTest extends WebTestCase
+final class ImagePipelineRunControllerTest extends AbstractTestControllerApi
 {
-    protected $client;
-    private EntityManagerInterface $entityManager;
-
     #[\Override]
     protected function setUp(): void
     {
         parent::setUp();
-        $this->client = static::createClient();
-        $this->entityManager = self::getContainer()->get(EntityManagerInterface::class);
-        // Ensure clean database for each test
-        $this->entityManager->getConnection()->executeStatement('TRUNCATE image_pipeline_run CASCADE');
+
+        // A POST-then-GET (or POST-then-PATCH) within a single test method must
+        // see the same uncommitted DB state. KernelBrowser reboots the kernel
+        // (and thus the DB connection) between requests by default, which would
+        // hide writes made by an earlier request in the same test. Disabling the
+        // reboot keeps a single kernel/container/connection for the whole test.
+        $this->client->disableReboot();
     }
 
-    protected function apiRequest(
-        string $method,
-        string $route,
-        array $params = [],
-        ?array $options = null,
-        ?string $content = null,
-    ): void {
-        $urlParams = \http_build_query($params);
-
-        $this->client->request(
-            $method,
-            "{$route}?{$urlParams}",
-            [],
-            [],
-            array_merge(
-                [
-                    'headers' => [
-                        'accept' => 'application/json',
-                    ],
-                ],
-                $options ?? ['PHP_AUTH_USER' => 'web', 'PHP_AUTH_PW' => 'douze']
-            ),
-            $content
-        );
-    }
-
-    protected function getClientResponseContent(): string
-    {
-        return (string) $this->client->getResponse()->getContent();
-    }
     public function testCreateThenGetLatest(): void
     {
         $this->apiRequest(
@@ -100,6 +68,45 @@ final class ImagePipelineRunControllerTest extends WebTestCase
             json_encode(['correlationId' => 'corr-dup'], JSON_THROW_ON_ERROR)
         );
         $this->assertResponseStatusCodeSame(409);
+    }
+
+    public function testCreateWithMissingCorrelationIdIsBadRequest(): void
+    {
+        $this->apiRequest(
+            'POST',
+            '/istration/image-pipeline-runs',
+            [],
+            null,
+            json_encode(['foo' => 'bar'], JSON_THROW_ON_ERROR)
+        );
+
+        $this->assertResponseStatusCodeSame(400);
+    }
+
+    public function testCreateWithNonStringCorrelationIdIsBadRequest(): void
+    {
+        $this->apiRequest(
+            'POST',
+            '/istration/image-pipeline-runs',
+            [],
+            null,
+            json_encode(['correlationId' => 123], JSON_THROW_ON_ERROR)
+        );
+
+        $this->assertResponseStatusCodeSame(400);
+    }
+
+    public function testCreateWithEmptyBodyIsBadRequest(): void
+    {
+        $this->apiRequest(
+            'POST',
+            '/istration/image-pipeline-runs',
+            [],
+            null,
+            ''
+        );
+
+        $this->assertResponseStatusCodeSame(400);
     }
 
     public function testGetLatestReturns404WhenNoneExist(): void
@@ -146,5 +153,27 @@ final class ImagePipelineRunControllerTest extends WebTestCase
             json_encode(['workflowARunId' => 1], JSON_THROW_ON_ERROR)
         );
         $this->assertResponseStatusCodeSame(404);
+    }
+
+    public function testPatchWithEmptyBodyIsBadRequest(): void
+    {
+        $this->apiRequest(
+            'POST',
+            '/istration/image-pipeline-runs',
+            [],
+            null,
+            json_encode(['correlationId' => 'corr-empty-patch'], JSON_THROW_ON_ERROR)
+        );
+        $this->assertResponseStatusCodeSame(201);
+
+        $this->apiRequest(
+            'PATCH',
+            '/istration/image-pipeline-runs/corr-empty-patch',
+            [],
+            null,
+            ''
+        );
+
+        $this->assertResponseStatusCodeSame(400);
     }
 }
