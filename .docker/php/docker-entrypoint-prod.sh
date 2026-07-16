@@ -8,4 +8,11 @@ set -e
 # Resync explicitly from the golden copy baked into the image on every start.
 rsync -a --delete /app/public-src/ /app/public/
 
+# RUN_MIGRATIONS is set on the `php` service only (not `worker`), so a
+# deploy runs pending Doctrine migrations exactly once even though the
+# same image backs several Swarm services with no shared migration lock.
+if [ "${RUN_MIGRATIONS:-}" = "true" ]; then
+	php bin/console doctrine:migrations:migrate --no-interaction
+fi
+
 exec docker-php-entrypoint "$@"
