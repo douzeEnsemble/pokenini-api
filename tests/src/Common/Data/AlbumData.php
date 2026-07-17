@@ -234,6 +234,7 @@ final class AlbumData
                 'original_game_bundle_slug' => 'diamondpearlplatinium',
                 'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
                 'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+                ...PokemonData::noCredits(),
             ],
             [
                 'pokemon_national_dex_number' => 3,
@@ -276,6 +277,7 @@ final class AlbumData
                 'original_game_bundle_slug' => 'xy',
                 'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
                 'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+                ...PokemonData::noCredits(),
             ],
             [
                 'pokemon_national_dex_number' => 3,
@@ -318,6 +320,7 @@ final class AlbumData
                 'original_game_bundle_slug' => 'swordshield',
                 'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
                 'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+                ...PokemonData::noCredits(),
             ],
             array_merge(
                 PokemonData::getCharmanderData(),
@@ -384,6 +387,7 @@ final class AlbumData
                 'original_game_bundle_slug' => 'diamondpearlplatinium',
                 'game_bundle_slugs' => '',
                 'game_bundle_shiny_slugs' => '',
+                ...PokemonData::noCredits(),
             ],
             [
                 'pokemon_national_dex_number' => 12,
@@ -426,6 +430,7 @@ final class AlbumData
                 'original_game_bundle_slug' => 'swordshield',
                 'game_bundle_slugs' => '',
                 'game_bundle_shiny_slugs' => '',
+                ...PokemonData::noCredits(),
             ],
             array_merge(
                 PokemonData::getRattataData(),
@@ -518,6 +523,7 @@ final class AlbumData
                 'original_game_bundle_slug' => 'diamondpearlplatinium',
                 'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
                 'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+                ...PokemonData::noCredits(),
             ],
             [
                 'pokemon_national_dex_number' => 3,
@@ -560,6 +566,7 @@ final class AlbumData
                 'original_game_bundle_slug' => 'xy',
                 'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
                 'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+                ...PokemonData::noCredits(),
             ],
             [
                 'pokemon_national_dex_number' => 3,
@@ -602,6 +609,7 @@ final class AlbumData
                 'original_game_bundle_slug' => 'swordshield',
                 'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
                 'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+                ...PokemonData::noCredits(),
             ],
             array_merge(
                 PokemonData::getCaterpieData(),
@@ -650,6 +658,7 @@ final class AlbumData
                 'original_game_bundle_slug' => 'diamondpearlplatinium',
                 'game_bundle_slugs' => '',
                 'game_bundle_shiny_slugs' => '',
+                ...PokemonData::noCredits(),
             ],
             [
                 'pokemon_national_dex_number' => 12,
@@ -692,6 +701,7 @@ final class AlbumData
                 'original_game_bundle_slug' => 'swordshield',
                 'game_bundle_slugs' => '',
                 'game_bundle_shiny_slugs' => '',
+                ...PokemonData::noCredits(),
             ],
         ];
     }
@@ -819,14 +829,40 @@ final class AlbumData
                     'normal' => array_map(static fn (string $slug): array => ['slug' => $slug], $gameBundles),
                     'shiny' => array_map(static fn (string $slug): array => ['slug' => $slug], $gameBundlesShiny),
                 ],
-                'small_regular_credit' => null,
-                'small_shiny_credit' => null,
-                'big_regular_credit' => null,
-                'big_shiny_credit' => null,
+                'small_regular_credit' => self::buildNestedCredit('small_regular', $flat),
+                'small_shiny_credit' => self::buildNestedCredit('small_shiny', $flat),
+                'big_regular_credit' => self::buildNestedCredit('big_regular', $flat),
+                'big_shiny_credit' => self::buildNestedCredit('big_shiny', $flat),
             ],
             'catch_state' => self::buildNestedCatchState($flat),
             'forms' => self::buildNestedForms($flat),
             'types' => self::buildNestedTypes($flat),
+        ];
+    }
+
+    /**
+     * @param array<string, mixed> $flat
+     *
+     * @return null|array<string, mixed>
+     */
+    private static function buildNestedCredit(string $prefix, array $flat): ?array
+    {
+        $nameKey = "{$prefix}_credit_name";
+        $urlKey = "{$prefix}_credit_url";
+
+        if (empty($flat[$nameKey]) || empty($flat[$urlKey])) {
+            return null;
+        }
+
+        /** @var scalar $name */
+        $name = $flat[$nameKey];
+
+        /** @var scalar $url */
+        $url = $flat[$urlKey];
+
+        return [
+            'name' => (string) $name,
+            'url' => (string) $url,
         ];
     }
 

@@ -32,6 +32,10 @@ SELECT p.slug AS pokemon_slug,
     ogb.slug AS original_game_bundle_slug,
     pagb.items AS game_bundle_slugs,
     pagbs.items AS game_bundle_shiny_slugs,
+    pic_sr.source_name AS small_regular_credit_name, pic_sr.source_url AS small_regular_credit_url,
+    pic_ss.source_name AS small_shiny_credit_name, pic_ss.source_url AS small_shiny_credit_url,
+    pic_br.source_name AS big_regular_credit_name, pic_br.source_url AS big_regular_credit_url,
+    pic_bs.source_name AS big_shiny_credit_name, pic_bs.source_url AS big_shiny_credit_url,
     CONCAT(
         '9999',
         '-',
@@ -52,6 +56,10 @@ FROM pokemon AS p
         ON p.id = pagb.pokemon_id AND pagb.category = :pokemon_availabilities_game_bundle_category
     LEFT JOIN pokemon_availabilities AS pagbs
         ON p.id = pagbs.pokemon_id AND pagbs.category = :pokemon_availabilities_game_bundle_shiny_category
+    LEFT JOIN pokemon_image_credit AS pic_sr ON p.id = pic_sr.pokemon_id AND pic_sr.size = 'small' AND pic_sr.is_shiny = false
+    LEFT JOIN pokemon_image_credit AS pic_ss ON p.id = pic_ss.pokemon_id AND pic_ss.size = 'small' AND pic_ss.is_shiny = true
+    LEFT JOIN pokemon_image_credit AS pic_br ON p.id = pic_br.pokemon_id AND pic_br.size = 'big' AND pic_br.is_shiny = false
+    LEFT JOIN pokemon_image_credit AS pic_bs ON p.id = pic_bs.pokemon_id AND pic_bs.size = 'big' AND pic_bs.is_shiny = true
     JOIN dex_availability AS da ON p.id = da.pokemon_id
     JOIN dex AS d ON da.dex_id = d.id
     AND d.slug = :dex_slug

@@ -7,6 +7,23 @@ namespace App\Tests\Common\Data;
 final class PokemonData
 {
     /**
+     * @return null[]
+     */
+    public static function noCredits(): array
+    {
+        return [
+            'small_regular_credit_name' => null,
+            'small_regular_credit_url' => null,
+            'small_shiny_credit_name' => null,
+            'small_shiny_credit_url' => null,
+            'big_regular_credit_name' => null,
+            'big_regular_credit_url' => null,
+            'big_shiny_credit_name' => null,
+            'big_shiny_credit_url' => null,
+        ];
+    }
+
+    /**
      * @return int[]|null[]|string[]|string[][]
      */
     public static function getBulbasaurData(): array
@@ -48,6 +65,14 @@ final class PokemonData
             'original_game_bundle_slug' => 'redgreenblueyellow',
             'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
             'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+            'small_regular_credit_name' => 'PokéSprite',
+            'small_regular_credit_url' => 'https://github.com/msikma/pokesprite',
+            'small_shiny_credit_name' => null,
+            'small_shiny_credit_url' => null,
+            'big_regular_credit_name' => 'PokemonDB',
+            'big_regular_credit_url' => 'https://pokemondb.net/sprites/bulbasaur',
+            'big_shiny_credit_name' => null,
+            'big_shiny_credit_url' => null,
         ];
     }
 
@@ -96,6 +121,14 @@ final class PokemonData
             'original_game_bundle_slug' => 'redgreenblueyellow',
             'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
             'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+            'small_regular_credit_name' => 'Bulbapedia',
+            'small_regular_credit_url' => 'https://bulbapedia.bulbagarden.net',
+            'small_shiny_credit_name' => null,
+            'small_shiny_credit_url' => null,
+            'big_regular_credit_name' => null,
+            'big_regular_credit_url' => null,
+            'big_shiny_credit_name' => null,
+            'big_shiny_credit_url' => null,
         ];
     }
 
@@ -144,6 +177,14 @@ final class PokemonData
             'original_game_bundle_slug' => 'redgreenblueyellow',
             'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
             'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
+            'small_regular_credit_name' => 'Serebii',
+            'small_regular_credit_url' => 'https://serebii.net',
+            'small_shiny_credit_name' => null,
+            'small_shiny_credit_url' => null,
+            'big_regular_credit_name' => null,
+            'big_regular_credit_url' => null,
+            'big_shiny_credit_name' => null,
+            'big_shiny_credit_url' => null,
         ];
     }
 
@@ -192,6 +233,7 @@ final class PokemonData
             'original_game_bundle_slug' => 'redgreenblueyellow',
             'game_bundle_slugs' => '',
             'game_bundle_shiny_slugs' => '',
+            ...self::noCredits(),
         ];
     }
 
@@ -240,6 +282,7 @@ final class PokemonData
             'original_game_bundle_slug' => 'redgreenblueyellow',
             'game_bundle_slugs' => '',
             'game_bundle_shiny_slugs' => '',
+            ...self::noCredits(),
         ];
     }
 
@@ -288,6 +331,7 @@ final class PokemonData
             'original_game_bundle_slug' => 'redgreenblueyellow',
             'game_bundle_slugs' => '',
             'game_bundle_shiny_slugs' => '',
+            ...self::noCredits(),
         ];
     }
 
@@ -336,6 +380,7 @@ final class PokemonData
             'original_game_bundle_slug' => 'redgreenblueyellow',
             'game_bundle_slugs' => 'un,dos,tres',
             'game_bundle_shiny_slugs' => '',
+            ...self::noCredits(),
         ];
     }
 
@@ -381,6 +426,7 @@ final class PokemonData
             'original_game_bundle_slug' => 'redgreenblueyellow',
             'game_bundle_slugs' => '',
             'game_bundle_shiny_slugs' => '',
+            ...self::noCredits(),
         ];
     }
 
@@ -429,6 +475,7 @@ final class PokemonData
             'original_game_bundle_slug' => 'redgreenblueyellow',
             'game_bundle_slugs' => '',
             'game_bundle_shiny_slugs' => '',
+            ...self::noCredits(),
         ];
     }
 
@@ -477,6 +524,7 @@ final class PokemonData
             'original_game_bundle_slug' => 'redgreenblueyellow',
             'game_bundle_slugs' => '',
             'game_bundle_shiny_slugs' => '',
+            ...self::noCredits(),
         ];
     }
 
@@ -525,6 +573,7 @@ final class PokemonData
             'pokemon_order_number' => '9999-0019-004',
             'game_bundle_slugs' => 'ultrasunultramoon',
             'game_bundle_shiny_slugs' => 'ultrasunultramoon',
+            ...self::noCredits(),
         ];
     }
 
@@ -573,6 +622,7 @@ final class PokemonData
             'pokemon_order_number' => '9999-0019-005',
             'game_bundle_slugs' => 'redgreenblueyellow,ultrasunultramoon',
             'game_bundle_shiny_slugs' => 'redgreenblueyellow,ultrasunultramoon',
+            ...self::noCredits(),
         ];
     }
 
@@ -621,6 +671,7 @@ final class PokemonData
             'pokemon_order_number' => '9999-0019-006',
             'game_bundle_slugs' => 'redgreenblueyellow,ultrasunultramoon',
             'game_bundle_shiny_slugs' => 'redgreenblueyellow,ultrasunultramoon',
+            ...self::noCredits(),
         ];
     }
 
@@ -669,6 +720,7 @@ final class PokemonData
             'pokemon_order_number' => '9999-0020-007',
             'game_bundle_slugs' => 'ultrasunultramoon',
             'game_bundle_shiny_slugs' => 'ultrasunultramoon',
+            ...self::noCredits(),
         ];
     }
 
@@ -717,6 +769,7 @@ final class PokemonData
             'pokemon_order_number' => '9999-0020-008',
             'game_bundle_slugs' => 'redgreenblueyellow,ultrasunultramoon',
             'game_bundle_shiny_slugs' => 'redgreenblueyellow,ultrasunultramoon',
+            ...self::noCredits(),
         ];
     }
 
@@ -765,6 +818,7 @@ final class PokemonData
             'pokemon_order_number' => '9999-0020-009',
             'game_bundle_slugs' => 'redgreenblueyellow,ultrasunultramoon',
             'game_bundle_shiny_slugs' => 'redgreenblueyellow,ultrasunultramoon',
+            ...self::noCredits(),
         ];
     }
 
@@ -813,6 +867,7 @@ final class PokemonData
             'pokemon_order_number' => '9999-0020-010',
             'game_bundle_slugs' => '',
             'game_bundle_shiny_slugs' => '',
+            ...self::noCredits(),
         ];
     }
 }
