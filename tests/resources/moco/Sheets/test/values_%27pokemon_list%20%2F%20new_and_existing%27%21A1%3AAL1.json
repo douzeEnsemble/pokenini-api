@@ -1,10 +1,9 @@
 {
-  "range": "'pokemon_list / family_link'!A1:AF1",
+  "range": "'pokemon_list / new_and_existing'!A1:AL1",
   "majorDimension": "ROWS",
   "values": [
     [
       "Bankable",
-      "Bankable-ish",
       "Breeedable Form",
       "#Origin",
       "#Games First Appears On",
@@ -14,7 +13,6 @@
       "#Category form",
       "#Family",
       "Family order",
-      "Slug",
       "Pokémon Nom Complet",
       "Pokémon Nom simplifié",
       "Forme",
@@ -23,10 +21,12 @@
       "Forme Fr",
       "Dex",
       "Sprites",
-      "Shiny Sprites",
-      "Icon",
       "Sprites url",
+      "Shiny Sprites",
       "Shiny Sprites url",
+      "Icon",
+      "Bankable-ish",
+      "Slug",
       "#Type 1",
       "#Type 2",
       "Species number",
@@ -34,7 +34,13 @@
       "PokemonDB icon name",
       "PokemonDB icon dex",
       "generic-slug",
-      "#Groups"
+      "#Groups",
+      "Icon Source",
+      "Icon Source Url",
+      "Shiny Icon Source",
+      "Shiny Icon Source Url",
+      "Sprites Source",
+      "Shiny Sprites Source"
     ]
   ]
 }

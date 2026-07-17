@@ -1,5 +1,5 @@
 {
-  "range": "'Pokémons'!A1:AF1",
+  "range": "'pokemon_list / family_link'!A1:AL1",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -14,9 +14,9 @@
       "#Category form",
       "#Family",
       "Family order",
+      "Slug",
       "Pokémon Nom Complet",
       "Pokémon Nom simplifié",
-      "Slug",
       "Forme",
       "Pokémon Nom Complet Fr",
       "Pokémon Nom simplifié Fr",
@@ -34,7 +34,13 @@
       "PokemonDB icon name",
       "PokemonDB icon dex",
       "generic-slug",
-      "#Groups"
+      "#Groups",
+      "Icon Source",
+      "Icon Source Url",
+      "Shiny Icon Source",
+      "Shiny Icon Source Url",
+      "Sprites Source",
+      "Shiny Sprites Source"
     ]
   ]
 }

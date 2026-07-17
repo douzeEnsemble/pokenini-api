@@ -8,6 +8,7 @@ use App\Tests\Common\Traits\CounterTrait\CountPokemonTrait;
 use App\Tests\Common\Traits\GetterTrait\GetPokemonTrait;
 use App\Updater\AbstractUpdater;
 use App\Updater\PokemonsUpdater;
+use Doctrine\DBAL\Connection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
@@ -54,6 +55,29 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
 
         $this->assertNotNull($charizard['primary_type_id']);
         $this->assertNotNull($charizard['secondary_type_id']);
+
+        $connection = self::getContainer()->get(Connection::class);
+
+        /** @var false|string[] $megaCharizardXSmallCredit */
+        $megaCharizardXSmallCredit = $connection->executeQuery(
+            <<<'SQL'
+                SELECT pic.source_name, pic.source_url
+                FROM pokemon_image_credit pic
+                INNER JOIN pokemon p ON p.id = pic.pokemon_id
+                WHERE p.slug = :slug
+                    AND pic.size = :size
+                    AND pic.is_shiny = :isShiny
+                SQL,
+            [
+                'slug' => 'charizard-mega-x',
+                'size' => 'small',
+                'isShiny' => 0,
+            ]
+        )->fetchAssociative();
+
+        $this->assertNotFalse($megaCharizardXSmallCredit);
+        $this->assertEquals('PokéSprite', $megaCharizardXSmallCredit['source_name']);
+        $this->assertEquals('https://github.com/msikma/pokesprite/charizard-mega-x', $megaCharizardXSmallCredit['source_url']);
     }
 
     public function testImportExistingPokemons(): void

@@ -1,5 +1,5 @@
 {
-  "range": "'pokemon_list / only_existing'!A1:AF1",
+  "range": "'pokemon_list / update_regional_form'!A1:AL1",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -34,7 +34,13 @@
       "PokemonDB icon name",
       "PokemonDB icon dex",
       "generic-slug",
-      "#Groups"
+      "#Groups",
+      "Icon Source",
+      "Icon Source Url",
+      "Shiny Icon Source",
+      "Shiny Icon Source Url",
+      "Sprites Source",
+      "Shiny Sprites Source"
     ]
   ]
 }
