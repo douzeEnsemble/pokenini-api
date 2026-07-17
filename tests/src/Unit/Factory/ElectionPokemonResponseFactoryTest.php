@@ -20,6 +20,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  *
  * @SuppressWarnings("PHPMD.TooManyPublicMethods")
+ * @SuppressWarnings("PHPMD.TooManyMethods")
  */
 #[CoversClass(ElectionPokemonResponseFactory::class)]
 final class ElectionPokemonResponseFactoryTest extends TestCase
@@ -413,6 +414,67 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
         self::assertSame('goldsilvercrystal', $response->pokemon->gameBundles->shiny[0]->slug);
     }
 
+    #[Test]
+    public function fromSqlRowWithNoCreditColumnsReturnsNullCredits(): void
+    {
+        $row = $this->buildRow();
+
+        $response = ElectionPokemonResponseFactory::fromSqlRow($row);
+
+        self::assertNull($response->pokemon->smallRegularCredit);
+        self::assertNull($response->pokemon->smallShinyCredit);
+        self::assertNull($response->pokemon->bigRegularCredit);
+        self::assertNull($response->pokemon->bigShinyCredit);
+    }
+
+    #[Test]
+    public function fromSqlRowWithCreditColumnsBuildsImageCreditResponse(): void
+    {
+        $row = $this->buildRow([
+            'small_regular_credit_name' => 'PokéSprite',
+            'small_regular_credit_url' => 'https://github.com/msikma/pokesprite',
+            'big_shiny_credit_name' => 'PokemonDB',
+            'big_shiny_credit_url' => 'https://pokemondb.net/sprites/bulbasaur',
+        ]);
+
+        $response = ElectionPokemonResponseFactory::fromSqlRow($row);
+
+        self::assertNotNull($response->pokemon->smallRegularCredit);
+        self::assertSame('PokéSprite', $response->pokemon->smallRegularCredit->name);
+        self::assertSame('https://github.com/msikma/pokesprite', $response->pokemon->smallRegularCredit->url);
+        self::assertNull($response->pokemon->smallShinyCredit);
+        self::assertNull($response->pokemon->bigRegularCredit);
+        self::assertNotNull($response->pokemon->bigShinyCredit);
+        self::assertSame('PokemonDB', $response->pokemon->bigShinyCredit->name);
+        self::assertSame('https://pokemondb.net/sprites/bulbasaur', $response->pokemon->bigShinyCredit->url);
+    }
+
+    #[Test]
+    public function fromSqlRowWithOnlyCreditNameReturnsNullCredit(): void
+    {
+        $row = $this->buildRow([
+            'big_regular_credit_name' => 'PokéSprite',
+            'big_regular_credit_url' => null,
+        ]);
+
+        $response = ElectionPokemonResponseFactory::fromSqlRow($row);
+
+        self::assertNull($response->pokemon->bigRegularCredit);
+    }
+
+    #[Test]
+    public function fromSqlRowWithOnlyCreditUrlReturnsNullCredit(): void
+    {
+        $row = $this->buildRow([
+            'big_regular_credit_name' => null,
+            'big_regular_credit_url' => 'https://github.com/msikma/pokesprite',
+        ]);
+
+        $response = ElectionPokemonResponseFactory::fromSqlRow($row);
+
+        self::assertNull($response->pokemon->bigRegularCredit);
+    }
+
     /**
      * @param array<string, mixed> $overrides
      *
@@ -456,6 +518,14 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
             'pokemon_order_number' => '9999-0001-000',
             'game_bundle_slugs' => null,
             'game_bundle_shiny_slugs' => null,
+            'small_regular_credit_name' => null,
+            'small_regular_credit_url' => null,
+            'small_shiny_credit_name' => null,
+            'small_shiny_credit_url' => null,
+            'big_regular_credit_name' => null,
+            'big_regular_credit_url' => null,
+            'big_shiny_credit_name' => null,
+            'big_shiny_credit_url' => null,
         ], $overrides);
     }
 }

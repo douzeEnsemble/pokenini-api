@@ -667,4 +667,159 @@ final class ElectionEloResponseFactoryTest extends TestCase
         self::assertInstanceOf(GameBundleSlugResponse::class, $response->pokemon->gameBundles->shiny[0]);
         self::assertSame('heartgoldsoulsilver', $response->pokemon->gameBundles->shiny[0]->slug);
     }
+
+    #[Test]
+    public function fromSqlRowWithCreditColumnsBuildsImageCreditResponse(): void
+    {
+        $row = [
+            'elo' => 1200.5,
+            'significance' => true,
+            'pokemon_slug' => 'pikachu',
+            'pokemon_name' => 'Pikachu',
+            'pokemon_french_name' => 'Pikachu',
+            'pokemon_national_dex_number' => 25,
+            'pokemon_simplified_name' => null,
+            'pokemon_forms_label' => null,
+            'pokemon_simplified_french_name' => null,
+            'pokemon_forms_french_label' => null,
+            'pokemon_icon' => 'pikachu.png',
+            'pokemon_family_order' => 1,
+            'family_lead_slug' => 'pichu',
+            'original_game_bundle_slug' => 'red-blue',
+            'pokemon_order_number' => '9999-0025-001',
+            'category_form_slug' => null,
+            'category_form_name' => null,
+            'category_form_french_name' => null,
+            'regional_form_slug' => null,
+            'regional_form_name' => null,
+            'regional_form_french_name' => null,
+            'special_form_slug' => null,
+            'special_form_name' => null,
+            'special_form_french_name' => null,
+            'variant_form_slug' => null,
+            'variant_form_name' => null,
+            'variant_form_french_name' => null,
+            'primary_type_slug' => 'electric',
+            'primary_type_name' => 'Electric',
+            'primary_type_french_name' => 'Électrique',
+            'primary_type_color' => '#FFCC33',
+            'secondary_type_slug' => null,
+            'secondary_type_name' => null,
+            'secondary_type_french_name' => null,
+            'secondary_type_color' => null,
+            'game_bundle_slugs' => null,
+            'game_bundle_shiny_slugs' => null,
+            'big_shiny_credit_name' => 'PokemonDB',
+            'big_shiny_credit_url' => 'https://pokemondb.net/sprites/pikachu-shiny',
+        ];
+
+        $response = ElectionEloResponseFactory::fromSqlRow($row);
+
+        self::assertNull($response->pokemon->smallRegularCredit);
+        self::assertNull($response->pokemon->smallShinyCredit);
+        self::assertNull($response->pokemon->bigRegularCredit);
+        self::assertNotNull($response->pokemon->bigShinyCredit);
+        self::assertSame('PokemonDB', $response->pokemon->bigShinyCredit->name);
+        self::assertSame('https://pokemondb.net/sprites/pikachu-shiny', $response->pokemon->bigShinyCredit->url);
+    }
+
+    #[Test]
+    public function fromSqlRowWithOnlyCreditNameReturnsNullCredit(): void
+    {
+        $row = [
+            'elo' => 1200.5,
+            'significance' => true,
+            'pokemon_slug' => 'pikachu',
+            'pokemon_name' => 'Pikachu',
+            'pokemon_french_name' => 'Pikachu',
+            'pokemon_national_dex_number' => 25,
+            'pokemon_simplified_name' => null,
+            'pokemon_forms_label' => null,
+            'pokemon_simplified_french_name' => null,
+            'pokemon_forms_french_label' => null,
+            'pokemon_icon' => 'pikachu.png',
+            'pokemon_family_order' => 1,
+            'family_lead_slug' => 'pichu',
+            'original_game_bundle_slug' => 'red-blue',
+            'pokemon_order_number' => '9999-0025-001',
+            'category_form_slug' => null,
+            'category_form_name' => null,
+            'category_form_french_name' => null,
+            'regional_form_slug' => null,
+            'regional_form_name' => null,
+            'regional_form_french_name' => null,
+            'special_form_slug' => null,
+            'special_form_name' => null,
+            'special_form_french_name' => null,
+            'variant_form_slug' => null,
+            'variant_form_name' => null,
+            'variant_form_french_name' => null,
+            'primary_type_slug' => 'electric',
+            'primary_type_name' => 'Electric',
+            'primary_type_french_name' => 'Électrique',
+            'primary_type_color' => '#FFCC33',
+            'secondary_type_slug' => null,
+            'secondary_type_name' => null,
+            'secondary_type_french_name' => null,
+            'secondary_type_color' => null,
+            'game_bundle_slugs' => null,
+            'game_bundle_shiny_slugs' => null,
+            'big_shiny_credit_name' => 'PokemonDB',
+            'big_shiny_credit_url' => null,
+        ];
+
+        $response = ElectionEloResponseFactory::fromSqlRow($row);
+
+        self::assertNull($response->pokemon->bigShinyCredit);
+    }
+
+    #[Test]
+    public function fromSqlRowWithOnlyCreditUrlReturnsNullCredit(): void
+    {
+        $row = [
+            'elo' => 1200.5,
+            'significance' => true,
+            'pokemon_slug' => 'pikachu',
+            'pokemon_name' => 'Pikachu',
+            'pokemon_french_name' => 'Pikachu',
+            'pokemon_national_dex_number' => 25,
+            'pokemon_simplified_name' => null,
+            'pokemon_forms_label' => null,
+            'pokemon_simplified_french_name' => null,
+            'pokemon_forms_french_label' => null,
+            'pokemon_icon' => 'pikachu.png',
+            'pokemon_family_order' => 1,
+            'family_lead_slug' => 'pichu',
+            'original_game_bundle_slug' => 'red-blue',
+            'pokemon_order_number' => '9999-0025-001',
+            'category_form_slug' => null,
+            'category_form_name' => null,
+            'category_form_french_name' => null,
+            'regional_form_slug' => null,
+            'regional_form_name' => null,
+            'regional_form_french_name' => null,
+            'special_form_slug' => null,
+            'special_form_name' => null,
+            'special_form_french_name' => null,
+            'variant_form_slug' => null,
+            'variant_form_name' => null,
+            'variant_form_french_name' => null,
+            'primary_type_slug' => 'electric',
+            'primary_type_name' => 'Electric',
+            'primary_type_french_name' => 'Électrique',
+            'primary_type_color' => '#FFCC33',
+            'secondary_type_slug' => null,
+            'secondary_type_name' => null,
+            'secondary_type_french_name' => null,
+            'secondary_type_color' => null,
+            'game_bundle_slugs' => null,
+            'game_bundle_shiny_slugs' => null,
+            'big_shiny_credit_name' => null,
+            'big_shiny_credit_url' => 'https://pokemondb.net/sprites/pikachu-shiny',
+        ];
+
+        $response = ElectionEloResponseFactory::fromSqlRow($row);
+
+        self::assertNull($response->pokemon->bigShinyCredit);
+    }
 }

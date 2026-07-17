@@ -90,6 +90,10 @@ final class ElectionPokemonResponseTest extends TestCase
             originalGameBundle: new GameBundleSlugResponse(slug: 'redgreenblueyellow'),
             orderNumber: '9999-0001-000',
             gameBundles: new GameBundlesGroupResponse(normal: [], shiny: []),
+            smallRegularCredit: null,
+            smallShinyCredit: null,
+            bigRegularCredit: null,
+            bigShinyCredit: null,
         );
     }
 }
