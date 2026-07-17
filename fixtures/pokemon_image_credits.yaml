@@ -1,0 +1,14 @@
+App\Entity\PokemonImageCredit:
+  pokemon_image_credit_bulbasaur_small_regular:
+    pokemon: "@pokemon_bulbasaur"
+    size: "small"
+    isShiny: false
+    sourceName: "PokéSprite"
+    sourceUrl: "https://github.com/msikma/pokesprite"
+
+  pokemon_image_credit_bulbasaur_big_regular:
+    pokemon: "@pokemon_bulbasaur"
+    size: "big"
+    isShiny: false
+    sourceName: "PokemonDB"
+    sourceUrl: "https://pokemondb.net/sprites/bulbasaur"
