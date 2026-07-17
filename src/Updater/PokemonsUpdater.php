@@ -14,10 +14,10 @@ class PokemonsUpdater extends AbstractUpdater
     protected string $sheetName = 'Pokémons';
     protected string $tableName = 'pokemon';
     protected string $statisticName = 'pokemons';
-    protected string $headerCellsRange = 'A1:AF1';
+    protected string $headerCellsRange = 'A1:AL1';
 
     /** @var array<int, string> */
-    protected array $recordsCellsRanges = ['A2:AF'];
+    protected array $recordsCellsRanges = ['A2:AL'];
 
     #[\Override]
     protected function getExpectedHeader(): array
@@ -55,6 +55,12 @@ class PokemonsUpdater extends AbstractUpdater
             'PokemonDB icon dex',
             'generic-slug',
             '#Groups',
+            'Icon Source',
+            'Icon Source Url',
+            'Shiny Icon Source',
+            'Shiny Icon Source Url',
+            'Sprites Source',
+            'Shiny Sprites Source',
         ];
     }
 
@@ -139,7 +145,64 @@ class PokemonsUpdater extends AbstractUpdater
 
         $this->executeQuery($sql, $sqlParameters);
 
+        $slug = (string) $newRecord['slug'];
+        $this->upsertImageCredit($slug, 'small', false, (string) $newRecord['smallRegularCreditName'], (string) $newRecord['smallRegularCreditUrl']);
+        $this->upsertImageCredit($slug, 'small', true, (string) $newRecord['smallShinyCreditName'], (string) $newRecord['smallShinyCreditUrl']);
+        $this->upsertImageCredit($slug, 'big', false, (string) $newRecord['bigRegularCreditName'], (string) $newRecord['bigRegularCreditUrl']);
+        $this->upsertImageCredit($slug, 'big', true, (string) $newRecord['bigShinyCreditName'], (string) $newRecord['bigShinyCreditUrl']);
+
         $this->statistic->increment();
+    }
+
+    private function upsertImageCredit(string $pokemonSlug, string $size, bool $isShiny, string $sourceName, string $sourceUrl): void
+    {
+        if ('' === $sourceName || '' === $sourceUrl) {
+            $this->deleteImageCredit($pokemonSlug, $size, $isShiny);
+
+            return;
+        }
+
+        $sql = <<<'SQL'
+            INSERT INTO pokemon_image_credit (id, pokemon_id, size, is_shiny, source_name, source_url)
+            VALUES (
+                :id,
+                (SELECT id FROM pokemon WHERE slug = :slug),
+                :size,
+                :isShiny,
+                :sourceName,
+                :sourceUrl
+            )
+            ON CONFLICT (pokemon_id, size, is_shiny)
+            DO
+            UPDATE
+            SET source_name = excluded.source_name,
+                source_url = excluded.source_url
+            SQL;
+
+        $this->executeQuery($sql, [
+            'id' => (string) Uuid::v4(),
+            'slug' => $pokemonSlug,
+            'size' => $size,
+            'isShiny' => (int) $isShiny,
+            'sourceName' => $sourceName,
+            'sourceUrl' => $sourceUrl,
+        ]);
+    }
+
+    private function deleteImageCredit(string $pokemonSlug, string $size, bool $isShiny): void
+    {
+        $sql = <<<'SQL'
+            DELETE FROM pokemon_image_credit
+            WHERE pokemon_id = (SELECT id FROM pokemon WHERE slug = :slug)
+                AND size = :size
+                AND is_shiny = :isShiny
+            SQL;
+
+        $this->executeQuery($sql, [
+            'slug' => $pokemonSlug,
+            'size' => $size,
+            'isShiny' => (int) $isShiny,
+        ]);
     }
 
     /**
@@ -174,6 +237,14 @@ class PokemonsUpdater extends AbstractUpdater
             'secondaryType' => $record['#Type 2'],
             'iconName' => $record['Icon'],
             'slug' => $record['Slug'],
+            'smallRegularCreditName' => $record['Icon Source'],
+            'smallRegularCreditUrl' => $record['Icon Source Url'],
+            'smallShinyCreditName' => $record['Shiny Icon Source'],
+            'smallShinyCreditUrl' => $record['Shiny Icon Source Url'],
+            'bigRegularCreditName' => $record['Sprites Source'],
+            'bigRegularCreditUrl' => $record['Sprites url'],
+            'bigShinyCreditName' => $record['Shiny Sprites Source'],
+            'bigShinyCreditUrl' => $record['Shiny Sprites url'],
         ];
     }
 
