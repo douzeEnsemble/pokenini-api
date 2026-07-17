@@ -25,14 +25,21 @@ final class PokemonImageCreditRepositoryTest extends KernelTestCase
     }
 
     #[Test]
-    public function findAllDistinctSourcesReturnsEachSourceOnce(): void
+    public function findAllDistinctSourcesReturnsEachSourceOnceExcludingNullsAndOrderedByName(): void
     {
         $repo = self::getContainer()->get(PokemonImageCreditRepository::class);
 
         $result = $repo->findAllDistinctSources();
 
-        self::assertContains(['source_name' => 'PokéSprite', 'source_url' => 'https://github.com/msikma/pokesprite'], $result);
-        self::assertContains(['source_name' => 'PokemonDB', 'source_url' => 'https://pokemondb.net/sprites/bulbasaur'], $result);
-        self::assertCount(2, $result);
+        self::assertCount(4, $result);
+        self::assertSame(
+            [
+                ['source_name' => 'Bulbapedia', 'source_url' => 'https://bulbapedia.bulbagarden.net'],
+                ['source_name' => 'PokemonDB', 'source_url' => 'https://pokemondb.net/sprites/bulbasaur'],
+                ['source_name' => 'PokéSprite', 'source_url' => 'https://github.com/msikma/pokesprite'],
+                ['source_name' => 'Serebii', 'source_url' => 'https://serebii.net'],
+            ],
+            $result,
+        );
     }
 }
