@@ -154,6 +154,49 @@ class PokemonsUpdater extends AbstractUpdater
         $this->statistic->increment();
     }
 
+    /**
+     * @param string[] $record
+     *
+     * @return bool[]|int[]|string[]
+     */
+    protected function transformRecord(array $record): array
+    {
+        $isBankable = filter_var($record['Bankable'], FILTER_VALIDATE_BOOLEAN);
+
+        $isBankableish = filter_var($record['Bankable-ish'], FILTER_VALIDATE_BOOLEAN);
+
+        return [
+            'name' => $record['Pokémon Nom Complet'],
+            'simplifiedName' => $record['Pokémon Nom simplifié'],
+            'formsLabel' => $record['Forme'],
+            'frenchName' => $record['Pokémon Nom Complet Fr'],
+            'simplifiedFrenchName' => $record['Pokémon Nom simplifié Fr'],
+            'formsFrenchLabel' => $record['Forme Fr'],
+            'nationalDexNumber' => (int) $record['Dex'],
+            'family' => $record['#Family'],
+            'familyOrder' => $record['Family order'],
+            'bankable' => $isBankable,
+            'bankableish' => $isBankableish,
+            'originalGameBundle' => $record['#Games First Appears On'],
+            'variantForm' => $record['#Form variant'],
+            'regionalForm' => $record['#Regional form'],
+            'specialForm' => $record['#Special form'],
+            'categoryForm' => $record['#Category form'],
+            'primaryType' => $record['#Type 1'],
+            'secondaryType' => $record['#Type 2'],
+            'iconName' => $record['Icon'],
+            'slug' => $record['Slug'],
+            'smallRegularCreditName' => $record['Icon Source'],
+            'smallRegularCreditUrl' => $record['Icon Source Url'],
+            'smallShinyCreditName' => $record['Shiny Icon Source'],
+            'smallShinyCreditUrl' => $record['Shiny Icon Source Url'],
+            'bigRegularCreditName' => $record['Sprites Source'],
+            'bigRegularCreditUrl' => $record['Sprites url'],
+            'bigShinyCreditName' => $record['Shiny Sprites Source'],
+            'bigShinyCreditUrl' => $record['Shiny Sprites url'],
+        ];
+    }
+
     private function upsertImageCredit(string $pokemonSlug, string $size, bool $isShiny, string $sourceName, string $sourceUrl): void
     {
         if ('' === $sourceName || '' === $sourceUrl) {
@@ -203,49 +246,6 @@ class PokemonsUpdater extends AbstractUpdater
             'size' => $size,
             'isShiny' => (int) $isShiny,
         ]);
-    }
-
-    /**
-     * @param string[] $record
-     *
-     * @return bool[]|int[]|string[]
-     */
-    protected function transformRecord(array $record): array
-    {
-        $isBankable = filter_var($record['Bankable'], FILTER_VALIDATE_BOOLEAN);
-
-        $isBankableish = filter_var($record['Bankable-ish'], FILTER_VALIDATE_BOOLEAN);
-
-        return [
-            'name' => $record['Pokémon Nom Complet'],
-            'simplifiedName' => $record['Pokémon Nom simplifié'],
-            'formsLabel' => $record['Forme'],
-            'frenchName' => $record['Pokémon Nom Complet Fr'],
-            'simplifiedFrenchName' => $record['Pokémon Nom simplifié Fr'],
-            'formsFrenchLabel' => $record['Forme Fr'],
-            'nationalDexNumber' => (int) $record['Dex'],
-            'family' => $record['#Family'],
-            'familyOrder' => $record['Family order'],
-            'bankable' => $isBankable,
-            'bankableish' => $isBankableish,
-            'originalGameBundle' => $record['#Games First Appears On'],
-            'variantForm' => $record['#Form variant'],
-            'regionalForm' => $record['#Regional form'],
-            'specialForm' => $record['#Special form'],
-            'categoryForm' => $record['#Category form'],
-            'primaryType' => $record['#Type 1'],
-            'secondaryType' => $record['#Type 2'],
-            'iconName' => $record['Icon'],
-            'slug' => $record['Slug'],
-            'smallRegularCreditName' => $record['Icon Source'],
-            'smallRegularCreditUrl' => $record['Icon Source Url'],
-            'smallShinyCreditName' => $record['Shiny Icon Source'],
-            'smallShinyCreditUrl' => $record['Shiny Icon Source Url'],
-            'bigRegularCreditName' => $record['Sprites Source'],
-            'bigRegularCreditUrl' => $record['Sprites url'],
-            'bigShinyCreditName' => $record['Shiny Sprites Source'],
-            'bigShinyCreditUrl' => $record['Shiny Sprites url'],
-        ];
     }
 
     /**
