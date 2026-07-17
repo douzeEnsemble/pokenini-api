@@ -49,6 +49,10 @@ final class AlbumPokemonResponseTest extends TestCase
                 normal: [new GameBundleSlugResponse(slug: 'redgreenblueyellow')],
                 shiny: [],
             ),
+            smallRegularCredit: null,
+            smallShinyCredit: null,
+            bigRegularCredit: null,
+            bigShinyCredit: null,
         );
         $catchState = new AlbumCatchStateResponse('no', 'No', 'Non', '#e57373');
         $forms = new AlbumFormsResponse(
@@ -103,6 +107,10 @@ final class AlbumPokemonResponseTest extends TestCase
                 ],
                 shiny: [],
             ),
+            smallRegularCredit: null,
+            smallShinyCredit: null,
+            bigRegularCredit: null,
+            bigShinyCredit: null,
         );
         $types = new AlbumTypesResponse(primary: null, secondary: null);
 

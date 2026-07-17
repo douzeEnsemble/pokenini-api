@@ -11,12 +11,16 @@ use App\DTO\Response\FormResponse;
 use App\DTO\Response\FormsResponse;
 use App\DTO\Response\GameBundlesGroupResponse;
 use App\DTO\Response\GameBundleSlugResponse;
+use App\DTO\Response\ImageCreditResponse;
 use App\DTO\Response\PokemonDataResponse;
 use App\DTO\Response\PokemonLabelsResponse;
 use App\DTO\Response\PokemonSlugResponse;
 use App\DTO\Response\TypeResponse;
 use App\DTO\Response\TypesResponse;
 
+/**
+ * @SuppressWarnings("PHPMD.CouplingBetweenObjects")
+ */
 final class ElectionPokemonResponseFactory
 {
     public static function fromElectionPokemonsList(ElectionPokemonsList $list): ElectionPokemonsListResponse
@@ -140,7 +144,32 @@ final class ElectionPokemonResponseFactory
                 normal: $gameBundles,
                 shiny: $gameBundlesShiny,
             ),
+            smallRegularCredit: self::buildCredit('small_regular', $row),
+            smallShinyCredit: self::buildCredit('small_shiny', $row),
+            bigRegularCredit: self::buildCredit('big_regular', $row),
+            bigShinyCredit: self::buildCredit('big_shiny', $row),
         );
+    }
+
+    /**
+     * @param array<string, mixed> $row
+     */
+    private static function buildCredit(string $prefix, array $row): ?ImageCreditResponse
+    {
+        $nameKey = "{$prefix}_credit_name";
+        $urlKey = "{$prefix}_credit_url";
+
+        if (empty($row[$nameKey]) || empty($row[$urlKey])) {
+            return null;
+        }
+
+        /** @var scalar $name */
+        $name = $row[$nameKey];
+
+        /** @var scalar $url */
+        $url = $row[$urlKey];
+
+        return new ImageCreditResponse(name: (string) $name, url: (string) $url);
     }
 
     /**

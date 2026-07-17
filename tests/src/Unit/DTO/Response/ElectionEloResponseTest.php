@@ -83,6 +83,10 @@ final class ElectionEloResponseTest extends TestCase
             originalGameBundle: null,
             orderNumber: '0006.001',
             gameBundles: new GameBundlesGroupResponse(normal: [], shiny: []),
+            smallRegularCredit: null,
+            smallShinyCredit: null,
+            bigRegularCredit: null,
+            bigShinyCredit: null,
         );
     }
 

@@ -50,6 +50,10 @@ final class PokemonDataResponseTest extends TestCase
             originalGameBundle: new GameBundleSlugResponse(slug: 'rby'),
             orderNumber: '0025.001',
             gameBundles: new GameBundlesGroupResponse(normal: $normalBundles, shiny: $shinyBundles),
+            smallRegularCredit: null,
+            smallShinyCredit: null,
+            bigRegularCredit: null,
+            bigShinyCredit: null,
         );
 
         self::assertSame('pikachu', $response->slug);
@@ -101,6 +105,10 @@ final class PokemonDataResponseTest extends TestCase
             originalGameBundle: null,
             orderNumber: '0001.001',
             gameBundles: new GameBundlesGroupResponse(normal: [], shiny: []),
+            smallRegularCredit: null,
+            smallShinyCredit: null,
+            bigRegularCredit: null,
+            bigShinyCredit: null,
         );
 
         self::assertNull($response->regionalDexNumber);

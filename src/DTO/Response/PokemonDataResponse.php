@@ -29,5 +29,13 @@ final class PokemonDataResponse
         public readonly string $orderNumber,
         #[SerializedName('game_bundles')]
         public readonly GameBundlesGroupResponse $gameBundles,
+        #[SerializedName('small_regular_credit')]
+        public readonly ?ImageCreditResponse $smallRegularCredit,
+        #[SerializedName('small_shiny_credit')]
+        public readonly ?ImageCreditResponse $smallShinyCredit,
+        #[SerializedName('big_regular_credit')]
+        public readonly ?ImageCreditResponse $bigRegularCredit,
+        #[SerializedName('big_shiny_credit')]
+        public readonly ?ImageCreditResponse $bigShinyCredit,
     ) {}
 }
