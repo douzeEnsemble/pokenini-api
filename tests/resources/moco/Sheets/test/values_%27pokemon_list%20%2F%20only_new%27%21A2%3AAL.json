@@ -1,5 +1,5 @@
 {
-  "range": "'pokemon_list / only_new'!A2:AF9",
+  "range": "'pokemon_list / only_new'!A2:AL9",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -28,7 +28,19 @@
       "Yes",
       "charizard-mega-x",
       "Fire",
-      "Dragon"
+      "Dragon",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "",
+      "PokéSprite",
+      "https://github.com/msikma/pokesprite/charizard-mega-x",
+      "PokéSprite Shiny",
+      "https://github.com/msikma/pokesprite/charizard-mega-x-shiny",
+      "PokemonDB",
+      "PokemonDB Shiny"
     ],
     [
       "No",
