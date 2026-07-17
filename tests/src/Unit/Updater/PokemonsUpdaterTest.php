@@ -47,6 +47,14 @@ final class PokemonsUpdaterTest extends TestCase
         $this->assertSame('', $result['secondaryType']);
         $this->assertSame('0025.png', $result['iconName']);
         $this->assertSame('pikachu', $result['slug']);
+        $this->assertSame('PokéSprite', $result['smallRegularCreditName']);
+        $this->assertSame('https://github.com/msikma/pokesprite', $result['smallRegularCreditUrl']);
+        $this->assertSame('PokéSprite Shiny', $result['smallShinyCreditName']);
+        $this->assertSame('https://github.com/msikma/pokesprite/shiny', $result['smallShinyCreditUrl']);
+        $this->assertSame('PokemonDB', $result['bigRegularCreditName']);
+        $this->assertSame('https://pokemondb.net/sprites/pikachu', $result['bigRegularCreditUrl']);
+        $this->assertSame('PokemonDB Shiny', $result['bigShinyCreditName']);
+        $this->assertSame('https://pokemondb.net/sprites/pikachu-shiny', $result['bigShinyCreditUrl']);
     }
 
     /** @return string[] */
@@ -75,8 +83,8 @@ final class PokemonsUpdaterTest extends TestCase
             'Sprites' => '',
             'Shiny Sprites' => '',
             'Icon' => '0025.png',
-            'Sprites url' => '',
-            'Shiny Sprites url' => '',
+            'Sprites url' => 'https://pokemondb.net/sprites/pikachu',
+            'Shiny Sprites url' => 'https://pokemondb.net/sprites/pikachu-shiny',
             '#Type 1' => 'electric',
             '#Type 2' => '',
             'Species number' => '25',
@@ -85,6 +93,12 @@ final class PokemonsUpdaterTest extends TestCase
             'PokemonDB icon dex' => '',
             'generic-slug' => '',
             '#Groups' => '',
+            'Icon Source' => 'PokéSprite',
+            'Icon Source Url' => 'https://github.com/msikma/pokesprite',
+            'Shiny Icon Source' => 'PokéSprite Shiny',
+            'Shiny Icon Source Url' => 'https://github.com/msikma/pokesprite/shiny',
+            'Sprites Source' => 'PokemonDB',
+            'Shiny Sprites Source' => 'PokemonDB Shiny',
         ];
     }
 }
