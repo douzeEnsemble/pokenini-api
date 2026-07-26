@@ -418,37 +418,23 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
     public function fromSqlRowWithCreditColumnsBuildsImageCreditResponse(): void
     {
         $row = array_merge($this->getBulbasaurRow(), [
-            'small_regular_credit_name' => 'PokéSprite',
-            'small_regular_credit_url' => 'https://github.com/msikma/pokesprite',
+            'small_regular_credit_source' => 'PokéSprite - https://github.com/msikma/pokesprite',
         ]);
 
         $response = AlbumPokemonResponseFactory::fromSqlRow($row);
 
         self::assertNotNull($response->pokemon->smallRegularCredit);
-        self::assertSame('PokéSprite', $response->pokemon->smallRegularCredit->name);
-        self::assertSame('https://github.com/msikma/pokesprite', $response->pokemon->smallRegularCredit->url);
+        self::assertSame('PokéSprite - https://github.com/msikma/pokesprite', $response->pokemon->smallRegularCredit->credit);
         self::assertNull($response->pokemon->smallShinyCredit);
         self::assertNull($response->pokemon->bigRegularCredit);
         self::assertNull($response->pokemon->bigShinyCredit);
     }
 
     #[Test]
-    public function fromSqlRowWithOnlyCreditNameReturnsNullCredit(): void
+    public function fromSqlRowWithEmptyCreditSourceReturnsNullCredit(): void
     {
         $row = array_merge($this->getBulbasaurRow(), [
-            'big_regular_credit_name' => 'PokéSprite',
-        ]);
-
-        $response = AlbumPokemonResponseFactory::fromSqlRow($row);
-
-        self::assertNull($response->pokemon->bigRegularCredit);
-    }
-
-    #[Test]
-    public function fromSqlRowWithOnlyCreditUrlReturnsNullCredit(): void
-    {
-        $row = array_merge($this->getBulbasaurRow(), [
-            'big_regular_credit_url' => 'https://github.com/msikma/pokesprite',
+            'big_regular_credit_source' => '',
         ]);
 
         $response = AlbumPokemonResponseFactory::fromSqlRow($row);

@@ -431,43 +431,25 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
     public function fromSqlRowWithCreditColumnsBuildsImageCreditResponse(): void
     {
         $row = $this->buildRow([
-            'small_regular_credit_name' => 'PokéSprite',
-            'small_regular_credit_url' => 'https://github.com/msikma/pokesprite',
-            'big_shiny_credit_name' => 'PokemonDB',
-            'big_shiny_credit_url' => 'https://pokemondb.net/sprites/bulbasaur',
+            'small_regular_credit_source' => 'PokéSprite - https://github.com/msikma/pokesprite',
+            'big_shiny_credit_source' => 'PokemonDB - https://pokemondb.net/sprites/bulbasaur',
         ]);
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
         self::assertNotNull($response->pokemon->smallRegularCredit);
-        self::assertSame('PokéSprite', $response->pokemon->smallRegularCredit->name);
-        self::assertSame('https://github.com/msikma/pokesprite', $response->pokemon->smallRegularCredit->url);
+        self::assertSame('PokéSprite - https://github.com/msikma/pokesprite', $response->pokemon->smallRegularCredit->credit);
         self::assertNull($response->pokemon->smallShinyCredit);
         self::assertNull($response->pokemon->bigRegularCredit);
         self::assertNotNull($response->pokemon->bigShinyCredit);
-        self::assertSame('PokemonDB', $response->pokemon->bigShinyCredit->name);
-        self::assertSame('https://pokemondb.net/sprites/bulbasaur', $response->pokemon->bigShinyCredit->url);
+        self::assertSame('PokemonDB - https://pokemondb.net/sprites/bulbasaur', $response->pokemon->bigShinyCredit->credit);
     }
 
     #[Test]
-    public function fromSqlRowWithOnlyCreditNameReturnsNullCredit(): void
+    public function fromSqlRowWithEmptyCreditSourceReturnsNullCredit(): void
     {
         $row = $this->buildRow([
-            'big_regular_credit_name' => 'PokéSprite',
-            'big_regular_credit_url' => null,
-        ]);
-
-        $response = ElectionPokemonResponseFactory::fromSqlRow($row);
-
-        self::assertNull($response->pokemon->bigRegularCredit);
-    }
-
-    #[Test]
-    public function fromSqlRowWithOnlyCreditUrlReturnsNullCredit(): void
-    {
-        $row = $this->buildRow([
-            'big_regular_credit_name' => null,
-            'big_regular_credit_url' => 'https://github.com/msikma/pokesprite',
+            'big_regular_credit_source' => '',
         ]);
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
@@ -518,14 +500,10 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
             'pokemon_order_number' => '9999-0001-000',
             'game_bundle_slugs' => null,
             'game_bundle_shiny_slugs' => null,
-            'small_regular_credit_name' => null,
-            'small_regular_credit_url' => null,
-            'small_shiny_credit_name' => null,
-            'small_shiny_credit_url' => null,
-            'big_regular_credit_name' => null,
-            'big_regular_credit_url' => null,
-            'big_shiny_credit_name' => null,
-            'big_shiny_credit_url' => null,
+            'small_regular_credit_source' => null,
+            'small_shiny_credit_source' => null,
+            'big_regular_credit_source' => null,
+            'big_shiny_credit_source' => null,
         ], $overrides);
     }
 }

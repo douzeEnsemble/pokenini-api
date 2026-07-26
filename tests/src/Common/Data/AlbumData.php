@@ -847,22 +847,17 @@ final class AlbumData
      */
     private static function buildNestedCredit(string $prefix, array $flat): ?array
     {
-        $nameKey = "{$prefix}_credit_name";
-        $urlKey = "{$prefix}_credit_url";
+        $key = "{$prefix}_credit_source";
 
-        if (empty($flat[$nameKey]) || empty($flat[$urlKey])) {
+        if (empty($flat[$key])) {
             return null;
         }
 
-        /** @var scalar $name */
-        $name = $flat[$nameKey];
-
-        /** @var scalar $url */
-        $url = $flat[$urlKey];
+        /** @var scalar $credit */
+        $credit = $flat[$key];
 
         return [
-            'name' => (string) $name,
-            'url' => (string) $url,
+            'credit' => (string) $credit,
         ];
     }
 
