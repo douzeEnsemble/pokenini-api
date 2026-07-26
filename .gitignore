@@ -47,3 +47,5 @@ tools/*/var
 
 /.deptrac.cache
 /docker-compose.override.yaml
+
+/.superpowers/
