@@ -28,41 +28,41 @@ New workflow file: `.github/workflows/composer_updates.yml`
 Single job `composer-updates` on `ubuntu-latest`.
 
 1. **Checkout** — plain `actions/checkout@v6` with the default `GITHUB_TOKEN` (no
-   `PAT_TOKEN`). The PAT is deliberately kept off this step: it would otherwise sit as a
-   persisted git credential for the rest of the job, during which every `composer update`
-   step executes third-party package/plugin code — needlessly widening what a compromised
-   dependency could exfiltrate. The PAT is only actually required on the PR-creation step
-   below (see step 4), since that's what authenticates the push/PR and is what determines
-   whether the PR triggers other workflows (anti-recursion protection: GitHub refuses to
-   let a `GITHUB_TOKEN`-authored push/PR trigger other workflows, and we need the PR to
-   trigger `ci_codequality`, `ci_tests`, and `security` normally).
+    `PAT_TOKEN`). The PAT is deliberately kept off this step: it would otherwise sit as a
+    persisted git credential for the rest of the job, during which every `composer update`
+    step executes third-party package/plugin code — needlessly widening what a compromised
+    dependency could exfiltrate. The PAT is only actually required on the PR-creation step
+    below (see step 4), since that's what authenticates the push/PR and is what determines
+    whether the PR triggers other workflows (anti-recursion protection: GitHub refuses to
+    let a `GITHUB_TOKEN`-authored push/PR trigger other workflows, and we need the PR to
+    trigger `ci_codequality`, `ci_tests`, and `security` normally).
 2. **PHP setup** — reuse `./.github/actions/local-php` (already used by
-   `local-composer`/`tools-composer`). It copies `.env.ci` to `.env` and installs PHP 8.5
-   with the extension set already validated by existing CI jobs. No Docker compose stack
-   is started.
+    `local-composer`/`tools-composer`). It copies `.env.ci` to `.env` and installs PHP 8.5
+    with the extension set already validated by existing CI jobs. No Docker compose stack
+    is started.
 3. **Composer updates** — one step per directory, run in the same order as the `updates`
-   Makefile target, each `composer update --bump-after-update --with-all-dependencies
-   --optimize-autoloader`:
-   - main app (`--working-dir=./`)
-   - `tools/deptrac`
-   - `tools/infection`
-   - `tools/jsonlint`
-   - `tools/php-cs-fixer`
-   - `tools/phpmd`
-   - `tools/phpstan`
-   - `tools/psalm`
+    Makefile target, each `composer update --bump-after-update --with-all-dependencies
+    --optimize-autoloader`:
+    - main app (`--working-dir=./`)
+    - `tools/deptrac`
+    - `tools/infection`
+    - `tools/jsonlint`
+    - `tools/php-cs-fixer`
+    - `tools/phpmd`
+    - `tools/phpstan`
+    - `tools/psalm`
 
-   Any step failing fails the job (default shell behavior) — no partial/broken PR is
-   created in that case.
+    Any step failing fails the job (default shell behavior) — no partial/broken PR is
+    created in that case.
 4. **Open/update PR** — `peter-evans/create-pull-request@v7`:
-   - `token: ${{ secrets.PAT_TOKEN }}`
-   - `branch: chore/composer-updates` (fixed name, so subsequent daily runs update the
-     same branch/PR instead of piling up new ones)
-   - `delete-branch: true` (branch is cleaned up once the PR is merged/closed)
-   - `commit-message` / `title`: `Composers updates`
-   - `labels: dependencies` (existing repo label)
-   - No explicit diff-check needed: the action itself no-ops (no branch push, no PR) when
-     there is no diff to commit.
+    - `token: ${{ secrets.PAT_TOKEN }}`
+    - `branch: chore/composer-updates` (fixed name, so subsequent daily runs update the
+      same branch/PR instead of piling up new ones)
+    - `delete-branch: true` (branch is cleaned up once the PR is merged/closed)
+    - `commit-message` / `title`: `Composers updates`
+    - `labels: dependencies` (existing repo label)
+    - No explicit diff-check needed: the action itself no-ops (no branch push, no PR) when
+      there is no diff to commit.
 
 **Hardening:** top-level `permissions: contents: read` (the default `GITHUB_TOKEN` is
 unused for writes since all pushes/PR operations go through `PAT_TOKEN`) and a
