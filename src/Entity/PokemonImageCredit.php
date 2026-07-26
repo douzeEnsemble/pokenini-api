@@ -25,8 +25,5 @@ final class PokemonImageCredit
     public bool $isShiny;
 
     #[ORM\Column(nullable: true)]
-    public ?string $sourceName = null;
-
-    #[ORM\Column(nullable: true)]
-    public ?string $sourceUrl = null;
+    public ?string $source = null;
 }
