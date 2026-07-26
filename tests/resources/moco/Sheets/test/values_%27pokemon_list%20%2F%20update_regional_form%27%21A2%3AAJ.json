@@ -1,5 +1,5 @@
 {
-  "range": "'pokemon_list / update_type'!A2:AL2",
+  "range": "'pokemon_list / update_regional_form'!A2:AJ2",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -8,7 +8,7 @@
       "1",
       "redgreenblueyellow",
       "",
-      "",
+      "alolan",
       "",
       "",
       "douze",
@@ -27,8 +27,8 @@
       "douze",
       "",
       "douze",
-      "grass",
-      "grass"
+      "Grass",
+      "Poison"
     ]
   ]
 }

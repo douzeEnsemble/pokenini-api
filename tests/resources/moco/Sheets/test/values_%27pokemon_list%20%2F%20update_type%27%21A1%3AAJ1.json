@@ -1,5 +1,5 @@
 {
-  "range": "'pokemon_list / only_existing'!A1:AL1",
+  "range": "'pokemon_list / update_type'!A1:AJ1",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -36,9 +36,7 @@
       "generic-slug",
       "#Groups",
       "Icon Source",
-      "Icon Source Url",
       "Shiny Icon Source",
-      "Shiny Icon Source Url",
       "Sprites Source",
       "Shiny Sprites Source"
     ]

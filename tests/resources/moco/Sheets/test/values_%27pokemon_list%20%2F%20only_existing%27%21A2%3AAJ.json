@@ -1,5 +1,5 @@
 {
-  "range": "'pokemon_list / only_existing'!A2:AL8",
+  "range": "'pokemon_list / only_existing'!A2:AJ8",
   "majorDimension": "ROWS",
   "values": [
     [
