@@ -16,20 +16,18 @@ use PHPUnit\Framework\TestCase;
 final class ImageCreditResponseTest extends TestCase
 {
     #[Test]
-    public function constructorInitializesNameAndUrl(): void
+    public function constructorInitializesCredit(): void
     {
-        $response = new ImageCreditResponse(name: 'PokéSprite', url: 'https://github.com/msikma/pokesprite');
+        $response = new ImageCreditResponse(credit: 'PokéSprite - https://github.com/msikma/pokesprite');
 
-        self::assertSame('PokéSprite', $response->name);
-        self::assertSame('https://github.com/msikma/pokesprite', $response->url);
+        self::assertSame('PokéSprite - https://github.com/msikma/pokesprite', $response->credit);
     }
 
     #[Test]
-    public function propertiesAreReadonly(): void
+    public function propertyIsReadonly(): void
     {
-        $response = new ImageCreditResponse(name: 'PokemonDB', url: 'https://pokemondb.net/sprites/bulbasaur');
+        $response = new ImageCreditResponse(credit: 'PokemonDB - https://pokemondb.net/sprites/bulbasaur');
 
-        self::assertSame('PokemonDB', $response->name);
-        self::assertSame('https://pokemondb.net/sprites/bulbasaur', $response->url);
+        self::assertSame('PokemonDB - https://pokemondb.net/sprites/bulbasaur', $response->credit);
     }
 }

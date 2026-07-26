@@ -29,7 +29,7 @@ final class ImageCreditsServiceTest extends TestCase
     #[Test]
     public function getAllReturnsRepositoryData(): void
     {
-        $expected = [['source_name' => 'A', 'source_url' => 'https://a.example']];
+        $expected = [['source' => 'A']];
 
         $this->repository
             ->expects(self::once())

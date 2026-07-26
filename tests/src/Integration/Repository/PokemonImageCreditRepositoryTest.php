@@ -34,10 +34,10 @@ final class PokemonImageCreditRepositoryTest extends KernelTestCase
         self::assertCount(4, $result);
         self::assertSame(
             [
-                ['source_name' => 'Bulbapedia', 'source_url' => 'https://bulbapedia.bulbagarden.net'],
-                ['source_name' => 'PokemonDB', 'source_url' => 'https://pokemondb.net/sprites/bulbasaur'],
-                ['source_name' => 'PokéSprite', 'source_url' => 'https://github.com/msikma/pokesprite'],
-                ['source_name' => 'Serebii', 'source_url' => 'https://serebii.net'],
+                ['source' => 'Bulbapedia - https://bulbapedia.bulbagarden.net'],
+                ['source' => 'PokemonDB - https://pokemondb.net/sprites/bulbasaur'],
+                ['source' => 'PokéSprite - https://github.com/msikma/pokesprite'],
+                ['source' => 'Serebii - https://serebii.net'],
             ],
             $result,
         );

@@ -7,7 +7,6 @@ namespace App\DTO\Response;
 final class ImageCreditResponse
 {
     public function __construct(
-        public readonly string $name,
-        public readonly string $url,
+        public readonly string $credit,
     ) {}
 }

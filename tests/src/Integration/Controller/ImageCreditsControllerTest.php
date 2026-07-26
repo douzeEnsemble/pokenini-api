@@ -43,10 +43,10 @@ final class ImageCreditsControllerTest extends WebTestCase
         /** @var array<int, array<string, string>> $data */
         $data = json_decode($content, associative: true);
 
-        self::assertContains(['name' => 'Bulbapedia', 'url' => 'https://bulbapedia.bulbagarden.net'], $data);
-        self::assertContains(['name' => 'PokéSprite', 'url' => 'https://github.com/msikma/pokesprite'], $data);
-        self::assertContains(['name' => 'PokemonDB', 'url' => 'https://pokemondb.net/sprites/bulbasaur'], $data);
-        self::assertContains(['name' => 'Serebii', 'url' => 'https://serebii.net'], $data);
+        self::assertContains(['credit' => 'Bulbapedia - https://bulbapedia.bulbagarden.net'], $data);
+        self::assertContains(['credit' => 'PokéSprite - https://github.com/msikma/pokesprite'], $data);
+        self::assertContains(['credit' => 'PokemonDB - https://pokemondb.net/sprites/bulbasaur'], $data);
+        self::assertContains(['credit' => 'Serebii - https://serebii.net'], $data);
         self::assertCount(4, $data);
     }
 }

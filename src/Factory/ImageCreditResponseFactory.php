@@ -13,13 +13,10 @@ final class ImageCreditResponseFactory
      */
     public static function fromSqlRow(array $row): ImageCreditResponse
     {
-        /** @var scalar $name */
-        $name = $row['source_name'];
+        /** @var scalar $source */
+        $source = $row['source'];
 
-        /** @var scalar $url */
-        $url = $row['source_url'];
-
-        return new ImageCreditResponse(name: (string) $name, url: (string) $url);
+        return new ImageCreditResponse(credit: (string) $source);
     }
 
     /**
