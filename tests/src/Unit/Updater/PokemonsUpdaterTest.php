@@ -89,10 +89,10 @@ final class PokemonsUpdaterTest extends TestCase
             'PokemonDB icon dex' => '',
             'generic-slug' => '',
             '#Groups' => '',
-            'Icon Source' => 'PokéSprite',
-            'Shiny Icon Source' => 'PokéSprite Shiny',
-            'Sprites Source' => 'PokemonDB',
-            'Shiny Sprites Source' => 'PokemonDB Shiny',
+            'Small Regular Credit' => 'PokéSprite',
+            'Small Shiny Credit' => 'PokéSprite Shiny',
+            'Big Regular Credit' => 'PokemonDB',
+            'Big Shiny Credit' => 'PokemonDB Shiny',
         ];
     }
 }
