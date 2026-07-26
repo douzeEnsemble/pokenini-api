@@ -47,14 +47,10 @@ final class PokemonsUpdaterTest extends TestCase
         $this->assertSame('', $result['secondaryType']);
         $this->assertSame('0025.png', $result['iconName']);
         $this->assertSame('pikachu', $result['slug']);
-        $this->assertSame('PokéSprite', $result['smallRegularCreditName']);
-        $this->assertSame('https://github.com/msikma/pokesprite', $result['smallRegularCreditUrl']);
-        $this->assertSame('PokéSprite Shiny', $result['smallShinyCreditName']);
-        $this->assertSame('https://github.com/msikma/pokesprite/shiny', $result['smallShinyCreditUrl']);
-        $this->assertSame('PokemonDB', $result['bigRegularCreditName']);
-        $this->assertSame('https://pokemondb.net/sprites/pikachu', $result['bigRegularCreditUrl']);
-        $this->assertSame('PokemonDB Shiny', $result['bigShinyCreditName']);
-        $this->assertSame('https://pokemondb.net/sprites/pikachu-shiny', $result['bigShinyCreditUrl']);
+        $this->assertSame('PokéSprite', $result['smallRegularCredit']);
+        $this->assertSame('PokéSprite Shiny', $result['smallShinyCredit']);
+        $this->assertSame('PokemonDB', $result['bigRegularCredit']);
+        $this->assertSame('PokemonDB Shiny', $result['bigShinyCredit']);
     }
 
     /** @return string[] */
@@ -94,9 +90,7 @@ final class PokemonsUpdaterTest extends TestCase
             'generic-slug' => '',
             '#Groups' => '',
             'Icon Source' => 'PokéSprite',
-            'Icon Source Url' => 'https://github.com/msikma/pokesprite',
             'Shiny Icon Source' => 'PokéSprite Shiny',
-            'Shiny Icon Source Url' => 'https://github.com/msikma/pokesprite/shiny',
             'Sprites Source' => 'PokemonDB',
             'Shiny Sprites Source' => 'PokemonDB Shiny',
         ];
