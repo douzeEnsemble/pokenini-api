@@ -61,7 +61,7 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
         /** @var false|string[] $megaCharizardXSmallCredit */
         $megaCharizardXSmallCredit = $connection->executeQuery(
             <<<'SQL'
-                SELECT pic.source_name, pic.source_url
+                SELECT pic.source
                 FROM pokemon_image_credit pic
                 INNER JOIN pokemon p ON p.id = pic.pokemon_id
                 WHERE p.slug = :slug
@@ -76,8 +76,7 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
         )->fetchAssociative();
 
         $this->assertNotFalse($megaCharizardXSmallCredit);
-        $this->assertEquals('PokéSprite', $megaCharizardXSmallCredit['source_name']);
-        $this->assertEquals('https://github.com/msikma/pokesprite/charizard-mega-x', $megaCharizardXSmallCredit['source_url']);
+        $this->assertEquals('PokéSprite', $megaCharizardXSmallCredit['source']);
     }
 
     public function testImportExistingPokemons(): void

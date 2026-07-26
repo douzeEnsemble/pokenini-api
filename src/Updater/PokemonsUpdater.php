@@ -14,10 +14,10 @@ class PokemonsUpdater extends AbstractUpdater
     protected string $sheetName = 'Pokémons';
     protected string $tableName = 'pokemon';
     protected string $statisticName = 'pokemons';
-    protected string $headerCellsRange = 'A1:AL1';
+    protected string $headerCellsRange = 'A1:AJ1';
 
     /** @var array<int, string> */
-    protected array $recordsCellsRanges = ['A2:AL'];
+    protected array $recordsCellsRanges = ['A2:AJ'];
 
     #[\Override]
     protected function getExpectedHeader(): array
@@ -56,9 +56,7 @@ class PokemonsUpdater extends AbstractUpdater
             'generic-slug',
             '#Groups',
             'Icon Source',
-            'Icon Source Url',
             'Shiny Icon Source',
-            'Shiny Icon Source Url',
             'Sprites Source',
             'Shiny Sprites Source',
         ];
@@ -146,10 +144,10 @@ class PokemonsUpdater extends AbstractUpdater
         $this->executeQuery($sql, $sqlParameters);
 
         $slug = (string) $newRecord['slug'];
-        $this->upsertImageCredit($slug, 'small', false, (string) $newRecord['smallRegularCreditName'], (string) $newRecord['smallRegularCreditUrl']);
-        $this->upsertImageCredit($slug, 'small', true, (string) $newRecord['smallShinyCreditName'], (string) $newRecord['smallShinyCreditUrl']);
-        $this->upsertImageCredit($slug, 'big', false, (string) $newRecord['bigRegularCreditName'], (string) $newRecord['bigRegularCreditUrl']);
-        $this->upsertImageCredit($slug, 'big', true, (string) $newRecord['bigShinyCreditName'], (string) $newRecord['bigShinyCreditUrl']);
+        $this->upsertImageCredit($slug, 'small', false, (string) $newRecord['smallRegularCredit']);
+        $this->upsertImageCredit($slug, 'small', true, (string) $newRecord['smallShinyCredit']);
+        $this->upsertImageCredit($slug, 'big', false, (string) $newRecord['bigRegularCredit']);
+        $this->upsertImageCredit($slug, 'big', true, (string) $newRecord['bigShinyCredit']);
 
         $this->statistic->increment();
     }
@@ -186,40 +184,34 @@ class PokemonsUpdater extends AbstractUpdater
             'secondaryType' => $record['#Type 2'],
             'iconName' => $record['Icon'],
             'slug' => $record['Slug'],
-            'smallRegularCreditName' => $record['Icon Source'],
-            'smallRegularCreditUrl' => $record['Icon Source Url'],
-            'smallShinyCreditName' => $record['Shiny Icon Source'],
-            'smallShinyCreditUrl' => $record['Shiny Icon Source Url'],
-            'bigRegularCreditName' => $record['Sprites Source'],
-            'bigRegularCreditUrl' => $record['Sprites url'],
-            'bigShinyCreditName' => $record['Shiny Sprites Source'],
-            'bigShinyCreditUrl' => $record['Shiny Sprites url'],
+            'smallRegularCredit' => $record['Icon Source'],
+            'smallShinyCredit' => $record['Shiny Icon Source'],
+            'bigRegularCredit' => $record['Sprites Source'],
+            'bigShinyCredit' => $record['Shiny Sprites Source'],
         ];
     }
 
-    private function upsertImageCredit(string $pokemonSlug, string $size, bool $isShiny, string $sourceName, string $sourceUrl): void
+    private function upsertImageCredit(string $pokemonSlug, string $size, bool $isShiny, string $source): void
     {
-        if ('' === $sourceName || '' === $sourceUrl) {
+        if ('' === $source) {
             $this->deleteImageCredit($pokemonSlug, $size, $isShiny);
 
             return;
         }
 
         $sql = <<<'SQL'
-            INSERT INTO pokemon_image_credit (id, pokemon_id, size, is_shiny, source_name, source_url)
+            INSERT INTO pokemon_image_credit (id, pokemon_id, size, is_shiny, source)
             VALUES (
                 :id,
                 (SELECT id FROM pokemon WHERE slug = :slug),
                 :size,
                 :isShiny,
-                :sourceName,
-                :sourceUrl
+                :source
             )
             ON CONFLICT (pokemon_id, size, is_shiny)
             DO
             UPDATE
-            SET source_name = excluded.source_name,
-                source_url = excluded.source_url
+            SET source = excluded.source
             SQL;
 
         $this->executeQuery($sql, [
@@ -227,8 +219,7 @@ class PokemonsUpdater extends AbstractUpdater
             'slug' => $pokemonSlug,
             'size' => $size,
             'isShiny' => (int) $isShiny,
-            'sourceName' => $sourceName,
-            'sourceUrl' => $sourceUrl,
+            'source' => $source,
         ]);
     }
 
