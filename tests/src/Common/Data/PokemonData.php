@@ -12,14 +12,10 @@ final class PokemonData
     public static function noCredits(): array
     {
         return [
-            'small_regular_credit_name' => null,
-            'small_regular_credit_url' => null,
-            'small_shiny_credit_name' => null,
-            'small_shiny_credit_url' => null,
-            'big_regular_credit_name' => null,
-            'big_regular_credit_url' => null,
-            'big_shiny_credit_name' => null,
-            'big_shiny_credit_url' => null,
+            'small_regular_credit_source' => null,
+            'small_shiny_credit_source' => null,
+            'big_regular_credit_source' => null,
+            'big_shiny_credit_source' => null,
         ];
     }
 
@@ -65,14 +61,10 @@ final class PokemonData
             'original_game_bundle_slug' => 'redgreenblueyellow',
             'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
             'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
-            'small_regular_credit_name' => 'PokéSprite',
-            'small_regular_credit_url' => 'https://github.com/msikma/pokesprite',
-            'small_shiny_credit_name' => null,
-            'small_shiny_credit_url' => null,
-            'big_regular_credit_name' => 'PokemonDB',
-            'big_regular_credit_url' => 'https://pokemondb.net/sprites/bulbasaur',
-            'big_shiny_credit_name' => null,
-            'big_shiny_credit_url' => null,
+            'small_regular_credit_source' => 'PokéSprite - https://github.com/msikma/pokesprite',
+            'small_shiny_credit_source' => null,
+            'big_regular_credit_source' => 'PokemonDB - https://pokemondb.net/sprites/bulbasaur',
+            'big_shiny_credit_source' => null,
         ];
     }
 
@@ -121,14 +113,10 @@ final class PokemonData
             'original_game_bundle_slug' => 'redgreenblueyellow',
             'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
             'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
-            'small_regular_credit_name' => 'Bulbapedia',
-            'small_regular_credit_url' => 'https://bulbapedia.bulbagarden.net',
-            'small_shiny_credit_name' => null,
-            'small_shiny_credit_url' => null,
-            'big_regular_credit_name' => null,
-            'big_regular_credit_url' => null,
-            'big_shiny_credit_name' => null,
-            'big_shiny_credit_url' => null,
+            'small_regular_credit_source' => 'Bulbapedia - https://bulbapedia.bulbagarden.net',
+            'small_shiny_credit_source' => null,
+            'big_regular_credit_source' => null,
+            'big_shiny_credit_source' => null,
         ];
     }
 
@@ -177,14 +165,10 @@ final class PokemonData
             'original_game_bundle_slug' => 'redgreenblueyellow',
             'game_bundle_slugs' => 'redgreenblueyellow,goldsilvercrystal',
             'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
-            'small_regular_credit_name' => 'Serebii',
-            'small_regular_credit_url' => 'https://serebii.net',
-            'small_shiny_credit_name' => null,
-            'small_shiny_credit_url' => null,
-            'big_regular_credit_name' => null,
-            'big_regular_credit_url' => null,
-            'big_shiny_credit_name' => null,
-            'big_shiny_credit_url' => null,
+            'small_regular_credit_source' => 'Serebii - https://serebii.net',
+            'small_shiny_credit_source' => null,
+            'big_regular_credit_source' => null,
+            'big_shiny_credit_source' => null,
         ];
     }
 

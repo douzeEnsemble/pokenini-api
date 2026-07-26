@@ -156,20 +156,16 @@ final class ElectionPokemonResponseFactory
      */
     private static function buildCredit(string $prefix, array $row): ?ImageCreditResponse
     {
-        $nameKey = "{$prefix}_credit_name";
-        $urlKey = "{$prefix}_credit_url";
+        $key = "{$prefix}_credit_source";
 
-        if (empty($row[$nameKey]) || empty($row[$urlKey])) {
+        if (empty($row[$key])) {
             return null;
         }
 
-        /** @var scalar $name */
-        $name = $row[$nameKey];
+        /** @var scalar $credit */
+        $credit = $row[$key];
 
-        /** @var scalar $url */
-        $url = $row[$urlKey];
-
-        return new ImageCreditResponse(name: (string) $name, url: (string) $url);
+        return new ImageCreditResponse(credit: (string) $credit);
     }
 
     /**
