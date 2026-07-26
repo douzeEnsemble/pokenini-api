@@ -55,10 +55,10 @@ class PokemonsUpdater extends AbstractUpdater
             'PokemonDB icon dex',
             'generic-slug',
             '#Groups',
-            'Icon Source',
-            'Shiny Icon Source',
-            'Sprites Source',
-            'Shiny Sprites Source',
+            'Small Regular Credit',
+            'Small Shiny Credit',
+            'Big Regular Credit',
+            'Big Shiny Credit',
         ];
     }
 
@@ -184,10 +184,10 @@ class PokemonsUpdater extends AbstractUpdater
             'secondaryType' => $record['#Type 2'],
             'iconName' => $record['Icon'],
             'slug' => $record['Slug'],
-            'smallRegularCredit' => $record['Icon Source'],
-            'smallShinyCredit' => $record['Shiny Icon Source'],
-            'bigRegularCredit' => $record['Sprites Source'],
-            'bigShinyCredit' => $record['Shiny Sprites Source'],
+            'smallRegularCredit' => $record['Small Regular Credit'],
+            'smallShinyCredit' => $record['Small Shiny Credit'],
+            'bigRegularCredit' => $record['Big Regular Credit'],
+            'bigShinyCredit' => $record['Big Shiny Credit'],
         ];
     }
 

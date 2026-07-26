@@ -35,10 +35,10 @@
       "PokemonDB icon dex",
       "generic-slug",
       "#Groups",
-      "Icon Source",
-      "Shiny Icon Source",
-      "Sprites Source",
-      "Shiny Sprites Source"
+      "Small Regular Credit",
+      "Small Shiny Credit",
+      "Big Regular Credit",
+      "Big Shiny Credit"
     ]
   ]
 }
