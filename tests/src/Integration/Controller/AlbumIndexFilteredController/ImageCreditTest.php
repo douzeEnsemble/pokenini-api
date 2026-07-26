@@ -52,15 +52,14 @@ final class ImageCreditTest extends AbstractTestAlbumIndexFilteredController
 
         /** @var array<string, mixed> $smallRegularCredit */
         $smallRegularCredit = $bulbasaur['small_regular_credit'];
-        self::assertSame('PokéSprite', $smallRegularCredit['name']);
-        self::assertSame('https://github.com/msikma/pokesprite', $smallRegularCredit['url']);
+        self::assertSame('PokéSprite - https://github.com/msikma/pokesprite', $smallRegularCredit['credit']);
 
         $this->assertArrayHasKey('big_regular_credit', $bulbasaur);
         $this->assertIsArray($bulbasaur['big_regular_credit']);
 
         /** @var array<string, mixed> $bigRegularCredit */
         $bigRegularCredit = $bulbasaur['big_regular_credit'];
-        self::assertSame('PokemonDB', $bigRegularCredit['name']);
+        self::assertSame('PokemonDB - https://pokemondb.net/sprites/bulbasaur', $bigRegularCredit['credit']);
 
         self::assertNull($bulbasaur['small_shiny_credit']);
         self::assertNull($bulbasaur['big_shiny_credit']);
