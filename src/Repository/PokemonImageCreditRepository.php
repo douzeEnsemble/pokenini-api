@@ -19,19 +19,18 @@ class PokemonImageCreditRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return array<array{source_name: string, source_url: string}>
+     * @return array<array{source: string}>
      */
     public function findAllDistinctSources(): array
     {
         $sql = <<<'SQL'
-            SELECT DISTINCT source_name, source_url
+            SELECT DISTINCT source
             FROM pokemon_image_credit
-            WHERE source_name IS NOT NULL
-                AND source_url IS NOT NULL
-            ORDER BY source_name
+            WHERE source IS NOT NULL
+            ORDER BY source
             SQL;
 
-        /** @var array<array{source_name: string, source_url: string}> */
+        /** @var array<array{source: string}> */
         return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
     }
 }

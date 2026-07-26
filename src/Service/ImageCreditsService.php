@@ -13,7 +13,7 @@ class ImageCreditsService
     ) {}
 
     /**
-     * @return array<array{source_name: string, source_url: string}>
+     * @return array<array{source: string}>
      */
     public function getAll(): array
     {

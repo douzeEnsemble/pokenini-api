@@ -20,38 +20,34 @@ final class ImageCreditResponseFactoryTest extends TestCase
     public function fromSqlRowBuildsImageCreditResponse(): void
     {
         $response = ImageCreditResponseFactory::fromSqlRow([
-            'source_name' => 'PokemonDB',
-            'source_url' => 'https://pokemondb.net',
+            'source' => 'PokemonDB - https://pokemondb.net',
         ]);
 
-        self::assertSame('PokemonDB', $response->name);
-        self::assertSame('https://pokemondb.net', $response->url);
+        self::assertSame('PokemonDB - https://pokemondb.net', $response->credit);
     }
 
     #[Test]
     public function fromSqlRowCastsNonStringValuesToString(): void
     {
         $response = ImageCreditResponseFactory::fromSqlRow([
-            'source_name' => 42,
-            'source_url' => 7,
+            'source' => 42,
         ]);
 
-        self::assertSame('42', $response->name);
-        self::assertSame('7', $response->url);
+        self::assertSame('42', $response->credit);
     }
 
     #[Test]
     public function fromSqlRowsTransformsMultipleRows(): void
     {
         $responses = ImageCreditResponseFactory::fromSqlRows([
-            ['source_name' => 'A', 'source_url' => 'https://a.example'],
-            ['source_name' => 'B', 'source_url' => 'https://b.example'],
+            ['source' => 'A'],
+            ['source' => 'B'],
         ]);
 
         self::assertCount(2, $responses);
         self::assertContainsOnlyInstancesOf(ImageCreditResponse::class, $responses);
-        self::assertSame('A', $responses[0]->name);
-        self::assertSame('B', $responses[1]->name);
+        self::assertSame('A', $responses[0]->credit);
+        self::assertSame('B', $responses[1]->credit);
     }
 
     #[Test]

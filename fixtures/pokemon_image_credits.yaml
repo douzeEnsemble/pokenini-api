@@ -3,33 +3,28 @@ App\Entity\PokemonImageCredit:
     pokemon: "@pokemon_bulbasaur"
     size: "small"
     isShiny: false
-    sourceName: "PokéSprite"
-    sourceUrl: "https://github.com/msikma/pokesprite"
+    source: "PokéSprite - https://github.com/msikma/pokesprite"
 
   pokemon_image_credit_bulbasaur_big_regular:
     pokemon: "@pokemon_bulbasaur"
     size: "big"
     isShiny: false
-    sourceName: "PokemonDB"
-    sourceUrl: "https://pokemondb.net/sprites/bulbasaur"
+    source: "PokemonDB - https://pokemondb.net/sprites/bulbasaur"
 
   pokemon_image_credit_douze_small_shiny_no_source:
     pokemon: "@pokemon_douze"
     size: "small"
     isShiny: true
-    sourceName: ~
-    sourceUrl: ~
+    source: ~
 
   pokemon_image_credit_ivysaur_small_regular:
     pokemon: "@pokemon_ivysaur"
     size: "small"
     isShiny: false
-    sourceName: "Bulbapedia"
-    sourceUrl: "https://bulbapedia.bulbagarden.net"
+    source: "Bulbapedia - https://bulbapedia.bulbagarden.net"
 
   pokemon_image_credit_venusaur_small_regular:
     pokemon: "@pokemon_venusaur"
     size: "small"
     isShiny: false
-    sourceName: "Serebii"
-    sourceUrl: "https://serebii.net"
+    source: "Serebii - https://serebii.net"
