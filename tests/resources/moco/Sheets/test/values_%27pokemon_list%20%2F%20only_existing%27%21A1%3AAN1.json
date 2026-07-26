@@ -1,5 +1,5 @@
 {
-  "range": "'pokemon_list / new_and_existing'!A1:AJ1",
+  "range": "'pokemon_list / only_existing'!A1:AN1",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -38,7 +38,11 @@
       "Small Regular Credit",
       "Small Shiny Credit",
       "Big Regular Credit",
-      "Big Shiny Credit"
+      "Big Shiny Credit",
+      "Big Regular",
+      "Big Shiny",
+      "Big Regular Url",
+      "Big Shiny Url"
     ]
   ]
 }

@@ -1,5 +1,5 @@
 {
-  "range": "'pokemon_list / different_columns_order'!A2:AJ18",
+  "range": "'pokemon_list / different_columns_order'!A2:AN18",
   "majorDimension": "ROWS",
   "values": [
     [
