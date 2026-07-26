@@ -157,8 +157,8 @@ make sf c="messenger:consume async -vv --limit=1"
 6. Look, in "Pokémons" sheet, for the slug.
     a. For icon name,
         1. you will need to change it into the sheet into "Icon" column
-        2. if not automatically updated, change it into "Sprites url"
-        3. if not automatically updated, change it into "Shiny Sprites url"
+        2. if not automatically updated, change it into "Small Regular Url"
+        3. if not automatically updated, change it into "Small Shiny Url"
         4. if not automatically updated, change it into "PokemonDB icon name"
         5. and into the icon repository, use the copy method to avoid missing image
 ```
