@@ -14,10 +14,10 @@ class PokemonsUpdater extends AbstractUpdater
     protected string $sheetName = 'Pokémons';
     protected string $tableName = 'pokemon';
     protected string $statisticName = 'pokemons';
-    protected string $headerCellsRange = 'A1:AJ1';
+    protected string $headerCellsRange = 'A1:AN1';
 
     /** @var array<int, string> */
-    protected array $recordsCellsRanges = ['A2:AJ'];
+    protected array $recordsCellsRanges = ['A2:AN'];
 
     #[\Override]
     protected function getExpectedHeader(): array
@@ -44,9 +44,13 @@ class PokemonsUpdater extends AbstractUpdater
             'Dex',
             'Small Regular',
             'Small Shiny',
+            'Big Regular',
+            'Big Shiny',
             'Icon',
             'Small Regular Url',
             'Small Shiny Url',
+            'Big Regular Url',
+            'Big Shiny Url',
             '#Type 1',
             '#Type 2',
             'Species number',

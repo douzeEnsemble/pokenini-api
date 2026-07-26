@@ -1,5 +1,5 @@
 {
-  "range": "'pokemon_list / only_new'!A2:AJ9",
+  "range": "'pokemon_list / only_new'!A2:AN9",
   "majorDimension": "ROWS",
   "values": [
     [

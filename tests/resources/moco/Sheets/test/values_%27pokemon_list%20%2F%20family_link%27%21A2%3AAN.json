@@ -1,5 +1,5 @@
 {
-  "range": "'pokemon_list / family_link'!A2:AJ10",
+  "range": "'pokemon_list / family_link'!A2:AN10",
   "majorDimension": "ROWS",
   "values": [
     [
