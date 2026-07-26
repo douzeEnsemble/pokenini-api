@@ -25,7 +25,7 @@ final class PokemonImageCreditRepositoryTest extends KernelTestCase
     }
 
     #[Test]
-    public function findAllDistinctSourcesReturnsEachSourceOnceExcludingNullsAndOrderedByName(): void
+    public function findAllDistinctSourcesReturnsEachSourceOnceExcludingNullsAndOrderedBySource(): void
     {
         $repo = self::getContainer()->get(PokemonImageCreditRepository::class);
 
