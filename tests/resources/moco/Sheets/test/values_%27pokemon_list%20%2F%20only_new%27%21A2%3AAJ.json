@@ -1,5 +1,5 @@
 {
-  "range": "'pokemon_list / only_new'!A2:AL9",
+  "range": "'pokemon_list / only_new'!A2:AJ9",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -36,9 +36,7 @@
       "",
       "",
       "PokéSprite",
-      "https://github.com/msikma/pokesprite/charizard-mega-x",
       "PokéSprite Shiny",
-      "https://github.com/msikma/pokesprite/charizard-mega-x-shiny",
       "PokemonDB",
       "PokemonDB Shiny"
     ],
