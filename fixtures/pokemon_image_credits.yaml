@@ -11,6 +11,12 @@ App\Entity\PokemonImageCredit:
     isShiny: false
     source: "PokemonDB - https://pokemondb.net/sprites/bulbasaur"
 
+  pokemon_image_credit_ivysaur_big_regular:
+    pokemon: "@pokemon_ivysaur"
+    size: "big"
+    isShiny: false
+    source: "PokéSprite - https://github.com/msikma/pokesprite"
+
   pokemon_image_credit_douze_small_shiny_no_source:
     pokemon: "@pokemon_douze"
     size: "small"
