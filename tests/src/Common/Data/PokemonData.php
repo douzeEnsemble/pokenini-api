@@ -115,7 +115,7 @@ final class PokemonData
             'game_bundle_shiny_slugs' => 'redgreenblueyellow,goldsilvercrystal',
             'small_regular_credit_source' => 'Bulbapedia - https://bulbapedia.bulbagarden.net',
             'small_shiny_credit_source' => null,
-            'big_regular_credit_source' => null,
+            'big_regular_credit_source' => 'PokéSprite - https://github.com/msikma/pokesprite',
             'big_shiny_credit_source' => null,
         ];
     }
