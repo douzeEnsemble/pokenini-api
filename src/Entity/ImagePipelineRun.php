@@ -25,7 +25,7 @@ final class ImagePipelineRun
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     public \DateTime $updatedAt;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(type: Types::BIGINT, nullable: true)]
     public ?int $workflowARunId = null;
 
     #[ORM\Column(nullable: true)]
@@ -49,7 +49,7 @@ final class ImagePipelineRun
     #[ORM\Column(nullable: true)]
     public ?string $iconPrMergeCommitSha = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column(type: Types::BIGINT, nullable: true)]
     public ?int $workflowBRunId = null;
 
     #[ORM\Column(nullable: true)]
