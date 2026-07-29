@@ -20,6 +20,8 @@ class DexAvailabilityCalculator
 
     public function calculate(Dex $dex): int
     {
+        $this->dexPokemonAvailabilityCalculator->resetExpressionLanguageCache();
+
         $count = 0;
         $batchCount = 0;
         $dexId = $dex->getIdentifier();

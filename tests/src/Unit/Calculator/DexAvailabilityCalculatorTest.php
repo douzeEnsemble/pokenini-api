@@ -63,6 +63,10 @@ final class DexAvailabilityCalculatorTest extends TestCase
 
         $dexPokemonAvailabilityCalculator = $this->createMock(DexPokemonAvailabilityCalculator::class);
         $dexPokemonAvailabilityCalculator
+            ->expects($this->once())
+            ->method('resetExpressionLanguageCache')
+        ;
+        $dexPokemonAvailabilityCalculator
             ->expects($this->exactly(3))
             ->method('calculate')
             ->willReturnOnConsecutiveCalls(
@@ -123,6 +127,10 @@ final class DexAvailabilityCalculatorTest extends TestCase
         ;
 
         $dexPokemonAvailabilityCalculator = $this->createMock(DexPokemonAvailabilityCalculator::class);
+        $dexPokemonAvailabilityCalculator
+            ->expects($this->exactly(2))
+            ->method('resetExpressionLanguageCache')
+        ;
         $dexPokemonAvailabilityCalculator
             ->expects($this->exactly(6))
             ->method('calculate')
