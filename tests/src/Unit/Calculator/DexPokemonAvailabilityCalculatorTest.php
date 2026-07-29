@@ -16,6 +16,7 @@ use App\Service\GamesAvailabilitiesService;
 use App\Service\GamesShiniesAvailabilitiesService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
+use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
 /**
  * @internal
@@ -23,6 +24,29 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(DexPokemonAvailabilityCalculator::class)]
 final class DexPokemonAvailabilityCalculatorTest extends TestCase
 {
+    public function testResetExpressionLanguageCacheReplacesTheInstance(): void
+    {
+        $calculator = new DexPokemonAvailabilityCalculator(
+            $this->createMock(GameBundlesAvailabilitiesService::class),
+            $this->createMock(GameBundlesShiniesAvailabilitiesService::class),
+            $this->createMock(GamesAvailabilitiesService::class),
+            $this->createMock(GamesShiniesAvailabilitiesService::class),
+            $this->createMock(CollectionsAvailabilitiesService::class),
+        );
+
+        $property = new \ReflectionProperty(DexPokemonAvailabilityCalculator::class, 'expressionLanguage');
+
+        /** @var ExpressionLanguage $before */
+        $before = $property->getValue($calculator);
+
+        $calculator->resetExpressionLanguageCache();
+
+        /** @var ExpressionLanguage $after */
+        $after = $property->getValue($calculator);
+
+        $this->assertNotSame($before, $after);
+    }
+
     public function testCalculateNotAvailable(): void
     {
         $pokemon = new Pokemon();

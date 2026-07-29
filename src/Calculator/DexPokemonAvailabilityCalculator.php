@@ -16,7 +16,7 @@ use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
 class DexPokemonAvailabilityCalculator
 {
-    private readonly ExpressionLanguage $expressionLanguage;
+    private ExpressionLanguage $expressionLanguage;
 
     public function __construct(
         private readonly GameBundlesAvailabilitiesService $gameBundlesAvailabilitiesService,
@@ -25,6 +25,17 @@ class DexPokemonAvailabilityCalculator
         private readonly GamesShiniesAvailabilitiesService $gamesShiniesAvailabilitiesService,
         private readonly CollectionsAvailabilitiesService $collectionsAvailabilitiesService,
     ) {
+        $this->expressionLanguage = new ExpressionLanguage();
+    }
+
+    /**
+     * ExpressionLanguage caches every parsed rule forever in memory (no cache
+     * pool given = ArrayAdapter with no eviction). Since each Dex has its own
+     * (potentially very large) selectionRule, that cache must be dropped
+     * between dexes or it grows unbounded across a full recalculation run.
+     */
+    public function resetExpressionLanguageCache(): void
+    {
         $this->expressionLanguage = new ExpressionLanguage();
     }
 
