@@ -59,9 +59,9 @@ final class ImageCreditsControllerTest extends WebTestCase
     }
 
     /**
-     * @param array<int, array{pokemon_slug: string, small_regular_credit: ?array{credit: string}, small_shiny_credit: ?array{credit: string}, big_regular_credit: ?array{credit: string}, big_shiny_credit: ?array{credit: string}}> $data
+     * @param array<int, array{pokemon_slug: string, pokemon_name: string, pokemon_french_name: string, pokemon_icon: string, small_regular_credit: ?array{credit: string}, small_shiny_credit: ?array{credit: string}, big_regular_credit: ?array{credit: string}, big_shiny_credit: ?array{credit: string}}> $data
      *
-     * @return array{pokemon_slug: string, small_regular_credit: ?array{credit: string}, small_shiny_credit: ?array{credit: string}, big_regular_credit: ?array{credit: string}, big_shiny_credit: ?array{credit: string}}
+     * @return array{pokemon_slug: string, pokemon_name: string, pokemon_french_name: string, pokemon_icon: string, small_regular_credit: ?array{credit: string}, small_shiny_credit: ?array{credit: string}, big_regular_credit: ?array{credit: string}, big_shiny_credit: ?array{credit: string}}
      */
     private static function findEntryBySlug(array $data, string $slug): array
     {
