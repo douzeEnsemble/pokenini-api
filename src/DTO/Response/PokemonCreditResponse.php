@@ -6,7 +6,7 @@ namespace App\DTO\Response;
 
 use Symfony\Component\Serializer\Attribute\SerializedName;
 
-final class ImageCreditImageResponse
+final class PokemonCreditResponse
 {
     public function __construct(
         #[SerializedName('pokemon_slug')]
@@ -17,8 +17,13 @@ final class ImageCreditImageResponse
         public readonly string $pokemonFrenchName,
         #[SerializedName('pokemon_icon')]
         public readonly string $pokemonIcon,
-        public readonly string $size,
-        #[SerializedName('is_shiny')]
-        public readonly bool $isShiny,
+        #[SerializedName('small_regular_credit')]
+        public readonly ?ImageCreditResponse $smallRegularCredit,
+        #[SerializedName('small_shiny_credit')]
+        public readonly ?ImageCreditResponse $smallShinyCredit,
+        #[SerializedName('big_regular_credit')]
+        public readonly ?ImageCreditResponse $bigRegularCredit,
+        #[SerializedName('big_shiny_credit')]
+        public readonly ?ImageCreditResponse $bigShinyCredit,
     ) {}
 }
