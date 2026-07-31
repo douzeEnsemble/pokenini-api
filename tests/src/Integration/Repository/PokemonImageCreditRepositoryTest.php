@@ -25,84 +25,93 @@ final class PokemonImageCreditRepositoryTest extends KernelTestCase
     }
 
     #[Test]
-    public function findAllWithPokemonReturnsEachNonNullCreditWithItsPokemonAndSlot(): void
+    public function findAllPokemonWithCreditsReturnsOneRowPerSpeciesOrderedByNationalDexNumber(): void
     {
         $repo = self::getContainer()->get(PokemonImageCreditRepository::class);
 
-        $result = $repo->findAllWithPokemon();
+        $result = $repo->findAllPokemonWithCredits();
 
-        self::assertCount(5, $result);
-        self::assertContains(
+        // 26 species in fixtures/pokemons.yaml, including ones with zero
+        // pokemon_image_credit rows at all — this query must return all of them.
+        self::assertCount(26, $result);
+        self::assertSame('bulbasaur', $result[0]['pokemon_slug']);
+        self::assertSame('ivysaur', $result[1]['pokemon_slug']);
+        self::assertSame('venusaur', $result[2]['pokemon_slug']);
+        self::assertSame('douze', $result[25]['pokemon_slug']);
+    }
+
+    #[Test]
+    public function findAllPokemonWithCreditsReturnsEachOfTheFourSlotsWithTheirIndividualSources(): void
+    {
+        $repo = self::getContainer()->get(PokemonImageCreditRepository::class);
+
+        $result = $repo->findAllPokemonWithCredits();
+
+        self::assertSame(
             [
-                'source' => 'PokéSprite - https://github.com/msikma/pokesprite',
                 'pokemon_slug' => 'bulbasaur',
                 'pokemon_name' => 'Bulbasaur',
                 'pokemon_french_name' => 'Bulbizarre',
                 'pokemon_icon' => 'bulbasaur',
-                'size' => 'small',
-                'is_shiny' => false,
+                'small_regular_credit' => 'PokéSprite - https://github.com/msikma/pokesprite',
+                'small_shiny_credit' => null,
+                'big_regular_credit' => 'PokemonDB - https://pokemondb.net/sprites/bulbasaur',
+                'big_shiny_credit' => null,
             ],
-            $result,
-        );
-        self::assertContains(
-            [
-                'source' => 'PokéSprite - https://github.com/msikma/pokesprite',
-                'pokemon_slug' => 'ivysaur',
-                'pokemon_name' => 'Ivysaur',
-                'pokemon_french_name' => 'Herbizarre',
-                'pokemon_icon' => 'ivysaur',
-                'size' => 'big',
-                'is_shiny' => false,
-            ],
-            $result,
-        );
-        self::assertContains(
-            [
-                'source' => 'PokemonDB - https://pokemondb.net/sprites/bulbasaur',
-                'pokemon_slug' => 'bulbasaur',
-                'pokemon_name' => 'Bulbasaur',
-                'pokemon_french_name' => 'Bulbizarre',
-                'pokemon_icon' => 'bulbasaur',
-                'size' => 'big',
-                'is_shiny' => false,
-            ],
-            $result,
-        );
-        self::assertContains(
-            [
-                'source' => 'Bulbapedia - https://bulbapedia.bulbagarden.net',
-                'pokemon_slug' => 'ivysaur',
-                'pokemon_name' => 'Ivysaur',
-                'pokemon_french_name' => 'Herbizarre',
-                'pokemon_icon' => 'ivysaur',
-                'size' => 'small',
-                'is_shiny' => false,
-            ],
-            $result,
-        );
-        self::assertContains(
-            [
-                'source' => 'Serebii - https://serebii.net',
-                'pokemon_slug' => 'venusaur',
-                'pokemon_name' => 'Venusaur',
-                'pokemon_french_name' => 'Florizarre',
-                'pokemon_icon' => 'venusaur',
-                'size' => 'small',
-                'is_shiny' => false,
-            ],
-            $result,
+            $result[0],
         );
     }
 
     #[Test]
-    public function findAllWithPokemonExcludesRowsWithNullSource(): void
+    public function findAllPokemonWithCreditsReturnsNullForASpeciesWithNoCreditRowAtAll(): void
     {
         $repo = self::getContainer()->get(PokemonImageCreditRepository::class);
 
-        $result = $repo->findAllWithPokemon();
+        $result = $repo->findAllPokemonWithCredits();
 
-        foreach ($result as $row) {
-            self::assertNotSame('douze', $row['pokemon_slug']);
+        $charmander = self::findRowBySlug($result, 'charmander');
+        self::assertSame(
+            [
+                'pokemon_slug' => 'charmander',
+                'pokemon_name' => 'Charmander',
+                'pokemon_french_name' => 'Salamèche',
+                'pokemon_icon' => 'charmander',
+                'small_regular_credit' => null,
+                'small_shiny_credit' => null,
+                'big_regular_credit' => null,
+                'big_shiny_credit' => null,
+            ],
+            $charmander,
+        );
+    }
+
+    #[Test]
+    public function findAllPokemonWithCreditsReturnsNullForASpeciesWhoseOnlyCreditRowHasANullSource(): void
+    {
+        $repo = self::getContainer()->get(PokemonImageCreditRepository::class);
+
+        $result = $repo->findAllPokemonWithCredits();
+
+        $douze = self::findRowBySlug($result, 'douze');
+        self::assertSame(null, $douze['small_regular_credit']);
+        self::assertSame(null, $douze['small_shiny_credit']);
+        self::assertSame(null, $douze['big_regular_credit']);
+        self::assertSame(null, $douze['big_shiny_credit']);
+    }
+
+    /**
+     * @param array<array{pokemon_slug: string, pokemon_name: string, pokemon_french_name: string, pokemon_icon: string, small_regular_credit: ?string, small_shiny_credit: ?string, big_regular_credit: ?string, big_shiny_credit: ?string}> $rows
+     *
+     * @return array{pokemon_slug: string, pokemon_name: string, pokemon_french_name: string, pokemon_icon: string, small_regular_credit: ?string, small_shiny_credit: ?string, big_regular_credit: ?string, big_shiny_credit: ?string}
+     */
+    private static function findRowBySlug(array $rows, string $slug): array
+    {
+        foreach ($rows as $row) {
+            if ($row['pokemon_slug'] === $slug) {
+                return $row;
+            }
         }
+
+        self::fail(\sprintf('No row found for slug "%s"', $slug));
     }
 }
