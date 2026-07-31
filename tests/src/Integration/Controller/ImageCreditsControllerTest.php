@@ -29,7 +29,7 @@ final class ImageCreditsControllerTest extends WebTestCase
     }
 
     #[Test]
-    public function getReturnsCreditsGroupedBySourceWithTheirImagesFromFixtures(): void
+    public function getReturnsOneEntryPerSpeciesOrderedByNationalDexNumberFromFixtures(): void
     {
         $client = self::createClient();
         $client->request('GET', '/credits', [], [], [
@@ -40,30 +40,37 @@ final class ImageCreditsControllerTest extends WebTestCase
         $content = $client->getResponse()->getContent();
         self::assertIsString($content);
 
-        /** @var array<int, array{credit: string, images: array<int, array<string, mixed>>}> $data */
+        /** @var array<int, array{pokemon_slug: string, pokemon_name: string, pokemon_french_name: string, pokemon_icon: string, small_regular_credit: ?array{credit: string}, small_shiny_credit: ?array{credit: string}, big_regular_credit: ?array{credit: string}, big_shiny_credit: ?array{credit: string}}> $data */
         $data = json_decode($content, associative: true);
 
-        self::assertCount(4, $data);
-
-        // Sorted by image count descending: PokéSprite has 2 images (bulbasaur small
-        // regular + ivysaur big regular, see fixtures/pokemon_image_credits.yaml), the
-        // other 3 sources have 1 image each and tie-break alphabetically.
-        self::assertSame('PokéSprite - https://github.com/msikma/pokesprite', $data[0]['credit']);
-        self::assertCount(2, $data[0]['images']);
-        self::assertSame('Bulbapedia - https://bulbapedia.bulbagarden.net', $data[1]['credit']);
-        self::assertSame('PokemonDB - https://pokemondb.net/sprites/bulbasaur', $data[2]['credit']);
-        self::assertSame('Serebii - https://serebii.net', $data[3]['credit']);
-
-        self::assertContains(
-            [
-                'pokemon_slug' => 'bulbasaur',
-                'pokemon_name' => 'Bulbasaur',
-                'pokemon_french_name' => 'Bulbizarre',
-                'pokemon_icon' => 'bulbasaur',
-                'size' => 'small',
-                'is_shiny' => false,
-            ],
-            $data[0]['images'],
+        self::assertCount(26, $data);
+        self::assertSame('bulbasaur', $data[0]['pokemon_slug']);
+        self::assertSame(
+            'PokéSprite - https://github.com/msikma/pokesprite',
+            $data[0]['small_regular_credit']['credit'] ?? null,
         );
+        self::assertNull($data[0]['small_shiny_credit']);
+
+        $charmander = self::findEntryBySlug($data, 'charmander');
+        self::assertNull($charmander['small_regular_credit']);
+        self::assertNull($charmander['small_shiny_credit']);
+        self::assertNull($charmander['big_regular_credit']);
+        self::assertNull($charmander['big_shiny_credit']);
+    }
+
+    /**
+     * @param array<int, array{pokemon_slug: string, small_regular_credit: ?array{credit: string}, small_shiny_credit: ?array{credit: string}, big_regular_credit: ?array{credit: string}, big_shiny_credit: ?array{credit: string}}> $data
+     *
+     * @return array{pokemon_slug: string, small_regular_credit: ?array{credit: string}, small_shiny_credit: ?array{credit: string}, big_regular_credit: ?array{credit: string}, big_shiny_credit: ?array{credit: string}}
+     */
+    private static function findEntryBySlug(array $data, string $slug): array
+    {
+        foreach ($data as $entry) {
+            if ($entry['pokemon_slug'] === $slug) {
+                return $entry;
+            }
+        }
+
+        self::fail(\sprintf('No entry found for slug "%s"', $slug));
     }
 }
