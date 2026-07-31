@@ -46,6 +46,7 @@ class PokemonImageCreditRepository extends ServiceEntityRepository
                 LEFT JOIN pokemon_image_credit AS pic_ss ON p.id = pic_ss.pokemon_id AND pic_ss.size = 'small' AND pic_ss.is_shiny = true
                 LEFT JOIN pokemon_image_credit AS pic_br ON p.id = pic_br.pokemon_id AND pic_br.size = 'big'   AND pic_br.is_shiny = false
                 LEFT JOIN pokemon_image_credit AS pic_bs ON p.id = pic_bs.pokemon_id AND pic_bs.size = 'big'   AND pic_bs.is_shiny = true
+            WHERE       p.deleted_at IS NULL
             ORDER BY    p.national_dex_number, p.family_order
             SQL;
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Integration\Repository;
 
 use App\Repository\PokemonImageCreditRepository;
+use App\Repository\PokemonsRepository;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -97,6 +98,34 @@ final class PokemonImageCreditRepositoryTest extends KernelTestCase
         self::assertSame(null, $douze['small_shiny_credit']);
         self::assertSame(null, $douze['big_regular_credit']);
         self::assertSame(null, $douze['big_shiny_credit']);
+    }
+
+    #[Test]
+    public function findAllPokemonWithCreditsExcludesSoftDeletedSpecies(): void
+    {
+        // Soft-delete an existing fixture species at runtime (rolled back by
+        // RefreshDatabaseTrait's per-test transaction), mirroring the pattern
+        // used in PokemonsRepositoryTest::testRemoveAll.
+        $pokemonsRepository = self::getContainer()->get(PokemonsRepository::class);
+        $queryBuilder = $pokemonsRepository->createQueryBuilder('p')
+            ->update()
+            ->set('p.deletedAt', ':now')
+            ->where('p.slug = :slug')
+        ;
+
+        /** @psalm-suppress QueryBuilderSetParameter */
+        $queryBuilder->setParameter('now', new \DateTimeImmutable());
+        $queryBuilder->setParameter('slug', 'metapod');
+        $queryBuilder->getQuery()->execute();
+
+        $repo = self::getContainer()->get(PokemonImageCreditRepository::class);
+        $result = $repo->findAllPokemonWithCredits();
+
+        self::assertCount(25, $result);
+
+        foreach ($result as $row) {
+            self::assertNotSame('metapod', $row['pokemon_slug']);
+        }
     }
 
     /**
