@@ -202,6 +202,7 @@ parameters:
       - AppActionStarter
       - AppDTO
       - AppEntity
+      - AppException
       - AppFactory
       - AppRepository
       - AppService
@@ -263,6 +264,7 @@ parameters:
       - AppCalculator
       - AppDTO
       - AppEntity
+      - AppException
       - AppRepository
       - AppService
       - AppUpdater
@@ -270,6 +272,7 @@ parameters:
       - GoogleClient
       - GoogleService
       - SymfonyContractsCache
+      - SymfonyUid
     AppUpdater:
       - AppDTO
       - AppEntity
