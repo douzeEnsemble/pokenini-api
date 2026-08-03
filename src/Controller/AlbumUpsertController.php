@@ -4,12 +4,14 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use App\DTO\Response\AlbumUpsertResponse;
 use App\Service\PokedexService;
 use App\Service\TrainerDexService;
 use Doctrine\DBAL\Exception\NotNullConstraintViolationException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\HttpKernel\Attribute\Serialize;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -22,27 +24,25 @@ final class AlbumUpsertController extends AbstractController
     ) {}
 
     #[Route(methods: ['PATCH'], path: '/{trainerExternalId}/{dexSlug}/{pokemonSlug}')]
+    #[Serialize]
     public function update(
         Request $request,
         string $trainerExternalId,
         string $dexSlug,
         string $pokemonSlug,
-    ): Response {
-        $this->upsert($trainerExternalId, $dexSlug, $pokemonSlug, $request);
-
-        return new Response();
+    ): AlbumUpsertResponse {
+        return $this->upsert($trainerExternalId, $dexSlug, $pokemonSlug, $request);
     }
 
     #[Route(methods: ['PUT'], path: '/{trainerExternalId}/{dexSlug}/{pokemonSlug}')]
+    #[Serialize(code: Response::HTTP_CREATED)]
     public function create(
         Request $request,
         string $trainerExternalId,
         string $dexSlug,
         string $pokemonSlug,
-    ): Response {
-        $this->upsert($trainerExternalId, $dexSlug, $pokemonSlug, $request);
-
-        return new Response('', Response::HTTP_CREATED);
+    ): AlbumUpsertResponse {
+        return $this->upsert($trainerExternalId, $dexSlug, $pokemonSlug, $request);
     }
 
     private function upsert(
@@ -50,7 +50,7 @@ final class AlbumUpsertController extends AbstractController
         string $dexSlug,
         string $pokemonSlug,
         Request $request
-    ): void {
+    ): AlbumUpsertResponse {
         $content = $request->getContent();
 
         if (!$content) {
@@ -66,7 +66,7 @@ final class AlbumUpsertController extends AbstractController
                 $dexSlug,
             );
 
-            $this->pokedexService->upsert(
+            $updatedDexSlugs = $this->pokedexService->upsert(
                 $trainerExternalId,
                 $dexSlug,
                 $pokemonSlug,
@@ -75,5 +75,7 @@ final class AlbumUpsertController extends AbstractController
         } catch (NotNullConstraintViolationException $e) {
             throw new BadRequestHttpException();
         }
+
+        return new AlbumUpsertResponse($updatedDexSlugs);
     }
 }

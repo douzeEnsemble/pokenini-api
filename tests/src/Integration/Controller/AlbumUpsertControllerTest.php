@@ -7,6 +7,7 @@ namespace App\Tests\Integration\Controller;
 use App\Controller\AlbumUpsertController;
 use App\Tests\Common\Traits\CounterTrait\CountTrainerDexTrait;
 use App\Tests\Common\Traits\GetterTrait\GetPokedexTrait;
+use Doctrine\DBAL\Connection;
 use PHPUnit\Framework\Attributes\CoversClass;
 
 /**
@@ -17,6 +18,21 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
 {
     use GetPokedexTrait;
     use CountTrainerDexTrait;
+
+    #[\Override]
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // testUpdateCascadesThroughAnActiveLink() makes two requests (POST /trainer_dex_link,
+        // then PATCH /album/...) that must see the same uncommitted DB state. KernelBrowser
+        // reboots the kernel (and thus the DB connection) between requests by default, which
+        // would hide the link created by the first request. Disabling the reboot keeps a
+        // single kernel/container/connection for the whole test, so RefreshDatabaseTrait's
+        // per-test transaction (and its rollback at teardown) stays intact. See
+        // TrainerDexLinkControllerTest for the same pattern.
+        $this->client->disableReboot();
+    }
 
     public function testUpdate(): void
     {
@@ -36,11 +52,10 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         );
 
         $this->assertResponseIsSuccessful();
-
-        $pokedexAfter = $this->getPokedexFromSlugs('redgreenblueyellow', 'ivysaur');
-
-        $this->assertArrayHasKey('slug', $pokedexAfter);
-        $this->assertEquals('maybe', $pokedexAfter['slug']);
+        $this->assertEquals(
+            ['updatedDexSlugs' => ['redgreenblueyellow']],
+            $this->getJsonDecodedResponseContent()
+        );
 
         $this->assertEquals(34, $this->getTrainerDexCount());
     }
@@ -73,6 +88,10 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         );
 
         $this->assertResponseIsSuccessful();
+        $this->assertEquals(
+            ['updatedDexSlugs' => ['douze']],
+            $this->getJsonDecodedResponseContent()
+        );
 
         $pokedexAfter = $this->getPokedexFromSlugs('douze', 'ivysaur');
 
@@ -109,6 +128,11 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         );
 
         $this->assertResponseIsSuccessful();
+        $this->assertResponseStatusCodeSame(201);
+        $this->assertEquals(
+            ['updatedDexSlugs' => ['goldsilvercrystal']],
+            $this->getJsonDecodedResponseContent()
+        );
 
         $pokedexAfter = $this->getPokedexFromSlugs('goldsilvercrystal', 'douze');
 
@@ -135,6 +159,10 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         );
 
         $this->assertResponseIsSuccessful();
+        $this->assertEquals(
+            ['updatedDexSlugs' => ['spoon']],
+            $this->getJsonDecodedResponseContent()
+        );
 
         $pokedexAfter = $this->getPokedexFromSlugs('spoon', 'douze');
 
@@ -159,6 +187,10 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         );
 
         $this->assertResponseIsSuccessful();
+        $this->assertEquals(
+            ['updatedDexSlugs' => ['douze']],
+            $this->getJsonDecodedResponseContent()
+        );
 
         $pokedexAfter = $this->getPokedexFromSlugs('douze', 'ivysaur');
 
@@ -189,5 +221,85 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         );
 
         $this->assertResponseStatusCodeSame(400);
+    }
+
+    public function testUpdateCascadesThroughAnActiveLink(): void
+    {
+        $this->apiRequest(
+            'POST',
+            '/trainer_dex_link/7b52009b64fd0a2a49e6d8a939753077792b0554',
+            [],
+            ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
+            json_encode(
+                ['sourceDexSlug' => 'redgreenblueyellow', 'targetDexSlug' => 'goldsilvercrystal', 'bidirectional' => false],
+                JSON_THROW_ON_ERROR
+            ),
+        );
+        $this->assertResponseStatusCodeSame(201);
+
+        // Fixture: ivysaur is 'no' in goldsilvercrystal, 'maybe' in redgreenblueyellow, for this trainer.
+        // NB: several other trainer fixtures also own a "goldsilvercrystal" dex, so we look up the
+        // pokedex row scoped to *this* trainer explicitly instead of using GetPokedexTrait's
+        // unscoped-by-trainer helper, which could otherwise match a different trainer's row that
+        // happens to share the same dex slug and silently hide a broken cascade.
+        $pokedexBefore = $this->getPokedexFromSlugsForTrainer(
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'goldsilvercrystal',
+            'ivysaur'
+        );
+        $this->assertEquals('no', $pokedexBefore['slug']);
+
+        $this->apiRequest(
+            'PATCH',
+            '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow/ivysaur',
+            [],
+            ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
+            'yes'
+        );
+
+        $this->assertResponseIsSuccessful();
+        $this->assertEquals(
+            ['updatedDexSlugs' => ['redgreenblueyellow', 'goldsilvercrystal']],
+            $this->getJsonDecodedResponseContent()
+        );
+
+        $pokedexAfter = $this->getPokedexFromSlugsForTrainer(
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'goldsilvercrystal',
+            'ivysaur'
+        );
+        $this->assertEquals('yes', $pokedexAfter['slug']);
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function getPokedexFromSlugsForTrainer(string $trainerExternalId, string $dexSlug, string $pokemonSlug): array
+    {
+        $connection = self::getContainer()->get(Connection::class);
+
+        $sql = <<<'SQL'
+            SELECT      cs.*
+            FROM        pokedex AS pd
+                JOIN pokemon AS p
+                    ON pd.pokemon_id = p.id AND p.slug = :pokemon_slug
+                JOIN trainer_dex AS td
+                    ON pd.trainer_dex_id = td.id
+                JOIN catch_state AS cs
+                    ON pd.catch_state_id = cs.id
+            WHERE   td.slug = :dex_slug
+                AND td.trainer_external_id = :trainer_external_id
+            SQL;
+
+        /** @var array<string, mixed>|false $result */
+        $result = $connection->executeQuery($sql, [
+            'trainer_external_id' => $trainerExternalId,
+            'dex_slug' => $dexSlug,
+            'pokemon_slug' => $pokemonSlug,
+        ])->fetchAssociative();
+
+        $this->assertIsArray($result, 'Expected a pokedex row for this trainer/dex/pokemon combination');
+
+        return $result;
     }
 }
