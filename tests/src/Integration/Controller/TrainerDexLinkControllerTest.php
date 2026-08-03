@@ -15,6 +15,22 @@ final class TrainerDexLinkControllerTest extends AbstractTestControllerApi
 {
     private const string TRAINER = '7b52009b64fd0a2a49e6d8a939753077792b0554';
 
+    #[\Override]
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // A POST-then-GET (or POST-then-POST, or POST-then-GET-then-DELETE) within a
+        // single test method must see the same uncommitted DB state. KernelBrowser
+        // reboots the kernel (and thus the DB connection) between requests by
+        // default, which would hide writes made by an earlier request in the same
+        // test. Disabling the reboot keeps a single kernel/container/connection for
+        // the whole test, so RefreshDatabaseTrait's per-test transaction (and its
+        // rollback at teardown) stays intact. See ImagePipelineRunControllerTest for
+        // the same pattern.
+        $this->client->disableReboot();
+    }
+
     public function testCreateListAndDelete(): void
     {
         $this->apiRequest('GET', '/trainer_dex_link/'.self::TRAINER.'/redgreenblueyellow');
@@ -83,8 +99,6 @@ final class TrainerDexLinkControllerTest extends AbstractTestControllerApi
 
     public function testCreateRejectsDuplicateEdge(): void
     {
-        $this->apiRequest('GET', '/trainer_dex_link/'.self::TRAINER.'/redgreenblueyellow');
-
         $body = json_encode(
             ['sourceDexSlug' => 'redgreenblueyellow', 'targetDexSlug' => 'goldsilvercrystal', 'bidirectional' => false],
             JSON_THROW_ON_ERROR
@@ -95,12 +109,6 @@ final class TrainerDexLinkControllerTest extends AbstractTestControllerApi
 
         $this->apiRequest('POST', '/trainer_dex_link/'.self::TRAINER, [], null, $body);
         $this->assertResponseStatusCodeSame(409);
-
-        $this->apiRequest('GET', '/trainer_dex_link/'.self::TRAINER.'/redgreenblueyellow');
-
-        /** @var array<int, array{id: string}> $links */
-        $links = $this->getJsonDecodedResponseContent();
-        $this->apiRequest('DELETE', '/trainer_dex_link/'.self::TRAINER.'/'.$links[0]['id']);
     }
 
     public function testCreateEmptyBody(): void
@@ -117,10 +125,24 @@ final class TrainerDexLinkControllerTest extends AbstractTestControllerApi
         $this->assertResponseStatusCodeSame(400);
     }
 
+    public function testCreateRejectsNonBooleanBidirectional(): void
+    {
+        $this->apiRequest(
+            'POST',
+            '/trainer_dex_link/'.self::TRAINER,
+            [],
+            null,
+            json_encode(
+                ['sourceDexSlug' => 'redgreenblueyellow', 'targetDexSlug' => 'goldsilvercrystal', 'bidirectional' => 'yes'],
+                JSON_THROW_ON_ERROR
+            ),
+        );
+
+        $this->assertResponseStatusCodeSame(400);
+    }
+
     public function testCreateBidirectional(): void
     {
-        $this->apiRequest('GET', '/trainer_dex_link/'.self::TRAINER.'/goldsilvercrystal');
-
         $this->apiRequest(
             'POST',
             '/trainer_dex_link/'.self::TRAINER,
@@ -135,11 +157,9 @@ final class TrainerDexLinkControllerTest extends AbstractTestControllerApi
 
         $this->apiRequest('GET', '/trainer_dex_link/'.self::TRAINER.'/goldsilvercrystal');
 
-        /** @var array<int, array{id: string, direction: string}> $links */
+        /** @var array<int, array{direction: string}> $links */
         $links = $this->getJsonDecodedResponseContent();
         $this->assertCount(1, $links);
         $this->assertSame('both', $links[0]['direction']);
-
-        $this->apiRequest('DELETE', '/trainer_dex_link/'.self::TRAINER.'/'.$links[0]['id']);
     }
 }
