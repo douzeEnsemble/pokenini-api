@@ -205,33 +205,39 @@ class PokedexRepository extends ServiceEntityRepository
         string $dexSlug,
         string $pokemonSlug,
         string $catchStateSlug,
-    ): void {
+    ): ?string {
         $sql = <<<'SQL'
-            INSERT INTO pokedex (
-                id,
-                pokemon_id,
-                catch_state_id,
-                trainer_dex_id
-            )
-            VALUES
-            (
-                :id,
-                (SELECT id FROM pokemon WHERE slug = :pokemon_slug),
-                (SELECT id FROM catch_state WHERE slug = :catch_state_slug),
-                (
-                    SELECT  td.id
-                    FROM    trainer_dex AS td
-                    WHERE   td.slug = :dex_slug
-                        AND td.trainer_external_id = :trainer_external_id
+            WITH upserted AS (
+                INSERT INTO pokedex (
+                    id,
+                    pokemon_id,
+                    catch_state_id,
+                    trainer_dex_id
                 )
+                VALUES
+                (
+                    :id,
+                    (SELECT id FROM pokemon WHERE slug = :pokemon_slug),
+                    (SELECT id FROM catch_state WHERE slug = :catch_state_slug),
+                    (
+                        SELECT  td.id
+                        FROM    trainer_dex AS td
+                        WHERE   td.slug = :dex_slug
+                            AND td.trainer_external_id = :trainer_external_id
+                    )
+                )
+                ON CONFLICT (pokemon_id, trainer_dex_id)
+                DO
+                UPDATE
+                SET catch_state_id = excluded.catch_state_id
+                WHERE pokedex.catch_state_id IS DISTINCT FROM excluded.catch_state_id
+                RETURNING trainer_dex_id
             )
-            ON CONFLICT (pokemon_id, trainer_dex_id)
-            DO
-            UPDATE
-            SET catch_state_id = excluded.catch_state_id
+            SELECT trainer_dex_id FROM upserted
             SQL;
 
-        $this->getEntityManager()->getConnection()->executeQuery(
+        /** @var null|false|string $trainerDexId */
+        $trainerDexId = $this->getEntityManager()->getConnection()->fetchOne(
             $sql,
             [
                 'id' => Uuid::v4(),
@@ -241,6 +247,12 @@ class PokedexRepository extends ServiceEntityRepository
                 'catch_state_slug' => $catchStateSlug,
             ]
         );
+
+        if (false === $trainerDexId || null === $trainerDexId) {
+            return null;
+        }
+
+        return $trainerDexId;
     }
 
     public function upsertIfDifferent(

@@ -6,6 +6,7 @@ namespace App\Tests\Unit\Service;
 
 use App\Repository\PokedexRepository;
 use App\Service\PokedexService;
+use App\Service\PropagateCatchStateService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
@@ -34,7 +35,7 @@ final class PokedexServiceTest extends TestCase
             )
         ;
 
-        $service = new PokedexService($repository);
+        $service = new PokedexService($repository, $this->createStub(PropagateCatchStateService::class));
 
         $this->assertEquals(
             [
@@ -77,7 +78,7 @@ final class PokedexServiceTest extends TestCase
             )
         ;
 
-        $service = new PokedexService($repository);
+        $service = new PokedexService($repository, $this->createStub(PropagateCatchStateService::class));
 
         $this->assertEquals(
             [
@@ -136,7 +137,7 @@ final class PokedexServiceTest extends TestCase
             )
         ;
 
-        $service = new PokedexService($repository);
+        $service = new PokedexService($repository, $this->createStub(PropagateCatchStateService::class));
 
         $this->assertEquals(
             [
@@ -169,21 +170,69 @@ final class PokedexServiceTest extends TestCase
         );
     }
 
-    public function testUpsert(): void
+    public function testUpsertReturnsOnlyOriginWhenNothingChanged(): void
     {
         $repository = $this->createMock(PokedexRepository::class);
         $repository->expects($this->once())
             ->method('upsert')
-            ->with(
-                'bd307a3ec329e10a2cff8fb87480823da114f8f4',
-                'bw2',
-                'pichu',
-                'yes',
-            )
+            ->with('bd307a3ec329e10a2cff8fb87480823da114f8f4', 'bw2', 'pichu', 'yes')
+            ->willReturn(null)
         ;
 
-        $service = new PokedexService($repository);
+        $propagateCatchStateService = $this->createMock(PropagateCatchStateService::class);
+        $propagateCatchStateService->expects($this->never())->method('propagate');
 
-        $service->upsert('bd307a3ec329e10a2cff8fb87480823da114f8f4', 'bw2', 'pichu', 'yes');
+        $service = new PokedexService($repository, $propagateCatchStateService);
+
+        $this->assertSame(
+            ['bw2'],
+            $service->upsert('bd307a3ec329e10a2cff8fb87480823da114f8f4', 'bw2', 'pichu', 'yes')
+        );
+    }
+
+    public function testUpsertPropagatesWhenOriginChanged(): void
+    {
+        $repository = $this->createMock(PokedexRepository::class);
+        $repository->expects($this->once())
+            ->method('upsert')
+            ->with('bd307a3ec329e10a2cff8fb87480823da114f8f4', 'bw2', 'pichu', 'yes')
+            ->willReturn('trainer-dex-uuid')
+        ;
+
+        $propagateCatchStateService = $this->createMock(PropagateCatchStateService::class);
+        $propagateCatchStateService->expects($this->once())
+            ->method('propagate')
+            ->with('bd307a3ec329e10a2cff8fb87480823da114f8f4', 'trainer-dex-uuid', 'pichu', 'yes')
+            ->willReturn(['bw2_shiny'])
+        ;
+
+        $service = new PokedexService($repository, $propagateCatchStateService);
+
+        $this->assertSame(
+            ['bw2', 'bw2_shiny'],
+            $service->upsert('bd307a3ec329e10a2cff8fb87480823da114f8f4', 'bw2', 'pichu', 'yes')
+        );
+    }
+
+    public function testUpsertPropagatesNothingWhenCascadeReturnsEmptyList(): void
+    {
+        $repository = $this->createMock(PokedexRepository::class);
+        $repository->expects($this->once())
+            ->method('upsert')
+            ->willReturn('trainer-dex-uuid')
+        ;
+
+        $propagateCatchStateService = $this->createMock(PropagateCatchStateService::class);
+        $propagateCatchStateService->expects($this->once())
+            ->method('propagate')
+            ->willReturn([])
+        ;
+
+        $service = new PokedexService($repository, $propagateCatchStateService);
+
+        $this->assertSame(
+            ['bw2'],
+            $service->upsert('bd307a3ec329e10a2cff8fb87480823da114f8f4', 'bw2', 'pichu', 'yes')
+        );
     }
 }
