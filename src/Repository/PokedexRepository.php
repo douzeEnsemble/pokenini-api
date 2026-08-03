@@ -243,6 +243,61 @@ class PokedexRepository extends ServiceEntityRepository
         );
     }
 
+    public function upsertIfDifferent(
+        string $trainerDexId,
+        string $pokemonSlug,
+        string $catchStateSlug,
+    ): bool {
+        $sql = <<<'SQL'
+            INSERT INTO pokedex (
+                id,
+                pokemon_id,
+                catch_state_id,
+                trainer_dex_id
+            )
+            SELECT      :id,
+                        p.id,
+                        cs.id,
+                        :trainer_dex_id
+            FROM        pokemon AS p
+                    CROSS JOIN catch_state AS cs
+            WHERE       p.slug = :pokemon_slug
+                    AND cs.slug = :catch_state_slug
+                    AND EXISTS (
+                        SELECT  1
+                        FROM    trainer_dex AS td
+                                JOIN dex_availability AS da
+                                    ON da.dex_id = td.dex_id
+                                    AND da.pokemon_id = p.id
+                        WHERE   td.id = :trainer_dex_id
+                    )
+            ON CONFLICT (pokemon_id, trainer_dex_id)
+            DO
+            UPDATE
+            SET     catch_state_id = excluded.catch_state_id
+            WHERE   pokedex.catch_state_id IS DISTINCT FROM excluded.catch_state_id
+            RETURNING id
+            SQL;
+
+        $result = $this->getEntityManager()->getConnection()->fetchOne(
+            $sql,
+            [
+                'id' => Uuid::v4(),
+                'trainer_dex_id' => $trainerDexId,
+                'pokemon_slug' => $pokemonSlug,
+                'catch_state_slug' => $catchStateSlug,
+            ],
+            [
+                'id' => ParameterType::STRING,
+                'trainer_dex_id' => ParameterType::STRING,
+                'pokemon_slug' => ParameterType::STRING,
+                'catch_state_slug' => ParameterType::STRING,
+            ],
+        );
+
+        return false !== $result;
+    }
+
     /**
      * @return list<array<string, mixed>>
      */
