@@ -1,0 +1,207 @@
+<?php
+
+declare(strict_types=1);
+
+namespace App\Tests\Unit\Service;
+
+use App\Repository\PokedexRepository;
+use App\Repository\TrainerDexLinkRepository;
+use App\Service\PropagateCatchStateService;
+use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\TestCase;
+
+/**
+ * @internal
+ */
+#[CoversClass(PropagateCatchStateService::class)]
+final class PropagateCatchStateServiceTest extends TestCase
+{
+    public function testPropagatesToDirectNeighbourWhenValueChanges(): void
+    {
+        $linkRepository = $this->createMock(TrainerDexLinkRepository::class);
+        $linkRepository->expects($this->exactly(2))
+            ->method('getOutgoingEdges')
+            ->willReturnMap([
+                ['trainer-1', 'dex-a', [['target_trainer_dex_id' => 'dex-b', 'target_dex_slug' => 'b']]],
+                ['trainer-1', 'dex-b', []],
+            ])
+        ;
+
+        $pokedexRepository = $this->createMock(PokedexRepository::class);
+        $pokedexRepository->expects($this->once())
+            ->method('upsertIfDifferent')
+            ->with('dex-b', 'pikachu', 'yes')
+            ->willReturn(true)
+        ;
+
+        $service = new PropagateCatchStateService($linkRepository, $pokedexRepository);
+
+        $this->assertSame(
+            ['b'],
+            $service->propagate('trainer-1', 'dex-a', 'pikachu', 'yes')
+        );
+    }
+
+    public function testStopsAtANodeWhoseValueDidNotChange(): void
+    {
+        $linkRepository = $this->createMock(TrainerDexLinkRepository::class);
+        $linkRepository->expects($this->once())
+            ->method('getOutgoingEdges')
+            ->with('trainer-1', 'dex-a')
+            ->willReturn([['target_trainer_dex_id' => 'dex-b', 'target_dex_slug' => 'b']])
+        ;
+
+        $pokedexRepository = $this->createMock(PokedexRepository::class);
+        $pokedexRepository->expects($this->once())
+            ->method('upsertIfDifferent')
+            ->with('dex-b', 'pikachu', 'yes')
+            ->willReturn(false)
+        ;
+
+        $service = new PropagateCatchStateService($linkRepository, $pokedexRepository);
+
+        $this->assertSame(
+            [],
+            $service->propagate('trainer-1', 'dex-a', 'pikachu', 'yes')
+        );
+    }
+
+    public function testPropagatesTransitivelyThroughAChain(): void
+    {
+        $linkRepository = $this->createMock(TrainerDexLinkRepository::class);
+        $linkRepository->expects($this->exactly(3))
+            ->method('getOutgoingEdges')
+            ->willReturnMap([
+                ['trainer-1', 'dex-a', [['target_trainer_dex_id' => 'dex-b', 'target_dex_slug' => 'b']]],
+                ['trainer-1', 'dex-b', [['target_trainer_dex_id' => 'dex-c', 'target_dex_slug' => 'c']]],
+                ['trainer-1', 'dex-c', []],
+            ])
+        ;
+
+        $pokedexRepository = $this->createMock(PokedexRepository::class);
+        $pokedexRepository->expects($this->exactly(2))
+            ->method('upsertIfDifferent')
+            ->willReturnMap([
+                ['dex-b', 'pikachu', 'yes', true],
+                ['dex-c', 'pikachu', 'yes', true],
+            ])
+        ;
+
+        $service = new PropagateCatchStateService($linkRepository, $pokedexRepository);
+
+        $this->assertSame(
+            ['b', 'c'],
+            $service->propagate('trainer-1', 'dex-a', 'pikachu', 'yes')
+        );
+    }
+
+    public function testCycleTerminatesByIdempotenceWithoutInfiniteLoop(): void
+    {
+        // A <-> B: origin is A, edge A -> B, and B -> A also exists.
+        $linkRepository = $this->createMock(TrainerDexLinkRepository::class);
+        $linkRepository->expects($this->exactly(2))
+            ->method('getOutgoingEdges')
+            ->willReturnMap([
+                ['trainer-1', 'dex-a', [['target_trainer_dex_id' => 'dex-b', 'target_dex_slug' => 'b']]],
+                ['trainer-1', 'dex-b', [['target_trainer_dex_id' => 'dex-a', 'target_dex_slug' => 'a']]],
+            ])
+        ;
+
+        $pokedexRepository = $this->createMock(PokedexRepository::class);
+        $pokedexRepository->expects($this->exactly(2))
+            ->method('upsertIfDifferent')
+            ->willReturnMap([
+                // B changes to the new value...
+                ['dex-b', 'pikachu', 'yes', true],
+                // ...but A, the origin, already has it (the caller already wrote it before calling propagate()) so the cycle stops here.
+                ['dex-a', 'pikachu', 'yes', false],
+            ])
+        ;
+
+        $service = new PropagateCatchStateService($linkRepository, $pokedexRepository);
+
+        $this->assertSame(
+            ['b'],
+            $service->propagate('trainer-1', 'dex-a', 'pikachu', 'yes')
+        );
+    }
+
+    public function testThreeNodeCycleTerminatesByIdempotence(): void
+    {
+        // A -> B -> C -> A. Origin A was already written by the caller before propagate() runs,
+        // so by the time the cycle comes back around to A, upsertIfDifferent('dex-a', ...) is a no-op.
+        $linkRepository = $this->createMock(TrainerDexLinkRepository::class);
+        $linkRepository->expects($this->exactly(3))
+            ->method('getOutgoingEdges')
+            ->willReturnMap([
+                ['trainer-1', 'dex-a', [['target_trainer_dex_id' => 'dex-b', 'target_dex_slug' => 'b']]],
+                ['trainer-1', 'dex-b', [['target_trainer_dex_id' => 'dex-c', 'target_dex_slug' => 'c']]],
+                ['trainer-1', 'dex-c', [['target_trainer_dex_id' => 'dex-a', 'target_dex_slug' => 'a']]],
+            ])
+        ;
+
+        $pokedexRepository = $this->createMock(PokedexRepository::class);
+        $pokedexRepository->expects($this->exactly(3))
+            ->method('upsertIfDifferent')
+            ->willReturnMap([
+                ['dex-b', 'pikachu', 'yes', true],
+                ['dex-c', 'pikachu', 'yes', true],
+                ['dex-a', 'pikachu', 'yes', false],
+            ])
+        ;
+
+        $service = new PropagateCatchStateService($linkRepository, $pokedexRepository);
+
+        $this->assertSame(
+            ['b', 'c'],
+            $service->propagate('trainer-1', 'dex-a', 'pikachu', 'yes')
+        );
+    }
+
+    public function testPokemonAbsentFromAnIntermediateDexSkipsTheWriteButKeepsTraversing(): void
+    {
+        // A -> B -> C, pokemon isn't in B's DexAvailability (upsertIfDifferent returns false for that reason)
+        // but traversal must still continue from B to C per the design.
+        //
+        // Per the design, a skipped write means the traversal from that node does NOT continue automatically
+        // (propagation only enqueues a node's own outgoing edges when its upsertIfDifferent returned true) —
+        // so C is never reached in this scenario, matching the "changed" flag being the sole continuation signal.
+        $linkRepository = $this->createMock(TrainerDexLinkRepository::class);
+        $linkRepository->expects($this->once())
+            ->method('getOutgoingEdges')
+            ->with('trainer-1', 'dex-a')
+            ->willReturn([['target_trainer_dex_id' => 'dex-b', 'target_dex_slug' => 'b']])
+        ;
+
+        $pokedexRepository = $this->createMock(PokedexRepository::class);
+        $pokedexRepository->expects($this->once())
+            ->method('upsertIfDifferent')
+            ->with('dex-b', 'pikachu', 'yes')
+            ->willReturn(false)
+        ;
+
+        $service = new PropagateCatchStateService($linkRepository, $pokedexRepository);
+
+        $this->assertSame(
+            [],
+            $service->propagate('trainer-1', 'dex-a', 'pikachu', 'yes')
+        );
+    }
+
+    public function testNoOutgoingEdgesReturnsEmptyList(): void
+    {
+        $linkRepository = $this->createMock(TrainerDexLinkRepository::class);
+        $linkRepository->expects($this->once())
+            ->method('getOutgoingEdges')
+            ->with('trainer-1', 'dex-a')
+            ->willReturn([])
+        ;
+
+        $pokedexRepository = $this->createMock(PokedexRepository::class);
+        $pokedexRepository->expects($this->never())->method('upsertIfDifferent');
+
+        $service = new PropagateCatchStateService($linkRepository, $pokedexRepository);
+
+        $this->assertSame([], $service->propagate('trainer-1', 'dex-a', 'pikachu', 'yes'));
+    }
+}

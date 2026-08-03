@@ -10,6 +10,7 @@ class PokedexService
 {
     public function __construct(
         private readonly PokedexRepository $repository,
+        private readonly PropagateCatchStateService $propagateCatchStateService,
     ) {}
 
     /**
@@ -36,17 +37,36 @@ class PokedexService
         return $this->repository->getCatchStateUsage();
     }
 
+    /**
+     * @return list<string>
+     */
     public function upsert(
         string $trainerExternalId,
         string $dexSlug,
         string $pokemonSlug,
         string $catchStateSlug,
-    ): void {
-        $this->repository->upsert(
+    ): array {
+        $changedTrainerDexId = $this->repository->upsert(
             $trainerExternalId,
             $dexSlug,
             $pokemonSlug,
             $catchStateSlug,
+        );
+
+        $updatedDexSlugs = [$dexSlug];
+
+        if (null === $changedTrainerDexId) {
+            return $updatedDexSlugs;
+        }
+
+        return array_merge(
+            $updatedDexSlugs,
+            $this->propagateCatchStateService->propagate(
+                $trainerExternalId,
+                $changedTrainerDexId,
+                $pokemonSlug,
+                $catchStateSlug,
+            ),
         );
     }
 }
