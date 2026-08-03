@@ -7,6 +7,7 @@ namespace App\Tests\Integration\Repository;
 use App\Repository\PokedexRepository;
 use App\Repository\Trait\FiltersTrait;
 use App\Tests\Common\Traits\GetterTrait\GetPokedexTrait;
+use Doctrine\DBAL\Connection;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
@@ -21,6 +22,8 @@ final class PokedexRepositoryTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use GetPokedexTrait;
+
+    private const string TRAINER = '7b52009b64fd0a2a49e6d8a939753077792b0554';
 
     #[\Override]
     public function setUp(): void
@@ -59,6 +62,38 @@ final class PokedexRepositoryTest extends KernelTestCase
 
         $this->assertEquals('Maybe not', $pokedexAfter['name']);
         $this->assertEquals('maybenot', $pokedexAfter['slug']);
+    }
+
+    public function testUpsertReturnsTheWrittenTrainerDexIdWhenCatchStateChanges(): void
+    {
+        $repo = self::getContainer()->get(PokedexRepository::class);
+        $trainerDexId = $this->getTrainerDexId('goldsilvercrystal');
+
+        // Fixture: ivysaur is 'no' in goldsilvercrystal for this trainer, so 'yes' is an actual change.
+        $result = $repo->upsert(self::TRAINER, 'goldsilvercrystal', 'ivysaur', 'yes');
+
+        $this->assertSame($trainerDexId, $result);
+    }
+
+    public function testUpsertReturnsNullWhenCatchStateIsUnchanged(): void
+    {
+        $repo = self::getContainer()->get(PokedexRepository::class);
+
+        // Fixture: bulbasaur is already 'yes' in goldsilvercrystal for this trainer, so this is a no-op write.
+        $result = $repo->upsert(self::TRAINER, 'goldsilvercrystal', 'bulbasaur', 'yes');
+
+        $this->assertNull($result);
+    }
+
+    public function testUpsertReturnsNullWhenDexSlugDoesNotResolveForThisTrainer(): void
+    {
+        $repo = self::getContainer()->get(PokedexRepository::class);
+
+        // Fixture: 'demo' has no trainer_dex row for this trainer (only for the other test trainer),
+        // so the trainer_dex_id subselect resolves to NULL.
+        $result = $repo->upsert(self::TRAINER, 'demo', 'ivysaur', 'yes');
+
+        $this->assertNull($result);
     }
 
     public function testGetDexUsage(): void
@@ -120,5 +155,16 @@ final class PokedexRepositoryTest extends KernelTestCase
             ],
             $counts
         );
+    }
+
+    private function getTrainerDexId(string $dexSlug): string
+    {
+        $connection = self::getContainer()->get(Connection::class);
+
+        /** @var string */
+        return $connection->executeQuery(
+            'SELECT id FROM trainer_dex WHERE slug = :slug AND trainer_external_id = :trainer',
+            ['slug' => $dexSlug, 'trainer' => self::TRAINER]
+        )->fetchOne();
     }
 }
