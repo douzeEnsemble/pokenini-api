@@ -200,6 +200,10 @@ class PokedexRepository extends ServiceEntityRepository
         );
     }
 
+    /**
+     * @return null|string the written `trainer_dex` id, or `null` when either the catch state was unchanged
+     *                     or the dex slug doesn't resolve to a `trainer_dex` row for this trainer
+     */
     public function upsert(
         string $trainerExternalId,
         string $dexSlug,
