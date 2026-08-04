@@ -175,7 +175,7 @@ class TrainerDexLinkRepository extends ServiceEntityRepository
         );
     }
 
-    public function deleteByIdOrPairId(string $trainerExternalId, string $id): void
+    public function deleteByIdOrPairId(string $trainerExternalId, string $linkId): void
     {
         $sql = <<<'SQL'
             DELETE FROM trainer_dex_link
@@ -195,7 +195,7 @@ class TrainerDexLinkRepository extends ServiceEntityRepository
             $sql,
             [
                 'trainer_external_id' => $trainerExternalId,
-                'id' => $id,
+                'id' => $linkId,
             ],
             [
                 'trainer_external_id' => ParameterType::STRING,

@@ -13,8 +13,8 @@ final class TrainerDexLinkResponseFactory
      */
     public static function fromSqlRow(array $row): TrainerDexLinkResponse
     {
-        /** @var scalar $id */
-        $id = $row['id'];
+        /** @var scalar $linkId */
+        $linkId = $row['id'];
 
         /** @var scalar $direction */
         $direction = $row['direction'];
@@ -29,7 +29,7 @@ final class TrainerDexLinkResponseFactory
         $targetFrenchName = $row['target_french_name'];
 
         return new TrainerDexLinkResponse(
-            id: (string) $id,
+            id: (string) $linkId,
             direction: (string) $direction,
             targetDexSlug: (string) $targetDexSlug,
             targetName: (string) $targetName,

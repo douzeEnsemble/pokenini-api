@@ -188,6 +188,81 @@ final class PropagateCatchStateServiceTest extends TestCase
         );
     }
 
+    public function testFanOutContinuesToSiblingEdgeAfterANoChangeSibling(): void
+    {
+        // A -> B and A -> C are two sibling edges discovered together from A's single
+        // expansion (both already queued before either is processed). B is idempotent
+        // (no change), so the loop must `continue` to the still-queued sibling C rather
+        // than abandon the whole traversal.
+        $linkRepository = $this->createMock(TrainerDexLinkRepository::class);
+        $linkRepository->expects($this->exactly(2))
+            ->method('getOutgoingEdges')
+            ->willReturnMap([
+                ['trainer-1', 'dex-a', [
+                    ['target_trainer_dex_id' => 'dex-b', 'target_dex_slug' => 'b'],
+                    ['target_trainer_dex_id' => 'dex-c', 'target_dex_slug' => 'c'],
+                ]],
+                ['trainer-1', 'dex-c', []],
+            ])
+        ;
+
+        $pokedexRepository = $this->createMock(PokedexRepository::class);
+        $pokedexRepository->expects($this->exactly(2))
+            ->method('upsertIfDifferent')
+            ->willReturnMap([
+                ['dex-b', 'pikachu', 'yes', false],
+                ['dex-c', 'pikachu', 'yes', true],
+            ])
+        ;
+
+        $service = new PropagateCatchStateService($linkRepository, $pokedexRepository);
+
+        $this->assertSame(
+            ['c'],
+            $service->propagate('trainer-1', 'dex-a', 'pikachu', 'yes')
+        );
+    }
+
+    public function testFanOutPreservesPendingSiblingEdgeWhenAppendingNewlyDiscoveredOnes(): void
+    {
+        // A -> B and A -> C are two sibling edges discovered together from A's single
+        // expansion. B changes AND has its own further outgoing edge to D. The still-queued
+        // sibling C must survive being merged with B's newly discovered edges — replacing
+        // the queue instead of merging into it would silently drop C.
+        $linkRepository = $this->createMock(TrainerDexLinkRepository::class);
+        $linkRepository->expects($this->exactly(4))
+            ->method('getOutgoingEdges')
+            ->willReturnMap([
+                ['trainer-1', 'dex-a', [
+                    ['target_trainer_dex_id' => 'dex-b', 'target_dex_slug' => 'b'],
+                    ['target_trainer_dex_id' => 'dex-c', 'target_dex_slug' => 'c'],
+                ]],
+                ['trainer-1', 'dex-b', [
+                    ['target_trainer_dex_id' => 'dex-d', 'target_dex_slug' => 'd'],
+                ]],
+                ['trainer-1', 'dex-c', []],
+                ['trainer-1', 'dex-d', []],
+            ])
+        ;
+
+        $pokedexRepository = $this->createMock(PokedexRepository::class);
+        $pokedexRepository->expects($this->exactly(3))
+            ->method('upsertIfDifferent')
+            ->willReturnMap([
+                ['dex-b', 'pikachu', 'yes', true],
+                ['dex-c', 'pikachu', 'yes', true],
+                ['dex-d', 'pikachu', 'yes', true],
+            ])
+        ;
+
+        $service = new PropagateCatchStateService($linkRepository, $pokedexRepository);
+
+        $this->assertSame(
+            ['b', 'c', 'd'],
+            $service->propagate('trainer-1', 'dex-a', 'pikachu', 'yes')
+        );
+    }
+
     public function testNoOutgoingEdgesReturnsEmptyList(): void
     {
         $linkRepository = $this->createMock(TrainerDexLinkRepository::class);

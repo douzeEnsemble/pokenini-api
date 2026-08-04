@@ -295,6 +295,7 @@ class PokedexRepository extends ServiceEntityRepository
             RETURNING id
             SQL;
 
+        /** @var false|string $result */
         $result = $this->getEntityManager()->getConnection()->fetchOne(
             $sql,
             [
