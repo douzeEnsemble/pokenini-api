@@ -8,6 +8,9 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
 
 final class TrainerDexLinkResponse
 {
+    /**
+     * @SuppressWarnings("PHPMD.ShortVariable")
+     */
     public function __construct(
         public readonly string $id,
         public readonly string $direction,

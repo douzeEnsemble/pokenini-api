@@ -15,6 +15,7 @@ use PHPUnit\Framework\TestCase;
  * @internal
  */
 #[CoversClass(PokemonCreditResponseFactory::class)]
+#[CoversClass(PokemonCreditResponse::class)]
 final class PokemonCreditResponseFactoryTest extends TestCase
 {
     #[Test]

@@ -163,6 +163,9 @@ final class TrainerDexLinkServiceTest extends TestCase
         $service->create('trainer-1', 'national', 'shiny', true);
     }
 
+    /**
+     * @SuppressWarnings("PHPMD.UnusedFormalParameter")
+     */
     public function testCreateInsertsTwoRowsSharingAPairIdForABidirectionalLink(): void
     {
         $source = $this->trainerDexWithId('11111111-1111-1111-1111-111111111111');
@@ -189,7 +192,7 @@ final class TrainerDexLinkServiceTest extends TestCase
         $this->assertCount(2, $pairIds);
         $this->assertNotNull($pairIds[0]);
         $this->assertSame($pairIds[0], $pairIds[1]);
-        $this->assertTrue(Uuid::isValid((string) $pairIds[0]));
+        $this->assertTrue(Uuid::isValid($pairIds[0]));
     }
 
     public function testDeleteDelegatesToRepository(): void

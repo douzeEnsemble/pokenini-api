@@ -22,6 +22,14 @@
                 "App\\Entity\\TrainerPokemonElo::__construct",
             ],
         },
+        ArrayOneItem: {
+            ignore: [
+                // $updatedDexSlugs is always a freshly-built single-element array literal
+                // ([$dexSlug]) at this point, so "count() > 1" can never be true here:
+                // an equivalent mutant, not a coverage gap.
+                "App\\Service\\PokedexService::upsert",
+            ],
+        },
         Throw_: {
             ignore: [
                 "App\\Repository\\TrainerPokemonEloRepository::getTopNSQL",

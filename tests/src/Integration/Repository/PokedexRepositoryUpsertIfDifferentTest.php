@@ -86,6 +86,7 @@ final class PokedexRepositoryUpsertIfDifferentTest extends KernelTestCase
     {
         $connection = self::getContainer()->get(Connection::class);
 
+        /** @var false|string $result */
         $result = $connection->executeQuery(
             <<<'SQL'
                 SELECT      cs.slug
@@ -99,6 +100,6 @@ final class PokedexRepositoryUpsertIfDifferentTest extends KernelTestCase
             ['trainer_dex_id' => $trainerDexId, 'pokemon_slug' => $pokemonSlug]
         )->fetchOne();
 
-        return false === $result ? null : (string) $result;
+        return false === $result ? null : $result;
     }
 }

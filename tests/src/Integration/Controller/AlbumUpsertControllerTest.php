@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Integration\Controller;
 
 use App\Controller\AlbumUpsertController;
+use App\DTO\Response\AlbumUpsertResponse;
 use App\Tests\Common\Traits\CounterTrait\CountTrainerDexTrait;
 use App\Tests\Common\Traits\GetterTrait\GetPokedexTrait;
 use Doctrine\DBAL\Connection;
@@ -14,6 +15,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  * @internal
  */
 #[CoversClass(AlbumUpsertController::class)]
+#[CoversClass(AlbumUpsertResponse::class)]
 final class AlbumUpsertControllerTest extends AbstractTestControllerApi
 {
     use GetPokedexTrait;
@@ -291,7 +293,6 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
                 AND td.trainer_external_id = :trainer_external_id
             SQL;
 
-        /** @var array<string, mixed>|false $result */
         $result = $connection->executeQuery($sql, [
             'trainer_external_id' => $trainerExternalId,
             'dex_slug' => $dexSlug,

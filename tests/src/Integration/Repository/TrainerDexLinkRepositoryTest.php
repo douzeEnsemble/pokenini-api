@@ -101,9 +101,9 @@ final class TrainerDexLinkRepositoryTest extends KernelTestCase
         $targetId = $this->getTrainerDexId('goldsilvercrystal');
 
         $repository->insert(self::TRAINER, $sourceId, $targetId, null);
-        $id = $repository->getForDex(self::TRAINER, 'redgreenblueyellow')[0]['id'];
+        $linkId = $repository->getForDex(self::TRAINER, 'redgreenblueyellow')[0]['id'];
 
-        $repository->deleteByIdOrPairId(self::TRAINER, $id);
+        $repository->deleteByIdOrPairId(self::TRAINER, $linkId);
 
         $this->assertFalse($repository->exists($sourceId, $targetId));
     }
@@ -118,9 +118,9 @@ final class TrainerDexLinkRepositoryTest extends KernelTestCase
 
         $repository->insert(self::TRAINER, $sourceId, $targetId, $pairId);
         $repository->insert(self::TRAINER, $targetId, $sourceId, $pairId);
-        $id = $repository->getForDex(self::TRAINER, 'redgreenblueyellow')[0]['id'];
+        $linkId = $repository->getForDex(self::TRAINER, 'redgreenblueyellow')[0]['id'];
 
-        $repository->deleteByIdOrPairId(self::TRAINER, $id);
+        $repository->deleteByIdOrPairId(self::TRAINER, $linkId);
 
         $this->assertFalse($repository->exists($sourceId, $targetId));
         $this->assertFalse($repository->exists($targetId, $sourceId));
