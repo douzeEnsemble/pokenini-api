@@ -14,7 +14,7 @@ class VersionService
     {
         $path = $this->metadataDir.'/version';
 
-        if (!is_file($path)) {
+        if (!is_readable($path)) {
             return self::FALLBACK_VERSION;
         }
 
