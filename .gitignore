@@ -49,3 +49,4 @@ tools/*/var
 /docker-compose.override.yaml
 
 /.superpowers/
+/.worktrees/
