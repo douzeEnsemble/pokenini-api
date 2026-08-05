@@ -49,7 +49,7 @@
         "symfony/phpunit-bridge": "8.1.*",
         "symfony/stopwatch": "8.1.*",
         "symfony/var-dumper": "8.1.*",
-        "zenstruck/messenger-test": "^1.14.0"
+        "zenstruck/messenger-test": "^1.15.0"
     },
     "config": {
         "optimize-autoloader": true,
