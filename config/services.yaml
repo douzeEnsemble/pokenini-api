@@ -9,7 +9,8 @@ services:
             int $eloDDifference: '%env(ELO_D_DIFFERENCE)%'
             int $eloDefault: '%env(ELO_DEFAULT)%'
             string $sqlDir: '%kernel.project_dir%/resources/sql'
-            
+            string $metadataDir: '%kernel.project_dir%/resources/metadata'
+
     App\:
         resource: '../src/'
         exclude:
