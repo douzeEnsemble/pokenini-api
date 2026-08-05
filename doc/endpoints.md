@@ -54,6 +54,7 @@ curl -u web:douze http://web:8080/types
 | 31 | GET | `/debogage/pokemon/{slug}` | (Debug) Détail brut d'un pokémon |
 | 32 | GET | `/debogage/pokemon/{slug}/availabilities` | (Debug) Disponibilités d'un pokémon |
 | 33 | DELETE | `/debogage/pokemon/{slug}/caches` | (Debug) Purge des caches de disponibilités d'un pokémon |
+| 34 | GET | `/version` | Version de l'application |
 
 > **Note** : le préfixe d'administration est littéralement `/istration` (et non `/administration`), et le préfixe de debug est `/debogage`.
 
@@ -1262,3 +1263,27 @@ curl -u web:douze -X DELETE http://web:8080/debogage/pokemon/venusaur-mega/cache
 Exemple de réponse (`200`) : corps vide.
 
 Codes de statut : `200`, `401`, `404`.
+
+---
+
+### 34. GET `/version`
+
+Renvoie le numéro de version de l'application actuellement déployée, lu depuis le fichier `resources/metadata/version`. Si le fichier est absent ou illisible, la réponse contient `"unknown"`.
+
+**Paramètres** : aucun.
+
+Exemple de requête :
+
+```bash
+curl -u web:douze http://web:8080/version
+```
+
+Exemple de réponse (`200`) :
+
+```json
+{
+  "version": "1.2.12"
+}
+```
+
+Codes de statut : `200`, `401`.
