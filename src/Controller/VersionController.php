@@ -17,6 +17,6 @@ final class VersionController extends AbstractController
     #[Serialize]
     public function get(VersionService $service): VersionResponse
     {
-        return new VersionResponse($service->getVersion());
+        return new VersionResponse($service->getVersion(), $service->getUpdatedAt());
     }
 }
