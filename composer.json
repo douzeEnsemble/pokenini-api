@@ -10,7 +10,7 @@
         "ext-zip": "*",
         "doctrine/doctrine-bundle": "^3.3.1",
         "doctrine/doctrine-migrations-bundle": "^4.0.0",
-        "doctrine/orm": "^3.6.7",
+        "doctrine/orm": "^3.6.8",
         "google/apiclient": "^2.19.4",
         "symfony/browser-kit": "8.1.*",
         "symfony/console": "8.1.*",
