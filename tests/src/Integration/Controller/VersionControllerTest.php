@@ -40,10 +40,15 @@ final class VersionControllerTest extends WebTestCase
         $content = $client->getResponse()->getContent();
         self::assertIsString($content);
 
-        $expectedVersion = trim((string) file_get_contents(dirname(__DIR__, 4).'/resources/metadata/version'));
+        $versionFilePath = dirname(__DIR__, 4).'/resources/metadata/version';
+        $expectedVersion = trim((string) file_get_contents($versionFilePath));
+        $expectedUpdatedAt = (new \DateTimeImmutable())->setTimestamp((int) filemtime($versionFilePath));
 
         self::assertJsonStringEqualsJsonString(
-            json_encode(['version' => $expectedVersion], JSON_THROW_ON_ERROR),
+            json_encode([
+                'version' => $expectedVersion,
+                'updated_at' => $expectedUpdatedAt->format(\DateTimeInterface::ATOM),
+            ], JSON_THROW_ON_ERROR),
             $content,
         );
     }
