@@ -19,6 +19,7 @@ use App\Tests\Common\Traits\CounterTrait\CountGameBundleShinyAvailabilityTrait;
 use App\Tests\Common\Traits\CounterTrait\CountGameShinyAvailabilityTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -38,7 +39,8 @@ final class CalculateGameBundlesShiniesAvailabilitiesCommandTest extends Abstrac
     use CountGameBundleShinyAvailabilityTrait;
     use CountActionLogTrait;
 
-    public function testNoGamesShiniesAvailabilities(): void
+    #[Test]
+    public function noGamesShiniesAvailabilities(): void
     {
         $repo = self::getContainer()->get(GamesShiniesAvailabilitiesRepository::class);
         $queryBuilder = $repo->createQueryBuilder('gsa')
@@ -63,7 +65,8 @@ final class CalculateGameBundlesShiniesAvailabilitiesCommandTest extends Abstrac
         );
     }
 
-    public function testCalculateBundlesShiniesAvailabilities(): void
+    #[Test]
+    public function calculateBundlesShiniesAvailabilities(): void
     {
         $initialToProcessCount = $this->getActionLogToProcessCount();
         $initialDoneCount = $this->getActionLogDoneCount();

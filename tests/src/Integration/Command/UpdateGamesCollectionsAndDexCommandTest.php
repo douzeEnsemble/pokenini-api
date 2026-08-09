@@ -15,6 +15,7 @@ use App\Tests\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Common\Traits\CounterTrait\CounterTableTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -31,7 +32,8 @@ final class UpdateGamesCollectionsAndDexCommandTest extends AbstractTestCaseComm
     use CounterTableTrait;
     use CountActionLogTrait;
 
-    public function testUpdate(): void
+    #[Test]
+    public function update(): void
     {
         $this->assertEquals(9, $this->getTableCount('game_generation'));
         $this->assertEquals(19, $this->getTableCount('game_bundle'));

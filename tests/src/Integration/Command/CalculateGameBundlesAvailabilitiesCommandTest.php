@@ -18,6 +18,7 @@ use App\Tests\Common\Traits\CounterTrait\CountGameAvailabilityTrait;
 use App\Tests\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -36,7 +37,8 @@ final class CalculateGameBundlesAvailabilitiesCommandTest extends AbstractTestCa
     use CountGameBundleAvailabilityTrait;
     use CountActionLogTrait;
 
-    public function testNoGamesAvailabilities(): void
+    #[Test]
+    public function noGamesAvailabilities(): void
     {
         $repo = self::getContainer()->get(GamesAvailabilitiesRepository::class);
         $queryBuilder = $repo->createQueryBuilder('ga')
@@ -58,7 +60,8 @@ final class CalculateGameBundlesAvailabilitiesCommandTest extends AbstractTestCa
         $this->assertStringContainsString("0 bundles' availabilities calculated", $commandTester->getDisplay());
     }
 
-    public function testCalculateBundlesAvailabilities(): void
+    #[Test]
+    public function calculateBundlesAvailabilities(): void
     {
         $initialToProcessCount = $this->getActionLogToProcessCount();
         $initialDoneCount = $this->getActionLogDoneCount();

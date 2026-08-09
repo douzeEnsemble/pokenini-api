@@ -15,6 +15,7 @@ use App\Tests\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Common\Traits\CounterTrait\CounterTableTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -31,7 +32,8 @@ final class UpdateLabelsCommandTest extends AbstractTestCaseCommand
     use CounterTableTrait;
     use CountActionLogTrait;
 
-    public function testUpdate(): void
+    #[Test]
+    public function update(): void
     {
         $this->assertEquals(5, $this->getTableCount('catch_state'));
         $this->assertEquals(3, $this->getTableCount('category_form'));
