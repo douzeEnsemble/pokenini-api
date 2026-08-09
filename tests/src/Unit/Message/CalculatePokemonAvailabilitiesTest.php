@@ -6,6 +6,7 @@ namespace App\Tests\Unit\Message;
 
 use App\Message\CalculatePokemonAvailabilities;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,7 +15,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(CalculatePokemonAvailabilities::class)]
 final class CalculatePokemonAvailabilitiesTest extends TestCase
 {
-    public function testSerialize(): void
+    #[Test]
+    public function serialize(): void
     {
         $message = new CalculatePokemonAvailabilities('12');
 
