@@ -11,6 +11,7 @@ use Doctrine\DBAL\Connection;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -31,7 +32,8 @@ final class PokedexRepositoryTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testUpdate(): void
+    #[Test]
+    public function update(): void
     {
         $pokedexBefore = $this->getPokedexFromSlugs('redgreenblueyellow', 'ivysaur');
 
@@ -48,7 +50,8 @@ final class PokedexRepositoryTest extends KernelTestCase
         $this->assertEquals('maybe', $pokedexAfter['slug']);
     }
 
-    public function testInsert(): void
+    #[Test]
+    public function insert(): void
     {
         $pokedexBefore = $this->getPokedexFromSlugs('goldsilvercrystal', 'douze');
 
@@ -64,7 +67,8 @@ final class PokedexRepositoryTest extends KernelTestCase
         $this->assertEquals('maybenot', $pokedexAfter['slug']);
     }
 
-    public function testUpsertReturnsTheWrittenTrainerDexIdWhenCatchStateChanges(): void
+    #[Test]
+    public function upsertReturnsTheWrittenTrainerDexIdWhenCatchStateChanges(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
         $trainerDexId = $this->getTrainerDexId('goldsilvercrystal');
@@ -75,7 +79,8 @@ final class PokedexRepositoryTest extends KernelTestCase
         $this->assertSame($trainerDexId, $result);
     }
 
-    public function testUpsertReturnsNullWhenCatchStateIsUnchanged(): void
+    #[Test]
+    public function upsertReturnsNullWhenCatchStateIsUnchanged(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 
@@ -85,7 +90,8 @@ final class PokedexRepositoryTest extends KernelTestCase
         $this->assertNull($result);
     }
 
-    public function testUpsertReturnsNullWhenDexSlugDoesNotResolveForThisTrainer(): void
+    #[Test]
+    public function upsertReturnsNullWhenDexSlugDoesNotResolveForThisTrainer(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 
@@ -96,7 +102,8 @@ final class PokedexRepositoryTest extends KernelTestCase
         $this->assertNull($result);
     }
 
-    public function testGetDexUsage(): void
+    #[Test]
+    public function getDexUsage(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 

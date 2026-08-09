@@ -8,6 +8,7 @@ use App\Repository\TrainerPokemonEloRepository;
 use App\Tests\Common\Traits\GetterTrait\GetTrainerPokemonEloTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -25,7 +26,8 @@ final class TrainerPokemonEloRepositoryUpdateEloTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testUpdateElo(): void
+    #[Test]
+    public function updateElo(): void
     {
         $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
@@ -41,7 +43,8 @@ final class TrainerPokemonEloRepositoryUpdateEloTest extends KernelTestCase
         );
     }
 
-    public function testUpdateNewElo(): void
+    #[Test]
+    public function updateNewElo(): void
     {
         $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
@@ -57,7 +60,8 @@ final class TrainerPokemonEloRepositoryUpdateEloTest extends KernelTestCase
         );
     }
 
-    public function testUpdateWinnerAgain(): void
+    #[Test]
+    public function updateWinnerAgain(): void
     {
         $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
@@ -73,7 +77,8 @@ final class TrainerPokemonEloRepositoryUpdateEloTest extends KernelTestCase
         );
     }
 
-    public function testUpdateLoserAgain(): void
+    #[Test]
+    public function updateLoserAgain(): void
     {
         $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 

@@ -12,6 +12,7 @@ use App\Tests\Common\Traits\PokemonListTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -32,7 +33,8 @@ final class TypesTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testGetListQueryPrimaryTypeFilter(): void
+    #[Test]
+    public function getListQueryPrimaryTypeFilter(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 
@@ -59,7 +61,8 @@ final class TypesTest extends KernelTestCase
         );
     }
 
-    public function testGetListQuerySecondaryTypeFilter(): void
+    #[Test]
+    public function getListQuerySecondaryTypeFilter(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 
@@ -83,7 +86,8 @@ final class TypesTest extends KernelTestCase
         );
     }
 
-    public function testGetListQueryPrimaryAndSecondaryTypeFilter(): void
+    #[Test]
+    public function getListQueryPrimaryAndSecondaryTypeFilter(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 
@@ -110,7 +114,8 @@ final class TypesTest extends KernelTestCase
         );
     }
 
-    public function testGetListQueryAnyTypeFilter(): void
+    #[Test]
+    public function getListQueryAnyTypeFilter(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 

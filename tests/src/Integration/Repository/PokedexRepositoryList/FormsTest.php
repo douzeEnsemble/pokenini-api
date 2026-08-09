@@ -12,6 +12,7 @@ use App\Tests\Common\Traits\PokemonListTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -32,7 +33,8 @@ final class FormsTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testGetListQueryCategoryForm(): void
+    #[Test]
+    public function getListQueryCategoryForm(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 
@@ -55,7 +57,8 @@ final class FormsTest extends KernelTestCase
         );
     }
 
-    public function testGetListQueryRegionalForm(): void
+    #[Test]
+    public function getListQueryRegionalForm(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 
@@ -79,7 +82,8 @@ final class FormsTest extends KernelTestCase
         );
     }
 
-    public function testGetListQuerySpecialForm(): void
+    #[Test]
+    public function getListQuerySpecialForm(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 
@@ -102,7 +106,8 @@ final class FormsTest extends KernelTestCase
         );
     }
 
-    public function testGetListQuerySpecialsForm(): void
+    #[Test]
+    public function getListQuerySpecialsForm(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 
@@ -127,7 +132,8 @@ final class FormsTest extends KernelTestCase
         );
     }
 
-    public function testGetListQueryVariantForm(): void
+    #[Test]
+    public function getListQueryVariantForm(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 

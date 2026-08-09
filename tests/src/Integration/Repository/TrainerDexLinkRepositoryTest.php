@@ -8,6 +8,7 @@ use App\Repository\TrainerDexLinkRepository;
 use Doctrine\DBAL\Connection;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Symfony\Component\Uid\Uuid;
 
@@ -21,7 +22,8 @@ final class TrainerDexLinkRepositoryTest extends KernelTestCase
 
     private const string TRAINER = '7b52009b64fd0a2a49e6d8a939753077792b0554';
 
-    public function testInsertExistsAndGetOutgoingEdges(): void
+    #[Test]
+    public function insertExistsAndGetOutgoingEdges(): void
     {
         $repository = self::getContainer()->get(TrainerDexLinkRepository::class);
 
@@ -42,7 +44,8 @@ final class TrainerDexLinkRepositoryTest extends KernelTestCase
         );
     }
 
-    public function testGetOutgoingEdgesEmptyWhenNoLink(): void
+    #[Test]
+    public function getOutgoingEdgesEmptyWhenNoLink(): void
     {
         $repository = self::getContainer()->get(TrainerDexLinkRepository::class);
 
@@ -51,7 +54,8 @@ final class TrainerDexLinkRepositoryTest extends KernelTestCase
         $this->assertSame([], $repository->getOutgoingEdges(self::TRAINER, $sourceId));
     }
 
-    public function testGetForDexUnidirectional(): void
+    #[Test]
+    public function getForDexUnidirectional(): void
     {
         $repository = self::getContainer()->get(TrainerDexLinkRepository::class);
 
@@ -72,7 +76,8 @@ final class TrainerDexLinkRepositoryTest extends KernelTestCase
         $this->assertSame('redgreenblueyellow', $fromTarget[0]['target_dex_slug']);
     }
 
-    public function testGetForDexBidirectionalIsMergedIntoOneRow(): void
+    #[Test]
+    public function getForDexBidirectionalIsMergedIntoOneRow(): void
     {
         $repository = self::getContainer()->get(TrainerDexLinkRepository::class);
 
@@ -93,7 +98,8 @@ final class TrainerDexLinkRepositoryTest extends KernelTestCase
         $this->assertSame('both', $fromTarget[0]['direction']);
     }
 
-    public function testDeleteByIdOrPairIdDeletesOnlyItselfWhenUnidirectional(): void
+    #[Test]
+    public function deleteByIdOrPairIdDeletesOnlyItselfWhenUnidirectional(): void
     {
         $repository = self::getContainer()->get(TrainerDexLinkRepository::class);
 
@@ -108,7 +114,8 @@ final class TrainerDexLinkRepositoryTest extends KernelTestCase
         $this->assertFalse($repository->exists($sourceId, $targetId));
     }
 
-    public function testDeleteByIdOrPairIdDeletesBothRowsWhenBidirectional(): void
+    #[Test]
+    public function deleteByIdOrPairIdDeletesBothRowsWhenBidirectional(): void
     {
         $repository = self::getContainer()->get(TrainerDexLinkRepository::class);
 

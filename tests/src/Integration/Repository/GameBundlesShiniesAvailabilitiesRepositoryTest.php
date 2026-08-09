@@ -13,6 +13,7 @@ use App\Repository\PokemonsRepository;
 use App\Tests\Common\Traits\CounterTrait\CountGameBundleShinyAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -44,7 +45,8 @@ final class GameBundlesShiniesAvailabilitiesRepositoryTest extends KernelTestCas
         $this->pokemonsRepo = self::getContainer()->get(PokemonsRepository::class);
     }
 
-    public function testRemoveAll(): void
+    #[Test]
+    public function removeAll(): void
     {
         $this->assertGreaterThan(0, $this->getGameBundleShinyAvailabilityCount());
 
@@ -53,7 +55,8 @@ final class GameBundlesShiniesAvailabilitiesRepositoryTest extends KernelTestCas
         $this->assertEquals(0, $this->getGameBundleShinyAvailabilityCount());
     }
 
-    public function testCalculate(): void
+    #[Test]
+    public function calculate(): void
     {
         $this->gameBundleShinyAvailabilityRepo->removeAll();
 
@@ -89,7 +92,8 @@ final class GameBundlesShiniesAvailabilitiesRepositoryTest extends KernelTestCas
         $this->assertIsNotAvailable('Ruby, Sapphire, Emerald', 'deoxys-attack');
     }
 
-    public function testGetFromPokemon(): void
+    #[Test]
+    public function getFromPokemon(): void
     {
         $pokemonDouze = $this->getPokemon('douze');
 

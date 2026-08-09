@@ -12,6 +12,7 @@ use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -30,7 +31,8 @@ final class DexAvailabilitiesRepositoryTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testRemoveAll(): void
+    #[Test]
+    public function removeAll(): void
     {
         $this->assertGreaterThan(0, $this->getDexAvailabilityCount());
 
@@ -40,7 +42,8 @@ final class DexAvailabilitiesRepositoryTest extends KernelTestCase
         $this->assertEquals(0, $this->getDexAvailabilityCount());
     }
 
-    public function testGetTotal(): void
+    #[Test]
+    public function getTotal(): void
     {
         $repo = self::getContainer()->get(DexAvailabilitiesRepository::class);
 
@@ -53,7 +56,8 @@ final class DexAvailabilitiesRepositoryTest extends KernelTestCase
         $this->assertEquals(22, $totalCount);
     }
 
-    public function testGetTotalDifferentTrainer(): void
+    #[Test]
+    public function getTotalDifferentTrainer(): void
     {
         $repo = self::getContainer()->get(DexAvailabilitiesRepository::class);
 
@@ -69,8 +73,9 @@ final class DexAvailabilitiesRepositoryTest extends KernelTestCase
     /**
      * @param string[][] $filters
      */
+    #[Test]
     #[DataProvider('providerGetTotalFilters')]
-    public function testGetTotalFilters(array $filters, int $expectedTotalCount): void
+    public function getTotalFilters(array $filters, int $expectedTotalCount): void
     {
         $repo = self::getContainer()->get(DexAvailabilitiesRepository::class);
 
@@ -102,7 +107,8 @@ final class DexAvailabilitiesRepositoryTest extends KernelTestCase
         );
     }
 
-    public function testGetBatchedTotal(): void
+    #[Test]
+    public function getBatchedTotal(): void
     {
         $repo = self::getContainer()->get(DexAvailabilitiesRepository::class);
 
@@ -118,7 +124,8 @@ final class DexAvailabilitiesRepositoryTest extends KernelTestCase
         $this->assertSame(11, $byDexSlug['home_shiny']);
     }
 
-    public function testGetBatchedTotalDifferentTrainer(): void
+    #[Test]
+    public function getBatchedTotalDifferentTrainer(): void
     {
         $repo = self::getContainer()->get(DexAvailabilitiesRepository::class);
 

@@ -7,6 +7,7 @@ namespace App\Tests\Integration\Repository;
 use App\Repository\TrainerPokemonEloRepository;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -23,7 +24,8 @@ final class TrainerPokemonEloRepositoryMetricsTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testGetMetrics(): void
+    #[Test]
+    public function getMetrics(): void
     {
         $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
@@ -43,7 +45,8 @@ final class TrainerPokemonEloRepositoryMetricsTest extends KernelTestCase
         );
     }
 
-    public function testGetMetricsBis(): void
+    #[Test]
+    public function getMetricsBis(): void
     {
         $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
@@ -63,7 +66,8 @@ final class TrainerPokemonEloRepositoryMetricsTest extends KernelTestCase
         );
     }
 
-    public function testGetMetricsNo(): void
+    #[Test]
+    public function getMetricsNo(): void
     {
         $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 

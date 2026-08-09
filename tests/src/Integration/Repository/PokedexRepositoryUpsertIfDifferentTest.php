@@ -8,6 +8,7 @@ use App\Repository\PokedexRepository;
 use Doctrine\DBAL\Connection;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -20,7 +21,8 @@ final class PokedexRepositoryUpsertIfDifferentTest extends KernelTestCase
 
     private const string TRAINER = '7b52009b64fd0a2a49e6d8a939753077792b0554';
 
-    public function testReturnsTrueAndWritesWhenValueChanges(): void
+    #[Test]
+    public function returnsTrueAndWritesWhenValueChanges(): void
     {
         $repository = self::getContainer()->get(PokedexRepository::class);
         $trainerDexId = $this->getTrainerDexId('goldsilvercrystal');
@@ -32,7 +34,8 @@ final class PokedexRepositoryUpsertIfDifferentTest extends KernelTestCase
         $this->assertSame('yes', $this->getCatchStateSlug($trainerDexId, 'ivysaur'));
     }
 
-    public function testReturnsFalseAndDoesNotWriteWhenValueIsUnchanged(): void
+    #[Test]
+    public function returnsFalseAndDoesNotWriteWhenValueIsUnchanged(): void
     {
         $repository = self::getContainer()->get(PokedexRepository::class);
         $trainerDexId = $this->getTrainerDexId('goldsilvercrystal');
@@ -44,7 +47,8 @@ final class PokedexRepositoryUpsertIfDifferentTest extends KernelTestCase
         $this->assertSame('no', $this->getCatchStateSlug($trainerDexId, 'ivysaur'));
     }
 
-    public function testReturnsFalseWhenPokemonNotInDex(): void
+    #[Test]
+    public function returnsFalseWhenPokemonNotInDex(): void
     {
         $repository = self::getContainer()->get(PokedexRepository::class);
         // Fixture: 'douze' has no dex_availability row for goldsilvercrystal (only redgreenblueyellow and home).
@@ -56,7 +60,8 @@ final class PokedexRepositoryUpsertIfDifferentTest extends KernelTestCase
         $this->assertNull($this->getCatchStateSlug($trainerDexId, 'douze'));
     }
 
-    public function testCreatesAFreshPokedexRowWhenNoneExists(): void
+    #[Test]
+    public function createsAFreshPokedexRowWhenNoneExists(): void
     {
         $repository = self::getContainer()->get(PokedexRepository::class);
         // Fixture: 'douze' has a dex_availability row for redgreenblueyellow but no pokedex row for it yet.

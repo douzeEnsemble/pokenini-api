@@ -11,6 +11,7 @@ use App\Tests\Common\Traits\CounterTrait\CountPokemonTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -28,7 +29,8 @@ final class PokemonsRepositoryTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testRemoveAll(): void
+    #[Test]
+    public function removeAll(): void
     {
         $initCount = $this->getPokemonCount();
         $this->assertGreaterThan(0, $initCount);
@@ -50,7 +52,8 @@ final class PokemonsRepositoryTest extends KernelTestCase
         $this->assertEquals(0, $this->getPokemonNotDeletedCount());
     }
 
-    public function testGetAll(): void
+    #[Test]
+    public function getAll(): void
     {
         $repo = self::getContainer()->get(PokemonsRepository::class);
 
@@ -81,8 +84,9 @@ final class PokemonsRepositoryTest extends KernelTestCase
     /**
      * @param string[][] $filters
      */
+    #[Test]
     #[DataProvider('providerGetNToPick')]
-    public function testGetNToPick(
+    public function getNToPick(
         string $dexSlug,
         string $electionSlug,
         array $filters,
@@ -169,8 +173,9 @@ final class PokemonsRepositoryTest extends KernelTestCase
     /**
      * @param string[][] $filters
      */
+    #[Test]
     #[DataProvider('providerGetNToVote')]
-    public function testGetNToVote(
+    public function getNToVote(
         string $dexSlug,
         string $electionSlug,
         array $filters,

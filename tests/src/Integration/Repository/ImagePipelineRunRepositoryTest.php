@@ -9,6 +9,7 @@ use App\Repository\ImagePipelineRunRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -25,7 +26,8 @@ final class ImagePipelineRunRepositoryTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testCreateThenFindLatest(): void
+    #[Test]
+    public function createThenFindLatest(): void
     {
         $repo = self::getContainer()->get(ImagePipelineRunRepository::class);
 
@@ -38,14 +40,16 @@ final class ImagePipelineRunRepositoryTest extends KernelTestCase
         $this->assertNull($run->workflowARunId);
     }
 
-    public function testFindLatestReturnsNullWhenEmpty(): void
+    #[Test]
+    public function findLatestReturnsNullWhenEmpty(): void
     {
         $repo = self::getContainer()->get(ImagePipelineRunRepository::class);
 
         $this->assertNull($repo->findLatest());
     }
 
-    public function testFindLatestReturnsMostRecent(): void
+    #[Test]
+    public function findLatestReturnsMostRecent(): void
     {
         $repo = self::getContainer()->get(ImagePipelineRunRepository::class);
         $entityManager = self::getContainer()->get(EntityManagerInterface::class);
@@ -69,7 +73,8 @@ final class ImagePipelineRunRepositoryTest extends KernelTestCase
         $this->assertSame('corr-newer', $run->correlationId);
     }
 
-    public function testUpdateFieldsAppliesOnlyProvidedFields(): void
+    #[Test]
+    public function updateFieldsAppliesOnlyProvidedFields(): void
     {
         $repo = self::getContainer()->get(ImagePipelineRunRepository::class);
 
@@ -92,7 +97,8 @@ final class ImagePipelineRunRepositoryTest extends KernelTestCase
         $this->assertNull($run->iconPrNumber);
     }
 
-    public function testUpdateFieldsPreservesFieldsFromAnEarlierPatch(): void
+    #[Test]
+    public function updateFieldsPreservesFieldsFromAnEarlierPatch(): void
     {
         $repo = self::getContainer()->get(ImagePipelineRunRepository::class);
 
@@ -108,7 +114,8 @@ final class ImagePipelineRunRepositoryTest extends KernelTestCase
         $this->assertSame(2, $run->iconPrNumber);
     }
 
-    public function testUpdateFieldsAppliesAllProvidedFields(): void
+    #[Test]
+    public function updateFieldsAppliesAllProvidedFields(): void
     {
         $repo = self::getContainer()->get(ImagePipelineRunRepository::class);
 
@@ -152,7 +159,8 @@ final class ImagePipelineRunRepositoryTest extends KernelTestCase
         $this->assertSame('merged', $run->resourcesPrState);
     }
 
-    public function testUpdateFieldsReturnsFalseWhenCorrelationIdUnknown(): void
+    #[Test]
+    public function updateFieldsReturnsFalseWhenCorrelationIdUnknown(): void
     {
         $repo = self::getContainer()->get(ImagePipelineRunRepository::class);
 

@@ -7,6 +7,7 @@ namespace App\Tests\Integration\Repository;
 use App\Repository\TrainerPokemonEloRepository;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -23,7 +24,8 @@ final class TrainerPokemonEloRepositoryTopNTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testTop5(): void
+    #[Test]
+    public function top5(): void
     {
         $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
@@ -59,7 +61,8 @@ final class TrainerPokemonEloRepositoryTopNTest extends KernelTestCase
         );
     }
 
-    public function testTop5Home(): void
+    #[Test]
+    public function top5Home(): void
     {
         $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
@@ -71,7 +74,8 @@ final class TrainerPokemonEloRepositoryTopNTest extends KernelTestCase
         );
     }
 
-    public function testTop5HomeFavorite(): void
+    #[Test]
+    public function top5HomeFavorite(): void
     {
         $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
@@ -107,7 +111,8 @@ final class TrainerPokemonEloRepositoryTopNTest extends KernelTestCase
         );
     }
 
-    public function testTop10(): void
+    #[Test]
+    public function top10(): void
     {
         $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 
@@ -145,7 +150,8 @@ final class TrainerPokemonEloRepositoryTopNTest extends KernelTestCase
         );
     }
 
-    public function testTopComplete(): void
+    #[Test]
+    public function topComplete(): void
     {
         $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 

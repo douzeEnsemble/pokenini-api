@@ -10,6 +10,7 @@ use App\Repository\PokemonsRepository;
 use App\Tests\Common\Traits\CounterTrait\CountGameAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -36,7 +37,8 @@ final class GamesAvailabilitiesRepositoryTest extends KernelTestCase
         $this->pokemonsRepo = self::getContainer()->get(PokemonsRepository::class);
     }
 
-    public function testRemoveAll(): void
+    #[Test]
+    public function removeAll(): void
     {
         $this->assertGreaterThan(0, $this->getGameAvailabilityCount());
 
@@ -48,7 +50,8 @@ final class GamesAvailabilitiesRepositoryTest extends KernelTestCase
         $this->assertEquals(0, $this->getGameAvailabilityCount());
     }
 
-    public function testGetFromPokemon(): void
+    #[Test]
+    public function getFromPokemon(): void
     {
         $pokemonDouze = $this->getPokemon('Douze');
 

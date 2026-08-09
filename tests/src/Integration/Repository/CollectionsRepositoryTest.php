@@ -7,6 +7,7 @@ namespace App\Tests\Integration\Repository;
 use App\Repository\CollectionsRepository;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -23,7 +24,8 @@ final class CollectionsRepositoryTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testGetAllSlug(): void
+    #[Test]
+    public function getAllSlug(): void
     {
         $repo = self::getContainer()->get(CollectionsRepository::class);
 
@@ -44,7 +46,8 @@ final class CollectionsRepositoryTest extends KernelTestCase
         );
     }
 
-    public function testGetAll(): void
+    #[Test]
+    public function getAll(): void
     {
         $repo = self::getContainer()->get(CollectionsRepository::class);
 

@@ -12,6 +12,7 @@ use App\Tests\Common\Traits\PokemonListTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -32,7 +33,8 @@ final class CollectionsTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testGetListQueryCollectionAvailabilities(): void
+    #[Test]
+    public function getListQueryCollectionAvailabilities(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 
@@ -54,7 +56,8 @@ final class CollectionsTest extends KernelTestCase
         );
     }
 
-    public function testGetListQueryCollectionAvailabilitiesNegative(): void
+    #[Test]
+    public function getListQueryCollectionAvailabilitiesNegative(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 

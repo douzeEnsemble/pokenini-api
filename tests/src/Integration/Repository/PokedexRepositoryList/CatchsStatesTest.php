@@ -12,6 +12,7 @@ use App\Tests\Common\Traits\PokemonListTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -32,7 +33,8 @@ final class CatchsStatesTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testGetListQueryCatchStates(): void
+    #[Test]
+    public function getListQueryCatchStates(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 
@@ -56,7 +58,8 @@ final class CatchsStatesTest extends KernelTestCase
         );
     }
 
-    public function testGetListQueryCatchStatesNegative(): void
+    #[Test]
+    public function getListQueryCatchStatesNegative(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 
@@ -96,7 +99,8 @@ final class CatchsStatesTest extends KernelTestCase
         );
     }
 
-    public function testGetListQueryCatchStatesNegativeNo(): void
+    #[Test]
+    public function getListQueryCatchStatesNegativeNo(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 

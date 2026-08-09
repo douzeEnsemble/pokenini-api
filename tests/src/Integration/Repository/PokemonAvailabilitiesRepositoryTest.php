@@ -9,6 +9,7 @@ use App\Tests\Common\Traits\CounterTrait\CountPokemonAvailabilitiesTrait;
 use Doctrine\DBAL\Exception\UniqueConstraintViolationException;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -26,7 +27,8 @@ final class PokemonAvailabilitiesRepositoryTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testRemoveAllByCategory(): void
+    #[Test]
+    public function removeAllByCategory(): void
     {
         $this->assertGreaterThan(0, $this->getPokemonAvailabilitiesCount('game_bundle'));
         $previousCount = $this->getPokemonAvailabilitiesCount('game_bundle_shiny');
@@ -42,7 +44,8 @@ final class PokemonAvailabilitiesRepositoryTest extends KernelTestCase
         );
     }
 
-    public function testCalculateGameBundle(): void
+    #[Test]
+    public function calculateGameBundle(): void
     {
         $repo = self::getContainer()->get(PokemonAvailabilitiesRepository::class);
 
@@ -61,7 +64,8 @@ final class PokemonAvailabilitiesRepositoryTest extends KernelTestCase
         );
     }
 
-    public function testCalculateGameBundleShiny(): void
+    #[Test]
+    public function calculateGameBundleShiny(): void
     {
         $repo = self::getContainer()->get(PokemonAvailabilitiesRepository::class);
 
@@ -80,7 +84,8 @@ final class PokemonAvailabilitiesRepositoryTest extends KernelTestCase
         );
     }
 
-    public function testCalculateUnicity(): void
+    #[Test]
+    public function calculateUnicity(): void
     {
         $repo = self::getContainer()->get(PokemonAvailabilitiesRepository::class);
 

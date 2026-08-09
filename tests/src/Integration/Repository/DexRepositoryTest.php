@@ -11,6 +11,7 @@ use App\Tests\Common\Traits\CounterTrait\CountDexTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -28,7 +29,8 @@ final class DexRepositoryTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testGetAll(): void
+    #[Test]
+    public function getAll(): void
     {
         $repo = self::getContainer()->get(DexRepository::class);
 
@@ -48,7 +50,8 @@ final class DexRepositoryTest extends KernelTestCase
         );
     }
 
-    public function testGetData(): void
+    #[Test]
+    public function getData(): void
     {
         $repo = self::getContainer()->get(DexRepository::class);
 
@@ -83,8 +86,9 @@ final class DexRepositoryTest extends KernelTestCase
     /**
      * @param string[] $expectedSlugs
      */
+    #[Test]
     #[DataProvider('providerGetCanHoldElection')]
-    public function testGetCanHoldElection(
+    public function getCanHoldElection(
         bool $includeUnreleasedDex,
         bool $includePremiumDex,
         array $expectedSlugs,
