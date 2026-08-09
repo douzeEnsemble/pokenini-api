@@ -15,6 +15,7 @@ use App\Tests\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Common\Traits\CounterTrait\CountGameAvailabilityTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -31,7 +32,8 @@ final class UpdateGamesAvailabilitiesCommandTest extends AbstractTestCaseCommand
     use CountGameAvailabilityTrait;
     use CountActionLogTrait;
 
-    public function testUpdate(): void
+    #[Test]
+    public function update(): void
     {
         $this->assertGreaterThan(0, $this->getGameAvailabilityCount());
 

@@ -19,6 +19,7 @@ use App\Tests\Common\Traits\CounterTrait\CountPokemonTrait;
 use App\Tests\Common\Traits\HasserTrait\HasDexAvailabilityTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -38,7 +39,8 @@ final class CalculateDexAvailabilitiesCommandTest extends AbstractTestCaseComman
     use HasDexAvailabilityTrait;
     use CountActionLogTrait;
 
-    public function testNoDexAvailabilities(): void
+    #[Test]
+    public function noDexAvailabilities(): void
     {
         $repo = self::getContainer()->get(PokemonsRepository::class);
         $queryBuilder = $repo->createQueryBuilder('p')
@@ -68,7 +70,8 @@ final class CalculateDexAvailabilitiesCommandTest extends AbstractTestCaseComman
         $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
     }
 
-    public function testDexAvailabilities(): void
+    #[Test]
+    public function dexAvailabilities(): void
     {
         $this->assertEquals(70, $this->getDexAvailabilityCount());
 

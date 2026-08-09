@@ -19,6 +19,7 @@ use App\Tests\Common\Traits\CounterTrait\CountPokemonTrait;
 use App\Tests\Common\Traits\HasserTrait\HasPokemonAvailabilitiesTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -38,7 +39,8 @@ final class CalculatePokemonAvailabilitiesCommandTest extends AbstractTestCaseCo
     use HasPokemonAvailabilitiesTrait;
     use CountActionLogTrait;
 
-    public function testNoPokemonAvailabilities(): void
+    #[Test]
+    public function noPokemonAvailabilities(): void
     {
         $repo = self::getContainer()->get(PokemonsRepository::class);
         $queryBuilder = $repo->createQueryBuilder('p')
@@ -77,7 +79,8 @@ final class CalculatePokemonAvailabilitiesCommandTest extends AbstractTestCaseCo
         $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
     }
 
-    public function testPokemonAvailabilities(): void
+    #[Test]
+    public function pokemonAvailabilities(): void
     {
         $this->assertEquals(26, $this->getPokemonAvailabilitiesCount('game_bundle'));
         $this->assertEquals(26, $this->getPokemonAvailabilitiesCount('game_bundle_shiny'));

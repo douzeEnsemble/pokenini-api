@@ -15,6 +15,7 @@ use App\Tests\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Common\Traits\CounterTrait\CounterTableTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -31,7 +32,8 @@ final class UpdatePokemonsCommandTest extends AbstractTestCaseCommand
     use CounterTableTrait;
     use CountActionLogTrait;
 
-    public function testUpdateWithInvalidSheetFailsAndLogsError(): void
+    #[Test]
+    public function updateWithInvalidSheetFailsAndLogsError(): void
     {
         $initialErrorCount = $this->getActionLogErrorCount();
 
@@ -42,7 +44,8 @@ final class UpdatePokemonsCommandTest extends AbstractTestCaseCommand
         $this->assertStringContainsString('This is not a valid data spreadsheet', $commandTester->getDisplay());
     }
 
-    public function testUpdate(): void
+    #[Test]
+    public function update(): void
     {
         $this->assertEquals(26, $this->getTableCount('pokemon'));
 

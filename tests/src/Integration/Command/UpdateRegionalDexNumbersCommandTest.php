@@ -15,6 +15,7 @@ use App\Tests\Common\Traits\CounterTrait\CountActionLogTrait;
 use App\Tests\Common\Traits\CounterTrait\CountRegionalDexNumberTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -31,7 +32,8 @@ final class UpdateRegionalDexNumbersCommandTest extends AbstractTestCaseCommand
     use CountRegionalDexNumberTrait;
     use CountActionLogTrait;
 
-    public function testUpdate(): void
+    #[Test]
+    public function update(): void
     {
         $this->assertGreaterThan(0, $this->getRegionalDexNumberCount());
 
