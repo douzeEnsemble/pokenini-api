@@ -10,6 +10,7 @@ use App\Updater\AbstractUpdater;
 use App\Updater\PokemonsUpdater;
 use Doctrine\DBAL\Connection;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -27,7 +28,8 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
     protected string $sheetName = 'Pokémons';
     protected string $tableName = 'pokemon';
 
-    public function testImportNewPokemons(): void
+    #[Test]
+    public function importNewPokemons(): void
     {
         $this->assertGreaterThan(0, $this->getPokemonCount());
         $this->assertEquals($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
@@ -79,7 +81,8 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
         $this->assertEquals('PokéSprite', $megaCharizardXSmallCredit['source']);
     }
 
-    public function testImportExistingPokemons(): void
+    #[Test]
+    public function importExistingPokemons(): void
     {
         $this->assertGreaterThan(0, $this->getPokemonCount());
         $this->assertEquals($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
@@ -131,7 +134,8 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
         $this->assertNotNull($ivysaurAfter['secondary_type_id']);
     }
 
-    public function testImportNewAndExistingPokemons(): void
+    #[Test]
+    public function importNewAndExistingPokemons(): void
     {
         $this->assertGreaterThan(0, $this->getPokemonCount());
         $this->assertEquals($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
@@ -144,7 +148,8 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
         $this->assertEquals(17, $this->getPokemonDeletedCount());
     }
 
-    public function testUpdateRegionalFormPokemons(): void
+    #[Test]
+    public function updateRegionalFormPokemons(): void
     {
         $this->assertGreaterThan(0, $this->getPokemonCount());
         $this->assertEquals($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
@@ -163,7 +168,8 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
         $this->assertNotNull($pokemonAfter['regional_form_id']);
     }
 
-    public function testUpdateTypesPokemons(): void
+    #[Test]
+    public function updateTypesPokemons(): void
     {
         $this->assertGreaterThan(0, $this->getPokemonCount());
         $this->assertEquals($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
@@ -184,7 +190,8 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
         $this->assertNotNull($pokemonAfter['secondary_type_id']);
     }
 
-    public function testUpdateFamilyLink(): void
+    #[Test]
+    public function updateFamilyLink(): void
     {
         $this->assertNotEmpty($this->getPokemonFromName('Charmander'));
         $this->assertNotEmpty($this->getPokemonFromName('Charmeleon'));
@@ -221,7 +228,8 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
         $this->assertEquals('rattata', $raticateFemale['family']);
     }
 
-    public function testDifferentColumnsOrderPokemons(): void
+    #[Test]
+    public function differentColumnsOrderPokemons(): void
     {
         $this->assertGreaterThan(0, $this->getPokemonCount());
         $this->assertEquals($this->getPokemonCount(), $this->getPokemonNotDeletedCount());

@@ -8,6 +8,7 @@ use App\Exception\InvalidSheetDataException;
 use App\Updater\AbstractUpdater;
 use Doctrine\DBAL\Connection;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 abstract class AbstractTestUpdater extends KernelTestCase
@@ -27,7 +28,8 @@ abstract class AbstractTestUpdater extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testDoEmptySheet(): void
+    #[Test]
+    public function doEmptySheet(): void
     {
         $service = $this->getService();
 
@@ -37,7 +39,8 @@ abstract class AbstractTestUpdater extends KernelTestCase
         $service->execute('empty');
     }
 
-    public function testDoWrongSheet(): void
+    #[Test]
+    public function doWrongSheet(): void
     {
         $service = $this->getService();
 
@@ -47,7 +50,8 @@ abstract class AbstractTestUpdater extends KernelTestCase
         $service->execute('wrong_sheet');
     }
 
-    public function testDo(): void
+    #[Test]
+    public function do(): void
     {
         $this->assertEquals($this->initialTotalCount, $this->getTableCount());
         $this->assertEquals($this->initialDeletedTotalCount, $this->getTableDeletedAtCount());
@@ -60,7 +64,8 @@ abstract class AbstractTestUpdater extends KernelTestCase
         $this->assertEquals($this->mustBeDeletedTotalCount, $this->getTableDeletedAtCount());
     }
 
-    public function testExecuteTwice(): void
+    #[Test]
+    public function executeTwice(): void
     {
         $this->getService()->execute($this->sheetName);
 

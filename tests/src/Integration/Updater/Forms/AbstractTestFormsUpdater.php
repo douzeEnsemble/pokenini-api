@@ -6,10 +6,12 @@ namespace App\Tests\Integration\Updater\Forms;
 
 use App\Exception\InvalidSheetDataException;
 use App\Tests\Integration\Updater\AbstractTestUpdater;
+use PHPUnit\Framework\Attributes\Test;
 
 abstract class AbstractTestFormsUpdater extends AbstractTestUpdater
 {
-    public function testDoEmptyData(): void
+    #[Test]
+    public function doEmptyData(): void
     {
         $service = $this->getService();
 
@@ -19,7 +21,8 @@ abstract class AbstractTestFormsUpdater extends AbstractTestUpdater
         $service->execute('form / empty_data');
     }
 
-    public function testDoZeroData(): void
+    #[Test]
+    public function doZeroData(): void
     {
         $service = $this->getService();
 
@@ -29,7 +32,8 @@ abstract class AbstractTestFormsUpdater extends AbstractTestUpdater
         $service->execute('form / zero_data');
     }
 
-    public function testDoAnotherList(): void
+    #[Test]
+    public function doAnotherList(): void
     {
         $this->assertEquals($this->initialTotalCount, $this->getTableCount());
         $this->assertEquals(0, $this->getTableDeletedAtCount());
@@ -42,7 +46,8 @@ abstract class AbstractTestFormsUpdater extends AbstractTestUpdater
         $this->assertEquals($this->initialTotalCount, $this->getTableDeletedAtCount());
     }
 
-    public function testDoDifferentColumnsOrder(): void
+    #[Test]
+    public function doDifferentColumnsOrder(): void
     {
         $this->assertEquals($this->initialTotalCount, $this->getTableCount());
         $this->assertEquals(0, $this->getTableDeletedAtCount());
