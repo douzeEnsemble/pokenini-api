@@ -12,6 +12,7 @@ use App\Service\GameBundlesShiniesAvailabilitiesService;
 use App\Service\GamesAvailabilitiesService;
 use App\Service\GamesShiniesAvailabilitiesService;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -20,7 +21,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(DebugPokemonController::class)]
 final class DebugPokemonControllerTest extends TestCase
 {
-    public function testPokemonCleanCaches(): void
+    #[Test]
+    public function pokemonCleanCaches(): void
     {
         $pokemon = new Pokemon();
         $pokemon->slug = 'zaertyuiop';
