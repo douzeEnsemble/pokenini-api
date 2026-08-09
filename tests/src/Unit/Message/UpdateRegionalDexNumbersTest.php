@@ -6,6 +6,7 @@ namespace App\Tests\Unit\Message;
 
 use App\Message\UpdateRegionalDexNumbers;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,7 +15,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(UpdateRegionalDexNumbers::class)]
 final class UpdateRegionalDexNumbersTest extends TestCase
 {
-    public function testSerialize(): void
+    #[Test]
+    public function serialize(): void
     {
         $message = new UpdateRegionalDexNumbers('12');
 
