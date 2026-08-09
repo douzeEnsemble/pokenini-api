@@ -11,6 +11,7 @@ use App\Repository\ActionLogsRepository;
 use App\Service\UpdaterService\CollectionsAvailabilitiesUpdaterService;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
@@ -22,7 +23,8 @@ use Symfony\Contracts\Translation\TranslatorInterface;
 #[CoversClass(UpdateCollectionsAvailabilitiesCommand::class)]
 final class UpdateCollectionsAvailabilitiesCommandTest extends TestCase
 {
-    public function testFailureOnException(): void
+    #[Test]
+    public function failureOnException(): void
     {
         $translator = $this->createMock(TranslatorInterface::class);
         $translator
