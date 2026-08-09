@@ -16,7 +16,7 @@ use PHPUnit\Framework\TestCase;
 final class ElectionPokemonsListTest extends TestCase
 {
     #[Test]
-    public function ok(): void
+    public function everythingOK(): void
     {
         $attributes = new ElectionPokemonsList(
             'pick',

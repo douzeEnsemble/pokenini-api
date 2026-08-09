@@ -18,7 +18,7 @@ use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 final class DexQueryOptionsTest extends TestCase
 {
     #[Test]
-    public function ok(): void
+    public function everythingOK(): void
     {
         $attributes = new DexQueryOptions([
             'include_unreleased_dex' => false,

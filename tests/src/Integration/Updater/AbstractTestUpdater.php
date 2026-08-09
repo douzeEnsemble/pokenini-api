@@ -51,7 +51,7 @@ abstract class AbstractTestUpdater extends KernelTestCase
     }
 
     #[Test]
-    public function do(): void
+    public function execute(): void
     {
         $this->assertEquals($this->initialTotalCount, $this->getTableCount());
         $this->assertEquals($this->initialDeletedTotalCount, $this->getTableDeletedAtCount());
