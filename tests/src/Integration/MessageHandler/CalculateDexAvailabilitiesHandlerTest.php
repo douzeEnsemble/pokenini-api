@@ -13,6 +13,7 @@ use App\Tests\Common\Traits\GetterTrait\GetActionLogTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 use Zenstruck\Messenger\Test\InteractsWithMessenger;
 
@@ -35,7 +36,8 @@ final class CalculateDexAvailabilitiesHandlerTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testHandler(): void
+    #[Test]
+    public function handler(): void
     {
         $transport = $this->transport('async');
         $transport->throwExceptions();
@@ -65,7 +67,8 @@ final class CalculateDexAvailabilitiesHandlerTest extends KernelTestCase
         $this->assertEquals($beforeDoneCount + 1, $this->getActionLogDoneCount());
     }
 
-    public function testExceptionHandler(): void
+    #[Test]
+    public function exceptionHandler(): void
     {
         $transport = $this->transport('async');
         $transport->throwExceptions();
