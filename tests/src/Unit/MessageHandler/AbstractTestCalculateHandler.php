@@ -11,6 +11,7 @@ use App\MessageHandler\CalculateHandlerInterface;
 use App\Repository\ActionLogsRepository;
 use App\Service\CalculatorService\CalculatorServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -28,7 +29,8 @@ abstract class AbstractTestCalculateHandler extends TestCase
 
     abstract public function getMessage(): AbstractActionMessage;
 
-    public function testCalculate(): void
+    #[Test]
+    public function calculate(): void
     {
         $calculatorService = $this->createMock($this->getServiceClass());
         $calculatorService
@@ -77,7 +79,8 @@ abstract class AbstractTestCalculateHandler extends TestCase
         $this->assertNull($actionLog->errorTrace);
     }
 
-    public function testCalculateError(): void
+    #[Test]
+    public function calculateError(): void
     {
         $calculatorService = $this->createMock($this->getServiceClass());
         $calculatorService

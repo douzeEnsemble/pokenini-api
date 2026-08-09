@@ -11,6 +11,7 @@ use App\MessageHandler\UpdateHandlerInterface;
 use App\Repository\ActionLogsRepository;
 use App\Service\UpdaterService\UpdaterServiceInterface;
 use Doctrine\ORM\EntityManagerInterface;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
@@ -28,7 +29,8 @@ abstract class AbstractTestUpdateHandler extends TestCase
 
     abstract public function getMessage(): AbstractActionMessage;
 
-    public function testUpdate(): void
+    #[Test]
+    public function update(): void
     {
         $updaterService = $this->createMock($this->getServiceClass());
         $updaterService
@@ -77,7 +79,8 @@ abstract class AbstractTestUpdateHandler extends TestCase
         $this->assertNull($actionLog->errorTrace);
     }
 
-    public function testUpdateError(): void
+    #[Test]
+    public function updateError(): void
     {
         $updaterService = $this->createMock($this->getServiceClass());
         $updaterService
