@@ -18,7 +18,7 @@ use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 final class TrainerDexAttributesTest extends TestCase
 {
     #[Test]
-    public function ok(): void
+    public function everythingOK(): void
     {
         $attributes = new TrainerDexAttributes(['is_private' => false, 'is_on_home' => false]);
 

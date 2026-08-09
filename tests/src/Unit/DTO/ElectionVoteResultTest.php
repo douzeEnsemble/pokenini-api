@@ -18,7 +18,7 @@ use PHPUnit\Framework\TestCase;
 final class ElectionVoteResultTest extends TestCase
 {
     #[Test]
-    public function ok(): void
+    public function everythingOK(): void
     {
         $electionVote = new ElectionVote([
             'trainer' => ['external_id' => '67865468'],

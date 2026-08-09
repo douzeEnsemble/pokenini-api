@@ -18,7 +18,7 @@ use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 final class ElectionVoteTest extends TestCase
 {
     #[Test]
-    public function ok(): void
+    public function everythingOK(): void
     {
         $attributes = new ElectionVote([
             'trainer' => ['external_id' => '67865468'],

@@ -19,7 +19,7 @@ use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 final class TrainerPokemonEloListQueryOptionsTest extends TestCase
 {
     #[Test]
-    public function ok(): void
+    public function everythingOK(): void
     {
         $attributes = new TrainerPokemonEloListQueryOptions([
             'trainer_external_id' => '67865468',
