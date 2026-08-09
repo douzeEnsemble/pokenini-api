@@ -8,6 +8,7 @@ use App\DTO\TrainerPokemonEloListQueryOptions;
 use App\Repository\PokemonsRepository;
 use App\Service\GetNPokemonsToVoteService;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -16,7 +17,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(GetNPokemonsToVoteService::class)]
 final class GetNPokemonsToVoteServiceTest extends TestCase
 {
-    public function testGetNPokemonsToVote(): void
+    #[Test]
+    public function getNPokemonsToVote(): void
     {
         $queryOptions = new TrainerPokemonEloListQueryOptions([
             'trainer_external_id' => 'bd307a3ec329e10a2cff8fb87480823da114f8f4',

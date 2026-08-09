@@ -10,6 +10,7 @@ use App\DTO\DataChangeReport\Report;
 use App\DTO\DataChangeReport\Statistic;
 use App\Service\CalculatorService\PokemonAvailabilitiesCalculatorService;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -18,7 +19,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(PokemonAvailabilitiesCalculatorService::class)]
 final class PokemonAvailabilitiesCalculatorServiceTest extends TestCase
 {
-    public function testExecute(): void
+    #[Test]
+    public function execute(): void
     {
         $gameBundleStatistic = new Statistic('gb');
         $gameBundleShinyStatistic = new Statistic('gbs');

@@ -8,6 +8,7 @@ use App\DTO\DataChangeReport\Statistic;
 use App\Service\UpdaterService\CollectionsUpdaterService;
 use App\Updater\CollectionsUpdater;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -16,14 +17,16 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(CollectionsUpdaterService::class)]
 final class CollectionsUpdaterServiceTest extends TestCase
 {
-    public function testExecute(): void
+    #[Test]
+    public function execute(): void
     {
         $service = $this->getService();
 
         $service->execute();
     }
 
-    public function testGetReport(): void
+    #[Test]
+    public function getReport(): void
     {
         $service = $this->getService();
 

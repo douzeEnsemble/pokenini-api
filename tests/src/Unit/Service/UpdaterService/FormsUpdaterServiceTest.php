@@ -11,6 +11,7 @@ use App\Updater\Forms\RegionalFormsUpdater;
 use App\Updater\Forms\SpecialFormsUpdater;
 use App\Updater\Forms\VariantFormsUpdater;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -19,14 +20,16 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(FormsUpdaterService::class)]
 final class FormsUpdaterServiceTest extends TestCase
 {
-    public function testExecute(): void
+    #[Test]
+    public function execute(): void
     {
         $service = $this->getService();
 
         $service->execute();
     }
 
-    public function testGetReport(): void
+    #[Test]
+    public function getReport(): void
     {
         $service = $this->getService();
 

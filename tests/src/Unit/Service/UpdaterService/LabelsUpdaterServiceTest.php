@@ -12,6 +12,7 @@ use App\Updater\CatchStatesUpdater;
 use App\Updater\RegionsUpdater;
 use App\Updater\TypesUpdater;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -20,14 +21,16 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(LabelsUpdaterService::class)]
 final class LabelsUpdaterServiceTest extends TestCase
 {
-    public function testExecute(): void
+    #[Test]
+    public function execute(): void
     {
         $service = $this->getService();
 
         $service->execute();
     }
 
-    public function testGetReport(): void
+    #[Test]
+    public function getReport(): void
     {
         $service = $this->getService();
 

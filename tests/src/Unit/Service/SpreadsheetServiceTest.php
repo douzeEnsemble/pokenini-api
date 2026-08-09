@@ -12,6 +12,7 @@ use Google\Service\Sheets\SheetProperties;
 use Google\Service\Sheets\Spreadsheet;
 use Google\Service\Sheets\ValueRange;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\NullLogger;
 
@@ -21,7 +22,8 @@ use Psr\Log\NullLogger;
 #[CoversClass(SpreadsheetService::class)]
 final class SpreadsheetServiceTest extends TestCase
 {
-    public function testGet(): void
+    #[Test]
+    public function get(): void
     {
         $logger = new NullLogger();
         $client = $this->createMock(Client::class);
@@ -46,7 +48,8 @@ final class SpreadsheetServiceTest extends TestCase
         $service->get('azertyuiop', 'A1:R12');
     }
 
-    public function testGetSheetRowCount(): void
+    #[Test]
+    public function getSheetRowCount(): void
     {
         $service = $this->getServiceForGettingProperties();
 
@@ -56,7 +59,8 @@ final class SpreadsheetServiceTest extends TestCase
         );
     }
 
-    public function testGetSheetColumnCount(): void
+    #[Test]
+    public function getSheetColumnCount(): void
     {
         $service = $this->getServiceForGettingProperties();
 
@@ -66,7 +70,8 @@ final class SpreadsheetServiceTest extends TestCase
         );
     }
 
-    public function testGetSheetColumnCountNonExistingSheet(): void
+    #[Test]
+    public function getSheetColumnCountNonExistingSheet(): void
     {
         $service = $this->getServiceForGettingProperties();
 

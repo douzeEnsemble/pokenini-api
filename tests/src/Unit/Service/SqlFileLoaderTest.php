@@ -6,6 +6,7 @@ namespace App\Tests\Unit\Service;
 
 use App\Service\SqlFileLoader;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -35,7 +36,8 @@ final class SqlFileLoaderTest extends TestCase
         rmdir($this->tempDir);
     }
 
-    public function testLoadReturnsFileContent(): void
+    #[Test]
+    public function loadReturnsFileContent(): void
     {
         file_put_contents($this->tempDir.'/test.sql', 'SELECT 1');
         $loader = new SqlFileLoader($this->tempDir);
@@ -43,7 +45,8 @@ final class SqlFileLoaderTest extends TestCase
         $this->assertSame('SELECT 1', $loader->load('test.sql'));
     }
 
-    public function testLoadThrowsOnMissingFile(): void
+    #[Test]
+    public function loadThrowsOnMissingFile(): void
     {
         $loader = new SqlFileLoader($this->tempDir);
 
@@ -52,7 +55,8 @@ final class SqlFileLoaderTest extends TestCase
         $loader->load('missing.sql');
     }
 
-    public function testAllReferencedSqlFilesExist(): void
+    #[Test]
+    public function allReferencedSqlFilesExist(): void
     {
         $loader = new SqlFileLoader(dirname(__DIR__, 4).'/resources/sql');
 

@@ -10,6 +10,7 @@ use App\Updater\GameBundlesUpdater;
 use App\Updater\GameGenerationsUpdater;
 use App\Updater\GamesUpdater;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -18,14 +19,16 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(GamesUpdaterService::class)]
 final class GamesUpdaterServiceTest extends TestCase
 {
-    public function testExecute(): void
+    #[Test]
+    public function execute(): void
     {
         $service = $this->getService();
 
         $service->execute();
     }
 
-    public function testGetReport(): void
+    #[Test]
+    public function getReport(): void
     {
         $service = $this->getService();
 
