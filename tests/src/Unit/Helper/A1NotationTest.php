@@ -7,6 +7,7 @@ namespace App\Tests\Unit\Helper;
 use App\Helper\A1Notation;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -15,8 +16,9 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(A1Notation::class)]
 final class A1NotationTest extends TestCase
 {
+    #[Test]
     #[DataProvider('providerIndexToLetter')]
-    public function testIndexToLetter(int $index, string $expected): void
+    public function indexToLetter(int $index, string $expected): void
     {
         $this->assertEquals($expected, A1Notation::indexToLetter($index));
     }
@@ -65,8 +67,9 @@ final class A1NotationTest extends TestCase
         ];
     }
 
+    #[Test]
     #[DataProvider('providerIndexToA1Notation')]
-    public function testFromIndex(int $rowIndex, int $columnIndex, string $expected): void
+    public function fromIndex(int $rowIndex, int $columnIndex, string $expected): void
     {
         $this->assertEquals($expected, A1Notation::fromIndex($rowIndex, $columnIndex));
     }
