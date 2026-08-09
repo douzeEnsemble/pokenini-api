@@ -8,6 +8,7 @@ use App\Calculator\AbstractCalculator;
 use App\Calculator\GameBundlesAvailabilitiesCalculator;
 use App\Repository\GameBundlesAvailabilitiesRepository;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -17,7 +18,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(AbstractCalculator::class)]
 final class GameBundlesAvailabilitiesCalculatorTest extends TestCase
 {
-    public function testInit(): void
+    #[Test]
+    public function init(): void
     {
         $gameBundlesAvailabilitiesRepository = $this->createMock(GameBundlesAvailabilitiesRepository::class);
         $gameBundlesAvailabilitiesRepository
@@ -37,7 +39,8 @@ final class GameBundlesAvailabilitiesCalculatorTest extends TestCase
         $this->assertSame(0, $service->getStatistic()->count);
     }
 
-    public function testExecute(): void
+    #[Test]
+    public function execute(): void
     {
         $gameBundlesAvailabilitiesRepository = $this->createMock(GameBundlesAvailabilitiesRepository::class);
         $gameBundlesAvailabilitiesRepository
@@ -57,7 +60,8 @@ final class GameBundlesAvailabilitiesCalculatorTest extends TestCase
         $this->assertEquals(12, $statistic->count);
     }
 
-    public function testExecuteTwice(): void
+    #[Test]
+    public function executeTwice(): void
     {
         $gameBundlesAvailabilitiesRepository = $this->createMock(GameBundlesAvailabilitiesRepository::class);
         $gameBundlesAvailabilitiesRepository

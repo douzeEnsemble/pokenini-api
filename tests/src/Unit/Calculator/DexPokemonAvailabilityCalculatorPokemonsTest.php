@@ -14,6 +14,7 @@ use App\Service\GamesAvailabilitiesService;
 use App\Service\GamesShiniesAvailabilitiesService;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -22,8 +23,9 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(DexPokemonAvailabilityCalculator::class)]
 final class DexPokemonAvailabilityCalculatorPokemonsTest extends TestCase
 {
+    #[Test]
     #[DataProvider('providerCalculateIncludingPokemonsValues')]
-    public function testCalculateIncludingPokemonsValues(string $rule): void
+    public function calculateIncludingPokemonsValues(string $rule): void
     {
         $pokemon = new Pokemon();
         $pokemon->slug = 'pikachu';

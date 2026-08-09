@@ -7,6 +7,7 @@ namespace App\Tests\Unit\Calculator\PokemonAvailabilities;
 use App\Calculator\PokemonAvailabilities\GameBundlesShinyCalculator;
 use App\Repository\PokemonAvailabilitiesRepository;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -15,7 +16,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(GameBundlesShinyCalculator::class)]
 final class GameBundlesShinyCalculatorTest extends TestCase
 {
-    public function testExecute(): void
+    #[Test]
+    public function execute(): void
     {
         $repository = $this->createMock(PokemonAvailabilitiesRepository::class);
         $repository
@@ -37,7 +39,8 @@ final class GameBundlesShinyCalculatorTest extends TestCase
         $this->assertEquals(12, $statistic->count);
     }
 
-    public function testExecuteTwice(): void
+    #[Test]
+    public function executeTwice(): void
     {
         $repository = $this->createMock(PokemonAvailabilitiesRepository::class);
         $repository

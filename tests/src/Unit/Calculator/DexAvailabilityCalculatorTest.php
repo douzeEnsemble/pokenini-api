@@ -13,6 +13,7 @@ use App\Repository\PokemonsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\Query;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -22,7 +23,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(DexAvailability::class)]
 final class DexAvailabilityCalculatorTest extends TestCase
 {
-    public function testCalculate(): void
+    #[Test]
+    public function calculate(): void
     {
         $pokemonA = new Pokemon();
         $pokemonB = new Pokemon();
@@ -87,7 +89,8 @@ final class DexAvailabilityCalculatorTest extends TestCase
         $this->assertEquals(3, $count);
     }
 
-    public function testCalculateTwice(): void
+    #[Test]
+    public function calculateTwice(): void
     {
         $pokemonA = new Pokemon();
         $pokemonB = new Pokemon();
@@ -157,7 +160,8 @@ final class DexAvailabilityCalculatorTest extends TestCase
         $this->assertEquals($firstCount, $count);
     }
 
-    public function testCalculateDefaultBatchSizeDoesNotFlushWith99Items(): void
+    #[Test]
+    public function calculateDefaultBatchSizeDoesNotFlushWith99Items(): void
     {
         $dex = new Dex();
         $pokemons = array_fill(0, 99, new Pokemon());
@@ -190,7 +194,8 @@ final class DexAvailabilityCalculatorTest extends TestCase
         $this->assertEquals(99, $calculator->calculate($dex));
     }
 
-    public function testCalculateDefaultBatchSizeFlushesAfter100Items(): void
+    #[Test]
+    public function calculateDefaultBatchSizeFlushesAfter100Items(): void
     {
         $dex = new Dex();
         $pokemons = array_fill(0, 100, new Pokemon());
@@ -228,7 +233,8 @@ final class DexAvailabilityCalculatorTest extends TestCase
         $this->assertEquals(100, $calculator->calculate($dex));
     }
 
-    public function testCalculateFlushesInBatches(): void
+    #[Test]
+    public function calculateFlushesInBatches(): void
     {
         $pokemons = [new Pokemon(), new Pokemon(), new Pokemon(), new Pokemon(), new Pokemon()];
         $dex = new Dex();
@@ -278,7 +284,8 @@ final class DexAvailabilityCalculatorTest extends TestCase
         $this->assertEquals(5, $count);
     }
 
-    public function testCalculateWithoutAvailabilities(): void
+    #[Test]
+    public function calculateWithoutAvailabilities(): void
     {
         $pokemonA = new Pokemon();
         $pokemonB = new Pokemon();
