@@ -6,6 +6,7 @@ namespace App\Tests\Unit\DTO\AlbumFilter;
 
 use App\DTO\AlbumFilter\AlbumFiltersRequest;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\HttpFoundation\Request;
 
@@ -15,7 +16,8 @@ use Symfony\Component\HttpFoundation\Request;
 #[CoversClass(AlbumFiltersRequest::class)]
 final class AlbumFiltersRequestTest extends TestCase
 {
-    public function testAlbumFiltersFromRequestEmpty(): void
+    #[Test]
+    public function albumFiltersFromRequestEmpty(): void
     {
         $request = new Request([]);
 
@@ -35,7 +37,8 @@ final class AlbumFiltersRequestTest extends TestCase
         $this->assertEmpty($filters->families->values);
     }
 
-    public function testAlbumFiltersFromRequest(): void
+    #[Test]
+    public function albumFiltersFromRequest(): void
     {
         $request = new Request([
             'primary_types' => ['fire', 'water'],

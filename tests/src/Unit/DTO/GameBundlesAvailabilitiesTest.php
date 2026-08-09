@@ -6,6 +6,7 @@ namespace App\Tests\Unit\DTO;
 
 use App\DTO\GameBundlesAvailabilities;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,7 +15,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(GameBundlesAvailabilities::class)]
 final class GameBundlesAvailabilitiesTest extends TestCase
 {
-    public function testGet(): void
+    #[Test]
+    public function get(): void
     {
         $object = new GameBundlesAvailabilities([
             'a' => true,
@@ -28,7 +30,8 @@ final class GameBundlesAvailabilitiesTest extends TestCase
         $this->assertFalse($object->b);
     }
 
-    public function testSet(): void
+    #[Test]
+    public function set(): void
     {
         $this->expectException(\Exception::class);
 
@@ -38,7 +41,8 @@ final class GameBundlesAvailabilitiesTest extends TestCase
         $object->c = true;
     }
 
-    public function testIsset(): void
+    #[Test]
+    public function isset(): void
     {
         $object = new GameBundlesAvailabilities([
             'a' => true,
@@ -48,7 +52,8 @@ final class GameBundlesAvailabilitiesTest extends TestCase
         $this->assertFalse(isset($object->b));
     }
 
-    public function testAll(): void
+    #[Test]
+    public function all(): void
     {
         $object = new GameBundlesAvailabilities([
             'a' => true,

@@ -6,6 +6,7 @@ namespace App\Tests\Unit\DTO\AlbumReport;
 
 use App\DTO\AlbumReport\Statistic;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,7 +15,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(Statistic::class)]
 final class StatisticTest extends TestCase
 {
-    public function testConstructor(): void
+    #[Test]
+    public function constructor(): void
     {
         $statisticWithCount = new Statistic(
             slug: 'douze',
@@ -44,7 +46,8 @@ final class StatisticTest extends TestCase
         $this->assertEquals(0, $statisticWithoutCount->count);
     }
 
-    public function testIncrement(): void
+    #[Test]
+    public function increment(): void
     {
         $statisticWithCount = new Statistic(
             slug: 'douze',

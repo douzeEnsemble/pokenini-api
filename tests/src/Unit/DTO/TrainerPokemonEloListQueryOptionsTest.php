@@ -6,6 +6,7 @@ namespace App\Tests\Unit\DTO;
 
 use App\DTO\TrainerPokemonEloListQueryOptions;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
@@ -17,7 +18,8 @@ use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 #[CoversClass(TrainerPokemonEloListQueryOptions::class)]
 final class TrainerPokemonEloListQueryOptionsTest extends TestCase
 {
-    public function testOk(): void
+    #[Test]
+    public function ok(): void
     {
         $attributes = new TrainerPokemonEloListQueryOptions([
             'trainer_external_id' => '67865468',
@@ -32,7 +34,8 @@ final class TrainerPokemonEloListQueryOptionsTest extends TestCase
         $this->assertSame(12, $attributes->count);
     }
 
-    public function testWithAlbumFilters(): void
+    #[Test]
+    public function withAlbumFilters(): void
     {
         $attributes = new TrainerPokemonEloListQueryOptions([
             'trainer_external_id' => '67865468',
@@ -60,7 +63,8 @@ final class TrainerPokemonEloListQueryOptionsTest extends TestCase
         $this->assertSame(12, $attributes->count);
     }
 
-    public function testMissingTrainerExternalId(): void
+    #[Test]
+    public function missingTrainerExternalId(): void
     {
         $this->expectException(MissingOptionsException::class);
         new TrainerPokemonEloListQueryOptions([
@@ -70,7 +74,8 @@ final class TrainerPokemonEloListQueryOptionsTest extends TestCase
         ]);
     }
 
-    public function testMissingDexSlug(): void
+    #[Test]
+    public function missingDexSlug(): void
     {
         $this->expectException(MissingOptionsException::class);
         new TrainerPokemonEloListQueryOptions([
@@ -80,7 +85,8 @@ final class TrainerPokemonEloListQueryOptionsTest extends TestCase
         ]);
     }
 
-    public function testMissingElectionSlug(): void
+    #[Test]
+    public function missingElectionSlug(): void
     {
         $attributes = new TrainerPokemonEloListQueryOptions([
             'trainer_external_id' => '67865468',
@@ -94,7 +100,8 @@ final class TrainerPokemonEloListQueryOptionsTest extends TestCase
         $this->assertSame(12, $attributes->count);
     }
 
-    public function testMissingCount(): void
+    #[Test]
+    public function missingCount(): void
     {
         $this->expectException(MissingOptionsException::class);
         new TrainerPokemonEloListQueryOptions([
@@ -104,7 +111,8 @@ final class TrainerPokemonEloListQueryOptionsTest extends TestCase
         ]);
     }
 
-    public function testWrongValueForTrainerExternalId(): void
+    #[Test]
+    public function wrongValueForTrainerExternalId(): void
     {
         $this->expectException(InvalidOptionsException::class);
         new TrainerPokemonEloListQueryOptions([
@@ -115,7 +123,8 @@ final class TrainerPokemonEloListQueryOptionsTest extends TestCase
         ]);
     }
 
-    public function testWrongValueForDexSlug(): void
+    #[Test]
+    public function wrongValueForDexSlug(): void
     {
         $this->expectException(InvalidOptionsException::class);
         new TrainerPokemonEloListQueryOptions([
@@ -126,7 +135,8 @@ final class TrainerPokemonEloListQueryOptionsTest extends TestCase
         ]);
     }
 
-    public function testWrongValueForElectionSlug(): void
+    #[Test]
+    public function wrongValueForElectionSlug(): void
     {
         $this->expectException(InvalidOptionsException::class);
         new TrainerPokemonEloListQueryOptions([
@@ -137,7 +147,8 @@ final class TrainerPokemonEloListQueryOptionsTest extends TestCase
         ]);
     }
 
-    public function testWrongValueForCount(): void
+    #[Test]
+    public function wrongValueForCount(): void
     {
         $this->expectException(InvalidOptionsException::class);
 
@@ -154,7 +165,8 @@ final class TrainerPokemonEloListQueryOptionsTest extends TestCase
         ]);
     }
 
-    public function testCountNormalizer(): void
+    #[Test]
+    public function countNormalizer(): void
     {
         $attributes = new TrainerPokemonEloListQueryOptions([
             'trainer_external_id' => '67865468',
@@ -169,7 +181,8 @@ final class TrainerPokemonEloListQueryOptionsTest extends TestCase
         $this->assertSame(12, $attributes->count);
     }
 
-    public function testAnotherValue(): void
+    #[Test]
+    public function anotherValue(): void
     {
         $this->expectException(UndefinedOptionsException::class);
         new TrainerPokemonEloListQueryOptions([

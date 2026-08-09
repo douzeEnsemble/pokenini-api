@@ -6,6 +6,7 @@ namespace App\Tests\Unit\DTO\AlbumFilter;
 
 use App\DTO\AlbumFilter\AlbumFilterValue;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,7 +15,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(AlbumFilterValue::class)]
 final class AlbumFilterValueTest extends TestCase
 {
-    public function testConstruct(): void
+    #[Test]
+    public function construct(): void
     {
         $albumFilterValue = new AlbumFilterValue('douze');
 
