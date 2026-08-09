@@ -7,6 +7,7 @@ namespace App\Tests\Integration\Repository;
 use App\Repository\ActionLogsRepository;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -23,7 +24,8 @@ final class ActionLogsRepositoryTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testGetLastests(): void
+    #[Test]
+    public function getLastests(): void
     {
         $repo = self::getContainer()->get(ActionLogsRepository::class);
 

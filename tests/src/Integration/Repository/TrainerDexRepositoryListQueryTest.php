@@ -9,6 +9,7 @@ use App\Repository\TrainerDexRepository;
 use App\Tests\Common\Traits\CounterTrait\CountTrainerDexTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -26,7 +27,8 @@ final class TrainerDexRepositoryListQueryTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testGetListQueryDefault(): void
+    #[Test]
+    public function getListQueryDefault(): void
     {
         $repo = self::getContainer()->get(TrainerDexRepository::class);
 
@@ -38,7 +40,8 @@ final class TrainerDexRepositoryListQueryTest extends KernelTestCase
         $this->assertCount(6, iterator_to_array($list, false));
     }
 
-    public function testGetListQueryWithUnreleased(): void
+    #[Test]
+    public function getListQueryWithUnreleased(): void
     {
         $repo = self::getContainer()->get(TrainerDexRepository::class);
 
@@ -50,7 +53,8 @@ final class TrainerDexRepositoryListQueryTest extends KernelTestCase
         $this->assertCount(10, iterator_to_array($list, false));
     }
 
-    public function testGetListQueryWithPremium(): void
+    #[Test]
+    public function getListQueryWithPremium(): void
     {
         $repo = self::getContainer()->get(TrainerDexRepository::class);
 
@@ -62,7 +66,8 @@ final class TrainerDexRepositoryListQueryTest extends KernelTestCase
         $this->assertCount(7, iterator_to_array($list, false));
     }
 
-    public function testGetListQueryWithUnreleasedAndPremium(): void
+    #[Test]
+    public function getListQueryWithUnreleasedAndPremium(): void
     {
         $repo = self::getContainer()->get(TrainerDexRepository::class);
 

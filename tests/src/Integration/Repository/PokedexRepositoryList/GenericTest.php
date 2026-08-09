@@ -11,6 +11,7 @@ use App\Tests\Common\Traits\GetterTrait\GetPokedexTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -30,7 +31,8 @@ final class GenericTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testGetListQuery(): void
+    #[Test]
+    public function getListQuery(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 

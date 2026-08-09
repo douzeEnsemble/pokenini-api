@@ -8,6 +8,7 @@ use App\Repository\TrainerDexRepository;
 use App\Tests\Common\Traits\CounterTrait\CountTrainerDexTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -25,7 +26,8 @@ final class TrainerDexRepositoryInsertIfNeededTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testWasNeeded(): void
+    #[Test]
+    public function wasNeeded(): void
     {
         $repo = self::getContainer()->get(TrainerDexRepository::class);
 
@@ -36,7 +38,8 @@ final class TrainerDexRepositoryInsertIfNeededTest extends KernelTestCase
         $this->assertEquals(35, $this->getTrainerDexCount());
     }
 
-    public function testWasntNeeded(): void
+    #[Test]
+    public function wasntNeeded(): void
     {
         $repo = self::getContainer()->get(TrainerDexRepository::class);
 
@@ -47,7 +50,8 @@ final class TrainerDexRepositoryInsertIfNeededTest extends KernelTestCase
         $this->assertEquals(34, $this->getTrainerDexCount());
     }
 
-    public function testWasNeededThenWasnt(): void
+    #[Test]
+    public function wasNeededThenWasnt(): void
     {
         $repo = self::getContainer()->get(TrainerDexRepository::class);
 
@@ -62,7 +66,8 @@ final class TrainerDexRepositoryInsertIfNeededTest extends KernelTestCase
         $this->assertEquals(35, $this->getTrainerDexCount());
     }
 
-    public function testlugOkThenKo(): void
+    #[Test]
+    public function lugOkThenKo(): void
     {
         $repo = self::getContainer()->get(TrainerDexRepository::class);
 

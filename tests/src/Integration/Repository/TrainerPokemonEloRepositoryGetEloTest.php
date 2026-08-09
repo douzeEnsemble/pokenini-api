@@ -8,6 +8,7 @@ use App\Repository\TrainerPokemonEloRepository;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -24,8 +25,9 @@ final class TrainerPokemonEloRepositoryGetEloTest extends KernelTestCase
         self::bootKernel();
     }
 
+    #[Test]
     #[DataProvider('providerGetElo')]
-    public function testGetElo(string $pokemonSlug, ?int $expectedElo): void
+    public function getElo(string $pokemonSlug, ?int $expectedElo): void
     {
         $repo = self::getContainer()->get(TrainerPokemonEloRepository::class);
 

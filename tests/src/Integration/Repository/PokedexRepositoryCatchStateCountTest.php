@@ -12,6 +12,7 @@ use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -30,7 +31,8 @@ final class PokedexRepositoryCatchStateCountTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testGetCatchStatesCounts(): void
+    #[Test]
+    public function getCatchStatesCounts(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 
@@ -75,7 +77,8 @@ final class PokedexRepositoryCatchStateCountTest extends KernelTestCase
         );
     }
 
-    public function testGetBatchedCatchStatesCounts(): void
+    #[Test]
+    public function getBatchedCatchStatesCounts(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 
@@ -104,8 +107,9 @@ final class PokedexRepositoryCatchStateCountTest extends KernelTestCase
      * @param array<string, array<int, string>> $filters
      * @param array<int, int>                   $expectedCounts
      */
+    #[Test]
     #[DataProvider('providerGetCatchStatesCountsFilters')]
-    public function testGetCatchStatesCountsFilters(
+    public function getCatchStatesCountsFilters(
         array $filters,
         array $expectedCounts
     ): void {
@@ -142,7 +146,8 @@ final class PokedexRepositoryCatchStateCountTest extends KernelTestCase
         );
     }
 
-    public function testGetCatchStateCountsDefinedByTrainer(): void
+    #[Test]
+    public function getCatchStateCountsDefinedByTrainer(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 
@@ -175,7 +180,8 @@ final class PokedexRepositoryCatchStateCountTest extends KernelTestCase
         );
     }
 
-    public function testGetCatchStateUsage(): void
+    #[Test]
+    public function getCatchStateUsage(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 

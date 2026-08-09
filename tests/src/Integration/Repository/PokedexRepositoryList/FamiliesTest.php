@@ -12,6 +12,7 @@ use App\Tests\Common\Traits\PokemonListTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -32,7 +33,8 @@ final class FamiliesTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testGetListQueryFamilies(): void
+    #[Test]
+    public function getListQueryFamilies(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 

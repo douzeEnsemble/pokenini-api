@@ -12,6 +12,7 @@ use App\Tests\Common\Traits\PokemonListTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -32,7 +33,8 @@ final class GamesTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testGetListQueryOriginalGameBundle(): void
+    #[Test]
+    public function getListQueryOriginalGameBundle(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 
@@ -65,7 +67,8 @@ final class GamesTest extends KernelTestCase
         );
     }
 
-    public function testGetListQueryGameBundleAvailabilities(): void
+    #[Test]
+    public function getListQueryGameBundleAvailabilities(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 
@@ -88,7 +91,8 @@ final class GamesTest extends KernelTestCase
         );
     }
 
-    public function testGetListQueryGameBundleAvailabilitiesNegative(): void
+    #[Test]
+    public function getListQueryGameBundleAvailabilitiesNegative(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 
@@ -129,7 +133,8 @@ final class GamesTest extends KernelTestCase
         );
     }
 
-    public function testGetListQueryGameBundleShinyAvailabilities(): void
+    #[Test]
+    public function getListQueryGameBundleShinyAvailabilities(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 
@@ -154,7 +159,8 @@ final class GamesTest extends KernelTestCase
         );
     }
 
-    public function testGetListQueryGameBundleShinyAvailabilitiesNegative(): void
+    #[Test]
+    public function getListQueryGameBundleShinyAvailabilitiesNegative(): void
     {
         $repo = self::getContainer()->get(PokedexRepository::class);
 

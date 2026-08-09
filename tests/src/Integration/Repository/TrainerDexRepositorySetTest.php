@@ -9,6 +9,7 @@ use App\Repository\TrainerDexRepository;
 use App\Tests\Common\Traits\CounterTrait\CountTrainerDexTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -26,7 +27,8 @@ final class TrainerDexRepositorySetTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testExistingTrainerDex(): void
+    #[Test]
+    public function existingTrainerDex(): void
     {
         $repo = self::getContainer()->get(TrainerDexRepository::class);
 
@@ -41,7 +43,8 @@ final class TrainerDexRepositorySetTest extends KernelTestCase
         $this->assertEquals(34, $this->getTrainerDexCount());
     }
 
-    public function testNewTrainerDex(): void
+    #[Test]
+    public function newTrainerDex(): void
     {
         $repo = self::getContainer()->get(TrainerDexRepository::class);
 
@@ -56,7 +59,8 @@ final class TrainerDexRepositorySetTest extends KernelTestCase
         $this->assertEquals(35, $this->getTrainerDexCount());
     }
 
-    public function testExistingCustomTrainerDex(): void
+    #[Test]
+    public function existingCustomTrainerDex(): void
     {
         $repo = self::getContainer()->get(TrainerDexRepository::class);
 
