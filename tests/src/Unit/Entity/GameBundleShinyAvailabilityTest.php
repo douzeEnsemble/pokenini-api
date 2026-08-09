@@ -8,6 +8,7 @@ use App\Entity\GameBundle;
 use App\Entity\GameBundleShinyAvailability;
 use App\Entity\Pokemon;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -16,7 +17,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(GameBundleShinyAvailability::class)]
 final class GameBundleShinyAvailabilityTest extends TestCase
 {
-    public function testCreateAvailable(): void
+    #[Test]
+    public function createAvailable(): void
     {
         $pokemon = new Pokemon();
         $pokemon->slug = 'Douze';
@@ -35,7 +37,8 @@ final class GameBundleShinyAvailabilityTest extends TestCase
         $this->assertTrue($gameBundleShinyAvailability->isAvailable);
     }
 
-    public function testCreateUnavailable(): void
+    #[Test]
+    public function createUnavailable(): void
     {
         $pokemon = new Pokemon();
         $pokemon->slug = 'Douze';
@@ -54,7 +57,8 @@ final class GameBundleShinyAvailabilityTest extends TestCase
         $this->assertFalse($gameBundleShinyAvailability->isAvailable);
     }
 
-    public function testGetIdentifierDefault(): void
+    #[Test]
+    public function getIdentifierDefault(): void
     {
         $pokemon = new Pokemon();
         $pokemon->slug = 'Douze';

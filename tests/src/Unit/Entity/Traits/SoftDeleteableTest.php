@@ -7,6 +7,7 @@ namespace App\Tests\Unit\Entity\Traits;
 use App\Entity\Pokemon;
 use App\Entity\Traits\SoftDeleteable;
 use PHPUnit\Framework\Attributes\CoversTrait;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -15,14 +16,16 @@ use PHPUnit\Framework\TestCase;
 #[CoversTrait(SoftDeleteable::class)]
 final class SoftDeleteableTest extends TestCase
 {
-    public function testGetDeletedAtReturnsNullByDefault(): void
+    #[Test]
+    public function getDeletedAtReturnsNullByDefault(): void
     {
         $entity = new Pokemon();
 
         $this->assertNull($entity->getDeletedAt());
     }
 
-    public function testGetDeletedAtReflectsDeletedAtProperty(): void
+    #[Test]
+    public function getDeletedAtReflectsDeletedAtProperty(): void
     {
         $entity = new Pokemon();
         $date = new \DateTime('2026-01-01');
