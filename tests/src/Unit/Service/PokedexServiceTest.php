@@ -8,6 +8,7 @@ use App\Repository\PokedexRepository;
 use App\Service\PokedexService;
 use App\Service\PropagateCatchStateService;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -16,7 +17,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(PokedexService::class)]
 final class PokedexServiceTest extends TestCase
 {
-    public function testGetCatchStateCountsDefinedByTrainer(): void
+    #[Test]
+    public function getCatchStateCountsDefinedByTrainer(): void
     {
         $repository = $this->createMock(PokedexRepository::class);
         $repository->expects($this->once())
@@ -52,7 +54,8 @@ final class PokedexServiceTest extends TestCase
         );
     }
 
-    public function testGetDexUsage(): void
+    #[Test]
+    public function getDexUsage(): void
     {
         $repository = $this->createMock(PokedexRepository::class);
         $repository->expects($this->once())
@@ -102,7 +105,8 @@ final class PokedexServiceTest extends TestCase
         );
     }
 
-    public function testGetCatchStateUsage(): void
+    #[Test]
+    public function getCatchStateUsage(): void
     {
         $repository = $this->createMock(PokedexRepository::class);
         $repository->expects($this->once())
@@ -170,7 +174,8 @@ final class PokedexServiceTest extends TestCase
         );
     }
 
-    public function testUpsertReturnsOnlyOriginWhenNothingChanged(): void
+    #[Test]
+    public function upsertReturnsOnlyOriginWhenNothingChanged(): void
     {
         $repository = $this->createMock(PokedexRepository::class);
         $repository->expects($this->once())
@@ -190,7 +195,8 @@ final class PokedexServiceTest extends TestCase
         );
     }
 
-    public function testUpsertPropagatesWhenOriginChanged(): void
+    #[Test]
+    public function upsertPropagatesWhenOriginChanged(): void
     {
         $repository = $this->createMock(PokedexRepository::class);
         $repository->expects($this->once())
@@ -214,7 +220,8 @@ final class PokedexServiceTest extends TestCase
         );
     }
 
-    public function testUpsertPropagatesNothingWhenCascadeReturnsEmptyList(): void
+    #[Test]
+    public function upsertPropagatesNothingWhenCascadeReturnsEmptyList(): void
     {
         $repository = $this->createMock(PokedexRepository::class);
         $repository->expects($this->once())

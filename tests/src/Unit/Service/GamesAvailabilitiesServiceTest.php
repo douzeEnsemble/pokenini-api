@@ -9,6 +9,7 @@ use App\Entity\Pokemon;
 use App\Repository\GamesAvailabilitiesRepository;
 use App\Service\GamesAvailabilitiesService;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Symfony\Contracts\Cache\CacheInterface;
 
@@ -18,7 +19,8 @@ use Symfony\Contracts\Cache\CacheInterface;
 #[CoversClass(GamesAvailabilitiesService::class)]
 final class GamesAvailabilitiesServiceTest extends TestCase
 {
-    public function testGetFromPokemonWithCacheHit(): void
+    #[Test]
+    public function getFromPokemonWithCacheHit(): void
     {
         $pokemon = new Pokemon();
         $pokemon->slug = 'pikachu';
@@ -45,7 +47,8 @@ final class GamesAvailabilitiesServiceTest extends TestCase
         $this->assertSame($expectedResult, $result);
     }
 
-    public function testGetFromPokemonWithCacheMiss(): void
+    #[Test]
+    public function getFromPokemonWithCacheMiss(): void
     {
         $pokemon = new Pokemon();
         $pokemon->slug = 'charizard';
@@ -77,7 +80,8 @@ final class GamesAvailabilitiesServiceTest extends TestCase
         $this->assertSame($expectedResult, $result);
     }
 
-    public function testCleanCacheFromPokemon(): void
+    #[Test]
+    public function cleanCacheFromPokemon(): void
     {
         $repository = $this->createMock(GamesAvailabilitiesRepository::class);
         $repository

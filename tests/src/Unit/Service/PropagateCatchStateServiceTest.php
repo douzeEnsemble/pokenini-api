@@ -8,6 +8,7 @@ use App\Repository\PokedexRepository;
 use App\Repository\TrainerDexLinkRepository;
 use App\Service\PropagateCatchStateService;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -16,7 +17,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(PropagateCatchStateService::class)]
 final class PropagateCatchStateServiceTest extends TestCase
 {
-    public function testPropagatesToDirectNeighbourWhenValueChanges(): void
+    #[Test]
+    public function propagatesToDirectNeighbourWhenValueChanges(): void
     {
         $linkRepository = $this->createMock(TrainerDexLinkRepository::class);
         $linkRepository->expects($this->exactly(2))
@@ -42,7 +44,8 @@ final class PropagateCatchStateServiceTest extends TestCase
         );
     }
 
-    public function testStopsAtANodeWhoseValueDidNotChange(): void
+    #[Test]
+    public function stopsAtANodeWhoseValueDidNotChange(): void
     {
         $linkRepository = $this->createMock(TrainerDexLinkRepository::class);
         $linkRepository->expects($this->once())
@@ -66,7 +69,8 @@ final class PropagateCatchStateServiceTest extends TestCase
         );
     }
 
-    public function testPropagatesTransitivelyThroughAChain(): void
+    #[Test]
+    public function propagatesTransitivelyThroughAChain(): void
     {
         $linkRepository = $this->createMock(TrainerDexLinkRepository::class);
         $linkRepository->expects($this->exactly(3))
@@ -95,7 +99,8 @@ final class PropagateCatchStateServiceTest extends TestCase
         );
     }
 
-    public function testCycleTerminatesByIdempotenceWithoutInfiniteLoop(): void
+    #[Test]
+    public function cycleTerminatesByIdempotenceWithoutInfiniteLoop(): void
     {
         // A <-> B: origin is A, edge A -> B, and B -> A also exists.
         $linkRepository = $this->createMock(TrainerDexLinkRepository::class);
@@ -126,7 +131,8 @@ final class PropagateCatchStateServiceTest extends TestCase
         );
     }
 
-    public function testThreeNodeCycleTerminatesByIdempotence(): void
+    #[Test]
+    public function threeNodeCycleTerminatesByIdempotence(): void
     {
         // A -> B -> C -> A. Origin A was already written by the caller before propagate() runs,
         // so by the time the cycle comes back around to A, upsertIfDifferent('dex-a', ...) is a no-op.
@@ -158,7 +164,8 @@ final class PropagateCatchStateServiceTest extends TestCase
         );
     }
 
-    public function testPokemonAbsentFromAnIntermediateDexSkipsTheWriteButKeepsTraversing(): void
+    #[Test]
+    public function pokemonAbsentFromAnIntermediateDexSkipsTheWriteButKeepsTraversing(): void
     {
         // A -> B -> C, pokemon isn't in B's DexAvailability (upsertIfDifferent returns false for that reason)
         // but traversal must still continue from B to C per the design.
@@ -188,7 +195,8 @@ final class PropagateCatchStateServiceTest extends TestCase
         );
     }
 
-    public function testFanOutContinuesToSiblingEdgeAfterANoChangeSibling(): void
+    #[Test]
+    public function fanOutContinuesToSiblingEdgeAfterANoChangeSibling(): void
     {
         // A -> B and A -> C are two sibling edges discovered together from A's single
         // expansion (both already queued before either is processed). B is idempotent
@@ -223,7 +231,8 @@ final class PropagateCatchStateServiceTest extends TestCase
         );
     }
 
-    public function testFanOutPreservesPendingSiblingEdgeWhenAppendingNewlyDiscoveredOnes(): void
+    #[Test]
+    public function fanOutPreservesPendingSiblingEdgeWhenAppendingNewlyDiscoveredOnes(): void
     {
         // A -> B and A -> C are two sibling edges discovered together from A's single
         // expansion. B changes AND has its own further outgoing edge to D. The still-queued
@@ -263,7 +272,8 @@ final class PropagateCatchStateServiceTest extends TestCase
         );
     }
 
-    public function testNoOutgoingEdgesReturnsEmptyList(): void
+    #[Test]
+    public function noOutgoingEdgesReturnsEmptyList(): void
     {
         $linkRepository = $this->createMock(TrainerDexLinkRepository::class);
         $linkRepository->expects($this->once())

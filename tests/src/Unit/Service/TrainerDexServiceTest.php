@@ -9,6 +9,7 @@ use App\DTO\TrainerDexAttributes;
 use App\Repository\TrainerDexRepository;
 use App\Service\TrainerDexService;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -17,7 +18,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(TrainerDexService::class)]
 final class TrainerDexServiceTest extends TestCase
 {
-    public function testInsertIfNeeded(): void
+    #[Test]
+    public function insertIfNeeded(): void
     {
         $repository = $this->createMock(TrainerDexRepository::class);
         $repository->expects($this->once())
@@ -30,7 +32,8 @@ final class TrainerDexServiceTest extends TestCase
         $service->insertIfNeeded('7b52009b64fd0a2a49e6d8a939753077792b0554', 'bw2');
     }
 
-    public function testGetListQuery(): void
+    #[Test]
+    public function getListQuery(): void
     {
         $queryOptions = new DexQueryOptions([
             'include_unreleased_dex' => false,
@@ -47,7 +50,8 @@ final class TrainerDexServiceTest extends TestCase
         $service->getListQuery('7b52009b64fd0a2a49e6d8a939753077792b0554', $queryOptions);
     }
 
-    public function testSet(): void
+    #[Test]
+    public function set(): void
     {
         $attributes = new TrainerDexAttributes([
             'is_on_home' => false,

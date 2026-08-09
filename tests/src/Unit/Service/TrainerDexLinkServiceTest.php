@@ -12,6 +12,7 @@ use App\Repository\TrainerDexLinkRepository;
 use App\Repository\TrainerDexRepository;
 use App\Service\TrainerDexLinkService;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\Uid\Uuid;
 
@@ -21,7 +22,8 @@ use Symfony\Component\Uid\Uuid;
 #[CoversClass(TrainerDexLinkService::class)]
 final class TrainerDexLinkServiceTest extends TestCase
 {
-    public function testListForDexDelegatesToRepository(): void
+    #[Test]
+    public function listForDexDelegatesToRepository(): void
     {
         $linkRepository = $this->createMock(TrainerDexLinkRepository::class);
         $linkRepository->expects($this->once())
@@ -37,7 +39,8 @@ final class TrainerDexLinkServiceTest extends TestCase
         $this->assertSame([['id' => 'link-1']], $service->listForDex('trainer-1', 'national'));
     }
 
-    public function testCreateRejectsSelfLink(): void
+    #[Test]
+    public function createRejectsSelfLink(): void
     {
         $linkRepository = $this->createMock(TrainerDexLinkRepository::class);
         $linkRepository->expects($this->never())->method('exists');
@@ -53,7 +56,8 @@ final class TrainerDexLinkServiceTest extends TestCase
         $service->create('trainer-1', 'national', 'national', false);
     }
 
-    public function testCreateRejectsUnknownSourceDex(): void
+    #[Test]
+    public function createRejectsUnknownSourceDex(): void
     {
         $linkRepository = $this->createMock(TrainerDexLinkRepository::class);
 
@@ -71,7 +75,8 @@ final class TrainerDexLinkServiceTest extends TestCase
         $service->create('trainer-1', 'unknown', 'shiny', false);
     }
 
-    public function testCreateRejectsUnknownTargetDex(): void
+    #[Test]
+    public function createRejectsUnknownTargetDex(): void
     {
         $source = new TrainerDex();
 
@@ -93,7 +98,8 @@ final class TrainerDexLinkServiceTest extends TestCase
         $service->create('trainer-1', 'national', 'unknown', false);
     }
 
-    public function testCreateRejectsDuplicateEdge(): void
+    #[Test]
+    public function createRejectsDuplicateEdge(): void
     {
         $source = $this->trainerDexWithId('11111111-1111-1111-1111-111111111111');
         $target = $this->trainerDexWithId('22222222-2222-2222-2222-222222222222');
@@ -116,7 +122,8 @@ final class TrainerDexLinkServiceTest extends TestCase
         $service->create('trainer-1', 'national', 'shiny', false);
     }
 
-    public function testCreateInsertsOneRowForAUnidirectionalLink(): void
+    #[Test]
+    public function createInsertsOneRowForAUnidirectionalLink(): void
     {
         $source = $this->trainerDexWithId('11111111-1111-1111-1111-111111111111');
         $target = $this->trainerDexWithId('22222222-2222-2222-2222-222222222222');
@@ -141,7 +148,8 @@ final class TrainerDexLinkServiceTest extends TestCase
         $service->create('trainer-1', 'national', 'shiny', false);
     }
 
-    public function testCreateRejectsWhenTheReverseEdgeOfABidirectionalLinkAlreadyExists(): void
+    #[Test]
+    public function createRejectsWhenTheReverseEdgeOfABidirectionalLinkAlreadyExists(): void
     {
         $source = $this->trainerDexWithId('11111111-1111-1111-1111-111111111111');
         $target = $this->trainerDexWithId('22222222-2222-2222-2222-222222222222');
@@ -166,7 +174,8 @@ final class TrainerDexLinkServiceTest extends TestCase
     /**
      * @SuppressWarnings("PHPMD.UnusedFormalParameter")
      */
-    public function testCreateInsertsTwoRowsSharingAPairIdForABidirectionalLink(): void
+    #[Test]
+    public function createInsertsTwoRowsSharingAPairIdForABidirectionalLink(): void
     {
         $source = $this->trainerDexWithId('11111111-1111-1111-1111-111111111111');
         $target = $this->trainerDexWithId('22222222-2222-2222-2222-222222222222');
@@ -195,7 +204,8 @@ final class TrainerDexLinkServiceTest extends TestCase
         $this->assertTrue(Uuid::isValid($pairIds[0]));
     }
 
-    public function testDeleteDelegatesToRepository(): void
+    #[Test]
+    public function deleteDelegatesToRepository(): void
     {
         $linkRepository = $this->createMock(TrainerDexLinkRepository::class);
         $linkRepository->expects($this->once())

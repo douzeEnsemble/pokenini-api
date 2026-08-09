@@ -11,6 +11,7 @@ use App\Service\UpdaterService\DexUpdaterService;
 use App\Service\UpdaterService\GamesCollectionsAndDexUpdaterService;
 use App\Service\UpdaterService\GamesUpdaterService;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -19,14 +20,16 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(GamesCollectionsAndDexUpdaterService::class)]
 final class GamesCollectionsAndDexUpdaterServiceTest extends TestCase
 {
-    public function testExecute(): void
+    #[Test]
+    public function execute(): void
     {
         $service = $this->getService();
 
         $service->execute();
     }
 
-    public function testGetReport(): void
+    #[Test]
+    public function getReport(): void
     {
         $service = $this->getService();
 

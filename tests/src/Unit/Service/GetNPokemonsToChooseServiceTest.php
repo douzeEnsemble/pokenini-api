@@ -9,6 +9,7 @@ use App\Service\GetNPokemonsToChooseService;
 use App\Service\GetNPokemonsToPickService;
 use App\Service\GetNPokemonsToVoteService;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -17,7 +18,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(GetNPokemonsToChooseService::class)]
 final class GetNPokemonsToChooseServiceTest extends TestCase
 {
-    public function testFromToPick(): void
+    #[Test]
+    public function fromToPick(): void
     {
         $queryOptions = new TrainerPokemonEloListQueryOptions([
             'trainer_external_id' => 'bd307a3ec329e10a2cff8fb87480823da114f8f4',
@@ -60,7 +62,8 @@ final class GetNPokemonsToChooseServiceTest extends TestCase
         );
     }
 
-    public function testFromToVote(): void
+    #[Test]
+    public function fromToVote(): void
     {
         $queryOptions = new TrainerPokemonEloListQueryOptions([
             'trainer_external_id' => 'bd307a3ec329e10a2cff8fb87480823da114f8f4',
