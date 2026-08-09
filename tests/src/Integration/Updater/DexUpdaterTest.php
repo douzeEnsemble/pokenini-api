@@ -8,6 +8,7 @@ use App\Tests\Common\Traits\GetterTrait\GetDexTrait;
 use App\Updater\AbstractUpdater;
 use App\Updater\DexUpdater;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -25,7 +26,8 @@ final class DexUpdaterTest extends AbstractTestUpdater
     protected string $sheetName = 'Dex';
     protected string $tableName = 'dex';
 
-    public function testDexRegion(): void
+    #[Test]
+    public function dexRegion(): void
     {
         $redGreenBlueYellowBefore = $this->getDexFromSlug('redgreenblueyellow');
         $rubySapphireEmeraldBefore = $this->getDexFromSlug('rubysapphireemerald');
@@ -42,7 +44,8 @@ final class DexUpdaterTest extends AbstractTestUpdater
         $this->assertEquals('Hoenn', $rubySapphireEmeraldAfter['region_name']);
     }
 
-    public function testDexIsReleased(): void
+    #[Test]
+    public function dexIsReleased(): void
     {
         $redGreenBlueYellowBefore = $this->getDexFromSlug('redgreenblueyellow');
         $rubySapphireEmeraldBefore = $this->getDexFromSlug('rubysapphireemerald');
