@@ -8,6 +8,7 @@ use App\DTO\DexQueryOptions;
 use App\Service\Election\ElectionReportService;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -26,7 +27,8 @@ final class ElectionReportServiceTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testGetReturnsTopAndMetricsForDemoDex(): void
+    #[Test]
+    public function getReturnsTopAndMetricsForDemoDex(): void
     {
         $service = self::getContainer()->get(ElectionReportService::class);
 
@@ -47,7 +49,8 @@ final class ElectionReportServiceTest extends KernelTestCase
         );
     }
 
-    public function testGetReturnsTopAndMetricsForAffineeElection(): void
+    #[Test]
+    public function getReturnsTopAndMetricsForAffineeElection(): void
     {
         $service = self::getContainer()->get(ElectionReportService::class);
 
@@ -67,7 +70,8 @@ final class ElectionReportServiceTest extends KernelTestCase
         );
     }
 
-    public function testGetReturnsZeroedMetricsForUnknownElectionSlug(): void
+    #[Test]
+    public function getReturnsZeroedMetricsForUnknownElectionSlug(): void
     {
         $service = self::getContainer()->get(ElectionReportService::class);
 
@@ -87,7 +91,8 @@ final class ElectionReportServiceTest extends KernelTestCase
         );
     }
 
-    public function testGetEligibleDexDefaultsToReleasedNonPremium(): void
+    #[Test]
+    public function getEligibleDexDefaultsToReleasedNonPremium(): void
     {
         $service = self::getContainer()->get(ElectionReportService::class);
 
@@ -103,7 +108,8 @@ final class ElectionReportServiceTest extends KernelTestCase
         $this->assertSame(['home'], $slugs);
     }
 
-    public function testGetEligibleDexWithAllOptions(): void
+    #[Test]
+    public function getEligibleDexWithAllOptions(): void
     {
         $service = self::getContainer()->get(ElectionReportService::class);
 
@@ -124,7 +130,8 @@ final class ElectionReportServiceTest extends KernelTestCase
         $this->assertSame(['homepogo', 'home', 'redgreenblueyellow', 'spoon'], $slugs);
     }
 
-    public function testGetBatchKeyedByDexSlug(): void
+    #[Test]
+    public function getBatchKeyedByDexSlug(): void
     {
         $service = self::getContainer()->get(ElectionReportService::class);
 

@@ -9,6 +9,7 @@ use App\Service\ElectionUpdateEloService;
 use App\Tests\Common\Traits\GetterTrait\GetTrainerPokemonEloTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -26,7 +27,8 @@ final class ElectionUpdateEloServiceTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testVote(): void
+    #[Test]
+    public function vote(): void
     {
         $service = self::getContainer()->get(ElectionUpdateEloService::class);
 
@@ -77,7 +79,8 @@ final class ElectionUpdateEloServiceTest extends KernelTestCase
         );
     }
 
-    public function testVoteBis(): void
+    #[Test]
+    public function voteBis(): void
     {
         $service = self::getContainer()->get(ElectionUpdateEloService::class);
 
@@ -139,7 +142,8 @@ final class ElectionUpdateEloServiceTest extends KernelTestCase
         );
     }
 
-    public function testVoteTer(): void
+    #[Test]
+    public function voteTer(): void
     {
         $service = self::getContainer()->get(ElectionUpdateEloService::class);
 
@@ -179,7 +183,8 @@ final class ElectionUpdateEloServiceTest extends KernelTestCase
         );
     }
 
-    public function testVoteAllLosers(): void
+    #[Test]
+    public function voteAllLosers(): void
     {
         $service = self::getContainer()->get(ElectionUpdateEloService::class);
 
@@ -221,7 +226,8 @@ final class ElectionUpdateEloServiceTest extends KernelTestCase
         );
     }
 
-    public function testVoteAllWinners(): void
+    #[Test]
+    public function voteAllWinners(): void
     {
         $service = self::getContainer()->get(ElectionUpdateEloService::class);
 
