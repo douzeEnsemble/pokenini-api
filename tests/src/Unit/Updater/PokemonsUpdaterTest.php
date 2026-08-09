@@ -8,6 +8,7 @@ use App\Service\SpreadsheetService;
 use App\Updater\PokemonsUpdater;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
@@ -17,7 +18,8 @@ use Psr\Log\LoggerInterface;
 #[CoversClass(PokemonsUpdater::class)]
 final class PokemonsUpdaterTest extends TestCase
 {
-    public function testTransformRecordMapsFieldsCorrectly(): void
+    #[Test]
+    public function transformRecordMapsFieldsCorrectly(): void
     {
         $spreadsheetService = $this->createStub(SpreadsheetService::class);
         $entityManager = $this->createStub(EntityManagerInterface::class);

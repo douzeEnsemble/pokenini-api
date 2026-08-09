@@ -12,6 +12,7 @@ use Doctrine\ORM\EntityManagerInterface;
 use Google\Service\Exception as GoogleServiceException;
 use Google\Service\Sheets\ValueRange;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
@@ -21,7 +22,8 @@ use Psr\Log\LoggerInterface;
 #[CoversClass(CatchStatesUpdater::class)]
 final class CatchStatesUpdaterTest extends TestCase
 {
-    public function testGettingSpreasheetLog(): void
+    #[Test]
+    public function gettingSpreasheetLog(): void
     {
         $exception = new GoogleServiceException('Something bad happenned');
 
@@ -63,7 +65,8 @@ final class CatchStatesUpdaterTest extends TestCase
         $updater->execute('douze');
     }
 
-    public function testGettingEmptyHeaderLog(): void
+    #[Test]
+    public function gettingEmptyHeaderLog(): void
     {
         $headerRange = new ValueRange();
         $headerRange->values = [];
@@ -106,7 +109,8 @@ final class CatchStatesUpdaterTest extends TestCase
         $updater->execute('douze');
     }
 
-    public function testGettingInvalidHeaderLog(): void
+    #[Test]
+    public function gettingInvalidHeaderLog(): void
     {
         $headerRange = new ValueRange();
         $headerRange->values = [
@@ -164,7 +168,8 @@ final class CatchStatesUpdaterTest extends TestCase
         $updater->execute('douze');
     }
 
-    public function testGettingEmptyRecordLog(): void
+    #[Test]
+    public function gettingEmptyRecordLog(): void
     {
         $headerRange = new ValueRange();
         $headerRange->values = [
