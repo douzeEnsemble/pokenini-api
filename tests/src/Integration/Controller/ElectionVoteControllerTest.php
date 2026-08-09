@@ -7,6 +7,7 @@ namespace App\Tests\Integration\Controller;
 use App\Controller\ElectionVoteController;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
@@ -17,7 +18,8 @@ final class ElectionVoteControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;
 
-    public function testVote(): void
+    #[Test]
+    public function vote(): void
     {
         $client = self::createClient();
 
@@ -76,7 +78,8 @@ final class ElectionVoteControllerTest extends WebTestCase
         );
     }
 
-    public function testVoteBis(): void
+    #[Test]
+    public function voteBis(): void
     {
         $client = self::createClient();
 
@@ -135,7 +138,8 @@ final class ElectionVoteControllerTest extends WebTestCase
         );
     }
 
-    public function testVoteAllLosers(): void
+    #[Test]
+    public function voteAllLosers(): void
     {
         $client = self::createClient();
 
@@ -192,7 +196,8 @@ final class ElectionVoteControllerTest extends WebTestCase
         );
     }
 
-    public function testVoteAllWinners(): void
+    #[Test]
+    public function voteAllWinners(): void
     {
         $client = self::createClient();
 
@@ -249,7 +254,8 @@ final class ElectionVoteControllerTest extends WebTestCase
         );
     }
 
-    public function testEmptyData(): void
+    #[Test]
+    public function emptyData(): void
     {
         $client = self::createClient();
 
@@ -268,7 +274,8 @@ final class ElectionVoteControllerTest extends WebTestCase
         $this->assertResponseStatusCodeSame(400);
     }
 
-    public function testEmptyDataBis(): void
+    #[Test]
+    public function emptyDataBis(): void
     {
         $client = self::createClient();
 
@@ -287,7 +294,8 @@ final class ElectionVoteControllerTest extends WebTestCase
         $this->assertResponseStatusCodeSame(400);
     }
 
-    public function testBadVote(): void
+    #[Test]
+    public function badVote(): void
     {
         $client = self::createClient();
 

@@ -8,6 +8,7 @@ use App\Controller\AlbumIndexController;
 use App\Tests\Common\Data\AlbumData;
 use App\Tests\Common\Traits\ReportTrait\AssertReportTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -22,7 +23,8 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
     /**
      * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
      */
-    public function testListUser12RedGreenBlueYellow(): void
+    #[Test]
+    public function listUser12RedGreenBlueYellow(): void
     {
         $this->apiRequest('GET', '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow');
 
@@ -124,7 +126,8 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertReport($report, 4, 1, 2, 0, 7);
     }
 
-    public function testListUser12GoldSilverCrystal(): void
+    #[Test]
+    public function listUser12GoldSilverCrystal(): void
     {
         $this->apiRequest('GET', '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/goldsilvercrystal');
 
@@ -206,7 +209,8 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertReport($report, 8, 0, 0, 1, 9);
     }
 
-    public function testListUser13(): void
+    #[Test]
+    public function listUser13(): void
     {
         $this->apiRequest('GET', '/album/bd307a3ec329e10a2cff8fb87480823da114f8f4/redgreenblueyellow');
 
@@ -286,7 +290,8 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertReport($report, 6, 0, 0, 1, 7);
     }
 
-    public function testListUserUnknown(): void
+    #[Test]
+    public function listUserUnknown(): void
     {
         $this->apiRequest('GET', '/album/46546542313186/redgreenblueyellow');
 
@@ -366,7 +371,8 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertReport($report, 0, 0, 0, 0, 7);
     }
 
-    public function testListHome(): void
+    #[Test]
+    public function listHome(): void
     {
         $this->apiRequest('GET', '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/home');
 
@@ -428,7 +434,8 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
-    public function testListHomeShiny(): void
+    #[Test]
+    public function listHomeShiny(): void
     {
         $this->apiRequest('GET', '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/home_shiny');
 
@@ -490,7 +497,8 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertReport($report, 11, 0, 0, 0, 11);
     }
 
-    public function testListHomePoGo(): void
+    #[Test]
+    public function listHomePoGo(): void
     {
         $this->apiRequest('GET', '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/home_pogo');
 
@@ -535,7 +543,8 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertPokemonsHaveGameBundlesStructure($pokemons);
     }
 
-    public function testListHomeShinyOT(): void
+    #[Test]
+    public function listHomeShinyOT(): void
     {
         $this->apiRequest('GET', '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/homeshinyot');
 
@@ -580,7 +589,8 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertPokemonsHaveGameBundlesStructure($pokemons);
     }
 
-    public function testListMultipleHomePoGo(): void
+    #[Test]
+    public function listMultipleHomePoGo(): void
     {
         $this->apiRequest('GET', '/album/7b52009b64fd0a2a49e6d8a939753077792b0554/homepogo');
 
@@ -613,7 +623,8 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertReport($report, 0, 0, 0, 0, 0);
     }
 
-    public function testListNoSlug(): void
+    #[Test]
+    public function listNoSlug(): void
     {
         $this->apiRequest('GET', 'album', []);
 
@@ -628,7 +639,8 @@ final class AlbumIndexControllerTest extends AbstractTestControllerApi
         $this->assertResponseIsNotFound();
     }
 
-    public function testListNoUser(): void
+    #[Test]
+    public function listNoUser(): void
     {
         $this->apiRequest('GET', '/album/home', []);
 

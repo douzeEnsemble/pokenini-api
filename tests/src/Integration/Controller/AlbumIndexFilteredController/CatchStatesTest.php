@@ -8,6 +8,7 @@ use App\Controller\AlbumIndexController;
 use App\Tests\Common\Traits\PokemonListTrait;
 use App\Tests\Common\Traits\ReportTrait\AssertReportTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -20,7 +21,8 @@ final class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
     use AssertReportTrait;
     use PokemonListTrait;
 
-    public function testCatchStateFilter(): void
+    #[Test]
+    public function catchStateFilter(): void
     {
         $this->apiRequest(
             'GET',
@@ -64,7 +66,8 @@ final class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
-    public function testCatchStateFilterNegative(): void
+    #[Test]
+    public function catchStateFilterNegative(): void
     {
         $this->apiRequest(
             'GET',
@@ -101,7 +104,8 @@ final class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
-    public function testNoCatchStateFilter(): void
+    #[Test]
+    public function noCatchStateFilter(): void
     {
         $this->apiRequest(
             'GET',
@@ -138,7 +142,8 @@ final class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
-    public function testCatchStateFilterNegativeNo(): void
+    #[Test]
+    public function catchStateFilterNegativeNo(): void
     {
         $this->apiRequest(
             'GET',
@@ -175,7 +180,8 @@ final class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
-    public function testCatchStateFilterNull(): void
+    #[Test]
+    public function catchStateFilterNull(): void
     {
         $this->apiRequest(
             'GET',
@@ -200,7 +206,8 @@ final class CatchStatesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertCount(1, $pokemons);
     }
 
-    public function testCatchStatesFilter(): void
+    #[Test]
+    public function catchStatesFilter(): void
     {
         $this->apiRequest(
             'GET',

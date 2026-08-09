@@ -6,6 +6,7 @@ namespace App\Tests\Integration\Controller\AlbumIndexFilteredController;
 
 use App\Controller\AlbumIndexController;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -13,7 +14,8 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(AlbumIndexController::class)]
 final class ImageCreditTest extends AbstractTestAlbumIndexFilteredController
 {
-    public function testIndexIncludesBulbasaurImageCredits(): void
+    #[Test]
+    public function indexIncludesBulbasaurImageCredits(): void
     {
         $this->apiRequest(
             'GET',

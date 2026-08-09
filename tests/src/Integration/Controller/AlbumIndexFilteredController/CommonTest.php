@@ -7,6 +7,7 @@ namespace App\Tests\Integration\Controller\AlbumIndexFilteredController;
 use App\Controller\AlbumIndexController;
 use App\Tests\Common\Traits\ReportTrait\AssertReportTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -18,7 +19,8 @@ final class CommonTest extends AbstractTestAlbumIndexFilteredController
 {
     use AssertReportTrait;
 
-    public function testEmptyFilters(): void
+    #[Test]
+    public function emptyFilters(): void
     {
         $this->apiRequest(
             'GET',

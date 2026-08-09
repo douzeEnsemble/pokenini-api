@@ -6,6 +6,7 @@ namespace App\Tests\Integration\Controller;
 
 use App\Controller\PokemonsController;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -13,7 +14,8 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(PokemonsController::class)]
 final class PokemonsControllerTest extends AbstractTestControllerApi
 {
-    public function testGetListFromDex(): void
+    #[Test]
+    public function getListFromDex(): void
     {
         $this->apiRequest(
             'GET',
@@ -30,7 +32,8 @@ final class PokemonsControllerTest extends AbstractTestControllerApi
         $this->assertResponseContent(12);
     }
 
-    public function testGetListFromDexBis(): void
+    #[Test]
+    public function getListFromDexBis(): void
     {
         $this->apiRequest(
             'GET',
@@ -47,7 +50,8 @@ final class PokemonsControllerTest extends AbstractTestControllerApi
         $this->assertResponseContent(7);
     }
 
-    public function testGetListFromDexTer(): void
+    #[Test]
+    public function getListFromDexTer(): void
     {
         $this->apiRequest(
             'GET',
@@ -65,7 +69,8 @@ final class PokemonsControllerTest extends AbstractTestControllerApi
         $this->assertResponseContent(1);
     }
 
-    public function testGetAuth(): void
+    #[Test]
+    public function getAuth(): void
     {
         $this->apiRequest(
             'GET',
@@ -86,7 +91,8 @@ final class PokemonsControllerTest extends AbstractTestControllerApi
         $this->assertResponseContent(12);
     }
 
-    public function testGetBadAuth(): void
+    #[Test]
+    public function getBadAuth(): void
     {
         $this->apiRequest(
             'GET',
