@@ -6,6 +6,7 @@ namespace App\Tests\Integration\Controller;
 
 use App\Controller\TrainerDexLinkController;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -31,7 +32,8 @@ final class TrainerDexLinkControllerTest extends AbstractTestControllerApi
         $this->client->disableReboot();
     }
 
-    public function testCreateListAndDelete(): void
+    #[Test]
+    public function createListAndDelete(): void
     {
         $this->apiRequest('GET', '/trainer_dex_link/'.self::TRAINER.'/redgreenblueyellow');
         $this->assertResponseIsOK();
@@ -65,7 +67,8 @@ final class TrainerDexLinkControllerTest extends AbstractTestControllerApi
         $this->assertSame([], $this->getJsonDecodedResponseContent());
     }
 
-    public function testCreateRejectsSelfLink(): void
+    #[Test]
+    public function createRejectsSelfLink(): void
     {
         $this->apiRequest(
             'POST',
@@ -81,7 +84,8 @@ final class TrainerDexLinkControllerTest extends AbstractTestControllerApi
         $this->assertResponseStatusCodeSame(400);
     }
 
-    public function testCreateRejectsUnknownDex(): void
+    #[Test]
+    public function createRejectsUnknownDex(): void
     {
         $this->apiRequest(
             'POST',
@@ -97,7 +101,8 @@ final class TrainerDexLinkControllerTest extends AbstractTestControllerApi
         $this->assertResponseStatusCodeSame(404);
     }
 
-    public function testCreateRejectsDuplicateEdge(): void
+    #[Test]
+    public function createRejectsDuplicateEdge(): void
     {
         $body = json_encode(
             ['sourceDexSlug' => 'redgreenblueyellow', 'targetDexSlug' => 'goldsilvercrystal', 'bidirectional' => false],
@@ -111,21 +116,24 @@ final class TrainerDexLinkControllerTest extends AbstractTestControllerApi
         $this->assertResponseStatusCodeSame(409);
     }
 
-    public function testCreateEmptyBody(): void
+    #[Test]
+    public function createEmptyBody(): void
     {
         $this->apiRequest('POST', '/trainer_dex_link/'.self::TRAINER, [], null, '');
 
         $this->assertResponseStatusCodeSame(400);
     }
 
-    public function testCreateMissingFields(): void
+    #[Test]
+    public function createMissingFields(): void
     {
         $this->apiRequest('POST', '/trainer_dex_link/'.self::TRAINER, [], null, json_encode(['sourceDexSlug' => 'redgreenblueyellow'], JSON_THROW_ON_ERROR));
 
         $this->assertResponseStatusCodeSame(400);
     }
 
-    public function testCreateRejectsNonBooleanBidirectional(): void
+    #[Test]
+    public function createRejectsNonBooleanBidirectional(): void
     {
         $this->apiRequest(
             'POST',
@@ -141,7 +149,8 @@ final class TrainerDexLinkControllerTest extends AbstractTestControllerApi
         $this->assertResponseStatusCodeSame(400);
     }
 
-    public function testCreateBidirectional(): void
+    #[Test]
+    public function createBidirectional(): void
     {
         $this->apiRequest(
             'POST',

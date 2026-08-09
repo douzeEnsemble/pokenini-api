@@ -14,6 +14,7 @@ use App\Factory\ElectionEloResponseFactory;
 use App\Factory\ElectionMetricsResponseFactory;
 use App\Factory\ElectionReportResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -31,7 +32,8 @@ final class ElectionReportControllerTest extends AbstractTestControllerApi
 {
     private const string TRAINER_U12 = '7b52009b64fd0a2a49e6d8a939753077792b0554';
 
-    public function testShowReturnsTopAndMetricsForHomeFavorite(): void
+    #[Test]
+    public function showReturnsTopAndMetricsForHomeFavorite(): void
     {
         $this->apiRequest(
             'GET',
@@ -59,7 +61,8 @@ final class ElectionReportControllerTest extends AbstractTestControllerApi
         }
     }
 
-    public function testShowReturnsMetricsForDemoWithDefaultElectionSlug(): void
+    #[Test]
+    public function showReturnsMetricsForDemoWithDefaultElectionSlug(): void
     {
         $this->apiRequest(
             'GET',
@@ -87,7 +90,8 @@ final class ElectionReportControllerTest extends AbstractTestControllerApi
         );
     }
 
-    public function testShowReturnsMetricsForAffineeElection(): void
+    #[Test]
+    public function showReturnsMetricsForAffineeElection(): void
     {
         $this->apiRequest(
             'GET',
@@ -114,7 +118,8 @@ final class ElectionReportControllerTest extends AbstractTestControllerApi
         );
     }
 
-    public function testShowDefaultsElectionSlugAndCountWhenOmitted(): void
+    #[Test]
+    public function showDefaultsElectionSlugAndCountWhenOmitted(): void
     {
         $this->apiRequest('GET', '/election/'.self::TRAINER_U12.'/demo');
 
@@ -126,7 +131,8 @@ final class ElectionReportControllerTest extends AbstractTestControllerApi
         $this->assertCount(5, $content['top']);
     }
 
-    public function testShowWithAuth(): void
+    #[Test]
+    public function showWithAuth(): void
     {
         $this->apiRequest(
             'GET',
@@ -138,7 +144,8 @@ final class ElectionReportControllerTest extends AbstractTestControllerApi
         $this->assertResponseIsOK();
     }
 
-    public function testShowWithBadAuth(): void
+    #[Test]
+    public function showWithBadAuth(): void
     {
         $this->apiRequest(
             'GET',
@@ -150,7 +157,8 @@ final class ElectionReportControllerTest extends AbstractTestControllerApi
         $this->assertEquals(401, $this->getClientResponse()->getStatusCode());
     }
 
-    public function testListReturnsOneDexByDefault(): void
+    #[Test]
+    public function listReturnsOneDexByDefault(): void
     {
         $this->apiRequest('GET', '/election/'.self::TRAINER_U12.'/list');
 
@@ -166,7 +174,8 @@ final class ElectionReportControllerTest extends AbstractTestControllerApi
         $this->assertArrayHasKey('metrics', $content[0]['report']);
     }
 
-    public function testListReturnsAllEligibleDexWithOptions(): void
+    #[Test]
+    public function listReturnsAllEligibleDexWithOptions(): void
     {
         // 'favorite' is the election_slug used across fixtures for 'home' and
         // 'redgreenblueyellow' (see fixtures/trainer_pokemon_elo.yaml); it's passed
@@ -202,7 +211,8 @@ final class ElectionReportControllerTest extends AbstractTestControllerApi
         $this->assertCount(1, $bySlug['redgreenblueyellow']['report']['top']);
     }
 
-    public function testListIsNotShadowedByTheSingleDexRoute(): void
+    #[Test]
+    public function listIsNotShadowedByTheSingleDexRoute(): void
     {
         $this->apiRequest('GET', '/election/'.self::TRAINER_U12.'/list');
 

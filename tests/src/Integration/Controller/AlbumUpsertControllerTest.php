@@ -10,6 +10,7 @@ use App\Tests\Common\Traits\CounterTrait\CountTrainerDexTrait;
 use App\Tests\Common\Traits\GetterTrait\GetPokedexTrait;
 use Doctrine\DBAL\Connection;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -36,7 +37,8 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         $this->client->disableReboot();
     }
 
-    public function testUpdate(): void
+    #[Test]
+    public function update(): void
     {
         $pokedexBefore = $this->getPokedexFromSlugs('redgreenblueyellow', 'ivysaur');
 
@@ -62,7 +64,8 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         $this->assertEquals(34, $this->getTrainerDexCount());
     }
 
-    public function testUpdateEmpty(): void
+    #[Test]
+    public function updateEmpty(): void
     {
         $this->apiRequest(
             'PATCH',
@@ -75,7 +78,8 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         $this->assertResponseStatusCodeSame(400);
     }
 
-    public function testUpdateNonExistingDex(): void
+    #[Test]
+    public function updateNonExistingDex(): void
     {
         $pokedexBefore = $this->getPokedexFromSlugs('douze', 'ivysaur');
 
@@ -100,7 +104,8 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         $this->assertEmpty($pokedexAfter);
     }
 
-    public function testUpdateNonExistingPokemon(): void
+    #[Test]
+    public function updateNonExistingPokemon(): void
     {
         $this->apiRequest(
             'PATCH',
@@ -113,7 +118,8 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         $this->assertResponseStatusCodeSame(400);
     }
 
-    public function testCreate(): void
+    #[Test]
+    public function create(): void
     {
         $pokedexBefore = $this->getPokedexFromSlugs('goldsilvercrystal', 'douze');
 
@@ -144,7 +150,8 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         $this->assertEquals(34, $this->getTrainerDexCount());
     }
 
-    public function testCreateNonExistingTrainerDex(): void
+    #[Test]
+    public function createNonExistingTrainerDex(): void
     {
         $pokedexBefore = $this->getPokedexFromSlugs('spoon', 'douze');
 
@@ -174,7 +181,8 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         $this->assertEquals(35, $this->getTrainerDexCount());
     }
 
-    public function testCreateNonExistingDex(): void
+    #[Test]
+    public function createNonExistingDex(): void
     {
         $pokedexBefore = $this->getPokedexFromSlugs('douze', 'ivysaur');
 
@@ -199,7 +207,8 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         $this->assertEmpty($pokedexAfter);
     }
 
-    public function testCreateNonExistingPokemon(): void
+    #[Test]
+    public function createNonExistingPokemon(): void
     {
         $this->apiRequest(
             'PUT',
@@ -212,7 +221,8 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         $this->assertResponseStatusCodeSame(400);
     }
 
-    public function testCreateEmpty(): void
+    #[Test]
+    public function createEmpty(): void
     {
         $this->apiRequest(
             'PUT',
@@ -225,7 +235,8 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         $this->assertResponseStatusCodeSame(400);
     }
 
-    public function testUpdateCascadesThroughAnActiveLink(): void
+    #[Test]
+    public function updateCascadesThroughAnActiveLink(): void
     {
         $this->apiRequest(
             'POST',

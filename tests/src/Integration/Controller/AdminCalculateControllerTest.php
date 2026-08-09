@@ -11,6 +11,7 @@ use App\Message\CalculateGameBundlesShiniesAvailabilities;
 use App\Message\CalculatePokemonAvailabilities;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Zenstruck\Messenger\Test\InteractsWithMessenger;
 
@@ -23,7 +24,8 @@ final class AdminCalculateControllerTest extends WebTestCase
     use RefreshDatabaseTrait;
     use InteractsWithMessenger;
 
-    public function testCalculateGameBundlesAvailabilities(): void
+    #[Test]
+    public function calculateGameBundlesAvailabilities(): void
     {
         $client = self::createClient();
 
@@ -45,7 +47,8 @@ final class AdminCalculateControllerTest extends WebTestCase
         $this->transport('async')->queue()->assertContains(CalculateGameBundlesAvailabilities::class, 1);
     }
 
-    public function testCalculateGameBundlesShiniesAvailabilities(): void
+    #[Test]
+    public function calculateGameBundlesShiniesAvailabilities(): void
     {
         $client = self::createClient();
 
@@ -67,7 +70,8 @@ final class AdminCalculateControllerTest extends WebTestCase
         $this->transport('async')->queue()->assertContains(CalculateGameBundlesShiniesAvailabilities::class, 1);
     }
 
-    public function testCalculateDexAvailabilities(): void
+    #[Test]
+    public function calculateDexAvailabilities(): void
     {
         $client = self::createClient();
 
@@ -89,7 +93,8 @@ final class AdminCalculateControllerTest extends WebTestCase
         $this->transport('async')->queue()->assertContains(CalculateDexAvailabilities::class, 1);
     }
 
-    public function testCalculatePokemonAvailabilities(): void
+    #[Test]
+    public function calculatePokemonAvailabilities(): void
     {
         $client = self::createClient();
 
@@ -111,7 +116,8 @@ final class AdminCalculateControllerTest extends WebTestCase
         $this->transport('async')->queue()->assertContains(CalculatePokemonAvailabilities::class, 1);
     }
 
-    public function testUpdateBadAuth(): void
+    #[Test]
+    public function updateBadAuth(): void
     {
         $client = self::createClient();
 

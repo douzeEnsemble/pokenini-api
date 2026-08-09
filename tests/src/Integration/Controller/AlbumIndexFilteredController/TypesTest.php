@@ -8,6 +8,7 @@ use App\Controller\AlbumIndexController;
 use App\Tests\Common\Traits\PokemonListTrait;
 use App\Tests\Common\Traits\ReportTrait\AssertReportTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -20,7 +21,8 @@ final class TypesTest extends AbstractTestAlbumIndexFilteredController
     use AssertReportTrait;
     use PokemonListTrait;
 
-    public function testPrimaryTypeFilter(): void
+    #[Test]
+    public function primaryTypeFilter(): void
     {
         $this->apiRequest(
             'GET',
@@ -67,7 +69,8 @@ final class TypesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
-    public function testPrimaryTypeNullFilter(): void
+    #[Test]
+    public function primaryTypeNullFilter(): void
     {
         $this->apiRequest(
             'GET',
@@ -91,7 +94,8 @@ final class TypesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertCount(1, $pokemons);
     }
 
-    public function testSecondaryTypeFilter(): void
+    #[Test]
+    public function secondaryTypeFilter(): void
     {
         $this->apiRequest(
             'GET',
@@ -135,7 +139,8 @@ final class TypesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
-    public function testSecondaryTypeNullFilter(): void
+    #[Test]
+    public function secondaryTypeNullFilter(): void
     {
         $this->apiRequest(
             'GET',
@@ -160,7 +165,8 @@ final class TypesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertCount(9, $pokemons);
     }
 
-    public function testPrimaryAndSecondaryTypeFilter(): void
+    #[Test]
+    public function primaryAndSecondaryTypeFilter(): void
     {
         $this->apiRequest(
             'GET',
@@ -207,7 +213,8 @@ final class TypesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
-    public function testAnyTypeFilter(): void
+    #[Test]
+    public function anyTypeFilter(): void
     {
         $this->apiRequest(
             'GET',

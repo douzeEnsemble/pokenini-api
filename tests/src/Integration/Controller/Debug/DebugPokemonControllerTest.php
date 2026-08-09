@@ -9,6 +9,7 @@ use App\Factory\PokemonDebugResponseFactory;
 use App\Service\DexAvailabilitiesService;
 use App\Tests\Integration\Controller\AbstractTestControllerApi;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -18,7 +19,8 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(PokemonDebugResponseFactory::class)]
 final class DebugPokemonControllerTest extends AbstractTestControllerApi
 {
-    public function testPokemon(): void
+    #[Test]
+    public function pokemon(): void
     {
         $this->apiRequest('GET', '/debogage/pokemon/venusaur-mega');
 
@@ -45,14 +47,16 @@ final class DebugPokemonControllerTest extends AbstractTestControllerApi
         $this->assertStringContainsString('"slug":"poison",', $content);
     }
 
-    public function testPokemonNotFound(): void
+    #[Test]
+    public function pokemonNotFound(): void
     {
         $this->apiRequest('GET', '/debogage/pokemon/venusaur-mega-x');
 
         $this->assertResponseStatusCodeSame(404);
     }
 
-    public function testPokemonCleanCaches(): void
+    #[Test]
+    public function pokemonCleanCaches(): void
     {
         $this->apiRequest('DELETE', '/debogage/pokemon/venusaur-mega/caches');
 
@@ -61,14 +65,16 @@ final class DebugPokemonControllerTest extends AbstractTestControllerApi
         $this->assertEmpty($this->getClientResponseContent());
     }
 
-    public function testPokemonCleanCachesNotFound(): void
+    #[Test]
+    public function pokemonCleanCachesNotFound(): void
     {
         $this->apiRequest('DELETE', '/debogage/pokemon/venusaur-mega-x/caches');
 
         $this->assertResponseStatusCodeSame(404);
     }
 
-    public function testPokemonAvailabilities(): void
+    #[Test]
+    public function pokemonAvailabilities(): void
     {
         $this->apiRequest('GET', '/debogage/pokemon/venusaur-mega/availabilities');
 
@@ -128,7 +134,8 @@ final class DebugPokemonControllerTest extends AbstractTestControllerApi
         }
     }
 
-    public function testPokemonAvailabilitiesNotFound(): void
+    #[Test]
+    public function pokemonAvailabilitiesNotFound(): void
     {
         $this->apiRequest('GET', '/debogage/pokemon/venusaur-mega-x/availabilities');
 

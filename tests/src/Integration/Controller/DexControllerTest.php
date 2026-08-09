@@ -10,6 +10,7 @@ use App\DTO\Response\TrainerDexSettingsResponse;
 use App\Factory\TrainerDexResponseFactory;
 use App\Tests\Common\Traits\GetterTrait\GetTrainerDexTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -25,7 +26,8 @@ final class DexControllerTest extends AbstractTestControllerApi
     /** @var array<string, array<string, mixed>> */
     private array $lastResponseReportsBySlug = [];
 
-    public function testListUser12(): void
+    #[Test]
+    public function listUser12(): void
     {
         $this->apiRequest('GET', '/dex/7b52009b64fd0a2a49e6d8a939753077792b0554/list');
 
@@ -41,7 +43,8 @@ final class DexControllerTest extends AbstractTestControllerApi
         $this->assertKnownReport('home_shiny', 11, 0, 0, 0, 11);
     }
 
-    public function testListUser12WithUnReleased(): void
+    #[Test]
+    public function listUser12WithUnReleased(): void
     {
         $this->apiRequest(
             'GET',
@@ -63,7 +66,8 @@ final class DexControllerTest extends AbstractTestControllerApi
         $this->assertKnownReport('goldsilvercrystal', 8, 0, 0, 1, 9);
     }
 
-    public function testListUser12WithPremium(): void
+    #[Test]
+    public function listUser12WithPremium(): void
     {
         $this->apiRequest(
             'GET',
@@ -84,7 +88,8 @@ final class DexControllerTest extends AbstractTestControllerApi
         $this->assertKnownReport('home', 9, 3, 3, 7, 22);
     }
 
-    public function testListUser12WithUnreleasedAndPremium(): void
+    #[Test]
+    public function listUser12WithUnreleasedAndPremium(): void
     {
         $this->apiRequest(
             'GET',
@@ -107,7 +112,8 @@ final class DexControllerTest extends AbstractTestControllerApi
         $this->assertKnownReport('goldsilvercrystal', 8, 0, 0, 1, 9);
     }
 
-    public function testListUser13(): void
+    #[Test]
+    public function listUser13(): void
     {
         $this->apiRequest('GET', '/dex/bd307a3ec329e10a2cff8fb87480823da114f8f4/list');
 
@@ -122,7 +128,8 @@ final class DexControllerTest extends AbstractTestControllerApi
         $this->assertReportShapeIsWellFormed();
     }
 
-    public function testListUserUnknown(): void
+    #[Test]
+    public function listUserUnknown(): void
     {
         $this->apiRequest('GET', '/dex/46546542313186/list');
 
@@ -137,7 +144,8 @@ final class DexControllerTest extends AbstractTestControllerApi
         $this->assertReportShapeIsWellFormed();
     }
 
-    public function testUpdate(): void
+    #[Test]
+    public function update(): void
     {
         $trainerDexBefore = $this->getTrainerDex('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow');
 
@@ -170,7 +178,8 @@ final class DexControllerTest extends AbstractTestControllerApi
         $this->assertEquals('redgreenblueyellow', $trainerDexAfter['slug']);
     }
 
-    public function testUpdateTrainerSlug(): void
+    #[Test]
+    public function updateTrainerSlug(): void
     {
         $trainerDexBefore = $this->getTrainerDex('7b52009b64fd0a2a49e6d8a939753077792b0554', 'homepogopokeball');
 
@@ -203,7 +212,8 @@ final class DexControllerTest extends AbstractTestControllerApi
         $this->assertEquals('homepogopokeball', $trainerDexAfter['slug']);
     }
 
-    public function testCreate(): void
+    #[Test]
+    public function create(): void
     {
         $trainerDexBefore = $this->getTrainerDex('fa35e192121eabf3dabf9f5ea6abdbcbc107ac3b', 'redgreenblueyellow');
 
@@ -230,7 +240,8 @@ final class DexControllerTest extends AbstractTestControllerApi
         $this->assertEquals('redgreenblueyellow', $trainerDexAfter['slug']);
     }
 
-    public function testCreateWithMissingAttribute(): void
+    #[Test]
+    public function createWithMissingAttribute(): void
     {
         $trainerDexBefore = $this->getTrainerDex('fa35e192121eabf3dabf9f5ea6abdbcbc107ac3b', 'redgreenblueyellow');
 
@@ -257,7 +268,8 @@ final class DexControllerTest extends AbstractTestControllerApi
         $this->assertEquals('redgreenblueyellow', $trainerDexAfter['slug']);
     }
 
-    public function testBadArgument(): void
+    #[Test]
+    public function badArgument(): void
     {
         $this->apiRequest(
             'PUT',
@@ -270,7 +282,8 @@ final class DexControllerTest extends AbstractTestControllerApi
         $this->assertResponseStatusCodeSame(400);
     }
 
-    public function testEmptyData(): void
+    #[Test]
+    public function emptyData(): void
     {
         $this->apiRequest(
             'PUT',

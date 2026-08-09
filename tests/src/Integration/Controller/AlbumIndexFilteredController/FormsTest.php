@@ -8,6 +8,7 @@ use App\Controller\AlbumIndexController;
 use App\Tests\Common\Traits\PokemonListTrait;
 use App\Tests\Common\Traits\ReportTrait\AssertReportTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -20,7 +21,8 @@ final class FormsTest extends AbstractTestAlbumIndexFilteredController
     use AssertReportTrait;
     use PokemonListTrait;
 
-    public function testCategoryForm(): void
+    #[Test]
+    public function categoryForm(): void
     {
         $this->apiRequest(
             'GET',
@@ -63,7 +65,8 @@ final class FormsTest extends AbstractTestAlbumIndexFilteredController
         $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
-    public function testCategoryFormNull(): void
+    #[Test]
+    public function categoryFormNull(): void
     {
         $this->apiRequest(
             'GET',
@@ -88,7 +91,8 @@ final class FormsTest extends AbstractTestAlbumIndexFilteredController
         $this->assertCount(20, $pokemons);
     }
 
-    public function testRegionalForm(): void
+    #[Test]
+    public function regionalForm(): void
     {
         $this->apiRequest(
             'GET',
@@ -132,7 +136,8 @@ final class FormsTest extends AbstractTestAlbumIndexFilteredController
         $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
-    public function testRegionalFormNull(): void
+    #[Test]
+    public function regionalFormNull(): void
     {
         $this->apiRequest(
             'GET',
@@ -157,7 +162,8 @@ final class FormsTest extends AbstractTestAlbumIndexFilteredController
         $this->assertCount(19, $pokemons);
     }
 
-    public function testSpecialForm(): void
+    #[Test]
+    public function specialForm(): void
     {
         $this->apiRequest(
             'GET',
@@ -200,7 +206,8 @@ final class FormsTest extends AbstractTestAlbumIndexFilteredController
         $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
-    public function testSpecialFormNull(): void
+    #[Test]
+    public function specialFormNull(): void
     {
         $this->apiRequest(
             'GET',
@@ -225,7 +232,8 @@ final class FormsTest extends AbstractTestAlbumIndexFilteredController
         $this->assertCount(18, $pokemons);
     }
 
-    public function testSpecialsForm(): void
+    #[Test]
+    public function specialsForm(): void
     {
         $this->apiRequest(
             'GET',
@@ -270,7 +278,8 @@ final class FormsTest extends AbstractTestAlbumIndexFilteredController
         $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
-    public function testVariantForm(): void
+    #[Test]
+    public function variantForm(): void
     {
         $this->apiRequest(
             'GET',
@@ -315,7 +324,8 @@ final class FormsTest extends AbstractTestAlbumIndexFilteredController
         $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
-    public function testVariantFormNull(): void
+    #[Test]
+    public function variantFormNull(): void
     {
         $this->apiRequest(
             'GET',

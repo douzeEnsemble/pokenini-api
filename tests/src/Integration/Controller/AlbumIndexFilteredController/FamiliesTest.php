@@ -8,6 +8,7 @@ use App\Controller\AlbumIndexController;
 use App\Tests\Common\Traits\PokemonListTrait;
 use App\Tests\Common\Traits\ReportTrait\AssertReportTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -20,7 +21,8 @@ final class FamiliesTest extends AbstractTestAlbumIndexFilteredController
     use AssertReportTrait;
     use PokemonListTrait;
 
-    public function testFamilyFilter(): void
+    #[Test]
+    public function familyFilter(): void
     {
         $this->apiRequest(
             'GET',
@@ -67,7 +69,8 @@ final class FamiliesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
-    public function testFamilyFilterNull(): void
+    #[Test]
+    public function familyFilterNull(): void
     {
         $this->apiRequest(
             'GET',
@@ -92,7 +95,8 @@ final class FamiliesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertCount(0, $pokemons);
     }
 
-    public function testFamiliesFilter(): void
+    #[Test]
+    public function familiesFilter(): void
     {
         $this->apiRequest(
             'GET',

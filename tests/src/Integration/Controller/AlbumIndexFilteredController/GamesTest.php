@@ -8,6 +8,7 @@ use App\Controller\AlbumIndexController;
 use App\Tests\Common\Traits\PokemonListTrait;
 use App\Tests\Common\Traits\ReportTrait\AssertReportTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -20,7 +21,8 @@ final class GamesTest extends AbstractTestAlbumIndexFilteredController
     use AssertReportTrait;
     use PokemonListTrait;
 
-    public function testOriginalGameBundle(): void
+    #[Test]
+    public function originalGameBundle(): void
     {
         $this->apiRequest(
             'GET',
@@ -73,7 +75,8 @@ final class GamesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
-    public function testOriginalGameBundleNull(): void
+    #[Test]
+    public function originalGameBundleNull(): void
     {
         $this->apiRequest(
             'GET',
@@ -98,7 +101,8 @@ final class GamesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertCount(0, $pokemons);
     }
 
-    public function testGameBundleAvailabilities(): void
+    #[Test]
+    public function gameBundleAvailabilities(): void
     {
         $this->apiRequest(
             'GET',
@@ -141,7 +145,8 @@ final class GamesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
-    public function testGameBundleAvailabilitiesNull(): void
+    #[Test]
+    public function gameBundleAvailabilitiesNull(): void
     {
         $this->apiRequest(
             'GET',
@@ -166,7 +171,8 @@ final class GamesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertCount(0, $pokemons);
     }
 
-    public function testGameBundleAvailabilitiesNegative(): void
+    #[Test]
+    public function gameBundleAvailabilitiesNegative(): void
     {
         $this->apiRequest(
             'GET',
@@ -227,7 +233,8 @@ final class GamesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
-    public function testGameBundleShinyAvailabilities(): void
+    #[Test]
+    public function gameBundleShinyAvailabilities(): void
     {
         $this->apiRequest(
             'GET',
@@ -272,7 +279,8 @@ final class GamesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertReport($report, 9, 3, 3, 7, 22);
     }
 
-    public function testGameBundleShinyAvailabilitiesNull(): void
+    #[Test]
+    public function gameBundleShinyAvailabilitiesNull(): void
     {
         $this->apiRequest(
             'GET',
@@ -297,7 +305,8 @@ final class GamesTest extends AbstractTestAlbumIndexFilteredController
         $this->assertCount(0, $pokemons);
     }
 
-    public function testGameBundleShinyAvailabilitiesNegative(): void
+    #[Test]
+    public function gameBundleShinyAvailabilitiesNegative(): void
     {
         $this->apiRequest(
             'GET',

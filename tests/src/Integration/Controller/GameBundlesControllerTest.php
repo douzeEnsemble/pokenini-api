@@ -7,6 +7,7 @@ namespace App\Tests\Integration\Controller;
 use App\Controller\GameBundlesController;
 use App\Service\GameBundlesService;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -15,7 +16,8 @@ use PHPUnit\Framework\Attributes\CoversClass;
 #[CoversClass(GameBundlesService::class)]
 final class GameBundlesControllerTest extends AbstractTestControllerApi
 {
-    public function testGetCollection(): void
+    #[Test]
+    public function getCollection(): void
     {
         $this->apiRequest('GET', '/game_bundles');
 
@@ -48,7 +50,8 @@ final class GameBundlesControllerTest extends AbstractTestControllerApi
         ], $content[6]);
     }
 
-    public function testGetAuth(): void
+    #[Test]
+    public function getAuth(): void
     {
         $this->apiRequest('GET', '/game_bundles', [], ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD]);
 
@@ -60,7 +63,8 @@ final class GameBundlesControllerTest extends AbstractTestControllerApi
         $this->assertCount(19, $content);
     }
 
-    public function testGetBadAuth(): void
+    #[Test]
+    public function getBadAuth(): void
     {
         $this->apiRequest('GET', '/game_bundles', [], ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => 'treize']);
 

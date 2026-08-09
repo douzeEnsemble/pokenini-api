@@ -6,6 +6,7 @@ namespace App\Tests\Integration\Controller;
 
 use App\Controller\ImagePipelineRunController;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
@@ -26,7 +27,8 @@ final class ImagePipelineRunControllerTest extends AbstractTestControllerApi
         $this->client->disableReboot();
     }
 
-    public function testCreateThenGetLatest(): void
+    #[Test]
+    public function createThenGetLatest(): void
     {
         $this->apiRequest(
             'POST',
@@ -49,7 +51,8 @@ final class ImagePipelineRunControllerTest extends AbstractTestControllerApi
         $this->assertNull($data['workflow_a_run_id']);
     }
 
-    public function testCreateWithDuplicateCorrelationIdConflicts(): void
+    #[Test]
+    public function createWithDuplicateCorrelationIdConflicts(): void
     {
         $this->apiRequest(
             'POST',
@@ -70,7 +73,8 @@ final class ImagePipelineRunControllerTest extends AbstractTestControllerApi
         $this->assertResponseStatusCodeSame(409);
     }
 
-    public function testCreateWithMissingCorrelationIdIsBadRequest(): void
+    #[Test]
+    public function createWithMissingCorrelationIdIsBadRequest(): void
     {
         $this->apiRequest(
             'POST',
@@ -83,7 +87,8 @@ final class ImagePipelineRunControllerTest extends AbstractTestControllerApi
         $this->assertResponseStatusCodeSame(400);
     }
 
-    public function testCreateWithNonStringCorrelationIdIsBadRequest(): void
+    #[Test]
+    public function createWithNonStringCorrelationIdIsBadRequest(): void
     {
         $this->apiRequest(
             'POST',
@@ -96,7 +101,8 @@ final class ImagePipelineRunControllerTest extends AbstractTestControllerApi
         $this->assertResponseStatusCodeSame(400);
     }
 
-    public function testCreateWithEmptyBodyIsBadRequest(): void
+    #[Test]
+    public function createWithEmptyBodyIsBadRequest(): void
     {
         $this->apiRequest(
             'POST',
@@ -109,14 +115,16 @@ final class ImagePipelineRunControllerTest extends AbstractTestControllerApi
         $this->assertResponseStatusCodeSame(400);
     }
 
-    public function testGetLatestReturns404WhenNoneExist(): void
+    #[Test]
+    public function getLatestReturns404WhenNoneExist(): void
     {
         $this->apiRequest('GET', '/istration/image-pipeline-runs/latest');
 
         $this->assertResponseStatusCodeSame(404);
     }
 
-    public function testPatchAppliesFields(): void
+    #[Test]
+    public function patchAppliesFields(): void
     {
         $this->apiRequest(
             'POST',
@@ -145,7 +153,8 @@ final class ImagePipelineRunControllerTest extends AbstractTestControllerApi
         $this->assertSame('completed', $data['workflow_a_status']);
     }
 
-    public function testPatchReturns404WhenCorrelationIdUnknown(): void
+    #[Test]
+    public function patchReturns404WhenCorrelationIdUnknown(): void
     {
         $this->apiRequest(
             'PATCH',
@@ -157,7 +166,8 @@ final class ImagePipelineRunControllerTest extends AbstractTestControllerApi
         $this->assertResponseStatusCodeSame(404);
     }
 
-    public function testPatchWithEmptyBodyIsBadRequest(): void
+    #[Test]
+    public function patchWithEmptyBodyIsBadRequest(): void
     {
         $this->apiRequest(
             'POST',

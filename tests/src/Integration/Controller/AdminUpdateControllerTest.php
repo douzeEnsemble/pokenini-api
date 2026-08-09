@@ -14,6 +14,7 @@ use App\Message\UpdatePokemons;
 use App\Message\UpdateRegionalDexNumbers;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Zenstruck\Messenger\Test\InteractsWithMessenger;
 
@@ -26,7 +27,8 @@ final class AdminUpdateControllerTest extends WebTestCase
     use RefreshDatabaseTrait;
     use InteractsWithMessenger;
 
-    public function testUpdateLabels(): void
+    #[Test]
+    public function updateLabels(): void
     {
         $client = self::createClient();
 
@@ -48,7 +50,8 @@ final class AdminUpdateControllerTest extends WebTestCase
         $this->transport('async')->queue()->assertContains(UpdateLabels::class, 1);
     }
 
-    public function testUpdateGamesCollectionsAndDex(): void
+    #[Test]
+    public function updateGamesCollectionsAndDex(): void
     {
         $client = self::createClient();
 
@@ -70,7 +73,8 @@ final class AdminUpdateControllerTest extends WebTestCase
         $this->transport('async')->queue()->assertContains(UpdateGamesCollectionsAndDex::class, 1);
     }
 
-    public function testUpdatePokemons(): void
+    #[Test]
+    public function updatePokemons(): void
     {
         $client = self::createClient();
 
@@ -92,7 +96,8 @@ final class AdminUpdateControllerTest extends WebTestCase
         $this->transport('async')->queue()->assertContains(UpdatePokemons::class, 1);
     }
 
-    public function testUpdateGamesAvailabilities(): void
+    #[Test]
+    public function updateGamesAvailabilities(): void
     {
         $client = self::createClient();
 
@@ -114,7 +119,8 @@ final class AdminUpdateControllerTest extends WebTestCase
         $this->transport('async')->queue()->assertContains(UpdateGamesAvailabilities::class, 1);
     }
 
-    public function testUpdateGamesShiniesAvailabilities(): void
+    #[Test]
+    public function updateGamesShiniesAvailabilities(): void
     {
         $client = self::createClient();
 
@@ -136,7 +142,8 @@ final class AdminUpdateControllerTest extends WebTestCase
         $this->transport('async')->queue()->assertContains(UpdateGamesShiniesAvailabilities::class, 1);
     }
 
-    public function testUpdateCollectionsAvailabilities(): void
+    #[Test]
+    public function updateCollectionsAvailabilities(): void
     {
         $client = self::createClient();
 
@@ -158,7 +165,8 @@ final class AdminUpdateControllerTest extends WebTestCase
         $this->transport('async')->queue()->assertContains(UpdateCollectionsAvailabilities::class, 1);
     }
 
-    public function testUpdateRegionalDexNumbers(): void
+    #[Test]
+    public function updateRegionalDexNumbers(): void
     {
         $client = self::createClient();
 
@@ -180,7 +188,8 @@ final class AdminUpdateControllerTest extends WebTestCase
         $this->transport('async')->queue()->assertContains(UpdateRegionalDexNumbers::class, 1);
     }
 
-    public function testUpdateCollections(): void
+    #[Test]
+    public function updateCollections(): void
     {
         $client = self::createClient();
 
@@ -202,7 +211,8 @@ final class AdminUpdateControllerTest extends WebTestCase
         $this->transport('async')->queue()->assertContains(UpdateCollectionsAvailabilities::class, 1);
     }
 
-    public function testUpdateBadAuth(): void
+    #[Test]
+    public function updateBadAuth(): void
     {
         $client = self::createClient();
 
