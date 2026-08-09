@@ -8,6 +8,7 @@ use App\DTO\ElectionVote;
 use App\Service\ElectionService;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -24,7 +25,8 @@ final class ElectionServiceTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testVote(): void
+    #[Test]
+    public function vote(): void
     {
         $service = self::getContainer()->get(ElectionService::class);
 
@@ -52,7 +54,8 @@ final class ElectionServiceTest extends KernelTestCase
         $this->assertSame(1013, $pokemonsElo['losers'][1]->getElo());
     }
 
-    public function testVoteBis(): void
+    #[Test]
+    public function voteBis(): void
     {
         $service = self::getContainer()->get(ElectionService::class);
 

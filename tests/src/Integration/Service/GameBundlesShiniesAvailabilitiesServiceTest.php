@@ -10,6 +10,7 @@ use App\Service\GameBundlesShiniesAvailabilitiesService;
 use App\Tests\Common\Traits\CounterTrait\CountGameBundleShinyAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -27,7 +28,8 @@ final class GameBundlesShiniesAvailabilitiesServiceTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testGetFromPokemon(): void
+    #[Test]
+    public function getFromPokemon(): void
     {
         $service = self::getContainer()->get(GameBundlesShiniesAvailabilitiesService::class);
 

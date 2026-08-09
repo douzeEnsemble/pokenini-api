@@ -11,6 +11,7 @@ use App\Tests\Common\Traits\PokemonListTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -29,7 +30,8 @@ final class AlbumPokemonServiceFilteredTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testListFilteredPrimaryType(): void
+    #[Test]
+    public function listFilteredPrimaryType(): void
     {
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
@@ -58,7 +60,8 @@ final class AlbumPokemonServiceFilteredTest extends KernelTestCase
         );
     }
 
-    public function testListFilteredSecondaryType(): void
+    #[Test]
+    public function listFilteredSecondaryType(): void
     {
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
@@ -82,7 +85,8 @@ final class AlbumPokemonServiceFilteredTest extends KernelTestCase
         );
     }
 
-    public function testListFilteredPrimaryAndSecondaryType(): void
+    #[Test]
+    public function listFilteredPrimaryAndSecondaryType(): void
     {
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
@@ -109,7 +113,8 @@ final class AlbumPokemonServiceFilteredTest extends KernelTestCase
         );
     }
 
-    public function testListFilteredAnyType(): void
+    #[Test]
+    public function listFilteredAnyType(): void
     {
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
@@ -137,7 +142,8 @@ final class AlbumPokemonServiceFilteredTest extends KernelTestCase
         );
     }
 
-    public function testListFilteredCategoryType(): void
+    #[Test]
+    public function listFilteredCategoryType(): void
     {
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
@@ -160,7 +166,8 @@ final class AlbumPokemonServiceFilteredTest extends KernelTestCase
         );
     }
 
-    public function testListFilteredRegionalType(): void
+    #[Test]
+    public function listFilteredRegionalType(): void
     {
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
@@ -184,7 +191,8 @@ final class AlbumPokemonServiceFilteredTest extends KernelTestCase
         );
     }
 
-    public function testListFilteredSpecialType(): void
+    #[Test]
+    public function listFilteredSpecialType(): void
     {
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
@@ -207,7 +215,8 @@ final class AlbumPokemonServiceFilteredTest extends KernelTestCase
         );
     }
 
-    public function testListFilteredSpecialsType(): void
+    #[Test]
+    public function listFilteredSpecialsType(): void
     {
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
@@ -232,7 +241,8 @@ final class AlbumPokemonServiceFilteredTest extends KernelTestCase
         );
     }
 
-    public function testListFilteredVariantType(): void
+    #[Test]
+    public function listFilteredVariantType(): void
     {
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
@@ -257,7 +267,8 @@ final class AlbumPokemonServiceFilteredTest extends KernelTestCase
         );
     }
 
-    public function testListFilteredCatchStates(): void
+    #[Test]
+    public function listFilteredCatchStates(): void
     {
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
@@ -281,7 +292,8 @@ final class AlbumPokemonServiceFilteredTest extends KernelTestCase
         );
     }
 
-    public function testListFilteredOriginalGameBundle(): void
+    #[Test]
+    public function listFilteredOriginalGameBundle(): void
     {
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
@@ -314,7 +326,8 @@ final class AlbumPokemonServiceFilteredTest extends KernelTestCase
         );
     }
 
-    public function testListFilteredGameBundleAvailabilities(): void
+    #[Test]
+    public function listFilteredGameBundleAvailabilities(): void
     {
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
@@ -337,7 +350,8 @@ final class AlbumPokemonServiceFilteredTest extends KernelTestCase
         );
     }
 
-    public function testListFilteredGameBundleShinyAvailabilities(): void
+    #[Test]
+    public function listFilteredGameBundleShinyAvailabilities(): void
     {
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
@@ -362,7 +376,8 @@ final class AlbumPokemonServiceFilteredTest extends KernelTestCase
         );
     }
 
-    public function testListFilteredFamilies(): void
+    #[Test]
+    public function listFilteredFamilies(): void
     {
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
@@ -389,7 +404,8 @@ final class AlbumPokemonServiceFilteredTest extends KernelTestCase
         );
     }
 
-    public function testListFilteredCollections(): void
+    #[Test]
+    public function listFilteredCollections(): void
     {
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
@@ -411,8 +427,9 @@ final class AlbumPokemonServiceFilteredTest extends KernelTestCase
         );
     }
 
+    #[Test]
     #[DataProvider('providerListFilteredNull')]
-    public function testListFilteredNull(string $filter, int $expectedCount): void
+    public function listFilteredNull(string $filter, int $expectedCount): void
     {
         $service = self::getContainer()->get(AlbumPokemonService::class);
 

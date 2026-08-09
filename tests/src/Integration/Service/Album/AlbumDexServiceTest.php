@@ -8,6 +8,7 @@ use App\Service\Album\AlbumDexService;
 use App\Tests\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -25,7 +26,8 @@ final class AlbumDexServiceTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testGet(): void
+    #[Test]
+    public function get(): void
     {
         $service = self::getContainer()->get(AlbumDexService::class);
 

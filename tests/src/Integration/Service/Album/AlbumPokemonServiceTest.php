@@ -10,6 +10,7 @@ use App\Tests\Common\Data\AlbumData;
 use App\Tests\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -27,7 +28,8 @@ final class AlbumPokemonServiceTest extends KernelTestCase
         self::bootKernel();
     }
 
-    public function testListUser12RedGreenBlueYellow(): void
+    #[Test]
+    public function listUser12RedGreenBlueYellow(): void
     {
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
@@ -51,7 +53,8 @@ final class AlbumPokemonServiceTest extends KernelTestCase
         );
     }
 
-    public function testListUser12GoldSilverCrystal(): void
+    #[Test]
+    public function listUser12GoldSilverCrystal(): void
     {
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
@@ -77,7 +80,8 @@ final class AlbumPokemonServiceTest extends KernelTestCase
         );
     }
 
-    public function testListUser13(): void
+    #[Test]
+    public function listUser13(): void
     {
         $service = self::getContainer()->get(AlbumPokemonService::class);
 
@@ -101,7 +105,8 @@ final class AlbumPokemonServiceTest extends KernelTestCase
         );
     }
 
-    public function testListUserUnknown(): void
+    #[Test]
+    public function listUserUnknown(): void
     {
         $service = self::getContainer()->get(AlbumPokemonService::class);
 

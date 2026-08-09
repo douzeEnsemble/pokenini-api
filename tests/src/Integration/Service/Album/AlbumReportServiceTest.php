@@ -11,6 +11,7 @@ use App\Tests\Common\Traits\CounterTrait\CountGameBundleAvailabilityTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 
 /**
@@ -28,8 +29,9 @@ final class AlbumReportServiceTest extends KernelTestCase
         self::bootKernel();
     }
 
+    #[Test]
     #[DataProvider('providerGetReport')]
-    public function testGetReport(
+    public function getReport(
         string $trainerId,
         string $dexSlug,
         int $countNo,
@@ -118,8 +120,9 @@ final class AlbumReportServiceTest extends KernelTestCase
     /**
      * @param array<string, array<int, string>> $filters
      */
+    #[Test]
     #[DataProvider('providerGetReportFiltered')]
-    public function testGetReportFiltered(
+    public function getReportFiltered(
         string $trainerId,
         string $dexSlug,
         array $filters,
@@ -160,7 +163,8 @@ final class AlbumReportServiceTest extends KernelTestCase
         );
     }
 
-    public function testGetBatch(): void
+    #[Test]
+    public function getBatch(): void
     {
         $service = self::getContainer()->get(AlbumReportService::class);
 
@@ -176,7 +180,8 @@ final class AlbumReportServiceTest extends KernelTestCase
         $this->assertReport($reports['goldsilvercrystal'], 8, 0, 0, 1, 9);
     }
 
-    public function testGetBatchDifferentTrainer(): void
+    #[Test]
+    public function getBatchDifferentTrainer(): void
     {
         $service = self::getContainer()->get(AlbumReportService::class);
 
