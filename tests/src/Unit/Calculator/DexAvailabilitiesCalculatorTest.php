@@ -12,6 +12,7 @@ use App\Repository\DexAvailabilitiesRepository;
 use App\Repository\DexRepository;
 use Doctrine\ORM\Query;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -21,7 +22,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(AbstractCalculator::class)]
 final class DexAvailabilitiesCalculatorTest extends TestCase
 {
-    public function testInit(): void
+    #[Test]
+    public function init(): void
     {
         $dexAvailabilitiesRepository = $this->createMock(DexAvailabilitiesRepository::class);
         $dexAvailabilitiesRepository
@@ -53,7 +55,8 @@ final class DexAvailabilitiesCalculatorTest extends TestCase
         $this->assertSame(0, $service->getStatistic()->count);
     }
 
-    public function testExecute(): void
+    #[Test]
+    public function execute(): void
     {
         $dexAvailabilitiesRepository = $this->createMock(DexAvailabilitiesRepository::class);
         $dexAvailabilitiesRepository
@@ -96,7 +99,8 @@ final class DexAvailabilitiesCalculatorTest extends TestCase
         $this->assertEquals(6, $statistic->count);
     }
 
-    public function testExecuteTwice(): void
+    #[Test]
+    public function executeTwice(): void
     {
         $dexAvailabilitiesRepository = $this->createMock(DexAvailabilitiesRepository::class);
         $dexAvailabilitiesRepository

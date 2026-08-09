@@ -15,6 +15,7 @@ use App\Service\GameBundlesShiniesAvailabilitiesService;
 use App\Service\GamesAvailabilitiesService;
 use App\Service\GamesShiniesAvailabilitiesService;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 
@@ -24,7 +25,8 @@ use Symfony\Component\ExpressionLanguage\ExpressionLanguage;
 #[CoversClass(DexPokemonAvailabilityCalculator::class)]
 final class DexPokemonAvailabilityCalculatorTest extends TestCase
 {
-    public function testResetExpressionLanguageCacheReplacesTheInstance(): void
+    #[Test]
+    public function resetExpressionLanguageCacheReplacesTheInstance(): void
     {
         $calculator = new DexPokemonAvailabilityCalculator(
             $this->createMock(GameBundlesAvailabilitiesService::class),
@@ -47,7 +49,8 @@ final class DexPokemonAvailabilityCalculatorTest extends TestCase
         $this->assertNotSame($before, $after);
     }
 
-    public function testCalculateNotAvailable(): void
+    #[Test]
+    public function calculateNotAvailable(): void
     {
         $pokemon = new Pokemon();
         $pokemon->slug = 'douze';
@@ -104,7 +107,8 @@ final class DexPokemonAvailabilityCalculatorTest extends TestCase
         $this->assertInstanceOf(DexAvailability::class, $dexAvailability);
     }
 
-    public function testCalculateWithoutValues(): void
+    #[Test]
+    public function calculateWithoutValues(): void
     {
         $pokemon = new Pokemon();
 
@@ -154,7 +158,8 @@ final class DexPokemonAvailabilityCalculatorTest extends TestCase
         $this->assertInstanceOf(DexAvailability::class, $dexAvailability);
     }
 
-    public function testCalculateWithoutValuesFalse(): void
+    #[Test]
+    public function calculateWithoutValuesFalse(): void
     {
         $pokemon = new Pokemon();
 

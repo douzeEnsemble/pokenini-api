@@ -7,6 +7,7 @@ namespace App\Tests\Unit\Calculator;
 use App\Calculator\GameBundlesShiniesAvailabilitiesCalculator;
 use App\Repository\GameBundlesShiniesAvailabilitiesRepository;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -15,7 +16,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(GameBundlesShiniesAvailabilitiesCalculator::class)]
 final class GameBundlesShiniesAvailabilitiesCalculatorTest extends TestCase
 {
-    public function testExecute(): void
+    #[Test]
+    public function execute(): void
     {
         $gameBundlesShiniesAvailabilitiesRepository
             = $this->createMock(GameBundlesShiniesAvailabilitiesRepository::class);
@@ -38,7 +40,8 @@ final class GameBundlesShiniesAvailabilitiesCalculatorTest extends TestCase
         $this->assertEquals(12, $statistic->count);
     }
 
-    public function testExecuteTwice(): void
+    #[Test]
+    public function executeTwice(): void
     {
         $gameBundlesShiniesAvailabilitiesRepository = $this->createMock(
             GameBundlesShiniesAvailabilitiesRepository::class
