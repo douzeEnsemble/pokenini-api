@@ -6,6 +6,7 @@ namespace App\Tests\Unit\DTO\ElectionReport;
 
 use App\DTO\ElectionReport\Report;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,7 +15,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(Report::class)]
 final class ReportTest extends TestCase
 {
-    public function testConstructor(): void
+    #[Test]
+    public function constructor(): void
     {
         $top = [
             ['pokemon_slug' => 'pikachu'],

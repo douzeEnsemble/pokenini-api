@@ -8,6 +8,7 @@ use App\DTO\ElectionVote;
 use App\DTO\ElectionVoteResult;
 use App\DTO\PokemonElo;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -16,7 +17,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(ElectionVoteResult::class)]
 final class ElectionVoteResultTest extends TestCase
 {
-    public function testOk(): void
+    #[Test]
+    public function ok(): void
     {
         $electionVote = new ElectionVote([
             'trainer' => ['external_id' => '67865468'],

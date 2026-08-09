@@ -6,6 +6,7 @@ namespace App\Tests\Unit\DTO;
 
 use App\DTO\ElectionVote;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
@@ -16,7 +17,8 @@ use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 #[CoversClass(ElectionVote::class)]
 final class ElectionVoteTest extends TestCase
 {
-    public function testOk(): void
+    #[Test]
+    public function ok(): void
     {
         $attributes = new ElectionVote([
             'trainer' => ['external_id' => '67865468'],
@@ -33,7 +35,8 @@ final class ElectionVoteTest extends TestCase
         $this->assertSame(['pichu', 'raichu'], $attributes->losersSlugs);
     }
 
-    public function testMissingElectionSlug(): void
+    #[Test]
+    public function missingElectionSlug(): void
     {
         $attributes = new ElectionVote([
             'trainer' => ['external_id' => '67865468'],
@@ -49,7 +52,8 @@ final class ElectionVoteTest extends TestCase
         $this->assertSame(['pichu', 'raichu'], $attributes->losersSlugs);
     }
 
-    public function testWrongTypeForTrainer(): void
+    #[Test]
+    public function wrongTypeForTrainer(): void
     {
         $this->expectException(InvalidOptionsException::class);
 
@@ -61,7 +65,8 @@ final class ElectionVoteTest extends TestCase
         ]);
     }
 
-    public function testWrongTypeForTrainerExternalId(): void
+    #[Test]
+    public function wrongTypeForTrainerExternalId(): void
     {
         $this->expectException(\InvalidArgumentException::class);
 
@@ -73,7 +78,8 @@ final class ElectionVoteTest extends TestCase
         ]);
     }
 
-    public function testWrongValueForElectionSlug(): void
+    #[Test]
+    public function wrongValueForElectionSlug(): void
     {
         $this->expectException(InvalidOptionsException::class);
 
@@ -86,7 +92,8 @@ final class ElectionVoteTest extends TestCase
         ]);
     }
 
-    public function testWrongValueForDexSlug(): void
+    #[Test]
+    public function wrongValueForDexSlug(): void
     {
         $this->expectException(InvalidOptionsException::class);
 
@@ -99,7 +106,8 @@ final class ElectionVoteTest extends TestCase
         ]);
     }
 
-    public function testWrongValueForWinnersSlugs(): void
+    #[Test]
+    public function wrongValueForWinnersSlugs(): void
     {
         $this->expectException(InvalidOptionsException::class);
         new ElectionVote([
@@ -110,7 +118,8 @@ final class ElectionVoteTest extends TestCase
         ]);
     }
 
-    public function testWrongValueForLosersSlugs(): void
+    #[Test]
+    public function wrongValueForLosersSlugs(): void
     {
         $this->expectException(InvalidOptionsException::class);
         new ElectionVote([
@@ -121,7 +130,8 @@ final class ElectionVoteTest extends TestCase
         ]);
     }
 
-    public function testAnotherValue(): void
+    #[Test]
+    public function anotherValue(): void
     {
         $this->expectException(UndefinedOptionsException::class);
         new ElectionVote([

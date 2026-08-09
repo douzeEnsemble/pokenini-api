@@ -6,6 +6,7 @@ namespace App\Tests\Unit\DTO;
 
 use App\DTO\PokemonElo;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,7 +15,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(PokemonElo::class)]
 final class PokemonEloTest extends TestCase
 {
-    public function testOk(): void
+    #[Test]
+    public function ok(): void
     {
         $attributes = new PokemonElo('pikachu', 12);
 

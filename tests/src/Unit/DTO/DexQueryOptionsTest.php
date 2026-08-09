@@ -6,6 +6,7 @@ namespace App\Tests\Unit\DTO;
 
 use App\DTO\DexQueryOptions;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
@@ -16,7 +17,8 @@ use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 #[CoversClass(DexQueryOptions::class)]
 final class DexQueryOptionsTest extends TestCase
 {
-    public function testOk(): void
+    #[Test]
+    public function ok(): void
     {
         $attributes = new DexQueryOptions([
             'include_unreleased_dex' => false,
@@ -27,7 +29,8 @@ final class DexQueryOptionsTest extends TestCase
         $this->assertTrue($attributes->includePremiumDex);
     }
 
-    public function testMissingAllValue(): void
+    #[Test]
+    public function missingAllValue(): void
     {
         $attributes = new DexQueryOptions([]);
 
@@ -35,7 +38,8 @@ final class DexQueryOptionsTest extends TestCase
         $this->assertFalse($attributes->includePremiumDex);
     }
 
-    public function testWrongValueUnreleased(): void
+    #[Test]
+    public function wrongValueUnreleased(): void
     {
         $this->expectException(InvalidOptionsException::class);
         new DexQueryOptions([
@@ -43,7 +47,8 @@ final class DexQueryOptionsTest extends TestCase
         ]);
     }
 
-    public function testWrongValuePremium(): void
+    #[Test]
+    public function wrongValuePremium(): void
     {
         $this->expectException(InvalidOptionsException::class);
         new DexQueryOptions([
@@ -51,7 +56,8 @@ final class DexQueryOptionsTest extends TestCase
         ]);
     }
 
-    public function testAnotherValue(): void
+    #[Test]
+    public function anotherValue(): void
     {
         $this->expectException(UndefinedOptionsException::class);
         new DexQueryOptions(['includeUnreleasedDex' => true, 'is_on_home' => false]);

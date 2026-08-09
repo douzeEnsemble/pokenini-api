@@ -7,6 +7,7 @@ namespace App\Tests\Unit\DTO\AlbumReport;
 use App\DTO\AlbumReport\Report;
 use App\DTO\AlbumReport\Statistic;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -15,7 +16,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(Report::class)]
 final class ReportTest extends TestCase
 {
-    public function testConstructor(): void
+    #[Test]
+    public function constructor(): void
     {
         $report = new Report(
             12,

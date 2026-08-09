@@ -6,6 +6,7 @@ namespace App\Tests\Unit\DTO\AlbumFilter;
 
 use App\DTO\AlbumFilter\AlbumFilterValues;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,7 +15,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(AlbumFilterValues::class)]
 final class AlbumFilterValuesTest extends TestCase
 {
-    public function testConstruct(): void
+    #[Test]
+    public function construct(): void
     {
         $albumFilterValues = new AlbumFilterValues(['douze', 'treize', '!quatorze']);
 
@@ -26,7 +28,8 @@ final class AlbumFilterValuesTest extends TestCase
         $this->assertEquals('quatorze', $albumFilterValues->negativeValues[0]->value);
     }
 
-    public function testExtract(): void
+    #[Test]
+    public function extract(): void
     {
         $albumFilterValues = new AlbumFilterValues(['douze', 'treize', '!quatorze']);
 
@@ -36,7 +39,8 @@ final class AlbumFilterValuesTest extends TestCase
         );
     }
 
-    public function testExtractNegatives(): void
+    #[Test]
+    public function extractNegatives(): void
     {
         $albumFilterValues = new AlbumFilterValues(['douze', 'treize', '!quatorze']);
 
@@ -46,7 +50,8 @@ final class AlbumFilterValuesTest extends TestCase
         );
     }
 
-    public function testExtractManyNegatives(): void
+    #[Test]
+    public function extractManyNegatives(): void
     {
         $albumFilterValues = new AlbumFilterValues(['!douze', '!treize', '!quatorze']);
 
@@ -56,35 +61,40 @@ final class AlbumFilterValuesTest extends TestCase
         );
     }
 
-    public function testHasNull(): void
+    #[Test]
+    public function hasNull(): void
     {
         $albumFilterValues = new AlbumFilterValues(['douze', null, 'treize']);
 
         $this->assertTrue($albumFilterValues->hasNull());
     }
 
-    public function testHasNullFirst(): void
+    #[Test]
+    public function hasNullFirst(): void
     {
         $albumFilterValues = new AlbumFilterValues([null, 'douze']);
 
         $this->assertTrue($albumFilterValues->hasNull());
     }
 
-    public function testHasNullLast(): void
+    #[Test]
+    public function hasNullLast(): void
     {
         $albumFilterValues = new AlbumFilterValues(['douze', null]);
 
         $this->assertTrue($albumFilterValues->hasNull());
     }
 
-    public function testHasNullFalse(): void
+    #[Test]
+    public function hasNullFalse(): void
     {
         $albumFilterValues = new AlbumFilterValues(['douze', 'treize']);
 
         $this->assertFalse($albumFilterValues->hasNull());
     }
 
-    public function testHasNullEmpty(): void
+    #[Test]
+    public function hasNullEmpty(): void
     {
         $albumFilterValues = new AlbumFilterValues([]);
 

@@ -7,6 +7,7 @@ namespace App\Tests\Unit\DTO\AlbumFilter;
 use App\DTO\AlbumFilter\AlbumFilters;
 use App\DTO\AlbumFilter\AlbumFilterValues;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\OptionsResolver\Exception\MissingOptionsException;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -17,7 +18,8 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 #[CoversClass(AlbumFilters::class)]
 final class AlbumFiltersTest extends TestCase
 {
-    public function testCreateFromArrayEmpty(): void
+    #[Test]
+    public function createFromArrayEmpty(): void
     {
         $filters = AlbumFilters::createFromArray([]);
 
@@ -50,7 +52,8 @@ final class AlbumFiltersTest extends TestCase
         $this->assertEmpty($filters->collectionAvailabilities->negativeValues);
     }
 
-    public function testCreateFromArray(): void
+    #[Test]
+    public function createFromArray(): void
     {
         $filters = AlbumFilters::createFromArray([
             'primary_types' => ['fire', 'water'],
@@ -97,7 +100,8 @@ final class AlbumFiltersTest extends TestCase
         $this->assertEmpty($filters->collectionAvailabilities->negativeValues);
     }
 
-    public function testCreateFromArrayWithNegative(): void
+    #[Test]
+    public function createFromArrayWithNegative(): void
     {
         $filters = AlbumFilters::createFromArray([
             'primary_types' => ['fire', 'water'],
@@ -144,7 +148,8 @@ final class AlbumFiltersTest extends TestCase
         $this->assertCount(1, $filters->collectionAvailabilities->negativeValues);
     }
 
-    public function testNormalizer(): void
+    #[Test]
+    public function normalizer(): void
     {
         $filterValues = AlbumFilters::normalizer(['a', 'b', 'c']);
 
@@ -153,7 +158,8 @@ final class AlbumFiltersTest extends TestCase
         $this->assertFalse($filterValues->hasNull());
     }
 
-    public function testNormalizerWithNullValue(): void
+    #[Test]
+    public function normalizerWithNullValue(): void
     {
         $filterValues = AlbumFilters::normalizer(['a', 'null', 'c']);
 
@@ -162,7 +168,8 @@ final class AlbumFiltersTest extends TestCase
         $this->assertTrue($filterValues->hasNull());
     }
 
-    public function testNormalizerWithEmptyValue(): void
+    #[Test]
+    public function normalizerWithEmptyValue(): void
     {
         $filterValues = AlbumFilters::normalizer(['a', '', 'c']);
 
@@ -171,7 +178,8 @@ final class AlbumFiltersTest extends TestCase
         $this->assertFalse($filterValues->hasNull());
     }
 
-    public function testNormalizerWithEmptyNegativeValue(): void
+    #[Test]
+    public function normalizerWithEmptyNegativeValue(): void
     {
         $filterValues = AlbumFilters::normalizer(['a', '!b', 'c']);
 
@@ -180,7 +188,8 @@ final class AlbumFiltersTest extends TestCase
         $this->assertFalse($filterValues->hasNull());
     }
 
-    public function testCreateWithOptionsResolver(): void
+    #[Test]
+    public function createWithOptionsResolver(): void
     {
         $resolver = new OptionsResolver();
 
@@ -221,7 +230,8 @@ final class AlbumFiltersTest extends TestCase
         $this->assertInstanceOf(AlbumFilterValues::class, $options['collection_availabilities']);
     }
 
-    public function testCreateWithOptionsResolverException(): void
+    #[Test]
+    public function createWithOptionsResolverException(): void
     {
         $resolver = new OptionsResolver();
 

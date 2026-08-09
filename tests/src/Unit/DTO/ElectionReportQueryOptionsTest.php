@@ -6,6 +6,7 @@ namespace App\Tests\Unit\DTO;
 
 use App\DTO\ElectionReportQueryOptions;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Symfony\Component\OptionsResolver\Exception\InvalidOptionsException;
 use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
@@ -16,7 +17,8 @@ use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 #[CoversClass(ElectionReportQueryOptions::class)]
 final class ElectionReportQueryOptionsTest extends TestCase
 {
-    public function testDefaults(): void
+    #[Test]
+    public function defaults(): void
     {
         $options = new ElectionReportQueryOptions();
 
@@ -24,7 +26,8 @@ final class ElectionReportQueryOptionsTest extends TestCase
         $this->assertSame(5, $options->count);
     }
 
-    public function testExplicitValues(): void
+    #[Test]
+    public function explicitValues(): void
     {
         $options = new ElectionReportQueryOptions([
             'election_slug' => 'favorite',
@@ -35,21 +38,24 @@ final class ElectionReportQueryOptionsTest extends TestCase
         $this->assertSame(10, $options->count);
     }
 
-    public function testInvalidElectionSlugType(): void
+    #[Test]
+    public function invalidElectionSlugType(): void
     {
         $this->expectException(InvalidOptionsException::class);
 
         new ElectionReportQueryOptions(['election_slug' => 12]);
     }
 
-    public function testUnknownOption(): void
+    #[Test]
+    public function unknownOption(): void
     {
         $this->expectException(UndefinedOptionsException::class);
 
         new ElectionReportQueryOptions(['unknown' => 'value']);
     }
 
-    public function testInvalidCountType(): void
+    #[Test]
+    public function invalidCountType(): void
     {
         $this->expectException(InvalidOptionsException::class);
 

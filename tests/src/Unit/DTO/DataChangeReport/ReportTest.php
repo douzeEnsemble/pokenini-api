@@ -7,6 +7,7 @@ namespace App\Tests\Unit\DTO\DataChangeReport;
 use App\DTO\DataChangeReport\Report;
 use App\DTO\DataChangeReport\Statistic;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -15,7 +16,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(Report::class)]
 final class ReportTest extends TestCase
 {
-    public function testConstructor(): void
+    #[Test]
+    public function constructor(): void
     {
         $report = new Report(
             [
@@ -27,7 +29,8 @@ final class ReportTest extends TestCase
         $this->assertCount(2, $report->detail);
     }
 
-    public function testMerge(): void
+    #[Test]
+    public function merge(): void
     {
         $reportA = new Report(
             [
@@ -46,7 +49,8 @@ final class ReportTest extends TestCase
         $this->assertCount(3, $reportA->detail);
     }
 
-    public function testJsonEncore(): void
+    #[Test]
+    public function jsonEncore(): void
     {
         $report = new Report([
             new Statistic('a', 1),
