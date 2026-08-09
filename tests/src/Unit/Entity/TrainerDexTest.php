@@ -6,6 +6,7 @@ namespace App\Tests\Unit\Entity;
 
 use App\Entity\TrainerDex;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,7 +15,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(TrainerDex::class)]
 final class TrainerDexTest extends TestCase
 {
-    public function testGetIdentifierDefault(): void
+    #[Test]
+    public function getIdentifierDefault(): void
     {
         $entity = new TrainerDex();
 

@@ -6,6 +6,7 @@ namespace App\Tests\Unit\Entity;
 
 use App\Entity\ActionLog;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,14 +15,16 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(ActionLog::class)]
 final class ActionLogTest extends TestCase
 {
-    public function testConstructorAndGetters(): void
+    #[Test]
+    public function constructorAndGetters(): void
     {
         $entity = new ActionLog('alpha');
 
         $this->assertSame('alpha', $entity->getType());
     }
 
-    public function testGetIdentifierDefault(): void
+    #[Test]
+    public function getIdentifierDefault(): void
     {
         $entity = new ActionLog('alpha');
 

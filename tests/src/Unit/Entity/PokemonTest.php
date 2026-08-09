@@ -6,6 +6,7 @@ namespace App\Tests\Unit\Entity;
 
 use App\Entity\Pokemon;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,14 +15,16 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(Pokemon::class)]
 final class PokemonTest extends TestCase
 {
-    public function testGetIdentifierDefault(): void
+    #[Test]
+    public function getIdentifierDefault(): void
     {
         $entity = new Pokemon();
 
         $this->assertNull($entity->getIdentifier());
     }
 
-    public function testConvertToString(): void
+    #[Test]
+    public function convertToString(): void
     {
         $entity = new Pokemon();
         $entity->name = 'Douze';

@@ -6,6 +6,7 @@ namespace App\Tests\Unit\Entity;
 
 use App\Entity\GameGeneration;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,7 +15,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(GameGeneration::class)]
 final class GameGenerationTest extends TestCase
 {
-    public function testGetNumber(): void
+    #[Test]
+    public function getNumber(): void
     {
         $generation = new GameGeneration();
         $generation->name = '12';
@@ -22,14 +24,16 @@ final class GameGenerationTest extends TestCase
         $this->assertSame(12, $generation->getNumber());
     }
 
-    public function testGetIdentifierDefault(): void
+    #[Test]
+    public function getIdentifierDefault(): void
     {
         $generation = new GameGeneration();
 
         $this->assertNull($generation->getIdentifier());
     }
 
-    public function testGetIdentifier(): void
+    #[Test]
+    public function getIdentifier(): void
     {
         $generation = new GameGeneration();
         $generation->name = 'Douze';

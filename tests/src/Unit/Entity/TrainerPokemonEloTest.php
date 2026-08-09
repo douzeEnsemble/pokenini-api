@@ -8,6 +8,7 @@ use App\Entity\Dex;
 use App\Entity\Pokemon;
 use App\Entity\TrainerPokemonElo;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -16,7 +17,8 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(TrainerPokemonElo::class)]
 final class TrainerPokemonEloTest extends TestCase
 {
-    public function testConstructorAndGetters(): void
+    #[Test]
+    public function constructorAndGetters(): void
     {
         $pokemon = new Pokemon();
         $pokemon->slug = 'Douze';
@@ -33,7 +35,8 @@ final class TrainerPokemonEloTest extends TestCase
         $this->assertSame('', $entity->getElectionSlug());
     }
 
-    public function testConstructorAndGettersWithElectionSlug(): void
+    #[Test]
+    public function constructorAndGettersWithElectionSlug(): void
     {
         $pokemon = new Pokemon();
         $pokemon->slug = 'Douze';

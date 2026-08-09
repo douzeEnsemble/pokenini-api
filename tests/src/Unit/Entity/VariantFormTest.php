@@ -6,6 +6,7 @@ namespace App\Tests\Unit\Entity;
 
 use App\Entity\VariantForm;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,14 +15,16 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(VariantForm::class)]
 final class VariantFormTest extends TestCase
 {
-    public function testGetIdentifierDefault(): void
+    #[Test]
+    public function getIdentifierDefault(): void
     {
         $entity = new VariantForm();
 
         $this->assertNull($entity->getIdentifier());
     }
 
-    public function testConvertToString(): void
+    #[Test]
+    public function convertToString(): void
     {
         $entity = new VariantForm();
         $entity->name = 'Douze';

@@ -6,6 +6,7 @@ namespace App\Tests\Unit\Entity;
 
 use App\Entity\GameBundle;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
@@ -14,14 +15,16 @@ use PHPUnit\Framework\TestCase;
 #[CoversClass(GameBundle::class)]
 final class GameBundleTest extends TestCase
 {
-    public function testGetIdentifierDefault(): void
+    #[Test]
+    public function getIdentifierDefault(): void
     {
         $entity = new GameBundle();
 
         $this->assertNull($entity->getIdentifier());
     }
 
-    public function testConvertToString(): void
+    #[Test]
+    public function convertToString(): void
     {
         $entity = new GameBundle();
         $entity->name = 'Douze';
