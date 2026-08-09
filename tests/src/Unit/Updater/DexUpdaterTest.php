@@ -10,6 +10,7 @@ use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManagerInterface;
 use Google\Service\Sheets\ValueRange;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
 
@@ -19,14 +20,16 @@ use Psr\Log\LoggerInterface;
 #[CoversClass(DexUpdater::class)]
 final class DexUpdaterTest extends TestCase
 {
-    public function testExecute(): void
+    #[Test]
+    public function execute(): void
     {
         $updater = $this->getService();
 
         $updater->execute('douze');
     }
 
-    public function testStatistic(): void
+    #[Test]
+    public function statistic(): void
     {
         $updater = $this->getService();
 
