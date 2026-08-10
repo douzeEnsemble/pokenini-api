@@ -13,18 +13,18 @@ This repo's split differs from `pokenini-back`'s in two structural ways, both co
 by reading the actual workflow/compose files (not assumed from the back precedent):
 
 1. `pokenini-api` owns a PostgreSQL database (`database` service in
-   `docker-compose.yaml`) and a Google-Sheets mock (`moco.sheets.int` /
-   `moco.sheets.test`, both built from `.docker/moco/Dockerfile`). `pokenini-back` has
-   neither.
+  `docker-compose.yaml`) and a Google-Sheets mock (`moco.sheets.int` /
+  `moco.sheets.test`, both built from `.docker/moco/Dockerfile`). `pokenini-back` has
+  neither.
 2. The current single job's `run:` steps include a phase that PHPUnit does not cover at
-   all: `Integration / Copy .env file` → `Integration / Initialize` → `Integration / Run`
-   seed a full dataset into a separate `int`-environment database (via `cp .env.int .env`
-   then a dozen `bin/console app:update:*`/`app:calculate:*` commands) and then run a
-   Postman collection through `docker compose up newman`. This is unrelated to the
-   PHPUnit tests under `tests/src/Integration/` (those run against the `test` env,
-   whose database the shared composite action already creates on every job). Per this
-   repo's `CLAUDE.md`: "API tests: Postman collection run via Newman (`make integration`)"
-   — a third, distinct test category alongside Unit and (PHPUnit) Integration.
+  all: `Integration / Copy .env file` → `Integration / Initialize` → `Integration / Run`
+  seed a full dataset into a separate `int`-environment database (via `cp .env.int .env`
+  then a dozen `bin/console app:update:*`/`app:calculate:*` commands) and then run a
+  Postman collection through `docker compose up newman`. This is unrelated to the
+  PHPUnit tests under `tests/src/Integration/` (those run against the `test` env,
+  whose database the shared composite action already creates on every job). Per this
+  repo's `CLAUDE.md`: "API tests: Postman collection run via Newman (`make integration`)"
+  — a third, distinct test category alongside Unit and (PHPUnit) Integration.
 
 ## Current state (baseline)
 
@@ -34,11 +34,11 @@ Single job `allin` in `.github/workflows/ci_tests.yml`:
 3. Infection composer install + run (consumes step 2's coverage output)
 4. `cp .env.int .env`
 5. Twelve `bin/console` calls seeding the `int` database (labels, games/dex,
-   pokemons, regional dex numbers, games availabilities, games shinies availabilities,
-   game bundles availabilities, game bundles shinies availabilities, dex
-   availabilities, pokemon availabilities)
+  pokemons, regional dex numbers, games availabilities, games shinies availabilities,
+  game bundles availabilities, game bundles shinies availabilities, dex
+  availabilities, pokemon availabilities)
 6. `docker compose up newman --no-recreate --menu=false` (runs the Postman collection
-   at `tests/src/Integration/Postman/collection.json` against the seeded `int` DB)
+  at `tests/src/Integration/Postman/collection.json` against the seeded `int` DB)
 7. `symfony security:check`
 
 As in `pokenini-back`, `grep`-ing the whole test suite for PHPUnit `#[Group(...)]`
