@@ -20,8 +20,8 @@ env:
   PHP_CS_FIXER_IGNORE_ENV: 1
 
 jobs:
-  allin:
-    name: All tests
+  unit-tests:
+    name: Unit Tests
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -30,26 +30,28 @@ jobs:
         uses: ./.github/actions/docker-compose
       - name: PHPUnit / Run
         run: |
-          docker compose exec -T php php vendor/bin/phpunit tests/src/ --exclude-group="time-testing"
-      - name: Measures / Run Coverage
+          docker compose exec -T php php vendor/bin/phpunit tests/src/Unit --exclude-group="time-testing"
+
+  integration-tests:
+    name: Integration Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Prepare
+        uses: ./.github/actions/docker-compose
+      - name: PHPUnit / Run
         run: |
-          docker compose exec \
-            -e XDEBUG_MODE=coverage \
-            -T php php vendor/bin/phpunit \
-            --exclude-group="browser-testing" \
-            --coverage-clover=coverage.xml \
-            --coverage-xml=build/coverage/coverage-xml \
-            --log-junit=build/coverage/junit.xml
-      - name: Measures / Composer install Infection
-        shell: bash
-        run: docker compose exec -T php composer install --working-dir=tools/infection --prefer-dist --no-progress --no-interaction
-      - name: Measures / Run Infection
-        run: |
-          docker compose exec -T php php tools/infection/vendor/bin/infection \
-            --threads=4 --no-progress \
-            --skip-initial-tests --coverage=build/coverage \
-            --min-msi=100 --min-covered-msi=100 \
-            --filter=src
+          docker compose exec -T php php vendor/bin/phpunit tests/src/Integration --exclude-group="time-testing"
+
+  api-integration:
+    name: API Integration (Postman)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Prepare
+        uses: ./.github/actions/docker-compose
       - name: Integration / Copy .env file
         shell: bash
         run: cp .env.int .env
@@ -70,6 +72,43 @@ jobs:
       - name: Integration / Run
         run: |
           docker compose up newman --no-recreate --menu=false
+
+  measures:
+    name: Measures (Coverage & Mutation Testing)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Prepare
+        uses: ./.github/actions/docker-compose
+      - name: Measures / Run Coverage
+        run: |
+          docker compose exec \
+            -e XDEBUG_MODE=coverage \
+            -T php php vendor/bin/phpunit \
+            --exclude-group="browser-testing" \
+            --coverage-clover=coverage.xml \
+            --coverage-xml=build/coverage/coverage-xml \
+            --log-junit=build/coverage/junit.xml
+      - name: Measures / Composer install Infection
+        shell: bash
+        run: docker compose exec -T php composer install --working-dir=tools/infection --prefer-dist --no-progress --no-interaction
+      - name: Measures / Run Infection
+        run: |
+          docker compose exec -T php php tools/infection/vendor/bin/infection \
+            --threads=4 --no-progress \
+            --skip-initial-tests --coverage=build/coverage \
+            --min-msi=100 --min-covered-msi=100 \
+            --filter=src
+
+  security:
+    name: Security
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+      - name: Prepare
+        uses: ./.github/actions/docker-compose
       - name: Security / Symfony Security Check
         run: |
           docker compose exec -T php symfony security:check
