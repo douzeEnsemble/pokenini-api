@@ -382,24 +382,24 @@ review caught and fixed a bug in the first draft of this same change (see that r
 commit history: `44f52e3` introduced the cache, `42fcb5e` fixed it):
 
 1. The archive-save step (`docker save ...`) runs AFTER `Start services`, not before.
-   `docker compose up` (with `--build` dropped) is what actually builds and tags the 3
-   built services under the compose-generated names — `docker buildx bake` alone does
-   not tag them, since none of the 3 declare an explicit `image:` key in
-   `docker-compose.yaml`. Saving before `up` would find those 3 image names missing
-   and fail on every cache-miss run.
+  `docker compose up` (with `--build` dropped) is what actually builds and tags the 3
+  built services under the compose-generated names — `docker buildx bake` alone does
+  not tag them, since none of the 3 declare an explicit `image:` key in
+  `docker-compose.yaml`. Saving before `up` would find those 3 image names missing
+  and fail on every cache-miss run.
 2. The cache uses split `actions/cache/restore@v5` / `actions/cache/save@v5` steps
-   (not the unified `actions/cache@v5`), so the save happens as an ordinary step right
-   after the tar is written — not deferred to a `post-if: success()` hook that a later
-   step failing (e.g. `Composer install`, `Create test database`) would silently skip.
-   The save step reuses `steps.docker-images-cache.outputs.cache-primary-key` (the
-   exact key the restore step resolved) rather than re-typing the key expression, so
-   the two can never drift out of sync.
+  (not the unified `actions/cache@v5`), so the save happens as an ordinary step right
+  after the tar is written — not deferred to a `post-if: success()` hook that a later
+  step failing (e.g. `Composer install`, `Create test database`) would silently skip.
+  The save step reuses `steps.docker-images-cache.outputs.cache-primary-key` (the
+  exact key the restore step resolved) rather than re-typing the key expression, so
+  the two can never drift out of sync.
 3. `docker save` is scoped to the 3 built services only
-   (`docker compose config --images php moco.sheets.int moco.sheets.test`) — `adminer`,
-   `database`, `newman`, and `web` are pulled, not built, so archiving them wastes
-   cache space for no benefit.
+  (`docker compose config --images php moco.sheets.int moco.sheets.test`) — `adminer`,
+  `database`, `newman`, and `web` are pulled, not built, so archiving them wastes
+  cache space for no benefit.
 4. `Composer install`, `Create test database`, and `Doctrine Schema Validator` are
-   unconditional and unchanged, same as before this task.
+  unconditional and unchanged, same as before this task.
 
 - [ ] **Step 3: Validate YAML syntax**
 
