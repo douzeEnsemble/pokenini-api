@@ -10,6 +10,11 @@ namespace App\DTO;
 final class BannerPipelineRunPatch
 {
     /**
+     * php-code-coverage reports this constructor as uncovered even though
+     * it demonstrably runs on every PATCH request - same verified artifact
+     * as BannerPipelineRunResponseFactory::fromEntity(); see that method's
+     * docblock for how it was verified.
+     *
      * @codeCoverageIgnore
      */
     public function __construct(
