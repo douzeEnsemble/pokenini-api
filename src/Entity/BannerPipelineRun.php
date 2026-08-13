@@ -71,6 +71,12 @@ final class BannerPipelineRun
     public ?string $resourcesPrState = null;
 
     /**
+     * php-code-coverage reports this constructor as uncovered even though
+     * BannerPipelineRunRepositoryTest's createThenFindLatest() (and every
+     * other test that calls create()) demonstrably runs it - same verified
+     * artifact as BannerPipelineRunResponseFactory::fromEntity(); see that
+     * method's docblock for how it was verified.
+     *
      * @codeCoverageIgnore
      */
     public function __construct(string $correlationId)
