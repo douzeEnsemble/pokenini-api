@@ -94,7 +94,9 @@ RUN set -eux; \
 
 COPY . ./
 
-RUN mv .env.prod .env && chown www-data:www-data .env
+# Prepare .env for cache warmup: .env.dev is consumed here at build time to compile the prod container cache.
+# IMPORTANT: .env.dev must retain every key referenced by %env(...)% in config/ — missing keys will break cache:clear.
+RUN mv .env.dev .env && chown www-data:www-data .env
 
 RUN set -eux; \
 	mkdir -p var/cache var/log; \
