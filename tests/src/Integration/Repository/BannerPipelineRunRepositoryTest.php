@@ -70,6 +70,34 @@ final class BannerPipelineRunRepositoryTest extends KernelTestCase
     }
 
     #[Test]
+    public function findLatestBreaksTieOnEqualCreatedAtByIdentifier(): void
+    {
+        $repo = self::getContainer()->get(BannerPipelineRunRepository::class);
+        $entityManager = self::getContainer()->get(EntityManagerInterface::class);
+
+        $repo->create('corr-tie-first');
+        $first = $repo->findLatest();
+        $this->assertNotNull($first);
+
+        $repo->create('corr-tie-second');
+        $second = $repo->findLatest();
+        $this->assertNotNull($second);
+        $this->assertSame('corr-tie-second', $second->correlationId);
+
+        // Force both rows onto the exact same second-granularity timestamp,
+        // reproducing a tie that createdAt alone cannot break.
+        $sharedCreatedAt = new \DateTime('-1 hour');
+        $first->createdAt = $sharedCreatedAt;
+        $second->createdAt = $sharedCreatedAt;
+        $entityManager->flush();
+
+        $run = $repo->findLatest();
+
+        $this->assertNotNull($run);
+        $this->assertSame('corr-tie-second', $run->correlationId);
+    }
+
+    #[Test]
     public function updateFieldsAppliesOnlyProvidedFields(): void
     {
         $repo = self::getContainer()->get(BannerPipelineRunRepository::class);
