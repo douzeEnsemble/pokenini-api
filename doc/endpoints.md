@@ -49,12 +49,15 @@ curl -u web:douze http://web:8080/types
 | 26 | POST | `/istration/update/games_availabilities` | (Async) Sync disponibilités par jeu |
 | 27 | POST | `/istration/update/games_shinies_availabilities` | (Async) Sync disponibilités shiny par jeu |
 | 28 | POST | `/istration/update/collections_availabilities` | (Async) Sync disponibilités par collection |
-| 29 | GET | `/debogage/dex/{slug}` | (Debug) Détail brut d'un dex |
-| 30 | GET | `/debogage/dex/{slug}/availabilities` | (Debug) Pokémons disponibles dans un dex |
-| 31 | GET | `/debogage/pokemon/{slug}` | (Debug) Détail brut d'un pokémon |
-| 32 | GET | `/debogage/pokemon/{slug}/availabilities` | (Debug) Disponibilités d'un pokémon |
-| 33 | DELETE | `/debogage/pokemon/{slug}/caches` | (Debug) Purge des caches de disponibilités d'un pokémon |
-| 34 | GET | `/version` | Version de l'application |
+| 29 | POST | `/istration/banner-pipeline-runs` | Crée un run de suivi du pipeline de bannière |
+| 30 | PATCH | `/istration/banner-pipeline-runs/{correlationId}` | Met à jour un run de suivi du pipeline de bannière |
+| 31 | GET | `/istration/banner-pipeline-runs/latest` | Dernier run de suivi du pipeline de bannière |
+| 32 | GET | `/debogage/dex/{slug}` | (Debug) Détail brut d'un dex |
+| 33 | GET | `/debogage/dex/{slug}/availabilities` | (Debug) Pokémons disponibles dans un dex |
+| 34 | GET | `/debogage/pokemon/{slug}` | (Debug) Détail brut d'un pokémon |
+| 35 | GET | `/debogage/pokemon/{slug}/availabilities` | (Debug) Disponibilités d'un pokémon |
+| 36 | DELETE | `/debogage/pokemon/{slug}/caches` | (Debug) Purge des caches de disponibilités d'un pokémon |
+| 37 | GET | `/version` | Version de l'application |
 
 > **Note** : le préfixe d'administration est littéralement `/istration` (et non `/administration`), et le préfixe de debug est `/debogage`.
 
@@ -1030,13 +1033,131 @@ Codes de statut : `201`, `401`.
 | 27 | POST `/istration/update/games_shinies_availabilities` | `update_games_shinies_availabilities` | Sync des disponibilités shiny par jeu |
 | 28 | POST `/istration/update/collections_availabilities` | `update_collections_availabilities` | Sync des disponibilités par collection |
 
+### Suivi du pipeline de bannière (`/istration/banner-pipeline-runs`)
+
+Contrairement aux endpoints ci-dessus, ces 3 endpoints ne déclenchent pas d'action asynchrone : ils exposent un CRUD synchrone simple, utilisé pour que la CI GitHub Actions du pipeline de génération des bannières fasse état de son avancement (deux workflows GitHub Actions + deux pull requests suivis par run).
+
+#### 29. POST `/istration/banner-pipeline-runs`
+
+Crée un nouveau run de suivi, identifié par un `correlationId` fourni par l'appelant (ex : id du run GitHub Actions déclencheur).
+
+**Body** (JSON) :
+
+| Champ | Type | Description |
+|-------|------|-------------|
+| `correlationId` | string | Identifiant de corrélation unique du run |
+
+Exemple de requête :
+
+```bash
+curl -u web:douze -X POST \
+  -H "Content-Type: application/json" \
+  -d '{"correlationId": "gh-run-12345"}' \
+  http://web:8080/istration/banner-pipeline-runs
+```
+
+Exemple de réponse (`201`) : corps vide.
+
+Codes de statut : `201`, `400` (corps vide, JSON invalide, `correlationId` absent ou non-string), `401`, `409` (`correlationId` déjà existant).
+
+---
+
+#### 30. PATCH `/istration/banner-pipeline-runs/{correlationId}`
+
+Met à jour un sous-ensemble des champs de suivi d'un run existant (statut des deux workflows GitHub Actions, PR icône, PR resources...). Seuls les champs présents et non `null` dans le corps sont appliqués ; les autres restent inchangés en base.
+
+**Paramètres de route** :
+
+| Paramètre | Type | Description |
+|-----------|------|-------------|
+| `correlationId` | string | Identifiant de corrélation du run à mettre à jour |
+
+**Body** (JSON, DTO `BannerPipelineRunPatch`, tous les champs optionnels) :
+
+| Champ | Type |
+|-------|------|
+| `workflowARunId` | int |
+| `workflowAStatus` | string |
+| `workflowAConclusion` | string |
+| `workflowAUrl` | string |
+| `iconPrNumber` | int |
+| `iconPrUrl` | string |
+| `iconPrState` | string |
+| `iconPrMergeCommitSha` | string |
+| `workflowBRunId` | int |
+| `workflowBStatus` | string |
+| `workflowBConclusion` | string |
+| `workflowBUrl` | string |
+| `resourcesPrNumber` | int |
+| `resourcesPrUrl` | string |
+| `resourcesPrState` | string |
+
+Exemple de requête :
+
+```bash
+curl -u web:douze -X PATCH \
+  -H "Content-Type: application/json" \
+  -d '{"workflowAStatus": "completed", "workflowAConclusion": "success"}' \
+  http://web:8080/istration/banner-pipeline-runs/gh-run-12345
+```
+
+Exemple de réponse (`200`) : corps vide.
+
+Codes de statut : `200`, `400` (corps vide ou JSON invalide), `401`, `404` (`correlationId` inconnu).
+
+Notes :
+- les clés du body sont en **camelCase**, alors que la réponse du GET ci-dessous est en `snake_case` — voir la note à l'endpoint 31 ;
+- un champ absent du body est ignoré (non écrasé) ; il n'existe pas de moyen de remettre un champ à `null` via ce endpoint.
+
+---
+
+#### 31. GET `/istration/banner-pipeline-runs/latest`
+
+Retourne le run de suivi du pipeline de bannière le plus récent (le plus grand `created_at`).
+
+**Paramètres** : aucun.
+
+Exemple de requête :
+
+```bash
+curl -u web:douze http://web:8080/istration/banner-pipeline-runs/latest
+```
+
+Exemple de réponse (`200`) :
+
+```json
+{
+  "correlation_id": "gh-run-12345",
+  "workflow_a_run_id": 987654321,
+  "workflow_a_status": "completed",
+  "workflow_a_conclusion": "success",
+  "workflow_a_url": "https://github.com/org/repo/actions/runs/987654321",
+  "icon_pr_number": 42,
+  "icon_pr_url": "https://github.com/org/repo/pull/42",
+  "icon_pr_state": "open",
+  "icon_pr_merge_commit_sha": null,
+  "workflow_b_run_id": null,
+  "workflow_b_status": null,
+  "workflow_b_conclusion": null,
+  "workflow_b_url": null,
+  "resources_pr_number": null,
+  "resources_pr_url": null,
+  "resources_pr_state": null
+}
+```
+
+Codes de statut : `200`, `401`, `404` (aucun run enregistré).
+
+Notes :
+- les clés de cette réponse sont en `snake_case` (comme partout ailleurs dans l'API), **alors que le PATCH de l'endpoint 30 attend des clés en camelCase** ; cette asymétrie est réelle (héritée du même schéma que `ImagePipelineRunController`, non corrigée sur cette branche) — un futur consommateur (par exemple un service `pokenini-back` pas encore construit) doit envoyer les clés du PATCH telles quelles, sans les convertir en snake_case, sous peine de voir tous les champs silencieusement ignorés.
+
 ---
 
 ## Debug (`/debogage`)
 
 Les entités sont résolues par slug via `#[MapEntity]` : un slug inconnu produit un **404**.
 
-### 29. GET `/debogage/dex/{slug}`
+### 32. GET `/debogage/dex/{slug}`
 
 Détail brut d'un dex (toutes colonnes, y compris `identifier` UUID et `deleted_at`).
 
@@ -1092,7 +1213,7 @@ Codes de statut : `200`, `401`, `404`.
 
 ---
 
-### 30. GET `/debogage/dex/{slug}/availabilities`
+### 33. GET `/debogage/dex/{slug}/availabilities`
 
 Liste des slugs de pokémons disponibles dans un dex (résultat du calcul `dex_availabilities`).
 
@@ -1122,7 +1243,7 @@ Codes de statut : `200`, `401`, `404`.
 
 ---
 
-### 31. GET `/debogage/pokemon/{slug}`
+### 34. GET `/debogage/pokemon/{slug}`
 
 Détail brut d'un pokémon (toutes colonnes, formes et types détaillés).
 
@@ -1211,7 +1332,7 @@ Codes de statut : `200`, `401`, `404`.
 
 ---
 
-### 32. GET `/debogage/pokemon/{slug}/availabilities`
+### 35. GET `/debogage/pokemon/{slug}/availabilities`
 
 Disponibilités calculées d'un pokémon, par jeu et par bundle (normal et shiny). Chaque liste contient des objets `{ game | game_bundle, is_available }`.
 
@@ -1250,7 +1371,7 @@ Codes de statut : `200`, `401`, `404`.
 
 ---
 
-### 33. DELETE `/debogage/pokemon/{slug}/caches`
+### 36. DELETE `/debogage/pokemon/{slug}/caches`
 
 Purge les caches de disponibilités d'un pokémon (jeux, jeux shiny, bundles, bundles shiny, collections).
 
@@ -1266,7 +1387,7 @@ Codes de statut : `200`, `401`, `404`.
 
 ---
 
-### 34. GET `/version`
+### 37. GET `/version`
 
 Renvoie le numéro de version de l'application actuellement déployée, lu depuis le fichier `resources/metadata/version`. Si le fichier est absent ou illisible, la réponse contient `"unknown"`.
 
