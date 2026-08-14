@@ -111,6 +111,7 @@ class BannerPipelineRunRepository extends ServiceEntityRepository
         /** @var ?BannerPipelineRun */
         return $this->createQueryBuilder('r')
             ->orderBy('r.createdAt', 'DESC')
+            ->addOrderBy('r.identifier', 'DESC')
             ->setMaxResults(1)
             ->getQuery()
             ->getOneOrNullResult()

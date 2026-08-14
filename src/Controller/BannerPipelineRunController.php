@@ -95,7 +95,7 @@ final class BannerPipelineRunController extends AbstractController
     {
         $content = $request->getContent();
 
-        if (!$content) {
+        if ('' === $content) {
             throw new BadRequestHttpException();
         }
 

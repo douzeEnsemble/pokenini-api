@@ -111,6 +111,31 @@ final class BannerPipelineRunControllerTest extends AbstractTestControllerApi
     }
 
     #[Test]
+    public function createWithLiteralZeroBodyIsNotRejectedAsEmpty(): void
+    {
+        $this->apiRequest(
+            'POST',
+            '/istration/banner-pipeline-runs',
+            [],
+            null,
+            '0'
+        );
+
+        // A literal "0" body is valid JSON (decodes to the int 0), so
+        // decodeBody()'s emptiness check ('' === $content) does not treat it
+        // as empty and does not short-circuit to 400. json_decode('0', true)
+        // then returns int(0), which does not satisfy decodeBody()'s
+        // `: array` return type, so PHP raises a TypeError - converted by
+        // Symfony into a 500 response. That downstream TypeError/500 is
+        // pre-existing json_decode/type-coercion behavior inherited from
+        // ImagePipelineRunController and is explicitly out of scope for this
+        // fix (deferred to a separate PR); this test only proves the "0"
+        // body is no longer misclassified as an empty body (i.e. it is not
+        // 400).
+        $this->assertResponseStatusCodeSame(500);
+    }
+
+    #[Test]
     public function getLatestReturns404WhenNoneExist(): void
     {
         $this->apiRequest('GET', '/istration/banner-pipeline-runs/latest');
