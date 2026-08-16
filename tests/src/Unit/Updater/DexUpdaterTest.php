@@ -108,6 +108,7 @@ final class DexUpdaterTest extends TestCase
             'French description',
             'Description',
             'Banner',
+            'Banner Layers',
         ];
     }
 
@@ -133,6 +134,7 @@ final class DexUpdaterTest extends TestCase
             '',
             '',
             '',
+            'shiny,mega',
         ];
     }
 }
