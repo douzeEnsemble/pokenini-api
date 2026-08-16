@@ -14,10 +14,10 @@ class DexUpdater extends AbstractUpdater
     protected string $sheetName = 'Dex';
     protected string $tableName = 'dex';
     protected string $statisticName = 'dex';
-    protected string $headerCellsRange = 'A1:P1';
+    protected string $headerCellsRange = 'A1:Q1';
 
     /** @var array<int, string> */
-    protected array $recordsCellsRanges = ['A2:P'];
+    protected array $recordsCellsRanges = ['A2:Q'];
 
     #[\Override]
     protected function getExpectedHeader(): array
@@ -39,12 +39,15 @@ class DexUpdater extends AbstractUpdater
             'French description',
             'Description',
             'Banner',
+            'Banner Layers',
         ];
     }
 
     #[\Override]
     protected function upsertRecord(array $record): void
     {
+        $bannerLayers = '' === $record['Banner Layers'] ? null : $record['Banner Layers'];
+
         $sqlParameters = [
             'id' => (string) Uuid::v4(),
             'slug' => $record['Slug'],
@@ -62,6 +65,7 @@ class DexUpdater extends AbstractUpdater
             'is_released' => $record['Is released'],
             'is_premium' => $record['Is Premium'],
             'can_hold_election' => $record['Can Hold Election'],
+            'banner_layers' => $bannerLayers,
         ];
 
         $tableName = $this->tableName;
@@ -84,6 +88,7 @@ class DexUpdater extends AbstractUpdater
               is_released,
               is_premium,
               can_hold_election,
+              banner_layers,
               last_changed_at
             )
             VALUES (
@@ -103,6 +108,7 @@ class DexUpdater extends AbstractUpdater
                 :is_released,
                 :is_premium,
                 :can_hold_election,
+                :banner_layers,
                 NOW()
             )
             ON CONFLICT (slug)
@@ -123,6 +129,7 @@ class DexUpdater extends AbstractUpdater
                 is_released = excluded.is_released,
                 is_premium = excluded.is_premium,
                 can_hold_election = excluded.can_hold_election,
+                banner_layers = excluded.banner_layers,
                 deleted_at = NULL
             SQL;
 

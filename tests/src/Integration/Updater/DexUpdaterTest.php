@@ -62,6 +62,24 @@ final class DexUpdaterTest extends AbstractTestUpdater
         $this->assertTrue($rubySapphireEmeraldAfter['is_released']);
     }
 
+    #[Test]
+    public function dexBannerLayers(): void
+    {
+        $xyBefore = $this->getDexFromSlug('xy');
+        $redGreenBlueYellowBefore = $this->getDexFromSlug('redgreenblueyellow');
+
+        $this->assertNull($xyBefore['banner_layers']);
+        $this->assertNull($redGreenBlueYellowBefore['banner_layers']);
+
+        $this->getService()->execute('Dex');
+
+        $xyAfter = $this->getDexFromSlug('xy');
+        $redGreenBlueYellowAfter = $this->getDexFromSlug('redgreenblueyellow');
+
+        $this->assertSame('xy,shiny', $xyAfter['banner_layers']);
+        $this->assertNull($redGreenBlueYellowAfter['banner_layers']);
+    }
+
     #[\Override]
     protected function getService(): AbstractUpdater
     {

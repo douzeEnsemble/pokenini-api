@@ -163,20 +163,20 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Dex'!A1:P1"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Dex'!A1:Q1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/test/values_%27Dex%27%21A1%3AP1.json"
+      "file": "/var/moco/test/values_%27Dex%27%21A1%3AQ1.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Dex'!A2:P"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Dex'!A2:Q"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/test/values_%27Dex%27%21A2%3AP.json"
+      "file": "/var/moco/test/values_%27Dex%27%21A2%3AQ.json"
     }
   },
   {
