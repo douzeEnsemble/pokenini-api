@@ -83,6 +83,24 @@ final class DexRepositoryTest extends KernelTestCase
         $this->assertEmpty($repo->getData('7b52009b64fd0a2a49e6d8a939753077792b0554', 'dexthatdoesntexists'));
     }
 
+    #[Test]
+    public function getBannerLayers(): void
+    {
+        $repo = self::getContainer()->get(DexRepository::class);
+
+        $result = $repo->getBannerLayers();
+
+        $bySlug = [];
+        foreach ($result as $row) {
+            $bySlug[$row['slug']] = $row['banner_layers'];
+        }
+
+        $this->assertArrayHasKey('redgreenblueyellow', $bySlug);
+        $this->assertSame('shiny,mega', $bySlug['redgreenblueyellow']);
+        $this->assertArrayNotHasKey('goldsilvercrystal', $bySlug);
+        $this->assertArrayNotHasKey('home', $bySlug);
+    }
+
     /**
      * @param string[] $expectedSlugs
      */

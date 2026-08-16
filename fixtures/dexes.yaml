@@ -14,6 +14,7 @@ App\Entity\Dex:
     isPremium: true
     canHoldElection: true
     isReleased: true
+    bannerLayers: ["shiny", "mega"]
   dex_goldsilvercrystal:
     name: "Gold / Silver / Crystal"
     slug: "goldsilvercrystal"
