@@ -154,6 +154,7 @@ Each quality tool is isolated under `tools/<name>/` with its own `composer.json`
 | `MESSENGER_TRANSPORT_DSN` | Doctrine-backed async transport |
 | `ELO_DEFAULT`, `ELO_K_FACTOR`, `ELO_D_DIFFERENCE` | ELO rating config |
 | `WEB_PASSWORD` | Bcrypt-hashed password for the single API user (`web`) |
+| `ICON_API_PASSWORD` | Bcrypt-hashed password for the scoped `icon` user (`ROLE_ICON`, access to `/istration/dex-banner-layers` only) |
 
 ## Debugging tip
 

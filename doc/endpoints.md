@@ -58,6 +58,7 @@ curl -u web:douze http://web:8080/types
 | 35 | GET | `/debogage/pokemon/{slug}/availabilities` | (Debug) Disponibilités d'un pokémon |
 | 36 | DELETE | `/debogage/pokemon/{slug}/caches` | (Debug) Purge des caches de disponibilités d'un pokémon |
 | 37 | GET | `/version` | Version de l'application |
+| 38 | GET | `/istration/dex-banner-layers` | Layers de bannière par dex, pour `pokenini-icon` |
 
 > **Note** : le préfixe d'administration est littéralement `/istration` (et non `/administration`), et le préfixe de debug est `/debogage`.
 
@@ -1408,3 +1409,31 @@ Exemple de réponse (`200`) :
 ```
 
 Codes de statut : `200`, `401`.
+
+---
+
+### 35. GET `/istration/dex-banner-layers`
+
+Layers de bannière (par ex. `shiny`, `mega`) par dex, indexés par slug. Consommé par `pokenini-icon` pour générer les bannières. Seuls les dex ayant des layers définis apparaissent dans la réponse.
+
+**Paramètres** : aucun.
+
+**Authentification** : accessible avec les identifiants `web` habituels, ou avec le credential dédié `icon` (mot de passe défini par la variable d'environnement `ICON_API_PASSWORD`), qui n'a accès qu'à cette route (`ROLE_ICON`).
+
+Exemple de requête :
+
+```bash
+curl -u icon:douze http://web:8080/istration/dex-banner-layers
+```
+
+Exemple de réponse (`200`) :
+
+```json
+{
+  "goldsilvercrystal": ["shiny", "mega"]
+}
+```
+
+Si aucun dex n'a de layers définis, la réponse est un objet JSON vide `{}` (jamais un tableau `[]`).
+
+Codes de statut : `200`, `401`, `403` (credential `icon` utilisé sur une autre route).
