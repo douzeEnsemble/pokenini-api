@@ -95,9 +95,9 @@ final class DexRepositoryTest extends KernelTestCase
             $bySlug[$row['slug']] = $row['banner_layers'];
         }
 
-        $this->assertArrayHasKey('redgreenblueyellow', $bySlug);
-        $this->assertSame('shiny,mega', $bySlug['redgreenblueyellow']);
-        $this->assertArrayNotHasKey('goldsilvercrystal', $bySlug);
+        $this->assertArrayHasKey('goldsilvercrystal', $bySlug);
+        $this->assertSame('shiny,mega', $bySlug['goldsilvercrystal']);
+        $this->assertArrayNotHasKey('redgreenblueyellow', $bySlug);
         $this->assertArrayNotHasKey('home', $bySlug);
     }
 
