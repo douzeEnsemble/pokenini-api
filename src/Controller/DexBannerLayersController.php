@@ -6,19 +6,17 @@ namespace App\Controller;
 
 use App\Service\DexBannerLayersService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Component\HttpKernel\Attribute\Serialize;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/istration/dex-banner-layers')]
 final class DexBannerLayersController extends AbstractController
 {
-    /**
-     * @return array<string, string[]>
-     */
     #[Route(path: '', methods: ['GET'])]
-    #[Serialize]
-    public function get(DexBannerLayersService $service): array
+    public function get(DexBannerLayersService $service): JsonResponse
     {
-        return $service->getAll();
+        $layers = $service->getAll();
+
+        return new JsonResponse([] === $layers ? new \stdClass() : $layers);
     }
 }
