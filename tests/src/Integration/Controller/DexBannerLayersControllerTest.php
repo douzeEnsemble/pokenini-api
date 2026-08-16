@@ -28,9 +28,9 @@ final class DexBannerLayersControllerTest extends AbstractTestControllerApi
 
         $content = $this->getJsonDecodedResponseContent();
 
-        $this->assertArrayHasKey('redgreenblueyellow', $content);
-        $this->assertSame(['shiny', 'mega'], $content['redgreenblueyellow']);
-        $this->assertArrayNotHasKey('goldsilvercrystal', $content);
+        $this->assertArrayHasKey('goldsilvercrystal', $content);
+        $this->assertSame(['shiny', 'mega'], $content['goldsilvercrystal']);
+        $this->assertArrayNotHasKey('redgreenblueyellow', $content);
         $this->assertArrayNotHasKey('home', $content);
     }
 
