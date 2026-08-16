@@ -36,6 +36,24 @@ class DexRepository extends ServiceEntityRepository
     }
 
     /**
+     * @return array<array-key, array{slug: string, banner_layers: string}>
+     */
+    public function getBannerLayers(): array
+    {
+        $sql = <<<'SQL'
+            SELECT      d.slug AS "slug",
+                        d.banner_layers AS "banner_layers"
+            FROM        dex AS d
+            WHERE       d.deleted_at IS NULL
+                    AND d.banner_layers IS NOT NULL
+            ORDER BY    d.slug ASC
+            SQL;
+
+        /** @var array<array-key, array{slug: string, banner_layers: string}> */
+        return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
+    }
+
+    /**
      * @return bool[]|string[]
      */
     public function getData(string $trainerExternalId, string $dexSlug): array
