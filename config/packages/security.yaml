@@ -7,6 +7,7 @@ security:
       memory:
         users:
           web: { password: '%env(WEB_PASSWORD)%', roles: ["ROLE_API"] }
+          icon: { password: '%env(ICON_API_PASSWORD)%', roles: ["ROLE_ICON"] }
 
   firewalls:
     dev:
@@ -21,6 +22,7 @@ security:
         realm: Secured Area
 
   access_control:
+    - { path: ^/istration/dex-banner-layers$, roles: [ROLE_ICON, ROLE_API] }
     - { path: ^/, roles: ROLE_API }
 
 when@test:

@@ -15,6 +15,8 @@ abstract class AbstractTestControllerApi extends WebTestCase
 
     public const string AUTH_USER = 'web';
     public const string AUTH_PASSWORD = 'douze';
+    public const string ICON_AUTH_USER = 'icon';
+    public const string ICON_AUTH_PASSWORD = 'douze';
 
     protected KernelBrowser $client;
 
