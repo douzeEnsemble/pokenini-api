@@ -54,4 +54,28 @@ final class DexBannerLayersServiceTest extends TestCase
 
         $this->assertSame([], $service->getAll());
     }
+
+    #[Test]
+    public function getAllStripsEmptySegmentsFromAMalformedCell(): void
+    {
+        $repository = $this->createMock(DexRepository::class);
+        $repository
+            ->expects($this->once())
+            ->method('getBannerLayers')
+            ->willReturn([
+                ['slug' => 'trailingcomma', 'banner_layers' => 'shiny,'],
+                ['slug' => 'doublecomma', 'banner_layers' => 'shiny,,mega'],
+            ])
+        ;
+
+        $service = new DexBannerLayersService($repository);
+
+        $this->assertSame(
+            [
+                'trailingcomma' => ['shiny'],
+                'doublecomma' => ['shiny', 'mega'],
+            ],
+            $service->getAll()
+        );
+    }
 }

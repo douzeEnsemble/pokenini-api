@@ -11,7 +11,7 @@ final class Version20260816203715 extends AbstractMigration
 {
     public function getDescription(): string
     {
-        return '';
+        return 'Add dex.banner_layers';
     }
 
     public function up(Schema $schema): void
