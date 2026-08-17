@@ -20,7 +20,7 @@ class DexBannerLayersService
         $result = [];
 
         foreach ($this->repository->getBannerLayers() as $row) {
-            $result[$row['slug']] = explode(',', $row['banner_layers']);
+            $result[$row['slug']] = array_values(array_filter(explode(',', $row['banner_layers'])));
         }
 
         return $result;
