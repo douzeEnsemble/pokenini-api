@@ -15,7 +15,7 @@
         "ext-xml": "*",
         "ext-xmlwriter": "*",
         "ext-zip": "*",
-        "infection/infection": "^0.34.2"
+        "infection/infection": "^0.35.0"
     },
     "config": {
         "allow-plugins": {
