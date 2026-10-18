@@ -64,6 +64,6 @@ final class Dex implements SoftDeleteableInterface
     /**
      * @var null|string[] $bannerLayers
      */
-    #[ORM\Column(type: Types::SIMPLE_ARRAY, nullable: true)]
+    #[ORM\Column(type: 'simple_array', nullable: true)]
     public ?array $bannerLayers = null;
 }
