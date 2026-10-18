@@ -35,6 +35,12 @@
 
     <rule ref="rulesets/design.xml">
         <exclude name="NumberOfChildren" />
+        <exclude name="CouplingBetweenObjects" />
+    </rule>
+    <rule ref="rulesets/design.xml/CouplingBetweenObjects">
+        <properties>
+            <property name="maximum" value="14" />
+        </properties>
     </rule>
     <rule ref="rulesets/design.xml/NumberOfChildren">
         <properties>
