@@ -182,7 +182,7 @@ final class DexAvailabilityCalculatorTest extends TestCase
         $dexPokemonAvailabilityCalculator
             ->expects($this->exactly(99))
             ->method('calculate')
-            ->willReturnCallback(fn (Dex $d, Pokemon $p) => DexAvailability::create($p, $d))
+            ->willReturnCallback(fn (Dex $dex, Pokemon $pokemon) => DexAvailability::create($pokemon, $dex))
         ;
 
         $calculator = new DexAvailabilityCalculator(
@@ -221,7 +221,7 @@ final class DexAvailabilityCalculatorTest extends TestCase
         $dexPokemonAvailabilityCalculator
             ->expects($this->exactly(100))
             ->method('calculate')
-            ->willReturnCallback(fn (Dex $d, Pokemon $p) => DexAvailability::create($p, $d))
+            ->willReturnCallback(fn (Dex $dex, Pokemon $pokemon) => DexAvailability::create($pokemon, $dex))
         ;
 
         $calculator = new DexAvailabilityCalculator(
