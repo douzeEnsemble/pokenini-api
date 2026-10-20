@@ -55,6 +55,9 @@ final class Dex implements SoftDeleteableInterface
     #[ORM\Column(options: ['default' => false])]
     public bool $canHoldElection = false;
 
+    #[ORM\Column(options: ['default' => false])]
+    public bool $canBeColorPlay = false;
+
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     public \DateTime $lastChangedAt;
 

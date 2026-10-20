@@ -13,6 +13,7 @@ App\Entity\Dex:
     lastChangedAt: '<(new DateTime("2023-02-21 08:51:00"))>'
     isPremium: true
     canHoldElection: true
+    canBeColorPlay: true
     isReleased: true
   dex_goldsilvercrystal:
     name: "Gold / Silver / Crystal"
@@ -83,6 +84,7 @@ App\Entity\Dex:
     lastChangedAt: '<(new DateTime("2023-03-21 12:34:56"))>'
     isPremium: false
     canHoldElection: false
+    canBeColorPlay: true
     isReleased: true
   dex_home_pogo:
     name: "Home PoGo"
@@ -97,6 +99,7 @@ App\Entity\Dex:
     lastChangedAt: '<(new DateTime("2023-03-21 12:12:12"))>'
     isPremium: false
     canHoldElection: true
+    canBeColorPlay: true
     isReleased: false
   dex_demo:
     name: "Demo"
@@ -109,6 +112,7 @@ App\Entity\Dex:
     lastChangedAt: "<date_create()>"
     isPremium: false
     canHoldElection: false
+    canBeColorPlay: true
     isReleased: true
   dex_spoon:
     name: "Spoon"

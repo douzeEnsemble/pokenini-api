@@ -1,0 +1,72 @@
+App\Entity\ColorGame:
+  color_game_demo_in_progress:
+    trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+    dex: "@dex_demo"
+    isShiny: false
+    status: "in_progress"
+    roundCount: 3
+    answeredCount: 1
+    correctCount: 1
+    startedAt: '<(new DateTime("2026-10-10 10:00:00"))>'
+    lastPlayedAt: '<(new DateTime("2026-10-10 10:05:00"))>'
+  color_game_homeshiny_completed:
+    trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+    dex: "@dex_home_shiny"
+    isShiny: true
+    status: "completed"
+    roundCount: 2
+    answeredCount: 2
+    correctCount: 1
+    startedAt: '<(new DateTime("2026-10-01 09:00:00"))>'
+    lastPlayedAt: '<(new DateTime("2026-10-01 09:02:00"))>'
+    endedAt: '<(new DateTime("2026-10-01 09:02:00"))>'
+  color_game_demo_other_trainer:
+    trainerExternalId: "other_trainer"
+    dex: "@dex_demo"
+    isShiny: false
+    status: "in_progress"
+    roundCount: 1
+    answeredCount: 0
+    correctCount: 0
+    startedAt: '<(new DateTime("2026-10-12 08:00:00"))>'
+
+App\Entity\ColorGameRound:
+  color_game_round_demo_1:
+    colorGame: "@color_game_demo_in_progress"
+    pokemon: "@pokemon_bulbasaur"
+    position: 1
+    choicesOrder: "2,1,3"
+    chosenChoice: 1
+    isCorrect: true
+    answeredAt: '<(new DateTime("2026-10-10 10:05:00"))>'
+  color_game_round_demo_2:
+    colorGame: "@color_game_demo_in_progress"
+    pokemon: "@pokemon_ivysaur"
+    position: 2
+    choicesOrder: "2,1"
+  color_game_round_demo_3:
+    colorGame: "@color_game_demo_in_progress"
+    pokemon: "@pokemon_venusaur"
+    position: 3
+    choicesOrder: "1,2"
+  color_game_round_homeshiny_1:
+    colorGame: "@color_game_homeshiny_completed"
+    pokemon: "@pokemon_bulbasaur"
+    position: 1
+    choicesOrder: "1,2"
+    chosenChoice: 0
+    isCorrect: true
+    answeredAt: '<(new DateTime("2026-10-01 09:01:00"))>'
+  color_game_round_homeshiny_2:
+    colorGame: "@color_game_homeshiny_completed"
+    pokemon: "@pokemon_caterpie"
+    position: 2
+    choicesOrder: "1,2"
+    chosenChoice: 1
+    isCorrect: false
+    answeredAt: '<(new DateTime("2026-10-01 09:02:00"))>'
+  color_game_round_other_1:
+    colorGame: "@color_game_demo_other_trainer"
+    pokemon: "@pokemon_caterpie"
+    position: 1
+    choicesOrder: "2,1"

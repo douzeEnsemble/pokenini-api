@@ -14,10 +14,10 @@ class DexUpdater extends AbstractUpdater
     protected string $sheetName = 'Dex';
     protected string $tableName = 'dex';
     protected string $statisticName = 'dex';
-    protected string $headerCellsRange = 'A1:Q1';
+    protected string $headerCellsRange = 'A1:R1';
 
     /** @var array<int, string> */
-    protected array $recordsCellsRanges = ['A2:Q'];
+    protected array $recordsCellsRanges = ['A2:R'];
 
     #[\Override]
     protected function getExpectedHeader(): array
@@ -33,6 +33,7 @@ class DexUpdater extends AbstractUpdater
             'Is Premium',
             'Is Display Form',
             'Can Hold Election',
+            'Can be Color Play',
             'Is released',
             'Display template',
             '#Region',
@@ -65,6 +66,7 @@ class DexUpdater extends AbstractUpdater
             'is_released' => $record['Is released'],
             'is_premium' => $record['Is Premium'],
             'can_hold_election' => $record['Can Hold Election'],
+            'can_be_color_play' => (int) filter_var($record['Can be Color Play'], FILTER_VALIDATE_BOOLEAN),
             'banner_layers' => $bannerLayers,
         ];
 
@@ -88,6 +90,7 @@ class DexUpdater extends AbstractUpdater
               is_released,
               is_premium,
               can_hold_election,
+              can_be_color_play,
               banner_layers,
               last_changed_at
             )
@@ -108,6 +111,7 @@ class DexUpdater extends AbstractUpdater
                 :is_released,
                 :is_premium,
                 :can_hold_election,
+                :can_be_color_play,
                 :banner_layers,
                 NOW()
             )
@@ -129,6 +133,7 @@ class DexUpdater extends AbstractUpdater
                 is_released = excluded.is_released,
                 is_premium = excluded.is_premium,
                 can_hold_election = excluded.can_hold_election,
+                can_be_color_play = excluded.can_be_color_play,
                 banner_layers = excluded.banner_layers,
                 deleted_at = NULL
             SQL;

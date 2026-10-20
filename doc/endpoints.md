@@ -58,6 +58,11 @@ curl -u web:douze http://web:8080/types
 | 35 | GET | `/debogage/pokemon/{slug}/availabilities` | (Debug) Disponibilités d'un pokémon |
 | 36 | DELETE | `/debogage/pokemon/{slug}/caches` | (Debug) Purge des caches de disponibilités d'un pokémon |
 | 37 | GET | `/version` | Version de l'application |
+| 38 | GET | `/color_game/{trainerExternalId}/dex` | Dex jouables au jeu des couleurs |
+| 39 | GET | `/color_game/{trainerExternalId}/games` | Historique des parties |
+| 40 | POST | `/color_game/{trainerExternalId}/games` | Créer une partie |
+| 41 | GET | `/color_game/{trainerExternalId}/games/{gameId}` | État d'une partie et prochaine manche |
+| 42 | POST | `/color_game/{trainerExternalId}/games/{gameId}/answers` | Répondre à une manche |
 | 38 | GET | `/istration/dex-banner-layers` | Layers de bannière par dex, pour `pokenini-icon` |
 
 > **Note** : le préfixe d'administration est littéralement `/istration` (et non `/administration`), et le préfixe de debug est `/debogage`.
@@ -932,6 +937,117 @@ Exemple de réponse (`200`) :
 Codes de statut : `200`, `401`, `500` (paramètre requis manquant).
 
 ---
+
+## Jeu des couleurs
+
+Le joueur choisit, parmi plusieurs lots de couleurs, celui qui correspond au Pokémon affiché.
+Les lots viennent des colonnes couleurs du Sheet Pokémons (table `pokemon_color_set`, le lot en position 1 est le bon).
+Seuls les dex avec le flag `can_be_color_play` sont jouables, en normal ou chromatique selon `is_shiny` du dex.
+Une partie compte une manche par Pokémon jouable du dex (liste figée à la création). Une seule partie en cours par dex et par dresseur : en créer une nouvelle abandonne la précédente, qui reste dans l'historique.
+
+Statuts d'une partie : `in_progress`, `completed`, `abandoned`.
+
+Objet partie (`ColorGameResponse`) :
+
+```json
+{
+  "id": "0b6c1d9e-2a31-4c2e-9d63-0f4a7c5e8b10",
+  "dex": { "slug": "demo", "name": "Demo", "french_name": "Démo" },
+  "is_shiny": false,
+  "status": "in_progress",
+  "round_count": 3,
+  "answered_count": 1,
+  "correct_count": 1,
+  "started_at": "2026-10-10T10:00:00+00:00",
+  "last_played_at": "2026-10-10T10:01:00+00:00",
+  "ended_at": null
+}
+```
+
+### 38. GET `/color_game/{trainerExternalId}/dex`
+
+Dex jouables, avec le nombre de Pokémon jouables et la partie en cours du dresseur (`current_game`, ou `null`).
+Paramètres de query `include_unreleased_dex` et `include_premium_dex` comme pour `/dex/can_hold_election`.
+
+```json
+[
+  {
+    "slug": "demo",
+    "name": "Demo",
+    "french_name": "Démo",
+    "is_shiny": false,
+    "is_released": true,
+    "is_premium": false,
+    "description": "",
+    "french_description": "",
+    "playable_count": 4,
+    "current_game": null
+  }
+]
+```
+
+Codes de statut : `200`, `401`.
+
+### 39. GET `/color_game/{trainerExternalId}/games`
+
+Historique des parties du dresseur, la plus récente en premier (liste d'objets partie).
+
+Codes de statut : `200`, `401`.
+
+### 40. POST `/color_game/{trainerExternalId}/games`
+
+Crée une partie. Corps JSON : `{"dex_slug": "demo"}`. Renvoie l'objet partie.
+
+Codes de statut : `201`, `400` (corps invalide, dex sans Pokémon jouable), `401`, `404` (dex inconnu ou non jouable).
+
+### 41. GET `/color_game/{trainerExternalId}/games/{gameId}`
+
+État de la partie et prochaine manche à jouer (`round` vaut `null` quand tout a été répondu).
+L'ordre de `choices` est tiré au sort à la création ; la réponse ne dit pas lequel est le bon.
+
+```json
+{
+  "game": { "...": "objet partie" },
+  "round": {
+    "position": 2,
+    "pokemon": {
+      "slug": "ivysaur",
+      "name": "Ivysaur",
+      "french_name": "Herbizarre",
+      "simplified_name": "Ivysaur",
+      "simplified_french_name": "Herbizarre",
+      "forms_label": "",
+      "forms_french_label": "",
+      "national_dex_number": 2
+    },
+    "choices": [
+      { "index": 0, "codes": ["#5A9C8C", "#E05A6A"], "names": ["teal", "pink"], "french_names": ["sarcelle", "rose"] },
+      { "index": 1, "codes": ["#3060A0"], "names": ["blue"], "french_names": ["bleu"] }
+    ]
+  }
+}
+```
+
+Codes de statut : `200`, `401`, `404` (partie inconnue pour ce dresseur).
+
+### 42. POST `/color_game/{trainerExternalId}/games/{gameId}/answers`
+
+Répond à une manche. Corps JSON : `{"position": 2, "choice": 0}` (`choice` = `index` du lot choisi).
+
+```json
+{
+  "position": 2,
+  "is_correct": true,
+  "chosen_choice": 0,
+  "correct_choice": 0,
+  "game": { "...": "objet partie mis à jour" }
+}
+```
+
+Codes de statut : `200`, `400` (corps invalide, choix inexistant), `401`, `404` (partie ou manche inconnue), `409` (partie terminée, manche déjà répondue).
+
+---
+
 
 ## Suivi des actions asynchrones
 

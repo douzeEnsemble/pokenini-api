@@ -10,6 +10,7 @@ use Doctrine\DBAL\Connection;
 use Doctrine\ORM\EntityManagerInterface;
 use Google\Service\Sheets\ValueRange;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Psr\Log\LoggerInterface;
@@ -41,13 +42,49 @@ final class DexUpdaterTest extends TestCase
         $this->assertSame(1, $statistic->count);
     }
 
-    private function getService(): DexUpdater
+    /**
+     * @SuppressWarnings("PHPMD.UnusedFormalParameter")
+     */
+    #[Test]
+    #[DataProvider('providerCanBeColorPlay')]
+    public function canBeColorPlay(string $value, int $expected): void
+    {
+        $parameters = [];
+
+        $updater = $this->getService(
+            $value,
+            static function (string $sql, array $params) use (&$parameters): int {
+                $parameters = $params;
+
+                return 1;
+            },
+        );
+
+        $updater->execute('douze');
+
+        $this->assertArrayHasKey('can_be_color_play', $parameters);
+        $this->assertSame($expected, $parameters['can_be_color_play']);
+    }
+
+    /**
+     * @return array<string, array{string, int}>
+     */
+    public static function providerCanBeColorPlay(): array
+    {
+        return [
+            'true' => ['TRUE', 1],
+            'false' => ['FALSE', 0],
+            'empty' => ['', 0],
+        ];
+    }
+
+    private function getService(string $canBeColorPlay = 'TRUE', ?\Closure $executeStatement = null): DexUpdater
     {
         $headerRange = new ValueRange();
         $headerRange->values = [$this->getHeader()];
 
         $recordRange = new ValueRange();
-        $recordRange->values = [$this->getRecord()];
+        $recordRange->values = [$this->getRecord($canBeColorPlay)];
 
         $spreadsheetService = $this->createMock(SpreadsheetService::class);
         $spreadsheetService
@@ -63,6 +100,7 @@ final class DexUpdaterTest extends TestCase
         $connection
             ->expects($this->exactly(2))
             ->method('executeStatement')
+            ->willReturnCallback($executeStatement ?? static fn (): int => 1)
         ;
 
         $entityManager = $this->createMock(EntityManagerInterface::class);
@@ -102,6 +140,7 @@ final class DexUpdaterTest extends TestCase
             'Is Premium',
             'Is Display Form',
             'Can Hold Election',
+            'Can be Color Play',
             'Is released',
             'Display template',
             '#Region',
@@ -115,7 +154,7 @@ final class DexUpdaterTest extends TestCase
     /**
      * @return bool[]|string[]
      */
-    private function getRecord(): array
+    private function getRecord(string $canBeColorPlay = 'TRUE'): array
     {
         return [
             'demo',
@@ -128,6 +167,7 @@ final class DexUpdaterTest extends TestCase
             false,
             false,
             false,
+            $canBeColorPlay,
             false,
             'box',
             '',

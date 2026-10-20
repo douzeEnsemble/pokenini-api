@@ -53,6 +53,12 @@ final class PokemonsUpdaterTest extends TestCase
         $this->assertSame('PokéSprite Shiny', $result['smallShinyCredit']);
         $this->assertSame('PokemonDB', $result['bigRegularCredit']);
         $this->assertSame('PokemonDB Shiny', $result['bigShinyCredit']);
+        $this->assertSame('#F8D030;#000000 | #3080F0;#FFFFFF', $result['regularColorsCodes']);
+        $this->assertSame('#F0B030;#000000 | #30F080;#FFFFFF', $result['shinyColorsCodes']);
+        $this->assertSame('yellow;black | blue;white', $result['regularColorsNames']);
+        $this->assertSame('orange;black | green;white', $result['shinyColorsNames']);
+        $this->assertSame('jaune;noir | bleu;blanc', $result['regularColorsFrenchNames']);
+        $this->assertSame('orange;noir | vert;blanc', $result['shinyColorsFrenchNames']);
     }
 
     /** @return string[] */
@@ -99,6 +105,12 @@ final class PokemonsUpdaterTest extends TestCase
             'Small Shiny Credit' => 'PokéSprite Shiny',
             'Big Regular Credit' => 'PokemonDB',
             'Big Shiny Credit' => 'PokemonDB Shiny',
+            'Regular colours codes' => '#F8D030;#000000 | #3080F0;#FFFFFF',
+            'Shiny coulours codes' => '#F0B030;#000000 | #30F080;#FFFFFF',
+            'Regular colours names' => 'yellow;black | blue;white',
+            'Shiny coulours names' => 'orange;black | green;white',
+            'Noms Couleurs normal' => 'jaune;noir | bleu;blanc',
+            'Noms Couleurs chromatique' => 'orange;noir | vert;blanc',
         ];
     }
 }

@@ -59,6 +59,9 @@
         <UnusedClass>
             <errorLevel type="suppress">
                 <file name="src/Entity/RegionalDexNumber.php" />
+                <!-- Only used for the schema, data is read and written with SQL -->
+                <file name="src/Entity/ColorGameRound.php" />
+                <file name="src/Entity/PokemonColorSet.php" />
             </errorLevel>
         </UnusedClass>
 

@@ -80,6 +80,22 @@ final class DexUpdaterTest extends AbstractTestUpdater
         $this->assertNull($redGreenBlueYellowAfter['banner_layers']);
     }
 
+    #[Test]
+    public function dexCanBeColorPlay(): void
+    {
+        $this->assertTrue($this->getDexFromSlug('redgreenblueyellow')['can_be_color_play']);
+        $this->assertFalse($this->getDexFromSlug('goldsilvercrystal')['can_be_color_play']);
+        $this->assertFalse($this->getDexFromSlug('rubysapphireemerald')['can_be_color_play']);
+        $this->assertFalse($this->getDexFromSlug('home')['can_be_color_play']);
+
+        $this->getService()->execute('Dex');
+
+        $this->assertTrue($this->getDexFromSlug('redgreenblueyellow')['can_be_color_play']);
+        $this->assertFalse($this->getDexFromSlug('goldsilvercrystal')['can_be_color_play']);
+        $this->assertFalse($this->getDexFromSlug('rubysapphireemerald')['can_be_color_play']);
+        $this->assertTrue($this->getDexFromSlug('home')['can_be_color_play']);
+    }
+
     #[\Override]
     protected function getService(): AbstractUpdater
     {
