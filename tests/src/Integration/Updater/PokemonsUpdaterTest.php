@@ -242,10 +242,108 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
         $this->assertEquals(17, $this->getPokemonDeletedCount());
     }
 
+    #[Test]
+    public function importColorSets(): void
+    {
+        $this->getService()->execute('Pokémons');
+
+        $this->assertSame(
+            [
+                [
+                    'position' => 1,
+                    'codes' => '#5AB4A0;#94DC64;#2C6450;#E6505A;#FFFFFF',
+                    'names' => 'teal;light green;dark teal;red;white',
+                    'french_names' => 'bleu vert;vert clair;bleu vert foncé;rouge;blanc',
+                ],
+                [
+                    'position' => 2,
+                    'codes' => '#B45A6E;#DC64C8;#642C40;#50E6DC;#FFFFFF',
+                    'names' => 'pink;magenta;dark red;cyan;white',
+                    'french_names' => 'rose;magenta;rouge foncé;cyan;blanc',
+                ],
+                [
+                    'position' => 3,
+                    'codes' => '#A0B45A;#64DC94;#50642C;#5A50E6;#FFFFFF',
+                    'names' => 'olive;green;dark olive;blue;white',
+                    'french_names' => 'olive;vert;olive foncé;bleu;blanc',
+                ],
+            ],
+            $this->getColorSets('bulbasaur', false),
+        );
+        $this->assertSame(
+            [
+                [
+                    'position' => 1,
+                    'codes' => '#8CD2B4;#DCC864;#3C7864;#E6505A;#FFFFFF',
+                    'names' => 'light teal;yellow;dark teal;red;white',
+                    'french_names' => 'bleu vert clair;jaune;bleu vert foncé;rouge;blanc',
+                ],
+                [
+                    'position' => 2,
+                    'codes' => '#D28CAA;#64DCC8;#783C5A;#50E6DC;#FFFFFF',
+                    'names' => 'pink;turquoise;purple;cyan;white',
+                    'french_names' => 'rose;turquoise;violet;cyan;blanc',
+                ],
+            ],
+            $this->getColorSets('bulbasaur', true),
+        );
+
+        $this->assertCount(2, $this->getColorSets('egg', false));
+        $this->assertSame([], $this->getColorSets('egg', true));
+
+        $this->assertCount(2, $this->getColorSets('ivysaur', false));
+        $this->assertSame([], $this->getColorSets('ivysaur', true));
+
+        // Invalid sets are ignored
+        $this->assertSame([], $this->getColorSets('charmander', false));
+        $this->assertSame([], $this->getColorSets('charmander', true));
+
+        $this->assertSame([], $this->getColorSets('venusaur', false));
+    }
+
+    #[Test]
+    public function reimportColorSets(): void
+    {
+        $this->getService()->execute('Pokémons');
+        $this->getService()->execute('Pokémons');
+
+        $this->assertCount(3, $this->getColorSets('bulbasaur', false));
+        $this->assertCount(2, $this->getColorSets('bulbasaur', true));
+
+        $this->getService()->execute('pokemon_list / only_existing');
+
+        $this->assertSame([], $this->getColorSets('bulbasaur', false));
+        $this->assertSame([], $this->getColorSets('bulbasaur', true));
+    }
+
     #[\Override]
     protected function getService(): AbstractUpdater
     {
         /** @var PokemonsUpdater */
         return self::getContainer()->get(PokemonsUpdater::class);
+    }
+
+    /**
+     * @return list<array{position: int, codes: string, names: string, french_names: string}>
+     */
+    private function getColorSets(string $slug, bool $isShiny): array
+    {
+        $connection = self::getContainer()->get(Connection::class);
+
+        /** @var list<array{position: int, codes: string, names: string, french_names: string}> */
+        return $connection->executeQuery(
+            <<<'SQL'
+                SELECT pcs.position, pcs.codes, pcs.names, pcs.french_names
+                FROM pokemon_color_set pcs
+                INNER JOIN pokemon p ON p.id = pcs.pokemon_id
+                WHERE p.slug = :slug
+                    AND pcs.is_shiny = :isShiny
+                ORDER BY pcs.position
+                SQL,
+            [
+                'slug' => $slug,
+                'isShiny' => (int) $isShiny,
+            ]
+        )->fetchAllAssociative();
     }
 }

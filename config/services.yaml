@@ -23,3 +23,5 @@ services:
     # entirely, which breaks direct retrieval via self::getContainer()->get() in tests.
     App\Service\Election\ElectionReportService:
         public: true
+
+    Random\Randomizer: ~

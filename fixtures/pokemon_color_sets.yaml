@@ -1,0 +1,92 @@
+App\Entity\PokemonColorSet:
+  pcs_bulbasaur_regular_1:
+    pokemon: "@pokemon_bulbasaur"
+    isShiny: false
+    position: 1
+    codes: "#5AB4A0;#94DC64;#2C6450"
+    names: "teal;light green;dark teal"
+    frenchNames: "bleu vert;vert clair;bleu vert foncé"
+  pcs_bulbasaur_regular_2:
+    pokemon: "@pokemon_bulbasaur"
+    isShiny: false
+    position: 2
+    codes: "#B45A6E;#DC64C8;#642C40"
+    names: "pink;magenta;dark red"
+    frenchNames: "rose;magenta;rouge foncé"
+  pcs_bulbasaur_regular_3:
+    pokemon: "@pokemon_bulbasaur"
+    isShiny: false
+    position: 3
+    codes: "#A0B45A;#64DC94;#50642C"
+    names: "olive;green;dark olive"
+    frenchNames: "olive;vert;olive foncé"
+  pcs_bulbasaur_shiny_1:
+    pokemon: "@pokemon_bulbasaur"
+    isShiny: true
+    position: 1
+    codes: "#8CD2B4;#DCC864"
+    names: "light teal;yellow"
+    frenchNames: "bleu vert clair;jaune"
+  pcs_bulbasaur_shiny_2:
+    pokemon: "@pokemon_bulbasaur"
+    isShiny: true
+    position: 2
+    codes: "#D28CAA;#64DCC8"
+    names: "pink;turquoise"
+    frenchNames: "rose;turquoise"
+  pcs_ivysaur_regular_1:
+    pokemon: "@pokemon_ivysaur"
+    isShiny: false
+    position: 1
+    codes: "#5AA0B4;#E66E8C"
+    names: "teal;pink"
+    frenchNames: "bleu vert;rose"
+  pcs_ivysaur_regular_2:
+    pokemon: "@pokemon_ivysaur"
+    isShiny: false
+    position: 2
+    codes: "#B45AA0;#8CE66E"
+    names: "purple;green"
+    frenchNames: "violet;vert"
+  pcs_venusaur_regular_1:
+    pokemon: "@pokemon_venusaur"
+    isShiny: false
+    position: 1
+    codes: "#64B4A0;#F08CA0;#3C7864"
+    names: "teal;pink;dark teal"
+    frenchNames: "bleu vert;rose;bleu vert foncé"
+  pcs_venusaur_regular_2:
+    pokemon: "@pokemon_venusaur"
+    isShiny: false
+    position: 2
+    codes: "#B464A0;#8CF0A0;#783C64"
+    names: "purple;light green;dark purple"
+    frenchNames: "violet;vert clair;violet foncé"
+  pcs_caterpie_regular_1:
+    pokemon: "@pokemon_caterpie"
+    isShiny: false
+    position: 1
+    codes: "#78C850;#F8D030"
+    names: "green;yellow"
+    frenchNames: "vert;jaune"
+  pcs_caterpie_regular_2:
+    pokemon: "@pokemon_caterpie"
+    isShiny: false
+    position: 2
+    codes: "#C85078;#30D0F8"
+    names: "pink;sky blue"
+    frenchNames: "rose;bleu ciel"
+  pcs_caterpie_shiny_1:
+    pokemon: "@pokemon_caterpie"
+    isShiny: true
+    position: 1
+    codes: "#F8D030;#78C850"
+    names: "yellow;green"
+    frenchNames: "jaune;vert"
+  pcs_caterpie_shiny_2:
+    pokemon: "@pokemon_caterpie"
+    isShiny: true
+    position: 2
+    codes: "#3050F8;#C878F8"
+    names: "blue;lavender"
+    frenchNames: "bleu;lavande"

@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Updater;
 
+use App\Helper\ColorSetsParser;
 use Symfony\Component\Uid\Uuid;
 
 /**
@@ -14,10 +15,10 @@ class PokemonsUpdater extends AbstractUpdater
     protected string $sheetName = 'Pokémons';
     protected string $tableName = 'pokemon';
     protected string $statisticName = 'pokemons';
-    protected string $headerCellsRange = 'A1:AN1';
+    protected string $headerCellsRange = 'A1:AT1';
 
     /** @var array<int, string> */
-    protected array $recordsCellsRanges = ['A2:AN'];
+    protected array $recordsCellsRanges = ['A2:AT'];
 
     #[\Override]
     protected function getExpectedHeader(): array
@@ -63,6 +64,12 @@ class PokemonsUpdater extends AbstractUpdater
             'Small Shiny Credit',
             'Big Regular Credit',
             'Big Shiny Credit',
+            'Regular colours codes',
+            'Shiny coulours codes',
+            'Regular colours names',
+            'Shiny coulours names',
+            'Noms Couleurs normal',
+            'Noms Couleurs chromatique',
         ];
     }
 
@@ -153,6 +160,8 @@ class PokemonsUpdater extends AbstractUpdater
         $this->upsertImageCredit($slug, 'big', false, (string) $newRecord['bigRegularCredit']);
         $this->upsertImageCredit($slug, 'big', true, (string) $newRecord['bigShinyCredit']);
 
+        $this->upsertAllColorSets($slug, $newRecord);
+
         $this->statistic->increment();
     }
 
@@ -192,6 +201,12 @@ class PokemonsUpdater extends AbstractUpdater
             'smallShinyCredit' => $record['Small Shiny Credit'],
             'bigRegularCredit' => $record['Big Regular Credit'],
             'bigShinyCredit' => $record['Big Shiny Credit'],
+            'regularColorsCodes' => $record['Regular colours codes'],
+            'shinyColorsCodes' => $record['Shiny coulours codes'],
+            'regularColorsNames' => $record['Regular colours names'],
+            'shinyColorsNames' => $record['Shiny coulours names'],
+            'regularColorsFrenchNames' => $record['Noms Couleurs normal'],
+            'shinyColorsFrenchNames' => $record['Noms Couleurs chromatique'],
         ];
     }
 
@@ -241,6 +256,88 @@ class PokemonsUpdater extends AbstractUpdater
             'size' => $size,
             'isShiny' => (int) $isShiny,
         ]);
+    }
+
+    /**
+     * @param bool[]|int[]|string[] $record
+     */
+    private function upsertAllColorSets(string $pokemonSlug, array $record): void
+    {
+        $this->upsertColorSets(
+            $pokemonSlug,
+            false,
+            (string) $record['regularColorsCodes'],
+            (string) $record['regularColorsNames'],
+            (string) $record['regularColorsFrenchNames'],
+        );
+        $this->upsertColorSets(
+            $pokemonSlug,
+            true,
+            (string) $record['shinyColorsCodes'],
+            (string) $record['shinyColorsNames'],
+            (string) $record['shinyColorsFrenchNames'],
+        );
+    }
+
+    private function upsertColorSets(
+        string $pokemonSlug,
+        bool $isShiny,
+        string $codes,
+        string $names,
+        string $frenchNames,
+    ): void {
+        $this->executeQuery(
+            <<<'SQL'
+                DELETE FROM pokemon_color_set
+                WHERE pokemon_id = (SELECT id FROM pokemon WHERE slug = :slug)
+                    AND is_shiny = :isShiny
+                SQL,
+            [
+                'slug' => $pokemonSlug,
+                'isShiny' => (int) $isShiny,
+            ]
+        );
+
+        try {
+            $sets = ColorSetsParser::parse($codes, $names, $frenchNames);
+        } catch (\InvalidArgumentException $e) {
+            $this->logger->warning(
+                'Invalid colour sets, they are ignored',
+                [
+                    'slug' => $pokemonSlug,
+                    'isShiny' => $isShiny,
+                    'reason' => $e->getMessage(),
+                ]
+            );
+
+            return;
+        }
+
+        foreach ($sets as $index => $set) {
+            $this->executeQuery(
+                <<<'SQL'
+                    INSERT INTO pokemon_color_set (id, pokemon_id, is_shiny, position, codes, names, french_names)
+                    VALUES (
+                        :id,
+                        (SELECT id FROM pokemon WHERE slug = :slug),
+                        :isShiny,
+                        :position,
+                        :codes,
+                        :names,
+                        :frenchNames
+                    )
+                    SQL,
+                [
+                    'id' => (string) Uuid::v4(),
+                    'slug' => $pokemonSlug,
+                    'isShiny' => (int) $isShiny,
+                    'position' => $index + 1,
+                    'codes' => $set['codes'],
+                    'names' => $set['names'],
+                    'frenchNames' => $set['french_names'],
+                ]
+            );
+        }
     }
 
     /**
