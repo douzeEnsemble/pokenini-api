@@ -1018,7 +1018,8 @@ L'ordre de `choices` est tiré au sort à la création ; la réponse ne dit pas 
       "simplified_french_name": "Herbizarre",
       "forms_label": "",
       "forms_french_label": "",
-      "national_dex_number": 2
+      "national_dex_number": 2,
+      "icon": "ivysaur"
     },
     "choices": [
       { "index": 0, "codes": ["#5A9C8C", "#E05A6A"], "names": ["teal", "pink"], "french_names": ["sarcelle", "rose"] },

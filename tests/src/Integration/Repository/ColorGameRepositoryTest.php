@@ -146,6 +146,7 @@ final class ColorGameRepositoryTest extends KernelTestCase
         $this->assertNotNull($firstRound);
         $this->assertSame(1, $firstRound['position']);
         $this->assertSame('venusaur', $firstRound['pokemon_slug']);
+        $this->assertSame('venusaur', $firstRound['pokemon_icon']);
         $this->assertSame('2,1', $firstRound['choices_order']);
 
         $secondRound = $repository->getRoundAt($gameId, 2);

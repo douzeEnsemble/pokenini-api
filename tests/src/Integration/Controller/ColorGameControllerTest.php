@@ -313,6 +313,7 @@ final class ColorGameControllerTest extends AbstractTestControllerApi
                     'forms_label' => '',
                     'forms_french_label' => '',
                     'national_dex_number' => 2,
+                    'icon' => 'ivysaur',
                 ],
                 'choices' => [
                     [
