@@ -41,6 +41,7 @@ final class PokemonsUpdaterTest extends TestCase
         $this->assertTrue($result['bankable']);
         $this->assertFalse($result['bankableish']);
         $this->assertSame('scarlet-violet', $result['originalGameBundle']);
+        $this->assertSame('9', $result['originGeneration']);
         $this->assertSame('', $result['variantForm']);
         $this->assertSame('', $result['regionalForm']);
         $this->assertSame('', $result['specialForm']);
@@ -68,7 +69,7 @@ final class PokemonsUpdaterTest extends TestCase
             'Bankable' => 'true',
             'Bankable-ish' => 'false',
             'Breeedable Form' => '',
-            '#Origin' => '',
+            '#Origin' => '9',
             '#Games First Appears On' => 'scarlet-violet',
             '#Form variant' => '',
             '#Regional form' => '',

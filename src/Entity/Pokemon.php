@@ -55,6 +55,10 @@ final class Pokemon implements SoftDeleteableInterface
 
     #[ORM\ManyToOne(fetch: 'EAGER')]
     #[ORM\JoinColumn(nullable: true)]
+    public ?GameGeneration $originGeneration = null;
+
+    #[ORM\ManyToOne(fetch: 'EAGER')]
+    #[ORM\JoinColumn(nullable: true)]
     public ?VariantForm $variantForm;
 
     #[ORM\ManyToOne(fetch: 'EAGER')]
