@@ -356,8 +356,8 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
     {
         $connection = self::getContainer()->get(Connection::class);
 
-        /** @var string $generationSlug */
-        $generationSlug = $connection->executeQuery(
+        /** @var string */
+        return $connection->executeQuery(
             <<<'SQL'
                 SELECT gg.slug
                 FROM pokemon p
@@ -366,7 +366,5 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
                 SQL,
             ['slug' => $slug]
         )->fetchOne();
-
-        return $generationSlug;
     }
 }
