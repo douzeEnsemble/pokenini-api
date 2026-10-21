@@ -63,6 +63,7 @@
                 <file name="src/Entity/ColorGameRound.php" />
                 <file name="src/Entity/PokemonColorSet.php" />
                 <file name="src/Entity/ShinyGameRound.php" />
+                <file name="src/Entity/WhichShinyGameRound.php" />
             </errorLevel>
         </UnusedClass>
 
