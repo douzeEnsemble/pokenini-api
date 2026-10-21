@@ -68,6 +68,11 @@ curl -u web:douze http://web:8080/types
 | 45 | POST | `/shiny_game/{trainerExternalId}/games` | Créer une partie « Shiny or not » |
 | 46 | GET | `/shiny_game/{trainerExternalId}/games/{gameId}` | État d'une partie « Shiny or not » et prochaine manche |
 | 47 | POST | `/shiny_game/{trainerExternalId}/games/{gameId}/answers` | Répondre à une manche « Shiny or not » |
+| 48 | GET | `/which_shiny_game/{trainerExternalId}/dex` | Dex jouables au jeu « Lequel est le shiny ? » |
+| 49 | GET | `/which_shiny_game/{trainerExternalId}/games` | Historique des parties « Lequel est le shiny ? » |
+| 50 | POST | `/which_shiny_game/{trainerExternalId}/games` | Créer une partie « Lequel est le shiny ? » |
+| 51 | GET | `/which_shiny_game/{trainerExternalId}/games/{gameId}` | État d'une partie « Lequel est le shiny ? » et prochaine manche |
+| 52 | POST | `/which_shiny_game/{trainerExternalId}/games/{gameId}/answers` | Répondre à une manche « Lequel est le shiny ? » |
 | 38 | GET | `/istration/dex-banner-layers` | Layers de bannière par dex, pour `pokenini-icon` |
 
 > **Note** : le préfixe d'administration est littéralement `/istration` (et non `/administration`), et le préfixe de debug est `/debogage`.
@@ -1152,6 +1157,76 @@ Répond à une manche. Corps JSON : `{"position": 2, "is_shiny": true}` (`is_shi
   "is_correct": false,
   "chosen_shiny": true,
   "is_shiny": false,
+  "game": { "...": "objet partie mis à jour" }
+}
+```
+
+Codes de statut : `200`, `400` (corps invalide), `401`, `404` (partie ou manche inconnue), `409` (partie terminée, manche déjà répondue).
+
+---
+
+## Jeu « Lequel est le shiny ? »
+
+Le joueur voit côte à côte les images normale et chromatique d'un Pokémon et doit trouver la chromatique.
+Mêmes dex jouables, mêmes statuts et même objet partie que le jeu « Shiny or not ».
+Chaque manche tire à pile ou face la place de l'image chromatique (`shiny_slot` : `1` à gauche, `2` à droite), figée à la création de la partie.
+
+### 48. GET `/which_shiny_game/{trainerExternalId}/dex`
+
+Comme le §43.
+
+Codes de statut : `200`, `401`.
+
+### 49. GET `/which_shiny_game/{trainerExternalId}/games`
+
+Comme le §44.
+
+Codes de statut : `200`, `401`.
+
+### 50. POST `/which_shiny_game/{trainerExternalId}/games`
+
+Comme le §45. Corps JSON : `{"dex_slug": "demo"}`.
+
+Codes de statut : `201`, `400` (corps invalide, dex sans Pokémon jouable), `401`, `404` (dex inconnu, non jouable ou chromatique).
+
+### 51. GET `/which_shiny_game/{trainerExternalId}/games/{gameId}`
+
+État de la partie et prochaine manche à jouer (`round` vaut `null` quand tout a été répondu).
+`shiny_slot` dit où placer l'image chromatique : c'est la réponse, le client ne doit pas la laisser voir au joueur.
+
+```json
+{
+  "game": { "...": "objet partie" },
+  "round": {
+    "position": 2,
+    "pokemon": {
+      "slug": "ivysaur",
+      "name": "Ivysaur",
+      "french_name": "Herbizarre",
+      "simplified_name": "Ivysaur",
+      "simplified_french_name": "Herbizarre",
+      "forms_label": "",
+      "forms_french_label": "",
+      "national_dex_number": 2,
+      "icon": "ivysaur"
+    },
+    "shiny_slot": 1
+  }
+}
+```
+
+Codes de statut : `200`, `401`, `404` (partie inconnue pour ce dresseur).
+
+### 52. POST `/which_shiny_game/{trainerExternalId}/games/{gameId}/answers`
+
+Répond à une manche. Corps JSON : `{"position": 2, "slot": 2}` (`slot` = l'image choisie par le joueur, `1` ou `2`).
+
+```json
+{
+  "position": 2,
+  "is_correct": false,
+  "chosen_slot": 2,
+  "shiny_slot": 1,
   "game": { "...": "objet partie mis à jour" }
 }
 ```

@@ -1,0 +1,69 @@
+App\Entity\WhichShinyGame:
+  which_shiny_game_demo_in_progress:
+    trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+    dex: "@dex_demo"
+    status: "in_progress"
+    roundCount: 3
+    answeredCount: 1
+    correctCount: 1
+    startedAt: '<(new DateTime("2026-10-10 10:00:00"))>'
+    lastPlayedAt: '<(new DateTime("2026-10-10 10:05:00"))>'
+  which_shiny_game_redgreenblueyellow_completed:
+    trainerExternalId: "7b52009b64fd0a2a49e6d8a939753077792b0554"
+    dex: "@dex_redgreenblueyellow"
+    status: "completed"
+    roundCount: 2
+    answeredCount: 2
+    correctCount: 1
+    startedAt: '<(new DateTime("2026-10-01 09:00:00"))>'
+    lastPlayedAt: '<(new DateTime("2026-10-01 09:02:00"))>'
+    endedAt: '<(new DateTime("2026-10-01 09:02:00"))>'
+  which_shiny_game_demo_other_trainer:
+    trainerExternalId: "other_trainer"
+    dex: "@dex_demo"
+    status: "in_progress"
+    roundCount: 1
+    answeredCount: 0
+    correctCount: 0
+    startedAt: '<(new DateTime("2026-10-12 08:00:00"))>'
+
+App\Entity\WhichShinyGameRound:
+  which_shiny_game_round_demo_1:
+    whichShinyGame: "@which_shiny_game_demo_in_progress"
+    pokemon: "@pokemon_bulbasaur"
+    position: 1
+    shinySlot: 2
+    chosenSlot: 2
+    isCorrect: true
+    answeredAt: '<(new DateTime("2026-10-10 10:05:00"))>'
+  which_shiny_game_round_demo_2:
+    whichShinyGame: "@which_shiny_game_demo_in_progress"
+    pokemon: "@pokemon_ivysaur"
+    position: 2
+    shinySlot: 1
+  which_shiny_game_round_demo_3:
+    whichShinyGame: "@which_shiny_game_demo_in_progress"
+    pokemon: "@pokemon_venusaur"
+    position: 3
+    shinySlot: 2
+  which_shiny_game_round_redgreenblueyellow_1:
+    whichShinyGame: "@which_shiny_game_redgreenblueyellow_completed"
+    pokemon: "@pokemon_caterpie"
+    position: 1
+    shinySlot: 1
+    chosenSlot: 1
+    isCorrect: true
+    answeredAt: '<(new DateTime("2026-10-01 09:01:00"))>'
+  which_shiny_game_round_redgreenblueyellow_2:
+    whichShinyGame: "@which_shiny_game_redgreenblueyellow_completed"
+    pokemon: "@pokemon_metapod"
+    position: 2
+    shinySlot: 2
+    chosenSlot: 1
+    isCorrect: false
+    answeredAt: '<(new DateTime("2026-10-01 09:02:00"))>'
+  which_shiny_game_round_other_1:
+    whichShinyGame: "@which_shiny_game_demo_other_trainer"
+    pokemon: "@pokemon_caterpie"
+    position: 1
+    shinySlot: 1
