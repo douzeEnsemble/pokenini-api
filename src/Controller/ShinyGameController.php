@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\DTO\ShinyGameCreation;
 use App\DTO\Response\ShinyGameResponse;
 use App\DTO\Response\ShinyGameStateResponse;
+use App\DTO\ShinyGameCreation;
 use App\Exception\ShinyGameNotFoundException;
 use App\Factory\ShinyGameResponseFactory;
 use App\Service\ShinyGameService;

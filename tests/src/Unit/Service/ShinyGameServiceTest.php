@@ -28,7 +28,7 @@ final class ShinyGameServiceTest extends TestCase
     private const string GAME_ID = '01a15aac-cfd2-7085-bbc7-88594aa005dd';
     private const int SEED = 12;
 
-    private ShinyGameRepository&MockObject $repository;
+    private MockObject&ShinyGameRepository $repository;
     private ShinyGameService $service;
 
     #[\Override]
