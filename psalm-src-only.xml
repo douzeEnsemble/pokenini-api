@@ -62,6 +62,7 @@
                 <!-- Only used for the schema, data is read and written with SQL -->
                 <file name="src/Entity/ColorGameRound.php" />
                 <file name="src/Entity/PokemonColorSet.php" />
+                <file name="src/Entity/ShinyGameRound.php" />
             </errorLevel>
         </UnusedClass>
 
