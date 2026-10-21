@@ -38,7 +38,6 @@ final class WhichShinyGameAnswer
         $resolver->setAllowedValues('position', static fn (int $value): bool => $value >= 1);
 
         $resolver->setRequired('slot');
-        $resolver->setAllowedTypes('slot', 'int');
         $resolver->setAllowedValues('slot', [1, 2]);
     }
 }
