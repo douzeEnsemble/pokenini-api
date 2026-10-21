@@ -132,6 +132,11 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
         $this->assertNotNull($bulbasaurAfter['secondary_type_id']);
         $this->assertNotNull($ivysaurAfter['primary_type_id']);
         $this->assertNotNull($ivysaurAfter['secondary_type_id']);
+
+        $this->assertSame('1', $this->getPokemonOriginGenerationSlug('venusaur'));
+        $this->assertSame('4', $this->getPokemonOriginGenerationSlug('venusaur-f'));
+        $this->assertSame('6', $this->getPokemonOriginGenerationSlug('venusaur-mega'));
+        $this->assertSame('8', $this->getPokemonOriginGenerationSlug('venusaur-gmax'));
     }
 
     #[Test]
@@ -345,5 +350,23 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
                 'isShiny' => (int) $isShiny,
             ]
         )->fetchAllAssociative();
+    }
+
+    private function getPokemonOriginGenerationSlug(string $slug): string
+    {
+        $connection = self::getContainer()->get(Connection::class);
+
+        /** @var string $generationSlug */
+        $generationSlug = $connection->executeQuery(
+            <<<'SQL'
+                SELECT gg.slug
+                FROM pokemon p
+                LEFT JOIN game_generation gg ON gg.id = p.origin_generation_id
+                WHERE p.slug = :slug
+                SQL,
+            ['slug' => $slug]
+        )->fetchOne();
+
+        return $generationSlug;
     }
 }
