@@ -76,6 +76,11 @@ class PokemonsUpdater extends AbstractUpdater
     #[\Override]
     protected function upsertRecord(array $record): void
     {
+        // Rows below the Pokémons list can still have values in the colour columns
+        if ('' === $record['Slug']) {
+            return;
+        }
+
         $newRecord = $this->transformRecord($record);
 
         $sqlParameters = $this->getSqlParametersFromPokemon($newRecord);
