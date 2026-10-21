@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\DTO\ShinyGameAnswer;
 use App\DTO\Response\ShinyGameAnswerResponse;
+use App\DTO\ShinyGameAnswer;
 use App\Exception\ShinyGameConflictException;
 use App\Exception\ShinyGameNotFoundException;
 use App\Factory\ShinyGameResponseFactory;

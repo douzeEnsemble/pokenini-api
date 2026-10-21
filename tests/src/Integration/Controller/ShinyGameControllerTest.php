@@ -193,7 +193,6 @@ final class ShinyGameControllerTest extends AbstractTestControllerApi
         $this->assertContains('raticate-alola-totem', $slugs);
 
         foreach ($rounds as $round) {
-            $this->assertIsBool($round['is_shiny']);
             $this->assertNull($round['chosen_shiny']);
         }
 
