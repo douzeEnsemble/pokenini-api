@@ -63,6 +63,11 @@ curl -u web:douze http://web:8080/types
 | 40 | POST | `/color_game/{trainerExternalId}/games` | Créer une partie |
 | 41 | GET | `/color_game/{trainerExternalId}/games/{gameId}` | État d'une partie et prochaine manche |
 | 42 | POST | `/color_game/{trainerExternalId}/games/{gameId}/answers` | Répondre à une manche |
+| 43 | GET | `/shiny_game/{trainerExternalId}/dex` | Dex jouables au jeu « Shiny or not » |
+| 44 | GET | `/shiny_game/{trainerExternalId}/games` | Historique des parties « Shiny or not » |
+| 45 | POST | `/shiny_game/{trainerExternalId}/games` | Créer une partie « Shiny or not » |
+| 46 | GET | `/shiny_game/{trainerExternalId}/games/{gameId}` | État d'une partie « Shiny or not » et prochaine manche |
+| 47 | POST | `/shiny_game/{trainerExternalId}/games/{gameId}/answers` | Répondre à une manche « Shiny or not » |
 | 38 | GET | `/istration/dex-banner-layers` | Layers de bannière par dex, pour `pokenini-icon` |
 
 > **Note** : le préfixe d'administration est littéralement `/istration` (et non `/administration`), et le préfixe de debug est `/debogage`.
@@ -1046,6 +1051,112 @@ Répond à une manche. Corps JSON : `{"position": 2, "choice": 0}` (`choice` = `
 ```
 
 Codes de statut : `200`, `400` (corps invalide, choix inexistant), `401`, `404` (partie ou manche inconnue), `409` (partie terminée, manche déjà répondue).
+
+---
+
+## Jeu « Shiny or not »
+
+Le joueur voit l'image d'un Pokémon et devine s'il s'agit de la version normale ou chromatique.
+Les dex jouables sont ceux du jeu des couleurs (`can_be_color_play`) qui ne sont pas chromatiques (`is_shiny` à `false`).
+Une partie compte une manche par Pokémon du dex (liste figée à la création), et chaque manche tire à pile ou face l'image montrée (`is_shiny`).
+Une seule partie en cours par dex et par dresseur : en créer une nouvelle abandonne la précédente, qui reste dans l'historique.
+
+Statuts d'une partie : `in_progress`, `completed`, `abandoned`.
+
+Objet partie (`ShinyGameResponse`) :
+
+```json
+{
+  "id": "0b6c1d9e-2a31-4c2e-9d63-0f4a7c5e8b10",
+  "dex": { "slug": "demo", "name": "Demo", "french_name": "Démo" },
+  "status": "in_progress",
+  "round_count": 21,
+  "answered_count": 1,
+  "correct_count": 1,
+  "started_at": "2026-10-10T10:00:00+00:00",
+  "last_played_at": "2026-10-10T10:01:00+00:00",
+  "ended_at": null
+}
+```
+
+### 43. GET `/shiny_game/{trainerExternalId}/dex`
+
+Dex jouables, avec le nombre de Pokémon jouables et la partie en cours du dresseur (`current_game`, ou `null`).
+Paramètres de query `include_unreleased_dex` et `include_premium_dex` comme pour `/dex/can_hold_election`.
+
+```json
+[
+  {
+    "slug": "demo",
+    "name": "Demo",
+    "french_name": "Démo",
+    "is_released": true,
+    "is_premium": false,
+    "description": "",
+    "french_description": "",
+    "playable_count": 21,
+    "current_game": null
+  }
+]
+```
+
+Codes de statut : `200`, `401`.
+
+### 44. GET `/shiny_game/{trainerExternalId}/games`
+
+Historique des parties du dresseur, la plus récente en premier (liste d'objets partie).
+
+Codes de statut : `200`, `401`.
+
+### 45. POST `/shiny_game/{trainerExternalId}/games`
+
+Crée une partie. Corps JSON : `{"dex_slug": "demo"}`. Renvoie l'objet partie.
+
+Codes de statut : `201`, `400` (corps invalide, dex sans Pokémon jouable), `401`, `404` (dex inconnu, non jouable ou chromatique).
+
+### 46. GET `/shiny_game/{trainerExternalId}/games/{gameId}`
+
+État de la partie et prochaine manche à jouer (`round` vaut `null` quand tout a été répondu).
+`is_shiny` dit quelle image montrer : c'est la réponse, le client ne doit pas la laisser voir au joueur.
+
+```json
+{
+  "game": { "...": "objet partie" },
+  "round": {
+    "position": 2,
+    "pokemon": {
+      "slug": "ivysaur",
+      "name": "Ivysaur",
+      "french_name": "Herbizarre",
+      "simplified_name": "Ivysaur",
+      "simplified_french_name": "Herbizarre",
+      "forms_label": "",
+      "forms_french_label": "",
+      "national_dex_number": 2,
+      "icon": "ivysaur"
+    },
+    "is_shiny": false
+  }
+}
+```
+
+Codes de statut : `200`, `401`, `404` (partie inconnue pour ce dresseur).
+
+### 47. POST `/shiny_game/{trainerExternalId}/games/{gameId}/answers`
+
+Répond à une manche. Corps JSON : `{"position": 2, "is_shiny": true}` (`is_shiny` = la réponse du joueur).
+
+```json
+{
+  "position": 2,
+  "is_correct": false,
+  "chosen_shiny": true,
+  "is_shiny": false,
+  "game": { "...": "objet partie mis à jour" }
+}
+```
+
+Codes de statut : `200`, `400` (corps invalide), `401`, `404` (partie ou manche inconnue), `409` (partie terminée, manche déjà répondue).
 
 ---
 
