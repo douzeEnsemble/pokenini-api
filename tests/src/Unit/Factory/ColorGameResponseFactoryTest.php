@@ -151,6 +151,7 @@ final class ColorGameResponseFactoryTest extends TestCase
                 'pokemon_forms_label' => 'Alola',
                 'pokemon_forms_french_label' => 'Alola',
                 'pokemon_national_dex_number' => '26',
+                'pokemon_icon' => 'raichu-alola',
             ],
             'color_sets' => [
                 ['position' => '1', 'codes' => '#F0B030;#FFFFFF', 'names' => 'orange;white', 'french_names' => 'orange;blanc'],
@@ -173,6 +174,7 @@ final class ColorGameResponseFactoryTest extends TestCase
                         formsLabel: 'Alola',
                         formsFrenchLabel: 'Alola',
                         nationalDexNumber: 26,
+                        icon: 'raichu-alola',
                     ),
                     choices: [
                         new ColorGameChoiceResponse(

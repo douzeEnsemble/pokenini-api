@@ -465,7 +465,8 @@ class ColorGameRepository extends ServiceEntityRepository
                         p.simplified_french_name AS "pokemon_simplified_french_name",
                         p.forms_label AS "pokemon_forms_label",
                         p.forms_french_label AS "pokemon_forms_french_label",
-                        p.national_dex_number AS "pokemon_national_dex_number"
+                        p.national_dex_number AS "pokemon_national_dex_number",
+                        p.icon_name AS "pokemon_icon"
             FROM        color_game_round AS cgr
                 JOIN    pokemon AS p
                     ON  p.id = cgr.pokemon_id

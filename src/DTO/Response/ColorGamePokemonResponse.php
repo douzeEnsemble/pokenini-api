@@ -23,5 +23,6 @@ final class ColorGamePokemonResponse
         public readonly string $formsFrenchLabel,
         #[SerializedName('national_dex_number')]
         public readonly int $nationalDexNumber,
+        public readonly string $icon,
     ) {}
 }

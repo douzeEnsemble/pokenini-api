@@ -213,6 +213,9 @@ final class ColorGameResponseFactory
         /** @var scalar $nationalDexNumber */
         $nationalDexNumber = $row['pokemon_national_dex_number'];
 
+        /** @var scalar $icon */
+        $icon = $row['pokemon_icon'];
+
         $setsByPosition = [];
         foreach ($colorSets as $colorSet) {
             /** @var int|string $setPosition numeric string keys are cast to int by PHP */
@@ -237,6 +240,7 @@ final class ColorGameResponseFactory
                 formsLabel: (string) $formsLabel,
                 formsFrenchLabel: (string) $formsFrenchLabel,
                 nationalDexNumber: (int) $nationalDexNumber,
+                icon: (string) $icon,
             ),
             choices: $choices,
         );
