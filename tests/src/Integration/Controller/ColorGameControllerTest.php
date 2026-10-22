@@ -43,7 +43,7 @@ final class ColorGameControllerTest extends AbstractTestControllerApi
         $this->assertSame(['demo', 'homeshiny'], array_column($content, 'slug'));
 
         /** @var array<string, mixed> $homeShiny */
-        $homeShiny = $content[0];
+        $homeShiny = $content[1];
         $this->assertSame(
             [
                 'slug' => 'homeshiny',
@@ -61,7 +61,7 @@ final class ColorGameControllerTest extends AbstractTestControllerApi
         );
 
         /** @var array<string, mixed> $demo */
-        $demo = $content[1];
+        $demo = $content[0];
         $this->assertSame(4, $demo['playable_count']);
         $this->assertSame(
             [
