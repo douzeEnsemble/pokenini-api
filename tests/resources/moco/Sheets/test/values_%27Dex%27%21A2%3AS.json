@@ -1,5 +1,5 @@
 {
-  "range": "Dex!A2:U22",
+  "range": "Dex!A2:S22",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -21,9 +21,7 @@
       "FALSE",
       "",
       "TRUE",
-      "3",
-      "1",
-      "2"
+      "5"
     ],
     [
       "Gold, Silver, Crystal",
@@ -331,9 +329,7 @@
       "TRUE",
       "",
       "TRUE",
-      "2",
-      "2",
-      "1"
+      "2"
     ],
     [
       "Home\nShiny",

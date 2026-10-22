@@ -37,9 +37,7 @@ final class DexDebugResponseFactory
         return new DexDebugOrderingResponse(
             main: $dex->orderNumber,
             election: $dex->electionOrderNumber,
-            colorGame: $dex->colorGameOrderNumber,
-            shinyGame: $dex->shinyGameOrderNumber,
-            whichShinyGame: $dex->whichShinyGameOrderNumber,
+            game: $dex->gameOrderNumber,
         );
     }
 

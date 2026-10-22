@@ -83,7 +83,7 @@ class ColorGameRepository extends ServiceEntityRepository
             WHERE       d.can_be_color_play = true
                     AND d.deleted_at IS NULL
                         {$where}
-            ORDER BY    d.color_game_order_number ASC, d.order_number ASC, d.slug ASC
+            ORDER BY    d.game_order_number ASC, d.order_number ASC, d.slug ASC
             SQL;
 
         /** @var array<array-key, array<string, mixed>> */

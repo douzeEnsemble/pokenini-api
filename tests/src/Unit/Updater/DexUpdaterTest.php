@@ -82,7 +82,8 @@ final class DexUpdaterTest extends TestCase
      * @SuppressWarnings("PHPMD.UnusedFormalParameter")
      */
     #[Test]
-    public function gameOrders(): void
+    #[DataProvider('providerGameOrder')]
+    public function gameOrder(string $value, int $expected): void
     {
         $parameters = [];
 
@@ -93,32 +94,36 @@ final class DexUpdaterTest extends TestCase
 
                 return 1;
             },
-            ['12', '', '3'],
+            $value,
         );
 
         $updater->execute('douze');
 
-        $this->assertArrayHasKey('color_game_order_number', $parameters);
-        $this->assertSame(12, $parameters['color_game_order_number']);
-        $this->assertArrayHasKey('shiny_game_order_number', $parameters);
-        $this->assertSame(0, $parameters['shiny_game_order_number']);
-        $this->assertArrayHasKey('which_shiny_game_order_number', $parameters);
-        $this->assertSame(3, $parameters['which_shiny_game_order_number']);
+        $this->assertArrayHasKey('game_order_number', $parameters);
+        $this->assertSame($expected, $parameters['game_order_number']);
     }
 
     /**
-     * @param string[] $gameOrders
+     * @return array<string, array{string, int}>
      */
+    public static function providerGameOrder(): array
+    {
+        return [
+            'number' => ['12', 12],
+            'empty' => ['', 0],
+        ];
+    }
+
     private function getService(
         string $canBeColorPlay = 'TRUE',
         ?\Closure $executeStatement = null,
-        array $gameOrders = ['1', '2', '3'],
+        string $gameOrder = '1',
     ): DexUpdater {
         $headerRange = new ValueRange();
         $headerRange->values = [$this->getHeader()];
 
         $recordRange = new ValueRange();
-        $recordRange->values = [$this->getRecord($canBeColorPlay, $gameOrders)];
+        $recordRange->values = [$this->getRecord($canBeColorPlay, $gameOrder)];
 
         $spreadsheetService = $this->createMock(SpreadsheetService::class);
         $spreadsheetService
@@ -182,18 +187,14 @@ final class DexUpdaterTest extends TestCase
             'Description',
             'Banner',
             'Banner Layers',
-            'Color Game Order',
-            'Shiny Game Order',
-            'Which Shiny Game Order',
+            'Game Order',
         ];
     }
 
     /**
-     * @param string[] $gameOrders
-     *
      * @return bool[]|string[]
      */
-    private function getRecord(string $canBeColorPlay = 'TRUE', array $gameOrders = ['1', '2', '3']): array
+    private function getRecord(string $canBeColorPlay = 'TRUE', string $gameOrder = '1'): array
     {
         return [
             'demo',
@@ -214,7 +215,7 @@ final class DexUpdaterTest extends TestCase
             '',
             '',
             'shiny,mega',
-            ...$gameOrders,
+            $gameOrder,
         ];
     }
 }

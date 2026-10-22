@@ -33,8 +33,8 @@ final class WhichShinyGameRepositoryTest extends KernelTestCase
 
         $this->assertSame(
             [
-                'redgreenblueyellow' => 7,
                 'demo' => 21,
+                'redgreenblueyellow' => 7,
                 'homepogo' => 0,
             ],
             array_column($rows, 'playable_count', 'slug'),
