@@ -12,6 +12,7 @@ use App\Exception\WhichShinyGameNotFoundException;
 use App\Repository\WhichShinyGameRepository;
 use App\Service\WhichShinyGameService;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -146,6 +147,54 @@ final class WhichShinyGameServiceTest extends TestCase
         // Every Pokémon is played once, the shiny image is drawn in both slots
         $this->assertEqualsCanonicalizing($pokemonIds, array_column($expectedRounds, 'pokemon_id'));
         $this->assertEqualsCanonicalizing([1, 2], array_values(array_unique(array_column($expectedRounds, 'shiny_slot'))));
+    }
+
+    #[Test]
+    #[DataProvider('providerCreateWithRoundCount')]
+    public function createWithRoundCount(?int $roundCount, int $expectedCount): void
+    {
+        $pokemonIds = ['p1', 'p2', 'p3', 'p4', 'p5'];
+        $shuffledIds = (new Randomizer(new Xoshiro256StarStar(self::SEED)))->shuffleArray($pokemonIds);
+
+        $this->repository
+            ->method('getPlayableDexId')
+            ->willReturn('dex-id')
+        ;
+
+        $this->repository
+            ->method('getPlayablePokemonIds')
+            ->willReturn($pokemonIds)
+        ;
+
+        // The first Pokémon of the shuffled dex are played
+        $this->repository
+            ->expects($this->once())
+            ->method('startGame')
+            ->with($this->anything(), $this->anything(), $this->anything(), $this->callback(
+                static fn (array $rounds): bool => array_slice($shuffledIds, 0, $expectedCount) === array_column($rounds, 'pokemon_id'),
+            ))
+        ;
+
+        $this->repository
+            ->method('getGame')
+            ->willReturn(['id' => 'new-game'])
+        ;
+
+        $this->assertSame(['id' => 'new-game'], $this->service->create(self::TRAINER, 'demo', $roundCount));
+    }
+
+    /**
+     * @return array<string, array{null|int, int}>
+     */
+    public static function providerCreateWithRoundCount(): array
+    {
+        return [
+            'every Pokémon' => [null, 5],
+            'fewer rounds' => [3, 3],
+            'one round' => [1, 1],
+            'as many rounds as Pokémon' => [5, 5],
+            'more rounds than Pokémon' => [50, 5],
+        ];
     }
 
     #[Test]

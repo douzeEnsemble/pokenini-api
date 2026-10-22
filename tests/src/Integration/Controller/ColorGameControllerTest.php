@@ -258,6 +258,23 @@ final class ColorGameControllerTest extends AbstractTestControllerApi
     }
 
     #[Test]
+    public function createWithRoundCount(): void
+    {
+        $this->apiRequest('POST', '/color_game/'.self::TRAINER.'/games', [], null, '{"dex_slug": "demo", "round_count": 2}');
+
+        $this->assertSame(201, $this->getClientResponse()->getStatusCode());
+
+        $content = $this->getJsonDecodedResponseContent();
+
+        $this->assertSame(2, $content['round_count']);
+
+        // Two different Pokémon of the dex are played
+        $rounds = $this->getRounds($content['id']);
+        $this->assertSame(range(1, 2), array_column($rounds, 'position'));
+        $this->assertCount(2, array_unique(array_column($rounds, 'slug')));
+    }
+
+    #[Test]
     #[DataProvider('providerCreateErrors')]
     public function createErrors(string $content, int $expectedStatusCode): void
     {
@@ -278,6 +295,8 @@ final class ColorGameControllerTest extends AbstractTestControllerApi
             'missing dex slug' => ['{}', 400],
             'invalid dex slug' => ['{"dex_slug": 12}', 400],
             'unknown option' => ['{"dex_slug": "demo", "douze": 12}', 400],
+            'no round' => ['{"dex_slug": "demo", "round_count": 0}', 400],
+            'invalid round count' => ['{"dex_slug": "demo", "round_count": "10"}', 400],
             'no playable Pokémon' => ['{"dex_slug": "homepogo"}', 400],
             'unknown dex' => ['{"dex_slug": "douze"}', 404],
             'not playable dex' => ['{"dex_slug": "home"}', 404],

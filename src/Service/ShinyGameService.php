@@ -46,9 +46,11 @@ class ShinyGameService
     }
 
     /**
+     * @param null|int $roundCount the number of Pokémon to play, randomly picked in the dex; null to play them all
+     *
      * @return array<string, mixed>
      */
-    public function create(string $trainerExternalId, string $dexSlug): array
+    public function create(string $trainerExternalId, string $dexSlug, ?int $roundCount = null): array
     {
         $dexId = $this->repository->getPlayableDexId($dexSlug);
 
@@ -68,7 +70,7 @@ class ShinyGameService
                 'pokemon_id' => $pokemonId,
                 'is_shiny' => 1 === $this->randomizer->getInt(0, 1),
             ],
-            $this->randomizer->shuffleArray($pokemonIds),
+            array_slice($this->randomizer->shuffleArray($pokemonIds), 0, $roundCount),
         );
 
         $gameId = (string) Uuid::v4();

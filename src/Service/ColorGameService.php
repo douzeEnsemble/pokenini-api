@@ -49,9 +49,11 @@ class ColorGameService
     }
 
     /**
+     * @param null|int $roundCount the number of Pokémon to play, randomly picked in the dex; null to play them all
+     *
      * @return array<string, mixed>
      */
-    public function create(string $trainerExternalId, string $dexSlug): array
+    public function create(string $trainerExternalId, string $dexSlug, ?int $roundCount = null): array
     {
         $dex = $this->repository->getPlayableDex($dexSlug);
 
@@ -72,7 +74,7 @@ class ColorGameService
                     array_map(intval(...), explode(',', $pokemon['positions'])),
                 ),
             ],
-            $this->randomizer->shuffleArray($pokemons),
+            array_slice($this->randomizer->shuffleArray($pokemons), 0, $roundCount),
         );
 
         $gameId = (string) Uuid::v4();

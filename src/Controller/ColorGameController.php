@@ -44,7 +44,7 @@ final class ColorGameController extends AbstractController
         try {
             $creation = new ColorGameCreation($request->toArray());
 
-            $game = $this->colorGameService->create($trainerExternalId, $creation->dexSlug);
+            $game = $this->colorGameService->create($trainerExternalId, $creation->dexSlug, $creation->roundCount);
         } catch (\InvalidArgumentException $e) {
             throw new BadRequestHttpException($e->getMessage(), $e);
         } catch (ColorGameNotFoundException $e) {

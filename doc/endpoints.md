@@ -1007,7 +1007,7 @@ Codes de statut : `200`, `401`.
 
 ### 40. POST `/color_game/{trainerExternalId}/games`
 
-Crée une partie. Corps JSON : `{"dex_slug": "demo"}`. Renvoie l'objet partie.
+Crée une partie. Corps JSON : `{"dex_slug": "demo", "round_count": 10}`. `round_count` (entier ≥ 1, facultatif) limite la partie à ce nombre de Pokémon tirés au hasard dans le dex ; absent ou `null`, tout le dex est joué (et un nombre plus grand que le dex aussi). Renvoie l'objet partie.
 
 Codes de statut : `201`, `400` (corps invalide, dex sans Pokémon jouable), `401`, `404` (dex inconnu ou non jouable).
 
@@ -1117,7 +1117,7 @@ Codes de statut : `200`, `401`.
 
 ### 45. POST `/shiny_game/{trainerExternalId}/games`
 
-Crée une partie. Corps JSON : `{"dex_slug": "demo"}`. Renvoie l'objet partie.
+Crée une partie. Corps JSON : `{"dex_slug": "demo", "round_count": 10}`. `round_count` (entier ≥ 1, facultatif) limite la partie à ce nombre de Pokémon tirés au hasard dans le dex ; absent ou `null`, tout le dex est joué (et un nombre plus grand que le dex aussi). Renvoie l'objet partie.
 
 Codes de statut : `201`, `400` (corps invalide, dex sans Pokémon jouable), `401`, `404` (dex inconnu, non jouable ou chromatique).
 
@@ -1187,7 +1187,7 @@ Codes de statut : `200`, `401`.
 
 ### 50. POST `/which_shiny_game/{trainerExternalId}/games`
 
-Comme le §45. Corps JSON : `{"dex_slug": "demo"}`.
+Comme le §45. Corps JSON : `{"dex_slug": "demo", "round_count": 10}` (`round_count` facultatif).
 
 Codes de statut : `201`, `400` (corps invalide, dex sans Pokémon jouable), `401`, `404` (dex inconnu, non jouable ou chromatique).
 
