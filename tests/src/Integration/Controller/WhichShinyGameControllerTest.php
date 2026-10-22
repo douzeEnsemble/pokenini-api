@@ -110,9 +110,9 @@ final class WhichShinyGameControllerTest extends AbstractTestControllerApi
     {
         return [
             'default' => [false, false, ['demo' => 21]],
-            'unreleased' => [true, false, ['homepogo' => 0, 'demo' => 21]],
+            'unreleased' => [true, false, ['demo' => 21, 'homepogo' => 0]],
             'premium' => [false, true, ['redgreenblueyellow' => 7, 'demo' => 21]],
-            'all' => [true, true, ['redgreenblueyellow' => 7, 'homepogo' => 0, 'demo' => 21]],
+            'all' => [true, true, ['redgreenblueyellow' => 7, 'demo' => 21, 'homepogo' => 0]],
         ];
     }
 

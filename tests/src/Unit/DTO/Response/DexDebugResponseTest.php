@@ -38,7 +38,7 @@ final class DexDebugResponseTest extends TestCase
             canHoldElection: false,
         );
 
-        $ordering = new DexDebugOrderingResponse(main: 1, election: 5);
+        $ordering = new DexDebugOrderingResponse(main: 1, election: 5, colorGame: 2, shinyGame: 3, whichShinyGame: 4);
 
         $response = new DexDebugResponse(
             identifier: '550e8400-e29b-41d4-a716-446655440000',
@@ -94,7 +94,7 @@ final class DexDebugResponseTest extends TestCase
             name: 'Home',
             frenchName: 'Home',
             selectionRule: '',
-            ordering: new DexDebugOrderingResponse(main: 99, election: 0),
+            ordering: new DexDebugOrderingResponse(main: 99, election: 0, colorGame: 0, shinyGame: 0, whichShinyGame: 0),
             flags: $flags,
             displayTemplate: 'list',
             region: null,
