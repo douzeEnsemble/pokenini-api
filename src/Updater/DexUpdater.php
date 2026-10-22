@@ -47,6 +47,9 @@ class DexUpdater extends AbstractUpdater
         ];
     }
 
+    /**
+     * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
+     */
     #[\Override]
     protected function upsertRecord(array $record): void
     {
