@@ -73,9 +73,7 @@ final class DebugDexControllerTest extends AbstractTestControllerApi
         $ordering = $data['ordering'];
         $this->assertArrayHasKey('main', $ordering);
         $this->assertArrayHasKey('election', $ordering);
-        $this->assertArrayHasKey('color_game', $ordering);
-        $this->assertArrayHasKey('shiny_game', $ordering);
-        $this->assertArrayHasKey('which_shiny_game', $ordering);
+        $this->assertArrayHasKey('game', $ordering);
 
         $this->assertArrayNotHasKey('order_number', $data);
         $this->assertArrayNotHasKey('election_order_number', $data);

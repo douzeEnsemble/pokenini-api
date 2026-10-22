@@ -97,33 +97,16 @@ final class DexUpdaterTest extends AbstractTestUpdater
     }
 
     #[Test]
-    public function dexGameOrders(): void
+    public function dexGameOrder(): void
     {
-        $redGreenBlueYellowBefore = $this->getDexFromSlug('redgreenblueyellow');
-
-        $this->assertEquals(3, $redGreenBlueYellowBefore['color_game_order_number']);
-        $this->assertEquals(3, $redGreenBlueYellowBefore['shiny_game_order_number']);
-        $this->assertEquals(1, $redGreenBlueYellowBefore['which_shiny_game_order_number']);
+        $this->assertEquals(3, $this->getDexFromSlug('redgreenblueyellow')['game_order_number']);
 
         $this->getService()->execute('Dex');
 
-        $redGreenBlueYellowAfter = $this->getDexFromSlug('redgreenblueyellow');
-
-        $this->assertEquals(3, $redGreenBlueYellowAfter['color_game_order_number']);
-        $this->assertEquals(1, $redGreenBlueYellowAfter['shiny_game_order_number']);
-        $this->assertEquals(2, $redGreenBlueYellowAfter['which_shiny_game_order_number']);
-
-        $goldSilverCrystalAfter = $this->getDexFromSlug('goldsilvercrystal');
-
-        $this->assertEquals(1, $goldSilverCrystalAfter['color_game_order_number']);
-        $this->assertEquals(0, $goldSilverCrystalAfter['shiny_game_order_number']);
-        $this->assertEquals(0, $goldSilverCrystalAfter['which_shiny_game_order_number']);
-
-        $homeAfter = $this->getDexFromSlug('home');
-
-        $this->assertEquals(2, $homeAfter['color_game_order_number']);
-        $this->assertEquals(2, $homeAfter['shiny_game_order_number']);
-        $this->assertEquals(1, $homeAfter['which_shiny_game_order_number']);
+        $this->assertEquals(5, $this->getDexFromSlug('redgreenblueyellow')['game_order_number']);
+        $this->assertEquals(1, $this->getDexFromSlug('goldsilvercrystal')['game_order_number']);
+        $this->assertEquals(2, $this->getDexFromSlug('home')['game_order_number']);
+        $this->assertEquals(0, $this->getDexFromSlug('rubysapphireemerald')['game_order_number']);
     }
 
     #[\Override]

@@ -7,9 +7,7 @@ App\Entity\Dex:
     displayTemplate: "box"
     orderNumber: 1
     electionOrderNumber: 99
-    colorGameOrderNumber: 3
-    shinyGameOrderNumber: 3
-    whichShinyGameOrderNumber: 1
+    gameOrderNumber: 3
     region: "@region_kanto"
     description: "The list of obtainable Pokémons in Red, Blue, Yellow and even Green games"
     frenchDescription: "La liste des pokémons obtenable dans les jeux Rouge, Bleu, Jaune et même Vert."
@@ -83,7 +81,7 @@ App\Entity\Dex:
     displayTemplate: "box"
     orderNumber: 5
     electionOrderNumber: 8
-    colorGameOrderNumber: 2
+    gameOrderNumber: 2
     isShiny: true
     lastChangedAt: '<(new DateTime("2023-03-21 12:34:56"))>'
     isPremium: false
@@ -98,9 +96,7 @@ App\Entity\Dex:
     displayTemplate: "list-7"
     orderNumber: 6
     electionOrderNumber: 39
-    colorGameOrderNumber: 4
-    shinyGameOrderNumber: 1
-    whichShinyGameOrderNumber: 3
+    gameOrderNumber: 4
     isShiny: false
     isDisplayForm: false
     lastChangedAt: '<(new DateTime("2023-03-21 12:12:12"))>'
@@ -116,9 +112,7 @@ App\Entity\Dex:
     displayTemplate: "box"
     orderNumber: 7
     electionOrderNumber: 701
-    colorGameOrderNumber: 1
-    shinyGameOrderNumber: 2
-    whichShinyGameOrderNumber: 2
+    gameOrderNumber: 1
     lastChangedAt: "<date_create()>"
     isPremium: false
     canHoldElection: false

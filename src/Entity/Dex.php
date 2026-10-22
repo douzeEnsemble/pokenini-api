@@ -14,9 +14,6 @@ use App\Entity\Traits\SoftDeleteableInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
-/**
- * @SuppressWarnings("PHPMD.TooManyFields")
- */
 #[ORM\Entity]
 final class Dex implements SoftDeleteableInterface
 {
@@ -68,13 +65,7 @@ final class Dex implements SoftDeleteableInterface
     public int $electionOrderNumber = 0;
 
     #[ORM\Column(options: ['default' => 0])]
-    public int $colorGameOrderNumber = 0;
-
-    #[ORM\Column(options: ['default' => 0])]
-    public int $shinyGameOrderNumber = 0;
-
-    #[ORM\Column(options: ['default' => 0])]
-    public int $whichShinyGameOrderNumber = 0;
+    public int $gameOrderNumber = 0;
 
     /**
      * @var null|string[] $bannerLayers

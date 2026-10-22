@@ -44,9 +44,7 @@ final class DexDebugResponseFactoryTest extends TestCase
         $dex->canHoldElection = false;
         $dex->lastChangedAt = new \DateTime('2024-01-15T10:30:00+00:00');
         $dex->electionOrderNumber = 5;
-        $dex->colorGameOrderNumber = 6;
-        $dex->shinyGameOrderNumber = 7;
-        $dex->whichShinyGameOrderNumber = 8;
+        $dex->gameOrderNumber = 6;
 
         $result = DexDebugResponseFactory::fromDex($dex);
 
@@ -66,9 +64,7 @@ final class DexDebugResponseFactoryTest extends TestCase
         self::assertSame('Première génération', $result->frenchDescription);
         self::assertSame('2024-01-15T10:30:00+00:00', $result->lastChangedAt);
         self::assertSame(5, $result->ordering->election);
-        self::assertSame(6, $result->ordering->colorGame);
-        self::assertSame(7, $result->ordering->shinyGame);
-        self::assertSame(8, $result->ordering->whichShinyGame);
+        self::assertSame(6, $result->ordering->game);
         self::assertNull($result->deletedAt);
 
         self::assertNotNull($result->region);

@@ -977,7 +977,7 @@ Objet partie (`ColorGameResponse`) :
 ### 38. GET `/color_game/{trainerExternalId}/dex`
 
 Dex jouables, avec le nombre de Pokémon jouables et la partie en cours du dresseur (`current_game`, ou `null`).
-Triés par la colonne `Color Game Order` du Sheet, puis par `Order`.
+Triés par la colonne `Game Order` du Sheet (commune aux trois jeux), puis par `Order`.
 Paramètres de query `include_unreleased_dex` et `include_premium_dex` comme pour `/dex/can_hold_election`.
 
 ```json
@@ -1088,7 +1088,7 @@ Objet partie (`ShinyGameResponse`) :
 ### 43. GET `/shiny_game/{trainerExternalId}/dex`
 
 Dex jouables, avec le nombre de Pokémon jouables et la partie en cours du dresseur (`current_game`, ou `null`).
-Triés par la colonne `Shiny Game Order` du Sheet, puis par `Order`.
+Triés par la colonne `Game Order` du Sheet (commune aux trois jeux), puis par `Order`.
 Paramètres de query `include_unreleased_dex` et `include_premium_dex` comme pour `/dex/can_hold_election`.
 
 ```json
@@ -1175,7 +1175,7 @@ Chaque manche tire à pile ou face la place de l'image chromatique (`shiny_slot`
 
 ### 48. GET `/which_shiny_game/{trainerExternalId}/dex`
 
-Comme le §43, triés par la colonne `Which Shiny Game Order` du Sheet, puis par `Order`.
+Comme le §43.
 
 Codes de statut : `200`, `401`.
 
@@ -1491,9 +1491,7 @@ Exemple de réponse (`200`) :
   "ordering": {
     "main": 10,
     "election": 0,
-    "color_game": 0,
-    "shiny_game": 0,
-    "which_shiny_game": 0
+    "game": 0
   },
   "flags": {
     "is_shiny": false,
