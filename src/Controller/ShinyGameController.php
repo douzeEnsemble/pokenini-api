@@ -44,7 +44,7 @@ final class ShinyGameController extends AbstractController
         try {
             $creation = new ShinyGameCreation($request->toArray());
 
-            $game = $this->shinyGameService->create($trainerExternalId, $creation->dexSlug);
+            $game = $this->shinyGameService->create($trainerExternalId, $creation->dexSlug, $creation->roundCount);
         } catch (\InvalidArgumentException $e) {
             throw new BadRequestHttpException($e->getMessage(), $e);
         } catch (ShinyGameNotFoundException $e) {

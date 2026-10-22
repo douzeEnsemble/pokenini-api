@@ -12,6 +12,7 @@ use App\Exception\InvalidColorGameRequestException;
 use App\Repository\ColorGameRepository;
 use App\Service\ColorGameService;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
@@ -155,6 +156,60 @@ final class ColorGameServiceTest extends TestCase
         $this->assertEqualsCanonicalizing([1, 2, 3, 4, 5], $choices['p1']);
         $this->assertEqualsCanonicalizing([1, 2], $choices['p2']);
         $this->assertEqualsCanonicalizing([1, 2, 3], $choices['p3']);
+    }
+
+    #[Test]
+    #[DataProvider('providerCreateWithRoundCount')]
+    public function createWithRoundCount(?int $roundCount, int $expectedCount): void
+    {
+        $pokemons = [
+            ['pokemon_id' => 'p1', 'positions' => '1,2'],
+            ['pokemon_id' => 'p2', 'positions' => '1,2'],
+            ['pokemon_id' => 'p3', 'positions' => '1,2'],
+            ['pokemon_id' => 'p4', 'positions' => '1,2'],
+            ['pokemon_id' => 'p5', 'positions' => '1,2'],
+        ];
+        $shuffledIds = array_column((new Randomizer(new Xoshiro256StarStar(self::SEED)))->shuffleArray($pokemons), 'pokemon_id');
+
+        $this->repository
+            ->method('getPlayableDex')
+            ->willReturn(['id' => 'dex-id', 'is_shiny' => false])
+        ;
+
+        $this->repository
+            ->method('getPlayablePokemons')
+            ->willReturn($pokemons)
+        ;
+
+        // The first Pokémon of the shuffled dex are played
+        $this->repository
+            ->expects($this->once())
+            ->method('startGame')
+            ->with($this->anything(), $this->anything(), $this->anything(), $this->anything(), $this->callback(
+                static fn (array $rounds): bool => array_slice($shuffledIds, 0, $expectedCount) === array_column($rounds, 'pokemon_id'),
+            ))
+        ;
+
+        $this->repository
+            ->method('getGame')
+            ->willReturn(['id' => 'new-game'])
+        ;
+
+        $this->assertSame(['id' => 'new-game'], $this->service->create(self::TRAINER, 'demo', $roundCount));
+    }
+
+    /**
+     * @return array<string, array{null|int, int}>
+     */
+    public static function providerCreateWithRoundCount(): array
+    {
+        return [
+            'every Pokémon' => [null, 5],
+            'fewer rounds' => [3, 3],
+            'one round' => [1, 1],
+            'as many rounds as Pokémon' => [5, 5],
+            'more rounds than Pokémon' => [50, 5],
+        ];
     }
 
     #[Test]
