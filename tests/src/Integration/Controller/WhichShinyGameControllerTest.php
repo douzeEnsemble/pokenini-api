@@ -236,6 +236,7 @@ final class WhichShinyGameControllerTest extends AbstractTestControllerApi
         $content = $this->getJsonDecodedResponseContent();
 
         $this->assertSame(5, $content['round_count']);
+        $this->assertIsString($content['id']);
 
         // Five different Pokémon of the dex are played
         $rounds = $this->getRounds($content['id']);
