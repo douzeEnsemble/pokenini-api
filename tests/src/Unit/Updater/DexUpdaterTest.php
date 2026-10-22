@@ -79,7 +79,7 @@ final class DexUpdaterTest extends TestCase
     }
 
     /**
-     * @param string[] $gameOrders
+     * @SuppressWarnings("PHPMD.UnusedFormalParameter")
      */
     #[Test]
     public function gameOrders(): void
