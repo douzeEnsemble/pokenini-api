@@ -234,6 +234,21 @@ final class ColorGameControllerTest extends AbstractTestControllerApi
         // Other games are untouched
         $this->assertSame('in_progress', $this->getGame($this->getGameId('color_game_demo_other_trainer'))['status']);
         $this->assertSame('completed', $this->getGame($this->getGameId('color_game_homeshiny_completed'))['status']);
+
+        // A game on a chosen number of rounds
+        $this->apiRequest('POST', '/color_game/'.self::TRAINER.'/games', [], null, '{"dex_slug": "demo", "round_count": 2}');
+
+        $this->assertSame(201, $this->getClientResponse()->getStatusCode());
+
+        $roundCountContent = $this->getJsonDecodedResponseContent();
+
+        $this->assertSame(2, $roundCountContent['round_count']);
+        $this->assertIsString($roundCountContent['id']);
+
+        // Two different Pokémon of the dex are played
+        $roundCountRounds = $this->getRounds($roundCountContent['id']);
+        $this->assertSame(range(1, 2), array_column($roundCountRounds, 'position'));
+        $this->assertCount(2, array_unique(array_column($roundCountRounds, 'slug')));
     }
 
     #[Test]
@@ -255,23 +270,6 @@ final class ColorGameControllerTest extends AbstractTestControllerApi
 
         // A completed game is not abandoned
         $this->assertSame('completed', $this->getGame($this->getGameId('color_game_homeshiny_completed'))['status']);
-    }
-
-    #[Test]
-    public function createWithRoundCount(): void
-    {
-        $this->apiRequest('POST', '/color_game/'.self::TRAINER.'/games', [], null, '{"dex_slug": "demo", "round_count": 2}');
-
-        $this->assertSame(201, $this->getClientResponse()->getStatusCode());
-
-        $content = $this->getJsonDecodedResponseContent();
-
-        $this->assertSame(2, $content['round_count']);
-
-        // Two different Pokémon of the dex are played
-        $rounds = $this->getRounds($content['id']);
-        $this->assertSame(range(1, 2), array_column($rounds, 'position'));
-        $this->assertCount(2, array_unique(array_column($rounds, 'slug')));
     }
 
     #[Test]
