@@ -79,7 +79,7 @@ class ShinyGameRepository extends ServiceEntityRepository
             FROM        dex AS d
             WHERE       {$playableDex}
                         {$where}
-            ORDER BY    d.order_number ASC, d.slug ASC
+            ORDER BY    d.shiny_game_order_number ASC, d.order_number ASC, d.slug ASC
             SQL;
 
         /** @var array<array-key, array<string, mixed>> */

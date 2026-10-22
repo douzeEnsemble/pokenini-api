@@ -78,13 +78,47 @@ final class DexUpdaterTest extends TestCase
         ];
     }
 
-    private function getService(string $canBeColorPlay = 'TRUE', ?\Closure $executeStatement = null): DexUpdater
+    /**
+     * @param string[] $gameOrders
+     */
+    #[Test]
+    public function gameOrders(): void
     {
+        $parameters = [];
+
+        $updater = $this->getService(
+            'TRUE',
+            static function (string $sql, array $params) use (&$parameters): int {
+                $parameters = $params;
+
+                return 1;
+            },
+            ['12', '', '3'],
+        );
+
+        $updater->execute('douze');
+
+        $this->assertArrayHasKey('color_game_order_number', $parameters);
+        $this->assertSame(12, $parameters['color_game_order_number']);
+        $this->assertArrayHasKey('shiny_game_order_number', $parameters);
+        $this->assertSame(0, $parameters['shiny_game_order_number']);
+        $this->assertArrayHasKey('which_shiny_game_order_number', $parameters);
+        $this->assertSame(3, $parameters['which_shiny_game_order_number']);
+    }
+
+    /**
+     * @param string[] $gameOrders
+     */
+    private function getService(
+        string $canBeColorPlay = 'TRUE',
+        ?\Closure $executeStatement = null,
+        array $gameOrders = ['1', '2', '3'],
+    ): DexUpdater {
         $headerRange = new ValueRange();
         $headerRange->values = [$this->getHeader()];
 
         $recordRange = new ValueRange();
-        $recordRange->values = [$this->getRecord($canBeColorPlay)];
+        $recordRange->values = [$this->getRecord($canBeColorPlay, $gameOrders)];
 
         $spreadsheetService = $this->createMock(SpreadsheetService::class);
         $spreadsheetService
@@ -148,13 +182,18 @@ final class DexUpdaterTest extends TestCase
             'Description',
             'Banner',
             'Banner Layers',
+            'Color Game Order',
+            'Shiny Game Order',
+            'Which Shiny Game Order',
         ];
     }
 
     /**
+     * @param string[] $gameOrders
+     *
      * @return bool[]|string[]
      */
-    private function getRecord(string $canBeColorPlay = 'TRUE'): array
+    private function getRecord(string $canBeColorPlay = 'TRUE', array $gameOrders = ['1', '2', '3']): array
     {
         return [
             'demo',
@@ -175,6 +214,7 @@ final class DexUpdaterTest extends TestCase
             '',
             '',
             'shiny,mega',
+            ...$gameOrders,
         ];
     }
 }

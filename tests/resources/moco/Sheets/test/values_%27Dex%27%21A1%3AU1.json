@@ -1,5 +1,5 @@
 {
-  "range": "Dex!A1:R1",
+  "range": "Dex!A1:U1",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -20,7 +20,10 @@
       "Banner",
       "Can Hold Election",
       "Banner Layers",
-      "Can be Color Play"
+      "Can be Color Play",
+      "Color Game Order",
+      "Shiny Game Order",
+      "Which Shiny Game Order"
     ]
   ]
 }

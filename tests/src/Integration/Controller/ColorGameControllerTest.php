@@ -40,7 +40,7 @@ final class ColorGameControllerTest extends AbstractTestControllerApi
 
         $content = $this->getJsonDecodedResponseContent();
 
-        $this->assertSame(['homeshiny', 'demo'], array_column($content, 'slug'));
+        $this->assertSame(['demo', 'homeshiny'], array_column($content, 'slug'));
 
         /** @var array<string, mixed> $homeShiny */
         $homeShiny = $content[0];
@@ -123,10 +123,10 @@ final class ColorGameControllerTest extends AbstractTestControllerApi
     public static function providerDexOptions(): array
     {
         return [
-            'default' => [false, false, ['homeshiny', 'demo']],
-            'unreleased' => [true, false, ['homeshiny', 'homepogo', 'demo']],
-            'premium' => [false, true, ['redgreenblueyellow', 'homeshiny', 'demo']],
-            'all' => [true, true, ['redgreenblueyellow', 'homeshiny', 'homepogo', 'demo']],
+            'default' => [false, false, ['demo', 'homeshiny']],
+            'unreleased' => [true, false, ['demo', 'homeshiny', 'homepogo']],
+            'premium' => [false, true, ['demo', 'homeshiny', 'redgreenblueyellow']],
+            'all' => [true, true, ['demo', 'homeshiny', 'redgreenblueyellow', 'homepogo']],
         ];
     }
 

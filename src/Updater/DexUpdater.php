@@ -14,10 +14,10 @@ class DexUpdater extends AbstractUpdater
     protected string $sheetName = 'Dex';
     protected string $tableName = 'dex';
     protected string $statisticName = 'dex';
-    protected string $headerCellsRange = 'A1:R1';
+    protected string $headerCellsRange = 'A1:U1';
 
     /** @var array<int, string> */
-    protected array $recordsCellsRanges = ['A2:R'];
+    protected array $recordsCellsRanges = ['A2:U'];
 
     #[\Override]
     protected function getExpectedHeader(): array
@@ -28,6 +28,9 @@ class DexUpdater extends AbstractUpdater
             'French Name',
             'Order',
             'Election Order',
+            'Color Game Order',
+            'Shiny Game Order',
+            'Which Shiny Game Order',
             'Selection rule',
             'Is Shiny',
             'Is Premium',
@@ -56,6 +59,9 @@ class DexUpdater extends AbstractUpdater
             'french_name' => $record['French Name'],
             'order_number' => $record['Order'],
             'election_order_number' => $record['Election Order'],
+            'color_game_order_number' => (int) $record['Color Game Order'],
+            'shiny_game_order_number' => (int) $record['Shiny Game Order'],
+            'which_shiny_game_order_number' => (int) $record['Which Shiny Game Order'],
             'selection_rule' => $record['Selection rule'],
             'is_shiny' => $record['Is Shiny'],
             'is_display_form' => $record['Is Display Form'],
@@ -80,6 +86,9 @@ class DexUpdater extends AbstractUpdater
               french_name,
               order_number,
               election_order_number,
+              color_game_order_number,
+              shiny_game_order_number,
+              which_shiny_game_order_number,
               selection_rule,
               is_shiny,
               is_display_form,
@@ -101,6 +110,9 @@ class DexUpdater extends AbstractUpdater
                 :french_name,
                 :order_number,
                 :election_order_number,
+                :color_game_order_number,
+                :shiny_game_order_number,
+                :which_shiny_game_order_number,
                 :selection_rule,
                 :is_shiny,
                 :is_display_form,
@@ -123,6 +135,9 @@ class DexUpdater extends AbstractUpdater
                 french_name = excluded.french_name,
                 order_number = excluded.order_number,
                 election_order_number = excluded.election_order_number,
+                color_game_order_number = excluded.color_game_order_number,
+                shiny_game_order_number = excluded.shiny_game_order_number,
+                which_shiny_game_order_number = excluded.which_shiny_game_order_number,
                 selection_rule = excluded.selection_rule,
                 is_shiny = excluded.is_shiny,
                 is_display_form = excluded.is_display_form,

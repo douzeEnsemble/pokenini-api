@@ -64,6 +64,15 @@ final class Dex implements SoftDeleteableInterface
     #[ORM\Column]
     public int $electionOrderNumber = 0;
 
+    #[ORM\Column(options: ['default' => 0])]
+    public int $colorGameOrderNumber = 0;
+
+    #[ORM\Column(options: ['default' => 0])]
+    public int $shinyGameOrderNumber = 0;
+
+    #[ORM\Column(options: ['default' => 0])]
+    public int $whichShinyGameOrderNumber = 0;
+
     /**
      * @var null|string[] $bannerLayers
      */

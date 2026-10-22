@@ -1,5 +1,5 @@
 {
-  "range": "Dex!A2:R22",
+  "range": "Dex!A2:U22",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -20,7 +20,10 @@
       "=IMAGE(CONCAT(\"https://resources.pokenini.fr/banner/\";CONCAT(B2;\".webp\")); 1)",
       "FALSE",
       "",
-      "TRUE"
+      "TRUE",
+      "3",
+      "1",
+      "2"
     ],
     [
       "Gold, Silver, Crystal",
@@ -40,7 +43,8 @@
       "=IMAGE(CONCAT(\"https://resources.pokenini.fr/banner/\";CONCAT(B2;\".webp\")); 1)",
       "FALSE",
       "",
-      "FALSE"
+      "FALSE",
+      "1"
     ],
     [
       "Ruby, Sapphire, Emerald",
@@ -326,7 +330,10 @@
       "=IMAGE(CONCAT(\"https://resources.pokenini.fr/banner/\";CONCAT(B2;\".webp\")); 1)",
       "TRUE",
       "",
-      "TRUE"
+      "TRUE",
+      "2",
+      "2",
+      "1"
     ],
     [
       "Home\nShiny",

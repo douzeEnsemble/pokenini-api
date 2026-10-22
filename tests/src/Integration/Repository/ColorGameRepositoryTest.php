@@ -33,10 +33,10 @@ final class ColorGameRepositoryTest extends KernelTestCase
 
         $this->assertSame(
             [
-                'redgreenblueyellow' => 4,
-                'homeshiny' => 2,
-                'homepogo' => 0,
                 'demo' => 4,
+                'homeshiny' => 2,
+                'redgreenblueyellow' => 4,
+                'homepogo' => 0,
             ],
             array_column($rows, 'playable_count', 'slug'),
         );
@@ -51,8 +51,8 @@ final class ColorGameRepositoryTest extends KernelTestCase
 
         $this->assertSame(
             [
-                'homeshiny' => 1,
                 'demo' => 3,
+                'homeshiny' => 1,
             ],
             array_column($rows, 'playable_count', 'slug'),
         );
