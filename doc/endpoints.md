@@ -73,6 +73,8 @@ curl -u web:douze http://web:8080/types
 | 50 | POST | `/which_shiny_game/{trainerExternalId}/games` | Créer une partie « Lequel est le shiny ? » |
 | 51 | GET | `/which_shiny_game/{trainerExternalId}/games/{gameId}` | État d'une partie « Lequel est le shiny ? » et prochaine manche |
 | 52 | POST | `/which_shiny_game/{trainerExternalId}/games/{gameId}/answers` | Répondre à une manche « Lequel est le shiny ? » |
+| 53 | GET | `/trainer_preference/{trainerExternalId}` | Page d'accueil choisie par un dresseur |
+| 54 | PUT | `/trainer_preference/{trainerExternalId}` | Choisir sa page d'accueil |
 | 38 | GET | `/istration/dex-banner-layers` | Layers de bannière par dex, pour `pokenini-icon` |
 
 > **Note** : le préfixe d'administration est littéralement `/istration` (et non `/administration`), et le préfixe de debug est `/debogage`.
@@ -1238,6 +1240,28 @@ Répond à une manche. Corps JSON : `{"position": 2, "slot": 2}` (`slot` = l'ima
 ```
 
 Codes de statut : `200`, `400` (corps invalide), `401`, `404` (partie ou manche inconnue), `409` (partie terminée, manche déjà répondue).
+
+---
+
+## Préférences du dresseur (`/trainer_preference`)
+
+Valeurs possibles de `home_page` : `hub` (l'accueil avec les albums, les élections et les jeux), `album`, `election`, `game`.
+
+### 53. GET `/trainer_preference/{trainerExternalId}`
+
+Page d'accueil choisie par le dresseur. Vaut `hub` tant qu'il n'a rien choisi.
+
+```json
+{ "home_page": "hub" }
+```
+
+Codes de statut : `200`, `401`.
+
+### 54. PUT `/trainer_preference/{trainerExternalId}`
+
+Enregistre la page d'accueil du dresseur (crée ou remplace son choix). Corps JSON : `{"home_page": "album"}`. Réponse vide.
+
+Codes de statut : `200`, `400` (corps invalide, page inconnue), `401`.
 
 ---
 
