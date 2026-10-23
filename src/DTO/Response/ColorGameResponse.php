@@ -12,6 +12,7 @@ final class ColorGameResponse
      * @param list<bool> $results answered rounds results, in the rounds order
      *
      * @SuppressWarnings("PHPMD.ShortVariable")
+     * @SuppressWarnings("PHPMD.ExcessiveParameterList")
      */
     public function __construct(
         public readonly string $id,
