@@ -76,6 +76,7 @@ final class ColorGameControllerTest extends AbstractTestControllerApi
                 'round_count' => 3,
                 'answered_count' => 1,
                 'correct_count' => 1,
+                'results' => [true],
                 'started_at' => '2026-10-10T10:00:00+00:00',
                 'last_played_at' => '2026-10-10T10:05:00+00:00',
                 'ended_at' => null,
@@ -160,6 +161,7 @@ final class ColorGameControllerTest extends AbstractTestControllerApi
                 'round_count' => 2,
                 'answered_count' => 2,
                 'correct_count' => 1,
+                'results' => [true, false],
                 'started_at' => '2026-10-01T09:00:00+00:00',
                 'last_played_at' => '2026-10-01T09:02:00+00:00',
                 'ended_at' => '2026-10-01T09:02:00+00:00',
@@ -196,6 +198,7 @@ final class ColorGameControllerTest extends AbstractTestControllerApi
         $this->assertSame(4, $content['round_count']);
         $this->assertSame(0, $content['answered_count']);
         $this->assertSame(0, $content['correct_count']);
+        $this->assertSame([], $content['results']);
         $this->assertNull($content['last_played_at']);
         $this->assertNull($content['ended_at']);
 
@@ -471,6 +474,7 @@ final class ColorGameControllerTest extends AbstractTestControllerApi
         $this->assertSame('in_progress', $game['status']);
         $this->assertSame(2, $game['answered_count']);
         $this->assertSame(2, $game['correct_count']);
+        $this->assertSame([true, true], $game['results']);
         $this->assertNotSame('2026-10-10T10:05:00+00:00', $game['last_played_at']);
         $this->assertNull($game['ended_at']);
 
@@ -513,6 +517,7 @@ final class ColorGameControllerTest extends AbstractTestControllerApi
         $this->assertSame('in_progress', $game['status']);
         $this->assertSame(2, $game['answered_count']);
         $this->assertSame(1, $game['correct_count']);
+        $this->assertSame([true, false], $game['results']);
 
         $this->apiRequest(
             'POST',
@@ -533,6 +538,7 @@ final class ColorGameControllerTest extends AbstractTestControllerApi
         $this->assertSame('completed', $game['status']);
         $this->assertSame(3, $game['answered_count']);
         $this->assertSame(1, $game['correct_count']);
+        $this->assertSame([true, false, false], $game['results']);
         $this->assertNotNull($game['ended_at']);
 
         $round = $this->getRounds($gameId)[2];

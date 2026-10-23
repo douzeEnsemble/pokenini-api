@@ -43,6 +43,9 @@ final class ShinyGameResponseFactory
         /** @var scalar $correctCount */
         $correctCount = $row['correct_count'];
 
+        /** @var null|scalar $results */
+        $results = $row['results'];
+
         /** @var scalar $startedAt */
         $startedAt = $row['started_at'];
 
@@ -63,6 +66,7 @@ final class ShinyGameResponseFactory
             roundCount: (int) $roundCount,
             answeredCount: (int) $answeredCount,
             correctCount: (int) $correctCount,
+            results: GameResultsFactory::fromString((string) $results),
             startedAt: self::formatDate((string) $startedAt),
             lastPlayedAt: null === $lastPlayedAt ? null : self::formatDate((string) $lastPlayedAt),
             endedAt: null === $endedAt ? null : self::formatDate((string) $endedAt),

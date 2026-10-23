@@ -26,6 +26,12 @@ class ColorGameRepository extends ServiceEntityRepository
         cg.round_count AS "round_count",
         cg.answered_count AS "answered_count",
         cg.correct_count AS "correct_count",
+        (
+            SELECT  STRING_AGG(CASE WHEN r.is_correct THEN '1' ELSE '0' END, '' ORDER BY r.position)
+            FROM    color_game_round AS r
+            WHERE   r.color_game_id = cg.id
+                AND r.is_correct IS NOT NULL
+        ) AS "results",
         cg.started_at AS "started_at",
         cg.last_played_at AS "last_played_at",
         cg.ended_at AS "ended_at"
