@@ -63,19 +63,6 @@ final class TrainerPreferenceServiceTest extends TestCase
         $service->setHomePage('trainer-1', $homePage);
     }
 
-    #[Test]
-    public function setHomePageRejectsAnUnknownPage(): void
-    {
-        $repository = $this->createMock(TrainerPreferenceRepository::class);
-        $repository->expects($this->never())->method('upsertHomePage');
-
-        $service = new TrainerPreferenceService($repository);
-
-        $this->expectException(InvalidHomePageException::class);
-
-        $service->setHomePage('trainer-1', 'admin');
-    }
-
     /**
      * @return string[][]
      */
@@ -87,5 +74,18 @@ final class TrainerPreferenceServiceTest extends TestCase
             'election' => ['election'],
             'game' => ['game'],
         ];
+    }
+
+    #[Test]
+    public function setHomePageRejectsAnUnknownPage(): void
+    {
+        $repository = $this->createMock(TrainerPreferenceRepository::class);
+        $repository->expects($this->never())->method('upsertHomePage');
+
+        $service = new TrainerPreferenceService($repository);
+
+        $this->expectException(InvalidHomePageException::class);
+
+        $service->setHomePage('trainer-1', 'admin');
     }
 }
