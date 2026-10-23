@@ -25,6 +25,12 @@ class ShinyGameRepository extends ServiceEntityRepository
         sg.round_count AS "round_count",
         sg.answered_count AS "answered_count",
         sg.correct_count AS "correct_count",
+        (
+            SELECT  STRING_AGG(CASE WHEN r.is_correct THEN '1' ELSE '0' END, '' ORDER BY r.position)
+            FROM    shiny_game_round AS r
+            WHERE   r.shiny_game_id = sg.id
+                AND r.is_correct IS NOT NULL
+        ) AS "results",
         sg.started_at AS "started_at",
         sg.last_played_at AS "last_played_at",
         sg.ended_at AS "ended_at"

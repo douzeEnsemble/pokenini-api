@@ -968,11 +968,14 @@ Objet partie (`ColorGameResponse`) :
   "round_count": 3,
   "answered_count": 1,
   "correct_count": 1,
+  "results": [true],
   "started_at": "2026-10-10T10:00:00+00:00",
   "last_played_at": "2026-10-10T10:01:00+00:00",
   "ended_at": null
 }
 ```
+
+`results` donne le résultat de chaque manche répondue (`true` = bonne réponse), dans l'ordre des manches. Il sert à partager la partie sous forme de grille.
 
 ### 38. GET `/color_game/{trainerExternalId}/dex`
 
@@ -1079,6 +1082,7 @@ Objet partie (`ShinyGameResponse`) :
   "round_count": 21,
   "answered_count": 1,
   "correct_count": 1,
+  "results": [true],
   "started_at": "2026-10-10T10:00:00+00:00",
   "last_played_at": "2026-10-10T10:01:00+00:00",
   "ended_at": null

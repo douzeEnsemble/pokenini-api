@@ -9,6 +9,8 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
 final class WhichShinyGameResponse
 {
     /**
+     * @param list<bool> $results answered rounds results, in the rounds order
+     *
      * @SuppressWarnings("PHPMD.ShortVariable")
      */
     public function __construct(
@@ -21,6 +23,7 @@ final class WhichShinyGameResponse
         public readonly int $answeredCount,
         #[SerializedName('correct_count')]
         public readonly int $correctCount,
+        public readonly array $results,
         #[SerializedName('started_at')]
         public readonly string $startedAt,
         #[SerializedName('last_played_at')]

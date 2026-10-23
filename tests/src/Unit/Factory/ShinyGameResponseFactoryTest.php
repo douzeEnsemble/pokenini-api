@@ -40,6 +40,7 @@ final class ShinyGameResponseFactoryTest extends TestCase
                 roundCount: 12,
                 answeredCount: 12,
                 correctCount: 7,
+                results: [true, false, true],
                 startedAt: '2026-10-10T10:00:00+00:00',
                 lastPlayedAt: '2026-10-10T10:05:01+00:00',
                 endedAt: '2026-10-10T10:05:02+00:00',
@@ -58,6 +59,7 @@ final class ShinyGameResponseFactoryTest extends TestCase
                     'status' => 'in_progress',
                     'last_played_at' => null,
                     'ended_at' => null,
+                    'results' => null,
                 ],
             ),
         );
@@ -66,6 +68,7 @@ final class ShinyGameResponseFactoryTest extends TestCase
         $this->assertSame('2026-10-10T10:00:00+00:00', $response->startedAt);
         $this->assertNull($response->lastPlayedAt);
         $this->assertNull($response->endedAt);
+        $this->assertSame([], $response->results);
     }
 
     #[Test]
@@ -247,6 +250,7 @@ final class ShinyGameResponseFactoryTest extends TestCase
             'round_count' => '12',
             'answered_count' => '12',
             'correct_count' => '7',
+            'results' => '101',
             'started_at' => '2026-10-10 10:00:00',
             'last_played_at' => '2026-10-10 10:05:01',
             'ended_at' => '2026-10-10 10:05:02',
