@@ -11,5 +11,6 @@ final class TrainerDexResponse
         public readonly TrainerDexSettingsResponse $settings,
         public readonly DexFlagsResponse $flags,
         public readonly AlbumReportResponse $report,
+        public readonly ?DexCategoryResponse $category,
     ) {}
 }

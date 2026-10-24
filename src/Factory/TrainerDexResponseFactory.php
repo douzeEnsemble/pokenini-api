@@ -73,6 +73,7 @@ final class TrainerDexResponseFactory
                 isCustom: (bool) $isCustom,
             ),
             report: AlbumReportResponseFactory::fromReport($report),
+            category: DexCategoryResponseFactory::fromSqlRow($row),
         );
     }
 

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Unit\DTO\Response;
 
 use App\DTO\Response\AlbumReportResponse;
+use App\DTO\Response\DexCategoryResponse;
 use App\DTO\Response\DexFlagsResponse;
 use App\DTO\Response\DexSlugResponse;
 use App\DTO\Response\TrainerDexResponse;
@@ -45,6 +46,7 @@ final class TrainerDexResponseTest extends TestCase
             settings: $settings,
             flags: $flags,
             report: $report,
+            category: new DexCategoryResponse(slug: 'home', name: 'Home', frenchName: 'Home', orderNumber: 2),
         );
 
         self::assertSame($dex, $response->dex);
@@ -63,6 +65,7 @@ final class TrainerDexResponseTest extends TestCase
         self::assertFalse($response->flags->isPremium);
         self::assertFalse($response->flags->isCustom);
         self::assertSame($report, $response->report);
+        self::assertSame('home', $response->category?->slug);
         self::assertSame(22, $response->report->total);
     }
 
@@ -92,6 +95,7 @@ final class TrainerDexResponseTest extends TestCase
             settings: $settings,
             flags: $flags,
             report: $report,
+            category: null,
         );
 
         self::assertSame($dex, $response->dex);
@@ -110,6 +114,7 @@ final class TrainerDexResponseTest extends TestCase
         self::assertTrue($response->flags->isPremium);
         self::assertTrue($response->flags->isCustom);
         self::assertSame($report, $response->report);
+        self::assertNull($response->category);
         self::assertSame(0, $response->report->total);
     }
 }

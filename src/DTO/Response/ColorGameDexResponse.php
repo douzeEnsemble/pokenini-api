@@ -8,6 +8,9 @@ use Symfony\Component\Serializer\Attribute\SerializedName;
 
 final class ColorGameDexResponse
 {
+    /**
+     * @SuppressWarnings("PHPMD.ExcessiveParameterList")
+     */
     public function __construct(
         public readonly string $slug,
         public readonly string $name,
@@ -26,5 +29,6 @@ final class ColorGameDexResponse
         public readonly int $playableCount,
         #[SerializedName('current_game')]
         public readonly ?ColorGameResponse $currentGame,
+        public readonly ?DexCategoryResponse $category,
     ) {}
 }

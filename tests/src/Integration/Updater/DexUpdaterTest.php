@@ -109,6 +109,23 @@ final class DexUpdaterTest extends AbstractTestUpdater
         $this->assertEquals(0, $this->getDexFromSlug('rubysapphireemerald')['game_order_number']);
     }
 
+    #[Test]
+    public function dexCategory(): void
+    {
+        $this->assertEquals('main', $this->getDexFromSlug('redgreenblueyellow')['category_slug']);
+        $this->assertEquals('home', $this->getDexFromSlug('home')['category_slug']);
+        $this->assertNull($this->getDexFromSlug('demo')['category_slug']);
+
+        $this->getService()->execute('Dex');
+
+        $this->assertEquals('main', $this->getDexFromSlug('redgreenblueyellow')['category_slug']);
+        $this->assertEquals('main', $this->getDexFromSlug('fireredleafgreen')['category_slug']);
+        $this->assertEquals('home', $this->getDexFromSlug('homepokemongo')['category_slug']);
+        $this->assertNull($this->getDexFromSlug('xy')['category_slug']);
+        // The "special" category is not in the database before its own sheet is read
+        $this->assertNull($this->getDexFromSlug('mega')['category_slug']);
+    }
+
     #[\Override]
     protected function getService(): AbstractUpdater
     {

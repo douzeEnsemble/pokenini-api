@@ -1,0 +1,12 @@
+{
+  "range": "'Dex Category'!A1:D1",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "Slug",
+      "Name",
+      "French Name",
+      "Order"
+    ]
+  ]
+}

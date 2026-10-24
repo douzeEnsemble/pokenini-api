@@ -351,6 +351,8 @@ Codes de statut : `200`, `401`.
 
 ## Dex
 
+Chaque liste de dex (`/dex/can_hold_election`, `/dex/{trainerExternalId}/list` et les dex des trois jeux) donne la catégorie du dex dans `category` (`slug`, `name`, `french_name`, `order_number`), ou `null` pour un dex sans catégorie. Les catégories viennent de l'onglet `Dex Category` du Sheet (Slug, Name, French Name, Order) et la colonne `Category` de l'onglet `Dex` contient le slug de la catégorie. L'ordre des dex ne change pas : c'est au client de les regrouper.
+
 ### 7. GET `/dex/can_hold_election`
 
 Liste des dex éligibles à une élection (flag `can_hold_election`).
@@ -388,7 +390,13 @@ Exemple de réponse (`200`) :
     },
     "description": "",
     "french_description": "",
-    "dex_total_count": 22
+    "dex_total_count": 22,
+    "category": {
+      "slug": "home",
+      "name": "Pokémon Home",
+      "french_name": "Pokémon Home",
+      "order_number": 2
+    }
   }
 ]
 ```
@@ -440,6 +448,12 @@ Exemple de réponse (`200`) :
       "is_released": true,
       "is_premium": false,
       "is_custom": false
+    },
+    "category": {
+      "slug": "main",
+      "name": "Main games",
+      "french_name": "Jeux principaux",
+      "order_number": 1
     }
   },
   {
@@ -458,7 +472,8 @@ Exemple de réponse (`200`) :
       "is_released": true,
       "is_premium": true,
       "is_custom": true
-    }
+    },
+    "category": null
   }
 ]
 ```
@@ -997,7 +1012,8 @@ Paramètres de query `include_unreleased_dex` et `include_premium_dex` comme pou
     "description": "",
     "french_description": "",
     "playable_count": 4,
-    "current_game": null
+    "current_game": null,
+    "category": null
   }
 ]
 ```
@@ -1108,7 +1124,8 @@ Paramètres de query `include_unreleased_dex` et `include_premium_dex` comme pou
     "description": "",
     "french_description": "",
     "playable_count": 21,
-    "current_game": null
+    "current_game": null,
+    "category": null
   }
 ]
 ```

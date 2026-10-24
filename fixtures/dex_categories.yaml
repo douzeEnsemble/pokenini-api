@@ -1,0 +1,16 @@
+App\Entity\DexCategory:
+  dex_category_main:
+    name: "Main games"
+    slug: "main"
+    frenchName: "Jeux principaux"
+    orderNumber: 1
+  dex_category_home:
+    name: "Home"
+    slug: "home"
+    frenchName: "Home"
+    orderNumber: 2
+  dex_category_other:
+    name: "Other"
+    slug: "other"
+    frenchName: "Autre"
+    orderNumber: 3

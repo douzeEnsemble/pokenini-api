@@ -188,6 +188,7 @@ final class DexUpdaterTest extends TestCase
             'Banner',
             'Banner Layers',
             'Game Order',
+            'Category',
         ];
     }
 
@@ -216,6 +217,7 @@ final class DexUpdaterTest extends TestCase
             '',
             'shiny,mega',
             $gameOrder,
+            'main',
         ];
     }
 }

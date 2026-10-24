@@ -16,10 +16,12 @@ trait GetDexTrait
         $connection = static::getContainer()->get(Connection::class);
 
         $sql = <<<'SQL'
-            SELECT      d.*, r.name AS region_name
+            SELECT      d.*, r.name AS region_name, dc.slug AS category_slug
             FROM        dex AS d
                 LEFT JOIN region as r
                     ON d.region_id = r.id
+                LEFT JOIN dex_category as dc
+                    ON d.category_id = dc.id
             WHERE       d.slug = :slug
             SQL;
 

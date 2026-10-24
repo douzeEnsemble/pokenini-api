@@ -14,6 +14,9 @@ use App\Entity\Traits\SoftDeleteableInterface;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @SuppressWarnings("PHPMD.TooManyFields")
+ */
 #[ORM\Entity]
 final class Dex implements SoftDeleteableInterface
 {
@@ -42,6 +45,10 @@ final class Dex implements SoftDeleteableInterface
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: true)]
     public ?Region $region = null;
+
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: true)]
+    public ?DexCategory $category = null;
 
     #[ORM\Column(length: 655)]
     public string $description = '';

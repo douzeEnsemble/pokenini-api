@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Factory;
 
+use App\DTO\Response\DexCategoryResponse;
 use App\DTO\Response\WhichShinyGameAnswerResponse;
 use App\DTO\Response\WhichShinyGameDexResponse;
 use App\DTO\Response\WhichShinyGameDexSummaryResponse;
@@ -90,7 +91,7 @@ final class WhichShinyGameResponseFactoryTest extends TestCase
         $responses = WhichShinyGameResponseFactory::fromDexRows(
             [
                 2 => $this->getDexRow('demo'),
-                5 => array_merge($this->getDexRow('home'), ['is_released' => 0, 'is_premium' => 1]),
+                5 => array_merge($this->getDexRow('home'), ['is_released' => 0, 'is_premium' => 1, 'category_slug' => 'home', 'category_name' => 'Home', 'category_french_name' => 'Home', 'category_order_number' => '2']),
             ],
             [
                 'home' => $this->getGameRow(),
@@ -110,6 +111,7 @@ final class WhichShinyGameResponseFactoryTest extends TestCase
                     frenchDescription: 'Description française demo',
                     playableCount: 151,
                     currentGame: null,
+                    category: null,
                 ),
                 new WhichShinyGameDexResponse(
                     slug: 'home',
@@ -121,6 +123,12 @@ final class WhichShinyGameResponseFactoryTest extends TestCase
                     frenchDescription: 'Description française home',
                     playableCount: 151,
                     currentGame: WhichShinyGameResponseFactory::fromGameRow($this->getGameRow()),
+                    category: new DexCategoryResponse(
+                        slug: 'home',
+                        name: 'Home',
+                        frenchName: 'Home',
+                        orderNumber: 2,
+                    ),
                 ),
             ],
             $responses,
@@ -271,6 +279,10 @@ final class WhichShinyGameResponseFactoryTest extends TestCase
             'description' => "Description {$slug}",
             'french_description' => "Description française {$slug}",
             'playable_count' => '151',
+            'category_slug' => null,
+            'category_name' => null,
+            'category_french_name' => null,
+            'category_order_number' => null,
         ];
     }
 }

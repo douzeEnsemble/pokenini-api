@@ -1,0 +1,24 @@
+{
+  "range": "'Dex Category'!A2:D4",
+  "majorDimension": "ROWS",
+  "values": [
+    [
+      "main",
+      "Main games",
+      "Jeux principaux",
+      "1"
+    ],
+    [
+      "home",
+      "Pokémon Home",
+      "Pokémon Home",
+      "2"
+    ],
+    [
+      "special",
+      "Special forms",
+      "Formes spéciales",
+      "3"
+    ]
+  ]
+}

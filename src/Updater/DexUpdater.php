@@ -14,10 +14,10 @@ class DexUpdater extends AbstractUpdater
     protected string $sheetName = 'Dex';
     protected string $tableName = 'dex';
     protected string $statisticName = 'dex';
-    protected string $headerCellsRange = 'A1:S1';
+    protected string $headerCellsRange = 'A1:T1';
 
     /** @var array<int, string> */
-    protected array $recordsCellsRanges = ['A2:S'];
+    protected array $recordsCellsRanges = ['A2:T'];
 
     #[\Override]
     protected function getExpectedHeader(): array
@@ -42,6 +42,7 @@ class DexUpdater extends AbstractUpdater
             'Description',
             'Banner',
             'Banner Layers',
+            'Category',
         ];
     }
 
@@ -66,6 +67,7 @@ class DexUpdater extends AbstractUpdater
             'is_display_form' => $record['Is Display Form'],
             'display_template' => $record['Display template'],
             'region' => $record['#Region'],
+            'category' => $record['Category'],
             'description' => $record['Description'],
             'french_description' => $record['French description'],
             'is_released' => $record['Is released'],
@@ -91,6 +93,7 @@ class DexUpdater extends AbstractUpdater
               is_display_form,
               display_template,
               region_id,
+              category_id,
               description,
               french_description,
               is_released,
@@ -113,6 +116,7 @@ class DexUpdater extends AbstractUpdater
                 :is_display_form,
                 :display_template,
                 (SELECT id FROM region WHERE slug = :region),
+                (SELECT id FROM dex_category WHERE slug = :category),
                 :description,
                 :french_description,
                 :is_released,
@@ -136,6 +140,7 @@ class DexUpdater extends AbstractUpdater
                 is_display_form = excluded.is_display_form,
                 display_template = excluded.display_template,
                 region_id = excluded.region_id,
+                category_id = excluded.category_id,
                 description = excluded.description,
                 french_description = excluded.french_description,
                 is_released = excluded.is_released,

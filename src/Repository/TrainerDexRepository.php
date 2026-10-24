@@ -51,11 +51,18 @@ class TrainerDexRepository extends ServiceEntityRepository
                     d.display_template as display_template,
                     d.is_released as is_released,
                     CASE WHEN td.slug <> d.slug THEN true ELSE d.is_premium END AS is_premium,
-                    CASE WHEN td.slug <> d.slug THEN true ELSE false END AS is_custom
+                    CASE WHEN td.slug <> d.slug THEN true ELSE false END AS is_custom,
+                    dc.slug as category_slug,
+                    dc.name as category_name,
+                    dc.french_name as category_french_name,
+                    dc.order_number as category_order_number
             FROM    dex AS d
                 LEFT JOIN trainer_dex AS td
                     ON td.dex_id = d.id
                     AND td.trainer_external_id = :trainer_external_id
+                LEFT JOIN dex_category AS dc
+                    ON dc.id = d.category_id
+                    AND dc.deleted_at IS NULL
             WHERE   1 = 1
                     AND d.deleted_at IS NULL
                     {$where}

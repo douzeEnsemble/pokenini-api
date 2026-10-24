@@ -22,5 +22,6 @@ final class DexResponse
         #[SerializedName('dex_total_count')]
         public readonly int $dexTotalCount,
         public readonly ElectionReportResponse $report,
+        public readonly ?DexCategoryResponse $category,
     ) {}
 }
