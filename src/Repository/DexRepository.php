@@ -128,14 +128,22 @@ class DexRepository extends ServiceEntityRepository
                             false AS "is_custom",
                             d.description AS "description",
                             d.french_description AS "french_description",
-                            COUNT(1) AS dex_total_count
+                            COUNT(1) AS dex_total_count,
+                            dc.slug AS "category_slug",
+                            dc.name AS "category_name",
+                            dc.french_name AS "category_french_name",
+                            dc.order_number AS "category_order_number"
                 FROM        dex AS d
                     LEFT JOIN dex_availability AS da
                         ON d.id = da.dex_id
+                    LEFT JOIN dex_category AS dc
+                        ON dc.id = d.category_id
+                        AND dc.deleted_at IS NULL
                 WHERE       d.can_hold_election = true
                             {$where}
                 GROUP BY    d.election_order_number, d.slug, d.name, d.french_name, d.is_shiny, d.is_display_form,
-                            d.description, d.french_description, d.is_released, d.is_premium
+                            d.description, d.french_description, d.is_released, d.is_premium,
+                            dc.slug, dc.name, dc.french_name, dc.order_number
                 ORDER BY    d.election_order_number ASC, d.slug ASC
             SQL;
 

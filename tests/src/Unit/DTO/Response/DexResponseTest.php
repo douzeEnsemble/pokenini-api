@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Unit\DTO\Response;
 
 use App\DTO\ElectionReport\Report;
+use App\DTO\Response\DexCategoryResponse;
 use App\DTO\Response\DexFlagsResponse;
 use App\DTO\Response\DexResponse;
 use App\Factory\ElectionReportResponseFactory;
@@ -50,6 +51,7 @@ final class DexResponseTest extends TestCase
             frenchDescription: 'Le Pokédex National dans Home',
             dexTotalCount: 22,
             report: $report,
+            category: new DexCategoryResponse(slug: 'home', name: 'Home', frenchName: 'Home', orderNumber: 2),
         );
 
         self::assertSame('home', $response->slug);
@@ -61,6 +63,7 @@ final class DexResponseTest extends TestCase
         self::assertSame('Le Pokédex National dans Home', $response->frenchDescription);
         self::assertSame(22, $response->dexTotalCount);
         self::assertSame($report, $response->report);
+        self::assertSame('home', $response->category?->slug);
     }
 
     #[Test]
@@ -95,6 +98,7 @@ final class DexResponseTest extends TestCase
             frenchDescription: '',
             dexTotalCount: 7,
             report: $report,
+            category: null,
         );
 
         self::assertSame('redgreenblueyellow', $response->slug);
@@ -108,5 +112,6 @@ final class DexResponseTest extends TestCase
         self::assertTrue($response->flags->isPremium);
         self::assertSame(7, $response->dexTotalCount);
         self::assertSame($report, $response->report);
+        self::assertNull($response->category);
     }
 }

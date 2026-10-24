@@ -10,7 +10,7 @@ namespace App\Tests\Integration\Controller;
 final class DexControllerTestData
 {
     /**
-     * @return array<int, array<string, array<string, bool>|string|string[]>>
+     * @return array<int, array<string, mixed>>
      */
     public static function getUser12Content(): array
     {
@@ -32,6 +32,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => ['slug' => 'main', 'name' => 'Main games', 'french_name' => 'Jeux principaux', 'order_number' => 1],
             ],
             1 => [
                 'dex' => ['slug' => 'home'],
@@ -50,6 +51,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             2 => [
                 'dex' => ['slug' => 'homeshiny'],
@@ -68,6 +70,7 @@ final class DexControllerTestData
                     'is_premium' => true,
                     'is_custom' => true,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             3 => [
                 'dex' => ['slug' => 'homeshiny'],
@@ -86,6 +89,7 @@ final class DexControllerTestData
                     'is_premium' => true,
                     'is_custom' => true,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             4 => [
                 'dex' => ['slug' => 'demo'],
@@ -104,6 +108,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => null,
             ],
             5 => [
                 'dex' => ['slug' => 'rubysapphireemeraldshiny'],
@@ -122,12 +127,13 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => null,
             ],
         ];
     }
 
     /**
-     * @return array<int, array<string, array<string, bool>|string|string[]>>
+     * @return array<int, array<string, mixed>>
      */
     public static function getUser12ContentWithUnreleased(): array
     {
@@ -149,6 +155,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => ['slug' => 'main', 'name' => 'Main games', 'french_name' => 'Jeux principaux', 'order_number' => 1],
             ],
             1 => [
                 'dex' => ['slug' => 'rubysapphireemerald'],
@@ -167,6 +174,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => ['slug' => 'main', 'name' => 'Main games', 'french_name' => 'Jeux principaux', 'order_number' => 1],
             ],
             2 => [
                 'dex' => ['slug' => 'home'],
@@ -185,6 +193,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             3 => [
                 'dex' => ['slug' => 'homeshiny'],
@@ -203,6 +212,7 @@ final class DexControllerTestData
                     'is_premium' => true,
                     'is_custom' => true,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             4 => [
                 'dex' => ['slug' => 'homeshiny'],
@@ -221,6 +231,7 @@ final class DexControllerTestData
                     'is_premium' => true,
                     'is_custom' => true,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             5 => [
                 'dex' => ['slug' => 'homepogo'],
@@ -239,6 +250,7 @@ final class DexControllerTestData
                     'is_premium' => true,
                     'is_custom' => true,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             6 => [
                 'dex' => ['slug' => 'homepogo'],
@@ -257,6 +269,7 @@ final class DexControllerTestData
                     'is_premium' => true,
                     'is_custom' => true,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             7 => [
                 'dex' => ['slug' => 'homepogo'],
@@ -275,6 +288,7 @@ final class DexControllerTestData
                     'is_premium' => true,
                     'is_custom' => true,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             8 => [
                 'dex' => ['slug' => 'demo'],
@@ -293,6 +307,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => null,
             ],
             9 => [
                 'dex' => ['slug' => 'rubysapphireemeraldshiny'],
@@ -311,12 +326,13 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => null,
             ],
         ];
     }
 
     /**
-     * @return array<int, array<string, array<string, bool>|string|string[]>>
+     * @return array<int, array<string, mixed>>
      */
     public static function getUser12ContentWithPremium(): array
     {
@@ -338,6 +354,7 @@ final class DexControllerTestData
                     'is_premium' => true,
                     'is_custom' => false,
                 ],
+                'category' => ['slug' => 'main', 'name' => 'Main games', 'french_name' => 'Jeux principaux', 'order_number' => 1],
             ],
             1 => [
                 'dex' => ['slug' => 'rubysapphireemerald'],
@@ -356,6 +373,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => ['slug' => 'main', 'name' => 'Main games', 'french_name' => 'Jeux principaux', 'order_number' => 1],
             ],
             2 => [
                 'dex' => ['slug' => 'home'],
@@ -374,6 +392,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             3 => [
                 'dex' => ['slug' => 'homeshiny'],
@@ -392,6 +411,7 @@ final class DexControllerTestData
                     'is_premium' => true,
                     'is_custom' => true,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             4 => [
                 'dex' => ['slug' => 'homeshiny'],
@@ -410,6 +430,7 @@ final class DexControllerTestData
                     'is_premium' => true,
                     'is_custom' => true,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             5 => [
                 'dex' => ['slug' => 'demo'],
@@ -428,6 +449,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => null,
             ],
             6 => [
                 'dex' => ['slug' => 'rubysapphireemeraldshiny'],
@@ -446,12 +468,13 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => null,
             ],
         ];
     }
 
     /**
-     * @return array<int, array<string, array<string, bool>|string|string[]>>
+     * @return array<int, array<string, mixed>>
      */
     public static function getUser12ContentWithUnreleasedAndPremium(): array
     {
@@ -473,6 +496,7 @@ final class DexControllerTestData
                     'is_premium' => true,
                     'is_custom' => false,
                 ],
+                'category' => ['slug' => 'main', 'name' => 'Main games', 'french_name' => 'Jeux principaux', 'order_number' => 1],
             ],
             1 => [
                 'dex' => ['slug' => 'goldsilvercrystal'],
@@ -491,6 +515,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => ['slug' => 'main', 'name' => 'Main games', 'french_name' => 'Jeux principaux', 'order_number' => 1],
             ],
             2 => [
                 'dex' => ['slug' => 'rubysapphireemerald'],
@@ -509,6 +534,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => ['slug' => 'main', 'name' => 'Main games', 'french_name' => 'Jeux principaux', 'order_number' => 1],
             ],
             3 => [
                 'dex' => ['slug' => 'home'],
@@ -527,6 +553,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             4 => [
                 'dex' => ['slug' => 'homeshiny'],
@@ -545,6 +572,7 @@ final class DexControllerTestData
                     'is_premium' => true,
                     'is_custom' => true,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             5 => [
                 'dex' => ['slug' => 'homeshiny'],
@@ -563,6 +591,7 @@ final class DexControllerTestData
                     'is_premium' => true,
                     'is_custom' => true,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             6 => [
                 'dex' => ['slug' => 'homepogo'],
@@ -581,6 +610,7 @@ final class DexControllerTestData
                     'is_premium' => true,
                     'is_custom' => true,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             7 => [
                 'dex' => ['slug' => 'homepogo'],
@@ -599,6 +629,7 @@ final class DexControllerTestData
                     'is_premium' => true,
                     'is_custom' => true,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             8 => [
                 'dex' => ['slug' => 'homepogo'],
@@ -617,6 +648,7 @@ final class DexControllerTestData
                     'is_premium' => true,
                     'is_custom' => true,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             9 => [
                 'dex' => ['slug' => 'demo'],
@@ -635,6 +667,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => null,
             ],
             10 => [
                 'dex' => ['slug' => 'rubysapphireemeraldshiny'],
@@ -653,12 +686,13 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => null,
             ],
         ];
     }
 
     /**
-     * @return array<int, array<string, array<string, bool>|string|string[]>>
+     * @return array<int, array<string, mixed>>
      */
     public static function getUser13Content(): array
     {
@@ -680,6 +714,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => ['slug' => 'main', 'name' => 'Main games', 'french_name' => 'Jeux principaux', 'order_number' => 1],
             ],
             1 => [
                 'dex' => ['slug' => 'home'],
@@ -698,6 +733,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             2 => [
                 'dex' => ['slug' => 'homeshiny'],
@@ -716,6 +752,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             3 => [
                 'dex' => ['slug' => 'demo'],
@@ -734,6 +771,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => null,
             ],
             4 => [
                 'dex' => ['slug' => 'rubysapphireemeraldshiny'],
@@ -752,12 +790,13 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => null,
             ],
         ];
     }
 
     /**
-     * @return array<int, array<string, array<string, bool>|string|string[]>>
+     * @return array<int, array<string, mixed>>
      */
     public static function getUserUnknownContent(): array
     {
@@ -779,6 +818,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => ['slug' => 'main', 'name' => 'Main games', 'french_name' => 'Jeux principaux', 'order_number' => 1],
             ],
             1 => [
                 'dex' => ['slug' => 'home'],
@@ -797,6 +837,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             2 => [
                 'dex' => ['slug' => 'homeshiny'],
@@ -815,6 +856,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
             ],
             3 => [
                 'dex' => ['slug' => 'demo'],
@@ -833,6 +875,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => null,
             ],
             4 => [
                 'dex' => ['slug' => 'rubysapphireemeraldshiny'],
@@ -851,6 +894,7 @@ final class DexControllerTestData
                     'is_premium' => false,
                     'is_custom' => false,
                 ],
+                'category' => null,
             ],
         ];
     }

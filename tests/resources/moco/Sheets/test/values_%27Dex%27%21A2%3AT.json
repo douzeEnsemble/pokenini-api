@@ -1,5 +1,5 @@
 {
-  "range": "Dex!A2:S22",
+  "range": "Dex!A2:T22",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -21,7 +21,8 @@
       "FALSE",
       "",
       "TRUE",
-      "5"
+      "5",
+      "main"
     ],
     [
       "Gold, Silver, Crystal",
@@ -42,7 +43,8 @@
       "FALSE",
       "",
       "FALSE",
-      "1"
+      "1",
+      "main"
     ],
     [
       "Ruby, Sapphire, Emerald",
@@ -61,7 +63,10 @@
       "TRUE",
       "=IMAGE(CONCAT(\"https://resources.pokenini.fr/banner/\";CONCAT(B2;\".webp\")); 1)",
       "FALSE",
-      ""
+      "",
+      "",
+      "",
+      "main"
     ],
     [
       "Fire Red, Leaf Green",
@@ -80,7 +85,10 @@
       "TRUE",
       "=IMAGE(CONCAT(\"https://resources.pokenini.fr/banner/\";CONCAT(B2;\".webp\")); 1)",
       "FALSE",
-      ""
+      "",
+      "",
+      "",
+      "main"
     ],
     [
       "Diamond, Pearl, Platinium",
@@ -329,7 +337,8 @@
       "TRUE",
       "",
       "TRUE",
-      "2"
+      "2",
+      "home"
     ],
     [
       "Home\nShiny",
@@ -348,7 +357,10 @@
       "TRUE",
       "=IMAGE(CONCAT(\"https://resources.pokenini.fr/banner/\";CONCAT(B2;\".webp\")); 1)",
       "FALSE",
-      ""
+      "",
+      "",
+      "",
+      "home"
     ],
     [
       "Home\nPokemon Go",
@@ -367,7 +379,10 @@
       "TRUE",
       "=IMAGE(CONCAT(\"https://resources.pokenini.fr/banner/\";CONCAT(B2;\".webp\")); 1)",
       "FALSE",
-      ""
+      "",
+      "",
+      "",
+      "home"
     ],
     [
       "Alpha",
@@ -386,7 +401,10 @@
       "TRUE",
       "=IMAGE(CONCAT(\"https://resources.pokenini.fr/banner/\";CONCAT(B2;\".webp\")); 1)",
       "FALSE",
-      ""
+      "",
+      "",
+      "",
+      "special"
     ],
     [
       "Mega",
@@ -405,7 +423,10 @@
       "TRUE",
       "=IMAGE(CONCAT(\"https://resources.pokenini.fr/banner/\";CONCAT(B2;\".webp\")); 1)",
       "TRUE",
-      ""
+      "",
+      "",
+      "",
+      "special"
     ]
   ]
 }

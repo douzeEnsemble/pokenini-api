@@ -12,6 +12,7 @@ use App\DTO\Response\ColorGamePokemonResponse;
 use App\DTO\Response\ColorGameResponse;
 use App\DTO\Response\ColorGameRoundResponse;
 use App\DTO\Response\ColorGameStateResponse;
+use App\DTO\Response\DexCategoryResponse;
 use App\Factory\ColorGameResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -95,7 +96,7 @@ final class ColorGameResponseFactoryTest extends TestCase
         $responses = ColorGameResponseFactory::fromDexRows(
             [
                 2 => $this->getDexRow('demo'),
-                5 => array_merge($this->getDexRow('home'), ['is_shiny' => 1, 'is_released' => 0, 'is_premium' => 1]),
+                5 => array_merge($this->getDexRow('home'), ['is_shiny' => 1, 'is_released' => 0, 'is_premium' => 1, 'category_slug' => 'home', 'category_name' => 'Home', 'category_french_name' => 'Home', 'category_order_number' => '2']),
             ],
             [
                 'home' => $this->getGameRow(),
@@ -116,6 +117,7 @@ final class ColorGameResponseFactoryTest extends TestCase
                     frenchDescription: 'Description française demo',
                     playableCount: 151,
                     currentGame: null,
+                    category: null,
                 ),
                 new ColorGameDexResponse(
                     slug: 'home',
@@ -128,6 +130,12 @@ final class ColorGameResponseFactoryTest extends TestCase
                     frenchDescription: 'Description française home',
                     playableCount: 151,
                     currentGame: ColorGameResponseFactory::fromGameRow($this->getGameRow()),
+                    category: new DexCategoryResponse(
+                        slug: 'home',
+                        name: 'Home',
+                        frenchName: 'Home',
+                        orderNumber: 2,
+                    ),
                 ),
             ],
             $responses,
@@ -288,6 +296,10 @@ final class ColorGameResponseFactoryTest extends TestCase
             'description' => "Description {$slug}",
             'french_description' => "Description française {$slug}",
             'playable_count' => '151',
+            'category_slug' => null,
+            'category_name' => null,
+            'category_french_name' => null,
+            'category_order_number' => null,
         ];
     }
 }

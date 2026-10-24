@@ -50,6 +50,7 @@ final class WhichShinyGameControllerTest extends AbstractTestControllerApi
         $this->assertFalse($demo['is_premium']);
         $this->assertSame(21, $demo['playable_count']);
         $this->assertArrayNotHasKey('is_shiny', $demo);
+        $this->assertNull($demo['category']);
         $this->assertSame(
             [
                 'id' => $this->getGameId('which_shiny_game_demo_in_progress'),

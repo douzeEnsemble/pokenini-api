@@ -24,5 +24,6 @@ final class WhichShinyGameDexResponse
         public readonly int $playableCount,
         #[SerializedName('current_game')]
         public readonly ?WhichShinyGameResponse $currentGame,
+        public readonly ?DexCategoryResponse $category,
     ) {}
 }

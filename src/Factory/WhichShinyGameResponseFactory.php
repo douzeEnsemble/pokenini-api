@@ -129,6 +129,7 @@ final class WhichShinyGameResponseFactory
                     frenchDescription: (string) $frenchDescription,
                     playableCount: (int) $playableCount,
                     currentGame: null === $game ? null : self::fromGameRow($game),
+                    category: DexCategoryResponseFactory::fromSqlRow($row),
                 );
             },
             $rows,
