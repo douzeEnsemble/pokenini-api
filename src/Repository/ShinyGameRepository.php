@@ -81,8 +81,15 @@ class ShinyGameRepository extends ServiceEntityRepository
                         d.is_premium AS "is_premium",
                         d.description AS "description",
                         d.french_description AS "french_description",
-                        (SELECT COUNT(1) FROM ({$playablePokemons}) AS pp) AS "playable_count"
+                        (SELECT COUNT(1) FROM ({$playablePokemons}) AS pp) AS "playable_count",
+                        dc.slug AS "category_slug",
+                        dc.name AS "category_name",
+                        dc.french_name AS "category_french_name",
+                        dc.order_number AS "category_order_number"
             FROM        dex AS d
+                LEFT JOIN dex_category AS dc
+                    ON  dc.id = d.category_id
+                    AND dc.deleted_at IS NULL
             WHERE       {$playableDex}
                         {$where}
             ORDER BY    d.game_order_number ASC, d.order_number ASC, d.slug ASC

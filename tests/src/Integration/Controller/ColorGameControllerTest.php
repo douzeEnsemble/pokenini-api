@@ -56,6 +56,12 @@ final class ColorGameControllerTest extends AbstractTestControllerApi
                 'french_description' => '',
                 'playable_count' => 2,
                 'current_game' => null,
+                'category' => [
+                    'slug' => 'home',
+                    'name' => 'Home',
+                    'french_name' => 'Home',
+                    'order_number' => 2,
+                ],
             ],
             $homeShiny,
         );
@@ -63,6 +69,7 @@ final class ColorGameControllerTest extends AbstractTestControllerApi
         /** @var array<string, mixed> $demo */
         $demo = $content[0];
         $this->assertSame(4, $demo['playable_count']);
+        $this->assertNull($demo['category']);
         $this->assertSame(
             [
                 'id' => $this->getGameId('color_game_demo_in_progress'),

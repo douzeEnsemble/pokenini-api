@@ -1,5 +1,6 @@
 App\Entity\Dex:
   dex_redgreenblueyellow:
+    category: "@dex_category_main"
     name: "Red / Green / Blue / Yellow"
     slug: "redgreenblueyellow"
     frenchName: "Rouge / Vert / Bleu / Jaune"
@@ -17,6 +18,7 @@ App\Entity\Dex:
     canBeColorPlay: true
     isReleased: true
   dex_goldsilvercrystal:
+    category: "@dex_category_main"
     name: "Gold / Silver / Crystal"
     slug: "goldsilvercrystal"
     frenchName: "Or / Argent / Cristal"
@@ -33,6 +35,7 @@ App\Entity\Dex:
     canHoldElection: false
     bannerLayers: ["shiny", "mega"]
   dex_rubysapphireemerald:
+    category: "@dex_category_main"
     name: "Ruby / Sapphire / Emerald"
     slug: "rubysapphireemerald"
     frenchName: "Rubis / Saphir / Émeraude"
@@ -58,6 +61,7 @@ App\Entity\Dex:
     canHoldElection: false
     isReleased: true
   dex_home:
+    category: "@dex_category_home"
     name: "Home"
     slug: "home"
     frenchName: "Home"
@@ -70,6 +74,7 @@ App\Entity\Dex:
     canHoldElection: true
     isReleased: true
   dex_home_shiny:
+    category: "@dex_category_home"
     name: |-
       Home
       Shiny
@@ -89,6 +94,7 @@ App\Entity\Dex:
     canBeColorPlay: true
     isReleased: true
   dex_home_pogo:
+    category: "@dex_category_home"
     name: "Home PoGo"
     slug: "homepogo"
     frenchName: "Home PoGo"

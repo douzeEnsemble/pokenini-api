@@ -34,6 +34,10 @@ final class TrainerDexResponseFactoryTest extends TestCase
             'is_released' => true,
             'is_premium' => false,
             'is_custom' => false,
+            'category_slug' => 'home',
+            'category_name' => 'Home',
+            'category_french_name' => 'Home',
+            'category_order_number' => '2',
         ];
         $report = new Report(22, 7, 9, [
             new Statistic(slug: 'no', name: 'No', frenchName: 'Non', color: '#e57373', count: 9),
@@ -58,6 +62,11 @@ final class TrainerDexResponseFactoryTest extends TestCase
         self::assertSame(9, $response->report->totalUncaught);
         self::assertCount(1, $response->report->detail);
         self::assertSame('no', $response->report->detail[0]->catchState->slug);
+        self::assertNotNull($response->category);
+        self::assertSame('home', $response->category->slug);
+        self::assertSame('Home', $response->category->name);
+        self::assertSame('Home', $response->category->frenchName);
+        self::assertSame(2, $response->category->orderNumber);
     }
 
     #[Test]
@@ -76,6 +85,10 @@ final class TrainerDexResponseFactoryTest extends TestCase
             'is_released' => 1,
             'is_premium' => 0,
             'is_custom' => 0,
+            'category_slug' => null,
+            'category_name' => null,
+            'category_french_name' => null,
+            'category_order_number' => null,
         ];
         $report = new Report(0, 0, 0, []);
 
@@ -93,6 +106,7 @@ final class TrainerDexResponseFactoryTest extends TestCase
         self::assertTrue($response->flags->isReleased);
         self::assertFalse($response->flags->isPremium);
         self::assertFalse($response->flags->isCustom);
+        self::assertNull($response->category);
     }
 
     #[Test]
@@ -112,6 +126,10 @@ final class TrainerDexResponseFactoryTest extends TestCase
                 'is_released' => true,
                 'is_premium' => false,
                 'is_custom' => false,
+                'category_slug' => null,
+                'category_name' => null,
+                'category_french_name' => null,
+                'category_order_number' => null,
             ],
             [
                 'dex_slug' => 'homeshiny',
@@ -126,6 +144,10 @@ final class TrainerDexResponseFactoryTest extends TestCase
                 'is_released' => true,
                 'is_premium' => true,
                 'is_custom' => true,
+                'category_slug' => null,
+                'category_name' => null,
+                'category_french_name' => null,
+                'category_order_number' => null,
             ],
         ];
         $reports = [
@@ -163,6 +185,10 @@ final class TrainerDexResponseFactoryTest extends TestCase
                 'is_released' => true,
                 'is_premium' => false,
                 'is_custom' => false,
+                'category_slug' => null,
+                'category_name' => null,
+                'category_french_name' => null,
+                'category_order_number' => null,
             ],
         ];
 

@@ -163,20 +163,38 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Dex'!A1:S1"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Dex'!A1:T1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/test/values_%27Dex%27%21A1%3AS1.json"
+      "file": "/var/moco/test/values_%27Dex%27%21A1%3AT1.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Dex'!A2:S"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Dex'!A2:T"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/test/values_%27Dex%27%21A2%3AS.json"
+      "file": "/var/moco/test/values_%27Dex%27%21A2%3AT.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Dex Category'!A1:D1"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/test/values_%27Dex%20Category%27%21A1%3AD1.json"
+    }
+  },
+  {
+    "request": {
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Dex Category'!A2:D"
+    },
+    "response": {
+      "status": 200,
+      "file": "/var/moco/test/values_%27Dex%20Category%27%21A2%3AD.json"
     }
   },
   {

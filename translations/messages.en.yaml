@@ -8,6 +8,7 @@ update:
   games: "games"
   collections: "collections"
   dex: "dex"
+  dex_categories: "dex categories"
   catch_states: "catch's states"
   regions: "regions"
   category_forms: "category forms"

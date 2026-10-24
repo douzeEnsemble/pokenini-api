@@ -192,7 +192,7 @@ final class ElectionReportControllerTest extends AbstractTestControllerApi
 
         $this->assertResponseIsOK();
 
-        /** @var array<int, array{slug: string, report: array{top: array<int, array<string, mixed>>, metrics: array<string, mixed>}}> $content */
+        /** @var array<int, array{slug: string, category: null|array<string, int|string>, report: array{top: array<int, array<string, mixed>>, metrics: array<string, mixed>}}> $content */
         $content = $this->getJsonDecodedResponseContent();
 
         $this->assertCount(4, $content);
@@ -209,6 +209,15 @@ final class ElectionReportControllerTest extends AbstractTestControllerApi
         $bySlug = array_column($content, null, 'slug');
         $this->assertCount(1, $bySlug['home']['report']['top']);
         $this->assertCount(1, $bySlug['redgreenblueyellow']['report']['top']);
+        $this->assertSame(
+            ['slug' => 'home', 'name' => 'Home', 'french_name' => 'Home', 'order_number' => 2],
+            $bySlug['home']['category'],
+        );
+        $this->assertSame(
+            ['slug' => 'main', 'name' => 'Main games', 'french_name' => 'Jeux principaux', 'order_number' => 1],
+            $bySlug['redgreenblueyellow']['category'],
+        );
+        $this->assertNull($bySlug['spoon']['category']);
     }
 
     #[Test]

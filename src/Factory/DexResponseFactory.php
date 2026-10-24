@@ -87,6 +87,7 @@ final class DexResponseFactory
             frenchDescription: (string) $frenchDescription,
             dexTotalCount: (int) $dexTotalCount,
             report: ElectionReportResponseFactory::fromReport($report),
+            category: DexCategoryResponseFactory::fromSqlRow($row),
         );
     }
 

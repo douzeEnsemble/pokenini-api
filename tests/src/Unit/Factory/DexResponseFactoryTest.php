@@ -45,6 +45,10 @@ final class DexResponseFactoryTest extends TestCase
             'description' => 'The National Dex in Home',
             'french_description' => 'Le Pokédex National dans Home',
             'dex_total_count' => 22,
+            'category_slug' => 'home',
+            'category_name' => 'Home',
+            'category_french_name' => 'Home',
+            'category_order_number' => '2',
         ];
         $report = new Report([], array_merge(self::ZERO_METRICS, ['dex_total_count' => 22]));
 
@@ -65,6 +69,11 @@ final class DexResponseFactoryTest extends TestCase
         self::assertSame('Le Pokédex National dans Home', $response->frenchDescription);
         self::assertSame(22, $response->dexTotalCount);
         self::assertSame(22, $response->report->metrics->dexTotalCount);
+        self::assertNotNull($response->category);
+        self::assertSame('home', $response->category->slug);
+        self::assertSame('Home', $response->category->name);
+        self::assertSame('Home', $response->category->frenchName);
+        self::assertSame(2, $response->category->orderNumber);
     }
 
     #[Test]
@@ -85,6 +94,10 @@ final class DexResponseFactoryTest extends TestCase
             'description' => 202,
             'french_description' => 303,
             'dex_total_count' => '7',
+            'category_slug' => null,
+            'category_name' => null,
+            'category_french_name' => null,
+            'category_order_number' => null,
         ];
         $report = new Report([], self::ZERO_METRICS);
 
@@ -104,6 +117,7 @@ final class DexResponseFactoryTest extends TestCase
         self::assertSame('202', $response->description);
         self::assertSame('303', $response->frenchDescription);
         self::assertSame(7, $response->dexTotalCount);
+        self::assertNull($response->category);
     }
 
     #[Test]
@@ -125,6 +139,10 @@ final class DexResponseFactoryTest extends TestCase
                 'description' => '',
                 'french_description' => '',
                 'dex_total_count' => 22,
+                'category_slug' => null,
+                'category_name' => null,
+                'category_french_name' => null,
+                'category_order_number' => null,
             ],
             [
                 'slug' => 'redgreenblueyellow',
@@ -141,6 +159,10 @@ final class DexResponseFactoryTest extends TestCase
                 'description' => '',
                 'french_description' => '',
                 'dex_total_count' => 7,
+                'category_slug' => null,
+                'category_name' => null,
+                'category_french_name' => null,
+                'category_order_number' => null,
             ],
         ];
         $reports = [
@@ -181,6 +203,10 @@ final class DexResponseFactoryTest extends TestCase
                 'description' => '',
                 'french_description' => '',
                 'dex_total_count' => 1,
+                'category_slug' => null,
+                'category_name' => null,
+                'category_french_name' => null,
+                'category_order_number' => null,
             ],
         ];
 

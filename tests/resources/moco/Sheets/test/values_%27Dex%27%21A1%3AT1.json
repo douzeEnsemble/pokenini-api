@@ -1,5 +1,5 @@
 {
-  "range": "Dex!A1:S1",
+  "range": "Dex!A1:T1",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -21,7 +21,8 @@
       "Can Hold Election",
       "Banner Layers",
       "Can be Color Play",
-      "Game Order"
+      "Game Order",
+      "Category"
     ]
   ]
 }
