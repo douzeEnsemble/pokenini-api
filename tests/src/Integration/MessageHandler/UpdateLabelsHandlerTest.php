@@ -43,6 +43,7 @@ final class UpdateLabelsHandlerTest extends KernelTestCase
         $transport->throwExceptions();
 
         $this->assertEquals(5, $this->getTableCount('catch_state'));
+        $this->assertEquals(3, $this->getTableCount('dex_category'));
         $this->assertEquals(10, $this->getTableCount('region'));
         $this->assertEquals(3, $this->getTableCount('category_form'));
         $this->assertEquals(3, $this->getTableCount('regional_form'));
@@ -67,6 +68,7 @@ final class UpdateLabelsHandlerTest extends KernelTestCase
         $transport->queue()->assertEmpty();
 
         $this->assertEquals(9, $this->getTableCount('catch_state'));
+        $this->assertEquals(4, $this->getTableCount('dex_category'));
         $this->assertEquals(10, $this->getTableCount('region'));
         $this->assertEquals(4, $this->getTableCount('category_form'));
         $this->assertEquals(4, $this->getTableCount('regional_form'));

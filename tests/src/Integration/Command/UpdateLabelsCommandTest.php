@@ -36,6 +36,7 @@ final class UpdateLabelsCommandTest extends AbstractTestCaseCommand
     public function update(): void
     {
         $this->assertEquals(5, $this->getTableCount('catch_state'));
+        $this->assertEquals(3, $this->getTableCount('dex_category'));
         $this->assertEquals(3, $this->getTableCount('category_form'));
         $this->assertEquals(3, $this->getTableCount('regional_form'));
         $this->assertEquals(4, $this->getTableCount('special_form'));
@@ -51,6 +52,7 @@ final class UpdateLabelsCommandTest extends AbstractTestCaseCommand
         $commandTester->assertCommandIsSuccessful();
 
         $this->assertEquals(9, $this->getTableCount('catch_state'));
+        $this->assertEquals(4, $this->getTableCount('dex_category'));
         $this->assertEquals(4, $this->getTableCount('category_form'));
         $this->assertEquals(4, $this->getTableCount('regional_form'));
         $this->assertEquals(5, $this->getTableCount('special_form'));
@@ -62,6 +64,7 @@ final class UpdateLabelsCommandTest extends AbstractTestCaseCommand
         $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString("6 catch's states updated", $commandTester->getDisplay());
+        $this->assertStringContainsString('3 dex categories updated', $commandTester->getDisplay());
         $this->assertStringContainsString('4 category forms updated', $commandTester->getDisplay());
         $this->assertStringContainsString('4 regional forms updated', $commandTester->getDisplay());
         $this->assertStringContainsString('5 special forms updated', $commandTester->getDisplay());
