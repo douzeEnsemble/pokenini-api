@@ -29,6 +29,7 @@ final class GameReportResponseFactoryTest extends TestCase
                 $this->getDexUsageRow('which_shiny_game', 'home'),
             ],
             [
+                $this->getHardestPokemonRow('color_game', 'venusaur'),
                 $this->getHardestPokemonRow('which_shiny_game', 'caterpie'),
                 $this->getHardestPokemonRow('which_shiny_game', 'metapod'),
             ],
@@ -45,7 +46,8 @@ final class GameReportResponseFactoryTest extends TestCase
         self::assertSame(5, $color->games->total);
         self::assertSame([0], array_keys($color->dexUsage));
         self::assertSame('demo', $color->dexUsage[0]->dex->slug);
-        self::assertSame([], $color->hardestPokemons);
+        self::assertSame([0], array_keys($color->hardestPokemons));
+        self::assertSame('venusaur', $color->hardestPokemons[0]->pokemon->slug);
 
         self::assertSame(0, $shiny->games->total);
         self::assertSame(0, $shiny->games->played);
