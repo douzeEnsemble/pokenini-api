@@ -218,6 +218,6 @@ bin/console app:calculate:dex_availabilities
 | `web` | `nginx:alpine` | 1.29.8 | Reverse proxy HTTP |
 | `database` | `postgres:alpine` | 14.22 | Base de données principale |
 | `adminer` | `adminer:fastcgi` | 5.4.2 | Interface DB (dev) |
-| `moco.sheets.test` | `moco` (custom) | 1.5.0 | Mock serveur Google Sheets (tests unitaires) |
-| `moco.sheets.int` | `moco` (custom) | 1.5.0 | Mock serveur Google Sheets (intégration) |
+| `moco.sheets.test` | `moco` (custom) | 1.6.1 | Mock serveur Google Sheets (tests unitaires) |
+| `moco.sheets.int` | `moco` (custom) | 1.6.1 | Mock serveur Google Sheets (intégration) |
 | `newman` | `postman/newman:alpine` | 6.1.3 | Tests API Postman en CI |

@@ -4,7 +4,7 @@
 
 | Dépendance | Version actuelle | Action recommandée |
 |-----------|-----------------|-------------------|
-| `php` | `>=8.5.11` (8.5.11 en prod) | OK — PHP 8.5.11 actif |
+| `php` | `>=8.5.12` (8.5.12 en prod) | OK — PHP 8.5.12 actif |
 | `doctrine/doctrine-bundle` | `^3.2.2` | Surveiller — Doctrine 4.x en préparation |
 | `doctrine/doctrine-migrations-bundle` | `^4.0.0` | OK |
 | `doctrine/orm` | `^3.6.3` | OK |
@@ -64,13 +64,13 @@
 
 | Service | Image | Version actuelle | Action recommandée |
 |---------|-------|-----------------|-------------------|
-| php | `php:fpm-alpine` | 8.5.11-fpm-alpine3.24 | OK — version récente |
+| php | `php:fpm-alpine` | 8.5.12-fpm-alpine3.24 | OK — version récente |
 | nginx | `nginx:alpine` | 1.29.8-alpine3.23 | OK |
 | postgres | `postgres:alpine` | 14.22-alpine3.24 | **Mettre à jour** — PostgreSQL 14 entre en EOL fin 2026 ; migrer vers 16 ou 17 |
 | adminer | `adminer:fastcgi` | 5.4.2-fastcgi | OK |
-| moco | custom | 1.5.0 | Surveiller — vérifier releases upstream |
+| moco | custom | 1.6.1 | Surveiller — vérifier releases upstream |
 | newman | `postman/newman:alpine` | 6.1.3-alpine | Surveiller |
-| symfony-cli | `ghcr.io/symfony-cli/symfony-cli` | 5.17.1 | Surveiller |
+| symfony-cli | `ghcr.io/symfony-cli/symfony-cli` | 5.22.2 | Surveiller |
 
 ## CI / GitHub Actions
 
@@ -85,8 +85,8 @@
 |-------|---------|-------------------|
 | `dclint` | `zavoloklom/dclint:3.1.0-alpine` | OK |
 | `dotenv-linter` | `dotenvlinter/dotenv-linter:4.0.0` | OK |
-| `hadolint` | `hadolint/hadolint:v2.14.0-alpine` | OK |
-| `editorconfig-checker` | `mstruebing/editorconfig-checker:v3.6.0` | OK |
+| `hadolint` | `hadolint/hadolint:v2.15.1-alpine` | OK |
+| `editorconfig-checker` | `mstruebing/editorconfig-checker:4.0.2` | OK |
 
 ## Variables d'environnement
 
