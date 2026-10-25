@@ -188,7 +188,7 @@ final class DexUpdaterTest extends TestCase
             'Banner',
             'Banner Layers',
             'Game Order',
-            'Category',
+            '#Category',
         ];
     }
 

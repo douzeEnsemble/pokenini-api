@@ -42,7 +42,7 @@ class DexUpdater extends AbstractUpdater
             'Description',
             'Banner',
             'Banner Layers',
-            'Category',
+            '#Category',
         ];
     }
 
@@ -67,7 +67,7 @@ class DexUpdater extends AbstractUpdater
             'is_display_form' => $record['Is Display Form'],
             'display_template' => $record['Display template'],
             'region' => $record['#Region'],
-            'category' => $record['Category'],
+            'category' => $record['#Category'],
             'description' => $record['Description'],
             'french_description' => $record['French description'],
             'is_released' => $record['Is released'],
