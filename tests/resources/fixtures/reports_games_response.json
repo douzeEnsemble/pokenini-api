@@ -1,0 +1,125 @@
+[
+  {
+    "game": "color_game",
+    "games": {
+      "total": 3,
+      "played": 2,
+      "in_progress": 2,
+      "completed": 1,
+      "abandoned": 0,
+      "players": 2
+    },
+    "rounds": {
+      "planned": 6,
+      "answered": 3,
+      "correct": 2
+    },
+    "dex_usage": [
+      {
+        "dex": {
+          "slug": "demo",
+          "name": "Demo",
+          "french_name": "Démo"
+        },
+        "games": 2,
+        "players": 2,
+        "answered": 1,
+        "correct": 1
+      },
+      {
+        "dex": {
+          "slug": "homeshiny",
+          "name": "Home\nShiny",
+          "french_name": "Home\nChromatique"
+        },
+        "games": 1,
+        "players": 1,
+        "answered": 2,
+        "correct": 1
+      }
+    ],
+    "hardest_pokemons": []
+  },
+  {
+    "game": "shiny_game",
+    "games": {
+      "total": 3,
+      "played": 2,
+      "in_progress": 2,
+      "completed": 1,
+      "abandoned": 0,
+      "players": 2
+    },
+    "rounds": {
+      "planned": 6,
+      "answered": 3,
+      "correct": 2
+    },
+    "dex_usage": [
+      {
+        "dex": {
+          "slug": "demo",
+          "name": "Demo",
+          "french_name": "Démo"
+        },
+        "games": 2,
+        "players": 2,
+        "answered": 1,
+        "correct": 1
+      },
+      {
+        "dex": {
+          "slug": "redgreenblueyellow",
+          "name": "Red / Green / Blue / Yellow",
+          "french_name": "Rouge / Vert / Bleu / Jaune"
+        },
+        "games": 1,
+        "players": 1,
+        "answered": 2,
+        "correct": 1
+      }
+    ],
+    "hardest_pokemons": []
+  },
+  {
+    "game": "which_shiny_game",
+    "games": {
+      "total": 3,
+      "played": 2,
+      "in_progress": 2,
+      "completed": 1,
+      "abandoned": 0,
+      "players": 2
+    },
+    "rounds": {
+      "planned": 6,
+      "answered": 3,
+      "correct": 2
+    },
+    "dex_usage": [
+      {
+        "dex": {
+          "slug": "demo",
+          "name": "Demo",
+          "french_name": "Démo"
+        },
+        "games": 2,
+        "players": 2,
+        "answered": 1,
+        "correct": 1
+      },
+      {
+        "dex": {
+          "slug": "redgreenblueyellow",
+          "name": "Red / Green / Blue / Yellow",
+          "french_name": "Rouge / Vert / Bleu / Jaune"
+        },
+        "games": 1,
+        "players": 1,
+        "answered": 2,
+        "correct": 1
+      }
+    ],
+    "hardest_pokemons": []
+  }
+]

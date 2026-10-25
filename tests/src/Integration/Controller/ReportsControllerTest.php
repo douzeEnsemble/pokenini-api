@@ -172,4 +172,43 @@ final class ReportsControllerTest extends WebTestCase
             $content,
         );
     }
+
+    #[Test]
+    public function getGamesMatchesFixture(): void
+    {
+        $client = self::createClient();
+        $client->request('GET', '/reports/games', [], [], [
+            'PHP_AUTH_USER' => 'web',
+            'PHP_AUTH_PW' => 'douze',
+        ]);
+
+        self::assertResponseIsSuccessful();
+        self::assertResponseHeaderSame('content-type', 'application/json');
+
+        $content = $client->getResponse()->getContent();
+        self::assertIsString($content);
+
+        /** @var array{games: list<mixed>, daily_games: list<array<string, mixed>>} $data */
+        $data = json_decode($content, associative: true);
+
+        self::assertJsonStringEqualsJsonFile(
+            '/app/tests/resources/fixtures/reports_games_response.json',
+            (string) json_encode($data['games']),
+        );
+
+        $dailyGames = $data['daily_games'];
+        self::assertCount(30, $dailyGames);
+        self::assertSame(new \DateTimeImmutable('today')->format('Y-m-d'), $dailyGames[29]['date']);
+        self::assertSame(new \DateTimeImmutable('-29 days')->format('Y-m-d'), $dailyGames[0]['date']);
+        self::assertSame(['date', 'color_game', 'shiny_game', 'which_shiny_game'], array_keys($dailyGames[0]));
+    }
+
+    #[Test]
+    public function getGamesRequiresAuthentication(): void
+    {
+        $client = self::createClient();
+        $client->request('GET', '/reports/games');
+
+        self::assertResponseStatusCodeSame(401);
+    }
 }
