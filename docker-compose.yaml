@@ -56,7 +56,7 @@ services:
     tty: true
 
   web:
-    image: nginx:1.31.7-alpine3.24
+    image: nginx:1.31.8-alpine3.24
     volumes:
       - .:/app
       - ./.docker/nginx/nginx.conf:/etc/nginx/nginx.conf
