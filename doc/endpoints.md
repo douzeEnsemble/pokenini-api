@@ -352,7 +352,7 @@ Codes de statut : `200`, `401`.
 
 ## Dex
 
-Chaque liste de dex (`/dex/can_hold_election`, `/dex/{trainerExternalId}/list` et les dex des trois jeux) donne la catégorie du dex dans `category` (`slug`, `name`, `french_name`, `order_number`), ou `null` pour un dex sans catégorie. Les catégories viennent de l'onglet `Dex Category` du Sheet (Slug, Name, French Name, Order) et la colonne `#Category` de l'onglet `Dex` contient le slug de la catégorie. L'ordre des dex ne change pas : c'est au client de les regrouper.
+Chaque liste de dex (`/dex/can_hold_election`, `/dex/{trainerExternalId}/list` et les dex des trois jeux) donne la catégorie du dex dans `category` (`slug`, `name`, `french_name`, `order_number`), ou `null` pour un dex sans catégorie. Les catégories viennent de l'onglet `Dex Category` du Sheet (Slug, Name, French Name, Order), synchronisé avec les labels (`/istration/update/labels`), et la colonne `#Category` de l'onglet `Dex` contient le slug de la catégorie. L'ordre des dex ne change pas : c'est au client de les regrouper.
 
 ### 7. GET `/dex/can_hold_election`
 
@@ -1424,7 +1424,7 @@ Codes de statut : `201`, `401`.
 
 | # | Chemin | Action (clé dans `/action_logs`) | Description |
 |---|--------|----------------------------------|-------------|
-| 22 | POST `/istration/update/labels` | `update_labels` | Sync des labels (noms, formes) |
+| 22 | POST `/istration/update/labels` | `update_labels` | Sync des labels (noms, formes, catégories de dex) |
 | 23 | POST `/istration/update/games_collections_and_dex` | `update_games_collections_and_dex` | Sync des jeux, collections et dex |
 | 24 | POST `/istration/update/pokemons` | `update_pokemons` | Sync des pokémons |
 | 25 | POST `/istration/update/regional_dex_numbers` | `update_regional_dex_numbers` | Sync des numéros de dex régionaux |

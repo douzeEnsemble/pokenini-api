@@ -6,6 +6,7 @@ namespace App\Service\UpdaterService;
 
 use App\DTO\DataChangeReport\Report;
 use App\Updater\CatchStatesUpdater;
+use App\Updater\DexCategoriesUpdater;
 use App\Updater\RegionsUpdater;
 use App\Updater\TypesUpdater;
 
@@ -16,6 +17,7 @@ class LabelsUpdaterService extends AbstractUpdaterService
 {
     public function __construct(
         private readonly CatchStatesUpdater $catchStatesUpdater,
+        private readonly DexCategoriesUpdater $dexCategoriesUpdater,
         private readonly FormsUpdaterService $formsUpdaterService,
         private readonly RegionsUpdater $regionsUpdater,
         private readonly TypesUpdater $typesUpdater,
@@ -25,12 +27,14 @@ class LabelsUpdaterService extends AbstractUpdaterService
     public function execute(?string $sheetName = null): void
     {
         $this->catchStatesUpdater->execute();
+        $this->dexCategoriesUpdater->execute();
         $this->formsUpdaterService->execute();
         $this->regionsUpdater->execute();
         $this->typesUpdater->execute();
 
         $this->report = new Report([
             $this->catchStatesUpdater->getStatistic(),
+            $this->dexCategoriesUpdater->getStatistic(),
             $this->regionsUpdater->getStatistic(),
             $this->typesUpdater->getStatistic(),
         ]);

@@ -45,7 +45,6 @@ final class UpdateGamesCollectionsAndDexHandlerTest extends KernelTestCase
         $this->assertEquals(9, $this->getTableCount('game_generation'));
         $this->assertEquals(19, $this->getTableCount('game_bundle'));
         $this->assertEquals(39, $this->getTableCount('game'));
-        $this->assertEquals(3, $this->getTableCount('dex_category'));
         $this->assertEquals(9, $this->getTableCount('dex'));
         $this->assertEquals(8, $this->getTableCount('collection'));
 
@@ -68,7 +67,6 @@ final class UpdateGamesCollectionsAndDexHandlerTest extends KernelTestCase
         $this->assertEquals(9, $this->getTableCount('game_generation'));
         $this->assertEquals(19, $this->getTableCount('game_bundle'));
         $this->assertEquals(39, $this->getTableCount('game'));
-        $this->assertEquals(4, $this->getTableCount('dex_category'));
         $this->assertEquals(25, $this->getTableCount('dex'));
         $this->assertEquals(8, $this->getTableCount('collection'));
 

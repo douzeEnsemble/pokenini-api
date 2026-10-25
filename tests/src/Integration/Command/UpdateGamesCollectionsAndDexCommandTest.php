@@ -38,7 +38,6 @@ final class UpdateGamesCollectionsAndDexCommandTest extends AbstractTestCaseComm
         $this->assertEquals(9, $this->getTableCount('game_generation'));
         $this->assertEquals(19, $this->getTableCount('game_bundle'));
         $this->assertEquals(39, $this->getTableCount('game'));
-        $this->assertEquals(3, $this->getTableCount('dex_category'));
         $this->assertEquals(9, $this->getTableCount('dex'));
         $this->assertEquals(8, $this->getTableCount('collection'));
 
@@ -52,7 +51,6 @@ final class UpdateGamesCollectionsAndDexCommandTest extends AbstractTestCaseComm
         $this->assertEquals(9, $this->getTableCount('game_generation'));
         $this->assertEquals(19, $this->getTableCount('game_bundle'));
         $this->assertEquals(39, $this->getTableCount('game'));
-        $this->assertEquals(4, $this->getTableCount('dex_category'));
         $this->assertEquals(25, $this->getTableCount('dex'));
         $this->assertEquals(8, $this->getTableCount('collection'));
 
@@ -62,7 +60,6 @@ final class UpdateGamesCollectionsAndDexCommandTest extends AbstractTestCaseComm
         $this->assertStringContainsString("9 game's generations updated", $commandTester->getDisplay());
         $this->assertStringContainsString("18 game's bundles updated", $commandTester->getDisplay());
         $this->assertStringContainsString('36 games updated', $commandTester->getDisplay());
-        $this->assertStringContainsString('3 dex categories updated', $commandTester->getDisplay());
         $this->assertStringContainsString('21 dex updated', $commandTester->getDisplay());
         $this->assertStringContainsString('8 collections updated', $commandTester->getDisplay());
     }

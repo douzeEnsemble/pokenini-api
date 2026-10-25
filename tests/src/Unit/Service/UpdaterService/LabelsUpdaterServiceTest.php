@@ -9,6 +9,7 @@ use App\DTO\DataChangeReport\Statistic;
 use App\Service\UpdaterService\FormsUpdaterService;
 use App\Service\UpdaterService\LabelsUpdaterService;
 use App\Updater\CatchStatesUpdater;
+use App\Updater\DexCategoriesUpdater;
 use App\Updater\RegionsUpdater;
 use App\Updater\TypesUpdater;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -39,6 +40,9 @@ final class LabelsUpdaterServiceTest extends TestCase
 
         $this->assertSame('cs', $report->detail[0]->slug);
         $this->assertSame(0, $report->detail[0]->count);
+        $this->assertSame('dc', $report->detail[1]->slug);
+        $this->assertSame('r', $report->detail[2]->slug);
+        $this->assertSame('t', $report->detail[3]->slug);
     }
 
     public function getService(): LabelsUpdaterService
@@ -65,6 +69,17 @@ final class LabelsUpdaterServiceTest extends TestCase
             ->willReturn(new Statistic('cs'))
         ;
 
+        $dexCategoriesUpdater = $this->createMock(DexCategoriesUpdater::class);
+        $dexCategoriesUpdater
+            ->expects($this->once())
+            ->method('execute')
+        ;
+        $dexCategoriesUpdater
+            ->expects($this->once())
+            ->method('getStatistic')
+            ->willReturn(new Statistic('dc'))
+        ;
+
         $regionsUpdater = $this->createMock(RegionsUpdater::class);
         $regionsUpdater
             ->expects($this->once())
@@ -89,6 +104,7 @@ final class LabelsUpdaterServiceTest extends TestCase
 
         return new LabelsUpdaterService(
             $catchStatesUpdater,
+            $dexCategoriesUpdater,
             $formsUpdaterService,
             $regionsUpdater,
             $typesUpdater,
