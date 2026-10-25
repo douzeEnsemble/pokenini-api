@@ -75,6 +75,7 @@ curl -u web:douze http://web:8080/types
 | 52 | POST | `/which_shiny_game/{trainerExternalId}/games/{gameId}/answers` | Répondre à une manche « Lequel est le shiny ? » |
 | 53 | GET | `/trainer_preference/{trainerExternalId}` | Page d'accueil choisie par un dresseur |
 | 54 | PUT | `/trainer_preference/{trainerExternalId}` | Choisir sa page d'accueil |
+| 55 | GET | `/reports/games` | Statistiques des trois jeux (parties, manches, dex, Pokémon les plus ratés, parties par jour) |
 | 38 | GET | `/istration/dex-banner-layers` | Layers de bannière par dex, pour `pokenini-icon` |
 
 > **Note** : le préfixe d'administration est littéralement `/istration` (et non `/administration`), et le préfixe de debug est `/debogage`.
@@ -1279,6 +1280,53 @@ Codes de statut : `200`, `401`.
 Enregistre la page d'accueil du dresseur (crée ou remplace son choix). Corps JSON : `{"home_page": "album"}`. Réponse vide.
 
 Codes de statut : `200`, `400` (corps invalide, page inconnue), `401`.
+
+## Statistiques des jeux (`/reports/games`)
+
+### 55. GET `/reports/games`
+
+Statistiques des trois jeux, toujours dans cet ordre : `color_game` (Bonne Palette), `shiny_game` (Chroma ou pas), `which_shiny_game` (Chroma-Trouvé). Un jeu sans aucune partie est présent avec des compteurs à zéro.
+
+- `games` : parties créées (`total`), parties avec au moins une manche répondue (`played`), par statut (`in_progress`, `completed`, `abandoned`), dresseurs distincts (`players`).
+- `rounds` : manches prévues à la création des parties (`planned`), répondues (`answered`), bonnes réponses (`correct`). Les mauvaises réponses valent `answered - correct`.
+- `dex_usage` : les mêmes compteurs par dex, du plus joué au moins joué.
+- `hardest_pokemons` : les 10 Pokémon au plus faible taux de bonnes réponses, parmi ceux répondus au moins 3 fois.
+- `daily_games` : parties créées chaque jour sur les 30 derniers jours (aujourd'hui compris), jours sans partie inclus.
+
+**Paramètres** : aucun.
+
+```json
+{
+  "games": [
+    {
+      "game": "color_game",
+      "games": { "total": 3, "played": 2, "in_progress": 2, "completed": 1, "abandoned": 0, "players": 2 },
+      "rounds": { "planned": 6, "answered": 3, "correct": 2 },
+      "dex_usage": [
+        {
+          "dex": { "slug": "demo", "name": "Demo", "french_name": "Démo" },
+          "games": 2, "players": 2, "answered": 1, "correct": 1
+        }
+      ],
+      "hardest_pokemons": [
+        {
+          "pokemon": {
+            "slug": "caterpie", "name": "Caterpie", "french_name": "Chenipan",
+            "simplified_name": "Caterpie", "simplified_french_name": "Chenipan",
+            "forms_label": "", "forms_french_label": "", "icon": "caterpie"
+          },
+          "answered": 4, "correct": 1
+        }
+      ]
+    }
+  ],
+  "daily_games": [
+    { "date": "2026-10-25", "color_game": 1, "shiny_game": 0, "which_shiny_game": 2 }
+  ]
+}
+```
+
+Codes de statut : `200`, `401`.
 
 ---
 
