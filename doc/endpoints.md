@@ -351,7 +351,7 @@ Codes de statut : `200`, `401`.
 
 ## Dex
 
-Chaque liste de dex (`/dex/can_hold_election`, `/dex/{trainerExternalId}/list` et les dex des trois jeux) donne la catégorie du dex dans `category` (`slug`, `name`, `french_name`, `order_number`), ou `null` pour un dex sans catégorie. Les catégories viennent de l'onglet `Dex Category` du Sheet (Slug, Name, French Name, Order) et la colonne `Category` de l'onglet `Dex` contient le slug de la catégorie. L'ordre des dex ne change pas : c'est au client de les regrouper.
+Chaque liste de dex (`/dex/can_hold_election`, `/dex/{trainerExternalId}/list` et les dex des trois jeux) donne la catégorie du dex dans `category` (`slug`, `name`, `french_name`, `order_number`), ou `null` pour un dex sans catégorie. Les catégories viennent de l'onglet `Dex Category` du Sheet (Slug, Name, French Name, Order) et la colonne `#Category` de l'onglet `Dex` contient le slug de la catégorie. L'ordre des dex ne change pas : c'est au client de les regrouper.
 
 ### 7. GET `/dex/can_hold_election`
 
