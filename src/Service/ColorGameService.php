@@ -115,6 +115,46 @@ class ColorGameService
 
     /**
      * @return array{
+     *  game: array<string, mixed>,
+     *  rounds: list<array{
+     *   round: array<string, mixed>,
+     *   color_sets: list<array<string, mixed>>,
+     *   correct_choice: int,
+     *  }>,
+     * }
+     */
+    public function getRounds(string $trainerExternalId, string $gameId): array
+    {
+        $game = $this->getGame($trainerExternalId, $gameId);
+
+        $colorSets = [];
+        foreach ($this->repository->getAnsweredRoundsColorSets($gameId) as $colorSet) {
+            /** @var int|string $roundPosition numeric string keys are cast to int by PHP */
+            $roundPosition = $colorSet['round_position'];
+
+            $colorSets[$roundPosition][] = $colorSet;
+        }
+
+        $rounds = [];
+        foreach ($this->repository->getAnsweredRounds($gameId) as $round) {
+            /** @var int|string $position numeric string keys are cast to int by PHP */
+            $position = $round['position'];
+
+            $rounds[] = [
+                'round' => $round,
+                'color_sets' => $colorSets[$position] ?? [],
+                'correct_choice' => self::getCorrectChoice(self::getChoicesOrder($round)),
+            ];
+        }
+
+        return [
+            'game' => $game,
+            'rounds' => $rounds,
+        ];
+    }
+
+    /**
+     * @return array{
      *  position: int,
      *  is_correct: bool,
      *  chosen_choice: int,
@@ -140,16 +180,13 @@ class ColorGameService
             throw new ColorGameConflictException("Round {$answer->position} has already been answered");
         }
 
-        /** @var scalar $roundChoicesOrder */
-        $roundChoicesOrder = $round['choices_order'];
-
-        $choicesOrder = array_map(intval(...), explode(',', (string) $roundChoicesOrder));
+        $choicesOrder = self::getChoicesOrder($round);
 
         if (!isset($choicesOrder[$answer->choice])) {
             throw new InvalidColorGameRequestException("Choice {$answer->choice} does not exist");
         }
 
-        $correctChoice = array_flip($choicesOrder)[self::RIGHT_SET_POSITION];
+        $correctChoice = self::getCorrectChoice($choicesOrder);
         $isCorrect = $answer->choice === $correctChoice;
 
         if (!$this->repository->answerRound($gameId, $answer->position, $answer->choice, $isCorrect)) {
@@ -177,5 +214,26 @@ class ColorGameService
         }
 
         return $game;
+    }
+
+    /**
+     * @param array<string, mixed> $round
+     *
+     * @return list<int> the position of the colour set shown at each choice index
+     */
+    private static function getChoicesOrder(array $round): array
+    {
+        /** @var scalar $choicesOrder */
+        $choicesOrder = $round['choices_order'];
+
+        return array_map(intval(...), explode(',', (string) $choicesOrder));
+    }
+
+    /**
+     * @param list<int> $choicesOrder
+     */
+    private static function getCorrectChoice(array $choicesOrder): int
+    {
+        return array_flip($choicesOrder)[self::RIGHT_SET_POSITION];
     }
 }

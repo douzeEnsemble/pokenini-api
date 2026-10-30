@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\DTO\Response\ColorGameAnswerResponse;
+use App\DTO\Response\ColorGameAnsweredRoundResponse;
 use App\DTO\Response\ColorGameChoiceResponse;
 use App\DTO\Response\ColorGameDexResponse;
 use App\DTO\Response\ColorGameDexSummaryResponse;
 use App\DTO\Response\ColorGamePokemonResponse;
 use App\DTO\Response\ColorGameResponse;
 use App\DTO\Response\ColorGameRoundResponse;
+use App\DTO\Response\ColorGameRoundsResponse;
 use App\DTO\Response\ColorGameStateResponse;
 
 final class ColorGameResponseFactory
@@ -179,6 +181,51 @@ final class ColorGameResponseFactory
             chosenChoice: $answer['chosen_choice'],
             correctChoice: $answer['correct_choice'],
             game: self::fromGameRow($answer['game']),
+        );
+    }
+
+    /**
+     * @param array{
+     *  game: array<array-key, mixed>,
+     *  rounds: array<array-key, array{
+     *   round: array<array-key, mixed>,
+     *   color_sets: array<array-key, array<array-key, mixed>>,
+     *   correct_choice: int,
+     *  }>,
+     * } $rounds
+     */
+    public static function fromRounds(array $rounds): ColorGameRoundsResponse
+    {
+        return new ColorGameRoundsResponse(
+            game: self::fromGameRow($rounds['game']),
+            rounds: array_values(array_map(
+                /**
+                 * @param array{
+                 *  round: array<array-key, mixed>,
+                 *  color_sets: array<array-key, array<array-key, mixed>>,
+                 *  correct_choice: int,
+                 * } $answered
+                 */
+                static function (array $answered): ColorGameAnsweredRoundResponse {
+                    $round = self::fromRoundRow($answered['round'], $answered['color_sets']);
+
+                    /** @var scalar $isCorrect */
+                    $isCorrect = $answered['round']['is_correct'];
+
+                    /** @var scalar $chosenChoice */
+                    $chosenChoice = $answered['round']['chosen_choice'];
+
+                    return new ColorGameAnsweredRoundResponse(
+                        position: $round->position,
+                        pokemon: $round->pokemon,
+                        isCorrect: (bool) $isCorrect,
+                        choices: $round->choices,
+                        chosenChoice: (int) $chosenChoice,
+                        correctChoice: $answered['correct_choice'],
+                    );
+                },
+                $rounds['rounds'],
+            )),
         );
     }
 

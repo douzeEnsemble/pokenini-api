@@ -96,6 +96,20 @@ class ShinyGameService
 
     /**
      * @return array{
+     *  game: array<string, mixed>,
+     *  rounds: array<array-key, array<string, mixed>>,
+     * }
+     */
+    public function getRounds(string $trainerExternalId, string $gameId): array
+    {
+        return [
+            'game' => $this->getGame($trainerExternalId, $gameId),
+            'rounds' => $this->repository->getAnsweredRounds($gameId),
+        ];
+    }
+
+    /**
+     * @return array{
      *  position: int,
      *  is_correct: bool,
      *  chosen_shiny: bool,

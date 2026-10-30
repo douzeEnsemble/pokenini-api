@@ -49,6 +49,23 @@ class ColorGameRepository extends ServiceEntityRepository
         GROUP BY    p.id
         SQL;
 
+    private const string ROUND_COLUMNS = <<<'SQL'
+        cgr.position AS "position",
+        cgr.choices_order AS "choices_order",
+        cgr.chosen_choice AS "chosen_choice",
+        cgr.is_correct AS "is_correct",
+        p.id AS "pokemon_id",
+        p.slug AS "pokemon_slug",
+        p.name AS "pokemon_name",
+        p.french_name AS "pokemon_french_name",
+        p.simplified_name AS "pokemon_simplified_name",
+        p.simplified_french_name AS "pokemon_simplified_french_name",
+        p.forms_label AS "pokemon_forms_label",
+        p.forms_french_label AS "pokemon_forms_french_label",
+        p.national_dex_number AS "pokemon_national_dex_number",
+        p.icon_name AS "pokemon_icon"
+        SQL;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, ColorGame::class);
@@ -292,6 +309,55 @@ class ColorGameRepository extends ServiceEntityRepository
     }
 
     /**
+     * The answered rounds, in play order: the ones not answered yet would give the answers away.
+     *
+     * @return array<array-key, array<string, mixed>>
+     */
+    public function getAnsweredRounds(string $gameId): array
+    {
+        $columns = self::ROUND_COLUMNS;
+
+        $sql = <<<SQL
+            SELECT      {$columns}
+            FROM        color_game_round AS cgr
+                JOIN    pokemon AS p
+                    ON  p.id = cgr.pokemon_id
+            WHERE       cgr.color_game_id = :color_game_id
+                    AND cgr.chosen_choice IS NOT NULL
+            ORDER BY    cgr.position ASC
+            SQL;
+
+        return $this->getConnection()->fetchAllAssociative($sql, ['color_game_id' => $gameId]);
+    }
+
+    /**
+     * The colour sets of the answered rounds, with the position of their round.
+     *
+     * @return array<array-key, array<string, mixed>>
+     */
+    public function getAnsweredRoundsColorSets(string $gameId): array
+    {
+        $sql = <<<'SQL'
+            SELECT      cgr.position AS "round_position",
+                        pcs.position AS "position",
+                        pcs.codes AS "codes",
+                        pcs.names AS "names",
+                        pcs.french_names AS "french_names"
+            FROM        color_game_round AS cgr
+                JOIN    color_game AS cg
+                    ON  cg.id = cgr.color_game_id
+                JOIN    pokemon_color_set AS pcs
+                    ON  pcs.pokemon_id = cgr.pokemon_id
+                    AND pcs.is_shiny = cg.is_shiny
+            WHERE       cgr.color_game_id = :color_game_id
+                    AND cgr.chosen_choice IS NOT NULL
+            ORDER BY    cgr.position ASC, pcs.position ASC
+            SQL;
+
+        return $this->getConnection()->fetchAllAssociative($sql, ['color_game_id' => $gameId]);
+    }
+
+    /**
      * Saves the answer of a round, only if it has not been answered yet.
      *
      * @return bool true if the answer has been saved
@@ -463,23 +529,11 @@ class ColorGameRepository extends ServiceEntityRepository
      */
     private function getRound(string $gameId, ?int $position): ?array
     {
+        $columns = self::ROUND_COLUMNS;
         $where = null === $position ? 'cgr.chosen_choice IS NULL' : 'cgr.position = :position';
 
         $sql = <<<SQL
-            SELECT      cgr.position AS "position",
-                        cgr.choices_order AS "choices_order",
-                        cgr.chosen_choice AS "chosen_choice",
-                        cgr.is_correct AS "is_correct",
-                        p.id AS "pokemon_id",
-                        p.slug AS "pokemon_slug",
-                        p.name AS "pokemon_name",
-                        p.french_name AS "pokemon_french_name",
-                        p.simplified_name AS "pokemon_simplified_name",
-                        p.simplified_french_name AS "pokemon_simplified_french_name",
-                        p.forms_label AS "pokemon_forms_label",
-                        p.forms_french_label AS "pokemon_forms_french_label",
-                        p.national_dex_number AS "pokemon_national_dex_number",
-                        p.icon_name AS "pokemon_icon"
+            SELECT      {$columns}
             FROM        color_game_round AS cgr
                 JOIN    pokemon AS p
                     ON  p.id = cgr.pokemon_id

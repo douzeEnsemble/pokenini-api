@@ -76,6 +76,9 @@ curl -u web:douze http://web:8080/types
 | 53 | GET | `/trainer_preference/{trainerExternalId}` | Page d'accueil choisie par un dresseur |
 | 54 | PUT | `/trainer_preference/{trainerExternalId}` | Choisir sa page d'accueil |
 | 55 | GET | `/reports/games` | Statistiques des trois jeux (parties, manches, dex, Pokémon les plus ratés, parties par jour) |
+| 56 | GET | `/color_game/{trainerExternalId}/games/{gameId}/rounds` | Manches répondues d'une partie (pour la revoir) |
+| 57 | GET | `/shiny_game/{trainerExternalId}/games/{gameId}/rounds` | Manches répondues d'une partie « Shiny or not » |
+| 58 | GET | `/which_shiny_game/{trainerExternalId}/games/{gameId}/rounds` | Manches répondues d'une partie « Lequel est le shiny ? » |
 | 38 | GET | `/istration/dex-banner-layers` | Layers de bannière par dex, pour `pokenini-icon` |
 
 > **Note** : le préfixe d'administration est littéralement `/istration` (et non `/administration`), et le préfixe de debug est `/debogage`.
@@ -1080,6 +1083,41 @@ Répond à une manche. Corps JSON : `{"position": 2, "choice": 0}` (`choice` = `
 
 Codes de statut : `200`, `400` (corps invalide, choix inexistant), `401`, `404` (partie ou manche inconnue), `409` (partie terminée, manche déjà répondue).
 
+### 56. GET `/color_game/{trainerExternalId}/games/{gameId}/rounds`
+
+Partie et manches déjà répondues, dans l'ordre de jeu, pour revoir une partie terminée ou en cours. Les manches pas encore répondues ne sont pas renvoyées : elles donneraient les réponses.
+
+```json
+{
+  "game": { "...": "objet partie" },
+  "rounds": [
+    {
+      "position": 1,
+      "pokemon": {
+        "slug": "bulbasaur",
+        "name": "Bulbasaur",
+        "french_name": "Bulbizarre",
+        "simplified_name": "Bulbasaur",
+        "simplified_french_name": "Bulbizarre",
+        "forms_label": "",
+        "forms_french_label": "",
+        "national_dex_number": 1,
+        "icon": "bulbasaur"
+      },
+      "is_correct": true,
+      "choices": [
+        { "index": 0, "codes": ["#5A9C8C", "#E05A6A"], "names": ["teal", "pink"], "french_names": ["sarcelle", "rose"] },
+        { "index": 1, "codes": ["#3060A0"], "names": ["blue"], "french_names": ["bleu"] }
+      ],
+      "chosen_choice": 0,
+      "correct_choice": 0
+    }
+  ]
+}
+```
+
+Codes de statut : `200`, `401`, `404` (partie inconnue pour ce dresseur).
+
 ---
 
 ## Jeu « Shiny or not »
@@ -1189,6 +1227,37 @@ Répond à une manche. Corps JSON : `{"position": 2, "is_shiny": true}` (`is_shi
 
 Codes de statut : `200`, `400` (corps invalide), `401`, `404` (partie ou manche inconnue), `409` (partie terminée, manche déjà répondue).
 
+### 57. GET `/shiny_game/{trainerExternalId}/games/{gameId}/rounds`
+
+Partie et manches déjà répondues, dans l'ordre de jeu, pour revoir une partie terminée ou en cours. Les manches pas encore répondues ne sont pas renvoyées : elles donneraient les réponses.
+
+```json
+{
+  "game": { "...": "objet partie" },
+  "rounds": [
+    {
+      "position": 1,
+      "pokemon": {
+        "slug": "bulbasaur",
+        "name": "Bulbasaur",
+        "french_name": "Bulbizarre",
+        "simplified_name": "Bulbasaur",
+        "simplified_french_name": "Bulbizarre",
+        "forms_label": "",
+        "forms_french_label": "",
+        "national_dex_number": 1,
+        "icon": "bulbasaur"
+      },
+      "is_correct": true,
+      "is_shiny": true,
+      "chosen_shiny": true
+    }
+  ]
+}
+```
+
+Codes de statut : `200`, `401`, `404` (partie inconnue pour ce dresseur).
+
 ---
 
 ## Jeu « Lequel est le shiny ? »
@@ -1258,6 +1327,37 @@ Répond à une manche. Corps JSON : `{"position": 2, "slot": 2}` (`slot` = l'ima
 ```
 
 Codes de statut : `200`, `400` (corps invalide), `401`, `404` (partie ou manche inconnue), `409` (partie terminée, manche déjà répondue).
+
+### 58. GET `/which_shiny_game/{trainerExternalId}/games/{gameId}/rounds`
+
+Partie et manches déjà répondues, dans l'ordre de jeu, pour revoir une partie terminée ou en cours. Les manches pas encore répondues ne sont pas renvoyées : elles donneraient les réponses.
+
+```json
+{
+  "game": { "...": "objet partie" },
+  "rounds": [
+    {
+      "position": 1,
+      "pokemon": {
+        "slug": "bulbasaur",
+        "name": "Bulbasaur",
+        "french_name": "Bulbizarre",
+        "simplified_name": "Bulbasaur",
+        "simplified_french_name": "Bulbizarre",
+        "forms_label": "",
+        "forms_french_label": "",
+        "national_dex_number": 1,
+        "icon": "bulbasaur"
+      },
+      "is_correct": true,
+      "shiny_slot": 2,
+      "chosen_slot": 2
+    }
+  ]
+}
+```
+
+Codes de statut : `200`, `401`, `404` (partie inconnue pour ce dresseur).
 
 ---
 

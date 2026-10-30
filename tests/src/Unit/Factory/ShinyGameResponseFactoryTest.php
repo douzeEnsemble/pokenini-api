@@ -6,11 +6,13 @@ namespace App\Tests\Unit\Factory;
 
 use App\DTO\Response\DexCategoryResponse;
 use App\DTO\Response\ShinyGameAnswerResponse;
+use App\DTO\Response\ShinyGameAnsweredRoundResponse;
 use App\DTO\Response\ShinyGameDexResponse;
 use App\DTO\Response\ShinyGameDexSummaryResponse;
 use App\DTO\Response\ShinyGamePokemonResponse;
 use App\DTO\Response\ShinyGameResponse;
 use App\DTO\Response\ShinyGameRoundResponse;
+use App\DTO\Response\ShinyGameRoundsResponse;
 use App\DTO\Response\ShinyGameStateResponse;
 use App\Factory\ShinyGameResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -22,11 +24,13 @@ use PHPUnit\Framework\TestCase;
  */
 #[CoversClass(ShinyGameResponseFactory::class)]
 #[CoversClass(ShinyGameAnswerResponse::class)]
+#[CoversClass(ShinyGameAnsweredRoundResponse::class)]
 #[CoversClass(ShinyGameDexResponse::class)]
 #[CoversClass(ShinyGameDexSummaryResponse::class)]
 #[CoversClass(ShinyGamePokemonResponse::class)]
 #[CoversClass(ShinyGameResponse::class)]
 #[CoversClass(ShinyGameRoundResponse::class)]
+#[CoversClass(ShinyGameRoundsResponse::class)]
 #[CoversClass(ShinyGameStateResponse::class)]
 final class ShinyGameResponseFactoryTest extends TestCase
 {
@@ -242,6 +246,76 @@ final class ShinyGameResponseFactoryTest extends TestCase
                 'game' => $this->getGameRow(),
             ]),
         );
+    }
+
+    #[Test]
+    public function fromRounds(): void
+    {
+        $response = ShinyGameResponseFactory::fromRounds([
+            'game' => $this->getGameRow(),
+            'rounds' => [
+                3 => [
+                    'position' => '3',
+                    'is_shiny' => 1,
+                    'chosen_shiny' => 0,
+                    'is_correct' => 0,
+                    'pokemon_id' => 'p1',
+                    'pokemon_slug' => 'raichu-alola',
+                    'pokemon_name' => 'Raichu Alola',
+                    'pokemon_french_name' => 'Raichu d\'Alola',
+                    'pokemon_simplified_name' => 'Raichu',
+                    'pokemon_simplified_french_name' => 'Raichu',
+                    'pokemon_forms_label' => 'Alola',
+                    'pokemon_forms_french_label' => 'Alola',
+                    'pokemon_national_dex_number' => '26',
+                    'pokemon_icon' => 'raichu-alola',
+                ],
+            ],
+        ]);
+
+        $this->assertEquals(
+            new ShinyGameRoundsResponse(
+                game: ShinyGameResponseFactory::fromGameRow($this->getGameRow()),
+                rounds: [
+                    new ShinyGameAnsweredRoundResponse(
+                        position: 3,
+                        pokemon: new ShinyGamePokemonResponse(
+                            slug: 'raichu-alola',
+                            name: 'Raichu Alola',
+                            frenchName: 'Raichu d\'Alola',
+                            simplifiedName: 'Raichu',
+                            simplifiedFrenchName: 'Raichu',
+                            formsLabel: 'Alola',
+                            formsFrenchLabel: 'Alola',
+                            nationalDexNumber: 26,
+                            icon: 'raichu-alola',
+                        ),
+                        isCorrect: false,
+                        isShiny: true,
+                        chosenShiny: false,
+                    ),
+                ],
+            ),
+            $response,
+        );
+
+        $this->assertSame([0], array_keys($response->rounds));
+        $this->assertSame(3, $response->rounds[0]->position);
+        $this->assertFalse($response->rounds[0]->isCorrect);
+        $this->assertSame(true, $response->rounds[0]->isShiny);
+        $this->assertSame(false, $response->rounds[0]->chosenShiny);
+    }
+
+    #[Test]
+    public function fromRoundsWithoutRounds(): void
+    {
+        $response = ShinyGameResponseFactory::fromRounds([
+            'game' => $this->getGameRow(),
+            'rounds' => [],
+        ]);
+
+        $this->assertSame([], $response->rounds);
+        $this->assertSame('completed', $response->game->status);
     }
 
     /**

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\DTO\Response\ShinyGameResponse;
+use App\DTO\Response\ShinyGameRoundsResponse;
 use App\DTO\Response\ShinyGameStateResponse;
 use App\DTO\ShinyGameCreation;
 use App\Exception\ShinyGameNotFoundException;
@@ -67,5 +68,20 @@ final class ShinyGameController extends AbstractController
         }
 
         return ShinyGameResponseFactory::fromState($state);
+    }
+
+    #[Route(path: '/{gameId}/rounds', requirements: ['gameId' => Requirement::UUID], methods: ['GET'])]
+    #[Serialize]
+    public function rounds(
+        string $trainerExternalId,
+        string $gameId,
+    ): ShinyGameRoundsResponse {
+        try {
+            $rounds = $this->shinyGameService->getRounds($trainerExternalId, $gameId);
+        } catch (ShinyGameNotFoundException $e) {
+            throw new NotFoundHttpException($e->getMessage(), $e);
+        }
+
+        return ShinyGameResponseFactory::fromRounds($rounds);
     }
 }

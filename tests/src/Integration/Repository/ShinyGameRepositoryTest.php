@@ -184,6 +184,40 @@ final class ShinyGameRepositoryTest extends KernelTestCase
     }
 
     #[Test]
+    public function getAnsweredRounds(): void
+    {
+        $rows = $this->getRepository()->getAnsweredRounds($this->getCompletedGameId());
+
+        $this->assertSame(
+            [
+                ['position' => 1, 'pokemon_slug' => 'caterpie', 'is_correct' => true, 'is_shiny' => false, 'chosen_shiny' => false],
+                ['position' => 2, 'pokemon_slug' => 'metapod', 'is_correct' => false, 'is_shiny' => true, 'chosen_shiny' => false],
+            ],
+            array_map(
+                static fn (array $row): array => [
+                    'position' => $row['position'],
+                    'pokemon_slug' => $row['pokemon_slug'],
+                    'is_correct' => $row['is_correct'],
+                    'is_shiny' => $row['is_shiny'],
+                    'chosen_shiny' => $row['chosen_shiny'],
+                ],
+                $rows,
+            ),
+        );
+        $this->assertSame('caterpie', $rows[0]['pokemon_icon']);
+    }
+
+    #[Test]
+    public function getAnsweredRoundsOfAGameInProgress(): void
+    {
+        $rows = $this->getRepository()->getAnsweredRounds($this->getInProgressGameId());
+
+        $this->assertSame([1], array_column($rows, 'position'));
+        $this->assertSame(['bulbasaur'], array_column($rows, 'pokemon_slug'));
+        $this->assertSame([true], array_column($rows, 'chosen_shiny'));
+    }
+
+    #[Test]
     public function getGameOfAnotherTrainer(): void
     {
         $this->assertNull($this->getRepository()->getGame('other_trainer', $this->getInProgressGameId()));
@@ -213,6 +247,15 @@ final class ShinyGameRepositoryTest extends KernelTestCase
         return $this->getConnection()->fetchOne(
             'SELECT id FROM shiny_game WHERE trainer_external_id = ? AND status = ?',
             [self::TRAINER, 'in_progress'],
+        );
+    }
+
+    private function getCompletedGameId(): string
+    {
+        /** @var string */
+        return $this->getConnection()->fetchOne(
+            'SELECT id FROM shiny_game WHERE trainer_external_id = ? AND status = ?',
+            [self::TRAINER, 'completed'],
         );
     }
 

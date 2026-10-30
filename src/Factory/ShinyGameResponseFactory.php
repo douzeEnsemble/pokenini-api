@@ -5,11 +5,13 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\DTO\Response\ShinyGameAnswerResponse;
+use App\DTO\Response\ShinyGameAnsweredRoundResponse;
 use App\DTO\Response\ShinyGameDexResponse;
 use App\DTO\Response\ShinyGameDexSummaryResponse;
 use App\DTO\Response\ShinyGamePokemonResponse;
 use App\DTO\Response\ShinyGameResponse;
 use App\DTO\Response\ShinyGameRoundResponse;
+use App\DTO\Response\ShinyGameRoundsResponse;
 use App\DTO\Response\ShinyGameStateResponse;
 
 final class ShinyGameResponseFactory
@@ -167,6 +169,39 @@ final class ShinyGameResponseFactory
             chosenShiny: $answer['chosen_shiny'],
             isShiny: $answer['is_shiny'],
             game: self::fromGameRow($answer['game']),
+        );
+    }
+
+    /**
+     * @param array{
+     *  game: array<array-key, mixed>,
+     *  rounds: array<array-key, array<array-key, mixed>>,
+     * } $rounds
+     */
+    public static function fromRounds(array $rounds): ShinyGameRoundsResponse
+    {
+        return new ShinyGameRoundsResponse(
+            game: self::fromGameRow($rounds['game']),
+            rounds: array_values(array_map(
+                static function (array $row): ShinyGameAnsweredRoundResponse {
+                    $round = self::fromRoundRow($row);
+
+                    /** @var scalar $isCorrect */
+                    $isCorrect = $row['is_correct'];
+
+                    /** @var scalar $chosenShiny */
+                    $chosenShiny = $row['chosen_shiny'];
+
+                    return new ShinyGameAnsweredRoundResponse(
+                        position: $round->position,
+                        pokemon: $round->pokemon,
+                        isCorrect: (bool) $isCorrect,
+                        isShiny: $round->isShiny,
+                        chosenShiny: (bool) $chosenShiny,
+                    );
+                },
+                $rounds['rounds'],
+            )),
         );
     }
 
