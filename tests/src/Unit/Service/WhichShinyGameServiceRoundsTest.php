@@ -23,7 +23,7 @@ final class WhichShinyGameServiceRoundsTest extends TestCase
     private const string TRAINER = '7b52009b64fd0a2a49e6d8a939753077792b0554';
     private const string GAME_ID = '01a15aac-cfd2-7085-bbc7-88594aa005dd';
 
-    private MockObject&WhichShinyGameRepository $repository;
+    private WhichShinyGameRepository&MockObject $repository;
     private WhichShinyGameService $service;
 
     #[\Override]

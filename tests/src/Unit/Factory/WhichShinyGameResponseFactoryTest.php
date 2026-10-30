@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Factory;
 
 use App\DTO\Response\DexCategoryResponse;
-use App\DTO\Response\WhichShinyGameAnswerResponse;
 use App\DTO\Response\WhichShinyGameAnsweredRoundResponse;
+use App\DTO\Response\WhichShinyGameAnswerResponse;
 use App\DTO\Response\WhichShinyGameDexResponse;
 use App\DTO\Response\WhichShinyGameDexSummaryResponse;
 use App\DTO\Response\WhichShinyGamePokemonResponse;
