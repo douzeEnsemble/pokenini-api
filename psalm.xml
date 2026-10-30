@@ -29,12 +29,6 @@
     </plugins>
 
     <issueHandlers>
-        <InvalidArgument>
-            <errorLevel type="suppress">
-                <referencedFunction name="PHPUnit\Framework\Attributes\CoversTrait::__construct"/>
-            </errorLevel>
-        </InvalidArgument>
-
         <ClassMustBeFinal>
             <errorLevel type="suppress">
                 <!-- Symfony services -->
