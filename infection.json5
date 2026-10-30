@@ -50,7 +50,7 @@
             ignore: [
                 // intval() is only there for static analysis: array_flip() already turns
                 // the numeric string positions into int keys, an equivalent mutant.
-                "App\\Service\\ColorGameService::answer",
+                "App\\Service\\ColorGameService::getChoicesOrder",
             ],
         },
         "global-ignore": [
