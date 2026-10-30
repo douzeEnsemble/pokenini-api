@@ -2,7 +2,7 @@ name: Pokénini Api
 
 services:
   adminer:
-    image: adminer:5.5.1
+    image: adminer:6.1.2
     ports:
       - '127.0.0.1:8082:8080'
     restart: always
