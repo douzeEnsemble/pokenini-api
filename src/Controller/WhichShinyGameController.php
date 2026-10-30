@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use App\DTO\Response\WhichShinyGameResponse;
+use App\DTO\Response\WhichShinyGameRoundsResponse;
 use App\DTO\Response\WhichShinyGameStateResponse;
 use App\DTO\WhichShinyGameCreation;
 use App\Exception\WhichShinyGameNotFoundException;
@@ -67,5 +68,20 @@ final class WhichShinyGameController extends AbstractController
         }
 
         return WhichShinyGameResponseFactory::fromState($state);
+    }
+
+    #[Route(path: '/{gameId}/rounds', requirements: ['gameId' => Requirement::UUID], methods: ['GET'])]
+    #[Serialize]
+    public function rounds(
+        string $trainerExternalId,
+        string $gameId,
+    ): WhichShinyGameRoundsResponse {
+        try {
+            $rounds = $this->whichShinyGameService->getRounds($trainerExternalId, $gameId);
+        } catch (WhichShinyGameNotFoundException $e) {
+            throw new NotFoundHttpException($e->getMessage(), $e);
+        }
+
+        return WhichShinyGameResponseFactory::fromRounds($rounds);
     }
 }

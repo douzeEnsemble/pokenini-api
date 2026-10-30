@@ -50,6 +50,23 @@ class ShinyGameRepository extends ServiceEntityRepository
                 AND p.id IN (SELECT da.pokemon_id FROM dex_availability AS da WHERE da.dex_id = :dex_id)
         SQL;
 
+    private const string ROUND_COLUMNS = <<<'SQL'
+        sgr.position AS "position",
+        sgr.is_shiny AS "is_shiny",
+        sgr.chosen_shiny AS "chosen_shiny",
+        sgr.is_correct AS "is_correct",
+        p.id AS "pokemon_id",
+        p.slug AS "pokemon_slug",
+        p.name AS "pokemon_name",
+        p.french_name AS "pokemon_french_name",
+        p.simplified_name AS "pokemon_simplified_name",
+        p.simplified_french_name AS "pokemon_simplified_french_name",
+        p.forms_label AS "pokemon_forms_label",
+        p.forms_french_label AS "pokemon_forms_french_label",
+        p.national_dex_number AS "pokemon_national_dex_number",
+        p.icon_name AS "pokemon_icon"
+        SQL;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, ShinyGame::class);
@@ -252,6 +269,28 @@ class ShinyGameRepository extends ServiceEntityRepository
     }
 
     /**
+     * The answered rounds, in play order: the ones not answered yet would give the answers away.
+     *
+     * @return array<array-key, array<string, mixed>>
+     */
+    public function getAnsweredRounds(string $gameId): array
+    {
+        $columns = self::ROUND_COLUMNS;
+
+        $sql = <<<SQL
+            SELECT      {$columns}
+            FROM        shiny_game_round AS sgr
+                JOIN    pokemon AS p
+                    ON  p.id = sgr.pokemon_id
+            WHERE       sgr.shiny_game_id = :shiny_game_id
+                    AND sgr.chosen_shiny IS NOT NULL
+            ORDER BY    sgr.position ASC
+            SQL;
+
+        return $this->getConnection()->fetchAllAssociative($sql, ['shiny_game_id' => $gameId]);
+    }
+
+    /**
      * Saves the answer of a round, only if it has not been answered yet.
      *
      * @return bool true if the answer has been saved
@@ -418,23 +457,11 @@ class ShinyGameRepository extends ServiceEntityRepository
      */
     private function getRound(string $gameId, ?int $position): ?array
     {
+        $columns = self::ROUND_COLUMNS;
         $where = null === $position ? 'sgr.chosen_shiny IS NULL' : 'sgr.position = :position';
 
         $sql = <<<SQL
-            SELECT      sgr.position AS "position",
-                        sgr.is_shiny AS "is_shiny",
-                        sgr.chosen_shiny AS "chosen_shiny",
-                        sgr.is_correct AS "is_correct",
-                        p.id AS "pokemon_id",
-                        p.slug AS "pokemon_slug",
-                        p.name AS "pokemon_name",
-                        p.french_name AS "pokemon_french_name",
-                        p.simplified_name AS "pokemon_simplified_name",
-                        p.simplified_french_name AS "pokemon_simplified_french_name",
-                        p.forms_label AS "pokemon_forms_label",
-                        p.forms_french_label AS "pokemon_forms_french_label",
-                        p.national_dex_number AS "pokemon_national_dex_number",
-                        p.icon_name AS "pokemon_icon"
+            SELECT      {$columns}
             FROM        shiny_game_round AS sgr
                 JOIN    pokemon AS p
                     ON  p.id = sgr.pokemon_id

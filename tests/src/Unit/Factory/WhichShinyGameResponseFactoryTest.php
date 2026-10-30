@@ -6,11 +6,13 @@ namespace App\Tests\Unit\Factory;
 
 use App\DTO\Response\DexCategoryResponse;
 use App\DTO\Response\WhichShinyGameAnswerResponse;
+use App\DTO\Response\WhichShinyGameAnsweredRoundResponse;
 use App\DTO\Response\WhichShinyGameDexResponse;
 use App\DTO\Response\WhichShinyGameDexSummaryResponse;
 use App\DTO\Response\WhichShinyGamePokemonResponse;
 use App\DTO\Response\WhichShinyGameResponse;
 use App\DTO\Response\WhichShinyGameRoundResponse;
+use App\DTO\Response\WhichShinyGameRoundsResponse;
 use App\DTO\Response\WhichShinyGameStateResponse;
 use App\Factory\WhichShinyGameResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -22,11 +24,13 @@ use PHPUnit\Framework\TestCase;
  */
 #[CoversClass(WhichShinyGameResponseFactory::class)]
 #[CoversClass(WhichShinyGameAnswerResponse::class)]
+#[CoversClass(WhichShinyGameAnsweredRoundResponse::class)]
 #[CoversClass(WhichShinyGameDexResponse::class)]
 #[CoversClass(WhichShinyGameDexSummaryResponse::class)]
 #[CoversClass(WhichShinyGamePokemonResponse::class)]
 #[CoversClass(WhichShinyGameResponse::class)]
 #[CoversClass(WhichShinyGameRoundResponse::class)]
+#[CoversClass(WhichShinyGameRoundsResponse::class)]
 #[CoversClass(WhichShinyGameStateResponse::class)]
 final class WhichShinyGameResponseFactoryTest extends TestCase
 {
@@ -242,6 +246,76 @@ final class WhichShinyGameResponseFactoryTest extends TestCase
                 'game' => $this->getGameRow(),
             ]),
         );
+    }
+
+    #[Test]
+    public function fromRounds(): void
+    {
+        $response = WhichShinyGameResponseFactory::fromRounds([
+            'game' => $this->getGameRow(),
+            'rounds' => [
+                3 => [
+                    'position' => '3',
+                    'shiny_slot' => '2',
+                    'chosen_slot' => '1',
+                    'is_correct' => 0,
+                    'pokemon_id' => 'p1',
+                    'pokemon_slug' => 'raichu-alola',
+                    'pokemon_name' => 'Raichu Alola',
+                    'pokemon_french_name' => 'Raichu d\'Alola',
+                    'pokemon_simplified_name' => 'Raichu',
+                    'pokemon_simplified_french_name' => 'Raichu',
+                    'pokemon_forms_label' => 'Alola',
+                    'pokemon_forms_french_label' => 'Alola',
+                    'pokemon_national_dex_number' => '26',
+                    'pokemon_icon' => 'raichu-alola',
+                ],
+            ],
+        ]);
+
+        $this->assertEquals(
+            new WhichShinyGameRoundsResponse(
+                game: WhichShinyGameResponseFactory::fromGameRow($this->getGameRow()),
+                rounds: [
+                    new WhichShinyGameAnsweredRoundResponse(
+                        position: 3,
+                        pokemon: new WhichShinyGamePokemonResponse(
+                            slug: 'raichu-alola',
+                            name: 'Raichu Alola',
+                            frenchName: 'Raichu d\'Alola',
+                            simplifiedName: 'Raichu',
+                            simplifiedFrenchName: 'Raichu',
+                            formsLabel: 'Alola',
+                            formsFrenchLabel: 'Alola',
+                            nationalDexNumber: 26,
+                            icon: 'raichu-alola',
+                        ),
+                        isCorrect: false,
+                        shinySlot: 2,
+                        chosenSlot: 1,
+                    ),
+                ],
+            ),
+            $response,
+        );
+
+        $this->assertSame([0], array_keys($response->rounds));
+        $this->assertSame(3, $response->rounds[0]->position);
+        $this->assertFalse($response->rounds[0]->isCorrect);
+        $this->assertSame(2, $response->rounds[0]->shinySlot);
+        $this->assertSame(1, $response->rounds[0]->chosenSlot);
+    }
+
+    #[Test]
+    public function fromRoundsWithoutRounds(): void
+    {
+        $response = WhichShinyGameResponseFactory::fromRounds([
+            'game' => $this->getGameRow(),
+            'rounds' => [],
+        ]);
+
+        $this->assertSame([], $response->rounds);
+        $this->assertSame('completed', $response->game->status);
     }
 
     /**

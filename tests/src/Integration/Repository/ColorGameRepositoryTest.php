@@ -201,6 +201,68 @@ final class ColorGameRepositoryTest extends KernelTestCase
     }
 
     #[Test]
+    public function getAnsweredRounds(): void
+    {
+        $rows = $this->getRepository()->getAnsweredRounds($this->getCompletedGameId());
+
+        $this->assertSame(
+            [
+                ['position' => 1, 'pokemon_slug' => 'bulbasaur', 'is_correct' => true, 'choices_order' => '1,2', 'chosen_choice' => 0],
+                ['position' => 2, 'pokemon_slug' => 'caterpie', 'is_correct' => false, 'choices_order' => '1,2', 'chosen_choice' => 1],
+            ],
+            array_map(
+                static fn (array $row): array => [
+                    'position' => $row['position'],
+                    'pokemon_slug' => $row['pokemon_slug'],
+                    'is_correct' => $row['is_correct'],
+                    'choices_order' => $row['choices_order'],
+                    'chosen_choice' => $row['chosen_choice'],
+                ],
+                $rows,
+            ),
+        );
+        $this->assertSame('bulbasaur', $rows[0]['pokemon_icon']);
+    }
+
+    #[Test]
+    public function getAnsweredRoundsOfAGameInProgress(): void
+    {
+        $rows = $this->getRepository()->getAnsweredRounds($this->getInProgressGameId());
+
+        $this->assertSame([1], array_column($rows, 'position'));
+        $this->assertSame(['bulbasaur'], array_column($rows, 'pokemon_slug'));
+        $this->assertSame([1], array_column($rows, 'chosen_choice'));
+    }
+
+    #[Test]
+    public function getAnsweredRoundsColorSets(): void
+    {
+        $this->assertSame(
+            [
+                [1, 1, '#8CD2B4;#DCC864'],
+                [1, 2, '#D28CAA;#64DCC8'],
+                [2, 1, '#F8D030;#78C850'],
+                [2, 2, '#3050F8;#C878F8'],
+            ],
+            array_map(
+                static fn (array $row): array => [$row['round_position'], $row['position'], $row['codes']],
+                $this->getRepository()->getAnsweredRoundsColorSets($this->getCompletedGameId()),
+            ),
+        );
+    }
+
+    #[Test]
+    public function getAnsweredRoundsColorSetsOfAGameInProgress(): void
+    {
+        $rows = $this->getRepository()->getAnsweredRoundsColorSets($this->getInProgressGameId());
+
+        $this->assertSame([1, 1, 1], array_column($rows, 'round_position'));
+        $this->assertSame([1, 2, 3], array_column($rows, 'position'));
+        $this->assertSame(['teal;light green;dark teal', 'pink;magenta;dark red', 'olive;green;dark olive'], array_column($rows, 'names'));
+        $this->assertSame(['bleu vert;vert clair;bleu vert foncé', 'rose;magenta;rouge foncé', 'olive;vert;olive foncé'], array_column($rows, 'french_names'));
+    }
+
+    #[Test]
     public function getGameOfAnotherTrainer(): void
     {
         $this->assertNull($this->getRepository()->getGame('other_trainer', $this->getInProgressGameId()));
@@ -273,6 +335,15 @@ final class ColorGameRepositoryTest extends KernelTestCase
         return $this->getConnection()->fetchOne(
             'SELECT id FROM color_game WHERE trainer_external_id = ? AND status = ?',
             [self::TRAINER, 'in_progress'],
+        );
+    }
+
+    private function getCompletedGameId(): string
+    {
+        /** @var string */
+        return $this->getConnection()->fetchOne(
+            'SELECT id FROM color_game WHERE trainer_external_id = ? AND status = ?',
+            [self::TRAINER, 'completed'],
         );
     }
 

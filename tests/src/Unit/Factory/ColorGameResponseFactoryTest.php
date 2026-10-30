@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Factory;
 
 use App\DTO\Response\ColorGameAnswerResponse;
+use App\DTO\Response\ColorGameAnsweredRoundResponse;
 use App\DTO\Response\ColorGameChoiceResponse;
 use App\DTO\Response\ColorGameDexResponse;
 use App\DTO\Response\ColorGameDexSummaryResponse;
 use App\DTO\Response\ColorGamePokemonResponse;
 use App\DTO\Response\ColorGameResponse;
 use App\DTO\Response\ColorGameRoundResponse;
+use App\DTO\Response\ColorGameRoundsResponse;
 use App\DTO\Response\ColorGameStateResponse;
 use App\DTO\Response\DexCategoryResponse;
 use App\Factory\ColorGameResponseFactory;
@@ -23,12 +25,14 @@ use PHPUnit\Framework\TestCase;
  */
 #[CoversClass(ColorGameResponseFactory::class)]
 #[CoversClass(ColorGameAnswerResponse::class)]
+#[CoversClass(ColorGameAnsweredRoundResponse::class)]
 #[CoversClass(ColorGameChoiceResponse::class)]
 #[CoversClass(ColorGameDexResponse::class)]
 #[CoversClass(ColorGameDexSummaryResponse::class)]
 #[CoversClass(ColorGamePokemonResponse::class)]
 #[CoversClass(ColorGameResponse::class)]
 #[CoversClass(ColorGameRoundResponse::class)]
+#[CoversClass(ColorGameRoundsResponse::class)]
 #[CoversClass(ColorGameStateResponse::class)]
 final class ColorGameResponseFactoryTest extends TestCase
 {
@@ -257,6 +261,97 @@ final class ColorGameResponseFactoryTest extends TestCase
                 'game' => $this->getGameRow(),
             ]),
         );
+    }
+
+    #[Test]
+    public function fromRounds(): void
+    {
+        $response = ColorGameResponseFactory::fromRounds([
+            'game' => $this->getGameRow(),
+            'rounds' => [
+                3 => [
+                    'round' => [
+                        'position' => '3',
+                        'choices_order' => '2,1',
+                        'chosen_choice' => '0',
+                        'is_correct' => 0,
+                        'pokemon_id' => 'p1',
+                        'pokemon_slug' => 'raichu-alola',
+                        'pokemon_name' => 'Raichu Alola',
+                        'pokemon_french_name' => 'Raichu d\'Alola',
+                        'pokemon_simplified_name' => 'Raichu',
+                        'pokemon_simplified_french_name' => 'Raichu',
+                        'pokemon_forms_label' => 'Alola',
+                        'pokemon_forms_french_label' => 'Alola',
+                        'pokemon_national_dex_number' => '26',
+                        'pokemon_icon' => 'raichu-alola',
+                    ],
+                    'color_sets' => [
+                        ['position' => '1', 'codes' => '#F0B030;#FFFFFF', 'names' => 'orange;white', 'french_names' => 'orange;blanc'],
+                        ['position' => '2', 'codes' => '#3080F0', 'names' => 'blue', 'french_names' => 'bleu'],
+                    ],
+                    'correct_choice' => 1,
+                ],
+            ],
+        ]);
+
+        $this->assertEquals(
+            new ColorGameRoundsResponse(
+                game: ColorGameResponseFactory::fromGameRow($this->getGameRow()),
+                rounds: [
+                    new ColorGameAnsweredRoundResponse(
+                        position: 3,
+                        pokemon: new ColorGamePokemonResponse(
+                            slug: 'raichu-alola',
+                            name: 'Raichu Alola',
+                            frenchName: 'Raichu d\'Alola',
+                            simplifiedName: 'Raichu',
+                            simplifiedFrenchName: 'Raichu',
+                            formsLabel: 'Alola',
+                            formsFrenchLabel: 'Alola',
+                            nationalDexNumber: 26,
+                            icon: 'raichu-alola',
+                        ),
+                        isCorrect: false,
+                        choices: [
+                            new ColorGameChoiceResponse(
+                                index: 0,
+                                codes: ['#3080F0'],
+                                names: ['blue'],
+                                frenchNames: ['bleu'],
+                            ),
+                            new ColorGameChoiceResponse(
+                                index: 1,
+                                codes: ['#F0B030', '#FFFFFF'],
+                                names: ['orange', 'white'],
+                                frenchNames: ['orange', 'blanc'],
+                            ),
+                        ],
+                        chosenChoice: 0,
+                        correctChoice: 1,
+                    ),
+                ],
+            ),
+            $response,
+        );
+
+        $this->assertSame([0], array_keys($response->rounds));
+        $this->assertSame(3, $response->rounds[0]->position);
+        $this->assertFalse($response->rounds[0]->isCorrect);
+        $this->assertSame(0, $response->rounds[0]->chosenChoice);
+        $this->assertSame(1, $response->rounds[0]->correctChoice);
+    }
+
+    #[Test]
+    public function fromRoundsWithoutRounds(): void
+    {
+        $response = ColorGameResponseFactory::fromRounds([
+            'game' => $this->getGameRow(),
+            'rounds' => [],
+        ]);
+
+        $this->assertSame([], $response->rounds);
+        $this->assertSame('completed', $response->game->status);
     }
 
     /**

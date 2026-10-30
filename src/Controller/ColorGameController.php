@@ -6,6 +6,7 @@ namespace App\Controller;
 
 use App\DTO\ColorGameCreation;
 use App\DTO\Response\ColorGameResponse;
+use App\DTO\Response\ColorGameRoundsResponse;
 use App\DTO\Response\ColorGameStateResponse;
 use App\Exception\ColorGameNotFoundException;
 use App\Factory\ColorGameResponseFactory;
@@ -67,5 +68,20 @@ final class ColorGameController extends AbstractController
         }
 
         return ColorGameResponseFactory::fromState($state);
+    }
+
+    #[Route(path: '/{gameId}/rounds', requirements: ['gameId' => Requirement::UUID], methods: ['GET'])]
+    #[Serialize]
+    public function rounds(
+        string $trainerExternalId,
+        string $gameId,
+    ): ColorGameRoundsResponse {
+        try {
+            $rounds = $this->colorGameService->getRounds($trainerExternalId, $gameId);
+        } catch (ColorGameNotFoundException $e) {
+            throw new NotFoundHttpException($e->getMessage(), $e);
+        }
+
+        return ColorGameResponseFactory::fromRounds($rounds);
     }
 }
