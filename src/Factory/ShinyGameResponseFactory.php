@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Factory;
 
-use App\DTO\Response\ShinyGameAnswerResponse;
 use App\DTO\Response\ShinyGameAnsweredRoundResponse;
+use App\DTO\Response\ShinyGameAnswerResponse;
 use App\DTO\Response\ShinyGameDexResponse;
 use App\DTO\Response\ShinyGameDexSummaryResponse;
 use App\DTO\Response\ShinyGamePokemonResponse;

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Factory;
 
-use App\DTO\Response\ColorGameAnswerResponse;
 use App\DTO\Response\ColorGameAnsweredRoundResponse;
+use App\DTO\Response\ColorGameAnswerResponse;
 use App\DTO\Response\ColorGameChoiceResponse;
 use App\DTO\Response\ColorGameDexResponse;
 use App\DTO\Response\ColorGameDexSummaryResponse;
