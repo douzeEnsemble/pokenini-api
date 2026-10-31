@@ -17,7 +17,7 @@
         "ext-zip": "*",
         "phpstan/phpstan": "^2.3.4",
         "phpstan/phpstan-symfony": "^2.1.1",
-        "phpstan/phpstan-doctrine": "^2.0.28",
+        "phpstan/phpstan-doctrine": "^2.1.0",
         "phpstan/phpstan-phpunit": "^2.0.18"
     }
 }
