@@ -65,6 +65,7 @@ final class DexResponseFactoryTest extends TestCase
         self::assertTrue($response->flags->isReleased);
         self::assertFalse($response->flags->isPremium);
         self::assertFalse($response->flags->isCustom);
+        self::assertFalse($response->flags->isOnHub);
         self::assertSame('The National Dex in Home', $response->description);
         self::assertSame('Le Pokédex National dans Home', $response->frenchDescription);
         self::assertSame(22, $response->dexTotalCount);

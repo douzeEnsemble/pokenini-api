@@ -30,6 +30,7 @@ final class DexResponseTest extends TestCase
             isReleased: true,
             isPremium: false,
             isCustom: false,
+            isOnHub: false,
         );
         $report = ElectionReportResponseFactory::fromReport(new Report([], [
             'view_count_sum' => 0,
@@ -77,6 +78,7 @@ final class DexResponseTest extends TestCase
             isReleased: true,
             isPremium: true,
             isCustom: false,
+            isOnHub: false,
         );
         $report = ElectionReportResponseFactory::fromReport(new Report([], [
             'view_count_sum' => 0,

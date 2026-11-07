@@ -82,6 +82,7 @@ final class DexResponseFactory
                 isReleased: (bool) $isReleased,
                 isPremium: (bool) $isPremium,
                 isCustom: (bool) $isCustom,
+                isOnHub: false,
             ),
             description: (string) $description,
             frenchDescription: (string) $frenchDescription,

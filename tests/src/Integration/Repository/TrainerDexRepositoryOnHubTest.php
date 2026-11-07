@@ -70,7 +70,10 @@ final class TrainerDexRepositoryOnHubTest extends KernelTestCase
         foreach ($repo->getListQuery(self::TRAINER, new DexQueryOptions(['include_unreleased_dex' => true, 'include_premium_dex' => true])) as $row) {
             /** @var string $slug */
             $slug = $row['slug'];
-            $flags[$slug] = $row['is_on_hub'];
+
+            /** @var bool $isOnHub */
+            $isOnHub = $row['is_on_hub'];
+            $flags[$slug] = $isOnHub;
         }
 
         $this->assertTrue($flags['redgreenblueyellow']);

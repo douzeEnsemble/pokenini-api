@@ -34,6 +34,7 @@ final class AlbumIndexResponseTest extends TestCase
                 isReleased: true,
                 isPremium: false,
                 isCustom: false,
+                isOnHub: false,
             ),
             displayTemplate: 'list',
             region: null,
