@@ -40,6 +40,24 @@ final class TrainerDexAttributesTest extends TestCase
 
         $this->assertFalse($attributes->isPrivate);
         $this->assertFalse($attributes->isOnHome);
+        $this->assertFalse($attributes->isOnHub);
+    }
+
+    #[Test]
+    public function onHub(): void
+    {
+        $attributes = new TrainerDexAttributes(['is_private' => false, 'is_on_home' => true, 'is_on_hub' => true]);
+
+        $this->assertFalse($attributes->isPrivate);
+        $this->assertTrue($attributes->isOnHome);
+        $this->assertTrue($attributes->isOnHub);
+    }
+
+    #[Test]
+    public function wrongOnHubValue(): void
+    {
+        $this->expectException(InvalidOptionsException::class);
+        new TrainerDexAttributes(['is_on_hub' => 'yes']);
     }
 
     #[Test]

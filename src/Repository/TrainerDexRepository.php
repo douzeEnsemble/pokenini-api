@@ -47,6 +47,7 @@ class TrainerDexRepository extends ServiceEntityRepository
                     d.is_shiny as is_shiny,
                     COALESCE(td.is_private, true) as is_private,
                     COALESCE(td.is_on_home, false) as is_on_home,
+                    COALESCE(td.is_on_hub, false) as is_on_hub,
                     d.is_display_form as is_display_form,
                     d.display_template as display_template,
                     d.is_released as is_released,
@@ -127,6 +128,33 @@ class TrainerDexRepository extends ServiceEntityRepository
         );
     }
 
+    /**
+     * Counts the trainer's dex shown on the hub, the given one left aside.
+     */
+    public function countOthersOnHub(
+        string $trainerExternalId,
+        string $dexSlug
+    ): int {
+        $sql = <<<'SQL'
+            SELECT      COUNT(*)
+            FROM        trainer_dex AS td
+            WHERE       td.trainer_external_id = :trainer_external_id
+                    AND td.is_on_hub = true
+                    AND td.slug <> :dex_slug
+            SQL;
+
+        /** @var int $count */
+        $count = $this->getEntityManager()->getConnection()->fetchOne(
+            $sql,
+            [
+                'trainer_external_id' => $trainerExternalId,
+                'dex_slug' => $dexSlug,
+            ]
+        );
+
+        return (int) $count;
+    }
+
     private function isCustomized(
         string $trainerExternalId,
         string $dexSlug
@@ -165,6 +193,7 @@ class TrainerDexRepository extends ServiceEntityRepository
                 dex_id,
                 is_private,
                 is_on_home,
+                is_on_hub,
                 name,
                 french_name,
                 slug
@@ -175,6 +204,7 @@ class TrainerDexRepository extends ServiceEntityRepository
                 d.id,
                 :is_private,
                 :is_on_home,
+                :is_on_hub,
                 d.name,
                 d.french_name,
                 d.slug
@@ -184,7 +214,8 @@ class TrainerDexRepository extends ServiceEntityRepository
             DO
             UPDATE
             SET     is_private = excluded.is_private,
-                    is_on_home = excluded.is_on_home
+                    is_on_home = excluded.is_on_home,
+                    is_on_hub = excluded.is_on_hub
             WHERE   trainer_dex.slug = excluded.slug
             SQL;
 
@@ -196,6 +227,7 @@ class TrainerDexRepository extends ServiceEntityRepository
                 'dex_slug' => $dexSlug,
                 'is_private' => (int) $attributes->isPrivate,
                 'is_on_home' => (int) $attributes->isOnHome,
+                'is_on_hub' => (int) $attributes->isOnHub,
             ]
         );
     }
@@ -208,7 +240,8 @@ class TrainerDexRepository extends ServiceEntityRepository
         $sql = <<<'SQL'
             UPDATE  trainer_dex
             SET     is_private = :is_private,
-                    is_on_home = :is_on_home
+                    is_on_home = :is_on_home,
+                    is_on_hub = :is_on_hub
             WHERE   trainer_dex.slug = :dex_slug
                 AND trainer_external_id = :trainer_external_id
             SQL;
@@ -220,6 +253,7 @@ class TrainerDexRepository extends ServiceEntityRepository
                 'dex_slug' => $dexSlug,
                 'is_private' => (int) $attributes->isPrivate,
                 'is_on_home' => (int) $attributes->isOnHome,
+                'is_on_hub' => (int) $attributes->isOnHub,
             ]
         );
     }
