@@ -24,6 +24,6 @@ final class DexFlagsResponse
         #[SerializedName('is_custom')]
         public readonly bool $isCustom,
         #[SerializedName('is_on_hub')]
-        public readonly bool $isOnHub = false,
+        public readonly bool $isOnHub,
     ) {}
 }

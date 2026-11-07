@@ -38,6 +38,7 @@ final class TrainerDexResponseTest extends TestCase
             isReleased: true,
             isPremium: false,
             isCustom: false,
+            isOnHub: false,
         );
         $report = new AlbumReportResponse(total: 22, totalCaught: 7, totalUncaught: 9, detail: []);
 
@@ -87,6 +88,7 @@ final class TrainerDexResponseTest extends TestCase
             isReleased: false,
             isPremium: true,
             isCustom: true,
+            isOnHub: false,
         );
         $report = new AlbumReportResponse(total: 0, totalCaught: 0, totalUncaught: 0, detail: []);
 

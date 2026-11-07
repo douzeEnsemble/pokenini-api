@@ -29,6 +29,7 @@ final class AlbumDexResponseTest extends TestCase
             isReleased: true,
             isPremium: false,
             isCustom: false,
+            isOnHub: false,
         );
 
         $response = new AlbumDexResponse(
@@ -75,6 +76,7 @@ final class AlbumDexResponseTest extends TestCase
             isReleased: true,
             isPremium: false,
             isCustom: false,
+            isOnHub: false,
         );
 
         $response = new AlbumDexResponse(

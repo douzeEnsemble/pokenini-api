@@ -26,6 +26,7 @@ final class DexFlagsResponseTest extends TestCase
             isReleased: true,
             isPremium: false,
             isCustom: false,
+            isOnHub: false,
         );
 
         self::assertFalse($response->isShiny);
@@ -73,6 +74,7 @@ final class DexFlagsResponseTest extends TestCase
             isReleased: false,
             isPremium: false,
             isCustom: false,
+            isOnHub: false,
         );
 
         self::assertFalse($response->isShiny);

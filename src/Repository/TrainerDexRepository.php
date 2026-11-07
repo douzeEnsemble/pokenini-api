@@ -143,7 +143,7 @@ class TrainerDexRepository extends ServiceEntityRepository
                     AND td.slug <> :dex_slug
             SQL;
 
-        /** @var int $count */
+        /** @var int|string $count */
         $count = $this->getEntityManager()->getConnection()->fetchOne(
             $sql,
             [
