@@ -29,6 +29,9 @@ final class TrainerDex
     #[ORM\Column(options: ['default' => false])]
     public bool $isOnHome = false;
 
+    #[ORM\Column(options: ['default' => false])]
+    public bool $isOnHub = false;
+
     #[ORM\Column]
     public string $name;
 

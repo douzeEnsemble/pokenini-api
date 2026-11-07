@@ -46,6 +46,7 @@ final class AlbumDexResponseFactoryTest extends TestCase
         self::assertFalse($result->flags->isShiny);
         self::assertFalse($result->flags->isPrivate);
         self::assertFalse($result->flags->isOnHome);
+        self::assertFalse($result->flags->isOnHub);
         self::assertTrue($result->flags->isDisplayForm);
         self::assertTrue($result->flags->isReleased);
         self::assertFalse($result->flags->isPremium);
@@ -107,6 +108,7 @@ final class AlbumDexResponseFactoryTest extends TestCase
         $row['is_shiny'] = 0;
         $row['is_private'] = 1;
         $row['is_on_home'] = 0;
+        $row['is_on_hub'] = 1;
         $row['is_display_form'] = 1;
         $row['display_template'] = 202;
         $row['selection_rule'] = 303;
@@ -126,6 +128,7 @@ final class AlbumDexResponseFactoryTest extends TestCase
         self::assertFalse($result->flags->isShiny);
         self::assertTrue($result->flags->isPrivate);
         self::assertFalse($result->flags->isOnHome);
+        self::assertTrue($result->flags->isOnHub);
         self::assertTrue($result->flags->isDisplayForm);
         self::assertSame('202', $result->displayTemplate);
         self::assertSame('303', $result->selectionRule);
@@ -164,6 +167,7 @@ final class AlbumDexResponseFactoryTest extends TestCase
             'is_shiny' => false,
             'is_private' => false,
             'is_on_home' => false,
+            'is_on_hub' => false,
             'is_display_form' => true,
             'display_template' => 'box',
             'region_name' => 'Kanto',
@@ -191,6 +195,7 @@ final class AlbumDexResponseFactoryTest extends TestCase
             'is_shiny' => false,
             'is_private' => true,
             'is_on_home' => false,
+            'is_on_hub' => false,
             'is_display_form' => true,
             'display_template' => 'box',
             'region_name' => null,

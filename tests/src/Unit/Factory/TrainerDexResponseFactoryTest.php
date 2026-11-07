@@ -29,6 +29,7 @@ final class TrainerDexResponseFactoryTest extends TestCase
             'is_shiny' => false,
             'is_private' => true,
             'is_on_home' => false,
+            'is_on_hub' => true,
             'is_display_form' => true,
             'display_template' => 'box',
             'is_released' => true,
@@ -53,6 +54,7 @@ final class TrainerDexResponseFactoryTest extends TestCase
         self::assertFalse($response->flags->isShiny);
         self::assertTrue($response->flags->isPrivate);
         self::assertFalse($response->flags->isOnHome);
+        self::assertTrue($response->flags->isOnHub);
         self::assertTrue($response->flags->isDisplayForm);
         self::assertTrue($response->flags->isReleased);
         self::assertFalse($response->flags->isPremium);
@@ -80,6 +82,7 @@ final class TrainerDexResponseFactoryTest extends TestCase
             'is_shiny' => 0,
             'is_private' => 1,
             'is_on_home' => 0,
+            'is_on_hub' => 1,
             'is_display_form' => 1,
             'display_template' => 202,
             'is_released' => 1,
@@ -106,6 +109,7 @@ final class TrainerDexResponseFactoryTest extends TestCase
         self::assertTrue($response->flags->isReleased);
         self::assertFalse($response->flags->isPremium);
         self::assertFalse($response->flags->isCustom);
+        self::assertTrue($response->flags->isOnHub);
         self::assertNull($response->category);
     }
 
@@ -121,6 +125,7 @@ final class TrainerDexResponseFactoryTest extends TestCase
                 'is_shiny' => false,
                 'is_private' => true,
                 'is_on_home' => false,
+                'is_on_hub' => false,
                 'is_display_form' => true,
                 'display_template' => 'box',
                 'is_released' => true,
@@ -139,6 +144,7 @@ final class TrainerDexResponseFactoryTest extends TestCase
                 'is_shiny' => true,
                 'is_private' => true,
                 'is_on_home' => false,
+                'is_on_hub' => false,
                 'is_display_form' => true,
                 'display_template' => 'box',
                 'is_released' => true,
@@ -180,6 +186,7 @@ final class TrainerDexResponseFactoryTest extends TestCase
                 'is_shiny' => false,
                 'is_private' => true,
                 'is_on_home' => false,
+                'is_on_hub' => false,
                 'is_display_form' => true,
                 'display_template' => 'box',
                 'is_released' => true,

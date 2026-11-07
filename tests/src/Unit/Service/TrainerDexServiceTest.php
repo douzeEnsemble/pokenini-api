@@ -6,6 +6,7 @@ namespace App\Tests\Unit\Service;
 
 use App\DTO\DexQueryOptions;
 use App\DTO\TrainerDexAttributes;
+use App\Exception\TooManyDexOnHubException;
 use App\Repository\TrainerDexRepository;
 use App\Service\TrainerDexService;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -59,12 +60,62 @@ final class TrainerDexServiceTest extends TestCase
         ]);
 
         $repository = $this->createMock(TrainerDexRepository::class);
+        $repository->expects($this->never())
+            ->method('countOthersOnHub')
+        ;
         $repository->expects($this->once())
             ->method('set')
             ->with('7b52009b64fd0a2a49e6d8a939753077792b0554', 'bw2', $attributes)
         ;
 
         $service = new TrainerDexService($repository);
+
+        $service->set('7b52009b64fd0a2a49e6d8a939753077792b0554', 'bw2', $attributes);
+    }
+
+    #[Test]
+    public function setOnHubUnderTheLimit(): void
+    {
+        $attributes = new TrainerDexAttributes([
+            'is_on_hub' => true,
+        ]);
+
+        $repository = $this->createMock(TrainerDexRepository::class);
+        $repository->expects($this->once())
+            ->method('countOthersOnHub')
+            ->with('7b52009b64fd0a2a49e6d8a939753077792b0554', 'bw2')
+            ->willReturn(2)
+        ;
+        $repository->expects($this->once())
+            ->method('set')
+            ->with('7b52009b64fd0a2a49e6d8a939753077792b0554', 'bw2', $attributes)
+        ;
+
+        $service = new TrainerDexService($repository);
+
+        $service->set('7b52009b64fd0a2a49e6d8a939753077792b0554', 'bw2', $attributes);
+    }
+
+    #[Test]
+    public function setOnHubAtTheLimit(): void
+    {
+        $attributes = new TrainerDexAttributes([
+            'is_on_hub' => true,
+        ]);
+
+        $repository = $this->createMock(TrainerDexRepository::class);
+        $repository->expects($this->once())
+            ->method('countOthersOnHub')
+            ->with('7b52009b64fd0a2a49e6d8a939753077792b0554', 'bw2')
+            ->willReturn(3)
+        ;
+        $repository->expects($this->never())
+            ->method('set')
+        ;
+
+        $service = new TrainerDexService($repository);
+
+        $this->expectException(TooManyDexOnHubException::class);
 
         $service->set('7b52009b64fd0a2a49e6d8a939753077792b0554', 'bw2', $attributes);
     }

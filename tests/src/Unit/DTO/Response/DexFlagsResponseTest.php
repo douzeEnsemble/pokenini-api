@@ -35,6 +35,7 @@ final class DexFlagsResponseTest extends TestCase
         self::assertTrue($response->isReleased);
         self::assertFalse($response->isPremium);
         self::assertFalse($response->isCustom);
+        self::assertFalse($response->isOnHub);
     }
 
     #[Test]
@@ -48,6 +49,7 @@ final class DexFlagsResponseTest extends TestCase
             isReleased: true,
             isPremium: true,
             isCustom: true,
+            isOnHub: true,
         );
 
         self::assertTrue($response->isShiny);
@@ -57,6 +59,7 @@ final class DexFlagsResponseTest extends TestCase
         self::assertTrue($response->isReleased);
         self::assertTrue($response->isPremium);
         self::assertTrue($response->isCustom);
+        self::assertTrue($response->isOnHub);
     }
 
     #[Test]
@@ -79,5 +82,6 @@ final class DexFlagsResponseTest extends TestCase
         self::assertFalse($response->isReleased);
         self::assertFalse($response->isPremium);
         self::assertFalse($response->isCustom);
+        self::assertFalse($response->isOnHub);
     }
 }

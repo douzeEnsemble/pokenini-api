@@ -390,7 +390,8 @@ Exemple de réponse (`200`) :
       "is_display_form": true,
       "is_released": true,
       "is_premium": false,
-      "is_custom": false
+      "is_custom": false,
+      "is_on_hub": false
     },
     "description": "",
     "french_description": "",
@@ -451,7 +452,8 @@ Exemple de réponse (`200`) :
       "is_display_form": true,
       "is_released": true,
       "is_premium": false,
-      "is_custom": false
+      "is_custom": false,
+      "is_on_hub": false
     },
     "category": {
       "slug": "main",
@@ -475,7 +477,8 @@ Exemple de réponse (`200`) :
       "is_display_form": true,
       "is_released": true,
       "is_premium": true,
-      "is_custom": true
+      "is_custom": true,
+      "is_on_hub": false
     },
     "category": null
   }
@@ -502,7 +505,8 @@ Modifie les attributs du dex d'un dresseur (visibilité, affichage sur la home).
 | Champ | Type | Défaut | Description |
 |-------|------|--------|-------------|
 | `is_private` | bool | `false` | Dex privé |
-| `is_on_home` | bool | `false` | Dex affiché sur la page d'accueil |
+| `is_on_home` | bool | `false` | Dex affiché dans « Tes albums » |
+| `is_on_hub` | bool | `false` | Dex mis en avant sur la page d'accueil (3 au maximum par dresseur) |
 
 Exemple de requête :
 
@@ -515,7 +519,7 @@ curl -u web:douze -X PUT \
 
 Exemple de réponse (`200`) : corps vide.
 
-Codes de statut : `200`, `400` (corps absent, JSON invalide ou champ inconnu/mal typé), `401`.
+Codes de statut : `200`, `400` (corps absent, JSON invalide ou champ inconnu/mal typé), `401`, `409` (`is_on_hub` à `true` alors que 3 autres dex du dresseur sont déjà sur l'accueil).
 
 ---
 
@@ -578,7 +582,8 @@ Exemple de réponse (`200`, tronquée à un pokémon) :
       "is_display_form": true,
       "is_released": true,
       "is_premium": false,
-      "is_custom": false
+      "is_custom": false,
+      "is_on_hub": false
     },
     "display_template": "box",
     "region": {

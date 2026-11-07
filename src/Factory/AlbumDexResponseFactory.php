@@ -71,6 +71,9 @@ final class AlbumDexResponseFactory
         /** @var scalar $isOnHome */
         $isOnHome = $row['is_on_home'];
 
+        /** @var scalar $isOnHub */
+        $isOnHub = $row['is_on_hub'];
+
         /** @var scalar $isDisplayForm */
         $isDisplayForm = $row['is_display_form'];
 
@@ -91,6 +94,7 @@ final class AlbumDexResponseFactory
             isReleased: (bool) $isReleased,
             isPremium: (bool) $isPremium,
             isCustom: (bool) $isCustom,
+            isOnHub: (bool) $isOnHub,
         );
     }
 

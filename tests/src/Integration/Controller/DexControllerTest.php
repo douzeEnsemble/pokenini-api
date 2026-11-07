@@ -269,6 +269,75 @@ final class DexControllerTest extends AbstractTestControllerApi
     }
 
     #[Test]
+    public function updateOnHub(): void
+    {
+        $trainerDexBefore = $this->getTrainerDex('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow');
+
+        $this->assertArrayHasKey('is_on_hub', $trainerDexBefore);
+        $this->assertFalse($trainerDexBefore['is_on_hub']);
+
+        $this->apiRequest(
+            'PUT',
+            '/dex/7b52009b64fd0a2a49e6d8a939753077792b0554/redgreenblueyellow',
+            [],
+            ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
+            '{"is_private": false, "is_on_home": true, "is_on_hub": true}'
+        );
+
+        $this->assertResponseIsOK();
+
+        $trainerDexAfter = $this->getTrainerDex('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow');
+
+        $this->assertTrue($trainerDexAfter['is_on_hub']);
+        $this->assertTrue($trainerDexAfter['is_on_home']);
+        $this->assertFalse($trainerDexAfter['is_private']);
+    }
+
+    #[Test]
+    public function tooManyOnHub(): void
+    {
+        // Keeps the same kernel, and so the same database transaction, between the requests
+        $this->client->disableReboot();
+
+        foreach (['redgreenblueyellow', 'goldsilvercrystal', 'rubysapphireemerald'] as $dexSlug) {
+            $this->apiRequest(
+                'PUT',
+                "/dex/7b52009b64fd0a2a49e6d8a939753077792b0554/{$dexSlug}",
+                [],
+                ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
+                '{"is_on_hub": true}'
+            );
+
+            $this->assertResponseIsOK();
+        }
+
+        // A dex already on the hub can still be saved
+        $this->apiRequest(
+            'PUT',
+            '/dex/7b52009b64fd0a2a49e6d8a939753077792b0554/goldsilvercrystal',
+            [],
+            ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
+            '{"is_private": true, "is_on_hub": true}'
+        );
+
+        $this->assertResponseIsOK();
+
+        $this->apiRequest(
+            'PUT',
+            '/dex/7b52009b64fd0a2a49e6d8a939753077792b0554/home',
+            [],
+            ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => self::AUTH_PASSWORD],
+            '{"is_on_hub": true}'
+        );
+
+        $this->assertResponseStatusCodeSame(409);
+
+        $trainerDex = $this->getTrainerDex('7b52009b64fd0a2a49e6d8a939753077792b0554', 'home');
+
+        $this->assertFalse($trainerDex['is_on_hub']);
+    }
+
+    #[Test]
     public function badArgument(): void
     {
         $this->apiRequest(

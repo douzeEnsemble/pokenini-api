@@ -10,6 +10,7 @@ final class TrainerDexAttributes
 {
     public bool $isPrivate;
     public bool $isOnHome;
+    public bool $isOnHub;
 
     /**
      * @param bool[]|string[] $values
@@ -23,12 +24,14 @@ final class TrainerDexAttributes
          * @var array{
          *  is_private: bool,
          *  is_on_home: bool,
+         *  is_on_hub: bool,
          * } $options
          */
         $options = $resolver->resolve($values);
 
         $this->isPrivate = $options['is_private'];
         $this->isOnHome = $options['is_on_home'];
+        $this->isOnHub = $options['is_on_hub'];
     }
 
     private function configureOptions(OptionsResolver $resolver): void
@@ -38,5 +41,8 @@ final class TrainerDexAttributes
 
         $resolver->setDefault('is_on_home', false);
         $resolver->setAllowedTypes('is_on_home', 'bool');
+
+        $resolver->setDefault('is_on_hub', false);
+        $resolver->setAllowedTypes('is_on_hub', 'bool');
     }
 }

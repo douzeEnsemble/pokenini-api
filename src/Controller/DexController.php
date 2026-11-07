@@ -7,6 +7,7 @@ namespace App\Controller;
 use App\DTO\DexQueryOptions;
 use App\DTO\Response\TrainerDexResponse;
 use App\DTO\TrainerDexAttributes;
+use App\Exception\TooManyDexOnHubException;
 use App\Factory\TrainerDexResponseFactory;
 use App\Service\Album\AlbumReportService;
 use App\Service\TrainerDexService;
@@ -15,6 +16,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Attribute\Serialize;
 use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
+use Symfony\Component\HttpKernel\Exception\ConflictHttpException;
 use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -68,7 +70,11 @@ final class DexController extends AbstractController
             throw new BadRequestHttpException($e->getMessage());
         }
 
-        $this->trainerDexService->set($trainerExternalId, $dexSlug, $attributes);
+        try {
+            $this->trainerDexService->set($trainerExternalId, $dexSlug, $attributes);
+        } catch (TooManyDexOnHubException $e) {
+            throw new ConflictHttpException(previous: $e);
+        }
 
         return new Response();
     }

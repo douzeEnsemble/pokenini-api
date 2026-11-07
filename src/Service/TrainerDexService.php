@@ -6,10 +6,13 @@ namespace App\Service;
 
 use App\DTO\DexQueryOptions;
 use App\DTO\TrainerDexAttributes;
+use App\Exception\TooManyDexOnHubException;
 use App\Repository\TrainerDexRepository;
 
 class TrainerDexService
 {
+    public const int MAX_DEX_ON_HUB = 3;
+
     public function __construct(
         private readonly TrainerDexRepository $repository,
     ) {}
@@ -36,6 +39,13 @@ class TrainerDexService
         string $dexSlug,
         TrainerDexAttributes $attributes
     ): void {
+        if (
+            $attributes->isOnHub
+            && $this->repository->countOthersOnHub($trainerExternalId, $dexSlug) >= self::MAX_DEX_ON_HUB
+        ) {
+            throw new TooManyDexOnHubException();
+        }
+
         $this->repository->set($trainerExternalId, $dexSlug, $attributes);
     }
 }
