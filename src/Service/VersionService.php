@@ -29,12 +29,7 @@ class VersionService
             return null;
         }
 
-        $mtime = filemtime($path);
-
-        if (false === $mtime) {
-            return null;
-        }
-
-        return (new \DateTimeImmutable())->setTimestamp($mtime);
+        // The file is readable: if it vanishes before this line, SplFileInfo throws, which is the right answer to a race
+        return (new \DateTimeImmutable())->setTimestamp((new \SplFileInfo($path))->getMTime());
     }
 }
