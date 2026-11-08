@@ -23,7 +23,7 @@ final class VariantFormsServiceTest extends TestCase
     protected function setUp(): void
     {
         $this->repository = $this->createMock(VariantFormsRepository::class);
-        $this->service = new VariantFormsService($this->repository);
+        $this->service = new VariantFormsService($this->repository, 'en');
     }
 
     #[Test]
@@ -37,12 +37,26 @@ final class VariantFormsServiceTest extends TestCase
         $this->repository
             ->expects(self::once())
             ->method('getAll')
+            ->with('en', 'en')
             ->willReturn($expectedData)
         ;
 
         $result = $this->service->getAll();
 
         self::assertSame($expectedData, $result);
+    }
+
+    #[Test]
+    public function getAllAsksTheRepositoryForTheRequestedLocale(): void
+    {
+        $this->repository
+            ->expects(self::once())
+            ->method('getAll')
+            ->with('fr', 'en')
+            ->willReturn([])
+        ;
+
+        $this->service->getAll('fr');
     }
 
     #[Test]

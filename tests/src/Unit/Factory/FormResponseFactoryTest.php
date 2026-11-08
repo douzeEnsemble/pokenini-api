@@ -79,4 +79,43 @@ final class FormResponseFactoryTest extends TestCase
 
         self::assertCount(0, $responses);
     }
+
+    #[Test]
+    public function localizedFromSqlRowUsesTheLocalizedName(): void
+    {
+        $response = FormResponseFactory::localizedFromSqlRow([
+            'slug' => 'alolan',
+            'name' => 'Alolan',
+            'french_name' => "d'Alola",
+            'localized_name' => "d'Alola",
+        ]);
+
+        self::assertSame('alolan', $response->slug);
+        self::assertSame("d'Alola", $response->name);
+    }
+
+    #[Test]
+    public function localizedFromSqlRowCastsToStrings(): void
+    {
+        $response = FormResponseFactory::localizedFromSqlRow([
+            'slug' => 123,
+            'localized_name' => 456,
+        ]);
+
+        self::assertSame('123', $response->slug);
+        self::assertSame('456', $response->name);
+    }
+
+    #[Test]
+    public function localizedFromSqlRowsTransformsEveryRowInOrder(): void
+    {
+        $responses = FormResponseFactory::localizedFromSqlRows([
+            ['slug' => 'alolan', 'localized_name' => "d'Alola"],
+            ['slug' => 'galarian', 'localized_name' => 'de Galar'],
+        ]);
+
+        self::assertCount(2, $responses);
+        self::assertSame('alolan', $responses[0]->slug);
+        self::assertSame('de Galar', $responses[1]->name);
+    }
 }

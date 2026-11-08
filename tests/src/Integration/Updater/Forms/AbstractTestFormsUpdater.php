@@ -5,10 +5,10 @@ declare(strict_types=1);
 namespace App\Tests\Integration\Updater\Forms;
 
 use App\Exception\InvalidSheetDataException;
-use App\Tests\Integration\Updater\AbstractTestUpdater;
+use App\Tests\Integration\Updater\AbstractTestNamedUpdater;
 use PHPUnit\Framework\Attributes\Test;
 
-abstract class AbstractTestFormsUpdater extends AbstractTestUpdater
+abstract class AbstractTestFormsUpdater extends AbstractTestNamedUpdater
 {
     #[Test]
     public function doEmptyData(): void

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\DTO\Response\FormResponse;
+use App\DTO\Response\LocalizedFormResponse;
 
 final class FormResponseFactory
 {
@@ -27,6 +28,33 @@ final class FormResponseFactory
             name: (string) $name,
             frenchName: (string) $frenchName,
         );
+    }
+
+    /**
+     * @param array<array-key, mixed> $row
+     */
+    public static function localizedFromSqlRow(array $row): LocalizedFormResponse
+    {
+        /** @var scalar $slug */
+        $slug = $row['slug'];
+
+        /** @var scalar $name */
+        $name = $row['localized_name'];
+
+        return new LocalizedFormResponse(
+            slug: (string) $slug,
+            name: (string) $name,
+        );
+    }
+
+    /**
+     * @param array<array-key, array<array-key, mixed>> $rows
+     *
+     * @return LocalizedFormResponse[]
+     */
+    public static function localizedFromSqlRows(array $rows): array
+    {
+        return array_map(self::localizedFromSqlRow(...), $rows);
     }
 
     /**

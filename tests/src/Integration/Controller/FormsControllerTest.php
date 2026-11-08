@@ -121,4 +121,58 @@ final class FormsControllerTest extends WebTestCase
             $content,
         );
     }
+
+    #[Test]
+    public function getInTheRequestedLanguage(): void
+    {
+        $data = $this->getForms('fr');
+
+        self::assertSame(['slug' => 'starter', 'name' => 'de Départ'], $data['category'][0]);
+        self::assertSame(['slug' => 'alolan', 'name' => "d'Alola"], $data['regional'][0]);
+        self::assertSame(['slug' => 'gigantamax', 'name' => 'Gigamax'], $data['special'][1]);
+        self::assertSame(['slug' => 'gender', 'name' => 'Sexe'], $data['variant'][0]);
+    }
+
+    #[Test]
+    public function getInTheFallbackLanguage(): void
+    {
+        $data = $this->getForms('en');
+
+        self::assertSame(['slug' => 'starter', 'name' => 'Starter'], $data['category'][0]);
+        self::assertSame(['slug' => 'alolan', 'name' => 'Alolan'], $data['regional'][0]);
+        self::assertSame(['slug' => 'gigantamax', 'name' => 'Gigantamax'], $data['special'][1]);
+        self::assertSame(['slug' => 'gender', 'name' => 'Gender'], $data['variant'][0]);
+    }
+
+    #[Test]
+    public function getInANotEnabledLanguageIsABadRequest(): void
+    {
+        $client = self::createClient();
+        $client->request('GET', '/forms?lang=de', [], [], [
+            'PHP_AUTH_USER' => 'web',
+            'PHP_AUTH_PW' => 'douze',
+        ]);
+
+        self::assertResponseStatusCodeSame(400);
+    }
+
+    /**
+     * @return array<string, list<array<string, string>>>
+     */
+    private function getForms(string $lang): array
+    {
+        $client = self::createClient();
+        $client->request('GET', '/forms?lang='.$lang, [], [], [
+            'PHP_AUTH_USER' => 'web',
+            'PHP_AUTH_PW' => 'douze',
+        ]);
+
+        self::assertResponseIsSuccessful();
+
+        $content = $client->getResponse()->getContent();
+        self::assertIsString($content);
+
+        /** @var array<string, list<array<string, string>>> */
+        return json_decode($content, associative: true, flags: JSON_THROW_ON_ERROR);
+    }
 }

@@ -3,19 +3,23 @@ App\Entity\SpecialForm:
     name: "Mega"
     slug: "mega"
     frenchName: "Mega"
+    names: { en: "Mega", fr: "Mega" }
     orderNumber: 1
   special_form_alpha:
     name: "Alpha"
     slug: "alpha"
     frenchName: "Baron"
+    names: { en: "Alpha", fr: "Baron" }
     orderNumber: 3
   special_form_gigantamax:
     name: "Gigantamax"
     slug: "gigantamax"
     frenchName: "Gigamax"
+    names: { en: "Gigantamax", fr: "Gigamax" }
     orderNumber: 2
   special_form_totem:
     name: "Totem"
     slug: "totem"
     frenchName: "Dominant"
+    names: { en: "Totem", fr: "Dominant" }
     orderNumber: 4

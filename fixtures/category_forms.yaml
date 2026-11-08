@@ -3,14 +3,17 @@ App\Entity\CategoryForm:
     name: "Starter"
     slug: "starter"
     frenchName: "de Départ"
+    names: { en: "Starter", fr: "de Départ" }
     orderNumber: 1
   category_form_legendary:
     name: "Legendary"
     slug: "legendary"
     frenchName: "Légendaire"
+    names: { en: "Legendary", fr: "Légendaire" }
     orderNumber: 3
   category_form_mythical:
     name: "Mythical"
     slug: "mythical"
     frenchName: "Fabuleux"
+    names: { en: "Mythical", fr: "Fabuleux" }
     orderNumber: 2
