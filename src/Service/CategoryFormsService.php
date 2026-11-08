@@ -10,13 +10,14 @@ class CategoryFormsService
 {
     public function __construct(
         private readonly CategoryFormsRepository $repository,
+        private readonly string $fallbackLocale,
     ) {}
 
     /**
      * @return string[][]
      */
-    public function getAll(): array
+    public function getAll(?string $locale = null): array
     {
-        return $this->repository->getAll();
+        return $this->repository->getAll($locale ?? $this->fallbackLocale, $this->fallbackLocale);
     }
 }

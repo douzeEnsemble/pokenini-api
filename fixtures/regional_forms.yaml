@@ -3,14 +3,17 @@ App\Entity\RegionalForm:
     name: "Alolan"
     slug: "alolan"
     frenchName: "d'Alola"
+    names: { en: "Alolan", fr: "d'Alola" }
     orderNumber: 1
   regional_form_galarian:
     name: "Galarian"
     slug: "galarian"
     frenchName: "de Galar"
+    names: { en: "Galarian", fr: "de Galar" }
     orderNumber: 2
   regional_form_hisuian:
     name: "Hisuian"
     slug: "hisuian"
     frenchName: "de Hisui"
+    names: { en: "Hisuian", fr: "de Hisui" }
     orderNumber: 3

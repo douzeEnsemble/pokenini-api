@@ -23,7 +23,7 @@ final class RegionalFormsServiceTest extends TestCase
     protected function setUp(): void
     {
         $this->repository = $this->createMock(RegionalFormsRepository::class);
-        $this->service = new RegionalFormsService($this->repository);
+        $this->service = new RegionalFormsService($this->repository, 'en');
     }
 
     #[Test]
@@ -37,12 +37,26 @@ final class RegionalFormsServiceTest extends TestCase
         $this->repository
             ->expects(self::once())
             ->method('getAll')
+            ->with('en', 'en')
             ->willReturn($expectedData)
         ;
 
         $result = $this->service->getAll();
 
         self::assertSame($expectedData, $result);
+    }
+
+    #[Test]
+    public function getAllAsksTheRepositoryForTheRequestedLocale(): void
+    {
+        $this->repository
+            ->expects(self::once())
+            ->method('getAll')
+            ->with('fr', 'en')
+            ->willReturn([])
+        ;
+
+        $this->service->getAll('fr');
     }
 
     #[Test]

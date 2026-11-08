@@ -26,4 +26,13 @@ final class SpecialFormsUpdaterTest extends AbstractTestFormsUpdater
         /** @var SpecialFormsUpdater */
         return self::getContainer()->get(SpecialFormsUpdater::class);
     }
+
+    #[\Override]
+    protected function namesExample(): array
+    {
+        return [
+            'slug' => 'gigantamax',
+            'names' => ['en' => 'Gigantamax', 'fr' => 'Gigamax'],
+        ];
+    }
 }

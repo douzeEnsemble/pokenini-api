@@ -26,4 +26,13 @@ final class CategoryFormsUpdaterTest extends AbstractTestFormsUpdater
         /** @var CategoryFormsUpdater */
         return self::getContainer()->get(CategoryFormsUpdater::class);
     }
+
+    #[\Override]
+    protected function namesExample(): array
+    {
+        return [
+            'slug' => 'starter',
+            'names' => ['en' => 'Starter', 'fr' => 'de Départ'],
+        ];
+    }
 }

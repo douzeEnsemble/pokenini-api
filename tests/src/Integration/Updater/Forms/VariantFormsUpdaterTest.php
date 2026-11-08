@@ -26,4 +26,13 @@ final class VariantFormsUpdaterTest extends AbstractTestFormsUpdater
         /** @var VariantFormsUpdater */
         return self::getContainer()->get(VariantFormsUpdater::class);
     }
+
+    #[\Override]
+    protected function namesExample(): array
+    {
+        return [
+            'slug' => 'gender',
+            'names' => ['en' => 'Gender', 'fr' => 'Sexe'],
+        ];
+    }
 }

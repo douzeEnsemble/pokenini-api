@@ -26,4 +26,13 @@ final class RegionalFormsUpdaterTest extends AbstractTestFormsUpdater
         /** @var RegionalFormsUpdater */
         return self::getContainer()->get(RegionalFormsUpdater::class);
     }
+
+    #[\Override]
+    protected function namesExample(): array
+    {
+        return [
+            'slug' => 'alolan',
+            'names' => ['en' => 'Alolan', 'fr' => 'd\'Alola'],
+        ];
+    }
 }
