@@ -35,6 +35,51 @@ final class TypeResponseFactoryTest extends TestCase
     }
 
     #[Test]
+    public function localizedFromSqlRowUsesTheLocalizedName(): void
+    {
+        $row = [
+            'slug' => 'electric',
+            'name' => 'Electric',
+            'french_name' => 'Électrique',
+            'localized_name' => 'Électrique',
+            'color' => '#FFCC33',
+        ];
+
+        $response = TypeResponseFactory::localizedFromSqlRow($row);
+
+        self::assertSame('electric', $response->slug);
+        self::assertSame('Électrique', $response->name);
+        self::assertSame('#FFCC33', $response->color);
+    }
+
+    #[Test]
+    public function localizedFromSqlRowCastsToStrings(): void
+    {
+        $response = TypeResponseFactory::localizedFromSqlRow([
+            'slug' => 123,
+            'localized_name' => 456,
+            'color' => 789,
+        ]);
+
+        self::assertSame('123', $response->slug);
+        self::assertSame('456', $response->name);
+        self::assertSame('789', $response->color);
+    }
+
+    #[Test]
+    public function localizedFromSqlRowsTransformsEveryRowInOrder(): void
+    {
+        $responses = TypeResponseFactory::localizedFromSqlRows([
+            ['slug' => 'electric', 'localized_name' => 'Électrique', 'color' => '#FFCC33'],
+            ['slug' => 'water', 'localized_name' => 'Eau', 'color' => '#3399FF'],
+        ]);
+
+        self::assertCount(2, $responses);
+        self::assertSame('electric', $responses[0]->slug);
+        self::assertSame('Eau', $responses[1]->name);
+    }
+
+    #[Test]
     public function fromSqlRowCastsSlugsAndNamesToStrings(): void
     {
         $row = [

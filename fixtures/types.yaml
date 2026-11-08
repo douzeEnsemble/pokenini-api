@@ -3,114 +3,133 @@ App\Entity\Type:
     name: "Normal"
     slug: "normal"
     frenchName: "Normal"
+    names: { en: "Normal", fr: "Normal" }
     orderNumber: 1
     color: "#A8A878"
   type_fighting:
     name: "Fighting"
     slug: "fighting"
     frenchName: "Combat"
+    names: { en: "Fighting", fr: "Combat" }
     orderNumber: 2
     color: "#C03028"
   type_flying:
     name: "Flying"
     slug: "flying"
     frenchName: "Vol"
+    names: { en: "Flying", fr: "Vol" }
     orderNumber: 3
     color: "#A890F0"
   type_poison:
     name: "Poison"
     slug: "poison"
     frenchName: "Poison"
+    names: { en: "Poison", fr: "Poison" }
     orderNumber: 4
     color: "#A040A0"
   type_ground:
     name: "Ground"
     slug: "ground"
     frenchName: "Sol"
+    names: { en: "Ground", fr: "Sol" }
     orderNumber: 5
     color: "#E0C068"
   type_rock:
     name: "Rock"
     slug: "rock"
     frenchName: "Roche"
+    names: { en: "Rock", fr: "Roche" }
     orderNumber: 6
     color: "#B8A038"
   type_bug:
     name: "Bug"
     slug: "bug"
     frenchName: "Insecte"
+    names: { en: "Bug", fr: "Insecte" }
     orderNumber: 7
     color: "#A8B820"
   type_ghost:
     name: "Ghost"
     slug: "ghost"
     frenchName: "Spectre"
+    names: { en: "Ghost", fr: "Spectre" }
     orderNumber: 8
     color: "#705898"
   type_steel:
     name: "Steel"
     slug: "steel"
     frenchName: "Acier"
+    names: { en: "Steel", fr: "Acier" }
     orderNumber: 9
     color: "#B8B8D0"
   type_fire:
     name: "Fire"
     slug: "fire"
     frenchName: "Feu"
+    names: { en: "Fire", fr: "Feu" }
     orderNumber: 10
     color: "#F08030"
   type_water:
     name: "Water"
     slug: "water"
     frenchName: "Eau"
+    names: { en: "Water", fr: "Eau" }
     orderNumber: 11
     color: "#6890F0"
   type_grass:
     name: "Grass"
     slug: "grass"
     frenchName: "Plante"
+    names: { en: "Grass", fr: "Plante" }
     orderNumber: 12
     color: "#78C850"
   type_electric:
     name: "Electric"
     slug: "electric"
     frenchName: "Electrik"
+    names: { en: "Electric", fr: "Electrik" }
     orderNumber: 13
     color: "#F8D030"
   type_psychic:
     name: "Psychic"
     slug: "psychic"
     frenchName: "Psy"
+    names: { en: "Psychic", fr: "Psy" }
     orderNumber: 14
     color: "#F85888"
   type_ice:
     name: "Ice"
     slug: "ice"
     frenchName: "Glace"
+    names: { en: "Ice", fr: "Glace" }
     orderNumber: 15
     color: "#98D8D8"
   type_dragon:
     name: "Dragon"
     slug: "dragon"
     frenchName: "Dragon"
+    names: { en: "Dragon", fr: "Dragon" }
     orderNumber: 16
     color: "#7038F8"
   type_dark:
     name: "Dark"
     slug: "dark"
     frenchName: "Ténèbre"
+    names: { en: "Dark", fr: "Ténèbre" }
     orderNumber: 17
     color: "#705848"
   type_stellar:
     name: "Stellar"
     slug: "stellar"
     frenchName: "Stellaire"
+    names: { en: "Stellar", fr: "Stellaire" }
     orderNumber: 19
     color: "#7CC7B2"
   type_unknown:
     name: "???"
     slug: "???"
     frenchName: "???"
+    names: { en: "???", fr: "???" }
     orderNumber: 0
     color: "#68A090"
     deletedAt: "<dateTime('now')>"

@@ -12,6 +12,7 @@ use App\Entity\Traits\OrderedTrait;
 use App\Entity\Traits\SlugifiedTrait;
 use App\Entity\Traits\SoftDeleteable;
 use App\Entity\Traits\SoftDeleteableInterface;
+use App\Entity\Traits\TranslatedNamesTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
@@ -24,4 +25,5 @@ final class Type implements SoftDeleteableInterface
     use OrderedTrait;
     use ColoredTrait;
     use SoftDeleteable;
+    use TranslatedNamesTrait;
 }

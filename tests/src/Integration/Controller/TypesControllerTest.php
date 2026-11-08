@@ -100,6 +100,41 @@ final class TypesControllerTest extends WebTestCase
     }
 
     #[Test]
+    public function getInTheRequestedLanguage(): void
+    {
+        $data = $this->getTypes('/types?lang=fr');
+
+        self::assertCount(18, $data);
+        self::assertSame(
+            ['slug' => 'fighting', 'name' => 'Combat', 'color' => '#C03028'],
+            $data[1],
+        );
+    }
+
+    #[Test]
+    public function getInTheFallbackLanguage(): void
+    {
+        $data = $this->getTypes('/types?lang=en');
+
+        self::assertSame(
+            ['slug' => 'fighting', 'name' => 'Fighting', 'color' => '#C03028'],
+            $data[1],
+        );
+    }
+
+    #[Test]
+    public function getInANotEnabledLanguageIsABadRequest(): void
+    {
+        $client = self::createClient();
+        $client->request('GET', '/types?lang=de', [], [], [
+            'PHP_AUTH_USER' => 'web',
+            'PHP_AUTH_PW' => 'douze',
+        ]);
+
+        self::assertResponseStatusCodeSame(400);
+    }
+
+    #[Test]
     public function getResponseMatchesFixture(): void
     {
         $client = self::createClient();
@@ -115,5 +150,28 @@ final class TypesControllerTest extends WebTestCase
             '/app/tests/resources/fixtures/types_response.json',
             $content,
         );
+    }
+
+    /**
+     * @return array<array-key, mixed>
+     */
+    private function getTypes(string $uri): array
+    {
+        $client = self::createClient();
+        $client->request('GET', $uri, [], [], [
+            'PHP_AUTH_USER' => 'web',
+            'PHP_AUTH_PW' => 'douze',
+        ]);
+
+        self::assertResponseIsSuccessful();
+
+        $content = $client->getResponse()->getContent();
+        self::assertIsString($content);
+
+        /** @var null|array<array-key, mixed> $data */
+        $data = json_decode($content, associative: true);
+        self::assertIsArray($data);
+
+        return $data;
     }
 }
