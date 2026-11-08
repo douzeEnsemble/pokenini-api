@@ -26,14 +26,12 @@ class TypesRepository extends ServiceEntityRepository
      */
     public function getAll(string $locale = 'en', string $fallbackLocale = 'en'): array
     {
-        $sql = <<<'SQL'
+        $localizedName = LocalizedName::sql();
+
+        $sql = <<<SQL
             SELECT      name,
                         french_name as "french_name",
-                        COALESCE(
-                            NULLIF(names ->> :locale, ''),
-                            NULLIF(names ->> :fallback_locale, ''),
-                            name
-                        ) AS "localized_name",
+                        {$localizedName} AS "localized_name",
                         slug,
                         color
             FROM        type
@@ -42,9 +40,9 @@ class TypesRepository extends ServiceEntityRepository
             SQL;
 
         /** @var string[][] */
-        return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql, [
-            'locale' => $locale,
-            'fallback_locale' => $fallbackLocale,
-        ]);
+        return $this->getEntityManager()->getConnection()->fetchAllAssociative(
+            $sql,
+            LocalizedName::parameters($locale, $fallbackLocale),
+        );
     }
 }

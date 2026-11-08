@@ -39,6 +39,7 @@ class CollectionsUpdater extends AbstractUpdater
             'name' => $record['Name'],
             'order_number' => $record['Order'],
             'french_name' => $record['French Name'],
+            'names' => $this->namesParameter($record),
         ];
 
         $tableName = $this->tableName;
@@ -49,14 +50,16 @@ class CollectionsUpdater extends AbstractUpdater
               slug,
               name,
               order_number,
-              french_name
+              french_name,
+              names
             )
             VALUES (
                 :id,
                 :slug,
                 :name,
                 :order_number,
-                :french_name
+                :french_name,
+                CAST(:names AS jsonb)
             )
             ON CONFLICT (slug)
             DO
@@ -65,6 +68,7 @@ class CollectionsUpdater extends AbstractUpdater
                 name = excluded.name,
                 order_number = excluded.order_number,
                 french_name = excluded.french_name,
+                names = excluded.names,
                 deleted_at = NULL
             SQL;
 

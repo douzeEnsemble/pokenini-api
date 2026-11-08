@@ -6,8 +6,10 @@ namespace App\Tests\Integration\Controller;
 
 use App\Controller\GameBundlesController;
 use App\Service\GameBundlesService;
+use App\Tests\Common\Traits\LocalizedEndpointTestTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 
 /**
  * @internal
@@ -16,6 +18,8 @@ use PHPUnit\Framework\Attributes\Test;
 #[CoversClass(GameBundlesService::class)]
 final class GameBundlesControllerTest extends AbstractTestControllerApi
 {
+    use LocalizedEndpointTestTrait;
+
     #[Test]
     public function getCollection(): void
     {
@@ -69,5 +73,27 @@ final class GameBundlesControllerTest extends AbstractTestControllerApi
         $this->apiRequest('GET', '/game_bundles', [], ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => 'treize']);
 
         $this->assertEquals(401, $this->getClientResponse()->getStatusCode());
+    }
+
+    #[\Override]
+    protected function localizedClient(): KernelBrowser
+    {
+        return $this->client;
+    }
+
+    #[\Override]
+    protected function localizedUri(): string
+    {
+        return '/game_bundles';
+    }
+
+    #[\Override]
+    protected function localizedExample(): array
+    {
+        return [
+            'slug' => 'redgreenblueyellow',
+            'fr' => ['slug' => 'redgreenblueyellow', 'name' => 'Rouge, Vert, Bleu, Jaune', 'generation' => ['slug' => '1']],
+            'en' => ['slug' => 'redgreenblueyellow', 'name' => 'Red, Green, Blue, Yellow', 'generation' => ['slug' => '1']],
+        ];
     }
 }

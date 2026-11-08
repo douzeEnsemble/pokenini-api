@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  */
 #[CoversClass(GameBundlesUpdater::class)]
 #[CoversClass(AbstractUpdater::class)]
-final class GameBundlesUpdaterTest extends AbstractTestUpdater
+final class GameBundlesUpdaterTest extends AbstractTestNamedUpdater
 {
     protected int $initialTotalCount = 19;
     protected int $finalTotalCount = 19;
@@ -26,5 +26,14 @@ final class GameBundlesUpdaterTest extends AbstractTestUpdater
     {
         /** @var GameBundlesUpdater */
         return self::getContainer()->get(GameBundlesUpdater::class);
+    }
+
+    #[\Override]
+    protected function namesExample(): array
+    {
+        return [
+            'slug' => 'redgreenblueyellow',
+            'names' => ['en' => 'Red, Green, Blue, Yellow', 'fr' => 'Rouge, Vert, Bleu, Jaune'],
+        ];
     }
 }

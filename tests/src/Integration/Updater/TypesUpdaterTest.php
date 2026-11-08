@@ -6,16 +6,14 @@ namespace App\Tests\Integration\Updater;
 
 use App\Updater\AbstractUpdater;
 use App\Updater\TypesUpdater;
-use Doctrine\DBAL\Connection;
 use PHPUnit\Framework\Attributes\CoversClass;
-use PHPUnit\Framework\Attributes\Test;
 
 /**
  * @internal
  */
 #[CoversClass(TypesUpdater::class)]
 #[CoversClass(AbstractUpdater::class)]
-final class TypesUpdaterTest extends AbstractTestUpdater
+final class TypesUpdaterTest extends AbstractTestNamedUpdater
 {
     protected int $initialTotalCount = 19;
     protected int $finalTotalCount = 20;
@@ -24,23 +22,19 @@ final class TypesUpdaterTest extends AbstractTestUpdater
     protected string $sheetName = 'Type';
     protected string $tableName = 'type';
 
-    #[Test]
-    public function executeStoresTheNameInEveryLanguage(): void
-    {
-        $this->getService()->execute($this->sheetName);
-
-        $connection = self::getContainer()->get(Connection::class);
-
-        $this->assertSame(
-            '{"en": "Fighting", "fr": "Combat"}',
-            $connection->executeQuery("SELECT names FROM type WHERE slug = 'fighting'")->fetchOne(),
-        );
-    }
-
     #[\Override]
     protected function getService(): AbstractUpdater
     {
         /** @var TypesUpdater */
         return self::getContainer()->get(TypesUpdater::class);
+    }
+
+    #[\Override]
+    protected function namesExample(): array
+    {
+        return [
+            'slug' => 'fighting',
+            'names' => ['en' => 'Fighting', 'fr' => 'Combat'],
+        ];
     }
 }

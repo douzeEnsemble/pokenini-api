@@ -7,8 +7,10 @@ namespace App\Tests\Integration\Controller;
 use App\Controller\CollectionsController;
 use App\Factory\CollectionResponseFactory;
 use App\Service\CollectionsService;
+use App\Tests\Common\Traits\LocalizedEndpointTestTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 
 /**
  * @internal
@@ -18,6 +20,8 @@ use PHPUnit\Framework\Attributes\Test;
 #[CoversClass(CollectionsService::class)]
 final class CollectionsControllerTest extends AbstractTestControllerApi
 {
+    use LocalizedEndpointTestTrait;
+
     #[Test]
     public function getReturnsCollections(): void
     {
@@ -88,5 +92,27 @@ final class CollectionsControllerTest extends AbstractTestControllerApi
         $this->apiRequest('GET', '/collections', [], ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => 'treize']);
 
         $this->assertEquals(401, $this->getClientResponse()->getStatusCode());
+    }
+
+    #[\Override]
+    protected function localizedClient(): KernelBrowser
+    {
+        return $this->client;
+    }
+
+    #[\Override]
+    protected function localizedUri(): string
+    {
+        return '/collections';
+    }
+
+    #[\Override]
+    protected function localizedExample(): array
+    {
+        return [
+            'slug' => 'swshdynamaxadventuresbosses',
+            'fr' => ['slug' => 'swshdynamaxadventuresbosses', 'name' => 'Sword, Shield - Boss des expéditions Dynamax', 'order_number' => 11],
+            'en' => ['slug' => 'swshdynamaxadventuresbosses', 'name' => 'Sword, Shield - Dynamax Adventures bosses', 'order_number' => 11],
+        ];
     }
 }

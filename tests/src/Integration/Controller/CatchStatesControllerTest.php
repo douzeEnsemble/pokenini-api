@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace App\Tests\Integration\Controller;
 
 use App\Controller\CatchStatesController;
+use App\Tests\Common\Traits\LocalizedEndpointTestTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
@@ -15,6 +17,8 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 #[CoversClass(CatchStatesController::class)]
 final class CatchStatesControllerTest extends WebTestCase
 {
+    use LocalizedEndpointTestTrait;
+
     #[Test]
     public function getReturnsSuccessfulJsonResponse(): void
     {
@@ -115,5 +119,27 @@ final class CatchStatesControllerTest extends WebTestCase
             '/app/tests/resources/fixtures/catch_states_response.json',
             $content,
         );
+    }
+
+    #[\Override]
+    protected function localizedClient(): KernelBrowser
+    {
+        return self::createClient();
+    }
+
+    #[\Override]
+    protected function localizedUri(): string
+    {
+        return '/catch_states';
+    }
+
+    #[\Override]
+    protected function localizedExample(): array
+    {
+        return [
+            'slug' => 'no',
+            'fr' => ['slug' => 'no', 'name' => 'Non', 'color' => '#e57373'],
+            'en' => ['slug' => 'no', 'name' => 'No', 'color' => '#e57373'],
+        ];
     }
 }

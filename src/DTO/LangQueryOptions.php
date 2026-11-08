@@ -6,7 +6,7 @@ namespace App\DTO;
 
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-final class TypesQueryOptions
+final class LangQueryOptions
 {
     public ?string $lang;
 

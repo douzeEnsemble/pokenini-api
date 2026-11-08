@@ -21,11 +21,14 @@ class GameBundlesRepository extends ServiceEntityRepository
     /**
      * @return string[][]
      */
-    public function getAll(): array
+    public function getAll(string $locale = 'en', string $fallbackLocale = 'en'): array
     {
-        $sql = <<<'SQL'
+        $localizedName = LocalizedName::sql('gb');
+
+        $sql = <<<SQL
             SELECT      gb.name,
                         gb.french_name as "french_name",
+                        {$localizedName} AS "localized_name",
                         gb.slug,
                         gg.slug AS generation_slug
             FROM        game_bundle AS gb
@@ -36,6 +39,9 @@ class GameBundlesRepository extends ServiceEntityRepository
             SQL;
 
         /** @var string[][] */
-        return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
+        return $this->getEntityManager()->getConnection()->fetchAllAssociative(
+            $sql,
+            LocalizedName::parameters($locale, $fallbackLocale),
+        );
     }
 }

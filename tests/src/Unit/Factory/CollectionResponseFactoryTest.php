@@ -85,4 +85,47 @@ final class CollectionResponseFactoryTest extends TestCase
 
         self::assertCount(0, $responses);
     }
+
+    #[Test]
+    public function localizedFromSqlRowUsesTheLocalizedName(): void
+    {
+        $response = CollectionResponseFactory::localizedFromSqlRow([
+            'slug' => 'swshdynamaxadventuresbosses',
+            'name' => 'Sword, Shield - Dynamax Adventures bosses',
+            'french_name' => 'Sword, Shield - Boss des expéditions Dynamax',
+            'localized_name' => 'Sword, Shield - Boss des expéditions Dynamax',
+            'order_number' => 11,
+        ]);
+
+        self::assertSame('swshdynamaxadventuresbosses', $response->slug);
+        self::assertSame('Sword, Shield - Boss des expéditions Dynamax', $response->name);
+        self::assertSame(11, $response->orderNumber);
+    }
+
+    #[Test]
+    public function localizedFromSqlRowCastsValues(): void
+    {
+        $response = CollectionResponseFactory::localizedFromSqlRow([
+            'slug' => 123,
+            'localized_name' => 456,
+            'order_number' => '42',
+        ]);
+
+        self::assertSame('123', $response->slug);
+        self::assertSame('456', $response->name);
+        self::assertSame(42, $response->orderNumber);
+    }
+
+    #[Test]
+    public function localizedFromSqlRowsTransformsEveryRowInOrder(): void
+    {
+        $responses = CollectionResponseFactory::localizedFromSqlRows([
+            ['slug' => 'a', 'localized_name' => 'A', 'order_number' => 1],
+            ['slug' => 'b', 'localized_name' => 'B', 'order_number' => 2],
+        ]);
+
+        self::assertCount(2, $responses);
+        self::assertSame('a', $responses[0]->slug);
+        self::assertSame('B', $responses[1]->name);
+    }
 }

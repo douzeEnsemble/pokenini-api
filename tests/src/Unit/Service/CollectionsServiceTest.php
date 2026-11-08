@@ -23,7 +23,7 @@ final class CollectionsServiceTest extends TestCase
     protected function setUp(): void
     {
         $this->repository = $this->createMock(CollectionsRepository::class);
-        $this->service = new CollectionsService($this->repository);
+        $this->service = new CollectionsService($this->repository, 'en');
     }
 
     #[Test]
@@ -45,12 +45,26 @@ final class CollectionsServiceTest extends TestCase
         $this->repository
             ->expects(self::once())
             ->method('getAll')
+            ->with('en', 'en')
             ->willReturn($expectedData)
         ;
 
         $result = $this->service->getAll();
 
         self::assertSame($expectedData, $result);
+    }
+
+    #[Test]
+    public function getAllAsksTheRepositoryForTheRequestedLocale(): void
+    {
+        $this->repository
+            ->expects(self::once())
+            ->method('getAll')
+            ->with('fr', 'en')
+            ->willReturn([])
+        ;
+
+        $this->service->getAll('fr');
     }
 
     #[Test]

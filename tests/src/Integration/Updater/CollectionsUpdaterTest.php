@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  */
 #[CoversClass(CollectionsUpdater::class)]
 #[CoversClass(AbstractUpdater::class)]
-final class CollectionsUpdaterTest extends AbstractTestUpdater
+final class CollectionsUpdaterTest extends AbstractTestNamedUpdater
 {
     protected int $initialTotalCount = 8;
     protected int $finalTotalCount = 8;
@@ -27,5 +27,14 @@ final class CollectionsUpdaterTest extends AbstractTestUpdater
     {
         /** @var CollectionsUpdater */
         return self::getContainer()->get(CollectionsUpdater::class);
+    }
+
+    #[\Override]
+    protected function namesExample(): array
+    {
+        return [
+            'slug' => 'swshdynamaxadventuresbosses',
+            'names' => ['en' => 'Sword, Shield - Dynamax Adventures bosses', 'fr' => 'Sword, Shield - Boss des expéditions Dynamax'],
+        ];
     }
 }

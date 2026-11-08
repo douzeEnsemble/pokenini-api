@@ -39,7 +39,7 @@ class TypesUpdater extends AbstractUpdater
             'slug' => $record['Slug'],
             'name' => $record['Name'],
             'french_name' => $record['French Name'],
-            'names' => json_encode(['en' => $record['Name'], 'fr' => $record['French Name']], JSON_THROW_ON_ERROR),
+            'names' => $this->namesParameter($record),
             'order_number' => $record['Order'],
             'color' => $record['Color'],
         ];
