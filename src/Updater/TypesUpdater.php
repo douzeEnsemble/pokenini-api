@@ -39,6 +39,7 @@ class TypesUpdater extends AbstractUpdater
             'slug' => $record['Slug'],
             'name' => $record['Name'],
             'french_name' => $record['French Name'],
+            'names' => json_encode(['en' => $record['Name'], 'fr' => $record['French Name']], JSON_THROW_ON_ERROR),
             'order_number' => $record['Order'],
             'color' => $record['Color'],
         ];
@@ -51,6 +52,7 @@ class TypesUpdater extends AbstractUpdater
               slug,
               name,
               french_name,
+              names,
               order_number,
               color
             )
@@ -59,6 +61,7 @@ class TypesUpdater extends AbstractUpdater
                 :slug,
                 :name,
                 :french_name,
+                CAST(:names AS jsonb),
                 :order_number,
                 :color
             )
@@ -68,6 +71,7 @@ class TypesUpdater extends AbstractUpdater
             SET
                 name = excluded.name,
                 french_name = excluded.french_name,
+                names = excluded.names,
                 order_number= excluded.order_number,
                 color= excluded.color,
                 deleted_at = NULL

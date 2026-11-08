@@ -1,3 +1,9 @@
+parameters:
+    # Enabled locales, in display order (keep in sync with framework.enabled_locales)
+    app.locales: ['en', 'fr']
+    # Used when a name is missing in the requested locale
+    app.fallback_locale: 'en'
+
 services:
     _defaults:
         autowire: true
@@ -10,6 +16,8 @@ services:
             int $eloDefault: '%env(ELO_DEFAULT)%'
             string $sqlDir: '%kernel.project_dir%/resources/sql'
             string $metadataDir: '%kernel.project_dir%/resources/metadata'
+            string $fallbackLocale: '%app.fallback_locale%'
+            array $locales: '%app.locales%'
 
     App\:
         resource: '../src/'
