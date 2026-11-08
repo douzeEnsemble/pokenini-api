@@ -35,11 +35,14 @@ class CollectionsRepository extends ServiceEntityRepository
     /**
      * @return string[][]
      */
-    public function getAll(): array
+    public function getAll(string $locale = 'en', string $fallbackLocale = 'en'): array
     {
-        $sql = <<<'SQL'
+        $localizedName = LocalizedName::sql();
+
+        $sql = <<<SQL
             SELECT      name,
                         french_name as "french_name",
+                        {$localizedName} AS "localized_name",
                         slug,
                         order_number
             FROM        collection
@@ -48,6 +51,9 @@ class CollectionsRepository extends ServiceEntityRepository
             SQL;
 
         /** @var string[][] */
-        return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
+        return $this->getEntityManager()->getConnection()->fetchAllAssociative(
+            $sql,
+            LocalizedName::parameters($locale, $fallbackLocale),
+        );
     }
 }

@@ -3,30 +3,35 @@ App\Entity\CatchState:
         name: "No"
         slug: "no"
         frenchName: "Non"
+        names: { en: "No", fr: "Non" }
         orderNumber: 1
         color: "#e57373"
     catchstate_maybe:
         name: "Maybe"
         slug: "maybe"
         frenchName: "Peut être"
+        names: { en: "Maybe", fr: "Peut être" }
         orderNumber: 2
         color: "blue"
     catchstate_maybenot:
         name: "Maybe not"
         slug: "maybenot"
         frenchName: "Peut être pas"
+        names: { en: "Maybe not", fr: "Peut être pas" }
         orderNumber: 3
         color: "yellow"
     catchstate_yes:
         name: "Yes"
         slug: "yes"
         frenchName: "Oui"
+        names: { en: "Yes", fr: "Oui" }
         orderNumber: 4
         color: "#66bb6a"
     catchstate_forbidden:
         name: "Forbidden"
         slug: "forbidden"
         frenchName: "Interdit"
+        names: { en: "Forbidden", fr: "Interdit" }
         orderNumber: 2
         color: "red"
         deletedAt: "<dateTime('now')>"

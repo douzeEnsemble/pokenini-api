@@ -87,4 +87,47 @@ final class GameBundleResponseFactoryTest extends TestCase
 
         self::assertCount(0, $responses);
     }
+
+    #[Test]
+    public function localizedFromSqlRowUsesTheLocalizedName(): void
+    {
+        $response = GameBundleResponseFactory::localizedFromSqlRow([
+            'name' => 'Red, Green, Blue, Yellow',
+            'french_name' => 'Rouge, Vert, Bleu, Jaune',
+            'localized_name' => 'Rouge, Vert, Bleu, Jaune',
+            'slug' => 'redgreenblueyellow',
+            'generation_slug' => '1',
+        ]);
+
+        self::assertSame('redgreenblueyellow', $response->slug);
+        self::assertSame('Rouge, Vert, Bleu, Jaune', $response->name);
+        self::assertSame('1', $response->generation->slug);
+    }
+
+    #[Test]
+    public function localizedFromSqlRowCastsValuesToStrings(): void
+    {
+        $response = GameBundleResponseFactory::localizedFromSqlRow([
+            'slug' => 123,
+            'localized_name' => 456,
+            'generation_slug' => 789,
+        ]);
+
+        self::assertSame('123', $response->slug);
+        self::assertSame('456', $response->name);
+        self::assertSame('789', $response->generation->slug);
+    }
+
+    #[Test]
+    public function localizedFromSqlRowsTransformsEveryRowInOrder(): void
+    {
+        $responses = GameBundleResponseFactory::localizedFromSqlRows([
+            ['slug' => 'a', 'localized_name' => 'A', 'generation_slug' => '1'],
+            ['slug' => 'b', 'localized_name' => 'B', 'generation_slug' => '2'],
+        ]);
+
+        self::assertCount(2, $responses);
+        self::assertSame('a', $responses[0]->slug);
+        self::assertSame('2', $responses[1]->generation->slug);
+    }
 }

@@ -6,6 +6,7 @@ namespace App\Factory;
 
 use App\DTO\Response\GameBundleResponse;
 use App\DTO\Response\GenerationResponse;
+use App\DTO\Response\LocalizedGameBundleResponse;
 
 final class GameBundleResponseFactory
 {
@@ -31,6 +32,38 @@ final class GameBundleResponseFactory
             frenchName: (string) $frenchName,
             generation: self::buildGeneration($row),
         );
+    }
+
+    /**
+     * Transform a single SQL row into a LocalizedGameBundleResponse DTO.
+     *
+     * @param array<array-key, mixed> $row
+     */
+    public static function localizedFromSqlRow(array $row): LocalizedGameBundleResponse
+    {
+        /** @var scalar $slug */
+        $slug = $row['slug'];
+
+        /** @var scalar $name */
+        $name = $row['localized_name'];
+
+        return new LocalizedGameBundleResponse(
+            slug: (string) $slug,
+            name: (string) $name,
+            generation: self::buildGeneration($row),
+        );
+    }
+
+    /**
+     * Transform multiple SQL rows into LocalizedGameBundleResponse DTOs.
+     *
+     * @param array<array-key, array<array-key, mixed>> $rows
+     *
+     * @return LocalizedGameBundleResponse[]
+     */
+    public static function localizedFromSqlRows(array $rows): array
+    {
+        return array_map(self::localizedFromSqlRow(...), $rows);
     }
 
     /**

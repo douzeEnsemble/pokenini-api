@@ -23,7 +23,7 @@ final class CatchStatesServiceTest extends TestCase
     protected function setUp(): void
     {
         $this->repository = $this->createMock(CatchStatesRepository::class);
-        $this->service = new CatchStatesService($this->repository);
+        $this->service = new CatchStatesService($this->repository, 'en');
     }
 
     #[Test]
@@ -47,12 +47,26 @@ final class CatchStatesServiceTest extends TestCase
         $this->repository
             ->expects(self::once())
             ->method('getAll')
+            ->with('en', 'en')
             ->willReturn($expectedData)
         ;
 
         $result = $this->service->getAll();
 
         self::assertSame($expectedData, $result);
+    }
+
+    #[Test]
+    public function getAllAsksTheRepositoryForTheRequestedLocale(): void
+    {
+        $this->repository
+            ->expects(self::once())
+            ->method('getAll')
+            ->with('fr', 'en')
+            ->willReturn([])
+        ;
+
+        $this->service->getAll('fr');
     }
 
     #[Test]

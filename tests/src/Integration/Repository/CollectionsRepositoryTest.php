@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Integration\Repository;
 
 use App\Repository\CollectionsRepository;
+use App\Tests\Common\Traits\LocalizedNamesRepositoryTestTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -16,6 +17,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 #[CoversClass(CollectionsRepository::class)]
 final class CollectionsRepositoryTest extends KernelTestCase
 {
+    use LocalizedNamesRepositoryTestTrait;
     use RefreshDatabaseTrait;
 
     #[\Override]
@@ -54,5 +56,23 @@ final class CollectionsRepositoryTest extends KernelTestCase
         $list = $repo->getAll();
 
         $this->assertCount(8, $list);
+    }
+
+    #[\Override]
+    protected function getAllRows(string $locale, string $fallbackLocale): array
+    {
+        return self::getContainer()->get(CollectionsRepository::class)->getAll($locale, $fallbackLocale);
+    }
+
+    #[\Override]
+    protected function localizedTable(): string
+    {
+        return 'collection';
+    }
+
+    #[\Override]
+    protected function localizedExample(): array
+    {
+        return ['slug' => 'swshdynamaxadventuresbosses', 'en' => 'Sword, Shield - Dynamax Adventures bosses', 'fr' => 'Sword, Shield - Boss des expéditions Dynamax'];
     }
 }

@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  */
 #[CoversClass(CatchStatesUpdater::class)]
 #[CoversClass(AbstractUpdater::class)]
-final class CatchStatesUpdaterTest extends AbstractTestUpdater
+final class CatchStatesUpdaterTest extends AbstractTestNamedUpdater
 {
     protected int $initialTotalCount = 5;
     protected int $finalTotalCount = 9;
@@ -27,5 +27,14 @@ final class CatchStatesUpdaterTest extends AbstractTestUpdater
     {
         /** @var CatchStatesUpdater */
         return self::getContainer()->get(CatchStatesUpdater::class);
+    }
+
+    #[\Override]
+    protected function namesExample(): array
+    {
+        return [
+            'slug' => 'no',
+            'names' => ['en' => 'No', 'fr' => 'Non'],
+        ];
     }
 }

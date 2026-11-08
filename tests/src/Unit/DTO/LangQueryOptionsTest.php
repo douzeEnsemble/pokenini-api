@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\DTO;
 
-use App\DTO\TypesQueryOptions;
+use App\DTO\LangQueryOptions;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
@@ -15,13 +15,13 @@ use Symfony\Component\OptionsResolver\Exception\UndefinedOptionsException;
 /**
  * @internal
  */
-#[CoversClass(TypesQueryOptions::class)]
-final class TypesQueryOptionsTest extends TestCase
+#[CoversClass(LangQueryOptions::class)]
+final class LangQueryOptionsTest extends TestCase
 {
     #[Test]
     public function defaults(): void
     {
-        $options = new TypesQueryOptions();
+        $options = new LangQueryOptions();
 
         $this->assertNull($options->lang);
     }
@@ -29,7 +29,7 @@ final class TypesQueryOptionsTest extends TestCase
     #[Test]
     public function withoutLanguage(): void
     {
-        $options = new TypesQueryOptions(['lang' => null], ['en', 'fr']);
+        $options = new LangQueryOptions(['lang' => null], ['en', 'fr']);
 
         $this->assertNull($options->lang);
     }
@@ -38,7 +38,7 @@ final class TypesQueryOptionsTest extends TestCase
     #[Test]
     public function enabledLanguage(string $lang): void
     {
-        $options = new TypesQueryOptions(['lang' => $lang], ['en', 'fr']);
+        $options = new LangQueryOptions(['lang' => $lang], ['en', 'fr']);
 
         $this->assertSame($lang, $options->lang);
     }
@@ -60,7 +60,7 @@ final class TypesQueryOptionsTest extends TestCase
     {
         $this->expectException(InvalidOptionsException::class);
 
-        new TypesQueryOptions(['lang' => $lang], ['en', 'fr']);
+        new LangQueryOptions(['lang' => $lang], ['en', 'fr']);
     }
 
     /**
@@ -80,7 +80,7 @@ final class TypesQueryOptionsTest extends TestCase
     {
         $this->expectException(InvalidOptionsException::class);
 
-        new TypesQueryOptions(['lang' => 5], ['en', 'fr']);
+        new LangQueryOptions(['lang' => 5], ['en', 'fr']);
     }
 
     #[Test]
@@ -88,7 +88,7 @@ final class TypesQueryOptionsTest extends TestCase
     {
         $this->expectException(InvalidOptionsException::class);
 
-        new TypesQueryOptions(['lang' => 'en']);
+        new LangQueryOptions(['lang' => 'en']);
     }
 
     #[Test]
@@ -96,6 +96,6 @@ final class TypesQueryOptionsTest extends TestCase
     {
         $this->expectException(UndefinedOptionsException::class);
 
-        new TypesQueryOptions(['foo' => 'bar'], ['en']);
+        new LangQueryOptions(['foo' => 'bar'], ['en']);
     }
 }

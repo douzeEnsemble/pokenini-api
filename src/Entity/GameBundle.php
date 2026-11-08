@@ -11,6 +11,7 @@ use App\Entity\Traits\OrderedTrait;
 use App\Entity\Traits\SlugifiedTrait;
 use App\Entity\Traits\SoftDeleteable;
 use App\Entity\Traits\SoftDeleteableInterface;
+use App\Entity\Traits\TranslatedNamesTrait;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity]
@@ -22,6 +23,7 @@ final class GameBundle implements SoftDeleteableInterface
     use SlugifiedTrait;
     use OrderedTrait;
     use SoftDeleteable;
+    use TranslatedNamesTrait;
 
     #[ORM\ManyToOne(fetch: 'EAGER')]
     #[ORM\JoinColumn(nullable: false)]

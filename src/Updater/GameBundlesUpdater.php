@@ -39,6 +39,7 @@ class GameBundlesUpdater extends AbstractUpdater
             'slug' => $record['Slug'],
             'name' => $record['Name'],
             'french_name' => $record['French Name'],
+            'names' => $this->namesParameter($record),
             'generation' => $record['#Generation'],
             'order' => $record['Order'],
         ];
@@ -51,6 +52,7 @@ class GameBundlesUpdater extends AbstractUpdater
               slug,
               name,
               french_name,
+              names,
               generation_id,
               order_number
             )
@@ -59,6 +61,7 @@ class GameBundlesUpdater extends AbstractUpdater
                 :slug,
                 :name,
                 :french_name,
+                CAST(:names AS jsonb),
                 (SELECT id FROM game_generation WHERE slug = :generation),
                 :order
             )
@@ -68,6 +71,7 @@ class GameBundlesUpdater extends AbstractUpdater
             SET
                 name = excluded.name,
                 french_name = excluded.french_name,
+                names = excluded.names,
                 order_number = excluded.order_number,
                 generation_id = excluded.generation_id,
                 deleted_at = NULL

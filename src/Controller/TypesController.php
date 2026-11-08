@@ -6,19 +6,18 @@ namespace App\Controller;
 
 use App\DTO\Response\LocalizedTypeResponse;
 use App\DTO\Response\TypeResponse;
-use App\DTO\TypesQueryOptions;
 use App\Factory\TypeResponseFactory;
 use App\Service\TypesService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Attribute\Serialize;
-use Symfony\Component\HttpKernel\Exception\BadRequestHttpException;
-use Symfony\Component\OptionsResolver\Exception\InvalidArgumentException;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[Route('/types')]
 final class TypesController extends AbstractController
 {
+    use LangQueryTrait;
+
     /**
      * Without "lang", each type has its name in English and in French (legacy shape).
      * With "lang", each type has a single name, in that language.
@@ -34,15 +33,11 @@ final class TypesController extends AbstractController
         TypesService $service,
         array $locales,
     ): array {
-        try {
-            $options = new TypesQueryOptions(['lang' => $request->query->get('lang')], $locales);
-        } catch (InvalidArgumentException $e) {
-            throw new BadRequestHttpException($e->getMessage());
-        }
+        $lang = $this->getLang($request, $locales);
 
-        $types = $service->getAll($options->lang);
+        $types = $service->getAll($lang);
 
-        if (null === $options->lang) {
+        if (null === $lang) {
             return TypeResponseFactory::fromSqlRows($types);
         }
 
