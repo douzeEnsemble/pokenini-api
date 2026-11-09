@@ -17,6 +17,8 @@ App\Entity\Dex:
     canHoldElection: true
     canBeColorPlay: true
     isReleased: true
+    names: { en: "$name", fr: "$frenchName" }
+    descriptions: { en: "$description", fr: "$frenchDescription" }
   dex_goldsilvercrystal:
     category: "@dex_category_main"
     name: "Gold / Silver / Crystal"
@@ -34,6 +36,8 @@ App\Entity\Dex:
     isPremium: false
     canHoldElection: false
     bannerLayers: ["shiny", "mega"]
+    names: { en: "$name", fr: "$frenchName" }
+    descriptions: { en: "$description", fr: "$frenchDescription" }
   dex_rubysapphireemerald:
     category: "@dex_category_main"
     name: "Ruby / Sapphire / Emerald"
@@ -47,6 +51,7 @@ App\Entity\Dex:
     isPremium: false
     canHoldElection: false
     isReleased: true
+    names: { en: "$name", fr: "$frenchName" }
   dex_rubysapphireemeraldshiny:
     name: "Ruby / Sapphire / Emerald: Shiny"
     slug: "rubysapphireemeraldshiny"
@@ -60,6 +65,7 @@ App\Entity\Dex:
     isPremium: false
     canHoldElection: false
     isReleased: true
+    names: { en: "$name", fr: "$frenchName" }
   dex_home:
     category: "@dex_category_home"
     name: "Home"
@@ -73,6 +79,7 @@ App\Entity\Dex:
     isPremium: false
     canHoldElection: true
     isReleased: true
+    names: { en: "$name", fr: "$frenchName" }
   dex_home_shiny:
     category: "@dex_category_home"
     name: |-
@@ -93,6 +100,7 @@ App\Entity\Dex:
     canHoldElection: false
     canBeColorPlay: true
     isReleased: true
+    names: { en: "$name", fr: "$frenchName" }
   dex_home_pogo:
     category: "@dex_category_home"
     name: "Home PoGo"
@@ -110,6 +118,7 @@ App\Entity\Dex:
     canHoldElection: true
     canBeColorPlay: true
     isReleased: false
+    names: { en: "$name", fr: "$frenchName" }
   dex_demo:
     name: "Demo"
     slug: "demo"
@@ -124,6 +133,7 @@ App\Entity\Dex:
     canHoldElection: false
     canBeColorPlay: true
     isReleased: true
+    names: { en: "$name", fr: "$frenchName" }
   dex_spoon:
     name: "Spoon"
     slug: "spoon"
@@ -139,3 +149,4 @@ App\Entity\Dex:
     isPremium: true
     isReleased: false
     canHoldElection: true
+    names: { en: "$name", fr: "$frenchName" }

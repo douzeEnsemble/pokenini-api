@@ -103,6 +103,7 @@ class TrainerDexRepository extends ServiceEntityRepository
                 dex_id,
                 name,
                 french_name,
+                names,
                 slug
             )
             SELECT
@@ -111,6 +112,7 @@ class TrainerDexRepository extends ServiceEntityRepository
                 d.id,
                 d.name,
                 d.french_name,
+                d.names,
                 d.slug
             FROM    dex AS d
             WHERE   d.slug = :dex_slug
@@ -196,6 +198,7 @@ class TrainerDexRepository extends ServiceEntityRepository
                 is_on_hub,
                 name,
                 french_name,
+                names,
                 slug
             )
             SELECT
@@ -207,6 +210,7 @@ class TrainerDexRepository extends ServiceEntityRepository
                 :is_on_hub,
                 d.name,
                 d.french_name,
+                d.names,
                 d.slug
             FROM    dex AS d
             WHERE   d.slug = :dex_slug

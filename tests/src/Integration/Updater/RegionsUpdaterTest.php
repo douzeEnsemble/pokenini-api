@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  */
 #[CoversClass(RegionsUpdater::class)]
 #[CoversClass(AbstractUpdater::class)]
-final class RegionsUpdaterTest extends AbstractTestUpdater
+final class RegionsUpdaterTest extends AbstractTestNamedUpdater
 {
     protected int $initialTotalCount = 10;
     protected int $finalTotalCount = 10;
@@ -26,5 +26,14 @@ final class RegionsUpdaterTest extends AbstractTestUpdater
     {
         /** @var RegionsUpdater */
         return self::getContainer()->get(RegionsUpdater::class);
+    }
+
+    #[\Override]
+    protected function namesExample(): array
+    {
+        return [
+            'slug' => 'unova',
+            'names' => ['en' => 'Unova', 'fr' => 'Unys'],
+        ];
     }
 }

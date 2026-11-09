@@ -13,7 +13,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
  */
 #[CoversClass(DexCategoriesUpdater::class)]
 #[CoversClass(AbstractUpdater::class)]
-final class DexCategoriesUpdaterTest extends AbstractTestUpdater
+final class DexCategoriesUpdaterTest extends AbstractTestNamedUpdater
 {
     protected int $initialTotalCount = 3;
     protected int $finalTotalCount = 4;
@@ -26,5 +26,14 @@ final class DexCategoriesUpdaterTest extends AbstractTestUpdater
     {
         /** @var DexCategoriesUpdater */
         return self::getContainer()->get(DexCategoriesUpdater::class);
+    }
+
+    #[\Override]
+    protected function namesExample(): array
+    {
+        return [
+            'slug' => 'main',
+            'names' => ['en' => 'Main games', 'fr' => 'Jeux principaux'],
+        ];
     }
 }

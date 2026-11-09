@@ -83,7 +83,11 @@ class PokemonsUpdater extends AbstractUpdater
 
         $newRecord = $this->transformRecord($record);
 
-        $sqlParameters = $this->getSqlParametersFromPokemon($newRecord);
+        $sqlParameters = $this->getSqlParametersFromPokemon($newRecord) + [
+            'names' => $this->namesParameter($record, 'Nom Complet', 'Nom Complet Fr'),
+            'simplifiedNames' => $this->namesParameter($record, 'Nom simplifié', 'Nom simplifié Fr'),
+            'formsLabels' => $this->namesParameter($record, 'Forme', 'Forme Fr'),
+        ];
 
         $sql = <<<'SQL'
                     INSERT INTO pokemon (
@@ -94,6 +98,9 @@ class PokemonsUpdater extends AbstractUpdater
                         french_name,
                         simplified_french_name,
                         forms_french_label,
+                        names,
+                        simplified_names,
+                        forms_labels,
                         national_dex_number,
                         family,
                         family_order,
@@ -118,6 +125,9 @@ class PokemonsUpdater extends AbstractUpdater
                         :frenchName,
                         :simplifiedFrenchName,
                         :formsFrenchLabel,
+                        CAST(:names AS jsonb),
+                        CAST(:simplifiedNames AS jsonb),
+                        CAST(:formsLabels AS jsonb),
                         :nationalDexNumber,
                         :family,
                         :familyOrder,
@@ -143,6 +153,9 @@ class PokemonsUpdater extends AbstractUpdater
                         french_name = excluded.french_name,
                         simplified_french_name = excluded.simplified_french_name,
                         forms_french_label = excluded.forms_french_label,
+                        names = excluded.names,
+                        simplified_names = excluded.simplified_names,
+                        forms_labels = excluded.forms_labels,
                         national_dex_number = excluded.national_dex_number,
                         family = excluded.family,
                         family_order = excluded.family_order,

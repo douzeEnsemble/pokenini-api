@@ -38,6 +38,7 @@ class RegionsUpdater extends AbstractUpdater
             'slug' => $record['Slug'],
             'name' => $record['Name'],
             'french_name' => $record['French Name'],
+            'names' => $this->namesParameter($record),
             'order_number' => $record['Order'],
         ];
 
@@ -49,6 +50,7 @@ class RegionsUpdater extends AbstractUpdater
               slug,
               name,
               french_name,
+              names,
               order_number
             )
             VALUES (
@@ -56,6 +58,7 @@ class RegionsUpdater extends AbstractUpdater
                 :slug,
                 :name,
                 :french_name,
+                CAST(:names AS jsonb),
                 :order_number
             )
             ON CONFLICT (slug)
@@ -64,6 +67,7 @@ class RegionsUpdater extends AbstractUpdater
             SET
                 name = excluded.name,
                 french_name = excluded.french_name,
+                names = excluded.names,
                 order_number = excluded.order_number,
                 deleted_at = NULL
             SQL;
