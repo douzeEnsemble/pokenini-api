@@ -10,7 +10,7 @@ final class AlbumReportStatisticResponse
 {
     public function __construct(
         #[SerializedName('catch_state')]
-        public readonly AlbumCatchStateResponse $catchState,
+        public readonly AlbumCatchStateResponse|LocalizedAlbumCatchStateResponse $catchState,
         public readonly int $count,
     ) {}
 }

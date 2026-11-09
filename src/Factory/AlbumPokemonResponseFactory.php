@@ -13,10 +13,17 @@ use App\DTO\Response\AlbumTypesResponse;
 use App\DTO\Response\GameBundlesGroupResponse;
 use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\ImageCreditResponse;
+use App\DTO\Response\LocalizedAlbumCatchStateResponse;
+use App\DTO\Response\LocalizedAlbumFormResponse;
+use App\DTO\Response\LocalizedAlbumTypeResponse;
+use App\DTO\Response\LocalizedPokemonLabelsResponse;
 use App\DTO\Response\PokemonDataResponse;
 use App\DTO\Response\PokemonLabelsResponse;
 use App\DTO\Response\PokemonSlugResponse;
 
+/**
+ * @SuppressWarnings("PHPMD.CouplingBetweenObjects")
+ */
 final class AlbumPokemonResponseFactory
 {
     /**
@@ -24,12 +31,17 @@ final class AlbumPokemonResponseFactory
      */
     public static function fromSqlRow(array $row): AlbumPokemonResponse
     {
-        return new AlbumPokemonResponse(
-            pokemon: self::buildPokemon($row),
-            catchState: self::buildCatchState($row),
-            forms: self::buildForms($row),
-            types: self::buildTypes($row),
-        );
+        return self::build($row, false);
+    }
+
+    /**
+     * The names of the Pokémon in every language, the others in a single language.
+     *
+     * @param array<string, mixed> $row
+     */
+    public static function localizedFromSqlRow(array $row): AlbumPokemonResponse
+    {
+        return self::build($row, true);
     }
 
     /**
@@ -43,9 +55,32 @@ final class AlbumPokemonResponseFactory
     }
 
     /**
+     * @param array<array<string, mixed>> $rows
+     *
+     * @return AlbumPokemonResponse[]
+     */
+    public static function localizedFromSqlRows(array $rows): array
+    {
+        return array_map(self::localizedFromSqlRow(...), $rows);
+    }
+
+    /**
      * @param array<string, mixed> $row
      */
-    private static function buildPokemon(array $row): PokemonDataResponse
+    private static function build(array $row, bool $localized): AlbumPokemonResponse
+    {
+        return new AlbumPokemonResponse(
+            pokemon: self::buildPokemon($row, $localized),
+            catchState: self::buildCatchState($row, $localized),
+            forms: self::buildForms($row, $localized),
+            types: self::buildTypes($row, $localized),
+        );
+    }
+
+    /**
+     * @param array<string, mixed> $row
+     */
+    private static function buildPokemon(array $row, bool $localized): PokemonDataResponse
     {
         /** @var scalar $slug */
         $slug = $row['pokemon_slug'];
@@ -113,14 +148,16 @@ final class AlbumPokemonResponseFactory
 
         return new PokemonDataResponse(
             slug: (string) $slug,
-            labels: new PokemonLabelsResponse(
-                name: (string) $name,
-                frenchName: (string) $frenchName,
-                simplifiedName: null !== $simplifiedName ? (string) $simplifiedName : null,
-                simplifiedFrenchName: null !== $simplifiedFrenchName ? (string) $simplifiedFrenchName : null,
-                formsLabel: null !== $formsLabel ? (string) $formsLabel : null,
-                formsFrenchLabel: null !== $formsFrenchLabel ? (string) $formsFrenchLabel : null,
-            ),
+            labels: $localized
+                ? self::buildLocalizedLabels($row)
+                : new PokemonLabelsResponse(
+                    name: (string) $name,
+                    frenchName: (string) $frenchName,
+                    simplifiedName: null !== $simplifiedName ? (string) $simplifiedName : null,
+                    simplifiedFrenchName: null !== $simplifiedFrenchName ? (string) $simplifiedFrenchName : null,
+                    formsLabel: null !== $formsLabel ? (string) $formsLabel : null,
+                    formsFrenchLabel: null !== $formsFrenchLabel ? (string) $formsFrenchLabel : null,
+                ),
             nationalDexNumber: (int) $nationalDexNumber,
             regionalDexNumber: null !== $regionalDexNumber ? (int) $regionalDexNumber : null,
             icon: null !== $icon ? (string) $icon : null,
@@ -146,6 +183,48 @@ final class AlbumPokemonResponseFactory
     /**
      * @param array<string, mixed> $row
      */
+    private static function buildLocalizedLabels(array $row): LocalizedPokemonLabelsResponse
+    {
+        /** @var null|scalar $formsLabel */
+        $formsLabel = $row['pokemon_localized_forms_label'] ?? null;
+
+        return new LocalizedPokemonLabelsResponse(
+            names: self::decodeTexts($row['pokemon_names'] ?? null),
+            simplifiedNames: self::decodeTexts($row['pokemon_simplified_names'] ?? null),
+            formsLabel: null !== $formsLabel ? (string) $formsLabel : null,
+        );
+    }
+
+    /**
+     * The texts indexed by locale, as the database gives them (a JSON object).
+     *
+     * @return array<array-key, string>
+     */
+    private static function decodeTexts(mixed $json): array
+    {
+        $texts = \is_string($json) ? json_decode($json, true) : null;
+
+        if (!\is_array($texts)) {
+            return [];
+        }
+
+        return array_map(static fn (mixed $text): string => \is_scalar($text) ? (string) $text : '', $texts);
+    }
+
+    /**
+     * @param array<string, mixed> $row
+     */
+    private static function text(array $row, string $key): string
+    {
+        /** @var scalar $value */
+        $value = $row[$key];
+
+        return (string) $value;
+    }
+
+    /**
+     * @param array<string, mixed> $row
+     */
     private static function buildCredit(string $prefix, array $row): ?ImageCreditResponse
     {
         $key = "{$prefix}_credit_source";
@@ -163,7 +242,7 @@ final class AlbumPokemonResponseFactory
     /**
      * @param array<string, mixed> $row
      */
-    private static function buildCatchState(array $row): ?AlbumCatchStateResponse
+    private static function buildCatchState(array $row, bool $localized): AlbumCatchStateResponse|LocalizedAlbumCatchStateResponse|null
     {
         if (empty($row['catch_state_slug'])) {
             return null;
@@ -181,6 +260,14 @@ final class AlbumPokemonResponseFactory
         /** @var scalar $color */
         $color = $row['catch_state_color'];
 
+        if ($localized) {
+            return new LocalizedAlbumCatchStateResponse(
+                slug: (string) $slug,
+                name: self::text($row, 'catch_state_localized_name'),
+                color: (string) $color,
+            );
+        }
+
         return new AlbumCatchStateResponse(
             slug: (string) $slug,
             name: (string) $name,
@@ -192,7 +279,7 @@ final class AlbumPokemonResponseFactory
     /**
      * @param array<string, mixed> $row
      */
-    private static function buildForms(array $row): ?AlbumFormsResponse
+    private static function buildForms(array $row, bool $localized): ?AlbumFormsResponse
     {
         $hasAnyForm = !empty($row['category_form_slug'])
             || !empty($row['regional_form_slug'])
@@ -204,17 +291,17 @@ final class AlbumPokemonResponseFactory
         }
 
         return new AlbumFormsResponse(
-            category: self::buildForm('category_form', $row),
-            regional: self::buildForm('regional_form', $row),
-            special: self::buildForm('special_form', $row),
-            variant: self::buildForm('variant_form', $row),
+            category: self::buildForm('category_form', $row, $localized),
+            regional: self::buildForm('regional_form', $row, $localized),
+            special: self::buildForm('special_form', $row, $localized),
+            variant: self::buildForm('variant_form', $row, $localized),
         );
     }
 
     /**
      * @param array<string, mixed> $row
      */
-    private static function buildForm(string $prefix, array $row): ?AlbumFormResponse
+    private static function buildForm(string $prefix, array $row, bool $localized): AlbumFormResponse|LocalizedAlbumFormResponse|null
     {
         $slugKey = "{$prefix}_slug";
         $nameKey = "{$prefix}_name";
@@ -233,6 +320,13 @@ final class AlbumPokemonResponseFactory
         /** @var scalar $frenchName */
         $frenchName = $row[$frenchNameKey];
 
+        if ($localized) {
+            return new LocalizedAlbumFormResponse(
+                slug: (string) $slug,
+                name: self::text($row, "{$prefix}_localized_name"),
+            );
+        }
+
         return new AlbumFormResponse(
             slug: (string) $slug,
             name: (string) $name,
@@ -243,18 +337,18 @@ final class AlbumPokemonResponseFactory
     /**
      * @param array<string, mixed> $row
      */
-    private static function buildTypes(array $row): AlbumTypesResponse
+    private static function buildTypes(array $row, bool $localized): AlbumTypesResponse
     {
         return new AlbumTypesResponse(
-            primary: self::buildType('primary_type', $row),
-            secondary: self::buildType('secondary_type', $row),
+            primary: self::buildType('primary_type', $row, $localized),
+            secondary: self::buildType('secondary_type', $row, $localized),
         );
     }
 
     /**
      * @param array<string, mixed> $row
      */
-    private static function buildType(string $prefix, array $row): ?AlbumTypeResponse
+    private static function buildType(string $prefix, array $row, bool $localized): AlbumTypeResponse|LocalizedAlbumTypeResponse|null
     {
         $slugKey = "{$prefix}_slug";
         $nameKey = "{$prefix}_name";
@@ -276,6 +370,14 @@ final class AlbumPokemonResponseFactory
 
         /** @var scalar $color */
         $color = $row[$colorKey];
+
+        if ($localized) {
+            return new LocalizedAlbumTypeResponse(
+                slug: (string) $slug,
+                name: self::text($row, "{$prefix}_localized_name"),
+                color: (string) $color,
+            );
+        }
 
         return new AlbumTypeResponse(
             slug: (string) $slug,

@@ -15,9 +15,10 @@ class AlbumReportService
     public function __construct(
         private readonly PokedexRepository $pokedexRepository,
         private readonly DexAvailabilitiesRepository $dexAvailabilitiesRepository,
+        private readonly string $fallbackLocale,
     ) {}
 
-    public function get(string $trainerExternalId, string $dexSlug, AlbumFilters $albumFilters): Report
+    public function get(string $trainerExternalId, string $dexSlug, AlbumFilters $albumFilters, ?string $locale = null): Report
     {
         $totalCaught = 0;
         $detail = [];
@@ -33,6 +34,8 @@ class AlbumReportService
             $trainerExternalId,
             $dexSlug,
             $albumFilters,
+            $locale ?? $this->fallbackLocale,
+            $this->fallbackLocale,
         );
 
         foreach ($catchStatesCounts as $catchStatesCount) {
@@ -42,6 +45,7 @@ class AlbumReportService
                 frenchName: (string) $catchStatesCount['french_name'],
                 color: (string) $catchStatesCount['color'],
                 count: (int) $catchStatesCount['count'],
+                localizedName: (string) $catchStatesCount['localized_name'],
             );
 
             if ('yes' === $catchStatesCount['slug']) {

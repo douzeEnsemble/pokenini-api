@@ -10,15 +10,22 @@ use App\DTO\Response\AlbumFormsResponse;
 use App\DTO\Response\AlbumPokemonResponse;
 use App\DTO\Response\AlbumTypeResponse;
 use App\DTO\Response\GameBundleSlugResponse;
+use App\DTO\Response\LocalizedAlbumCatchStateResponse;
+use App\DTO\Response\LocalizedAlbumFormResponse;
+use App\DTO\Response\LocalizedAlbumTypeResponse;
+use App\DTO\Response\LocalizedPokemonLabelsResponse;
+use App\DTO\Response\PokemonLabelsResponse;
 use App\DTO\Response\PokemonSlugResponse;
 use App\Factory\AlbumPokemonResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
+use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
  *
+ * @SuppressWarnings("PHPMD.CouplingBetweenObjects")
  * @SuppressWarnings("PHPMD.ExcessiveMethodLength")
  * @SuppressWarnings("PHPMD.TooManyPublicMethods")
  * @SuppressWarnings("PHPMD.TooManyMethods")
@@ -32,6 +39,7 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
         $result = AlbumPokemonResponseFactory::fromSqlRow($this->getBulbasaurRow());
 
         self::assertSame('bulbasaur', $result->pokemon->slug);
+        self::assertInstanceOf(PokemonLabelsResponse::class, $result->pokemon->labels);
         self::assertSame('Bulbasaur', $result->pokemon->labels->name);
         self::assertSame('Bulbizarre', $result->pokemon->labels->frenchName);
         self::assertSame(1, $result->pokemon->nationalDexNumber);
@@ -324,6 +332,7 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
 
         $result = AlbumPokemonResponseFactory::fromSqlRow($row);
 
+        self::assertInstanceOf(PokemonLabelsResponse::class, $result->pokemon->labels);
         self::assertSame('42', $result->pokemon->labels->simplifiedName);
         self::assertSame('1', $result->pokemon->labels->formsLabel);
         self::assertSame('99', $result->pokemon->labels->simplifiedFrenchName);
@@ -442,6 +451,130 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
         self::assertNull($response->pokemon->bigRegularCredit);
     }
 
+    #[Test]
+    public function localizedRowKeepsTheNamesOfThePokemonInEveryLanguage(): void
+    {
+        $result = AlbumPokemonResponseFactory::localizedFromSqlRow($this->getLocalizedBulbasaurRow());
+
+        $labels = $result->pokemon->labels;
+        self::assertInstanceOf(LocalizedPokemonLabelsResponse::class, $labels);
+        self::assertSame(['en' => 'Bulbasaur', 'fr' => 'Bulbizarre'], $labels->names);
+        self::assertSame(['en' => 'Bulbasaur', 'fr' => 'Bulbizarre'], $labels->simplifiedNames);
+        self::assertSame('Alolan', $labels->formsLabel);
+    }
+
+    #[Test]
+    public function localizedRowResolvesTheOtherNames(): void
+    {
+        $result = AlbumPokemonResponseFactory::localizedFromSqlRow($this->getLocalizedBulbasaurRow());
+
+        $catchState = $result->catchState;
+        self::assertInstanceOf(LocalizedAlbumCatchStateResponse::class, $catchState);
+        self::assertSame('no', $catchState->slug);
+        self::assertSame('Non', $catchState->name);
+        self::assertSame('#e57373', $catchState->color);
+
+        $forms = $result->forms;
+        self::assertNotNull($forms);
+        $category = $forms->category;
+        self::assertInstanceOf(LocalizedAlbumFormResponse::class, $category);
+        self::assertSame('starter', $category->slug);
+        self::assertSame('de Départ', $category->name);
+        self::assertNull($forms->regional);
+
+        $primary = $result->types->primary;
+        self::assertInstanceOf(LocalizedAlbumTypeResponse::class, $primary);
+        self::assertSame('grass', $primary->slug);
+        self::assertSame('Plante', $primary->name);
+        self::assertSame('#78C850', $primary->color);
+
+        $secondary = $result->types->secondary;
+        self::assertInstanceOf(LocalizedAlbumTypeResponse::class, $secondary);
+        self::assertSame('Poison', $secondary->name);
+    }
+
+    #[Test]
+    public function localizedRowWithoutCatchStateNorForms(): void
+    {
+        $row = $this->getLocalizedBulbasaurRow();
+        $row['catch_state_slug'] = null;
+        $row['category_form_slug'] = null;
+
+        $result = AlbumPokemonResponseFactory::localizedFromSqlRow($row);
+
+        self::assertNull($result->catchState);
+        self::assertNull($result->forms);
+    }
+
+    #[DataProvider('providerUnreadableTexts')]
+    #[Test]
+    public function localizedRowWithUnreadableNames(int|string|null $names): void
+    {
+        $row = $this->getLocalizedBulbasaurRow();
+        $row['pokemon_names'] = $names;
+        $row['pokemon_simplified_names'] = $names;
+        $row['pokemon_localized_forms_label'] = null;
+
+        $labels = AlbumPokemonResponseFactory::localizedFromSqlRow($row)->pokemon->labels;
+
+        self::assertInstanceOf(LocalizedPokemonLabelsResponse::class, $labels);
+        self::assertSame([], $labels->names);
+        self::assertSame([], $labels->simplifiedNames);
+        self::assertNull($labels->formsLabel);
+    }
+
+    /**
+     * @return array<string, array{names: null|int|string}>
+     */
+    public static function providerUnreadableTexts(): array
+    {
+        return [
+            'no value' => ['names' => null],
+            'not a JSON' => ['names' => 'not a json'],
+            'a JSON which is not an object' => ['names' => '12'],
+            'an empty list, as the ORM writes an entity without names' => ['names' => '[]'],
+            'not a string' => ['names' => 12],
+        ];
+    }
+
+    #[Test]
+    public function localizedRowCastsTheNamesToStrings(): void
+    {
+        $row = $this->getLocalizedBulbasaurRow();
+        $row['pokemon_names'] = '{"en": 25, "fr": ["x"]}';
+
+        $labels = AlbumPokemonResponseFactory::localizedFromSqlRow($row)->pokemon->labels;
+
+        self::assertInstanceOf(LocalizedPokemonLabelsResponse::class, $labels);
+        self::assertSame(['en' => '25', 'fr' => ''], $labels->names);
+    }
+
+    #[Test]
+    public function localizedRowsKeepTheOrder(): void
+    {
+        $second = $this->getLocalizedBulbasaurRow();
+        $second['pokemon_slug'] = 'ivysaur';
+
+        $results = AlbumPokemonResponseFactory::localizedFromSqlRows([$this->getLocalizedBulbasaurRow(), $second]);
+
+        self::assertCount(2, $results);
+        self::assertSame('bulbasaur', $results[0]->pokemon->slug);
+        self::assertSame('ivysaur', $results[1]->pokemon->slug);
+        self::assertInstanceOf(LocalizedPokemonLabelsResponse::class, $results[1]->pokemon->labels);
+    }
+
+    #[Test]
+    public function localizedRowCastsTheFormsLabelToAString(): void
+    {
+        $row = $this->getLocalizedBulbasaurRow();
+        $row['pokemon_localized_forms_label'] = 12;
+
+        $labels = AlbumPokemonResponseFactory::localizedFromSqlRow($row)->pokemon->labels;
+
+        self::assertInstanceOf(LocalizedPokemonLabelsResponse::class, $labels);
+        self::assertSame('12', $labels->formsLabel);
+    }
+
     /**
      * @return array<string, mixed>
      */
@@ -531,5 +664,21 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
             'game_bundle_slugs' => 'un,dos,tres',
             'game_bundle_shiny_slugs' => '',
         ];
+    }
+
+    /**
+     * @return array<string, mixed>
+     */
+    private function getLocalizedBulbasaurRow(): array
+    {
+        return array_merge($this->getBulbasaurRow(), [
+            'pokemon_names' => '{"en": "Bulbasaur", "fr": "Bulbizarre"}',
+            'pokemon_simplified_names' => '{"en": "Bulbasaur", "fr": "Bulbizarre"}',
+            'pokemon_localized_forms_label' => 'Alolan',
+            'category_form_localized_name' => 'de Départ',
+            'catch_state_localized_name' => 'Non',
+            'primary_type_localized_name' => 'Plante',
+            'secondary_type_localized_name' => 'Poison',
+        ]);
     }
 }

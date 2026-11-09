@@ -9,6 +9,7 @@ use App\DTO\Response\ElectionPokemonResponse;
 use App\DTO\Response\FormResponse;
 use App\DTO\Response\FormsResponse;
 use App\DTO\Response\GameBundleSlugResponse;
+use App\DTO\Response\PokemonLabelsResponse;
 use App\DTO\Response\PokemonSlugResponse;
 use App\DTO\Response\TypeResponse;
 use App\Factory\ElectionPokemonResponseFactory;
@@ -33,6 +34,7 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
         self::assertSame('bulbasaur', $response->pokemon->slug);
+        self::assertInstanceOf(PokemonLabelsResponse::class, $response->pokemon->labels);
         self::assertSame('Bulbasaur', $response->pokemon->labels->name);
         self::assertSame('Bulbizarre', $response->pokemon->labels->frenchName);
         self::assertSame(1, $response->pokemon->nationalDexNumber);
@@ -67,6 +69,7 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
         self::assertSame('1', $response->pokemon->slug);
+        self::assertInstanceOf(PokemonLabelsResponse::class, $response->pokemon->labels);
         self::assertSame('2', $response->pokemon->labels->name);
         self::assertSame('3', $response->pokemon->labels->frenchName);
         self::assertSame(42, $response->pokemon->nationalDexNumber);
@@ -297,6 +300,7 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
+        self::assertInstanceOf(PokemonLabelsResponse::class, $response->pokemon->labels);
         self::assertNull($response->pokemon->labels->simplifiedName);
         self::assertNull($response->pokemon->labels->formsLabel);
         self::assertNull($response->pokemon->labels->simplifiedFrenchName);
@@ -321,6 +325,7 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
+        self::assertInstanceOf(PokemonLabelsResponse::class, $response->pokemon->labels);
         self::assertSame('42', $response->pokemon->labels->simplifiedName);
         self::assertSame('7', $response->pokemon->labels->formsLabel);
         self::assertSame('99', $response->pokemon->labels->simplifiedFrenchName);

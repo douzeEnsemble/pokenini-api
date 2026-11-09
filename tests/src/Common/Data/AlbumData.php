@@ -220,6 +220,7 @@ final class AlbumData
                 'catch_state_slug' => 'no',
                 'catch_state_name' => 'No',
                 'catch_state_french_name' => 'Non',
+                'catch_state_localized_name' => 'No',
                 'catch_state_color' => '#e57373',
                 'family_lead_slug' => 'bulbasaur',
                 'pokemon_family_order' => 3,
@@ -263,6 +264,7 @@ final class AlbumData
                 'catch_state_slug' => 'no',
                 'catch_state_name' => 'No',
                 'catch_state_french_name' => 'Non',
+                'catch_state_localized_name' => 'No',
                 'catch_state_color' => '#e57373',
                 'family_lead_slug' => 'bulbasaur',
                 'pokemon_family_order' => 4,
@@ -306,6 +308,7 @@ final class AlbumData
                 'catch_state_slug' => 'no',
                 'catch_state_name' => 'No',
                 'catch_state_french_name' => 'Non',
+                'catch_state_localized_name' => 'No',
                 'catch_state_color' => '#e57373',
                 'family_lead_slug' => 'bulbasaur',
                 'pokemon_family_order' => 5,
@@ -373,6 +376,7 @@ final class AlbumData
                 'catch_state_slug' => 'yes',
                 'catch_state_name' => 'Yes',
                 'catch_state_french_name' => 'Oui',
+                'catch_state_localized_name' => 'Yes',
                 'catch_state_color' => '#66bb6a',
                 'family_lead_slug' => 'caterpie',
                 'pokemon_family_order' => 3,
@@ -416,6 +420,7 @@ final class AlbumData
                 'catch_state_slug' => 'no',
                 'catch_state_name' => 'No',
                 'catch_state_french_name' => 'Non',
+                'catch_state_localized_name' => 'No',
                 'catch_state_color' => '#e57373',
                 'family_lead_slug' => 'caterpie',
                 'pokemon_family_order' => 4,
@@ -509,6 +514,7 @@ final class AlbumData
                 'catch_state_slug' => null,
                 'catch_state_name' => null,
                 'catch_state_french_name' => null,
+                'catch_state_localized_name' => null,
                 'catch_state_color' => null,
                 'family_lead_slug' => 'bulbasaur',
                 'pokemon_family_order' => 3,
@@ -552,6 +558,7 @@ final class AlbumData
                 'catch_state_slug' => null,
                 'catch_state_name' => null,
                 'catch_state_french_name' => null,
+                'catch_state_localized_name' => null,
                 'catch_state_color' => null,
                 'family_lead_slug' => 'bulbasaur',
                 'pokemon_family_order' => 4,
@@ -595,6 +602,7 @@ final class AlbumData
                 'catch_state_slug' => null,
                 'catch_state_name' => null,
                 'catch_state_french_name' => null,
+                'catch_state_localized_name' => null,
                 'catch_state_color' => null,
                 'family_lead_slug' => 'bulbasaur',
                 'pokemon_family_order' => 5,
@@ -644,6 +652,7 @@ final class AlbumData
                 'catch_state_slug' => null,
                 'catch_state_name' => null,
                 'catch_state_french_name' => null,
+                'catch_state_localized_name' => null,
                 'catch_state_color' => null,
                 'family_lead_slug' => 'caterpie',
                 'pokemon_family_order' => 3,
@@ -687,6 +696,7 @@ final class AlbumData
                 'catch_state_slug' => null,
                 'catch_state_name' => null,
                 'catch_state_french_name' => null,
+                'catch_state_localized_name' => null,
                 'catch_state_color' => null,
                 'family_lead_slug' => 'caterpie',
                 'pokemon_family_order' => 4,
@@ -950,6 +960,7 @@ final class AlbumData
                     'catch_state_slug' => 'yes',
                     'catch_state_name' => 'Yes',
                     'catch_state_french_name' => 'Oui',
+                    'catch_state_localized_name' => 'Yes',
                     'catch_state_color' => '#66bb6a',
                 ];
 
@@ -958,6 +969,7 @@ final class AlbumData
                     'catch_state_slug' => 'maybe',
                     'catch_state_name' => 'Maybe',
                     'catch_state_french_name' => 'Peut être',
+                    'catch_state_localized_name' => 'Maybe',
                     'catch_state_color' => 'blue',
                 ];
 
@@ -966,6 +978,7 @@ final class AlbumData
                     'catch_state_slug' => 'maybenot',
                     'catch_state_name' => 'Maybe not',
                     'catch_state_french_name' => 'Peut être pas',
+                    'catch_state_localized_name' => 'Maybe not',
                     'catch_state_color' => 'yellow',
                 ];
 
@@ -974,6 +987,7 @@ final class AlbumData
                     'catch_state_slug' => 'no',
                     'catch_state_name' => 'No',
                     'catch_state_french_name' => 'Non',
+                    'catch_state_localized_name' => 'No',
                     'catch_state_color' => '#e57373',
                 ];
 
@@ -983,6 +997,7 @@ final class AlbumData
                     'catch_state_slug' => null,
                     'catch_state_name' => null,
                     'catch_state_french_name' => null,
+                    'catch_state_localized_name' => null,
                     'catch_state_color' => null,
                 ];
         }

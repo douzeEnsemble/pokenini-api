@@ -29,6 +29,9 @@ final class AlbumFiltersRequest
             'collection_availabilities' => [],
         ]);
 
+        // The language of the names, read by the controller: it is not a filter
+        $resolver->setDefined('lang');
+
         /**
          * @var array{
          *  primary_types: string[],

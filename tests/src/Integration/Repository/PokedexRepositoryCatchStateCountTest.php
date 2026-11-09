@@ -49,6 +49,7 @@ final class PokedexRepositoryCatchStateCountTest extends KernelTestCase
                     'slug' => 'no',
                     'name' => 'No',
                     'french_name' => 'Non',
+                    'localized_name' => 'No',
                     'color' => '#e57373',
                 ],
                 [
@@ -56,6 +57,7 @@ final class PokedexRepositoryCatchStateCountTest extends KernelTestCase
                     'slug' => 'maybe',
                     'name' => 'Maybe',
                     'french_name' => 'Peut être',
+                    'localized_name' => 'Maybe',
                     'color' => 'blue',
                 ],
                 [
@@ -63,6 +65,7 @@ final class PokedexRepositoryCatchStateCountTest extends KernelTestCase
                     'slug' => 'maybenot',
                     'name' => 'Maybe not',
                     'french_name' => 'Peut être pas',
+                    'localized_name' => 'Maybe not',
                     'color' => 'yellow',
                 ],
                 [
@@ -70,6 +73,7 @@ final class PokedexRepositoryCatchStateCountTest extends KernelTestCase
                     'slug' => 'yes',
                     'name' => 'Yes',
                     'french_name' => 'Oui',
+                    'localized_name' => 'Yes',
                     'color' => '#66bb6a',
                 ],
             ],

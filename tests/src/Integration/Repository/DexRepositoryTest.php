@@ -8,6 +8,7 @@ use App\DTO\DexQueryOptions;
 use App\Entity\Dex;
 use App\Repository\DexRepository;
 use App\Tests\Common\Traits\CounterTrait\CountDexTrait;
+use Doctrine\DBAL\Connection;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\DataProvider;
@@ -179,5 +180,56 @@ final class DexRepositoryTest extends KernelTestCase
                 ],
             ],
         ];
+    }
+
+    #[Test]
+    public function getDataInTheRequestedLocale(): void
+    {
+        $repo = self::getContainer()->get(DexRepository::class);
+
+        $dex = $repo->getData('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow', 'fr', 'en');
+
+        $this->assertSame('Rouge / Vert / Bleu / Jaune', $dex['localized_name']);
+        $this->assertSame('La liste des pokémons obtenable dans les jeux Rouge, Bleu, Jaune et même Vert.', $dex['localized_description']);
+        $this->assertSame('Kanto', $dex['region_localized_name']);
+        // The English name stays, the legacy shape still needs it
+        $this->assertSame('Red / Green / Blue / Yellow', $dex['name']);
+    }
+
+    #[Test]
+    public function getDataInTheEnglishLocale(): void
+    {
+        $repo = self::getContainer()->get(DexRepository::class);
+
+        $dex = $repo->getData('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow', 'en', 'en');
+
+        $this->assertSame('Red / Green / Blue / Yellow', $dex['localized_name']);
+        $this->assertSame('The list of obtainable Pokémons in Red, Blue, Yellow and even Green games', $dex['localized_description']);
+    }
+
+    #[Test]
+    public function getDataFallsBackToTheFallbackLocale(): void
+    {
+        $repo = self::getContainer()->get(DexRepository::class);
+
+        $dex = $repo->getData('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow', 'de', 'fr');
+
+        $this->assertSame('Rouge / Vert / Bleu / Jaune', $dex['localized_name']);
+        $this->assertSame('Kanto', $dex['region_localized_name']);
+    }
+
+    #[Test]
+    public function getDataGivesThePriorityToTheNameOfTheTrainerDex(): void
+    {
+        self::getContainer()->get(Connection::class)->executeStatement(
+            "UPDATE trainer_dex SET names = '{\"en\": \"My album\", \"fr\": \"Mon album\"}' WHERE slug = 'redgreenblueyellow' AND trainer_external_id = :trainer",
+            ['trainer' => '7b52009b64fd0a2a49e6d8a939753077792b0554'],
+        );
+
+        $repo = self::getContainer()->get(DexRepository::class);
+
+        $this->assertSame('Mon album', $repo->getData('7b52009b64fd0a2a49e6d8a939753077792b0554', 'redgreenblueyellow', 'fr', 'en')['localized_name']);
+        // Another trainer has no trainer dex: the name of the dex
+        $this->assertSame('Rouge / Vert / Bleu / Jaune', $repo->getData('unknowntrainer', 'redgreenblueyellow', 'fr', 'en')['localized_name']);
     }
 }

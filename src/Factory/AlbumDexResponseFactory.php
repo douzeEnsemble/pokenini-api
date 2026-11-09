@@ -7,6 +7,8 @@ namespace App\Factory;
 use App\DTO\Response\AlbumDexResponse;
 use App\DTO\Response\AlbumRegionResponse;
 use App\DTO\Response\DexFlagsResponse;
+use App\DTO\Response\LocalizedAlbumDexResponse;
+use App\DTO\Response\LocalizedAlbumRegionResponse;
 
 final class AlbumDexResponseFactory
 {
@@ -58,6 +60,41 @@ final class AlbumDexResponseFactory
     }
 
     /**
+     * The dex with its name, its description and its region in a single language.
+     *
+     * @param array<array-key, mixed> $row
+     */
+    public static function localizedFromSqlRow(array $row): LocalizedAlbumDexResponse
+    {
+        /** @var scalar $slug */
+        $slug = $row['slug'];
+
+        /** @var scalar $originalSlug */
+        $originalSlug = $row['original_slug'];
+
+        /** @var scalar $displayTemplate */
+        $displayTemplate = $row['display_template'];
+
+        /** @var scalar $selectionRule */
+        $selectionRule = $row['selection_rule'];
+
+        /** @var scalar $version */
+        $version = $row['version'];
+
+        return new LocalizedAlbumDexResponse(
+            slug: (string) $slug,
+            originalSlug: (string) $originalSlug,
+            name: self::text($row, 'localized_name'),
+            flags: self::buildFlags($row),
+            displayTemplate: (string) $displayTemplate,
+            region: self::buildLocalizedRegion($row),
+            selectionRule: (string) $selectionRule,
+            description: self::text($row, 'localized_description'),
+            version: (string) $version,
+        );
+    }
+
+    /**
      * @param array<array-key, mixed> $row
      */
     private static function buildFlags(array $row): DexFlagsResponse
@@ -101,6 +138,18 @@ final class AlbumDexResponseFactory
     /**
      * @param array<array-key, mixed> $row
      */
+    private static function buildLocalizedRegion(array $row): ?LocalizedAlbumRegionResponse
+    {
+        if (empty($row['region_name'])) {
+            return null;
+        }
+
+        return new LocalizedAlbumRegionResponse(name: self::text($row, 'region_localized_name'));
+    }
+
+    /**
+     * @param array<array-key, mixed> $row
+     */
     private static function buildRegion(array $row): ?AlbumRegionResponse
     {
         if (empty($row['region_name'])) {
@@ -117,5 +166,16 @@ final class AlbumDexResponseFactory
             name: (string) $regionName,
             frenchName: (string) $regionFrenchName,
         );
+    }
+
+    /**
+     * @param array<array-key, mixed> $row
+     */
+    private static function text(array $row, string $key): string
+    {
+        /** @var scalar $value */
+        $value = $row[$key];
+
+        return (string) $value;
     }
 }

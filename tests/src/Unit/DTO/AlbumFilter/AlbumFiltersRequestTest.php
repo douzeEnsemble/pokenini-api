@@ -70,4 +70,15 @@ final class AlbumFiltersRequestTest extends TestCase
         $this->assertCount(1, $filters->gameBundleShinyAvailabilities->values);
         $this->assertCount(2, $filters->families->values);
     }
+
+    #[Test]
+    public function theLanguageIsNotAFilter(): void
+    {
+        $request = new Request(['lang' => 'fr', 'primary_types' => ['grass']]);
+
+        $filters = AlbumFiltersRequest::albumFiltersFromRequest($request);
+
+        $this->assertCount(1, $filters->primaryTypes->values);
+        $this->assertEmpty($filters->secondaryTypes->values);
+    }
 }

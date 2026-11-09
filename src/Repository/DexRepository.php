@@ -56,24 +56,36 @@ class DexRepository extends ServiceEntityRepository
     /**
      * @return bool[]|string[]
      */
-    public function getData(string $trainerExternalId, string $dexSlug): array
-    {
-        $sql = <<<'SQL'
+    public function getData(
+        string $trainerExternalId,
+        string $dexSlug,
+        string $locale = 'en',
+        string $fallbackLocale = 'en',
+    ): array {
+        // The name of a trainer dex first, then the one of the dex
+        $localizedName = 'COALESCE('.LocalizedName::sql('td').', '.LocalizedName::sql('d').')';
+        $localizedDescription = LocalizedName::sql('d', 'descriptions', 'description');
+        $localizedRegionName = LocalizedName::sql('r');
+
+        $sql = <<<SQL
             SELECT      COALESCE(td.slug, d.slug) AS "slug",
                         d.slug AS "original_slug",
                         COALESCE(td.name, d.name) AS "name",
                         COALESCE(td.french_name, d.french_name) AS "french_name",
+                        {$localizedName} AS "localized_name",
                         d.is_shiny AS "is_shiny",
                         d.is_display_form AS "is_display_form",
                         d.display_template AS "display_template",
                         r.name AS "region_name",
                         r.french_name AS "region_french_name",
+                        {$localizedRegionName} AS "region_localized_name",
                         d.selection_rule AS "selection_rule",
                         COALESCE(td.is_private, true) AS "is_private",
                         COALESCE(td.is_on_home, false) AS "is_on_home",
                         COALESCE(td.is_on_hub, false) AS "is_on_hub",
                         d.description AS "description",
                         d.french_description AS "french_description",
+                        {$localizedDescription} AS "localized_description",
                         TO_CHAR(last_changed_at, 'YYYYMMDD.HHMISS') AS "version",
                         d.is_released AS "is_released",
                         CASE WHEN td.slug <> d.slug THEN true ELSE d.is_premium END AS "is_premium",
@@ -93,7 +105,7 @@ class DexRepository extends ServiceEntityRepository
             [
                 'trainer_external_id' => $trainerExternalId,
                 'dex_slug' => $dexSlug,
-            ]
+            ] + LocalizedName::parameters($locale, $fallbackLocale)
         );
 
         /** @var bool[]|string[] */

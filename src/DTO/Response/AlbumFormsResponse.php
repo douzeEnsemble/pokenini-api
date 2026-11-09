@@ -7,9 +7,9 @@ namespace App\DTO\Response;
 final class AlbumFormsResponse
 {
     public function __construct(
-        public readonly ?AlbumFormResponse $category,
-        public readonly ?AlbumFormResponse $regional,
-        public readonly ?AlbumFormResponse $special,
-        public readonly ?AlbumFormResponse $variant,
+        public readonly AlbumFormResponse|LocalizedAlbumFormResponse|null $category,
+        public readonly AlbumFormResponse|LocalizedAlbumFormResponse|null $regional,
+        public readonly AlbumFormResponse|LocalizedAlbumFormResponse|null $special,
+        public readonly AlbumFormResponse|LocalizedAlbumFormResponse|null $variant,
     ) {}
 }

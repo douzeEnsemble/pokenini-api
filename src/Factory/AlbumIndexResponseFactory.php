@@ -8,6 +8,7 @@ use App\DTO\Response\AlbumDexResponse;
 use App\DTO\Response\AlbumIndexResponse;
 use App\DTO\Response\AlbumPokemonResponse;
 use App\DTO\Response\AlbumReportResponse;
+use App\DTO\Response\LocalizedAlbumDexResponse;
 
 final class AlbumIndexResponseFactory
 {
@@ -15,7 +16,7 @@ final class AlbumIndexResponseFactory
      * @param AlbumPokemonResponse[] $pokemons
      */
     public static function fromParts(
-        ?AlbumDexResponse $dex,
+        AlbumDexResponse|LocalizedAlbumDexResponse|null $dex,
         array $pokemons,
         AlbumReportResponse $report,
         AlbumReportResponse $filteredReport,
