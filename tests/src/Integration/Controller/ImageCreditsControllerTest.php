@@ -5,8 +5,10 @@ declare(strict_types=1);
 namespace App\Tests\Integration\Controller;
 
 use App\Controller\ImageCreditsController;
+use App\Tests\Common\Traits\LocalizedEndpointTestTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
+use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 /**
@@ -15,6 +17,8 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 #[CoversClass(ImageCreditsController::class)]
 final class ImageCreditsControllerTest extends WebTestCase
 {
+    use LocalizedEndpointTestTrait;
+
     #[Test]
     public function getReturnsSuccessfulJsonResponse(): void
     {
@@ -56,6 +60,40 @@ final class ImageCreditsControllerTest extends WebTestCase
         self::assertNull($charmander['small_shiny_credit']);
         self::assertNull($charmander['big_regular_credit']);
         self::assertNull($charmander['big_shiny_credit']);
+    }
+
+    #[\Override]
+    protected function localizedClient(): KernelBrowser
+    {
+        return self::createClient();
+    }
+
+    #[\Override]
+    protected function localizedUri(): string
+    {
+        return '/credits';
+    }
+
+    protected function localizedSlugKey(): string
+    {
+        return 'pokemon_slug';
+    }
+
+    #[\Override]
+    protected function localizedExample(): array
+    {
+        $credits = [
+            'small_regular_credit' => null,
+            'small_shiny_credit' => null,
+            'big_regular_credit' => null,
+            'big_shiny_credit' => null,
+        ];
+
+        return [
+            'slug' => 'charmander',
+            'fr' => ['pokemon_slug' => 'charmander', 'pokemon_name' => 'Salamèche', 'pokemon_icon' => 'charmander'] + $credits,
+            'en' => ['pokemon_slug' => 'charmander', 'pokemon_name' => 'Charmander', 'pokemon_icon' => 'charmander'] + $credits,
+        ];
     }
 
     /**

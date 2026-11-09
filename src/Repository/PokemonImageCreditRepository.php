@@ -19,10 +19,14 @@ class PokemonImageCreditRepository extends ServiceEntityRepository
     }
 
     /**
+     * The name in the requested locale is in "localized_name", falling back to the fallback locale
+     * and, as a last resort, to the English name column.
+     *
      * @return array<array{
      *   pokemon_slug: string,
      *   pokemon_name: string,
      *   pokemon_french_name: string,
+     *   localized_name: string,
      *   pokemon_icon: string,
      *   small_regular_credit: ?string,
      *   small_shiny_credit: ?string,
@@ -30,12 +34,15 @@ class PokemonImageCreditRepository extends ServiceEntityRepository
      *   big_shiny_credit: ?string,
      * }>
      */
-    public function findAllPokemonWithCredits(): array
+    public function findAllPokemonWithCredits(string $locale = 'en', string $fallbackLocale = 'en'): array
     {
-        $sql = <<<'SQL'
+        $localizedName = LocalizedName::sql('p');
+
+        $sql = <<<SQL
             SELECT      p.slug AS pokemon_slug,
                         p.name AS pokemon_name,
                         p.french_name AS pokemon_french_name,
+                        {$localizedName} AS localized_name,
                         p.icon_name AS pokemon_icon,
                         pic_sr.source AS small_regular_credit,
                         pic_ss.source AS small_shiny_credit,
@@ -50,7 +57,10 @@ class PokemonImageCreditRepository extends ServiceEntityRepository
             ORDER BY    p.national_dex_number, p.family_order
             SQL;
 
-        /** @var array<array{pokemon_slug: string, pokemon_name: string, pokemon_french_name: string, pokemon_icon: string, small_regular_credit: ?string, small_shiny_credit: ?string, big_regular_credit: ?string, big_shiny_credit: ?string}> */
-        return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
+        /** @var array<array{pokemon_slug: string, pokemon_name: string, pokemon_french_name: string, localized_name: string, pokemon_icon: string, small_regular_credit: ?string, small_shiny_credit: ?string, big_regular_credit: ?string, big_shiny_credit: ?string}> */
+        return $this->getEntityManager()->getConnection()->fetchAllAssociative(
+            $sql,
+            LocalizedName::parameters($locale, $fallbackLocale),
+        );
     }
 }

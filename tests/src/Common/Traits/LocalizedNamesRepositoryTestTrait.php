@@ -57,11 +57,19 @@ trait LocalizedNamesRepositoryTestTrait
     }
 
     /**
-     * @return string[][] the rows of the repository for the given locales
+     * @return array<array<null|string>> the rows of the repository for the given locales
      */
     abstract protected function getAllRows(string $locale, string $fallbackLocale): array;
 
     abstract protected function localizedTable(): string;
+
+    /**
+     * The key of the slug in the rows of the repository.
+     */
+    protected function localizedSlugKey(): string
+    {
+        return 'slug';
+    }
 
     /**
      * A record of the fixtures, with its names.
@@ -81,13 +89,13 @@ trait LocalizedNamesRepositoryTestTrait
     }
 
     /**
-     * @param string[][] $rows
+     * @param array<array<null|string>> $rows
      */
     private function localizedNameOf(array $rows, string $slug): string
     {
         foreach ($rows as $row) {
-            if ($slug === $row['slug']) {
-                return $row['localized_name'];
+            if ($slug === $row[$this->localizedSlugKey()]) {
+                return (string) $row['localized_name'];
             }
         }
 
