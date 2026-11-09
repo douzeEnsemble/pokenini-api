@@ -321,6 +321,26 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
         $this->assertSame([], $this->getColorSets('bulbasaur', true));
     }
 
+    #[Test]
+    public function executeStoresTheNamesInEveryLanguage(): void
+    {
+        $connection = self::getContainer()->get(Connection::class);
+        $connection->executeStatement(
+            "UPDATE pokemon SET names = '{}', simplified_names = '{}', forms_labels = '{}' WHERE slug = 'venusaur'",
+        );
+
+        $this->getService()->execute($this->sheetName);
+
+        /** @var array{names: string, simplified_names: string, forms_labels: string} $row */
+        $row = $connection->executeQuery(
+            "SELECT names, simplified_names, forms_labels FROM pokemon WHERE slug = 'venusaur'",
+        )->fetchAssociative();
+
+        $this->assertSame(['en' => 'Venusaur ♂️', 'fr' => 'Florizarre ♂️'], json_decode($row['names'], associative: true));
+        $this->assertSame(['en' => 'Venusaur', 'fr' => 'Florizarre'], json_decode($row['simplified_names'], associative: true));
+        $this->assertSame(['en' => '♂️', 'fr' => '♂️'], json_decode($row['forms_labels'], associative: true));
+    }
+
     #[\Override]
     protected function getService(): AbstractUpdater
     {

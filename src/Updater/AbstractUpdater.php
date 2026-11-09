@@ -231,15 +231,17 @@ abstract class AbstractUpdater implements UpdaterInterface
     }
 
     /**
-     * The name of a record in every language, as the JSON stored in its `names` column.
+     * A text of a record in every language, as the JSON stored in a `names`-like column.
      *
      * The sheet has a column per language ("Name", "French Name"): this is the only place which knows which.
      *
      * @param array<string, string> $record
+     * @param string                $english the column of the English text
+     * @param string                $french  the column of the French text
      */
-    protected function namesParameter(array $record): string
+    protected function namesParameter(array $record, string $english = 'Name', string $french = 'French Name'): string
     {
-        return json_encode(['en' => $record['Name'], 'fr' => $record['French Name']], JSON_THROW_ON_ERROR);
+        return json_encode(['en' => $record[$english], 'fr' => $record[$french]], JSON_THROW_ON_ERROR);
     }
 
     /**

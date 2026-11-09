@@ -7,6 +7,7 @@ namespace App\Tests\Integration\Repository;
 use App\DTO\TrainerDexAttributes;
 use App\Repository\TrainerDexRepository;
 use App\Tests\Common\Traits\CounterTrait\CountTrainerDexTrait;
+use App\Tests\Common\Traits\GetterTrait\GetTrainerDexTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -20,6 +21,7 @@ final class TrainerDexRepositorySetTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
     use CountTrainerDexTrait;
+    use GetTrainerDexTrait;
 
     #[\Override]
     public function setUp(): void
@@ -73,5 +75,22 @@ final class TrainerDexRepositorySetTest extends KernelTestCase
         );
 
         $this->assertEquals(34, $this->getTrainerDexCount());
+    }
+
+    #[Test]
+    public function aNewTrainerDexHasTheNamesOfTheDex(): void
+    {
+        $repo = self::getContainer()->get(TrainerDexRepository::class);
+
+        $repo->set(
+            '7b52009b64fd0a2a49e6d8a939753077792b0554',
+            'spoon',
+            new TrainerDexAttributes([])
+        );
+
+        $names = $this->getTrainerDex('7b52009b64fd0a2a49e6d8a939753077792b0554', 'spoon')['names'];
+
+        $this->assertIsString($names);
+        $this->assertSame(['en' => 'Spoon', 'fr' => 'Cuillière'], json_decode($names, associative: true));
     }
 }

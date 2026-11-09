@@ -11,6 +11,7 @@ use App\Entity\Traits\OrderedTrait;
 use App\Entity\Traits\SlugifiedTrait;
 use App\Entity\Traits\SoftDeleteable;
 use App\Entity\Traits\SoftDeleteableInterface;
+use App\Entity\Traits\TranslatedNamesTrait;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -26,6 +27,11 @@ final class Dex implements SoftDeleteableInterface
     use SlugifiedTrait;
     use OrderedTrait;
     use SoftDeleteable;
+    use TranslatedNamesTrait;
+
+    /** @var array<string, string> the description indexed by locale */
+    #[ORM\Column(type: Types::JSON, options: ['jsonb' => true, 'default' => '{}'])]
+    public array $descriptions = [];
 
     #[ORM\Column(length: 13570)]
     public string $selectionRule = '';

@@ -6,6 +6,7 @@ namespace App\Entity;
 
 use App\Entity\Traits\BaseEntityTrait;
 use App\Entity\Traits\FrenchNamedTrait;
+use App\Entity\Traits\TranslatedNamesTrait;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\ORM\Mapping\UniqueConstraint;
 
@@ -15,6 +16,7 @@ final class TrainerDex
 {
     use BaseEntityTrait;
     use FrenchNamedTrait;
+    use TranslatedNamesTrait;
 
     #[ORM\Column]
     public string $trainerExternalId = '';

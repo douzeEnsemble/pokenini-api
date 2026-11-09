@@ -4,13 +4,16 @@ App\Entity\DexCategory:
     slug: "main"
     frenchName: "Jeux principaux"
     orderNumber: 1
+    names: { en: "$name", fr: "$frenchName" }
   dex_category_home:
     name: "Home"
     slug: "home"
     frenchName: "Home"
     orderNumber: 2
+    names: { en: "$name", fr: "$frenchName" }
   dex_category_other:
     name: "Other"
     slug: "other"
     frenchName: "Autre"
     orderNumber: 3
+    names: { en: "$name", fr: "$frenchName" }

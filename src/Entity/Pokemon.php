@@ -9,6 +9,8 @@ use App\Entity\Traits\FrenchNamedTrait;
 use App\Entity\Traits\NamedTrait;
 use App\Entity\Traits\SoftDeleteable;
 use App\Entity\Traits\SoftDeleteableInterface;
+use App\Entity\Traits\TranslatedNamesTrait;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -21,6 +23,15 @@ final class Pokemon implements SoftDeleteableInterface
     use NamedTrait;
     use FrenchNamedTrait;
     use SoftDeleteable;
+    use TranslatedNamesTrait;
+
+    /** @var array<string, string> the simplified name indexed by locale */
+    #[ORM\Column(type: Types::JSON, options: ['jsonb' => true, 'default' => '{}'])]
+    public array $simplifiedNames = [];
+
+    /** @var array<string, string> the forms label indexed by locale */
+    #[ORM\Column(type: Types::JSON, options: ['jsonb' => true, 'default' => '{}'])]
+    public array $formsLabels = [];
 
     #[ORM\Column(unique: true)]
     public string $slug;

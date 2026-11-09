@@ -7,6 +7,7 @@ namespace App\Tests\Integration\Updater;
 use App\Tests\Common\Traits\GetterTrait\GetDexTrait;
 use App\Updater\AbstractUpdater;
 use App\Updater\DexUpdater;
+use Doctrine\DBAL\Connection;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 
@@ -15,7 +16,7 @@ use PHPUnit\Framework\Attributes\Test;
  */
 #[CoversClass(DexUpdater::class)]
 #[CoversClass(AbstractUpdater::class)]
-final class DexUpdaterTest extends AbstractTestUpdater
+final class DexUpdaterTest extends AbstractTestNamedUpdater
 {
     use GetDexTrait;
 
@@ -126,10 +127,39 @@ final class DexUpdaterTest extends AbstractTestUpdater
         $this->assertNull($this->getDexFromSlug('mega')['category_slug']);
     }
 
+    #[Test]
+    public function executeStoresTheDescriptionInEveryLanguage(): void
+    {
+        $connection = self::getContainer()->get(Connection::class);
+        $connection->executeStatement("UPDATE dex SET descriptions = '{}' WHERE slug = 'redgreenblueyellow'");
+
+        $this->getService()->execute('Dex');
+
+        $descriptions = $connection->executeQuery("SELECT descriptions FROM dex WHERE slug = 'redgreenblueyellow'")->fetchOne();
+
+        $this->assertIsString($descriptions);
+        $this->assertSame(
+            [
+                'en' => "The list of obtainable Pokémons in Red, Blue, Yellow and even Green games.\n\nThere were no different forms for the same Pokémon or gender at the time. So these are the first 151 Pokémons.",
+                'fr' => "La liste des pokémons obtenable dans les jeux Rouge, Bleu, Jaune et même Vert.\n\nIl n'y avait pas de formes différentes pour le même pokémon ni de genre à l'époque. Donc ce sont les 151 premiers pokémons.",
+            ],
+            json_decode($descriptions, associative: true),
+        );
+    }
+
     #[\Override]
     protected function getService(): AbstractUpdater
     {
         /** @var DexUpdater */
         return self::getContainer()->get(DexUpdater::class);
+    }
+
+    #[\Override]
+    protected function namesExample(): array
+    {
+        return [
+            'slug' => 'redgreenblueyellow',
+            'names' => ['en' => 'Red, Green, Blue, Yellow', 'fr' => 'Rouge, Vert, Bleu, Jaune'],
+        ];
     }
 }

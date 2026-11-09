@@ -4,48 +4,58 @@ App\Entity\Region:
     slug: "kanto"
     frenchName: "Kanto"
     orderNumber: 1
+    names: { en: "$name", fr: "$frenchName" }
   region_johto:
     name: "Johto"
     slug: "johto"
     frenchName: "Johto"
     orderNumber: 2
+    names: { en: "$name", fr: "$frenchName" }
   region_hoenn:
     name: "Hoenn"
     slug: "hoenn"
     frenchName: "Hoenn"
     orderNumber: 3
+    names: { en: "$name", fr: "$frenchName" }
   region_sinnoh:
     name: "Sinnoh"
     slug: "sinnoh"
     frenchName: "Sinnoh"
     orderNumber: 4
+    names: { en: "$name", fr: "$frenchName" }
   region_unova:
     name: "Unova"
     slug: "unova"
     frenchName: "Unys"
     orderNumber: 5
+    names: { en: "$name", fr: "$frenchName" }
   region_kalos:
     name: "Kalos"
     slug: "kalos"
     frenchName: "Kalos"
     orderNumber: 6
+    names: { en: "$name", fr: "$frenchName" }
   region_alola:
     name: "Alola"
     slug: "alola"
     frenchName: "Alola"
     orderNumber: 7
+    names: { en: "$name", fr: "$frenchName" }
   region_galar:
     name: "Galar"
     slug: "galar"
     frenchName: "Galar"
     orderNumber: 8
+    names: { en: "$name", fr: "$frenchName" }
   region_hisui:
     name: "Hisui"
     slug: "hisui"
     frenchName: "Hisui"
     orderNumber: 9
+    names: { en: "$name", fr: "$frenchName" }
   region_paldea:
     name: "Paldea"
     slug: "paldea"
     frenchName: "Paldea"
     orderNumber: 10
+    names: { en: "$name", fr: "$frenchName" }

@@ -13,6 +13,9 @@ App\Entity\Pokemon:
     formsLabel: ""
     simplifiedFrenchName: "$frenchName"
     formsFrenchLabel: ""
+    names: { en: "$name", fr: "$frenchName" }
+    simplifiedNames: { en: "$simplifiedName", fr: "$simplifiedFrenchName" }
+    formsLabels: { en: "$formsLabel", fr: "$formsFrenchLabel" }
     family: "$slug"
     iconName: "$slug"
 
