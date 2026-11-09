@@ -12,15 +12,15 @@ final class ShinyGamePokemonResponse
         public readonly string $slug,
         public readonly string $name,
         #[SerializedName('french_name')]
-        public readonly string $frenchName,
+        public readonly ?string $frenchName,
         #[SerializedName('simplified_name')]
         public readonly string $simplifiedName,
         #[SerializedName('simplified_french_name')]
-        public readonly string $simplifiedFrenchName,
+        public readonly ?string $simplifiedFrenchName,
         #[SerializedName('forms_label')]
         public readonly string $formsLabel,
         #[SerializedName('forms_french_label')]
-        public readonly string $formsFrenchLabel,
+        public readonly ?string $formsFrenchLabel,
         #[SerializedName('national_dex_number')]
         public readonly int $nationalDexNumber,
         public readonly string $icon,

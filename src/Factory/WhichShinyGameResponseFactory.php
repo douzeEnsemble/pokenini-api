@@ -30,7 +30,7 @@ final class WhichShinyGameResponseFactory
         /** @var scalar $dexName */
         $dexName = $row['dex_name'];
 
-        /** @var scalar $dexFrenchName */
+        /** @var null|scalar $dexFrenchName */
         $dexFrenchName = $row['dex_french_name'];
 
         /** @var scalar $status */
@@ -62,7 +62,7 @@ final class WhichShinyGameResponseFactory
             dex: new WhichShinyGameDexSummaryResponse(
                 slug: (string) $dexSlug,
                 name: (string) $dexName,
-                frenchName: (string) $dexFrenchName,
+                frenchName: OptionalText::fromScalar($dexFrenchName),
             ),
             status: (string) $status,
             roundCount: (int) $roundCount,
@@ -101,7 +101,7 @@ final class WhichShinyGameResponseFactory
                 /** @var scalar $name */
                 $name = $row['name'];
 
-                /** @var scalar $frenchName */
+                /** @var null|scalar $frenchName */
                 $frenchName = $row['french_name'];
 
                 /** @var scalar $isReleased */
@@ -113,7 +113,7 @@ final class WhichShinyGameResponseFactory
                 /** @var scalar $description */
                 $description = $row['description'];
 
-                /** @var scalar $frenchDescription */
+                /** @var null|scalar $frenchDescription */
                 $frenchDescription = $row['french_description'];
 
                 /** @var scalar $playableCount */
@@ -124,11 +124,11 @@ final class WhichShinyGameResponseFactory
                 return new WhichShinyGameDexResponse(
                     slug: $slug,
                     name: (string) $name,
-                    frenchName: (string) $frenchName,
+                    frenchName: OptionalText::fromScalar($frenchName),
                     isReleased: (bool) $isReleased,
                     isPremium: (bool) $isPremium,
                     description: (string) $description,
-                    frenchDescription: (string) $frenchDescription,
+                    frenchDescription: OptionalText::fromScalar($frenchDescription),
                     playableCount: (int) $playableCount,
                     currentGame: null === $game ? null : self::fromGameRow($game),
                     category: DexCategoryResponseFactory::fromSqlRow($row),
@@ -222,19 +222,19 @@ final class WhichShinyGameResponseFactory
         /** @var scalar $name */
         $name = $row['pokemon_name'];
 
-        /** @var scalar $frenchName */
+        /** @var null|scalar $frenchName */
         $frenchName = $row['pokemon_french_name'];
 
         /** @var scalar $simplifiedName */
         $simplifiedName = $row['pokemon_simplified_name'];
 
-        /** @var scalar $simplifiedFrenchName */
+        /** @var null|scalar $simplifiedFrenchName */
         $simplifiedFrenchName = $row['pokemon_simplified_french_name'];
 
         /** @var scalar $formsLabel */
         $formsLabel = $row['pokemon_forms_label'];
 
-        /** @var scalar $formsFrenchLabel */
+        /** @var null|scalar $formsFrenchLabel */
         $formsFrenchLabel = $row['pokemon_forms_french_label'];
 
         /** @var scalar $nationalDexNumber */
@@ -248,11 +248,11 @@ final class WhichShinyGameResponseFactory
             pokemon: new WhichShinyGamePokemonResponse(
                 slug: (string) $slug,
                 name: (string) $name,
-                frenchName: (string) $frenchName,
+                frenchName: OptionalText::fromScalar($frenchName),
                 simplifiedName: (string) $simplifiedName,
-                simplifiedFrenchName: (string) $simplifiedFrenchName,
+                simplifiedFrenchName: OptionalText::fromScalar($simplifiedFrenchName),
                 formsLabel: (string) $formsLabel,
-                formsFrenchLabel: (string) $formsFrenchLabel,
+                formsFrenchLabel: OptionalText::fromScalar($formsFrenchLabel),
                 nationalDexNumber: (int) $nationalDexNumber,
                 icon: (string) $icon,
             ),

@@ -16,8 +16,14 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/which_shiny_game/{trainerExternalId}')]
 final class WhichShinyGameDexController extends AbstractController
 {
+    use LangQueryTrait;
+
+    /**
+     * @param string[] $locales the enabled locales
+     */
     public function __construct(
         private readonly WhichShinyGameService $whichShinyGameService,
+        private readonly array $locales,
     ) {}
 
     /** @return WhichShinyGameDexResponse[] */
@@ -32,9 +38,11 @@ final class WhichShinyGameDexController extends AbstractController
             'include_premium_dex' => $request->query->getBoolean('include_premium_dex', false),
         ]);
 
+        $lang = $this->getLang($request, $this->locales);
+
         return WhichShinyGameResponseFactory::fromDexRows(
-            $this->whichShinyGameService->getPlayableDexList($dexQueryOptions),
-            $this->whichShinyGameService->getInProgressGamesByDex($trainerExternalId),
+            $this->whichShinyGameService->getPlayableDexList($dexQueryOptions, $lang),
+            $this->whichShinyGameService->getInProgressGamesByDex($trainerExternalId, $lang),
         );
     }
 }

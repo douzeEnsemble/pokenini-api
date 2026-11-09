@@ -19,30 +19,31 @@ class ShinyGameService
     public function __construct(
         private readonly ShinyGameRepository $repository,
         private readonly Randomizer $randomizer,
+        private readonly string $fallbackLocale,
     ) {}
 
     /**
      * @return array<array-key, array<string, mixed>>
      */
-    public function getPlayableDexList(DexQueryOptions $options): array
+    public function getPlayableDexList(DexQueryOptions $options, ?string $locale = null): array
     {
-        return $this->repository->getPlayableDexList($options);
+        return $this->repository->getPlayableDexList($options, $locale, $this->fallbackLocale);
     }
 
     /**
      * @return array<string, array<string, mixed>> keyed by dex slug
      */
-    public function getInProgressGamesByDex(string $trainerExternalId): array
+    public function getInProgressGamesByDex(string $trainerExternalId, ?string $locale = null): array
     {
-        return $this->repository->getInProgressGamesByDex($trainerExternalId);
+        return $this->repository->getInProgressGamesByDex($trainerExternalId, $locale, $this->fallbackLocale);
     }
 
     /**
      * @return array<array-key, array<string, mixed>>
      */
-    public function getGames(string $trainerExternalId): array
+    public function getGames(string $trainerExternalId, ?string $locale = null): array
     {
-        return $this->repository->getGames($trainerExternalId);
+        return $this->repository->getGames($trainerExternalId, $locale, $this->fallbackLocale);
     }
 
     /**
@@ -50,7 +51,7 @@ class ShinyGameService
      *
      * @return array<string, mixed>
      */
-    public function create(string $trainerExternalId, string $dexSlug, ?int $roundCount = null): array
+    public function create(string $trainerExternalId, string $dexSlug, ?int $roundCount = null, ?string $locale = null): array
     {
         $dexId = $this->repository->getPlayableDexId($dexSlug);
 
@@ -77,7 +78,7 @@ class ShinyGameService
 
         $this->repository->startGame($gameId, $trainerExternalId, $dexId, $rounds);
 
-        return $this->getGame($trainerExternalId, $gameId);
+        return $this->getGame($trainerExternalId, $gameId, $locale);
     }
 
     /**
@@ -86,11 +87,11 @@ class ShinyGameService
      *  round: null|array<string, mixed>,
      * }
      */
-    public function get(string $trainerExternalId, string $gameId): array
+    public function get(string $trainerExternalId, string $gameId, ?string $locale = null): array
     {
         return [
-            'game' => $this->getGame($trainerExternalId, $gameId),
-            'round' => $this->repository->getNextRound($gameId),
+            'game' => $this->getGame($trainerExternalId, $gameId, $locale),
+            'round' => $this->repository->getNextRound($gameId, $locale, $this->fallbackLocale),
         ];
     }
 
@@ -100,11 +101,11 @@ class ShinyGameService
      *  rounds: array<array-key, array<string, mixed>>,
      * }
      */
-    public function getRounds(string $trainerExternalId, string $gameId): array
+    public function getRounds(string $trainerExternalId, string $gameId, ?string $locale = null): array
     {
         return [
-            'game' => $this->getGame($trainerExternalId, $gameId),
-            'rounds' => $this->repository->getAnsweredRounds($gameId),
+            'game' => $this->getGame($trainerExternalId, $gameId, $locale),
+            'rounds' => $this->repository->getAnsweredRounds($gameId, $locale, $this->fallbackLocale),
         ];
     }
 
@@ -117,7 +118,7 @@ class ShinyGameService
      *  game: array<string, mixed>,
      * }
      */
-    public function answer(string $trainerExternalId, string $gameId, ShinyGameAnswer $answer): array
+    public function answer(string $trainerExternalId, string $gameId, ShinyGameAnswer $answer, ?string $locale = null): array
     {
         $game = $this->getGame($trainerExternalId, $gameId);
 
@@ -147,16 +148,16 @@ class ShinyGameService
             'is_correct' => $isCorrect,
             'chosen_shiny' => $answer->isShiny,
             'is_shiny' => $isShiny,
-            'game' => $this->getGame($trainerExternalId, $gameId),
+            'game' => $this->getGame($trainerExternalId, $gameId, $locale),
         ];
     }
 
     /**
      * @return array<string, mixed>
      */
-    private function getGame(string $trainerExternalId, string $gameId): array
+    private function getGame(string $trainerExternalId, string $gameId, ?string $locale = null): array
     {
-        $game = $this->repository->getGame($trainerExternalId, $gameId);
+        $game = $this->repository->getGame($trainerExternalId, $gameId, $locale, $this->fallbackLocale);
 
         if (null === $game) {
             throw new ShinyGameNotFoundException("Game {$gameId} not found");

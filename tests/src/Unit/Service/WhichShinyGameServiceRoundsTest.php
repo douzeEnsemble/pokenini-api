@@ -33,6 +33,7 @@ final class WhichShinyGameServiceRoundsTest extends TestCase
         $this->service = new WhichShinyGameService(
             $this->repository,
             new Randomizer(new Xoshiro256StarStar(12)),
+            'en',
         );
     }
 
