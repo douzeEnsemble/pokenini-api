@@ -25,7 +25,7 @@ final class DexCategoryResponseFactory
         /** @var scalar $name */
         $name = $row['category_name'];
 
-        /** @var scalar $frenchName */
+        /** @var null|scalar $frenchName */
         $frenchName = $row['category_french_name'];
 
         /** @var scalar $orderNumber */
@@ -34,7 +34,7 @@ final class DexCategoryResponseFactory
         return new DexCategoryResponse(
             slug: (string) $slug,
             name: (string) $name,
-            frenchName: (string) $frenchName,
+            frenchName: OptionalText::fromScalar($frenchName),
             orderNumber: (int) $orderNumber,
         );
     }

@@ -12,7 +12,7 @@ final class DexCategoryResponse
         public readonly string $slug,
         public readonly string $name,
         #[SerializedName('french_name')]
-        public readonly string $frenchName,
+        public readonly ?string $frenchName,
         #[SerializedName('order_number')]
         public readonly int $orderNumber,
     ) {}

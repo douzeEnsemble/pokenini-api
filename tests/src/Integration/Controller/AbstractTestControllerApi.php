@@ -9,6 +9,9 @@ use Symfony\Bundle\FrameworkBundle\KernelBrowser;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 use Symfony\Component\HttpFoundation\Response;
 
+/**
+ * @SuppressWarnings("PHPMD.NumberOfChildren")
+ */
 abstract class AbstractTestControllerApi extends WebTestCase
 {
     use RefreshDatabaseTrait;

@@ -22,17 +22,23 @@ use Symfony\Component\Routing\Requirement\Requirement;
 #[Route('/shiny_game/{trainerExternalId}/games')]
 final class ShinyGameController extends AbstractController
 {
+    use LangQueryTrait;
+
+    /**
+     * @param string[] $locales the enabled locales
+     */
     public function __construct(
         private readonly ShinyGameService $shinyGameService,
+        private readonly array $locales,
     ) {}
 
     /** @return ShinyGameResponse[] */
     #[Route(path: '', methods: ['GET'])]
     #[Serialize]
-    public function list(string $trainerExternalId): array
+    public function list(string $trainerExternalId, Request $request): array
     {
         return ShinyGameResponseFactory::fromGameRows(
-            $this->shinyGameService->getGames($trainerExternalId),
+            $this->shinyGameService->getGames($trainerExternalId, $this->getLang($request, $this->locales)),
         );
     }
 
@@ -45,7 +51,7 @@ final class ShinyGameController extends AbstractController
         try {
             $creation = new ShinyGameCreation($request->toArray());
 
-            $game = $this->shinyGameService->create($trainerExternalId, $creation->dexSlug, $creation->roundCount);
+            $game = $this->shinyGameService->create($trainerExternalId, $creation->dexSlug, $creation->roundCount, $this->getLang($request, $this->locales));
         } catch (\InvalidArgumentException $e) {
             throw new BadRequestHttpException($e->getMessage(), $e);
         } catch (ShinyGameNotFoundException $e) {
@@ -60,9 +66,10 @@ final class ShinyGameController extends AbstractController
     public function show(
         string $trainerExternalId,
         string $gameId,
+        Request $request,
     ): ShinyGameStateResponse {
         try {
-            $state = $this->shinyGameService->get($trainerExternalId, $gameId);
+            $state = $this->shinyGameService->get($trainerExternalId, $gameId, $this->getLang($request, $this->locales));
         } catch (ShinyGameNotFoundException $e) {
             throw new NotFoundHttpException($e->getMessage(), $e);
         }
@@ -75,9 +82,10 @@ final class ShinyGameController extends AbstractController
     public function rounds(
         string $trainerExternalId,
         string $gameId,
+        Request $request,
     ): ShinyGameRoundsResponse {
         try {
-            $rounds = $this->shinyGameService->getRounds($trainerExternalId, $gameId);
+            $rounds = $this->shinyGameService->getRounds($trainerExternalId, $gameId, $this->getLang($request, $this->locales));
         } catch (ShinyGameNotFoundException $e) {
             throw new NotFoundHttpException($e->getMessage(), $e);
         }

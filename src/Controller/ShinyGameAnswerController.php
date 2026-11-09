@@ -22,8 +22,14 @@ use Symfony\Component\Routing\Requirement\Requirement;
 #[Route('/shiny_game/{trainerExternalId}/games')]
 final class ShinyGameAnswerController extends AbstractController
 {
+    use LangQueryTrait;
+
+    /**
+     * @param string[] $locales the enabled locales
+     */
     public function __construct(
         private readonly ShinyGameService $shinyGameService,
+        private readonly array $locales,
     ) {}
 
     #[Route(path: '/{gameId}/answers', requirements: ['gameId' => Requirement::UUID], methods: ['POST'])]
@@ -36,7 +42,7 @@ final class ShinyGameAnswerController extends AbstractController
         try {
             $answer = new ShinyGameAnswer($request->toArray());
 
-            $result = $this->shinyGameService->answer($trainerExternalId, $gameId, $answer);
+            $result = $this->shinyGameService->answer($trainerExternalId, $gameId, $answer, $this->getLang($request, $this->locales));
         } catch (\InvalidArgumentException $e) {
             throw new BadRequestHttpException($e->getMessage(), $e);
         } catch (ShinyGameNotFoundException $e) {
