@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Factory;
 
 use App\DTO\Response\ImageCreditResponse;
+use App\DTO\Response\LocalizedPokemonCreditResponse;
 use App\DTO\Response\PokemonCreditResponse;
 
 final class PokemonCreditResponseFactory
@@ -14,6 +15,7 @@ final class PokemonCreditResponseFactory
      *   pokemon_slug: string,
      *   pokemon_name: string,
      *   pokemon_french_name: string,
+     *   localized_name: string,
      *   pokemon_icon: string,
      *   small_regular_credit: ?string,
      *   small_shiny_credit: ?string,
@@ -29,10 +31,31 @@ final class PokemonCreditResponseFactory
     }
 
     /**
+     * @param array<array{
+     *   pokemon_slug: string,
+     *   pokemon_name: string,
+     *   pokemon_french_name: string,
+     *   localized_name: string,
+     *   pokemon_icon: string,
+     *   small_regular_credit: ?string,
+     *   small_shiny_credit: ?string,
+     *   big_regular_credit: ?string,
+     *   big_shiny_credit: ?string,
+     * }> $rows
+     *
+     * @return LocalizedPokemonCreditResponse[]
+     */
+    public static function localizedFromRows(array $rows): array
+    {
+        return array_map(self::localizedFromRow(...), $rows);
+    }
+
+    /**
      * @param array{
      *   pokemon_slug: string,
      *   pokemon_name: string,
      *   pokemon_french_name: string,
+     *   localized_name: string,
      *   pokemon_icon: string,
      *   small_regular_credit: ?string,
      *   small_shiny_credit: ?string,
@@ -46,6 +69,32 @@ final class PokemonCreditResponseFactory
             pokemonSlug: $row['pokemon_slug'],
             pokemonName: $row['pokemon_name'],
             pokemonFrenchName: $row['pokemon_french_name'],
+            pokemonIcon: $row['pokemon_icon'],
+            smallRegularCredit: self::buildCredit($row['small_regular_credit']),
+            smallShinyCredit: self::buildCredit($row['small_shiny_credit']),
+            bigRegularCredit: self::buildCredit($row['big_regular_credit']),
+            bigShinyCredit: self::buildCredit($row['big_shiny_credit']),
+        );
+    }
+
+    /**
+     * @param array{
+     *   pokemon_slug: string,
+     *   pokemon_name: string,
+     *   pokemon_french_name: string,
+     *   localized_name: string,
+     *   pokemon_icon: string,
+     *   small_regular_credit: ?string,
+     *   small_shiny_credit: ?string,
+     *   big_regular_credit: ?string,
+     *   big_shiny_credit: ?string,
+     * } $row
+     */
+    private static function localizedFromRow(array $row): LocalizedPokemonCreditResponse
+    {
+        return new LocalizedPokemonCreditResponse(
+            pokemonSlug: $row['pokemon_slug'],
+            pokemonName: $row['localized_name'],
             pokemonIcon: $row['pokemon_icon'],
             smallRegularCredit: self::buildCredit($row['small_regular_credit']),
             smallShinyCredit: self::buildCredit($row['small_shiny_credit']),

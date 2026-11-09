@@ -50,6 +50,14 @@ trait LocalizedEndpointTestTrait
     abstract protected function localizedUri(): string;
 
     /**
+     * The key of the slug in the items the endpoint answers.
+     */
+    protected function localizedSlugKey(): string
+    {
+        return 'slug';
+    }
+
+    /**
      * A record of the fixtures, as the endpoint answers it for each language.
      *
      * @return array{slug: string, fr: array<string, mixed>, en: array<string, mixed>}
@@ -88,7 +96,7 @@ trait LocalizedEndpointTestTrait
     {
         /** @var mixed $item */
         foreach ($list as $item) {
-            if (\is_array($item) && $slug === $item['slug']) {
+            if (\is_array($item) && $slug === $item[$this->localizedSlugKey()]) {
                 return $item;
             }
         }

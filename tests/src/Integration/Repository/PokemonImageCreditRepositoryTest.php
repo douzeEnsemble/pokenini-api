@@ -6,6 +6,7 @@ namespace App\Tests\Integration\Repository;
 
 use App\Repository\PokemonImageCreditRepository;
 use App\Repository\PokemonsRepository;
+use App\Tests\Common\Traits\LocalizedNamesRepositoryTestTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -17,6 +18,7 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 #[CoversClass(PokemonImageCreditRepository::class)]
 final class PokemonImageCreditRepositoryTest extends KernelTestCase
 {
+    use LocalizedNamesRepositoryTestTrait;
     use RefreshDatabaseTrait;
 
     #[\Override]
@@ -53,6 +55,7 @@ final class PokemonImageCreditRepositoryTest extends KernelTestCase
                 'pokemon_slug' => 'bulbasaur',
                 'pokemon_name' => 'Bulbasaur',
                 'pokemon_french_name' => 'Bulbizarre',
+                'localized_name' => 'Bulbasaur',
                 'pokemon_icon' => 'bulbasaur',
                 'small_regular_credit' => 'PokéSprite - https://github.com/msikma/pokesprite',
                 'small_shiny_credit' => null,
@@ -76,6 +79,7 @@ final class PokemonImageCreditRepositoryTest extends KernelTestCase
                 'pokemon_slug' => 'charmander',
                 'pokemon_name' => 'Charmander',
                 'pokemon_french_name' => 'Salamèche',
+                'localized_name' => 'Charmander',
                 'pokemon_icon' => 'charmander',
                 'small_regular_credit' => null,
                 'small_shiny_credit' => null,
@@ -128,10 +132,33 @@ final class PokemonImageCreditRepositoryTest extends KernelTestCase
         }
     }
 
+    #[\Override]
+    protected function getAllRows(string $locale, string $fallbackLocale): array
+    {
+        return self::getContainer()->get(PokemonImageCreditRepository::class)->findAllPokemonWithCredits($locale, $fallbackLocale);
+    }
+
+    #[\Override]
+    protected function localizedTable(): string
+    {
+        return 'pokemon';
+    }
+
+    protected function localizedSlugKey(): string
+    {
+        return 'pokemon_slug';
+    }
+
+    #[\Override]
+    protected function localizedExample(): array
+    {
+        return ['slug' => 'charmander', 'en' => 'Charmander', 'fr' => 'Salamèche'];
+    }
+
     /**
-     * @param array<array{pokemon_slug: string, pokemon_name: string, pokemon_french_name: string, pokemon_icon: string, small_regular_credit: ?string, small_shiny_credit: ?string, big_regular_credit: ?string, big_shiny_credit: ?string}> $rows
+     * @param array<array{pokemon_slug: string, pokemon_name: string, pokemon_french_name: string, localized_name: string, pokemon_icon: string, small_regular_credit: ?string, small_shiny_credit: ?string, big_regular_credit: ?string, big_shiny_credit: ?string}> $rows
      *
-     * @return array{pokemon_slug: string, pokemon_name: string, pokemon_french_name: string, pokemon_icon: string, small_regular_credit: ?string, small_shiny_credit: ?string, big_regular_credit: ?string, big_shiny_credit: ?string}
+     * @return array{pokemon_slug: string, pokemon_name: string, pokemon_french_name: string, localized_name: string, pokemon_icon: string, small_regular_credit: ?string, small_shiny_credit: ?string, big_regular_credit: ?string, big_shiny_credit: ?string}
      */
     private static function findRowBySlug(array $rows, string $slug): array
     {

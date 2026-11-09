@@ -23,7 +23,7 @@ final class ImageCreditsServiceTest extends TestCase
     protected function setUp(): void
     {
         $this->repository = $this->createMock(PokemonImageCreditRepository::class);
-        $this->service = new ImageCreditsService($this->repository);
+        $this->service = new ImageCreditsService($this->repository, 'en');
     }
 
     #[Test]
@@ -34,6 +34,7 @@ final class ImageCreditsServiceTest extends TestCase
                 'pokemon_slug' => 'bulbasaur',
                 'pokemon_name' => 'Bulbasaur',
                 'pokemon_french_name' => 'Bulbizarre',
+                'localized_name' => 'Bulbasaur',
                 'pokemon_icon' => 'bulbasaur',
                 'small_regular_credit' => 'PokéSprite - https://github.com/msikma/pokesprite',
                 'small_shiny_credit' => null,
@@ -45,10 +46,24 @@ final class ImageCreditsServiceTest extends TestCase
         $this->repository
             ->expects(self::once())
             ->method('findAllPokemonWithCredits')
+            ->with('en', 'en')
             ->willReturn($rows)
         ;
 
         self::assertSame($rows, $this->service->getAllByPokemon());
+    }
+
+    #[Test]
+    public function getAllByPokemonAsksTheRepositoryForTheRequestedLocale(): void
+    {
+        $this->repository
+            ->expects(self::once())
+            ->method('findAllPokemonWithCredits')
+            ->with('fr', 'en')
+            ->willReturn([])
+        ;
+
+        $this->service->getAllByPokemon('fr');
     }
 
     #[Test]

@@ -10,6 +10,7 @@ class ImageCreditsService
 {
     public function __construct(
         private readonly PokemonImageCreditRepository $repository,
+        private readonly string $fallbackLocale,
     ) {}
 
     /**
@@ -17,6 +18,7 @@ class ImageCreditsService
      *   pokemon_slug: string,
      *   pokemon_name: string,
      *   pokemon_french_name: string,
+     *   localized_name: string,
      *   pokemon_icon: string,
      *   small_regular_credit: ?string,
      *   small_shiny_credit: ?string,
@@ -24,8 +26,8 @@ class ImageCreditsService
      *   big_shiny_credit: ?string,
      * }>
      */
-    public function getAllByPokemon(): array
+    public function getAllByPokemon(?string $locale = null): array
     {
-        return $this->repository->findAllPokemonWithCredits();
+        return $this->repository->findAllPokemonWithCredits($locale ?? $this->fallbackLocale, $this->fallbackLocale);
     }
 }
