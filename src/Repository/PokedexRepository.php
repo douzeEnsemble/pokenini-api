@@ -390,7 +390,10 @@ class PokedexRepository extends ServiceEntityRepository
         return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql);
     }
 
-    private function getListQuerySQL(string $where): string
+    /**
+     * The columns of the list: the names in English and French, and in the requested locale.
+     */
+    private function getListColumnsSQL(): string
     {
         $formsLabel = LocalizedName::sql('p', 'forms_labels', 'forms_label');
         $categoryForm = LocalizedName::sql('cf');
@@ -402,7 +405,7 @@ class PokedexRepository extends ServiceEntityRepository
         $secondaryType = LocalizedName::sql('st');
 
         return <<<SQL
-            SELECT  p.slug AS pokemon_slug,
+            p.slug AS pokemon_slug,
                     p.name AS pokemon_name,
                     p.national_dex_number AS pokemon_national_dex_number,
                     p.simplified_name AS pokemon_simplified_name,
@@ -462,6 +465,15 @@ class PokedexRepository extends ServiceEntityRepository
                         '-',
                         LPAD(CAST(p.family_order AS varchar), 3, '0')
                     ) as pokemon_order_number
+            SQL;
+    }
+
+    private function getListQuerySQL(string $where): string
+    {
+        $columns = $this->getListColumnsSQL();
+
+        return <<<SQL
+            SELECT  {$columns}
             FROM    dex_availability AS da
                 JOIN pokemon AS p
                     ON da.pokemon_id = p.id
