@@ -14,17 +14,20 @@ class AlbumPokemonService
 {
     public function __construct(
         private readonly PokedexRepository $pokedexRepository,
+        private readonly string $fallbackLocale,
     ) {}
 
     /**
      * @return PokedexRepositoryItems
      */
-    public function get(string $trainerExternalId, string $dexSlug, AlbumFilters $albumFilters): array
+    public function get(string $trainerExternalId, string $dexSlug, AlbumFilters $albumFilters, ?string $locale = null): array
     {
         return $this->pokedexRepository->getList(
             $trainerExternalId,
             $dexSlug,
             $albumFilters,
+            $locale ?? $this->fallbackLocale,
+            $this->fallbackLocale,
         );
     }
 }

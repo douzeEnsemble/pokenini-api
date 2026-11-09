@@ -57,6 +57,7 @@ final class PokemonDataResponseTest extends TestCase
         );
 
         self::assertSame('pikachu', $response->slug);
+        self::assertInstanceOf(PokemonLabelsResponse::class, $response->labels);
         self::assertSame('Pikachu', $response->labels->name);
         self::assertSame('Pikachu', $response->labels->frenchName);
         self::assertSame('Pikachu Base', $response->labels->simplifiedName);
@@ -112,6 +113,7 @@ final class PokemonDataResponseTest extends TestCase
         );
 
         self::assertNull($response->regionalDexNumber);
+        self::assertInstanceOf(PokemonLabelsResponse::class, $response->labels);
         self::assertNull($response->labels->simplifiedName);
         self::assertNull($response->labels->simplifiedFrenchName);
         self::assertNull($response->labels->formsLabel);

@@ -7,7 +7,7 @@ namespace App\DTO\Response;
 final class AlbumTypesResponse
 {
     public function __construct(
-        public readonly ?AlbumTypeResponse $primary,
-        public readonly ?AlbumTypeResponse $secondary,
+        public readonly AlbumTypeResponse|LocalizedAlbumTypeResponse|null $primary,
+        public readonly AlbumTypeResponse|LocalizedAlbumTypeResponse|null $secondary,
     ) {}
 }

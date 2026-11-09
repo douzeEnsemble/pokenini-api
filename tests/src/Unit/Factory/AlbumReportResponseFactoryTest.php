@@ -6,7 +6,9 @@ namespace App\Tests\Unit\Factory;
 
 use App\DTO\AlbumReport\Report;
 use App\DTO\AlbumReport\Statistic;
+use App\DTO\Response\AlbumCatchStateResponse;
 use App\DTO\Response\AlbumReportStatisticResponse;
+use App\DTO\Response\LocalizedAlbumCatchStateResponse;
 use App\Factory\AlbumReportResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -46,6 +48,7 @@ final class AlbumReportResponseFactoryTest extends TestCase
         self::assertSame(7, $detail->count);
         self::assertSame('maybe', $detail->catchState->slug);
         self::assertSame('Maybe', $detail->catchState->name);
+        self::assertInstanceOf(AlbumCatchStateResponse::class, $detail->catchState);
         self::assertSame('Peut être', $detail->catchState->frenchName);
         self::assertSame('blue', $detail->catchState->color);
     }
@@ -59,5 +62,30 @@ final class AlbumReportResponseFactoryTest extends TestCase
 
         self::assertSame(0, $result->total);
         self::assertEmpty($result->detail);
+    }
+
+    #[Test]
+    public function localizedReportUsesTheLocalizedNameOfTheCatchStates(): void
+    {
+        $stat = new Statistic(
+            slug: 'maybe',
+            name: 'Maybe',
+            frenchName: 'Peut être',
+            color: 'blue',
+            count: 7,
+            localizedName: 'Peut être (fr)',
+        );
+        $report = new Report(7, 0, 7, [$stat]);
+
+        $result = AlbumReportResponseFactory::localizedFromReport($report);
+
+        self::assertSame(7, $result->total);
+        $detail = $result->detail[0];
+        self::assertInstanceOf(AlbumReportStatisticResponse::class, $detail);
+        self::assertSame(7, $detail->count);
+        self::assertInstanceOf(LocalizedAlbumCatchStateResponse::class, $detail->catchState);
+        self::assertSame('maybe', $detail->catchState->slug);
+        self::assertSame('Peut être (fr)', $detail->catchState->name);
+        self::assertSame('blue', $detail->catchState->color);
     }
 }

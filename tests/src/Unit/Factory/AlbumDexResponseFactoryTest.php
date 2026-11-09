@@ -154,6 +154,41 @@ final class AlbumDexResponseFactoryTest extends TestCase
         self::assertSame('456', $result->region->frenchName);
     }
 
+    #[Test]
+    public function localizedFromSqlRowBuildsAResponseWithASingleLanguage(): void
+    {
+        $row = $this->getRedGreenBlueYellowRow() + [
+            'localized_name' => 'Rouge / Vert / Bleu / Jaune',
+            'localized_description' => 'La liste',
+            'region_localized_name' => 'Kanto (fr)',
+        ];
+
+        $result = AlbumDexResponseFactory::localizedFromSqlRow($row);
+
+        self::assertSame('redgreenblueyellow', $result->slug);
+        self::assertSame('redgreenblueyellow', $result->originalSlug);
+        self::assertSame('Rouge / Vert / Bleu / Jaune', $result->name);
+        self::assertSame('La liste', $result->description);
+        self::assertSame('box', $result->displayTemplate);
+        self::assertSame('(p.bankable or p.bankableish) and ba?.redgreenblueyellow', $result->selectionRule);
+        self::assertSame('20230221.085100', $result->version);
+        self::assertTrue($result->flags->isDisplayForm);
+        self::assertSame('Kanto (fr)', $result->region?->name);
+    }
+
+    #[Test]
+    public function localizedFromSqlRowWithoutRegion(): void
+    {
+        $row = $this->getRedGreenBlueYellowRow() + [
+            'localized_name' => 'Rouge',
+            'localized_description' => 'La liste',
+            'region_localized_name' => null,
+        ];
+        $row['region_name'] = null;
+
+        self::assertNull(AlbumDexResponseFactory::localizedFromSqlRow($row)->region);
+    }
+
     /**
      * @return array<string, mixed>
      */

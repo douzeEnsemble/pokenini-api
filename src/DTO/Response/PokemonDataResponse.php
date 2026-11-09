@@ -13,7 +13,7 @@ final class PokemonDataResponse
      */
     public function __construct(
         public readonly string $slug,
-        public readonly PokemonLabelsResponse $labels,
+        public readonly LocalizedPokemonLabelsResponse|PokemonLabelsResponse $labels,
         #[SerializedName('national_dex_number')]
         public readonly int $nationalDexNumber,
         #[SerializedName('regional_dex_number')]

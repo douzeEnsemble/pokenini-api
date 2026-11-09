@@ -41,4 +41,13 @@ final class LocalizedNameTest extends TestCase
             LocalizedName::parameters('fr', 'en'),
         );
     }
+
+    #[Test]
+    public function sqlOfAnotherColumn(): void
+    {
+        $this->assertSame(
+            "COALESCE(NULLIF(p.forms_labels ->> :locale, ''), NULLIF(p.forms_labels ->> :fallback_locale, ''), p.forms_label)",
+            LocalizedName::sql('p', 'forms_labels', 'forms_label'),
+        );
+    }
 }

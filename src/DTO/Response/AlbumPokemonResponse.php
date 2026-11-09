@@ -11,7 +11,7 @@ final class AlbumPokemonResponse
     public function __construct(
         public readonly PokemonDataResponse $pokemon,
         #[SerializedName('catch_state')]
-        public readonly ?AlbumCatchStateResponse $catchState,
+        public readonly AlbumCatchStateResponse|LocalizedAlbumCatchStateResponse|null $catchState,
         public readonly ?AlbumFormsResponse $forms,
         public readonly AlbumTypesResponse $types,
     ) {}

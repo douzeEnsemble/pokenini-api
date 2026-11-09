@@ -19,6 +19,7 @@ final class Statistic
         public string $color,
         #[SerializedName('count')]
         public int $count = 0,
+        public string $localizedName = '',
     ) {}
 
     public function increment(): int

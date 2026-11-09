@@ -6,7 +6,9 @@ namespace App\Controller;
 
 use App\DTO\AlbumFilter\AlbumFilters;
 use App\DTO\AlbumFilter\AlbumFiltersRequest;
+use App\DTO\Response\AlbumDexResponse;
 use App\DTO\Response\AlbumIndexResponse;
+use App\DTO\Response\LocalizedAlbumDexResponse;
 use App\Factory\AlbumDexResponseFactory;
 use App\Factory\AlbumIndexResponseFactory;
 use App\Factory\AlbumPokemonResponseFactory;
@@ -19,9 +21,20 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Attribute\Serialize;
 use Symfony\Component\Routing\Attribute\Route;
 
+/**
+ * @SuppressWarnings("PHPMD.CouplingBetweenObjects")
+ */
 #[Route('/album')]
 final class AlbumIndexController extends AbstractController
 {
+    use LangQueryTrait;
+
+    /**
+     * Without "lang", the names are in English and in French (legacy shape). With "lang", the names of the
+     * Pokémon are in every language and the others in that language.
+     *
+     * @param string[] $locales
+     */
     #[Route(path: '/{trainerExternalId}/{dexSlug}', methods: ['GET'])]
     #[Serialize]
     public function index(
@@ -31,33 +44,60 @@ final class AlbumIndexController extends AbstractController
         string $trainerExternalId,
         string $dexSlug,
         Request $request,
+        array $locales,
     ): AlbumIndexResponse {
+        $lang = $this->getLang($request, $locales);
+        $localized = null !== $lang;
+
         $albumsFilters = AlbumFiltersRequest::albumFiltersFromRequest($request);
 
         $pokemons = $albumPokemonService->get(
             $trainerExternalId,
             $dexSlug,
-            $albumsFilters
+            $albumsFilters,
+            $lang,
         );
 
         $report = $albumReportService->get(
             $trainerExternalId,
             $dexSlug,
-            AlbumFilters::createFromArray([])
+            AlbumFilters::createFromArray([]),
+            $lang,
         );
         $filteredReport = $albumReportService->get(
             $trainerExternalId,
             $dexSlug,
-            $albumsFilters
+            $albumsFilters,
+            $lang,
         );
 
-        $dex = $albumDexService->get($trainerExternalId, $dexSlug);
+        $dex = $albumDexService->get($trainerExternalId, $dexSlug, $lang);
 
         return AlbumIndexResponseFactory::fromParts(
-            dex: empty($dex) ? null : AlbumDexResponseFactory::fromSqlRow($dex),
-            pokemons: AlbumPokemonResponseFactory::fromSqlRows($pokemons),
-            report: AlbumReportResponseFactory::fromReport($report),
-            filteredReport: AlbumReportResponseFactory::fromReport($filteredReport),
+            dex: self::buildDex($dex, $localized),
+            pokemons: $localized
+                ? AlbumPokemonResponseFactory::localizedFromSqlRows($pokemons)
+                : AlbumPokemonResponseFactory::fromSqlRows($pokemons),
+            report: $localized
+                ? AlbumReportResponseFactory::localizedFromReport($report)
+                : AlbumReportResponseFactory::fromReport($report),
+            filteredReport: $localized
+                ? AlbumReportResponseFactory::localizedFromReport($filteredReport)
+                : AlbumReportResponseFactory::fromReport($filteredReport),
         );
+    }
+
+    /**
+     * @param bool[]|string[] $dex
+     */
+    private static function buildDex(array $dex, bool $localized): AlbumDexResponse|LocalizedAlbumDexResponse|null
+    {
+        if ([] === $dex) {
+            return null;
+        }
+
+        return $localized
+            ? AlbumDexResponseFactory::localizedFromSqlRow($dex)
+            : AlbumDexResponseFactory::fromSqlRow($dex);
     }
 }

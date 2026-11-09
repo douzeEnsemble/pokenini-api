@@ -12,7 +12,7 @@ final class AlbumIndexResponse
      * @param AlbumPokemonResponse[] $pokemons
      */
     public function __construct(
-        public readonly ?AlbumDexResponse $dex,
+        public readonly AlbumDexResponse|LocalizedAlbumDexResponse|null $dex,
         public readonly array $pokemons,
         public readonly AlbumReportResponse $report,
         #[SerializedName('filtered_report')]

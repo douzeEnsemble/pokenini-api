@@ -9,6 +9,7 @@ use App\DTO\Response\ElectionEloScoreResponse;
 use App\DTO\Response\FormResponse;
 use App\DTO\Response\FormsResponse;
 use App\DTO\Response\GameBundleSlugResponse;
+use App\DTO\Response\PokemonLabelsResponse;
 use App\DTO\Response\PokemonSlugResponse;
 use App\Factory\ElectionEloResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
@@ -70,6 +71,7 @@ final class ElectionEloResponseFactoryTest extends TestCase
         self::assertSame(1200.5, $response->score->elo);
         self::assertTrue($response->score->significance);
         self::assertSame('pikachu', $response->pokemon->slug);
+        self::assertInstanceOf(PokemonLabelsResponse::class, $response->pokemon->labels);
         self::assertSame('Pikachu', $response->pokemon->labels->name);
         self::assertNull($response->forms);
         self::assertNotNull($response->types->primary);
@@ -343,6 +345,7 @@ final class ElectionEloResponseFactoryTest extends TestCase
 
         $response = ElectionEloResponseFactory::fromSqlRow($row);
 
+        self::assertInstanceOf(PokemonLabelsResponse::class, $response->pokemon->labels);
         self::assertSame('133', $response->pokemon->labels->simplifiedName);
         self::assertSame('42', $response->pokemon->labels->formsLabel);
         self::assertSame('1', $response->pokemon->labels->simplifiedFrenchName);

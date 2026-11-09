@@ -34,6 +34,8 @@ class PokedexRepository extends ServiceEntityRepository
         string $trainerExternalId,
         string $dexSlug,
         AlbumFilters $filters,
+        string $locale = 'en',
+        string $fallbackLocale = 'en',
     ): array {
         $where = "COALESCE(NULLIF(td.slug, ''), d.slug) = :dex_slug "
             .$this->getFiltersQuery($filters);
@@ -47,6 +49,7 @@ class PokedexRepository extends ServiceEntityRepository
                 'pokemon_availabilities_game_bundle_category' => PokemonAvailabilities::CATEGORY_GAME_BUNDLE,
                 'pokemon_availabilities_game_bundle_shiny_category' => PokemonAvailabilities::CATEGORY_GAME_BUNDLE_SHINY,
             ],
+            LocalizedName::parameters($locale, $fallbackLocale),
             $this->getFiltersParameters($filters),
         );
 
@@ -56,6 +59,8 @@ class PokedexRepository extends ServiceEntityRepository
                 'dex_slug' => ParameterType::STRING,
                 'pokemon_availabilities_game_bundle_category' => ParameterType::STRING,
                 'pokemon_availabilities_game_bundle_shiny_category' => ParameterType::STRING,
+                'locale' => ParameterType::STRING,
+                'fallback_locale' => ParameterType::STRING,
             ],
             $this->getFiltersTypes(),
         );
@@ -75,12 +80,16 @@ class PokedexRepository extends ServiceEntityRepository
         string $trainerExternalId,
         string $dexSlug,
         AlbumFilters $filters,
+        string $locale = 'en',
+        string $fallbackLocale = 'en',
     ): array {
         $where = 'td.slug = :dex_slug '.$this->getFiltersQuery($filters);
+        $localizedName = LocalizedName::sql('cs');
 
         $sql = <<<SQL
             SELECT  COUNT(dex_availability_id) AS count,
-                    cs.slug AS slug, cs.name AS name, cs.french_name AS french_name, cs.color AS color
+                    cs.slug AS slug, cs.name AS name, cs.french_name AS french_name, cs.color AS color,
+                    {$localizedName} AS localized_name
             FROM    catch_state AS cs
                     LEFT JOIN (
                     SELECT  da.id AS dex_availability_id,
@@ -122,7 +131,7 @@ class PokedexRepository extends ServiceEntityRepository
                 ) AS t
                         ON cs.id = t.catch_state_id
             WHERE   cs.deleted_at IS NULL
-            GROUP BY cs.slug, cs.name, cs.french_name, cs.color, cs.order_number
+            GROUP BY cs.slug, cs.name, cs.french_name, cs.color, cs.names, cs.order_number
             ORDER BY cs.order_number
             SQL;
 
@@ -131,6 +140,7 @@ class PokedexRepository extends ServiceEntityRepository
                 'trainer_external_id' => $trainerExternalId,
                 'dex_slug' => $dexSlug,
             ],
+            LocalizedName::parameters($locale, $fallbackLocale),
             $this->getFiltersParameters($filters),
         );
 
@@ -138,6 +148,8 @@ class PokedexRepository extends ServiceEntityRepository
             [
                 'trainer_external_id' => ParameterType::STRING,
                 'dex_slug' => ParameterType::STRING,
+                'locale' => ParameterType::STRING,
+                'fallback_locale' => ParameterType::STRING,
             ],
             $this->getFiltersTypes(),
         );
@@ -380,6 +392,15 @@ class PokedexRepository extends ServiceEntityRepository
 
     private function getListQuerySQL(string $where): string
     {
+        $formsLabel = LocalizedName::sql('p', 'forms_labels', 'forms_label');
+        $categoryForm = LocalizedName::sql('cf');
+        $regionalForm = LocalizedName::sql('rf');
+        $specialForm = LocalizedName::sql('sf');
+        $variantForm = LocalizedName::sql('vf');
+        $catchState = LocalizedName::sql('cs');
+        $primaryType = LocalizedName::sql('pt');
+        $secondaryType = LocalizedName::sql('st');
+
         return <<<SQL
             SELECT  p.slug AS pokemon_slug,
                     p.name AS pokemon_name,
@@ -389,33 +410,43 @@ class PokedexRepository extends ServiceEntityRepository
                     p.french_name AS pokemon_french_name,
                     p.simplified_french_name AS pokemon_simplified_french_name,
                     p.forms_french_label AS pokemon_forms_french_label,
+                    p.names AS pokemon_names,
+                    p.simplified_names AS pokemon_simplified_names,
+                    {$formsLabel} AS pokemon_localized_forms_label,
                     p.icon_name AS pokemon_icon,
                     p.family_order AS pokemon_family_order,
                     pp.slug AS family_lead_slug,
                     cf.slug as category_form_slug,
                     cf.name as category_form_name,
                     cf.french_name as category_form_french_name,
+                    {$categoryForm} AS category_form_localized_name,
                     rf.slug as regional_form_slug,
                     rf.name as regional_form_name,
                     rf.french_name as regional_form_french_name,
+                    {$regionalForm} AS regional_form_localized_name,
                     sf.slug as special_form_slug,
                     sf.name as special_form_name,
                     sf.french_name as special_form_french_name,
+                    {$specialForm} AS special_form_localized_name,
                     vf.slug as variant_form_slug,
                     vf.name as variant_form_name,
                     vf.french_name as variant_form_french_name,
+                    {$variantForm} AS variant_form_localized_name,
                     cs.slug AS catch_state_slug,
                     cs.name AS catch_state_name,
                     cs.french_name AS catch_state_french_name,
+                    {$catchState} AS catch_state_localized_name,
                     cs.color AS catch_state_color,
                     rdn.dex_number AS pokemon_regional_dex_number,
                     pt.slug AS primary_type_slug,
                     pt.name AS primary_type_name,
                     pt.french_name AS primary_type_french_name,
+                    {$primaryType} AS primary_type_localized_name,
                     pt.color AS primary_type_color,
                     st.slug AS secondary_type_slug,
                     st.name AS secondary_type_name,
                     st.french_name AS secondary_type_french_name,
+                    {$secondaryType} AS secondary_type_localized_name,
                     st.color AS secondary_type_color,
                     ogb.slug AS original_game_bundle_slug,
                     pagb.items AS game_bundle_slugs,
