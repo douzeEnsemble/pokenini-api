@@ -93,6 +93,26 @@ final class GameLocalizedColumns
     }
 
     /**
+     * The names of the colours of a colour set, from the table "pokemon_color_set" aliased "pcs".
+     */
+    public static function colorSet(?string $locale): string
+    {
+        if (null === $locale) {
+            return <<<'SQL'
+                pcs.names AS "names",
+                pcs.french_names AS "french_names"
+                SQL;
+        }
+
+        $names = LocalizedName::sql('pcs', 'localized_names', 'names');
+
+        return <<<SQL
+            {$names} AS "names",
+            NULL AS "french_names"
+            SQL;
+    }
+
+    /**
      * The parameters of the localized columns, none for the columns in both languages.
      *
      * @return array<string, string>

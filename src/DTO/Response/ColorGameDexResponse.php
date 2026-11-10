@@ -15,7 +15,7 @@ final class ColorGameDexResponse
         public readonly string $slug,
         public readonly string $name,
         #[SerializedName('french_name')]
-        public readonly string $frenchName,
+        public readonly ?string $frenchName,
         #[SerializedName('is_shiny')]
         public readonly bool $isShiny,
         #[SerializedName('is_released')]
@@ -24,7 +24,7 @@ final class ColorGameDexResponse
         public readonly bool $isPremium,
         public readonly string $description,
         #[SerializedName('french_description')]
-        public readonly string $frenchDescription,
+        public readonly ?string $frenchDescription,
         #[SerializedName('playable_count')]
         public readonly int $playableCount,
         #[SerializedName('current_game')]

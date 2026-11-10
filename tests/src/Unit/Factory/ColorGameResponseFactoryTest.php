@@ -354,6 +354,61 @@ final class ColorGameResponseFactoryTest extends TestCase
         $this->assertSame('completed', $response->game->status);
     }
 
+    #[Test]
+    public function fromStateInASingleLanguage(): void
+    {
+        $response = ColorGameResponseFactory::fromState([
+            'game' => array_merge($this->getGameRow(), ['dex_name' => 'Démo', 'dex_french_name' => null]),
+            'round' => [
+                'position' => '4',
+                'choices_order' => '2,1',
+                'chosen_choice' => null,
+                'is_correct' => null,
+                'pokemon_id' => 'p1',
+                'pokemon_slug' => 'raichu-alola',
+                'pokemon_name' => 'Raichu d\'Alola',
+                'pokemon_french_name' => null,
+                'pokemon_simplified_name' => 'Raichu',
+                'pokemon_simplified_french_name' => null,
+                'pokemon_forms_label' => 'Alola',
+                'pokemon_forms_french_label' => null,
+                'pokemon_national_dex_number' => '26',
+                'pokemon_icon' => 'raichu-alola',
+            ],
+            'color_sets' => [
+                ['position' => '1', 'codes' => '#F0B030;#FFFFFF', 'names' => 'orange;blanc', 'french_names' => null],
+                ['position' => '2', 'codes' => '#3080F0', 'names' => 'bleu', 'french_names' => null],
+            ],
+        ]);
+
+        $this->assertSame('Démo', $response->game->dex->name);
+        $this->assertNull($response->game->dex->frenchName);
+        $this->assertNotNull($response->round);
+        $this->assertNull($response->round->pokemon->frenchName);
+        $this->assertNull($response->round->pokemon->simplifiedFrenchName);
+        $this->assertNull($response->round->pokemon->formsFrenchLabel);
+        $this->assertEquals(
+            [
+                new ColorGameChoiceResponse(index: 0, codes: ['#3080F0'], names: ['bleu'], frenchNames: null),
+                new ColorGameChoiceResponse(index: 1, codes: ['#F0B030', '#FFFFFF'], names: ['orange', 'blanc'], frenchNames: null),
+            ],
+            $response->round->choices,
+        );
+    }
+
+    #[Test]
+    public function fromDexRowsInASingleLanguage(): void
+    {
+        $responses = ColorGameResponseFactory::fromDexRows(
+            [array_merge($this->getDexRow('demo'), ['french_name' => null, 'french_description' => null])],
+            [],
+        );
+
+        $this->assertNull($responses[0]->frenchName);
+        $this->assertNull($responses[0]->frenchDescription);
+        $this->assertSame('Name demo', $responses[0]->name);
+    }
+
     /**
      * @return array<string, mixed>
      */

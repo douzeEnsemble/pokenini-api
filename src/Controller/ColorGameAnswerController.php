@@ -22,8 +22,14 @@ use Symfony\Component\Routing\Requirement\Requirement;
 #[Route('/color_game/{trainerExternalId}/games')]
 final class ColorGameAnswerController extends AbstractController
 {
+    use LangQueryTrait;
+
+    /**
+     * @param string[] $locales the enabled locales
+     */
     public function __construct(
         private readonly ColorGameService $colorGameService,
+        private readonly array $locales,
     ) {}
 
     #[Route(path: '/{gameId}/answers', requirements: ['gameId' => Requirement::UUID], methods: ['POST'])]
@@ -36,7 +42,7 @@ final class ColorGameAnswerController extends AbstractController
         try {
             $answer = new ColorGameAnswer($request->toArray());
 
-            $result = $this->colorGameService->answer($trainerExternalId, $gameId, $answer);
+            $result = $this->colorGameService->answer($trainerExternalId, $gameId, $answer, $this->getLang($request, $this->locales));
         } catch (\InvalidArgumentException $e) {
             throw new BadRequestHttpException($e->getMessage(), $e);
         } catch (ColorGameNotFoundException $e) {
