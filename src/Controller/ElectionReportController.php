@@ -19,8 +19,14 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/election')]
 final class ElectionReportController extends AbstractController
 {
+    use LangQueryTrait;
+
+    /**
+     * @param string[] $locales the enabled locales
+     */
     public function __construct(
         private readonly ElectionReportService $electionReportService,
+        private readonly array $locales,
     ) {}
 
     /** @return DexResponse[] */
@@ -40,7 +46,9 @@ final class ElectionReportController extends AbstractController
             'count' => $request->query->get('count', 5),
         ]);
 
-        $dexRows = $this->electionReportService->getEligibleDex($dexQueryOptions);
+        $lang = $this->getLang($request, $this->locales);
+
+        $dexRows = $this->electionReportService->getEligibleDex($dexQueryOptions, $lang);
 
         $dexSlugs = array_map(static function (array $row): string {
             /** @var scalar $slug */
@@ -54,9 +62,10 @@ final class ElectionReportController extends AbstractController
             $dexSlugs,
             $reportQueryOptions->electionSlug,
             $reportQueryOptions->count,
+            $lang,
         );
 
-        return DexResponseFactory::fromSqlRows($dexRows, $reports);
+        return DexResponseFactory::fromSqlRows($dexRows, $reports, null !== $lang);
     }
 
     #[Route(path: '/{trainerExternalId}/{dexSlug}', methods: ['GET'])]
@@ -71,13 +80,16 @@ final class ElectionReportController extends AbstractController
             'count' => $request->query->get('count', 5),
         ]);
 
+        $lang = $this->getLang($request, $this->locales);
+
         $report = $this->electionReportService->get(
             $trainerExternalId,
             $dexSlug,
             $reportQueryOptions->electionSlug,
             $reportQueryOptions->count,
+            $lang,
         );
 
-        return ElectionReportResponseFactory::fromReport($report);
+        return ElectionReportResponseFactory::fromReport($report, null !== $lang);
     }
 }

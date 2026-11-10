@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Factory;
 
 use App\DTO\ElectionReport\Report;
+use App\DTO\Response\LocalizedPokemonLabelsResponse;
 use App\Factory\ElectionReportResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -105,5 +106,42 @@ final class ElectionReportResponseFactoryTest extends TestCase
         $response = ElectionReportResponseFactory::fromReport($report);
 
         $this->assertSame([], $response->top);
+    }
+
+    #[Test]
+    public function fromReportInALanguage(): void
+    {
+        $row = [
+            'elo' => 1200.5,
+            'significance' => true,
+            'pokemon_slug' => 'pikachu',
+            'pokemon_name' => 'Pikachu',
+            'pokemon_french_name' => 'Pikachu',
+            'pokemon_national_dex_number' => 25,
+            'pokemon_icon' => 'pikachu.png',
+            'pokemon_family_order' => 1,
+            'pokemon_order_number' => '9999-0025-001',
+            'pokemon_names' => '{"en": "Pikachu", "fr": "Pikachu"}',
+            'pokemon_simplified_names' => '{"en": "Pikachu", "fr": "Pikachu"}',
+            'pokemon_localized_forms_label' => null,
+            'primary_type_slug' => 'electric',
+            'primary_type_name' => 'Electric',
+            'primary_type_french_name' => 'Électrique',
+            'primary_type_localized_name' => 'Électrique',
+            'primary_type_color' => '#FFCC33',
+        ];
+        $metrics = [
+            'view_count_sum' => 0,
+            'win_count_sum' => 0,
+            'view_count_max' => 0,
+            'win_count_max' => 0,
+            'under_max_view_count' => 0,
+            'max_view_count' => 0,
+            'dex_total_count' => 0,
+        ];
+
+        $response = ElectionReportResponseFactory::fromReport(new Report([$row], $metrics), true);
+
+        self::assertInstanceOf(LocalizedPokemonLabelsResponse::class, $response->top[0]->pokemon->labels);
     }
 }

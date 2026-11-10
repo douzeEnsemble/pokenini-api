@@ -31,7 +31,7 @@ final class GetNPokemonsToChooseServiceTest extends TestCase
         $toPickService = $this->createMock(GetNPokemonsToPickService::class);
         $toPickService->expects($this->once())
             ->method('getNPokemonsToPick')
-            ->with($queryOptions)
+            ->with($queryOptions, 'fr')
             ->willReturn(
                 [
                     ['pokemon_slug' => 'toto'],
@@ -50,7 +50,7 @@ final class GetNPokemonsToChooseServiceTest extends TestCase
             $toVoteService,
         );
 
-        $electionList = $service->getNPokemonsToChoose($queryOptions);
+        $electionList = $service->getNPokemonsToChoose($queryOptions, 'fr');
 
         $this->assertSame('pick', $electionList->getListType());
         $this->assertSame(
@@ -75,14 +75,14 @@ final class GetNPokemonsToChooseServiceTest extends TestCase
         $toPickService = $this->createMock(GetNPokemonsToPickService::class);
         $toPickService->expects($this->once())
             ->method('getNPokemonsToPick')
-            ->with($queryOptions)
+            ->with($queryOptions, 'fr')
             ->willReturn([])
         ;
 
         $toVoteService = $this->createMock(GetNPokemonsToVoteService::class);
         $toVoteService->expects($this->once())
             ->method('getNPokemonsToVote')
-            ->with($queryOptions)
+            ->with($queryOptions, 'fr')
             ->willReturn(
                 [
                     ['pokemon_slug' => 'tata'],
@@ -96,7 +96,7 @@ final class GetNPokemonsToChooseServiceTest extends TestCase
             $toVoteService,
         );
 
-        $electionList = $service->getNPokemonsToChoose($queryOptions);
+        $electionList = $service->getNPokemonsToChoose($queryOptions, 'fr');
 
         $this->assertSame('vote', $electionList->getListType());
         $this->assertSame(

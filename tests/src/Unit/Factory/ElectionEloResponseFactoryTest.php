@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Factory;
 
+use App\DTO\Response\AlbumFormResponse;
+use App\DTO\Response\AlbumFormsResponse;
 use App\DTO\Response\ElectionEloResponse;
 use App\DTO\Response\ElectionEloScoreResponse;
-use App\DTO\Response\FormResponse;
-use App\DTO\Response\FormsResponse;
 use App\DTO\Response\GameBundleSlugResponse;
+use App\DTO\Response\LocalizedAlbumTypeResponse;
+use App\DTO\Response\LocalizedPokemonLabelsResponse;
 use App\DTO\Response\PokemonLabelsResponse;
 use App\DTO\Response\PokemonSlugResponse;
 use App\Factory\ElectionEloResponseFactory;
@@ -125,10 +127,10 @@ final class ElectionEloResponseFactoryTest extends TestCase
 
         $response = ElectionEloResponseFactory::fromSqlRow($row);
 
-        self::assertInstanceOf(FormsResponse::class, $response->forms);
+        self::assertInstanceOf(AlbumFormsResponse::class, $response->forms);
         self::assertNull($response->forms->category);
         self::assertNull($response->forms->regional);
-        self::assertInstanceOf(FormResponse::class, $response->forms->special);
+        self::assertInstanceOf(AlbumFormResponse::class, $response->forms->special);
         self::assertSame('heat', $response->forms->special->slug);
         self::assertSame('Heat', $response->forms->special->name);
         self::assertSame('Chaleur', $response->forms->special->frenchName);
@@ -404,9 +406,9 @@ final class ElectionEloResponseFactoryTest extends TestCase
 
         $response = ElectionEloResponseFactory::fromSqlRow($row);
 
-        self::assertInstanceOf(FormsResponse::class, $response->forms);
+        self::assertInstanceOf(AlbumFormsResponse::class, $response->forms);
         self::assertNull($response->forms->category);
-        self::assertInstanceOf(FormResponse::class, $response->forms->regional);
+        self::assertInstanceOf(AlbumFormResponse::class, $response->forms->regional);
         self::assertSame('alola', $response->forms->regional->slug);
         self::assertSame('Forme d\'Alola', $response->forms->regional->frenchName);
         self::assertNull($response->forms->special);
@@ -771,5 +773,40 @@ final class ElectionEloResponseFactoryTest extends TestCase
         $response = ElectionEloResponseFactory::fromSqlRow($row);
 
         self::assertNull($response->pokemon->bigShinyCredit);
+    }
+
+    #[Test]
+    public function fromSqlRowsInALanguage(): void
+    {
+        $row = [
+            'elo' => 1200.5,
+            'significance' => true,
+            'pokemon_slug' => 'pikachu',
+            'pokemon_name' => 'Pikachu',
+            'pokemon_french_name' => 'Pikachu',
+            'pokemon_national_dex_number' => 25,
+            'pokemon_icon' => 'pikachu.png',
+            'pokemon_family_order' => 1,
+            'pokemon_order_number' => '9999-0025-001',
+            'pokemon_names' => '{"en": "Pikachu", "fr": "Pikachu"}',
+            'pokemon_simplified_names' => '{"en": "Pikachu", "fr": "Pikachu"}',
+            'pokemon_localized_forms_label' => null,
+            'primary_type_slug' => 'electric',
+            'primary_type_name' => 'Electric',
+            'primary_type_french_name' => 'Électrique',
+            'primary_type_localized_name' => 'Électrique',
+            'primary_type_color' => '#FFCC33',
+        ];
+
+        $responses = ElectionEloResponseFactory::fromSqlRows([$row], true);
+
+        self::assertInstanceOf(LocalizedPokemonLabelsResponse::class, $responses[0]->pokemon->labels);
+        self::assertSame(['en' => 'Pikachu', 'fr' => 'Pikachu'], $responses[0]->pokemon->labels->names);
+        self::assertInstanceOf(LocalizedAlbumTypeResponse::class, $responses[0]->types->primary);
+        self::assertSame('Électrique', $responses[0]->types->primary->name);
+        self::assertSame(1200.5, $responses[0]->score->elo);
+
+        $legacy = ElectionEloResponseFactory::fromSqlRow($row);
+        self::assertInstanceOf(PokemonLabelsResponse::class, $legacy->pokemon->labels);
     }
 }

@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\DTO\Response;
 
+use App\DTO\Response\AlbumFormResponse;
+use App\DTO\Response\AlbumFormsResponse;
+use App\DTO\Response\AlbumTypeResponse;
+use App\DTO\Response\AlbumTypesResponse;
 use App\DTO\Response\ElectionEloResponse;
 use App\DTO\Response\ElectionEloScoreResponse;
-use App\DTO\Response\FormResponse;
-use App\DTO\Response\FormsResponse;
 use App\DTO\Response\GameBundlesGroupResponse;
 use App\DTO\Response\PokemonDataResponse;
 use App\DTO\Response\PokemonLabelsResponse;
-use App\DTO\Response\TypeResponse;
-use App\DTO\Response\TypesResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -27,8 +27,8 @@ final class ElectionEloResponseTest extends TestCase
     public function constructorInitializesProperties(): void
     {
         $pokemon = $this->makePokemon();
-        $forms = new FormsResponse(
-            category: new FormResponse('mega', 'Mega', ''),
+        $forms = new AlbumFormsResponse(
+            category: new AlbumFormResponse('mega', 'Mega', ''),
             regional: null,
             special: null,
             variant: null,
@@ -90,11 +90,11 @@ final class ElectionEloResponseTest extends TestCase
         );
     }
 
-    private function makeTypes(): TypesResponse
+    private function makeTypes(): AlbumTypesResponse
     {
-        return new TypesResponse(
-            primary: new TypeResponse('fire', 'Fire', 'Feu', '#FF4422'),
-            secondary: new TypeResponse('flying', 'Flying', 'Vol', '#89AADD'),
+        return new AlbumTypesResponse(
+            primary: new AlbumTypeResponse('fire', 'Fire', 'Feu', '#FF4422'),
+            secondary: new AlbumTypeResponse('flying', 'Flying', 'Vol', '#89AADD'),
         );
     }
 }

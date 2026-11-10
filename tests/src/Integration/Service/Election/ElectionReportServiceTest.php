@@ -147,4 +147,50 @@ final class ElectionReportServiceTest extends KernelTestCase
         $this->assertCount(5, $reports['home']->top);
         $this->assertCount(5, $reports['redgreenblueyellow']->top);
     }
+
+    #[Test]
+    public function getInALanguage(): void
+    {
+        $service = self::getContainer()->get(ElectionReportService::class);
+
+        $legacy = $service->get(self::TRAINER_U12, 'home', 'favorite', 5);
+        $french = $service->get(self::TRAINER_U12, 'home', 'favorite', 5, 'fr');
+
+        $this->assertNotEmpty($french->top);
+        $this->assertSame(array_column($legacy->top, 'pokemon_slug'), array_column($french->top, 'pokemon_slug'));
+        $this->assertSame(
+            array_column($legacy->top, 'pokemon_french_name'),
+            array_map(
+                static function (array $row): mixed {
+                    /** @var string $json */
+                    $json = $row['pokemon_names'];
+
+                    /** @var array<string, string> $names */
+                    $names = json_decode($json, true);
+
+                    return $names['fr'];
+                },
+                $french->top,
+            ),
+        );
+        $this->assertSame(
+            array_column($legacy->top, 'primary_type_french_name'),
+            array_column($french->top, 'primary_type_localized_name'),
+        );
+    }
+
+    #[Test]
+    public function getEligibleDexInALanguage(): void
+    {
+        $service = self::getContainer()->get(ElectionReportService::class);
+        $options = new DexQueryOptions(['include_unreleased_dex' => true, 'include_premium_dex' => true]);
+
+        $legacy = $service->getEligibleDex($options);
+        $french = $service->getEligibleDex($options, 'fr');
+
+        $this->assertNotEmpty($french);
+        $this->assertSame(array_column($legacy, 'french_name'), array_column($french, 'name'));
+        $this->assertSame(array_column($legacy, 'french_description'), array_column($french, 'description'));
+        $this->assertSame(array_fill(0, count($french), null), array_column($french, 'french_name'));
+    }
 }

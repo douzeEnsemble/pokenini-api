@@ -115,8 +115,10 @@ class DexRepository extends ServiceEntityRepository
     /**
      * @return array<array-key, array<string, mixed>>
      */
-    public function getCanHoldElection(DexQueryOptions $options): array
+    public function getCanHoldElection(DexQueryOptions $options, ?string $locale = null, string $fallbackLocale = 'en'): array
     {
+        $dexColumns = GameLocalizedColumns::playableDex($locale);
+
         $where = '';
 
         if (!$options->includeUnreleasedDex) {
@@ -130,8 +132,7 @@ class DexRepository extends ServiceEntityRepository
         $sql = <<<SQL
                 SELECT      d.slug AS "slug",
                             d.slug AS "original_slug",
-                            d.name AS "name",
-                            d.french_name AS "french_name",
+                            {$dexColumns},
                             d.is_shiny AS "is_shiny",
                             false AS "is_private",
                             false AS "is_on_home",
@@ -139,12 +140,8 @@ class DexRepository extends ServiceEntityRepository
                             d.is_released AS "is_released",
                             d.is_premium AS "is_premium",
                             false AS "is_custom",
-                            d.description AS "description",
-                            d.french_description AS "french_description",
                             COUNT(1) AS dex_total_count,
                             dc.slug AS "category_slug",
-                            dc.name AS "category_name",
-                            dc.french_name AS "category_french_name",
                             dc.order_number AS "category_order_number"
                 FROM        dex AS d
                     LEFT JOIN dex_availability AS da
@@ -156,11 +153,15 @@ class DexRepository extends ServiceEntityRepository
                             {$where}
                 GROUP BY    d.election_order_number, d.slug, d.name, d.french_name, d.is_shiny, d.is_display_form,
                             d.description, d.french_description, d.is_released, d.is_premium,
+                            d.names, d.descriptions, dc.names,
                             dc.slug, dc.name, dc.french_name, dc.order_number
                 ORDER BY    d.election_order_number ASC, d.slug ASC
             SQL;
 
         /** @var array<array-key, array<string, mixed>> */
-        return $this->getEntityManager()->getConnection()->fetchAllAssociative($sql, []);
+        return $this->getEntityManager()->getConnection()->fetchAllAssociative(
+            $sql,
+            GameLocalizedColumns::parameters($locale, $fallbackLocale),
+        );
     }
 }

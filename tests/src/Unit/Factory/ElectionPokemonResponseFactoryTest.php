@@ -5,13 +5,16 @@ declare(strict_types=1);
 namespace App\Tests\Unit\Factory;
 
 use App\DTO\ElectionPokemonsList;
+use App\DTO\Response\AlbumFormResponse;
+use App\DTO\Response\AlbumFormsResponse;
+use App\DTO\Response\AlbumTypeResponse;
 use App\DTO\Response\ElectionPokemonResponse;
-use App\DTO\Response\FormResponse;
-use App\DTO\Response\FormsResponse;
 use App\DTO\Response\GameBundleSlugResponse;
+use App\DTO\Response\LocalizedAlbumFormResponse;
+use App\DTO\Response\LocalizedAlbumTypeResponse;
+use App\DTO\Response\LocalizedPokemonLabelsResponse;
 use App\DTO\Response\PokemonLabelsResponse;
 use App\DTO\Response\PokemonSlugResponse;
-use App\DTO\Response\TypeResponse;
 use App\Factory\ElectionPokemonResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -98,8 +101,8 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertInstanceOf(FormsResponse::class, $response->forms);
-        self::assertInstanceOf(FormResponse::class, $response->forms->category);
+        self::assertInstanceOf(AlbumFormsResponse::class, $response->forms);
+        self::assertInstanceOf(AlbumFormResponse::class, $response->forms->category);
         self::assertSame('starter', $response->forms->category->slug);
         self::assertSame('Starter', $response->forms->category->name);
         self::assertSame('Partant', $response->forms->category->frenchName);
@@ -119,9 +122,9 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertInstanceOf(FormsResponse::class, $response->forms);
+        self::assertInstanceOf(AlbumFormsResponse::class, $response->forms);
         self::assertNull($response->forms->category);
-        self::assertInstanceOf(FormResponse::class, $response->forms->regional);
+        self::assertInstanceOf(AlbumFormResponse::class, $response->forms->regional);
         self::assertSame('alolan', $response->forms->regional->slug);
         self::assertSame('Alolan', $response->forms->regional->name);
         self::assertSame('Alolan FR', $response->forms->regional->frenchName);
@@ -140,10 +143,10 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertInstanceOf(FormsResponse::class, $response->forms);
+        self::assertInstanceOf(AlbumFormsResponse::class, $response->forms);
         self::assertNull($response->forms->category);
         self::assertNull($response->forms->regional);
-        self::assertInstanceOf(FormResponse::class, $response->forms->special);
+        self::assertInstanceOf(AlbumFormResponse::class, $response->forms->special);
         self::assertSame('mega', $response->forms->special->slug);
         self::assertSame('Mega', $response->forms->special->name);
         self::assertSame('Méga', $response->forms->special->frenchName);
@@ -161,11 +164,11 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertInstanceOf(FormsResponse::class, $response->forms);
+        self::assertInstanceOf(AlbumFormsResponse::class, $response->forms);
         self::assertNull($response->forms->category);
         self::assertNull($response->forms->regional);
         self::assertNull($response->forms->special);
-        self::assertInstanceOf(FormResponse::class, $response->forms->variant);
+        self::assertInstanceOf(AlbumFormResponse::class, $response->forms->variant);
         self::assertSame('shiny', $response->forms->variant->slug);
         self::assertSame('Shiny', $response->forms->variant->name);
         self::assertSame('Chromatique', $response->forms->variant->frenchName);
@@ -178,7 +181,7 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertInstanceOf(TypeResponse::class, $response->types->primary);
+        self::assertInstanceOf(AlbumTypeResponse::class, $response->types->primary);
         self::assertSame('grass', $response->types->primary->slug);
         self::assertSame('Grass', $response->types->primary->name);
         self::assertSame('Plante', $response->types->primary->frenchName);
@@ -198,7 +201,7 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
 
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
-        self::assertInstanceOf(TypeResponse::class, $response->types->secondary);
+        self::assertInstanceOf(AlbumTypeResponse::class, $response->types->secondary);
         self::assertSame('poison', $response->types->secondary->slug);
         self::assertSame('Poison', $response->types->secondary->name);
         self::assertSame('Poison', $response->types->secondary->frenchName);
@@ -460,6 +463,43 @@ final class ElectionPokemonResponseFactoryTest extends TestCase
         $response = ElectionPokemonResponseFactory::fromSqlRow($row);
 
         self::assertNull($response->pokemon->bigRegularCredit);
+    }
+
+    #[Test]
+    public function fromSqlRowInALanguage(): void
+    {
+        $row = $this->buildRow([
+            'pokemon_names' => '{"en": "Bulbasaur", "fr": "Bulbizarre"}',
+            'pokemon_simplified_names' => '{"en": "Bulbasaur", "fr": "Bulbizarre"}',
+            'pokemon_localized_forms_label' => 'Forme',
+            'primary_type_localized_name' => 'Plante',
+            'category_form_slug' => 'starter',
+            'category_form_localized_name' => 'Départ',
+        ]);
+
+        $response = ElectionPokemonResponseFactory::fromSqlRow($row, true);
+
+        self::assertInstanceOf(LocalizedPokemonLabelsResponse::class, $response->pokemon->labels);
+        self::assertSame(['en' => 'Bulbasaur', 'fr' => 'Bulbizarre'], $response->pokemon->labels->names);
+        self::assertSame('Forme', $response->pokemon->labels->formsLabel);
+        self::assertInstanceOf(LocalizedAlbumTypeResponse::class, $response->types->primary);
+        self::assertSame('Plante', $response->types->primary->name);
+        self::assertNotNull($response->forms);
+        self::assertInstanceOf(LocalizedAlbumFormResponse::class, $response->forms->category);
+        self::assertSame('Départ', $response->forms->category->name);
+    }
+
+    #[Test]
+    public function fromSqlRowsAndListInALanguage(): void
+    {
+        $row = $this->buildRow(['pokemon_names' => '{"fr": "Bulbizarre"}', 'primary_type_localized_name' => 'Plante']);
+
+        $rows = ElectionPokemonResponseFactory::fromSqlRows([$row], true);
+        $list = ElectionPokemonResponseFactory::fromElectionPokemonsList(new ElectionPokemonsList('pick', [$row]), true);
+
+        self::assertInstanceOf(LocalizedPokemonLabelsResponse::class, $rows[0]->pokemon->labels);
+        self::assertInstanceOf(LocalizedPokemonLabelsResponse::class, $list->items[0]->pokemon->labels);
+        self::assertSame('pick', $list->type);
     }
 
     /**

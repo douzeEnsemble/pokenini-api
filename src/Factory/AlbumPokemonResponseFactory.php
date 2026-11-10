@@ -67,20 +67,7 @@ final class AlbumPokemonResponseFactory
     /**
      * @param array<string, mixed> $row
      */
-    private static function build(array $row, bool $localized): AlbumPokemonResponse
-    {
-        return new AlbumPokemonResponse(
-            pokemon: self::buildPokemon($row, $localized),
-            catchState: self::buildCatchState($row, $localized),
-            forms: self::buildForms($row, $localized),
-            types: self::buildTypes($row, $localized),
-        );
-    }
-
-    /**
-     * @param array<string, mixed> $row
-     */
-    private static function buildPokemon(array $row, bool $localized): PokemonDataResponse
+    public static function buildPokemon(array $row, bool $localized): PokemonDataResponse
     {
         /** @var scalar $slug */
         $slug = $row['pokemon_slug'];
@@ -183,6 +170,52 @@ final class AlbumPokemonResponseFactory
     /**
      * @param array<string, mixed> $row
      */
+    public static function buildForms(array $row, bool $localized): ?AlbumFormsResponse
+    {
+        $hasAnyForm = !empty($row['category_form_slug'])
+            || !empty($row['regional_form_slug'])
+            || !empty($row['special_form_slug'])
+            || !empty($row['variant_form_slug']);
+
+        if (!$hasAnyForm) {
+            return null;
+        }
+
+        return new AlbumFormsResponse(
+            category: self::buildForm('category_form', $row, $localized),
+            regional: self::buildForm('regional_form', $row, $localized),
+            special: self::buildForm('special_form', $row, $localized),
+            variant: self::buildForm('variant_form', $row, $localized),
+        );
+    }
+
+    /**
+     * @param array<string, mixed> $row
+     */
+    public static function buildTypes(array $row, bool $localized): AlbumTypesResponse
+    {
+        return new AlbumTypesResponse(
+            primary: self::buildType('primary_type', $row, $localized),
+            secondary: self::buildType('secondary_type', $row, $localized),
+        );
+    }
+
+    /**
+     * @param array<string, mixed> $row
+     */
+    private static function build(array $row, bool $localized): AlbumPokemonResponse
+    {
+        return new AlbumPokemonResponse(
+            pokemon: self::buildPokemon($row, $localized),
+            catchState: self::buildCatchState($row, $localized),
+            forms: self::buildForms($row, $localized),
+            types: self::buildTypes($row, $localized),
+        );
+    }
+
+    /**
+     * @param array<string, mixed> $row
+     */
     private static function buildLocalizedLabels(array $row): LocalizedPokemonLabelsResponse
     {
         /** @var null|scalar $formsLabel */
@@ -279,28 +312,6 @@ final class AlbumPokemonResponseFactory
     /**
      * @param array<string, mixed> $row
      */
-    private static function buildForms(array $row, bool $localized): ?AlbumFormsResponse
-    {
-        $hasAnyForm = !empty($row['category_form_slug'])
-            || !empty($row['regional_form_slug'])
-            || !empty($row['special_form_slug'])
-            || !empty($row['variant_form_slug']);
-
-        if (!$hasAnyForm) {
-            return null;
-        }
-
-        return new AlbumFormsResponse(
-            category: self::buildForm('category_form', $row, $localized),
-            regional: self::buildForm('regional_form', $row, $localized),
-            special: self::buildForm('special_form', $row, $localized),
-            variant: self::buildForm('variant_form', $row, $localized),
-        );
-    }
-
-    /**
-     * @param array<string, mixed> $row
-     */
     private static function buildForm(string $prefix, array $row, bool $localized): AlbumFormResponse|LocalizedAlbumFormResponse|null
     {
         $slugKey = "{$prefix}_slug";
@@ -331,17 +342,6 @@ final class AlbumPokemonResponseFactory
             slug: (string) $slug,
             name: (string) $name,
             frenchName: (string) $frenchName,
-        );
-    }
-
-    /**
-     * @param array<string, mixed> $row
-     */
-    private static function buildTypes(array $row, bool $localized): AlbumTypesResponse
-    {
-        return new AlbumTypesResponse(
-            primary: self::buildType('primary_type', $row, $localized),
-            secondary: self::buildType('secondary_type', $row, $localized),
         );
     }
 

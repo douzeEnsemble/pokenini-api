@@ -135,6 +135,8 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
         string $dexSlug,
         string $electionSlug,
         int $count,
+        string $locale = 'en',
+        string $fallbackLocale = 'en',
     ): array {
         $sql = $this->sqlFileLoader->load('trainer_pokemon_elo-get_top_n.sql');
 
@@ -145,7 +147,7 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             'count' => $count,
             'pokemon_availabilities_game_bundle_category' => PokemonAvailabilities::CATEGORY_GAME_BUNDLE,
             'pokemon_availabilities_game_bundle_shiny_category' => PokemonAvailabilities::CATEGORY_GAME_BUNDLE_SHINY,
-        ];
+        ] + LocalizedName::parameters($locale, $fallbackLocale);
 
         $types = [
             'trainer_external_id' => ParameterType::STRING,
@@ -154,6 +156,8 @@ class TrainerPokemonEloRepository extends ServiceEntityRepository
             'count' => ParameterType::INTEGER,
             'pokemon_availabilities_game_bundle_category' => ParameterType::STRING,
             'pokemon_availabilities_game_bundle_shiny_category' => ParameterType::STRING,
+            'locale' => ParameterType::STRING,
+            'fallback_locale' => ParameterType::STRING,
         ];
 
         /** @var array<array-key, array<string, mixed>> */
