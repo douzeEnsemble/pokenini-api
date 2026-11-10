@@ -14,9 +14,12 @@ class GetNPokemonsToChooseService
         private readonly GetNPokemonsToVoteService $toVoteService,
     ) {}
 
-    public function getNPokemonsToChoose(TrainerPokemonEloListQueryOptions $queryOptions): ElectionPokemonsList
+    /**
+     * @param null|string $locale the language of the names, null for the legacy ones (English and French)
+     */
+    public function getNPokemonsToChoose(TrainerPokemonEloListQueryOptions $queryOptions, ?string $locale = null): ElectionPokemonsList
     {
-        $toPick = $this->toPickService->getNPokemonsToPick($queryOptions);
+        $toPick = $this->toPickService->getNPokemonsToPick($queryOptions, $locale);
 
         if (!empty($toPick)) {
             return new ElectionPokemonsList('pick', $toPick);
@@ -24,7 +27,7 @@ class GetNPokemonsToChooseService
 
         return new ElectionPokemonsList(
             'vote',
-            $this->toVoteService->getNPokemonsToVote($queryOptions)
+            $this->toVoteService->getNPokemonsToVote($queryOptions, $locale)
         );
     }
 }

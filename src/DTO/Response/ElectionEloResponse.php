@@ -8,8 +8,8 @@ final class ElectionEloResponse
 {
     public function __construct(
         public readonly PokemonDataResponse $pokemon,
-        public readonly ?FormsResponse $forms,
-        public readonly TypesResponse $types,
+        public readonly ?AlbumFormsResponse $forms,
+        public readonly AlbumTypesResponse $types,
         public readonly ElectionEloScoreResponse $score,
     ) {}
 }

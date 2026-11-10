@@ -51,6 +51,8 @@ class PokemonsRepository extends ServiceEntityRepository
         string $electionSlug,
         AlbumFilters $filters,
         int $defaultElo,
+        string $locale = 'en',
+        string $fallbackLocale = 'en',
     ): array {
         $sql = $this->sqlFileLoader->load('pokemons-get_n_to_pick.sql');
         $sql = $this->replaceFilters($sql, $filters);
@@ -65,6 +67,7 @@ class PokemonsRepository extends ServiceEntityRepository
                 'pokemon_availabilities_game_bundle_category' => PokemonAvailabilities::CATEGORY_GAME_BUNDLE,
                 'pokemon_availabilities_game_bundle_shiny_category' => PokemonAvailabilities::CATEGORY_GAME_BUNDLE_SHINY,
             ],
+            LocalizedName::parameters($locale, $fallbackLocale),
             $this->getFiltersParameters($filters),
         );
 
@@ -77,6 +80,8 @@ class PokemonsRepository extends ServiceEntityRepository
                 'default_elo' => ParameterType::INTEGER,
                 'pokemon_availabilities_game_bundle_category' => ParameterType::STRING,
                 'pokemon_availabilities_game_bundle_shiny_category' => ParameterType::STRING,
+                'locale' => ParameterType::STRING,
+                'fallback_locale' => ParameterType::STRING,
             ],
             $this->getFiltersTypes(),
         );
@@ -99,6 +104,8 @@ class PokemonsRepository extends ServiceEntityRepository
         string $electionSlug,
         AlbumFilters $filters,
         int $defaultElo,
+        string $locale = 'en',
+        string $fallbackLocale = 'en',
     ): array {
         $sql = $this->sqlFileLoader->load('pokemons-get_n_to_vote.sql');
         $sql = $this->replaceFilters($sql, $filters);
@@ -113,6 +120,7 @@ class PokemonsRepository extends ServiceEntityRepository
                 'pokemon_availabilities_game_bundle_category' => PokemonAvailabilities::CATEGORY_GAME_BUNDLE,
                 'pokemon_availabilities_game_bundle_shiny_category' => PokemonAvailabilities::CATEGORY_GAME_BUNDLE_SHINY,
             ],
+            LocalizedName::parameters($locale, $fallbackLocale),
             $this->getFiltersParameters($filters),
         );
 
@@ -125,6 +133,8 @@ class PokemonsRepository extends ServiceEntityRepository
                 'default_elo' => ParameterType::INTEGER,
                 'pokemon_availabilities_game_bundle_category' => ParameterType::STRING,
                 'pokemon_availabilities_game_bundle_shiny_category' => ParameterType::STRING,
+                'locale' => ParameterType::STRING,
+                'fallback_locale' => ParameterType::STRING,
             ],
             $this->getFiltersTypes(),
         );

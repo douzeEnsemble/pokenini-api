@@ -4,16 +4,16 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\DTO\Response;
 
+use App\DTO\Response\AlbumFormResponse;
+use App\DTO\Response\AlbumFormsResponse;
+use App\DTO\Response\AlbumTypeResponse;
+use App\DTO\Response\AlbumTypesResponse;
 use App\DTO\Response\ElectionPokemonResponse;
-use App\DTO\Response\FormResponse;
-use App\DTO\Response\FormsResponse;
 use App\DTO\Response\GameBundlesGroupResponse;
 use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\PokemonDataResponse;
 use App\DTO\Response\PokemonLabelsResponse;
 use App\DTO\Response\PokemonSlugResponse;
-use App\DTO\Response\TypeResponse;
-use App\DTO\Response\TypesResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -28,15 +28,15 @@ final class ElectionPokemonResponseTest extends TestCase
     public function constructorInitializesAllProperties(): void
     {
         $pokemon = $this->buildPokemon();
-        $forms = new FormsResponse(
-            category: new FormResponse('starter', 'Starter', 'Partant'),
+        $forms = new AlbumFormsResponse(
+            category: new AlbumFormResponse('starter', 'Starter', 'Partant'),
             regional: null,
             special: null,
             variant: null,
         );
-        $types = new TypesResponse(
-            primary: new TypeResponse('grass', 'Grass', 'Plante', ''),
-            secondary: new TypeResponse('poison', 'Poison', 'Poison', ''),
+        $types = new AlbumTypesResponse(
+            primary: new AlbumTypeResponse('grass', 'Grass', 'Plante', ''),
+            secondary: new AlbumTypeResponse('poison', 'Poison', 'Poison', ''),
         );
 
         $response = new ElectionPokemonResponse(
@@ -54,8 +54,8 @@ final class ElectionPokemonResponseTest extends TestCase
     public function constructorAcceptsNullForms(): void
     {
         $pokemon = $this->buildPokemon();
-        $types = new TypesResponse(
-            primary: new TypeResponse('grass', 'Grass', 'Plante', ''),
+        $types = new AlbumTypesResponse(
+            primary: new AlbumTypeResponse('grass', 'Grass', 'Plante', ''),
             secondary: null,
         );
 

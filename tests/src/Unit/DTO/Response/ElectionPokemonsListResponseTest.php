@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\DTO\Response;
 
+use App\DTO\Response\AlbumTypesResponse;
 use App\DTO\Response\ElectionPokemonResponse;
 use App\DTO\Response\ElectionPokemonsListResponse;
 use App\DTO\Response\GameBundlesGroupResponse;
@@ -11,7 +12,6 @@ use App\DTO\Response\GameBundleSlugResponse;
 use App\DTO\Response\PokemonDataResponse;
 use App\DTO\Response\PokemonLabelsResponse;
 use App\DTO\Response\PokemonSlugResponse;
-use App\DTO\Response\TypesResponse;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
@@ -89,7 +89,7 @@ final class ElectionPokemonsListResponseTest extends TestCase
         return new ElectionPokemonResponse(
             pokemon: $pokemon,
             forms: null,
-            types: new TypesResponse(primary: null, secondary: null),
+            types: new AlbumTypesResponse(primary: null, secondary: null),
         );
     }
 }

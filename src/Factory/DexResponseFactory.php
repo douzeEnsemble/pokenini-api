@@ -8,6 +8,9 @@ use App\DTO\ElectionReport\Report;
 use App\DTO\Response\DexFlagsResponse;
 use App\DTO\Response\DexResponse;
 
+/**
+ * @SuppressWarnings("PHPMD.BooleanArgumentFlag")
+ */
 final class DexResponseFactory
 {
     private const array EMPTY_METRICS = [
@@ -25,7 +28,7 @@ final class DexResponseFactory
      *
      * @param array<array-key, mixed> $row
      */
-    public static function fromSqlRow(array $row, Report $report): DexResponse
+    public static function fromSqlRow(array $row, Report $report, bool $localized = false): DexResponse
     {
         /** @var scalar $slug */
         $slug = $row['slug'];
@@ -36,7 +39,7 @@ final class DexResponseFactory
         /** @var scalar $name */
         $name = $row['name'];
 
-        /** @var scalar $frenchName */
+        /** @var null|scalar $frenchName */
         $frenchName = $row['french_name'];
 
         /** @var scalar $isShiny */
@@ -63,7 +66,7 @@ final class DexResponseFactory
         /** @var scalar $description */
         $description = $row['description'];
 
-        /** @var scalar $frenchDescription */
+        /** @var null|scalar $frenchDescription */
         $frenchDescription = $row['french_description'];
 
         /** @var scalar $dexTotalCount */
@@ -73,7 +76,7 @@ final class DexResponseFactory
             slug: (string) $slug,
             originalSlug: (string) $originalSlug,
             name: (string) $name,
-            frenchName: (string) $frenchName,
+            frenchName: OptionalText::fromScalar($frenchName),
             flags: new DexFlagsResponse(
                 isShiny: (bool) $isShiny,
                 isPrivate: (bool) $isPrivate,
@@ -85,9 +88,9 @@ final class DexResponseFactory
                 isOnHub: false,
             ),
             description: (string) $description,
-            frenchDescription: (string) $frenchDescription,
+            frenchDescription: OptionalText::fromScalar($frenchDescription),
             dexTotalCount: (int) $dexTotalCount,
-            report: ElectionReportResponseFactory::fromReport($report),
+            report: ElectionReportResponseFactory::fromReport($report, $localized),
             category: DexCategoryResponseFactory::fromSqlRow($row),
         );
     }
@@ -100,12 +103,13 @@ final class DexResponseFactory
      *
      * @return DexResponse[]
      */
-    public static function fromSqlRows(array $rows, array $reports): array
+    public static function fromSqlRows(array $rows, array $reports, bool $localized = false): array
     {
         return array_map(
             static fn (array $row): DexResponse => self::fromSqlRow(
                 $row,
                 $reports[(string) $row['slug']] ?? new Report([], self::EMPTY_METRICS),
+                $localized,
             ),
             $rows,
         );

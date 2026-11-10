@@ -16,18 +16,31 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/pokemons')]
 final class PokemonsController extends AbstractController
 {
+    use LangQueryTrait;
+
+    /**
+     * @param string[] $locales the enabled locales
+     */
+    public function __construct(
+        private readonly array $locales,
+    ) {}
+
     #[Route(path: '/to_choose', methods: ['GET'])]
     #[Serialize]
     public function getNPokemonsToChoose(
         Request $request,
         GetNPokemonsToChooseService $getNPokemonsToChooseService,
     ): ElectionPokemonsListResponse {
+        $lang = $this->getLang($request, $this->locales);
+
         /** @var array<array<string>|int|string> $params */
         $params = $request->query->all();
+        // The language is not a filter
+        unset($params['lang']);
         $queryOptions = new TrainerPokemonEloListQueryOptions($params);
 
-        $list = $getNPokemonsToChooseService->getNPokemonsToChoose($queryOptions);
+        $list = $getNPokemonsToChooseService->getNPokemonsToChoose($queryOptions, $lang);
 
-        return ElectionPokemonResponseFactory::fromElectionPokemonsList($list);
+        return ElectionPokemonResponseFactory::fromElectionPokemonsList($list, null !== $lang);
     }
 }

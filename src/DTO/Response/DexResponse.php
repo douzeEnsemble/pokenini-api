@@ -14,11 +14,11 @@ final class DexResponse
         public readonly string $originalSlug,
         public readonly string $name,
         #[SerializedName('french_name')]
-        public readonly string $frenchName,
+        public readonly ?string $frenchName,
         public readonly DexFlagsResponse $flags,
         public readonly string $description,
         #[SerializedName('french_description')]
-        public readonly string $frenchDescription,
+        public readonly ?string $frenchDescription,
         #[SerializedName('dex_total_count')]
         public readonly int $dexTotalCount,
         public readonly ElectionReportResponse $report,

@@ -575,6 +575,22 @@ final class AlbumPokemonResponseFactoryTest extends TestCase
         self::assertSame('12', $labels->formsLabel);
     }
 
+    #[Test]
+    public function theBuildersAreUsedByTheElectionFactories(): void
+    {
+        $row = $this->getBulbasaurRow();
+
+        self::assertSame('bulbasaur', AlbumPokemonResponseFactory::buildPokemon($row, false)->slug);
+        self::assertEquals(
+            AlbumPokemonResponseFactory::fromSqlRow($row)->types,
+            AlbumPokemonResponseFactory::buildTypes($row, false),
+        );
+        self::assertEquals(
+            AlbumPokemonResponseFactory::fromSqlRow($row)->forms,
+            AlbumPokemonResponseFactory::buildForms($row, false),
+        );
+    }
+
     /**
      * @return array<string, mixed>
      */

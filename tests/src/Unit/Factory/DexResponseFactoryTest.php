@@ -6,6 +6,7 @@ namespace App\Tests\Unit\Factory;
 
 use App\DTO\ElectionReport\Report;
 use App\DTO\Response\DexResponse;
+use App\DTO\Response\LocalizedPokemonLabelsResponse;
 use App\Factory\DexResponseFactory;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -223,5 +224,53 @@ final class DexResponseFactoryTest extends TestCase
         $responses = DexResponseFactory::fromSqlRows([], []);
 
         self::assertCount(0, $responses);
+    }
+
+    #[Test]
+    public function fromSqlRowsInALanguage(): void
+    {
+        $row = [
+            'slug' => 'home',
+            'original_slug' => 'home',
+            'name' => 'Maison',
+            'french_name' => null,
+            'is_shiny' => false,
+            'is_private' => false,
+            'is_on_home' => false,
+            'is_display_form' => true,
+            'is_released' => true,
+            'is_premium' => false,
+            'is_custom' => false,
+            'description' => 'Le Pokédex National dans Home',
+            'french_description' => null,
+            'dex_total_count' => 22,
+            'category_slug' => null,
+            'category_name' => null,
+            'category_french_name' => null,
+            'category_order_number' => null,
+        ];
+        $topRow = [
+            'elo' => 1200.5,
+            'significance' => true,
+            'pokemon_slug' => 'pikachu',
+            'pokemon_name' => 'Pikachu',
+            'pokemon_french_name' => 'Pikachu',
+            'pokemon_national_dex_number' => 25,
+            'pokemon_family_order' => 1,
+            'pokemon_order_number' => '9999-0025-001',
+            'pokemon_names' => '{"en": "Pikachu"}',
+            'pokemon_simplified_names' => '{"en": "Pikachu"}',
+        ];
+
+        $responses = DexResponseFactory::fromSqlRows(
+            [$row],
+            ['home' => new Report([$topRow], self::ZERO_METRICS)],
+            true,
+        );
+
+        self::assertSame('Maison', $responses[0]->name);
+        self::assertNull($responses[0]->frenchName);
+        self::assertNull($responses[0]->frenchDescription);
+        self::assertInstanceOf(LocalizedPokemonLabelsResponse::class, $responses[0]->report->top[0]->pokemon->labels);
     }
 }
