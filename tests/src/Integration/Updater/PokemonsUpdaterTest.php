@@ -293,6 +293,11 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
             $this->getColorSets('bulbasaur', true),
         );
 
+        $this->assertSame(
+            ['en' => 'light teal;yellow;dark teal;red;white', 'fr' => 'bleu vert clair;jaune;bleu vert foncé;rouge;blanc'],
+            $this->getLocalizedColorNames('bulbasaur', true, 1),
+        );
+
         $this->assertCount(2, $this->getColorSets('egg', false));
         $this->assertSame([], $this->getColorSets('egg', true));
 
@@ -346,6 +351,30 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
     {
         /** @var PokemonsUpdater */
         return self::getContainer()->get(PokemonsUpdater::class);
+    }
+
+    /**
+     * @return array<string, string>
+     */
+    private function getLocalizedColorNames(string $slug, bool $isShiny, int $position): array
+    {
+        $connection = self::getContainer()->get(Connection::class);
+
+        /** @var string $names */
+        $names = $connection->fetchOne(
+            <<<'SQL'
+                SELECT pcs.localized_names
+                FROM pokemon_color_set pcs
+                INNER JOIN pokemon p ON p.id = pcs.pokemon_id
+                WHERE p.slug = :slug
+                    AND pcs.is_shiny = :isShiny
+                    AND pcs.position = :position
+                SQL,
+            ['slug' => $slug, 'isShiny' => (int) $isShiny, 'position' => $position],
+        );
+
+        /** @var array<string, string> */
+        return json_decode($names, true, flags: \JSON_THROW_ON_ERROR);
     }
 
     /**

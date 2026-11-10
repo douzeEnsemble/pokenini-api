@@ -16,27 +16,6 @@ use Doctrine\Persistence\ManagerRegistry;
  */
 class ColorGameRepository extends ServiceEntityRepository
 {
-    private const string GAME_COLUMNS = <<<'SQL'
-        cg.id AS "id",
-        d.slug AS "dex_slug",
-        d.name AS "dex_name",
-        d.french_name AS "dex_french_name",
-        cg.is_shiny AS "is_shiny",
-        cg.status AS "status",
-        cg.round_count AS "round_count",
-        cg.answered_count AS "answered_count",
-        cg.correct_count AS "correct_count",
-        (
-            SELECT  STRING_AGG(CASE WHEN r.is_correct THEN '1' ELSE '0' END, '' ORDER BY r.position)
-            FROM    color_game_round AS r
-            WHERE   r.color_game_id = cg.id
-                AND r.is_correct IS NOT NULL
-        ) AS "results",
-        cg.started_at AS "started_at",
-        cg.last_played_at AS "last_played_at",
-        cg.ended_at AS "ended_at"
-        SQL;
-
     private const string PLAYABLE_POKEMONS = <<<'SQL'
         SELECT      p.id AS "pokemon_id",
                     STRING_AGG(CAST(pcs.position AS varchar), ',' ORDER BY pcs.position) AS "positions"
@@ -49,23 +28,6 @@ class ColorGameRepository extends ServiceEntityRepository
         GROUP BY    p.id
         SQL;
 
-    private const string ROUND_COLUMNS = <<<'SQL'
-        cgr.position AS "position",
-        cgr.choices_order AS "choices_order",
-        cgr.chosen_choice AS "chosen_choice",
-        cgr.is_correct AS "is_correct",
-        p.id AS "pokemon_id",
-        p.slug AS "pokemon_slug",
-        p.name AS "pokemon_name",
-        p.french_name AS "pokemon_french_name",
-        p.simplified_name AS "pokemon_simplified_name",
-        p.simplified_french_name AS "pokemon_simplified_french_name",
-        p.forms_label AS "pokemon_forms_label",
-        p.forms_french_label AS "pokemon_forms_french_label",
-        p.national_dex_number AS "pokemon_national_dex_number",
-        p.icon_name AS "pokemon_icon"
-        SQL;
-
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, ColorGame::class);
@@ -74,7 +36,7 @@ class ColorGameRepository extends ServiceEntityRepository
     /**
      * @return array<array-key, array<string, mixed>>
      */
-    public function getPlayableDexList(DexQueryOptions $options): array
+    public function getPlayableDexList(DexQueryOptions $options, ?string $locale = null, string $fallbackLocale = 'en'): array
     {
         $where = '';
 
@@ -92,19 +54,16 @@ class ColorGameRepository extends ServiceEntityRepository
             self::PLAYABLE_POKEMONS,
         );
 
+        $dexColumns = GameLocalizedColumns::playableDex($locale);
+
         $sql = <<<SQL
             SELECT      d.slug AS "slug",
-                        d.name AS "name",
-                        d.french_name AS "french_name",
+                        {$dexColumns},
                         d.is_shiny AS "is_shiny",
                         d.is_released AS "is_released",
                         d.is_premium AS "is_premium",
-                        d.description AS "description",
-                        d.french_description AS "french_description",
                         (SELECT COUNT(1) FROM ({$playablePokemons}) AS pp) AS "playable_count",
                         dc.slug AS "category_slug",
-                        dc.name AS "category_name",
-                        dc.french_name AS "category_french_name",
                         dc.order_number AS "category_order_number"
             FROM        dex AS d
                 LEFT JOIN dex_category AS dc
@@ -117,15 +76,18 @@ class ColorGameRepository extends ServiceEntityRepository
             SQL;
 
         /** @var array<array-key, array<string, mixed>> */
-        return $this->getConnection()->fetchAllAssociative($sql);
+        return $this->getConnection()->fetchAllAssociative(
+            $sql,
+            GameLocalizedColumns::parameters($locale, $fallbackLocale),
+        );
     }
 
     /**
      * @return array<string, array<string, mixed>> keyed by dex slug
      */
-    public function getInProgressGamesByDex(string $trainerExternalId): array
+    public function getInProgressGamesByDex(string $trainerExternalId, ?string $locale = null, string $fallbackLocale = 'en'): array
     {
-        $columns = self::GAME_COLUMNS;
+        $columns = self::gameColumns($locale);
 
         $sql = <<<SQL
             SELECT      {$columns}
@@ -141,7 +103,7 @@ class ColorGameRepository extends ServiceEntityRepository
             [
                 'trainer_external_id' => $trainerExternalId,
                 'status' => ColorGame::STATUS_IN_PROGRESS,
-            ],
+            ] + GameLocalizedColumns::parameters($locale, $fallbackLocale),
         );
 
         $games = [];
@@ -215,9 +177,9 @@ class ColorGameRepository extends ServiceEntityRepository
     /**
      * @return null|array<string, mixed>
      */
-    public function getGame(string $trainerExternalId, string $gameId): ?array
+    public function getGame(string $trainerExternalId, string $gameId, ?string $locale = null, string $fallbackLocale = 'en'): ?array
     {
-        $columns = self::GAME_COLUMNS;
+        $columns = self::gameColumns($locale);
 
         $sql = <<<SQL
             SELECT      {$columns}
@@ -233,7 +195,7 @@ class ColorGameRepository extends ServiceEntityRepository
             [
                 'id' => $gameId,
                 'trainer_external_id' => $trainerExternalId,
-            ],
+            ] + GameLocalizedColumns::parameters($locale, $fallbackLocale),
         );
 
         return false === $row ? null : $row;
@@ -242,9 +204,9 @@ class ColorGameRepository extends ServiceEntityRepository
     /**
      * @return array<array-key, array<string, mixed>>
      */
-    public function getGames(string $trainerExternalId): array
+    public function getGames(string $trainerExternalId, ?string $locale = null, string $fallbackLocale = 'en'): array
     {
-        $columns = self::GAME_COLUMNS;
+        $columns = self::gameColumns($locale);
 
         $sql = <<<SQL
             SELECT      {$columns}
@@ -257,7 +219,7 @@ class ColorGameRepository extends ServiceEntityRepository
 
         return $this->getConnection()->fetchAllAssociative(
             $sql,
-            ['trainer_external_id' => $trainerExternalId],
+            ['trainer_external_id' => $trainerExternalId] + GameLocalizedColumns::parameters($locale, $fallbackLocale),
         );
     }
 
@@ -266,29 +228,30 @@ class ColorGameRepository extends ServiceEntityRepository
      *
      * @return null|array<string, mixed>
      */
-    public function getNextRound(string $gameId): ?array
+    public function getNextRound(string $gameId, ?string $locale = null, string $fallbackLocale = 'en'): ?array
     {
-        return $this->getRound($gameId, null);
+        return $this->getRound($gameId, null, $locale, $fallbackLocale);
     }
 
     /**
      * @return null|array<string, mixed>
      */
-    public function getRoundAt(string $gameId, int $position): ?array
+    public function getRoundAt(string $gameId, int $position, ?string $locale = null, string $fallbackLocale = 'en'): ?array
     {
-        return $this->getRound($gameId, $position);
+        return $this->getRound($gameId, $position, $locale, $fallbackLocale);
     }
 
     /**
      * @return array<array-key, array<string, mixed>>
      */
-    public function getColorSets(string $pokemonId, bool $isShiny): array
+    public function getColorSets(string $pokemonId, bool $isShiny, ?string $locale = null, string $fallbackLocale = 'en'): array
     {
-        $sql = <<<'SQL'
+        $names = GameLocalizedColumns::colorSet($locale);
+
+        $sql = <<<SQL
             SELECT      pcs.position AS "position",
                         pcs.codes AS "codes",
-                        pcs.names AS "names",
-                        pcs.french_names AS "french_names"
+                        {$names}
             FROM        pokemon_color_set AS pcs
             WHERE       pcs.pokemon_id = :pokemon_id
                     AND pcs.is_shiny = :is_shiny
@@ -300,7 +263,7 @@ class ColorGameRepository extends ServiceEntityRepository
             [
                 'pokemon_id' => $pokemonId,
                 'is_shiny' => $isShiny,
-            ],
+            ] + GameLocalizedColumns::parameters($locale, $fallbackLocale),
             [
                 'pokemon_id' => ParameterType::STRING,
                 'is_shiny' => ParameterType::BOOLEAN,
@@ -313,9 +276,9 @@ class ColorGameRepository extends ServiceEntityRepository
      *
      * @return array<array-key, array<string, mixed>>
      */
-    public function getAnsweredRounds(string $gameId): array
+    public function getAnsweredRounds(string $gameId, ?string $locale = null, string $fallbackLocale = 'en'): array
     {
-        $columns = self::ROUND_COLUMNS;
+        $columns = self::roundColumns($locale);
 
         $sql = <<<SQL
             SELECT      {$columns}
@@ -327,7 +290,10 @@ class ColorGameRepository extends ServiceEntityRepository
             ORDER BY    cgr.position ASC
             SQL;
 
-        return $this->getConnection()->fetchAllAssociative($sql, ['color_game_id' => $gameId]);
+        return $this->getConnection()->fetchAllAssociative(
+            $sql,
+            ['color_game_id' => $gameId] + GameLocalizedColumns::parameters($locale, $fallbackLocale),
+        );
     }
 
     /**
@@ -335,14 +301,15 @@ class ColorGameRepository extends ServiceEntityRepository
      *
      * @return array<array-key, array<string, mixed>>
      */
-    public function getAnsweredRoundsColorSets(string $gameId): array
+    public function getAnsweredRoundsColorSets(string $gameId, ?string $locale = null, string $fallbackLocale = 'en'): array
     {
-        $sql = <<<'SQL'
+        $names = GameLocalizedColumns::colorSet($locale);
+
+        $sql = <<<SQL
             SELECT      cgr.position AS "round_position",
                         pcs.position AS "position",
                         pcs.codes AS "codes",
-                        pcs.names AS "names",
-                        pcs.french_names AS "french_names"
+                        {$names}
             FROM        color_game_round AS cgr
                 JOIN    color_game AS cg
                     ON  cg.id = cgr.color_game_id
@@ -354,7 +321,10 @@ class ColorGameRepository extends ServiceEntityRepository
             ORDER BY    cgr.position ASC, pcs.position ASC
             SQL;
 
-        return $this->getConnection()->fetchAllAssociative($sql, ['color_game_id' => $gameId]);
+        return $this->getConnection()->fetchAllAssociative(
+            $sql,
+            ['color_game_id' => $gameId] + GameLocalizedColumns::parameters($locale, $fallbackLocale),
+        );
     }
 
     /**
@@ -527,9 +497,9 @@ class ColorGameRepository extends ServiceEntityRepository
     /**
      * @return null|array<string, mixed>
      */
-    private function getRound(string $gameId, ?int $position): ?array
+    private function getRound(string $gameId, ?int $position, ?string $locale, string $fallbackLocale): ?array
     {
-        $columns = self::ROUND_COLUMNS;
+        $columns = self::roundColumns($locale);
         $where = null === $position ? 'cgr.chosen_choice IS NULL' : 'cgr.position = :position';
 
         $sql = <<<SQL
@@ -543,7 +513,7 @@ class ColorGameRepository extends ServiceEntityRepository
             LIMIT       1
             SQL;
 
-        $params = ['color_game_id' => $gameId];
+        $params = ['color_game_id' => $gameId] + GameLocalizedColumns::parameters($locale, $fallbackLocale);
 
         if (null !== $position) {
             $params['position'] = $position;
@@ -552,6 +522,48 @@ class ColorGameRepository extends ServiceEntityRepository
         $row = $this->getConnection()->fetchAssociative($sql, $params);
 
         return false === $row ? null : $row;
+    }
+
+    private static function gameColumns(?string $locale): string
+    {
+        $dex = GameLocalizedColumns::gameDex($locale);
+
+        return <<<SQL
+            cg.id AS "id",
+            d.slug AS "dex_slug",
+            {$dex},
+            cg.is_shiny AS "is_shiny",
+            cg.status AS "status",
+            cg.round_count AS "round_count",
+            cg.answered_count AS "answered_count",
+            cg.correct_count AS "correct_count",
+            (
+                SELECT  STRING_AGG(CASE WHEN r.is_correct THEN '1' ELSE '0' END, '' ORDER BY r.position)
+                FROM    color_game_round AS r
+                WHERE   r.color_game_id = cg.id
+                    AND r.is_correct IS NOT NULL
+            ) AS "results",
+            cg.started_at AS "started_at",
+            cg.last_played_at AS "last_played_at",
+            cg.ended_at AS "ended_at"
+            SQL;
+    }
+
+    private static function roundColumns(?string $locale): string
+    {
+        $pokemon = GameLocalizedColumns::pokemon($locale);
+
+        return <<<SQL
+            cgr.position AS "position",
+            cgr.choices_order AS "choices_order",
+            cgr.chosen_choice AS "chosen_choice",
+            cgr.is_correct AS "is_correct",
+            p.id AS "pokemon_id",
+            p.slug AS "pokemon_slug",
+            {$pokemon},
+            p.national_dex_number AS "pokemon_national_dex_number",
+            p.icon_name AS "pokemon_icon"
+            SQL;
     }
 
     private function getConnection(): Connection

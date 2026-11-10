@@ -16,8 +16,14 @@ use Symfony\Component\Routing\Attribute\Route;
 #[Route('/color_game/{trainerExternalId}')]
 final class ColorGameDexController extends AbstractController
 {
+    use LangQueryTrait;
+
+    /**
+     * @param string[] $locales the enabled locales
+     */
     public function __construct(
         private readonly ColorGameService $colorGameService,
+        private readonly array $locales,
     ) {}
 
     /** @return ColorGameDexResponse[] */
@@ -32,9 +38,11 @@ final class ColorGameDexController extends AbstractController
             'include_premium_dex' => $request->query->getBoolean('include_premium_dex', false),
         ]);
 
+        $lang = $this->getLang($request, $this->locales);
+
         return ColorGameResponseFactory::fromDexRows(
-            $this->colorGameService->getPlayableDexList($dexQueryOptions),
-            $this->colorGameService->getInProgressGamesByDex($trainerExternalId),
+            $this->colorGameService->getPlayableDexList($dexQueryOptions, $lang),
+            $this->colorGameService->getInProgressGamesByDex($trainerExternalId, $lang),
         );
     }
 }

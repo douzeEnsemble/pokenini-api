@@ -22,30 +22,31 @@ class ColorGameService
     public function __construct(
         private readonly ColorGameRepository $repository,
         private readonly Randomizer $randomizer,
+        private readonly string $fallbackLocale,
     ) {}
 
     /**
      * @return array<array-key, array<string, mixed>>
      */
-    public function getPlayableDexList(DexQueryOptions $options): array
+    public function getPlayableDexList(DexQueryOptions $options, ?string $locale = null): array
     {
-        return $this->repository->getPlayableDexList($options);
+        return $this->repository->getPlayableDexList($options, $locale, $this->fallbackLocale);
     }
 
     /**
      * @return array<string, array<string, mixed>> keyed by dex slug
      */
-    public function getInProgressGamesByDex(string $trainerExternalId): array
+    public function getInProgressGamesByDex(string $trainerExternalId, ?string $locale = null): array
     {
-        return $this->repository->getInProgressGamesByDex($trainerExternalId);
+        return $this->repository->getInProgressGamesByDex($trainerExternalId, $locale, $this->fallbackLocale);
     }
 
     /**
      * @return array<array-key, array<string, mixed>>
      */
-    public function getGames(string $trainerExternalId): array
+    public function getGames(string $trainerExternalId, ?string $locale = null): array
     {
-        return $this->repository->getGames($trainerExternalId);
+        return $this->repository->getGames($trainerExternalId, $locale, $this->fallbackLocale);
     }
 
     /**
@@ -53,7 +54,7 @@ class ColorGameService
      *
      * @return array<string, mixed>
      */
-    public function create(string $trainerExternalId, string $dexSlug, ?int $roundCount = null): array
+    public function create(string $trainerExternalId, string $dexSlug, ?int $roundCount = null, ?string $locale = null): array
     {
         $dex = $this->repository->getPlayableDex($dexSlug);
 
@@ -81,7 +82,7 @@ class ColorGameService
 
         $this->repository->startGame($gameId, $trainerExternalId, $dex['id'], $dex['is_shiny'], $rounds);
 
-        return $this->getGame($trainerExternalId, $gameId);
+        return $this->getGame($trainerExternalId, $gameId, $locale);
     }
 
     /**
@@ -91,11 +92,11 @@ class ColorGameService
      *  color_sets: array<array-key, array<string, mixed>>,
      * }
      */
-    public function get(string $trainerExternalId, string $gameId): array
+    public function get(string $trainerExternalId, string $gameId, ?string $locale = null): array
     {
-        $game = $this->getGame($trainerExternalId, $gameId);
+        $game = $this->getGame($trainerExternalId, $gameId, $locale);
 
-        $round = $this->repository->getNextRound($gameId);
+        $round = $this->repository->getNextRound($gameId, $locale, $this->fallbackLocale);
 
         $colorSets = [];
 
@@ -103,7 +104,7 @@ class ColorGameService
             /** @var scalar $pokemonId */
             $pokemonId = $round['pokemon_id'];
 
-            $colorSets = $this->repository->getColorSets((string) $pokemonId, (bool) $game['is_shiny']);
+            $colorSets = $this->repository->getColorSets((string) $pokemonId, (bool) $game['is_shiny'], $locale, $this->fallbackLocale);
         }
 
         return [
@@ -123,12 +124,12 @@ class ColorGameService
      *  }>,
      * }
      */
-    public function getRounds(string $trainerExternalId, string $gameId): array
+    public function getRounds(string $trainerExternalId, string $gameId, ?string $locale = null): array
     {
-        $game = $this->getGame($trainerExternalId, $gameId);
+        $game = $this->getGame($trainerExternalId, $gameId, $locale);
 
         $colorSets = [];
-        foreach ($this->repository->getAnsweredRoundsColorSets($gameId) as $colorSet) {
+        foreach ($this->repository->getAnsweredRoundsColorSets($gameId, $locale, $this->fallbackLocale) as $colorSet) {
             /** @var int|string $roundPosition numeric string keys are cast to int by PHP */
             $roundPosition = $colorSet['round_position'];
 
@@ -136,7 +137,7 @@ class ColorGameService
         }
 
         $rounds = [];
-        foreach ($this->repository->getAnsweredRounds($gameId) as $round) {
+        foreach ($this->repository->getAnsweredRounds($gameId, $locale, $this->fallbackLocale) as $round) {
             /** @var int|string $position numeric string keys are cast to int by PHP */
             $position = $round['position'];
 
@@ -162,7 +163,7 @@ class ColorGameService
      *  game: array<string, mixed>,
      * }
      */
-    public function answer(string $trainerExternalId, string $gameId, ColorGameAnswer $answer): array
+    public function answer(string $trainerExternalId, string $gameId, ColorGameAnswer $answer, ?string $locale = null): array
     {
         $game = $this->getGame($trainerExternalId, $gameId);
 
@@ -198,16 +199,16 @@ class ColorGameService
             'is_correct' => $isCorrect,
             'chosen_choice' => $answer->choice,
             'correct_choice' => $correctChoice,
-            'game' => $this->getGame($trainerExternalId, $gameId),
+            'game' => $this->getGame($trainerExternalId, $gameId, $locale),
         ];
     }
 
     /**
      * @return array<string, mixed>
      */
-    private function getGame(string $trainerExternalId, string $gameId): array
+    private function getGame(string $trainerExternalId, string $gameId, ?string $locale = null): array
     {
-        $game = $this->repository->getGame($trainerExternalId, $gameId);
+        $game = $this->repository->getGame($trainerExternalId, $gameId, $locale, $this->fallbackLocale);
 
         if (null === $game) {
             throw new ColorGameNotFoundException("Game {$gameId} not found");

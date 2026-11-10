@@ -33,6 +33,7 @@ final class ColorGameServiceRoundsTest extends TestCase
         $this->service = new ColorGameService(
             $this->repository,
             new Randomizer(new Xoshiro256StarStar(12)),
+            'en',
         );
     }
 

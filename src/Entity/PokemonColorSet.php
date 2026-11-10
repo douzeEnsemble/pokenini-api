@@ -38,4 +38,12 @@ final class PokemonColorSet
 
     #[ORM\Column]
     public string $frenchNames;
+
+    /**
+     * The names of the colours in every language, indexed by locale, in the same format as "names".
+     *
+     * @var array<string, string>
+     */
+    #[ORM\Column(type: Types::JSON, options: ['jsonb' => true, 'default' => '{}'])]
+    public array $localizedNames = [];
 }

@@ -15,6 +15,9 @@ use App\DTO\Response\ColorGameRoundResponse;
 use App\DTO\Response\ColorGameRoundsResponse;
 use App\DTO\Response\ColorGameStateResponse;
 
+/**
+ * @SuppressWarnings("PHPMD.CouplingBetweenObjects")
+ */
 final class ColorGameResponseFactory
 {
     private const string COLORS_SEPARATOR = ';';
@@ -33,7 +36,7 @@ final class ColorGameResponseFactory
         /** @var scalar $dexName */
         $dexName = $row['dex_name'];
 
-        /** @var scalar $dexFrenchName */
+        /** @var null|scalar $dexFrenchName */
         $dexFrenchName = $row['dex_french_name'];
 
         /** @var scalar $isShiny */
@@ -68,7 +71,7 @@ final class ColorGameResponseFactory
             dex: new ColorGameDexSummaryResponse(
                 slug: (string) $dexSlug,
                 name: (string) $dexName,
-                frenchName: (string) $dexFrenchName,
+                frenchName: OptionalText::fromScalar($dexFrenchName),
             ),
             isShiny: (bool) $isShiny,
             status: (string) $status,
@@ -108,7 +111,7 @@ final class ColorGameResponseFactory
                 /** @var scalar $name */
                 $name = $row['name'];
 
-                /** @var scalar $frenchName */
+                /** @var null|scalar $frenchName */
                 $frenchName = $row['french_name'];
 
                 /** @var scalar $isShiny */
@@ -123,7 +126,7 @@ final class ColorGameResponseFactory
                 /** @var scalar $description */
                 $description = $row['description'];
 
-                /** @var scalar $frenchDescription */
+                /** @var null|scalar $frenchDescription */
                 $frenchDescription = $row['french_description'];
 
                 /** @var scalar $playableCount */
@@ -134,12 +137,12 @@ final class ColorGameResponseFactory
                 return new ColorGameDexResponse(
                     slug: $slug,
                     name: (string) $name,
-                    frenchName: (string) $frenchName,
+                    frenchName: OptionalText::fromScalar($frenchName),
                     isShiny: (bool) $isShiny,
                     isReleased: (bool) $isReleased,
                     isPremium: (bool) $isPremium,
                     description: (string) $description,
-                    frenchDescription: (string) $frenchDescription,
+                    frenchDescription: OptionalText::fromScalar($frenchDescription),
                     playableCount: (int) $playableCount,
                     currentGame: null === $game ? null : self::fromGameRow($game),
                     category: DexCategoryResponseFactory::fromSqlRow($row),
@@ -247,19 +250,19 @@ final class ColorGameResponseFactory
         /** @var scalar $name */
         $name = $row['pokemon_name'];
 
-        /** @var scalar $frenchName */
+        /** @var null|scalar $frenchName */
         $frenchName = $row['pokemon_french_name'];
 
         /** @var scalar $simplifiedName */
         $simplifiedName = $row['pokemon_simplified_name'];
 
-        /** @var scalar $simplifiedFrenchName */
+        /** @var null|scalar $simplifiedFrenchName */
         $simplifiedFrenchName = $row['pokemon_simplified_french_name'];
 
         /** @var scalar $formsLabel */
         $formsLabel = $row['pokemon_forms_label'];
 
-        /** @var scalar $formsFrenchLabel */
+        /** @var null|scalar $formsFrenchLabel */
         $formsFrenchLabel = $row['pokemon_forms_french_label'];
 
         /** @var scalar $nationalDexNumber */
@@ -286,11 +289,11 @@ final class ColorGameResponseFactory
             pokemon: new ColorGamePokemonResponse(
                 slug: (string) $slug,
                 name: (string) $name,
-                frenchName: (string) $frenchName,
+                frenchName: OptionalText::fromScalar($frenchName),
                 simplifiedName: (string) $simplifiedName,
-                simplifiedFrenchName: (string) $simplifiedFrenchName,
+                simplifiedFrenchName: OptionalText::fromScalar($simplifiedFrenchName),
                 formsLabel: (string) $formsLabel,
-                formsFrenchLabel: (string) $formsFrenchLabel,
+                formsFrenchLabel: OptionalText::fromScalar($formsFrenchLabel),
                 nationalDexNumber: (int) $nationalDexNumber,
                 icon: (string) $icon,
             ),
@@ -309,15 +312,23 @@ final class ColorGameResponseFactory
         /** @var scalar $names */
         $names = $colorSet['names'] ?? '';
 
-        /** @var scalar $frenchNames */
+        /** @var null|scalar $frenchNames */
         $frenchNames = $colorSet['french_names'] ?? '';
 
         return new ColorGameChoiceResponse(
             index: $index,
             codes: self::splitColors((string) $codes),
             names: self::splitColors((string) $names),
-            frenchNames: self::splitColors((string) $frenchNames),
+            frenchNames: self::isSingleLanguage($colorSet) ? null : self::splitColors((string) $frenchNames),
         );
+    }
+
+    /**
+     * @param array<array-key, mixed> $colorSet
+     */
+    private static function isSingleLanguage(array $colorSet): bool
+    {
+        return array_key_exists('french_names', $colorSet) && null === $colorSet['french_names'];
     }
 
     /**

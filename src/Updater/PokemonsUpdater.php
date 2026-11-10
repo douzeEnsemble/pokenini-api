@@ -254,7 +254,7 @@ class PokemonsUpdater extends AbstractUpdater
         foreach ($sets as $index => $set) {
             $this->executeQuery(
                 <<<'SQL'
-                    INSERT INTO pokemon_color_set (id, pokemon_id, is_shiny, position, codes, names, french_names)
+                    INSERT INTO pokemon_color_set (id, pokemon_id, is_shiny, position, codes, names, french_names, localized_names)
                     VALUES (
                         :id,
                         (SELECT id FROM pokemon WHERE slug = :slug),
@@ -262,7 +262,8 @@ class PokemonsUpdater extends AbstractUpdater
                         :position,
                         :codes,
                         :names,
-                        :frenchNames
+                        :frenchNames,
+                        CAST(:localizedNames AS jsonb)
                     )
                     SQL,
                 [
@@ -273,6 +274,7 @@ class PokemonsUpdater extends AbstractUpdater
                     'codes' => $set['codes'],
                     'names' => $set['names'],
                     'frenchNames' => $set['french_names'],
+                    'localizedNames' => json_encode(['en' => $set['names'], 'fr' => $set['french_names']], \JSON_THROW_ON_ERROR),
                 ]
             );
         }
