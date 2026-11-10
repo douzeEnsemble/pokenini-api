@@ -5,7 +5,7 @@ when@dev:
         defaults: 
             _locale: 'fr'
         requirements:
-            _locale: 'en|fr'
+            _locale: '%app.locales_pattern%'
 
 when@test:
     _errors:
@@ -14,4 +14,4 @@ when@test:
         defaults: 
             _locale: 'fr'
         requirements:
-            _locale: 'en|fr'
+            _locale: '%app.locales_pattern%'
