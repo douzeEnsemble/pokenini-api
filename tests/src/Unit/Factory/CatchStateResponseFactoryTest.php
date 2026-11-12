@@ -65,7 +65,6 @@ final class CatchStateResponseFactoryTest extends TestCase
                 'french_name' => 'Non',
                 'color' => '#e57373',
                 'text_color' => '#2a0e0e',
-                'text_color' => '#2a0e0e',
             ],
             [
                 'slug' => 'yes',
