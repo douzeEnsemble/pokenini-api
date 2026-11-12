@@ -3,24 +3,28 @@
     "slug": "no",
     "name": "No",
     "french_name": "Non",
-    "color": "#e57373"
+    "color": "#e57373",
+    "text_color": "#2a0e0e"
   },
   {
     "slug": "maybe",
     "name": "Maybe",
     "french_name": "Peut être",
-    "color": "blue"
+    "color": "blue",
+    "text_color": "#ffffff"
   },
   {
     "slug": "maybenot",
     "name": "Maybe not",
     "french_name": "Peut être pas",
-    "color": "yellow"
+    "color": "yellow",
+    "text_color": "#000000"
   },
   {
     "slug": "yes",
     "name": "Yes",
     "french_name": "Oui",
-    "color": "#66bb6a"
+    "color": "#66bb6a",
+    "text_color": "#09200a"
   }
 ]

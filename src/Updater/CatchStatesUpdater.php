@@ -14,10 +14,10 @@ class CatchStatesUpdater extends AbstractUpdater
     protected string $sheetName = 'Catch state';
     protected string $tableName = 'catch_state';
     protected string $statisticName = 'catch_states';
-    protected string $headerCellsRange = 'A1:E1';
+    protected string $headerCellsRange = 'A1:F1';
 
     /** @var array<int, string> */
-    protected array $recordsCellsRanges = ['A2:E'];
+    protected array $recordsCellsRanges = ['A2:F'];
 
     #[\Override]
     protected function getExpectedHeader(): array
@@ -28,6 +28,7 @@ class CatchStatesUpdater extends AbstractUpdater
             'French Name',
             'Order',
             'Color',
+            'Text Color',
         ];
     }
 
@@ -42,6 +43,7 @@ class CatchStatesUpdater extends AbstractUpdater
             'names' => $this->namesParameter($record),
             'order_number' => $record['Order'],
             'color' => $record['Color'],
+            'text_color' => $record['Text Color'],
         ];
 
         $tableName = $this->tableName;
@@ -54,7 +56,8 @@ class CatchStatesUpdater extends AbstractUpdater
               french_name,
               names,
               order_number,
-              color
+              color,
+              text_color
             )
             VALUES (
                 :id,
@@ -63,7 +66,8 @@ class CatchStatesUpdater extends AbstractUpdater
                 :french_name,
                 CAST(:names AS jsonb),
                 :order_number,
-                :color
+                :color,
+                :text_color
             )
             ON CONFLICT (slug)
             DO
@@ -74,6 +78,7 @@ class CatchStatesUpdater extends AbstractUpdater
                 names = excluded.names,
                 order_number= excluded.order_number,
                 color= excluded.color,
+                text_color= excluded.text_color,
                 deleted_at = NULL
             SQL;
 

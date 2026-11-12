@@ -24,6 +24,7 @@ final class CatchStateResponseFactoryTest extends TestCase
             'name' => 'No',
             'french_name' => 'Non',
             'color' => '#e57373',
+            'text_color' => '#2a0e0e',
         ];
 
         $response = CatchStateResponseFactory::fromSqlRow($row);
@@ -32,6 +33,7 @@ final class CatchStateResponseFactoryTest extends TestCase
         self::assertSame('No', $response->name);
         self::assertSame('Non', $response->frenchName);
         self::assertSame('#e57373', $response->color);
+        self::assertSame('#2a0e0e', $response->textColor);
     }
 
     #[Test]
@@ -42,6 +44,7 @@ final class CatchStateResponseFactoryTest extends TestCase
             'name' => 456,
             'french_name' => 789,
             'color' => '#ABC123',
+            'text_color' => '#000000',
         ];
 
         $response = CatchStateResponseFactory::fromSqlRow($row);
@@ -61,12 +64,15 @@ final class CatchStateResponseFactoryTest extends TestCase
                 'name' => 'No',
                 'french_name' => 'Non',
                 'color' => '#e57373',
+                'text_color' => '#2a0e0e',
+                'text_color' => '#2a0e0e',
             ],
             [
                 'slug' => 'yes',
                 'name' => 'Yes',
                 'french_name' => 'Oui',
                 'color' => '#66bb6a',
+                'text_color' => '#09200a',
             ],
         ];
 
@@ -95,6 +101,7 @@ final class CatchStateResponseFactoryTest extends TestCase
             'french_name' => 'Non',
             'localized_name' => 'Non',
             'color' => '#e57373',
+            'text_color' => '#2a0e0e',
         ]);
 
         self::assertSame('no', $response->slug);
@@ -109,19 +116,21 @@ final class CatchStateResponseFactoryTest extends TestCase
             'slug' => 123,
             'localized_name' => 456,
             'color' => 789,
+            'text_color' => 987,
         ]);
 
         self::assertSame('123', $response->slug);
         self::assertSame('456', $response->name);
         self::assertSame('789', $response->color);
+        self::assertSame('987', $response->textColor);
     }
 
     #[Test]
     public function localizedFromSqlRowsTransformsEveryRowInOrder(): void
     {
         $responses = CatchStateResponseFactory::localizedFromSqlRows([
-            ['slug' => 'no', 'localized_name' => 'Non', 'color' => '#e57373'],
-            ['slug' => 'yes', 'localized_name' => 'Oui', 'color' => '#66bb6a'],
+            ['slug' => 'no', 'localized_name' => 'Non', 'color' => '#e57373', 'text_color' => '#2a0e0e'],
+            ['slug' => 'yes', 'localized_name' => 'Oui', 'color' => '#66bb6a', 'text_color' => '#09200a'],
         ]);
 
         self::assertCount(2, $responses);

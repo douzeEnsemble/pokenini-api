@@ -23,12 +23,14 @@ final class CatchStateResponseTest extends TestCase
             name: 'No',
             frenchName: 'Non',
             color: '#e57373',
+            textColor: '#2a0e0e',
         );
 
         self::assertSame('no', $response->slug);
         self::assertSame('No', $response->name);
         self::assertSame('Non', $response->frenchName);
         self::assertSame('#e57373', $response->color);
+        self::assertSame('#2a0e0e', $response->textColor);
     }
 
     #[Test]
@@ -39,11 +41,13 @@ final class CatchStateResponseTest extends TestCase
             name: 'Yes',
             frenchName: 'Oui',
             color: '#66bb6a',
+            textColor: '#09200a',
         );
 
         self::assertSame('yes', $response->slug);
         self::assertSame('Yes', $response->name);
         self::assertSame('Oui', $response->frenchName);
         self::assertSame('#66bb6a', $response->color);
+        self::assertSame('#09200a', $response->textColor);
     }
 }
