@@ -15,7 +15,7 @@
         "ext-xml": "*",
         "ext-xmlwriter": "*",
         "ext-zip": "*",
-        "vimeo/psalm": "^6.20.10",
+        "vimeo/psalm": "^6.20.11",
         "psalm/plugin-symfony": "^5.3.0",
         "psalm/plugin-phpunit": "^0.19.7"
     }
