@@ -45,7 +45,7 @@ final class CatchStatesUpdaterTest extends TestCase
             ->expects($this->once())
             ->method('error')
             ->with(
-                "Can't get data for range 'douze'!A1:E1",
+                "Can't get data for range 'douze'!A1:F1",
                 [
                     'exception' => $exception,
                 ]
@@ -60,7 +60,7 @@ final class CatchStatesUpdaterTest extends TestCase
         );
 
         $this->expectException(InvalidSheetDataException::class);
-        $this->expectExceptionMessageIsOrContains("Can't get data for range 'douze'!A1:E1");
+        $this->expectExceptionMessageIsOrContains("Can't get data for range 'douze'!A1:F1");
 
         $updater->execute('douze');
     }
@@ -91,7 +91,7 @@ final class CatchStatesUpdaterTest extends TestCase
             ->with(
                 'Spreadsheet is empty',
                 [
-                    'spreadsheet' => "'douze'!A1:E1",
+                    'spreadsheet' => "'douze'!A1:F1",
                 ]
             )
         ;
@@ -150,6 +150,7 @@ final class CatchStatesUpdaterTest extends TestCase
                         'Name',
                         'Order',
                         'Slug',
+                        'Text Color',
                     ],
                 ]
             )
@@ -175,6 +176,7 @@ final class CatchStatesUpdaterTest extends TestCase
         $headerRange->values = [
             [
                 'Color',
+                'Text Color',
                 'French Name',
                 'Name',
                 'Order',
@@ -215,7 +217,7 @@ final class CatchStatesUpdaterTest extends TestCase
             ->with(
                 'There is not data in spreadsheet',
                 [
-                    'spreadsheet' => "'douze'!A2:E",
+                    'spreadsheet' => "'douze'!A2:F",
                 ]
             )
         ;

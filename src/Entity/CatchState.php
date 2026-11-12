@@ -26,4 +26,8 @@ final class CatchState implements SoftDeleteableInterface
     use ColoredTrait;
     use SoftDeleteable;
     use TranslatedNamesTrait;
+
+    /** Color of the text written on the catch state color, e.g. in the bars of the album report */
+    #[ORM\Column(options: ['default' => ''])]
+    public string $textColor = '';
 }

@@ -75,6 +75,7 @@ final class CatchStatesControllerTest extends WebTestCase
             self::assertArrayHasKey('name', $catchState);
             self::assertArrayHasKey('french_name', $catchState);
             self::assertArrayHasKey('color', $catchState);
+            self::assertArrayHasKey('text_color', $catchState);
         }
     }
 
@@ -101,6 +102,7 @@ final class CatchStatesControllerTest extends WebTestCase
         self::assertIsString($firstCatchState['name']);
         self::assertIsString($firstCatchState['french_name']);
         self::assertIsString($firstCatchState['color']);
+        self::assertIsString($firstCatchState['text_color']);
     }
 
     #[Test]
@@ -138,8 +140,8 @@ final class CatchStatesControllerTest extends WebTestCase
     {
         return [
             'slug' => 'no',
-            'fr' => ['slug' => 'no', 'name' => 'Non', 'color' => '#e57373'],
-            'en' => ['slug' => 'no', 'name' => 'No', 'color' => '#e57373'],
+            'fr' => ['slug' => 'no', 'name' => 'Non', 'color' => '#e57373', 'text_color' => '#2a0e0e'],
+            'en' => ['slug' => 'no', 'name' => 'No', 'color' => '#e57373', 'text_color' => '#2a0e0e'],
         ];
     }
 }

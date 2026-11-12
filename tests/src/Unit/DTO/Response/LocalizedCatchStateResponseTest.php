@@ -18,10 +18,11 @@ final class LocalizedCatchStateResponseTest extends TestCase
     #[Test]
     public function constructorInitializesProperties(): void
     {
-        $response = new LocalizedCatchStateResponse(slug: 'no', name: 'Non', color: '#e57373');
+        $response = new LocalizedCatchStateResponse(slug: 'no', name: 'Non', color: '#e57373', textColor: '#2a0e0e');
 
         self::assertSame('no', $response->slug);
         self::assertSame('Non', $response->name);
         self::assertSame('#e57373', $response->color);
+        self::assertSame('#2a0e0e', $response->textColor);
     }
 }

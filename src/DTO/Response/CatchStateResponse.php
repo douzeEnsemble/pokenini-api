@@ -14,5 +14,7 @@ final class CatchStateResponse
         #[SerializedName('french_name')]
         public readonly string $frenchName,
         public readonly string $color,
+        #[SerializedName('text_color')]
+        public readonly string $textColor,
     ) {}
 }

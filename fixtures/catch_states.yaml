@@ -6,6 +6,7 @@ App\Entity\CatchState:
         names: { en: "No", fr: "Non" }
         orderNumber: 1
         color: "#e57373"
+        textColor: "#2a0e0e"
     catchstate_maybe:
         name: "Maybe"
         slug: "maybe"
@@ -13,6 +14,7 @@ App\Entity\CatchState:
         names: { en: "Maybe", fr: "Peut être" }
         orderNumber: 2
         color: "blue"
+        textColor: "#ffffff"
     catchstate_maybenot:
         name: "Maybe not"
         slug: "maybenot"
@@ -20,6 +22,7 @@ App\Entity\CatchState:
         names: { en: "Maybe not", fr: "Peut être pas" }
         orderNumber: 3
         color: "yellow"
+        textColor: "#000000"
     catchstate_yes:
         name: "Yes"
         slug: "yes"
@@ -27,6 +30,7 @@ App\Entity\CatchState:
         names: { en: "Yes", fr: "Oui" }
         orderNumber: 4
         color: "#66bb6a"
+        textColor: "#09200a"
     catchstate_forbidden:
         name: "Forbidden"
         slug: "forbidden"
@@ -34,5 +38,6 @@ App\Entity\CatchState:
         names: { en: "Forbidden", fr: "Interdit" }
         orderNumber: 2
         color: "red"
+        textColor: "#ffffff"
         deletedAt: "<dateTime('now')>"
 

@@ -19,20 +19,20 @@
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Catch state'!A1:E1"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Catch state'!A1:F1"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/test/values_%27Catch%20state%27%21A1%3AE1.json"
+      "file": "/var/moco/test/values_%27Catch%20state%27%21A1%3AF1.json"
     }
   },
   {
     "request": {
-      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Catch state'!A2:E"
+      "uri": "/v4/spreadsheets/1dlMkJoh6q6Yr0OmEfUpBXhU64ILMPpmkj_8NPIlS6bU/values/'Catch state'!A2:F"
     },
     "response": {
       "status": 200,
-      "file": "/var/moco/test/values_%27Catch%20state%27%21A2%3AE.json"
+      "file": "/var/moco/test/values_%27Catch%20state%27%21A2%3AF.json"
     }
   },
   {

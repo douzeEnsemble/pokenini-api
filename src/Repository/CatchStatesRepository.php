@@ -30,7 +30,8 @@ class CatchStatesRepository extends ServiceEntityRepository
                         french_name as "french_name",
                         {$localizedName} AS "localized_name",
                         slug,
-                        color
+                        color,
+                        text_color AS "text_color"
             FROM        catch_state
             WHERE       deleted_at IS NULL
             ORDER BY    order_number

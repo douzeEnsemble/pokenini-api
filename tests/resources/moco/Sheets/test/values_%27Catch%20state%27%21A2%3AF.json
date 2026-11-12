@@ -1,5 +1,5 @@
 {
-  "range": "'Catch state'!A2:E6",
+  "range": "'Catch state'!A2:F6",
   "majorDimension": "ROWS",
   "values": [
     [
@@ -7,42 +7,48 @@
       "no",
       "1",
       "Non",
-      "#e57373"
+      "#e57373",
+      "#2a0e0e"
     ],
     [
       "To evolve",
       "toevolve",
       "2",
       "af. évoluer",
-      "#9575cd"
+      "#9575cd",
+      "#120a24"
     ],
     [
       "To breed",
       "tobreed",
       "3",
       "af. reproduire",
-      "#4fc3f7"
+      "#4fc3f7",
+      "#112e3b"
     ],
     [
       "To transfer",
       "totransfer",
       "4",
       "à transférer",
-      "#ffd54f"
+      "#ffd54f",
+      "#4f4217"
     ],
     [
       "To trade",
       "totrade",
       "5",
       "à échanger",
-      "#ff9100"
+      "#ff9100",
+      "#2b1e0d"
     ],
     [
       "Yes",
       "yes",
       "6",
       "Oui",
-      "#66bb6a"
+      "#66bb6a",
+      "#09200a"
     ]
   ]
 }

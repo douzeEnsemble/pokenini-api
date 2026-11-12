@@ -28,11 +28,15 @@ final class CatchStateResponseFactory
         /** @var scalar $color */
         $color = $row['color'];
 
+        /** @var scalar $textColor */
+        $textColor = $row['text_color'];
+
         return new CatchStateResponse(
             slug: (string) $slug,
             name: (string) $name,
             frenchName: (string) $frenchName,
             color: (string) $color,
+            textColor: (string) $textColor,
         );
     }
 
@@ -52,10 +56,14 @@ final class CatchStateResponseFactory
         /** @var scalar $color */
         $color = $row['color'];
 
+        /** @var scalar $textColor */
+        $textColor = $row['text_color'];
+
         return new LocalizedCatchStateResponse(
             slug: (string) $slug,
             name: (string) $name,
             color: (string) $color,
+            textColor: (string) $textColor,
         );
     }
 
