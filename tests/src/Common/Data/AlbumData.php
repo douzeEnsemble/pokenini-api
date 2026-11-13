@@ -221,7 +221,7 @@ final class AlbumData
                 'catch_state_name' => 'No',
                 'catch_state_french_name' => 'Non',
                 'catch_state_localized_name' => 'No',
-                'catch_state_color' => '#ef9a9a',
+                'catch_state_color' => '#ec8b8b',
                 'family_lead_slug' => 'bulbasaur',
                 'pokemon_family_order' => 3,
                 'primary_type_slug' => 'grass',
@@ -265,7 +265,7 @@ final class AlbumData
                 'catch_state_name' => 'No',
                 'catch_state_french_name' => 'Non',
                 'catch_state_localized_name' => 'No',
-                'catch_state_color' => '#ef9a9a',
+                'catch_state_color' => '#ec8b8b',
                 'family_lead_slug' => 'bulbasaur',
                 'pokemon_family_order' => 4,
                 'primary_type_slug' => 'grass',
@@ -309,7 +309,7 @@ final class AlbumData
                 'catch_state_name' => 'No',
                 'catch_state_french_name' => 'Non',
                 'catch_state_localized_name' => 'No',
-                'catch_state_color' => '#ef9a9a',
+                'catch_state_color' => '#ec8b8b',
                 'family_lead_slug' => 'bulbasaur',
                 'pokemon_family_order' => 5,
                 'primary_type_slug' => 'grass',
@@ -377,7 +377,7 @@ final class AlbumData
                 'catch_state_name' => 'Yes',
                 'catch_state_french_name' => 'Oui',
                 'catch_state_localized_name' => 'Yes',
-                'catch_state_color' => '#2e7d32',
+                'catch_state_color' => '#256d29',
                 'family_lead_slug' => 'caterpie',
                 'pokemon_family_order' => 3,
                 'primary_type_slug' => 'bug',
@@ -421,7 +421,7 @@ final class AlbumData
                 'catch_state_name' => 'No',
                 'catch_state_french_name' => 'Non',
                 'catch_state_localized_name' => 'No',
-                'catch_state_color' => '#ef9a9a',
+                'catch_state_color' => '#ec8b8b',
                 'family_lead_slug' => 'caterpie',
                 'pokemon_family_order' => 4,
                 'primary_type_slug' => 'bug',
@@ -961,7 +961,7 @@ final class AlbumData
                     'catch_state_name' => 'Yes',
                     'catch_state_french_name' => 'Oui',
                     'catch_state_localized_name' => 'Yes',
-                    'catch_state_color' => '#2e7d32',
+                    'catch_state_color' => '#256d29',
                 ];
 
             case 'maybe':
@@ -988,7 +988,7 @@ final class AlbumData
                     'catch_state_name' => 'No',
                     'catch_state_french_name' => 'Non',
                     'catch_state_localized_name' => 'No',
-                    'catch_state_color' => '#ef9a9a',
+                    'catch_state_color' => '#ec8b8b',
                 ];
 
             case null:

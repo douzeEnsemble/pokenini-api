@@ -5,7 +5,7 @@ App\Entity\CatchState:
         frenchName: "Non"
         names: { en: "No", fr: "Non" }
         orderNumber: 1
-        color: "#ef9a9a"
+        color: "#ec8b8b"
         textColor: "#2a0e0e"
     catchstate_maybe:
         name: "Maybe"
@@ -29,7 +29,7 @@ App\Entity\CatchState:
         frenchName: "Oui"
         names: { en: "Yes", fr: "Oui" }
         orderNumber: 4
-        color: "#2e7d32"
+        color: "#256d29"
         textColor: "#ffffff"
     catchstate_forbidden:
         name: "Forbidden"
