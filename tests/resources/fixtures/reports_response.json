@@ -104,7 +104,7 @@
         "slug": "no",
         "name": "No",
         "french_name": "Non",
-        "color": "#ef9a9a"
+        "color": "#ec8b8b"
       }
     },
     {
@@ -131,7 +131,7 @@
         "slug": "yes",
         "name": "Yes",
         "french_name": "Oui",
-        "color": "#2e7d32"
+        "color": "#256d29"
       }
     }
   ]

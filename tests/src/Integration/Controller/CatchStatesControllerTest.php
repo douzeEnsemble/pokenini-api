@@ -140,8 +140,8 @@ final class CatchStatesControllerTest extends WebTestCase
     {
         return [
             'slug' => 'no',
-            'fr' => ['slug' => 'no', 'name' => 'Non', 'color' => '#ef9a9a', 'text_color' => '#2a0e0e'],
-            'en' => ['slug' => 'no', 'name' => 'No', 'color' => '#ef9a9a', 'text_color' => '#2a0e0e'],
+            'fr' => ['slug' => 'no', 'name' => 'Non', 'color' => '#ec8b8b', 'text_color' => '#2a0e0e'],
+            'en' => ['slug' => 'no', 'name' => 'No', 'color' => '#ec8b8b', 'text_color' => '#2a0e0e'],
         ];
     }
 }
