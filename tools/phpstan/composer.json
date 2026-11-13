@@ -18,6 +18,6 @@
         "phpstan/phpstan": "^2.3.5",
         "phpstan/phpstan-symfony": "^2.1.1",
         "phpstan/phpstan-doctrine": "^2.1.2",
-        "phpstan/phpstan-phpunit": "^2.0.18"
+        "phpstan/phpstan-phpunit": "^2.1.2"
     }
 }
