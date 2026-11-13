@@ -3,7 +3,7 @@
     "slug": "no",
     "name": "No",
     "french_name": "Non",
-    "color": "#ef9a9a",
+    "color": "#ec8b8b",
     "text_color": "#2a0e0e"
   },
   {
@@ -24,7 +24,7 @@
     "slug": "yes",
     "name": "Yes",
     "french_name": "Oui",
-    "color": "#2e7d32",
+    "color": "#256d29",
     "text_color": "#ffffff"
   }
 ]

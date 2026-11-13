@@ -31,7 +31,7 @@ trait AssertReportTrait
         $this->assertEquals('no', $reportDetail[0]['catch_state']['slug']);
         $this->assertEquals('No', $reportDetail[0]['catch_state']['name']);
         $this->assertEquals('Non', $reportDetail[0]['catch_state']['french_name']);
-        $this->assertEquals('#ef9a9a', $reportDetail[0]['catch_state']['color']);
+        $this->assertEquals('#ec8b8b', $reportDetail[0]['catch_state']['color']);
 
         $this->assertArrayHasKey(1, $reportDetail);
         $this->assertArrayHasKey('count', $reportDetail[1]);
@@ -58,7 +58,7 @@ trait AssertReportTrait
         $this->assertEquals('yes', $reportDetail[3]['catch_state']['slug']);
         $this->assertEquals('Yes', $reportDetail[3]['catch_state']['name']);
         $this->assertEquals('Oui', $reportDetail[3]['catch_state']['french_name']);
-        $this->assertEquals('#2e7d32', $reportDetail[3]['catch_state']['color']);
+        $this->assertEquals('#256d29', $reportDetail[3]['catch_state']['color']);
 
         $this->assertArrayHasKey('total', $report);
         $this->assertEquals($countTotal, $report['total']);
