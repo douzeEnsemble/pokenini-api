@@ -50,7 +50,7 @@ final class PokedexRepositoryCatchStateCountTest extends KernelTestCase
                     'name' => 'No',
                     'french_name' => 'Non',
                     'localized_name' => 'No',
-                    'color' => '#e57373',
+                    'color' => '#ef9a9a',
                 ],
                 [
                     'count' => 1,
@@ -74,7 +74,7 @@ final class PokedexRepositoryCatchStateCountTest extends KernelTestCase
                     'name' => 'Yes',
                     'french_name' => 'Oui',
                     'localized_name' => 'Yes',
-                    'color' => '#66bb6a',
+                    'color' => '#2e7d32',
                 ],
             ],
             $counts
@@ -198,7 +198,7 @@ final class PokedexRepositoryCatchStateCountTest extends KernelTestCase
                     'slug' => 'no',
                     'name' => 'No',
                     'french_name' => 'Non',
-                    'color' => '#e57373',
+                    'color' => '#ef9a9a',
                 ],
                 [
                     'nb' => 14,
@@ -219,7 +219,7 @@ final class PokedexRepositoryCatchStateCountTest extends KernelTestCase
                     'slug' => 'yes',
                     'name' => 'Yes',
                     'french_name' => 'Oui',
-                    'color' => '#66bb6a',
+                    'color' => '#2e7d32',
                 ],
             ],
             $counts
