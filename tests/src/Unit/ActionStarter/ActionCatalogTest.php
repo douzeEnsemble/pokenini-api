@@ -26,6 +26,8 @@ use PHPUnit\Framework\TestCase;
 
 /**
  * @internal
+ *
+ * @SuppressWarnings("PHPMD.CouplingBetweenObjects")
  */
 #[CoversClass(ActionCatalog::class)]
 #[CoversClass(ActionDefinition::class)]
@@ -37,7 +39,7 @@ final class ActionCatalogTest extends TestCase
         $catalog = $this->catalog();
 
         $keys = array_map(
-            static fn (ActionDefinition $d): string => "{$d->type}:{$d->name}",
+            static fn (ActionDefinition $definition): string => "{$definition->type}:{$definition->name}",
             $catalog->all(),
         );
 
@@ -86,21 +88,21 @@ final class ActionCatalogTest extends TestCase
 
     private function catalog(): ActionCatalog
     {
-        $em = $this->createStub(EntityManagerInterface::class);
+        $entityManager = $this->createStub(EntityManagerInterface::class);
         $repo = $this->createStub(ActionLogsRepository::class);
 
         return new ActionCatalog(
-            new UpdateLabelsActionStarter($em, $repo),
-            new UpdateGamesCollectionsAndDexActionStarter($em, $repo),
-            new UpdatePokemonsActionStarter($em, $repo),
-            new UpdateRegionalDexNumbersActionStarter($em, $repo),
-            new UpdateGamesAvailabilitiesActionStarter($em, $repo),
-            new UpdateGamesShiniesAvailabilitiesActionStarter($em, $repo),
-            new UpdateCollectionsAvailabilitiesActionStarter($em, $repo),
-            new CalculateGameBundlesAvailabilitiesActionStarter($em, $repo),
-            new CalculateGameBundlesShiniesAvailabilitiesActionStarter($em, $repo),
-            new CalculateDexAvailabilitiesActionStarter($em, $repo),
-            new CalculatePokemonAvailabilitiesActionStarter($em, $repo),
+            new UpdateLabelsActionStarter($entityManager, $repo),
+            new UpdateGamesCollectionsAndDexActionStarter($entityManager, $repo),
+            new UpdatePokemonsActionStarter($entityManager, $repo),
+            new UpdateRegionalDexNumbersActionStarter($entityManager, $repo),
+            new UpdateGamesAvailabilitiesActionStarter($entityManager, $repo),
+            new UpdateGamesShiniesAvailabilitiesActionStarter($entityManager, $repo),
+            new UpdateCollectionsAvailabilitiesActionStarter($entityManager, $repo),
+            new CalculateGameBundlesAvailabilitiesActionStarter($entityManager, $repo),
+            new CalculateGameBundlesShiniesAvailabilitiesActionStarter($entityManager, $repo),
+            new CalculateDexAvailabilitiesActionStarter($entityManager, $repo),
+            new CalculatePokemonAvailabilitiesActionStarter($entityManager, $repo),
         );
     }
 }

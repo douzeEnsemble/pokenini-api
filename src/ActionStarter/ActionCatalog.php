@@ -6,6 +6,10 @@ namespace App\ActionStarter;
 
 /**
  * Single source of truth of the admin "update" and "calculate" actions.
+ *
+ * One starter per action, hence the long constructor.
+ *
+ * @SuppressWarnings("PHPMD.ExcessiveParameterList")
  */
 final class ActionCatalog
 {

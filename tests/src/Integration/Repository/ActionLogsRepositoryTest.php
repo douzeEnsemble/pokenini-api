@@ -76,7 +76,7 @@ final class ActionLogsRepositoryTest extends KernelTestCase
     public function hasPending(): void
     {
         $repo = self::getContainer()->get(ActionLogsRepository::class);
-        $em = self::getContainer()->get(EntityManagerInterface::class);
+        $entityManager = self::getContainer()->get(EntityManagerInterface::class);
         $since = new \DateTimeImmutable('-1 hour');
 
         $this->assertFalse($repo->hasPending('App\Test\Pending', $since));
@@ -85,14 +85,14 @@ final class ActionLogsRepositoryTest extends KernelTestCase
         $old->createdAt = new \DateTime('-2 hours');
         $done = new ActionLog('App\Test\Pending');
         $done->doneAt = new \DateTime();
-        $em->persist($old);
-        $em->persist($done);
-        $em->flush();
+        $entityManager->persist($old);
+        $entityManager->persist($done);
+        $entityManager->flush();
 
         $this->assertFalse($repo->hasPending('App\Test\Pending', $since));
 
-        $em->persist(new ActionLog('App\Test\Pending'));
-        $em->flush();
+        $entityManager->persist(new ActionLog('App\Test\Pending'));
+        $entityManager->flush();
 
         $this->assertTrue($repo->hasPending('App\Test\Pending', $since));
         $this->assertFalse($repo->hasPending('App\Test\Other', $since));
