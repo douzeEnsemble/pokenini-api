@@ -57,7 +57,7 @@ final class CalculateDexAvailabilitiesCommandTest extends TestCase
             ->method('flush')
         ;
 
-        $actionStarter = new CalculateDexAvailabilitiesActionStarter($entityManager);
+        $actionStarter = new CalculateDexAvailabilitiesActionStarter($entityManager, $repository);
 
         $calculatorService = $this->createMock(DexAvailabilitiesCalculatorService::class);
         $calculatorService

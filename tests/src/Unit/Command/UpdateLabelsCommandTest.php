@@ -57,7 +57,7 @@ final class UpdateLabelsCommandTest extends TestCase
             ->method('flush')
         ;
 
-        $actionStarter = new UpdateLabelsActionStarter($entityManager);
+        $actionStarter = new UpdateLabelsActionStarter($entityManager, $repository);
 
         $updaterService = $this->createMock(LabelsUpdaterService::class);
         $updaterService

@@ -102,7 +102,7 @@ pokenini-api/
 
 ```
 POST /istration/update/pokemons
-  → AdminUpdateController
+  → AdminActionController
     → UpdatePokemonsActionStarter::start()
       → crée ActionLog en DB
       → retourne UpdatePokemons message

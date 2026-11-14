@@ -7,7 +7,6 @@ namespace App\ActionEnder;
 use App\DTO\DataChangeReport\Report;
 use App\Entity\ActionLog;
 use App\Message\ActionMessageInterface;
-use App\Repository\ActionLogsRepository;
 use Doctrine\ORM\EntityManagerInterface;
 
 trait ActionEnderTrait
@@ -40,7 +39,6 @@ trait ActionEnderTrait
     private function findActionLog(
         ActionMessageInterface $message
     ): ActionLog {
-        /** @var ActionLogsRepository $repo */
         $repo = $this->entityManager->getRepository(ActionLog::class);
 
         $actionLog = $repo->find($message->getActionId());

@@ -57,7 +57,7 @@ final class UpdateRegionalDexNumbersCommandTest extends TestCase
             ->method('flush')
         ;
 
-        $actionStarter = new UpdateRegionalDexNumbersActionStarter($entityManager);
+        $actionStarter = new UpdateRegionalDexNumbersActionStarter($entityManager, $repository);
 
         $updaterService = $this->createMock(RegionalDexNumbersUpdaterService::class);
         $updaterService
