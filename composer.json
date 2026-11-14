@@ -10,7 +10,7 @@
         "ext-zip": "*",
         "doctrine/doctrine-bundle": "^3.4.1",
         "doctrine/doctrine-migrations-bundle": "^4.0.1",
-        "doctrine/orm": "^3.7.6",
+        "doctrine/orm": "^3.7.7",
         "google/apiclient": "^2.20.1",
         "symfony/browser-kit": "8.1.*",
         "symfony/console": "8.1.*",
@@ -49,7 +49,7 @@
         "symfony/phpunit-bridge": "8.1.*",
         "symfony/stopwatch": "8.1.*",
         "symfony/var-dumper": "8.1.*",
-        "zenstruck/messenger-test": "^1.15.1"
+        "zenstruck/messenger-test": "^1.16.0"
     },
     "config": {
         "optimize-autoloader": true,
