@@ -57,7 +57,7 @@ final class UpdateCollectionsAvailabilitiesCommandTest extends TestCase
             ->method('flush')
         ;
 
-        $actionStarter = new UpdateCollectionsAvailabilitiesActionStarter($entityManager);
+        $actionStarter = new UpdateCollectionsAvailabilitiesActionStarter($entityManager, $repository);
 
         $updaterService = $this->createMock(CollectionsAvailabilitiesUpdaterService::class);
         $updaterService

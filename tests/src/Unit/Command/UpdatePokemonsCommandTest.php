@@ -57,7 +57,7 @@ final class UpdatePokemonsCommandTest extends TestCase
             ->method('flush')
         ;
 
-        $actionStarter = new UpdatePokemonsActionStarter($entityManager);
+        $actionStarter = new UpdatePokemonsActionStarter($entityManager, $repository);
 
         $updaterService = $this->createMock(PokemonsUpdaterService::class);
         $updaterService

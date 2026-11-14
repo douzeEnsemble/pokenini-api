@@ -57,7 +57,7 @@ final class UpdateGamesCollectionsAndDexCommandTest extends TestCase
             ->method('flush')
         ;
 
-        $actionStarter = new UpdateGamesCollectionsAndDexActionStarter($entityManager);
+        $actionStarter = new UpdateGamesCollectionsAndDexActionStarter($entityManager, $repository);
 
         $updaterService = $this->createMock(GamesCollectionsAndDexUpdaterService::class);
         $updaterService

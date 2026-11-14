@@ -6,6 +6,7 @@ namespace App\Repository;
 
 use App\Entity\ActionLog;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -16,6 +17,21 @@ class ActionLogsRepository extends ServiceEntityRepository
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, ActionLog::class);
+    }
+
+    public function hasPending(string $type, \DateTimeInterface $since): bool
+    {
+        return null !== $this->createQueryBuilder('a')
+            ->select('a.createdAt')
+            ->where('a.type = :type')
+            ->andWhere('a.doneAt IS NULL')
+            ->andWhere('a.createdAt > :since')
+            ->setParameter('type', $type)
+            ->setParameter('since', $since, Types::DATETIME_IMMUTABLE)
+            ->setMaxResults(1)
+            ->getQuery()
+            ->getOneOrNullResult()
+        ;
     }
 
     /**

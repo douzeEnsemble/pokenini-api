@@ -57,7 +57,7 @@ final class UpdateGamesShiniesAvailabilitiesCommandTest extends TestCase
             ->method('flush')
         ;
 
-        $actionStarter = new UpdateGamesShiniesAvailabilitiesActionStarter($entityManager);
+        $actionStarter = new UpdateGamesShiniesAvailabilitiesActionStarter($entityManager, $repository);
 
         $updaterService = $this->createMock(GamesShiniesAvailabilitiesUpdaterService::class);
         $updaterService

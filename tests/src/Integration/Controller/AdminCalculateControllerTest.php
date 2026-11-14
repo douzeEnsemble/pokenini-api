@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Integration\Controller;
 
-use App\Controller\AdminCalculateController;
+use App\Controller\AdminActionController;
 use App\Message\CalculateDexAvailabilities;
 use App\Message\CalculateGameBundlesAvailabilities;
 use App\Message\CalculateGameBundlesShiniesAvailabilities;
@@ -18,7 +18,7 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
 /**
  * @internal
  */
-#[CoversClass(AdminCalculateController::class)]
+#[CoversClass(AdminActionController::class)]
 final class AdminCalculateControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;

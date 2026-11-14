@@ -57,7 +57,7 @@ final class CalculateGameBundlesAvailabilitiesCommandTest extends TestCase
             ->method('flush')
         ;
 
-        $actionStarter = new CalculateGameBundlesAvailabilitiesActionStarter($entityManager);
+        $actionStarter = new CalculateGameBundlesAvailabilitiesActionStarter($entityManager, $repository);
 
         $calculatorService = $this->createMock(GameBundlesAvailabilitiesCalculatorService::class);
         $calculatorService
