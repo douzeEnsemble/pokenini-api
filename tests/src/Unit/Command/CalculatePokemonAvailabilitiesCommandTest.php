@@ -57,7 +57,7 @@ final class CalculatePokemonAvailabilitiesCommandTest extends TestCase
             ->method('flush')
         ;
 
-        $actionStarter = new CalculatePokemonAvailabilitiesActionStarter($entityManager);
+        $actionStarter = new CalculatePokemonAvailabilitiesActionStarter($entityManager, $repository);
 
         $calculatorService = $this->createMock(PokemonAvailabilitiesCalculatorService::class);
         $calculatorService

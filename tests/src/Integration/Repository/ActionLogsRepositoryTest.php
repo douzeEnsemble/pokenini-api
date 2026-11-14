@@ -4,7 +4,9 @@ declare(strict_types=1);
 
 namespace App\Tests\Integration\Repository;
 
+use App\Entity\ActionLog;
 use App\Repository\ActionLogsRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
@@ -68,5 +70,31 @@ final class ActionLogsRepositoryTest extends KernelTestCase
                 $this->isNull(),
             ));
         }
+    }
+
+    #[Test]
+    public function hasPending(): void
+    {
+        $repo = self::getContainer()->get(ActionLogsRepository::class);
+        $entityManager = self::getContainer()->get(EntityManagerInterface::class);
+        $since = new \DateTimeImmutable('-1 hour');
+
+        $this->assertFalse($repo->hasPending('App\Test\Pending', $since));
+
+        $old = new ActionLog('App\Test\Pending');
+        $old->createdAt = new \DateTime('-2 hours');
+        $done = new ActionLog('App\Test\Pending');
+        $done->doneAt = new \DateTime();
+        $entityManager->persist($old);
+        $entityManager->persist($done);
+        $entityManager->flush();
+
+        $this->assertFalse($repo->hasPending('App\Test\Pending', $since));
+
+        $entityManager->persist(new ActionLog('App\Test\Pending'));
+        $entityManager->flush();
+
+        $this->assertTrue($repo->hasPending('App\Test\Pending', $since));
+        $this->assertFalse($repo->hasPending('App\Test\Other', $since));
     }
 }

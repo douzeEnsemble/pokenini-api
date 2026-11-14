@@ -171,7 +171,9 @@ parameters:
       - DoctrineORM
     AppActionStarter:
       - AppEntity
+      - AppException
       - AppMessage
+      - AppRepository
       - DoctrineEntityManager
       - DoctrineORM
     AppCalculator:
@@ -228,6 +230,8 @@ parameters:
       - SymfonySerializer
       - SymfonyUid
       - SymfonyValidator
+    AppException:
+      - SymfonyHttpKernel
     AppFactory:
       - AppDTO
       - AppEntity
