@@ -54,6 +54,36 @@ final class ActionCatalogTest extends TestCase
     }
 
     #[Test]
+    public function dependenciesAreExactlyTheExpectedOnes(): void
+    {
+        $dependencies = [];
+        foreach ($this->catalog()->all() as $definition) {
+            $dependencies["{$definition->type}:{$definition->name}"] = $definition->dependsOn;
+        }
+
+        $this->assertSame(
+            [
+                'update:labels' => [],
+                'update:games_collections_and_dex' => [],
+                'update:pokemons' => [],
+                'update:regional_dex_numbers' => [],
+                'update:games_availabilities' => [],
+                'update:games_shinies_availabilities' => [],
+                'update:collections_availabilities' => [],
+                'calculate:game_bundles_availabilities' => ['update:games_availabilities'],
+                'calculate:game_bundles_shinies_availabilities' => ['update:games_shinies_availabilities'],
+                'calculate:dex_availabilities' => ['update:games_availabilities', 'update:collections_availabilities'],
+                'calculate:pokemon_availabilities' => [
+                    'calculate:game_bundles_availabilities',
+                    'calculate:game_bundles_shinies_availabilities',
+                    'calculate:dex_availabilities',
+                ],
+            ],
+            $dependencies,
+        );
+    }
+
+    #[Test]
     public function findReturnsTheMatchingDefinition(): void
     {
         $catalog = $this->catalog();
