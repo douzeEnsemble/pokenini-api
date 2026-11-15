@@ -326,7 +326,7 @@ final class PokemonDebugResponseFactoryTest extends TestCase
     public function fromPokemonWithDeletedAtFormatsAtomDate(): void
     {
         $pokemon = $this->buildBasePokemon();
-        $pokemon->deletedAt = new \DateTime('2024-03-15T12:00:00+00:00');
+        $pokemon->deletedAt = new \DateTimeImmutable('2024-03-15T12:00:00+00:00');
 
         $result = PokemonDebugResponseFactory::fromPokemon($pokemon);
 
@@ -351,7 +351,7 @@ final class PokemonDebugResponseFactoryTest extends TestCase
     public function fromPokemonGameBundleWithDeletedAtFormatsAtomDate(): void
     {
         $pokemon = $this->buildBasePokemon();
-        $pokemon->originalGameBundle->deletedAt = new \DateTime('2024-04-20T08:00:00+00:00');
+        $pokemon->originalGameBundle->deletedAt = new \DateTimeImmutable('2024-04-20T08:00:00+00:00');
 
         $result = PokemonDebugResponseFactory::fromPokemon($pokemon);
 
@@ -376,7 +376,7 @@ final class PokemonDebugResponseFactoryTest extends TestCase
     public function fromPokemonGenerationWithDeletedAtFormatsAtomDate(): void
     {
         $pokemon = $this->buildBasePokemon();
-        $pokemon->originalGameBundle->generation->deletedAt = new \DateTime('2024-05-10T00:00:00+00:00');
+        $pokemon->originalGameBundle->generation->deletedAt = new \DateTimeImmutable('2024-05-10T00:00:00+00:00');
 
         $result = PokemonDebugResponseFactory::fromPokemon($pokemon);
 
@@ -405,7 +405,7 @@ final class PokemonDebugResponseFactoryTest extends TestCase
         $variantForm->name = 'Gender';
         $variantForm->frenchName = 'Genre';
         $variantForm->orderNumber = 1;
-        $variantForm->deletedAt = new \DateTime('2024-06-01T00:00:00+00:00');
+        $variantForm->deletedAt = new \DateTimeImmutable('2024-06-01T00:00:00+00:00');
 
         $pokemon = $this->buildBasePokemon();
         $pokemon->variantForm = $variantForm;
@@ -450,7 +450,7 @@ final class PokemonDebugResponseFactoryTest extends TestCase
         $type->frenchName = 'Plante';
         $type->orderNumber = 3;
         $type->color = '#78C850';
-        $type->deletedAt = new \DateTime('2024-07-01T00:00:00+00:00');
+        $type->deletedAt = new \DateTimeImmutable('2024-07-01T00:00:00+00:00');
 
         $pokemon = $this->buildBasePokemon();
         $pokemon->primaryType = $type;

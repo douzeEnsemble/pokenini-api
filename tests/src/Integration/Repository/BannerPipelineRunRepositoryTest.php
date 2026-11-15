@@ -58,7 +58,7 @@ final class BannerPipelineRunRepositoryTest extends KernelTestCase
 
         $older = $repo->findLatest();
         $this->assertNotNull($older);
-        $older->createdAt = new \DateTime('-1 hour');
+        $older->createdAt = new \DateTimeImmutable('-1 hour');
         $entityManager->flush();
 
         $repo->create('corr-newer');
@@ -86,7 +86,7 @@ final class BannerPipelineRunRepositoryTest extends KernelTestCase
 
         // Force both rows onto the exact same second-granularity timestamp,
         // reproducing a tie that createdAt alone cannot break.
-        $sharedCreatedAt = new \DateTime('-1 hour');
+        $sharedCreatedAt = new \DateTimeImmutable('-1 hour');
         $first->createdAt = $sharedCreatedAt;
         $second->createdAt = $sharedCreatedAt;
         $entityManager->flush();

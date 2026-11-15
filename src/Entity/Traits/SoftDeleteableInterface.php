@@ -6,5 +6,5 @@ namespace App\Entity\Traits;
 
 interface SoftDeleteableInterface
 {
-    public function getDeletedAt(): ?\DateTime;
+    public function getDeletedAt(): ?\DateTimeImmutable;
 }

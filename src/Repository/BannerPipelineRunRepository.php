@@ -99,7 +99,7 @@ class BannerPipelineRunRepository extends ServiceEntityRepository
             $run->resourcesPrState = $patch->resourcesPrState;
         }
 
-        $run->updatedAt = new \DateTime();
+        $run->updatedAt = new \DateTimeImmutable();
 
         $this->getEntityManager()->flush();
 

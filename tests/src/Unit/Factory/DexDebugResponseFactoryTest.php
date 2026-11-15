@@ -42,7 +42,7 @@ final class DexDebugResponseFactoryTest extends TestCase
         $dex->frenchDescription = 'Première génération';
         $dex->isReleased = true;
         $dex->canHoldElection = false;
-        $dex->lastChangedAt = new \DateTime('2024-01-15T10:30:00+00:00');
+        $dex->lastChangedAt = new \DateTimeImmutable('2024-01-15T10:30:00+00:00');
         $dex->electionOrderNumber = 5;
         $dex->gameOrderNumber = 6;
 
@@ -94,7 +94,7 @@ final class DexDebugResponseFactoryTest extends TestCase
         $dex->frenchDescription = '';
         $dex->isReleased = false;
         $dex->canHoldElection = true;
-        $dex->lastChangedAt = new \DateTime('2024-06-01T00:00:00+00:00');
+        $dex->lastChangedAt = new \DateTimeImmutable('2024-06-01T00:00:00+00:00');
         $dex->electionOrderNumber = 0;
 
         $result = DexDebugResponseFactory::fromDex($dex);
@@ -124,9 +124,9 @@ final class DexDebugResponseFactoryTest extends TestCase
         $dex->frenchDescription = '';
         $dex->isReleased = false;
         $dex->canHoldElection = false;
-        $dex->lastChangedAt = new \DateTime('2024-01-01T00:00:00+00:00');
+        $dex->lastChangedAt = new \DateTimeImmutable('2024-01-01T00:00:00+00:00');
         $dex->electionOrderNumber = 0;
-        $dex->deletedAt = new \DateTime('2024-03-15T12:00:00+00:00');
+        $dex->deletedAt = new \DateTimeImmutable('2024-03-15T12:00:00+00:00');
 
         $result = DexDebugResponseFactory::fromDex($dex);
 
@@ -141,7 +141,7 @@ final class DexDebugResponseFactoryTest extends TestCase
         $region->name = 'Johto';
         $region->frenchName = 'Johto';
         $region->orderNumber = 2;
-        $region->deletedAt = new \DateTime('2024-04-20T08:00:00+00:00');
+        $region->deletedAt = new \DateTimeImmutable('2024-04-20T08:00:00+00:00');
 
         $dex = new Dex();
         $dex->slug = 'goldsilvercrystal';
@@ -158,7 +158,7 @@ final class DexDebugResponseFactoryTest extends TestCase
         $dex->frenchDescription = '';
         $dex->isReleased = false;
         $dex->canHoldElection = false;
-        $dex->lastChangedAt = new \DateTime('2024-01-01T00:00:00+00:00');
+        $dex->lastChangedAt = new \DateTimeImmutable('2024-01-01T00:00:00+00:00');
         $dex->electionOrderNumber = 0;
 
         $result = DexDebugResponseFactory::fromDex($dex);
@@ -186,7 +186,7 @@ final class DexDebugResponseFactoryTest extends TestCase
         $dex->frenchDescription = '';
         $dex->isReleased = false;
         $dex->canHoldElection = false;
-        $dex->lastChangedAt = new \DateTime('2024-01-01T00:00:00+00:00');
+        $dex->lastChangedAt = new \DateTimeImmutable('2024-01-01T00:00:00+00:00');
         $dex->electionOrderNumber = 0;
 
         $reflection = new \ReflectionProperty(Dex::class, 'identifier');
@@ -226,7 +226,7 @@ final class DexDebugResponseFactoryTest extends TestCase
         $dex->frenchDescription = '';
         $dex->isReleased = false;
         $dex->canHoldElection = false;
-        $dex->lastChangedAt = new \DateTime('2024-01-01T00:00:00+00:00');
+        $dex->lastChangedAt = new \DateTimeImmutable('2024-01-01T00:00:00+00:00');
         $dex->electionOrderNumber = 0;
 
         $result = DexDebugResponseFactory::fromDex($dex);

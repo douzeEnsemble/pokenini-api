@@ -62,7 +62,7 @@ final class ImagePipelineRunRepositoryTest extends KernelTestCase
         // ordering by `createdAt` alone, regardless of any incidental id ordering.
         $older = $repo->findLatest();
         $this->assertNotNull($older);
-        $older->createdAt = new \DateTime('-1 hour');
+        $older->createdAt = new \DateTimeImmutable('-1 hour');
         $entityManager->flush();
 
         $repo->create('corr-newer');

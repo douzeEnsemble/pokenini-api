@@ -75,7 +75,7 @@ abstract class AbstractTestUpdateHandler extends TestCase
         $handler->update($message);
 
         $this->assertEquals('[]', $actionLog->reportData);
-        $this->assertInstanceOf(\DateTime::class, $actionLog->doneAt);
+        $this->assertInstanceOf(\DateTimeImmutable::class, $actionLog->doneAt);
         $this->assertNull($actionLog->errorTrace);
     }
 
@@ -128,7 +128,7 @@ abstract class AbstractTestUpdateHandler extends TestCase
         $handler->update($message);
 
         $this->assertNull($actionLog->reportData);
-        $this->assertInstanceOf(\DateTime::class, $actionLog->doneAt);
+        $this->assertInstanceOf(\DateTimeImmutable::class, $actionLog->doneAt);
         $this->assertEquals('Ya un blèm !', $actionLog->errorTrace);
     }
 }

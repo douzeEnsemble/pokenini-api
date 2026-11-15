@@ -39,6 +39,6 @@ final class ColorGameRound
     #[ORM\Column(nullable: true)]
     public ?bool $isCorrect = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    public ?\DateTime $answeredAt = null;
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
+    public ?\DateTimeImmutable $answeredAt = null;
 }
