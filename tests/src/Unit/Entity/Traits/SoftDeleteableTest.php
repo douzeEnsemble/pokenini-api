@@ -28,7 +28,7 @@ final class SoftDeleteableTest extends TestCase
     public function getDeletedAtReflectsDeletedAtProperty(): void
     {
         $entity = new Pokemon();
-        $date = new \DateTime('2026-01-01');
+        $date = new \DateTimeImmutable('2026-01-01');
         $entity->deletedAt = $date;
 
         $this->assertSame($date, $entity->getDeletedAt());

@@ -27,8 +27,8 @@ final class DexDebugResponseFactory
             region: null !== $dex->region ? self::buildRegion($dex->region) : null,
             description: $dex->description,
             frenchDescription: $dex->frenchDescription,
-            lastChangedAt: $dex->lastChangedAt->format(\DateTime::ATOM),
-            deletedAt: $dex->deletedAt?->format(\DateTime::ATOM),
+            lastChangedAt: $dex->lastChangedAt->format(\DateTimeInterface::ATOM),
+            deletedAt: $dex->deletedAt?->format(\DateTimeInterface::ATOM),
         );
     }
 
@@ -60,7 +60,7 @@ final class DexDebugResponseFactory
             name: $region->name,
             frenchName: $region->frenchName,
             orderNumber: $region->orderNumber,
-            deletedAt: $region->deletedAt?->format(\DateTime::ATOM),
+            deletedAt: $region->deletedAt?->format(\DateTimeInterface::ATOM),
         );
     }
 }

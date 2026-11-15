@@ -82,9 +82,9 @@ final class ActionLogsRepositoryTest extends KernelTestCase
         $this->assertFalse($repo->hasPending('App\Test\Pending', $since));
 
         $old = new ActionLog('App\Test\Pending');
-        $old->createdAt = new \DateTime('-2 hours');
+        $old->createdAt = new \DateTimeImmutable('-2 hours');
         $done = new ActionLog('App\Test\Pending');
-        $done->doneAt = new \DateTime();
+        $done->doneAt = new \DateTimeImmutable();
         $entityManager->persist($old);
         $entityManager->persist($done);
         $entityManager->flush();

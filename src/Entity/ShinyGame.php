@@ -37,12 +37,12 @@ final class ShinyGame
     #[ORM\Column]
     public int $correctCount = 0;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    public \DateTime $startedAt;
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
+    public \DateTimeImmutable $startedAt;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    public ?\DateTime $lastPlayedAt = null;
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
+    public ?\DateTimeImmutable $lastPlayedAt = null;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    public ?\DateTime $endedAt = null;
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
+    public ?\DateTimeImmutable $endedAt = null;
 }

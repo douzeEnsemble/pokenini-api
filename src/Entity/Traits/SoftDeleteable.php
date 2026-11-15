@@ -10,11 +10,11 @@ use Symfony\Component\Serializer\Attribute\Ignore;
 
 trait SoftDeleteable
 {
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    public ?\DateTime $deletedAt = null;
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
+    public ?\DateTimeImmutable $deletedAt = null;
 
     #[Ignore]
-    public function getDeletedAt(): ?\DateTime
+    public function getDeletedAt(): ?\DateTimeImmutable
     {
         return $this->deletedAt;
     }

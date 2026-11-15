@@ -19,11 +19,11 @@ final class BannerPipelineRun
     #[ORM\Column(unique: true)]
     public string $correlationId;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    public \DateTime $createdAt;
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
+    public \DateTimeImmutable $createdAt;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    public \DateTime $updatedAt;
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
+    public \DateTimeImmutable $updatedAt;
 
     #[ORM\Column(type: Types::BIGINT, nullable: true)]
     public ?int $workflowARunId = null;
@@ -82,7 +82,7 @@ final class BannerPipelineRun
     public function __construct(string $correlationId)
     {
         $this->correlationId = $correlationId;
-        $this->createdAt = new \DateTime();
-        $this->updatedAt = new \DateTime();
+        $this->createdAt = new \DateTimeImmutable();
+        $this->updatedAt = new \DateTimeImmutable();
     }
 }

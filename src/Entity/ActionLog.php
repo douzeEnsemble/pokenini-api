@@ -13,11 +13,11 @@ final class ActionLog
 {
     use BaseEntityTrait;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE)]
-    public \DateTime $createdAt;
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE)]
+    public \DateTimeImmutable $createdAt;
 
-    #[ORM\Column(type: Types::DATETIME_MUTABLE, nullable: true)]
-    public ?\DateTime $doneAt = null;
+    #[ORM\Column(type: Types::DATETIME_IMMUTABLE, nullable: true)]
+    public ?\DateTimeImmutable $doneAt = null;
 
     #[ORM\Column(nullable: true)]
     public ?string $reportData = null;
@@ -29,7 +29,7 @@ final class ActionLog
         #[ORM\Column]
         private string $type,
     ) {
-        $this->createdAt = new \DateTime();
+        $this->createdAt = new \DateTimeImmutable();
     }
 
     public function getType(): string

@@ -52,7 +52,7 @@ trait ActionEnderTrait
 
     private function finalizeActionLog(ActionLog $actionLog): void
     {
-        $actionLog->doneAt = new \DateTime();
+        $actionLog->doneAt = new \DateTimeImmutable();
 
         $this->entityManager->flush();
     }
