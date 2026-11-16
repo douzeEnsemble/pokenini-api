@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "8e4916892b111e482e5354f7ced93fe3",
+    "content-hash": "4d120e50ca1952f4e91d6017fb8279f7",
     "packages": [
         {
             "name": "doctrine/collections",
@@ -252,16 +252,16 @@
         },
         {
             "name": "doctrine/doctrine-bundle",
-            "version": "3.4.1",
+            "version": "3.4.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/DoctrineBundle.git",
-                "reference": "65d212e9792ae00753e5bd93fe0449eea149804f"
+                "reference": "467740778a47d0bb9833dd94ee5d4e5151f7c70f"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/65d212e9792ae00753e5bd93fe0449eea149804f",
-                "reference": "65d212e9792ae00753e5bd93fe0449eea149804f",
+                "url": "https://api.github.com/repos/doctrine/DoctrineBundle/zipball/467740778a47d0bb9833dd94ee5d4e5151f7c70f",
+                "reference": "467740778a47d0bb9833dd94ee5d4e5151f7c70f",
                 "shasum": ""
             },
             "require": {
@@ -353,7 +353,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/DoctrineBundle/issues",
-                "source": "https://github.com/doctrine/DoctrineBundle/tree/3.4.1"
+                "source": "https://github.com/doctrine/DoctrineBundle/tree/3.4.2"
             },
             "funding": [
                 {
@@ -369,8 +369,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-11-12T21:32:20+00:00",
-            "published-time": "2026-11-12T21:46:16+00:00"
+            "time": "2026-11-15T14:34:22+00:00",
+            "published-time": "2026-11-15T14:35:03+00:00"
         },
         {
             "name": "doctrine/doctrine-migrations-bundle",
@@ -650,16 +650,16 @@
         },
         {
             "name": "doctrine/instantiator",
-            "version": "2.1.0",
+            "version": "2.2.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/instantiator.git",
-                "reference": "23da848e1a2308728fe5fdddabf4be17ff9720c7"
+                "reference": "bf3870fbe25c1b5f4febaf281be76d1e2d86df30"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/23da848e1a2308728fe5fdddabf4be17ff9720c7",
-                "reference": "23da848e1a2308728fe5fdddabf4be17ff9720c7",
+                "url": "https://api.github.com/repos/doctrine/instantiator/zipball/bf3870fbe25c1b5f4febaf281be76d1e2d86df30",
+                "reference": "bf3870fbe25c1b5f4febaf281be76d1e2d86df30",
                 "shasum": ""
             },
             "require": {
@@ -669,15 +669,15 @@
                 "doctrine/coding-standard": "^14",
                 "ext-pdo": "*",
                 "ext-phar": "*",
-                "phpbench/phpbench": "^1.2",
-                "phpstan/phpstan": "^2.1",
-                "phpstan/phpstan-phpunit": "^2.0",
-                "phpunit/phpunit": "^10.5.58"
+                "phpbench/phpbench": "^1.7",
+                "phpstan/phpstan": "^2.3",
+                "phpstan/phpstan-phpunit": "^2.1",
+                "phpunit/phpunit": "^13.4.6"
             },
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "Doctrine\\Instantiator\\": "src/Doctrine/Instantiator/"
+                    "Doctrine\\Instantiator\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -699,7 +699,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/instantiator/issues",
-                "source": "https://github.com/doctrine/instantiator/tree/2.1.0"
+                "source": "https://github.com/doctrine/instantiator/tree/2.2.0"
             },
             "funding": [
                 {
@@ -715,8 +715,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-01-05T06:47:08+00:00",
-            "published-time": "2026-01-06T07:25:40+00:00"
+            "time": "2026-11-15T20:06:55+00:00",
+            "published-time": "2026-11-15T20:08:11+00:00"
         },
         {
             "name": "doctrine/lexer",
@@ -1291,16 +1291,16 @@
         },
         {
             "name": "google/apiclient-services",
-            "version": "v0.466.0",
+            "version": "v0.467.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/googleapis/google-api-php-client-services.git",
-                "reference": "a5893e53f50b16b78684a99957e1a2880396f576"
+                "reference": "f6c99f89b7f4d85e882fe68ed8fe3149d6e8a609"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/a5893e53f50b16b78684a99957e1a2880396f576",
-                "reference": "a5893e53f50b16b78684a99957e1a2880396f576",
+                "url": "https://api.github.com/repos/googleapis/google-api-php-client-services/zipball/f6c99f89b7f4d85e882fe68ed8fe3149d6e8a609",
+                "reference": "f6c99f89b7f4d85e882fe68ed8fe3149d6e8a609",
                 "shasum": ""
             },
             "require": {
@@ -1329,10 +1329,10 @@
             ],
             "support": {
                 "issues": "https://github.com/googleapis/google-api-php-client-services/issues",
-                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.466.0"
+                "source": "https://github.com/googleapis/google-api-php-client-services/tree/v0.467.0"
             },
-            "time": "2026-11-09T01:08:14+00:00",
-            "published-time": "2026-11-09T01:22:23+00:00"
+            "time": "2026-11-16T01:08:16+00:00",
+            "published-time": "2026-11-16T01:25:24+00:00"
         },
         {
             "name": "google/auth",
@@ -1741,16 +1741,16 @@
         },
         {
             "name": "monolog/monolog",
-            "version": "3.12.1",
+            "version": "3.13.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Seldaek/monolog.git",
-                "reference": "d7059e4c691d05ea1222b5124bed0f961be46e15"
+                "reference": "1f5f55bb4a9a230ff6d8a4ceccea31d10b0142ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/d7059e4c691d05ea1222b5124bed0f961be46e15",
-                "reference": "d7059e4c691d05ea1222b5124bed0f961be46e15",
+                "url": "https://api.github.com/repos/Seldaek/monolog/zipball/1f5f55bb4a9a230ff6d8a4ceccea31d10b0142ac",
+                "reference": "1f5f55bb4a9a230ff6d8a4ceccea31d10b0142ac",
                 "shasum": ""
             },
             "require": {
@@ -1830,7 +1830,7 @@
             ],
             "support": {
                 "issues": "https://github.com/Seldaek/monolog/issues",
-                "source": "https://github.com/Seldaek/monolog/tree/3.12.1"
+                "source": "https://github.com/Seldaek/monolog/tree/3.13.0"
             },
             "funding": [
                 {
@@ -1842,8 +1842,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-29T19:21:12+00:00",
-            "published-time": "2026-09-29T19:21:44+00:00"
+            "time": "2026-11-16T10:43:05+00:00",
+            "published-time": "2026-11-16T10:45:37+00:00"
         },
         {
             "name": "psr/cache",
@@ -5217,16 +5217,16 @@
         },
         {
             "name": "symfony/polyfill-php85",
-            "version": "v1.43.0",
+            "version": "v1.44.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/polyfill-php85.git",
-                "reference": "86a42cbcc07adc331481a5ab310a4024bfc227f6"
+                "reference": "94c794cb5ba51784bc259f11e9f128593297d8dc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/polyfill-php85/zipball/86a42cbcc07adc331481a5ab310a4024bfc227f6",
-                "reference": "86a42cbcc07adc331481a5ab310a4024bfc227f6",
+                "url": "https://api.github.com/repos/symfony/polyfill-php85/zipball/94c794cb5ba51784bc259f11e9f128593297d8dc",
+                "reference": "94c794cb5ba51784bc259f11e9f128593297d8dc",
                 "shasum": ""
             },
             "require": {
@@ -5273,7 +5273,7 @@
                 "shim"
             ],
             "support": {
-                "source": "https://github.com/symfony/polyfill-php85/tree/v1.43.0"
+                "source": "https://github.com/symfony/polyfill-php85/tree/v1.44.0"
             },
             "funding": [
                 {
@@ -5293,8 +5293,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-09-25T15:46:47+00:00",
-            "published-time": "2026-09-30T10:23:32+00:00"
+            "time": "2026-10-30T15:20:09+00:00",
+            "published-time": "2026-11-15T14:20:22+00:00"
         },
         {
             "name": "symfony/polyfill-php86",
@@ -7182,44 +7182,44 @@
     "packages-dev": [
         {
             "name": "doctrine/data-fixtures",
-            "version": "2.2.1",
+            "version": "2.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/doctrine/data-fixtures.git",
-                "reference": "bf7ac3a050b54b261cedfb3d0a44733819062275"
+                "reference": "dbd26375ff0ad85f9cc80647e470290a9702e86d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/bf7ac3a050b54b261cedfb3d0a44733819062275",
-                "reference": "bf7ac3a050b54b261cedfb3d0a44733819062275",
+                "url": "https://api.github.com/repos/doctrine/data-fixtures/zipball/dbd26375ff0ad85f9cc80647e470290a9702e86d",
+                "reference": "dbd26375ff0ad85f9cc80647e470290a9702e86d",
                 "shasum": ""
             },
             "require": {
-                "doctrine/persistence": "^3.1 || ^4.0",
-                "php": "^8.1",
+                "doctrine/persistence": "^4",
+                "php": "^8.4",
                 "psr/log": "^1.1 || ^2 || ^3"
             },
             "conflict": {
-                "doctrine/dbal": "<3.5 || >=5",
-                "doctrine/orm": "<2.14 || >=4",
-                "doctrine/phpcr-odm": "<1.3.0"
+                "doctrine/dbal": "<4.5 || >=5",
+                "doctrine/mongodb-odm": "<2.17",
+                "doctrine/orm": "<3.7 || >=4",
+                "doctrine/phpcr-odm": "<3"
             },
             "require-dev": {
                 "doctrine/coding-standard": "^14",
-                "doctrine/dbal": "^3.5 || ^4",
-                "doctrine/mongodb-odm": "^1.3.0 || ^2.0.0",
-                "doctrine/orm": "^2.14 || ^3",
-                "doctrine/phpcr-odm": "^1.8 || ^2.0",
+                "doctrine/dbal": "^4.5",
+                "doctrine/mongodb-odm": "^2.17",
+                "doctrine/orm": "^3.7",
+                "doctrine/phpcr-odm": "^3.0",
                 "ext-sqlite3": "*",
                 "fig/log-test": "^1",
-                "jackalope/jackalope-fs": "*",
-                "phpstan/phpstan": "2.1.46",
-                "phpunit/phpunit": "10.5.63 || 12.5.12",
-                "symfony/cache": "^6.4 || ^7 || ^8",
-                "symfony/var-exporter": "^6.4 || ^7 || ^8"
+                "jackalope/jackalope": "^2",
+                "jackalope/jackalope-doctrine-dbal": "^2",
+                "phpstan/phpstan": "2.3.5",
+                "phpunit/phpunit": "13.4.6",
+                "symfony/cache": "^8.1"
             },
             "suggest": {
-                "alcaeus/mongo-php-adapter": "For using MongoDB ODM 1.3 with PHP 7 (deprecated)",
                 "doctrine/mongodb-odm": "For loading MongoDB ODM fixtures",
                 "doctrine/orm": "For loading ORM fixtures",
                 "doctrine/phpcr-odm": "For loading PHPCR ODM fixtures"
@@ -7247,7 +7247,7 @@
             ],
             "support": {
                 "issues": "https://github.com/doctrine/data-fixtures/issues",
-                "source": "https://github.com/doctrine/data-fixtures/tree/2.2.1"
+                "source": "https://github.com/doctrine/data-fixtures/tree/2.3.0"
             },
             "funding": [
                 {
@@ -7263,8 +7263,8 @@
                     "type": "tidelift"
                 }
             ],
-            "time": "2026-04-01T13:56:01+00:00",
-            "published-time": "2026-04-01T14:03:34+00:00"
+            "time": "2026-11-15T20:53:29+00:00",
+            "published-time": "2026-11-15T20:54:47+00:00"
         },
         {
             "name": "fakerphp/faker",
@@ -9931,16 +9931,16 @@
         },
         {
             "name": "webmozart/assert",
-            "version": "2.5.0",
+            "version": "2.5.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/webmozarts/assert.git",
-                "reference": "8a163706bbcac613733dba03f51e13b5eb1bb819"
+                "reference": "e578132c01bd0c64108386ab20d8217cd175ddec"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/webmozarts/assert/zipball/8a163706bbcac613733dba03f51e13b5eb1bb819",
-                "reference": "8a163706bbcac613733dba03f51e13b5eb1bb819",
+                "url": "https://api.github.com/repos/webmozarts/assert/zipball/e578132c01bd0c64108386ab20d8217cd175ddec",
+                "reference": "e578132c01bd0c64108386ab20d8217cd175ddec",
                 "shasum": ""
             },
             "require": {
@@ -9991,10 +9991,10 @@
             ],
             "support": {
                 "issues": "https://github.com/webmozarts/assert/issues",
-                "source": "https://github.com/webmozarts/assert/tree/2.5.0"
+                "source": "https://github.com/webmozarts/assert/tree/2.5.1"
             },
-            "time": "2026-10-05T23:14:19+00:00",
-            "published-time": "2026-10-05T23:14:25+00:00"
+            "time": "2026-11-15T13:41:13+00:00",
+            "published-time": "2026-11-15T13:41:42+00:00"
         },
         {
             "name": "zenstruck/assert",
