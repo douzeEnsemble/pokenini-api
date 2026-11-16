@@ -38,9 +38,14 @@ final class AbstractActionStarterTest extends TestCase
 
         $starter = new UpdateLabelsActionStarter($entityManager, $repository);
 
-        $this->expectException(ActionAlreadyRunningException::class);
-        $this->expectExceptionMessage('Action already running: '.UpdateLabels::class);
+        try {
+            $message = $starter->start();
+        } catch (ActionAlreadyRunningException $exception) {
+            $this->assertSame('Action already running: '.UpdateLabels::class, $exception->getMessage());
 
-        $starter->start();
+            return;
+        }
+
+        $this->fail('Expected ActionAlreadyRunningException, got '.$message::class);
     }
 }
