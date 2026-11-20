@@ -13,7 +13,7 @@ RUN docker-php-ext-enable opcache 2>/dev/null || true
 # build them from pinned upstream commits. Back to pecl once releases support PHP 8.6.
 ARG PHPREDIS_REF=a6ce1e60b3e81ce3b25174aa5aaefd5590dc64fd
 ARG APCU_REF=66300e28647c
-# hadolint ignore=DL3018,SC2086
+# hadolint ignore=DL3003,DL3018,SC2086
 RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS git \
 	&& git clone -q https://github.com/phpredis/phpredis.git /tmp/phpredis \
 	&& git -C /tmp/phpredis checkout -q "$PHPREDIS_REF" \
@@ -74,7 +74,7 @@ COPY --link .docker/php/conf.d/app.dev.ini $PHP_INI_DIR/conf.d/20-app.dev.ini
 
 # No pecl on PHP 8.6 images: build xdebug from its first release supporting 8.6.
 ARG XDEBUG_REF=3.6.0alpha1
-# hadolint ignore=DL3018,SC2086
+# hadolint ignore=DL3003,DL3018,SC2086
 RUN apk add --no-cache --virtual .build-deps $PHPIZE_DEPS linux-headers git \
 	&& git clone -q https://github.com/xdebug/xdebug.git /tmp/xdebug \
 	&& git -C /tmp/xdebug checkout -q "$XDEBUG_REF" \
