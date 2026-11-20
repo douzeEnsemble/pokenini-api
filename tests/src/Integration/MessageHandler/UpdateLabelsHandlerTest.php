@@ -42,14 +42,14 @@ final class UpdateLabelsHandlerTest extends KernelTestCase
         $transport = $this->transport('async');
         $transport->throwExceptions();
 
-        $this->assertEquals(5, $this->getTableCount('catch_state'));
-        $this->assertEquals(3, $this->getTableCount('dex_category'));
-        $this->assertEquals(10, $this->getTableCount('region'));
-        $this->assertEquals(3, $this->getTableCount('category_form'));
-        $this->assertEquals(3, $this->getTableCount('regional_form'));
-        $this->assertEquals(4, $this->getTableCount('special_form'));
-        $this->assertEquals(7, $this->getTableCount('variant_form'));
-        $this->assertEquals(19, $this->getTableCount('type'));
+        $this->assertSame(5, $this->getTableCount('catch_state'));
+        $this->assertSame(3, $this->getTableCount('dex_category'));
+        $this->assertSame(10, $this->getTableCount('region'));
+        $this->assertSame(3, $this->getTableCount('category_form'));
+        $this->assertSame(3, $this->getTableCount('regional_form'));
+        $this->assertSame(4, $this->getTableCount('special_form'));
+        $this->assertSame(7, $this->getTableCount('variant_form'));
+        $this->assertSame(19, $this->getTableCount('type'));
 
         $beforeTotalCount = $this->getActionLogCount();
         $beforeToProcessCount = $this->getActionLogToProcessCount();
@@ -67,18 +67,18 @@ final class UpdateLabelsHandlerTest extends KernelTestCase
 
         $transport->queue()->assertEmpty();
 
-        $this->assertEquals(9, $this->getTableCount('catch_state'));
-        $this->assertEquals(4, $this->getTableCount('dex_category'));
-        $this->assertEquals(10, $this->getTableCount('region'));
-        $this->assertEquals(4, $this->getTableCount('category_form'));
-        $this->assertEquals(4, $this->getTableCount('regional_form'));
-        $this->assertEquals(5, $this->getTableCount('special_form'));
-        $this->assertEquals(8, $this->getTableCount('variant_form'));
-        $this->assertEquals(20, $this->getTableCount('type'));
+        $this->assertSame(9, $this->getTableCount('catch_state'));
+        $this->assertSame(4, $this->getTableCount('dex_category'));
+        $this->assertSame(10, $this->getTableCount('region'));
+        $this->assertSame(4, $this->getTableCount('category_form'));
+        $this->assertSame(4, $this->getTableCount('regional_form'));
+        $this->assertSame(5, $this->getTableCount('special_form'));
+        $this->assertSame(8, $this->getTableCount('variant_form'));
+        $this->assertSame(20, $this->getTableCount('type'));
 
-        $this->assertEquals($beforeTotalCount + 1, $this->getActionLogCount());
-        $this->assertEquals($beforeToProcessCount, $this->getActionLogToProcessCount());
-        $this->assertEquals($beforeDoneCount + 1, $this->getActionLogDoneCount());
+        $this->assertSame($beforeTotalCount + 1, $this->getActionLogCount());
+        $this->assertSame($beforeToProcessCount, $this->getActionLogToProcessCount());
+        $this->assertSame($beforeDoneCount + 1, $this->getActionLogDoneCount());
     }
 
     #[Test]

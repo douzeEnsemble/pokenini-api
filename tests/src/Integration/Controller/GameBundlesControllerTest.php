@@ -72,7 +72,7 @@ final class GameBundlesControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest('GET', '/game_bundles', [], ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => 'treize']);
 
-        $this->assertEquals(401, $this->getClientResponse()->getStatusCode());
+        $this->assertSame(401, $this->getClientResponse()->getStatusCode());
     }
 
     #[\Override]

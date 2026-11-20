@@ -52,7 +52,7 @@ final class GameBundlesShiniesAvailabilitiesRepositoryTest extends KernelTestCas
 
         $this->gameBundleShinyAvailabilityRepo->removeAll();
 
-        $this->assertEquals(0, $this->getGameBundleShinyAvailabilityCount());
+        $this->assertSame(0, $this->getGameBundleShinyAvailabilityCount());
     }
 
     #[Test]
@@ -60,7 +60,7 @@ final class GameBundlesShiniesAvailabilitiesRepositoryTest extends KernelTestCas
     {
         $this->gameBundleShinyAvailabilityRepo->removeAll();
 
-        $this->assertEquals(9, $this->gameBundleShinyAvailabilityRepo->calculate());
+        $this->assertSame(9, $this->gameBundleShinyAvailabilityRepo->calculate());
 
         $this->assertIsNotAvailable('Red, Green, Blue, Yellow', 'douze');
         $this->assertIsNotAvailable('Gold, Silver, Crystal', 'douze');

@@ -37,8 +37,8 @@ final class PokedexRepositoryTest extends KernelTestCase
     {
         $pokedexBefore = $this->getPokedexFromSlugs('redgreenblueyellow', 'ivysaur');
 
-        $this->assertEquals('Maybe', $pokedexBefore['name']);
-        $this->assertEquals('maybe', $pokedexBefore['slug']);
+        $this->assertSame('Maybe', $pokedexBefore['name']);
+        $this->assertSame('maybe', $pokedexBefore['slug']);
 
         $repo = self::getContainer()->get(PokedexRepository::class);
 
@@ -46,8 +46,8 @@ final class PokedexRepositoryTest extends KernelTestCase
 
         $pokedexAfter = $this->getPokedexFromSlugs('redgreenblueyellow', 'ivysaur');
 
-        $this->assertEquals('Maybe', $pokedexAfter['name']);
-        $this->assertEquals('maybe', $pokedexAfter['slug']);
+        $this->assertSame('Maybe', $pokedexAfter['name']);
+        $this->assertSame('maybe', $pokedexAfter['slug']);
     }
 
     #[Test]
@@ -63,8 +63,8 @@ final class PokedexRepositoryTest extends KernelTestCase
 
         $pokedexAfter = $this->getPokedexFromSlugs('goldsilvercrystal', 'douze');
 
-        $this->assertEquals('Maybe not', $pokedexAfter['name']);
-        $this->assertEquals('maybenot', $pokedexAfter['slug']);
+        $this->assertSame('Maybe not', $pokedexAfter['name']);
+        $this->assertSame('maybenot', $pokedexAfter['slug']);
     }
 
     #[Test]

@@ -53,7 +53,7 @@ final class SpreadsheetServiceTest extends TestCase
     {
         $service = $this->getServiceForGettingProperties();
 
-        $this->assertEquals(
+        $this->assertSame(
             12,
             $service->getSheetRowCount('azertyuiop', 'Toto')
         );
@@ -64,7 +64,7 @@ final class SpreadsheetServiceTest extends TestCase
     {
         $service = $this->getServiceForGettingProperties();
 
-        $this->assertEquals(
+        $this->assertSame(
             3,
             $service->getSheetColumnCount('azertyuiop', 'Toto')
         );

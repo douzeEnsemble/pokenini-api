@@ -96,7 +96,7 @@ final class DexAvailabilitiesCalculatorTest extends TestCase
         $service->execute();
         $statistic = $service->getStatistic();
 
-        $this->assertEquals(6, $statistic->count);
+        $this->assertSame(6, $statistic->count);
     }
 
     #[Test]
@@ -141,6 +141,6 @@ final class DexAvailabilitiesCalculatorTest extends TestCase
         $firstCount = $service->getStatistic()->count;
 
         $service->execute();
-        $this->assertEquals($firstCount, $service->getStatistic()->count);
+        $this->assertSame($firstCount, $service->getStatistic()->count);
     }
 }

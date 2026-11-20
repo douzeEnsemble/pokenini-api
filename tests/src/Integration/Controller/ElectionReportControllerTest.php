@@ -154,7 +154,7 @@ final class ElectionReportControllerTest extends AbstractTestControllerApi
             ['PHP_AUTH_USER' => self::AUTH_USER, 'PHP_AUTH_PW' => 'treize']
         );
 
-        $this->assertEquals(401, $this->getClientResponse()->getStatusCode());
+        $this->assertSame(401, $this->getClientResponse()->getStatusCode());
     }
 
     #[Test]

@@ -27,9 +27,11 @@ class PokemonsRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Query<Pokemon>
+     * @phpstan-return Query<null, Pokemon>
      *
-     * @psalm-suppress TooManyTemplateParams
+     * @psalm-return Query<array-key, Pokemon>
+     *
+     * @psalm-suppress MixedReturnTypeCoercion
      */
     public function getQueryAll(): Query
     {

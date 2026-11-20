@@ -35,7 +35,6 @@ final class DexRepositoryTest extends KernelTestCase
     {
         $repo = self::getContainer()->get(DexRepository::class);
 
-        /** @var Dex[] $dex */
         $dex = $repo->getQueryAll()->getResult();
 
         $this->assertCount(
@@ -43,9 +42,9 @@ final class DexRepositoryTest extends KernelTestCase
             $dex
         );
 
-        $this->assertEquals('Red / Green / Blue / Yellow', $dex[0]->name);
+        $this->assertSame('Red / Green / Blue / Yellow', $dex[0]->name);
 
-        $this->assertEquals(
+        $this->assertSame(
             '(p.bankable or p.bankableish) and ba?.rubysapphireemerald',
             $dex[2]->selectionRule
         );

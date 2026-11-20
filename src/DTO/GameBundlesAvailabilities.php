@@ -25,9 +25,6 @@ final class GameBundlesAvailabilities
         return isset($this->gameBundlesAvailabilities[$bundle]);
     }
 
-    /**
-     * @psalm-suppress UnusedParam
-     */
     public function __set(string $bundle, bool $value): void
     {
         throw new \Exception('Use constructor please');

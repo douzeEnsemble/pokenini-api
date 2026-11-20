@@ -32,14 +32,14 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
     public function importNewPokemons(): void
     {
         $this->assertGreaterThan(0, $this->getPokemonCount());
-        $this->assertEquals($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
-        $this->assertEquals(0, $this->getPokemonDeletedCount());
+        $this->assertSame($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
+        $this->assertSame(0, $this->getPokemonDeletedCount());
 
         $this->getService()->execute('pokemon_list / only_new');
 
-        $this->assertEquals(34, $this->getPokemonCount());
-        $this->assertEquals(8, $this->getPokemonNotDeletedCount());
-        $this->assertEquals(26, $this->getPokemonDeletedCount());
+        $this->assertSame(34, $this->getPokemonCount());
+        $this->assertSame(8, $this->getPokemonNotDeletedCount());
+        $this->assertSame(26, $this->getPokemonDeletedCount());
 
         $charmander = $this->getPokemonFromName('Charmander');
         $charmeleon = $this->getPokemonFromName('Charmeleon');
@@ -78,15 +78,15 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
         )->fetchAssociative();
 
         $this->assertNotFalse($megaCharizardXSmallCredit);
-        $this->assertEquals('PokéSprite', $megaCharizardXSmallCredit['source']);
+        $this->assertSame('PokéSprite', $megaCharizardXSmallCredit['source']);
     }
 
     #[Test]
     public function importExistingPokemons(): void
     {
         $this->assertGreaterThan(0, $this->getPokemonCount());
-        $this->assertEquals($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
-        $this->assertEquals(0, $this->getPokemonDeletedCount());
+        $this->assertSame($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
+        $this->assertSame(0, $this->getPokemonDeletedCount());
 
         $pokemonBefore = $this->getPokemonFromName('Douze');
 
@@ -107,9 +107,9 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
 
         $this->getService()->execute('pokemon_list / only_existing');
 
-        $this->assertEquals(26, $this->getPokemonCount());
-        $this->assertEquals(7, $this->getPokemonNotDeletedCount());
-        $this->assertEquals(19, $this->getPokemonDeletedCount());
+        $this->assertSame(26, $this->getPokemonCount());
+        $this->assertSame(7, $this->getPokemonNotDeletedCount());
+        $this->assertSame(19, $this->getPokemonDeletedCount());
 
         $pokemonAfter = $this->getPokemonFromName('Douze');
 
@@ -143,31 +143,31 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
     public function importNewAndExistingPokemons(): void
     {
         $this->assertGreaterThan(0, $this->getPokemonCount());
-        $this->assertEquals($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
-        $this->assertEquals(0, $this->getPokemonDeletedCount());
+        $this->assertSame($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
+        $this->assertSame(0, $this->getPokemonDeletedCount());
 
         $this->getService()->execute('pokemon_list / new_and_existing');
 
-        $this->assertEquals(34, $this->getPokemonCount());
-        $this->assertEquals(17, $this->getPokemonNotDeletedCount());
-        $this->assertEquals(17, $this->getPokemonDeletedCount());
+        $this->assertSame(34, $this->getPokemonCount());
+        $this->assertSame(17, $this->getPokemonNotDeletedCount());
+        $this->assertSame(17, $this->getPokemonDeletedCount());
     }
 
     #[Test]
     public function updateRegionalFormPokemons(): void
     {
         $this->assertGreaterThan(0, $this->getPokemonCount());
-        $this->assertEquals($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
-        $this->assertEquals(0, $this->getPokemonDeletedCount());
+        $this->assertSame($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
+        $this->assertSame(0, $this->getPokemonDeletedCount());
 
         $pokemonBefore = $this->getPokemonFromName('Douze');
         $this->assertNull($pokemonBefore['regional_form_id']);
 
         $this->getService()->execute('pokemon_list / update_regional_form');
 
-        $this->assertEquals(26, $this->getPokemonCount());
-        $this->assertEquals(1, $this->getPokemonNotDeletedCount());
-        $this->assertEquals(25, $this->getPokemonDeletedCount());
+        $this->assertSame(26, $this->getPokemonCount());
+        $this->assertSame(1, $this->getPokemonNotDeletedCount());
+        $this->assertSame(25, $this->getPokemonDeletedCount());
 
         $pokemonAfter = $this->getPokemonFromName('Douze');
         $this->assertNotNull($pokemonAfter['regional_form_id']);
@@ -177,8 +177,8 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
     public function updateTypesPokemons(): void
     {
         $this->assertGreaterThan(0, $this->getPokemonCount());
-        $this->assertEquals($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
-        $this->assertEquals(0, $this->getPokemonDeletedCount());
+        $this->assertSame($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
+        $this->assertSame(0, $this->getPokemonDeletedCount());
 
         $pokemonBefore = $this->getPokemonFromName('Douze');
         $this->assertNull($pokemonBefore['primary_type_id']);
@@ -186,9 +186,9 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
 
         $this->getService()->execute('pokemon_list / update_type');
 
-        $this->assertEquals(26, $this->getPokemonCount());
-        $this->assertEquals(1, $this->getPokemonNotDeletedCount());
-        $this->assertEquals(25, $this->getPokemonDeletedCount());
+        $this->assertSame(26, $this->getPokemonCount());
+        $this->assertSame(1, $this->getPokemonNotDeletedCount());
+        $this->assertSame(25, $this->getPokemonDeletedCount());
 
         $pokemonAfter = $this->getPokemonFromName('Douze');
         $this->assertNotNull($pokemonAfter['primary_type_id']);
@@ -237,14 +237,14 @@ final class PokemonsUpdaterTest extends AbstractTestUpdater
     public function differentColumnsOrderPokemons(): void
     {
         $this->assertGreaterThan(0, $this->getPokemonCount());
-        $this->assertEquals($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
-        $this->assertEquals(0, $this->getPokemonDeletedCount());
+        $this->assertSame($this->getPokemonCount(), $this->getPokemonNotDeletedCount());
+        $this->assertSame(0, $this->getPokemonDeletedCount());
 
         $this->getService()->execute('pokemon_list / different_columns_order');
 
-        $this->assertEquals(34, $this->getPokemonCount());
-        $this->assertEquals(17, $this->getPokemonNotDeletedCount());
-        $this->assertEquals(17, $this->getPokemonDeletedCount());
+        $this->assertSame(34, $this->getPokemonCount());
+        $this->assertSame(17, $this->getPokemonNotDeletedCount());
+        $this->assertSame(17, $this->getPokemonDeletedCount());
     }
 
     #[Test]

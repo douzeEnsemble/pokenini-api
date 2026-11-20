@@ -43,9 +43,9 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         $pokedexBefore = $this->getPokedexFromSlugs('redgreenblueyellow', 'ivysaur');
 
         $this->assertArrayHasKey('slug', $pokedexBefore);
-        $this->assertEquals('maybe', $pokedexBefore['slug']);
+        $this->assertSame('maybe', $pokedexBefore['slug']);
 
-        $this->assertEquals(34, $this->getTrainerDexCount());
+        $this->assertSame(34, $this->getTrainerDexCount());
 
         $this->apiRequest(
             'PATCH',
@@ -61,7 +61,7 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
             $this->getJsonDecodedResponseContent()
         );
 
-        $this->assertEquals(34, $this->getTrainerDexCount());
+        $this->assertSame(34, $this->getTrainerDexCount());
     }
 
     #[Test]
@@ -125,7 +125,7 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
 
         $this->assertEmpty($pokedexBefore);
 
-        $this->assertEquals(34, $this->getTrainerDexCount());
+        $this->assertSame(34, $this->getTrainerDexCount());
 
         $this->apiRequest(
             'PUT',
@@ -145,9 +145,9 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         $pokedexAfter = $this->getPokedexFromSlugs('goldsilvercrystal', 'douze');
 
         $this->assertArrayHasKey('slug', $pokedexAfter);
-        $this->assertEquals('maybenot', $pokedexAfter['slug']);
+        $this->assertSame('maybenot', $pokedexAfter['slug']);
 
-        $this->assertEquals(34, $this->getTrainerDexCount());
+        $this->assertSame(34, $this->getTrainerDexCount());
     }
 
     #[Test]
@@ -157,7 +157,7 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
 
         $this->assertEmpty($pokedexBefore);
 
-        $this->assertEquals(34, $this->getTrainerDexCount());
+        $this->assertSame(34, $this->getTrainerDexCount());
 
         $this->apiRequest(
             'PUT',
@@ -176,9 +176,9 @@ final class AlbumUpsertControllerTest extends AbstractTestControllerApi
         $pokedexAfter = $this->getPokedexFromSlugs('spoon', 'douze');
 
         $this->assertArrayHasKey('slug', $pokedexAfter);
-        $this->assertEquals('maybenot', $pokedexAfter['slug']);
+        $this->assertSame('maybenot', $pokedexAfter['slug']);
 
-        $this->assertEquals(35, $this->getTrainerDexCount());
+        $this->assertSame(35, $this->getTrainerDexCount());
     }
 
     #[Test]

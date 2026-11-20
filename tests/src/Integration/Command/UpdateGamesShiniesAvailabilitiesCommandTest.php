@@ -44,10 +44,10 @@ final class UpdateGamesShiniesAvailabilitiesCommandTest extends AbstractTestCase
 
         $commandTester->assertCommandIsSuccessful();
 
-        $this->assertEquals(4598, $this->getGameShinyAvailabilityCount());
+        $this->assertSame(4598, $this->getGameShinyAvailabilityCount());
 
-        $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
-        $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
+        $this->assertSame($initialToProcessCount, $this->getActionLogToProcessCount());
+        $this->assertSame($initialDoneCount + 1, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString("4598 games' shinies' availabilities updated", $commandTester->getDisplay());
     }

@@ -49,7 +49,7 @@ final class DexBannerLayersControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest('GET', '/istration/dex-banner-layers', [], []);
 
-        $this->assertEquals(401, $this->getClientResponse()->getStatusCode());
+        $this->assertSame(401, $this->getClientResponse()->getStatusCode());
     }
 
     #[Test]
@@ -57,7 +57,7 @@ final class DexBannerLayersControllerTest extends AbstractTestControllerApi
     {
         $this->apiRequest('GET', '/types', [], ['PHP_AUTH_USER' => self::ICON_AUTH_USER, 'PHP_AUTH_PW' => self::ICON_AUTH_PASSWORD]);
 
-        $this->assertEquals(403, $this->getClientResponse()->getStatusCode());
+        $this->assertSame(403, $this->getClientResponse()->getStatusCode());
     }
 
     #[Test]

@@ -29,9 +29,9 @@ final class ReportTest extends TestCase
             ]
         );
 
-        $this->assertEquals(12, $report->total);
-        $this->assertEquals(1, $report->totalCaught);
-        $this->assertEquals(5, $report->totalUncaught);
+        $this->assertSame(12, $report->total);
+        $this->assertSame(1, $report->totalCaught);
+        $this->assertSame(5, $report->totalUncaught);
         $this->assertCount(2, $report->detail);
     }
 }

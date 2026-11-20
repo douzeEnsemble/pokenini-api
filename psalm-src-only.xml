@@ -56,8 +56,16 @@
             </errorLevel>
         </PossiblyUnusedMethod>
 
+        <UnusedProperty>
+            <errorLevel type="suppress">
+                <!-- Read through Doctrine / tests, which this src-only run does not analyse -->
+                <directory name="src/Entity" />
+            </errorLevel>
+        </UnusedProperty>
+
         <UnusedClass>
             <errorLevel type="suppress">
+                <directory name="src/DTO/Response" />
                 <file name="src/Entity/RegionalDexNumber.php" />
                 <!-- Only used for the schema, data is read and written with SQL -->
                 <file name="src/Entity/ColorGameRound.php" />

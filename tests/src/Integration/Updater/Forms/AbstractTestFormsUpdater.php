@@ -35,28 +35,28 @@ abstract class AbstractTestFormsUpdater extends AbstractTestNamedUpdater
     #[Test]
     public function doAnotherList(): void
     {
-        $this->assertEquals($this->initialTotalCount, $this->getTableCount());
-        $this->assertEquals(0, $this->getTableDeletedAtCount());
+        $this->assertSame($this->initialTotalCount, $this->getTableCount());
+        $this->assertSame(0, $this->getTableDeletedAtCount());
 
         $service = $this->getService();
 
         $service->execute('form / another_list');
 
-        $this->assertEquals($this->initialTotalCount + 4, $this->getTableCount());
-        $this->assertEquals($this->initialTotalCount, $this->getTableDeletedAtCount());
+        $this->assertSame($this->initialTotalCount + 4, $this->getTableCount());
+        $this->assertSame($this->initialTotalCount, $this->getTableDeletedAtCount());
     }
 
     #[Test]
     public function doDifferentColumnsOrder(): void
     {
-        $this->assertEquals($this->initialTotalCount, $this->getTableCount());
-        $this->assertEquals(0, $this->getTableDeletedAtCount());
+        $this->assertSame($this->initialTotalCount, $this->getTableCount());
+        $this->assertSame(0, $this->getTableDeletedAtCount());
 
         $service = $this->getService();
 
         $service->execute('form / different_columns_order');
 
-        $this->assertEquals($this->initialTotalCount + 4, $this->getTableCount());
-        $this->assertEquals($this->initialTotalCount, $this->getTableDeletedAtCount());
+        $this->assertSame($this->initialTotalCount + 4, $this->getTableCount());
+        $this->assertSame($this->initialTotalCount, $this->getTableDeletedAtCount());
     }
 }

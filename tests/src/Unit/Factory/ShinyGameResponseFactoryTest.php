@@ -302,8 +302,8 @@ final class ShinyGameResponseFactoryTest extends TestCase
         $this->assertSame([0], array_keys($response->rounds));
         $this->assertSame(3, $response->rounds[0]->position);
         $this->assertFalse($response->rounds[0]->isCorrect);
-        $this->assertSame(true, $response->rounds[0]->isShiny);
-        $this->assertSame(false, $response->rounds[0]->chosenShiny);
+        $this->assertTrue($response->rounds[0]->isShiny);
+        $this->assertFalse($response->rounds[0]->chosenShiny);
     }
 
     #[Test]

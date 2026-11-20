@@ -35,14 +35,14 @@ final class UpdateLabelsCommandTest extends AbstractTestCaseCommand
     #[Test]
     public function update(): void
     {
-        $this->assertEquals(5, $this->getTableCount('catch_state'));
-        $this->assertEquals(3, $this->getTableCount('dex_category'));
-        $this->assertEquals(3, $this->getTableCount('category_form'));
-        $this->assertEquals(3, $this->getTableCount('regional_form'));
-        $this->assertEquals(4, $this->getTableCount('special_form'));
-        $this->assertEquals(7, $this->getTableCount('variant_form'));
-        $this->assertEquals(10, $this->getTableCount('region'));
-        $this->assertEquals(19, $this->getTableCount('type'));
+        $this->assertSame(5, $this->getTableCount('catch_state'));
+        $this->assertSame(3, $this->getTableCount('dex_category'));
+        $this->assertSame(3, $this->getTableCount('category_form'));
+        $this->assertSame(3, $this->getTableCount('regional_form'));
+        $this->assertSame(4, $this->getTableCount('special_form'));
+        $this->assertSame(7, $this->getTableCount('variant_form'));
+        $this->assertSame(10, $this->getTableCount('region'));
+        $this->assertSame(19, $this->getTableCount('type'));
 
         $initialToProcessCount = $this->getActionLogToProcessCount();
         $initialDoneCount = $this->getActionLogDoneCount();
@@ -51,17 +51,17 @@ final class UpdateLabelsCommandTest extends AbstractTestCaseCommand
 
         $commandTester->assertCommandIsSuccessful();
 
-        $this->assertEquals(9, $this->getTableCount('catch_state'));
-        $this->assertEquals(4, $this->getTableCount('dex_category'));
-        $this->assertEquals(4, $this->getTableCount('category_form'));
-        $this->assertEquals(4, $this->getTableCount('regional_form'));
-        $this->assertEquals(5, $this->getTableCount('special_form'));
-        $this->assertEquals(8, $this->getTableCount('variant_form'));
-        $this->assertEquals(10, $this->getTableCount('region'));
-        $this->assertEquals(20, $this->getTableCount('type'));
+        $this->assertSame(9, $this->getTableCount('catch_state'));
+        $this->assertSame(4, $this->getTableCount('dex_category'));
+        $this->assertSame(4, $this->getTableCount('category_form'));
+        $this->assertSame(4, $this->getTableCount('regional_form'));
+        $this->assertSame(5, $this->getTableCount('special_form'));
+        $this->assertSame(8, $this->getTableCount('variant_form'));
+        $this->assertSame(10, $this->getTableCount('region'));
+        $this->assertSame(20, $this->getTableCount('type'));
 
-        $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
-        $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
+        $this->assertSame($initialToProcessCount, $this->getActionLogToProcessCount());
+        $this->assertSame($initialDoneCount + 1, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString("6 catch's states updated", $commandTester->getDisplay());
         $this->assertStringContainsString('3 dex categories updated', $commandTester->getDisplay());

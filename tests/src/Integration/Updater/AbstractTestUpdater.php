@@ -53,15 +53,15 @@ abstract class AbstractTestUpdater extends KernelTestCase
     #[Test]
     public function execute(): void
     {
-        $this->assertEquals($this->initialTotalCount, $this->getTableCount());
-        $this->assertEquals($this->initialDeletedTotalCount, $this->getTableDeletedAtCount());
+        $this->assertSame($this->initialTotalCount, $this->getTableCount());
+        $this->assertSame($this->initialDeletedTotalCount, $this->getTableDeletedAtCount());
 
         $service = $this->getService();
 
         $service->execute($this->sheetName);
 
-        $this->assertEquals($this->finalTotalCount, $this->getTableCount());
-        $this->assertEquals($this->mustBeDeletedTotalCount, $this->getTableDeletedAtCount());
+        $this->assertSame($this->finalTotalCount, $this->getTableCount());
+        $this->assertSame($this->mustBeDeletedTotalCount, $this->getTableDeletedAtCount());
     }
 
     #[Test]
@@ -73,7 +73,7 @@ abstract class AbstractTestUpdater extends KernelTestCase
 
         $this->getService()->execute($this->sheetName);
 
-        $this->assertEquals(
+        $this->assertSame(
             $firstCount,
             $this->getService()->getStatistic()->count
         );

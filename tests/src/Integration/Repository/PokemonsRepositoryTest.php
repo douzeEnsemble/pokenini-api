@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Tests\Integration\Repository;
 
 use App\DTO\AlbumFilter\AlbumFilters;
-use App\Entity\Pokemon;
 use App\Repository\PokemonsRepository;
 use App\Tests\Common\Traits\CounterTrait\CountPokemonTrait;
 use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
@@ -34,7 +33,7 @@ final class PokemonsRepositoryTest extends KernelTestCase
     {
         $initCount = $this->getPokemonCount();
         $this->assertGreaterThan(0, $initCount);
-        $this->assertEquals(0, $this->getPokemonDeletedCount());
+        $this->assertSame(0, $this->getPokemonDeletedCount());
         $this->assertGreaterThan(0, $this->getPokemonNotDeletedCount());
 
         $repo = self::getContainer()->get(PokemonsRepository::class);
@@ -47,9 +46,9 @@ final class PokemonsRepositoryTest extends KernelTestCase
         $queryBuilder->setParameter('now', new \DateTimeImmutable());
         $queryBuilder->getQuery()->execute();
 
-        $this->assertEquals($initCount, $this->getPokemonCount());
-        $this->assertEquals($initCount, $this->getPokemonDeletedCount());
-        $this->assertEquals(0, $this->getPokemonNotDeletedCount());
+        $this->assertSame($initCount, $this->getPokemonCount());
+        $this->assertSame($initCount, $this->getPokemonDeletedCount());
+        $this->assertSame(0, $this->getPokemonNotDeletedCount());
     }
 
     #[Test]
@@ -57,25 +56,24 @@ final class PokemonsRepositoryTest extends KernelTestCase
     {
         $repo = self::getContainer()->get(PokemonsRepository::class);
 
-        /** @var Pokemon[] $pokemons */
         $pokemons = $repo->getQueryAll()->getResult();
 
         $this->assertCount($this->getPokemonCount(), $pokemons);
 
-        $this->assertEquals('Bulbasaur', $pokemons[0]->name);
-        $this->assertEquals(1, $pokemons[0]->nationalDexNumber);
-        $this->assertEquals('bulbasaur', $pokemons[0]->family);
+        $this->assertSame('Bulbasaur', $pokemons[0]->name);
+        $this->assertSame(1, $pokemons[0]->nationalDexNumber);
+        $this->assertSame('bulbasaur', $pokemons[0]->family);
 
         $this->assertTrue($pokemons[3]->bankable);
         $this->assertNull($pokemons[3]->bankableish);
-        $this->assertEquals('Diamond, Pearl, Platinium', $pokemons[3]->originalGameBundle->name);
+        $this->assertSame('Diamond, Pearl, Platinium', $pokemons[3]->originalGameBundle->name);
 
         $this->assertNull($pokemons[5]->variantForm);
         $this->assertNull($pokemons[5]->regionalForm);
         $this->assertEquals('Gigantamax', $pokemons[5]->specialForm?->name);
 
-        $this->assertEquals('charizard', $pokemons[8]->iconName);
-        $this->assertEquals('butterfree', $pokemons[11]->iconName);
+        $this->assertSame('charizard', $pokemons[8]->iconName);
+        $this->assertSame('butterfree', $pokemons[11]->iconName);
 
         $this->assertEquals('fire', $pokemons[8]->primaryType?->slug);
         $this->assertEquals('flying', $pokemons[8]->secondaryType?->slug);

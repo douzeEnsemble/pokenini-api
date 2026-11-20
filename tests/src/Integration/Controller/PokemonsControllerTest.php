@@ -108,7 +108,7 @@ final class PokemonsControllerTest extends AbstractTestControllerApi
             ],
         );
 
-        $this->assertEquals(401, $this->getClientResponse()->getStatusCode());
+        $this->assertSame(401, $this->getClientResponse()->getStatusCode());
     }
 
     private function assertResponseContent(int $expectedCount): void

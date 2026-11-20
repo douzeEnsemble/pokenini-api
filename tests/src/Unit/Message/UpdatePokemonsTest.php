@@ -20,7 +20,7 @@ final class UpdatePokemonsTest extends TestCase
     {
         $message = new UpdatePokemons('12');
 
-        $this->assertEquals(
+        $this->assertSame(
             'O:26:"App\Message\UpdatePokemons":1:{s:8:"actionId";s:2:"12";}',
             serialize($message)
         );

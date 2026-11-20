@@ -57,7 +57,7 @@ final class GameBundlesAvailabilitiesCalculatorTest extends TestCase
         $service->execute();
         $statistic = $service->getStatistic();
 
-        $this->assertEquals(12, $statistic->count);
+        $this->assertSame(12, $statistic->count);
     }
 
     #[Test]
@@ -82,6 +82,6 @@ final class GameBundlesAvailabilitiesCalculatorTest extends TestCase
 
         $service->execute();
 
-        $this->assertEquals($firstCount, $service->getStatistic()->count);
+        $this->assertSame($firstCount, $service->getStatistic()->count);
     }
 }

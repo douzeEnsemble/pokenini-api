@@ -47,7 +47,7 @@ final class GamesShiniesAvailabilitiesRepositoryTest extends KernelTestCase
         ;
         $queryBuilder->getQuery()->execute();
 
-        $this->assertEquals(0, $this->getGameShinyAvailabilityCount());
+        $this->assertSame(0, $this->getGameShinyAvailabilityCount());
     }
 
     #[Test]

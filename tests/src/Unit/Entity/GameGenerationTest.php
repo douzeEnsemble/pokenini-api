@@ -38,7 +38,7 @@ final class GameGenerationTest extends TestCase
         $generation = new GameGeneration();
         $generation->name = 'Douze';
 
-        $this->assertEquals('Douze', (string) $generation);
-        $this->assertEquals('Douze', $generation->__toString());
+        $this->assertSame('Douze', (string) $generation);
+        $this->assertSame('Douze', $generation->__toString());
     }
 }

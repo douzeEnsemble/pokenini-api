@@ -21,9 +21,11 @@ class DexRepository extends ServiceEntityRepository
     }
 
     /**
-     * @return Query<Dex>
+     * @phpstan-return Query<null, Dex>
      *
-     * @psalm-suppress TooManyTemplateParams
+     * @psalm-return Query<array-key, Dex>
+     *
+     * @psalm-suppress MixedReturnTypeCoercion
      */
     public function getQueryAll(): Query
     {

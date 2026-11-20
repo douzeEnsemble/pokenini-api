@@ -42,11 +42,11 @@ final class UpdateGamesCollectionsAndDexHandlerTest extends KernelTestCase
         $transport = $this->transport('async');
         $transport->throwExceptions();
 
-        $this->assertEquals(9, $this->getTableCount('game_generation'));
-        $this->assertEquals(19, $this->getTableCount('game_bundle'));
-        $this->assertEquals(39, $this->getTableCount('game'));
-        $this->assertEquals(9, $this->getTableCount('dex'));
-        $this->assertEquals(8, $this->getTableCount('collection'));
+        $this->assertSame(9, $this->getTableCount('game_generation'));
+        $this->assertSame(19, $this->getTableCount('game_bundle'));
+        $this->assertSame(39, $this->getTableCount('game'));
+        $this->assertSame(9, $this->getTableCount('dex'));
+        $this->assertSame(8, $this->getTableCount('collection'));
 
         $beforeTotalCount = $this->getActionLogCount();
         $beforeToProcessCount = $this->getActionLogToProcessCount();
@@ -64,15 +64,15 @@ final class UpdateGamesCollectionsAndDexHandlerTest extends KernelTestCase
 
         $transport->queue()->assertEmpty();
 
-        $this->assertEquals(9, $this->getTableCount('game_generation'));
-        $this->assertEquals(19, $this->getTableCount('game_bundle'));
-        $this->assertEquals(39, $this->getTableCount('game'));
-        $this->assertEquals(25, $this->getTableCount('dex'));
-        $this->assertEquals(8, $this->getTableCount('collection'));
+        $this->assertSame(9, $this->getTableCount('game_generation'));
+        $this->assertSame(19, $this->getTableCount('game_bundle'));
+        $this->assertSame(39, $this->getTableCount('game'));
+        $this->assertSame(25, $this->getTableCount('dex'));
+        $this->assertSame(8, $this->getTableCount('collection'));
 
-        $this->assertEquals($beforeTotalCount + 1, $this->getActionLogCount());
-        $this->assertEquals($beforeToProcessCount, $this->getActionLogToProcessCount());
-        $this->assertEquals($beforeDoneCount + 1, $this->getActionLogDoneCount());
+        $this->assertSame($beforeTotalCount + 1, $this->getActionLogCount());
+        $this->assertSame($beforeToProcessCount, $this->getActionLogToProcessCount());
+        $this->assertSame($beforeDoneCount + 1, $this->getActionLogDoneCount());
     }
 
     #[Test]
