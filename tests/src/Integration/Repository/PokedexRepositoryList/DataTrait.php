@@ -16,19 +16,19 @@ trait DataTrait
     {
         $this->assertArrayHasKey(0, $pokedex);
 
-        $this->assertEquals('Bulbasaur', $pokedex[0]['pokemon_name']);
-        $this->assertEquals('Bulbizarre', $pokedex[0]['pokemon_french_name']);
-        $this->assertEquals('bulbasaur', $pokedex[0]['pokemon_slug']);
+        $this->assertSame('Bulbasaur', $pokedex[0]['pokemon_name']);
+        $this->assertSame('Bulbizarre', $pokedex[0]['pokemon_french_name']);
+        $this->assertSame('bulbasaur', $pokedex[0]['pokemon_slug']);
         $this->assertEquals('No', $pokedex[0]['catch_state_name']);
         $this->assertEquals('no', $pokedex[0]['catch_state_slug']);
-        $this->assertEquals('Grass', $pokedex[0]['primary_type_name']);
-        $this->assertEquals('Plante', $pokedex[0]['primary_type_french_name']);
-        $this->assertEquals('grass', $pokedex[0]['primary_type_slug']);
+        $this->assertSame('Grass', $pokedex[0]['primary_type_name']);
+        $this->assertSame('Plante', $pokedex[0]['primary_type_french_name']);
+        $this->assertSame('grass', $pokedex[0]['primary_type_slug']);
         $this->assertEquals('Poison', $pokedex[0]['secondary_type_name']);
         $this->assertEquals('Poison', $pokedex[0]['secondary_type_french_name']);
         $this->assertEquals('poison', $pokedex[0]['secondary_type_slug']);
         $this->assertEquals('poison', $pokedex[0]['secondary_type_slug']);
-        $this->assertEquals('redgreenblueyellow', $pokedex[0]['original_game_bundle_slug']);
+        $this->assertSame('redgreenblueyellow', $pokedex[0]['original_game_bundle_slug']);
         $this->assertEquals(
             'redgreenblueyellow,goldsilvercrystal',
             $pokedex[0]['game_bundle_slugs']
@@ -46,18 +46,18 @@ trait DataTrait
     {
         $this->assertArrayHasKey(1, $pokedex);
 
-        $this->assertEquals('Ivysaur', $pokedex[1]['pokemon_name']);
-        $this->assertEquals('Herbizarre', $pokedex[1]['pokemon_french_name']);
-        $this->assertEquals('ivysaur', $pokedex[1]['pokemon_slug']);
+        $this->assertSame('Ivysaur', $pokedex[1]['pokemon_name']);
+        $this->assertSame('Herbizarre', $pokedex[1]['pokemon_french_name']);
+        $this->assertSame('ivysaur', $pokedex[1]['pokemon_slug']);
         $this->assertEquals('Maybe', $pokedex[1]['catch_state_name']);
         $this->assertEquals('maybe', $pokedex[1]['catch_state_slug']);
-        $this->assertEquals('Grass', $pokedex[1]['primary_type_name']);
-        $this->assertEquals('Plante', $pokedex[1]['primary_type_french_name']);
-        $this->assertEquals('grass', $pokedex[1]['primary_type_slug']);
+        $this->assertSame('Grass', $pokedex[1]['primary_type_name']);
+        $this->assertSame('Plante', $pokedex[1]['primary_type_french_name']);
+        $this->assertSame('grass', $pokedex[1]['primary_type_slug']);
         $this->assertEquals('Poison', $pokedex[1]['secondary_type_name']);
         $this->assertEquals('Poison', $pokedex[1]['secondary_type_french_name']);
         $this->assertEquals('poison', $pokedex[1]['secondary_type_slug']);
-        $this->assertEquals('redgreenblueyellow', $pokedex[1]['original_game_bundle_slug']);
+        $this->assertSame('redgreenblueyellow', $pokedex[1]['original_game_bundle_slug']);
         $this->assertEquals('redgreenblueyellow,goldsilvercrystal', $pokedex[1]['game_bundle_slugs']);
         $this->assertEquals('redgreenblueyellow,goldsilvercrystal', $pokedex[1]['game_bundle_shiny_slugs']);
     }
@@ -69,18 +69,18 @@ trait DataTrait
     {
         $this->assertArrayHasKey(2, $pokedex);
 
-        $this->assertEquals('Venusaur', $pokedex[2]['pokemon_name']);
-        $this->assertEquals('Florizarre', $pokedex[2]['pokemon_french_name']);
-        $this->assertEquals('venusaur', $pokedex[2]['pokemon_slug']);
+        $this->assertSame('Venusaur', $pokedex[2]['pokemon_name']);
+        $this->assertSame('Florizarre', $pokedex[2]['pokemon_french_name']);
+        $this->assertSame('venusaur', $pokedex[2]['pokemon_slug']);
         $this->assertEquals('Maybe not', $pokedex[2]['catch_state_name']);
         $this->assertEquals('maybenot', $pokedex[2]['catch_state_slug']);
-        $this->assertEquals('Grass', $pokedex[2]['primary_type_name']);
-        $this->assertEquals('Plante', $pokedex[2]['primary_type_french_name']);
-        $this->assertEquals('grass', $pokedex[2]['primary_type_slug']);
+        $this->assertSame('Grass', $pokedex[2]['primary_type_name']);
+        $this->assertSame('Plante', $pokedex[2]['primary_type_french_name']);
+        $this->assertSame('grass', $pokedex[2]['primary_type_slug']);
         $this->assertEquals('Poison', $pokedex[2]['secondary_type_name']);
         $this->assertEquals('Poison', $pokedex[2]['secondary_type_french_name']);
         $this->assertEquals('poison', $pokedex[2]['secondary_type_slug']);
-        $this->assertEquals('redgreenblueyellow', $pokedex[2]['original_game_bundle_slug']);
+        $this->assertSame('redgreenblueyellow', $pokedex[2]['original_game_bundle_slug']);
         $this->assertEquals('redgreenblueyellow,goldsilvercrystal', $pokedex[2]['game_bundle_slugs']);
         $this->assertEquals('redgreenblueyellow,goldsilvercrystal', $pokedex[2]['game_bundle_shiny_slugs']);
     }
@@ -92,18 +92,18 @@ trait DataTrait
     {
         $this->assertArrayHasKey(3, $pokedex);
 
-        $this->assertEquals('Caterpie', $pokedex[3]['pokemon_name']);
-        $this->assertEquals('Chenipan', $pokedex[3]['pokemon_french_name']);
-        $this->assertEquals('caterpie', $pokedex[3]['pokemon_slug']);
+        $this->assertSame('Caterpie', $pokedex[3]['pokemon_name']);
+        $this->assertSame('Chenipan', $pokedex[3]['pokemon_french_name']);
+        $this->assertSame('caterpie', $pokedex[3]['pokemon_slug']);
         $this->assertEquals('Maybe not', $pokedex[3]['catch_state_name']);
         $this->assertEquals('maybenot', $pokedex[3]['catch_state_slug']);
-        $this->assertEquals('Bug', $pokedex[3]['primary_type_name']);
-        $this->assertEquals('Insecte', $pokedex[3]['primary_type_french_name']);
-        $this->assertEquals('bug', $pokedex[3]['primary_type_slug']);
+        $this->assertSame('Bug', $pokedex[3]['primary_type_name']);
+        $this->assertSame('Insecte', $pokedex[3]['primary_type_french_name']);
+        $this->assertSame('bug', $pokedex[3]['primary_type_slug']);
         $this->assertNull($pokedex[3]['secondary_type_name']);
         $this->assertNull($pokedex[3]['secondary_type_french_name']);
         $this->assertNull($pokedex[3]['secondary_type_slug']);
-        $this->assertEquals('redgreenblueyellow', $pokedex[3]['original_game_bundle_slug']);
+        $this->assertSame('redgreenblueyellow', $pokedex[3]['original_game_bundle_slug']);
         $this->assertEquals(
             '',
             $pokedex[3]['game_bundle_slugs']
@@ -121,9 +121,9 @@ trait DataTrait
     {
         $this->assertArrayHasKey(6, $pokedex);
 
-        $this->assertEquals('Douze', $pokedex[6]['pokemon_name']);
-        $this->assertEquals('Douze', $pokedex[6]['pokemon_french_name']);
-        $this->assertEquals('douze', $pokedex[6]['pokemon_slug']);
+        $this->assertSame('Douze', $pokedex[6]['pokemon_name']);
+        $this->assertSame('Douze', $pokedex[6]['pokemon_french_name']);
+        $this->assertSame('douze', $pokedex[6]['pokemon_slug']);
         $this->assertNull($pokedex[6]['catch_state_name']);
         $this->assertNull($pokedex[6]['catch_state_slug']);
 
@@ -138,7 +138,7 @@ trait DataTrait
         $this->assertNull($pokedex[6]['secondary_type_name']);
         $this->assertNull($pokedex[6]['secondary_type_french_name']);
         $this->assertNull($pokedex[6]['secondary_type_slug']);
-        $this->assertEquals('redgreenblueyellow', $pokedex[6]['original_game_bundle_slug']);
+        $this->assertSame('redgreenblueyellow', $pokedex[6]['original_game_bundle_slug']);
         $this->assertEquals('un,dos,tres', $pokedex[6]['game_bundle_slugs']);
         $this->assertEquals('', $pokedex[6]['game_bundle_shiny_slugs']);
     }

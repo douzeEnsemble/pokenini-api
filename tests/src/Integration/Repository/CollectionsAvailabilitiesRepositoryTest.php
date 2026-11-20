@@ -47,7 +47,7 @@ final class CollectionsAvailabilitiesRepositoryTest extends KernelTestCase
         ;
         $queryBuilder->getQuery()->execute();
 
-        $this->assertEquals(0, $this->getCollectionAvailabilityCount());
+        $this->assertSame(0, $this->getCollectionAvailabilityCount());
     }
 
     #[Test]

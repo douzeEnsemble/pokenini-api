@@ -33,7 +33,7 @@ abstract class AbstractTestControllerApi extends WebTestCase
 
     public function assertResponseIsOK(): void
     {
-        $this->assertEquals(
+        $this->assertSame(
             200,
             $this->getClientResponse()->getStatusCode()
         );
@@ -50,7 +50,7 @@ abstract class AbstractTestControllerApi extends WebTestCase
 
     public function assertResponseIsNotFound(): void
     {
-        $this->assertEquals(
+        $this->assertSame(
             404,
             $this->getClientResponse()->getStatusCode()
         );

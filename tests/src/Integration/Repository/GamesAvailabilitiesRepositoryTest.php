@@ -47,7 +47,7 @@ final class GamesAvailabilitiesRepositoryTest extends KernelTestCase
         ;
         $queryBuilder->getQuery()->execute();
 
-        $this->assertEquals(0, $this->getGameAvailabilityCount());
+        $this->assertSame(0, $this->getGameAvailabilityCount());
     }
 
     #[Test]

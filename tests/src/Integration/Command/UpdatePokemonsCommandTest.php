@@ -39,15 +39,15 @@ final class UpdatePokemonsCommandTest extends AbstractTestCaseCommand
 
         $commandTester = $this->executeCommand(['--sheet-name' => 'wrong_sheet']);
 
-        $this->assertEquals(1, $commandTester->getStatusCode());
-        $this->assertEquals($initialErrorCount + 1, $this->getActionLogErrorCount());
+        $this->assertSame(1, $commandTester->getStatusCode());
+        $this->assertSame($initialErrorCount + 1, $this->getActionLogErrorCount());
         $this->assertStringContainsString('This is not a valid data spreadsheet', $commandTester->getDisplay());
     }
 
     #[Test]
     public function update(): void
     {
-        $this->assertEquals(26, $this->getTableCount('pokemon'));
+        $this->assertSame(26, $this->getTableCount('pokemon'));
 
         $initialToProcessCount = $this->getActionLogToProcessCount();
         $initialDoneCount = $this->getActionLogDoneCount();
@@ -55,10 +55,10 @@ final class UpdatePokemonsCommandTest extends AbstractTestCaseCommand
         $commandTester = $this->executeCommand();
 
         $commandTester->assertCommandIsSuccessful();
-        $this->assertEquals(1818, $this->getTableCount('pokemon'));
+        $this->assertSame(1818, $this->getTableCount('pokemon'));
 
-        $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
-        $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
+        $this->assertSame($initialToProcessCount, $this->getActionLogToProcessCount());
+        $this->assertSame($initialDoneCount + 1, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString('1817 pokémons updated', $commandTester->getDisplay());
     }

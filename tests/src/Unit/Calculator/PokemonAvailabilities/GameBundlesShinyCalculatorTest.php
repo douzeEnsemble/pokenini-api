@@ -36,7 +36,7 @@ final class GameBundlesShinyCalculatorTest extends TestCase
         $service->execute();
         $statistic = $service->getStatistic();
 
-        $this->assertEquals(12, $statistic->count);
+        $this->assertSame(12, $statistic->count);
     }
 
     #[Test]
@@ -60,6 +60,6 @@ final class GameBundlesShinyCalculatorTest extends TestCase
         $firstCount = $service->getStatistic()->count;
 
         $service->execute();
-        $this->assertEquals($firstCount, $service->getStatistic()->count);
+        $this->assertSame($firstCount, $service->getStatistic()->count);
     }
 }

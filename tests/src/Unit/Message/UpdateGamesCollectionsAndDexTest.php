@@ -20,7 +20,7 @@ final class UpdateGamesCollectionsAndDexTest extends TestCase
     {
         $message = new UpdateGamesCollectionsAndDex('12');
 
-        $this->assertEquals(
+        $this->assertSame(
             'O:40:"App\Message\UpdateGamesCollectionsAndDex":1:{s:8:"actionId";s:2:"12";}',
             serialize($message)
         );

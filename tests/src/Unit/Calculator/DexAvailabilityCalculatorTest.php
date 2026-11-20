@@ -86,7 +86,7 @@ final class DexAvailabilityCalculatorTest extends TestCase
 
         $count = $calculator->calculate($dex);
 
-        $this->assertEquals(3, $count);
+        $this->assertSame(3, $count);
     }
 
     #[Test]
@@ -157,7 +157,7 @@ final class DexAvailabilityCalculatorTest extends TestCase
 
         $count = $calculator->calculate($dex);
 
-        $this->assertEquals($firstCount, $count);
+        $this->assertSame($firstCount, $count);
     }
 
     #[Test]
@@ -191,7 +191,7 @@ final class DexAvailabilityCalculatorTest extends TestCase
             $dexPokemonAvailabilityCalculator,
         );
 
-        $this->assertEquals(99, $calculator->calculate($dex));
+        $this->assertSame(99, $calculator->calculate($dex));
     }
 
     #[Test]
@@ -230,7 +230,7 @@ final class DexAvailabilityCalculatorTest extends TestCase
             $dexPokemonAvailabilityCalculator,
         );
 
-        $this->assertEquals(100, $calculator->calculate($dex));
+        $this->assertSame(100, $calculator->calculate($dex));
     }
 
     #[Test]
@@ -281,7 +281,7 @@ final class DexAvailabilityCalculatorTest extends TestCase
 
         $count = $calculator->calculate($dex);
 
-        $this->assertEquals(5, $count);
+        $this->assertSame(5, $count);
     }
 
     #[Test]
@@ -343,6 +343,6 @@ final class DexAvailabilityCalculatorTest extends TestCase
 
         $count = $calculator->calculate($dex);
 
-        $this->assertEquals(0, $count);
+        $this->assertSame(0, $count);
     }
 }

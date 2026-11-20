@@ -52,9 +52,9 @@ final class CalculateDexAvailabilitiesCommandTest extends AbstractTestCaseComman
         $queryBuilder->setParameter('now', new \DateTimeImmutable());
         $queryBuilder->getQuery()->execute();
 
-        $this->assertEquals(0, $this->getPokemonNotDeletedCount());
+        $this->assertSame(0, $this->getPokemonNotDeletedCount());
 
-        $this->assertEquals(70, $this->getDexAvailabilityCount());
+        $this->assertSame(70, $this->getDexAvailabilityCount());
 
         $initialToProcessCount = $this->getActionLogToProcessCount();
         $initialDoneCount = $this->getActionLogDoneCount();
@@ -64,16 +64,16 @@ final class CalculateDexAvailabilitiesCommandTest extends AbstractTestCaseComman
 
         $this->assertStringContainsString("0 dex' availabilities calculated", $commandTester->getDisplay());
 
-        $this->assertEquals(0, $this->getDexAvailabilityCount());
+        $this->assertSame(0, $this->getDexAvailabilityCount());
 
-        $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
-        $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
+        $this->assertSame($initialToProcessCount, $this->getActionLogToProcessCount());
+        $this->assertSame($initialDoneCount + 1, $this->getActionLogDoneCount());
     }
 
     #[Test]
     public function dexAvailabilities(): void
     {
-        $this->assertEquals(70, $this->getDexAvailabilityCount());
+        $this->assertSame(70, $this->getDexAvailabilityCount());
 
         $initialToProcessCount = $this->getActionLogToProcessCount();
         $initialDoneCount = $this->getActionLogDoneCount();
@@ -83,10 +83,10 @@ final class CalculateDexAvailabilitiesCommandTest extends AbstractTestCaseComman
 
         $this->assertStringContainsString("103 dex' availabilities calculated", $commandTester->getDisplay());
 
-        $this->assertEquals(103, $this->getDexAvailabilityCount());
+        $this->assertSame(103, $this->getDexAvailabilityCount());
 
-        $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
-        $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
+        $this->assertSame($initialToProcessCount, $this->getActionLogToProcessCount());
+        $this->assertSame($initialDoneCount + 1, $this->getActionLogDoneCount());
 
         $this->assertTrue($this->hasDexAvailability('Red / Green / Blue / Yellow', 'bulbasaur'));
     }

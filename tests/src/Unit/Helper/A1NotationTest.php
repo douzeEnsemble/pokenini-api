@@ -20,7 +20,7 @@ final class A1NotationTest extends TestCase
     #[DataProvider('providerIndexToLetter')]
     public function indexToLetter(int $index, string $expected): void
     {
-        $this->assertEquals($expected, A1Notation::indexToLetter($index));
+        $this->assertSame($expected, A1Notation::indexToLetter($index));
     }
 
     /**
@@ -71,7 +71,7 @@ final class A1NotationTest extends TestCase
     #[DataProvider('providerIndexToA1Notation')]
     public function fromIndex(int $rowIndex, int $columnIndex, string $expected): void
     {
-        $this->assertEquals($expected, A1Notation::fromIndex($rowIndex, $columnIndex));
+        $this->assertSame($expected, A1Notation::fromIndex($rowIndex, $columnIndex));
     }
 
     /**

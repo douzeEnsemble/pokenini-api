@@ -37,8 +37,8 @@ final class PokemonAvailabilitiesRepositoryTest extends KernelTestCase
 
         $repo->removeAllByCategory('game_bundle');
 
-        $this->assertEquals(0, $this->getPokemonAvailabilitiesCount('game_bundle'));
-        $this->assertEquals(
+        $this->assertSame(0, $this->getPokemonAvailabilitiesCount('game_bundle'));
+        $this->assertSame(
             $previousCount,
             $this->getPokemonAvailabilitiesCount('game_bundle_shiny')
         );
@@ -57,8 +57,8 @@ final class PokemonAvailabilitiesRepositoryTest extends KernelTestCase
         $count = $repo->calculateGameBundle();
 
         $this->assertGreaterThan(0, $count);
-        $this->assertEquals($count, $this->getPokemonAvailabilitiesCount('game_bundle'));
-        $this->assertEquals(
+        $this->assertSame($count, $this->getPokemonAvailabilitiesCount('game_bundle'));
+        $this->assertSame(
             $previousCount,
             $this->getPokemonAvailabilitiesCount('game_bundle_shiny')
         );
@@ -77,8 +77,8 @@ final class PokemonAvailabilitiesRepositoryTest extends KernelTestCase
         $count = $repo->calculateGameBundleShiny();
 
         $this->assertGreaterThan(0, $count);
-        $this->assertEquals($count, $this->getPokemonAvailabilitiesCount('game_bundle_shiny'));
-        $this->assertEquals(
+        $this->assertSame($count, $this->getPokemonAvailabilitiesCount('game_bundle_shiny'));
+        $this->assertSame(
             $previousCount,
             $this->getPokemonAvailabilitiesCount('game_bundle')
         );

@@ -20,7 +20,7 @@ final class UpdateLabelsTest extends TestCase
     {
         $message = new UpdateLabels('12');
 
-        $this->assertEquals(
+        $this->assertSame(
             'O:24:"App\Message\UpdateLabels":1:{s:8:"actionId";s:2:"12";}',
             serialize($message)
         );

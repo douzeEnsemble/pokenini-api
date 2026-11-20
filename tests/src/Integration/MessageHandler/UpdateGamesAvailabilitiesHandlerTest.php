@@ -42,7 +42,7 @@ final class UpdateGamesAvailabilitiesHandlerTest extends KernelTestCase
         $transport = $this->transport('async');
         $transport->throwExceptions();
 
-        $this->assertEquals(28, $this->getTableCount('game_availability'));
+        $this->assertSame(28, $this->getTableCount('game_availability'));
 
         $beforeTotalCount = $this->getActionLogCount();
         $beforeToProcessCount = $this->getActionLogToProcessCount();
@@ -60,11 +60,11 @@ final class UpdateGamesAvailabilitiesHandlerTest extends KernelTestCase
 
         $transport->queue()->assertEmpty();
 
-        $this->assertEquals(68970, $this->getTableCount('game_availability'));
+        $this->assertSame(68970, $this->getTableCount('game_availability'));
 
-        $this->assertEquals($beforeTotalCount + 1, $this->getActionLogCount());
-        $this->assertEquals($beforeToProcessCount, $this->getActionLogToProcessCount());
-        $this->assertEquals($beforeDoneCount + 1, $this->getActionLogDoneCount());
+        $this->assertSame($beforeTotalCount + 1, $this->getActionLogCount());
+        $this->assertSame($beforeToProcessCount, $this->getActionLogToProcessCount());
+        $this->assertSame($beforeDoneCount + 1, $this->getActionLogDoneCount());
     }
 
     #[Test]

@@ -39,7 +39,7 @@ final class DexAvailabilitiesRepositoryTest extends KernelTestCase
         $repo = self::getContainer()->get(DexAvailabilitiesRepository::class);
         $repo->removeAll();
 
-        $this->assertEquals(0, $this->getDexAvailabilityCount());
+        $this->assertSame(0, $this->getDexAvailabilityCount());
     }
 
     #[Test]
@@ -53,7 +53,7 @@ final class DexAvailabilitiesRepositoryTest extends KernelTestCase
             AlbumFilters::createFromArray([])
         );
 
-        $this->assertEquals(22, $totalCount);
+        $this->assertSame(22, $totalCount);
     }
 
     #[Test]
@@ -67,7 +67,7 @@ final class DexAvailabilitiesRepositoryTest extends KernelTestCase
             AlbumFilters::createFromArray([])
         );
 
-        $this->assertEquals(22, $totalCount);
+        $this->assertSame(22, $totalCount);
     }
 
     /**
@@ -85,7 +85,7 @@ final class DexAvailabilitiesRepositoryTest extends KernelTestCase
             AlbumFilters::createFromArray($filters)
         );
 
-        $this->assertEquals($expectedTotalCount, $totalCount);
+        $this->assertSame($expectedTotalCount, $totalCount);
     }
 
     /**

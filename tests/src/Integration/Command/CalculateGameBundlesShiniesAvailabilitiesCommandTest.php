@@ -48,7 +48,7 @@ final class CalculateGameBundlesShiniesAvailabilitiesCommandTest extends Abstrac
         ;
         $queryBuilder->getQuery()->execute();
 
-        $this->assertEquals(0, $this->getGameShinyAvailabilityCount());
+        $this->assertSame(0, $this->getGameShinyAvailabilityCount());
 
         $initialToProcessCount = $this->getActionLogToProcessCount();
         $initialDoneCount = $this->getActionLogDoneCount();
@@ -56,8 +56,8 @@ final class CalculateGameBundlesShiniesAvailabilitiesCommandTest extends Abstrac
         $commandTester = $this->executeCommand();
         $commandTester->assertCommandIsSuccessful();
 
-        $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
-        $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
+        $this->assertSame($initialToProcessCount, $this->getActionLogToProcessCount());
+        $this->assertSame($initialDoneCount + 1, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString(
             "0 bundles' shinies' availabilities calculated",
@@ -74,8 +74,8 @@ final class CalculateGameBundlesShiniesAvailabilitiesCommandTest extends Abstrac
         $commandTester = $this->executeCommand();
         $commandTester->assertCommandIsSuccessful();
 
-        $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
-        $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
+        $this->assertSame($initialToProcessCount, $this->getActionLogToProcessCount());
+        $this->assertSame($initialDoneCount + 1, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString(
             "9 bundles' shinies' availabilities calculated",

@@ -98,10 +98,10 @@ final class PokemonImageCreditRepositoryTest extends KernelTestCase
         $result = $repo->findAllPokemonWithCredits();
 
         $douze = self::findRowBySlug($result, 'douze');
-        self::assertSame(null, $douze['small_regular_credit']);
-        self::assertSame(null, $douze['small_shiny_credit']);
-        self::assertSame(null, $douze['big_regular_credit']);
-        self::assertSame(null, $douze['big_shiny_credit']);
+        self::assertNull($douze['small_regular_credit']);
+        self::assertNull($douze['small_shiny_credit']);
+        self::assertNull($douze['big_regular_credit']);
+        self::assertNull($douze['big_shiny_credit']);
     }
 
     #[Test]

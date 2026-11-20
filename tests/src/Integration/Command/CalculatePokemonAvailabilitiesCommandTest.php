@@ -52,10 +52,10 @@ final class CalculatePokemonAvailabilitiesCommandTest extends AbstractTestCaseCo
         $queryBuilder->setParameter('now', new \DateTimeImmutable());
         $queryBuilder->getQuery()->execute();
 
-        $this->assertEquals(0, $this->getPokemonNotDeletedCount());
+        $this->assertSame(0, $this->getPokemonNotDeletedCount());
 
-        $this->assertEquals(26, $this->getPokemonAvailabilitiesCount('game_bundle'));
-        $this->assertEquals(26, $this->getPokemonAvailabilitiesCount('game_bundle_shiny'));
+        $this->assertSame(26, $this->getPokemonAvailabilitiesCount('game_bundle'));
+        $this->assertSame(26, $this->getPokemonAvailabilitiesCount('game_bundle_shiny'));
 
         $initialToProcessCount = $this->getActionLogToProcessCount();
         $initialDoneCount = $this->getActionLogDoneCount();
@@ -72,18 +72,18 @@ final class CalculatePokemonAvailabilitiesCommandTest extends AbstractTestCaseCo
             $commandTester->getDisplay()
         );
 
-        $this->assertEquals(10, $this->getPokemonAvailabilitiesCount('game_bundle'));
-        $this->assertEquals(11, $this->getPokemonAvailabilitiesCount('game_bundle_shiny'));
+        $this->assertSame(10, $this->getPokemonAvailabilitiesCount('game_bundle'));
+        $this->assertSame(11, $this->getPokemonAvailabilitiesCount('game_bundle_shiny'));
 
-        $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
-        $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
+        $this->assertSame($initialToProcessCount, $this->getActionLogToProcessCount());
+        $this->assertSame($initialDoneCount + 1, $this->getActionLogDoneCount());
     }
 
     #[Test]
     public function pokemonAvailabilities(): void
     {
-        $this->assertEquals(26, $this->getPokemonAvailabilitiesCount('game_bundle'));
-        $this->assertEquals(26, $this->getPokemonAvailabilitiesCount('game_bundle_shiny'));
+        $this->assertSame(26, $this->getPokemonAvailabilitiesCount('game_bundle'));
+        $this->assertSame(26, $this->getPokemonAvailabilitiesCount('game_bundle_shiny'));
 
         $initialToProcessCount = $this->getActionLogToProcessCount();
         $initialDoneCount = $this->getActionLogDoneCount();
@@ -100,11 +100,11 @@ final class CalculatePokemonAvailabilitiesCommandTest extends AbstractTestCaseCo
             $commandTester->getDisplay()
         );
 
-        $this->assertEquals(10, $this->getPokemonAvailabilitiesCount('game_bundle'));
-        $this->assertEquals(11, $this->getPokemonAvailabilitiesCount('game_bundle_shiny'));
+        $this->assertSame(10, $this->getPokemonAvailabilitiesCount('game_bundle'));
+        $this->assertSame(11, $this->getPokemonAvailabilitiesCount('game_bundle_shiny'));
 
-        $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
-        $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
+        $this->assertSame($initialToProcessCount, $this->getActionLogToProcessCount());
+        $this->assertSame($initialDoneCount + 1, $this->getActionLogDoneCount());
 
         $this->assertTrue($this->hasPokemonAvailabilities('game_bundle', 'bulbasaur'));
         $this->assertTrue($this->hasPokemonAvailabilities('game_bundle_shiny', 'bulbasaur'));

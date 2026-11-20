@@ -214,8 +214,8 @@ final class AlbumReportServiceTest extends KernelTestCase
             $details,
         );
 
-        $this->assertEquals($countTotal, $report->total);
-        $this->assertEquals($countYes, $report->totalCaught);
-        $this->assertEquals($countTotal - $countMaybe - $countMaybeNot - $countYes, $report->totalUncaught);
+        $this->assertSame($countTotal, $report->total);
+        $this->assertSame($countYes, $report->totalCaught);
+        $this->assertSame($countTotal - $countMaybe - $countMaybeNot - $countYes, $report->totalUncaught);
     }
 }

@@ -52,12 +52,6 @@
             </errorLevel>
         </PossiblyUnusedProperty>
 
-        <PossiblyUnusedMethod>
-            <errorLevel type="suppress">
-                <directory name="src/Controller" />
-            </errorLevel>
-        </PossiblyUnusedMethod>
-
         <UnnecessaryVarAnnotation>
             <errorLevel type="suppress">
                 <file name="src/Service/SpreadsheetService.php" />

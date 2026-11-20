@@ -57,7 +57,7 @@ final class ReportTest extends TestCase
             new Statistic('b', 2),
         ]);
 
-        $this->assertEquals(
+        $this->assertSame(
             '{"a":1,"b":2}',
             (string) json_encode($report),
         );

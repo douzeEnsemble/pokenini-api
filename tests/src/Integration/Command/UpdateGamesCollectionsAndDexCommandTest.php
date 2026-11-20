@@ -35,11 +35,11 @@ final class UpdateGamesCollectionsAndDexCommandTest extends AbstractTestCaseComm
     #[Test]
     public function update(): void
     {
-        $this->assertEquals(9, $this->getTableCount('game_generation'));
-        $this->assertEquals(19, $this->getTableCount('game_bundle'));
-        $this->assertEquals(39, $this->getTableCount('game'));
-        $this->assertEquals(9, $this->getTableCount('dex'));
-        $this->assertEquals(8, $this->getTableCount('collection'));
+        $this->assertSame(9, $this->getTableCount('game_generation'));
+        $this->assertSame(19, $this->getTableCount('game_bundle'));
+        $this->assertSame(39, $this->getTableCount('game'));
+        $this->assertSame(9, $this->getTableCount('dex'));
+        $this->assertSame(8, $this->getTableCount('collection'));
 
         $initialToProcessCount = $this->getActionLogToProcessCount();
         $initialDoneCount = $this->getActionLogDoneCount();
@@ -48,14 +48,14 @@ final class UpdateGamesCollectionsAndDexCommandTest extends AbstractTestCaseComm
 
         $commandTester->assertCommandIsSuccessful();
 
-        $this->assertEquals(9, $this->getTableCount('game_generation'));
-        $this->assertEquals(19, $this->getTableCount('game_bundle'));
-        $this->assertEquals(39, $this->getTableCount('game'));
-        $this->assertEquals(25, $this->getTableCount('dex'));
-        $this->assertEquals(8, $this->getTableCount('collection'));
+        $this->assertSame(9, $this->getTableCount('game_generation'));
+        $this->assertSame(19, $this->getTableCount('game_bundle'));
+        $this->assertSame(39, $this->getTableCount('game'));
+        $this->assertSame(25, $this->getTableCount('dex'));
+        $this->assertSame(8, $this->getTableCount('collection'));
 
-        $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
-        $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
+        $this->assertSame($initialToProcessCount, $this->getActionLogToProcessCount());
+        $this->assertSame($initialDoneCount + 1, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString("9 game's generations updated", $commandTester->getDisplay());
         $this->assertStringContainsString("18 game's bundles updated", $commandTester->getDisplay());

@@ -20,7 +20,7 @@ final class UpdateGamesAvailabilitiesTest extends TestCase
     {
         $message = new UpdateGamesAvailabilities('12');
 
-        $this->assertEquals(
+        $this->assertSame(
             'O:37:"App\Message\UpdateGamesAvailabilities":1:{s:8:"actionId";s:2:"12";}',
             serialize($message)
         );

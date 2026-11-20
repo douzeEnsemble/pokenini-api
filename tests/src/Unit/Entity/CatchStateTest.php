@@ -29,7 +29,7 @@ final class CatchStateTest extends TestCase
         $entity = new CatchState();
         $entity->name = 'Douze';
 
-        $this->assertEquals('Douze', (string) $entity);
-        $this->assertEquals('Douze', $entity->__toString());
+        $this->assertSame('Douze', (string) $entity);
+        $this->assertSame('Douze', $entity->__toString());
     }
 }

@@ -20,13 +20,13 @@ final class StatisticTest extends TestCase
     {
         $statisticWithCount = new Statistic('douze', 12);
 
-        $this->assertEquals('douze', $statisticWithCount->slug);
-        $this->assertEquals(12, $statisticWithCount->count);
+        $this->assertSame('douze', $statisticWithCount->slug);
+        $this->assertSame(12, $statisticWithCount->count);
 
         $statisticWithoutCount = new Statistic('zero');
 
-        $this->assertEquals('zero', $statisticWithoutCount->slug);
-        $this->assertEquals(0, $statisticWithoutCount->count);
+        $this->assertSame('zero', $statisticWithoutCount->slug);
+        $this->assertSame(0, $statisticWithoutCount->count);
     }
 
     #[Test]
@@ -34,17 +34,17 @@ final class StatisticTest extends TestCase
     {
         $statisticWithCount = new Statistic('douze', 12);
 
-        $this->assertEquals(12, $statisticWithCount->count);
+        $this->assertSame(12, $statisticWithCount->count);
 
         $statisticWithCount->increment();
-        $this->assertEquals(13, $statisticWithCount->count);
+        $this->assertSame(13, $statisticWithCount->count);
 
         $statisticWithoutCount = new Statistic('zero');
 
-        $this->assertEquals(0, $statisticWithoutCount->count);
+        $this->assertSame(0, $statisticWithoutCount->count);
 
         $statisticWithoutCount->increment();
-        $this->assertEquals(1, $statisticWithoutCount->count);
+        $this->assertSame(1, $statisticWithoutCount->count);
     }
 
     #[Test]
@@ -52,12 +52,12 @@ final class StatisticTest extends TestCase
     {
         $statistic = new Statistic('douze', 12);
 
-        $this->assertEquals(12, $statistic->count);
+        $this->assertSame(12, $statistic->count);
 
         $statistic->incrementBy(1);
-        $this->assertEquals(13, $statistic->count);
+        $this->assertSame(13, $statistic->count);
 
         $statistic->incrementBy(3);
-        $this->assertEquals(16, $statistic->count);
+        $this->assertSame(16, $statistic->count);
     }
 }

@@ -26,11 +26,11 @@ final class StatisticTest extends TestCase
             count: 12,
         );
 
-        $this->assertEquals('douze', $statisticWithCount->slug);
-        $this->assertEquals('Twelve', $statisticWithCount->name);
-        $this->assertEquals('Douze', $statisticWithCount->frenchName);
-        $this->assertEquals('#e57373', $statisticWithCount->color);
-        $this->assertEquals(12, $statisticWithCount->count);
+        $this->assertSame('douze', $statisticWithCount->slug);
+        $this->assertSame('Twelve', $statisticWithCount->name);
+        $this->assertSame('Douze', $statisticWithCount->frenchName);
+        $this->assertSame('#e57373', $statisticWithCount->color);
+        $this->assertSame(12, $statisticWithCount->count);
 
         $statisticWithoutCount = new Statistic(
             slug: 'zero',
@@ -39,11 +39,11 @@ final class StatisticTest extends TestCase
             color: '#e57373',
         );
 
-        $this->assertEquals('zero', $statisticWithoutCount->slug);
-        $this->assertEquals('Zero', $statisticWithoutCount->name);
-        $this->assertEquals('Zéro', $statisticWithoutCount->frenchName);
-        $this->assertEquals('#e57373', $statisticWithoutCount->color);
-        $this->assertEquals(0, $statisticWithoutCount->count);
+        $this->assertSame('zero', $statisticWithoutCount->slug);
+        $this->assertSame('Zero', $statisticWithoutCount->name);
+        $this->assertSame('Zéro', $statisticWithoutCount->frenchName);
+        $this->assertSame('#e57373', $statisticWithoutCount->color);
+        $this->assertSame(0, $statisticWithoutCount->count);
     }
 
     #[Test]
@@ -57,9 +57,9 @@ final class StatisticTest extends TestCase
             count: 12,
         );
 
-        $this->assertEquals(12, $statisticWithCount->count);
+        $this->assertSame(12, $statisticWithCount->count);
 
-        $this->assertEquals(13, $statisticWithCount->increment());
+        $this->assertSame(13, $statisticWithCount->increment());
 
         $statisticWithoutCount = new Statistic(
             slug: 'zero',
@@ -68,8 +68,8 @@ final class StatisticTest extends TestCase
             color: '#e57373',
         );
 
-        $this->assertEquals(0, $statisticWithoutCount->count);
+        $this->assertSame(0, $statisticWithoutCount->count);
 
-        $this->assertEquals(1, $statisticWithoutCount->increment());
+        $this->assertSame(1, $statisticWithoutCount->increment());
     }
 }

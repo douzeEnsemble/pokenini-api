@@ -44,10 +44,10 @@ final class UpdateCollectionsAvailabilitiesCommandTest extends AbstractTestCaseC
 
         $commandTester->assertCommandIsSuccessful();
 
-        $this->assertEquals(968, $this->getCollectionAvailabilityCount());
+        $this->assertSame(968, $this->getCollectionAvailabilityCount());
 
-        $this->assertEquals($initialToProcessCount, $this->getActionLogToProcessCount());
-        $this->assertEquals($initialDoneCount + 1, $this->getActionLogDoneCount());
+        $this->assertSame($initialToProcessCount, $this->getActionLogToProcessCount());
+        $this->assertSame($initialDoneCount + 1, $this->getActionLogDoneCount());
 
         $this->assertStringContainsString("968 collections' availabilities updated", $commandTester->getDisplay());
     }
