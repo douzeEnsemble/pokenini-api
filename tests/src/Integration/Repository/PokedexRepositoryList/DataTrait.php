@@ -127,13 +127,8 @@ trait DataTrait
         $this->assertNull($pokedex[6]['catch_state_name']);
         $this->assertNull($pokedex[6]['catch_state_slug']);
 
-        /** @psalm-suppress DocblockTypeContradiction */
         $this->assertNull($pokedex[6]['primary_type_name']);
-
-        /** @psalm-suppress DocblockTypeContradiction */
         $this->assertNull($pokedex[6]['primary_type_french_name']);
-
-        /** @psalm-suppress DocblockTypeContradiction */
         $this->assertNull($pokedex[6]['primary_type_slug']);
         $this->assertNull($pokedex[6]['secondary_type_name']);
         $this->assertNull($pokedex[6]['secondary_type_french_name']);
