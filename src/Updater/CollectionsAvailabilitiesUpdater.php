@@ -19,8 +19,11 @@ class CollectionsAvailabilitiesUpdater extends AbstractUpdater
 {
     protected const int RANGE_SIZE = 100;
     protected const int BATCH_SIZE = 20;
+    #[\Override]
     protected string $sheetName = 'Collections Availability';
+    #[\Override]
     protected string $tableName = 'collection_availability';
+    #[\Override]
     protected string $statisticName = 'collections_availabilities';
     protected int $recordsCellsStartRowIndex = 1;
     protected int $recordsCellsStartColumnIndex = 0;

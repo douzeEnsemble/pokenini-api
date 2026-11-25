@@ -11,12 +11,17 @@ use Symfony\Component\Uid\Uuid;
  */
 class CollectionsUpdater extends AbstractUpdater
 {
+    #[\Override]
     protected string $sheetName = 'Collection';
+    #[\Override]
     protected string $tableName = 'collection';
+    #[\Override]
     protected string $statisticName = 'collections';
+    #[\Override]
     protected string $headerCellsRange = 'A1:D1';
 
     /** @var array<int, string> */
+    #[\Override]
     protected array $recordsCellsRanges = ['A2:D'];
 
     #[\Override]

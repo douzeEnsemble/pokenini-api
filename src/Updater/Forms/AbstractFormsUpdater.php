@@ -9,9 +9,11 @@ use Symfony\Component\Uid\Uuid;
 
 abstract class AbstractFormsUpdater extends AbstractUpdater
 {
+    #[\Override]
     protected string $headerCellsRange = 'A1:D1';
 
     /** @var array<int, string> */
+    #[\Override]
     protected array $recordsCellsRanges = ['A2:D'];
 
     #[\Override]

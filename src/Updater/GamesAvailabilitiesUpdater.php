@@ -19,8 +19,11 @@ class GamesAvailabilitiesUpdater extends AbstractUpdater
 {
     protected const int RANGE_SIZE = 100;
     protected const int BATCH_SIZE = 20;
+    #[\Override]
     protected string $sheetName = 'Games Availability';
+    #[\Override]
     protected string $tableName = 'game_availability';
+    #[\Override]
     protected string $statisticName = 'games_availabilities';
     protected int $recordsCellsStartRowIndex = 2;
     protected int $recordsCellsStartColumnIndex = 0;

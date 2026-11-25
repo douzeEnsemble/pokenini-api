@@ -12,12 +12,17 @@ use Symfony\Component\Uid\Uuid;
  */
 class PokemonsUpdater extends AbstractUpdater
 {
+    #[\Override]
     protected string $sheetName = 'Pokémons';
+    #[\Override]
     protected string $tableName = 'pokemon';
+    #[\Override]
     protected string $statisticName = 'pokemons';
+    #[\Override]
     protected string $headerCellsRange = 'A1:AT1';
 
     /** @var array<int, string> */
+    #[\Override]
     protected array $recordsCellsRanges = ['A2:AT'];
 
     #[\Override]

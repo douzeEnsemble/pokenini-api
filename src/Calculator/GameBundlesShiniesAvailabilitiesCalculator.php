@@ -11,6 +11,7 @@ use App\Repository\GameBundlesShiniesAvailabilitiesRepository;
  */
 class GameBundlesShiniesAvailabilitiesCalculator extends AbstractCalculator
 {
+    #[\Override]
     protected string $statisticName = 'game_bundles_shinies_availabilities';
 
     public function __construct(

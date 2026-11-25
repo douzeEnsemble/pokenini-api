@@ -9,7 +9,10 @@ namespace App\Updater\Forms;
  */
 class CategoryFormsUpdater extends AbstractFormsUpdater
 {
+    #[\Override]
     protected string $sheetName = 'Category form';
+    #[\Override]
     protected string $tableName = 'category_form';
+    #[\Override]
     protected string $statisticName = 'category_forms';
 }
