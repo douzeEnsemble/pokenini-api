@@ -11,12 +11,17 @@ use Symfony\Component\Uid\Uuid;
  */
 class RegionsUpdater extends AbstractUpdater
 {
+    #[\Override]
     protected string $sheetName = 'Region';
+    #[\Override]
     protected string $tableName = 'region';
+    #[\Override]
     protected string $statisticName = 'regions';
+    #[\Override]
     protected string $headerCellsRange = 'A1:D1';
 
     /** @var array<int, string> */
+    #[\Override]
     protected array $recordsCellsRanges = ['A2:D'];
 
     #[\Override]

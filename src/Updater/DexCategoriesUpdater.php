@@ -11,12 +11,17 @@ use Symfony\Component\Uid\Uuid;
  */
 class DexCategoriesUpdater extends AbstractUpdater
 {
+    #[\Override]
     protected string $sheetName = 'Dex Category';
+    #[\Override]
     protected string $tableName = 'dex_category';
+    #[\Override]
     protected string $statisticName = 'dex_categories';
+    #[\Override]
     protected string $headerCellsRange = 'A1:D1';
 
     /** @var array<int, string> */
+    #[\Override]
     protected array $recordsCellsRanges = ['A2:D'];
 
     #[\Override]

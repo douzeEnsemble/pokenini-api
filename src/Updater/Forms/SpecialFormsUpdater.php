@@ -9,7 +9,10 @@ namespace App\Updater\Forms;
  */
 class SpecialFormsUpdater extends AbstractFormsUpdater
 {
+    #[\Override]
     protected string $sheetName = 'Special form';
+    #[\Override]
     protected string $tableName = 'special_form';
+    #[\Override]
     protected string $statisticName = 'special_forms';
 }

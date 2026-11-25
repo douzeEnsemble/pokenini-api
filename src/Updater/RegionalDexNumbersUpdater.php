@@ -19,8 +19,11 @@ class RegionalDexNumbersUpdater extends AbstractUpdater
 {
     protected const int RANGE_SIZE = 100;
     protected const int BATCH_SIZE = 20;
+    #[\Override]
     protected string $sheetName = 'Regional Dex Number';
+    #[\Override]
     protected string $tableName = 'regional_dex_number';
+    #[\Override]
     protected string $statisticName = 'regional_dex_numbers';
     protected int $recordsCellsStartRowIndex = 1;
     protected int $recordsCellsStartColumnIndex = 0;

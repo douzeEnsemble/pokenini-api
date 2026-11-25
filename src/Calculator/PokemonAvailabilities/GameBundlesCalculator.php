@@ -13,6 +13,7 @@ use App\Repository\PokemonAvailabilitiesRepository;
  */
 class GameBundlesCalculator extends AbstractCalculator
 {
+    #[\Override]
     protected string $statisticName = 'pokemon_availabilities_game_bundle';
 
     public function __construct(

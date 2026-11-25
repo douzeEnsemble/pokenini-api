@@ -9,7 +9,10 @@ namespace App\Updater\Forms;
  */
 class VariantFormsUpdater extends AbstractFormsUpdater
 {
+    #[\Override]
     protected string $sheetName = 'Variant form';
+    #[\Override]
     protected string $tableName = 'variant_form';
+    #[\Override]
     protected string $statisticName = 'variant_forms';
 }

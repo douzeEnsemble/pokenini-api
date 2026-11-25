@@ -9,7 +9,10 @@ namespace App\Updater\Forms;
  */
 class RegionalFormsUpdater extends AbstractFormsUpdater
 {
+    #[\Override]
     protected string $sheetName = 'Regional form';
+    #[\Override]
     protected string $tableName = 'regional_form';
+    #[\Override]
     protected string $statisticName = 'regional_forms';
 }

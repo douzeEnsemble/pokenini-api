@@ -13,6 +13,7 @@ use App\Repository\DexRepository;
  */
 class DexAvailabilitiesCalculator extends AbstractCalculator
 {
+    #[\Override]
     protected string $statisticName = 'dex_availabilities';
 
     public function __construct(

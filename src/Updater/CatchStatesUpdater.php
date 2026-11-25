@@ -11,12 +11,17 @@ use Symfony\Component\Uid\Uuid;
  */
 class CatchStatesUpdater extends AbstractUpdater
 {
+    #[\Override]
     protected string $sheetName = 'Catch state';
+    #[\Override]
     protected string $tableName = 'catch_state';
+    #[\Override]
     protected string $statisticName = 'catch_states';
+    #[\Override]
     protected string $headerCellsRange = 'A1:F1';
 
     /** @var array<int, string> */
+    #[\Override]
     protected array $recordsCellsRanges = ['A2:F'];
 
     #[\Override]

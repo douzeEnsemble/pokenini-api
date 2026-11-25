@@ -11,12 +11,17 @@ use Symfony\Component\Uid\Uuid;
  */
 class TypesUpdater extends AbstractUpdater
 {
+    #[\Override]
     protected string $sheetName = 'Type';
+    #[\Override]
     protected string $tableName = 'type';
+    #[\Override]
     protected string $statisticName = 'types';
+    #[\Override]
     protected string $headerCellsRange = 'A1:E1';
 
     /** @var array<int, string> */
+    #[\Override]
     protected array $recordsCellsRanges = ['A2:E'];
 
     #[\Override]

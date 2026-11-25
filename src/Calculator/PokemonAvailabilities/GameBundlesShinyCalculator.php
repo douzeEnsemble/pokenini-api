@@ -13,6 +13,7 @@ use App\Repository\PokemonAvailabilitiesRepository;
  */
 class GameBundlesShinyCalculator extends AbstractCalculator
 {
+    #[\Override]
     protected string $statisticName = 'pokemon_availabilities_game_bundle_shiny';
 
     public function __construct(
