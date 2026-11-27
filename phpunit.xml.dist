@@ -15,7 +15,7 @@
     <server name="SYMFONY_PHPUNIT_VERSION" value="11.3" />
     <env name="SYMFONY_DEPRECATIONS_HELPER" value="max[self]=0" />
     <env name="DATABASE_URL"
-      value="postgresql://app:!ChangeMe!@database:5432/app?serverVersion=13%26charset=utf8"
+      value="postgresql://app:!ChangeMe!@database:5432/app"
       force="true" />
   </php>
   <testsuites>

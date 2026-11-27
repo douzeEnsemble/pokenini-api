@@ -2,7 +2,7 @@ doctrine:
     dbal:
         url: '%env(resolve:DATABASE_URL)%'
         charset: utf8
-        server_version: "14"
+        server_version: "18"
         profiling_collect_backtrace: false
     orm:
         validate_xml_mapping: false
