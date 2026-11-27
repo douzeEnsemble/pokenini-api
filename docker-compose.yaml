@@ -2,13 +2,13 @@ name: Pokénini Api
 
 services:
   adminer:
-    image: adminer:6.3.0
+    image: adminer:6.3.1
     ports:
       - '127.0.0.1:8082:8080'
     restart: always
 
   database:
-    image: postgres:18.7-alpine3.24
+    image: postgres:19.0-alpine3.24
     volumes:
       - db_data:/var/lib/postgresql
     environment:
