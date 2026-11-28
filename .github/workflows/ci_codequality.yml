@@ -114,3 +114,14 @@ jobs:
           dir: deptrac
       - name: Run
         run: ./tools/deptrac/vendor/bin/deptrac analyse --report-uncovered --fail-on-uncovered
+
+  lint-expressions:
+    name: Expressions (lint:expressions)
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7
+      - name: Composer install
+        uses: ./.github/actions/local-composer
+      - name: Run
+        run: php bin/console lint:expressions
