@@ -215,6 +215,15 @@ data-app: ## Initialize app data
 data-fixtures-app: ## Initialize app fixtures data
 	$(SYMFONY) hautelook:fixtures:load --no-interaction --env=dev
 
+## —— Messenger 📨 ————————————————————————————————————————————————————————————
+.PHONY: messenger-show
+messenger-show: ## List the pending messages, pass "t=failed" for the failed ones
+	@$(SYMFONY) messenger:show $(or $(t),async)
+
+.PHONY: messenger-drain
+messenger-drain: ## Handle the pending messages then stop
+	@$(SYMFONY) messenger:consume async --stop-when-empty -vv
+
 ## —— Composer 🧙 ——————————————————————————————————————————————————————————————
 .PHONY: composer
 composer: ## Run composer, pass the parameter "c=" to run a given command, example: make composer c='req symfony/orm-pack'

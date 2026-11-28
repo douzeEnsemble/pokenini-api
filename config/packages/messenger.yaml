@@ -2,6 +2,12 @@ framework:
   messenger:
     failure_transport: failed
 
+    # Logs the duration and memory usage of each message, on the "messenger" channel
+    buses:
+      messenger.bus.default:
+        middleware:
+          - logging
+
     transports:
       async:
         dsn: "%env(MESSENGER_TRANSPORT_DSN)%"
