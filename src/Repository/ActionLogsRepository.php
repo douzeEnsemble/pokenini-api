@@ -35,6 +35,19 @@ class ActionLogsRepository extends ServiceEntityRepository
     }
 
     /**
+     * Ends an unfinished action with an error. It goes through DBAL: a database error may have closed
+     * the entity manager.
+     */
+    public function endPendingInError(string $actionId, string $errorTrace): void
+    {
+        $this->getEntityManager()->getConnection()->executeStatement(
+            'UPDATE action_log SET done_at = :doneAt, error_trace = :errorTrace WHERE id = :id AND done_at IS NULL',
+            ['doneAt' => new \DateTimeImmutable(), 'errorTrace' => $errorTrace, 'id' => $actionId],
+            ['doneAt' => Types::DATETIME_IMMUTABLE],
+        );
+    }
+
+    /**
      * @return array<int, array{
      *  type_action: string,
      *  row_number: int,

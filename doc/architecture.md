@@ -20,6 +20,7 @@ pokenini-api/
 ├── src/                         Code source PHP
 │   ├── ActionEnder/             Finalisation des ActionLog (trait)
 │   ├── ActionStarter/           Création d'ActionLog + instanciation de Message
+│   ├── EventListener/           Clôture en erreur des ActionLog restés ouverts
 │   ├── Calculator/              Calculs purs de disponibilités
 │   │   └── PokemonAvailabilities/  Sous-calculateurs disponibilités Pokémon
 │   ├── Command/                 Commandes CLI Symfony console
@@ -89,6 +90,7 @@ pokenini-api/
 | **ActionStarter** | Crée ActionLog + instancie Message | Entity, Message, EntityManager | `src/ActionStarter/UpdatePokemonsActionStarter.php` |
 | **ActionEnder** | Finalise ActionLog (rapport ou erreur) | Entity, Repository, DTO | `src/ActionEnder/ActionEnderTrait.php` |
 | **MessageHandler** | Reçoit Message, orchestre execution async | Service, Updater, Calculator, ActionEnder | `src/MessageHandler/UpdatePokemonsHandler.php` |
+| **EventListener** | Filet des handlers : clôt l'ActionLog quand un message échoue définitivement (`Error`, EntityManager fermé) | Message, Repository, Messenger | `src/EventListener/EndFailedActionLogListener.php` |
 | **Command** | Entrée CLI, déclenche directement un flux complet | ActionStarter, ActionEnder, Service | `src/Command/UpdatePokemonsCommand.php` |
 | **DTO** | Validation des inputs (OptionsResolver) + shapes de réponses | OptionsResolver | `src/DTO/TrainerPokemonEloQueryOptions.php` |
 | **Entity** | Entités Doctrine, propriétés publiques, sans logique | ORM, UUID | `src/Entity/Pokemon.php` |
