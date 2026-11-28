@@ -22,7 +22,7 @@ security:
         realm: Secured Area
 
   access_control:
-    - { path: ^/istration/dex-banner-layers$, roles: [ROLE_ICON, ROLE_API] }
+    - { path: ^/istration/dex-banner-layers$, allow_if: "is_granted('ROLE_ICON') or is_granted('ROLE_API')" }
     - { path: ^/, roles: ROLE_API }
 
 when@test:
