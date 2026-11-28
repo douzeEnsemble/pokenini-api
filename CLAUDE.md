@@ -40,7 +40,7 @@ docker compose exec php php vendor/bin/phpunit --filter testGetForAPublicDex tes
 ### Quality
 ```bash
 make quality            # All quality checks
-make code-quality       # PHP checks (cs-fixer, phpmd, psalm, phpstan, deptrac, jsonlint, lint:expressions)
+make code-quality       # PHP checks (cs-fixer, phpmd, psalm, phpstan, deptrac, jsonlint, lint:expressions, lint:yaml)
 make infra-quality      # Docker/dotenv/editorconfig linting
 make phpcsfixer-fix     # Auto-fix code style
 ```
