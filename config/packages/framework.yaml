@@ -3,7 +3,6 @@ framework:
     http_method_override: false
     
     handle_all_throwables: true
-    enabled_locales: '%app.locales%'
 
     trusted_proxies: '%env(TRUSTED_PROXIES)%'
     trusted_hosts: '%env(TRUSTED_HOSTS)%'
