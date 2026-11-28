@@ -326,7 +326,7 @@ dotenv-fixer: ## Run DotEnv fixer
 .PHONY: code-quality
 code-quality: ## Execute all code quality analyses
 code-quality:
-	$(call parallel_runner,editorconfig-linter jsonlint validate-autoloader phpcsfixer phpmd psalm phpstan deptrac,code-quality checks)
+	$(call parallel_runner,editorconfig-linter jsonlint validate-autoloader phpcsfixer phpmd psalm phpstan deptrac lint-expressions,code-quality checks)
 
 .PHONY: cq
 cq: ## Alias of code-quality
@@ -396,6 +396,10 @@ phpstan: tools/phpstan/vendor/bin/phpstan
 deptrac: ## Execute deptrac analyse
 deptrac: tools/deptrac/vendor/bin/deptrac
 	@$(PHP) tools/deptrac/vendor/bin/deptrac analyse --report-uncovered --fail-on-uncovered --cache-file=/app/var/cache/deptrac/.deptrac.cache
+
+.PHONY: lint-expressions
+lint-expressions: ## Check the expressions of controller attributes and of the config
+	@$(SYMFONY) lint:expressions
 
 ## —— Integration 🗂️ ———————————————————————————————————————————————————————————————
 .PHONY: integration
