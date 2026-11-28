@@ -23,5 +23,5 @@ when@test:
   framework:
     messenger:
       transports:
-        async: "test://"
-        sync: "test://"
+        async: "in-memory://?serialize=true"
+        sync: "in-memory://?serialize=true"

@@ -13,7 +13,7 @@ use Monolog\LogRecord;
 use PHPUnit\Framework\Attributes\CoversNothing;
 use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Zenstruck\Messenger\Test\InteractsWithMessenger;
+use Symfony\Component\Messenger\Envelope;
 
 /**
  * Checks the messenger configuration: each handled message is logged with its duration and memory.
@@ -24,7 +24,6 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
 final class LoggingMiddlewareTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
-    use InteractsWithMessenger;
     use GetActionLogTrait;
 
     #[\Override]
@@ -41,9 +40,8 @@ final class LoggingMiddlewareTest extends KernelTestCase
         $this->assertInstanceOf(Logger::class, $logger);
         $logger->pushHandler($handler);
 
-        $transport = $this->transport('async');
-        $transport->send(new CalculatePokemonAvailabilities($this->getIdToProcess(CalculatePokemonAvailabilities::class)));
-        $transport->process(1);
+        self::getMessengerTransport('async')->send(new Envelope(new CalculatePokemonAvailabilities($this->getIdToProcess(CalculatePokemonAvailabilities::class))));
+        self::consumeQueuedMessages('async', 1);
 
         $records = array_values(array_filter(
             $handler->getRecords(),

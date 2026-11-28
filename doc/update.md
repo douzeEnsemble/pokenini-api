@@ -41,7 +41,6 @@
 | `symfony/phpunit-bridge` | `8.0.*` | OK |
 | `symfony/stopwatch` | `8.0.*` | OK |
 | `symfony/var-dumper` | `8.0.*` | OK |
-| `zenstruck/messenger-test` | `^1.14.0` | OK |
 
 ## Outils qualité (`tools/*/composer.json`)
 

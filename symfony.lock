@@ -503,8 +503,5 @@
     },
     "webmozart/assert": {
         "version": "1.10.0"
-    },
-    "zenstruck/messenger-test": {
-        "version": "v1.7.2"
     }
 }
