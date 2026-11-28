@@ -32,6 +32,10 @@ parameters:
       collectors:
         - type: classLike
           value: '^App\\Entity\\.*'
+    - name: AppEventListener
+      collectors:
+        - type: classLike
+          value: '^App\\EventListener\\.*'
     - name: AppException
       collectors:
         - type: classLike
@@ -136,6 +140,10 @@ parameters:
       collectors:
         - type: classLike
           value: '^Symfony\\Component\\HttpKernel\\.*'
+    - name: SymfonyEventDispatcher
+      collectors:
+        - type: classLike
+          value: '^Symfony\\Component\\EventDispatcher\\.*'
     - name: SymfonyMessenger
       collectors:
         - type: classLike
@@ -230,6 +238,11 @@ parameters:
       - SymfonySerializer
       - SymfonyUid
       - SymfonyValidator
+    AppEventListener:
+      - AppMessage
+      - AppRepository
+      - SymfonyEventDispatcher
+      - SymfonyMessenger
     AppException:
       - SymfonyHttpKernel
     AppFactory:
