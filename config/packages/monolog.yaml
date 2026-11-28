@@ -36,6 +36,11 @@ when@test:
 when@prod:
     monolog:
         handlers:
+            # "main" only writes the logs when an error occurs: the duration of each message is written anyway
+            messenger:
+                type: error_log
+                level: info
+                channels: [messenger]
             main:
                 type: fingers_crossed
                 action_level: error

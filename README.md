@@ -145,6 +145,19 @@ curl -X POST --insecure  "http://localhost/istration/update/labels" \
 make sf c="messenger:consume async -vv --limit=1"
 ```
 
+### Follow the messages
+
+```
+make messenger-show             # pending messages
+make messenger-show t=failed    # failed messages
+make messenger-drain            # handle the pending messages then stop
+```
+
+Each handled message is logged on the `messenger` channel with its duration (`duration_ms`) and the memory
+it added (`memory_usage`, in bytes), in production too.
+
+On a deployed stack, the same commands run in the `worker` container, with `php bin/console`.
+
 ### Process
 
 #### Change a pokemon slug
