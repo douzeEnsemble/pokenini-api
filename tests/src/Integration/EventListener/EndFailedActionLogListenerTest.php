@@ -15,7 +15,8 @@ use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Zenstruck\Messenger\Test\InteractsWithMessenger;
+use Symfony\Component\Messenger\Envelope;
+use Symfony\Component\Messenger\Exception\HandlerFailedException;
 
 /**
  * @internal
@@ -25,7 +26,6 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
 final class EndFailedActionLogListenerTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
-    use InteractsWithMessenger;
     use GetActionLogTrait;
 
     #[\Override]
@@ -46,9 +46,14 @@ final class EndFailedActionLogListenerTest extends KernelTestCase
 
         $actionId = $this->getIdToProcess(UpdateLabels::class);
 
-        $transport = $this->transport('async');
-        $transport->send(new UpdateLabels($actionId));
-        $transport->process(1);
+        self::getMessengerTransport('async')->send(new Envelope(new UpdateLabels($actionId)));
+
+        try {
+            self::consumeQueuedMessages('async', 1);
+            $this->fail('The failure of the handler should be rethrown');
+        } catch (HandlerFailedException $e) {
+            $this->assertInstanceOf(\TypeError::class, $e->getPrevious());
+        }
 
         $actionLog = $this->getActionLog($actionId);
         $this->assertNotNull($actionLog['done_at']);

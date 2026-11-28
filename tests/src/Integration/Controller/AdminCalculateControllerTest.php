@@ -13,7 +13,6 @@ use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Zenstruck\Messenger\Test\InteractsWithMessenger;
 
 /**
  * @internal
@@ -22,14 +21,13 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
 final class AdminCalculateControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;
-    use InteractsWithMessenger;
 
     #[Test]
     public function calculateGameBundlesAvailabilities(): void
     {
         $client = self::createClient();
 
-        $this->transport('async')->queue()->assertEmpty();
+        self::assertQueuedMessageCount(0, 'async');
 
         $client->request(
             'POST',
@@ -44,7 +42,7 @@ final class AdminCalculateControllerTest extends WebTestCase
 
         $this->assertResponseStatusCodeSame(201);
 
-        $this->transport('async')->queue()->assertContains(CalculateGameBundlesAvailabilities::class, 1);
+        self::assertQueuedMessageCount(1, 'async', CalculateGameBundlesAvailabilities::class);
     }
 
     #[Test]
@@ -52,7 +50,7 @@ final class AdminCalculateControllerTest extends WebTestCase
     {
         $client = self::createClient();
 
-        $this->transport('async')->queue()->assertEmpty();
+        self::assertQueuedMessageCount(0, 'async');
 
         $client->request(
             'POST',
@@ -67,7 +65,7 @@ final class AdminCalculateControllerTest extends WebTestCase
 
         $this->assertResponseStatusCodeSame(201);
 
-        $this->transport('async')->queue()->assertContains(CalculateGameBundlesShiniesAvailabilities::class, 1);
+        self::assertQueuedMessageCount(1, 'async', CalculateGameBundlesShiniesAvailabilities::class);
     }
 
     #[Test]
@@ -75,7 +73,7 @@ final class AdminCalculateControllerTest extends WebTestCase
     {
         $client = self::createClient();
 
-        $this->transport('async')->queue()->assertEmpty();
+        self::assertQueuedMessageCount(0, 'async');
 
         $client->request(
             'POST',
@@ -90,7 +88,7 @@ final class AdminCalculateControllerTest extends WebTestCase
 
         $this->assertResponseStatusCodeSame(201);
 
-        $this->transport('async')->queue()->assertContains(CalculateDexAvailabilities::class, 1);
+        self::assertQueuedMessageCount(1, 'async', CalculateDexAvailabilities::class);
     }
 
     #[Test]
@@ -98,7 +96,7 @@ final class AdminCalculateControllerTest extends WebTestCase
     {
         $client = self::createClient();
 
-        $this->transport('async')->queue()->assertEmpty();
+        self::assertQueuedMessageCount(0, 'async');
 
         $client->request(
             'POST',
@@ -113,7 +111,7 @@ final class AdminCalculateControllerTest extends WebTestCase
 
         $this->assertResponseStatusCodeSame(201);
 
-        $this->transport('async')->queue()->assertContains(CalculatePokemonAvailabilities::class, 1);
+        self::assertQueuedMessageCount(1, 'async', CalculatePokemonAvailabilities::class);
     }
 
     #[Test]

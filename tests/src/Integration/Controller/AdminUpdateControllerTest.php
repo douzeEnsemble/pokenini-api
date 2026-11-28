@@ -16,7 +16,6 @@ use Hautelook\AliceBundle\PhpUnit\RefreshDatabaseTrait;
 use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
-use Zenstruck\Messenger\Test\InteractsWithMessenger;
 
 /**
  * @internal
@@ -25,14 +24,13 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
 final class AdminUpdateControllerTest extends WebTestCase
 {
     use RefreshDatabaseTrait;
-    use InteractsWithMessenger;
 
     #[Test]
     public function updateLabels(): void
     {
         $client = self::createClient();
 
-        $this->transport('async')->queue()->assertEmpty();
+        self::assertQueuedMessageCount(0, 'async');
 
         $client->request(
             'POST',
@@ -47,7 +45,7 @@ final class AdminUpdateControllerTest extends WebTestCase
 
         $this->assertResponseStatusCodeSame(201);
 
-        $this->transport('async')->queue()->assertContains(UpdateLabels::class, 1);
+        self::assertQueuedMessageCount(1, 'async', UpdateLabels::class);
     }
 
     #[Test]
@@ -55,7 +53,7 @@ final class AdminUpdateControllerTest extends WebTestCase
     {
         $client = self::createClient();
 
-        $this->transport('async')->queue()->assertEmpty();
+        self::assertQueuedMessageCount(0, 'async');
 
         $client->request(
             'POST',
@@ -70,7 +68,7 @@ final class AdminUpdateControllerTest extends WebTestCase
 
         $this->assertResponseStatusCodeSame(201);
 
-        $this->transport('async')->queue()->assertContains(UpdateGamesCollectionsAndDex::class, 1);
+        self::assertQueuedMessageCount(1, 'async', UpdateGamesCollectionsAndDex::class);
     }
 
     #[Test]
@@ -78,7 +76,7 @@ final class AdminUpdateControllerTest extends WebTestCase
     {
         $client = self::createClient();
 
-        $this->transport('async')->queue()->assertEmpty();
+        self::assertQueuedMessageCount(0, 'async');
 
         $client->request(
             'POST',
@@ -93,7 +91,7 @@ final class AdminUpdateControllerTest extends WebTestCase
 
         $this->assertResponseStatusCodeSame(201);
 
-        $this->transport('async')->queue()->assertContains(UpdatePokemons::class, 1);
+        self::assertQueuedMessageCount(1, 'async', UpdatePokemons::class);
     }
 
     #[Test]
@@ -101,7 +99,7 @@ final class AdminUpdateControllerTest extends WebTestCase
     {
         $client = self::createClient();
 
-        $this->transport('async')->queue()->assertEmpty();
+        self::assertQueuedMessageCount(0, 'async');
 
         $client->request(
             'POST',
@@ -116,7 +114,7 @@ final class AdminUpdateControllerTest extends WebTestCase
 
         $this->assertResponseStatusCodeSame(201);
 
-        $this->transport('async')->queue()->assertContains(UpdateGamesAvailabilities::class, 1);
+        self::assertQueuedMessageCount(1, 'async', UpdateGamesAvailabilities::class);
     }
 
     #[Test]
@@ -124,7 +122,7 @@ final class AdminUpdateControllerTest extends WebTestCase
     {
         $client = self::createClient();
 
-        $this->transport('async')->queue()->assertEmpty();
+        self::assertQueuedMessageCount(0, 'async');
 
         $client->request(
             'POST',
@@ -139,7 +137,7 @@ final class AdminUpdateControllerTest extends WebTestCase
 
         $this->assertResponseStatusCodeSame(201);
 
-        $this->transport('async')->queue()->assertContains(UpdateGamesShiniesAvailabilities::class, 1);
+        self::assertQueuedMessageCount(1, 'async', UpdateGamesShiniesAvailabilities::class);
     }
 
     #[Test]
@@ -147,7 +145,7 @@ final class AdminUpdateControllerTest extends WebTestCase
     {
         $client = self::createClient();
 
-        $this->transport('async')->queue()->assertEmpty();
+        self::assertQueuedMessageCount(0, 'async');
 
         $client->request(
             'POST',
@@ -162,7 +160,7 @@ final class AdminUpdateControllerTest extends WebTestCase
 
         $this->assertResponseStatusCodeSame(201);
 
-        $this->transport('async')->queue()->assertContains(UpdateCollectionsAvailabilities::class, 1);
+        self::assertQueuedMessageCount(1, 'async', UpdateCollectionsAvailabilities::class);
     }
 
     #[Test]
@@ -170,7 +168,7 @@ final class AdminUpdateControllerTest extends WebTestCase
     {
         $client = self::createClient();
 
-        $this->transport('async')->queue()->assertEmpty();
+        self::assertQueuedMessageCount(0, 'async');
 
         $client->request(
             'POST',
@@ -185,7 +183,7 @@ final class AdminUpdateControllerTest extends WebTestCase
 
         $this->assertResponseStatusCodeSame(201);
 
-        $this->transport('async')->queue()->assertContains(UpdateRegionalDexNumbers::class, 1);
+        self::assertQueuedMessageCount(1, 'async', UpdateRegionalDexNumbers::class);
     }
 
     #[Test]
@@ -193,7 +191,7 @@ final class AdminUpdateControllerTest extends WebTestCase
     {
         $client = self::createClient();
 
-        $this->transport('async')->queue()->assertEmpty();
+        self::assertQueuedMessageCount(0, 'async');
 
         $client->request(
             'POST',
@@ -208,7 +206,7 @@ final class AdminUpdateControllerTest extends WebTestCase
 
         $this->assertResponseStatusCodeSame(201);
 
-        $this->transport('async')->queue()->assertContains(UpdateCollectionsAvailabilities::class, 1);
+        self::assertQueuedMessageCount(1, 'async', UpdateCollectionsAvailabilities::class);
     }
 
     #[Test]
@@ -228,7 +226,7 @@ final class AdminUpdateControllerTest extends WebTestCase
         $client->request('POST', '/istration/update/labels', [], [], $server);
         $this->assertResponseStatusCodeSame(409);
 
-        $this->transport('async')->queue()->assertContains(UpdateLabels::class, 1);
+        self::assertQueuedMessageCount(1, 'async', UpdateLabels::class);
     }
 
     #[Test]
@@ -242,7 +240,7 @@ final class AdminUpdateControllerTest extends WebTestCase
         ]);
 
         $this->assertResponseStatusCodeSame(404);
-        $this->transport('async')->queue()->assertEmpty();
+        self::assertQueuedMessageCount(0, 'async');
     }
 
     #[Test]

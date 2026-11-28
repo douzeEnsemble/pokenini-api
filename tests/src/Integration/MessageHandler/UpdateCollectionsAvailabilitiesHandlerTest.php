@@ -15,7 +15,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Zenstruck\Messenger\Test\InteractsWithMessenger;
+use Symfony\Component\Messenger\Envelope;
 
 /**
  * @internal
@@ -25,7 +25,6 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
 final class UpdateCollectionsAvailabilitiesHandlerTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
-    use InteractsWithMessenger;
     use CounterTableTrait;
     use CountActionLogTrait;
     use GetActionLogTrait;
@@ -39,26 +38,23 @@ final class UpdateCollectionsAvailabilitiesHandlerTest extends KernelTestCase
     #[Test]
     public function handler(): void
     {
-        $transport = $this->transport('async');
-        $transport->throwExceptions();
-
         $this->assertSame(6, $this->getTableCount('collection_availability'));
 
         $beforeTotalCount = $this->getActionLogCount();
         $beforeToProcessCount = $this->getActionLogToProcessCount();
         $beforeDoneCount = $this->getActionLogDoneCount();
 
-        $transport->send(
-            new UpdateCollectionsAvailabilities(
+        self::getMessengerTransport('async')->send(
+            new Envelope(new UpdateCollectionsAvailabilities(
                 $this->getIdToProcess(UpdateCollectionsAvailabilities::class)
-            )
+            ))
         );
 
-        $transport->queue()->assertContains(UpdateCollectionsAvailabilities::class, 1);
+        self::assertQueuedMessageCount(1, 'async', UpdateCollectionsAvailabilities::class);
 
-        $transport->process(1);
+        self::consumeQueuedMessages('async', 1);
 
-        $transport->queue()->assertEmpty();
+        self::assertQueuedMessageCount(0, 'async');
 
         $this->assertSame(968, $this->getTableCount('collection_availability'));
 
@@ -70,16 +66,13 @@ final class UpdateCollectionsAvailabilitiesHandlerTest extends KernelTestCase
     #[Test]
     public function exceptionHandler(): void
     {
-        $transport = $this->transport('async');
-        $transport->throwExceptions();
+        self::getMessengerTransport('async')->send(new Envelope(new UpdateCollectionsAvailabilities('0a35b132-fa1d-4528-b866-dadac5876e1c')));
 
-        $transport->send(new UpdateCollectionsAvailabilities('0a35b132-fa1d-4528-b866-dadac5876e1c'));
-
-        $transport->queue()->assertContains(UpdateCollectionsAvailabilities::class, 1);
+        self::assertQueuedMessageCount(1, 'async', UpdateCollectionsAvailabilities::class);
 
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessageIsOrContains("Can't find ActionLog #0a35b132-fa1d-4528-b866-dadac5876e1c");
 
-        $transport->process(1);
+        self::consumeQueuedMessages('async', 1);
     }
 }

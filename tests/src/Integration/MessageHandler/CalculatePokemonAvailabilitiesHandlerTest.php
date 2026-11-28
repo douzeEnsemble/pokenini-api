@@ -15,7 +15,7 @@ use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\Attributes\CoversTrait;
 use PHPUnit\Framework\Attributes\Test;
 use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
-use Zenstruck\Messenger\Test\InteractsWithMessenger;
+use Symfony\Component\Messenger\Envelope;
 
 /**
  * @internal
@@ -25,7 +25,6 @@ use Zenstruck\Messenger\Test\InteractsWithMessenger;
 final class CalculatePokemonAvailabilitiesHandlerTest extends KernelTestCase
 {
     use RefreshDatabaseTrait;
-    use InteractsWithMessenger;
     use CounterTableTrait;
     use CountActionLogTrait;
     use GetActionLogTrait;
@@ -39,26 +38,23 @@ final class CalculatePokemonAvailabilitiesHandlerTest extends KernelTestCase
     #[Test]
     public function handler(): void
     {
-        $transport = $this->transport('async');
-        $transport->throwExceptions();
-
         $this->assertSame(52, $this->getTableCount('pokemon_availabilities'));
 
         $beforeTotalCount = $this->getActionLogCount();
         $beforeToProcessCount = $this->getActionLogToProcessCount();
         $beforeDoneCount = $this->getActionLogDoneCount();
 
-        $transport->send(
-            new CalculatePokemonAvailabilities(
+        self::getMessengerTransport('async')->send(
+            new Envelope(new CalculatePokemonAvailabilities(
                 $this->getIdToProcess(CalculatePokemonAvailabilities::class)
-            )
+            ))
         );
 
-        $transport->queue()->assertContains(CalculatePokemonAvailabilities::class, 1);
+        self::assertQueuedMessageCount(1, 'async', CalculatePokemonAvailabilities::class);
 
-        $transport->process(1);
+        self::consumeQueuedMessages('async', 1);
 
-        $transport->queue()->assertEmpty();
+        self::assertQueuedMessageCount(0, 'async');
 
         $this->assertSame(21, $this->getTableCount('pokemon_availabilities'));
 
@@ -70,16 +66,13 @@ final class CalculatePokemonAvailabilitiesHandlerTest extends KernelTestCase
     #[Test]
     public function exceptionHandler(): void
     {
-        $transport = $this->transport('async');
-        $transport->throwExceptions();
+        self::getMessengerTransport('async')->send(new Envelope(new CalculatePokemonAvailabilities('0a35b132-fa1d-4528-b866-dadac5876e1c')));
 
-        $transport->send(new CalculatePokemonAvailabilities('0a35b132-fa1d-4528-b866-dadac5876e1c'));
-
-        $transport->queue()->assertContains(CalculatePokemonAvailabilities::class, 1);
+        self::assertQueuedMessageCount(1, 'async', CalculatePokemonAvailabilities::class);
 
         $this->expectException(\RuntimeException::class);
         $this->expectExceptionMessageIsOrContains("Can't find ActionLog #0a35b132-fa1d-4528-b866-dadac5876e1c");
 
-        $transport->process(1);
+        self::consumeQueuedMessages('async', 1);
     }
 }
