@@ -374,6 +374,8 @@ phpmd: tools/phpmd/vendor/bin/phpmd
 psalm: ## Execute psalm
 psalm: tools/psalm/vendor/bin/psalm
 	@$(PHP_CONT) rm -Rf var/cache/psalm
+	@# psalm/plugin-symfony 5.16.3 does not know the env_closure argument type of Symfony 8.2
+	@$(PHP_CONT) sed -i 's/type="env_closure"/type="string"/g' var/cache/test/App_KernelTestDebugContainer.xml
 	$(call parallel_runner,psalm-xml psalm-src-xml,psalm analyses)
 
 .PHONY: psalm-xml
